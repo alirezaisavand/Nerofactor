@@ -713,6 +713,14 @@ class MaterialFeatsNetwork(nn.Module):
 def saturate_dot(v0, v1):
     return torch.clamp(torch.sum(v0 * v1, dim=-1, keepdim=True), min=0.0, max=1.0)
 
+from nerfactor.third_party.xiuminglib import xiuminglib as xm
+from nerfactor.nerfactor.models.shape import Model as ShapeModel
+from nerfactor.nerfactor.models.brdf import Model as BRDFModel
+from nerfactor.nerfactor.networks import mlp
+from nerfactor.nerfactor.networks.embedder import Embedder
+from nerfactor.nerfactor.util import vis as visutil, config as configutil, \
+    io as ioutil, tensor as tutil, light as lightutil, img as imgutil, \
+    math as mathutil, geom as geomutil
 
 class MCShadingNetwork(nn.Module):
     default_cfg = {
@@ -738,7 +746,32 @@ class MCShadingNetwork(nn.Module):
         self.cfg = {**self.default_cfg, **cfg}
         super().__init__()
 
-        # material part
+        # Configurations
+        config_ini = "nerfactor/nerfactor/config/nerfactor.ini"
+        config = ioutil.read_config(config_ini)
+        # BRDF nerfactor part
+        brdf_ckpt = config.get('DEFAULT', 'brdf_model_ckpt')
+        brdf_config_path = configutil.get_config_ini(brdf_ckpt)
+        self.config_brdf = ioutil.read_config(brdf_config_path)
+        self.pred_brdf = config.getboolean('DEFAULT', 'pred_brdf')
+        self.z_dim = self.config_brdf.getint('DEFAULT', 'z_dim')
+        self.normalize_brdf_z = self.config_brdf.getboolean(
+            'DEFAULT', 'normalize_z')
+
+
+        # BRDF
+        self.albedo_smooth_weight = config.getfloat(
+            'DEFAULT', 'albedo_smooth_weight')
+        self.brdf_smooth_weight = config.getfloat(
+            'DEFAULT', 'brdf_smooth_weight')
+        self.brdf_model = BRDFModel(self.config_brdf)
+        ioutil.restore_model(self.brdf_model, brdf_ckpt)
+        self.brdf_model.trainable = False
+
+        # PSNR calculator
+        self.psnr = xm.metric.PSNR('uint8')
+        ######
+
         self.feats_network = MaterialFeatsNetwork()
         self.metallic_predictor = make_predictor(256 + 3, 1)
         self.roughness_predictor = make_predictor(256 + 3, 1)
