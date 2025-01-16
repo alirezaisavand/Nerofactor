@@ -714,13 +714,10 @@ def saturate_dot(v0, v1):
     return torch.clamp(torch.sum(v0 * v1, dim=-1, keepdim=True), min=0.0, max=1.0)
 
 from nerfactor.third_party.xiuminglib import xiuminglib as xm
-from nerfactor.nerfactor.models.shape import Model as ShapeModel
 from nerfactor.nerfactor.models.brdf import Model as BRDFModel
-from nerfactor.nerfactor.networks import mlp
 from nerfactor.nerfactor.networks.embedder import Embedder
-from nerfactor.nerfactor.util import vis as visutil, config as configutil, \
-    io as ioutil, tensor as tutil, light as lightutil, img as imgutil, \
-    math as mathutil, geom as geomutil
+from nerfactor.nerfactor.util import config as configutil, \
+    io as ioutil
 
 class MCShadingNetwork(nn.Module):
     default_cfg = {
