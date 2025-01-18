@@ -770,11 +770,11 @@ class MCShadingNetwork(nn.Module):
         mlp_skip_at = config.getint('DEFAULT', 'mlp_skip_at')
         self.brdf_net = {}
         # BRDF Z
-        from NeRO.network.brdf_mlp import MLPNetwork as mlp
-        self.brdf_net['brdf_z_mlp'] = mlp.Network(
+        from NeRO.network.brdf_mlp import MLPNetwork as brdf_mlp
+        self.brdf_net['brdf_z_mlp'] = brdf_mlp.Network(
             [mlp_width] * mlp_depth, act=['relu'] * mlp_depth,
             skip_at=[mlp_skip_at])
-        self.brdf_net['brdf_z_out'] = mlp.Network([self.z_dim], act=None)
+        self.brdf_net['brdf_z_out'] = brdf_mlp.Network([self.z_dim], act=None)
 
         # PSNR calculator
         self.psnr = xm.metric.PSNR('uint8')
