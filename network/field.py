@@ -749,6 +749,7 @@ class MCShadingNetwork(nn.Module):
         # BRDF nerfactor part
         brdf_ckpt = config.get('DEFAULT', 'brdf_model_ckpt')
         brdf_config_path = configutil.get_config_ini(brdf_ckpt)
+        print(brdf_config_path)
         self.config_brdf = ioutil.read_config(brdf_config_path)
         self.pred_brdf = config.getboolean('DEFAULT', 'pred_brdf')
         self.z_dim = self.config_brdf.getint('DEFAULT', 'z_dim')
