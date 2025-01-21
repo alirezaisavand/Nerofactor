@@ -772,10 +772,10 @@ class MCShadingNetwork(nn.Module):
         self.brdf_net = {}
         # BRDF Z
         from network.brdf_mlp import MLPNetwork as brdf_mlp
-        self.brdf_net['brdf_z_mlp'] = brdf_mlp.Network(
+        self.brdf_net['brdf_z_mlp'] = brdf_mlp(
             [mlp_width] * mlp_depth, act=['relu'] * mlp_depth,
             skip_at=[mlp_skip_at])
-        self.brdf_net['brdf_z_out'] = brdf_mlp.Network([self.z_dim], act=None)
+        self.brdf_net['brdf_z_out'] = brdf_mlp([self.z_dim], act=None)
 
         # PSNR calculator
         self.psnr = xm.metric.PSNR('uint8')
