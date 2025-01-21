@@ -32,7 +32,7 @@ class MLPNetwork(SeqNetwork):
 
         for w, a in zip(widths, act):
             activation = self._get_activation(a)
-            layer = nn.Linear(w, w if activation is None else w + activation.in_features)
+            layer = nn.Linear(w, w, activation=activation)
             self.layers.append(layer)
 
     def forward(self, x):
