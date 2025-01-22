@@ -1,6 +1,6 @@
 import torch.nn as nn
 
-from base_brdf import Network
+from network.base_brdf import Network
 
 class SequentialNetwork(Network):
     """Assuming simple sequential flow."""
