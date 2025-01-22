@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from seq_brdf import SequentialNetwork
+from network.seq_brdf import SequentialNetwork
 
 class MLPNetwork(SequentialNetwork):
     def __init__(self, widths, act=None, skip_at=None):
