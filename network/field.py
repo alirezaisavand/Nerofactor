@@ -715,7 +715,7 @@ def saturate_dot(v0, v1):
 
 from nerfactor.third_party.xiuminglib import xiuminglib as xm
 from nerfactor.nerfactor.models.brdf import Model as BRDFModel
-from nerfactor.nerfactor.networks.embedder import Embedder
+from nerfactor.nerfactor.networks.embedder import Embedder as nerfactor_Embedder
 from nerfactor.nerfactor.util import config as configutil, \
     io as ioutil
 
