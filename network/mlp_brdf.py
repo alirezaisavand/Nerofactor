@@ -14,18 +14,26 @@ class MLPNetwork(SequentialNetwork):
 
         assert len(act) == depth, "If not `None`, `act` must have the same length as `widths`"
 
+        activation_map = {
+            'relu': nn.ReLU,
+            'sigmoid': nn.Sigmoid,
+            'tanh': nn.Tanh,
+            'softmax': nn.Softmax,
+            'leaky_relu': nn.LeakyReLU,
+            'elu': nn.ELU,
+            'selu': nn.SELU,
+            None: nn.Identity  # Handle case where no activation is specified
+        }
+
         # Define layers
         for w, a in zip(widths, act):
             activation = None
-            if isinstance(a, str):
-                # Convert string activation to PyTorch equivalent
-                activation = getattr(nn, a.capitalize(), None)
-                if activation is None:
-                    raise ValueError(f"Unsupported activation function: {a}")
-                activation = activation()  # Instantiate activation
+            activation = activation_map.get(a.lower() if a else None, None)
+            if activation is None:
+                raise ValueError(f"Unsupported activation function: {a}")
             layer = nn.Sequential(
                 nn.Linear(w, w),  # Dense layer
-                activation if activation is not None else nn.Identity()  # Activation or identity
+                activation()  # Instantiate activation
             )
             self.layers.append(layer)
 
