@@ -771,7 +771,7 @@ class MCShadingNetwork(nn.Module):
         mlp_skip_at = config.getint('DEFAULT', 'mlp_skip_at')
         self.brdf_net = {}
         # BRDF Z
-        from network.brdf_mlp import MLPNetwork as brdf_mlp
+        from mlp_brdf import Network as brdf_mlp
         self.brdf_net['brdf_z_mlp'] = brdf_mlp(
             [mlp_width] * mlp_depth, act=['relu'] * mlp_depth,
             skip_at=[mlp_skip_at])
