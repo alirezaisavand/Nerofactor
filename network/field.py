@@ -1072,8 +1072,7 @@ class MCShadingNetwork(nn.Module):
             brdf_z = out_layer(mlp_layers(surf_embed))
             return brdf_z
 
-        brdf_z = self.chunk_apply(
-            chunk_func, pts_scaled, self.nerfactor_z_dim, len(pts))
+        brdf_z = chunk_func(pts_scaled)
         return brdf_z # NxZ
 
     def _eval_brdf_at(self, pts2l, pts2c, normal, albedo, brdf_prop):
@@ -1117,7 +1116,7 @@ class MCShadingNetwork(nn.Module):
             return brdf
 
         rusink_z = torch.cat((rusink_fl, z_fl), dim=1)
-        brdf_fl = self.chunk_apply(chunk_func, rusink_z, 1, chunk_size=len(pts2l))
+        brdf_fl = chunk_func(rusink_z)
 
         # Put front-lit BRDF values back into an all-zero flat tensor
         brdf_flat = torch.zeros((front_lit.shape[0], 1), dtype=torch.float32)
