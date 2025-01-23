@@ -715,9 +715,10 @@ def saturate_dot(v0, v1):
 
 from nerfactor.third_party.xiuminglib import xiuminglib as xm
 from nerfactor.nerfactor.models.brdf import Model as BRDFModel
-from nerfactor.nerfactor.networks.embedder import Embedder as nerfactor_Embedder
+# from nerfactor.nerfactor.networks.embedder import Embedder as nerfactor_Embedder
 from nerfactor.nerfactor.util import config as configutil, \
     io as ioutil, math as mathutil, geom as geomutil
+from network.embedder import Embedder as nerfactor_Embedder
 
 
 class MCShadingNetwork(nn.Module):
@@ -1035,12 +1036,12 @@ class MCShadingNetwork(nn.Module):
 
         # Position embedder
         kwargs = {
-            'include_input': True,
-            'input_dims': 3,
-            'max_freq_log2': n_freqs_xyz - 1,
-            'num_freqs': n_freqs_xyz,
+            'incl_input': True,
+            'in_dims': 3,
+            'log2_max_freq': n_freqs_xyz - 1,
+            'n_freqs': n_freqs_xyz,
             'log_sampling': True,
-            'periodic_fns': [torch.sin, torch.cos]
+            'periodic_func': [torch.sin, torch.cos]
         }
         embedder_xyz = nerfactor_Embedder(**kwargs)
 
