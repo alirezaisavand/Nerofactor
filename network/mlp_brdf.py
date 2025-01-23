@@ -25,18 +25,37 @@ class MLPNetwork(SequentialNetwork):
             None: nn.Identity  # Handle case where no activation is specified
         }
 
-        # Define layers
-        for w, a in zip(widths, act):
-            activation = None
+        input_size = widths[0]  # Initial input size
+        for i, (w, a) in enumerate(zip(widths, act)):
+            output_size = w
+            if i in self.skip_at:
+                # Account for concatenation of input tensor
+                input_size += widths[0]
+
             activation = activation_map.get(a.lower() if a else None, None)
             if activation is None:
                 raise ValueError(f"Unsupported activation function: {a}")
+
+            # Create the layer with the updated input size
             layer = nn.Sequential(
-                nn.Linear(w, w),  # Dense layer
-                activation()  # Instantiate activation
+                nn.Linear(input_size, output_size),  # Dense layer
+                activation()  # Add activation function
             )
             self.layers.append(layer)
+            input_size = output_size  # Update input size for the next layer
 
+        # # Define layers
+        # for w, a in zip(widths, act):
+        #     activation = None
+        #     activation = activation_map.get(a.lower() if a else None, None)
+        #     if activation is None:
+        #         raise ValueError(f"Unsupported activation function: {a}")
+        #     layer = nn.Sequential(
+        #         nn.Linear(w, w),  # Dense layer
+        #         activation()  # Instantiate activation
+        #     )
+        #     self.layers.append(layer)
+        #
         self.skip_at = skip_at
 
     def forward(self, x):
