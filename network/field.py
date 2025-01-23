@@ -782,7 +782,7 @@ class MCShadingNetwork(nn.Module):
 
         # setting up the nerfactor embedder
         self.nerfactor_embedder = self._init_nerfactor_embedder()
-        self.nerfactor_xyz_scale = self.config.getfloat(
+        self.nerfactor_xyz_scale = self.nerfactor_config.getfloat(
             'DEFAULT', 'xyz_scale', fallback=1.)
 
         # PSNR calculator
@@ -1077,7 +1077,7 @@ class MCShadingNetwork(nn.Module):
         return brdf_z # NxZ
 
     def _eval_brdf_at(self, pts2l, pts2c, normal, albedo, brdf_prop):
-        brdf_scale = self.config.getfloat('DEFAULT', 'learned_brdf_scale')
+        brdf_scale = self.nerfactor_config.getfloat('DEFAULT', 'learned_brdf_scale')
         z = brdf_prop
         # todo
         # Generate world-to-local transformation matrix
