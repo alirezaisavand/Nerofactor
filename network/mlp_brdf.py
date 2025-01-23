@@ -42,11 +42,10 @@ class MLPNetwork(SequentialNetwork):
             )
             self.layers.append(layer)
             # input_size = output_size  # Update input size for the next layer
+            input_size = output_size
             if i in self.skip_at:
                 # Account for concatenation of input tensor
-                input_size += output_size
-            else:
-                input_size = output_size
+                input_size += widths[0]
 
         # # Define layers
         # for w, a in zip(widths, act):
