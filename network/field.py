@@ -1069,7 +1069,7 @@ class MCShadingNetwork(nn.Module):
 
         def chunk_func(surf):
             surf_embed = embedder(surf)
-            print('surf embed, surf, mlp_layers, out_layer, embedder', surf_embed.device, surf.device, mlp_layers.device, out_layer.device, embedder.device)
+            print('surf embed, surf, mlp_layers, out_layer, embedder', surf_embed.device, surf.device, mlp_layers.parameters.device, out_layer.parameters.device, embedder.parameters.device)
             brdf_z = out_layer(mlp_layers(surf_embed))
             return brdf_z
 
