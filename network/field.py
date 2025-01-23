@@ -717,7 +717,8 @@ from nerfactor.third_party.xiuminglib import xiuminglib as xm
 from nerfactor.nerfactor.models.brdf import Model as BRDFModel
 from nerfactor.nerfactor.networks.embedder import Embedder as nerfactor_Embedder
 from nerfactor.nerfactor.util import config as configutil, \
-    io as ioutil
+    io as ioutil, math as mathutil, geom as geomutil
+
 
 class MCShadingNetwork(nn.Module):
     default_cfg = {
@@ -746,36 +747,42 @@ class MCShadingNetwork(nn.Module):
         # Configurations
         config_ini = "nerfactor/nerfactor/config/nerfactor.ini"
         config = ioutil.read_config(config_ini)
+        self.nerfactor_config = config
         # BRDF nerfactor part
         brdf_ckpt = config.get('DEFAULT', 'brdf_model_ckpt')
         brdf_config_path = configutil.get_config_ini(brdf_ckpt)
         print(brdf_config_path)
-        self.config_brdf = ioutil.read_config(brdf_config_path)
-        self.pred_brdf = config.getboolean('DEFAULT', 'pred_brdf')
-        self.z_dim = self.config_brdf.getint('DEFAULT', 'z_dim')
-        self.normalize_brdf_z = self.config_brdf.getboolean(
+        self.nerfactor_config_brdf = ioutil.read_config(brdf_config_path)
+        self.nerfactor_pred_brdf = config.getboolean('DEFAULT', 'pred_brdf')
+        self.nerfactor_z_dim = self.nerfactor_config_brdf.getint('DEFAULT', 'z_dim')
+        self.nerfactor_normalize_brdf_z = self.nerfactor_config_brdf.getboolean(
             'DEFAULT', 'normalize_z')
 
         # Pre-trained BRDF Decoder
-        self.albedo_smooth_weight = config.getfloat(
+        self.nerfactor_albedo_smooth_weight = config.getfloat(
             'DEFAULT', 'albedo_smooth_weight')
-        self.brdf_smooth_weight = config.getfloat(
+        self.nerfactor_brdf_smooth_weight = config.getfloat(
             'DEFAULT', 'brdf_smooth_weight')
-        self.brdf_model = BRDFModel(self.config_brdf)
-        ioutil.restore_model(self.brdf_model, brdf_ckpt)
-        self.brdf_model.trainable = False
+        self.nerfactor_brdf_model = BRDFModel(self.nerfactor_config_brdf)
+        ioutil.restore_model(self.nerfactor_brdf_model, brdf_ckpt)
+        self.nerfactor_brdf_model.trainable = False
 
         # BRDF Encoder
         mlp_width = config.getint('DEFAULT', 'mlp_width')
         mlp_depth = config.getint('DEFAULT', 'mlp_depth')
         mlp_skip_at = config.getint('DEFAULT', 'mlp_skip_at')
-        self.brdf_net = {}
+        self.nerfactor_net = {}
         # BRDF Z
         from network.mlp_brdf import MLPNetwork as brdf_mlp
-        self.brdf_net['brdf_z_mlp'] = brdf_mlp(
+        self.nerfactor_net['brdf_z_mlp'] = brdf_mlp(
             [mlp_width] * mlp_depth, act=['relu'] * mlp_depth,
             skip_at=[mlp_skip_at])
-        self.brdf_net['brdf_z_out'] = brdf_mlp([self.z_dim], act=None)
+        self.nerfactor_net['brdf_z_out'] = brdf_mlp([self.nerfactor_z_dim], act=None)
+
+        # setting up the nerfactor embedder
+        self.nerfactor_embedder = self._init_nerfactor_embedder()
+        self.nerfactor_xyz_scale = self.config.getfloat(
+            'DEFAULT', 'xyz_scale', fallback=1.)
 
         # PSNR calculator
         self.psnr = xm.metric.PSNR('uint8')
@@ -820,6 +827,8 @@ class MCShadingNetwork(nn.Module):
         light_pts = az_el_to_points(az, el)
         self.register_buffer('light_pts', torch.from_numpy(light_pts.astype(np.float32)))
         self.ray_trace_fun = ray_trace_fun
+
+
 
     def get_orthogonal_directions(self, directions):
         x, y, z = torch.split(directions, 1, dim=-1)  # pn,1
@@ -1009,6 +1018,178 @@ class MCShadingNetwork(nn.Module):
             raise NotImplementedError
         return geometry
 
+    # todo check next 4 functions
+    def _init_nerfactor_embedder(self):
+        # Read configuration values
+        pos_enc = self.nerfactor_config.getboolean('DEFAULT', 'pos_enc')
+        n_freqs_xyz = self.nerfactor_config.getint('DEFAULT', 'n_freqs_xyz')
+        n_freqs_ldir = self.nerfactor_config.getint('DEFAULT', 'n_freqs_ldir')
+        n_freqs_vdir = self.nerfactor_config.getint('DEFAULT', 'n_freqs_vdir')
+
+        # Shortcircuit if not using embedders
+        if not pos_enc:
+            embedder = {
+                'xyz': torch.identity, 'ldir': torch.identity, 'vdir': torch.identity
+            }
+            return embedder
+
+        # Position embedder
+        kwargs = {
+            'include_input': True,
+            'input_dims': 3,
+            'max_freq_log2': n_freqs_xyz - 1,
+            'num_freqs': n_freqs_xyz,
+            'log_sampling': True,
+            'periodic_fns': [torch.sin, torch.cos]
+        }
+        embedder_xyz = nerfactor_Embedder(**kwargs)
+
+        # Light direction embedder
+        kwargs['max_freq_log2'] = n_freqs_ldir - 1
+        kwargs['num_freqs'] = n_freqs_ldir
+        embedder_ldir = nerfactor_Embedder(**kwargs)
+
+        # View direction embedder
+        kwargs['max_freq_log2'] = n_freqs_vdir - 1
+        kwargs['num_freqs'] = n_freqs_vdir
+        embedder_vdir = nerfactor_Embedder(**kwargs)
+
+        # Combine embedders
+        embedder = {
+            'xyz': embedder_xyz, 'ldir': embedder_ldir, 'vdir': embedder_vdir
+        }
+        return embedder
+
+    def _pred_brdf_at(self, pts):
+        mlp_layers = self.nerfactor_net['brdf_z_mlp']
+        out_layer = self.nerfactor_net['brdf_z_out']
+        embedder = self.nerfactor_embedder['xyz']
+        pts_scaled = self.nerfactor_xyz_scale * pts # transparent to the user
+
+        def chunk_func(surf):
+            surf_embed = embedder(surf)
+            brdf_z = out_layer(mlp_layers(surf_embed))
+            return brdf_z
+
+        brdf_z = self.chunk_apply(
+            chunk_func, pts_scaled, self.nerfactor_z_dim, len(pts))
+        return brdf_z # NxZ
+
+    def _eval_brdf_at(self, pts2l, pts2c, normal, albedo, brdf_prop):
+        brdf_scale = self.config.getfloat('DEFAULT', 'learned_brdf_scale')
+        z = brdf_prop
+        # todo
+        # Generate world-to-local transformation matrix
+        world2local = geomutil.gen_world2local(normal)
+
+        # Transform directions into local frames
+        vdir = torch.einsum('jkl,jl->jk', world2local, pts2c)
+        ldir = torch.einsum('jkl,jnl->jnk', world2local, pts2l)
+
+        # Directions to Rusinkiewicz parameterization
+        ldir_flat = ldir.reshape(-1, 3)
+        vdir_rep = vdir[:, None, :].expand(-1, ldir.shape[1], -1)
+        vdir_flat = vdir_rep.reshape(-1, 3)
+        rusink = geomutil.dir2rusink(ldir_flat, vdir_flat)  # NLx3
+
+        # Repeat BRDF Z
+        z_rep = z[:, None, :].expand(-1, ldir.shape[1], -1)
+        z_flat = z_rep.reshape(-1, self.nerfactor_z_dim)
+
+        # Mask out back-lit directions for speed
+        local_normal = torch.tensor([0, 0, 1], dtype=torch.float32).reshape(3, 1)
+        cos = (ldir_flat @ local_normal).squeeze(-1)
+        front_lit = cos > 0
+        rusink_fl = rusink[front_lit]
+        z_fl = z_flat[front_lit]
+
+        # Predict BRDF values given identities and Rusinkiewicz parameters
+        mlp_layers = self.nerfactor_brdf_model.net['brdf_mlp']
+        out_layer = self.nerfactor_brdf_model.net['brdf_out']
+        embedder = self.nerfactor_embedder['rusink']
+
+        def chunk_func(rusink_z):
+            rusink, z = rusink_z[:, :3], rusink_z[:, 3:]
+            rusink_embed = embedder(rusink)
+            z_rusink = torch.cat((z, rusink_embed), dim=1)
+            brdf = out_layer(mlp_layers(z_rusink))
+            return brdf
+
+        rusink_z = torch.cat((rusink_fl, z_fl), dim=1)
+        brdf_fl = self.chunk_apply(chunk_func, rusink_z, 1, chunk_size=len(pts2l))
+
+        # Put front-lit BRDF values back into an all-zero flat tensor
+        brdf_flat = torch.zeros((front_lit.shape[0], 1), dtype=torch.float32)
+        brdf_flat[front_lit] = brdf_fl
+
+        # Reshape the resultant flat tensor
+        spec = brdf_flat.reshape(ldir.shape[0], ldir.shape[1], 1)
+        spec = spec.expand(-1, -1, 3)  # Make it achromatic
+
+        brdf = spec * brdf_scale
+        return brdf  # NxLx3
+
+
+    # def safe_l2_normalize(x, dim=None, eps=1e-6):
+    #     """
+    #     Safely normalize a tensor along a specified dimension using the L2 norm.
+    #
+    #     Args:
+    #         x (torch.Tensor): Input tensor.
+    #         dim (int or None): Dimension along which to normalize. If None, normalize the entire tensor.
+    #         eps (float): Small value to avoid division by zero.
+    #
+    #     Returns:
+    #         torch.Tensor: L2-normalized tensor.
+    #     """
+    #     norm = torch.norm(x, p=2, dim=dim, keepdim=True)  # Compute L2 norm
+    #     norm = torch.clamp(norm, min=eps)  # Avoid division by zero
+    #     return x / norm
+    #
+    # def _calc_ldir(self, pts):
+    #     """
+    #     Calculate normalized light directions from surface points to light sources.
+    #
+    #     Args:
+    #         pts (torch.Tensor): Surface points, shape `(N, 3)`.
+    #
+    #     Returns:
+    #         torch.Tensor: Normalized light directions, shape `(N, L, 3)`.
+    #     """
+    #     # Calculate vectors from surface points to light sources
+    #     surf2l = self.lxyz.unsqueeze(0) - pts.unsqueeze(1)  # Shape: NxLx3
+    #
+    #     # Normalize the vectors
+    #     surf2l = self.safe_l2_normalize(surf2l, dim=2)
+    #
+    #     # Assert that no direction has zero norm
+    #     assert torch.all(torch.norm(surf2l, dim=2) > 0), "Found zero-norm light directions"
+    #
+    #     return surf2l  # Shape: NxLx3
+    #
+    # @staticmethod
+    # def _calc_vdir(cam_loc, pts):
+    #     """
+    #     Calculate normalized view directions from surface points to the camera.
+    #
+    #     Args:
+    #         cam_loc (torch.Tensor): Camera location, shape `(3,)`.
+    #         pts (torch.Tensor): Surface points, shape `(N, 3)`.
+    #
+    #     Returns:
+    #         torch.Tensor: Normalized view directions, shape `(N, 3)`.
+    #     """
+    #     # Calculate vectors from surface points to the camera
+    #     surf2c = cam_loc - pts  # Shape: Nx3
+    #
+    #     # Normalize the vectors
+    #     surf2c = MCShadingNetwork.safe_l2_normalize(surf2c, dim=1)
+    #
+    #     # Assert that no direction has zero norm
+    #     assert torch.all(torch.norm(surf2c, dim=1) > 0), "Found zero-norm view directions"
+    #
+    #     return surf2c  # Shape: Nx3
+
     def shade_mixed(self, pts, normals, view_dirs, reflections, metallic, roughness, albedo, human_poses, is_train):
         F0 = 0.04 * (1 - metallic) + metallic * albedo  # [pn,1]
 
@@ -1023,7 +1204,7 @@ class MCShadingNetwork(nn.Module):
         NoL_d = saturate_dot(diffuse_directions, normals.unsqueeze(1))
         diffuse_probability = NoL_d / np.pi * (diffuse_num / (specular_num + diffuse_num))
 
-        # specualr sample prob
+        # specular sample prob
         H_s = (view_dirs.unsqueeze(1) + specular_directions)  # [pn,sn0,3] half vector
         H_s = F.normalize(H_s, dim=-1)
         NoH_s = saturate_dot(normals.unsqueeze(1), H_s)
@@ -1048,6 +1229,26 @@ class MCShadingNetwork(nn.Module):
         lights, hl, light_pts, light_normals, light_pts_mask = self.get_lights(pts_, directions, human_poses)  # pn,sn,3
         specular_weights = distribution * geometry / (4 * NoV * probability + 1e-5)
         specular_lights = lights * specular_weights
+
+        # Change here for using nerfactor BRDF model
+
+        brdf_prop = self._pred_brdf_at(pts)
+        print('brdf_prop shape:', brdf_prop.shape)
+        brdf_prop_jitter = None
+        if self.nerfactor_normalize_brdf_z:
+            brdf_prop = self.safe_l2_normalize(brdf_prop, axis=1)
+            if brdf_prop_jitter is not None:
+                brdf_prop_jitter = mathutil.safe_l2_normalize(
+                    brdf_prop_jitter, axis=1)
+        print('pts shape:', pts.shape)
+        surf2l = directions
+        print('surf2l shape:', surf2l.shape)
+        surf2c = view_dirs
+        print('surf2c shape:', surf2c.shape)
+        brdf = self._eval_brdf_at(
+            surf2l, surf2c, normals, albedo, brdf_prop) # NxLx3
+        print('brdf shape:', brdf.shape)
+
         specular_colors = torch.mean(fresnel * specular_lights, 1)
         specular_weights = specular_weights * fresnel
 
