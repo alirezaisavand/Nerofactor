@@ -29,9 +29,7 @@ class MLPNetwork(SequentialNetwork):
         input_size = widths[0]  # Initial input size
         for i, (w, a) in enumerate(zip(widths, act)):
             output_size = w
-            if i in self.skip_at:
-                # Account for concatenation of input tensor
-                input_size += widths[0]
+
 
             activation = activation_map.get(a.lower() if a else None, None)
             if activation is None:
@@ -43,7 +41,12 @@ class MLPNetwork(SequentialNetwork):
                 activation()  # Add activation function
             )
             self.layers.append(layer)
-            input_size = output_size  # Update input size for the next layer
+            # input_size = output_size  # Update input size for the next layer
+            if i in self.skip_at:
+                # Account for concatenation of input tensor
+                input_size += output_size
+            else:
+                input_size = output_size
 
         # # Define layers
         # for w, a in zip(widths, act):
