@@ -8,6 +8,7 @@ class MLPNetwork(SequentialNetwork):
     def __init__(self, widths, act=None, skip_at=None):
         super(MLPNetwork, self).__init__()
         depth = len(widths)
+        self.skip_at = skip_at
 
         if act is None:
             act = [None] * depth
@@ -56,7 +57,7 @@ class MLPNetwork(SequentialNetwork):
         #     )
         #     self.layers.append(layer)
         #
-        self.skip_at = skip_at
+
 
     def forward(self, x):
         if self.skip_at is None:
