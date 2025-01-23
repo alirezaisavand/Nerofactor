@@ -1062,9 +1062,9 @@ class MCShadingNetwork(nn.Module):
         return embedder
 
     def _pred_brdf_at(self, pts):
-        mlp_layers = self.nerfactor_net['brdf_z_mlp']
-        out_layer = self.nerfactor_net['brdf_z_out']
-        embedder = self.nerfactor_embedder['xyz']
+        mlp_layers = self.nerfactor_net['brdf_z_mlp'].cuda()
+        out_layer = self.nerfactor_net['brdf_z_out'].cuda()
+        embedder = self.nerfactor_embedder['xyz'].cuda()
         pts_scaled = self.nerfactor_xyz_scale * pts # transparent to the user
 
         def chunk_func(surf):
