@@ -1046,13 +1046,13 @@ class MCShadingNetwork(nn.Module):
         embedder_xyz = nerfactor_Embedder(**kwargs)
 
         # Light direction embedder
-        kwargs['max_freq_log2'] = n_freqs_ldir - 1
-        kwargs['num_freqs'] = n_freqs_ldir
+        kwargs['log2_max_freq'] = n_freqs_ldir - 1
+        kwargs['n_freqs'] = n_freqs_ldir
         embedder_ldir = nerfactor_Embedder(**kwargs)
 
         # View direction embedder
-        kwargs['max_freq_log2'] = n_freqs_vdir - 1
-        kwargs['num_freqs'] = n_freqs_vdir
+        kwargs['log2_max_freq'] = n_freqs_vdir - 1
+        kwargs['n_freqs'] = n_freqs_vdir
         embedder_vdir = nerfactor_Embedder(**kwargs)
 
         # Combine embedders
