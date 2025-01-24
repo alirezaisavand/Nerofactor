@@ -775,13 +775,14 @@ class MCShadingNetwork(nn.Module):
         self.nerfactor_net = {}
         # BRDF Z
         from network.mlp_brdf import MLPNetwork as brdf_mlp
+        self.nerfactor_embedder = self._init_nerfactor_embedder()
         self.nerfactor_net['brdf_z_mlp'] = brdf_mlp(
-            [mlp_width] * mlp_depth, act=['relu'] * mlp_depth,
+            [nerfactor_Embedder['xyz'].out_dims] + [mlp_width] * mlp_depth, act=['relu'] * mlp_depth,
             skip_at=[mlp_skip_at])
-        self.nerfactor_net['brdf_z_out'] = brdf_mlp([self.nerfactor_z_dim], act=None)
+        self.nerfactor_net['brdf_z_out'] = brdf_mlp([mlp_width, self.nerfactor_z_dim], act=None)
 
         # setting up the nerfactor embedder
-        self.nerfactor_embedder = self._init_nerfactor_embedder()
+
         self.nerfactor_xyz_scale = self.nerfactor_config.getfloat(
             'DEFAULT', 'xyz_scale', fallback=1.)
 
@@ -1059,6 +1060,25 @@ class MCShadingNetwork(nn.Module):
         embedder = {
             'xyz': embedder_xyz, 'ldir': embedder_ldir, 'vdir': embedder_vdir
         }
+
+        pos_enc = self.nerfactor_config.getboolean('DEFAULT', 'pos_enc')
+        n_freqs_rusink = self.nerfactor_config_brdf.getint('DEFAULT', 'n_freqs')
+
+        if not pos_enc:
+            embedder['rusink'] = lambda x: x  # Identity function
+            return embedder
+
+        # Parameters for the rusink embedder
+        kwargs = {
+            'incl_input': True,
+            'in_dims': 3,
+            'log2_max_freq': n_freqs_rusink - 1,
+            'n_freqs': n_freqs_rusink,
+            'log_sampling': True,
+            'periodic_func': [torch.sin, torch.cos]
+        }
+        embedder_rusink = nerfactor_Embedder(**kwargs)
+        embedder['rusink'] = embedder_rusink
         return embedder
 
     def _pred_brdf_at(self, pts):
