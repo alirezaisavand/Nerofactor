@@ -777,7 +777,7 @@ class MCShadingNetwork(nn.Module):
         from network.mlp_brdf import MLPNetwork as brdf_mlp
         self.nerfactor_embedder = self._init_nerfactor_embedder()
         self.nerfactor_net['brdf_z_mlp'] = brdf_mlp(
-            [nerfactor_Embedder['xyz'].out_dims] + [mlp_width] * mlp_depth, act=['relu'] * mlp_depth,
+            [self.nerfactor_embedder['xyz'].out_dims] + [mlp_width] * mlp_depth, act=['relu'] * mlp_depth,
             skip_at=[mlp_skip_at])
         self.nerfactor_net['brdf_z_out'] = brdf_mlp([mlp_width, self.nerfactor_z_dim], act=None)
 
