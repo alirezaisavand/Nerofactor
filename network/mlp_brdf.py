@@ -13,7 +13,7 @@ class MLPNetwork(SequentialNetwork):
         if act is None:
             act = [None] * depth
 
-        assert len(act) == depth, "If not `None`, `act` must have the same length as `widths`"
+        assert len(act) == depth-1, "If not `None`, `act` must have the same length as `widths`"
 
         activation_map = {
             'relu': nn.ReLU,
@@ -32,6 +32,7 @@ class MLPNetwork(SequentialNetwork):
                 input_dim += widths[0]  # Account for concatenation with input
 
             output_dim = widths[i + 1]
+            a = act[i]
             activation = activation_map.get(a.lower() if a else None, None)
             if activation is None:
                 raise ValueError(f"Unsupported activation function: {a}")
