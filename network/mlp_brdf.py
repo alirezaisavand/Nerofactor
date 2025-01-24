@@ -11,9 +11,9 @@ class MLPNetwork(SequentialNetwork):
         self.skip_at = skip_at or []
 
         if act is None:
-            act = [None] * depth
+            act = [None] * (depth-1)
 
-        assert len(act) == depth-1, "If not `None`, `act` must have the same length as `widths`"
+        assert len(act) == (depth-1), "If not `None`, `act` must have the same length as `widths`"
 
         activation_map = {
             'relu': nn.ReLU,
