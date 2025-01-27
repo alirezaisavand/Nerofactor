@@ -1140,7 +1140,6 @@ class MCShadingNetwork(nn.Module):
 
         def chunk_func(surf):
             surf_embed = embedder(surf)
-            print('surf embed, surf, mlp_layers, out_layer, embedder', surf_embed.device, surf.device)
             brdf_z = out_layer(mlp_layers(surf_embed))
             return brdf_z
 
@@ -1245,21 +1244,17 @@ class MCShadingNetwork(nn.Module):
         # Change here for using nerfactor BRDF model
 
         brdf_prop = self._pred_brdf_at(pts)
-        print('brdf_prop shape:', brdf_prop.shape)
         brdf_prop_jitter = None
         if self.nerfactor_normalize_brdf_z:
             brdf_prop = mathutil.safe_l2_normalize(brdf_prop, axis=1)
             if brdf_prop_jitter is not None:
                 brdf_prop_jitter = mathutil.safe_l2_normalize(
                     brdf_prop_jitter, axis=1)
-        print('pts shape:', pts.shape)
         surf2l = directions
-        print('surf2l shape:', surf2l.shape)
         surf2c = view_dirs
-        print('surf2c shape:', surf2c.shape)
         brdf = self._eval_brdf_at(
             surf2l, surf2c, normals, albedo, brdf_prop)  # NxLx3
-        print('brdf shape:', brdf.shape)
+
 
         specular_colors = torch.mean(fresnel * specular_lights, 1)
         specular_weights = specular_weights * fresnel
