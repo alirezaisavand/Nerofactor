@@ -717,7 +717,9 @@ from nerfactor.third_party.xiuminglib import xiuminglib as xm
 from nerfactor.nerfactor.models.brdf import Model as BRDFModel
 # from nerfactor.nerfactor.networks.embedder import Embedder as nerfactor_Embedder
 from nerfactor.nerfactor.util import config as configutil, \
-    io as ioutil, geom as geomutil
+    io as ioutil
+
+from utils import geom as geomutil
 from network.embedder import Embedder as nerfactor_Embedder
 
 
