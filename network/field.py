@@ -11,6 +11,7 @@ from utils.ref_utils import generate_ide_fn
 from utils import math as mathutil
 import tensorflow as tf
 
+
 # Positional encoding embedding. Code was taken from https://github.com/bmild/nerf.
 class Embedder:
     def __init__(self, **kwargs):
@@ -591,7 +592,7 @@ class AppShadingNetwork(nn.Module):
         occ_prob_ = torch.clamp(occ_prob, min=0, max=1)
 
         light = indirect_light * occ_prob_ + (human_light * human_weight + direct_light * (1 - human_weight)) * (
-                    1 - occ_prob_)
+                1 - occ_prob_)
         indirect_light = indirect_light * occ_prob_
         return light, occ_prob, indirect_light, human_light * human_weight
 
@@ -714,6 +715,7 @@ class MaterialFeatsNetwork(nn.Module):
 def saturate_dot(v0, v1):
     return torch.clamp(torch.sum(v0 * v1, dim=-1, keepdim=True), min=0.0, max=1.0)
 
+
 from nerfactor.third_party.xiuminglib import xiuminglib as xm
 from nerfactor.nerfactor.models.brdf import Model as BRDFModel
 # from nerfactor.nerfactor.networks.embedder import Embedder as nerfactor_Embedder
@@ -722,6 +724,52 @@ from nerfactor.nerfactor.util import config as configutil, \
 
 from utils import geom as geomutil
 from network.embedder import Embedder as nerfactor_Embedder
+
+
+# Custom PyTorch autograd function
+class TensorFlowBridge(torch.autograd.Function):
+    tf_model = None  # Class-level attribute to hold the TensorFlow model
+
+    @staticmethod
+    def initialize_model(model):
+        """Initialize the TensorFlow model."""
+        TensorFlowBridge.tf_model = model
+
+    @staticmethod
+    def forward(ctx, input_tensor):
+        # Check if the TensorFlow model has been initialized
+        if TensorFlowBridge.tf_model is None:
+            raise ValueError("TensorFlow model is not initialized. Call `TensorFlowBridge.initialize_model()` first.")
+
+        # Convert PyTorch tensor to TensorFlow tensor
+        tf_input = tf.convert_to_tensor(input_tensor.cpu().detach().numpy())
+
+
+
+
+        mlp_layers = TensorFlowBridge.tf_model.net['brdf_mlp']
+        out_layer = TensorFlowBridge.tf_model.net['brdf_out']
+
+
+
+        # Pass through the frozen TensorFlow model
+        tf_output = out_layer(mlp_layers(tf_input))
+
+        # Convert TensorFlow tensor back to PyTorch tensor
+        output_tensor = torch.from_numpy(tf_output.numpy())
+
+        # Save input for backward pass
+        ctx.save_for_backward(input_tensor)
+        return output_tensor
+
+    @staticmethod
+    def backward(ctx, grad_output):
+        # Retrieve the saved input tensor
+        input_tensor, = ctx.saved_tensors
+
+        # Since the TensorFlow model is frozen, no gradients flow through it
+        # The gradient is simply passed back as-is
+        return grad_output
 
 
 class MCShadingNetwork(nn.Module):
@@ -770,6 +818,7 @@ class MCShadingNetwork(nn.Module):
         self.nerfactor_brdf_model = BRDFModel(self.nerfactor_config_brdf)
         ioutil.restore_model(self.nerfactor_brdf_model, brdf_ckpt)
         self.nerfactor_brdf_model.trainable = False
+        TensorFlowBridge.initialize_model(self.nerfactor_brdf_model)
 
         # BRDF Encoder
         mlp_width = config.getint('DEFAULT', 'mlp_width')
@@ -832,8 +881,6 @@ class MCShadingNetwork(nn.Module):
         light_pts = az_el_to_points(az, el)
         self.register_buffer('light_pts', torch.from_numpy(light_pts.astype(np.float32)))
         self.ray_trace_fun = ray_trace_fun
-
-
 
     def get_orthogonal_directions(self, directions):
         x, y, z = torch.split(directions, 1, dim=-1)  # pn,1
@@ -1089,7 +1136,7 @@ class MCShadingNetwork(nn.Module):
         out_layer = self.nerfactor_net['brdf_z_out'].cuda()
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         embedder = self.nerfactor_embedder['xyz']
-        pts_scaled = self.nerfactor_xyz_scale * pts # transparent to the user
+        pts_scaled = self.nerfactor_xyz_scale * pts  # transparent to the user
 
         def chunk_func(surf):
             surf_embed = embedder(surf)
@@ -1098,131 +1145,14 @@ class MCShadingNetwork(nn.Module):
             return brdf_z
 
         brdf_z = chunk_func(pts_scaled)
-        return brdf_z # NxZ
-
-
-    def safe_l2_normalize(self, x, dim, eps=1e-6):
-        """
-        Safely normalize a tensor along a specified dimension using the L2 norm.
-
-        Args:
-            x (torch.Tensor): Input tensor.
-            dim (int): Dimension along which to normalize.
-            eps (float): Small value to avoid division by zero.
-
-        Returns:
-            torch.Tensor: L2-normalized tensor.
-        """
-        norm = torch.norm(x, p=2, dim=dim, keepdim=True)
-        norm = torch.clamp(norm, min=eps)
-        return x / norm
-
-    def gen_world2local(self, normal, eps=1e-6):
-        """
-        Generates rotation matrices that transform world normals to local +Z,
-        world tangents to local +X, and world binormals to local +Y.
-
-        Args:
-            normal (torch.Tensor): World normals, shape (N, 3).
-            eps (float): Small value to avoid colinearity issues.
-
-        Returns:
-            torch.Tensor: Rotation matrices of shape (N, 3, 3).
-        """
-        # Normalize the input normals
-        normal = self.safe_l2_normalize(normal, dim=1)
-
-        # Avoid colinearity by adding a small offset to the +Z axis
-        z = torch.tensor([0.0, 0.0, 1.0], dtype=torch.float32, device=normal.device) + eps
-        z = z.unsqueeze(0).expand(normal.size(0), -1)  # Expand to match batch size
-
-        # Compute tangents (cross product of normal and z)
-        t = torch.cross(normal, z, dim=1)
-        assert torch.all(torch.norm(t, dim=1) > 0), (
-            "Found zero-norm tangents, either due to colinearity or zero-norm normals"
-        )
-        t = self.safe_l2_normalize(t, dim=1)
-
-        # Compute binormals (cross product of normal and tangents)
-        b = torch.cross(normal, t, dim=1)
-        b = self.safe_l2_normalize(b, dim=1)
-
-        # Stack tangents, binormals, and normals into rotation matrices
-        rot = torch.stack((t, b, normal), dim=1)
-        # Each row corresponds to tangents, binormals, and normals
-
-        return rot
-
-    def dir2rusink(self, a, b):
-        """
-        Convert two directions into the Rusinkiewicz parameterization.
-
-        Args:
-            a (torch.Tensor): First direction tensor, shape (N, 3).
-            b (torch.Tensor): Second direction tensor, shape (N, 3).
-
-        Returns:
-            torch.Tensor: Rusinkiewicz coordinates, shape (N, 3).
-        """
-        # Normalize input vectors
-        a = self.safe_l2_normalize(a, dim=1)
-        b = self.safe_l2_normalize(b, dim=1)
-
-        # Halfway vector
-        h = self.safe_l2_normalize((a + b) / 2, dim=1)
-
-        # Compute theta_h and phi_h
-        theta_h = self.safe_acos(h[:, 2])
-        phi_h = mathutil.safe_atan2(h[:, 1], h[:, 0])
-
-        # Define binormal and normal
-        binormal = torch.tensor([0.0, 1.0, 0.0], dtype=torch.float32, device=a.device)
-        normal = torch.tensor([0.0, 0.0, 1.0], dtype=torch.float32, device=a.device)
-
-        def rot_vec(vector, axis, angle):
-            """
-            Rotate a vector around an arbitrary axis by a specified angle.
-
-            Args:
-                vector (torch.Tensor): Vectors to rotate, shape (N, 3).
-                axis (torch.Tensor): Rotation axis, shape (3,).
-                angle (torch.Tensor): Rotation angle for each vector, shape (N,).
-
-            Returns:
-                torch.Tensor: Rotated vectors, shape (N, 3).
-            """
-            cos_angle = torch.cos(angle).unsqueeze(-1)  # (N, 1)
-            sin_angle = torch.sin(angle).unsqueeze(-1)  # (N, 1)
-            axis = axis.expand_as(vector)  # Broadcast axis to match vector
-
-            # Rodrigues' rotation formula
-            rotated = (
-                    vector * cos_angle
-                    + torch.cross(axis, vector, dim=1) * sin_angle
-                    + axis * torch.sum(vector * axis, dim=1, keepdim=True) * (1 - cos_angle)
-            )
-            return rotated
-
-        # Rotate b into the Rusinkiewicz frame
-        diff = rot_vec(rot_vec(b, normal, -phi_h), binormal, -theta_h)
-        diff0, diff1, diff2 = diff[:, 0], diff[:, 1], diff[:, 2]
-
-        # Compute theta_d and phi_d
-        theta_d = mathutil.safe_acos(diff2)
-        import math
-        phi_d = torch.fmod(mathutil.safe_atan2(diff1, diff0), math.pi)
-
-        # Stack Rusinkiewicz coordinates
-        rusink = torch.stack((phi_d, theta_h, theta_d), dim=1)
-
-        return rusink
+        return brdf_z  # NxZ
 
     def _eval_brdf_at(self, pts2l, pts2c, normal, albedo, brdf_prop):
         brdf_scale = self.nerfactor_config.getfloat('DEFAULT', 'learned_brdf_scale')
         z = brdf_prop
         # todo
         # Generate world-to-local transformation matrix
-        world2local = self.gen_world2local(normal)
+        world2local = geomutil.gen_world2local(normal)
 
         # Transform directions into local frames
         vdir = torch.einsum('jkl,jl->jk', world2local, pts2c)
@@ -1253,11 +1183,9 @@ class MCShadingNetwork(nn.Module):
         def chunk_func(rusink_z):
             rusink, z = rusink_z[:, :3], rusink_z[:, 3:]
             rusink_embed = embedder(rusink)
-            z_rusink_np = torch.cat((z, rusink_embed), dim=1).cpu().detach().numpy()
-            z_rusink = tf.convert_to_tensor(z_rusink_np)
-            with tf.device('/GPU:0'):  # Adjust GPU index as needed
-                z_rusink = tf.identity(z_rusink)
-            brdf = out_layer(mlp_layers(z_rusink))
+            z_rusink = torch.cat((z, rusink_embed), dim=1)
+            brdf = TensorFlowBridge.apply(z_rusink)
+            # brdf = out_layer(mlp_layers(z_rusink))
             return brdf
 
         rusink_z = torch.cat((rusink_fl, z_fl), dim=1)
@@ -1273,67 +1201,6 @@ class MCShadingNetwork(nn.Module):
 
         brdf = spec * brdf_scale
         return brdf  # NxLx3
-
-
-    # def safe_l2_normalize(x, dim=None, eps=1e-6):
-    #     """
-    #     Safely normalize a tensor along a specified dimension using the L2 norm.
-    #
-    #     Args:
-    #         x (torch.Tensor): Input tensor.
-    #         dim (int or None): Dimension along which to normalize. If None, normalize the entire tensor.
-    #         eps (float): Small value to avoid division by zero.
-    #
-    #     Returns:
-    #         torch.Tensor: L2-normalized tensor.
-    #     """
-    #     norm = torch.norm(x, p=2, dim=dim, keepdim=True)  # Compute L2 norm
-    #     norm = torch.clamp(norm, min=eps)  # Avoid division by zero
-    #     return x / norm
-    #
-    # def _calc_ldir(self, pts):
-    #     """
-    #     Calculate normalized light directions from surface points to light sources.
-    #
-    #     Args:
-    #         pts (torch.Tensor): Surface points, shape `(N, 3)`.
-    #
-    #     Returns:
-    #         torch.Tensor: Normalized light directions, shape `(N, L, 3)`.
-    #     """
-    #     # Calculate vectors from surface points to light sources
-    #     surf2l = self.lxyz.unsqueeze(0) - pts.unsqueeze(1)  # Shape: NxLx3
-    #
-    #     # Normalize the vectors
-    #     surf2l = self.safe_l2_normalize(surf2l, dim=2)
-    #
-    #     # Assert that no direction has zero norm
-    #     assert torch.all(torch.norm(surf2l, dim=2) > 0), "Found zero-norm light directions"
-    #
-    #     return surf2l  # Shape: NxLx3
-    #
-    # @staticmethod
-    # def _calc_vdir(cam_loc, pts):
-    #     """
-    #     Calculate normalized view directions from surface points to the camera.
-    #
-    #     Args:
-    #         cam_loc (torch.Tensor): Camera location, shape `(3,)`.
-    #         pts (torch.Tensor): Surface points, shape `(N, 3)`.
-    #
-    #     Returns:
-    #         torch.Tensor: Normalized view directions, shape `(N, 3)`.
-    #     """
-    #     # Calculate vectors from surface points to the camera
-    #     surf2c = cam_loc - pts  # Shape: Nx3
-    #
-    #     # Normalize the vectors
-    #     surf2c = MCShadingNetwork.safe_l2_normalize(surf2c, dim=1)
-    #
-    #     # Assert that no direction has zero norm
-    #     assert torch.all(torch.norm(surf2c, dim=1) > 0), "Found zero-norm view directions"
-    #
-    #     return surf2c  # Shape: Nx3
 
     def shade_mixed(self, pts, normals, view_dirs, reflections, metallic, roughness, albedo, human_poses, is_train):
         F0 = 0.04 * (1 - metallic) + metallic * albedo  # [pn,1]
@@ -1355,7 +1222,7 @@ class MCShadingNetwork(nn.Module):
         NoH_s = saturate_dot(normals.unsqueeze(1), H_s)
         VoH_s = saturate_dot(view_dirs.unsqueeze(1), H_s)
         specular_probability = self.distribution_ggx(NoH_s, roughness.unsqueeze(1)) * NoH_s / (4 * VoH_s + 1e-5) * (
-                    specular_num / (specular_num + diffuse_num))  # D * NoH / (4 * VoH)
+                specular_num / (specular_num + diffuse_num))  # D * NoH / (4 * VoH)
 
         # combine
         directions = torch.cat([diffuse_directions, specular_directions], 1)
@@ -1381,7 +1248,7 @@ class MCShadingNetwork(nn.Module):
         print('brdf_prop shape:', brdf_prop.shape)
         brdf_prop_jitter = None
         if self.nerfactor_normalize_brdf_z:
-            brdf_prop = self.safe_l2_normalize(brdf_prop, axis=1)
+            brdf_prop = mathutil.safe_l2_normalize(brdf_prop, axis=1)
             if brdf_prop_jitter is not None:
                 brdf_prop_jitter = mathutil.safe_l2_normalize(
                     brdf_prop_jitter, axis=1)
@@ -1391,7 +1258,7 @@ class MCShadingNetwork(nn.Module):
         surf2c = view_dirs
         print('surf2c shape:', surf2c.shape)
         brdf = self._eval_brdf_at(
-            surf2l, surf2c, normals, albedo, brdf_prop) # NxLx3
+            surf2l, surf2c, normals, albedo, brdf_prop)  # NxLx3
         print('brdf shape:', brdf.shape)
 
         specular_colors = torch.mean(fresnel * specular_lights, 1)
