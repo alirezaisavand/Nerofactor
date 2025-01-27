@@ -9,6 +9,7 @@ from utils.base_utils import az_el_to_points, sample_sphere
 from utils.raw_utils import linear_to_srgb
 from utils.ref_utils import generate_ide_fn
 from utils import math as mathutil
+import tensorflow as tf
 
 # Positional encoding embedding. Code was taken from https://github.com/bmild/nerf.
 class Embedder:
@@ -1252,7 +1253,10 @@ class MCShadingNetwork(nn.Module):
         def chunk_func(rusink_z):
             rusink, z = rusink_z[:, :3], rusink_z[:, 3:]
             rusink_embed = embedder(rusink)
-            z_rusink = torch.cat((z, rusink_embed), dim=1)
+            z_rusink_np = torch.cat((z, rusink_embed), dim=1).cpu().numpy()
+            z_rusink = tf.convert_to_tensor(z_rusink_np)
+            with tf.device('/GPU:0'):  # Adjust GPU index as needed
+                z_rusink = tf.identity(z_rusink)
             brdf = out_layer(mlp_layers(z_rusink))
             return brdf
 
