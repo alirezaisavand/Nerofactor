@@ -8,7 +8,7 @@ import mcubes
 from utils.base_utils import az_el_to_points, sample_sphere
 from utils.raw_utils import linear_to_srgb
 from utils.ref_utils import generate_ide_fn
-from NeRO.utils import math as mathutil
+from utils import math as mathutil
 
 # Positional encoding embedding. Code was taken from https://github.com/bmild/nerf.
 class Embedder:
