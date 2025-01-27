@@ -756,7 +756,7 @@ class TensorFlowBridge(torch.autograd.Function):
         tf_output = out_layer(mlp_layers(tf_input))
 
         # Convert TensorFlow tensor back to PyTorch tensor
-        output_tensor = torch.from_numpy(tf_output.numpy())
+        output_tensor = torch.from_numpy(tf_output.numpy()).cuda()
 
         # Save input for backward pass
         ctx.save_for_backward(input_tensor)
