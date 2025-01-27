@@ -8,7 +8,7 @@ import mcubes
 from utils.base_utils import az_el_to_points, sample_sphere
 from utils.raw_utils import linear_to_srgb
 from utils.ref_utils import generate_ide_fn
-
+from NeRO.utils import math as mathutil
 
 # Positional encoding embedding. Code was taken from https://github.com/bmild/nerf.
 class Embedder:
@@ -717,7 +717,7 @@ from nerfactor.third_party.xiuminglib import xiuminglib as xm
 from nerfactor.nerfactor.models.brdf import Model as BRDFModel
 # from nerfactor.nerfactor.networks.embedder import Embedder as nerfactor_Embedder
 from nerfactor.nerfactor.util import config as configutil, \
-    io as ioutil, math as mathutil, geom as geomutil
+    io as ioutil, geom as geomutil
 from network.embedder import Embedder as nerfactor_Embedder
 
 
@@ -1097,12 +1097,129 @@ class MCShadingNetwork(nn.Module):
         brdf_z = chunk_func(pts_scaled)
         return brdf_z # NxZ
 
+
+    def safe_l2_normalize(self, x, dim, eps=1e-6):
+        """
+        Safely normalize a tensor along a specified dimension using the L2 norm.
+
+        Args:
+            x (torch.Tensor): Input tensor.
+            dim (int): Dimension along which to normalize.
+            eps (float): Small value to avoid division by zero.
+
+        Returns:
+            torch.Tensor: L2-normalized tensor.
+        """
+        norm = torch.norm(x, p=2, dim=dim, keepdim=True)
+        norm = torch.clamp(norm, min=eps)
+        return x / norm
+
+    def gen_world2local(self, normal, eps=1e-6):
+        """
+        Generates rotation matrices that transform world normals to local +Z,
+        world tangents to local +X, and world binormals to local +Y.
+
+        Args:
+            normal (torch.Tensor): World normals, shape (N, 3).
+            eps (float): Small value to avoid colinearity issues.
+
+        Returns:
+            torch.Tensor: Rotation matrices of shape (N, 3, 3).
+        """
+        # Normalize the input normals
+        normal = self.safe_l2_normalize(normal, dim=1)
+
+        # Avoid colinearity by adding a small offset to the +Z axis
+        z = torch.tensor([0.0, 0.0, 1.0], dtype=torch.float32, device=normal.device) + eps
+        z = z.unsqueeze(0).expand(normal.size(0), -1)  # Expand to match batch size
+
+        # Compute tangents (cross product of normal and z)
+        t = torch.cross(normal, z, dim=1)
+        assert torch.all(torch.norm(t, dim=1) > 0), (
+            "Found zero-norm tangents, either due to colinearity or zero-norm normals"
+        )
+        t = self.safe_l2_normalize(t, dim=1)
+
+        # Compute binormals (cross product of normal and tangents)
+        b = torch.cross(normal, t, dim=1)
+        b = self.safe_l2_normalize(b, dim=1)
+
+        # Stack tangents, binormals, and normals into rotation matrices
+        rot = torch.stack((t, b, normal), dim=1)
+        # Each row corresponds to tangents, binormals, and normals
+
+        return rot
+
+    def dir2rusink(self, a, b):
+        """
+        Convert two directions into the Rusinkiewicz parameterization.
+
+        Args:
+            a (torch.Tensor): First direction tensor, shape (N, 3).
+            b (torch.Tensor): Second direction tensor, shape (N, 3).
+
+        Returns:
+            torch.Tensor: Rusinkiewicz coordinates, shape (N, 3).
+        """
+        # Normalize input vectors
+        a = self.safe_l2_normalize(a, dim=1)
+        b = self.safe_l2_normalize(b, dim=1)
+
+        # Halfway vector
+        h = self.safe_l2_normalize((a + b) / 2, dim=1)
+
+        # Compute theta_h and phi_h
+        theta_h = self.safe_acos(h[:, 2])
+        phi_h = mathutil.safe_atan2(h[:, 1], h[:, 0])
+
+        # Define binormal and normal
+        binormal = torch.tensor([0.0, 1.0, 0.0], dtype=torch.float32, device=a.device)
+        normal = torch.tensor([0.0, 0.0, 1.0], dtype=torch.float32, device=a.device)
+
+        def rot_vec(vector, axis, angle):
+            """
+            Rotate a vector around an arbitrary axis by a specified angle.
+
+            Args:
+                vector (torch.Tensor): Vectors to rotate, shape (N, 3).
+                axis (torch.Tensor): Rotation axis, shape (3,).
+                angle (torch.Tensor): Rotation angle for each vector, shape (N,).
+
+            Returns:
+                torch.Tensor: Rotated vectors, shape (N, 3).
+            """
+            cos_angle = torch.cos(angle).unsqueeze(-1)  # (N, 1)
+            sin_angle = torch.sin(angle).unsqueeze(-1)  # (N, 1)
+            axis = axis.expand_as(vector)  # Broadcast axis to match vector
+
+            # Rodrigues' rotation formula
+            rotated = (
+                    vector * cos_angle
+                    + torch.cross(axis, vector, dim=1) * sin_angle
+                    + axis * torch.sum(vector * axis, dim=1, keepdim=True) * (1 - cos_angle)
+            )
+            return rotated
+
+        # Rotate b into the Rusinkiewicz frame
+        diff = rot_vec(rot_vec(b, normal, -phi_h), binormal, -theta_h)
+        diff0, diff1, diff2 = diff[:, 0], diff[:, 1], diff[:, 2]
+
+        # Compute theta_d and phi_d
+        theta_d = mathutil.safe_acos(diff2)
+        import math
+        phi_d = torch.fmod(mathutil.safe_atan2(diff1, diff0), math.pi)
+
+        # Stack Rusinkiewicz coordinates
+        rusink = torch.stack((phi_d, theta_h, theta_d), dim=1)
+
+        return rusink
+
     def _eval_brdf_at(self, pts2l, pts2c, normal, albedo, brdf_prop):
         brdf_scale = self.nerfactor_config.getfloat('DEFAULT', 'learned_brdf_scale')
         z = brdf_prop
         # todo
         # Generate world-to-local transformation matrix
-        world2local = geomutil.gen_world2local(normal)
+        world2local = self.gen_world2local(normal)
 
         # Transform directions into local frames
         vdir = torch.einsum('jkl,jl->jk', world2local, pts2c)
