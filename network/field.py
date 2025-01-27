@@ -1253,7 +1253,7 @@ class MCShadingNetwork(nn.Module):
         def chunk_func(rusink_z):
             rusink, z = rusink_z[:, :3], rusink_z[:, 3:]
             rusink_embed = embedder(rusink)
-            z_rusink_np = torch.cat((z, rusink_embed), dim=1).cpu().numpy()
+            z_rusink_np = torch.cat((z, rusink_embed), dim=1).cpu().detach().numpy()
             z_rusink = tf.convert_to_tensor(z_rusink_np)
             with tf.device('/GPU:0'):  # Adjust GPU index as needed
                 z_rusink = tf.identity(z_rusink)
