@@ -753,7 +753,8 @@ class TensorFlowBridge(torch.autograd.Function):
 
 
         # Pass through the frozen TensorFlow model
-        tf_output = out_layer(mlp_layers(tf_input))
+        with tf.device('/GPU:0' if tf.test.is_gpu_available() else '/CPU:0'):
+            tf_output = out_layer(mlp_layers(tf_input))
 
         # Convert TensorFlow tensor back to PyTorch tensor
         output_tensor = torch.from_numpy(tf_output.numpy()).cuda()
@@ -1252,11 +1253,12 @@ class MCShadingNetwork(nn.Module):
                     brdf_prop_jitter, axis=1)
         surf2l = directions
         surf2c = view_dirs
-        brdf = self._eval_brdf_at(
+        spec_brdf = self._eval_brdf_at(
             surf2l, surf2c, normals, albedo, brdf_prop)  # NxLx3
 
 
-        specular_colors = torch.mean(fresnel * specular_lights, 1)
+        # specular_colors = torch.mean(fresnel * specular_lights, 1)
+        specular_colors = torch.mean(spec_brdf * specular_lights, 1)
         specular_weights = specular_weights * fresnel
 
         # diffuse only consider diffuse directions
