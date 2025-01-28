@@ -772,13 +772,24 @@ class TensorFlowBridge(torch.autograd.Function):
         input_shape = ctx.input_shape
         output_shape = ctx.output_shape
 
-        # Check if the shapes are compatible or need transformation
-        if grad_output.shape != input_shape:
-            # Example: Reshape gradient to match input shape
-            grad_input = grad_output.view(input_shape)
-        else:
-            grad_input = grad_output
+        # Debugging print for shape mismatch
+        print("Input shape:", input_shape)
+        print("Output shape:", output_shape)
+        print("Grad output shape:", grad_output.shape)
 
+        # Check if the total number of elements matches
+        input_size = torch.prod(torch.tensor(input_shape))
+        output_size = torch.prod(torch.tensor(output_shape))
+        grad_size = torch.prod(torch.tensor(grad_output.shape))
+
+        if grad_size != input_size:
+            raise RuntimeError(
+                f"Mismatch in size: grad_output has {grad_size.item()} elements, "
+                f"but input tensor requires {input_size.item()} elements."
+            )
+
+        # Reshape the gradient if total elements match
+        grad_input = grad_output.view(input_shape)
         return grad_input
 
 
