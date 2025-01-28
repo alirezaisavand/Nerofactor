@@ -1222,7 +1222,7 @@ class MCShadingNetwork(nn.Module):
         return brdf  # NxLx3
 
     def shade_mixed(self, pts, normals, view_dirs, reflections, metallic, roughness, albedo, human_poses, is_train):
-        # F0 = 0.04 * (1 - metallic) + metallic * albedo  # [pn,1]
+        F0 = 0.04 * (1 - metallic) + metallic * albedo  # [pn,1]
 
         # sample diffuse directions
         diffuse_directions = self.sample_diffuse_directions(normals, is_train)  # [pn,sn0,3]
