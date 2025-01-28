@@ -767,10 +767,10 @@ class TensorFlowBridge(torch.autograd.Function):
     def backward(ctx, grad_output):
         # Retrieve the saved input tensor
         input_tensor, = ctx.saved_tensors
-
+        reshaped_grad = grad_output.view_as(input_tensor)
         # Since the TensorFlow model is frozen, no gradients flow through it
         # The gradient is simply passed back as-is
-        return grad_output
+        return reshaped_grad
 
 
 class MCShadingNetwork(nn.Module):
