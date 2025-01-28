@@ -853,7 +853,7 @@ class MCShadingNetwork(nn.Module):
 
         self.nerfactor_xyz_scale = self.nerfactor_config.getfloat(
             'DEFAULT', 'xyz_scale', fallback=1.)
-        self.nerfactor_smooth_use_l1 = self.config.getboolean('DEFAULT', 'smooth_use_l1')
+        self.nerfactor_smooth_use_l1 = self.nerfactor_config.getboolean('DEFAULT', 'smooth_use_l1')
         self.nerfactor_smooth_loss = nn.L1Loss() if self.smooth_use_l1 else nn.MSELoss()
         # PSNR calculator
         self.psnr = xm.metric.PSNR('uint8')
