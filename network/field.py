@@ -735,6 +735,8 @@ class TensorFlowBridge(torch.autograd.Function):
         """Initialize the TensorFlow model."""
         TensorFlowBridge.tf_model = model
 
+        TensorFlowBridge.tf_model = model
+
     @staticmethod
     def forward(ctx, input_tensor):
         # Check if the TensorFlow model has been initialized
@@ -742,54 +744,54 @@ class TensorFlowBridge(torch.autograd.Function):
             raise ValueError("TensorFlow model is not initialized. Call `TensorFlowBridge.initialize_model()` first.")
 
         # Convert PyTorch tensor to TensorFlow tensor
-        tf_input = tf.convert_to_tensor(input_tensor.cpu().detach().numpy())
+        tf_input = tf.convert_to_tensor(input_tensor.detach().cpu().numpy(), dtype=tf.float32)
 
-
-
-
-        mlp_layers = TensorFlowBridge.tf_model.net['brdf_mlp']
-        out_layer = TensorFlowBridge.tf_model.net['brdf_out']
-
-
-
-        # Pass through the frozen TensorFlow model
+        # Perform inference in TensorFlow
         with tf.device('/GPU:0' if tf.test.is_gpu_available() else '/CPU:0'):
-            tf_output = out_layer(mlp_layers(tf_input))
+            brdf_mlp = TensorFlowBridge.tf_model.net['brdf_mlp']
+            brdf_out = TensorFlowBridge.tf_model.net['brdf_out']
+            tf_output = brdf_out(brdf_mlp(tf_input))
 
-        # Convert TensorFlow tensor back to PyTorch tensor
-        output_tensor = torch.from_numpy(tf_output.numpy()).cuda()
+        # Convert TensorFlow output back to PyTorch tensor
+        output_tensor = torch.tensor(tf_output.numpy(), device=input_tensor.device)
 
-        # Save input for backward pass
+        # Save necessary data for backward pass
         ctx.save_for_backward(input_tensor)
-        ctx.input_shape = input_tensor.shape
-        ctx.output_shape = output_tensor.shape
+        ctx.tf_mlp_weights = brdf_mlp.weights
+        ctx.tf_mlp_biases = brdf_mlp.biases
+        ctx.tf_out_weights = brdf_out.weights
+        ctx.tf_out_biases = brdf_out.biases
+        ctx.skip_at = brdf_mlp.skip_at  # Save skip connections info
+
         return output_tensor
 
     @staticmethod
     def backward(ctx, grad_output):
-        # Retrieve saved input shape
+        # Retrieve saved tensors and weights
         input_tensor, = ctx.saved_tensors
-        input_shape = ctx.input_shape
-        output_shape = ctx.output_shape
+        mlp_weights = ctx.tf_mlp_weights
+        mlp_biases = ctx.tf_mlp_biases
+        out_weights = ctx.tf_out_weights
+        out_biases = ctx.tf_out_biases
+        skip_at = ctx.skip_at
 
-        # Debugging print for shape mismatch
-        print("Input shape:", input_shape)
-        print("Output shape:", output_shape)
-        print("Grad output shape:", grad_output.shape)
+        # Backpropagate through the final layer
+        output_pre_activation = input_tensor @ out_weights.T + out_biases
+        softplus_derivative = 1 / (1 + torch.exp(-output_pre_activation))
+        grad_output = grad_output * softplus_derivative
 
-        # Check if the total number of elements matches
-        input_size = torch.prod(torch.tensor(input_shape))
-        output_size = torch.prod(torch.tensor(output_shape))
-        grad_size = torch.prod(torch.tensor(grad_output.shape))
+        # Backpropagate through MLP with skip connections
+        grad_input = grad_output
+        for i, (W, b) in enumerate(zip(reversed(mlp_weights), reversed(mlp_biases))):
+            grad_input = grad_input @ W.T  # Linear backpropagation
 
-        if grad_size != input_size:
-            raise RuntimeError(
-                f"Mismatch in size: grad_output has {grad_size.item()} elements, "
-                f"but input tensor requires {input_size.item()} elements."
-            )
+            # Apply ReLU derivative
+            grad_input = grad_input * (grad_input > 0).float()
 
-        # Reshape the gradient if total elements match
-        grad_input = grad_output.view(input_shape)
+            # Add skip connection gradients if the layer is a skip layer
+            if i in skip_at:
+                grad_input += grad_output
+
         return grad_input
 
 
