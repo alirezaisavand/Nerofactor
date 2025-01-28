@@ -761,16 +761,25 @@ class TensorFlowBridge(torch.autograd.Function):
 
         # Save input for backward pass
         ctx.save_for_backward(input_tensor)
+        ctx.input_shape = input_tensor.shape
+        ctx.output_shape = output_tensor.shape
         return output_tensor
 
     @staticmethod
     def backward(ctx, grad_output):
-        # Retrieve the saved input tensor
+        # Retrieve saved input shape
         input_tensor, = ctx.saved_tensors
-        reshaped_grad = grad_output.view_as(input_tensor)
-        # Since the TensorFlow model is frozen, no gradients flow through it
-        # The gradient is simply passed back as-is
-        return reshaped_grad
+        input_shape = ctx.input_shape
+        output_shape = ctx.output_shape
+
+        # Check if the shapes are compatible or need transformation
+        if grad_output.shape != input_shape:
+            # Example: Reshape gradient to match input shape
+            grad_input = grad_output.view(input_shape)
+        else:
+            grad_input = grad_output
+
+        return grad_input
 
 
 class MCShadingNetwork(nn.Module):
