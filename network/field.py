@@ -832,6 +832,8 @@ class MCShadingNetwork(nn.Module):
         self.nerfactor_brdf_model = BRDFModel(self.nerfactor_config_brdf)
         ioutil.restore_model(self.nerfactor_brdf_model, brdf_ckpt)
         self.nerfactor_brdf_model.trainable = False
+        self.nerfactor_brdf_smooth_weight = config.getfloat(
+            'DEFAULT', 'brdf_smooth_weight')
         # TensorFlowBridge.initialize_model(self.nerfactor_brdf_model)
 
         # BRDF Encoder
@@ -851,7 +853,8 @@ class MCShadingNetwork(nn.Module):
 
         self.nerfactor_xyz_scale = self.nerfactor_config.getfloat(
             'DEFAULT', 'xyz_scale', fallback=1.)
-
+        self.nerfactor_smooth_use_l1 = self.config.getboolean('DEFAULT', 'smooth_use_l1')
+        self.nerfactor_smooth_loss = nn.L1Loss() if self.smooth_use_l1 else nn.MSELoss()
         # PSNR calculator
         self.psnr = xm.metric.PSNR('uint8')
         ######
@@ -1061,8 +1064,10 @@ class MCShadingNetwork(nn.Module):
 
     def predict_materials(self, pts):
         feats = self.feats_network(pts)
-        metallic = self.metallic_predictor(torch.cat([feats, pts], -1))
-        roughness = self.roughness_predictor(torch.cat([feats, pts], -1))
+        # metallic = self.metallic_predictor(torch.cat([feats, pts], -1))
+        metallic = None
+        # roughness = self.roughness_predictor(torch.cat([feats, pts], -1))
+        roughness = None
         rmax, rmin = 1.0, 0.04 ** 2
         roughness = roughness * (rmax - rmin) + rmin
         albedo = self.albedo_predictor(torch.cat([feats, pts], -1))
@@ -1288,6 +1293,9 @@ class MCShadingNetwork(nn.Module):
         outputs['albedo'] = albedo
         outputs['roughness'] = roughness
         outputs['metallic'] = metallic
+        # Added this to use in the loss function
+        outputs['spec_brdf'] = spec_brdf
+
         outputs['human_lights'] = hl.reshape(-1, 3)
         outputs['diffuse_light'] = torch.clamp(linear_to_srgb(torch.mean(diffuse_lights, dim=1)), min=0, max=1)
         outputs['specular_light'] = torch.clamp(linear_to_srgb(torch.mean(specular_lights, dim=1)), min=0, max=1)
@@ -1346,7 +1354,7 @@ class MCShadingNetwork(nn.Module):
     def get_env_light(self):
         return self.predict_outer_lights_pts(self.light_pts)
 
-    def material_regularization(self, pts, normals, metallic, roughness, albedo, step):
+    def material_regularization(self, pts, normals, metallic, roughness, albedo, spec_brdf, step):
         # metallic, roughness, albedo = self.predict_materials(pts)
         reg = 0
 
@@ -1363,16 +1371,29 @@ class MCShadingNetwork(nn.Module):
             else:
                 raise NotImplementedError
             m0, r0, a0 = self.predict_materials(pts + change)
+
+
+            # reg = reg + torch.mean(
+            #     (torch.abs(m0 - metallic) + torch.abs(r0 - roughness) + torch.abs(a0 - albedo)) * self.cfg[
+            #         'reg_lambda1'], dim=1)
+
+
+            brdf_prop_jitter = self._pred_brdf_at(pts + change)
+            brdf_prop_pred = self._pred_brdf_at(pts)
+            brdf_smooth_loss = self.nerfactor_smooth_loss(brdf_prop_pred, brdf_prop_jitter)  # N
+            #todo modify nerfactor_brdf_smooth_weight based on loss function
+            reg += self.nerfactor_brdf_smooth_weight * brdf_smooth_loss
+
             reg = reg + torch.mean(
-                (torch.abs(m0 - metallic) + torch.abs(r0 - roughness) + torch.abs(a0 - albedo)) * self.cfg[
+                torch.abs(a0 - albedo) * self.cfg[
                     'reg_lambda1'], dim=1)
 
-        if self.cfg['reg_min_max'] and step is not None and step < 2000:
-            # sometimes the roughness and metallic saturate with the sigmoid activation in the early stage
-            reg = reg + torch.sum(torch.clamp(roughness - 0.98 ** 2, min=0))
-            reg = reg + torch.sum(torch.clamp(0.02 ** 2 - roughness, min=0))
-            reg = reg + torch.sum(torch.clamp(metallic - 0.98, min=0))
-            reg = reg + torch.sum(torch.clamp(0.02 - metallic, min=0))
+        # if self.cfg['reg_min_max'] and step is not None and step < 2000:
+        #     # sometimes the roughness and metallic saturate with the sigmoid activation in the early stage
+        #     reg = reg + torch.sum(torch.clamp(roughness - 0.98 ** 2, min=0))
+        #     reg = reg + torch.sum(torch.clamp(0.02 ** 2 - roughness, min=0))
+        #     reg = reg + torch.sum(torch.clamp(metallic - 0.98, min=0))
+        #     reg = reg + torch.sum(torch.clamp(0.02 - metallic, min=0))
 
         return reg
 
