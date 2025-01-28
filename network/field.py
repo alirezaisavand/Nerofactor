@@ -727,63 +727,63 @@ from network.embedder import Embedder as nerfactor_Embedder
 
 
 # Custom PyTorch autograd function
-class TensorFlowBridge(torch.autograd.Function):
-    tf_model = None  # Class-level attribute to hold the TensorFlow model
-
-    @staticmethod
-    def initialize_model(model):
-        """Initialize the TensorFlow model."""
-        TensorFlowBridge.tf_model = model
-
-
-    @staticmethod
-    def forward(ctx, input_tensor):
-        # Check if the TensorFlow model has been initialized
-        if TensorFlowBridge.tf_model is None:
-            raise ValueError("TensorFlow model is not initialized. Call `TensorFlowBridge.initialize_model()` first.")
-
-        # Convert PyTorch tensor to TensorFlow tensor
-        tf_input = tf.convert_to_tensor(input_tensor.detach().cpu().numpy(), dtype=tf.float32)
-
-        # Perform inference using the frozen TensorFlow model
-        with tf.device('/GPU:0' if tf.test.is_gpu_available() else '/CPU:0'):
-            brdf_mlp = TensorFlowBridge.tf_model.net['brdf_mlp']
-            brdf_out = TensorFlowBridge.tf_model.net['brdf_out']
-
-            # Forward pass through the frozen model
-            mlp_output = brdf_mlp(tf_input)
-            tf_output = brdf_out(mlp_output)
-
-        # Convert TensorFlow output back to PyTorch tensor
-        output_tensor = torch.tensor(tf_output.numpy(), device=input_tensor.device)
-
-        # Save TensorFlow input and the intermediate outputs for backward pass
-        ctx.save_for_backward(input_tensor)
-        ctx.tf_input = tf_input
-        ctx.mlp_output = mlp_output
-
-        return output_tensor
-
-    @staticmethod
-    def backward(ctx, grad_output):
-        # Retrieve saved tensors
-        input_tensor, = ctx.saved_tensors
-        tf_input = ctx.tf_input
-        mlp_output = ctx.mlp_output
-
-        # Convert PyTorch gradient to TensorFlow tensor
-        tf_grad_output = tf.convert_to_tensor(grad_output.cpu().numpy(), dtype=tf.float32)
-
-        # Compute gradient w.r.t. input using TensorFlow's `GradientTape`
-        with tf.GradientTape() as tape:
-            tape.watch(tf_input)  # Track input tensor for gradients
-            tf_output = mlp_output  # Frozen MLP already evaluated
-        tf_grad_input = tape.gradient(tf_output, tf_input, output_gradients=tf_grad_output)
-
-        # Convert TensorFlow gradient back to PyTorch tensor
-        grad_input = torch.tensor(tf_grad_input.numpy(), device=input_tensor.device)
-
-        return grad_input
+# class TensorFlowBridge(torch.autograd.Function):
+#     tf_model = None  # Class-level attribute to hold the TensorFlow model
+#
+#     @staticmethod
+#     def initialize_model(model):
+#         """Initialize the TensorFlow model."""
+#         TensorFlowBridge.tf_model = model
+#
+#
+#     @staticmethod
+#     def forward(ctx, input_tensor):
+#         # Check if the TensorFlow model has been initialized
+#         if TensorFlowBridge.tf_model is None:
+#             raise ValueError("TensorFlow model is not initialized. Call `TensorFlowBridge.initialize_model()` first.")
+#
+#         # Convert PyTorch tensor to TensorFlow tensor
+#         tf_input = tf.convert_to_tensor(input_tensor.detach().cpu().numpy(), dtype=tf.float32)
+#
+#         # Perform inference using the frozen TensorFlow model
+#         with tf.device('/GPU:0' if tf.test.is_gpu_available() else '/CPU:0'):
+#             brdf_mlp = TensorFlowBridge.tf_model.net['brdf_mlp']
+#             brdf_out = TensorFlowBridge.tf_model.net['brdf_out']
+#
+#             # Forward pass through the frozen model
+#             mlp_output = brdf_mlp(tf_input)
+#             tf_output = brdf_out(mlp_output)
+#
+#         # Convert TensorFlow output back to PyTorch tensor
+#         output_tensor = torch.tensor(tf_output.numpy(), device=input_tensor.device)
+#
+#         # Save TensorFlow input and the intermediate outputs for backward pass
+#         ctx.save_for_backward(input_tensor)
+#         ctx.tf_input = tf_input
+#         ctx.mlp_output = mlp_output
+#
+#         return output_tensor
+#
+#     @staticmethod
+#     def backward(ctx, grad_output):
+#         # Retrieve saved tensors
+#         input_tensor, = ctx.saved_tensors
+#         tf_input = ctx.tf_input
+#         mlp_output = ctx.mlp_output
+#
+#         # Convert PyTorch gradient to TensorFlow tensor
+#         tf_grad_output = tf.convert_to_tensor(grad_output.cpu().numpy(), dtype=tf.float32)
+#
+#         # Compute gradient w.r.t. input using TensorFlow's `GradientTape`
+#         with tf.GradientTape() as tape:
+#             tape.watch(tf_input)  # Track input tensor for gradients
+#             tf_output = mlp_output  # Frozen MLP already evaluated
+#         tf_grad_input = tape.gradient(tf_output, tf_input, output_gradients=tf_grad_output)
+#
+#         # Convert TensorFlow gradient back to PyTorch tensor
+#         grad_input = torch.tensor(tf_grad_input.numpy(), device=input_tensor.device)
+#
+#         return grad_input
 
 
 class MCShadingNetwork(nn.Module):
@@ -1197,9 +1197,10 @@ class MCShadingNetwork(nn.Module):
             rusink, z = rusink_z[:, :3], rusink_z[:, 3:]
             rusink_embed = embedder(rusink)
             z_rusink = torch.cat((z, rusink_embed), dim=1)
-            brdf = TensorFlowBridge.apply(z_rusink)
-            # brdf = out_layer(mlp_layers(z_rusink))
-            return brdf
+            # brdf = TensorFlowBridge.apply(z_rusink)
+            z_rusink_tf = tf.convert_to_tensor(z_rusink.detach().cpu().numpy(), dtype=tf.float32)
+            brdf = out_layer(mlp_layers(z_rusink_tf))
+            return torch.tensor(brdf.numpy()).cuda()
 
         rusink_z = torch.cat((rusink_fl, z_fl), dim=1)
         brdf_fl = chunk_func(rusink_z)
