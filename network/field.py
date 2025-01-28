@@ -1069,7 +1069,7 @@ class MCShadingNetwork(nn.Module):
         # roughness = self.roughness_predictor(torch.cat([feats, pts], -1))
         roughness = None
         rmax, rmin = 1.0, 0.04 ** 2
-        roughness = roughness * (rmax - rmin) + rmin
+        # roughness = roughness * (rmax - rmin) + rmin
         albedo = self.albedo_predictor(torch.cat([feats, pts], -1))
         return metallic, roughness, albedo
 
