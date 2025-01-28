@@ -1222,7 +1222,7 @@ class MCShadingNetwork(nn.Module):
         return brdf  # NxLx3
 
     def shade_mixed(self, pts, normals, view_dirs, reflections, metallic, roughness, albedo, human_poses, is_train):
-        F0 = 0.04 * (1 - metallic) + metallic * albedo  # [pn,1]
+        # F0 = 0.04 * (1 - metallic) + metallic * albedo  # [pn,1]
 
         # sample diffuse directions
         diffuse_directions = self.sample_diffuse_directions(normals, is_train)  # [pn,sn0,3]
@@ -1260,6 +1260,7 @@ class MCShadingNetwork(nn.Module):
         lights, hl, light_pts, light_normals, light_pts_mask = self.get_lights(pts_, directions, human_poses)  # pn,sn,3
         specular_weights = distribution * geometry / (4 * NoV * probability + 1e-5)
         specular_lights = lights * specular_weights
+        print('specular wights:', specular_weights.shape, specular_weights)
 
         # Change here for using nerfactor BRDF model
 
