@@ -735,7 +735,6 @@ class TensorFlowBridge(torch.autograd.Function):
         """Initialize the TensorFlow model."""
         TensorFlowBridge.tf_model = model
 
-        TensorFlowBridge.tf_model = model
 
     @staticmethod
     def forward(ctx, input_tensor):
@@ -746,51 +745,43 @@ class TensorFlowBridge(torch.autograd.Function):
         # Convert PyTorch tensor to TensorFlow tensor
         tf_input = tf.convert_to_tensor(input_tensor.detach().cpu().numpy(), dtype=tf.float32)
 
-        # Perform inference in TensorFlow
+        # Perform inference using the frozen TensorFlow model
         with tf.device('/GPU:0' if tf.test.is_gpu_available() else '/CPU:0'):
             brdf_mlp = TensorFlowBridge.tf_model.net['brdf_mlp']
             brdf_out = TensorFlowBridge.tf_model.net['brdf_out']
-            tf_output = brdf_out(brdf_mlp(tf_input))
+
+            # Forward pass through the frozen model
+            mlp_output = brdf_mlp(tf_input)
+            tf_output = brdf_out(mlp_output)
 
         # Convert TensorFlow output back to PyTorch tensor
         output_tensor = torch.tensor(tf_output.numpy(), device=input_tensor.device)
 
-        # Save necessary data for backward pass
+        # Save TensorFlow input and the intermediate outputs for backward pass
         ctx.save_for_backward(input_tensor)
-        ctx.tf_mlp_weights = brdf_mlp.weights
-        ctx.tf_mlp_biases = brdf_mlp.biases
-        ctx.tf_out_weights = brdf_out.weights
-        ctx.tf_out_biases = brdf_out.biases
-        ctx.skip_at = brdf_mlp.skip_at  # Save skip connections info
+        ctx.tf_input = tf_input
+        ctx.mlp_output = mlp_output
 
         return output_tensor
 
     @staticmethod
     def backward(ctx, grad_output):
-        # Retrieve saved tensors and weights
+        # Retrieve saved tensors
         input_tensor, = ctx.saved_tensors
-        mlp_weights = ctx.tf_mlp_weights
-        mlp_biases = ctx.tf_mlp_biases
-        out_weights = ctx.tf_out_weights
-        out_biases = ctx.tf_out_biases
-        skip_at = ctx.skip_at
+        tf_input = ctx.tf_input
+        mlp_output = ctx.mlp_output
 
-        # Backpropagate through the final layer
-        output_pre_activation = input_tensor @ out_weights.T + out_biases
-        softplus_derivative = 1 / (1 + torch.exp(-output_pre_activation))
-        grad_output = grad_output * softplus_derivative
+        # Convert PyTorch gradient to TensorFlow tensor
+        tf_grad_output = tf.convert_to_tensor(grad_output.cpu().numpy(), dtype=tf.float32)
 
-        # Backpropagate through MLP with skip connections
-        grad_input = grad_output
-        for i, (W, b) in enumerate(zip(reversed(mlp_weights), reversed(mlp_biases))):
-            grad_input = grad_input @ W.T  # Linear backpropagation
+        # Compute gradient w.r.t. input using TensorFlow's `GradientTape`
+        with tf.GradientTape() as tape:
+            tape.watch(tf_input)  # Track input tensor for gradients
+            tf_output = mlp_output  # Frozen MLP already evaluated
+        tf_grad_input = tape.gradient(tf_output, tf_input, output_gradients=tf_grad_output)
 
-            # Apply ReLU derivative
-            grad_input = grad_input * (grad_input > 0).float()
-
-            # Add skip connection gradients if the layer is a skip layer
-            if i in skip_at:
-                grad_input += grad_output
+        # Convert TensorFlow gradient back to PyTorch tensor
+        grad_input = torch.tensor(tf_grad_input.numpy(), device=input_tensor.device)
 
         return grad_input
 
