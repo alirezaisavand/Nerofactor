@@ -832,7 +832,7 @@ class MCShadingNetwork(nn.Module):
         self.nerfactor_brdf_model = BRDFModel(self.nerfactor_config_brdf)
         ioutil.restore_model(self.nerfactor_brdf_model, brdf_ckpt)
         self.nerfactor_brdf_model.trainable = False
-        TensorFlowBridge.initialize_model(self.nerfactor_brdf_model)
+        # TensorFlowBridge.initialize_model(self.nerfactor_brdf_model)
 
         # BRDF Encoder
         mlp_width = config.getint('DEFAULT', 'mlp_width')
