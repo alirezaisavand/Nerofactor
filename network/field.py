@@ -1253,7 +1253,7 @@ class MCShadingNetwork(nn.Module):
         # fresnel, H, HoV = self.fresnel_schlick_directions(F0.unsqueeze(1), view_dirs.unsqueeze(1), directions)
         NoV = saturate_dot(normals, view_dirs).unsqueeze(1)  # pn,1,3
         NoL = saturate_dot(normals.unsqueeze(1), directions)  # pn,sn,3
-        geometry = self.geometry(NoV, NoL, roughness.unsqueeze(1))
+        # geometry = self.geometry(NoV, NoL, roughness.unsqueeze(1))
         # NoH = saturate_dot(normals.unsqueeze(1), H)
         # distribution = self.distribution_ggx(NoH, roughness.unsqueeze(1))
         human_poses = human_poses.unsqueeze(1).repeat(1, sn, 1, 1) if human_poses is not None else None
