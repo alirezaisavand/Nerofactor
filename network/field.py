@@ -661,8 +661,8 @@ class AppShadingNetwork(nn.Module):
                 'diffuse_light': torch.clamp(linear_to_srgb(diffuse_light), min=0.0, max=1.0),
                 'diffuse_color': torch.clamp(diffuse_color, min=0.0, max=1.0),
 
-                'metallic': metallic,
-                'roughness': roughness,
+                # 'metallic': metallic,
+                # 'roughness': roughness,
 
                 'occ_prob': torch.clamp(occ_prob, max=1.0, min=0.0),
                 'indirect_light': indirect_light,
@@ -1295,8 +1295,8 @@ class MCShadingNetwork(nn.Module):
 
         outputs = {}
         outputs['albedo'] = albedo
-        outputs['roughness'] = roughness
-        outputs['metallic'] = metallic
+        # outputs['roughness'] = roughness
+        # outputs['metallic'] = metallic
         # Added this to use in the loss function
         outputs['spec_brdf'] = spec_brdf
 
@@ -1358,7 +1358,7 @@ class MCShadingNetwork(nn.Module):
     def get_env_light(self):
         return self.predict_outer_lights_pts(self.light_pts)
 
-    def material_regularization(self, pts, normals, metallic, roughness, albedo, spec_brdf, step):
+    def material_regularization(self, pts, normals,  albedo, spec_brdf, step):
         # metallic, roughness, albedo = self.predict_materials(pts)
         reg = 0
 

@@ -401,10 +401,15 @@ class NeROShapeRenderer(nn.Module):
 
         trn = self.cfg['test_ray_num']
         outputs_keys = ['ray_rgb', 'gradient_error', 'normal', 'depth']
+        # outputs_keys += [
+        #     'diffuse_albedo', 'diffuse_light', 'diffuse_color',
+        #     'specular_albedo', 'specular_light', 'specular_color', 'specular_ref',
+        #     'metallic', 'roughness', 'occ_prob', 'indirect_light', 'occ_prob_gt',
+        # ]
         outputs_keys += [
             'diffuse_albedo', 'diffuse_light', 'diffuse_color',
             'specular_albedo', 'specular_light', 'specular_color', 'specular_ref',
-            'metallic', 'roughness', 'occ_prob', 'indirect_light', 'occ_prob_gt',
+            'occ_prob', 'indirect_light', 'occ_prob_gt',
         ]
         if self.color_network.cfg['human_light']:
             outputs_keys += ['human_light']
@@ -822,8 +827,9 @@ class NeROShapeRenderer(nn.Module):
             roughness.append(r.cpu().numpy())
             albedo.append(a.cpu().numpy())
 
-        return {'metallic': np.concatenate(metallic, 0),
-                'roughness': np.concatenate(roughness, 0),
+        return {
+            # 'metallic': np.concatenate(metallic, 0),
+        #         'roughness': np.concatenate(roughness, 0),
                 'albedo': np.concatenate(albedo, 0)}
 
 
@@ -1082,8 +1088,10 @@ class NeROMaterialRenderer(nn.Module):
         shade_outputs['rgb_gt'] = rgb_gt
         shade_outputs['loss_rgb'] = self.compute_rgb_loss(shade_outputs['rgb_pr'], shade_outputs['rgb_gt'])
         if self.cfg['reg_mat']:
+            # shade_outputs['loss_mat_reg'] = self.shader_network.material_regularization(
+            #     pts, normals, shade_outputs['metallic'], shade_outputs['roughness'], shade_outputs['albedo'], shade_outputs['spec_brdf'], step)
             shade_outputs['loss_mat_reg'] = self.shader_network.material_regularization(
-                pts, normals, shade_outputs['metallic'], shade_outputs['roughness'], shade_outputs['albedo'], shade_outputs['spec_brdf'], step)
+                pts, normals, shade_outputs['albedo'], shade_outputs['spec_brdf'], step)
         if self.cfg['reg_diffuse_light']:
             shade_outputs['loss_diffuse_light'] = self.compute_diffuse_light_regularization(
                 shade_outputs['diffuse_light'])
@@ -1100,8 +1108,10 @@ class NeROMaterialRenderer(nn.Module):
                                                                                                          'cuda', False)
         trn = self.cfg['test_ray_num']
 
+        # output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'specular_color': 3, 'diffuse_light': 3,
+        #                'diffuse_color': 3, 'albedo': 3, 'metallic': 1, 'roughness': 1}
         output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'specular_color': 3, 'diffuse_light': 3,
-                       'diffuse_color': 3, 'albedo': 3, 'metallic': 1, 'roughness': 1}
+                       'diffuse_color': 3, 'albedo': 3}
         outputs = {k: [] for k in output_keys.keys()}
         rn = ray_batch['rays_o'].shape[0]
         for ri in range(0, rn, trn):
@@ -1123,9 +1133,9 @@ class NeROMaterialRenderer(nn.Module):
                 outputs_cur['diffuse_color'][hit_mask] = shade_outputs['diffuse_color']
                 outputs_cur['diffuse_light'][hit_mask] = shade_outputs['diffuse_light']
                 outputs_cur['albedo'][hit_mask] = shade_outputs['albedo']
-                outputs_cur['metallic'][hit_mask] = shade_outputs['metallic']
-                outputs_cur['roughness'][hit_mask] = torch.sqrt(
-                    shade_outputs['roughness'])  # note: we assume predictions are roughness squared
+                # outputs_cur['metallic'][hit_mask] = shade_outputs['metallic']
+                # outputs_cur['roughness'][hit_mask] = torch.sqrt(
+                #     shade_outputs['roughness'])  # note: we assume predictions are roughness squared
 
             for k in output_keys.keys():
                 outputs[k].append(outputs_cur[k])
@@ -1159,8 +1169,9 @@ class NeROMaterialRenderer(nn.Module):
             roughness.append(r.cpu().numpy())
             albedo.append(a.cpu().numpy())
 
-        return {'metallic': np.concatenate(metallic, 0),
-                'roughness': np.concatenate(roughness, 0),
+        return {
+            # 'metallic': np.concatenate(metallic, 0),
+        #         'roughness': np.concatenate(roughness, 0),
                 'albedo': np.concatenate(albedo, 0)}
 
 
