@@ -1064,12 +1064,12 @@ class MCShadingNetwork(nn.Module):
 
     def predict_materials(self, pts):
         feats = self.feats_network(pts)
-        metallic = self.metallic_predictor(torch.cat([feats, pts], -1))
-        # metallic = None
-        roughness = self.roughness_predictor(torch.cat([feats, pts], -1))
-        # roughness = None
-        rmax, rmin = 1.0, 0.04 ** 2
-        roughness = roughness * (rmax - rmin) + rmin
+        # metallic = self.metallic_predictor(torch.cat([feats, pts], -1))
+        metallic = None
+        # roughness = self.roughness_predictor(torch.cat([feats, pts], -1))
+        roughness = None
+        # rmax, rmin = 1.0, 0.04 ** 2
+        # roughness = roughness * (rmax - rmin) + rmin
         albedo = self.albedo_predictor(torch.cat([feats, pts], -1))
         return metallic, roughness, albedo
 
