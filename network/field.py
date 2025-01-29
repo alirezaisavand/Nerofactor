@@ -936,7 +936,7 @@ class MCShadingNetwork(nn.Module):
         # roughness [pn,1]
         z = reflections  # pn,3
         x = self.get_orthogonal_directions(reflections)  # pn,3
-        y = torch.cross(z, x, dim=-1)  # pn,3
+        y = torch.cross(z, x, dim=-1)  # pn,3tele
         a = roughness  # we assume the predicted roughness is already squared
 
         az, el = torch.split(self.specular_direction_samples, 1, dim=1)  # sn,1
@@ -1222,13 +1222,14 @@ class MCShadingNetwork(nn.Module):
         return brdf  # NxLx3
 
     def shade_mixed(self, pts, normals, view_dirs, reflections, metallic, roughness, albedo, human_poses, is_train):
-        F0 = 0.04 * (1 - metallic) + metallic * albedo  # [pn,1]
+        # F0 = 0.04 * (1 - metallic) + metallic * albedo  # [pn,1]
 
         # sample diffuse directions
         diffuse_directions = self.sample_diffuse_directions(normals, is_train)  # [pn,sn0,3]
         point_num, diffuse_num, _ = diffuse_directions.shape
         # sample specular directions
-        specular_directions = self.sample_specular_directions(reflections, roughness, is_train)  # [pn,sn1,3]
+        # specular_directions = self.sample_specular_directions(reflections, roughness, is_train)  # [pn,sn1,3]
+        specular_directions = diffuse_directions
         specular_num = specular_directions.shape[1]
 
         # diffuse sample prob
@@ -1240,27 +1241,28 @@ class MCShadingNetwork(nn.Module):
         H_s = F.normalize(H_s, dim=-1)
         NoH_s = saturate_dot(normals.unsqueeze(1), H_s)
         VoH_s = saturate_dot(view_dirs.unsqueeze(1), H_s)
-        specular_probability = self.distribution_ggx(NoH_s, roughness.unsqueeze(1)) * NoH_s / (4 * VoH_s + 1e-5) * (
-                specular_num / (specular_num + diffuse_num))  # D * NoH / (4 * VoH)
+        # specular_probability = self.distribution_ggx(NoH_s, roughness.unsqueeze(1)) * NoH_s / (4 * VoH_s + 1e-5) * (
+        #         specular_num / (specular_num + diffuse_num))  # D * NoH / (4 * VoH)
 
         # combine
         directions = torch.cat([diffuse_directions, specular_directions], 1)
-        probability = torch.cat([diffuse_probability, specular_probability], 1)
+        # probability = torch.cat([diffuse_probability, specular_probability], 1)
         sn = diffuse_num + specular_num
 
         # specular
-        fresnel, H, HoV = self.fresnel_schlick_directions(F0.unsqueeze(1), view_dirs.unsqueeze(1), directions)
+        # fresnel, H, HoV = self.fresnel_schlick_directions(F0.unsqueeze(1), view_dirs.unsqueeze(1), directions)
         NoV = saturate_dot(normals, view_dirs).unsqueeze(1)  # pn,1,3
         NoL = saturate_dot(normals.unsqueeze(1), directions)  # pn,sn,3
         geometry = self.geometry(NoV, NoL, roughness.unsqueeze(1))
-        NoH = saturate_dot(normals.unsqueeze(1), H)
-        distribution = self.distribution_ggx(NoH, roughness.unsqueeze(1))
+        # NoH = saturate_dot(normals.unsqueeze(1), H)
+        # distribution = self.distribution_ggx(NoH, roughness.unsqueeze(1))
         human_poses = human_poses.unsqueeze(1).repeat(1, sn, 1, 1) if human_poses is not None else None
         pts_ = pts.unsqueeze(1).repeat(1, sn, 1)
         lights, hl, light_pts, light_normals, light_pts_mask = self.get_lights(pts_, directions, human_poses)  # pn,sn,3
-        specular_weights = distribution * geometry / (4 * NoV * probability + 1e-5)
-        specular_lights = lights * specular_weights
-        print('specular wights:', specular_weights.shape, specular_weights)
+        # specular_weights = distribution * geometry / (4 * NoV * probability + 1e-5)
+        # specular_lights = lights * specular_weights
+        specular_lights = lights
+        # print('specular wights:', specular_weights.shape, specular_weights)
 
         # Change here for using nerfactor BRDF model
 
@@ -1279,12 +1281,13 @@ class MCShadingNetwork(nn.Module):
 
         # specular_colors = torch.mean(fresnel * specular_lights, 1)
         specular_colors = torch.mean(spec_brdf * specular_lights, 1)
-        specular_weights = specular_weights * fresnel
+        # specular_weights = specular_weights * fresnel
 
         # diffuse only consider diffuse directions
-        kd = (1 - metallic.unsqueeze(1))
+        # kd = (1 - metallic.unsqueeze(1))
         diffuse_lights = lights[:, :diffuse_num]
-        diffuse_colors = albedo.unsqueeze(1) * kd[:, :diffuse_num] * diffuse_lights
+        # diffuse_colors = albedo.unsqueeze(1) * kd[:, :diffuse_num] * diffuse_lights
+        diffuse_colors = albedo.unsqueeze(1) * diffuse_lights
         diffuse_colors = torch.mean(diffuse_colors, 1)
 
         colors = diffuse_colors + specular_colors
@@ -1304,8 +1307,8 @@ class MCShadingNetwork(nn.Module):
         specular_colors = torch.clamp(linear_to_srgb(specular_colors), min=0, max=1)
         outputs['diffuse_color'] = diffuse_colors
         outputs['specular_color'] = specular_colors
-        outputs['approximate_light'] = torch.clamp(
-            linear_to_srgb(torch.mean(kd[:, :diffuse_num] * diffuse_lights, dim=1) + specular_colors), min=0, max=1)
+        # outputs['approximate_light'] = torch.clamp(
+        #     linear_to_srgb(torch.mean(kd[:, :diffuse_num] * diffuse_lights, dim=1) + specular_colors), min=0, max=1)
         return colors, outputs
 
     def forward(self, pts, view_dirs, normals, human_poses, step, is_train):
