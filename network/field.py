@@ -1273,7 +1273,7 @@ class MCShadingNetwork(nn.Module):
             if brdf_prop_jitter is not None:
                 brdf_prop_jitter = mathutil.safe_l2_normalize(
                     brdf_prop_jitter, axis=1)
-        surf2l = -directions
+        surf2l = directions
         surf2c = -view_dirs
         spec_brdf = self._eval_brdf_at(
             surf2l, surf2c, normals, albedo, brdf_prop)  # NxLx3
