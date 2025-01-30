@@ -8,7 +8,7 @@ is_nerf: true
 
 reg_diffuse_light: true
 reg_diffuse_light_lambda: 0.1
-reg_mat: true
+reg_mat: false
 shader_cfg:
   diffuse_sample_num: 512
   specular_sample_num: 256
