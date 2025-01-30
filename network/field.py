@@ -1202,7 +1202,6 @@ class MCShadingNetwork(nn.Module):
             rusink, z = rusink_z[:, :3], rusink_z[:, 3:]
             rusink_embed = embedder(rusink)
             z_rusink = torch.cat((z, rusink_embed), dim=1)
-            # brdf = TensorFlowBridge.apply(z_rusink)
             z_rusink_tf = tf.convert_to_tensor(z_rusink.detach().cpu().numpy(), dtype=tf.float32)
             brdf = out_layer(mlp_layers(z_rusink_tf))
             return torch.tensor(brdf.numpy()).cuda()
