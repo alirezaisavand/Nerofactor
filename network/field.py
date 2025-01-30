@@ -1275,7 +1275,7 @@ class MCShadingNetwork(nn.Module):
         surf2l = directions
         surf2c = -view_dirs
         spec_brdf = self._eval_brdf_at(
-            surf2l, surf2c, normals, albedo, brdf_prop)  # NxLx3
+            surf2l, surf2c, -normals, albedo, brdf_prop)  # NxLx3
 
 
         # specular_colors = torch.mean(fresnel * specular_lights, 1)
