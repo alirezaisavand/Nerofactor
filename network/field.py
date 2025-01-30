@@ -1285,7 +1285,7 @@ class MCShadingNetwork(nn.Module):
         black_count = (spec_brdf == 0).all(dim=1).sum().item()
         if not is_train:
             print('pts size:', len(spec_brdf), 'number of zeros:', black_count)
-            print('black brdf props:', brdf_prop[spec_brdf == 0])
+            print('black brdf props:', brdf_prop[(spec_brdf == 0).all(dim=1)])
 
         # specular_colors = torch.mean(fresnel * specular_lights, 1)
         specular_colors = torch.mean(spec_brdf * specular_lights, 1)
