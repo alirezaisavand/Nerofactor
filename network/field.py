@@ -1170,7 +1170,7 @@ class MCShadingNetwork(nn.Module):
         z = brdf_prop
         # todo
         # Generate world-to-local transformation matrix
-        world2local = geomutil.gen_world2local(normal)
+        world2local = geomutil.gen_world2local(-normal)
 
         # Transform directions into local frames
         vdir = torch.einsum('jkl,jl->jk', world2local, pts2c)
