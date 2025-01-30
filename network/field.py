@@ -958,50 +958,7 @@ class MCShadingNetwork(nn.Module):
     import torch
     import numpy as np
 
-    def sample_specular_directions_brdf(self, normals, view_dirs, brdf_values, num_samples):
-        """
-        Sample specular reflection directions based on the learned BRDF.
 
-        normals: Tensor [N, 3] - Surface normals
-        view_dirs: Tensor [N, 3] - View directions
-        brdf_values: Tensor [N, 3] - BRDF output from the learned model (assumed to be specular reflectance)
-        num_samples: int - Number of specular samples per point
-
-        Returns:
-        specular_directions: Tensor [N, num_samples, 3] - Sampled specular directions
-        """
-
-        N, _ = normals.shape
-
-        # Sample random values for azimuth (φ) and elevation (θ)
-        u1 = torch.rand((N, num_samples), device=normals.device)
-        u2 = torch.rand((N, num_samples), device=normals.device)
-
-        # Convert BRDF values to an empirical roughness estimate
-        brdf_strength = brdf_values.mean(dim=-1, keepdim=True)  # Approximate specular strength
-        roughness = 1.0 - brdf_strength.clamp(0.1, 0.9)  # Map BRDF reflectance to roughness scale
-
-        # Sample half-vectors H (importance sampling)
-        theta_h = torch.acos(torch.pow(u1, 1.0 / (roughness + 1e-4)))  # Elevation sampling
-        phi_h = 2 * np.pi * u2  # Azimuth
-
-        # Convert spherical coordinates to Cartesian (half-vector H)
-        H = torch.zeros((N, num_samples, 3), device=normals.device)
-        H[:, :, 0] = torch.sin(theta_h) * torch.cos(phi_h)
-        H[:, :, 1] = torch.sin(theta_h) * torch.sin(phi_h)
-        H[:, :, 2] = torch.cos(theta_h)
-
-        # Transform H to world space
-        x = torch.cross(normals, torch.tensor([0.0, 1.0, 0.0], device=normals.device).expand_as(normals))
-        x = torch.nn.functional.normalize(x, dim=-1)
-        y = torch.cross(normals, x)
-        H_world = H[:, :, 0:1] * x.unsqueeze(1) + H[:, :, 1:2] * y.unsqueeze(1) + H[:, :, 2:3] * normals.unsqueeze(1)
-
-        # Reflect view direction around H to get specular directions
-        V = view_dirs.unsqueeze(1).expand_as(H_world)  # [N, num_samples, 3]
-        specular_directions = 2 * torch.sum(H_world * V, dim=-1, keepdim=True) * H_world - V
-
-        return torch.nn.functional.normalize(specular_directions, dim=-1)  # Normalize output
 
     def get_inner_lights(self, points, view_dirs, normals):
         pos_enc = self.pos_enc(points)
@@ -1265,7 +1222,7 @@ class MCShadingNetwork(nn.Module):
         spec = brdf_flat.reshape(ldir.shape[0], ldir.shape[1], 1)
         spec = spec.expand(-1, -1, 3)  # Make it achromatic
 
-        brdf = spec * brdf_scale)
+        brdf = spec * brdf_scale
         return brdf  # NxLx3
 
     def shade_mixed(self, pts, normals, view_dirs, reflections, metallic, roughness, albedo, human_poses, is_train):
@@ -1275,9 +1232,8 @@ class MCShadingNetwork(nn.Module):
         diffuse_directions = self.sample_diffuse_directions(normals, is_train)  # [pn,sn0,3]
         point_num, diffuse_num, _ = diffuse_directions.shape
         # sample specular directions
-        # specular_directions = self.sample_specular_directions(reflections, roughness, is_train)  # [pn,sn1,3]
-        specular_directions = self.sample_specular_directions_brdf(normals=normals, view_dirs=view_dirs,
-                                                                   brdf_values=brdf, num_samples=self.cfg['specular_sample_num'])
+        specular_directions = diffuse_directions
+
         specular_num = specular_directions.shape[1]
 
         # diffuse sample prob
