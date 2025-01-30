@@ -1287,7 +1287,7 @@ class MCShadingNetwork(nn.Module):
         # kd = (1 - metallic.unsqueeze(1))
         diffuse_lights = lights[:, :diffuse_num]
         # diffuse_colors = albedo.unsqueeze(1) * kd[:, :diffuse_num] * diffuse_lights
-        diffuse_colors = albedo.unsqueeze(1) * diffuse_lights
+        diffuse_colors = albedo.unsqueeze(1) / np.pi * diffuse_lights
         diffuse_colors = torch.mean(diffuse_colors, 1)
 
         colors = diffuse_colors + specular_colors
