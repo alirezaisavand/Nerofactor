@@ -1091,7 +1091,7 @@ class NeROMaterialRenderer(nn.Module):
             # shade_outputs['loss_mat_reg'] = self.shader_network.material_regularization(
             #     pts, normals, shade_outputs['metallic'], shade_outputs['roughness'], shade_outputs['albedo'], shade_outputs['spec_brdf'], step)
             shade_outputs['loss_mat_reg'] = self.shader_network.material_regularization(
-                pts, normals, shade_outputs['albedo'], shade_outputs['spec_brdf'], step)
+                pts, normals, shade_outputs['albedo'], step)
             print('rgb loss:', shade_outputs['loss_rgb'], 'mat reg loss:', shade_outputs['loss_mat_reg'])
         if self.cfg['reg_diffuse_light']:
             shade_outputs['loss_diffuse_light'] = self.compute_diffuse_light_regularization(

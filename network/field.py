@@ -1273,8 +1273,8 @@ class MCShadingNetwork(nn.Module):
             if brdf_prop_jitter is not None:
                 brdf_prop_jitter = mathutil.safe_l2_normalize(
                     brdf_prop_jitter, axis=1)
-        surf2l = directions
-        surf2c = view_dirs
+        surf2l = -directions
+        surf2c = -view_dirs
         spec_brdf = self._eval_brdf_at(
             surf2l, surf2c, normals, albedo, brdf_prop)  # NxLx3
 
@@ -1358,7 +1358,7 @@ class MCShadingNetwork(nn.Module):
     def get_env_light(self):
         return self.predict_outer_lights_pts(self.light_pts)
 
-    def material_regularization(self, pts, normals,  albedo, spec_brdf, step):
+    def material_regularization(self, pts, normals,  albedo, step):
         # metallic, roughness, albedo = self.predict_materials(pts)
         reg = 0
 
