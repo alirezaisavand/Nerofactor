@@ -1313,7 +1313,7 @@ class MCShadingNetwork(nn.Module):
         lights, hl, light_pts, light_normals, light_pts_mask = self.get_lights(pts_, directions, human_poses)  # pn,sn,3
         # specular_weights = distribution * geometry / (4 * NoV * probability + 1e-5)
         # specular_lights = lights * specular_weights
-        specular_lights = lights
+        specular_lights = lights[:, diffuse_num:]
         # print('specular wights:', specular_weights.shape, specular_weights)
 
         # Change here for using nerfactor BRDF model
@@ -1325,7 +1325,7 @@ class MCShadingNetwork(nn.Module):
             if brdf_prop_jitter is not None:
                 brdf_prop_jitter = mathutil.safe_l2_normalize(
                     brdf_prop_jitter, axis=1)
-        surf2l = directions
+        surf2l = specular_directions
         surf2c = -view_dirs
         spec_brdf = self._eval_brdf_at(
             surf2l, surf2c, normals, albedo, brdf_prop)  # NxLx3
@@ -1335,7 +1335,7 @@ class MCShadingNetwork(nn.Module):
 
         # specular_colors = torch.mean(fresnel * specular_lights, 1)
         specular_colors = torch.mean(spec_brdf * specular_lights, 1)
-
+        spec_brdf_avg = torch.mean(spec_brdf, 1)
         # specular_weights = specular_weights * fresnel
 
         # diffuse only consider diffuse directions
@@ -1369,7 +1369,7 @@ class MCShadingNetwork(nn.Module):
         specular_colors = torch.clamp(linear_to_srgb(specular_colors), min=0, max=1)
         outputs['diffuse_color'] = diffuse_colors
         outputs['specular_color'] = specular_colors
-        outputs['spec_brdf'] = spec_brdf
+        outputs['spec_brdf'] = spec_brdf_avg
 
         # outputs['approximate_light'] = torch.clamp(
         #     linear_to_srgb(torch.mean(kd[:, :diffuse_num] * diffuse_lights, dim=1) + specular_colors), min=0, max=1)
