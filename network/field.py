@@ -1328,7 +1328,7 @@ class MCShadingNetwork(nn.Module):
 
         # specular_colors = torch.mean(fresnel * specular_lights, 1)
         specular_colors = torch.mean(spec_brdf * specular_lights, 1)
-        spec_brdf_avg = torch.max(spec_brdf, 1)
+        spec_brdf_avg = torch.mean(spec_brdf, 1)
         # specular_weights = specular_weights * fresnel
 
         # diffuse only consider diffuse directions
