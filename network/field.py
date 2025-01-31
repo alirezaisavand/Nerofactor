@@ -1335,7 +1335,7 @@ class MCShadingNetwork(nn.Module):
 
         # specular_colors = torch.mean(fresnel * specular_lights, 1)
         specular_colors = torch.mean(spec_brdf * specular_lights, 1)
-        spec_brdf_avg = torch.mean(spec_brdf, 1)
+        spec_brdf_mx = torch.max(spec_brdf, 1)
         # specular_weights = specular_weights * fresnel
 
         # diffuse only consider diffuse directions
@@ -1369,7 +1369,7 @@ class MCShadingNetwork(nn.Module):
         specular_colors = torch.clamp(linear_to_srgb(specular_colors), min=0, max=1)
         outputs['diffuse_color'] = diffuse_colors
         outputs['specular_color'] = specular_colors
-        outputs['spec_brdf'] = spec_brdf_avg
+        outputs['spec_brdf'] = spec_brdf_mx
 
         # outputs['approximate_light'] = torch.clamp(
         #     linear_to_srgb(torch.mean(kd[:, :diffuse_num] * diffuse_lights, dim=1) + specular_colors), min=0, max=1)
