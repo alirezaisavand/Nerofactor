@@ -11,7 +11,7 @@ reg_diffuse_light_lambda: 0.1
 reg_mat: true
 shader_cfg:
   diffuse_sample_num: 512
-  specular_sample_num: 1024
+  specular_sample_num: 256
   outer_light_version: direction
   light_exp_max: 5.0
   inner_light_exp_max: 5.0
