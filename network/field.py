@@ -1002,7 +1002,9 @@ class MCShadingNetwork(nn.Module):
         H_world = H[:, :, 0:1] * x.unsqueeze(1) + H[:, :, 1:2] * y.unsqueeze(1) + H[:, :, 2:3] * reflection.unsqueeze(1)
 
         # Compute final specular reflection direction
-        specular_directions = 2 * torch.sum(H_world * reflection, dim=-1, keepdim=True) * H_world - reflection
+        reflection_expanded = reflection.unsqueeze(1).expand(-1, H_world.shape[1], -1)  # [N, num_samples, 3]
+        specular_directions = 2 * torch.sum(H_world * reflection_expanded, dim=-1,
+                                            keepdim=True) * H_world - reflection_expanded
 
         return torch.nn.functional.normalize(specular_directions, dim=-1)  # Normalize output
 
