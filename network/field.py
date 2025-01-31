@@ -1283,13 +1283,11 @@ class MCShadingNetwork(nn.Module):
             surf2l, surf2c, -normals, albedo, brdf_prop)  # NxLx3
 
         black_count = (spec_brdf == 0).all(dim=1).sum().item()
-        if not is_train:
-            print('pts size:', len(pts))
-            print('brdf size:', len(spec_brdf), 'number of zeros:', black_count)
-            print('black brdf props:', brdf_prop[(spec_brdf == 0).all(dim=1)])
+
 
         # specular_colors = torch.mean(fresnel * specular_lights, 1)
         specular_colors = torch.mean(spec_brdf * specular_lights, 1)
+
         # specular_weights = specular_weights * fresnel
 
         # diffuse only consider diffuse directions
@@ -1301,6 +1299,13 @@ class MCShadingNetwork(nn.Module):
 
         colors = diffuse_colors + specular_colors
         colors = linear_to_srgb(colors)
+
+        if not is_train:
+            print('pts size:', len(pts))
+            print('brdf size:', len(spec_brdf), 'number of zeros:', black_count)
+            print('black brdf props:', brdf_prop[(spec_brdf == 0).all(dim=1)])
+            print('spec range:', specular_colors.min(), specular_colors.max())
+            print('diffuse range:', diffuse_colors.min(), diffuse_colors.max())
 
         outputs = {}
         outputs['albedo'] = albedo
