@@ -958,7 +958,53 @@ class MCShadingNetwork(nn.Module):
     import torch
     import numpy as np
 
+    def sample_specular_directions_variable_shininess(self, normals, view_dirs, num_samples):
+        """
+        Sample specular reflection directions where each point has a different shininess.
 
+        normals: Tensor [N, 3] - Surface normals
+        view_dirs: Tensor [N, 3] - View directions (from surface to camera)
+        num_samples: int - Number of specular samples per point
+
+        Returns:
+        specular_directions: Tensor [N, num_samples, 3] - Sampled specular directions
+        """
+
+        N, _ = normals.shape
+
+        # Assign a different roughness per point
+        roughness = torch.rand((N, 1), device=normals.device) * 0.5 + 0.2  # Per-point random roughness
+
+        # Compute ideal reflection direction
+        reflection = 2 * torch.sum(normals * view_dirs, dim=-1, keepdim=True) * normals - view_dirs
+        reflection = torch.nn.functional.normalize(reflection, dim=-1)
+
+        # Sample random values
+        u1 = torch.rand((N, num_samples), device=normals.device)
+        u2 = torch.rand((N, num_samples), device=normals.device)
+
+        # Convert to spherical coordinates
+        theta_h = torch.acos(torch.pow(u1, 1.0 / (1 + roughness)))  # Adaptive spread per point
+        phi_h = 2 * np.pi * u2  # Uniform azimuth angle
+
+        # Convert to Cartesian coordinates (half-vector H)
+        H = torch.zeros((N, num_samples, 3), device=normals.device)
+        H[:, :, 0] = torch.sin(theta_h) * torch.cos(phi_h)
+        H[:, :, 1] = torch.sin(theta_h) * torch.sin(phi_h)
+        H[:, :, 2] = torch.cos(theta_h)
+
+        # Construct local tangent frame
+        x = torch.cross(normals, torch.tensor([0.0, 1.0, 0.0], device=normals.device).expand_as(normals))
+        x = torch.nn.functional.normalize(x, dim=-1)
+        y = torch.cross(normals, x)
+
+        # Transform H to world space
+        H_world = H[:, :, 0:1] * x.unsqueeze(1) + H[:, :, 1:2] * y.unsqueeze(1) + H[:, :, 2:3] * reflection.unsqueeze(1)
+
+        # Compute final specular reflection direction
+        specular_directions = 2 * torch.sum(H_world * reflection, dim=-1, keepdim=True) * H_world - reflection
+
+        return torch.nn.functional.normalize(specular_directions, dim=-1)  # Normalize output
 
     def get_inner_lights(self, points, view_dirs, normals):
         pos_enc = self.pos_enc(points)
@@ -1175,7 +1221,7 @@ class MCShadingNetwork(nn.Module):
         z = brdf_prop
         # todo
         # Generate world-to-local transformation matrix
-        world2local = geomutil.gen_world2local(-normal)
+        world2local = geomutil.gen_world2local(normal)
 
         # Transform directions into local frames
         vdir = torch.einsum('jkl,jl->jk', world2local, pts2c)
@@ -1232,7 +1278,7 @@ class MCShadingNetwork(nn.Module):
         diffuse_directions = self.sample_diffuse_directions(normals, is_train)  # [pn,sn0,3]
         point_num, diffuse_num, _ = diffuse_directions.shape
         # sample specular directions
-        specular_directions = diffuse_directions
+        specular_directions = self.sample_specular_directions_variable_shininess(normals, view_dirs, self.cfg['specular_sample_num'])
 
         specular_num = specular_directions.shape[1]
 
@@ -1280,7 +1326,7 @@ class MCShadingNetwork(nn.Module):
         surf2l = directions
         surf2c = -view_dirs
         spec_brdf = self._eval_brdf_at(
-            surf2l, surf2c, -normals, albedo, brdf_prop)  # NxLx3
+            surf2l, surf2c, normals, albedo, brdf_prop)  # NxLx3
 
         black_count = (spec_brdf == 0).all(dim=1).sum().item()
 
