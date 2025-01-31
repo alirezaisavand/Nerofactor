@@ -1111,7 +1111,7 @@ class NeROMaterialRenderer(nn.Module):
         # output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'specular_color': 3, 'diffuse_light': 3,
         #                'diffuse_color': 3, 'albedo': 3, 'metallic': 1, 'roughness': 1}
         output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'specular_color': 3, 'diffuse_light': 3,
-                       'diffuse_color': 3, 'albedo': 3}
+                       'diffuse_color': 3, 'albedo': 3, 'spec_brdf': 3}
         outputs = {k: [] for k in output_keys.keys()}
         rn = ray_batch['rays_o'].shape[0]
         for ri in range(0, rn, trn):
@@ -1133,6 +1133,7 @@ class NeROMaterialRenderer(nn.Module):
                 outputs_cur['diffuse_color'][hit_mask] = shade_outputs['diffuse_color']
                 outputs_cur['diffuse_light'][hit_mask] = shade_outputs['diffuse_light']
                 outputs_cur['albedo'][hit_mask] = shade_outputs['albedo']
+                outputs_cur['spec_brdf'][hit_mask] = shade_outputs['spec_brdf']
                 # outputs_cur['metallic'][hit_mask] = shade_outputs['metallic']
                 # outputs_cur['roughness'][hit_mask] = torch.sqrt(
                 #     shade_outputs['roughness'])  # note: we assume predictions are roughness squared

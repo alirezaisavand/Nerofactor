@@ -1369,6 +1369,8 @@ class MCShadingNetwork(nn.Module):
         specular_colors = torch.clamp(linear_to_srgb(specular_colors), min=0, max=1)
         outputs['diffuse_color'] = diffuse_colors
         outputs['specular_color'] = specular_colors
+        outputs['spec_brdf'] = spec_brdf
+
         # outputs['approximate_light'] = torch.clamp(
         #     linear_to_srgb(torch.mean(kd[:, :diffuse_num] * diffuse_lights, dim=1) + specular_colors), min=0, max=1)
 
