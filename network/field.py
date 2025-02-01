@@ -1238,18 +1238,18 @@ class MCShadingNetwork(nn.Module):
 
         # Directions to Rusinkiewicz parameterization
         ldir_flat = ldir.reshape(-1, 3)
-        vdir_rep = vdir[:, None, :].expand(-1, ldir.shape[1], -1)
+        vdir_rep = vdir[:, None, :].repeat(1, ldir.shape[1], 1)
         vdir_flat = vdir_rep.reshape(-1, 3)
         rusink = geomutil.dir2rusink(ldir_flat, vdir_flat)  # NLx3
 
         # Repeat BRDF Z
-        z_rep = z[:, None, :].expand(-1, ldir.shape[1], -1)
+        z_rep = z[:, None, :].repeat(1, ldir.shape[1], 1)
         z_flat = z_rep.reshape(-1, self.nerfactor_z_dim)
 
         # Mask out back-lit directions for speed
         local_normal = torch.tensor([0, 0, 1], dtype=torch.float32).reshape(3, 1)
-        cos = (ldir_flat @ local_normal).squeeze(-1)
-        front_lit = cos > 0
+        cos = ldir_flat @ local_normal
+        front_lit = cos.reshape(-1) > 0
         rusink_fl = rusink[front_lit]
         z_fl = z_flat[front_lit]
 
@@ -1274,8 +1274,8 @@ class MCShadingNetwork(nn.Module):
         brdf_flat[front_lit] = brdf_fl
 
         # Reshape the resultant flat tensor
-        spec = brdf_flat.reshape(ldir.shape[0], ldir.shape[1], 1)
-        spec = spec.expand(-1, -1, 3)  # Make it achromatic
+        spec = brdf_flat.view(ldir.shape[0], ldir.shape[1], 1)
+        spec = spec.repeat(1, 1, 3) # Because they are achromatic
 
         brdf = spec * brdf_scale
         return brdf  # NxLx3

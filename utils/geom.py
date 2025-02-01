@@ -109,8 +109,8 @@ def gen_world2local(normal, eps=1e-6):
     normal = mathutil.safe_l2_normalize(normal, dim=1)
 
     # To avoid colinearity with some special normals that may pop up
-    z = torch.tensor((0, 0, 1), dtype=torch.float32, device=normal.device) + eps
-    z = z.unsqueeze(0).expand(normal.size(0), -1)
+    z = torch.tensor([0, 0, 1], dtype=torch.float32, device=normal.device) + eps
+    z = z.unsqueeze(0).repeat(normal.shape[0], 1)
 
     # Tangents
     t = torch.cross(normal, z, dim=1)
