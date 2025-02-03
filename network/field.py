@@ -980,7 +980,7 @@ class MCShadingNetwork(nn.Module):
         if specular_reflectance is not None:
             shininess = (1.0 / (1.0 - specular_reflectance)).clamp(10, 200)  # Adaptive
         else:
-            shininess = torch.full((N, 1), 50, device=normals.device)  # Safe default
+            shininess = torch.full((N, 1), 100, device=normals.device)  # Safe default
 
         # Compute reflection direction
         reflection = 2 * torch.sum(normals * view_dirs, dim=-1, keepdim=True) * normals - view_dirs
