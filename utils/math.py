@@ -41,8 +41,8 @@ class SafeAcos(torch.autograd.Function):
 def safe_acos(x, eps=1e-6):
     return SafeAcos.apply(x, eps)
 
-def safe_l2_normalize(x, dim=None, eps=1e-6):
-    norm = torch.linalg.norm(x, dim=dim, keepdim=True) + eps
+def safe_l2_normalize(x, axis=None, eps=1e-6):
+    norm = torch.linalg.norm(x, dim=axis, keepdim=True) + eps
     return x / norm
 
 def safe_cumprod(x, eps=1e-6):

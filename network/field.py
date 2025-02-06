@@ -1308,8 +1308,9 @@ class MCShadingNetwork(nn.Module):
                     brdf_prop_jitter, axis=1)
         surf2l = mathutil.safe_l2_normalize(specular_directions, axis=2)
         surf2c = mathutil.safe_l2_normalize(-view_dirs, axis=1)
+        brdf_normals = mathutil.safe_l2_normalize(normals, axis=1)
         spec_brdf = self._eval_brdf_at(
-            surf2l, surf2c, normals, albedo, brdf_prop)  # NxLx3
+            surf2l, surf2c, brdf_normals, albedo, brdf_prop)  # NxLx3
 
         # Repeat the process to sample based on new specular values
         #################################################
