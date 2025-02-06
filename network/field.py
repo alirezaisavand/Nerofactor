@@ -1340,6 +1340,7 @@ class MCShadingNetwork(nn.Module):
         diffuse_colors = torch.mean(diffuse_colors, 1)
 
         colors = diffuse_colors + specular_colors
+        colors = torch.clamp(colors, min=0.0, max=1.0)
         colors = linear_to_srgb(colors)
 
         if not is_train:
