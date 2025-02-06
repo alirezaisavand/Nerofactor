@@ -106,7 +106,7 @@ def gen_world2local(normal, eps=1e-6):
 
     `normal`: Nx3
     """
-    normal = mathutil.safe_l2_normalize(normal, dim=1)
+    normal = mathutil.safe_l2_normalize(normal, axis=1)
 
     # To avoid colinearity with some special normals that may pop up
     z = torch.tensor([0, 0, 1], dtype=torch.float32, device=normal.device) + eps
@@ -117,11 +117,11 @@ def gen_world2local(normal, eps=1e-6):
     assert torch.all(torch.linalg.norm(t, dim=1) > 0), (
         "Found zero-norm tangents, either because of colinearity "
         "or zero-norm normals")
-    t = mathutil.safe_l2_normalize(t, dim=1)
+    t = mathutil.safe_l2_normalize(t, axis=1)
 
     # Binormals
     b = torch.cross(normal, t, dim=1)
-    b = mathutil.safe_l2_normalize(b, dim=1)
+    b = mathutil.safe_l2_normalize(b, axis=1)
 
     # Rotation matrices
     rot = torch.stack((t, b, normal), dim=1)
@@ -136,9 +136,9 @@ def dir2rusink(a, b):
 
     `a` and `b` should be both Nx3.
     """
-    a = mathutil.safe_l2_normalize(a, dim=1)
-    b = mathutil.safe_l2_normalize(b, dim=1)
-    h = mathutil.safe_l2_normalize((a + b) / 2, dim=1)
+    a = mathutil.safe_l2_normalize(a, axis=1)
+    b = mathutil.safe_l2_normalize(b, axis=1)
+    h = mathutil.safe_l2_normalize((a + b) / 2, axis=1)
 
     theta_h = mathutil.safe_acos(h[:, 2])
     phi_h = mathutil.safe_atan2(h[:, 1], h[:, 0])
