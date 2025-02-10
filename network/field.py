@@ -1330,8 +1330,8 @@ class MCShadingNetwork(nn.Module):
 
         cos_theta = torch.clamp(
             (specular_directions * brdf_normals.unsqueeze(1)).sum(dim=-1), min=0.0)  # (B, n_samples)
-
-        print(spec_brdf.shape, specular_lights.shape, cos_theta.shape, pdfs.shape)
+        cos_theta = cos_theta.unsqueeze(-1)
+        pdfs = pdfs.unsqueeze(-1)
         specular_colors = torch.mean(spec_brdf * specular_lights * cos_theta / pdfs, 1)
         spec_brdf_avg = torch.mean(spec_brdf, 1)
 
