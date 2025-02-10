@@ -911,8 +911,6 @@ class MCShadingNetwork(nn.Module):
         otho = F.normalize(otho, dim=-1)
         return otho
 
-
-
     def sample_diffuse_directions(self, normals, is_train):
         # normals [pn,3]
         z = normals  # pn,3
@@ -941,7 +939,6 @@ class MCShadingNetwork(nn.Module):
         """
         dot = (v * n).sum(dim=-1, keepdim=True)
         return v - 2 * dot * n
-
 
     def sample_specular_rays(self, normals, view_dirs, roughness, n_samples):
         """
@@ -1031,60 +1028,6 @@ class MCShadingNetwork(nn.Module):
         pdfs = (exp_unsq + 1) / (2 * np.pi) * (cos_theta ** exp_unsq)  # (B, n_samples)
 
         return sample_dirs, pdfs
-
-    # def sample_specular_directions_safe(self, normals, view_dirs, num_samples, specular_reflectance=None):
-    #     """
-    #     Sample specular reflection directions with safe default shininess values.
-    #
-    #     normals: Tensor [N, 3] - Surface normals
-    #     view_dirs: Tensor [N, 3] - View directions (from surface to camera)
-    #     num_samples: int - Number of specular samples per point
-    #     specular_reflectance: Tensor [N, 1] (Optional) - If available, adapt shininess
-    #
-    #     Returns:
-    #     specular_directions: Tensor [N, num_samples, 3] - Sampled specular directions
-    #     """
-    #
-    #     N, _ = normals.shape
-    #
-    #     # Assign shininess adaptively or set a safe default
-    #     if specular_reflectance is not None:
-    #         shininess = (1.0 / (1.0 - specular_reflectance)).clamp(10, 200)  # Adaptive
-    #     else:
-    #         shininess = torch.full((N, 1), 100, device=normals.device)  # Safe default
-    #
-    #     # Compute reflection direction
-    #     reflection = 2 * torch.sum(normals * view_dirs, dim=-1, keepdim=True) * normals - view_dirs
-    #     reflection = torch.nn.functional.normalize(reflection, dim=-1)
-    #
-    #     # Sample random values
-    #     u1 = torch.rand((N, num_samples), device=normals.device)
-    #     u2 = torch.rand((N, num_samples), device=normals.device)
-    #
-    #     # Convert to spherical coordinates
-    #     theta_h = torch.acos(torch.pow(u1, 1.0 / (1 + shininess)))  # Adaptive spread
-    #     phi_h = 2 * np.pi * u2  # Uniform azimuth angle
-    #
-    #     # Convert to Cartesian coordinates (half-vector H)
-    #     H = torch.zeros((N, num_samples, 3), device=normals.device)
-    #     H[:, :, 0] = torch.sin(theta_h) * torch.cos(phi_h)
-    #     H[:, :, 1] = torch.sin(theta_h) * torch.sin(phi_h)
-    #     H[:, :, 2] = torch.cos(theta_h)
-    #
-    #     # Construct local tangent frame
-    #     x = torch.cross(normals, torch.tensor([0.0, 1.0, 0.0], device=normals.device).expand_as(normals))
-    #     x = torch.nn.functional.normalize(x, dim=-1)
-    #     y = torch.cross(normals, x)
-    #
-    #     # Transform H to world space
-    #     H_world = H[:, :, 0:1] * x.unsqueeze(1) + H[:, :, 1:2] * y.unsqueeze(1) + H[:, :, 2:3] * reflection.unsqueeze(1)
-    #
-    #     # Compute final specular reflection direction
-    #     reflection_expanded = reflection.unsqueeze(1).expand(-1, H_world.shape[1], -1)
-    #     specular_directions = 2 * torch.sum(H_world * reflection_expanded, dim=-1,
-    #                                         keepdim=True) * H_world - reflection_expanded
-    #
-    #     return torch.nn.functional.normalize(specular_directions, dim=-1)  # Normalize output
 
     def get_inner_lights(self, points, view_dirs, normals):
         pos_enc = self.pos_enc(points)
@@ -1346,7 +1289,7 @@ class MCShadingNetwork(nn.Module):
 
         # Reshape the resultant flat tensor
         spec = brdf_flat.view(ldir.shape[0], ldir.shape[1], 1)
-        spec = spec.repeat(1, 1, 3) # Because they are achromatic
+        spec = spec.repeat(1, 1, 3)  # Because they are achromatic
 
         brdf = spec * brdf_scale
         return brdf  # NxLx3
@@ -1388,6 +1331,7 @@ class MCShadingNetwork(nn.Module):
         cos_theta = torch.clamp(
             (specular_directions * brdf_normals.unsqueeze(1)).sum(dim=-1), min=0.0)  # (B, n_samples)
 
+        print(spec_brdf.shape, specular_lights.shape, cos_theta.shape, pdfs.shape)
         specular_colors = torch.mean(spec_brdf * specular_lights * cos_theta / pdfs, 1)
         spec_brdf_avg = torch.mean(spec_brdf, 1)
 
@@ -1467,7 +1411,7 @@ class MCShadingNetwork(nn.Module):
     def get_env_light(self):
         return self.predict_outer_lights_pts(self.light_pts)
 
-    def material_regularization(self, pts, normals,  albedo, step):
+    def material_regularization(self, pts, normals, albedo, step):
         # metallic, roughness, albedo = self.predict_materials(pts)
         reg = 0
 
@@ -1485,16 +1429,14 @@ class MCShadingNetwork(nn.Module):
                 raise NotImplementedError
             m0, r0, a0 = self.predict_materials(pts + change)
 
-
             # reg = reg + torch.mean(
             #     (torch.abs(m0 - metallic) + torch.abs(r0 - roughness) + torch.abs(a0 - albedo)) * self.cfg[
             #         'reg_lambda1'], dim=1)
 
-
             brdf_prop_jitter = self._pred_brdf_at(pts + change)
             brdf_prop_pred = self._pred_brdf_at(pts)
             brdf_smooth_loss = self.nerfactor_smooth_loss(brdf_prop_pred, brdf_prop_jitter)  # N
-            #todo modify nerfactor_brdf_smooth_weight based on loss function
+            # todo modify nerfactor_brdf_smooth_weight based on loss function
             reg += self.nerfactor_brdf_smooth_weight * brdf_smooth_loss
 
             reg = reg + torch.mean(
