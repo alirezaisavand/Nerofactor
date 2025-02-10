@@ -1332,6 +1332,29 @@ class MCShadingNetwork(nn.Module):
             (specular_directions * brdf_normals.unsqueeze(1)).sum(dim=-1), min=0.0)  # (B, n_samples)
         cos_theta = cos_theta.unsqueeze(-1)
         pdfs = pdfs.unsqueeze(-1)
+        if torch.isnan(spec_brdf).any():
+            print('nan in spec_brdf')
+        if torch.isinf(spec_brdf).any():
+            print('inf in spec_brdf')
+
+        if torch.isnan(specular_lights).any():
+            print('nan in specular_lights')
+        if torch.isinf(specular_lights).any():
+            print('inf in specular_lights')
+
+        if torch.isnan(cos_theta).any():
+            print('nan in cos_theta')
+        if torch.isinf(cos_theta).any():
+            print('inf in cos_theta')
+
+        if torch.isnan(pdfs).any():
+            print('nan in pdfs')
+        if torch.isinf(pdfs).any():
+            print('inf in pdfs')
+
+        if pdfs.min() == 0:
+            print('pdfs min is 0')
+
         specular_colors = torch.mean(spec_brdf * specular_lights * cos_theta / pdfs, 1)
         spec_brdf_avg = torch.mean(spec_brdf, 1)
 
