@@ -1000,7 +1000,9 @@ class MCShadingNetwork(nn.Module):
         exp_unsq = exponent.unsqueeze(1)
 
         # Invert the CDF to sample theta for each point:
-        theta = torch.acos(u1 ** (1.0 / (exp_unsq + 1.0)))  # (B, n_samples)
+        val = u1 ** (1.0 / (exp_unsq + 1.0))
+        val = torch.clamp(val, min=-1.0, max=1.0)  # Ensure it's in [-1, 1]
+        theta = torch.acos(val)  # (B, n_samples)
         phi = 2 * np.pi * u2  # (B, n_samples)
 
         sin_theta = torch.sin(theta)
@@ -1025,6 +1027,17 @@ class MCShadingNetwork(nn.Module):
         # --- Compute the PDF for Each Sample ---
         # The PDF for the cosine-power distribution:
         #   pdf(theta) = (exponent + 1)/(2π) * (cos(theta))^(exponent)
+
+        if torch.isinf(exp_unsq).any():
+            print('inf in exp_unsq', exp_unsq)
+        if torch.isnan(exp_unsq).any():
+            print('nan in exp_unsq', exp_unsq)
+
+        if torch.isinf(cos_theta).any():
+            print('inf in cos_theta', cos_theta)
+        if torch.isnan(cos_theta).any():
+            print('nan in cos_theta', cos_theta)
+
         pdfs = (exp_unsq + 1) / (2 * np.pi) * (cos_theta ** exp_unsq)  # (B, n_samples)
 
         return sample_dirs, pdfs
