@@ -1318,8 +1318,8 @@ class MCShadingNetwork(nn.Module):
         spec = brdf_flat.view(ldir.shape[0], ldir.shape[1], 1)
         spec = spec.repeat(1, 1, 3)  # Because they are achromatic
 
-        # brdf = spec * brdf_scale
-        brdf = spec * brdf_scale + (albedo[:, None, :] * 0.7 + 0.1) / np.pi
+        brdf = spec * brdf_scale
+        # brdf = spec * brdf_scale + (albedo[:, None, :] * 0.7 + 0.1) / np.pi
         return brdf  # NxLx3
 
     def shade_mixed(self, pts, normals, view_dirs, reflections, metallic, roughness, albedo, human_poses, is_train):
@@ -1327,21 +1327,21 @@ class MCShadingNetwork(nn.Module):
         specular_directions, pdfs = self.sample_specular_rays(normals, view_dirs, 0.3, self.cfg['specular_sample_num'])
         specular_num = specular_directions.shape[1]
         # sample diffuse directions
-        # diffuse_directions = self.sample_diffuse_directions(normals, is_train)  # [pn,sn0,3]
-        # point_num, diffuse_num, _ = diffuse_directions.shape
+        diffuse_directions = self.sample_diffuse_directions(normals, is_train)  # [pn,sn0,3]
+        point_num, diffuse_num, _ = diffuse_directions.shape
 
         # combine
-        # directions = torch.cat([diffuse_directions, specular_directions], 1)
-        # sn = diffuse_num + specular_num
-        directions = specular_directions
-        sn = specular_num
+        directions = torch.cat([diffuse_directions, specular_directions], 1)
+        sn = diffuse_num + specular_num
+        # directions = specular_directions
+        # sn = specular_num
 
         # specular
         human_poses = human_poses.unsqueeze(1).repeat(1, sn, 1, 1) if human_poses is not None else None
         pts_ = pts.unsqueeze(1).repeat(1, sn, 1)
         lights, hl, light_pts, light_normals, light_pts_mask = self.get_lights(pts_, directions, human_poses)  # pn,sn,3
-        # specular_lights = lights[:, diffuse_num:]
-        specular_lights = lights
+        specular_lights = lights[:, diffuse_num:]
+        # specular_lights = lights
         # Change here for using nerfactor BRDF model
 
         brdf_prop = self._pred_brdf_at(pts)
@@ -1388,36 +1388,31 @@ class MCShadingNetwork(nn.Module):
         if torch.isinf(pdfs).any():
             print('inf in pdfs')
 
-        # if pdfs.min() == 0:
-        #     print('pdfs min is 0')
-
         specular_colors = torch.mean(spec_brdf * specular_lights * cos_theta / (1e-6 + pdfs), 1)
+        specular_colors = torch.clamp(specular_colors, min=0.0, max=1.0)
         spec_brdf_avg = torch.mean(spec_brdf, 1)
 
-        # diffuse_lights = lights[:, :diffuse_num]
-        # diffuse_colors = albedo.unsqueeze(1) * 0.7 + 0.1 / np.pi * diffuse_lights
-        # diffuse_colors = torch.mean(diffuse_colors, 1)
+        diffuse_lights = lights[:, :diffuse_num]
+        diffuse_colors = albedo.unsqueeze(1) * 0.7 + 0.1 / np.pi * diffuse_lights
+        diffuse_colors = torch.mean(diffuse_colors, 1)
+        diffuse_colors = torch.clamp(diffuse_colors, min=0.0, max=1.0)
 
-        # colors = diffuse_colors + specular_colors
-        colors = specular_colors
+        colors = diffuse_colors + specular_colors
+        # colors = specular_colors
         colors = torch.clamp(colors, min=0.0, max=1.0)
         colors = linear_to_srgb(colors)
-
-        if not is_train:
-            print('spec range:', specular_colors.min(), specular_colors.max())
-            # print('diffuse range:', diffuse_colors.min(), diffuse_colors.max())
 
         outputs = {}
         outputs['albedo'] = albedo
         outputs['spec_brdf'] = spec_brdf
 
         outputs['human_lights'] = hl.reshape(-1, 3)
-        # outputs['diffuse_light'] = torch.clamp(linear_to_srgb(torch.mean(diffuse_lights, dim=1)), min=0, max=1)
-        outputs['diffuse_light'] = torch.clamp(linear_to_srgb(torch.mean(specular_lights, dim=1)), min=0, max=1)
+        outputs['diffuse_light'] = torch.clamp(linear_to_srgb(torch.mean(diffuse_lights, dim=1)), min=0, max=1)
+        # outputs['diffuse_light'] = torch.clamp(linear_to_srgb(torch.mean(specular_lights, dim=1)), min=0, max=1)
         outputs['specular_light'] = torch.clamp(linear_to_srgb(torch.mean(specular_lights, dim=1)), min=0, max=1)
-        # diffuse_colors = torch.clamp(linear_to_srgb(diffuse_colors), min=0, max=1)
-        diffuse_colors = torch.clamp(linear_to_srgb(specular_colors), min=0, max=1)
-        specular_colors = torch.clamp(linear_to_srgb(specular_colors), min=0, max=1)
+        diffuse_colors = torch.clamp(linear_to_srgb(diffuse_colors), min=0, max=1)
+        # diffuse_colors = torch.clamp(linear_to_srgb(specular_colors), min=0, max=1)
+        # specular_colors = torch.clamp(linear_to_srgb(specular_colors), min=0, max=1)
         outputs['diffuse_color'] = diffuse_colors
         outputs['specular_color'] = specular_colors
         outputs['spec_brdf'] = spec_brdf_avg
