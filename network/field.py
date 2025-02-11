@@ -1319,7 +1319,7 @@ class MCShadingNetwork(nn.Module):
         spec = spec.repeat(1, 1, 3)  # Because they are achromatic
 
         # brdf = spec * brdf_scale
-        brdf = spec * brdf_scale + (albedo * 0.7 + 0.1) / np.pi
+        brdf = spec * brdf_scale + (albedo[:, None, :] * 0.7 + 0.1) / np.pi
         return brdf  # NxLx3
 
     def shade_mixed(self, pts, normals, view_dirs, reflections, metallic, roughness, albedo, human_poses, is_train):
