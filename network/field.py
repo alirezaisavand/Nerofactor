@@ -1389,13 +1389,13 @@ class MCShadingNetwork(nn.Module):
             print('inf in pdfs')
 
         specular_colors = torch.mean(spec_brdf * specular_lights * cos_theta / (1e-6 + pdfs), 1)
-        specular_colors = torch.clamp(specular_colors, min=0.0, max=1.0)
+        # specular_colors = torch.clamp(specular_colors, min=0.0, max=1.0)
         spec_brdf_avg = torch.mean(spec_brdf, 1)
 
         diffuse_lights = lights[:, :diffuse_num]
         diffuse_colors = albedo.unsqueeze(1) * 0.7 + 0.1 / np.pi * diffuse_lights
         diffuse_colors = torch.mean(diffuse_colors, 1)
-        diffuse_colors = torch.clamp(diffuse_colors, min=0.0, max=1.0)
+        # diffuse_colors = torch.clamp(diffuse_colors, min=0.0, max=1.0)
 
         colors = diffuse_colors + specular_colors
         # colors = specular_colors
