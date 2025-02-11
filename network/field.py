@@ -1327,7 +1327,7 @@ class MCShadingNetwork(nn.Module):
         diffuse_directions = self.sample_diffuse_directions(normals, is_train)  # [pn,sn0,3]
         point_num, diffuse_num, _ = diffuse_directions.shape
         # sample specular directions
-        specular_directions, pdfs = self.sample_specular_rays(normals, view_dirs, 0.3, self.cfg['specular_sample_num'])
+        specular_directions, pdfs = self.sample_specular_rays(normals, view_dirs, 0.4, self.cfg['specular_sample_num'])
         specular_num = specular_directions.shape[1]
 
 
