@@ -1323,12 +1323,13 @@ class MCShadingNetwork(nn.Module):
         return brdf  # NxLx3
 
     def shade_mixed(self, pts, normals, view_dirs, reflections, metallic, roughness, albedo, human_poses, is_train):
-        # sample specular directions
-        specular_directions, pdfs = self.sample_specular_rays(normals, view_dirs, 0.3, self.cfg['specular_sample_num'])
-        specular_num = specular_directions.shape[1]
         # sample diffuse directions
         diffuse_directions = self.sample_diffuse_directions(normals, is_train)  # [pn,sn0,3]
         point_num, diffuse_num, _ = diffuse_directions.shape
+        # sample specular directions
+        specular_directions, pdfs = self.sample_specular_rays(normals, view_dirs, 0.3, self.cfg['specular_sample_num'])
+        specular_num = specular_directions.shape[1]
+
 
         # combine
         directions = torch.cat([diffuse_directions, specular_directions], 1)
