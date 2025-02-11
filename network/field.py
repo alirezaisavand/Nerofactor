@@ -959,13 +959,13 @@ class MCShadingNetwork(nn.Module):
         B = normals.shape[0]
 
         # Ensure normals and view_dirs are normalized.
-        normals = normals / normals.norm(dim=-1, keepdim=True)
-        view_dirs = view_dirs / view_dirs.norm(dim=-1, keepdim=True)
+        normals = mathutil.safe_l2_normalize(normals, axis=-1)
+        view_dirs = mathutil.safe_l2_normalize(view_dirs, axis=-1)
 
         # Compute the perfect reflection direction for each point.
         # Note: we reflect -view_dir about the normal.
         r = self.reflect(-view_dirs, normals)
-        r = r / r.norm(dim=-1, keepdim=True)  # shape (B, 3)
+        r = mathutil.safe_l2_normalize(r, axis=-1)
 
         # Ensure roughness is a tensor of shape (B,)
         if not torch.is_tensor(roughness):
@@ -987,9 +987,9 @@ class MCShadingNetwork(nn.Module):
         arbitrary = arbitrary.expand_as(r)  # (B, 3)
 
         tangent = torch.cross(r, arbitrary, dim=-1)  # (B, 3)
-        tangent = tangent / tangent.norm(dim=-1, keepdim=True)
+        tangent = mathutil.safe_l2_normalize(tangent, axis=-1)
         bitangent = torch.cross(r, tangent, dim=-1)  # (B, 3)
-        bitangent = bitangent / bitangent.norm(dim=-1, keepdim=True)
+        bitangent = mathutil.safe_l2_normalize(bitangent, axis=-1)
 
         # --- Sample from the Cosine-Power Distribution ---
         # Generate random numbers for each batch element and sample.
@@ -1020,7 +1020,7 @@ class MCShadingNetwork(nn.Module):
         sample_dirs = (local_dirs[..., 0:1] * tangent.unsqueeze(1) +
                        local_dirs[..., 1:2] * bitangent.unsqueeze(1) +
                        local_dirs[..., 2:3] * r.unsqueeze(1))
-        sample_dirs = sample_dirs / sample_dirs.norm(dim=-1, keepdim=True)  # (B, n_samples, 3)
+        sample_dirs = mathutil.safe_l2_normalize(sample_dirs, axis=-1)  # (B, n_samples, 3)
 
         # --- Compute the PDF for Each Sample ---
         # The PDF for the cosine-power distribution:
@@ -1332,6 +1332,12 @@ class MCShadingNetwork(nn.Module):
             (specular_directions * brdf_normals.unsqueeze(1)).sum(dim=-1), min=0.0)  # (B, n_samples)
         cos_theta = cos_theta.unsqueeze(-1)
         pdfs = pdfs.unsqueeze(-1)
+
+        if torch.isnan(specular_directions).any():
+            print('nan in specular_directions')
+        if torch.isinf(specular_directions).any():
+            print('inf in specular_directions')
+
         if torch.isnan(spec_brdf).any():
             print('nan in spec_brdf')
         if torch.isinf(spec_brdf).any():
