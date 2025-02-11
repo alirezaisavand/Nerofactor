@@ -1040,7 +1040,10 @@ class MCShadingNetwork(nn.Module):
 
 
         pdfs = (exp_unsq + 1) / (2 * np.pi) * (cos_theta ** exp_unsq)  # (B, n_samples)
-
+        if torch.isinf(pdfs).any():
+            print('*inf in pdfs', pdfs)
+        if torch.isnan(pdfs).any():
+            print('*nan in pdfs', pdfs)
         return sample_dirs, pdfs
 
     def get_inner_lights(self, points, view_dirs, normals):
