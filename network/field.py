@@ -1038,6 +1038,11 @@ class MCShadingNetwork(nn.Module):
         if torch.isnan(cos_theta).any():
             print('nan in cos_theta', cos_theta)
 
+        exp_component = cos_theta ** exp_unsq  # (B, n_samples)
+        if torch.isinf(exp_component).any():
+            print('inf in exp_component', exp_component)
+        if torch.isnan(exp_component).any():
+            print('nan in exp_component', exp_component)
 
         pdfs = (exp_unsq + 1) / (2 * np.pi) * (cos_theta ** exp_unsq)  # (B, n_samples)
         if torch.isinf(pdfs).any():
