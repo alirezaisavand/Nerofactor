@@ -1038,14 +1038,17 @@ class MCShadingNetwork(nn.Module):
         if torch.isnan(cos_theta).any():
             print('nan in cos_theta', cos_theta)
 
-        exp_component = cos_theta ** exp_unsq  # (B, n_samples)
+
+
+        eps = 1e-6
+        cos_theta_clamped = torch.clamp(torch.cos(theta), min=eps)
+
+        exp_component = cos_theta_clamped ** exp_unsq  # (B, n_samples)
         if torch.isinf(exp_component).any():
             print('inf in exp_component', exp_component)
         if torch.isnan(exp_component).any():
             print('nan in exp_component', exp_component)
 
-        eps = 1e-6
-        cos_theta_clamped = torch.clamp(torch.cos(theta), min=eps)
         pdfs = (exp_unsq + 1) / (2 * np.pi) * (cos_theta_clamped ** exp_unsq)  # (B, n_samples)
         if torch.isinf(pdfs).any():
             print('*inf in pdfs', pdfs)
@@ -1385,7 +1388,7 @@ class MCShadingNetwork(nn.Module):
         if pdfs.min() == 0:
             print('pdfs min is 0')
 
-        specular_colors = torch.mean(spec_brdf * specular_lights * cos_theta / pdfs, 1)
+        specular_colors = torch.mean(spec_brdf * specular_lights * cos_theta / (1e-6 + pdfs), 1)
         spec_brdf_avg = torch.mean(spec_brdf, 1)
 
         diffuse_lights = lights[:, :diffuse_num]
