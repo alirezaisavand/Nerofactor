@@ -1385,8 +1385,8 @@ class MCShadingNetwork(nn.Module):
         if torch.isinf(pdfs).any():
             print('inf in pdfs')
 
-        if pdfs.min() == 0:
-            print('pdfs min is 0')
+        # if pdfs.min() == 0:
+        #     print('pdfs min is 0')
 
         specular_colors = torch.mean(spec_brdf * specular_lights * cos_theta / (1e-6 + pdfs), 1)
         spec_brdf_avg = torch.mean(spec_brdf, 1)
