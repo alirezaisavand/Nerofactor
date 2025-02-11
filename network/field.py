@@ -1397,7 +1397,7 @@ class MCShadingNetwork(nn.Module):
 
         # diffuse_lights = lights[:, :diffuse_num]
         diffuse_colors = (albedo.unsqueeze(1) * 0.7 + 0.1) / np.pi * lights
-        # diffuse_colors = torch.mean(diffuse_colors, 1)
+        diffuse_colors = torch.mean(diffuse_colors, 1)
         # # diffuse_colors = torch.clamp(diffuse_colors, min=0.0, max=1.0)
 
         # colors = diffuse_colors + specular_colors
@@ -1414,7 +1414,6 @@ class MCShadingNetwork(nn.Module):
         outputs['diffuse_light'] = torch.clamp(linear_to_srgb(torch.mean(specular_lights, dim=1)), min=0, max=1)
         outputs['specular_light'] = torch.clamp(linear_to_srgb(torch.mean(specular_lights, dim=1)), min=0, max=1)
         diffuse_colors = torch.clamp(linear_to_srgb(diffuse_colors), min=0, max=1)
-        # diffuse_colors = torch.clamp(linear_to_srgb(specular_colors), min=0, max=1)
         specular_colors = torch.clamp(linear_to_srgb(specular_colors), min=0, max=1)
         outputs['diffuse_color'] = diffuse_colors
         outputs['specular_color'] = specular_colors
