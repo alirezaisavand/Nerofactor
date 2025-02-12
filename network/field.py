@@ -1344,7 +1344,7 @@ class MCShadingNetwork(nn.Module):
             return brdf_z
 
         # Apply the network in chunks (to avoid memory issues) along the last dimension.
-        brdf_z = chunk_fun(pts_scaled)
+        brdf_z = chunk_func(pts_scaled)
         return brdf_z  # Tensor of shape (N, z_dim)
 
     # def _pred_brdf_at(self, pts):
