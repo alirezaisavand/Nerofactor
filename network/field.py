@@ -1403,7 +1403,7 @@ class MCShadingNetwork(nn.Module):
 
         # Repeat the BRDF “z” property for each light direction.
         z_rep = z.unsqueeze(1).repeat(1, ldir.shape[1], 1)
-        z_flat = z_rep.reshape(-1, self.z_dim)
+        z_flat = z_rep.reshape(-1, self.nerfactor_z_dim)
 
         # Mask out back‐lit directions.
         # Create a local “up” vector. (Ensure it’s on the same device as ldir.)
