@@ -1344,7 +1344,7 @@ class MCShadingNetwork(nn.Module):
             return brdf_z
 
         # Apply the network in chunks (to avoid memory issues) along the last dimension.
-        brdf_z = self.chunk_fun(pts_scaled)
+        brdf_z = chunk_fun(pts_scaled)
         return brdf_z  # Tensor of shape (N, z_dim)
 
     # def _pred_brdf_at(self, pts):
@@ -1434,7 +1434,7 @@ class MCShadingNetwork(nn.Module):
 
         # Concatenate the Rusink coordinates and BRDF z values.
         rusink_z = torch.cat((rusink_fl, z_fl), dim=1)
-        brdf_fl = self.chunk_func(rusink_z)  # shape: (N_front, 1)
+        brdf_fl = chunk_func(rusink_z)  # shape: (N_front, 1)
 
         # Scatter the computed front-lit BRDF values back into a tensor of shape (N*L, 1).
         # (In PyTorch, boolean indexing can be used to assign into a pre-created tensor.)
