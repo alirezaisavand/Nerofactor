@@ -171,7 +171,7 @@ def gen_world2local(normal, eps=1e-6):
            [tangent, binormal, normal].
     """
     # Normalize the input normals safely along dim 1
-    normal = mathutil.safe_l2_normalize(normal, dim=1)
+    normal = mathutil.safe_l2_normalize(normal, axis=1)
 
     # To avoid colinearity with some special normals, add a small epsilon to z.
     z = torch.tensor([0, 0, 1], dtype=torch.float32, device=normal.device) + eps
@@ -182,11 +182,11 @@ def gen_world2local(normal, eps=1e-6):
     # Assert that none of the tangents are zero-norm.
     assert torch.all(torch.norm(t, dim=1) > 0), (
         "Found zero-norm tangents, either because of colinearity or zero-norm normals")
-    t = mathutil.safe_l2_normalize(t, dim=1)
+    t = mathutil.safe_l2_normalize(t, axis=1)
 
     # Compute binormals as cross product between the normal and the tangent.
     b = torch.cross(normal, t, dim=1)
-    b = mathutil.safe_l2_normalize(b, dim=1)
+    b = mathutil.safe_l2_normalize(b, axis=1)
 
     # Stack tangent, binormal, and normal to form the rotation matrix for each sample.
     rot = torch.stack([t, b, normal], dim=1)
@@ -198,9 +198,9 @@ def dir2rusink(a, b):
     Converts two directions (a and b, both of shape (N, 3)) into Rusink coordinates.
     Adapted from nielsen2015on/coordinateFunctions.py->DirectionsToRusink().
     """
-    a = mathutil.safe_l2_normalize(a, dim=1)
-    b = mathutil.safe_l2_normalize(b, dim=1)
-    h = mathutil.safe_l2_normalize((a + b) / 2, dim=1)
+    a = mathutil.safe_l2_normalize(a, axis=1)
+    b = mathutil.safe_l2_normalize(b, axis=1)
+    h = mathutil.safe_l2_normalize((a + b) / 2, axis=1)
 
     theta_h = mathutil.safe_acos(h[:, 2])
     phi_h = mathutil.safe_atan2(h[:, 1], h[:, 0])
