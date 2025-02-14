@@ -1529,8 +1529,8 @@ class MCShadingNetwork(nn.Module):
         human_poses = human_poses.unsqueeze(1).repeat(1, sn, 1, 1) if human_poses is not None else None
         pts_ = pts.unsqueeze(1).repeat(1, sn, 1)
         lights, hl, light_pts, light_normals, light_pts_mask = self.get_lights(pts_, directions, human_poses)  # pn,sn,3
-        # specular_lights = lights[:, diffuse_num:]
-        specular_lights = lights
+        specular_lights = lights[:, diffuse_num:]
+        # specular_lights = lights
         # Change here for using nerfactor BRDF model
 
         brdf_prop = self._pred_brdf_at(pts)
@@ -1547,9 +1547,12 @@ class MCShadingNetwork(nn.Module):
         spec_brdf = self._eval_brdf_at(
             surf2l, surf2c, brdf_normals, albedo_nerfacor, brdf_prop)  # NxLx3
 
-        cos_theta = torch.clamp(
+        cos_theta_spec = torch.clamp(
             (specular_directions * brdf_normals.unsqueeze(1)).sum(dim=-1), min=0.0)  # (B, n_samples)
-        cos_theta = cos_theta.unsqueeze(-1)
+        cos_theta_diff = torch.clamp(
+            (diffuse_directions * brdf_normals.unsqueeze(1)).sum(dim=-1), min=0.0)  # (B, n_samples)
+        cos_theta_spec = cos_theta_spec.unsqueeze(-1)
+        cos_theta_diff = cos_theta_diff.unsqueeze(-1)
         spec_pdfs = spec_pdfs.unsqueeze(-1)
         diff_pdfs = diff_pdfs.unsqueeze(-1)
 
@@ -1578,11 +1581,11 @@ class MCShadingNetwork(nn.Module):
         if torch.isinf(spec_pdfs).any():
             print('inf in pdfs')
 
-        specular_colors = torch.mean(spec_brdf * specular_lights * cos_theta / (1e-6 + spec_pdfs), 1)
+        specular_colors = torch.mean(spec_brdf * specular_lights * cos_theta_spec / (1e-6 + spec_pdfs), 1)
         spec_brdf_avg = torch.mean(spec_brdf, 1)
 
-        # diffuse_lights = lights[:, :diffuse_num]
-        diffuse_colors = torch.mean(albedo_nerfacor.unsqueeze(1) / np.pi * lights * cos_theta / (1e-6+diff_pdfs), 1)
+        diffuse_lights = lights[:, :diffuse_num]
+        diffuse_colors = torch.mean(albedo_nerfacor.unsqueeze(1) / np.pi * diffuse_lights * cos_theta_diff / (1e-6+diff_pdfs), 1)
 
         colors = diffuse_colors + specular_colors
         colors = torch.clamp(colors, min=0.0, max=1.0)
@@ -1593,8 +1596,8 @@ class MCShadingNetwork(nn.Module):
         outputs['spec_brdf'] = spec_brdf
 
         outputs['human_lights'] = hl.reshape(-1, 3)
-        # outputs['diffuse_light'] = torch.clamp(linear_to_srgb(torch.mean(diffuse_lights, dim=1)), min=0, max=1)
-        outputs['diffuse_light'] = torch.clamp(linear_to_srgb(torch.mean(specular_lights, dim=1)), min=0, max=1)
+        outputs['diffuse_light'] = torch.clamp(linear_to_srgb(torch.mean(diffuse_lights, dim=1)), min=0, max=1)
+        # outputs['diffuse_light'] = torch.clamp(linear_to_srgb(torch.mean(specular_lights, dim=1)), min=0, max=1)
         outputs['specular_light'] = torch.clamp(linear_to_srgb(torch.mean(specular_lights, dim=1)), min=0, max=1)
         diffuse_colors = torch.clamp(linear_to_srgb(diffuse_colors), min=0, max=1)
         specular_colors = torch.clamp(linear_to_srgb(specular_colors), min=0, max=1)
