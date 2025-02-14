@@ -1587,7 +1587,7 @@ class MCShadingNetwork(nn.Module):
         if torch.isinf(spec_pdfs).any():
             print('inf in pdfs')
 
-        specular_colors = torch.mean(spec_brdf * specular_lights * cos_theta_spec / (1e-6 + spec_pdfs), 1)
+        specular_colors = torch.mean(spec_brdf * specular_lights * cos_theta_spec / (1 + spec_pdfs), 1)
         spec_brdf_avg = torch.mean(spec_brdf, 1)
 
         # diffuse_lights = lights[:, :diffuse_num]
