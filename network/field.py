@@ -1559,7 +1559,7 @@ class MCShadingNetwork(nn.Module):
         cos_theta_spec = cos_theta_spec.unsqueeze(-1)
         cos_theta_diff = cos_theta_diff.unsqueeze(-1)
         spec_pdfs = spec_pdfs.unsqueeze(-1)
-        # diff_pdfs = diff_pdfs.unsqueeze(-1)
+        diff_pdfs = diff_pdfs.unsqueeze(-1)
 
         if torch.isnan(specular_directions).any():
             print('nan in specular_directions')
