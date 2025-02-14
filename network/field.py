@@ -1432,6 +1432,82 @@ class MCShadingNetwork(nn.Module):
         brdf = spec * brdf_scale
         return brdf  # Tensor of shape (N, L, 3)
 
+    def sample_diffuse_seperate(self, normals, num_samples):
+        # Cosine-weighted sampling (as before)
+        B = normals.shape[0]
+        device = normals.device
+        u1 = torch.rand(B, num_samples, device=device)
+        u2 = torch.rand(B, num_samples, device=device)
+        r = torch.sqrt(u1)
+        theta = 2 * np.pi * u2
+        x = r * torch.cos(theta)
+        y = r * torch.sin(theta)
+        z = torch.sqrt(torch.clamp(1 - u1, min=0.0))
+        local_dirs = torch.stack([x, y, z], dim=-1)
+        # Transform from local (with +Z aligned with normal) to world space
+        world_dirs = self.transform_local_to_world(normals, local_dirs)
+        pdf_diff = z / np.pi  # cosθ/π
+        return world_dirs, pdf_diff
+
+    def sample_specular_seperate(self, normals, view_dirs, exponent, num_samples):
+        """
+        Sample specular directions according to a Blinn-Phong like distribution.
+        `exponent` is the lobe exponent.
+        """
+        B = normals.shape[0]
+        device = normals.device
+        u1 = torch.rand(B, num_samples, device=device)
+        u2 = torch.rand(B, num_samples, device=device)
+        # Sample half-vectors in local space:
+        # theta_h ~ arccos(u1^(1/(exponent+1))) and phi_h ~ 2*pi*u2.
+        theta_h = torch.acos(torch.clamp(u1, max=1.0) ** (1 / (exponent + 1)))
+        phi_h = 2 * np.pi * u2
+        sin_theta_h = torch.sin(theta_h)
+        cos_theta_h = torch.cos(theta_h)
+        # Half-vectors in local coordinate system:
+        h_local = torch.stack([
+            sin_theta_h * torch.cos(phi_h),
+            sin_theta_h * torch.sin(phi_h),
+            cos_theta_h
+        ], dim=-1)
+        # Transform half-vector to world space:
+        h_world = self.transform_local_to_world(normals, h_local)
+        # Reflect view direction around half-vector:
+        # reflection: ω_i = 2 (v·h) h - v
+        v_dot_h = (view_dirs.unsqueeze(1) * h_world).sum(dim=-1, keepdim=True)
+        spec_dirs = 2 * v_dot_h * h_world - view_dirs.unsqueeze(1)
+        # Compute PDF for half-vector sampling
+        # PDF_h = (exponent + 1) / (2π) * (cosθ_h)^(exponent)
+        pdf_h = (exponent + 1) / (2 * np.pi) * (cos_theta_h ** exponent)
+        # Jacobian for the half-vector to direction mapping:
+        # pdf_spec = pdf_h / (4 * |v · h|)
+        pdf_spec = pdf_h / (4 * torch.abs(v_dot_h))
+        return spec_dirs, pdf_spec
+
+    def transform_local_to_world(self, normals, local_dirs):
+        """
+        Build an orthonormal basis for each normal and transform local_dirs (BxN x 3) to world space.
+        """
+        # For each normal, compute tangent and bitangent.
+        B = normals.shape[0]
+        device = normals.device
+        # Use a similar technique as before:
+        # Choose an up vector that is not colinear.
+        up = torch.where(torch.abs(normals[:, 2:3]) < 0.999,
+                         torch.tensor([0, 0, 1], dtype=torch.float32, device=device),
+                         torch.tensor([1, 0, 0], dtype=torch.float32, device=device)).unsqueeze(0).repeat(B, 1)
+        tangent = torch.nn.functional.normalize(torch.cross(up, normals, dim=1), dim=1)
+        bitangent = torch.cross(normals, tangent, dim=1)
+        # Expand basis vectors for broadcasting with samples.
+        tangent = tangent.unsqueeze(1)  # (B, 1, 3)
+        bitangent = bitangent.unsqueeze(1)
+        normals_exp = normals.unsqueeze(1)
+        # Combine local directions: local_dirs assumed shape (B, num_samples, 3)
+        world_dirs = local_dirs[..., 0:1] * tangent + local_dirs[..., 1:2] * bitangent + local_dirs[...,
+                                                                                         2:3] * normals_exp
+        world_dirs = mathutil.safe_l2_normalize(world_dirs, axis=-1)
+        return world_dirs
+
     def shade_mixed(self, pts, normals, view_dirs, reflections, metallic, roughness, albedo, human_poses, is_train):
 
         # sample specular directions
