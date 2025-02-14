@@ -1675,7 +1675,6 @@ class MCShadingNetwork(nn.Module):
             # reg = reg + torch.mean(
             #     (torch.abs(m0 - metallic) + torch.abs(r0 - roughness) + torch.abs(a0 - albedo)) * self.cfg[
             #         'reg_lambda1'], dim=1)
-
             brdf_prop_jitter = self._pred_brdf_at(pts + change)
             brdf_prop_pred = self._pred_brdf_at(pts)
             brdf_smooth_loss = self.nerfactor_smooth_loss(brdf_prop_pred, brdf_prop_jitter)  # N
