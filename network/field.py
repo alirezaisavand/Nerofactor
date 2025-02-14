@@ -1511,19 +1511,19 @@ class MCShadingNetwork(nn.Module):
     def shade_mixed(self, pts, normals, view_dirs, reflections, metallic, roughness, albedo, human_poses, is_train):
 
         # sample specular directions
-        # specular_directions, pdfs = self.sample_specular_rays(normals, view_dirs, 0.4, self.cfg['specular_sample_num'])
-        specular_directions, pdfs = self.sample_cosine_weighted_rays(normals, self.cfg['specular_sample_num'])
+        specular_directions, spec_pdfs = self.sample_specular_seperate(normals, view_dirs, 80, self.cfg['specular_sample_num'])
+        # specular_directions, pdfs = self.sample_cosine_weighted_rays(normals, self.cfg['specular_sample_num'])
         specular_num = specular_directions.shape[1]
 
         # sample diffuse directions
-        # diffuse_directions = self.sample_diffuse_directions(normals, is_train)  # [pn,sn0,3]
-        # point_num, diffuse_num, _ = diffuse_directions.shape
+        diffuse_directions, diff_pdfs = self.sample_diffuse_seperate(normals, self.cfg['diffuse_sample_num'])  # [pn,sn0,3]
+        point_num, diffuse_num, _ = diffuse_directions.shape
 
         # combine
-        # directions = torch.cat([diffuse_directions, specular_directions], 1)
-        # sn = diffuse_num + specular_num
-        directions = specular_directions
-        sn = specular_num
+        directions = torch.cat([diffuse_directions, specular_directions], 1)
+        sn = diffuse_num + specular_num
+        # directions = specular_directions
+        # sn = specular_num
 
         # specular
         human_poses = human_poses.unsqueeze(1).repeat(1, sn, 1, 1) if human_poses is not None else None
@@ -1550,7 +1550,8 @@ class MCShadingNetwork(nn.Module):
         cos_theta = torch.clamp(
             (specular_directions * brdf_normals.unsqueeze(1)).sum(dim=-1), min=0.0)  # (B, n_samples)
         cos_theta = cos_theta.unsqueeze(-1)
-        pdfs = pdfs.unsqueeze(-1)
+        spec_pdfs = spec_pdfs.unsqueeze(-1)
+        diff_pdfs = diff_pdfs.unsqueeze(-1)
 
         if torch.isnan(specular_directions).any():
             print('nan in specular_directions')
@@ -1572,16 +1573,16 @@ class MCShadingNetwork(nn.Module):
         if torch.isinf(cos_theta).any():
             print('inf in cos_theta')
 
-        if torch.isnan(pdfs).any():
+        if torch.isnan(spec_pdfs).any():
             print('nan in pdfs')
-        if torch.isinf(pdfs).any():
+        if torch.isinf(spec_pdfs).any():
             print('inf in pdfs')
 
-        specular_colors = torch.mean(spec_brdf * specular_lights * cos_theta / (1e-6 + pdfs), 1)
+        specular_colors = torch.mean(spec_brdf * specular_lights * cos_theta / (1e-6 + spec_pdfs), 1)
         spec_brdf_avg = torch.mean(spec_brdf, 1)
 
         # diffuse_lights = lights[:, :diffuse_num]
-        diffuse_colors = torch.mean(albedo_nerfacor.unsqueeze(1) / np.pi * lights * cos_theta / (1e-6+pdfs), 1)
+        diffuse_colors = torch.mean(albedo_nerfacor.unsqueeze(1) / np.pi * lights * cos_theta / (1e-6+diff_pdfs), 1)
 
         colors = diffuse_colors + specular_colors
         colors = torch.clamp(colors, min=0.0, max=1.0)
