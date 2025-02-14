@@ -1573,9 +1573,9 @@ class MCShadingNetwork(nn.Module):
         if torch.isinf(specular_lights).any():
             print('inf in specular_lights')
 
-        if torch.isnan(cos_theta).any():
+        if torch.isnan(cos_theta_spec).any():
             print('nan in cos_theta')
-        if torch.isinf(cos_theta).any():
+        if torch.isinf(cos_theta_spec).any():
             print('inf in cos_theta')
 
         if torch.isnan(spec_pdfs).any():
