@@ -799,7 +799,7 @@ class MCShadingNetwork(nn.Module):
         'reg_change': True,
         'change_eps': 0.05,
         'change_type': 'gaussian',
-        'reg_lambda1': 0.005,
+        'reg_lambda1': 0.05,
         'reg_min_max': True,
 
         'random_azimuth': True,
@@ -1434,6 +1434,7 @@ class MCShadingNetwork(nn.Module):
 
     def sample_diffuse_seperate(self, normals, num_samples):
         # Cosine-weighted sampling (as before)
+        normals = normals / (normals.norm(dim=-1, keepdim=True) + 1e-8)
         B = normals.shape[0]
         device = normals.device
         u1 = torch.rand(B, num_samples, device=device)
@@ -1454,6 +1455,7 @@ class MCShadingNetwork(nn.Module):
         Sample specular directions according to a Blinn-Phong like distribution.
         `exponent` is the lobe exponent.
         """
+        normals = normals / (normals.norm(dim=-1, keepdim=True) + 1e-8)
         B = normals.shape[0]
         device = normals.device
         u1 = torch.rand(B, num_samples, device=device)
@@ -1495,7 +1497,7 @@ class MCShadingNetwork(nn.Module):
         # Choose an up vector that is not colinear.
         up = torch.where(torch.abs(normals[:, 2:3]) < 0.999,
                          torch.tensor([0, 0, 1], dtype=torch.float32, device=device),
-                         torch.tensor([1, 0, 0], dtype=torch.float32, device=device)).unsqueeze(0).repeat(B, 1)
+                         torch.tensor([1, 0, 0], dtype=torch.float32, device=device))
         tangent = torch.nn.functional.normalize(torch.cross(up, normals, dim=1), dim=1)
         bitangent = torch.cross(normals, tangent, dim=1)
         # Expand basis vectors for broadcasting with samples.
@@ -1542,7 +1544,7 @@ class MCShadingNetwork(nn.Module):
                     brdf_prop_jitter, axis=1)
         surf2l = mathutil.safe_l2_normalize(specular_directions, axis=-1)
         surf2c = mathutil.safe_l2_normalize(-view_dirs, axis=-1)
-        brdf_normals = mathutil.safe_l2_normalize(normals, axis=-1)
+
         albedo_nerfacor = albedo * 0.7 + 0.1
         spec_brdf = self._eval_brdf_at(
             surf2l, surf2c, brdf_normals, albedo_nerfacor, brdf_prop)  # NxLx3
