@@ -1513,7 +1513,7 @@ class MCShadingNetwork(nn.Module):
     def shade_mixed(self, pts, normals, view_dirs, reflections, metallic, roughness, albedo, human_poses, is_train):
 
         # sample specular directions
-        specular_directions, spec_pdfs = self.sample_specular_seperate(normals, view_dirs, 80, self.cfg['specular_sample_num'])
+        specular_directions, spec_pdfs = self.sample_specular_seperate(normals, view_dirs, 50, self.cfg['specular_sample_num'])
         # specular_directions, spec_pdfs = self.sample_cosine_weighted_rays(normals, self.cfg['specular_sample_num'])
         specular_num = specular_directions.shape[1]
 
@@ -1547,7 +1547,7 @@ class MCShadingNetwork(nn.Module):
         surf2l = mathutil.safe_l2_normalize(specular_directions, axis=-1)
         surf2c = mathutil.safe_l2_normalize(-view_dirs, axis=-1)
         brdf_normals = mathutil.safe_l2_normalize(normals, axis=-1)
-        albedo_nerfacor = albedo * 0.7 + 0.1
+        albedo_nerfacor = albedo * 0.77 + 0.03
         spec_brdf = self._eval_brdf_at(
             surf2l, surf2c, brdf_normals, albedo_nerfacor, brdf_prop)  # NxLx3
 
@@ -1587,7 +1587,7 @@ class MCShadingNetwork(nn.Module):
         if torch.isinf(spec_pdfs).any():
             print('inf in pdfs')
 
-        specular_colors = torch.mean(spec_brdf * specular_lights * cos_theta_spec / (0.01 + spec_pdfs), 1)
+        specular_colors = torch.mean(spec_brdf * specular_lights * cos_theta_spec / (0.001 + spec_pdfs), 1)
         spec_brdf_avg = torch.mean(spec_brdf, 1)
 
         diffuse_lights = lights[:, :diffuse_num]
