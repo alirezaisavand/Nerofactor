@@ -1483,7 +1483,8 @@ class MCShadingNetwork(nn.Module):
         pdf_h = (exponent + 1) / (2 * np.pi) * (cos_theta_h ** exponent)
         # Jacobian for the half-vector to direction mapping:
         # pdf_spec = pdf_h / (4 * |v · h|)
-        pdf_spec = pdf_h / (4 * torch.abs(v_dot_h.squeeze(-1)))
+        eps = 1e-5  # or a small value that makes sense in your context
+        pdf_spec = pdf_h / (4 * (torch.abs(v_dot_h.squeeze(-1)) + eps))
         return spec_dirs, pdf_spec
 
     def transform_local_to_world(self, normals, local_dirs):
