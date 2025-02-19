@@ -1513,7 +1513,7 @@ class MCShadingNetwork(nn.Module):
     def shade_mixed(self, pts, normals, view_dirs, reflections, metallic, roughness, albedo, human_poses, is_train):
 
         # sample specular directions
-        specular_directions, spec_pdfs = self.sample_specular_seperate(normals, view_dirs, 50, self.cfg['specular_sample_num'])
+        specular_directions, spec_pdfs = self.sample_specular_seperate(normals, view_dirs, 30, self.cfg['specular_sample_num'])
         # specular_directions, spec_pdfs = self.sample_cosine_weighted_rays(normals, self.cfg['specular_sample_num'])
         specular_num = specular_directions.shape[1]
 
@@ -1587,7 +1587,7 @@ class MCShadingNetwork(nn.Module):
         if torch.isinf(spec_pdfs).any():
             print('inf in pdfs')
 
-        specular_colors = torch.mean(spec_brdf * specular_lights * cos_theta_spec / (0.001 + spec_pdfs), 1)
+        specular_colors = torch.mean(spec_brdf * specular_lights * cos_theta_spec / (0.0005 + spec_pdfs), 1)
         spec_brdf_avg = torch.mean(spec_brdf, 1)
 
         diffuse_lights = lights[:, :diffuse_num]
