@@ -1547,7 +1547,7 @@ class MCShadingNetwork(nn.Module):
                     brdf_prop_jitter, axis=1)
         surf2l = mathutil.safe_l2_normalize(-specular_directions, axis=-1)
         surf2c = mathutil.safe_l2_normalize(view_dirs, axis=-1)
-        brdf_normals = mathutil.safe_l2_normalize(normals, axis=-1)
+        brdf_normals = mathutil.safe_l2_normalize(-normals, axis=-1)
         albedo_nerfacor = albedo * 0.77 + 0.03
         spec_brdf = self._eval_brdf_at(
             surf2l, surf2c, brdf_normals, albedo_nerfacor, brdf_prop)  # NxLx3
