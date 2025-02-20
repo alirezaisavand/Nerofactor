@@ -797,7 +797,7 @@ class MCShadingNetwork(nn.Module):
         'geometry_type': 'schlick',
 
         'reg_change': True,
-        'change_eps': 0.05,
+        'change_eps': 0.01,
         'change_type': 'gaussian',
         'reg_lambda1': 0.05,
         'reg_min_max': True,
@@ -1691,8 +1691,7 @@ class MCShadingNetwork(nn.Module):
             reg += self.nerfactor_brdf_smooth_weight * brdf_smooth_loss
 
             reg = reg + torch.mean(
-                torch.abs(a0 - albedo) * self.cfg[
-                    'reg_lambda1'], dim=1)
+                torch.abs(a0 - albedo) * self.nerfactor_albedo_smooth_weight, dim=1)
 
         # if self.cfg['reg_min_max'] and step is not None and step < 2000:
         #     # sometimes the roughness and metallic saturate with the sigmoid activation in the early stage
