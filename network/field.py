@@ -1529,7 +1529,7 @@ class MCShadingNetwork(nn.Module):
         # sn = diffuse_num + specular_num
         directions = specular_directions
         sn = specular_num
-        print('normals shape:', normals.shape, 'view_dirs shape:', view_dirs.shape, 'directions shape:', directions.shape)
+
         # specular
         human_poses = human_poses.unsqueeze(1).repeat(1, sn, 1, 1) if human_poses is not None else None
         pts_ = pts.unsqueeze(1).repeat(1, sn, 1)
