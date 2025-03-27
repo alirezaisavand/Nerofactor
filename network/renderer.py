@@ -1022,7 +1022,7 @@ class NeROMaterialRenderer(nn.Module):
         K = imgs_info['Ks'][0]
         dirs = torch.stack([(i - K[0][2]) / K[0][0], -(j - K[1][2]) / K[1][1], -torch.ones_like(i)], -1)
 
-        imgs = imgs_info['imgs'].permute(0, 2, 3, 1)  # imn,h*w,3
+        imgs = imgs_info['imgs'].permute(0, 1, 2, 3)  # imn,h*w,3
         poses = imgs_info['poses']  # imn,3,4
         # if is_train:
         #     masks = imgs_info['masks'].reshape(imn, h * w)
