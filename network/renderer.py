@@ -1140,6 +1140,7 @@ class NeROMaterialRenderer(nn.Module):
         Returns:
           selected_masks: list of selected object masks (one per image).
         """
+        imgs = imgs.cpu().numpy()
         n = len(imgs)
         H, W = imgs[0].shape[:2]
         selected_masks = []
