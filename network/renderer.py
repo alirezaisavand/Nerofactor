@@ -1022,7 +1022,7 @@ class NeROMaterialRenderer(nn.Module):
         K = imgs_info['Ks'][0]
         dirs = torch.stack([(i - K[0][2]) / K[0][0], -(j - K[1][2]) / K[1][1], -torch.ones_like(i)], -1)
 
-        imgs = imgs_info['imgs'].permute(0, 2, 3, 1).reshape(imn, h * w, 3)  # imn,h*w,3
+        imgs = imgs_info['imgs'].permute(0, 2, 3, 1)  # imn,h*w,3
         poses = imgs_info['poses']  # imn,3,4
         # if is_train:
         #     masks = imgs_info['masks'].reshape(imn, h * w)
@@ -1033,7 +1033,6 @@ class NeROMaterialRenderer(nn.Module):
         rays_o = torch.stack(rays_o, 0).reshape(imn, h * w, 3)
         self._warn_ray_tracing(rays_o)
         poses = poses.unsqueeze(1).repeat(1, h * w, 1, 1)
-        rgb = imgs_info['imgs'].reshape(imn, 3, h * w).permute(0, 2, 1)  # imn,h*w,3
 
         from segment_anything import SamAutomaticMaskGenerator, sam_model_registry
         sam_checkpoint = "/home/NeRO/sam_vit_h_4b8939.pth"
@@ -1042,8 +1041,8 @@ class NeROMaterialRenderer(nn.Module):
         sam.to(device=device)
         mask_generator = SamAutomaticMaskGenerator(sam)
 
-        print('imgs[0].shape:', imgs_info['imgs'][0].shape)
-        segmentation_masks = self.propagate_masks(imgs_info['imgs'], rays_o, rays_d, poses, imgs_info['Ks'], mask_generator,
+        print('imgs.shape:', imgs.shape)
+        segmentation_masks = self.propagate_masks(imgs, rays_o, rays_d, poses, imgs_info['Ks'], mask_generator,
                                                   self.trace_in_batch)
         return segmentation_masks
 
