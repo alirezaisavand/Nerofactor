@@ -1061,7 +1061,7 @@ class NeROMaterialRenderer(nn.Module):
           uv: (N,2) 2D image coordinates.
           z:  (N,) depth values in camera space.
         """
-        pts = pts.to()
+
         R = pose[:, :3]
         t = pose[:, 3]
         # Transform points to camera coordinate system
@@ -1077,6 +1077,10 @@ class NeROMaterialRenderer(nn.Module):
         pts_cam = (R @ pts.T + t[:, None]).T  # shape (N,3)
         z = pts_cam[:, 2]
         # Normalize by depth (avoid division by zero if necessary)
+
+        K = K.to(device)
+        pts_cam = pts_cam.to(device)
+        z = z.to(device)
         uv = (K @ (pts_cam.T / z)).T[:, :2]
         return uv, z
 
