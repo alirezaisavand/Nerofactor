@@ -880,8 +880,8 @@ class NeROMaterialRenderer(nn.Module):
         all_imgs_info = imgs_info_to_torch(all_imgs_info, 'cpu')
         self.seg_masks = self._construct_nerf_segmentation_masks(all_imgs_info)
         print('segmentation masks are created')
-        print('seg_masks shape:', self.seg_masks.shape)
-        self.save_masks(self.seg_masks, 'seg_masks')
+        self.save_masks(self.seg_masks, '/home/NeRO/seg_masks')
+        print('seg_masks shape:', len(self.seg_masks))
         print('segmentation masks are saved')
 
         if is_train:
