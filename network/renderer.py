@@ -1038,7 +1038,7 @@ class NeROMaterialRenderer(nn.Module):
         rays_o = torch.stack(rays_o, 0).reshape(imn, h, w, 3)
         self._warn_ray_tracing(rays_o)
         poses = poses.unsqueeze(1).repeat(1, h, w, 1, 1)
-
+        print('poses shape:', poses.shape)
         from segment_anything import SamAutomaticMaskGenerator, sam_model_registry
         sam_checkpoint = "/home/NeRO/sam_vit_h_4b8939.pth"
         device = "cuda"
@@ -1227,8 +1227,7 @@ class NeROMaterialRenderer(nn.Module):
                 'normals': normals[hit_mask].to(device),
                 'depth': depth[hit_mask].to(device),
                 'human_poses': poses[hit_mask].to(device),
-                'rgb': imgs[hit_mask].to(device),
-                'seg_mask': seg_masks
+                'rgb': imgs[hit_mask].to(device)
                 # 'dirs': dirs.float().reshape(rn, 3).to(device),
             }
         else:
