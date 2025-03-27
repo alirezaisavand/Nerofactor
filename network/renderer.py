@@ -1201,7 +1201,7 @@ class NeROMaterialRenderer(nn.Module):
 
         for i, mask in enumerate(masks):
             # Ensure the mask is uint8 (0-255) if it isn't already.
-            mask_uint8 = mask.astype(np.uint8)
+            mask_uint8 = (255*mask).astype(np.uint8)
             file_path = os.path.join(output_folder, f"mask_{i:03d}.png")
             cv2.imwrite(file_path, mask_uint8)
             print(f"Saved mask {i} to {file_path}")
