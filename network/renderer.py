@@ -1037,7 +1037,7 @@ class NeROMaterialRenderer(nn.Module):
         rays_o = [poses[i, :3, -1].expand(rays_d[0].shape) for i in range(imn)]
         rays_o = torch.stack(rays_o, 0).reshape(imn, h, w, 3)
         self._warn_ray_tracing(rays_o)
-        poses = poses.unsqueeze(1).repeat(1, h, w, 1, 1)
+        poses = poses.unsqueeze(1).repeat(1, h*w, 1, 1)
         print('poses shape:', poses.shape)
         from segment_anything import SamAutomaticMaskGenerator, sam_model_registry
         sam_checkpoint = "/home/NeRO/sam_vit_h_4b8939.pth"
