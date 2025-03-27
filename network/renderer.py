@@ -1164,7 +1164,7 @@ class NeROMaterialRenderer(nn.Module):
             # Get segmentation masks for image i.
             seg_masks = seg_model.generate(imgs[i])
             # Use the previously computed pointcloud to find the best match.
-            best_idx, overlap = self.choose_matching_mask(pts3d, camera_poses[i], Ks[0], seg_masks, H, W)
+            best_idx, overlap = self.choose_matching_mask(pts3d, camera_poses[i][0], Ks[0], seg_masks, H, W)
             if best_idx is None:
                 # No good match found; return an empty mask.
                 selected_masks.append(np.zeros((H, W), dtype=np.uint8))
