@@ -18,6 +18,7 @@ from tqdm import trange
 
 def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
     images = [database.get_image(img_id) for img_id in img_ids]
+    print('img_ids[0]:', img_ids[0])
     images_cv2 = [database.get_image_cv2(img_id) for img_id in img_ids]
 
     poses = [database.get_pose(img_id) for img_id in img_ids]
@@ -917,8 +918,6 @@ class NeROMaterialRenderer(nn.Module):
             normals.append(normals_cur)
             depth.append(depth_cur)
             hit_mask.append(hit_mask_cur)
-            print('hit_mask[0]:', hit_mask[0])
-            print('hit_mask shape:', hit_mask[0].shape)
         return torch.cat(inters, 0), torch.cat(normals, 0), torch.cat(depth, 0), torch.cat(hit_mask, 0)
 
     def trace(self, rays_o, rays_d):
