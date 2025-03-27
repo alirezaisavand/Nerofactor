@@ -1061,9 +1061,19 @@ class NeROMaterialRenderer(nn.Module):
           uv: (N,2) 2D image coordinates.
           z:  (N,) depth values in camera space.
         """
+        pts = pts.to()
         R = pose[:, :3]
         t = pose[:, 3]
         # Transform points to camera coordinate system
+
+        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+        R = R.to(device)
+        t = t.to(device)
+        pts = pts.to(device)
+
+        pts_cam = (R @ pts.T + t[:, None]).T  # Now all are on the same device.
+
         pts_cam = (R @ pts.T + t[:, None]).T  # shape (N,3)
         z = pts_cam[:, 2]
         # Normalize by depth (avoid division by zero if necessary)
