@@ -1082,7 +1082,7 @@ class NeROMaterialRenderer(nn.Module):
         pts_cam = pts_cam.to(device)
         z = z.to(device)
         uv = (K @ (pts_cam.T / z)).T[:, :2]
-        return uv, z
+        return uv.cpu().numpy(), z.cpu().numpy()
 
     def choose_matching_mask(self, pointcloud, pose, K, seg_masks, H, W):
         """
