@@ -878,6 +878,7 @@ class NeROMaterialRenderer(nn.Module):
         self.train_ids = np.asarray(self.train_ids)
         # This part is for genetaring sementation masks
         all_imgs_info = build_imgs_info(self.database, np.asarray(self.database.get_img_ids()), self.is_nerf)
+        print('img_ids:', self.database.get_img_ids())
         all_imgs_info = imgs_info_to_torch(all_imgs_info, 'cpu')
         self.seg_masks = self._construct_nerf_segmentation_masks(all_imgs_info)
         print('segmentation masks are created')
