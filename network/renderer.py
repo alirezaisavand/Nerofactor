@@ -36,7 +36,7 @@ def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
 
     imgs_info = {
         'imgs': images,
-        'cv2_images': images_cv2,
+        'cv2_imgs': images_cv2,
         'Ks': Ks, 
         'poses': poses,
     }
