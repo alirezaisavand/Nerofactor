@@ -1022,7 +1022,7 @@ class NeROMaterialRenderer(nn.Module):
         K = imgs_info['Ks'][0]
         dirs = torch.stack([(i - K[0][2]) / K[0][0], -(j - K[1][2]) / K[1][1], -torch.ones_like(i)], -1)
 
-        imgs = imgs_info['imgs'].permute(0, 1, 2, 3)  # imn,h*w,3
+        imgs = imgs_info['imgs'].permute(0, 2, 3, 1)  # imn,h*w,3
         poses = imgs_info['poses']  # imn,3,4
         # if is_train:
         #     masks = imgs_info['masks'].reshape(imn, h * w)
@@ -1120,7 +1120,7 @@ class NeROMaterialRenderer(nn.Module):
         pts, _, _, _ = trace_fn(selected_origins, selected_dirs)
         return pts
 
-    def propagate_masks(self, imgs, ray_origins, ray_dirs, camera_poses, Ks, seg_model, trace_fn):
+    def propagate_masks(self, imgs_float, ray_origins, ray_dirs, camera_poses, Ks, seg_model, trace_fn):
         """
         Iterates over all images and for each, selects the instance mask
         that best overlaps with the projected source object.
@@ -1135,6 +1135,7 @@ class NeROMaterialRenderer(nn.Module):
         Returns:
           selected_masks: list of selected object masks (one per image).
         """
+        imgs = (imgs_float * 255).astype(np.uint8)
         n = len(imgs)
         H, W = imgs[0].shape[1:]
         selected_masks = []
