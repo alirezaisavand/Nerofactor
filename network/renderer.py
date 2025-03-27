@@ -1017,7 +1017,7 @@ class NeROMaterialRenderer(nn.Module):
 
     # This part is for generating segmentation masks
     def _construct_nerf_segmentation_masks(self, imgs_info, device='cpu', is_train=True):
-        imn, _, h, w = imgs_info['cv2_imgs'].shape
+        imn, h, w, _ = imgs_info['cv2_imgs'].shape
 
         i, j = torch.meshgrid(torch.linspace(0, w - 1, w),
                               torch.linspace(0, h - 1, h))  # pytorch's meshgrid has indexing='ij'
