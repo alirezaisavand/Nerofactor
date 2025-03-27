@@ -1142,6 +1142,7 @@ class NeROMaterialRenderer(nn.Module):
         # For image 0, assume you have a manually selected mask (or one chosen via seg_model).
         print('imgs[0].shape', imgs[0].shape)
         src_masks = seg_model.generate(imgs[0])
+        print('imgs values:', imgs[0].min(), imgs[0].max())
         print('src_masks.shape', len(src_masks))
         src_mask = src_masks[2]['segmentation']
         # Here, we assume src_mask is the binary mask of the target object.
