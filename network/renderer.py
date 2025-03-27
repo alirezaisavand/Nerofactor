@@ -1042,7 +1042,8 @@ class NeROMaterialRenderer(nn.Module):
         sam.to(device=device)
         mask_generator = SamAutomaticMaskGenerator(sam)
 
-        segmentation_masks = self.propagate_masks(rgb, rays_o, rays_d, poses, imgs_info['Ks'], mask_generator,
+        print('imgs[0].shape:', imgs_info['imgs'][0].shape)
+        segmentation_masks = self.propagate_masks(imgs_info['imgs'], rays_o, rays_d, poses, imgs_info['Ks'], mask_generator,
                                                   self.trace_in_batch)
         return segmentation_masks
 
