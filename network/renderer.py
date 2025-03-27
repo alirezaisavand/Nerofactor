@@ -1142,7 +1142,11 @@ class NeROMaterialRenderer(nn.Module):
 
         # For image 0, assume you have a manually selected mask (or one chosen via seg_model).
         print('imgs[0].shape', imgs[0].shape)
-        src_masks = seg_model.generate(imgs[0])
+
+        image = cv2.imread('/home/NeRO/data/nerf_synthetic/drums/train/r_0.png')
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+        src_masks = seg_model.generate(image)
         print('imgs values:', imgs[0].min(), imgs[0].max())
         print('src_masks.shape', len(src_masks))
         src_mask = src_masks[2]['segmentation']
