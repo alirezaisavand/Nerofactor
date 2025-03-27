@@ -1166,7 +1166,7 @@ class NeROMaterialRenderer(nn.Module):
         print('ray_dirs.shape', ray_dirs.shape)
 
         print('src_masks.shape', len(src_masks))
-        src_mask = src_masks[1]['segmentation']
+        src_mask = src_masks[2]['segmentation']
         # Here, we assume src_mask is the binary mask of the target object.
         selected_masks.append(src_mask)
 
