@@ -18,10 +18,14 @@ from tqdm import trange
 
 def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
     images = [database.get_image(img_id) for img_id in img_ids]
+    images_cv2 = [database.get_image_cv2(img_id) for img_id in img_ids]
+
     poses = [database.get_pose(img_id) for img_id in img_ids]
     Ks = [database.get_K(img_id) for img_id in img_ids]
 
     images = np.stack(images, 0)
+    images_cv2 = np.stack(images_cv2, 0)
+
     if is_nerf:
         masks = [database.get_depth(img_id)[1] for img_id in img_ids]
         masks = np.stack(masks, 0)
@@ -31,7 +35,8 @@ def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
     poses = np.stack(poses, 0).astype(np.float32)
 
     imgs_info = {
-        'imgs': images, 
+        'imgs': images,
+        'cv2_images': images_cv2,
         'Ks': Ks, 
         'poses': poses,
     }
@@ -1012,7 +1017,7 @@ class NeROMaterialRenderer(nn.Module):
 
     # This part is for generating segmentation masks
     def _construct_nerf_segmentation_masks(self, imgs_info, device='cpu', is_train=True):
-        imn, _, h, w = imgs_info['imgs'].shape
+        imn, _, h, w = imgs_info['cv2_imgs'].shape
 
         i, j = torch.meshgrid(torch.linspace(0, w - 1, w),
                               torch.linspace(0, h - 1, h))  # pytorch's meshgrid has indexing='ij'
@@ -1022,17 +1027,17 @@ class NeROMaterialRenderer(nn.Module):
         K = imgs_info['Ks'][0]
         dirs = torch.stack([(i - K[0][2]) / K[0][0], -(j - K[1][2]) / K[1][1], -torch.ones_like(i)], -1)
 
-        imgs = imgs_info['imgs'].permute(0, 1, 2, 3)  # imn,h*w,3
+        imgs = imgs_info['cv2_imgs'] # imn,h*w,3
         poses = imgs_info['poses']  # imn,3,4
         # if is_train:
         #     masks = imgs_info['masks'].reshape(imn, h * w)
 
         rays_d = [torch.sum(dirs[..., None, :].cpu() * poses[i, :3, :3], -1) for i in range(imn)]
-        rays_d = torch.stack(rays_d, 0).reshape(imn, h * w, 3)
+        rays_d = torch.stack(rays_d, 0).reshape(imn, h, w, 3)
         rays_o = [poses[i, :3, -1].expand(rays_d[0].shape) for i in range(imn)]
-        rays_o = torch.stack(rays_o, 0).reshape(imn, h * w, 3)
+        rays_o = torch.stack(rays_o, 0).reshape(imn, h, w, 3)
         self._warn_ray_tracing(rays_o)
-        poses = poses.unsqueeze(1).repeat(1, h * w, 1, 1)
+        poses = poses.unsqueeze(1).repeat(1, h, w, 1, 1)
 
         from segment_anything import SamAutomaticMaskGenerator, sam_model_registry
         sam_checkpoint = "/home/NeRO/sam_vit_h_4b8939.pth"
@@ -1120,7 +1125,7 @@ class NeROMaterialRenderer(nn.Module):
         pts, _, _, _ = trace_fn(selected_origins, selected_dirs)
         return pts
 
-    def propagate_masks(self, imgs_float, ray_origins, ray_dirs, camera_poses, Ks, seg_model, trace_fn):
+    def propagate_masks(self, imgs, ray_origins, ray_dirs, camera_poses, Ks, seg_model, trace_fn):
         """
         Iterates over all images and for each, selects the instance mask
         that best overlaps with the projected source object.
@@ -1135,19 +1140,16 @@ class NeROMaterialRenderer(nn.Module):
         Returns:
           selected_masks: list of selected object masks (one per image).
         """
-        imgs = (imgs_float * 255).to(torch.uint8)
         n = len(imgs)
-        H, W = imgs[0].shape[1:]
+        H, W = imgs[0].shape[:2]
         selected_masks = []
 
         # For image 0, assume you have a manually selected mask (or one chosen via seg_model).
         print('imgs[0].shape', imgs[0].shape)
+        src_masks = seg_model.generate(imgs[0])
+        print('ray_origins[0].shape', ray_origins[0].shape)
+        print('ray_dirs.shape', ray_dirs.shape)
 
-        image = cv2.imread('/home/NeRO/data/nerf_synthetic/drums/train/r_0.png')
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-
-        src_masks = seg_model.generate(image)
-        print('imgs values:', imgs[0].min(), imgs[0].max())
         print('src_masks.shape', len(src_masks))
         src_mask = src_masks[2]['segmentation']
         # Here, we assume src_mask is the binary mask of the target object.
