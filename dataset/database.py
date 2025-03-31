@@ -442,7 +442,7 @@ class NeRFSyntheticDatabase(BaseDatabase):
                 skip = testskip
 
             for frame in meta['frames'][::skip]:
-
+                print(frame['file_path'])
                 fname = os.path.join(self.root, frame['file_path'] + '.png')
                 imgs.append(imageio.imread(fname))
 
@@ -531,7 +531,7 @@ def parse_database_name(database_name: str, dataset_dir: str) -> BaseDatabase:
 def get_database_split(database: BaseDatabase, split_type='validation'):
     if split_type == 'validation':
         random.seed(6033)
-        img_ids = database.get_img_ids()
+        img_ids = database.get_img_ids().copy()
         random.shuffle(img_ids)
         test_ids = img_ids[:1]
         train_ids = img_ids[1:]
