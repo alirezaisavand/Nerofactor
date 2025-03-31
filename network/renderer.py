@@ -1140,6 +1140,15 @@ class NeROMaterialRenderer(nn.Module):
         pts, _, _, _ = trace_fn(selected_origins, selected_dirs)
         return pts
 
+    def save_pointcloud(self, points):
+        import open3d as o3d
+        # Create a point cloud object
+        pcd = o3d.geometry.PointCloud()
+        pcd.points = o3d.utility.Vector3dVector(points)
+
+        # Save point cloud to a file (e.g., 'cloud.ply')
+        o3d.io.write_point_cloud("cloud.ply", pcd)
+
     def propagate_masks(self, imgs, ray_origins, ray_dirs, camera_poses, Ks, seg_model, trace_fn):
         """
         Iterates over all images and for each, selects the instance mask
@@ -1174,6 +1183,7 @@ class NeROMaterialRenderer(nn.Module):
         # Build the object's 3D pointcloud from image 0.
 
         pts3d = self.build_pointcloud(src_mask, ray_origins[0], ray_dirs[0], trace_fn)
+        self.save_pointcloud(pts3d)
         # Process images 1 ... n-1.
         last_mask = src_mask
         for i in range(1, n):
