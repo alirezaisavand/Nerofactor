@@ -1172,11 +1172,11 @@ class NeROMaterialRenderer(nn.Module):
 
         # Build the object's 3D pointcloud from image 0.
 
-
+        pts3d = self.build_pointcloud(src_mask, ray_origins[0], ray_dirs[0], trace_fn)
         # Process images 1 ... n-1.
         last_mask = src_mask
         for i in range(1, n):
-            pts3d = self.build_pointcloud(last_mask, ray_origins[i], ray_dirs[i], trace_fn)
+
             # Get segmentation masks for image i.
             seg_masks = seg_model.generate(imgs[i])
             # Use the previously computed pointcloud to find the best match.
