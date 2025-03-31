@@ -880,9 +880,10 @@ class NeROMaterialRenderer(nn.Module):
         all_imgs_info = build_imgs_info(self.database, np.asarray(self.database.get_img_ids()), self.is_nerf)
         print('img_ids:', self.database.get_img_ids())
         all_imgs_info = imgs_info_to_torch(all_imgs_info, 'cpu')
-        self.seg_masks = self._construct_nerf_segmentation_masks(all_imgs_info)
+        self.seg_masks, self.projected_masks = self._construct_nerf_segmentation_masks(all_imgs_info)
         print('segmentation masks are created')
         self.save_masks(self.seg_masks, '/home/NeRO/seg_masks')
+        self.save_masks(self.projected_masks, '/home/NeRO/projected_masks')
         print('seg_masks shape:', len(self.seg_masks))
         print('segmentation masks are saved')
 
@@ -1047,9 +1048,9 @@ class NeROMaterialRenderer(nn.Module):
         mask_generator = SamAutomaticMaskGenerator(sam)
 
         print('imgs.shape:', imgs.shape)
-        segmentation_masks = self.propagate_masks(imgs, rays_o, rays_d, poses, imgs_info['Ks'], mask_generator,
+        segmentation_masks, projected_masks = self.propagate_masks(imgs, rays_o, rays_d, poses, imgs_info['Ks'], mask_generator,
                                                   self.trace_in_batch)
-        return segmentation_masks
+        return segmentation_masks, projected_masks
 
     def project(self, pts, pose, K):
         """
@@ -1120,7 +1121,7 @@ class NeROMaterialRenderer(nn.Module):
         best_idx = int(np.argmax(overlaps))
         if overlaps[best_idx] == 0:
             return None, 0
-        return best_idx, overlaps[best_idx]
+        return best_idx, overlaps[best_idx], footprint
 
     def build_pointcloud(self, src_mask, ray_origins, ray_dirs, trace_fn):
         """
@@ -1169,7 +1170,7 @@ class NeROMaterialRenderer(nn.Module):
         src_mask = src_masks[2]['segmentation']
         # Here, we assume src_mask is the binary mask of the target object.
         selected_masks.append(src_mask)
-
+        projected_masks = [src_mask]
         # Build the object's 3D pointcloud from image 0.
 
         pts3d = self.build_pointcloud(src_mask, ray_origins[0], ray_dirs[0], trace_fn)
@@ -1180,14 +1181,14 @@ class NeROMaterialRenderer(nn.Module):
             # Get segmentation masks for image i.
             seg_masks = seg_model.generate(imgs[i])
             # Use the previously computed pointcloud to find the best match.
-            best_idx, overlap = self.choose_matching_mask(pts3d, camera_poses[i][0], Ks[0], seg_masks, H, W)
+            best_idx, overlap, projected_mask = self.choose_matching_mask(pts3d, camera_poses[i][0], Ks[0], seg_masks, H, W)
+            projected_masks.append(projected_mask)
             if best_idx is None:
                 # No good match found; return an empty mask.
                 selected_masks.append(np.zeros((H, W), dtype=np.uint8))
             else:
                 selected_masks.append(seg_masks[best_idx]['segmentation'])
-            last_mask = selected_masks[-1]
-        return selected_masks
+        return selected_masks, projected_masks
 
 
     def save_masks(self, masks, output_folder):
