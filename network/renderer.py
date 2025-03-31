@@ -1106,7 +1106,7 @@ class NeROMaterialRenderer(nn.Module):
                 (uv_round[:, 1] >= 0) & (uv_round[:, 1] < H)
         uv_valid = uv_round[valid]
         if uv_valid.shape[0] == 0:
-            return None, 0
+            return None, 0, None
         # Build a footprint mask from the projected points.
         footprint = np.zeros((H, W), dtype=bool)
         footprint[uv_valid[:, 1], uv_valid[:, 0]] = True
@@ -1117,10 +1117,10 @@ class NeROMaterialRenderer(nn.Module):
             m_bool = m['segmentation'].astype(bool)
             overlaps.append(np.sum(footprint & m_bool))
         if len(overlaps) == 0:
-            return None, 0
+            return None, 0, footprint
         best_idx = int(np.argmax(overlaps))
         if overlaps[best_idx] == 0:
-            return None, 0
+            return None, 0, footprint
         return best_idx, overlaps[best_idx], footprint
 
     def build_pointcloud(self, src_mask, ray_origins, ray_dirs, trace_fn):
