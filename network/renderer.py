@@ -1142,9 +1142,10 @@ class NeROMaterialRenderer(nn.Module):
 
     def save_pointcloud(self, points):
         import open3d as o3d
+        points_np = points.detach().cpu().numpy()
         # Create a point cloud object
         pcd = o3d.geometry.PointCloud()
-        pcd.points = o3d.utility.Vector3dVector(points)
+        pcd.points = o3d.utility.Vector3dVector(points_np)
 
         # Save point cloud to a file (e.g., 'cloud.ply')
         o3d.io.write_point_cloud("cloud.ply", pcd)
