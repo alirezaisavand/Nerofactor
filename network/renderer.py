@@ -1106,7 +1106,7 @@ class NeROMaterialRenderer(nn.Module):
                 (uv_round[:, 1] >= 0) & (uv_round[:, 1] < H)
         uv_valid = uv_round[valid]
         if uv_valid.shape[0] == 0:
-            return None, 0, None
+            return None, 0, np.zeros((H, W), dtype=bool)
         # Build a footprint mask from the projected points.
         footprint = np.zeros((H, W), dtype=bool)
         footprint[uv_valid[:, 1], uv_valid[:, 0]] = True
