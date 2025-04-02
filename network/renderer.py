@@ -1066,25 +1066,26 @@ class NeROMaterialRenderer(nn.Module):
         pose = pose.to(device)
         K = K.to(device)
         pts = pts.to(device)
+
         R = pose[:, :3]
         t = pose[:, 3]
+        pts_cam = (pts - t) @ R.t()
 
+
+        # Number of points.
+        N = pts.shape[0]
+        pts_hom = torch.cat([pts, torch.ones(N, 1, device=pts.device)], dim=1)
         last_row = torch.tensor([[0.0, 0.0, 0.0, 1.0]], dtype=pose.dtype, device=pose.device)
         pose_4x4 = torch.cat([pose, last_row], dim=0)  # Now shape is (4,4)
 
         # Invert the pose to get the world-to-camera transformation.
         pose_inv = torch.inverse(pose_4x4)
 
-        # Number of points.
-        N = pts.shape[0]
 
-        # Convert points to homogeneous coordinates (N, 4).
-        ones = torch.ones((N, 1), dtype=pts.dtype, device=pts.device)
-        pts_h = torch.cat([pts, ones], dim=1)  # Shape (N, 4)
+
 
         # Transform the world points into camera space.
-        pts_cam_h = (pose_inv @ pts_h.t()).t()  # Shape (N, 4)
-        pts_cam = (pts - t) @ R.t()
+        pts_cam_h = (pose_inv @ pts_hom.t()).t()  # Shape (N, 4)
 
         # Extract the 3D camera coordinates (X_c, Y_c, Z_c).
         pts_cam2 = pts_cam_h[:, :3]
