@@ -1069,7 +1069,7 @@ class NeROMaterialRenderer(nn.Module):
 
         R = pose[:, :3]
         t = pose[:, 3]
-        pts_cam = R.t()@(pts - t)
+        pts_cam = (pts - t)@R
 
 
         # Number of points.
