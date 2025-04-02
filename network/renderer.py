@@ -1210,7 +1210,7 @@ class NeROMaterialRenderer(nn.Module):
         print('camera_poses shape:', camera_poses.shape)
         print('Ks shape:', Ks.shape)
 
-        for i in range(0, n):
+        for i in range(0, 1):
             # Get segmentation masks for image i.
             seg_masks = seg_model.generate(imgs[i])
             # Use the previously computed pointcloud to find the best match.
