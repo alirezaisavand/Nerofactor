@@ -1076,8 +1076,8 @@ class NeROMaterialRenderer(nn.Module):
         points_cam = (pts - t) @ R.t()  # (N, 3)
         # points_cam = pts
         K = K.to(device)
-        points_h = points_cam @ K.t()  # (N, 3)
-
+        # points_h = points_cam @ K.t()  # (N, 3)
+        points_h = points_cam
         pixel_coords = points_h[:, :2] / points_h[:, 2:3]
 
         return pixel_coords.cpu().numpy()
