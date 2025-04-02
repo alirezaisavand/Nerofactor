@@ -1063,21 +1063,20 @@ class NeROMaterialRenderer(nn.Module):
           z:  (N,) depth values in camera space.
         """
 
-        # R = pose[:, :3]
-        # t = pose[:, 3]
+        R = pose[:3, :3]
+        t = pose[:3, 3]
         # Transform points to camera coordinate system
 
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-        # R = R.to(device)
-        # t = t.to(device)
+        R = R.to(device)
+        t = t.to(device)
         pts = pts.to(device)
 
-        # R_inv = R.transpose(0, 1)  # R_inv = R^T
-        # points_cam = (pts - t.unsqueeze(0)) @ R_inv  # (N, 3)
-        points_cam = pts
+        points_cam = (pts - t) @ R.t()  # (N, 3)
+        # points_cam = pts
         K = K.to(device)
-        points_h = points_cam @ K.transpose(0, 1)  # (N, 3)
+        points_h = points_cam @ K.t()  # (N, 3)
 
         pixel_coords = points_h[:, :2] / points_h[:, 2:3]
 
