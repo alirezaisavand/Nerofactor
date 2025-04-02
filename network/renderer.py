@@ -1180,7 +1180,7 @@ class NeROMaterialRenderer(nn.Module):
         imgs = imgs.cpu().numpy()
         n = len(imgs)
         H, W = imgs[0].shape[:2]
-        selected_masks = []
+
 
         # For image 0, assume you have a manually selected mask (or one chosen via seg_model).
         print('imgs[0].shape', imgs[0].shape)
@@ -1191,18 +1191,17 @@ class NeROMaterialRenderer(nn.Module):
         print('src_masks.shape', len(src_masks))
         src_mask = src_masks[2]['segmentation']
         # Here, we assume src_mask is the binary mask of the target object.
-        selected_masks.append(src_mask)
-        projected_masks = [src_mask]
+        selected_masks = []
+        projected_masks = []
         # Build the object's 3D pointcloud from image 0.
 
         pts3d = self.build_pointcloud(src_mask, ray_origins[0], ray_dirs[0], trace_fn)
         self.save_pointcloud(pts3d)
         # Process images 1 ... n-1.
-        last_mask = src_mask
         print('camera_poses shape:', camera_poses.shape)
         print('Ks shape:', Ks.shape)
-        for i in range(1, n):
 
+        for i in range(0, n):
             # Get segmentation masks for image i.
             seg_masks = seg_model.generate(imgs[i])
             # Use the previously computed pointcloud to find the best match.
