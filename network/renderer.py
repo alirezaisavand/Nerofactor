@@ -907,8 +907,9 @@ class NeROMaterialRenderer(nn.Module):
         inters, normals, depth, hit_mask = [], [], [], []
         rn = rays_o.shape[0]
         for ri in range(0, rn, batch_size):
-            inters_cur, normals_cur, depth_cur, hit_mask_cur = self.trace(rays_o[ri:ri + batch_size],
-                                                                          rays_d[ri:ri + batch_size])
+            end = min(ri + batch_size, rn)
+            inters_cur, normals_cur, depth_cur, hit_mask_cur = self.trace(rays_o[ri:end],
+                                                                          rays_d[ri:end])
             if cpu:
                 inters_cur = inters_cur.cpu()
                 normals_cur = normals_cur.cpu()
@@ -1092,8 +1093,8 @@ class NeROMaterialRenderer(nn.Module):
         proj_homog = (K @ pts_cam.T).T  # Shape (N, 3)
 
         # Perform perspective division to obtain pixel coordinates.
-        u = proj_homog[:, 0] / proj_homog[:, 2]
-        v = proj_homog[:, 1] / proj_homog[:, 2]
+        u = proj_homog[:, 0] / -proj_homog[:, 2]
+        v = proj_homog[:, 1] / -proj_homog[:, 2]
 
         return torch.stack([u, v], dim=1).cpu().numpy()
 
