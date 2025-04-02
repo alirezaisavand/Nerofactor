@@ -1073,11 +1073,10 @@ class NeROMaterialRenderer(nn.Module):
 
         # Apply the intrinsic matrix K to the camera coordinates.
         pts_img_hom = pts_cam@K.T
-        pts_img_hom = pts_img_hom / pts_img_hom[2, :].clone()
-        pts_img = pts_img_hom[:2, :].T  # Shape (N, 2)
+        pts_img_hom = pts_img_hom / pts_img_hom[:, 2].clone()
         # Perform perspective division to obtain pixel coordinates.
 
-        return pts_img.cpu().numpy()
+        return pts_img_hom.cpu().numpy()
 
     def choose_matching_mask(self, pointcloud, pose, K, seg_masks, H, W):
         """
