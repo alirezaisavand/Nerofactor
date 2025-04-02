@@ -1069,11 +1069,11 @@ class NeROMaterialRenderer(nn.Module):
         R = pose[:, :3]
         t = pose[:, 3]
 
-        # last_row = torch.tensor([[0.0, 0.0, 0.0, 1.0]], dtype=pose.dtype, device=pose.device)
-        # pose_4x4 = torch.cat([pose, last_row], dim=0)  # Now shape is (4,4)
+        last_row = torch.tensor([[0.0, 0.0, 0.0, 1.0]], dtype=pose.dtype, device=pose.device)
+        pose_4x4 = torch.cat([pose, last_row], dim=0)  # Now shape is (4,4)
 
         # Invert the pose to get the world-to-camera transformation.
-        # pose_inv = torch.inverse(pose_4x4)
+        pose_inv = torch.inverse(pose_4x4)
 
         # Number of points.
         N = pts.shape[0]
