@@ -18,7 +18,6 @@ from tqdm import trange
 
 def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
     images = [database.get_image(img_id) for img_id in img_ids]
-    print('img_ids[0]:', img_ids[0])
     images_cv2 = [database.get_image_cv2(img_id) for img_id in img_ids]
 
     poses = [database.get_pose(img_id) for img_id in img_ids]
@@ -878,7 +877,6 @@ class NeROMaterialRenderer(nn.Module):
         self.train_ids = np.asarray(self.train_ids)
         # This part is for genetaring sementation masks
         all_imgs_info = build_imgs_info(self.database, np.asarray(self.database.get_img_ids()), self.is_nerf)
-        print('img_ids:', self.database.get_img_ids())
         all_imgs_info = imgs_info_to_torch(all_imgs_info, 'cpu')
         self.seg_masks, self.projected_masks = self._construct_nerf_segmentation_masks(all_imgs_info)
         print('segmentation masks are created')
@@ -1062,7 +1060,8 @@ class NeROMaterialRenderer(nn.Module):
           uv: (N,2) 2D image coordinates.
           z:  (N,) depth values in camera space.
         """
-        print('pose, K:', pose, K)
+        print('pose:', pose)
+        print('K:', K)
         R = pose[:3, :3]
         t = pose[:3, 3]
         # Transform points to camera coordinate system
@@ -1073,7 +1072,7 @@ class NeROMaterialRenderer(nn.Module):
         t = t.to(device)
         pts = pts.to(device)
 
-        points_cam = (pts - t) @ R.t()  # (N, 3)
+        points_cam = -(pts - t) @ R.t()  # (N, 3)
         K = K.to(device)
         points_h = points_cam @ K.t()  # (N, 3)
         pixel_coords = points_h[:, :2] / points_h[:, 2:3]
