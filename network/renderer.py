@@ -1077,8 +1077,7 @@ class NeROMaterialRenderer(nn.Module):
         #     raise ValueError("Some points are behind the camera.")
 
         # Apply the intrinsic matrix K to the camera coordinates.
-        pts_cam = pts_cam.T  # Shape (3, N)
-        pts_img_hom = K.T@pts_cam  # Shape (3, N)
+        pts_img_hom = pts_cam@K
         pts_img_hom = pts_img_hom / pts_img_hom[2, :].clone()
         pts_img = pts_img_hom[:2, :].T  # Shape (N, 2)
         # Perform perspective division to obtain pixel coordinates.
