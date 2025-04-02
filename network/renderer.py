@@ -1079,15 +1079,18 @@ class NeROMaterialRenderer(nn.Module):
         N = pts.shape[0]
 
         # Convert points to homogeneous coordinates (N, 4).
-        # ones = torch.ones((N, 1), dtype=pts.dtype, device=pts.device)
-        # pts_h = torch.cat([pts, ones], dim=1)  # Shape (N, 4)
+        ones = torch.ones((N, 1), dtype=pts.dtype, device=pts.device)
+        pts_h = torch.cat([pts, ones], dim=1)  # Shape (N, 4)
 
         # Transform the world points into camera space.
-        # pts_cam_h = (pose_inv @ pts_h.T).T  # Shape (N, 4)
+        pts_cam_h = (pose_inv @ pts_h.T).T  # Shape (N, 4)
         pts_cam = (pts - t) @ R.t()
 
         # Extract the 3D camera coordinates (X_c, Y_c, Z_c).
-        # pts_cam = pts_cam_h[:, :3]
+        pts_cam2 = pts_cam_h[:, :3]
+
+        diff = pts_cam - pts_cam2
+        print('diff:', diff)
 
         # (Optional) Check if any points are behind the camera.
         # if (pts_cam[:, 2] <= 0).any():
