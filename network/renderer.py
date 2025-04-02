@@ -1072,39 +1072,18 @@ class NeROMaterialRenderer(nn.Module):
         pts_cam = (pts - t)@R
 
 
-        # Number of points.
-        N = pts.shape[0]
-        pts_hom = torch.cat([pts, torch.ones(N, 1, device=pts.device)], dim=1)
-        last_row = torch.tensor([[0.0, 0.0, 0.0, 1.0]], dtype=pose.dtype, device=pose.device)
-        pose_4x4 = torch.cat([pose, last_row], dim=0)  # Now shape is (4,4)
-
-        # Invert the pose to get the world-to-camera transformation.
-        pose_inv = torch.inverse(pose_4x4)
-
-
-
-
-        # Transform the world points into camera space.
-        pts_cam_h = (pose_inv @ pts_hom.t()).t()  # Shape (N, 4)
-
-        # Extract the 3D camera coordinates (X_c, Y_c, Z_c).
-        pts_cam2 = pts_cam_h[:, :3]
-
-        diff = pts_cam - pts_cam2
-        print('diff:', diff)
-
         # (Optional) Check if any points are behind the camera.
         # if (pts_cam[:, 2] <= 0).any():
         #     raise ValueError("Some points are behind the camera.")
 
         # Apply the intrinsic matrix K to the camera coordinates.
-        proj_homog = pts_cam@K.t()  # Shape (N, 3)
-
+        pts_cam = pts_cam.T  # Shape (3, N)
+        pts_img_hom = K@pts_cam  # Shape (3, N)
+        pts_img_hom /= pts_img_hom[2, :]
+        pts_img = pts_img_hom[:2, :].T  # Shape (N, 2)
         # Perform perspective division to obtain pixel coordinates.
-        u = proj_homog[:, 0] / proj_homog[:, 2]
-        v = proj_homog[:, 1] / proj_homog[:, 2]
 
-        return torch.stack([u, v], dim=1).cpu().numpy()
+        return pts_img.cpu().numpy()
 
     def choose_matching_mask(self, pointcloud, pose, K, seg_masks, H, W):
         """
