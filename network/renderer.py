@@ -1062,7 +1062,7 @@ class NeROMaterialRenderer(nn.Module):
           uv: (N,2) 2D image coordinates.
           z:  (N,) depth values in camera space.
         """
-
+        print('pose, K:', pose, K)
         R = pose[:3, :3]
         t = pose[:3, 3]
         # Transform points to camera coordinate system
@@ -1074,10 +1074,8 @@ class NeROMaterialRenderer(nn.Module):
         pts = pts.to(device)
 
         points_cam = (pts - t) @ R.t()  # (N, 3)
-        # points_cam = pts
         K = K.to(device)
-        # points_h = points_cam @ K.t()  # (N, 3)
-        points_h = points_cam
+        points_h = points_cam @ K.t()  # (N, 3)
         pixel_coords = points_h[:, :2] / points_h[:, 2:3]
 
         return pixel_coords.cpu().numpy()
@@ -1184,6 +1182,8 @@ class NeROMaterialRenderer(nn.Module):
         self.save_pointcloud(pts3d)
         # Process images 1 ... n-1.
         last_mask = src_mask
+        print('camera_poses shape:', camera_poses.shape)
+        print('Ks shape:', Ks.shape)
         for i in range(1, n):
 
             # Get segmentation masks for image i.
