@@ -1073,17 +1073,15 @@ class NeROMaterialRenderer(nn.Module):
         t = t.to(device)
         pts = pts.to(device)
 
-        pts_cam = (R @ pts.T + t[:, None]).T  # Now all are on the same device.
-
-        pts_cam = (R @ pts.T + t[:, None]).T  # shape (N,3)
-        z = pts_cam[:, 2]
-        # Normalize by depth (avoid division by zero if necessary)
+        R_inv = R.transpose(0, 1)  # R_inv = R^T
+        points_cam = (pts - t.unsqueeze(0)) @ R_inv  # (N, 3)
 
         K = K.to(device)
-        pts_cam = pts_cam.to(device)
-        z = z.to(device)
-        uv = (K @ (pts_cam.T / z)).T[:, :2]
-        return uv.cpu().numpy(), z.cpu().numpy()
+        points_h = points_cam @ K.transpose(0, 1)  # (N, 3)
+
+        pixel_coords = points_h[:, :2] / points_h[:, 2:3]
+
+        return pixel_coords.cpu().numpy()
 
     def choose_matching_mask(self, pointcloud, pose, K, seg_masks, H, W):
         """
