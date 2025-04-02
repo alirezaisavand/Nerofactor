@@ -1085,8 +1085,8 @@ class NeROMaterialRenderer(nn.Module):
         pts_cam = pts_cam_h[:, :3]
 
         # (Optional) Check if any points are behind the camera.
-        if (pts_cam[:, 2] <= 0).any():
-            raise ValueError("Some points are behind the camera.")
+        # if (pts_cam[:, 2] <= 0).any():
+        #     raise ValueError("Some points are behind the camera.")
 
         # Apply the intrinsic matrix K to the camera coordinates.
         proj_homog = (K @ pts_cam.T).T  # Shape (N, 3)
