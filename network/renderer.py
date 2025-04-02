@@ -1096,7 +1096,7 @@ class NeROMaterialRenderer(nn.Module):
           best_idx: index of the segmentation mask with maximum overlap (or None if no overlap).
           overlap: the pixel overlap count.
         """
-        uv, _ = self.project(pointcloud, pose, K)
+        uv = self.project(pointcloud, pose, K)
         # Round to integer pixel coordinates.
         uv_round = np.round(uv).astype(int)
         # Filter points that lie within the image bounds.
