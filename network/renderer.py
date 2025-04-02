@@ -1083,7 +1083,7 @@ class NeROMaterialRenderer(nn.Module):
         pts_h = torch.cat([pts, ones], dim=1)  # Shape (N, 4)
 
         # Transform the world points into camera space.
-        pts_cam_h = (pose_inv @ pts_h.T).T  # Shape (N, 4)
+        pts_cam_h = (pose_inv @ pts_h.t()).t()  # Shape (N, 4)
         pts_cam = (pts - t) @ R.t()
 
         # Extract the 3D camera coordinates (X_c, Y_c, Z_c).
@@ -1097,7 +1097,7 @@ class NeROMaterialRenderer(nn.Module):
         #     raise ValueError("Some points are behind the camera.")
 
         # Apply the intrinsic matrix K to the camera coordinates.
-        proj_homog = (K @ pts_cam.T).T  # Shape (N, 3)
+        proj_homog = (K @ pts_cam.t()).t()  # Shape (N, 3)
 
         # Perform perspective division to obtain pixel coordinates.
         u = proj_homog[:, 0] / proj_homog[:, 2]
