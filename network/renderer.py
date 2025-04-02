@@ -1060,24 +1060,42 @@ class NeROMaterialRenderer(nn.Module):
           uv: (N,2) 2D image coordinates.
           z:  (N,) depth values in camera space.
         """
-        print('pose:', pose)
-        print('K:', K)
-        R = pose[:3, :3]
-        t = pose[:3, 3]
-        # Transform points to camera coordinate system
 
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-        R = R.to(device)
-        t = t.to(device)
-        pts = pts.to(device)
-
-        points_cam = -(pts - t) @ R.t()  # (N, 3)
+        pose = pose.to(device)
         K = K.to(device)
-        points_h = points_cam @ K.t()  # (N, 3)
-        pixel_coords = points_h[:, :2] / points_h[:, 2:3]
+        pts = pts.to(device)
+        last_row = torch.tensor([[0.0, 0.0, 0.0, 1.0]], dtype=pose.dtype, device=pose.device)
+        pose_4x4 = torch.cat([pose, last_row], dim=0)  # Now shape is (4,4)
 
-        return pixel_coords.cpu().numpy()
+        # Invert the pose to get the world-to-camera transformation.
+        pose_inv = torch.inverse(pose_4x4)
+
+        # Number of points.
+        N = pts.shape[0]
+
+        # Convert points to homogeneous coordinates (N, 4).
+        ones = torch.ones((N, 1), dtype=pts.dtype, device=pts.device)
+        pts_h = torch.cat([pts, ones], dim=1)  # Shape (N, 4)
+
+        # Transform the world points into camera space.
+        pts_cam_h = (pose_inv @ pts_h.T).T  # Shape (N, 4)
+
+        # Extract the 3D camera coordinates (X_c, Y_c, Z_c).
+        pts_cam = pts_cam_h[:, :3]
+
+        # (Optional) Check if any points are behind the camera.
+        if (pts_cam[:, 2] <= 0).any():
+            raise ValueError("Some points are behind the camera.")
+
+        # Apply the intrinsic matrix K to the camera coordinates.
+        proj_homog = (K @ pts_cam.T).T  # Shape (N, 3)
+
+        # Perform perspective division to obtain pixel coordinates.
+        u = proj_homog[:, 0] / proj_homog[:, 2]
+        v = proj_homog[:, 1] / proj_homog[:, 2]
+
+        return torch.stack([u, v], dim=1).cpu().numpy()
 
     def choose_matching_mask(self, pointcloud, pose, K, seg_masks, H, W):
         """
