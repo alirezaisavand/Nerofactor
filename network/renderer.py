@@ -1069,12 +1069,12 @@ class NeROMaterialRenderer(nn.Module):
 
         R = pose[:, :3]
         t = pose[:, 3]
-        pts_cam = -(pts - t)@R
+        pts_cam = (pts - t)@R
 
         # Apply the intrinsic matrix K to the camera coordinates.
         pts_img_hom = pts_cam@K.T
         print('pts_img_hom shape:', pts_img_hom.shape)
-        pts_img_hom = pts_img_hom / pts_img_hom[:, 2:].clone()
+        pts_img_hom = pts_img_hom / -pts_img_hom[:, 2:].clone()
         # Perform perspective division to obtain pixel coordinates.
 
         return pts_img_hom.cpu().numpy()
