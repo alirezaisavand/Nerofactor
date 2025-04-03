@@ -1238,8 +1238,8 @@ class NeROMaterialRenderer(nn.Module):
                 mask = mask > 0.5
 
             masks.append(mask)
-
-        return torch.from_numpy(masks).to('cuda')
+        masks = [torch.from_numpy(m).to('cuda') for m in masks]
+        return masks
 
     def save_masks(self, masks, output_folder):
         """
