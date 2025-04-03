@@ -1180,6 +1180,8 @@ class NeROMaterialRenderer(nn.Module):
         pts3d = self.build_pointcloud(src_mask, ray_origins[0], ray_dirs[0], trace_fn)
         R = camera_poses[0][0, :3, :3]
         t = camera_poses[0][0, :3, 3]
+        R = R.to(pts3d.device)
+        t = t.to(pts3d.device)
         pts3d = pts3d @ R.T + t
         self.save_pointcloud(pts3d)
         # Process images 1 ... n-1.
