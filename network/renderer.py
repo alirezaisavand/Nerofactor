@@ -1084,7 +1084,6 @@ class NeROMaterialRenderer(nn.Module):
         rays_o = torch.stack(rays_o, 0).reshape(imn, h, w, 3)
         self._warn_ray_tracing(rays_o)
         poses = poses.unsqueeze(1).repeat(1, h*w, 1, 1)
-        print('poses shape:', poses.shape)
         from segment_anything import SamAutomaticMaskGenerator, sam_model_registry
         sam_checkpoint = "/home/NeRO/sam_vit_h_4b8939.pth"
         device = "cuda"
@@ -1092,7 +1091,6 @@ class NeROMaterialRenderer(nn.Module):
         sam.to(device=device)
         mask_generator = SamAutomaticMaskGenerator(sam)
 
-        print('imgs.shape:', imgs.shape)
         segmentation_masks, projected_masks = self.propagate_masks(imgs, rays_o, rays_d, poses, imgs_info['Ks'], mask_generator,
                                                   self.trace_in_batch)
         return segmentation_masks, projected_masks
@@ -1120,7 +1118,6 @@ class NeROMaterialRenderer(nn.Module):
 
         # Apply the intrinsic matrix K to the camera coordinates.
         pts_img_hom = pts_cam@K.T
-        print('pts_img_hom shape:', pts_img_hom.shape)
         pts_img_hom = pts_img_hom / pts_img_hom[:, 2:].clone()
         # Perform perspective division to obtain pixel coordinates.
 
@@ -1212,12 +1209,8 @@ class NeROMaterialRenderer(nn.Module):
 
 
         # For image 0, assume you have a manually selected mask (or one chosen via seg_model).
-        print('imgs[0].shape', imgs[0].shape)
         src_masks = seg_model.generate(imgs[0])
-        print('ray_origins[0].shape', ray_origins[0].shape)
-        print('ray_dirs.shape', ray_dirs.shape)
 
-        print('src_masks.shape', len(src_masks))
         src_mask = src_masks[2]['segmentation']
         # Here, we assume src_mask is the binary mask of the target object.
         selected_masks = []
@@ -1227,8 +1220,6 @@ class NeROMaterialRenderer(nn.Module):
         pts3d = self.build_pointcloud(src_mask, ray_origins[0], ray_dirs[0], trace_fn)
         self.save_pointcloud(pts3d)
         # Process images 1 ... n-1.
-        print('camera_poses shape:', camera_poses.shape)
-        print('Ks shape:', Ks.shape)
 
         for i in range(0, n):
             # Get segmentation masks for image i.
@@ -1292,8 +1283,6 @@ class NeROMaterialRenderer(nn.Module):
         inters, normals, depth, hit_mask = inters.reshape(imn, h * w, 3), normals.reshape(imn, h * w, 3), depth.reshape(
             imn, h * w, 1), hit_mask.reshape(imn, h * w)
         seg_masks = imgs_info['seg_masks'].reshape(imn, h * w)
-        print('hit_mask.shape:', hit_mask.shape)
-        print('seg_masks shape:', seg_masks.shape)
         hit_mask &= seg_masks
         poses = poses.unsqueeze(1).repeat(1, h * w, 1, 1)
 
