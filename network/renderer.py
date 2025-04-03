@@ -1069,7 +1069,6 @@ class NeROMaterialRenderer(nn.Module):
 
         R = pose[:, :3]
         t = pose[:, 3]
-        t[-1] = -t[-1]
         pts_cam = (pts - t)@R
 
         # Apply the intrinsic matrix K to the camera coordinates.
@@ -1179,6 +1178,9 @@ class NeROMaterialRenderer(nn.Module):
         # Build the object's 3D pointcloud from image 0.
 
         pts3d = self.build_pointcloud(src_mask, ray_origins[0], ray_dirs[0], trace_fn)
+        R = camera_poses[0][0, :3, :3]
+        t = camera_poses[0][0, :3, 3]
+        pts3d = pts3d @ R.T + t
         self.save_pointcloud(pts3d)
         # Process images 1 ... n-1.
         print('camera_poses shape:', camera_poses.shape)
