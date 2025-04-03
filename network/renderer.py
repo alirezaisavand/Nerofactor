@@ -1287,12 +1287,14 @@ class NeROMaterialRenderer(nn.Module):
         self._warn_ray_tracing(rays_o)
         inters, normals, depth, hit_mask = self.trace_in_batch(rays_o.reshape(-1, 3), rays_d.reshape(-1, 3),
                                                                cpu=True)  # imn
-        seg_masks = imgs_info['seg_masks'].reshape(imn, h * w)
-        print(hit_mask.shape)
-        hit_mask &= seg_masks
+
 
         inters, normals, depth, hit_mask = inters.reshape(imn, h * w, 3), normals.reshape(imn, h * w, 3), depth.reshape(
             imn, h * w, 1), hit_mask.reshape(imn, h * w)
+        seg_masks = imgs_info['seg_masks'].reshape(imn, h * w)
+        print('hit_mask.shape:', hit_mask.shape)
+        print('seg_masks shape:', seg_masks.shape)
+        hit_mask &= seg_masks
         poses = poses.unsqueeze(1).repeat(1, h * w, 1, 1)
 
         if is_train:
