@@ -1239,7 +1239,7 @@ class NeROMaterialRenderer(nn.Module):
 
             masks.append(mask)
 
-        return masks
+        return torch.from_numpy(masks).to('cuda')
 
     def save_masks(self, masks, output_folder):
         """
