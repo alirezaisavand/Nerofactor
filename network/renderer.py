@@ -1070,7 +1070,7 @@ class NeROMaterialRenderer(nn.Module):
         R = pose[:, :3]
         t = pose[:, 3]
         pts_cam = (pts - t)@R
-        pts_cam[:, 1] = -pts_cam[:, 1]  # Flip y-axis to match image coordinates
+        pts_cam[:, 0] = -pts_cam[:, 0]  # Flip y-axis to match image coordinates
 
         # Apply the intrinsic matrix K to the camera coordinates.
         pts_img_hom = pts_cam@K.T
