@@ -878,7 +878,7 @@ class NeROMaterialRenderer(nn.Module):
         # This part is for genetaring sementation masks
 
 
-        self.seg_masks = self.load_masks('home/NeRO/seg_masks')
+        self.seg_masks = self.load_masks('/home/NeRO/seg_masks')
         print('segmentation masks are loaded')
 
         all_imgs_info = build_imgs_info(self.database, np.asarray(self.database.get_img_ids()), self.is_nerf)
