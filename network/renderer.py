@@ -1069,7 +1069,7 @@ class NeROMaterialRenderer(nn.Module):
 
         R = pose[:, :3]
         t = pose[:, 3]
-        pts_cam = (-pts + t)@R
+        pts_cam = (pts - t)@R.T
 
         # Apply the intrinsic matrix K to the camera coordinates.
         pts_img_hom = pts_cam@K.T
