@@ -16,6 +16,45 @@ from utils.raw_utils import linear_to_srgb
 from tqdm import trange
 
 
+def load_masks(input_folder, as_bool=True):
+    import os
+    """
+    Loads a list of 2D masks (numpy arrays) from the specified folder.
+
+    Parameters:
+      input_folder (str): Directory path where the mask images are saved.
+      as_bool (bool): If True, returns masks as boolean arrays (True for mask, False for background);
+                      otherwise returns masks as floats in the range [0, 1].
+
+    Returns:
+      list of np.ndarray: Each array is of shape (H, W) representing a mask.
+    """
+    # List all files that follow the naming pattern used in save_masks (e.g., mask_000.png, mask_001.png, etc.)
+    mask_files = sorted([
+        os.path.join(input_folder, f)
+        for f in os.listdir(input_folder)
+        if f.startswith("mask_") and f.endswith(".png")
+    ])
+
+    masks = []
+    for file_path in mask_files:
+        # Read the image as a grayscale image.
+        mask_img = cv2.imread(file_path, cv2.IMREAD_GRAYSCALE)
+        if mask_img is None:
+            print(f"Warning: Could not read image {file_path}.")
+            continue
+
+        # Convert from 0-255 to 0-1 by dividing by 255.
+        mask = mask_img.astype(np.float32) / 255.0
+
+        if as_bool:
+            # Convert to boolean using a threshold.
+            mask = mask > 0.5
+
+        masks.append(mask)
+    return np.stack(masks, 0)
+
+
 def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
     images = [database.get_image(img_id) for img_id in img_ids]
     images_cv2 = [database.get_image_cv2(img_id) for img_id in img_ids]
@@ -25,7 +64,8 @@ def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
 
     images = np.stack(images, 0)
     images_cv2 = np.stack(images_cv2, 0)
-
+    seg_masks = load_masks('/home/NeRO/seg_masks', as_bool=True)
+    segmentation_masks = [seg_masks[img_id] for img_id in img_ids]
     if is_nerf:
         masks = [database.get_depth(img_id)[1] for img_id in img_ids]
         masks = np.stack(masks, 0)
@@ -39,6 +79,7 @@ def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
         'cv2_imgs': images_cv2,
         'Ks': Ks, 
         'poses': poses,
+        'seg_masks': segmentation_masks
     }
 
     if is_nerf:
@@ -878,7 +919,6 @@ class NeROMaterialRenderer(nn.Module):
         # This part is for genetaring sementation masks
 
 
-        self.seg_masks = self.load_masks('/home/NeRO/seg_masks')
         print('segmentation masks are loaded')
 
         all_imgs_info = build_imgs_info(self.database, np.asarray(self.database.get_img_ids()), self.is_nerf)
@@ -1202,44 +1242,7 @@ class NeROMaterialRenderer(nn.Module):
                 selected_masks.append(seg_masks[best_idx]['segmentation'])
         return selected_masks, projected_masks
 
-    def load_masks(self, input_folder, as_bool=True):
-        import os
-        """
-        Loads a list of 2D masks (numpy arrays) from the specified folder.
 
-        Parameters:
-          input_folder (str): Directory path where the mask images are saved.
-          as_bool (bool): If True, returns masks as boolean arrays (True for mask, False for background);
-                          otherwise returns masks as floats in the range [0, 1].
-
-        Returns:
-          list of np.ndarray: Each array is of shape (H, W) representing a mask.
-        """
-        # List all files that follow the naming pattern used in save_masks (e.g., mask_000.png, mask_001.png, etc.)
-        mask_files = sorted([
-            os.path.join(input_folder, f)
-            for f in os.listdir(input_folder)
-            if f.startswith("mask_") and f.endswith(".png")
-        ])
-
-        masks = []
-        for file_path in mask_files:
-            # Read the image as a grayscale image.
-            mask_img = cv2.imread(file_path, cv2.IMREAD_GRAYSCALE)
-            if mask_img is None:
-                print(f"Warning: Could not read image {file_path}.")
-                continue
-
-            # Convert from 0-255 to 0-1 by dividing by 255.
-            mask = mask_img.astype(np.float32) / 255.0
-
-            if as_bool:
-                # Convert to boolean using a threshold.
-                mask = mask > 0.5
-
-            masks.append(mask)
-        masks = [torch.from_numpy(m).to('cuda') for m in masks]
-        return masks
 
     def save_masks(self, masks, output_folder):
         """
@@ -1283,7 +1286,7 @@ class NeROMaterialRenderer(nn.Module):
         self._warn_ray_tracing(rays_o)
         inters, normals, depth, hit_mask = self.trace_in_batch(rays_o.reshape(-1, 3), rays_d.reshape(-1, 3),
                                                                cpu=True)  # imn
-        seg_masks = torch.cat(self.seg_masks, 0).reshape(imn, h * w)
+        seg_masks = imgs_info['seg_masks'].reshape(imn, h * w)
         print(hit_mask.shape)
         print(self.seg_masks.shape)
         hit_mask &= seg_masks
