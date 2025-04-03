@@ -1289,7 +1289,6 @@ class NeROMaterialRenderer(nn.Module):
                                                                cpu=True)  # imn
         seg_masks = imgs_info['seg_masks'].reshape(imn, h * w)
         print(hit_mask.shape)
-        print(self.seg_masks.shape)
         hit_mask &= seg_masks
 
         inters, normals, depth, hit_mask = inters.reshape(imn, h * w, 3), normals.reshape(imn, h * w, 3), depth.reshape(
