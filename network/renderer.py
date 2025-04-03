@@ -876,14 +876,19 @@ class NeROMaterialRenderer(nn.Module):
         self.train_ids, self.test_ids = get_database_split(self.database, 'validation')
         self.train_ids = np.asarray(self.train_ids)
         # This part is for genetaring sementation masks
+
+
+        self.seg_masks = self.load_masks('home/NeRO/seg_masks')
+        print('segmentation masks are loaded')
+
         all_imgs_info = build_imgs_info(self.database, np.asarray(self.database.get_img_ids()), self.is_nerf)
         all_imgs_info = imgs_info_to_torch(all_imgs_info, 'cpu')
-        self.seg_masks, self.projected_masks = self._construct_nerf_segmentation_masks(all_imgs_info)
-        print('segmentation masks are created')
-        self.save_masks(self.seg_masks, '/home/NeRO/seg_masks')
-        self.save_masks(self.projected_masks, '/home/NeRO/projected_masks')
-        print('seg_masks shape:', len(self.seg_masks))
-        print('segmentation masks are saved')
+        # self.seg_masks, self.projected_masks = self._construct_nerf_segmentation_masks(all_imgs_info)
+        # print('segmentation masks are created')
+        # self.save_masks(self.seg_masks, '/home/NeRO/seg_masks')
+        # self.save_masks(self.projected_masks, '/home/NeRO/projected_masks')
+        # print('seg_masks shape:', len(self.seg_masks))
+        # print('segmentation masks are saved')
 
         if is_train:
             self.train_imgs_info = build_imgs_info(self.database, self.train_ids, self.is_nerf)
@@ -1197,6 +1202,44 @@ class NeROMaterialRenderer(nn.Module):
                 selected_masks.append(seg_masks[best_idx]['segmentation'])
         return selected_masks, projected_masks
 
+    def load_masks(self, input_folder, as_bool=True):
+        import os
+        """
+        Loads a list of 2D masks (numpy arrays) from the specified folder.
+
+        Parameters:
+          input_folder (str): Directory path where the mask images are saved.
+          as_bool (bool): If True, returns masks as boolean arrays (True for mask, False for background);
+                          otherwise returns masks as floats in the range [0, 1].
+
+        Returns:
+          list of np.ndarray: Each array is of shape (H, W) representing a mask.
+        """
+        # List all files that follow the naming pattern used in save_masks (e.g., mask_000.png, mask_001.png, etc.)
+        mask_files = sorted([
+            os.path.join(input_folder, f)
+            for f in os.listdir(input_folder)
+            if f.startswith("mask_") and f.endswith(".png")
+        ])
+
+        masks = []
+        for file_path in mask_files:
+            # Read the image as a grayscale image.
+            mask_img = cv2.imread(file_path, cv2.IMREAD_GRAYSCALE)
+            if mask_img is None:
+                print(f"Warning: Could not read image {file_path}.")
+                continue
+
+            # Convert from 0-255 to 0-1 by dividing by 255.
+            mask = mask_img.astype(np.float32) / 255.0
+
+            if as_bool:
+                # Convert to boolean using a threshold.
+                mask = mask > 0.5
+
+            masks.append(mask)
+
+        return masks
 
     def save_masks(self, masks, output_folder):
         """
@@ -1240,6 +1283,11 @@ class NeROMaterialRenderer(nn.Module):
         self._warn_ray_tracing(rays_o)
         inters, normals, depth, hit_mask = self.trace_in_batch(rays_o.reshape(-1, 3), rays_d.reshape(-1, 3),
                                                                cpu=True)  # imn
+        seg_masks = torch.cat(self.seg_masks, 0).reshape(imn, h * w)
+        print(hit_mask.shape)
+        print(self.seg_masks.shape)
+        hit_mask &= seg_masks
+
         inters, normals, depth, hit_mask = inters.reshape(imn, h * w, 3), normals.reshape(imn, h * w, 3), depth.reshape(
             imn, h * w, 1), hit_mask.reshape(imn, h * w)
         poses = poses.unsqueeze(1).repeat(1, h * w, 1, 1)
