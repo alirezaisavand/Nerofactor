@@ -80,7 +80,7 @@ def filter_bottom_images(poses, Ks):
         if pos_ok and view_ok:  # keep only safe images
             to_keep.append(i)
 
-    return np.asarray(to_keep)
+    return np.asarray(to_keep).astype(int)
 
 def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
     images = [database.get_image(img_id) for img_id in img_ids]
@@ -118,6 +118,7 @@ def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
         imgs_info['masks'] = masks[above_imgs_ids]
     for img in images_cv2:
         ok = cv2.imwrite("above_images/frame_0001.jpg", img)
+    print('above images are saved')
     return imgs_info
 
 
