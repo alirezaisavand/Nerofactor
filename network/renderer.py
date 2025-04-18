@@ -54,6 +54,33 @@ def load_masks(input_folder, as_bool=True):
         masks.append(mask)
     return np.stack(masks, 0)
 
+def filter_bottom_images(poses, Ks):
+    import open3d as o3d
+    pcd = o3d.io.read_point_cloud("cloud.ply")
+
+    # Robustly fit a plane through the main surface
+    plane_model, inliers = pcd.segment_plane(
+        distance_threshold=0.030,  # tweak
+        ransac_n=3,
+        num_iterations=2000)
+
+    n, d = plane_model[:3], plane_model[3]  # plane eqn  n·x + d = 0
+
+    to_keep = []
+    for i, pose in enumerate(poses):
+        R = pose[:, :3]
+        t = pose[:, 3]
+
+        C = -R.T @ t
+        pos_ok = np.dot(n, C) + d > 0  # position test
+
+        v = R.T @ np.array([0, 0, 1])  # optical axis in world space
+        view_ok = np.dot(n, v) > 0  # angle test
+
+        if pos_ok and view_ok:  # keep only safe images
+            to_keep.append(i)
+
+    return np.asarray(to_keep)
 
 def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
     images = [database.get_image(img_id) for img_id in img_ids]
@@ -67,25 +94,30 @@ def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
     seg_masks = load_masks('/home/NeRO/seg_masks', as_bool=True)
     segmentation_masks = [seg_masks[int(img_id)] for img_id in img_ids]
     segmentation_masks = np.stack(segmentation_masks, 0)
+
+    above_imgs_ids = filter_bottom_images(poses, Ks)
     if is_nerf:
         masks = [database.get_depth(img_id)[1] for img_id in img_ids]
         masks = np.stack(masks, 0)
     else:
         images = color_map_forward(images).astype(np.float32)
+
+
     Ks = np.stack(Ks, 0).astype(np.float32)
     poses = np.stack(poses, 0).astype(np.float32)
 
     imgs_info = {
-        'imgs': images,
-        'cv2_imgs': images_cv2,
-        'Ks': Ks, 
-        'poses': poses,
-        'seg_masks': segmentation_masks
+        'imgs': images[above_imgs_ids],
+        'cv2_imgs': images_cv2[above_imgs_ids],
+        'Ks': Ks[above_imgs_ids],
+        'poses': poses[above_imgs_ids],
+        'seg_masks': segmentation_masks[above_imgs_ids]
     }
 
     if is_nerf:
-        imgs_info['masks'] = masks
-    
+        imgs_info['masks'] = masks[above_imgs_ids]
+    for img in images_cv2:
+        ok = cv2.imwrite("above_images/frame_0001.jpg", img)
     return imgs_info
 
 
@@ -923,8 +955,9 @@ class NeROMaterialRenderer(nn.Module):
         print('segmentation masks are loaded')
 
         all_imgs_info = build_imgs_info(self.database, np.asarray(self.database.get_img_ids()), self.is_nerf)
+
         all_imgs_info = imgs_info_to_torch(all_imgs_info, 'cpu')
-        self.seg_masks, self.projected_masks = self._construct_nerf_segmentation_masks(all_imgs_info)
+        # self.seg_masks, self.projected_masks = self._construct_nerf_segmentation_masks(all_imgs_info)
         # print('segmentation masks are created')
         # self.save_masks(self.seg_masks, '/home/NeRO/seg_masks')
         # self.save_masks(self.projected_masks, '/home/NeRO/projected_masks')
@@ -944,6 +977,8 @@ class NeROMaterialRenderer(nn.Module):
                 self.train_imgs_info) if self.is_nerf else self._construct_ray_batch(self.train_imgs_info)
             self.tbn = self.train_batch['rays_o'].shape[0]
             self._shuffle_train_batch()
+
+
 
     def _init_shader(self):
         self.cfg['shader_cfg']['is_real'] = self.cfg['database_name'].startswith('real')
