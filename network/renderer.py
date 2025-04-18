@@ -79,7 +79,7 @@ def filter_bottom_images(poses, Ks):
 
         if pos_ok and view_ok:  # keep only safe images
             to_keep.append(i)
-
+    print('number of above images:', len(to_keep), len(poses))
     return np.asarray(to_keep).astype(int)
 
 def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
