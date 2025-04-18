@@ -65,6 +65,7 @@ def filter_bottom_images(poses, Ks):
         num_iterations=2000)
 
     n, d = plane_model[:3], plane_model[3]  # plane eqn  n·x + d = 0
+    n = -n
 
     to_keep = []
     for i, pose in enumerate(poses):
@@ -957,7 +958,7 @@ class NeROMaterialRenderer(nn.Module):
 
         all_imgs_info = build_imgs_info(self.database, np.asarray(self.database.get_img_ids()), self.is_nerf)
 
-        all_imgs_info = imgs_info_to_torch(all_imgs_info, 'cpu')
+        # all_imgs_info = imgs_info_to_torch(all_imgs_info, 'cpu')
         # self.seg_masks, self.projected_masks = self._construct_nerf_segmentation_masks(all_imgs_info)
         # print('segmentation masks are created')
         # self.save_masks(self.seg_masks, '/home/NeRO/seg_masks')
