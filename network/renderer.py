@@ -75,7 +75,7 @@ def filter_bottom_images(poses, Ks):
         C = -R.T @ t
         pos_ok = np.dot(n, C) + d > 0  # position test
 
-        v = R.T @ np.array([0, 0, 1])  # optical axis in world space
+        v = -R[:,2]  # optical axis in world space
         view_ok = np.dot(n, v) > 0  # angle test
         print('view:', view_ok, '\npos:', pos_ok)
         if pos_ok and view_ok:  # keep only safe images
@@ -1151,7 +1151,7 @@ class NeROMaterialRenderer(nn.Module):
         R = pose[:, :3]
         t = pose[:, 3]
         pts_cam = (pts - t)@R
-        pts_cam[:, 0] = -pts_cam[:, 0]  # Flip y-axis to match image coordinates
+        pts_cam[:, 0] = -pts_cam[:, 0]  # Flip x-axis to match image coordinates
 
         # Apply the intrinsic matrix K to the camera coordinates.
         pts_img_hom = pts_cam@K.T
