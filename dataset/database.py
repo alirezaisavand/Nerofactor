@@ -538,7 +538,7 @@ def get_database_split(database: BaseDatabase, split_type='validation'):
     if split_type == 'validation':
         random.seed(6033)
         img_ids = database.get_img_ids().copy()
-        random.shuffle(img_ids)
+        # random.shuffle(img_ids)
         test_ids = img_ids[:1]
         train_ids = img_ids[1:]
     elif split_type=='test':
