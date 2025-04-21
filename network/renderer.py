@@ -65,14 +65,15 @@ def filter_bottom_images(poses, Ks):
         num_iterations=2000)
 
     n, d = plane_model[:3], plane_model[3]  # plane eqn  n·x + d = 0
-    # n = -n
+    n = n
 
     to_keep = []
     for i, pose in enumerate(poses):
         R = pose[:, :3]
         t = pose[:, 3]
 
-        C = -R.T @ t
+        C = R.T @ t
+        C[:,0] = -C[:,0]
         pos_ok = np.dot(n, C) + d > 0  # position test
 
         v = -R[:,2]  # optical axis in world space
