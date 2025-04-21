@@ -65,7 +65,7 @@ def filter_bottom_images(poses, Ks):
         num_iterations=2000)
 
     n, d = plane_model[:3], plane_model[3]  # plane eqn  n·x + d = 0
-    n = n
+    # n = -n
 
     to_keep = []
     for i, pose in enumerate(poses):
@@ -73,6 +73,8 @@ def filter_bottom_images(poses, Ks):
         t = pose[:, 3]
 
         C = R.T @ t
+        print('camera centers shape:', C.shape)
+
         C[:,0] = -C[:,0]
         pos_ok = np.dot(n, C) + d > 0  # position test
 
