@@ -78,7 +78,7 @@ def filter_bottom_images(poses, Ks):
         C[0] = -C[0]
         pos_ok = np.dot(n, C) + d > 0  # position test
 
-        v = -R[:,2]  # optical axis in world space
+        v = R[:,2]  # optical axis in world space
         view_ok = np.dot(n, v) > 0  # angle test
         print('view:', view_ok, '\npos:', pos_ok)
         if pos_ok and view_ok:  # keep only safe images
