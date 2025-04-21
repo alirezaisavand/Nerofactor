@@ -430,6 +430,8 @@ class NeRFSyntheticDatabase(BaseDatabase):
         all_imgs_cv2 = []
         all_poses = []
         counts = [0]
+        bottom_images = {'train': [12, 23, 26, 31, 32, 35, 37, 45, 53, 56, 75, 86, 90],
+                         'test': [64, 72, 80, 88, 96, 104, 112, 120]}
         import cv2
         for s in splits:
             meta = metas[s]
@@ -444,7 +446,11 @@ class NeRFSyntheticDatabase(BaseDatabase):
             for frame in meta['frames'][::skip]:
                 print(frame['file_path'])
                 fname = os.path.join(self.root, frame['file_path'] + '.png')
-                imgs.append(imageio.imread(fname))
+                fname_number = int(frame['file_path'].split('_')[-1])
+                if fname_number in bottom_images[s]:
+                    print('bottom image:', fname_number)
+                else:
+                    imgs.append(imageio.imread(fname))
 
                 img_cv2 = cv2.imread(fname)
                 img_cv2 = cv2.cvtColor(img_cv2, cv2.COLOR_BGR2RGB)
