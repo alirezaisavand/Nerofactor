@@ -75,7 +75,7 @@ def filter_bottom_images(poses, Ks):
         C = R.T @ t
         print('camera centers shape:', C.shape)
 
-        C[:,0] = -C[:,0]
+        C[0] = -C[0]
         pos_ok = np.dot(n, C) + d > 0  # position test
 
         v = -R[:,2]  # optical axis in world space
