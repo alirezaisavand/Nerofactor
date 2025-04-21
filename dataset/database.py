@@ -449,9 +449,9 @@ class NeRFSyntheticDatabase(BaseDatabase):
                 fname_number = int(frame['file_path'].split('_')[-1])
                 if fname_number in bottom_images[s]:
                     print('bottom image:', fname_number)
-                else:
-                    imgs.append(imageio.imread(fname))
+                    continue
 
+                imgs.append(imageio.imread(fname))
                 img_cv2 = cv2.imread(fname)
                 img_cv2 = cv2.cvtColor(img_cv2, cv2.COLOR_BGR2RGB)
                 imgs_cv2.append(img_cv2)
