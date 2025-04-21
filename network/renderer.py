@@ -73,14 +73,14 @@ def filter_bottom_images(poses, Ks):
         t = pose[:, 3]
 
         C = R.T @ t
-        print('camera centers shape:', C.shape)
+        # print('camera centers shape:', C.shape)
 
         C[0] = -C[0]
         pos_ok = np.dot(n, C) + d > 0  # position test
 
         v = R[:,2]  # optical axis in world space
         view_ok = np.dot(n, v) > 0  # angle test
-        print('view:', view_ok, '\npos:', pos_ok)
+        # print('view:', view_ok, '\npos:', pos_ok)
         if pos_ok and view_ok:  # keep only safe images
             to_keep.append(i)
     print('number of above images:', len(to_keep), len(poses))
