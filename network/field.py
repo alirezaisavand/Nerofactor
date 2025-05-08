@@ -3050,13 +3050,14 @@ class MCShadingNetwork(nn.Module):
 
         # 2) evaluate BRDF f(wi, wo) using the provided function (it may use h internally)
         #    f_vals: (N, C)
-        f_vals = f
+        f_vals = f.unsqueeze(1).expand(M, N, 1)
 
         # 3) cosine term (wi · n)
-        cos_theta = torch.clamp((wi * n).sum(dim=-1), min=0.0)  # (N,)
+        cos_theta = torch.clamp((wi * n).sum(dim=-1), min=0.0).unsqueeze(2)  # (N,)
 
         # 4) weight each sample: Li * f * cosθ / pdf
         #    shape broadcasts to (N, C)
+        print('lights:', lights.shape, 'cos_theta:', cos_theta.shape, 'pdf:', pdf.shape, 'f_vals:', f_vals.shape)
         weights = lights * f_vals * cos_theta / (pdf + eps)
 
         # 5) average over samples
