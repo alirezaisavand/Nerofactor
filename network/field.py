@@ -2999,7 +2999,7 @@ class MCShadingNetwork(nn.Module):
         #    p = q(h) / [4π m_x m_y cos³θh (ωo·h)]
         cos3 = cos_th ** 3
         pdf = qh / (4.0 * np.pi * m_x * m_y * cos3 * dot_wo_h.squeeze().abs() + eps)
-
+        print('h:', h.shape, 'wi:', wi.shape, 'pfd:', pdf.shape, 'sin_th:', sin_th.shape)
         return h, wi, pdf, cos_th, sin_th, cos_phi, sin_phi
 
     def compute_outgoing_radiance(self, lights: torch.Tensor,
