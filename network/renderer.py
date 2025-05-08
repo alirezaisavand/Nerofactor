@@ -945,8 +945,100 @@ class NeROMaterialRenderer(nn.Module):
         self._init_dataset(is_train)
         self._init_shader()
 
+    def compute_pca_tangent_frame(self):
+        """
+        mesh: object with
+          mesh.vertices   : (V,3) array of vertex positions
+          mesh.adjacency  : list of lists of neighbor indices for each vertex
+          mesh.normals    : (V,3) array of normals (unit length)
+        Returns:
+          T, B arrays of shape (V,3) each
+        """
+        mesh = self.mesh
+        V = len(mesh.vertices)
+        T = np.zeros((V, 3))
+        B = np.zeros((V, 3))
+
+        for i in range(V):
+            p = mesh.vertices[i]
+            N = mesh.vertex_normals[i]
+            # gather neighbor positions
+            neigh_idx = mesh.adjacency[i]
+            neigh_pts = mesh.vertices[neigh_idx]
+
+            # project neighbors into tangent plane
+            offsets = neigh_pts - p  # (k,3)
+            proj = offsets - np.outer(offsets.dot(N), N)  # remove normal component
+
+            if proj.shape[0] < 3:
+                # fallback to arbitrary frame if too few neighbors
+                ref = np.array([0, 1, 0])
+                if abs(N.dot(ref)) > 0.99: ref = np.array([1, 0, 0])
+                t = ref - N * (N.dot(ref))
+                t /= np.linalg.norm(t)
+            else:
+                # PCA: covariance of planar offsets
+                C = proj.T @ proj  # (3×3), but rank-2
+                eigvals, eigvecs = np.linalg.eigh(C)
+                # eigenvector with largest eigenvalue in plane
+                t = eigvecs[:, np.argmax(eigvals)]
+                # ensure t ⟂ N
+                t = t - N * (N.dot(t))
+                t /= np.linalg.norm(t)
+
+            b = np.cross(N, t)
+            b /= np.linalg.norm(b)
+            T[i] = t
+            B[i] = b
+
+        return T, B
+
+    def build_vertex_adjacency(self):
+        """
+        faces: (M×3) iterable of int triplets
+        num_vertices: total number of vertices V
+        returns: list of sets, adjacency[i] = set of neighbor vertex indices of i
+        """
+        faces = self.mesh.faces
+        num_vertices = len(self.mesh.vertices)
+        adjacency = [set() for _ in range(num_vertices)]
+        for tri in faces:
+            i, j, k = tri
+            adjacency[i].update([j, k])
+            adjacency[j].update([i, k])
+            adjacency[k].update([i, j])
+        return adjacency
+
+    def initialize_kdd_tree(self):
+        import faiss
+
+        # ─────────────────────────────────────────────────────────────────────────────
+        # 1) Build the FAISS GPU index on triangle centroids (do this once at load time)
+        # ─────────────────────────────────────────────────────────────────────────────
+
+        # assume vertices: (V,3) torch.Tensor on CUDA
+        #        faces:    (F,3) torch.LongTensor on CUDA or CPU
+        device = torch.device('cuda')
+
+        # compute centroids on CPU as float32 array
+        centroids = self.mesh.vertices[self.mesh.faces].mean(dim=1).cpu().numpy().astype('float32')  # (F,3)
+
+        # build FAISS GPU index
+        res = faiss.StandardGpuResources()
+        flat_l2 = faiss.IndexFlatL2(3)  # 3 == dimension
+        gpu_index = faiss.index_cpu_to_gpu(res, 0, flat_l2)
+        gpu_index.add(centroids)  # add all F centroids
+        return gpu_index
+
+
+
     def _init_geometry(self):
         self.mesh = open3d.io.read_triangle_mesh(self.cfg['mesh'])
+        print('calculating tangents for mesh vertices')
+        self.mesh.adjacency = self.build_vertex_adjacency()
+        self.mesh.T, self.mesh.B = self.compute_pca_tangent_frame()
+        self.gpu_index = self.initialize_kdd_tree()
+
         self.ray_tracer = raytracing.RayTracer(np.asarray(self.mesh.vertices), np.asarray(self.mesh.triangles))
 
     def _init_dataset(self, is_train):
