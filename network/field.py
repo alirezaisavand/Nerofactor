@@ -2910,7 +2910,7 @@ class MCShadingNetwork(nn.Module):
         return colors, outputs
 
 
-    def predict_anisotropic_components(self, pts, mesh):
+    def predict_anisotropic_components(self, pts):
         # Todo implement using MLPs for predicting components
         feats = self.feats_network(pts)
         mx = self.mx_predictor(torch.cat([feats, pts], -1))
