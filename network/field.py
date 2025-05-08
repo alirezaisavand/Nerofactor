@@ -2999,7 +2999,6 @@ class MCShadingNetwork(nn.Module):
         #    p = q(h) / [4π m_x m_y cos³θh (ωo·h)]
         cos3 = cos_th ** 3
         pdf = qh / (4.0 * np.pi * m_x * m_y * cos3 * dot_wo_h.squeeze().abs() + eps)
-        print('h:', h.shape, 'wi:', wi.shape, 'pfd:', pdf.shape, 'sin_th:', sin_th.shape)
         return h, wi, pdf, cos_th, sin_th, cos_phi, sin_phi
 
     def compute_outgoing_radiance(self, lights: torch.Tensor,
@@ -3057,7 +3056,6 @@ class MCShadingNetwork(nn.Module):
         pdf_expanded = pdf.unsqueeze(2)
         # 4) weight each sample: Li * f * cosθ / pdf
         #    shape broadcasts to (N, C)
-        print('lights:', lights.shape, 'cos_theta:', cos_theta.shape, 'pdf:', pdf.shape, 'f_vals:', f_vals.shape)
         weights = lights * f_vals * cos_theta / (pdf_expanded + eps)
 
         # 5) average over samples
@@ -3077,7 +3075,6 @@ class MCShadingNetwork(nn.Module):
         wo_h_dot = (view_dirs_expanded * hs).sum(dim=2, keepdim=True)
         wi_n_dot = (wis * normals_expanded).sum(dim=2, keepdim=True)
         wo_n_dot = (view_dirs_expanded * normals_expanded).sum(dim=2, keepdim=True)
-        print('F0:', F0.shape, 'wo_h_dot:', wo_h_dot.shape)
         F0_expanded = F0.unsqueeze(1).expand(F0.shape[0], num_samples, 1)
         F = F0_expanded + (1- F0_expanded) * (1 - (wo_h_dot))**5
         tan_ths = sin_ths / cos_ths
@@ -3092,7 +3089,6 @@ class MCShadingNetwork(nn.Module):
         Q = torch.exp(-(tan_ths**2) * ((cos_phis**2/mx**2)+(sin_phis**2/my**2)))
         D = 1 / (np.pi*mx*my*cos_ths**4) * Q
         D_expanded = D.unsqueeze(2)
-        print('D:', D.shape, 'alpha:', alpha.shape, 'F:', F.shape, 'ks:', ks.shape, 'kd:', kd.shape)
         f = (kd_expanded * (1 - F)) / (np.pi) + (ks_expanded * F * D_expanded) / (4 * wo_h_dot * (wi_n_dot*wo_n_dot)**alpha_expanded)
         R = self.compute_outgoing_radiance(lights, wis, pdfs, view_dirs, normals, f)
 
