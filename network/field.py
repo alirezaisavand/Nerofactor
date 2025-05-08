@@ -2467,7 +2467,9 @@ class MCShadingNetwork(nn.Module):
 
         'random_azimuth': True,
         'is_real': False,
-        'anisotropy': False
+        'anisotropy': True,
+        'max_n_exp': 20,
+        'max_alpha_exp': 10
     }
 
     def __init__(self, cfg, ray_trace_fun):
