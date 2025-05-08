@@ -2923,92 +2923,7 @@ class MCShadingNetwork(nn.Module):
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
         return mx, my, alpha, F0, kd, ks
 
-    def sample_aniso_ggx_half_vector_and_pdf(self, num_samples: int,
-                                             m_x: float,
-                                             m_y: float,
-                                             wo: torch.Tensor,
-                                             device: torch.device = None,
-                                             eps: float = 1e-6):
-        """
-        Samples half-vectors h according to anisotropic GGX (Eqns 16-18)
-        and returns the corresponding PDF p(ωi | ωo) using Eqn (20).
 
-        Parameters:
-        -----------
-        num_samples : int
-            Number of samples to draw.
-        m_x, m_y : float
-            Anisotropic roughness parameters along tangent (x) and bitangent (y).
-        wo : torch.Tensor
-            Viewing direction (ωo) in local tangent-space, shape (3,) or (num_samples,3), unit-length.
-        device : torch.device, optional
-            Device to perform computation on.
-        eps : float
-            Small epsilon to avoid division by zero.
-
-        Returns:
-        --------
-        h : torch.Tensor
-            Sampled half-vectors, shape (num_samples, 3).
-        pdf : torch.Tensor
-            PDF values p(ωi | ωo) for each sample, shape (num_samples,).
-        """
-        if device is None:
-            device = wo.device if isinstance(wo, torch.Tensor) else torch.device('cpu')
-
-        # Ensure wo is (num_samples,3)
-        wo = wo.to(device)
-        if wo.ndim == 1:
-            wo = wo.expand(num_samples, -1)
-
-        # 1) Draw uniform random samples
-        xi1 = torch.rand(num_samples, device=device)
-        xi2 = torch.rand(num_samples, device=device)
-
-        # 2) Compute φ_h = atan2(m_y sin(2πξ2), m_x cos(2πξ2))
-        two_pi_xi2 = 2.0 * np.pi * xi2
-        cos2 = torch.cos(two_pi_xi2)
-        sin2 = torch.sin(two_pi_xi2)
-        phi_h = torch.atan2(m_y * sin2, m_x * cos2)  # (num_samples,)
-
-        # 3) Compute θ_h = arctan( sqrt(-log(xi1) / (cos²φ_h / m_x² + sin²φ_h / m_y²)) )
-        cos_phi = torch.cos(phi_h)
-        sin_phi = torch.sin(phi_h)
-        denom = (cos_phi ** 2) / (m_x * m_x) + (sin_phi ** 2) / (m_y * m_y)  # (num_samples,)
-        xi1_clamped = xi1.clamp(min=eps, max=1.0)
-        theta_h = torch.atan(torch.sqrt(-torch.log(xi1_clamped) / (denom + eps)))  # (num_samples,)
-
-        # 4) Build half-vector h = [sinθ cosφ, sinθ sinφ, cosθ]
-        sin_th = torch.sin(theta_h)
-        cos_th = torch.cos(theta_h)
-        h = torch.stack([sin_th * cos_phi,
-                         sin_th * sin_phi,
-                         cos_th], dim=1)  # (num_samples,3)
-
-        # 5) Compute anisotropic GGX D(h)
-        hx, hy, hz = h.unbind(dim=1)
-        denom_D = (hx * hx) / (m_x * m_x) + (hy * hy) / (m_y * m_y) + hz * hz
-        D = 1.0 / (np.pi * m_x * m_y * (denom_D * denom_D) + eps)  # (num_samples,)
-
-        # 6) Compute q(h) = D * cosθ_h
-        qh = D * cos_th  # (num_samples,)
-
-        # 7) Compute ωi by reflecting wo about h
-        #    η = wo ⋅ h
-        print('wo:', wo.shape, 'h:', h.shape)
-        eta = (wo * h).sum(dim=1)  # (num_samples,)
-        #    wi = 2(wo⋅h) h - wo
-        wi = 2.0 * eta.unsqueeze(1) * h - wo
-        wi = torch.nn.functional.normalize(wi, dim=1, eps=eps)
-
-        # 8) Compute PDF p(ωi | ωo) via Eqn (20):
-        #    p = (1 / (4π m_x m_y cos^3θ_h (wo⋅h))) * q(h)
-        cos3 = cos_th ** 3
-        pdf = qh / (4.0 * np.pi * m_x * m_y * cos3 * eta.abs() + eps)
-
-        return h, pdf
-
-    import torch, math
 
     def sample_aniso_ggx_half_vector_wi_pdf(self, num_samples: int,
                                             m_x: float,
@@ -3043,8 +2958,8 @@ class MCShadingNetwork(nn.Module):
 
         # broadcast wo to (num_samples,3)
         wo = wo.to(device)
-        if wo.ndim == 1:
-            wo = wo.unsqueeze(0).expand(num_samples, -1)
+        if wo.ndim == 2:
+            wo = wo.unsqueeze(1).expand(wo.shape[0], num_samples, 3)
 
         # 1) draw two uniforms
         xi1 = torch.rand(num_samples, device=device).clamp(min=eps)
@@ -3067,15 +2982,15 @@ class MCShadingNetwork(nn.Module):
         cos_th = torch.cos(theta_h)
         h = torch.stack([sin_th * cos_phi,
                          sin_th * sin_phi,
-                         cos_th], dim=1)  # (num_samples,3)
+                         cos_th], dim=2)  # (num_samples,3)
 
         # 5) reflect wo about h to get wi (Eqn 19)
-        dot_wo_h = (wo * h).sum(dim=1, keepdim=True)  # (num_samples,1)
+        dot_wo_h = (wo * h).sum(dim=2, keepdim=True)  # (num_samples,1)
         wi = 2.0 * dot_wo_h * h - wo
-        wi = torch.nn.functional.normalize(wi, dim=1, eps=eps)
+        wi = torch.nn.functional.normalize(wi, dim=2, eps=eps)
 
         # 6) compute D(h) and q(h)=D·cosθh
-        hx, hy, hz = h.unbind(dim=1)
+        hx, hy, hz = h.unbind(dim=2)
         denom_D = (hx * hx) / (m_x * m_x) + (hy * hy) / (m_y * m_y) + (hz * hz)
         D = 1.0 / (np.pi * m_x * m_y * (denom_D * denom_D) + eps)
         qh = D * cos_th  # (num_samples,)
@@ -3151,7 +3066,7 @@ class MCShadingNetwork(nn.Module):
 
     def shade_anisotropic_mixed(self, pts, normals, view_dirs, reflections, mx, my, alpha, F0, kd, ks, human_poses, is_train):
         # Todo implement shading final color
-        hs, wis, pdfs, cos_ths, sin_ths, cos_phis, sin_phis = self.sample_aniso_ggx_half_vector_and_pdf(self.cfg['specular_sample_num'], mx, my, view_dirs)
+        hs, wis, pdfs, cos_ths, sin_ths, cos_phis, sin_phis = self.sample_aniso_ggx_half_vector_wi_pdf(self.cfg['specular_sample_num'], mx, my, view_dirs)
         lights, hl, light_pts, light_normals, light_pts_mask = self.get_lights(pts, wis, human_poses)
         wo_h_dot = (view_dirs * hs).sum(dim=1, keepdim=True)
         wi_n_dot = (wis * normals).sum(dim=1, keepdim=True)
