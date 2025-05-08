@@ -3054,11 +3054,11 @@ class MCShadingNetwork(nn.Module):
 
         # 3) cosine term (wi · n)
         cos_theta = torch.clamp((wi * n).sum(dim=-1), min=0.0).unsqueeze(2)  # (N,)
-
+        pdf_expanded = pdf.unsqueeze(2)
         # 4) weight each sample: Li * f * cosθ / pdf
         #    shape broadcasts to (N, C)
         print('lights:', lights.shape, 'cos_theta:', cos_theta.shape, 'pdf:', pdf.shape, 'f_vals:', f_vals.shape)
-        weights = lights * f_vals * cos_theta / (pdf + eps)
+        weights = lights * f_vals * cos_theta / (pdf_expanded + eps)
 
         # 5) average over samples
         Lo = weights.mean(dim=1)  # (C,)
