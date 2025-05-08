@@ -53,39 +53,39 @@ def load_masks(input_folder, as_bool=True):
 
         masks.append(mask)
     return np.stack(masks, 0)
-
-def filter_bottom_images(poses, Ks):
-    import open3d as o3d
-    pcd = o3d.io.read_point_cloud("cloud.ply")
-
-    # Robustly fit a plane through the main surface
-    plane_model, inliers = pcd.segment_plane(
-        distance_threshold=0.030,  # tweak
-        ransac_n=3,
-        num_iterations=2000)
-
-    n, d = plane_model[:3], plane_model[3]  # plane eqn  n·x + d = 0
-    # n = -n
-
-    to_keep = []
-    for i, pose in enumerate(poses):
-        R = pose[:, :3]
-        t = pose[:, 3]
-
-        C = R.T @ t
-        # print('camera centers shape:', C.shape)
-
-        C[0] = -C[0]
-        pos_ok = np.dot(n, C) + d > 0  # position test
-
-        v = R[:,2]  # optical axis in world space
-        view_ok = np.dot(n, v) > 0  # angle test
-        # print('view:', view_ok, '\npos:', pos_ok)
-        if pos_ok and view_ok:  # keep only safe images
-            to_keep.append(i)
-    print('number of above images:', len(to_keep), len(poses))
-    return np.asarray(to_keep).astype(int)
-
+#
+# def filter_bottom_images(poses, Ks):
+#     import open3d as o3d
+#     pcd = o3d.io.read_point_cloud("cloud.ply")
+#
+#     # Robustly fit a plane through the main surface
+#     plane_model, inliers = pcd.segment_plane(
+#         distance_threshold=0.030,  # tweak
+#         ransac_n=3,
+#         num_iterations=2000)
+#
+#     n, d = plane_model[:3], plane_model[3]  # plane eqn  n·x + d = 0
+#     # n = -n
+#
+#     to_keep = []
+#     for i, pose in enumerate(poses):
+#         R = pose[:, :3]
+#         t = pose[:, 3]
+#
+#         C = R.T @ t
+#         # print('camera centers shape:', C.shape)
+#
+#         C[0] = -C[0]
+#         pos_ok = np.dot(n, C) + d > 0  # position test
+#
+#         v = R[:,2]  # optical axis in world space
+#         view_ok = np.dot(n, v) > 0  # angle test
+#         # print('view:', view_ok, '\npos:', pos_ok)
+#         if pos_ok and view_ok:  # keep only safe images
+#             to_keep.append(i)
+#     print('number of above images:', len(to_keep), len(poses))
+#     return np.asarray(to_keep).astype(int)
+#
 def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
     images = [database.get_image(img_id) for img_id in img_ids]
     images_cv2 = [database.get_image_cv2(img_id) for img_id in img_ids]
@@ -99,7 +99,7 @@ def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
     segmentation_masks = [seg_masks[int(img_id)] for img_id in img_ids]
     segmentation_masks = np.stack(segmentation_masks, 0)
 
-    above_imgs_ids = filter_bottom_images(poses, Ks)
+    # above_imgs_ids = filter_bottom_images(poses, Ks)
     if is_nerf:
         masks = [database.get_depth(img_id)[1] for img_id in img_ids]
         masks = np.stack(masks, 0)
@@ -111,15 +111,15 @@ def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
     poses = np.stack(poses, 0).astype(np.float32)
 
     imgs_info = {
-        'imgs': images[above_imgs_ids],
-        'cv2_imgs': images_cv2[above_imgs_ids],
-        'Ks': Ks[above_imgs_ids],
-        'poses': poses[above_imgs_ids],
-        'seg_masks': segmentation_masks[above_imgs_ids]
+        'imgs': images,
+        'cv2_imgs': images_cv2,
+        'Ks': Ks,
+        'poses': poses,
+        'seg_masks': segmentation_masks
     }
 
     if is_nerf:
-        imgs_info['masks'] = masks[above_imgs_ids]
+        imgs_info['masks'] = masks
     for img in images_cv2:
         ok = cv2.imwrite("above_images/frame_0001.jpg", img)
     print('above images are saved')
