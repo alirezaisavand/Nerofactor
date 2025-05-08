@@ -2995,6 +2995,7 @@ class MCShadingNetwork(nn.Module):
 
         # 7) Compute ωi by reflecting wo about h
         #    η = wo ⋅ h
+        print('wo:', wo.shape, 'h:', h.shape)
         eta = (wo * h).sum(dim=1)  # (num_samples,)
         #    wi = 2(wo⋅h) h - wo
         wi = 2.0 * eta.unsqueeze(1) * h - wo
