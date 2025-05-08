@@ -3067,7 +3067,8 @@ class MCShadingNetwork(nn.Module):
     def shade_anisotropic_mixed(self, pts, normals, view_dirs, reflections, mx, my, alpha, F0, kd, ks, human_poses, is_train):
         # Todo implement shading final color
         hs, wis, pdfs, cos_ths, sin_ths, cos_phis, sin_phis = self.sample_aniso_ggx_half_vector_wi_pdf(self.cfg['specular_sample_num'], mx, my, view_dirs)
-        lights, hl, light_pts, light_normals, light_pts_mask = self.get_lights(pts, wis, human_poses)
+        pts_ = pts.unsqueeze(1).repeat(1, sn, 1)
+        lights, hl, light_pts, light_normals, light_pts_mask = self.get_lights(pts_, wis, human_poses)
         num_samples = self.cfg['specular_sample_num']
         normals_expanded = normals.unsqueeze(1).expand(normals.shape[0], num_samples, 3)
         view_dirs_expanded = view_dirs.unsqueeze(1).expand(view_dirs.shape[0], num_samples, 3)
