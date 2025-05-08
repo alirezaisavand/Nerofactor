@@ -3090,8 +3090,9 @@ class MCShadingNetwork(nn.Module):
 
         Q = torch.exp(-(tan_ths**2) * ((cos_phis**2/mx**2)+(sin_phis**2/my**2)))
         D = 1 / (np.pi*mx*my*cos_ths**4) * Q
+        D_expanded = D.unsqueeze(2)
         print('D:', D.shape, 'alpha:', alpha.shape, 'F:', F.shape, 'ks:', ks.shape, 'kd:', kd.shape)
-        f = (kd_expanded * (1 - F)) / (np.pi) + (ks_expanded * F * D) / (4 * wo_h_dot * (wi_n_dot*wo_n_dot)**alpha_expanded)
+        f = (kd_expanded * (1 - F)) / (np.pi) + (ks_expanded * F * D_expanded) / (4 * wo_h_dot * (wi_n_dot*wo_n_dot)**alpha_expanded)
         R = self.compute_outgoing_radiance(lights, wis, pdfs, view_dirs, normals, f)
 
         colors = linear_to_srgb(R)
