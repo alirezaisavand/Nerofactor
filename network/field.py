@@ -3076,6 +3076,7 @@ class MCShadingNetwork(nn.Module):
         wo_h_dot = (view_dirs_expanded * hs).sum(dim=2, keepdim=True)
         wi_n_dot = (wis * normals_expanded).sum(dim=2, keepdim=True)
         wo_n_dot = (view_dirs_expanded * normals_expanded).sum(dim=2, keepdim=True)
+        print('F0:', F0.shape, 'wo_h_dot:', wo_h_dot.shape)
         F = F0 + (1- F0) * (1 - (wo_h_dot))**5
         tan_ths = sin_ths / cos_ths
         Q = torch.exp(-(tan_ths**2) * ((cos_phis**2/mx**2)+(sin_phis**2/my**2)))
