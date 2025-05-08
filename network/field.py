@@ -3050,7 +3050,7 @@ class MCShadingNetwork(nn.Module):
 
         # 2) evaluate BRDF f(wi, wo) using the provided function (it may use h internally)
         #    f_vals: (N, C)
-        f_vals = f.unsqueeze(1).expand(M, N, 1)
+        f_vals = f
 
         # 3) cosine term (wi · n)
         cos_theta = torch.clamp((wi * n).sum(dim=-1), min=0.0).unsqueeze(2)  # (N,)
