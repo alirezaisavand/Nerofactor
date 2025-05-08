@@ -3037,13 +3037,13 @@ class MCShadingNetwork(nn.Module):
         Lo : Tensor of shape (C,)
             Estimated outgoing radiance for the given ωo.
         """
-        N, C = lights.shape
+        M, N, C = lights.shape
 
         # Ensure wo and n have shape (N,3)
-        if wo.ndim == 1:
-            wo = wo.unsqueeze(0).expand(N, -1)
-        if n.ndim == 1:
-            n = n.unsqueeze(0).expand(N, -1)
+        if wo.ndim == 2:
+            wo = wo.unsqueeze(1).expand(M, N, 3)
+        if n.ndim == 2:
+            n = n.unsqueeze(1).expand(M, N, 3)
 
         # 1) compute half-vector h = normalize(wi + wo)
         h = torch.nn.functional.normalize(wi + wo, dim=-1, eps=eps)
@@ -3057,10 +3057,10 @@ class MCShadingNetwork(nn.Module):
 
         # 4) weight each sample: Li * f * cosθ / pdf
         #    shape broadcasts to (N, C)
-        weights = lights * f_vals * cos_theta.unsqueeze(-1) / (pdf.unsqueeze(-1) + eps)
+        weights = lights * f_vals * cos_theta / (pdf + eps)
 
         # 5) average over samples
-        Lo = weights.mean(dim=0)  # (C,)
+        Lo = weights.mean(dim=1)  # (C,)
 
         return Lo
 
@@ -3068,9 +3068,12 @@ class MCShadingNetwork(nn.Module):
         # Todo implement shading final color
         hs, wis, pdfs, cos_ths, sin_ths, cos_phis, sin_phis = self.sample_aniso_ggx_half_vector_wi_pdf(self.cfg['specular_sample_num'], mx, my, view_dirs)
         lights, hl, light_pts, light_normals, light_pts_mask = self.get_lights(pts, wis, human_poses)
-        wo_h_dot = (view_dirs * hs).sum(dim=1, keepdim=True)
-        wi_n_dot = (wis * normals).sum(dim=1, keepdim=True)
-        wo_n_dot = (view_dirs * normals).sum(dim=1, keepdim=True)
+        num_samples = self.cfg['specular_sample_num']
+        normals_expanded = normals.unsqueeze(1).expand(normals.shape[0], num_samples, 3)
+        view_dirs_expanded = view_dirs.unsqueeze(1).expand(view_dirs.shape[0], num_samples, 3)
+        wo_h_dot = (view_dirs_expanded * hs).sum(dim=3, keepdim=True)
+        wi_n_dot = (wis * normals_expanded).sum(dim=2, keepdim=True)
+        wo_n_dot = (view_dirs_expanded * normals_expanded).sum(dim=2, keepdim=True)
         F = F0 + (1- F0) * (1 - (wo_h_dot))**5
         tan_ths = sin_ths / cos_ths
         Q = torch.exp(-(tan_ths**2) * ((cos_phis**2/mx**2)+(sin_phis**2/my**2)))
