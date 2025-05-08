@@ -3080,9 +3080,18 @@ class MCShadingNetwork(nn.Module):
         F0_expanded = F0.unsqueeze(1).expand(F0.shape[0], num_samples, 1)
         F = F0_expanded + (1- F0_expanded) * (1 - (wo_h_dot))**5
         tan_ths = sin_ths / cos_ths
+
+        mx_expanded = mx.unsqueeze(1).expand(mx.shape[0], num_samples, 1)
+        my_expanded = my.unsqueeze(1).expand(my.shape[0], num_samples, 1)
+
+        kd_expanded = kd.unsqueeze(1).expand(kd.shape[0], num_samples, 3)
+        ks_expanded = ks.unsqueeze(1).expand(ks.shape[0], num_samples, 3)
+        alpha_expanded = alpha.unsqueeze(1).expand(alpha.shape[0], num_samples, 1)
+
         Q = torch.exp(-(tan_ths**2) * ((cos_phis**2/mx**2)+(sin_phis**2/my**2)))
         D = 1 / (np.pi*mx*my*cos_ths**4) * Q
-        f = (kd * (1 - F)) / (np.pi) + (ks * F * D) / (4 * wo_h_dot * (wi_n_dot*wo_n_dot)**alpha)
+        print('D:', D.shape, 'alpha:', alpha.shape, 'F:', F.shape, 'ks:', ks.shape, 'kd:', kd.shape)
+        f = (kd_expanded * (1 - F)) / (np.pi) + (ks_expanded * F * D) / (4 * wo_h_dot * (wi_n_dot*wo_n_dot)**alpha_expanded)
         R = self.compute_outgoing_radiance(lights, wis, pdfs, view_dirs, normals, f)
 
         colors = linear_to_srgb(R)
