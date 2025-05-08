@@ -3073,7 +3073,7 @@ class MCShadingNetwork(nn.Module):
 
         normals_expanded = normals.unsqueeze(1).expand(normals.shape[0], num_samples, 3)
         view_dirs_expanded = view_dirs.unsqueeze(1).expand(view_dirs.shape[0], num_samples, 3)
-        wo_h_dot = (view_dirs_expanded * hs).sum(dim=3, keepdim=True)
+        wo_h_dot = (view_dirs_expanded * hs).sum(dim=2, keepdim=True)
         wi_n_dot = (wis * normals_expanded).sum(dim=2, keepdim=True)
         wo_n_dot = (view_dirs_expanded * normals_expanded).sum(dim=2, keepdim=True)
         F = F0 + (1- F0) * (1 - (wo_h_dot))**5
