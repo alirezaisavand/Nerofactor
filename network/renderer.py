@@ -1035,9 +1035,9 @@ class NeROMaterialRenderer(nn.Module):
     def _init_geometry(self):
         self.mesh = open3d.io.read_triangle_mesh(self.cfg['mesh'])
         print('calculating tangents for mesh vertices')
-        self.mesh.adjacency = self.build_vertex_adjacency()
-        self.mesh.T, self.mesh.B = self.compute_pca_tangent_frame()
-        self.gpu_index = self.initialize_kdd_tree()
+        # self.mesh.adjacency = self.build_vertex_adjacency()
+        # self.mesh.T, self.mesh.B = self.compute_pca_tangent_frame()
+        # self.mesh.gpu_index = self.initialize_kdd_tree()
 
         self.ray_tracer = raytracing.RayTracer(np.asarray(self.mesh.vertices), np.asarray(self.mesh.triangles))
 
@@ -1454,7 +1454,7 @@ class NeROMaterialRenderer(nn.Module):
             self.train_batch[k] = v[shuffle_idxs]
 
     def shade(self, pts, view_dirs, normals, human_poses, is_train, step=None):
-        rgb_pr, outputs = self.shader_network(pts, view_dirs, normals, human_poses, step, is_train)
+        rgb_pr, outputs = self.shader_network(pts, view_dirs, normals, human_poses, step, is_train, self.mesh)
         outputs['rgb_pr'] = rgb_pr
         return outputs
 
