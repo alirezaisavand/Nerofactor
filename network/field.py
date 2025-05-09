@@ -3131,6 +3131,10 @@ class MCShadingNetwork(nn.Module):
 
         D_expanded = D.unsqueeze(2)
 
+
+        print('wi_n_dot min max:', wi_n_dot.min(), wi_n_dot.max())
+        print('wo_n_dot min max', wo_n_dot.min(), wo_n_dot.max())
+        print('alpha min max:', alpha.min(), alpha.max())
         power = (wi_n_dot*wo_n_dot)**alpha_expanded
         self.nan_inf_check(power, 'power')
 
