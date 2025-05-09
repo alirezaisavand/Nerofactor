@@ -3058,12 +3058,37 @@ class MCShadingNetwork(nn.Module):
 
         return Lo
 
+    def nan_inf_check(self, A, name):
+        if torch.isinf(A).any():
+            print('inf in exp_unsq', name)
+        if torch.isnan(A).any():
+            print('nan in exp_unsq', name)
+
     def shade_anisotropic_mixed(self, pts, normals, view_dirs, reflections, mx, my, alpha, F0, kd, ks, human_poses, is_train):
         # Todo implement shading final color
+        self.nan_inf_check(normals, 'normals')
+        self.nan_inf_check(mx, 'mx')
+        self.nan_inf_check(my, 'my')
+        self.nan_inf_check(alpha, 'alpha')
+        self.nan_inf_check(F0, 'F0')
+        self.nan_inf_check(kd, 'kd')
+        self.nan_inf_check(ks, 'ks')
         num_samples = self.cfg['specular_sample_num']
         hs, wis, pdfs, cos_ths, sin_ths, cos_phis, sin_phis = self.sample_aniso_ggx_half_vector_wi_pdf(num_samples, mx, my, view_dirs)
+
+        self.nan_inf_check(hs, 'hs')
+        self.nan_inf_check(wis, 'wis')
+        self.nan_inf_check(pdfs, 'pdfs')
+        self.nan_inf_check(cos_ths, 'cos_ths')
+        self.nan_inf_check(sin_ths, 'sin_ths')
+        self.nan_inf_check(cos_phis, 'cos_phis')
+        self.nan_inf_check(sin_phis, 'sin_phis')
+
         pts_ = pts.unsqueeze(1).repeat(1, num_samples, 1)
         lights, hl, light_pts, light_normals, light_pts_mask = self.get_lights(pts_, wis, human_poses)
+
+        self.nan_inf_check(lights, 'lights')
+
 
         normals_expanded = normals.unsqueeze(1).expand(normals.shape[0], num_samples, 3)
         view_dirs_expanded = view_dirs.unsqueeze(1).expand(view_dirs.shape[0], num_samples, 3)
