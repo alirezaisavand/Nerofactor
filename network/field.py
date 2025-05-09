@@ -3101,13 +3101,22 @@ class MCShadingNetwork(nn.Module):
 
         normals_expanded = normals.unsqueeze(1).expand(normals.shape[0], num_samples, 3)
         view_dirs_expanded = view_dirs.unsqueeze(1).expand(view_dirs.shape[0], num_samples, 3)
-        wo_h_dot = (view_dirs_expanded * hs).sum(dim=2, keepdim=True)
-        wi_n_dot = (wis * normals_expanded).sum(dim=2, keepdim=True)
-        wo_n_dot = (view_dirs_expanded * normals_expanded).sum(dim=2, keepdim=True)
-        F0_expanded = F0.unsqueeze(1).expand(F0.shape[0], num_samples, 1)
-        F = F0_expanded + (1- F0_expanded) * (1 - (wo_h_dot))**5
-        tan_ths = sin_ths / cos_ths
 
+        wo_h_dot = (view_dirs_expanded * hs).sum(dim=2, keepdim=True)
+        self.nan_inf_check(wo_h_dot, 'wo_h_dot')
+
+        wi_n_dot = (wis * normals_expanded).sum(dim=2, keepdim=True)
+        self.nan_inf_check(wi_n_dot, 'wi_n_dot')
+
+        wo_n_dot = (view_dirs_expanded * normals_expanded).sum(dim=2, keepdim=True)
+        self.nan_inf_check(wo_n_dot, 'wo_n_dot')
+
+        F0_expanded = F0.unsqueeze(1).expand(F0.shape[0], num_samples, 1)
+
+        F = F0_expanded + (1- F0_expanded) * (1 - (wo_h_dot))**5
+        self.nan_inf_check(F, 'F')
+
+        tan_ths = sin_ths / cos_ths
         self.nan_inf_check(tan_ths, 'tan_ths')
 
         kd_expanded = kd.unsqueeze(1).expand(kd.shape[0], num_samples, 3)
@@ -3116,13 +3125,24 @@ class MCShadingNetwork(nn.Module):
 
         Q = torch.exp(-(tan_ths**2) * ((cos_phis**2/mx**2)+(sin_phis**2/my**2)))
         self.nan_inf_check(Q, 'Q')
+
         D = 1 / (np.pi*mx*my*cos_ths**4) * Q
         self.nan_inf_check(D, 'D')
+
         D_expanded = D.unsqueeze(2)
-        f = (kd_expanded * (1 - F)) / (np.pi) + (ks_expanded * F * D_expanded) / (4 * wo_h_dot * (wi_n_dot*wo_n_dot)**alpha_expanded)
+
+        power = (wi_n_dot*wo_n_dot)**alpha_expanded
+        self.nan_inf_check(power, 'power')
+
+        denom = (4 * wo_h_dot * power)
+        self.nan_inf_check(denom, 'denom')
+
+        f = (kd_expanded * (1 - F)) / (np.pi) + (ks_expanded * F * D_expanded) / denom
         self.nan_inf_check(f, 'f')
+
         R = self.compute_outgoing_radiance(lights, wis, pdfs, view_dirs, normals, f)
         self.nan_inf_check(R, 'R')
+
         colors = linear_to_srgb(R)
 
         outputs = {}
