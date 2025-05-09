@@ -96,7 +96,7 @@ class MaterialRenderMetrics(Loss):
 
         # additional_keys = ['albedo', 'metallic', 'roughness', 'specular_light', 'specular_color', 'diffuse_light',
         #                    'diffuse_color']
-        additional_keys = ['kd', 'ks', 'specular_light', 'F0']
+        additional_keys = ['kd', 'ks', 'specular_light', 'F0', 'alpha']
         # additional_keys = ['albedo', 'specular_light', 'specular_color', 'diffuse_light',
         #                    'diffuse_color', 'spec_brdf']
         for k in additional_keys:

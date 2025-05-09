@@ -3094,6 +3094,7 @@ class MCShadingNetwork(nn.Module):
         outputs['kd'] = kd
         outputs['ks'] = ks
         outputs['F0'] = F0
+        outputs['alpha'] = alpha
         return colors, outputs
 
 
@@ -3170,8 +3171,10 @@ class MCShadingNetwork(nn.Module):
 
             mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch = self.predict_anisotropic_components(pts + change)
             reg = reg + torch.mean(
-                (torch.abs(mx - mx_ch) + torch.abs(my - my_ch) + torch.abs(alpha - alpha_ch)) * self.cfg[
+                torch.abs(kd - kd_ch)+torch.abs(ks - ks_ch)+(torch.abs(mx - mx_ch) +
+                                                             torch.abs(my - my_ch) + torch.abs(alpha - alpha_ch)) * self.cfg[
                     'reg_lambda1'], dim=1)
+        return reg
 
     def material_regularization(self, pts, normals, metallic, roughness, albedo, step):
         # metallic, roughness, albedo = self.predict_materials(pts)

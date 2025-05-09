@@ -1489,7 +1489,8 @@ class NeROMaterialRenderer(nn.Module):
             # shade_outputs['loss_mat_reg'] = self.shader_network.material_regularization(
             #     pts, normals, shade_outputs['metallic'], shade_outputs['roughness'], shade_outputs['albedo'], step)
             shade_outputs['loss_mat_reg'] = self.shader_network.anisotropic_regularization(
-                pts, normals,
+                pts, normals, shade_outputs['mx'], shade_outputs['my'], shade_outputs['alpha'], shade_outputs['F0'],
+                shade_outputs['kd'], shade_outputs['ks']
             )
             # shade_outputs['loss_mat_reg'] = self.shader_network.material_regularization(
             #     pts, normals, shade_outputs['albedo'], step)
@@ -1512,7 +1513,7 @@ class NeROMaterialRenderer(nn.Module):
         # output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'specular_color': 3, 'diffuse_light': 3,
         #                'diffuse_color': 3, 'albedo': 3, 'metallic': 1, 'roughness': 1}
         output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3,
-                       'kd': 3, 'ks': 3, 'F0': 1}
+                       'kd': 3, 'ks': 3, 'F0': 1, "alpha": 1}
         outputs = {k: [] for k in output_keys.keys()}
         rn = ray_batch['rays_o'].shape[0]
         for ri in range(0, rn, trn):
