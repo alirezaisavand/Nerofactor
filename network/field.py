@@ -3095,6 +3095,8 @@ class MCShadingNetwork(nn.Module):
         outputs['ks'] = ks
         outputs['F0'] = F0
         outputs['alpha'] = alpha
+        outputs['mx'] = mx
+        outputs['my'] = my
         return colors, outputs
 
 
