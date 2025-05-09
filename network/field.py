@@ -2916,6 +2916,15 @@ class MCShadingNetwork(nn.Module):
         F0 = self.F0_predictor(torch.cat([feats, pts], -1))
         kd = self.kd_predictor(torch.cat([feats, pts], -1))
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
+
+        print('predict_anisotropic_components:')
+        self.nan_inf_check(mx, 'mx')
+        self.nan_inf_check(my, 'my')
+        self.nan_inf_check(alpha, 'alpha')
+        self.nan_inf_check(F0, 'F0')
+        self.nan_inf_check(kd, 'kd')
+        self.nan_inf_check(ks, 'ks')
+
         return mx, my, alpha, F0, kd, ks
 
 
@@ -3060,9 +3069,9 @@ class MCShadingNetwork(nn.Module):
 
     def nan_inf_check(self, A, name):
         if torch.isinf(A).any():
-            print('inf in exp_unsq', name)
+            print('inf in', name)
         if torch.isnan(A).any():
-            print('nan in exp_unsq', name)
+            print('nan in', name)
 
     def shade_anisotropic_mixed(self, pts, normals, view_dirs, reflections, mx, my, alpha, F0, kd, ks, human_poses, is_train):
         # Todo implement shading final color
@@ -3099,17 +3108,21 @@ class MCShadingNetwork(nn.Module):
         F = F0_expanded + (1- F0_expanded) * (1 - (wo_h_dot))**5
         tan_ths = sin_ths / cos_ths
 
+        self.nan_inf_check(tan_ths, 'tan_ths')
 
         kd_expanded = kd.unsqueeze(1).expand(kd.shape[0], num_samples, 3)
         ks_expanded = ks.unsqueeze(1).expand(ks.shape[0], num_samples, 3)
         alpha_expanded = alpha.unsqueeze(1).expand(alpha.shape[0], num_samples, 1)
 
         Q = torch.exp(-(tan_ths**2) * ((cos_phis**2/mx**2)+(sin_phis**2/my**2)))
+        self.nan_inf_check(Q, 'Q')
         D = 1 / (np.pi*mx*my*cos_ths**4) * Q
+        self.nan_inf_check(D, 'D')
         D_expanded = D.unsqueeze(2)
         f = (kd_expanded * (1 - F)) / (np.pi) + (ks_expanded * F * D_expanded) / (4 * wo_h_dot * (wi_n_dot*wo_n_dot)**alpha_expanded)
+        self.nan_inf_check(f, 'f')
         R = self.compute_outgoing_radiance(lights, wis, pdfs, view_dirs, normals, f)
-
+        self.nan_inf_check(R, 'R')
         colors = linear_to_srgb(R)
 
         outputs = {}
@@ -3126,8 +3139,20 @@ class MCShadingNetwork(nn.Module):
 
 
     def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh):
+        print('anisotropic_forward:')
+        self.nan_inf_check(view_dirs, 'view_dirs')
+        self.nan_inf_check(normals, 'normals')
+        self.nan_inf_check(human_poses, 'human_poses')
         reflections = torch.sum(view_dirs * normals, -1, keepdim=True) * normals * 2 - view_dirs
         mx, my, alpha, F0, kd, ks = self.predict_anisotropic_components(pts)
+
+        self.nan_inf_check(mx, 'mx')
+        self.nan_inf_check(my, 'my')
+        self.nan_inf_check(alpha, 'alpha')
+        self.nan_inf_check(F0, 'F0')
+        self.nan_inf_check(kd, 'kd')
+        self.nan_inf_check(ks, 'ks')
+
         return self.shade_anisotropic_mixed(pts, normals, view_dirs, reflections, mx, my, alpha, F0, kd, ks, human_poses, is_train)
 
 
