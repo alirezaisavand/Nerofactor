@@ -1486,14 +1486,17 @@ class NeROMaterialRenderer(nn.Module):
         shade_outputs['rgb_gt'] = rgb_gt
         shade_outputs['loss_rgb'] = self.compute_rgb_loss(shade_outputs['rgb_pr'], shade_outputs['rgb_gt'])
         if self.cfg['reg_mat']:
-            shade_outputs['loss_mat_reg'] = self.shader_network.material_regularization(
-                pts, normals, shade_outputs['metallic'], shade_outputs['roughness'], shade_outputs['albedo'], step)
+            # shade_outputs['loss_mat_reg'] = self.shader_network.material_regularization(
+            #     pts, normals, shade_outputs['metallic'], shade_outputs['roughness'], shade_outputs['albedo'], step)
+            shade_outputs['loss_mat_reg'] = self.shader_network.anisotropic_regularization(
+                pts, normals,
+            )
             # shade_outputs['loss_mat_reg'] = self.shader_network.material_regularization(
             #     pts, normals, shade_outputs['albedo'], step)
         if self.cfg['reg_diffuse_light']:
-            shade_outputs['loss_diffuse_light'] = self.compute_diffuse_light_regularization(
-                shade_outputs['diffuse_light'])
-
+            # shade_outputs['loss_diffuse_light'] = self.compute_diffuse_light_regularization(
+            #     shade_outputs['diffuse_light'])
+            pass
         self.train_batch_i += rn
         if self.train_batch_i + rn >= self.tbn: self._shuffle_train_batch()
         return shade_outputs
@@ -1506,10 +1509,10 @@ class NeROMaterialRenderer(nn.Module):
                                                                                                          'cuda', False)
         trn = self.cfg['test_ray_num']
 
-        output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'specular_color': 3, 'diffuse_light': 3,
-                       'diffuse_color': 3, 'albedo': 3, 'metallic': 1, 'roughness': 1}
         # output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'specular_color': 3, 'diffuse_light': 3,
-        #                'diffuse_color': 3, 'albedo': 3, 'spec_brdf': 3}
+        #                'diffuse_color': 3, 'albedo': 3, 'metallic': 1, 'roughness': 1}
+        output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3,
+                       'kd': 3, 'ks': 3, 'F0': 1}
         outputs = {k: [] for k in output_keys.keys()}
         rn = ray_batch['rays_o'].shape[0]
         for ri in range(0, rn, trn):
@@ -1527,14 +1530,10 @@ class NeROMaterialRenderer(nn.Module):
                 outputs_cur['rgb_pr'][hit_mask] = shade_outputs['rgb_pr']
                 outputs_cur['rgb_gt'][hit_mask] = rgb_gt
                 outputs_cur['specular_light'][hit_mask] = shade_outputs['specular_light']
-                outputs_cur['specular_color'][hit_mask] = shade_outputs['specular_color']
-                outputs_cur['diffuse_color'][hit_mask] = shade_outputs['diffuse_color']
-                outputs_cur['diffuse_light'][hit_mask] = shade_outputs['diffuse_light']
-                outputs_cur['albedo'][hit_mask] = shade_outputs['albedo']
+                outputs_cur['ks'][hit_mask] = shade_outputs['ks']
+                outputs_cur['kd'][hit_mask] = shade_outputs['kd']
+                outputs_cur['F0'][hit_mask] = shade_outputs['F0']
                 # outputs_cur['spec_brdf'][hit_mask] = shade_outputs['spec_brdf']
-                outputs_cur['metallic'][hit_mask] = shade_outputs['metallic']
-                outputs_cur['roughness'][hit_mask] = torch.sqrt(
-                    shade_outputs['roughness'])  # note: we assume predictions are roughness squared
 
             for k in output_keys.keys():
                 outputs[k].append(outputs_cur[k])

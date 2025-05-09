@@ -2478,9 +2478,9 @@ class MCShadingNetwork(nn.Module):
 
         # material part
         self.feats_network = MaterialFeatsNetwork()
-        self.metallic_predictor = make_predictor(256 + 3, 1)
-        self.roughness_predictor = make_predictor(256 + 3, 1)
-        self.albedo_predictor = make_predictor(256 + 3, 3)
+        # self.metallic_predictor = make_predictor(256 + 3, 1)
+        # self.roughness_predictor = make_predictor(256 + 3, 1)
+        # self.albedo_predictor = make_predictor(256 + 3, 3)
 
         if self.cfg['anisotropy']:
             self.mx_predictor = make_predictor(256 + 3, 1, activation='exp', exp_max=self.cfg['max_n_exp'])
@@ -2874,11 +2874,6 @@ class MCShadingNetwork(nn.Module):
         geometry = self.geometry(NoV, NoL, roughness.unsqueeze(1))
         NoH = saturate_dot(normals.unsqueeze(1), H)
 
-        if mesh is None:
-            distribution = self.distribution_ggx(NoH, roughness.unsqueeze(1))
-        else:
-            # Todo Implement anisotropic distribution here
-            pass
         human_poses = human_poses.unsqueeze(1).repeat(1, sn, 1, 1) if human_poses is not None else None
         pts_ = pts.unsqueeze(1).repeat(1, sn, 1)
         lights, hl, light_pts, light_normals, light_pts_mask = self.get_lights(pts_, directions, human_poses)  # pn,sn,3
@@ -3079,8 +3074,6 @@ class MCShadingNetwork(nn.Module):
         F = F0_expanded + (1- F0_expanded) * (1 - (wo_h_dot))**5
         tan_ths = sin_ths / cos_ths
 
-        mx_expanded = mx.unsqueeze(1).expand(mx.shape[0], num_samples, 1)
-        my_expanded = my.unsqueeze(1).expand(my.shape[0], num_samples, 1)
 
         kd_expanded = kd.unsqueeze(1).expand(kd.shape[0], num_samples, 3)
         ks_expanded = ks.unsqueeze(1).expand(ks.shape[0], num_samples, 3)
@@ -3095,17 +3088,12 @@ class MCShadingNetwork(nn.Module):
         colors = linear_to_srgb(R)
 
         outputs = {}
-        outputs['albedo'] = torch.zeros_like(colors)
-        outputs['roughness'] = torch.zeros_like(colors)
-        outputs['metallic'] = torch.zeros_like(colors)
         outputs['human_lights'] = hl.reshape(-1, 3)
-        outputs['diffuse_light'] = torch.zeros_like(colors)
         outputs['specular_light'] = torch.clamp(linear_to_srgb(torch.mean(lights, dim=1)), min=0, max=1)
-        # diffuse_colors = torch.clamp(linear_to_srgb(diffuse_colors), min=0, max=1)
-        # specular_colors = torch.clamp(linear_to_srgb(specular_colors), min=0, max=1)
-        outputs['diffuse_color'] = torch.zeros_like(colors)
-        outputs['specular_color'] = torch.zeros_like(colors)
-        outputs['approximate_light'] = torch.zeros_like(colors)
+
+        outputs['kd'] = kd
+        outputs['ks'] = ks
+        outputs['F0'] = F0
         return colors, outputs
 
 
@@ -3163,6 +3151,27 @@ class MCShadingNetwork(nn.Module):
 
     def get_env_light(self):
         return self.predict_outer_lights_pts(self.light_pts)
+
+    def anisotropic_regularization(self, pts, normals, mx, my, alpha, F0, kd, ks):
+        reg = 0
+
+        if self.cfg['reg_change']:
+            normals = F.normalize(normals, dim=-1)
+            x = self.get_orthogonal_directions(normals)
+            y = torch.cross(normals, x)
+            ang = torch.rand(pts.shape[0], 1) * np.pi * 2
+            if self.cfg['change_type'] == 'constant':
+                change = (torch.cos(ang) * x + torch.sin(ang) * y) * self.cfg['change_eps']
+            elif self.cfg['change_type'] == 'gaussian':
+                eps = torch.normal(mean=0.0, std=self.cfg['change_eps'], size=[x.shape[0], 1])
+                change = (torch.cos(ang) * x + torch.sin(ang) * y) * eps
+            else:
+                raise NotImplementedError
+
+            mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch = self.predict_anisotropic_components(pts + change)
+            reg = reg + torch.mean(
+                (torch.abs(mx - mx_ch) + torch.abs(my - my_ch) + torch.abs(alpha - alpha_ch)) * self.cfg[
+                    'reg_lambda1'], dim=1)
 
     def material_regularization(self, pts, normals, metallic, roughness, albedo, step):
         # metallic, roughness, albedo = self.predict_materials(pts)
