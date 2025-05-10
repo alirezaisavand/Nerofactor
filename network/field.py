@@ -3068,7 +3068,7 @@ class MCShadingNetwork(nn.Module):
         weights = lights * f_vals * cos_theta / (pdf_expanded + eps)
 
         # 5) average over samples
-        Lo = weights.mean(dim=1)  # (C,)
+        Lo = weights[cos_theta>0].mean(dim=1)  # (C,)
 
         return Lo
 
