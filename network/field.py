@@ -2933,6 +2933,7 @@ class MCShadingNetwork(nn.Module):
                                             m_x: float,
                                             m_y: float,
                                             wo: torch.Tensor,
+                                            normals: torch.Tensor,
                                             device: torch.device = None,
                                             eps: float = 1e-6):
         """
@@ -3003,7 +3004,12 @@ class MCShadingNetwork(nn.Module):
         #    p = q(h) / [4π m_x m_y cos³θh (ωo·h)]
         cos3 = cos_th ** 3
         pdf = qh / (4.0 * np.pi * m_x * m_y * cos3 * dot_wo_h.squeeze().abs() + eps)
-        return h, wi, pdf, cos_th, sin_th, cos_phi, sin_phi
+
+        # 7) **Filter out directions with wi·n <= 0**
+        normals_expanded = normals.unsqueeze(1).expand(wi.shape[0], wi.shape[1], 3)
+        cos_i = (wi * normals).sum(dim=2)
+        mask = cos_i > 0.0
+        return h[mask], wi[mask], pdf[mask], cos_th[mask], sin_th[mask], cos_phi[mask], sin_phi[mask]
 
     def compute_outgoing_radiance(self, lights: torch.Tensor,
                                   wi: torch.Tensor,
@@ -3083,7 +3089,7 @@ class MCShadingNetwork(nn.Module):
         self.nan_inf_check(kd, 'kd')
         self.nan_inf_check(ks, 'ks')
         num_samples = self.cfg['specular_sample_num']
-        hs, wis, pdfs, cos_ths, sin_ths, cos_phis, sin_phis = self.sample_aniso_ggx_half_vector_wi_pdf(num_samples, mx, my, view_dirs)
+        hs, wis, pdfs, cos_ths, sin_ths, cos_phis, sin_phis = self.sample_aniso_ggx_half_vector_wi_pdf(num_samples, mx, my, view_dirs, normals)
 
         self.nan_inf_check(hs, 'hs')
         self.nan_inf_check(wis, 'wis')
