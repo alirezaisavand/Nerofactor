@@ -3009,7 +3009,7 @@ class MCShadingNetwork(nn.Module):
 
         normals_expanded = normals.unsqueeze(1).expand(wi.shape[0], wi.shape[1], 3)
         cos_i = (wi * normals_expanded).sum(dim=2)
-        mask = (cos_i > 0.0).unsqueeze(2).expand(mask.shape[0], mask.shape[1], 3)
+        mask = (cos_i > 0.0).unsqueeze(2).expand(wi.shape[0], wi.shape[1], 3)
         print('wi shape:', wi.shape, 'mask shape:', mask.shape, 'wi[mask]:', wi[mask].shape)
         return h[mask], wi[mask], pdf[mask], cos_th[mask], sin_th[mask], cos_phi[mask], sin_phi[mask]
 
