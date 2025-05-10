@@ -3006,8 +3006,9 @@ class MCShadingNetwork(nn.Module):
         pdf = qh / (4.0 * np.pi * m_x * m_y * cos3 * dot_wo_h.squeeze().abs() + eps)
 
         # 7) **Filter out directions with wi·n <= 0**
+
         normals_expanded = normals.unsqueeze(1).expand(wi.shape[0], wi.shape[1], 3)
-        cos_i = (wi * normals).sum(dim=2)
+        cos_i = (wi * normals_expanded).sum(dim=2)
         mask = cos_i > 0.0
         return h[mask], wi[mask], pdf[mask], cos_th[mask], sin_th[mask], cos_phi[mask], sin_phi[mask]
 
