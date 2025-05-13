@@ -2875,7 +2875,6 @@ class MCShadingNetwork(nn.Module):
 
 
     def predict_anisotropic_components(self, pts):
-        # Todo implement using MLPs for predicting components
         feats = self.feats_network(pts)
         mx = self.mx_predictor(torch.cat([feats, pts], -1))
         my = self.my_predictor(torch.cat([feats, pts], -1))
@@ -2884,7 +2883,7 @@ class MCShadingNetwork(nn.Module):
         kd = self.kd_predictor(torch.cat([feats, pts], -1))
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
 
-        print('predict_anisotropic_components:')
+        # print('predict_anisotropic_components:')
         self.nan_inf_check(mx, 'mx')
         self.nan_inf_check(my, 'my')
         self.nan_inf_check(alpha, 'alpha')
@@ -3153,7 +3152,7 @@ class MCShadingNetwork(nn.Module):
 
 
     def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh):
-        print('anisotropic_forward:')
+        # print('anisotropic_forward:')
         self.nan_inf_check(view_dirs, 'view_dirs')
         self.nan_inf_check(normals, 'normals')
         self.nan_inf_check(human_poses, 'human_poses')
