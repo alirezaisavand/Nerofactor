@@ -2787,39 +2787,6 @@ class MCShadingNetwork(nn.Module):
         albedo = self.albedo_predictor(torch.cat([feats, pts], -1))
         return metallic, roughness, albedo
 
-    # def distribution_ggx_anisotropic(self,
-    #                                  H: torch.Tensor,  # (...,3) half-vector
-    #                                  N: torch.Tensor,  # (...,3) normal
-    #                                  T: torch.Tensor,  # (...,3) tangent
-    #                                  B: torch.Tensor,  # (...,3) bitangent
-    #                                  roughness_u: float,  # αₓ
-    #                                  roughness_v: float,  # αᵧ
-    #                                  eps: float = 1e-6
-    #                                  ) -> torch.Tensor:
-    #     """
-    #     Anisotropic GGX normal distribution function (D term), vectorized.
-    #     Returns a tensor of shape (...) matching H[...,0].
-    #     """
-    #     # squared roughness along each axis
-    #     ax2 = roughness_u * roughness_u
-    #     ay2 = roughness_v * roughness_v
-    #
-    #     # dot products
-    #     h_dot_n = torch.clamp((H * N).sum(dim=-1), min=0.0)  # (...,)
-    #     h_dot_t = (H * T).sum(dim=-1)
-    #     h_dot_b = (H * B).sum(dim=-1)
-    #
-    #     # if below horizon, no contribution
-    #     # (optionally mask these to zero; clamp handles stability)
-    #     # form the anisotropic denominator
-    #     denom = (h_dot_t * h_dot_t) / ax2 \
-    #             + (h_dot_b * h_dot_b) / ay2 \
-    #             + h_dot_n * h_dot_n
-    #     denom2 = denom * denom
-    #
-    #     # final D value
-    #     D = 1.0 / (np.pi * roughness_u * roughness_v * denom2 + eps)
-    #     return D
 
     def distribution_ggx(self, NoH, roughness):
         a = roughness
@@ -2927,150 +2894,139 @@ class MCShadingNetwork(nn.Module):
 
         return mx, my, alpha, F0, kd, ks
 
-
-
-    def sample_aniso_ggx_half_vector_wi_pdf(self, num_samples: int,
-                                            m_x: float,
-                                            m_y: float,
-                                            wo: torch.Tensor,
-                                            normals: torch.Tensor,
-                                            device: torch.device = None,
-                                            eps: float = 1e-6):
+    def sample_aniso_ggx_directions(self,
+                                    m_x: torch.Tensor,
+                                    m_y: torch.Tensor,
+                                    wo: torch.Tensor,
+                                    M: int,
+                                    device: torch.device = None,
+                                    eps: float = 1e-6):
         """
-        Samples anisotropic‐GGX half‐vectors h, computes incident directions wi,
-        and returns their PDFs p(ωi | ωo).
-
-        Parameters
-        ----------
-        num_samples : int
-            Number of samples to draw.
-        m_x, m_y : float
-            Anisotropic roughness along tangent (x) and bitangent (y).
-        wo : torch.Tensor
-            Viewing direction ωo in tangent‐space. Shape (3,) or (num_samples,3).
-        device : torch.device, optional
-        eps : float
-            Small epsilon for numerical stability.
-
-        Returns
-        -------
-        h  : (num_samples,3) half‐vectors
-        wi : (num_samples,3) reflected incident directions
-        pdf: (num_samples,)   corresponding PDFs p(ωi | ωo)
+        Sample anisotropic GGX half-vectors h (N,M,3), incident directions wi (N,M,3),
+        and cos(theta_h) (N,M,1) for each of N points and M samples per point.
         """
         if device is None:
-            device = wo.device if isinstance(wo, torch.Tensor) else torch.device('cpu')
+            device = wo.device
 
-        # broadcast wo to (num_samples,3)
-        wo = wo.to(device)
-        if wo.ndim == 2:
-            wo = wo.unsqueeze(1).expand(wo.shape[0], num_samples, 3)
+        # Ensure tensors on correct device
+        m_x = m_x.to(device)  # (N,1)
+        m_y = m_y.to(device)  # (N,1)
+        wo = wo.to(device)  # (N,3)
 
-        # 1) draw two uniforms
-        xi1 = torch.rand(num_samples, device=device).clamp(min=eps)
-        xi2 = torch.rand(num_samples, device=device)
+        N = wo.shape[0]
 
-        # 2) φ_h via Eqn (17)
-        two_pi_xi2 = 2.0 * np.pi * xi2
-        cos2 = torch.cos(two_pi_xi2)
-        sin2 = torch.sin(two_pi_xi2)
-        phi_h = torch.atan2(m_y * sin2, m_x * cos2)  # (num_samples,)
+        # 1) Uniform random samples xi1, xi2 in [0,1)
+        xi1 = torch.rand((N, M), device=device).clamp(min=eps)
+        xi2 = torch.rand((N, M), device=device)
 
-        # 3) θ_h via Eqn (16)
+        # 2) Azimuth phi_h
+        two_pi_xi2 = 2.0 * np.pi * xi2  # (N,M)
+        phi_h = torch.atan((m_y / m_x) * torch.tan(two_pi_xi2))  # (N,M)
+
+        # 3) Elevation theta_h
         cos_phi = torch.cos(phi_h)
         sin_phi = torch.sin(phi_h)
-        denom = (cos_phi ** 2) / (m_x * m_x) + (sin_phi ** 2) / (m_y * m_y)
-        theta_h = torch.atan(torch.sqrt(-torch.log(xi1) / (denom + eps)))
+        denom = (cos_phi ** 2) / (m_x * m_x) + (sin_phi ** 2) / (m_y * m_y)  # (N,M)
+        theta_h = torch.atan(torch.sqrt(-torch.log(xi1) / (denom + eps)))  # (N,M)
 
-        # 4) build half-vector h (Eqn 18)
+        # 4) Half-vectors h in tangent-space
         sin_th = torch.sin(theta_h)
         cos_th = torch.cos(theta_h)
-        h = torch.stack([sin_th * cos_phi,
-                         sin_th * sin_phi,
-                         cos_th], dim=2)  # (num_samples,3)
+        h = torch.stack([
+            sin_th * cos_phi,
+            sin_th * sin_phi,
+            cos_th
+        ], dim=-1)  # (N,M,3)
 
-        # 5) reflect wo about h to get wi (Eqn 19)
-        dot_wo_h = (wo * h).sum(dim=2, keepdim=True)  # (num_samples,1)
-        wi = 2.0 * dot_wo_h * h - wo
-        wi = torch.nn.functional.normalize(wi, dim=2, eps=eps)
+        # 5) Incident directions wi = reflect(wo, h)
+        wo_exp = wo.unsqueeze(1)  # (N,1,3)
+        dot = (wo_exp * h).sum(dim=-1, keepdim=True)  # (N,M,1)
+        wi = 2.0 * dot * h - wo_exp  # (N,M,3)
+        wi = torch.nn.functional.normalize(wi, dim=-1, eps=eps)
 
-        # 6) compute D(h) and q(h)=D·cosθh
-        hx, hy, hz = h.unbind(dim=2)
-        denom_D = (hx * hx) / (m_x * m_x) + (hy * hy) / (m_y * m_y) + (hz * hz)
-        D = 1.0 / (np.pi * m_x * m_y * (denom_D * denom_D) + eps)
-        qh = D * cos_th  # (num_samples,)
+        # 6) cos(theta_h)
+        cos_theta_h = cos_th.unsqueeze(-1)  # (N,M,1)
 
-        # 7) PDF p(ωi|ωo) via Eqn (20):
-        #    p = q(h) / [4π m_x m_y cos³θh (ωo·h)]
-        cos3 = cos_th ** 3
-        pdf = qh / (4.0 * np.pi * m_x * m_y * cos3 * dot_wo_h.squeeze().abs() + eps)
+        return h, wi, cos_theta_h
 
-        # 7) **Filter out directions with wi·n <= 0**
-        mask = (wi * normals.unsqueeze(1)).sum(dim=-1) > 0
-        print('wi shape:', wi.shape, 'mask shape:', mask.shape, 'wi[mask]:', wi[mask].shape)
-        return h[mask], wi[mask], pdf[mask], cos_th[mask], sin_th[mask], cos_phi[mask], sin_phi[mask]
-
-    def compute_outgoing_radiance(self, lights: torch.Tensor,
-                                  wi: torch.Tensor,
-                                  pdf: torch.Tensor,
-                                  wo: torch.Tensor,
-                                  n: torch.Tensor,
-                                  f,
-                                  eps: float = 1e-8) -> torch.Tensor:
+    def compute_radiance(self,
+                         f_d: torch.Tensor,
+                         lights: torch.Tensor,
+                         k_s: torch.Tensor,
+                         F: torch.Tensor,
+                         wi: torch.Tensor,
+                         n: torch.Tensor,
+                         alpha: torch.Tensor,
+                         cos_theta_h: torch.Tensor,
+                         wo: torch.Tensor,
+                         eps: float = 1e-6) -> torch.Tensor:
         """
-        Monte Carlo estimate of outgoing radiance Lo(wo) via Eqn (15):
+        Compute outgoing radiance R for N points, M samples each, via:
 
-            Lo(wo) ≈ (1/N) ∑ Li(wi) * f(wi, wo) * (wi·n) / p(wi|wo)
+          R = (1/M) sum_i [ f_d * L_i ]
+            + (1/M) sum_i [ L_i * k_s * F * (wi·n)^(1-alpha) / (cosθ_h * (wo·n)^alpha) ]
 
-        Parameters
-        ----------
-        lights : Tensor of shape (N, C)
-            Incoming radiance Li(ωi) per sample (C = number of color channels).
-        wi : Tensor of shape (N, 3)
-            Sampled incident directions ωi in world or tangent-space.
-        pdf : Tensor of shape (N,)
-            PDF values p(ωi | ωo) for each sample.
-        wo : Tensor of shape (3,) or (N, 3)
-            Outgoing/view direction ωo. If shape is (3,), it will be broadcast to (N, 3).
-        n : Tensor of shape (3,) or (N, 3)
-            Surface normal. If shape is (3,), it will be broadcast to (N, 3).
-        f_fn : Callable
-            Function f_fn(wi, wo, h) → Tensor of shape (N, C), returning BRDF values
-            for each pair (wi, wo). It should internally compute the half-vector h = normalize(wi + wo).
+        Parameters:
+        -----------
+        f_d : Tensor (N, M, 3)
+            Diffuse BRDF term per sample.
+        lights : Tensor (N, M, 3)
+            Incoming radiance Li per sample.
+        k_s : Tensor (N, 3)
+            Specular reflectivity per point.
+        F : Tensor (N, M, 1)
+            Fresnel term per sample.
+        wi : Tensor (N, M, 3)
+            Incident directions per sample.
+        n : Tensor (N, 3)
+            Surface normals per point.
+        alpha : Tensor (N, 1)
+            Roughness exponent per point.
+        cos_theta_h : Tensor (N, M, 1)
+            cos(theta_h) per sample.
+        wo : Tensor (N, 3)
+            View/outgoing direction per point.
         eps : float
-            Small epsilon to avoid division by zero.
+            Small epsilon for stability.
 
-        Returns
-        -------
-        Lo : Tensor of shape (C,)
-            Estimated outgoing radiance for the given ωo.
+        Returns:
+        --------
+        R : Tensor (N, 3)
+            Estimated outgoing radiance per point.
         """
-        M, N, C = lights.shape
+        N, M, _ = lights.shape
 
-        # Ensure wo and n have shape (N,3)
-        if wo.ndim == 2:
-            wo = wo.unsqueeze(1).expand(M, N, 3)
-        if n.ndim == 2:
-            n = n.unsqueeze(1).expand(M, N, 3)
+        # Expand k_s, alpha, wo·n to match (N, M, *)
+        k_s_exp = k_s.unsqueeze(1)  # (N, 1, 3)
+        alpha_exp = alpha.unsqueeze(1)  # (N, 1, 1)
+        cos_on = torch.clamp((wo * n).sum(dim=1, keepdim=True), min=0.0)  # (N,1)
+        cos_on_exp = cos_on.unsqueeze(1)  # (N,1,1)
 
-        # 1) compute half-vector h = normalize(wi + wo)
-        h = torch.nn.functional.normalize(wi + wo, dim=-1, eps=eps)
+        # Dot product wi·n
+        cos_in = torch.clamp((wi * n.unsqueeze(1)).sum(dim=2, keepdim=True), min=0.0)  # (N,M,1)
 
-        # 2) evaluate BRDF f(wi, wo) using the provided function (it may use h internally)
-        #    f_vals: (N, C)
-        f_vals = f
+        # --- Diffuse component: (1/M) ∑ f_d * Li ---
+        diff_weighted = f_d * lights  # (N,M,3)
+        diffuse = diff_weighted.sum(dim=1) / M  # (N,3)
 
-        # 3) cosine term (wi · n)
-        cos_theta = torch.clamp((wi * n).sum(dim=-1), min=0.0).unsqueeze(2)  # (N,)
-        pdf_expanded = pdf.unsqueeze(2)
-        # 4) weight each sample: Li * f * cosθ / pdf
-        #    shape broadcasts to (N, C)
-        weights = lights * f_vals * cos_theta / (pdf_expanded + eps)
+        # --- Specular component ---
+        # term1 = L * k_s * F
+        spec_base = lights * k_s_exp * F  # (N,M,3)
 
-        # 5) average over samples
-        Lo = weights[cos_theta>0].mean(dim=1)  # (C,)
+        # term2 = (wi·n)^(1-alpha)
+        exponent = 1.0 - alpha_exp  # (N,1,1)
+        pow_in = torch.pow(cos_in + eps, exponent)  # (N,M,1)
 
-        return Lo
+        # denom = cos_theta_h * (wo·n)^alpha
+        pow_on = torch.pow(cos_on_exp + eps, alpha_exp)  # (N,1,1)
+        denom = cos_theta_h * pow_on + eps  # (N,M,1)
+
+        spec_weighted = spec_base * pow_in / denom  # (N,M,3)
+        specular = spec_weighted.sum(dim=1) / M  # (N,3)
+
+        # Total radiance
+        R = diffuse + specular  # (N,3)
+        return R, diffuse, specular
 
     def nan_inf_check(self, A, name):
         if torch.isinf(A).any():
@@ -3078,8 +3034,75 @@ class MCShadingNetwork(nn.Module):
         if torch.isnan(A).any():
             print('nan in', name)
 
-    def shade_anisotropic_mixed(self, pts, normals, view_dirs, reflections, mx, my, alpha, F0, kd, ks, human_poses, is_train):
-        # Todo implement shading final color
+    def fresnel_schlick_batch(self,
+                              f0: torch.Tensor,
+                              wo: torch.Tensor,
+                              h: torch.Tensor,
+                              eps: float = 1e-6) -> torch.Tensor:
+        """
+        Schlick's Fresnel for batched queries:
+            F = f0 + (1 - f0) * (1 - (wo · h))^5
+
+        Parameters:
+        -----------
+        f0 : torch.Tensor
+            Base reflectivity, shape (N, 1)  (per-point scalar or channel count 1).
+        wo : torch.Tensor
+            Outgoing/view directions, shape (N, 3).
+        h : torch.Tensor
+            Half-vectors, shape (N, M, 3), M samples per point.
+        eps : float
+            Small epsilon to avoid numerical issues.
+
+        Returns:
+        --------
+        F : torch.Tensor
+            Fresnel terms, shape (N, M, 1).
+        """
+        # Ensure shapes
+        N, M, _ = h.shape
+        # Broadcast wo to (N, M, 3)
+        wo_exp = wo.unsqueeze(1).expand(N, M, 3)
+        # Compute cos(theta) = wo · h, shape (N, M, 1)
+        cos_theta = torch.clamp(torch.sum(wo_exp * h, dim=-1, keepdim=True), min=0.0, max=1.0)
+        # Broadcast f0 to (N, M, 1)
+        f0_exp = f0.unsqueeze(1)  # (N, 1, 1) -> broadcast over M
+        # Compute Fresnel
+        F = f0_exp + (1.0 - f0_exp) * (1.0 - cos_theta) ** 5
+        return F
+
+    def diffuse_term(self,
+                     kd: torch.Tensor,
+                     F: torch.Tensor) -> torch.Tensor:
+        """
+        Compute the diffuse term f_d = (k_d / π) * (1 - F) for anisotropic Cook-Torrance.
+
+        Parameters:
+        -----------
+        kd : torch.Tensor
+            Diffuse albedo, shape (N, 3).
+        F : torch.Tensor
+            Fresnel term from fresnel_schlick_batch,
+            shape (N, M, 1).
+
+        Returns:
+        --------
+        f_d : torch.Tensor
+            Diffuse BRDF term, shape (N, M, 3).
+        """
+        # Ensure shapes
+        # kd: (N,3) -> (N,1,3)
+        kd_exp = kd.unsqueeze(1)  # (N,1,3)
+
+        # (1 - F): shape (N, M, 1)
+        one_minus_F = 1.0 - F  # broadcastable to (N,M,3)
+
+        # f_d = (k_d / π) * (1 - F)
+        f_d = kd_exp / np.pi * one_minus_F  # (N,M,3)
+
+        return f_d
+
+    def shade_anisotropic_mixed(self, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train):
         self.nan_inf_check(normals, 'normals')
         self.nan_inf_check(mx, 'mx')
         self.nan_inf_check(my, 'my')
@@ -3087,72 +3110,32 @@ class MCShadingNetwork(nn.Module):
         self.nan_inf_check(F0, 'F0')
         self.nan_inf_check(kd, 'kd')
         self.nan_inf_check(ks, 'ks')
-        num_samples = self.cfg['specular_sample_num']
-        hs, wis, pdfs, cos_ths, sin_ths, cos_phis, sin_phis = self.sample_aniso_ggx_half_vector_wi_pdf(num_samples, mx, my, view_dirs, normals)
 
+        num_samples = self.cfg['specular_sample_num']
+
+        hs, wis, cos_ths = self.sample_aniso_ggx_directions(mx, my, view_dirs, num_samples, 'cuda')
         self.nan_inf_check(hs, 'hs')
         self.nan_inf_check(wis, 'wis')
-        self.nan_inf_check(pdfs, 'pdfs')
         self.nan_inf_check(cos_ths, 'cos_ths')
-        self.nan_inf_check(sin_ths, 'sin_ths')
-        self.nan_inf_check(cos_phis, 'cos_phis')
-        self.nan_inf_check(sin_phis, 'sin_phis')
 
         pts_ = pts.unsqueeze(1).repeat(1, num_samples, 1)
         lights, hl, light_pts, light_normals, light_pts_mask = self.get_lights(pts_, wis, human_poses)
-
         self.nan_inf_check(lights, 'lights')
 
+        F = self.fresnel_schlick_batch(F0, view_dirs, hs)
+        self.nan_inf_check(F, 'F (fresnel schlick)')
 
-        normals_expanded = normals.unsqueeze(1).expand(normals.shape[0], num_samples, 3)
-        view_dirs_expanded = view_dirs.unsqueeze(1).expand(view_dirs.shape[0], num_samples, 3)
+        f_d = self.diffuse_term(kd, F)
+        self.nan_inf_check(f_d, 'diffuse term (f_d)')
 
-        wo_h_dot = (view_dirs_expanded * hs).sum(dim=2, keepdim=True)
-        self.nan_inf_check(wo_h_dot, 'wo_h_dot')
-
-        wi_n_dot = (wis * normals_expanded).sum(dim=2, keepdim=True)
-        self.nan_inf_check(wi_n_dot, 'wi_n_dot')
-
-        wo_n_dot = (view_dirs_expanded * normals_expanded).sum(dim=2, keepdim=True)
-        self.nan_inf_check(wo_n_dot, 'wo_n_dot')
-
-        F0_expanded = F0.unsqueeze(1).expand(F0.shape[0], num_samples, 1)
-
-        F = F0_expanded + (1- F0_expanded) * (1 - (wo_h_dot))**5
-        self.nan_inf_check(F, 'F')
-
-        tan_ths = sin_ths / cos_ths
-        self.nan_inf_check(tan_ths, 'tan_ths')
-
-        kd_expanded = kd.unsqueeze(1).expand(kd.shape[0], num_samples, 3)
-        ks_expanded = ks.unsqueeze(1).expand(ks.shape[0], num_samples, 3)
-        alpha_expanded = alpha.unsqueeze(1).expand(alpha.shape[0], num_samples, 1)
-
-        Q = torch.exp(-(tan_ths**2) * ((cos_phis**2/mx**2)+(sin_phis**2/my**2)))
-        self.nan_inf_check(Q, 'Q')
-
-        D = 1 / (np.pi*mx*my*cos_ths**4) * Q
-        self.nan_inf_check(D, 'D')
-
-        D_expanded = D.unsqueeze(2)
-
-
-        print('wi_n_dot min max:', wi_n_dot.min(), wi_n_dot.max())
-        print('wo_n_dot min max', wo_n_dot.min(), wo_n_dot.max())
-        print('alpha min max:', alpha.min(), alpha.max())
-        power = (wi_n_dot*wo_n_dot)**alpha_expanded
-        self.nan_inf_check(power, 'power')
-
-        denom = (4 * wo_h_dot * power)
-        self.nan_inf_check(denom, 'denom')
-
-        f = (kd_expanded * (1 - F)) / (np.pi) + (ks_expanded * F * D_expanded) / denom
-        self.nan_inf_check(f, 'f')
-
-        R = self.compute_outgoing_radiance(lights, wis, pdfs, view_dirs, normals, f)
+        R, diffuse_color, specular_color  = self.compute_radiance(f_d, lights, ks, F, wis, normals, alpha, cos_ths, view_dirs)
         self.nan_inf_check(R, 'R')
+        self.nan_inf_check(diffuse_color, 'diffuse_color')
+        self.nan_inf_check(specular_color, 'specular_color')
 
         colors = linear_to_srgb(R)
+        diffuse_color = linear_to_srgb(diffuse_color)
+        specular_color = linear_to_srgb(specular_color)
 
         outputs = {}
         outputs['human_lights'] = hl.reshape(-1, 3)
@@ -3164,6 +3147,8 @@ class MCShadingNetwork(nn.Module):
         outputs['alpha'] = alpha
         outputs['mx'] = mx
         outputs['my'] = my
+        outputs['diffuse_color'] = diffuse_color
+        outputs['specular_color'] = specular_color
         return colors, outputs
 
 
@@ -3172,7 +3157,6 @@ class MCShadingNetwork(nn.Module):
         self.nan_inf_check(view_dirs, 'view_dirs')
         self.nan_inf_check(normals, 'normals')
         self.nan_inf_check(human_poses, 'human_poses')
-        reflections = torch.sum(view_dirs * normals, -1, keepdim=True) * normals * 2 - view_dirs
         mx, my, alpha, F0, kd, ks = self.predict_anisotropic_components(pts)
 
         self.nan_inf_check(mx, 'mx')
@@ -3182,7 +3166,7 @@ class MCShadingNetwork(nn.Module):
         self.nan_inf_check(kd, 'kd')
         self.nan_inf_check(ks, 'ks')
 
-        return self.shade_anisotropic_mixed(pts, normals, view_dirs, reflections, mx, my, alpha, F0, kd, ks, human_poses, is_train)
+        return self.shade_anisotropic_mixed(pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train)
 
 
     def forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh):
