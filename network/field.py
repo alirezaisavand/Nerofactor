@@ -2882,15 +2882,6 @@ class MCShadingNetwork(nn.Module):
         F0 = self.F0_predictor(torch.cat([feats, pts], -1))
         kd = self.kd_predictor(torch.cat([feats, pts], -1))
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
-
-        # print('predict_anisotropic_components:')
-        self.nan_inf_check(mx, 'mx')
-        self.nan_inf_check(my, 'my')
-        self.nan_inf_check(alpha, 'alpha')
-        self.nan_inf_check(F0, 'F0')
-        self.nan_inf_check(kd, 'kd')
-        self.nan_inf_check(ks, 'ks')
-
         return mx, my, alpha, F0, kd, ks
 
     def sample_aniso_ggx_directions(self,
