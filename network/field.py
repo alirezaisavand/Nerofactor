@@ -3227,9 +3227,12 @@ class MCShadingNetwork(nn.Module):
 
             mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch = self.predict_anisotropic_components(pts + change)
             reg = reg + torch.mean(
-                torch.abs(kd - kd_ch)+torch.abs(ks - ks_ch)+(torch.abs(mx - mx_ch) +
-                                                             torch.abs(my - my_ch) + torch.abs(alpha - alpha_ch)) * self.cfg[
-                    'reg_lambda1'], dim=1)
+                (torch.abs(kd - kd_ch) + torch.abs(ks - ks_ch) + torch.abs(mx - mx_ch) +
+                                                                 torch.abs(my - my_ch) +
+                                                                 torch.abs(alpha - alpha_ch) +
+                                                                 torch.abs(F0 - F0_ch)) *
+                self.cfg['reg_lambda1'],
+                        dim=1)
         return reg
 
     def material_regularization(self, pts, normals, metallic, roughness, albedo, step):
