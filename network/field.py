@@ -3124,8 +3124,13 @@ class MCShadingNetwork(nn.Module):
         self.nan_inf_check(specular_color, 'specular_color')
 
         colors = linear_to_srgb(R)
+        self.nan_inf_check(colors, 'colors')
+
         diffuse_color = linear_to_srgb(diffuse_color)
+        self.nan_inf_check(diffuse_color, 'diffuse_color_srgb')
+
         specular_color = linear_to_srgb(specular_color)
+        self.nan_inf_check(specular_color, 'specular_color_srgb')
 
         outputs = {}
         outputs['human_lights'] = hl.reshape(-1, 3)
@@ -3144,18 +3149,7 @@ class MCShadingNetwork(nn.Module):
 
     def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh):
         # print('anisotropic_forward:')
-        self.nan_inf_check(view_dirs, 'view_dirs')
-        self.nan_inf_check(normals, 'normals')
-        self.nan_inf_check(human_poses, 'human_poses')
         mx, my, alpha, F0, kd, ks = self.predict_anisotropic_components(pts)
-
-        self.nan_inf_check(mx, 'mx')
-        self.nan_inf_check(my, 'my')
-        self.nan_inf_check(alpha, 'alpha')
-        self.nan_inf_check(F0, 'F0')
-        self.nan_inf_check(kd, 'kd')
-        self.nan_inf_check(ks, 'ks')
-
         return self.shade_anisotropic_mixed(pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train)
 
 
