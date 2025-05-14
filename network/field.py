@@ -3121,7 +3121,7 @@ class MCShadingNetwork(nn.Module):
         point_num, diffuse_num, _ = diffuse_directions.shape
         self.nan_inf_check(diffuse_directions, 'diffuse_directions')
 
-        pts_ = pts.unsqueeze(1).repeat(1, num_spec_samples, 1)
+        pts_ = pts.unsqueeze(1).repeat(1, num_spec_samples+diffuse_num, 1)
         directions = torch.cat([diffuse_directions, wis], 1)
         lights, hl, light_pts, light_normals, light_pts_mask = self.get_lights(pts_, directions, human_poses)
 
