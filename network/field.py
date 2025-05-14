@@ -2941,9 +2941,11 @@ class MCShadingNetwork(nn.Module):
 
     def compute_radiance(self,
                          f_d: torch.Tensor,
-                         lights: torch.Tensor,
+                         diffuse_lights: torch.Tensor,
+                         specular_lights: torch.Tensor,
                          k_s: torch.Tensor,
                          F: torch.Tensor,
+                         diffuse_directions: torch.Tensor,
                          wi: torch.Tensor,
                          n: torch.Tensor,
                          alpha: torch.Tensor,
@@ -2984,7 +2986,8 @@ class MCShadingNetwork(nn.Module):
         R : Tensor (N, 3)
             Estimated outgoing radiance per point.
         """
-        N, M, _ = lights.shape
+        N_spec, M_spec, _ = specular_lights.shape
+        N_diff, M_diff, _ = diffuse_lights.shape
 
         #    shape (N, M)
         mask = ((wi * n.unsqueeze(1)).sum(dim=-1) > 0.0)
@@ -3000,12 +3003,12 @@ class MCShadingNetwork(nn.Module):
         cos_in = torch.clamp((wi * n.unsqueeze(1)).sum(dim=2, keepdim=True), min=0.0)  # (N,M,1)
 
         # --- Diffuse component: (1/M) ∑ f_d * Li ---
-        diff_weighted = f_d * lights * mask.unsqueeze(-1) # (N,M,3)
-        diffuse = diff_weighted.sum(dim=1) / valid_counts  # (N,3)
+        diff_weighted = f_d * diffuse_lights # (N,M,3)
+        diffuse = diff_weighted.sum(dim=1) / M_diff  # (N,3)
 
         # --- Specular component ---
         # term1 = L * k_s * F
-        spec_base = lights * k_s_exp * F  # (N,M,3)
+        spec_base = specular_lights * k_s_exp * F  # (N,M,3)
 
         # term2 = (wi·n)^(1-alpha)
         exponent = 1.0 - alpha_exp  # (N,1,1)
@@ -3108,15 +3111,22 @@ class MCShadingNetwork(nn.Module):
         self.nan_inf_check(kd, 'kd')
         self.nan_inf_check(ks, 'ks')
 
-        num_samples = self.cfg['specular_sample_num']
-
-        hs, wis, cos_ths = self.sample_aniso_ggx_directions(mx, my, view_dirs, num_samples, 'cuda')
+        num_spec_samples = self.cfg['specular_sample_num']
+        hs, wis, cos_ths = self.sample_aniso_ggx_directions(mx, my, view_dirs, num_spec_samples, 'cuda')
         self.nan_inf_check(hs, 'hs')
         self.nan_inf_check(wis, 'wis')
         self.nan_inf_check(cos_ths, 'cos_ths')
 
-        pts_ = pts.unsqueeze(1).repeat(1, num_samples, 1)
-        lights, hl, light_pts, light_normals, light_pts_mask = self.get_lights(pts_, wis, human_poses)
+        diffuse_directions = self.sample_diffuse_directions(normals, is_train)
+        point_num, diffuse_num, _ = diffuse_directions.shape
+        self.nan_inf_check(diffuse_directions, 'diffuse_directions')
+
+        pts_ = pts.unsqueeze(1).repeat(1, num_spec_samples, 1)
+        directions = torch.cat([diffuse_directions, wis], 1)
+        lights, hl, light_pts, light_normals, light_pts_mask = self.get_lights(pts_, directions, human_poses)
+
+        diffuse_lights = lights[:, :diffuse_num]
+        specular_lights = lights[:, diffuse_num:]
         self.nan_inf_check(lights, 'lights')
 
         F = self.fresnel_schlick_batch(F0, view_dirs, hs)
@@ -3125,7 +3135,7 @@ class MCShadingNetwork(nn.Module):
         f_d = self.diffuse_term(kd, F)
         self.nan_inf_check(f_d, 'diffuse term (f_d)')
 
-        R, diffuse_color, specular_color  = self.compute_radiance(f_d, lights, ks, F, wis, normals, alpha, cos_ths, view_dirs)
+        R, diffuse_color, specular_color  = self.compute_radiance(f_d, diffuse_lights, specular_lights, ks, F,diffuse_lights, wis, normals, alpha, cos_ths, view_dirs)
         self.nan_inf_check(R, 'R')
         self.nan_inf_check(diffuse_color, 'diffuse_color')
         self.nan_inf_check(specular_color, 'specular_color')
@@ -3141,8 +3151,6 @@ class MCShadingNetwork(nn.Module):
 
         outputs = {}
         outputs['human_lights'] = hl.reshape(-1, 3)
-        outputs['specular_light'] = torch.clamp(linear_to_srgb(torch.mean(lights, dim=1)), min=0, max=1)
-
         outputs['kd'] = kd
         outputs['ks'] = ks
         outputs['F0'] = F0
@@ -3151,6 +3159,8 @@ class MCShadingNetwork(nn.Module):
         outputs['my'] = my
         outputs['diffuse_color'] = diffuse_color
         outputs['specular_color'] = specular_color
+        outputs['diffuse_light'] = torch.clamp(linear_to_srgb(torch.mean(diffuse_lights, dim=1)), min=0, max=1)
+        outputs['specular_light'] = torch.clamp(linear_to_srgb(torch.mean(specular_lights, dim=1)), min=0, max=1)
         return colors, outputs
 
 

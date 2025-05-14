@@ -1495,9 +1495,9 @@ class NeROMaterialRenderer(nn.Module):
             # shade_outputs['loss_mat_reg'] = self.shader_network.material_regularization(
             #     pts, normals, shade_outputs['albedo'], step)
         if self.cfg['reg_diffuse_light']:
-            # shade_outputs['loss_diffuse_light'] = self.compute_diffuse_light_regularization(
-            #     shade_outputs['diffuse_light'])
-            pass
+            shade_outputs['loss_diffuse_light'] = self.compute_diffuse_light_regularization(
+                shade_outputs['diffuse_light'])
+            # pass
         self.train_batch_i += rn
         if self.train_batch_i + rn >= self.tbn: self._shuffle_train_batch()
         return shade_outputs
@@ -1512,7 +1512,7 @@ class NeROMaterialRenderer(nn.Module):
 
         # output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'specular_color': 3, 'diffuse_light': 3,
         #                'diffuse_color': 3, 'albedo': 3, 'metallic': 1, 'roughness': 1}
-        output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3,
+        output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'diffuse_light': 3,
                        'kd': 3, 'ks': 3, 'F0': 1, "alpha": 1, 'diffuse_color':3, 'specular_color': 3,  'mx':1, 'my':1}
         outputs = {k: [] for k in output_keys.keys()}
         rn = ray_batch['rays_o'].shape[0]
@@ -1531,6 +1531,7 @@ class NeROMaterialRenderer(nn.Module):
                 outputs_cur['rgb_pr'][hit_mask] = shade_outputs['rgb_pr']
                 outputs_cur['rgb_gt'][hit_mask] = rgb_gt
                 outputs_cur['specular_light'][hit_mask] = shade_outputs['specular_light']
+                outputs_cur['diffuse_light'][hit_mask] = shade_outputs['diffuse_light']
                 outputs_cur['ks'][hit_mask] = shade_outputs['ks']
                 outputs_cur['kd'][hit_mask] = shade_outputs['kd']
                 outputs_cur['F0'][hit_mask] = shade_outputs['F0']
