@@ -2986,6 +2986,10 @@ class MCShadingNetwork(nn.Module):
         """
         N, M, _ = lights.shape
 
+        #    shape (N, M)
+        mask = ((wi * n.unsqueeze(1)).sum(dim=-1) > 0.0)
+        valid_counts = mask.sum(dim=1).clamp(min=1).unsqueeze(-1)
+
         # Expand k_s, alpha, wo·n to match (N, M, *)
         k_s_exp = k_s.unsqueeze(1)  # (N, 1, 3)
         alpha_exp = alpha.unsqueeze(1)  # (N, 1, 1)
@@ -2996,8 +3000,8 @@ class MCShadingNetwork(nn.Module):
         cos_in = torch.clamp((wi * n.unsqueeze(1)).sum(dim=2, keepdim=True), min=0.0)  # (N,M,1)
 
         # --- Diffuse component: (1/M) ∑ f_d * Li ---
-        diff_weighted = f_d * lights  # (N,M,3)
-        diffuse = diff_weighted.sum(dim=1) / M  # (N,3)
+        diff_weighted = f_d * lights * mask.unsqueeze(-1) # (N,M,3)
+        diffuse = diff_weighted.sum(dim=1) / valid_counts  # (N,3)
 
         # --- Specular component ---
         # term1 = L * k_s * F
@@ -3007,15 +3011,15 @@ class MCShadingNetwork(nn.Module):
         exponent = 1.0 - alpha_exp  # (N,1,1)
 
         pow_in = torch.pow(cos_in + eps, exponent)  # (N,M,1)
-        if cos_in.min() <= 0:
-            print('cos wi.n min:', cos_in.min(), torch.pow(cos_in + eps, exponent))
+        # if cos_in.min() <= 0:
+        #     print('cos wi.n min:', cos_in.min(), torch.pow(cos_in + eps, exponent))
 
         # denom = cos_theta_h * (wo·n)^alpha
         pow_on = torch.pow(cos_on_exp + eps, alpha_exp)  # (N,1,1)
         denom = cos_theta_h * pow_on + eps  # (N,M,1)
 
-        spec_weighted = spec_base * pow_in / denom  # (N,M,3)
-        specular = spec_weighted.sum(dim=1) / M  # (N,3)
+        spec_weighted = (spec_base * pow_in / denom) * mask.unsqueeze(-1)  # (N,M,3)
+        specular = spec_weighted.sum(dim=1) / valid_counts  # (N,3)
 
         # Total radiance
         R = diffuse + specular  # (N,3)
