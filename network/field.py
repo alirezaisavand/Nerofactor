@@ -3012,8 +3012,8 @@ class MCShadingNetwork(nn.Module):
         one_minus_F = 1.0 - F  # broadcastable to (N,M,3)
 
         # f_d = (k_d / π) * (1 - F)
-        f_d = kd_exp / np.pi * one_minus_F  # (N,M,3)
-
+        # f_d = kd_exp / np.pi * one_minus_F  # (N,M,3)
+        f_d = kd_exp / np.pi # (N,M,3)
         return f_d
 
     def shade_anisotropic_mixed(self, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train):
