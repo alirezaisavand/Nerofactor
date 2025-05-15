@@ -2821,7 +2821,7 @@ class MCShadingNetwork(nn.Module):
         two_pi_xi2 = 2.0 * np.pi * xi2  # (N,M)
 
         # 2) Azimuth via atan2
-        phi_h = torch.atan2((m_y / m_x) * torch.tan(two_pi_xi2))  # <-- full-range
+        phi_h = torch.atan2(m_y*torch.tan(two_pi_xi2), m_x)  # <-- full-range
 
         # 3) Elevation
         cos_phi = torch.cos(phi_h)
