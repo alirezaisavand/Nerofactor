@@ -2798,6 +2798,7 @@ class MCShadingNetwork(nn.Module):
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
         return mx, my, alpha, F0, kd, ks
 
+
     def sample_aniso_ggx_directions(self,
                                     m_x: torch.Tensor,
                                     m_y: torch.Tensor,
@@ -2805,50 +2806,44 @@ class MCShadingNetwork(nn.Module):
                                     M: int,
                                     device: torch.device = None,
                                     eps: float = 1e-6):
-        """
-        Sample anisotropic GGX half-vectors h (N,M,3), incident directions wi (N,M,3),
-        and cos(theta_h) (N,M,1) for each of N points and M samples per point.
-        """
         if device is None:
             device = wo.device
 
-        # Ensure tensors on correct device
         m_x = m_x.to(device)  # (N,1)
         m_y = m_y.to(device)  # (N,1)
         wo = wo.to(device)  # (N,3)
-
         N = wo.shape[0]
 
-        # 1) Uniform random samples xi1, xi2 in [0,1)
+        # 1) Uniformsk
         xi1 = torch.rand((N, M), device=device).clamp(min=eps)
         xi2 = torch.rand((N, M), device=device)
 
-        # 2) Azimuth phi_h
         two_pi_xi2 = 2.0 * np.pi * xi2  # (N,M)
-        phi_h = torch.atan((m_y / m_x) * torch.tan(two_pi_xi2))  # (N,M)
 
-        # 3) Elevation theta_h
+        # 2) Azimuth via atan2
+        sin2 = torch.sin(two_pi_xi2)
+        cos2 = torch.cos(two_pi_xi2)
+        phi_h = torch.atan2(m_y * sin2, m_x * cos2)  # <-- full-range
+
+        # 3) Elevation
         cos_phi = torch.cos(phi_h)
         sin_phi = torch.sin(phi_h)
-        denom = (cos_phi ** 2) / (m_x * m_x) + (sin_phi ** 2) / (m_y * m_y)  # (N,M)
-        theta_h = torch.atan(torch.sqrt(-torch.log(xi1) / (denom + eps)))  # (N,M)
+        denom = (cos_phi ** 2) / (m_x * m_x) + (sin_phi ** 2) / (m_y * m_y)
+        theta_h = torch.atan(torch.sqrt(-torch.log(xi1) / (denom + eps)))
 
-        # 4) Half-vectors h in tangent-space
-        sin_th = torch.sin(theta_h)
+        # 4) half-vector
+        sin_th = torch.sin(theta_h);
         cos_th = torch.cos(theta_h)
-        h = torch.stack([
-            sin_th * cos_phi,
-            sin_th * sin_phi,
-            cos_th
-        ], dim=-1)  # (N,M,3)
+        h = torch.stack([sin_th * cos_phi,
+                         sin_th * sin_phi,
+                         cos_th], dim=-1)  # (N,M,3)
 
-        # 5) Incident directions wi = reflect(wo, h)
-        wo_exp = wo.unsqueeze(1)  # (N,1,3)
-        dot = (wo_exp * h).sum(dim=-1, keepdim=True)  # (N,M,1)
-        wi = 2.0 * dot * h - wo_exp  # (N,M,3)
+        # 5) reflect
+        dot = (wo.unsqueeze(1) * h).sum(-1, keepdim=True)
+        wi = 2 * dot * h - wo.unsqueeze(1)
         wi = torch.nn.functional.normalize(wi, dim=-1, eps=eps)
 
-        # 6) cos(theta_h)
+        # 6) cos θ_h
         cos_theta_h = cos_th.unsqueeze(-1)  # (N,M,1)
 
         return h, wi, cos_theta_h
@@ -3055,7 +3050,7 @@ class MCShadingNetwork(nn.Module):
         f_d = self.diffuse_term(kd, F, is_seperate)
         self.nan_inf_check(f_d, 'diffuse term (f_d)')
 
-        R, diffuse_color, specular_color  = self.compute_radiance(f_d, diffuse_lights, specular_lights, ks, F,diffuse_lights, wis, normals, alpha, cos_ths, view_dirs)
+        R, diffuse_color, specular_color  = self.compute_radiance(f_d, diffuse_lights, specular_lights, ks, F,diffuse_directions, wis, normals, alpha, cos_ths, view_dirs)
         self.nan_inf_check(R, 'R')
         self.nan_inf_check(diffuse_color, 'diffuse_color')
         self.nan_inf_check(specular_color, 'specular_color')
@@ -3092,7 +3087,7 @@ class MCShadingNetwork(nn.Module):
 
     def forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh):
         if mesh is not None:
-            return self.anisotropic_forward(pts, view_dirs, normals, human_poses, step, is_train, mesh, is_seperate=False)
+            return self.anisotropic_forward(pts, view_dirs, normals, human_poses, step, is_train, mesh, is_seperate=True)
         view_dirs, normals = F.normalize(view_dirs, dim=-1), F.normalize(normals, dim=-1)
         reflections = torch.sum(view_dirs * normals, -1, keepdim=True) * normals * 2 - view_dirs
         metallic, roughness, albedo = self.predict_materials(pts)  # [pn,1] [pn,1] [pn,3]
