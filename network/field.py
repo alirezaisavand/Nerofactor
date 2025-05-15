@@ -2832,8 +2832,8 @@ class MCShadingNetwork(nn.Module):
         # 4) half-vector
         sin_th = torch.sin(theta_h)
         cos_th = torch.cos(theta_h)
-        h = torch.stack([sin_th * cos_phi,
-                         -sin_th * sin_phi,
+        h = torch.stack([-sin_th * cos_phi,
+                         sin_th * sin_phi,
                          cos_th], dim=-1)  # (N,M,3)
 
         # 5) reflect
