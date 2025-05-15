@@ -2462,7 +2462,7 @@ class MCShadingNetwork(nn.Module):
         'reg_change': True,
         'change_eps': 0.05,
         'change_type': 'gaussian',
-        'reg_lambda1': 0.005,
+        'reg_lambda1': 0.002,
         'reg_min_max': True,
 
         'random_azimuth': True,
@@ -2666,94 +2666,6 @@ class MCShadingNetwork(nn.Module):
         HoV = torch.clamp(torch.sum(H * view_dirs, dim=-1, keepdim=True), min=0.0, max=1.0)  # [pn,sn0,1]
         fresnel = self.fresnel_schlick(F0, HoV)  # [pn,sn0,1]
         return fresnel, H, HoV
-    #
-    # def compute_frames_with_faiss(self, pts: torch.Tensor,  # (Q,3) on CUDA: your sample points
-    #         mesh,
-    #         k: int = 8
-    # ) -> tuple:
-    #
-    #     Q = pts.shape[0]
-    #     gpu_index = mesh.gpu_index
-    #     faces = mesh.faces
-    #     vertices = mesh.vertices
-    #     device='cuda'
-    #     normals = mesh.vertex_normals
-    #     tangents = mesh.T
-    #     bitangents = mesh.B
-    #
-    #     # 1) query FAISS (CPU↔GPU transfer of ~512 pts is tiny)
-    #     pts_np = pts.cpu().numpy().astype('float32')  # (Q,3)
-    #     _, I = gpu_index.search(pts_np, k)  # I: (Q,k) np.int32
-    #     idxs = torch.from_numpy(I).long().to(device)  # (Q,k)
-    #
-    #     # 2) gather triangle vertex indices
-    #     tri_vidx = faces[idxs]  # (Q,k,3)
-    #
-    #     # 3) gather vertex positions for each candidate
-    #     p0 = vertices[tri_vidx[..., 0]]  # (Q,k,3)
-    #     p1 = vertices[tri_vidx[..., 1]]
-    #     p2 = vertices[tri_vidx[..., 2]]
-    #
-    #     # 4) compute barycentric coords
-    #     v0 = p1 - p0;
-    #     v1 = p2 - p0;
-    #     v2 = pts.unsqueeze(1) - p0
-    #     d00 = (v0 * v0).sum(-1);
-    #     d01 = (v0 * v1).sum(-1);
-    #     d11 = (v1 * v1).sum(-1)
-    #     d20 = (v2 * v0).sum(-1);
-    #     d21 = (v2 * v1).sum(-1)
-    #     denom = d00 * d11 - d01 * d01 + 1e-12
-    #     w1 = (d11 * d20 - d01 * d21) / denom
-    #     w2 = (d00 * d21 - d01 * d20) / denom
-    #     w0 = 1.0 - w1 - w2
-    #
-    #     # 5) pick the first valid triangle per point
-    #     mask = (w0 >= 0) & (w1 >= 0) & (w2 >= 0)  # (Q,k)
-    #     valid_int = mask.int()
-    #     choose_cand = torch.argmax(valid_int, dim=1)  # (Q,)
-    #     range_q = torch.arange(Q, device=device)
-    #     chosen_tri = idxs[range_q, choose_cand]  # (Q,)
-    #     w0_p = w0[range_q, choose_cand]
-    #     w1_p = w1[range_q, choose_cand]
-    #     w2_p = w2[range_q, choose_cand]
-    #
-    #     # 6) gather per-vertex frames for chosen triangles
-    #     tri_sel = faces[chosen_tri]  # (Q,3)
-    #     N0 = normals[tri_sel[:, 0]];
-    #     N1 = normals[tri_sel[:, 1]];
-    #     N2 = normals[tri_sel[:, 2]]
-    #     T0 = tangents[tri_sel[:, 0]];
-    #     T1 = tangents[tri_sel[:, 1]];
-    #     T2 = tangents[tri_sel[:, 2]]
-    #     B0 = bitangents[tri_sel[:, 0]];
-    #     B1 = bitangents[tri_sel[:, 1]];
-    #     B2 = bitangents[tri_sel[:, 2]]
-    #
-    #     # 7) interpolate
-    #     w0_v = w0_p.unsqueeze(-1);
-    #     w1_v = w1_p.unsqueeze(-1);
-    #     w2_v = w2_p.unsqueeze(-1)
-    #     Np = w0_v * N0 + w1_v * N1 + w2_v * N2
-    #     Tp = w0_v * T0 + w1_v * T1 + w2_v * T2
-    #     Bp = w0_v * B0 + w1_v * B1 + w2_v * B2
-    #
-    #     # 8) re-orthonormalize
-    #     Np = torch.nn.functional.normalize(Np, dim=1, eps=1e-8)
-    #     proj = (Np * Tp).sum(1, keepdim=True) * Np
-    #     Tp = Tp - proj
-    #     Tp = torch.nn.functional.normalize(Tp, dim=1, eps=1e-8)
-    #     Bp = torch.cross(Np, Tp, dim=1)
-    #     Bp = torch.nn.functional.normalize(Bp, dim=1, eps=1e-8)
-    #
-    #     return Tp, Bp, Np
-    #
-    # # ─────────────────────────────────────────────────────────────────────────────
-    # # Usage:
-    # #   T_p, B_p, N_p = compute_frames_with_faiss(
-    # #       pts, vertices, faces, normals, tangents, bitangents, gpu_index, k=8
-    # #   )
-    # # ─────────────────────────────────────────────────────────────────────────────
 
     def geometry_schlick_ggx(self, NoV, roughness):
         a = roughness  # a = roughness**2: we assume the predicted roughness is already squared
@@ -3239,10 +3151,12 @@ class MCShadingNetwork(nn.Module):
 
             mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch = self.predict_anisotropic_components(pts + change)
             reg = reg + torch.mean(
-                (torch.abs(kd - kd_ch) + torch.abs(ks - ks_ch) + torch.abs(mx - mx_ch) +
-                                                                 torch.abs(my - my_ch) +
-                                                                 torch.abs(alpha - alpha_ch) +
-                                                                 torch.abs(F0 - F0_ch)) *
+                (torch.abs(kd - kd_ch) +
+                 torch.abs(ks - ks_ch) +
+                 torch.abs(mx - mx_ch) +
+                 torch.abs(my - my_ch) +
+                 torch.abs(alpha - alpha_ch) +
+                 torch.abs(F0 - F0_ch)) *
                 self.cfg['reg_lambda1'],
                         dim=1)
         return reg
