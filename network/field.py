@@ -2462,7 +2462,7 @@ class MCShadingNetwork(nn.Module):
         'reg_change': True,
         'change_eps': 0.05,
         'change_type': 'gaussian',
-        'reg_lambda1': 0.002,
+        'reg_lambda1': 0.005,
         'reg_min_max': True,
 
         'random_azimuth': True,
@@ -2987,7 +2987,8 @@ class MCShadingNetwork(nn.Module):
 
     def diffuse_term(self,
                      kd: torch.Tensor,
-                     F: torch.Tensor) -> torch.Tensor:
+                     F: torch.Tensor,
+                     is_seperate: bool = True) -> torch.Tensor:
         """
         Compute the diffuse term f_d = (k_d / π) * (1 - F) for anisotropic Cook-Torrance.
 
@@ -3012,11 +3013,14 @@ class MCShadingNetwork(nn.Module):
         one_minus_F = 1.0 - F  # broadcastable to (N,M,3)
 
         # f_d = (k_d / π) * (1 - F)
-        # f_d = kd_exp / np.pi * one_minus_F  # (N,M,3)
-        f_d = kd_exp / np.pi # (N,M,3)
+        if is_seperate:
+            f_d = kd_exp / np.pi  # (N,M,3)
+        else:
+            f_d = kd_exp / np.pi * one_minus_F  # (N,M,3)
+
         return f_d
 
-    def shade_anisotropic_mixed(self, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train):
+    def shade_anisotropic_mixed(self, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train, is_seperate=True):
         self.nan_inf_check(normals, 'normals')
         self.nan_inf_check(mx, 'mx')
         self.nan_inf_check(my, 'my')
@@ -3030,8 +3034,10 @@ class MCShadingNetwork(nn.Module):
         self.nan_inf_check(hs, 'hs')
         self.nan_inf_check(wis, 'wis')
         self.nan_inf_check(cos_ths, 'cos_ths')
-
-        diffuse_directions = self.sample_diffuse_directions(normals, is_train)
+        if is_seperate:
+            diffuse_directions = self.sample_diffuse_directions(normals, is_train)
+        else:
+            diffuse_directions = wis
         point_num, diffuse_num, _ = diffuse_directions.shape
         self.nan_inf_check(diffuse_directions, 'diffuse_directions')
 
@@ -3046,7 +3052,7 @@ class MCShadingNetwork(nn.Module):
         F = self.fresnel_schlick_batch(F0, view_dirs, hs)
         self.nan_inf_check(F, 'F (fresnel schlick)')
 
-        f_d = self.diffuse_term(kd, F)
+        f_d = self.diffuse_term(kd, F, is_seperate)
         self.nan_inf_check(f_d, 'diffuse term (f_d)')
 
         R, diffuse_color, specular_color  = self.compute_radiance(f_d, diffuse_lights, specular_lights, ks, F,diffuse_lights, wis, normals, alpha, cos_ths, view_dirs)
@@ -3078,15 +3084,15 @@ class MCShadingNetwork(nn.Module):
         return colors, outputs
 
 
-    def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh):
+    def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh, is_seperate=True):
         # print('anisotropic_forward:')
         mx, my, alpha, F0, kd, ks = self.predict_anisotropic_components(pts)
-        return self.shade_anisotropic_mixed(pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train)
+        return self.shade_anisotropic_mixed(pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train, is_seperate)
 
 
     def forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh):
         if mesh is not None:
-            return self.anisotropic_forward(pts, view_dirs, normals, human_poses, step, is_train, mesh)
+            return self.anisotropic_forward(pts, view_dirs, normals, human_poses, step, is_train, mesh, is_seperate=False)
         view_dirs, normals = F.normalize(view_dirs, dim=-1), F.normalize(normals, dim=-1)
         reflections = torch.sum(view_dirs * normals, -1, keepdim=True) * normals * 2 - view_dirs
         metallic, roughness, albedo = self.predict_materials(pts)  # [pn,1] [pn,1] [pn,3]
