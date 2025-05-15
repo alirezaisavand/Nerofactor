@@ -2790,8 +2790,8 @@ class MCShadingNetwork(nn.Module):
 
     def predict_anisotropic_components(self, pts):
         feats = self.feats_network(pts)
-        mx = self.mx_predictor(torch.cat([feats, pts], -1)) + 1e-4
-        my = self.my_predictor(torch.cat([feats, pts], -1)) + 1e-4
+        mx = self.mx_predictor(torch.cat([feats, pts], -1)) + 1e-5
+        my = self.my_predictor(torch.cat([feats, pts], -1)) + 1e-5
         alpha = self.alpha_predictor(torch.cat([feats, pts], -1))
         F0 = self.F0_predictor(torch.cat([feats, pts], -1))
         kd = self.kd_predictor(torch.cat([feats, pts], -1))
@@ -2821,14 +2821,12 @@ class MCShadingNetwork(nn.Module):
         two_pi_xi2 = 2.0 * np.pi * xi2  # (N,M)
 
         # 2) Azimuth via atan2
-        sin2 = torch.sin(two_pi_xi2)
-        cos2 = torch.cos(two_pi_xi2)
-        phi_h = torch.atan2(m_y * sin2, m_x * cos2)  # <-- full-range
+        phi_h = torch.atan2((m_y / m_x) * torch.tan(two_pi_xi2))  # <-- full-range
 
         # 3) Elevation
         cos_phi = torch.cos(phi_h)
         sin_phi = torch.sin(phi_h)
-        denom = (cos_phi ** 2) / (m_x * m_x) + (sin_phi ** 2) / (m_y * m_y)
+        denom = (cos_phi * cos_phi) / (m_x * m_x) + (sin_phi * sin_phi) / (m_y * m_y)
         theta_h = torch.atan(torch.sqrt(-torch.log(xi1) / (denom + eps)))
 
         # 4) half-vector
@@ -3050,7 +3048,7 @@ class MCShadingNetwork(nn.Module):
         f_d = self.diffuse_term(kd, F, is_seperate)
         self.nan_inf_check(f_d, 'diffuse term (f_d)')
 
-        R, diffuse_color, specular_color  = self.compute_radiance(f_d, diffuse_lights, specular_lights, ks, F,diffuse_directions, wis, normals, alpha, cos_ths, view_dirs)
+        R, diffuse_color, specular_color  = self.compute_radiance(f_d, diffuse_lights, specular_lights, ks, F, diffuse_directions, wis, normals, alpha, cos_ths, view_dirs)
         self.nan_inf_check(R, 'R')
         self.nan_inf_check(diffuse_color, 'diffuse_color')
         self.nan_inf_check(specular_color, 'specular_color')
