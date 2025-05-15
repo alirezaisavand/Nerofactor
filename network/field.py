@@ -3092,7 +3092,7 @@ class MCShadingNetwork(nn.Module):
 
     def forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh):
         if mesh is not None:
-            return self.anisotropic_forward(pts, view_dirs, normals, human_poses, step, is_train, mesh, is_seperate=False)
+            return self.anisotropic_forward(pts, view_dirs, normals, human_poses, step, is_train, mesh, is_seperate=True)
         view_dirs, normals = F.normalize(view_dirs, dim=-1), F.normalize(normals, dim=-1)
         reflections = torch.sum(view_dirs * normals, -1, keepdim=True) * normals * 2 - view_dirs
         metallic, roughness, albedo = self.predict_materials(pts)  # [pn,1] [pn,1] [pn,3]
