@@ -2827,12 +2827,12 @@ class MCShadingNetwork(nn.Module):
         cos_phi = torch.cos(phi_h)
         sin_phi = torch.sin(phi_h)
         denom = (cos_phi * cos_phi) / (m_x * m_x) + (sin_phi * sin_phi) / (m_y * m_y)
-        theta_h = torch.atan(torch.sqrt(-torch.log(xi1) / (denom + eps)))
+        theta_h = torch.atan2(torch.sqrt(-torch.log(xi1), (denom + eps)))
 
         # 4) half-vector
-        sin_th = torch.sin(theta_h);
+        sin_th = torch.sin(theta_h)
         cos_th = torch.cos(theta_h)
-        h = torch.stack([-sin_th * cos_phi,
+        h = torch.stack([sin_th * cos_phi,
                          sin_th * sin_phi,
                          cos_th], dim=-1)  # (N,M,3)
 
