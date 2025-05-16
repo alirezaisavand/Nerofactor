@@ -2804,10 +2804,15 @@ class MCShadingNetwork(nn.Module):
                                     m_y: torch.Tensor,
                                     wo: torch.Tensor,
                                     M: int,
+                                    normals: torch.Tensor,
                                     device: torch.device = None,
                                     eps: float = 1e-6):
         if device is None:
             device = wo.device
+
+        z = normals  # pn,3
+        x = self.get_orthogonal_directions(normals)  # pn,3
+        y = torch.cross(z, x, dim=-1)  # pn,3
 
         m_x = m_x.to(device)  # (N,1)
         m_y = m_y.to(device)  # (N,1)
@@ -2832,16 +2837,16 @@ class MCShadingNetwork(nn.Module):
         # 4) half-vector
         sin_th = torch.sin(theta_h)
         cos_th = torch.cos(theta_h)
-        h = torch.stack([sin_th * sin_phi,
-                         -sin_th * cos_phi,
-                         cos_th], dim=-1)  # (N,M,3)
+        coeff_x = sin_th * cos_phi
+        coeff_y = sin_th * sin_phi
+        coeff_z = cos_th
 
-        # 5) reflect
+        h = coeff_x * x.unsqueeze(1) + coeff_y * y.unsqueeze(1) + coeff_z * z.unsqueeze(1)
+
         dot = (wo.unsqueeze(1) * h).sum(-1, keepdim=True)
         wi = 2 * dot * h - wo.unsqueeze(1)
         wi = torch.nn.functional.normalize(wi, dim=-1, eps=eps)
 
-        # 6) cos θ_h
         cos_theta_h = cos_th.unsqueeze(-1)  # (N,M,1)
 
         return h, wi, cos_theta_h
@@ -3023,7 +3028,7 @@ class MCShadingNetwork(nn.Module):
         self.nan_inf_check(ks, 'ks')
 
         num_spec_samples = self.cfg['specular_sample_num']
-        hs, wis, cos_ths = self.sample_aniso_ggx_directions(mx, my, view_dirs, num_spec_samples, 'cuda')
+        hs, wis, cos_ths = self.sample_aniso_ggx_directions(mx, my, view_dirs, num_spec_samples, normals,'cuda')
         self.nan_inf_check(hs, 'hs')
         self.nan_inf_check(wis, 'wis')
         self.nan_inf_check(cos_ths, 'cos_ths')
