@@ -2840,7 +2840,10 @@ class MCShadingNetwork(nn.Module):
         coeff_x = sin_th * cos_phi
         coeff_y = sin_th * sin_phi
         coeff_z = cos_th
-        h = coeff_x * x.unsqueeze(1) + coeff_y * y.unsqueeze(1) + coeff_z * z.unsqueeze(1)
+        print('coeff_x shape', coeff_x.shape, x.unsqueeze(1).expand(coeff_x.shape[0], coeff_x.shape[1], -1))
+        h = (coeff_x * x.unsqueeze(1).expand(coeff_x.shape[0], coeff_x.shape[1], -1) +
+             coeff_y * y.unsqueeze(1).expand(coeff_x.shape[0], coeff_x.shape[1], -1) +
+             coeff_z * z.unsqueeze(1).expand(coeff_x.shape[0], coeff_x.shape[1], -1))
 
         dot = (wo.unsqueeze(1) * h).sum(-1, keepdim=True)
         wi = 2 * dot * h - wo.unsqueeze(1)
