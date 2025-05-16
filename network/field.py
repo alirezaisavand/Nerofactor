@@ -2487,7 +2487,7 @@ class MCShadingNetwork(nn.Module):
             # self.my_predictor = make_predictor(256 + 3, 1, activation='exp', exp_max=self.cfg['max_n_exp'])
             self.mx_predictor = make_predictor(256 + 3, 1, activation='exp', exp_max=self.cfg['max_n_exp'])
             self.my_predictor = make_predictor(256 + 3, 1, activation='exp', exp_max=self.cfg['max_n_exp'])
-            self.alpha_predictor = make_predictor(256 + 3, 1, activation='exp', exp_max=self.cfg['max_alpha_exp'])
+            self.alpha_predictor = make_predictor(256 + 3, 1)
             self.F0_predictor = make_predictor(256 + 3, 1)
             self.kd_predictor = make_predictor(256 + 3, 3)
             self.ks_predictor = make_predictor(256 + 3, 3)
