@@ -3141,7 +3141,7 @@ class MCShadingNetwork(nn.Module):
 
     def anisotropic_regularization(self, pts, normals, mx, my, alpha, F0, kd, ks):
         reg = 0
-
+        print("I should not be here")
         if self.cfg['reg_change']:
             normals = F.normalize(normals, dim=-1)
             x = self.get_orthogonal_directions(normals)
