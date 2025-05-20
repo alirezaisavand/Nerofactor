@@ -225,8 +225,8 @@ shader_cfg:
   diffuse_sample_num: 512
   specular_sample_num: 1024
   outer_light_version: direction
-  light_exp_max: 5.0
-  inner_light_exp_max: 5.0
+  light_exp_max: 20
+  inner_light_exp_max: 20
   human_lights: false
   # Here should have same value as the one in the main config file
   shading_feature_num: 256
