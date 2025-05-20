@@ -2796,6 +2796,9 @@ class MCShadingNetwork(nn.Module):
         F0 = self.F0_predictor(torch.cat([feats, pts], -1))
         kd = self.kd_predictor(torch.cat([feats, pts], -1))
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
+        print('mx    range:', mx.min(), '-', mx.max())
+        print('my    range:', my.min(), '-', my.max())
+        print('alpha range:', alpha.min(), '-', alpha.max())
         return mx, my, alpha, F0, kd, ks
 
 
