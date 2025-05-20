@@ -2485,8 +2485,8 @@ class MCShadingNetwork(nn.Module):
         if self.cfg['anisotropy']:
             # self.mx_predictor = make_predictor(256 + 3, 1, activation='exp', exp_max=self.cfg['max_n_exp'])
             # self.my_predictor = make_predictor(256 + 3, 1, activation='exp', exp_max=self.cfg['max_n_exp'])
-            self.mx_predictor = make_predictor(256 + 3, 1, activation='exp', exp_max=self.cfg['max_n_exp'])
-            self.my_predictor = make_predictor(256 + 3, 1, activation='exp', exp_max=self.cfg['max_n_exp'])
+            self.mx_predictor = make_predictor(256 + 3, 1)
+            self.my_predictor = make_predictor(256 + 3, 1)
             self.alpha_predictor = make_predictor(256 + 3, 1)
             self.F0_predictor = make_predictor(256 + 3, 1)
             self.kd_predictor = make_predictor(256 + 3, 3)
@@ -2796,8 +2796,8 @@ class MCShadingNetwork(nn.Module):
         F0 = self.F0_predictor(torch.cat([feats, pts], -1))
         kd = self.kd_predictor(torch.cat([feats, pts], -1))
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
-        print('mx    range:', mx.min(), '-', mx.max())
-        print('my    range:', my.min(), '-', my.max())
+        print('mx   range:', mx.min(), '-', mx.max())
+        print('my range:', my.min(), '-', my.max())
         print('alpha range:', alpha.min(), '-', alpha.max())
         return mx, my, alpha, F0, kd, ks
 
