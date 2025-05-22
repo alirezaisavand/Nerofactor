@@ -1033,6 +1033,7 @@ class NeROMaterialRenderer(nn.Module):
 
 
     def _init_geometry(self):
+        print(torch.__version__, torch.version.cuda)
         from pytorch3d.structures import Meshes
         from pytorch3d.renderer.mesh.rasterizer import ray_mesh_intersect
         device = torch.device('cuda')
