@@ -2806,7 +2806,7 @@ class MCShadingNetwork(nn.Module):
 
 
     def sample_aniso_ggx_directions(self,
-                                    mesh: pytorch3d.structures.Meshes,
+                                    mesh, #: pytorch3d.structures.Meshes,
                                     T: torch.Tensor,
                                     B: torch.Tensor,
                                     pts: torch.Tensor,
