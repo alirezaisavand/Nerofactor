@@ -1743,7 +1743,7 @@ import mcubes
 from utils.base_utils import az_el_to_points, sample_sphere
 from utils.raw_utils import linear_to_srgb
 from utils.ref_utils import generate_ide_fn
-
+import open3d as o3d
 
 # Positional encoding embedding. Code was taken from https://github.com/bmild/nerf.
 class Embedder:
@@ -2796,13 +2796,18 @@ class MCShadingNetwork(nn.Module):
         F0 = self.F0_predictor(torch.cat([feats, pts], -1))
         kd = self.kd_predictor(torch.cat([feats, pts], -1))
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
-        print('mx   range:', mx.min(), '-', mx.max())
-        print('my range:', my.min(), '-', my.max())
+        print('mx    range:', mx.min(), '-', mx.max())
+        print('my    range:', my.min(), '-', my.max())
         print('alpha range:', alpha.min(), '-', alpha.max())
         return mx, my, alpha, F0, kd, ks
 
 
+
     def sample_aniso_ggx_directions(self,
+                                    mesh: pytorch3d.structures.Meshes,
+                                    T: torch.Tensor,
+                                    B: torch.Tensor,
+                                    pts: torch.Tensor,
                                     m_x: torch.Tensor,
                                     m_y: torch.Tensor,
                                     wo: torch.Tensor,
@@ -2813,9 +2818,11 @@ class MCShadingNetwork(nn.Module):
         if device is None:
             device = wo.device
 
-        z = normals  # pn,3
-        x = self.get_orthogonal_directions(normals)  # pn,3
-        y = torch.cross(z, x, dim=-1)  # pn,3
+        # z = normals  # pn,3
+        # x = self.get_orthogonal_directions(normals)  # pn,3
+        # y = torch.cross(z, x, dim=-1)  # pn,3
+        x, y = self.sample_tangent_bitangent_open3d(mesh, T, B, pts, normals)
+        z = normals
 
         m_x = m_x.to(device)  # (N,1)
         m_y = m_y.to(device)  # (N,1)
@@ -3023,7 +3030,71 @@ class MCShadingNetwork(nn.Module):
 
         return f_d
 
-    def shade_anisotropic_mixed(self, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train, is_seperate=True):
+    def sample_tangent_bitangent_open3d(self,
+            mesh_o3d: o3d.geometry.TriangleMesh,
+            vertex_tangents: torch.Tensor,
+            vertex_bitangents: torch.Tensor,
+            points: torch.Tensor,
+            normals: torch.Tensor,
+            eps: float = 1e-4
+    ) -> (torch.Tensor, torch.Tensor):
+        """
+        Given an Open3D mesh and per-vertex tangent/bitangent frames,
+        interpolate and orthonormalize these frames at a batch of surface points.
+
+        Args:
+            mesh_o3d:         an open3d.geometry.TriangleMesh with vertices and triangles
+            vertex_tangents:  (V, 3) tensor of per-vertex tangent vectors on device
+            vertex_bitangents:(V, 3) tensor of per-vertex bitangent vectors on device
+            points:           (P, 3) tensor of surface points in same coordinate space
+            normals:          (P, 3) tensor of normals at each point
+            eps:              small offset along normal to cast rays
+
+        Returns:
+            T_pts:  (P, 3) tensor of interpolated, orthonormal tangents
+            B_pts:  (P, 3) tensor of interpolated, orthonormal bitangents
+        """
+        device = points.device
+
+        # Convert Open3D mesh to PyTorch3D Meshes once
+        verts = torch.from_numpy(np.asarray(mesh_o3d.vertices)).to(device=device, dtype=torch.float32)
+        faces = torch.from_numpy(np.asarray(mesh_o3d.triangles)).to(device=device, dtype=torch.long)
+        meshes = Meshes(verts=[verts], faces=[faces])
+
+        # 1) Offset origins along normal and cast rays inward
+        origins = points + normals * eps  # (P, 3)
+        dirs = -normals  # (P, 3)
+        rays_o = origins.unsqueeze(1)  # (P, 1, 3)
+        rays_d = dirs.unsqueeze(1)  # (P, 1, 3)
+
+        # 2) Ray-mesh intersection (PyTorch3D)
+        hits = ray_mesh_intersect(meshes, rays_o, rays_d)
+        face_idx = hits.face_idx[..., 0]  # (P,)
+        bary = hits.bary_coords[..., 0, :]  # (P, 3)
+
+        # 3) Gather per-face vertex indices
+        faces_tensor = meshes.faces_packed()  # (F, 3)
+        vidx = faces_tensor[face_idx]  # (P, 3)
+        u, v, w = bary.unbind(dim=1)  # each (P,)
+
+        # 4) Barycentric interpolation of frames
+        T_pts = (u[:, None] * vertex_tangents[vidx[:, 0]] +
+                 v[:, None] * vertex_tangents[vidx[:, 1]] +
+                 w[:, None] * vertex_tangents[vidx[:, 2]])
+        B_pts = (u[:, None] * vertex_bitangents[vidx[:, 0]] +
+                 v[:, None] * vertex_bitangents[vidx[:, 1]] +
+                 w[:, None] * vertex_bitangents[vidx[:, 2]])
+
+        # 5) Orthonormalize tangent to normal, then recompute bitangent
+        proj = (T_pts * normals).sum(dim=1, keepdim=True)
+        T_pts = T_pts - proj * normals
+        T_pts = torch.nn.functional.normalize(T_pts, dim=1, eps=1e-6)
+        B_pts = torch.cross(normals, T_pts, dim=1)
+        B_pts = torch.nn.functional.normalize(B_pts, dim=1, eps=1e-6)
+
+        return T_pts, B_pts
+
+    def shade_anisotropic_mixed(self, mesh, T, B, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train, is_seperate=True):
         self.nan_inf_check(normals, 'normals')
         self.nan_inf_check(mx, 'mx')
         self.nan_inf_check(my, 'my')
@@ -3033,7 +3104,7 @@ class MCShadingNetwork(nn.Module):
         self.nan_inf_check(ks, 'ks')
 
         num_spec_samples = self.cfg['specular_sample_num']
-        hs, wis, cos_ths = self.sample_aniso_ggx_directions(mx, my, view_dirs, num_spec_samples, normals,'cuda')
+        hs, wis, cos_ths = self.sample_aniso_ggx_directions(mesh, T, B, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
         self.nan_inf_check(hs, 'hs')
         self.nan_inf_check(wis, 'wis')
         self.nan_inf_check(cos_ths, 'cos_ths')
@@ -3087,15 +3158,15 @@ class MCShadingNetwork(nn.Module):
         return colors, outputs
 
 
-    def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh, is_seperate=True):
+    def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh, T, B, is_seperate=True):
         # print('anisotropic_forward:')
         mx, my, alpha, F0, kd, ks = self.predict_anisotropic_components(pts)
-        return self.shade_anisotropic_mixed(pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train, is_seperate)
+        return self.shade_anisotropic_mixed(mesh, T, B, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train, is_seperate)
 
 
-    def forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh):
+    def forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh, T, B):
         if mesh is not None:
-            return self.anisotropic_forward(pts, view_dirs, normals, human_poses, step, is_train, mesh, is_seperate=True)
+            return self.anisotropic_forward(pts, view_dirs, normals, human_poses, step, is_train, mesh, T, B, is_seperate=True)
         view_dirs, normals = F.normalize(view_dirs, dim=-1), F.normalize(normals, dim=-1)
         reflections = torch.sum(view_dirs * normals, -1, keepdim=True) * normals * 2 - view_dirs
         metallic, roughness, albedo = self.predict_materials(pts)  # [pn,1] [pn,1] [pn,3]

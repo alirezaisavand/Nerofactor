@@ -1033,11 +1033,18 @@ class NeROMaterialRenderer(nn.Module):
 
 
     def _init_geometry(self):
-        self.mesh = open3d.io.read_triangle_mesh(self.cfg['mesh'])
+        from pytorch3d.structures import Meshes
+        from pytorch3d.renderer.mesh.rasterizer import ray_mesh_intersect
+        device = torch.device('cuda')
+        mesh = open3d.io.read_triangle_mesh(self.cfg['mesh'])
+        verts = torch.from_numpy(np.asarray(mesh.vertices)).to(device=device, dtype=torch.float32)
+        faces = torch.from_numpy(np.asarray(mesh.triangles)).to(device=device, dtype=torch.long)
+        meshes = Meshes(verts=[verts], faces=[faces])
+        self.mesh = meshes
+
         print('calculating tangents for mesh vertices')
-        # self.mesh.adjacency = self.build_vertex_adjacency()
-        # self.mesh.T, self.mesh.B = self.compute_pca_tangent_frame()
-        # self.mesh.gpu_index = self.initialize_kdd_tree()
+        self.mesh.adjacency = self.build_vertex_adjacency()
+        self.T, self.B = self.compute_pca_tangent_frame()
 
         self.ray_tracer = raytracing.RayTracer(np.asarray(self.mesh.vertices), np.asarray(self.mesh.triangles))
 
@@ -1454,7 +1461,7 @@ class NeROMaterialRenderer(nn.Module):
             self.train_batch[k] = v[shuffle_idxs]
 
     def shade(self, pts, view_dirs, normals, human_poses, is_train, step=None):
-        rgb_pr, outputs = self.shader_network(pts, view_dirs, normals, human_poses, step, is_train, self.mesh)
+        rgb_pr, outputs = self.shader_network(pts, view_dirs, normals, human_poses, step, is_train, self.mesh, self.T, self.B)
         outputs['rgb_pr'] = rgb_pr
         return outputs
 
