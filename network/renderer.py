@@ -999,7 +999,7 @@ class NeROMaterialRenderer(nn.Module):
         num_vertices: total number of vertices V
         returns: list of sets, adjacency[i] = set of neighbor vertex indices of i
         """
-        faces = self.mesh.faces
+        faces = self.mesh.triangles
         num_vertices = len(self.mesh.vertices)
         adjacency = [set() for _ in range(num_vertices)]
         for tri in faces:
