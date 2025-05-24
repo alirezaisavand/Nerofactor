@@ -14,7 +14,7 @@ from utils.base_utils import color_map_forward, downsample_gaussian_blur
 from utils.raw_utils import linear_to_srgb
 
 from tqdm import trange
-
+import faiss
 
 def load_masks(input_folder, as_bool=True):
     import os
@@ -1009,45 +1009,55 @@ class NeROMaterialRenderer(nn.Module):
             adjacency[k].update([i, j])
         return adjacency
 
-    def initialize_kdd_tree(self):
-        import faiss
+    def build_faiss_index(self, verts: torch.Tensor, faces: torch.LongTensor, use_gpu: bool = False):
+        """
+        Builds
+        a
+        FAISS
+        index
+        over
+        triangle
+        centroids.
+        Returns:
+        index: FAISS
+        index
+        for nearest - neighbor search
+            centroids: (F, 3)
+            numpy
+            array
+            of
+            triangle
+            centroids
 
-        # ─────────────────────────────────────────────────────────────────────────────
-        # 1) Build the FAISS GPU index on triangle centroids (do this once at load time)
-        # ─────────────────────────────────────────────────────────────────────────────
+        """
+        # Compute triangle centroids
+        tri_verts = verts[faces]  # (F,3,3)
+        centroids = tri_verts.mean(dim=1).cpu().numpy().astype('float32')  # (F,3)
 
-        # assume vertices: (V,3) torch.Tensor on CUDA
-        #        faces:    (F,3) torch.LongTensor on CUDA or CPU
-        device = torch.device('cuda')
-
-        # compute centroids on CPU as float32 array
-        centroids = self.mesh.vertices[self.mesh.faces].mean(dim=1).cpu().numpy().astype('float32')  # (F,3)
-
-        # build FAISS GPU index
-        res = faiss.StandardGpuResources()
-        flat_l2 = faiss.IndexFlatL2(3)  # 3 == dimension
-        gpu_index = faiss.index_cpu_to_gpu(res, 0, flat_l2)
-        gpu_index.add(centroids)  # add all F centroids
-        return gpu_index
-
+        # Build a flat L2 index
+        index = faiss.IndexFlatL2(3)
+        if use_gpu:
+            res = faiss.StandardGpuResources()
+            index = faiss.index_cpu_to_gpu(res, 0, index)
+        index.add(centroids)
+        return index, centroids
 
 
     def _init_geometry(self):
-        print(torch.__version__, torch.version.cuda)
-        from pytorch3d.structures import Meshes
-        from pytorch3d.renderer.mesh.rasterizer import ray_mesh_intersect
         device = torch.device('cuda')
-        mesh = open3d.io.read_triangle_mesh(self.cfg['mesh'])
-        verts = torch.from_numpy(np.asarray(mesh.vertices)).to(device=device, dtype=torch.float32)
-        faces = torch.from_numpy(np.asarray(mesh.triangles)).to(device=device, dtype=torch.long)
-        meshes = Meshes(verts=[verts], faces=[faces])
-        self.mesh = meshes
+        self.mesh = open3d.io.read_triangle_mesh(self.cfg['mesh'])
+
+        self.index, self.mesh.centroids = self.build_faiss_index(
+            torch.from_numpy(np.asarray(self.mesh.vertices)).to(device),
+            torch.from_numpy(np.asarray(self.mesh.triangles)).to(device),
+            use_gpu=True,
+        )
 
         print('calculating tangents for mesh vertices')
         self.mesh.adjacency = self.build_vertex_adjacency()
-        self.T, self.B = self.compute_pca_tangent_frame()
 
-        self.ray_tracer = raytracing.RayTracer(np.asarray(self.mesh.vertices), np.asarray(self.mesh.triangles))
+        self.mesh.T, self.mesh.B = self.compute_pca_tangent_frame()
+
 
     def _init_dataset(self, is_train):
         # train/test split
@@ -1462,7 +1472,7 @@ class NeROMaterialRenderer(nn.Module):
             self.train_batch[k] = v[shuffle_idxs]
 
     def shade(self, pts, view_dirs, normals, human_poses, is_train, step=None):
-        rgb_pr, outputs = self.shader_network(pts, view_dirs, normals, human_poses, step, is_train, self.mesh, self.T, self.B)
+        rgb_pr, outputs = self.shader_network(pts, view_dirs, normals, human_poses, step, is_train, self.mesh, self.index)
         outputs['rgb_pr'] = rgb_pr
         return outputs
 

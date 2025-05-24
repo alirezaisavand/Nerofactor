@@ -2807,8 +2807,7 @@ class MCShadingNetwork(nn.Module):
 
     def sample_aniso_ggx_directions(self,
                                     mesh: pytorch3d.structures.Meshes,
-                                    T: torch.Tensor,
-                                    B: torch.Tensor,
+                                    index,
                                     pts: torch.Tensor,
                                     m_x: torch.Tensor,
                                     m_y: torch.Tensor,
@@ -2819,11 +2818,13 @@ class MCShadingNetwork(nn.Module):
                                     eps: float = 1e-6):
         if device is None:
             device = wo.device
-
+        centroids = mesh.centroids
+        T = mesh.T
+        B = mesh.B
         # z = normals  # pn,3
         # x = self.get_orthogonal_directions(normals)  # pn,3
         # y = torch.cross(z, x, dim=-1)  # pn,3
-        x, y = self.sample_tangent_bitangent_open3d(mesh, T, B, pts, normals)
+        x, y = self.get_tangent_bitangent_via_faiss(mesh.vertices, mesh.faces, T, B, pts, normals, index, centroids)
         z = normals
 
         m_x = m_x.to(device)  # (N,1)
@@ -3032,71 +3033,151 @@ class MCShadingNetwork(nn.Module):
 
         return f_d
 
-    def sample_tangent_bitangent_open3d(self,
-            mesh_o3d: o3d.geometry.TriangleMesh,
-            vertex_tangents: torch.Tensor,
-            vertex_bitangents: torch.Tensor,
-            points: torch.Tensor,
-            normals: torch.Tensor,
-            eps: float = 1e-4
-    ) -> (torch.Tensor, torch.Tensor):
+    def find_triangles_and_barycentrics_faiss(
+            self,
+            verts: torch.Tensor,
+            faces: torch.LongTensor,
+            pts: torch.Tensor,
+            index,
+            centroids,
+            k: int = 10,
+    ) -> tuple[torch.LongTensor, torch.Tensor]:
         """
-        Given an Open3D mesh and per-vertex tangent/bitangent frames,
-        interpolate and orthonormalize these frames at a batch of surface points.
+        For
+        each
+        point in pts(N, 3), queries
+        the
+        k
+        nearest
+        triangle
+        centroids,
+        tests
+        each
+        candidate
+        for barycentric containment, and returns:
+            tri_indices: (N,)
+            long
+            tensor
+            of
+            face
+            IDs
+            bary_coords: (N, 3)
+            tensor
+            of
+            barycentric
+            coordinates
+        """
+        device = pts.device
+        pts_np = pts.cpu().numpy().astype('float32')  # (N,3)
+        # Query k nearest centroids
+        dists, idxs = index.search(pts_np, k)  # both (N,k)
 
-        Args:
-            mesh_o3d:         an open3d.geometry.TriangleMesh with vertices and triangles
-            vertex_tangents:  (V, 3) tensor of per-vertex tangent vectors on device
-            vertex_bitangents:(V, 3) tensor of per-vertex bitangent vectors on device
-            points:           (P, 3) tensor of surface points in same coordinate space
-            normals:          (P, 3) tensor of normals at each point
-            eps:              small offset along normal to cast rays
+        tri_indices = []
+        bary_coords = []
+        for i, candidates in enumerate(idxs):
+            p = pts[i]
+            for fid in candidates:
+                tri = verts[faces[fid]]  # (3,3)
+                v0, v1 = tri[1] - tri[0], tri[2] - tri[0]
+                v2 = p - tri[0]
+                # Compute barycentric coords
+                d00, d01 = torch.dot(v0, v0), torch.dot(v0, v1)
+                d11, d20 = torch.dot(v1, v1), torch.dot(v2, v0)
+                d21 = torch.dot(v2, v1)
+                denom = d00 * d11 - d01 * d01 + 1e-8
+                v = (d11 * d20 - d01 * d21) / denom
+                w = (d00 * d21 - d01 * d20) / denom
+                u = 1 - v - w
+                bary = torch.stack([u, v, w])
+                if (bary >= -1e-4).all() and (bary <= 1 + 1e-4).all():
+                    tri_indices.append(int(fid))
+                    bary_coords.append(bary)
+                    break
+
+        tri_indices = torch.LongTensor(tri_indices).to(device)
+        bary_coords = torch.stack(bary_coords, dim=0).to(device)
+        return tri_indices, bary_coords
+
+    def get_tangent_bitangent_via_faiss(
+            self,
+            verts: torch.Tensor,
+            faces: torch.LongTensor,
+            vert_tangents: torch.Tensor,
+            vert_bitangents: torch.Tensor,
+            pts: torch.Tensor,
+            query_normals: torch.Tensor,
+            index,
+            centroids,
+            k: int = 10,
+    ) -> tuple[torch.Tensor, torch.Tensor]:
+        """
+        Full
+        pipeline: finds
+        triangles + barycentrics
+        via
+        FAISS,
+        then
+        interpolates & orthonormalizes
+        tangents / bitangents.
+        """
+        tri_idx, baryc = self.find_triangles_and_barycentrics_faiss(
+            verts, faces, pts, index, centroids, k
+        )
+        return self.interpolate_tangent_bitangent(
+            vert_tangents, vert_bitangents, faces,
+            tri_idx, baryc, query_normals
+        )
+
+    def interpolate_tangent_bitangent(
+            self,
+            vert_tangents: torch.Tensor,
+            vert_bitangents: torch.Tensor,
+            faces: torch.LongTensor,
+            tri_indices: torch.LongTensor,
+            barycentric_coords: torch.Tensor,
+            query_normals: torch.Tensor,
+    ) -> tuple[torch.Tensor, torch.Tensor]:
+        """
+        vert_tangents:       (V, 3) per-vertex tangent vectors
+        vert_bitangents:     (V, 3) per-vertex bitangent vectors
+        faces:               (F, 3) triangle vertex indices
+        tri_indices:         (N,) face index for each query point
+        barycentric_coords:  (N, 3) barycentric coords per query point
+        query_normals:       (N, 3) interpolated normals at query points
 
         Returns:
-            T_pts:  (P, 3) tensor of interpolated, orthonormal tangents
-            B_pts:  (P, 3) tensor of interpolated, orthonormal bitangents
+          (tangents, bitangents): each (N, 3)
         """
-        device = points.device
+        # 1. Gather the three vertex indices for each sampled point
+        face_verts = faces[tri_indices]  # shape: (N, 3)
 
-        # Convert Open3D mesh to PyTorch3D Meshes once
-        verts = torch.from_numpy(np.asarray(mesh_o3d.vertices)).to(device=device, dtype=torch.float32)
-        faces = torch.from_numpy(np.asarray(mesh_o3d.triangles)).to(device=device, dtype=torch.long)
-        meshes = Meshes(verts=[verts], faces=[faces])
+        # 2. Pull per-vertex tangents & bitangents
+        t0 = vert_tangents[face_verts[:, 0]]
+        t1 = vert_tangents[face_verts[:, 1]]
+        t2 = vert_tangents[face_verts[:, 2]]
+        b0 = vert_bitangents[face_verts[:, 0]]
+        b1 = vert_bitangents[face_verts[:, 1]]
+        b2 = vert_bitangents[face_verts[:, 2]]
 
-        # 1) Offset origins along normal and cast rays inward
-        origins = points + normals * eps  # (P, 3)
-        dirs = -normals  # (P, 3)
-        rays_o = origins.unsqueeze(1)  # (P, 1, 3)
-        rays_d = dirs.unsqueeze(1)  # (P, 1, 3)
+        # 3. Barycentric interpolation
+        bc = barycentric_coords
+        t_interp = t0 * bc[:, 0:1] + t1 * bc[:, 1:2] + t2 * bc[:, 2:3]
+        b_interp = b0 * bc[:, 0:1] + b1 * bc[:, 1:2] + b2 * bc[:, 2:3]
 
-        # 2) Ray-mesh intersection (PyTorch3D)
-        hits = ray_mesh_intersect(meshes, rays_o, rays_d)
-        face_idx = hits.face_idx[..., 0]  # (P,)
-        bary = hits.bary_coords[..., 0, :]  # (P, 3)
+        # 4. Orthonormalize the tangent relative to the normal
+        n = query_normals
+        t_proj = t_interp - n * torch.sum(n * t_interp, dim=1, keepdim=True)
+        t_norm = F.normalize(t_proj, eps=1e-6, dim=1)
 
-        # 3) Gather per-face vertex indices
-        faces_tensor = meshes.faces_packed()  # (F, 3)
-        vidx = faces_tensor[face_idx]  # (P, 3)
-        u, v, w = bary.unbind(dim=1)  # each (P,)
+        # 5. Orthonormalize the bitangent relative to both normal & tangent
+        b_proj = b_interp
+        b_proj = b_proj - n * torch.sum(n * b_proj, dim=1, keepdim=True)
+        b_proj = b_proj - t_norm * torch.sum(t_norm * b_proj, dim=1, keepdim=True)
+        b_norm = F.normalize(b_proj, eps=1e-6, dim=1)
 
-        # 4) Barycentric interpolation of frames
-        T_pts = (u[:, None] * vertex_tangents[vidx[:, 0]] +
-                 v[:, None] * vertex_tangents[vidx[:, 1]] +
-                 w[:, None] * vertex_tangents[vidx[:, 2]])
-        B_pts = (u[:, None] * vertex_bitangents[vidx[:, 0]] +
-                 v[:, None] * vertex_bitangents[vidx[:, 1]] +
-                 w[:, None] * vertex_bitangents[vidx[:, 2]])
+        return t_norm, b_norm
 
-        # 5) Orthonormalize tangent to normal, then recompute bitangent
-        proj = (T_pts * normals).sum(dim=1, keepdim=True)
-        T_pts = T_pts - proj * normals
-        T_pts = torch.nn.functional.normalize(T_pts, dim=1, eps=1e-6)
-        B_pts = torch.cross(normals, T_pts, dim=1)
-        B_pts = torch.nn.functional.normalize(B_pts, dim=1, eps=1e-6)
-
-        return T_pts, B_pts
-
-    def shade_anisotropic_mixed(self, mesh, T, B, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train, is_seperate=True):
+    def shade_anisotropic_mixed(self, mesh, index, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train, is_seperate=True):
         self.nan_inf_check(normals, 'normals')
         self.nan_inf_check(mx, 'mx')
         self.nan_inf_check(my, 'my')
@@ -3106,7 +3187,7 @@ class MCShadingNetwork(nn.Module):
         self.nan_inf_check(ks, 'ks')
 
         num_spec_samples = self.cfg['specular_sample_num']
-        hs, wis, cos_ths = self.sample_aniso_ggx_directions(mesh, T, B, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
+        hs, wis, cos_ths = self.sample_aniso_ggx_directions(mesh, index, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
         self.nan_inf_check(hs, 'hs')
         self.nan_inf_check(wis, 'wis')
         self.nan_inf_check(cos_ths, 'cos_ths')
@@ -3160,15 +3241,15 @@ class MCShadingNetwork(nn.Module):
         return colors, outputs
 
 
-    def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh, T, B, is_seperate=True):
+    def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh, index, is_seperate=True):
         # print('anisotropic_forward:')
         mx, my, alpha, F0, kd, ks = self.predict_anisotropic_components(pts)
-        return self.shade_anisotropic_mixed(mesh, T, B, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train, is_seperate)
+        return self.shade_anisotropic_mixed(mesh, index, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train, is_seperate)
 
 
-    def forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh, T, B):
+    def forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh, index):
         if mesh is not None:
-            return self.anisotropic_forward(pts, view_dirs, normals, human_poses, step, is_train, mesh, T, B, is_seperate=True)
+            return self.anisotropic_forward(pts, view_dirs, normals, human_poses, step, is_train, mesh, index, is_seperate=True)
         view_dirs, normals = F.normalize(view_dirs, dim=-1), F.normalize(normals, dim=-1)
         reflections = torch.sum(view_dirs * normals, -1, keepdim=True) * normals * 2 - view_dirs
         metallic, roughness, albedo = self.predict_materials(pts)  # [pn,1] [pn,1] [pn,3]
