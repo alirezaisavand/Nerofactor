@@ -1744,8 +1744,6 @@ from utils.base_utils import az_el_to_points, sample_sphere
 from utils.raw_utils import linear_to_srgb
 from utils.ref_utils import generate_ide_fn
 import open3d as o3d
-import pytorch3d
-from pytorch3d.structures import Meshes
 
 # Positional encoding embedding. Code was taken from https://github.com/bmild/nerf.
 class Embedder:
@@ -2806,7 +2804,7 @@ class MCShadingNetwork(nn.Module):
 
 
     def sample_aniso_ggx_directions(self,
-                                    mesh: pytorch3d.structures.Meshes,
+                                    mesh,
                                     index,
                                     pts: torch.Tensor,
                                     m_x: torch.Tensor,
