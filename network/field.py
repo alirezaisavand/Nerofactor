@@ -3039,7 +3039,7 @@ class MCShadingNetwork(nn.Module):
             index,
             centroids,
             k: int = 10,
-    ) -> tuple[torch.LongTensor, torch.Tensor]:
+    ):
         """
         For
         each
