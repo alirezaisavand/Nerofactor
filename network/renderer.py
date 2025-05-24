@@ -964,7 +964,8 @@ class NeROMaterialRenderer(nn.Module):
             N = mesh.vertex_normals[i]
             # gather neighbor positions
             neigh_idx = self.adjacency[i]
-            neigh_pts = mesh.vertices[neigh_idx]
+            print('neigh_idx', neigh_idx)
+            neigh_pts = np.asarray(mesh.vertices)[neigh_idx]
 
             # project neighbors into tangent plane
             offsets = neigh_pts - p  # (k,3)
