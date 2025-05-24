@@ -2816,13 +2816,12 @@ class MCShadingNetwork(nn.Module):
                                     eps: float = 1e-6):
         if device is None:
             device = wo.device
-        centroids = mesh.centroids
         T = mesh.T
         B = mesh.B
         # z = normals  # pn,3
         # x = self.get_orthogonal_directions(normals)  # pn,3
         # y = torch.cross(z, x, dim=-1)  # pn,3
-        x, y = self.get_tangent_bitangent_via_faiss(mesh.vertices, mesh.faces, T, B, pts, normals, index, centroids)
+        x, y = self.get_tangent_bitangent_via_faiss(mesh.vertices, mesh.faces, T, B, pts, normals, index)
         z = normals
 
         m_x = m_x.to(device)  # (N,1)
@@ -3037,7 +3036,6 @@ class MCShadingNetwork(nn.Module):
             faces: torch.LongTensor,
             pts: torch.Tensor,
             index,
-            centroids,
             k: int = 10,
     ):
         """
@@ -3105,7 +3103,6 @@ class MCShadingNetwork(nn.Module):
             pts: torch.Tensor,
             query_normals: torch.Tensor,
             index,
-            centroids,
             k: int = 10,
     ):
         """
@@ -3119,7 +3116,7 @@ class MCShadingNetwork(nn.Module):
         tangents / bitangents.
         """
         tri_idx, baryc = self.find_triangles_and_barycentrics_faiss(
-            verts, faces, pts, index, centroids, k
+            verts, faces, pts, index, k
         )
         return self.interpolate_tangent_bitangent(
             vert_tangents, vert_bitangents, faces,
