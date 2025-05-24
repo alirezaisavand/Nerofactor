@@ -1031,6 +1031,7 @@ class NeROMaterialRenderer(nn.Module):
 
         """
         # Compute triangle centroids
+        print(faces)
         tri_verts = verts[faces]  # (F,3,3)
         centroids = tri_verts.mean(dim=1).cpu().numpy().astype('float32')  # (F,3)
 
