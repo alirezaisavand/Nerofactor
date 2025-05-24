@@ -1031,7 +1031,6 @@ class NeROMaterialRenderer(nn.Module):
 
         """
         # Compute triangle centroids
-        print(faces)
         tri_verts = verts[faces]  # (F,3,3)
         centroids = tri_verts.mean(dim=1).cpu().numpy().astype('float32')  # (F,3)
 
@@ -1047,10 +1046,11 @@ class NeROMaterialRenderer(nn.Module):
     def _init_geometry(self):
         device = torch.device('cuda')
         self.mesh = open3d.io.read_triangle_mesh(self.cfg['mesh'])
-
+        faces_np = np.asarray(self.mesh.triangles, dtype=np.int64)
+        faces = torch.from_numpy(faces_np).to(device=device, dtype=torch.long)
         self.index, self.mesh.centroids = self.build_faiss_index(
             torch.from_numpy(np.asarray(self.mesh.vertices)).to(device),
-            torch.from_numpy(np.asarray(self.mesh.triangles)).to(device),
+            faces,
             use_gpu=True,
         )
 
