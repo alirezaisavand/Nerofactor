@@ -1007,11 +1007,11 @@ class NeROMaterialRenderer(nn.Module):
             adjacency[i].update([j, k])
             adjacency[j].update([i, k])
             adjacency[k].update([i, j])
-        # convert sets to lists
+        # convert sets to sorted lists
         for i in range(num_vertices):
-            adjacency[i] = list(adjacency[i])
+            adjacency[i] = np.asarray(sorted(adjacency[i]), dtype=np.int32)
 
-        return np.asarray(adjacency)
+        return adjacency
 
     def build_faiss_index(self, verts: torch.Tensor, faces: torch.LongTensor, use_gpu: bool = False):
         """
