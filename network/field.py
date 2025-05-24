@@ -2823,7 +2823,9 @@ class MCShadingNetwork(nn.Module):
         # z = normals  # pn,3
         # x = self.get_orthogonal_directions(normals)  # pn,3
         # y = torch.cross(z, x, dim=-1)  # pn,3
-        x, y = self.get_tangent_bitangent_via_faiss(mesh.vertices, mesh.faces, T, B, pts, normals, index)
+        vertices = torch.from_numpy(np.asarray(mesh.vertices))
+        faces = torch.from_numpy(np.asarray(mesh.triangles))
+        x, y = self.get_tangent_bitangent_via_faiss(vertices, faces, T, B, pts, normals, index)
         z = normals
 
         m_x = m_x.to(device)  # (N,1)
