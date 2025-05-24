@@ -963,7 +963,7 @@ class NeROMaterialRenderer(nn.Module):
             p = mesh.vertices[i]
             N = mesh.vertex_normals[i]
             # gather neighbor positions
-            neigh_idx = mesh.adjacency[i]
+            neigh_idx = self.adjacency[i]
             neigh_pts = mesh.vertices[neigh_idx]
 
             # project neighbors into tangent plane
@@ -1048,16 +1048,16 @@ class NeROMaterialRenderer(nn.Module):
         self.mesh = open3d.io.read_triangle_mesh(self.cfg['mesh'])
         faces_np = np.asarray(self.mesh.triangles, dtype=np.int64)
         faces = torch.from_numpy(faces_np).to(device=device, dtype=torch.long)
-        self.index, self.mesh.centroids = self.build_faiss_index(
+        self.index, centroids = self.build_faiss_index(
             torch.from_numpy(np.asarray(self.mesh.vertices)).to(device),
             faces,
             use_gpu=True,
         )
 
         print('calculating tangents for mesh vertices')
-        self.mesh.adjacency = self.build_vertex_adjacency()
+        self.adjacency = self.build_vertex_adjacency()
 
-        self.mesh.T, self.mesh.B = self.compute_pca_tangent_frame()
+        self.T, self.B = self.compute_pca_tangent_frame()
 
 
     def _init_dataset(self, is_train):
@@ -1473,7 +1473,7 @@ class NeROMaterialRenderer(nn.Module):
             self.train_batch[k] = v[shuffle_idxs]
 
     def shade(self, pts, view_dirs, normals, human_poses, is_train, step=None):
-        rgb_pr, outputs = self.shader_network(pts, view_dirs, normals, human_poses, step, is_train, self.mesh, self.index)
+        rgb_pr, outputs = self.shader_network(pts, view_dirs, normals, human_poses, step, is_train, self.mesh, self.T, self.B, self.index)
         outputs['rgb_pr'] = rgb_pr
         return outputs
 

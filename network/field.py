@@ -2805,6 +2805,8 @@ class MCShadingNetwork(nn.Module):
 
     def sample_aniso_ggx_directions(self,
                                     mesh,
+                                    tangents,
+                                    bitangents,
                                     index,
                                     pts: torch.Tensor,
                                     m_x: torch.Tensor,
@@ -2816,8 +2818,8 @@ class MCShadingNetwork(nn.Module):
                                     eps: float = 1e-6):
         if device is None:
             device = wo.device
-        T = mesh.T
-        B = mesh.B
+        T = tangents
+        B = bitangents
         # z = normals  # pn,3
         # x = self.get_orthogonal_directions(normals)  # pn,3
         # y = torch.cross(z, x, dim=-1)  # pn,3
@@ -3172,7 +3174,7 @@ class MCShadingNetwork(nn.Module):
 
         return t_norm, b_norm
 
-    def shade_anisotropic_mixed(self, mesh, index, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train, is_seperate=True):
+    def shade_anisotropic_mixed(self, mesh, tangents, bitangents, index, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train, is_seperate=True):
         self.nan_inf_check(normals, 'normals')
         self.nan_inf_check(mx, 'mx')
         self.nan_inf_check(my, 'my')
@@ -3182,7 +3184,7 @@ class MCShadingNetwork(nn.Module):
         self.nan_inf_check(ks, 'ks')
 
         num_spec_samples = self.cfg['specular_sample_num']
-        hs, wis, cos_ths = self.sample_aniso_ggx_directions(mesh, index, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
+        hs, wis, cos_ths = self.sample_aniso_ggx_directions(mesh, tangents, bitangents, index, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
         self.nan_inf_check(hs, 'hs')
         self.nan_inf_check(wis, 'wis')
         self.nan_inf_check(cos_ths, 'cos_ths')
@@ -3236,15 +3238,15 @@ class MCShadingNetwork(nn.Module):
         return colors, outputs
 
 
-    def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh, index, is_seperate=True):
+    def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh, tangents, bitangents, index, is_seperate=True):
         # print('anisotropic_forward:')
         mx, my, alpha, F0, kd, ks = self.predict_anisotropic_components(pts)
-        return self.shade_anisotropic_mixed(mesh, index, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train, is_seperate)
+        return self.shade_anisotropic_mixed(mesh, tangents, bitangents, index, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train, is_seperate)
 
 
-    def forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh, index):
+    def forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh, tangents, bitangents, index):
         if mesh is not None:
-            return self.anisotropic_forward(pts, view_dirs, normals, human_poses, step, is_train, mesh, index, is_seperate=True)
+            return self.anisotropic_forward(pts, view_dirs, normals, human_poses, step, is_train, mesh, tangents, bitangents, index, is_seperate=True)
         view_dirs, normals = F.normalize(view_dirs, dim=-1), F.normalize(normals, dim=-1)
         reflections = torch.sum(view_dirs * normals, -1, keepdim=True) * normals * 2 - view_dirs
         metallic, roughness, albedo = self.predict_materials(pts)  # [pn,1] [pn,1] [pn,3]
