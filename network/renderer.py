@@ -1046,6 +1046,9 @@ class NeROMaterialRenderer(nn.Module):
     def _init_geometry(self):
         device = torch.device('cuda')
         self.mesh = open3d.io.read_triangle_mesh(self.cfg['mesh'])
+        if not self.mesh.has_vertex_normals():
+            print("Computing vertex normals...")
+            self.mesh.compute_vertex_normals()
         faces_np = np.asarray(self.mesh.triangles, dtype=np.int64)
         faces = torch.from_numpy(faces_np).to(device=device, dtype=torch.long)
         self.index, centroids = self.build_faiss_index(
