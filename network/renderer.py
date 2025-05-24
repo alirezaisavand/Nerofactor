@@ -1050,6 +1050,7 @@ class NeROMaterialRenderer(nn.Module):
     def _init_geometry(self):
         device = torch.device('cuda')
         self.mesh = open3d.io.read_triangle_mesh(self.cfg['mesh'])
+        self.ray_tracer = raytracing.RayTracer(np.asarray(self.mesh.vertices), np.asarray(self.mesh.triangles))
         if not self.mesh.has_vertex_normals():
             print("Computing vertex normals...")
             self.mesh.compute_vertex_normals()
