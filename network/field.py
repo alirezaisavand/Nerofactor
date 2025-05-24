@@ -3042,7 +3042,7 @@ class MCShadingNetwork(nn.Module):
             pts: torch.Tensor,
             tree: cKDTree,
             k: int = 5,
-    ) -> tuple[torch.LongTensor, torch.Tensor]:
+    ):
         """
         For each point in pts, search k nearest triangle centroids,
         test barycentric coordinates, and return the containing triangle.
@@ -3100,7 +3100,7 @@ class MCShadingNetwork(nn.Module):
             query_normals: torch.Tensor,
             tree: cKDTree,
             k: int = 5,
-    ) -> tuple[torch.Tensor, torch.Tensor]:
+    ):
         """
         Full pipeline: KD-tree lookup → barycentric coords → frame interpolation.
 
