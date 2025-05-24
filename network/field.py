@@ -3107,7 +3107,7 @@ class MCShadingNetwork(nn.Module):
             index,
             centroids,
             k: int = 10,
-    )
+    ):
         """
         Full
         pipeline: finds
