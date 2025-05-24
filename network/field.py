@@ -3107,7 +3107,7 @@ class MCShadingNetwork(nn.Module):
             index,
             centroids,
             k: int = 10,
-    ) -> tuple[torch.Tensor, torch.Tensor]:
+    )
         """
         Full
         pipeline: finds
@@ -3134,7 +3134,7 @@ class MCShadingNetwork(nn.Module):
             tri_indices: torch.LongTensor,
             barycentric_coords: torch.Tensor,
             query_normals: torch.Tensor,
-    ) -> tuple[torch.Tensor, torch.Tensor]:
+    ):
         """
         vert_tangents:       (V, 3) per-vertex tangent vectors
         vert_bitangents:     (V, 3) per-vertex bitangent vectors
