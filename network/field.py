@@ -1744,6 +1744,7 @@ from utils.base_utils import az_el_to_points, sample_sphere
 from utils.raw_utils import linear_to_srgb
 from utils.ref_utils import generate_ide_fn
 import open3d as o3d
+from scipy.spatial import cKDTree
 
 # Positional encoding embedding. Code was taken from https://github.com/bmild/nerf.
 class Embedder:
@@ -2807,7 +2808,7 @@ class MCShadingNetwork(nn.Module):
                                     mesh,
                                     tangents,
                                     bitangents,
-                                    index,
+                                    tree,
                                     pts: torch.Tensor,
                                     m_x: torch.Tensor,
                                     m_y: torch.Tensor,
@@ -2825,7 +2826,7 @@ class MCShadingNetwork(nn.Module):
         # y = torch.cross(z, x, dim=-1)  # pn,3
         vertices = torch.from_numpy(np.asarray(mesh.vertices))
         faces = torch.from_numpy(np.asarray(mesh.triangles))
-        x, y = self.get_tangent_bitangent_via_faiss(vertices, faces, T, B, pts, normals, index)
+        x, y = self.get_tangent_bitangent_via_kdtree(vertices, faces, T, B, pts, normals, tree)
         z = normals
 
         m_x = m_x.to(device)  # (N,1)
@@ -3034,55 +3035,46 @@ class MCShadingNetwork(nn.Module):
 
         return f_d
 
-    def find_triangles_and_barycentrics_faiss(
+    def find_triangles_and_barycentrics_kdtree(
             self,
             verts: torch.Tensor,
             faces: torch.LongTensor,
             pts: torch.Tensor,
-            index,
-            k: int = 10,
-    ):
+            tree: cKDTree,
+            k: int = 5,
+    ) -> tuple[torch.LongTensor, torch.Tensor]:
         """
-        For
-        each
-        point in pts(N, 3), queries
-        the
-        k
-        nearest
-        triangle
-        centroids,
-        tests
-        each
-        candidate
-        for barycentric containment, and returns:
-            tri_indices: (N,)
-            long
-            tensor
-            of
-            face
-            IDs
-            bary_coords: (N, 3)
-            tensor
-            of
-            barycentric
-            coordinates
+        For each point in pts, search k nearest triangle centroids,
+        test barycentric coordinates, and return the containing triangle.
+
+        Args:
+          verts: (V,3)
+          faces: (F,3)
+          pts: (N,3)
+          tree: cKDTree over centroids
+          centroids: (F,3) numpy array
+          k: number of candidate triangles
+
+        Returns:
+          tri_indices: (N,) LongTensor of face IDs
+          bary_coords: (N,3) tensor of barycentric coords
         """
         device = pts.device
-        pts_np = pts.cpu().numpy().astype('float32')  # (N,3)
-        # Query k nearest centroids
-        dists, idxs = index.search(pts_np, k)  # both (N,k)
+        pts_np = pts.cpu().numpy()  # (N,3)
+        _, idxs = tree.query(pts_np, k=k)  # (N,k)
 
         tri_indices = []
         bary_coords = []
-        for i, candidates in enumerate(idxs):
-            p = pts[i]
+        for pi, candidates in enumerate(idxs):
+            p = pts[pi]
             for fid in candidates:
                 tri = verts[faces[fid]]  # (3,3)
                 v0, v1 = tri[1] - tri[0], tri[2] - tri[0]
                 v2 = p - tri[0]
-                # Compute barycentric coords
-                d00, d01 = torch.dot(v0, v0), torch.dot(v0, v1)
-                d11, d20 = torch.dot(v1, v1), torch.dot(v2, v0)
+                d00 = torch.dot(v0, v0);
+                d01 = torch.dot(v0, v1)
+                d11 = torch.dot(v1, v1);
+                d20 = torch.dot(v2, v0)
                 d21 = torch.dot(v2, v1)
                 denom = d00 * d11 - d01 * d01 + 1e-8
                 v = (d11 * d20 - d01 * d21) / denom
@@ -3098,7 +3090,7 @@ class MCShadingNetwork(nn.Module):
         bary_coords = torch.stack(bary_coords, dim=0).to(device)
         return tri_indices, bary_coords
 
-    def get_tangent_bitangent_via_faiss(
+    def get_tangent_bitangent_via_kdtree(
             self,
             verts: torch.Tensor,
             faces: torch.LongTensor,
@@ -3106,22 +3098,21 @@ class MCShadingNetwork(nn.Module):
             vert_bitangents: torch.Tensor,
             pts: torch.Tensor,
             query_normals: torch.Tensor,
-            index,
-            k: int = 10,
-    ):
+            tree: cKDTree,
+            k: int = 5,
+    ) -> tuple[torch.Tensor, torch.Tensor]:
         """
-        Full
-        pipeline: finds
-        triangles + barycentrics
-        via
-        FAISS,
-        then
-        interpolates & orthonormalizes
-        tangents / bitangents.
+        Full pipeline: KD-tree lookup → barycentric coords → frame interpolation.
+
+        Returns:
+          (tangents, bitangents): each (N,3)
         """
-        tri_idx, baryc = self.find_triangles_and_barycentrics_faiss(
-            verts, faces, pts, index, k
+        # 1) find face IDs and barycentrics via KD-tree
+        tri_idx, baryc = self.find_triangles_and_barycentrics_kdtree(
+            verts, faces, pts, tree, k
         )
+
+        # 2) interpolate & orthonormalize
         return self.interpolate_tangent_bitangent(
             vert_tangents, vert_bitangents, faces,
             tri_idx, baryc, query_normals
@@ -3176,7 +3167,7 @@ class MCShadingNetwork(nn.Module):
 
         return t_norm, b_norm
 
-    def shade_anisotropic_mixed(self, mesh, tangents, bitangents, index, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train, is_seperate=True):
+    def shade_anisotropic_mixed(self, mesh, tangents, bitangents, tree, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train, is_seperate=True):
         self.nan_inf_check(normals, 'normals')
         self.nan_inf_check(mx, 'mx')
         self.nan_inf_check(my, 'my')
@@ -3186,7 +3177,7 @@ class MCShadingNetwork(nn.Module):
         self.nan_inf_check(ks, 'ks')
 
         num_spec_samples = self.cfg['specular_sample_num']
-        hs, wis, cos_ths = self.sample_aniso_ggx_directions(mesh, tangents, bitangents, index, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
+        hs, wis, cos_ths = self.sample_aniso_ggx_directions(mesh, tangents, bitangents, tree, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
         self.nan_inf_check(hs, 'hs')
         self.nan_inf_check(wis, 'wis')
         self.nan_inf_check(cos_ths, 'cos_ths')
@@ -3240,15 +3231,15 @@ class MCShadingNetwork(nn.Module):
         return colors, outputs
 
 
-    def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh, tangents, bitangents, index, is_seperate=True):
+    def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh, tangents, bitangents, tree, is_seperate=True):
         # print('anisotropic_forward:')
         mx, my, alpha, F0, kd, ks = self.predict_anisotropic_components(pts)
-        return self.shade_anisotropic_mixed(mesh, tangents, bitangents, index, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train, is_seperate)
+        return self.shade_anisotropic_mixed(mesh, tangents, bitangents, tree, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train, is_seperate)
 
 
-    def forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh, tangents, bitangents, index):
+    def forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh, tangents, bitangents, tree):
         if mesh is not None:
-            return self.anisotropic_forward(pts, view_dirs, normals, human_poses, step, is_train, mesh, tangents, bitangents, index, is_seperate=True)
+            return self.anisotropic_forward(pts, view_dirs, normals, human_poses, step, is_train, mesh, tangents, bitangents, tree, is_seperate=True)
         view_dirs, normals = F.normalize(view_dirs, dim=-1), F.normalize(normals, dim=-1)
         reflections = torch.sum(view_dirs * normals, -1, keepdim=True) * normals * 2 - view_dirs
         metallic, roughness, albedo = self.predict_materials(pts)  # [pn,1] [pn,1] [pn,3]

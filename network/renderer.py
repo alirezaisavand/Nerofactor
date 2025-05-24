@@ -14,7 +14,7 @@ from utils.base_utils import color_map_forward, downsample_gaussian_blur
 from utils.raw_utils import linear_to_srgb
 
 from tqdm import trange
-import faiss
+from scipy.spatial import cKDTree
 
 def load_masks(input_folder, as_bool=True):
     import os
@@ -1013,38 +1013,23 @@ class NeROMaterialRenderer(nn.Module):
 
         return adjacency
 
-    def build_faiss_index(self, verts: torch.Tensor, faces: torch.LongTensor, use_gpu: bool = False):
+    def build_triangle_kdtree(self, verts: torch.Tensor, faces: torch.LongTensor):
         """
-        Builds
-        a
-        FAISS
-        index
-        over
-        triangle
-        centroids.
+        Build a KD-tree over triangle centroids.
+
+        Args:
+          verts: (V,3) tensor of vertex positions
+          faces: (F,3) LongTensor of triangle indices
+
         Returns:
-        index: FAISS
-        index
-        for nearest - neighbor search
-            centroids: (F, 3)
-            numpy
-            array
-            of
-            triangle
-            centroids
-
+          tree: cKDTree over centroids
+          centroids: (F,3) numpy array of triangle centroids
         """
-        # Compute triangle centroids
-        tri_verts = verts[faces]  # (F,3,3)
-        centroids = tri_verts.mean(dim=1).cpu().numpy().astype('float32')  # (F,3)
-
-        # Build a flat L2 index
-        index = faiss.IndexFlatL2(3)
-        if use_gpu:
-            res = faiss.StandardGpuResources()
-            index = faiss.index_cpu_to_gpu(res, 0, index)
-        index.add(centroids)
-        return index, centroids
+        # Compute centroids
+        tri_verts = verts[faces].cpu().numpy()  # (F,3,3)
+        centroids = tri_verts.mean(axis=1)  # (F,3)
+        tree = cKDTree(centroids)
+        return tree, centroids
 
 
     def _init_geometry(self):
@@ -1056,11 +1041,8 @@ class NeROMaterialRenderer(nn.Module):
             self.mesh.compute_vertex_normals()
         faces_np = np.asarray(self.mesh.triangles, dtype=np.int64)
         faces = torch.from_numpy(faces_np).to(device=device, dtype=torch.long)
-        self.index, centroids = self.build_faiss_index(
-            torch.from_numpy(np.asarray(self.mesh.vertices)).to(device),
-            faces,
-            use_gpu=True,
-        )
+        self.tree, centroids = self.build_triangle_kdtree(torch.from_numpy(np.asarray(self.mesh.vertices)).to(device=device),
+                                                            faces)
 
         print('calculating tangents for mesh vertices')
         self.adjacency = self.build_vertex_adjacency()
@@ -1481,7 +1463,7 @@ class NeROMaterialRenderer(nn.Module):
             self.train_batch[k] = v[shuffle_idxs]
 
     def shade(self, pts, view_dirs, normals, human_poses, is_train, step=None):
-        rgb_pr, outputs = self.shader_network(pts, view_dirs, normals, human_poses, step, is_train, self.mesh, self.T, self.B, self.index)
+        rgb_pr, outputs = self.shader_network(pts, view_dirs, normals, human_poses, step, is_train, self.mesh, self.T, self.B, self.tree)
         outputs['rgb_pr'] = rgb_pr
         return outputs
 
