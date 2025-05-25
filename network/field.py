@@ -3142,12 +3142,12 @@ class MCShadingNetwork(nn.Module):
         face_verts = faces[tri_indices]  # shape: (N, 3)
 
         # 2. Pull per-vertex tangents & bitangents
-        t0 = vert_tangents[face_verts[:, 0]]
-        t1 = vert_tangents[face_verts[:, 1]]
-        t2 = vert_tangents[face_verts[:, 2]]
-        b0 = vert_bitangents[face_verts[:, 0]]
-        b1 = vert_bitangents[face_verts[:, 1]]
-        b2 = vert_bitangents[face_verts[:, 2]]
+        t0 = vert_tangents[face_verts[:, 0].cpu()]
+        t1 = vert_tangents[face_verts[:, 1].cpu()]
+        t2 = vert_tangents[face_verts[:, 2].cpu()]
+        b0 = vert_bitangents[face_verts[:, 0].cpu()]
+        b1 = vert_bitangents[face_verts[:, 1].cpu()]
+        b2 = vert_bitangents[face_verts[:, 2].cpu()]
 
         # 3. Barycentric interpolation
         bc = barycentric_coords
