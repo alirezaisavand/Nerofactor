@@ -2819,8 +2819,8 @@ class MCShadingNetwork(nn.Module):
                                     eps: float = 1e-6):
         if device is None:
             device = wo.device
-        T = tangents
-        B = bitangents
+        T = tangents.to(device)
+        B = bitangents.to(device)
         # z = normals  # pn,3
         # x = self.get_orthogonal_directions(normals)  # pn,3
         # y = torch.cross(z, x, dim=-1)  # pn,3
@@ -3177,6 +3177,7 @@ class MCShadingNetwork(nn.Module):
         self.nan_inf_check(ks, 'ks')
 
         num_spec_samples = self.cfg['specular_sample_num']
+
         hs, wis, cos_ths = self.sample_aniso_ggx_directions(mesh, tangents, bitangents, tree, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
         self.nan_inf_check(hs, 'hs')
         self.nan_inf_check(wis, 'wis')
