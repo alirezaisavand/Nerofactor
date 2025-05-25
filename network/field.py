@@ -3148,6 +3148,7 @@ class MCShadingNetwork(nn.Module):
 
         # 3. Barycentric interpolation
         bc = barycentric_coords
+        print('bc shape:', bc.shape)
         t_interp = t0 * bc[:, 0:1] + t1 * bc[:, 1:2] + t2 * bc[:, 2:3]
         b_interp = b0 * bc[:, 0:1] + b1 * bc[:, 1:2] + b2 * bc[:, 2:3]
 
