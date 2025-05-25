@@ -2797,9 +2797,6 @@ class MCShadingNetwork(nn.Module):
         F0 = self.F0_predictor(torch.cat([feats, pts], -1))
         kd = self.kd_predictor(torch.cat([feats, pts], -1))
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
-        print('mx    range:', mx.min(), '-', mx.max())
-        print('my    range:', my.min(), '-', my.max())
-        print('alpha range:', alpha.min(), '-', alpha.max())
         return mx, my, alpha, F0, kd, ks
 
 
@@ -3156,6 +3153,7 @@ class MCShadingNetwork(nn.Module):
 
         # 4. Orthonormalize the tangent relative to the normal
         n = query_normals
+        print('t_interp.shape, n.shape:', t_interp.shape, n.shape)
         t_proj = t_interp - n * torch.sum(n * t_interp, dim=1, keepdim=True)
         t_norm = F.normalize(t_proj, eps=1e-6, dim=1)
 
