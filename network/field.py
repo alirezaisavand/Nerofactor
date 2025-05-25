@@ -3059,7 +3059,6 @@ class MCShadingNetwork(nn.Module):
         device = pts.device
         pts_np = pts.cpu().numpy()  # (N,3)
         _, idxs = tree.query(pts_np, k=k)  # (N,k)
-        print('pts shape:', pts.shape)
         tri_indices = []
         bary_coords = []
         for pi, candidates in enumerate(idxs):
@@ -3148,13 +3147,11 @@ class MCShadingNetwork(nn.Module):
 
         # 3. Barycentric interpolation
         bc = barycentric_coords
-        print('bc shape:', bc.shape)
         t_interp = t0 * bc[:, 0:1] + t1 * bc[:, 1:2] + t2 * bc[:, 2:3]
         b_interp = b0 * bc[:, 0:1] + b1 * bc[:, 1:2] + b2 * bc[:, 2:3]
 
         # 4. Orthonormalize the tangent relative to the normal
         n = query_normals
-        print('t_interp.shape, n.shape:', t_interp.shape, n.shape)
         t_proj = t_interp - n * torch.sum(n * t_interp, dim=1, keepdim=True)
         t_norm = F.normalize(t_proj, eps=1e-6, dim=1)
 
