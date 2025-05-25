@@ -3059,7 +3059,7 @@ class MCShadingNetwork(nn.Module):
         device = pts.device
         pts_np = pts.cpu().numpy()  # (N,3)
         _, idxs = tree.query(pts_np, k=k)  # (N,k)
-
+        print('pts shape:', pts.shape)
         tri_indices = []
         bary_coords = []
         for pi, candidates in enumerate(idxs):
@@ -3078,7 +3078,7 @@ class MCShadingNetwork(nn.Module):
                 w = (d00 * d21 - d01 * d20) / denom
                 u = 1 - v - w
                 bary = torch.stack([u, v, w])
-                if (bary >= -1e-4).all() and (bary <= 1 + 1e-4).all():
+                if (bary >= -1e-3).all() and (bary <= 1 + 1e-3).all():
                     tri_indices.append(int(fid))
                     bary_coords.append(bary)
                     break
