@@ -991,7 +991,7 @@ class NeROMaterialRenderer(nn.Module):
             T[i] = t
             B[i] = b
 
-        return T, B
+        return torch.from_numpy(T), torch.from_numpy(B)
 
     def build_vertex_adjacency(self):
         """
