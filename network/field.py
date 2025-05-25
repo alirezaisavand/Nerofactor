@@ -2866,7 +2866,7 @@ class MCShadingNetwork(nn.Module):
 
         cos_theta_h = cos_th.unsqueeze(-1)  # (N,M,1)
 
-        return h, wi, cos_theta_h
+        return h.float(), wi.float(), cos_theta_h.float()
 
     def compute_radiance(self,
                          f_d: torch.Tensor,
