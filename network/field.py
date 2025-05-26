@@ -3311,9 +3311,9 @@ class MCShadingNetwork(nn.Module):
             #     self.cfg['reg_lambda1'],
             #             dim=1)
             reg = reg + torch.mean(
-                torch.abs(mx - my) * self.cfg['reg_lambda1'],
+                torch.abs(mx),
                 dim=1
-            )
+            ) * self.cfg['reg_lambda1']
         return reg
 
     def material_regularization(self, pts, normals, metallic, roughness, albedo, step):

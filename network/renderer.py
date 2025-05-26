@@ -924,7 +924,7 @@ class NeROMaterialRenderer(nn.Module):
 
         'database_name': 'real/bear/raw_1024',
         'is_nerf': False,
-        'rgb_loss': 'charbonier',
+        'rgb_loss': 'l1',
 
         'mesh': 'data/meshes/bear_shape-300000.ply',
 
