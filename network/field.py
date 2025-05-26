@@ -2463,7 +2463,7 @@ class MCShadingNetwork(nn.Module):
         'reg_change': True,
         'change_eps': 0.05,
         'change_type': 'gaussian',
-        'reg_lambda1': 0.005,
+        'reg_lambda1': 0.05,
         'reg_min_max': True,
 
         'random_azimuth': True,
