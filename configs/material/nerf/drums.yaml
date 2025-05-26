@@ -221,7 +221,7 @@ n_lobes: 2
 
 reg_diffuse_light: true
 reg_diffuse_light_lambda: 0.01
-reg_mat: true
+reg_mat: false
 shader_cfg:
   diffuse_sample_num: 1024
   specular_sample_num: 2048
