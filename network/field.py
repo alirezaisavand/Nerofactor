@@ -2791,10 +2791,11 @@ class MCShadingNetwork(nn.Module):
 
     def predict_anisotropic_components(self, pts):
         feats = self.feats_network(pts)
+        m_min, m_max = 0.05, 1.0
         mx = self.mx_predictor(torch.cat([feats, pts], -1))
-        mx = torch.clamp(mx, min=0.01)
+        mx = m_min + (m_max - m_min)*mx
         my = self.my_predictor(torch.cat([feats, pts], -1))
-        my = torch.clamp(my, min=0.01)
+        my = m_min + (m_max - m_min)*my
         alpha = self.alpha_predictor(torch.cat([feats, pts], -1))
         F0 = self.F0_predictor(torch.cat([feats, pts], -1))
         kd = self.kd_predictor(torch.cat([feats, pts], -1))
@@ -3300,20 +3301,20 @@ class MCShadingNetwork(nn.Module):
             else:
                 raise NotImplementedError
 
-            # mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch = self.predict_anisotropic_components(pts + change)
-            # reg = reg + torch.mean(
-            #     (torch.abs(kd - kd_ch) +
-            #      torch.abs(ks - ks_ch) +
-            #      torch.abs(mx - mx_ch) +
-            #      torch.abs(my - my_ch) +
-            #      torch.abs(alpha - alpha_ch) +
-            #      torch.abs(F0 - F0_ch)) *
-            #     self.cfg['reg_lambda1'],
-            #             dim=1)
+            mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch = self.predict_anisotropic_components(pts + change)
             reg = reg + torch.mean(
-                torch.abs(mx),
-                dim=1
-            ) * self.cfg['reg_lambda1']
+                (torch.abs(kd - kd_ch) +
+                 torch.abs(ks - ks_ch) +
+                 torch.abs(mx - mx_ch) +
+                 torch.abs(my - my_ch) +
+                 torch.abs(alpha - alpha_ch) +
+                 torch.abs(F0 - F0_ch)) *
+                self.cfg['reg_lambda1'],
+                        dim=1)
+            # reg = reg + torch.mean(
+            #     torch.abs(mx),
+            #     dim=1
+            # ) * self.cfg['reg_lambda1']
         return reg
 
     def material_regularization(self, pts, normals, metallic, roughness, albedo, step):
