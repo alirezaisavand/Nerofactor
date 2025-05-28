@@ -2496,9 +2496,11 @@ class MCShadingNetwork(nn.Module):
         # light part
         self.sph_enc = generate_ide_fn(5)
         self.dir_enc, dir_dim = get_embedder(6, 3)
+        # Todo changed here
         self.pos_enc, pos_dim = get_embedder(8, 3)
         if self.cfg['outer_light_version'] == 'direction':
-            self.outer_light = make_predictor(72, 3, activation='exp', exp_max=self.cfg['light_exp_max'])
+            # self.outer_light = make_predictor(72, 3, activation='exp', exp_max=self.cfg['light_exp_max'])
+            self.outer_light = make_predictor(dir_dim, 3, activation='exp', exp_max=self.cfg['light_exp_max'])
         elif self.cfg['outer_light_version'] == 'sphere_direction':
             self.outer_light = make_predictor(72 * 2, 3, activation='exp', exp_max=self.cfg['light_exp_max'])
         else:
@@ -2507,7 +2509,9 @@ class MCShadingNetwork(nn.Module):
         if self.cfg['human_lights']:
             self.human_light = make_predictor(2 * 2 * 6, 4, activation='exp')
             nn.init.constant_(self.human_light[-2].bias, np.log(0.02))
-        self.inner_light = make_predictor(pos_dim + 72, 3, activation='exp', exp_max=self.cfg['inner_light_exp_max'])
+        # self.inner_light = make_predictor(pos_dim + 72, 3, activation='exp', exp_max=self.cfg['inner_light_exp_max'])
+
+        self.inner_light = make_predictor(pos_dim + dir_dim, 3, activation='exp', exp_max=self.cfg['inner_light_exp_max'])
         nn.init.constant_(self.inner_light[-2].bias, np.log(0.5))
 
         # predefined diffuse sample directions
@@ -2589,7 +2593,9 @@ class MCShadingNetwork(nn.Module):
         normals = F.normalize(normals, dim=-1)
         view_dirs = F.normalize(view_dirs, dim=-1)
         reflections = torch.sum(view_dirs * normals, -1, keepdim=True) * normals * 2 - view_dirs
-        dir_enc = self.sph_enc(reflections, 0)
+
+        # Todo changed here dir_enc = self.sph_enc(reflections, 0)
+        dir_enc = self.dir_enc(reflections)
         return self.inner_light(torch.cat([pos_enc, dir_enc], -1))
 
     def get_human_light(self, points, directions, human_poses):
@@ -2609,20 +2615,24 @@ class MCShadingNetwork(nn.Module):
         return human_lights, human_weights
 
     def predict_outer_lights(self, points, directions):
+        # Todo changed sph_enc to dir_enc
         if self.cfg['outer_light_version'] == 'direction':
-            outer_enc = self.sph_enc(directions, 0)
+            # outer_enc = self.sph_enc(directions, 0)
+            outer_enc = self.dir_enc(directions)
             outer_lights = self.outer_light(outer_enc)
         elif self.cfg['outer_light_version'] == 'sphere_direction':
             outer_dirs = directions
             outer_pts = points
-            outer_enc = self.sph_enc(outer_dirs, 0)
+            # outer_enc = self.sph_enc(outer_dirs, 0)
+            outer_enc = self.dir_enc(outer_dirs)
             mask = torch.norm(outer_pts, dim=-1) > 0.999
             if torch.sum(mask) > 0:
                 outer_pts = torch.clone(outer_pts)
                 outer_pts[mask] *= 0.999  # shrink this point a little bit
             dists = get_sphere_intersection(outer_pts, outer_dirs)
             sphere_pts = outer_pts + outer_dirs * dists
-            sphere_pts = self.sph_enc(sphere_pts, 0)
+            # sphere_pts = self.sph_enc(sphere_pts, 0)
+            sphere_pts = self.dir_enc(sphere_pts)
             outer_lights = self.outer_light(torch.cat([outer_enc, sphere_pts], -1))
         else:
             raise NotImplementedError
@@ -3277,9 +3287,11 @@ class MCShadingNetwork(nn.Module):
 
     def predict_outer_lights_pts(self, pts):
         if self.cfg['outer_light_version'] == 'direction':
-            return self.outer_light(self.sph_enc(pts, 0))
+            # return self.outer_light(self.sph_enc(pts, 0))
+            return self.outer_light(self.dir_enc(pts))
         elif self.cfg['outer_light_version'] == 'sphere_direction':
-            return self.outer_light(torch.cat([self.sph_enc(pts, 0), self.sph_enc(pts, 0)], -1))
+            # return self.outer_light(torch.cat([self.sph_enc(pts, 0), self.sph_enc(pts, 0)], -1))
+            return self.outer_light(torch.cat([self.dir_enc(pts), self.dir_enc(pts)], -1))
         else:
             raise NotImplementedError
 
