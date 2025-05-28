@@ -2495,7 +2495,7 @@ class MCShadingNetwork(nn.Module):
 
         # light part
         self.sph_enc = generate_ide_fn(5)
-        self.dir_enc, dir_dim = get_embedder(10, 3)
+        self.dir_enc, dir_dim = get_embedder(12, 3)
         # Todo changed here
         self.pos_enc, pos_dim = get_embedder(8, 3)
         if self.cfg['outer_light_version'] == 'direction':
