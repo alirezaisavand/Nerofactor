@@ -2801,7 +2801,7 @@ class MCShadingNetwork(nn.Module):
 
     def predict_anisotropic_components(self, pts):
         feats = self.feats_network(pts)
-        m_min, m_max = 0.01, 1.0
+        m_min, m_max = 0.2, 1.0
         mx = self.mx_predictor(torch.cat([feats, pts], -1))
         mx = m_min + (m_max - m_min)*mx
         my = self.my_predictor(torch.cat([feats, pts], -1))
