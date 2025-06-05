@@ -1499,7 +1499,7 @@ class NeROMaterialRenderer(nn.Module):
             #     pts, normals, shade_outputs['metallic'], shade_outputs['roughness'], shade_outputs['albedo'], step)
             shade_outputs['loss_mat_reg'] = self.shader_network.anisotropic_regularization(
                 pts, normals, shade_outputs['mx'], shade_outputs['my'], shade_outputs['alpha'], shade_outputs['F0'],
-                shade_outputs['kd'], shade_outputs['ks']
+                shade_outputs['kd'], shade_outputs['ks'], shade_outputs['f_d_sum'], shade_outputs['f_s_sum']
             )
             # shade_outputs['loss_mat_reg'] = self.shader_network.material_regularization(
             #     pts, normals, shade_outputs['albedo'], step)
@@ -1549,6 +1549,8 @@ class NeROMaterialRenderer(nn.Module):
                 outputs_cur['alpha'][hit_mask] = shade_outputs['alpha']
                 outputs_cur['diffuse_color'][hit_mask] = shade_outputs['diffuse_color']
                 outputs_cur['specular_color'][hit_mask] = shade_outputs['specular_color']
+                outputs_cur['f_d_sum'][hit_mask] = shade_outputs['f_d_sum']
+                outputs_cur['f_s_sum'][hit_mask] = shade_outputs['f_s_sum']
                 # outputs_cur['spec_brdf'][hit_mask] = shade_outputs['spec_brdf']
 
             for k in output_keys.keys():

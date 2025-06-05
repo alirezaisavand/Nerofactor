@@ -2944,13 +2944,13 @@ class MCShadingNetwork(nn.Module):
         cos_in = torch.clamp((wi * n.unsqueeze(1)).sum(dim=2, keepdim=True), min=0.0)  # (N,M,1)
 
         # --- Diffuse component: (1/M) ∑ f_d * Li ---
-        diff_weighted = f_d * diffuse_lights # (N,M,3)
+        diff_weighted = diffuse_lights * f_d # (N,M,3)
+        f_d_sum = f_d.sum(dim=1) / M_diff
         diffuse = diff_weighted.sum(dim=1) / M_diff  # (N,3)
 
         # --- Specular component ---
         # term1 = L * k_s * F
-        spec_base = specular_lights * k_s_exp * F  # (N,M,3)
-
+        f_s = k_s_exp * F
         # term2 = (wi·n)^(1-alpha)
         exponent = 1.0 - alpha_exp  # (N,1,1)
 
@@ -2961,13 +2961,13 @@ class MCShadingNetwork(nn.Module):
         # denom = cos_theta_h * (wo·n)^alpha
         pow_on = torch.pow(cos_on_exp + eps, alpha_exp)  # (N,1,1)
         denom = cos_theta_h * pow_on + eps  # (N,M,1)
-
-        spec_weighted = (spec_base * pow_in / denom) * mask.unsqueeze(-1)  # (N,M,3)
+        f_s = (f_s * pow_in / denom) * mask.unsqueeze(-1)
+        spec_weighted = f_s * specular_lights  # (N,M,3)
         specular = spec_weighted.sum(dim=1) / valid_counts  # (N,3)
-
+        f_s_sum = f_s.sum(dim=1) / valid_counts
         # Total radiance
         R = diffuse + specular  # (N,3)
-        return R, diffuse, specular
+        return R, diffuse, specular, f_d_sum, f_s_sum
 
     def nan_inf_check(self, A, name):
         if torch.isinf(A).any():
@@ -3214,7 +3214,7 @@ class MCShadingNetwork(nn.Module):
         f_d = self.diffuse_term(kd, F, is_seperate)
         self.nan_inf_check(f_d, 'diffuse term (f_d)')
 
-        R, diffuse_color, specular_color  = self.compute_radiance(f_d, diffuse_lights, specular_lights, ks, F, diffuse_directions, wis, normals, alpha, cos_ths, view_dirs)
+        R, diffuse_color, specular_color, f_d_sum, f_s_sum  = self.compute_radiance(f_d, diffuse_lights, specular_lights, ks, F, diffuse_directions, wis, normals, alpha, cos_ths, view_dirs)
         self.nan_inf_check(R, 'R')
         self.nan_inf_check(diffuse_color, 'diffuse_color')
         self.nan_inf_check(specular_color, 'specular_color')
@@ -3240,7 +3240,8 @@ class MCShadingNetwork(nn.Module):
         outputs['specular_color'] = specular_color
         outputs['diffuse_light'] = torch.clamp(linear_to_srgb(torch.mean(diffuse_lights, dim=1)), min=0, max=1)
         outputs['specular_light'] = torch.clamp(linear_to_srgb(torch.mean(specular_lights, dim=1)), min=0, max=1)
-
+        outputs['f_d_sum'] = f_d_sum
+        outputs['f_s_sum'] = f_s_sum
         return colors, outputs
 
 
@@ -3301,7 +3302,7 @@ class MCShadingNetwork(nn.Module):
     def get_env_light(self):
         return self.predict_outer_lights_pts(self.light_pts)
 
-    def anisotropic_regularization(self, pts, normals, mx, my, alpha, F0, kd, ks):
+    def anisotropic_regularization(self, pts, normals, mx, my, alpha, F0, kd, ks, f_d_sum, f_s_sum):
         reg = 0
         if self.cfg['reg_change']:
             normals = F.normalize(normals, dim=-1)
@@ -3326,10 +3327,19 @@ class MCShadingNetwork(nn.Module):
                  torch.abs(F0 - F0_ch)) *
                 self.cfg['reg_lambda1'],
                         dim=1)
+
             # reg = reg + torch.mean(
             #     torch.abs(mx),
             #     dim=1
             # ) * self.cfg['reg_lambda1']
+            if self.cfg['reg_energy_loss']:
+                f_r_loss = 2 * np.pi * (f_d_sum + f_s_sum) - 1
+                f_r_loss = torch.max(f_r_loss, 0)
+                print('mx and f_r shape:', mx.shape, f_r_loss.shape)
+                reg = reg + torch.mean(
+                    f_r_loss,
+                    dim=1
+                ) * self.cfg['reg_energy_loss_lambda']
         return reg
 
     def material_regularization(self, pts, normals, metallic, roughness, albedo, step):
