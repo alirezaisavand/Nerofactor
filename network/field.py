@@ -1745,7 +1745,6 @@ from utils.raw_utils import linear_to_srgb
 from utils.ref_utils import generate_ide_fn
 import open3d as o3d
 from scipy.spatial import cKDTree
-from zmq.backend.cffi import device
 
 
 # Positional encoding embedding. Code was taken from https://github.com/bmild/nerf.
