@@ -3340,8 +3340,8 @@ class MCShadingNetwork(nn.Module):
                 f_r_loss = torch.nn.functional.relu(f_r_loss)
                 print('mx and f_r shape:', mx.shape, f_r_loss.shape)
                 reg = reg + torch.mean(
-                    f_r_loss,
-                    dim=1
+                    f_r_loss.sum(dim=1),
+                    dim=0
                 ) * self.cfg['reg_energy_loss_lambda']
         return reg
 
