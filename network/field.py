@@ -1745,6 +1745,8 @@ from utils.raw_utils import linear_to_srgb
 from utils.ref_utils import generate_ide_fn
 import open3d as o3d
 from scipy.spatial import cKDTree
+from zmq.backend.cffi import device
+
 
 # Positional encoding embedding. Code was taken from https://github.com/bmild/nerf.
 class Embedder:
@@ -3336,7 +3338,7 @@ class MCShadingNetwork(nn.Module):
             # ) * self.cfg['reg_lambda1']
             if self.cfg['reg_energy_loss']:
                 f_r_loss = 2 * np.pi * (f_d_sum + f_s_sum) - 1
-                f_r_loss = torch.max(f_r_loss, 0)
+                f_r_loss = torch.nn.functional.relu(f_r_loss)
                 print('mx and f_r shape:', mx.shape, f_r_loss.shape)
                 reg = reg + torch.mean(
                     f_r_loss,
