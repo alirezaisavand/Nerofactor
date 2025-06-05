@@ -2807,8 +2807,8 @@ class MCShadingNetwork(nn.Module):
         mx = mx_min + (mx_max - mx_min)*mx
         my = self.my_predictor(torch.cat([feats, pts], -1))
         my = my_min + (my_max - my_min)*my
-        # alpha = self.alpha_predictor(torch.cat([feats, pts], -1))
-        alpha = torch.ones_like(mx)
+        alpha = self.alpha_predictor(torch.cat([feats, pts], -1))
+        # alpha = torch.ones_like(mx)
         F0 = self.F0_predictor(torch.cat([feats, pts], -1))
         kd = self.kd_predictor(torch.cat([feats, pts], -1))
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
