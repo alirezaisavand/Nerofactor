@@ -2801,13 +2801,14 @@ class MCShadingNetwork(nn.Module):
 
     def predict_anisotropic_components(self, pts):
         feats = self.feats_network(pts)
-        mx_min, mx_max = 0.1, 1.0
-        my_min, my_max = 0.05, 1.0
+        mx_min, mx_max = 0.01, 1.0
+        my_min, my_max = 0.01, 1.0
         mx = self.mx_predictor(torch.cat([feats, pts], -1))
         mx = mx_min + (mx_max - mx_min)*mx
         my = self.my_predictor(torch.cat([feats, pts], -1))
         my = my_min + (my_max - my_min)*my
-        alpha = self.alpha_predictor(torch.cat([feats, pts], -1))
+        # alpha = self.alpha_predictor(torch.cat([feats, pts], -1))
+        alpha = torch.ones_like(mx)
         F0 = self.F0_predictor(torch.cat([feats, pts], -1))
         kd = self.kd_predictor(torch.cat([feats, pts], -1))
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
@@ -2966,6 +2967,7 @@ class MCShadingNetwork(nn.Module):
 
         # Total radiance
         R = diffuse + specular  # (N,3)
+        fr = F * D / ()
         return R, diffuse, specular
 
     def nan_inf_check(self, A, name):
@@ -3239,6 +3241,7 @@ class MCShadingNetwork(nn.Module):
         outputs['specular_color'] = specular_color
         outputs['diffuse_light'] = torch.clamp(linear_to_srgb(torch.mean(diffuse_lights, dim=1)), min=0, max=1)
         outputs['specular_light'] = torch.clamp(linear_to_srgb(torch.mean(specular_lights, dim=1)), min=0, max=1)
+
         return colors, outputs
 
 
