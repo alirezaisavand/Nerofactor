@@ -2967,7 +2967,6 @@ class MCShadingNetwork(nn.Module):
 
         # Total radiance
         R = diffuse + specular  # (N,3)
-        fr = F * D / ()
         return R, diffuse, specular
 
     def nan_inf_check(self, A, name):
