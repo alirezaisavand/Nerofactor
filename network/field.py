@@ -2817,7 +2817,45 @@ class MCShadingNetwork(nn.Module):
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
         return mx, my, alpha, F0, kd, ks
 
+    def compute_pdf_aniso_ggx(self,
+            m_x: torch.Tensor,  # (N,1)
+            m_y: torch.Tensor,  # (N,1)
+            w_i: torch.Tensor,  # (N, M, 3)  — unused in pdf itself
+            cos_th: torch.Tensor,  # (N, M, 1), = h[...,2:3]
+            w_o: torch.Tensor,  # (N, 3)
+            h: torch.Tensor,  # (N, M, 3), half‐vectors in tangent‐space
+            eps: float = 1e-8
+    ) -> torch.Tensor:
+        """
+        Returns:
+          p: (N, M, 1) the sampling PDF p(ω_i | ω_o) per Eqn.(20)&(4).
+        """
+        N, M, _ = h.shape
 
+        # unpack local components
+        h_x = h[..., 0:1]  # (N,M,1)
+        h_y = h[..., 1:2]  # (N,M,1)
+        h_z = cos_th  # (N,M,1), equals h[...,2:3]
+
+        # reshape roughness for broadcast
+        m_x = m_x.view(N, 1, 1)  # (N,1,1)
+        m_y = m_y.view(N, 1, 1)
+
+        # exponent: tan^2θ_h * (cos^2φ_h/m_x^2 + sin^2φ_h/m_y^2)
+        #  -> (h_x^2 + h_y^2)/h_z^2 * ( h_x^2/(h_x^2+h_y^2)/m_x^2 + h_y^2/(h_x^2+h_y^2)/m_y^2 )
+        # simplifies to:
+        exp_term = (h_x * h_x) / (h_z * h_z * m_x * m_x) + (h_y * h_y) / (h_z * h_z * m_y * m_y)
+        q = torch.exp(-exp_term)
+
+        # denominator: 4π m_x m_y cos^3θ_h (ω_o · h)
+        #   compute dot(ω_o, h) → (N,M,1)
+        wo = w_o.unsqueeze(1)  # (N,1,3)
+        dot_wo_h = (wo * h).sum(dim=-1, keepdim=True)  # (N,M,1)
+
+        denom = (4.0 * np.pi) * m_x * m_y * (h_z ** 3) * dot_wo_h
+        p = q / (denom + eps)
+
+        return p  # (N, M, 1)
 
     def sample_aniso_ggx_directions(self,
                                     mesh,
@@ -2880,8 +2918,8 @@ class MCShadingNetwork(nn.Module):
         wi = torch.nn.functional.normalize(wi, dim=-1, eps=eps)
 
         cos_theta_h = cos_th.unsqueeze(-1)  # (N,M,1)
-
-        return h.float(), wi.float(), cos_theta_h.float()
+        pdf = self.compute_pdf_aniso_ggx(m_x, m_y, wi, cos_theta_h, wo, h)
+        return h.float(), wi.float(), cos_theta_h.float(), pdf
 
     def compute_radiance(self,
                          f_d: torch.Tensor,
@@ -2895,6 +2933,7 @@ class MCShadingNetwork(nn.Module):
                          alpha: torch.Tensor,
                          cos_theta_h: torch.Tensor,
                          wo: torch.Tensor,
+                         pdf: torch.Tensor,
                          eps: float = 1e-6) -> torch.Tensor:
         """
         Compute outgoing radiance R for N points, M samples each, via:
@@ -2953,21 +2992,23 @@ class MCShadingNetwork(nn.Module):
 
         # --- Specular component ---
         # term1 = L * k_s * F
-        f_s = k_s_exp * F
+
         # term2 = (wi·n)^(1-alpha)
         exponent = 1.0 - alpha_exp  # (N,1,1)
 
         pow_in = torch.pow(cos_in + eps, exponent)  # (N,M,1)
+        pow_in_denom = torch.pow(cos_in + eps, -alpha_exp)
         # if cos_in.min() <= 0:
         #     print('cos wi.n min:', cos_in.min(), torch.pow(cos_in + eps, exponent))
 
         # denom = cos_theta_h * (wo·n)^alpha
         pow_on = torch.pow(cos_on_exp + eps, alpha_exp)  # (N,1,1)
         denom = cos_theta_h * pow_on + eps  # (N,M,1)
-        f_s = (f_s * pow_in / denom) * mask.unsqueeze(-1)
+        f_s = (k_s_exp * F * pow_in / denom) * mask.unsqueeze(-1)
+        spec_brdf = (k_s_exp * F * pow_in_denom * pdf / denom) * mask.unsqueeze(-1)
         spec_weighted = f_s * specular_lights  # (N,M,3)
         specular = spec_weighted.sum(dim=1) / valid_counts  # (N,3)
-        f_s_sum = f_s.sum(dim=1) / valid_counts
+        f_s_sum = spec_brdf.sum(dim=1) / valid_counts
         # Total radiance
         R = diffuse + specular  # (N,3)
         return R, diffuse, specular, f_d_sum, f_s_sum
@@ -3192,7 +3233,7 @@ class MCShadingNetwork(nn.Module):
 
         num_spec_samples = self.cfg['specular_sample_num']
 
-        hs, wis, cos_ths = self.sample_aniso_ggx_directions(mesh, tangents, bitangents, tree, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
+        hs, wis, cos_ths, pdfs = self.sample_aniso_ggx_directions(mesh, tangents, bitangents, tree, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
         self.nan_inf_check(hs, 'hs')
         self.nan_inf_check(wis, 'wis')
         self.nan_inf_check(cos_ths, 'cos_ths')
@@ -3217,7 +3258,7 @@ class MCShadingNetwork(nn.Module):
         f_d = self.diffuse_term(kd, F, is_seperate)
         self.nan_inf_check(f_d, 'diffuse term (f_d)')
 
-        R, diffuse_color, specular_color, f_d_sum, f_s_sum  = self.compute_radiance(f_d, diffuse_lights, specular_lights, ks, F, diffuse_directions, wis, normals, alpha, cos_ths, view_dirs)
+        R, diffuse_color, specular_color, f_d_sum, f_s_sum  = self.compute_radiance(f_d, diffuse_lights, specular_lights, ks, F, diffuse_directions, wis, normals, alpha, cos_ths, view_dirs, pdfs)
         self.nan_inf_check(R, 'R')
         self.nan_inf_check(diffuse_color, 'diffuse_color')
         self.nan_inf_check(specular_color, 'specular_color')
