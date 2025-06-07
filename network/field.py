@@ -3011,7 +3011,7 @@ class MCShadingNetwork(nn.Module):
         f_s_sum = spec_brdf.sum(dim=1) / valid_counts
         # Total radiance
         R = diffuse + specular  # (N,3)
-        return R, diffuse, specular, f_d_sum, f_s_sum
+        return R, diffuse, specular, f_d_sum.float(), f_s_sum
 
     def nan_inf_check(self, A, name):
         if torch.isinf(A).any():
