@@ -1552,9 +1552,9 @@ class NeROMaterialRenderer(nn.Module):
                 outputs_cur['specular_color'][hit_mask] = shade_outputs['specular_color']
                 outputs_cur['f_d_sum'][hit_mask] = shade_outputs['f_d_sum'].float()
                 outputs_cur['f_s_sum'][hit_mask] = shade_outputs['f_s_sum'].float()
-                outputs_cur['tangents'][hit_mask] = shade_outputs['tangents']
-                outputs_cur['bitangents'][hit_mask] = shade_outputs['bitangents']
-                outputs_cur['normals'][hit_mask] = shade_outputs['normals']
+                outputs_cur['tangents'][hit_mask] = shade_outputs['tangents'].float()
+                outputs_cur['bitangents'][hit_mask] = shade_outputs['bitangents'].float()
+                outputs_cur['normals'][hit_mask] = shade_outputs['normals'].float()
                 # outputs_cur['spec_brdf'][hit_mask] = shade_outputs['spec_brdf']
 
             for k in output_keys.keys():
