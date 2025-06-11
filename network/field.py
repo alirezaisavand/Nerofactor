@@ -2820,10 +2820,10 @@ class MCShadingNetwork(nn.Module):
     def compute_pdf_aniso_ggx(self,
             m_x: torch.Tensor,  # (N,1)
             m_y: torch.Tensor,  # (N,1)
-            w_i: torch.Tensor,  # (N, M, 3)  — unused in pdf itself
-            cos_th: torch.Tensor,  # (N, M, 1), = h[...,2:3]
             w_o: torch.Tensor,  # (N, 3)
             h: torch.Tensor,  # (N, M, 3), half‐vectors in tangent‐space
+            theta_h,
+            phi_h,
             eps: float = 1e-8
     ) -> torch.Tensor:
         """
@@ -2831,11 +2831,10 @@ class MCShadingNetwork(nn.Module):
           p: (N, M, 1) the sampling PDF p(ω_i | ω_o) per Eqn.(20)&(4).
         """
         N, M, _ = h.shape
-
-        # unpack local components
-        h_x = h[..., 0:1]  # (N,M,1)
-        h_y = h[..., 1:2]  # (N,M,1)
-        h_z = cos_th  # (N,M,1), equals h[...,2:3]
+        cos_phi = torch.cos(phi_h)
+        sin_phi = torch.sin(phi_h)
+        tan_th = torch.tan(theta_h)
+        cos_th = torch.cos(theta_h)
 
         # reshape roughness for broadcast
         m_x = m_x.view(N, 1, 1)  # (N,1,1)
@@ -2844,7 +2843,7 @@ class MCShadingNetwork(nn.Module):
         # exponent: tan^2θ_h * (cos^2φ_h/m_x^2 + sin^2φ_h/m_y^2)
         #  -> (h_x^2 + h_y^2)/h_z^2 * ( h_x^2/(h_x^2+h_y^2)/m_x^2 + h_y^2/(h_x^2+h_y^2)/m_y^2 )
         # simplifies to:
-        exp_term = (h_x * h_x) / (h_z * h_z * m_x * m_x) + (h_y * h_y) / (h_z * h_z * m_y * m_y)
+        exp_term = (tan_th * tan_th) * ((sin_phi * sin_phi) / (m_y * m_y) + (cos_phi * cos_phi) / (m_x * m_x))
         q = torch.exp(-exp_term)
 
         # denominator: 4π m_x m_y cos^3θ_h (ω_o · h)
@@ -2852,7 +2851,7 @@ class MCShadingNetwork(nn.Module):
         wo = w_o.unsqueeze(1)  # (N,1,3)
         dot_wo_h = (wo * h).sum(dim=-1, keepdim=True)  # (N,M,1)
 
-        denom = (4.0 * np.pi) * m_x * m_y * (h_z ** 3) * dot_wo_h
+        denom = (4.0 * np.pi) * m_x * m_y * (cos_th ** 3) * dot_wo_h
         p = q / (denom + eps)
 
         return p  # (N, M, 1)
@@ -2918,8 +2917,8 @@ class MCShadingNetwork(nn.Module):
         wi = torch.nn.functional.normalize(wi, dim=-1, eps=eps)
 
         cos_theta_h = cos_th.unsqueeze(-1)  # (N,M,1)
-        pdf = self.compute_pdf_aniso_ggx(m_x, m_y, wi, cos_theta_h, wo, h)
-        return h.float(), wi.float(), cos_theta_h.float(), pdf
+        pdf = self.compute_pdf_aniso_ggx(m_x, m_y, wo, h, theta_h, phi_h)
+        return h.float(), wi.float(), cos_theta_h.float(), pdf.float()
 
     def compute_radiance(self,
                          f_d: torch.Tensor,
@@ -3011,7 +3010,7 @@ class MCShadingNetwork(nn.Module):
         f_s_sum = spec_brdf.sum(dim=1) / valid_counts
         # Total radiance
         R = diffuse + specular  # (N,3)
-        return R, diffuse, specular, f_d_sum.float(), f_s_sum
+        return R, diffuse, specular, f_d_sum, f_s_sum
 
     def nan_inf_check(self, A, name):
         if torch.isinf(A).any():
