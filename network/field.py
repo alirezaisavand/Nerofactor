@@ -2473,7 +2473,9 @@ class MCShadingNetwork(nn.Module):
         'max_n_exp': 20,
         'max_alpha_exp': 10,
         'reg_energy_loss': True,
-        'reg_energy_loss_lambda': 0.01
+        'reg_energy_loss_lambda': 0.01,
+        'reg_spec_loss': True,
+        'reg_spec_loss_lambda': 0.01
     }
 
     def __init__(self, cfg, ray_trace_fun):
@@ -2852,6 +2854,43 @@ class MCShadingNetwork(nn.Module):
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
         return mx, my, alpha, F0, kd, ks
 
+    def compute_Dh(self, m_x, m_y, theta_h, phi_h):
+        """
+        Compute D(h) based on the provided equation.
+
+        Args:
+            m_x (torch.Tensor): (N, 1) tensor of roughness in the x direction
+            m_y (torch.Tensor): (N, 1) tensor of roughness in the y direction
+            theta_h (torch.Tensor): (N, M) tensor of the angles theta_h
+            phi_h (torch.Tensor): (N, M) tensor of the angles phi_h
+
+        Returns:
+            torch.Tensor: (N, M, 1) tensor of D(h)
+        """
+        # Step 1: Compute q(h)
+        cos_phi_h = torch.cos(phi_h)  # (N, M)
+        sin_phi_h = torch.sin(phi_h)  # (N, M)
+
+        cos_theta_h = torch.cos(theta_h)  # (N, M)
+
+        # Calculate q(h)
+        q_h = torch.exp(
+            -torch.tan(theta_h) ** 2 * (
+                    (cos_phi_h ** 2) / (m_x ** 2) + (sin_phi_h ** 2) / (m_y ** 2)
+            )
+        )
+
+        # Step 2: Compute D(h) based on the formula
+        D_h = (1 / (np.pi * m_x * m_y * cos_theta_h ** 4)) * q_h.unsqueeze(-1)  # (N, M, 1)
+
+        return D_h
+
+    def compute_spec_loss(self, tem, fd, m_x, m_y, theta_h, phi_h):
+        D = self.compute_Dh(m_x, m_y, theta_h, phi_h).detach()
+        soft_d = torch.nn.functional.softmax(D / tem, dim=1)
+        return soft_d
+
+
     def compute_pdf_aniso_ggx(self,
             m_x: torch.Tensor,  # (N,1)
             m_y: torch.Tensor,  # (N,1)
@@ -2959,7 +2998,8 @@ class MCShadingNetwork(nn.Module):
 
         cos_theta_h = cos_th.unsqueeze(-1)  # (N,M,1)
         pdf = self.compute_pdf_aniso_ggx(m_x, m_y, wo, h, theta_h, phi_h)
-        return h.float(), wi.float(), cos_theta_h.float(), pdf.float(), x, y, z
+
+        return h.float(), wi.float(), cos_theta_h.float(), pdf.float(), x, y, z, theta_h, phi_h
 
     def compute_radiance(self,
                          f_d: torch.Tensor,
@@ -2974,6 +3014,10 @@ class MCShadingNetwork(nn.Module):
                          cos_theta_h: torch.Tensor,
                          wo: torch.Tensor,
                          pdf: torch.Tensor,
+                         theta_h: torch.Tensor,
+                         phi_h: torch.Tensor,
+                         mx: torch.Tensor,
+                         my: torch.Tensor,
                          eps: float = 1e-6) -> torch.Tensor:
         """
         Compute outgoing radiance R for N points, M samples each, via:
@@ -3053,7 +3097,13 @@ class MCShadingNetwork(nn.Module):
         f_s_sum = spec_brdf.sum(dim=1) / valid_counts
         # Total radiance
         R = diffuse + specular  # (N,3)
-        return R, diffuse, specular, f_d_sum, f_s_sum
+
+        tem = 1
+        L_spec = self.compute_spec_loss(tem, f_d, mx, my, theta_h, phi_h)
+        L_spec = torch.sum(L_spec * f_d, dim=1)
+        L_spec = L_spec * mask.unsqueeze(-1)
+        L_spec = L_spec / valid_counts
+        return R, diffuse, specular, f_d_sum, f_s_sum, L_spec
 
     def nan_inf_check(self, A, name):
         if torch.isinf(A).any():
@@ -3275,7 +3325,7 @@ class MCShadingNetwork(nn.Module):
 
         num_spec_samples = self.cfg['specular_sample_num']
 
-        hs, wis, cos_ths, pdfs, t, b, n = self.sample_aniso_ggx_directions(mesh, tangents, bitangents, tree, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
+        hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(mesh, tangents, bitangents, tree, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
         self.nan_inf_check(hs, 'hs')
         self.nan_inf_check(wis, 'wis')
         self.nan_inf_check(cos_ths, 'cos_ths')
@@ -3300,10 +3350,12 @@ class MCShadingNetwork(nn.Module):
         f_d = self.diffuse_term(kd, F, is_seperate)
         self.nan_inf_check(f_d, 'diffuse term (f_d)')
 
-        R, diffuse_color, specular_color, f_d_sum, f_s_sum  = self.compute_radiance(f_d, diffuse_lights, specular_lights, ks, F, diffuse_directions, wis, normals, alpha, cos_ths, view_dirs, pdfs)
+        R, diffuse_color, specular_color, f_d_sum, f_s_sum, L_spec  = self.compute_radiance(f_d, diffuse_lights, specular_lights, ks, F, diffuse_directions, wis, normals, alpha, cos_ths, view_dirs, pdfs, theta_h, phi_h, mx, my)
         self.nan_inf_check(R, 'R')
         self.nan_inf_check(diffuse_color, 'diffuse_color')
         self.nan_inf_check(specular_color, 'specular_color')
+
+
 
         colors = linear_to_srgb(R)
         self.nan_inf_check(colors, 'colors')
@@ -3331,6 +3383,7 @@ class MCShadingNetwork(nn.Module):
         outputs['specular_light'] = torch.clamp(linear_to_srgb(torch.mean(specular_lights, dim=1)), min=0, max=1)
         outputs['f_d_sum'] = f_d_sum
         outputs['f_s_sum'] = f_s_sum
+        outputs['L_spec'] = L_spec
         return colors, outputs
 
 
@@ -3391,7 +3444,7 @@ class MCShadingNetwork(nn.Module):
     def get_env_light(self):
         return self.predict_outer_lights_pts(self.light_pts)
 
-    def anisotropic_regularization(self, pts, normals, mx, my, alpha, F0, kd, ks, f_d_sum, f_s_sum):
+    def anisotropic_regularization(self, pts, normals, mx, my, alpha, F0, kd, ks, f_d_sum, f_s_sum, L_spec):
         reg = 0
         if self.cfg['reg_change']:
             normals = F.normalize(normals, dim=-1)
@@ -3428,6 +3481,13 @@ class MCShadingNetwork(nn.Module):
                     f_r_loss.sum(dim=1),
                     dim=0
                 ) * self.cfg['reg_energy_loss_lambda']
+
+            if self.cfg['reg_spec_loss']:
+                print('l_spec_loss shape:', L_spec.shape)
+                reg = reg + torch.mean(
+                    L_spec,
+                    dim=0
+                ) * self.cfg['reg_spec_loss_lambda']
         return reg
 
     def material_regularization(self, pts, normals, metallic, roughness, albedo, step):
