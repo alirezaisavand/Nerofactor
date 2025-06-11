@@ -3158,7 +3158,7 @@ class MCShadingNetwork(nn.Module):
             pts: torch.Tensor,
             query_normals: torch.Tensor,
             tree: cKDTree,
-            k: int = 10,
+            k: int = 5,
     ):
         """
         Full pipeline: KD-tree lookup → barycentric coords → frame interpolation.
