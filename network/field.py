@@ -2831,10 +2831,10 @@ class MCShadingNetwork(nn.Module):
           p: (N, M, 1) the sampling PDF p(ω_i | ω_o) per Eqn.(20)&(4).
         """
         N, M, _ = h.shape
-        cos_phi = torch.cos(phi_h)
-        sin_phi = torch.sin(phi_h)
-        tan_th = torch.tan(theta_h)
-        cos_th = torch.cos(theta_h)
+        cos_phi = torch.cos(phi_h).unsqueeze(-1)
+        sin_phi = torch.sin(phi_h).unsqueeze(-1)
+        tan_th = torch.tan(theta_h).unsqueeze(-1)
+        cos_th = torch.cos(theta_h).unsqueeze(-1)
 
         # reshape roughness for broadcast
         m_x = m_x.view(N, 1, 1)  # (N,1,1)
@@ -2850,9 +2850,9 @@ class MCShadingNetwork(nn.Module):
         #   compute dot(ω_o, h) → (N,M,1)
         wo = w_o.unsqueeze(1)  # (N,1,3)
         dot_wo_h = (wo * h).sum(dim=-1, keepdim=True)  # (N,M,1)
-        print('cos_th, mx, my, dot_wo:', cos_th.unsqueeze(-1).shape, m_x.shape, m_y.shape, dot_wo_h.shape, q.unsqueeze(-1).shape)
+        print('cos_th, mx, my, dot_wo, q:', cos_th.unsqueeze(-1).shape, m_x.shape, m_y.shape, dot_wo_h.shape, q.shape)
         denom = (4.0 * np.pi) * m_x * m_y * (cos_th.unsqueeze(-1) ** 3) * dot_wo_h
-        p = q.unsqueeze(-1) / (denom + eps)
+        p = q / (denom + eps)
 
         return p  # (N, M, 1)
 
