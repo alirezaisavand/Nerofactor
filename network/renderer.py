@@ -1550,8 +1550,8 @@ class NeROMaterialRenderer(nn.Module):
                 outputs_cur['alpha'][hit_mask] = shade_outputs['alpha']
                 outputs_cur['diffuse_color'][hit_mask] = shade_outputs['diffuse_color']
                 outputs_cur['specular_color'][hit_mask] = shade_outputs['specular_color']
-                outputs_cur['f_d_sum'][hit_mask] = shade_outputs['f_d_sum']
-                outputs_cur['f_s_sum'][hit_mask] = shade_outputs['f_s_sum']
+                outputs_cur['f_d_sum'][hit_mask] = shade_outputs['f_d_sum'].float()
+                outputs_cur['f_s_sum'][hit_mask] = shade_outputs['f_s_sum'].float()
                 # outputs_cur['spec_brdf'][hit_mask] = shade_outputs['spec_brdf']
 
             for k in output_keys.keys():
