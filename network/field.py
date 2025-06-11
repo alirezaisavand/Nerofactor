@@ -2837,8 +2837,8 @@ class MCShadingNetwork(nn.Module):
         cos_th = torch.cos(theta_h).unsqueeze(-1)
 
         # reshape roughness for broadcast
-        m_x = m_x.view(N, M, 1)  # (N,1,1)
-        m_y = m_y.view(N, M, 1)
+        m_x = m_x.view(N, 1, 1)  # (N,1,1)
+        m_y = m_y.view(N, 1, 1)
 
         # exponent: tan^2θ_h * (cos^2φ_h/m_x^2 + sin^2φ_h/m_y^2)
         #  -> (h_x^2 + h_y^2)/h_z^2 * ( h_x^2/(h_x^2+h_y^2)/m_x^2 + h_y^2/(h_x^2+h_y^2)/m_y^2 )
