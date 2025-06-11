@@ -3372,8 +3372,8 @@ class MCShadingNetwork(nn.Module):
             reg = reg + torch.mean(
                 (torch.abs(kd - kd_ch) +
                  torch.abs(ks - ks_ch) +
-                 #torch.abs(mx - mx_ch) +
-                 #torch.abs(my - my_ch) +
+                 torch.abs(mx - mx_ch) +
+                 torch.abs(my - my_ch) +
                  torch.abs(alpha - alpha_ch) +
                  torch.abs(F0 - F0_ch)) *
                 self.cfg['reg_lambda1'],
