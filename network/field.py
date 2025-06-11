@@ -2921,7 +2921,7 @@ class MCShadingNetwork(nn.Module):
 
         cos_theta_h = cos_th.unsqueeze(-1)  # (N,M,1)
         pdf = self.compute_pdf_aniso_ggx(m_x, m_y, wo, h, theta_h, phi_h)
-        return h.float(), wi.float(), cos_theta_h.float(), pdf.float()
+        return h.float(), wi.float(), cos_theta_h.float(), pdf.float(), x, y, z
 
     def compute_radiance(self,
                          f_d: torch.Tensor,
@@ -3237,7 +3237,7 @@ class MCShadingNetwork(nn.Module):
 
         num_spec_samples = self.cfg['specular_sample_num']
 
-        hs, wis, cos_ths, pdfs = self.sample_aniso_ggx_directions(mesh, tangents, bitangents, tree, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
+        hs, wis, cos_ths, pdfs, t, b, n = self.sample_aniso_ggx_directions(mesh, tangents, bitangents, tree, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
         self.nan_inf_check(hs, 'hs')
         self.nan_inf_check(wis, 'wis')
         self.nan_inf_check(cos_ths, 'cos_ths')
@@ -3277,6 +3277,9 @@ class MCShadingNetwork(nn.Module):
         self.nan_inf_check(specular_color, 'specular_color_srgb')
 
         outputs = {}
+        outputs['tangents'] = t
+        outputs['bitangents'] = b
+        outputs['normals'] = n
         outputs['human_lights'] = hl.reshape(-1, 3)
         outputs['kd'] = kd
         outputs['ks'] = ks
