@@ -2837,8 +2837,8 @@ class MCShadingNetwork(nn.Module):
         cos_th = torch.cos(theta_h).unsqueeze(-1)
 
         # reshape roughness for broadcast
-        m_x = m_x.view(N, 1, 1)  # (N,1,1)
-        m_y = m_y.view(N, 1, 1)
+        m_x = m_x.view(N, M, 1)  # (N,1,1)
+        m_y = m_y.view(N, M, 1)
 
         # exponent: tan^2θ_h * (cos^2φ_h/m_x^2 + sin^2φ_h/m_y^2)
         #  -> (h_x^2 + h_y^2)/h_z^2 * ( h_x^2/(h_x^2+h_y^2)/m_x^2 + h_y^2/(h_x^2+h_y^2)/m_y^2 )
@@ -2851,8 +2851,8 @@ class MCShadingNetwork(nn.Module):
         #   compute dot(ω_o, h) → (N,M,1)
         wo = w_o.unsqueeze(1)  # (N,1,3)
         dot_wo_h = (wo * h).sum(dim=-1, keepdim=True)  # (N,M,1)
-        print('cos_th, mx, my, dot_wo, q:', cos_th.unsqueeze(-1).shape, m_x.shape, m_y.shape, dot_wo_h.shape, q.shape)
-        denom = (4.0 * np.pi) * m_x * m_y * (cos_th.unsqueeze(-1) ** 3) * dot_wo_h
+        print('cos_th, mx, my, dot_wo, q:', cos_th.shape, m_x.shape, m_y.shape, dot_wo_h.shape, q.shape)
+        denom = (4.0 * np.pi) * m_x * m_y * (cos_th ** 3) * dot_wo_h
         p = q / (denom + eps)
 
         return p  # (N, M, 1)
