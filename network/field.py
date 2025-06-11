@@ -2874,15 +2874,15 @@ class MCShadingNetwork(nn.Module):
         if device is None:
             device = wo.device
 
-        z = normals  # pn,3
-        x = self.get_orthogonal_directions(normals)  # pn,3
-        y = torch.cross(z, x, dim=-1)  # pn,3
-        # T = tangents.to(device)
-        # B = bitangents.to(device)
-        # vertices = torch.from_numpy(np.asarray(mesh.vertices)).to(device)
-        # faces = torch.from_numpy(np.asarray(mesh.triangles, dtype=np.int64)).to(device)
-        # x, y = self.get_tangent_bitangent_via_kdtree(vertices, faces, T, B, pts, normals, tree)
-        # z = normals
+        # z = normals  # pn,3
+        # x = self.get_orthogonal_directions(normals)  # pn,3
+        # y = torch.cross(z, x, dim=-1)  # pn,3
+        T = tangents.to(device)
+        B = bitangents.to(device)
+        vertices = torch.from_numpy(np.asarray(mesh.vertices)).to(device)
+        faces = torch.from_numpy(np.asarray(mesh.triangles, dtype=np.int64)).to(device)
+        x, y = self.get_tangent_bitangent_via_kdtree(vertices, faces, T, B, pts, normals, tree)
+        z = normals
 
         m_x = m_x.to(device)  # (N,1)
         m_y = m_y.to(device)  # (N,1)
@@ -3140,7 +3140,7 @@ class MCShadingNetwork(nn.Module):
                 w = (d00 * d21 - d01 * d20) / denom
                 u = 1 - v - w
                 bary = torch.stack([u, v, w])
-                if (bary >= -1e-3).all() and (bary <= 1 + 1e-3).all():
+                if (bary >= -5e-4).all() and (bary <= 1 + 5e-4).all():
                     tri_indices.append(int(fid))
                     bary_coords.append(bary)
                     break
