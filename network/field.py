@@ -2845,6 +2845,7 @@ class MCShadingNetwork(nn.Module):
         # simplifies to:
         print('tan_th, cos_phi, sin_phi, cos_th:', tan_th.shape, cos_phi.shape, sin_phi.shape, cos_th.shape)
         exp_term = (tan_th * tan_th) * ((sin_phi * sin_phi) / (m_y * m_y) + (cos_phi * cos_phi) / (m_x * m_x))
+        print((cos_phi / m_x).shape)
         q = torch.exp(-exp_term)
 
         # denominator: 4π m_x m_y cos^3θ_h (ω_o · h)
