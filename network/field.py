@@ -3100,10 +3100,8 @@ class MCShadingNetwork(nn.Module):
 
         tem = 1
         L_spec = self.compute_spec_loss(tem, f_d, mx, my, theta_h, phi_h)
-        L_spec = torch.sum(L_spec * f_d, dim=1)
-        print('L_spec mask shape:', L_spec.shape, mask.unsqueeze(-1).shape)
-        L_spec = L_spec * mask.unsqueeze(-1)
-        L_spec = L_spec / valid_counts
+        print('L_spec mask fd shape:', L_spec.shape, mask.unsqueeze(-1).shape, f_d.shape)
+        L_spec = torch.sum(L_spec * f_d * mask.unsqueeze(-1), dim=1) / valid_counts
         return R, diffuse, specular, f_d_sum, f_s_sum, L_spec
 
     def nan_inf_check(self, A, name):
