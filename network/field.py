@@ -2850,7 +2850,7 @@ class MCShadingNetwork(nn.Module):
         #   compute dot(ω_o, h) → (N,M,1)
         wo = w_o.unsqueeze(1)  # (N,1,3)
         dot_wo_h = (wo * h).sum(dim=-1, keepdim=True)  # (N,M,1)
-        print('cos_th, mx, my, dot_wo:', cos_th.shape, m_x.shape, m_y.shape, dot_wo_h.shape)
+        print('cos_th, mx, my, dot_wo:', cos_th.unsqueeze(-1).shape, m_x.shape, m_y.shape, dot_wo_h.shape, q.unsqueeze(-1).shape)
         denom = (4.0 * np.pi) * m_x * m_y * (cos_th.unsqueeze(-1) ** 3) * dot_wo_h
         p = q.unsqueeze(-1) / (denom + eps)
 
