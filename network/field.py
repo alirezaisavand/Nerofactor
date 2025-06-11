@@ -3005,6 +3005,7 @@ class MCShadingNetwork(nn.Module):
         denom = cos_theta_h * pow_on + eps  # (N,M,1)
         f_s = (k_s_exp * F * pow_in / denom) * mask.unsqueeze(-1)
         spec_brdf = (k_s_exp * F * pow_in_denom * pdf / denom) * mask.unsqueeze(-1)
+        print("pdf shape:", pdf.shape)
         spec_weighted = f_s * specular_lights  # (N,M,3)
         specular = spec_weighted.sum(dim=1) / valid_counts  # (N,3)
         print('spec BRDF valid counts:', spec_brdf.sum(dim=1).shape, valid_counts.shape)
