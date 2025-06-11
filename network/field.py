@@ -2547,6 +2547,41 @@ class MCShadingNetwork(nn.Module):
         otho = F.normalize(otho, dim=-1)
         return otho
 
+    def compute_tangent_bitangent_flat(self, normals):
+        """
+        Compute tangents and bitangents for flat surfaces with no UVs using a reference direction.
+
+        Args:
+            normals (torch.Tensor): (N, 3) tensor of vertex normals
+
+        Returns:
+            torch.Tensor: (N, 3) tensor of tangents
+            torch.Tensor: (N, 3) tensor of bitangents
+        """
+        # Set a global reference direction (here, along the X-axis)
+        ref_dir = torch.tensor([1.0, 0.0, 0.0], dtype=torch.float32)  # Example: X-axis
+
+        # Compute tangent by crossing the normal with the reference direction
+        tangent = torch.cross(normals, ref_dir.unsqueeze(0).expand(normals.size(0), -1), dim=-1)
+
+        # Handle cases where tangent is zero due to alignment with the reference direction
+        zero_tangent_mask = tangent.norm(dim=1) < 1e-6
+        if zero_tangent_mask.any():
+            # Recalculate tangent using the Y-axis if the normal is aligned with X-axis
+            ref_dir = torch.tensor([0.0, 1.0, 0.0], dtype=torch.float32)  # Example: Y-axis
+            tangent[zero_tangent_mask] = torch.cross(normals[zero_tangent_mask], ref_dir.unsqueeze(0), dim=-1)
+
+        # Normalize the tangents
+        tangent = torch.nn.functional.normalize(tangent, p=2, dim=-1)
+
+        # Compute bitangent via cross product with normal
+        bitangent = torch.cross(normals, tangent, dim=-1)
+
+        # Normalize bitangents
+        bitangent = torch.nn.functional.normalize(bitangent, p=2, dim=-1)
+
+        return tangent, bitangent
+
     def sample_diffuse_directions(self, normals, is_train):
         # normals [pn,3]
         z = normals  # pn,3
@@ -2874,15 +2909,18 @@ class MCShadingNetwork(nn.Module):
         if device is None:
             device = wo.device
 
-        # z = normals  # pn,3
+        z = normals  # pn,3
+
         # x = self.get_orthogonal_directions(normals)  # pn,3
         # y = torch.cross(z, x, dim=-1)  # pn,3
-        T = tangents.to(device)
-        B = bitangents.to(device)
-        vertices = torch.from_numpy(np.asarray(mesh.vertices)).to(device)
-        faces = torch.from_numpy(np.asarray(mesh.triangles, dtype=np.int64)).to(device)
-        x, y = self.get_tangent_bitangent_via_kdtree(vertices, faces, T, B, pts, normals, tree)
-        z = normals
+
+        # T = tangents.to(device)
+        # B = bitangents.to(device)
+        # vertices = torch.from_numpy(np.asarray(mesh.vertices)).to(device)
+        # faces = torch.from_numpy(np.asarray(mesh.triangles, dtype=np.int64)).to(device)
+        # x, y = self.get_tangent_bitangent_via_kdtree(vertices, faces, T, B, pts, normals, tree)
+
+        x, y = self.compute_tangent_bitangent_flat(normals)
 
         m_x = m_x.to(device)  # (N,1)
         m_y = m_y.to(device)  # (N,1)
