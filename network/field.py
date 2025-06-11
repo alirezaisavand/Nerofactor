@@ -3140,7 +3140,7 @@ class MCShadingNetwork(nn.Module):
                 w = (d00 * d21 - d01 * d20) / denom
                 u = 1 - v - w
                 bary = torch.stack([u, v, w])
-                if (bary >= -5e-5).all() and (bary <= 1 + 5e-5).all():
+                if (bary >= -1e-3).all() and (bary <= 1 + 1e-3).all():
                     tri_indices.append(int(fid))
                     bary_coords.append(bary)
                     break
