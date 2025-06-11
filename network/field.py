@@ -2881,9 +2881,9 @@ class MCShadingNetwork(nn.Module):
         )
 
         # Step 2: Compute D(h) based on the formula
-        D_h = (1 / (np.pi * m_x * m_y * cos_theta_h ** 4)) * q_h.unsqueeze(-1)  # (N, M, 1)
+        D_h = (1 / (np.pi * m_x * m_y * cos_theta_h ** 4)) * q_h  # (N, M, 1)
 
-        return D_h
+        return D_h.unsqueeze(-1)
 
     def compute_spec_loss(self, tem, fd, m_x, m_y, theta_h, phi_h):
         D = self.compute_Dh(m_x, m_y, theta_h, phi_h).detach()
