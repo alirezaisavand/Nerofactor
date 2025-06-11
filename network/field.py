@@ -3006,6 +3006,7 @@ class MCShadingNetwork(nn.Module):
         f_s = (k_s_exp * F * pow_in / denom) * mask.unsqueeze(-1)
         spec_brdf = (k_s_exp * F * pow_in_denom * pdf / denom) * mask.unsqueeze(-1)
         spec_weighted = f_s * specular_lights  # (N,M,3)
+        print('spec weighted valid counts:', spec_weighted.shape, valid_counts.shape)
         specular = spec_weighted.sum(dim=1) / valid_counts  # (N,3)
         f_s_sum = spec_brdf.sum(dim=1) / valid_counts
         # Total radiance
