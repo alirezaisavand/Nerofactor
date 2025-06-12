@@ -3365,8 +3365,8 @@ class MCShadingNetwork(nn.Module):
         self.nan_inf_check(specular_color, 'specular_color_srgb')
 
         outputs = {}
-        outputs['tangents'] = t
-        outputs['bitangents'] = b
+        outputs['tangents'] = (t + 1) / 2
+        outputs['bitangents'] = (b + 1) /2
         outputs['normals'] = (n + 1) / 2
         outputs['human_lights'] = hl.reshape(-1, 3)
         outputs['kd'] = kd
