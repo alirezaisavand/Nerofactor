@@ -14,31 +14,118 @@ from utils.base_utils import color_map_forward, downsample_gaussian_blur
 from utils.raw_utils import linear_to_srgb
 
 from tqdm import trange
+from scipy.spatial import cKDTree
 
 
+def load_masks(input_folder, as_bool=True, ignore_segmentation=False):
+    import os
+    """
+    Loads a list of 2D masks (numpy arrays) from the specified folder.
+
+    Parameters:
+      input_folder (str): Directory path where the mask images are saved.
+      as_bool (bool): If True, returns masks as boolean arrays (True for mask, False for background);
+                      otherwise returns masks as floats in the range [0, 1].
+
+    Returns:
+      list of np.ndarray: Each array is of shape (H, W) representing a mask.
+    """
+    # List all files that follow the naming pattern used in save_masks (e.g., mask_000.png, mask_001.png, etc.)
+    mask_files = sorted([
+        os.path.join(input_folder, f)
+        for f in os.listdir(input_folder)
+        if f.startswith("mask_") and f.endswith(".png")
+    ])
+
+    masks = []
+    for file_path in mask_files:
+        # Read the image as a grayscale image.
+        mask_img = cv2.imread(file_path, cv2.IMREAD_GRAYSCALE)
+        if mask_img is None:
+            print(f"Warning: Could not read image {file_path}.")
+            continue
+
+        # Convert from 0-255 to 0-1 by dividing by 255.
+        mask = mask_img.astype(np.float32) / 255.0
+
+        if as_bool:
+            # Convert to boolean using a threshold.
+            mask = mask > 0.5
+        if ignore_segmentation:
+            mask = np.ones_like(mask, dtype=bool)  # ignore segmentation, use all pixels
+        masks.append(mask)
+    return np.stack(masks, 0)
+
+
+#
+# def filter_bottom_images(poses, Ks):
+#     import open3d as o3d
+#     pcd = o3d.io.read_point_cloud("cloud.ply")
+#
+#     # Robustly fit a plane through the main surface
+#     plane_model, inliers = pcd.segment_plane(
+#         distance_threshold=0.030,  # tweak
+#         ransac_n=3,
+#         num_iterations=2000)
+#
+#     n, d = plane_model[:3], plane_model[3]  # plane eqn  n·x + d = 0
+#     # n = -n
+#
+#     to_keep = []
+#     for i, pose in enumerate(poses):
+#         R = pose[:, :3]
+#         t = pose[:, 3]
+#
+#         C = R.T @ t
+#         # print('camera centers shape:', C.shape)
+#
+#         C[0] = -C[0]
+#         pos_ok = np.dot(n, C) + d > 0  # position test
+#
+#         v = R[:,2]  # optical axis in world space
+#         view_ok = np.dot(n, v) > 0  # angle test
+#         # print('view:', view_ok, '\npos:', pos_ok)
+#         if pos_ok and view_ok:  # keep only safe images
+#             to_keep.append(i)
+#     print('number of above images:', len(to_keep), len(poses))
+#     return np.asarray(to_keep).astype(int)
+#
 def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
     images = [database.get_image(img_id) for img_id in img_ids]
+    images_cv2 = [database.get_image_cv2(img_id) for img_id in img_ids]
+
     poses = [database.get_pose(img_id) for img_id in img_ids]
     Ks = [database.get_K(img_id) for img_id in img_ids]
 
     images = np.stack(images, 0)
+    images_cv2 = np.stack(images_cv2, 0)
+    seg_masks = load_masks('/home/NeRO/seg_masks', as_bool=True, ignore_segmentation=True)
+    segmentation_masks = [seg_masks[int(img_id)] for img_id in img_ids]
+    segmentation_masks = np.stack(segmentation_masks, 0)
+
+    # above_imgs_ids = filter_bottom_images(poses, Ks)
     if is_nerf:
         masks = [database.get_depth(img_id)[1] for img_id in img_ids]
         masks = np.stack(masks, 0)
     else:
         images = color_map_forward(images).astype(np.float32)
+
     Ks = np.stack(Ks, 0).astype(np.float32)
     poses = np.stack(poses, 0).astype(np.float32)
 
     imgs_info = {
         'imgs': images,
+        'cv2_imgs': images_cv2,
         'Ks': Ks,
         'poses': poses,
+        'seg_masks': segmentation_masks
     }
 
     if is_nerf:
         imgs_info['masks'] = masks
-
+    for img in images_cv2:
+        ok = cv2.imwrite("above_images/frame_0001.jpg", img)
+    print('above images are saved')
     return imgs_info
 
 
@@ -403,10 +490,15 @@ class NeROShapeRenderer(nn.Module):
 
         trn = self.cfg['test_ray_num']
         outputs_keys = ['ray_rgb', 'gradient_error', 'normal', 'depth']
+        # outputs_keys += [
+        #     'diffuse_albedo', 'diffuse_light', 'diffuse_color',
+        #     'specular_albedo', 'specular_light', 'specular_color', 'specular_ref',
+        #     'metallic', 'roughness', 'occ_prob', 'indirect_light', 'occ_prob_gt',
+        # ]
         outputs_keys += [
             'diffuse_albedo', 'diffuse_light', 'diffuse_color',
             'specular_albedo', 'specular_light', 'specular_color', 'specular_ref',
-            'metallic', 'roughness', 'occ_prob', 'indirect_light', 'occ_prob_gt',
+            'occ_prob', 'indirect_light', 'occ_prob_gt',
         ]
         if self.color_network.cfg['human_light']:
             outputs_keys += ['human_light']
@@ -824,9 +916,10 @@ class NeROShapeRenderer(nn.Module):
             roughness.append(r.cpu().numpy())
             albedo.append(a.cpu().numpy())
 
-        return {'metallic': np.concatenate(metallic, 0),
-                'roughness': np.concatenate(roughness, 0),
-                'albedo': np.concatenate(albedo, 0)}
+        return {
+            'metallic': np.concatenate(metallic, 0),
+            'roughness': np.concatenate(roughness, 0),
+            'albedo': np.concatenate(albedo, 0)}
 
 
 class NeROMaterialRenderer(nn.Module):
@@ -857,15 +950,128 @@ class NeROMaterialRenderer(nn.Module):
         self._init_dataset(is_train)
         self._init_shader()
 
+    def compute_pca_tangent_frame(self):
+        """
+        mesh: object with
+          mesh.vertices   : (V,3) array of vertex positions
+          mesh.adjacency  : list of lists of neighbor indices for each vertex
+          mesh.normals    : (V,3) array of normals (unit length)
+        Returns:
+          T, B arrays of shape (V,3) each
+        """
+        mesh = self.mesh
+        V = len(mesh.vertices)
+        T = np.zeros((V, 3))
+        B = np.zeros((V, 3))
+
+        for i in range(V):
+            p = mesh.vertices[i]
+            N = mesh.vertex_normals[i]
+            # gather neighbor positions
+            neigh_idx = self.adjacency[i]
+            neigh_pts = np.asarray(mesh.vertices)[neigh_idx]
+
+            # project neighbors into tangent plane
+            offsets = neigh_pts - p  # (k,3)
+            proj = offsets - np.outer(offsets.dot(N), N)  # remove normal component
+
+            if proj.shape[0] < 3:
+                # fallback to arbitrary frame if too few neighbors
+                ref = np.array([0, 1, 0])
+                if abs(N.dot(ref)) > 0.99: ref = np.array([1, 0, 0])
+                t = ref - N * (N.dot(ref))
+                t /= np.linalg.norm(t)
+            else:
+                # PCA: covariance of planar offsets
+                C = proj.T @ proj  # (3×3), but rank-2
+                eigvals, eigvecs = np.linalg.eigh(C)
+                # eigenvector with largest eigenvalue in plane
+                t = eigvecs[:, np.argmax(eigvals)]
+                # ensure t ⟂ N
+                t = t - N * (N.dot(t))
+                t /= np.linalg.norm(t)
+
+            b = np.cross(N, t)
+            b /= np.linalg.norm(b)
+            T[i] = t
+            B[i] = b
+
+        return torch.from_numpy(T), torch.from_numpy(B)
+
+    def build_vertex_adjacency(self):
+        """
+        faces: (M×3) iterable of int triplets
+        num_vertices: total number of vertices V
+        returns: list of sets, adjacency[i] = set of neighbor vertex indices of i
+        """
+        faces = self.mesh.triangles
+        num_vertices = len(self.mesh.vertices)
+        adjacency = [set() for _ in range(num_vertices)]
+        for tri in faces:
+            i, j, k = tri
+            adjacency[i].update([j, k])
+            adjacency[j].update([i, k])
+            adjacency[k].update([i, j])
+        # convert sets to sorted lists
+        for i in range(num_vertices):
+            adjacency[i] = np.asarray(sorted(adjacency[i]), dtype=np.int32)
+
+        return adjacency
+
+    def build_triangle_kdtree(self, verts: torch.Tensor, faces: torch.LongTensor):
+        """
+        Build a KD-tree over triangle centroids.
+
+        Args:
+          verts: (V,3) tensor of vertex positions
+          faces: (F,3) LongTensor of triangle indices
+
+        Returns:
+          tree: cKDTree over centroids
+          centroids: (F,3) numpy array of triangle centroids
+        """
+        # Compute centroids
+        tri_verts = verts[faces].cpu().numpy()  # (F,3,3)
+        centroids = tri_verts.mean(axis=1)  # (F,3)
+        tree = cKDTree(centroids)
+        return tree, centroids
+
     def _init_geometry(self):
+        device = torch.device('cuda')
         self.mesh = open3d.io.read_triangle_mesh(self.cfg['mesh'])
         self.ray_tracer = raytracing.RayTracer(np.asarray(self.mesh.vertices), np.asarray(self.mesh.triangles))
+        if not self.mesh.has_vertex_normals():
+            print("Computing vertex normals...")
+            self.mesh.compute_vertex_normals()
+        faces_np = np.asarray(self.mesh.triangles, dtype=np.int64)
+        faces = torch.from_numpy(faces_np).to(device=device, dtype=torch.long)
+        self.tree, centroids = self.build_triangle_kdtree(
+            torch.from_numpy(np.asarray(self.mesh.vertices)).to(device=device),
+            faces)
+
+        print('calculating tangents for mesh vertices')
+        self.adjacency = self.build_vertex_adjacency()
+
+        self.T, self.B = self.compute_pca_tangent_frame()
 
     def _init_dataset(self, is_train):
         # train/test split
         self.database = parse_database_name(self.cfg['database_name'], self.cfg['dataset_dir'])
         self.train_ids, self.test_ids = get_database_split(self.database, 'validation')
         self.train_ids = np.asarray(self.train_ids)
+        # This part is for genetaring sementation masks
+
+        print('segmentation masks are loaded')
+
+        all_imgs_info = build_imgs_info(self.database, np.asarray(self.database.get_img_ids()), self.is_nerf)
+
+        # all_imgs_info = imgs_info_to_torch(all_imgs_info, 'cpu')
+        # self.seg_masks, self.projected_masks = self._construct_nerf_segmentation_masks(all_imgs_info)
+        # print('segmentation masks are created')
+        # self.save_masks(self.seg_masks, '/home/NeRO/seg_masks')
+        # self.save_masks(self.projected_masks, '/home/NeRO/projected_masks')
+        # print('seg_masks shape:', len(self.seg_masks))
+        # print('segmentation masks are saved')
 
         if is_train:
             self.train_imgs_info = build_imgs_info(self.database, self.train_ids, self.is_nerf)
@@ -889,8 +1095,9 @@ class NeROMaterialRenderer(nn.Module):
         inters, normals, depth, hit_mask = [], [], [], []
         rn = rays_o.shape[0]
         for ri in range(0, rn, batch_size):
-            inters_cur, normals_cur, depth_cur, hit_mask_cur = self.trace(rays_o[ri:ri + batch_size],
-                                                                          rays_d[ri:ri + batch_size])
+            end = min(ri + batch_size, rn)
+            inters_cur, normals_cur, depth_cur, hit_mask_cur = self.trace(rays_o[ri:end],
+                                                                          rays_d[ri:end])
             if cpu:
                 inters_cur = inters_cur.cpu()
                 normals_cur = normals_cur.cpu()
@@ -990,6 +1197,199 @@ class NeROMaterialRenderer(nn.Module):
             }
         return ray_batch
 
+    # This part is for generating segmentation masks
+    def _construct_nerf_segmentation_masks(self, imgs_info, device='cpu', is_train=True):
+        imn, h, w, _ = imgs_info['cv2_imgs'].shape
+
+        i, j = torch.meshgrid(torch.linspace(0, w - 1, w),
+                              torch.linspace(0, h - 1, h))  # pytorch's meshgrid has indexing='ij'
+        i = i.t()
+        j = j.t()
+
+        K = imgs_info['Ks'][0]
+        dirs = torch.stack([(i - K[0][2]) / K[0][0], -(j - K[1][2]) / K[1][1], -torch.ones_like(i)], -1)
+
+        imgs = imgs_info['cv2_imgs']  # imn,h*w,3
+        poses = imgs_info['poses']  # imn,3,4
+        # if is_train:
+        #     masks = imgs_info['masks'].reshape(imn, h * w)
+
+        rays_d = [torch.sum(dirs[..., None, :].cpu() * poses[i, :3, :3], -1) for i in range(imn)]
+        rays_d = torch.stack(rays_d, 0).reshape(imn, h, w, 3)
+        rays_o = [poses[i, :3, -1].expand(rays_d[0].shape) for i in range(imn)]
+        rays_o = torch.stack(rays_o, 0).reshape(imn, h, w, 3)
+        self._warn_ray_tracing(rays_o)
+        poses = poses.unsqueeze(1).repeat(1, h * w, 1, 1)
+        from segment_anything import SamAutomaticMaskGenerator, sam_model_registry
+        sam_checkpoint = "/home/NeRO/sam_vit_h_4b8939.pth"
+        device = "cuda"
+        sam = sam_model_registry["vit_h"](checkpoint=sam_checkpoint)
+        sam.to(device=device)
+        mask_generator = SamAutomaticMaskGenerator(sam)
+
+        segmentation_masks, projected_masks = self.propagate_masks(imgs, rays_o, rays_d, poses, imgs_info['Ks'],
+                                                                   mask_generator,
+                                                                   self.trace_in_batch)
+        return segmentation_masks, projected_masks
+
+    def project(self, pts, pose, K):
+        """
+        Projects 3D points (pts) to image coordinates given camera pose and intrinsics.
+        - pts: (N,3) 3D points in world coordinates.
+        - pose: (3,4) camera extrinsics (first 3 columns: rotation, last: translation).
+        - K: (3,3) intrinsic matrix.
+        Returns:
+          uv: (N,2) 2D image coordinates.
+          z:  (N,) depth values in camera space.
+        """
+
+        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        pose = pose.to(device)
+        K = K.to(device)
+        pts = pts.to(device)
+
+        R = pose[:, :3]
+        t = pose[:, 3]
+        pts_cam = (pts - t) @ R
+        pts_cam[:, 0] = -pts_cam[:, 0]  # Flip x-axis to match image coordinates
+
+        # Apply the intrinsic matrix K to the camera coordinates.
+        pts_img_hom = pts_cam @ K.T
+        pts_img_hom = pts_img_hom / pts_img_hom[:, 2:].clone()
+        # Perform perspective division to obtain pixel coordinates.
+
+        return pts_img_hom.cpu().numpy()
+
+    def choose_matching_mask(self, pointcloud, pose, K, seg_masks, H, W):
+        """
+        Projects the source pointcloud into the target view and compares the
+        resulting footprint with each segmentation mask.
+        - pointcloud: (N,3) array from image 0.
+        - pose: (3,4) camera pose for the target view.
+        - K: (3,3) intrinsic matrix for the target view.
+        - seg_masks: list/array of binary segmentation masks (each shape (H, W)).
+        - H, W: dimensions of the image.
+        Returns:
+          best_idx: index of the segmentation mask with maximum overlap (or None if no overlap).
+          overlap: the pixel overlap count.
+        """
+        uv = self.project(pointcloud, pose, K)
+        # Round to integer pixel coordinates.
+        uv_round = np.round(uv).astype(int)
+        # Filter points that lie within the image bounds.
+        valid = (uv_round[:, 0] >= 0) & (uv_round[:, 0] < W) & \
+                (uv_round[:, 1] >= 0) & (uv_round[:, 1] < H)
+        uv_valid = uv_round[valid]
+        if uv_valid.shape[0] == 0:
+            return None, 0, np.zeros((H, W), dtype=bool)
+        # Build a footprint mask from the projected points.
+        footprint = np.zeros((H, W), dtype=bool)
+        footprint[uv_valid[:, 1], uv_valid[:, 0]] = True
+
+        # Compute overlap with each segmentation mask.
+        overlaps = []
+        for m in seg_masks:
+            m_bool = m['segmentation'].astype(bool)
+            overlaps.append(np.sum(footprint & m_bool))
+        if len(overlaps) == 0:
+            return None, 0, footprint
+        best_idx = int(np.argmax(overlaps))
+        if overlaps[best_idx] == 0:
+            return None, 0, footprint
+        return best_idx, overlaps[best_idx], footprint
+
+    def build_pointcloud(self, src_mask, ray_origins, ray_dirs, trace_fn):
+        """
+        Build a 3D pointcloud for the object in image 0 from the selected mask.
+        - src_mask: (H, W) binary mask (the manually selected object).
+        - ray_origins: (H, W, 3) ray origins for image 0.
+        - ray_dirs: (H, W, 3) ray directions for image 0.
+        - trace_fn: function that takes (N,3) origins and (N,3) directions and returns (points, depth).
+        Returns:
+          pts: (M,3) 3D points in world coordinates.
+        """
+        ys, xs = np.nonzero(src_mask)
+        # Select rays corresponding to the mask.
+        selected_origins = ray_origins[ys, xs]
+        selected_dirs = ray_dirs[ys, xs]
+        pts, _, _, _ = trace_fn(selected_origins, selected_dirs)
+        return pts
+
+    def save_pointcloud(self, points):
+        import open3d as o3d
+        points_np = points.detach().cpu().numpy()
+        # Create a point cloud object
+        pcd = o3d.geometry.PointCloud()
+        pcd.points = o3d.utility.Vector3dVector(points_np)
+
+        # Save point cloud to a file (e.g., 'cloud.ply')
+        o3d.io.write_point_cloud("cloud.ply", pcd)
+
+    def propagate_masks(self, imgs, ray_origins, ray_dirs, camera_poses, Ks, seg_model, trace_fn):
+        """
+        Iterates over all images and for each, selects the instance mask
+        that best overlaps with the projected source object.
+        - imgs: list of images.
+        - ray_origins: list/array of ray origins per image; each has shape (H, W, 3).
+        - ray_dirs: list/array of ray directions per image; each has shape (H, W, 3).
+        - camera_poses: (n, 3, 4) camera poses.
+        - Ks: list of (3,3) intrinsics matrices for each image.
+        - seg_model: function that takes an image and returns segmentation masks
+                     (list/array of binary masks, each shape (H, W)).
+        - trace_fn: function trace_in_batch(ray_origins, ray_dirs).
+        Returns:
+          selected_masks: list of selected object masks (one per image).
+        """
+        imgs = imgs.cpu().numpy()
+        n = len(imgs)
+        H, W = imgs[0].shape[:2]
+
+        # For image 0, assume you have a manually selected mask (or one chosen via seg_model).
+        src_masks = seg_model.generate(imgs[0])
+
+        src_mask = src_masks[2]['segmentation']
+        # Here, we assume src_mask is the binary mask of the target object.
+        selected_masks = []
+        projected_masks = []
+        # Build the object's 3D pointcloud from image 0.
+
+        pts3d = self.build_pointcloud(src_mask, ray_origins[0], ray_dirs[0], trace_fn)
+        self.save_pointcloud(pts3d)
+        # Process images 1 ... n-1.
+
+        for i in range(0, n):
+            # Get segmentation masks for image i.
+            seg_masks = seg_model.generate(imgs[i])
+            # Use the previously computed pointcloud to find the best match.
+            best_idx, overlap, projected_mask = self.choose_matching_mask(pts3d, camera_poses[i][0], Ks[0], seg_masks,
+                                                                          H, W)
+            projected_masks.append(projected_mask)
+            if best_idx is None:
+                # No good match found; return an empty mask.
+                selected_masks.append(np.zeros((H, W), dtype=np.uint8))
+            else:
+                selected_masks.append(seg_masks[best_idx]['segmentation'])
+        return selected_masks, projected_masks
+
+    def save_masks(self, masks, output_folder):
+        """
+        Saves a list of 2D masks (numpy arrays) to the specified folder.
+
+        Parameters:
+          masks (list of np.ndarray): List of masks (each of shape (H, W)).
+          output_folder (str): Directory path to save the mask images.
+        """
+        import os
+        import cv2
+        os.makedirs(output_folder, exist_ok=True)
+
+        for i, mask in enumerate(masks):
+            # Ensure the mask is uint8 (0-255) if it isn't already.
+            mask_uint8 = (255 * mask).astype(np.uint8)
+            file_path = os.path.join(output_folder, f"mask_{i:03d}.png")
+            cv2.imwrite(file_path, mask_uint8)
+            print(f"Saved mask {i} to {file_path}")
+
     def _construct_nerf_ray_batch(self, imgs_info, device='cpu', is_train=True):
         imn, _, h, w = imgs_info['imgs'].shape
 
@@ -1013,8 +1413,11 @@ class NeROMaterialRenderer(nn.Module):
         self._warn_ray_tracing(rays_o)
         inters, normals, depth, hit_mask = self.trace_in_batch(rays_o.reshape(-1, 3), rays_d.reshape(-1, 3),
                                                                cpu=True)  # imn
+
         inters, normals, depth, hit_mask = inters.reshape(imn, h * w, 3), normals.reshape(imn, h * w, 3), depth.reshape(
             imn, h * w, 1), hit_mask.reshape(imn, h * w)
+        seg_masks = imgs_info['seg_masks'].reshape(imn, h * w)
+        hit_mask &= seg_masks
         poses = poses.unsqueeze(1).repeat(1, h * w, 1, 1)
 
         if is_train:
@@ -1025,7 +1428,7 @@ class NeROMaterialRenderer(nn.Module):
                 'normals': normals[hit_mask].to(device),
                 'depth': depth[hit_mask].to(device),
                 'human_poses': poses[hit_mask].to(device),
-                'rgb': imgs[hit_mask].to(device),
+                'rgb': imgs[hit_mask].to(device)
                 # 'dirs': dirs.float().reshape(rn, 3).to(device),
             }
         else:
@@ -1052,7 +1455,8 @@ class NeROMaterialRenderer(nn.Module):
             self.train_batch[k] = v[shuffle_idxs]
 
     def shade(self, pts, view_dirs, normals, human_poses, is_train, step=None):
-        rgb_pr, outputs = self.shader_network(pts, view_dirs, normals, human_poses, step, is_train)
+        rgb_pr, outputs = self.shader_network(pts, view_dirs, normals, human_poses, step, is_train, self.mesh, self.T,
+                                              self.B, self.tree)
         outputs['rgb_pr'] = rgb_pr
         return outputs
 
@@ -1084,12 +1488,19 @@ class NeROMaterialRenderer(nn.Module):
         shade_outputs['rgb_gt'] = rgb_gt
         shade_outputs['loss_rgb'] = self.compute_rgb_loss(shade_outputs['rgb_pr'], shade_outputs['rgb_gt'])
         if self.cfg['reg_mat']:
-            shade_outputs['loss_mat_reg'] = self.shader_network.material_regularization(
-                pts, normals, shade_outputs['metallic'], shade_outputs['roughness'], shade_outputs['albedo'], step)
+            # shade_outputs['loss_mat_reg'] = self.shader_network.material_regularization(
+            #     pts, normals, shade_outputs['metallic'], shade_outputs['roughness'], shade_outputs['albedo'], step)
+            shade_outputs['loss_mat_reg'] = self.shader_network.anisotropic_regularization(
+                pts, normals, shade_outputs['mx'], shade_outputs['my'], shade_outputs['alpha'], shade_outputs['F0'],
+                shade_outputs['kd'], shade_outputs['ks'], shade_outputs['f_d_sum'], shade_outputs['f_s_sum'],
+                shade_outputs['L_spec']
+            )
+            # shade_outputs['loss_mat_reg'] = self.shader_network.material_regularization(
+            #     pts, normals, shade_outputs['albedo'], step)
         if self.cfg['reg_diffuse_light']:
             shade_outputs['loss_diffuse_light'] = self.compute_diffuse_light_regularization(
                 shade_outputs['diffuse_light'])
-
+            # pass
         self.train_batch_i += rn
         if self.train_batch_i + rn >= self.tbn: self._shuffle_train_batch()
         return shade_outputs
@@ -1102,8 +1513,11 @@ class NeROMaterialRenderer(nn.Module):
                                                                                                          'cuda', False)
         trn = self.cfg['test_ray_num']
 
-        output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'specular_color': 3, 'diffuse_light': 3,
-                       'diffuse_color': 3, 'albedo': 3, 'metallic': 1, 'roughness': 1}
+        # output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'specular_color': 3, 'diffuse_light': 3,
+        #                'diffuse_color': 3, 'albedo': 3, 'metallic': 1, 'roughness': 1}
+        output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'diffuse_light': 3,
+                       'kd': 3, 'ks': 3, 'F0': 1, "alpha": 1, 'diffuse_color': 3, 'specular_color': 3, 'mx': 1, 'my': 1,
+                       'f_d_sum': 3, 'f_s_sum': 3, 'tangents': 3, 'bitangents': 3, 'normals': 3, 'L_spec': 3, }
         outputs = {k: [] for k in output_keys.keys()}
         rn = ray_batch['rays_o'].shape[0]
         for ri in range(0, rn, trn):
@@ -1121,13 +1535,22 @@ class NeROMaterialRenderer(nn.Module):
                 outputs_cur['rgb_pr'][hit_mask] = shade_outputs['rgb_pr']
                 outputs_cur['rgb_gt'][hit_mask] = rgb_gt
                 outputs_cur['specular_light'][hit_mask] = shade_outputs['specular_light']
-                outputs_cur['specular_color'][hit_mask] = shade_outputs['specular_color']
-                outputs_cur['diffuse_color'][hit_mask] = shade_outputs['diffuse_color']
                 outputs_cur['diffuse_light'][hit_mask] = shade_outputs['diffuse_light']
-                outputs_cur['albedo'][hit_mask] = shade_outputs['albedo']
-                outputs_cur['metallic'][hit_mask] = shade_outputs['metallic']
-                outputs_cur['roughness'][hit_mask] = torch.sqrt(
-                    shade_outputs['roughness'])  # note: we assume predictions are roughness squared
+                outputs_cur['ks'][hit_mask] = shade_outputs['ks']
+                outputs_cur['kd'][hit_mask] = shade_outputs['kd']
+                outputs_cur['F0'][hit_mask] = shade_outputs['F0']
+                outputs_cur['mx'][hit_mask] = shade_outputs['mx']
+                outputs_cur['my'][hit_mask] = shade_outputs['my']
+                outputs_cur['alpha'][hit_mask] = shade_outputs['alpha']
+                outputs_cur['diffuse_color'][hit_mask] = shade_outputs['diffuse_color']
+                outputs_cur['specular_color'][hit_mask] = shade_outputs['specular_color']
+                outputs_cur['f_d_sum'][hit_mask] = shade_outputs['f_d_sum'].float()
+                outputs_cur['f_s_sum'][hit_mask] = shade_outputs['f_s_sum'].float()
+                outputs_cur['L_spec'][hit_mask] = shade_outputs['L_spec'].float()
+                outputs_cur['tangents'][hit_mask] = shade_outputs['tangents'].float()
+                outputs_cur['bitangents'][hit_mask] = shade_outputs['bitangents'].float()
+                outputs_cur['normals'][hit_mask] = shade_outputs['normals'].float()
+                # outputs_cur['spec_brdf'][hit_mask] = shade_outputs['spec_brdf']
 
             for k in output_keys.keys():
                 outputs[k].append(outputs_cur[k])
@@ -1161,9 +1584,10 @@ class NeROMaterialRenderer(nn.Module):
             roughness.append(r.cpu().numpy())
             albedo.append(a.cpu().numpy())
 
-        return {'metallic': np.concatenate(metallic, 0),
-                'roughness': np.concatenate(roughness, 0),
-                'albedo': np.concatenate(albedo, 0)}
+        return {
+            'metallic': np.concatenate(metallic, 0),
+            'roughness': np.concatenate(roughness, 0),
+            'albedo': np.concatenate(albedo, 0)}
 
 
 name2renderer = {
