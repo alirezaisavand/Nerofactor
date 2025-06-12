@@ -16,6 +16,7 @@ from utils.base_utils import resize_img, read_pickle, project_points, save_pickl
 import open3d as o3d
 import json
 import imageio
+import cv2
 
 from utils.pose_utils import look_at_crop
 
