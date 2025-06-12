@@ -16,7 +16,7 @@ from utils.raw_utils import linear_to_srgb
 from tqdm import trange
 from scipy.spatial import cKDTree
 
-def load_masks(input_folder, as_bool=True):
+def load_masks(input_folder, as_bool=True, ignore_segmentation=False):
     import os
     """
     Loads a list of 2D masks (numpy arrays) from the specified folder.
@@ -50,7 +50,8 @@ def load_masks(input_folder, as_bool=True):
         if as_bool:
             # Convert to boolean using a threshold.
             mask = mask > 0.5
-
+        if ignore_segmentation:
+            mask = np.ones_like(mask, dtype=bool)  # ignore segmentation, use all pixels
         masks.append(mask)
     return np.stack(masks, 0)
 #
@@ -95,7 +96,7 @@ def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
 
     images = np.stack(images, 0)
     images_cv2 = np.stack(images_cv2, 0)
-    seg_masks = load_masks('/home/NeRO/seg_masks', as_bool=True)
+    seg_masks = load_masks('/home/NeRO/seg_masks', as_bool=True, ignore_segmentation=True)
     segmentation_masks = [seg_masks[int(img_id)] for img_id in img_ids]
     segmentation_masks = np.stack(segmentation_masks, 0)
 

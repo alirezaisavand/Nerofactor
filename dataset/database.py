@@ -430,7 +430,7 @@ class NeRFSyntheticDatabase(BaseDatabase):
         all_imgs_cv2 = []
         all_poses = []
         counts = [0]
-        bottom_images = {'train': [12, 23, 26, 31, 32, 35, 37, 45, 53, 56, 75, 86, 90],
+        bottom_images = {'train': [9, 12, 20, 23, 26, 31, 32, 35, 37, 45, 48, 49, 53, 56, 58, 75, 86, 90],
                          'test': [64, 72, 80, 88, 96, 104, 112, 120]}
         # bottom_images = {'train': [], 'test': []}
         import cv2
