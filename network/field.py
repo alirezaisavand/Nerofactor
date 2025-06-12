@@ -3100,7 +3100,6 @@ class MCShadingNetwork(nn.Module):
 
         tem = 1
         L_spec = self.compute_spec_loss(tem, f_d, mx, my, theta_h, phi_h)
-        print('L_spec mask fd shape:', L_spec.shape, mask.unsqueeze(-1).shape, f_d.shape)
         L_spec = torch.sum(L_spec * f_d * mask.unsqueeze(-1), dim=1) / (valid_counts*3)
         return R, diffuse, specular, f_d_sum, f_s_sum, L_spec
 
@@ -3482,7 +3481,6 @@ class MCShadingNetwork(nn.Module):
                 ) * self.cfg['reg_energy_loss_lambda']
 
             if self.cfg['reg_spec_loss']:
-                print('l_spec_loss shape:', L_spec.shape)
                 reg = reg + torch.mean(
                     L_spec.sum(dim=1),
                     dim=0
