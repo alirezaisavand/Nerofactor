@@ -430,9 +430,9 @@ class NeRFSyntheticDatabase(BaseDatabase):
         all_imgs_cv2 = []
         all_poses = []
         counts = [0]
-        bottom_images = {'train': [9, 12, 20, 23, 26, 31, 32, 35, 37, 45, 48, 49, 53, 56, 58, 75, 86, 90, 93],
-                         'test': [56, 64, 72, 80, 88, 96, 104, 112, 120, 128]}
-        # bottom_images = {'train': [], 'test': []}
+        # bottom_images = {'train': [9, 12, 20, 23, 26, 31, 32, 35, 37, 45, 48, 49, 53, 56, 58, 75, 86, 90, 93],
+        #                  'test': [56, 64, 72, 80, 88, 96, 104, 112, 120, 128]}
+        bottom_images = {'train': [], 'test': []}
         import cv2
         for s in splits:
             meta = metas[s]
@@ -540,8 +540,8 @@ def get_database_split(database: BaseDatabase, split_type='validation'):
         random.seed(6033)
         img_ids = database.get_img_ids().copy()
         # random.shuffle(img_ids)
-        test_ids = img_ids[:1]
-        train_ids = img_ids[1:]
+        test_ids = img_ids[116:117]
+        train_ids = img_ids[:116] + img_ids[117:]
     elif split_type=='test':
         test_ids, train_ids = read_pickle('configs/synthetic_split_128.pkl')
     else:
