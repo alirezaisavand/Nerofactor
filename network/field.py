@@ -3367,7 +3367,7 @@ class MCShadingNetwork(nn.Module):
         outputs = {}
         outputs['tangents'] = t
         outputs['bitangents'] = b
-        outputs['normals'] = n
+        outputs['normals'] = (n + 1) / 2
         outputs['human_lights'] = hl.reshape(-1, 3)
         outputs['kd'] = kd
         outputs['ks'] = ks
