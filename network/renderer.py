@@ -115,14 +115,14 @@ def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
 
     imgs_info = {
         'imgs': images,
-        'cv2_imgs': images_cv2,
         'Ks': Ks,
         'poses': poses,
-        'seg_masks': segmentation_masks
     }
 
     if is_nerf:
         imgs_info['masks'] = masks
+        imgs_info['seg_masks'] = segmentation_masks
+        imgs_info['cv2_imgs'] = images_cv2
         for img in images_cv2:
             ok = cv2.imwrite("above_images/frame_0001.jpg", img)
     print('above images are saved')
