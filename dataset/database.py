@@ -544,8 +544,8 @@ def get_database_split(database: BaseDatabase, split_type='validation'):
         random.seed(6033)
         img_ids = database.get_img_ids().copy()
         # random.shuffle(img_ids)
-        test_ids = img_ids[116:117]
-        train_ids = img_ids[:116] + img_ids[117:]
+        test_ids = img_ids[:1]
+        train_ids = img_ids[1:]
     elif split_type=='test':
         test_ids, train_ids = read_pickle('configs/synthetic_split_128.pkl')
     else:
