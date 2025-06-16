@@ -2657,22 +2657,22 @@ class MCShadingNetwork(nn.Module):
     def predict_outer_lights(self, points, directions):
         # Todo changed sph_enc to dir_enc
         if self.cfg['outer_light_version'] == 'direction':
-            # outer_enc = self.sph_enc(directions, 0)
-            outer_enc = self.dir_enc(directions)
+            outer_enc = self.sph_enc(directions, 0)
+            # outer_enc = self.dir_enc(directions)
             outer_lights = self.outer_light(outer_enc)
         elif self.cfg['outer_light_version'] == 'sphere_direction':
             outer_dirs = directions
             outer_pts = points
-            # outer_enc = self.sph_enc(outer_dirs, 0)
-            outer_enc = self.dir_enc(outer_dirs)
+            outer_enc = self.sph_enc(outer_dirs, 0)
+            # outer_enc = self.dir_enc(outer_dirs)
             mask = torch.norm(outer_pts, dim=-1) > 0.999
             if torch.sum(mask) > 0:
                 outer_pts = torch.clone(outer_pts)
                 outer_pts[mask] *= 0.999  # shrink this point a little bit
             dists = get_sphere_intersection(outer_pts, outer_dirs)
             sphere_pts = outer_pts + outer_dirs * dists
-            # sphere_pts = self.sph_enc(sphere_pts, 0)
-            sphere_pts = self.dir_enc(sphere_pts)
+            sphere_pts = self.sph_enc(sphere_pts, 0)
+            # sphere_pts = self.dir_enc(sphere_pts)
             outer_lights = self.outer_light(torch.cat([outer_enc, sphere_pts], -1))
         else:
             raise NotImplementedError
