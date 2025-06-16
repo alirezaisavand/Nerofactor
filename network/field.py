@@ -2502,7 +2502,7 @@ class MCShadingNetwork(nn.Module):
         self.sph_enc = generate_ide_fn(5)
         self.dir_enc, dir_dim = get_embedder(12, 3)
         # Todo changed here
-        self.pos_enc, pos_dim = get_embedder(8, 3)
+        self.pos_enc, pos_dim = get_embedder(6, 3)
         if self.cfg['outer_light_version'] == 'direction':
             # self.outer_light = make_predictor(72, 3, activation='exp', exp_max=self.cfg['light_exp_max'])
             self.outer_light = make_predictor(dir_dim, 3, activation='exp', exp_max=self.cfg['light_exp_max'])
