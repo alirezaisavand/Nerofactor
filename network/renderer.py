@@ -123,8 +123,8 @@ def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
 
     if is_nerf:
         imgs_info['masks'] = masks
-    for img in images_cv2:
-        ok = cv2.imwrite("above_images/frame_0001.jpg", img)
+        for img in images_cv2:
+            ok = cv2.imwrite("above_images/frame_0001.jpg", img)
     print('above images are saved')
     return imgs_info
 
