@@ -215,8 +215,6 @@ class GlossyRealDatabase(BaseDatabase):
     def get_image(self, img_id):
         path = f'{self.root}/images_{self.max_len}/{self.image_names[img_id]}'
         img = imread(path)
-        print('path:', path)
-        print('is null:', img is None)
         return img
 
     def get_K(self, img_id):
