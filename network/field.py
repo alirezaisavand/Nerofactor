@@ -3332,10 +3332,13 @@ class MCShadingNetwork(nn.Module):
         else:
             diffuse_directions = wis
         point_num, diffuse_num, _ = diffuse_directions.shape
+
         self.nan_inf_check(diffuse_directions, 'diffuse_directions')
 
         pts_ = pts.unsqueeze(1).repeat(1, num_spec_samples+diffuse_num, 1)
         directions = torch.cat([diffuse_directions, wis], 1)
+        sn = diffuse_num + num_spec_samples
+        human_poses = human_poses.unsqueeze(1).repeat(1, sn, 1, 1) if human_poses is not None else None
         lights, hl, light_pts, light_normals, light_pts_mask = self.get_lights(pts_, directions, human_poses)
 
         diffuse_lights = lights[:, :diffuse_num]
