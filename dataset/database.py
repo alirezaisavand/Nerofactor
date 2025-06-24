@@ -422,7 +422,9 @@ class NeRFSyntheticDatabase(BaseDatabase):
         self.root = f'{RENDER_ROOT}/{model_name}'
         self.scale_factor = 1.0
 
-        splits = ['train', 'test']
+        # splits = ['train', 'test']
+        splits = ['train']
+
         metas = {}
         for s in splits:
             with open(os.path.join(self.root, 'transforms_{}.json'.format(s)), 'r') as fp:
@@ -432,9 +434,9 @@ class NeRFSyntheticDatabase(BaseDatabase):
         all_imgs_cv2 = []
         all_poses = []
         counts = [0]
-        bottom_images = {'train': [9, 12, 20, 23, 26, 31, 32, 35, 37, 45, 48, 49, 53, 56, 58, 75, 86, 90, 93],
-                         'test': [56, 64, 72, 80, 88, 96, 104, 112, 120, 128]}
-        # bottom_images = {'train': [], 'test': []}
+        # bottom_images = {'train': [9, 12, 20, 23, 26, 31, 32, 35, 37, 45, 48, 49, 53, 56, 58, 75, 86, 90, 93],
+        #                  'test': [56, 64, 72, 80, 88, 96, 104, 112, 120, 128]}
+        bottom_images = {'train': [], 'test': []}
         # import cv2
         for s in splits:
             meta = metas[s]
@@ -448,11 +450,13 @@ class NeRFSyntheticDatabase(BaseDatabase):
 
             for frame in meta['frames'][::skip]:
                 print(frame['file_path'])
-                fname = os.path.join(self.root, frame['file_path'] + '.png')
-                fname_number = int(frame['file_path'].split('_')[-1])
-                if fname_number in bottom_images[s]:
-                    print('bottom image:', fname_number)
-                    continue
+                # fname = os.path.join(self.root, frame['file_path'] + '.png')
+                fname = os.path.join(self.root, frame['file_path'])
+
+                # fname_number = int(frame['file_path'].split('_')[-1])
+                # if fname_number in bottom_images[s]:
+                #     print('bottom image:', fname_number)
+                #     continue
 
                 imgs.append(imageio.imread(fname))
                 img_cv2 = cv2.imread(fname)
