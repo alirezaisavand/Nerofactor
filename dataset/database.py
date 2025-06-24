@@ -451,8 +451,10 @@ class NeRFSyntheticDatabase(BaseDatabase):
             for frame in meta['frames'][::skip]:
                 print(frame['file_path'])
                 # fname = os.path.join(self.root, frame['file_path'] + '.png')
-                fname = os.path.join(self.root, frame['file_path'])
+                folder, name = frame['file_path'].split('\\')
+                fname = os.path.join(self.root, folder, name)
 
+                # fname = os.path.join(self.root, frame['file_path'])
                 # fname_number = int(frame['file_path'].split('_')[-1])
                 # if fname_number in bottom_images[s]:
                 #     print('bottom image:', fname_number)
