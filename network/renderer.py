@@ -17,7 +17,7 @@ from tqdm import trange
 from scipy.spatial import cKDTree
 
 
-def load_masks(input_folder, as_bool=True, ignore_segmentation=False):
+def load_masks(input_folder, as_bool=True, ignore_segmentation=False, h=0, w=0):
     import os
     """
     Loads a list of 2D masks (numpy arrays) from the specified folder.
@@ -52,7 +52,8 @@ def load_masks(input_folder, as_bool=True, ignore_segmentation=False):
             # Convert to boolean using a threshold.
             mask = mask > 0.5
         if ignore_segmentation:
-            mask = np.ones_like(mask, dtype=bool)  # ignore segmentation, use all pixels
+            print(mask.shape)
+            mask = np.ones((h, w), dtype=bool)  # ignore segmentation, use all pixels
         masks.append(mask)
     return np.stack(masks, 0)
 
@@ -96,7 +97,8 @@ def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
     if is_nerf:
         images_cv2 = [database.get_image_cv2(img_id) for img_id in img_ids]
         images_cv2 = np.stack(images_cv2, 0)
-        seg_masks = load_masks('/home/NeRO/seg_masks', as_bool=True, ignore_segmentation=True)
+        h, w = images[0].shape[:2]
+        seg_masks = load_masks('/home/NeRO/seg_masks', as_bool=True, ignore_segmentation=True, h, w)
         segmentation_masks = [seg_masks[int(img_id)] for img_id in img_ids]
         segmentation_masks = np.stack(segmentation_masks, 0)
 
