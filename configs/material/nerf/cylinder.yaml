@@ -211,7 +211,7 @@ name: drums_material
 
 ####network#####
 network: material
-database_name: nerf/drums
+database_name: nerf/cylinder
 mesh: data/meshes/cylinder_shape-300000.ply
 is_nerf: true
 anisotropy: true
