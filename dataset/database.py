@@ -451,7 +451,7 @@ class NeRFSyntheticDatabase(BaseDatabase):
             for frame in meta['frames'][::skip]:
                 print(frame['file_path'])
 
-                folder, name = frame['file_path'].split('\\')
+                # folder, name = frame['file_path'].split('\\')
                 # fname = os.path.join(self.root, folder, name)
 
                 fname = os.path.join(self.root, frame['file_path'] + '.png')
