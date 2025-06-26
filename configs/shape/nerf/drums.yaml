@@ -16,9 +16,10 @@ freeze_inv_s_step: 15000
 
 ####dataset#####
 train_dataset_type: dummy
-dataset_dir: your_dataset_dir
+dataset_dir: data/nerf_synthetic
 train_dataset_cfg:
   database_name: nerf/drums
+  dataset_dir: data/nerf_synthetic
 val_set_list:
   -
     name: val
@@ -31,7 +32,7 @@ optimizer_type: adam
 lr_type: warm_up_cos
 lr_cfg: {}
 total_step: 300000
-val_interval: 5000
+val_interval: 1000
 save_interval: 1000
 train_log_step: 20
 
