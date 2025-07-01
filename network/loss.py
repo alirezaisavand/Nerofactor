@@ -136,7 +136,7 @@ class InitSDFRegLoss(Loss):
 
 class MaskLoss(Loss):
     default_cfg = {
-        'mask_loss_weight': 0.01,
+        'mask_loss_weight': 0.1, #changed here from 0.01 to 0.1
     }
 
     def __init__(self, cfg):
