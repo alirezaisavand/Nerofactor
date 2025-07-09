@@ -493,6 +493,11 @@ def load_ply_model(model_path):
     z = data['z']
     return np.stack([x, y, z], axis=-1)
 
+def map_range_val(input_val, input_start, input_end, output_start, output_end):
+    input_clamped = max(input_start, min(input_end, input_val))
+    return output_start + ((output_end - output_start) / (input_end - input_start)) * (
+        input_clamped - input_start
+    )
 
 def color_map_forward(rgb):
     return rgb.astype(np.float32) / 255

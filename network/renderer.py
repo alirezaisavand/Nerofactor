@@ -10,7 +10,7 @@ import torch.nn.functional as F
 from dataset.database import parse_database_name, get_database_split, BaseDatabase
 from network.field import SDFNetwork, SingleVarianceNetwork, NeRFNetwork, AppShadingNetwork, get_intersection, \
     extract_geometry, sample_pdf, MCShadingNetwork
-from utils.base_utils import color_map_forward, downsample_gaussian_blur
+from utils.base_utils import color_map_forward, downsample_gaussian_blur, map_range_val
 from utils.raw_utils import linear_to_srgb
 
 from tqdm import trange
@@ -223,7 +223,10 @@ class NeROShapeRenderer(nn.Module):
         'occ_sdf_thresh': 0.01,
 
         "fixed_camera": False,
-        "score_weight_max": 1.5,
+        'score_weight_max': 1.5,
+        'curvature_weight': 0,
+        'curvature_reduce_start': 50000,
+        'curvature_reduce_step': 2000,
     }
 
     def __init__(self, cfg, training=True):
@@ -818,6 +821,37 @@ class NeROShapeRenderer(nn.Module):
         else:
             return torch.zeros(1)
 
+    def get_curvature_loss(self, points, sdf_gradients):
+        # get the curvature along a certain random direction for each point
+        # does it by computing the normal at a shifted point on the tangent plant and then computing a dot produt
+
+        # to the original positions, add also a tiny epsilon
+        # nr_points_original = points.shape[0]
+        epsilon = 1e-4
+        rand_directions = torch.randn_like(points)
+        rand_directions = F.normalize(rand_directions, dim=-1)
+
+        # instead of random direction we take the normals at these points, and calculate a random vector that is orthogonal
+        normals = F.normalize(sdf_gradients, dim=-1)
+        # normals=normals.detach()
+        tangent = torch.cross(normals, rand_directions)
+        rand_directions = tangent  # set the random moving direction to be the tangent direction now
+
+        points_shifted = points.clone() + rand_directions * epsilon
+
+        # get the gradient at the shifted point
+        sdf_gradients_shifted = self.sdf_network.gradient(points_shifted)
+
+        normals_shifted = F.normalize(sdf_gradients_shifted, dim=-1)
+        dot = (normals * normals_shifted).sum(dim=-1, keepdim=True)
+        # the dot would assign low weight importance to normals that are almost the same, and increasing error the more they deviate. So it's something like and L2 loss. But we want a L1 loss so we get the angle, and then we map it to range [0,1]
+        angle = torch.acos(
+            torch.clamp(dot, -1.0 + 1e-6, 1.0 - 1e-6)
+        )  # goes to range 0 when the angle is the same and pi when is opposite
+
+        curvature = angle / np.pi  # map to [0,1 range]
+        return  curvature
+
     def render_core(self, rays_o, rays_d, z_vals, human_poses, cos_anneal_ratio=0.0, step=None, is_train=True,
                     is_nerf=False):
         batch_size, n_samples = z_vals.shape
@@ -874,11 +908,16 @@ class NeROShapeRenderer(nn.Module):
         if is_nerf:
             color = color + (1. - acc[..., None])
 
+        start = self.cfg['curvature_reduce_start']
+        end = start + self.cfg['curvature_reduce_step']
+        global_weight = map_range_val(step, start, end, 1, 0)
+        curvature =  self.get_curvature_loss(points[inner_mask], gradients)
         outputs = {
             'ray_rgb': color,  # rn,3
             'gradient_error': gradient_error,  # rn
             'acc': acc,  # rn
             'w_s': vol_fn(weights, ref_scores),  # rn,sn
+            'loss_curv': global_weight * self.cfg['curvature_weight'] * curvature.mean()
         }
 
         if torch.sum(inner_mask) > 0:
