@@ -223,6 +223,7 @@ class NeROShapeRenderer(nn.Module):
         'occ_sdf_thresh': 0.01,
 
         "fixed_camera": False,
+        "score_weight_max": 1.5,
     }
 
     def __init__(self, cfg, training=True):
@@ -519,7 +520,7 @@ class NeROShapeRenderer(nn.Module):
             for k in outputs_keys: outputs[k].append(cur_outputs[k].detach())
 
         for k in outputs_keys: outputs[k] = torch.cat(outputs[k], 0)
-        outputs['loss_rgb'] = self.compute_rgb_loss(outputs['ray_rgb'], ray_batch['rgbs'])
+        outputs['loss_rgb'] = self.compute_rgb_loss(outputs['ray_rgb'], ray_batch['rgbs'], outputs['w_s'])  # ray_loss
         outputs['gt_rgb'] = ray_batch['rgbs'].reshape(h, w, 3)
         outputs['ray_rgb'] = outputs['ray_rgb'].reshape(h, w, 3)
 
@@ -543,7 +544,7 @@ class NeROShapeRenderer(nn.Module):
 
         outputs = self.render(rays_o, rays_d, near, far, human_poses, -1, self.get_anneal_val(step), is_train=True,
                               step=step, is_nerf=is_nerf)
-        outputs['loss_rgb'] = self.compute_rgb_loss(outputs['ray_rgb'], train_ray_batch['rgbs'])  # ray_loss
+        outputs['loss_rgb'] = self.compute_rgb_loss(outputs['ray_rgb'], train_ray_batch['rgbs'], outputs['w_s'])  # ray_loss
         if is_nerf:  # only nerf dataset add loss_mask
             outputs['loss_mask'] = F.l1_loss(train_ray_batch['masks'], outputs['acc'], reduction='mean')
         return outputs
@@ -580,17 +581,28 @@ class NeROShapeRenderer(nn.Module):
 
     #     self.train()
     #     return outputs
+    def ref_score_wrapper(self, loss, weight):
+        assert (weight >= 0).all()
+        weight = 1 / (weight + 1e-4)
 
-    def compute_rgb_loss(self, rgb_pr, rgb_gt):
+        weight = weight.clamp(min=0.0, max=self.cfg["score_weight_max"])
+        score_loss = loss * weight
+        return torch.sum(score_loss, -1)
+
+    def compute_rgb_loss(self, rgb_pr, rgb_gt, w_s):
         if self.cfg['rgb_loss'] == 'l2':
-            rgb_loss = torch.sum((rgb_pr - rgb_gt) ** 2, -1)
+            l2 = (rgb_pr - rgb_gt) ** 2
+            rgb_loss = self.ref_score_wrapper(l2, w_s)
         elif self.cfg['rgb_loss'] == 'l1':
-            rgb_loss = torch.sum(F.l1_loss(rgb_pr, rgb_gt, reduction='none'), -1)
+            l1 = F.l1_loss(rgb_pr, rgb_gt, reduction='none')
+            rgb_loss = self.ref_score_wrapper(l1, w_s)
         elif self.cfg['rgb_loss'] == 'smooth_l1':
-            rgb_loss = torch.sum(F.smooth_l1_loss(rgb_pr, rgb_gt, reduction='none', beta=0.25), -1)
+            smooth_l1 = F.smooth_l1_loss(rgb_pr, rgb_gt, reduction='none', beta=0.25)
+            rgb_loss = self.ref_score_wrapper(smooth_l1, w_s)
         elif self.cfg['rgb_loss'] == 'charbonier':
             epsilon = 0.001
-            rgb_loss = torch.sqrt(torch.sum((rgb_gt - rgb_pr) ** 2, dim=-1) + epsilon)
+            l2 = (rgb_gt - rgb_pr) ** 2
+            rgb_loss = torch.sqrt(self.ref_score_wrapper(l2, w_s) + epsilon)
         else:
             raise NotImplementedError
         return rgb_loss
@@ -822,7 +834,7 @@ class NeROShapeRenderer(nn.Module):
         human_poses_pt = human_poses.unsqueeze(-3).expand(batch_size, n_samples, 3, 4)
         dirs = F.normalize(dirs, dim=-1)
         alpha, sampled_color = torch.zeros(batch_size, n_samples), torch.zeros(batch_size, n_samples, 3)
-
+        ref_scores = torch.zeros(batch_size, n_samples, 3)
         if torch.sum(outer_mask) > 0:
             if is_nerf:
                 alpha[outer_mask] = torch.zeros_like(alpha[outer_mask])
@@ -838,7 +850,7 @@ class NeROShapeRenderer(nn.Module):
                                                                                               dists[inner_mask],
                                                                                               dirs[inner_mask],
                                                                                               cos_anneal_ratio, step)
-            sampled_color[inner_mask], occ_info = self.color_network(points[inner_mask], gradients, -dirs[inner_mask],
+            sampled_color[inner_mask], occ_info, albedo_color, shaded_color = self.color_network(points[inner_mask], gradients, -dirs[inner_mask],
                                                                      feature_vector, human_poses_pt[inner_mask],
                                                                      step=step)
             # Eikonal loss
@@ -848,7 +860,15 @@ class NeROShapeRenderer(nn.Module):
 
         weights = alpha * torch.cumprod(torch.cat([torch.ones([batch_size, 1]), 1. - alpha + 1e-7], -1), -1)[...,
                           :-1]  # rn,sn
+        vol_fn = lambda weights, value: (value * weights[..., None]).sum(dim=1)
+
         color = (sampled_color * weights[..., None]).sum(dim=1)
+
+        if torch.sum(inner_mask) > 0:
+            ref_scores[inner_mask] = F.mse_loss(
+                albedo_color, shaded_color, reduction="none"
+            )
+
         acc = torch.sum(weights, -1)
         if is_nerf:
             color = color + (1. - acc[..., None])
@@ -857,6 +877,7 @@ class NeROShapeRenderer(nn.Module):
             'ray_rgb': color,  # rn,3
             'gradient_error': gradient_error,  # rn
             'acc': acc,  # rn
+            'w_s': vol_fn(weights, ref_scores),  # rn,sn
         }
 
         if torch.sum(inner_mask) > 0:

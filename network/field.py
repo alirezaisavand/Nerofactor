@@ -2380,6 +2380,9 @@ class AppShadingNetwork(nn.Module):
         color = linear_to_srgb(color)
         color = torch.clamp(color, min=0.0, max=1.0)
 
+        # changed here calculating the weights
+
+
         occ_info = {
             'reflective': reflective,
             'occ_prob': occ_prob,
@@ -2406,7 +2409,7 @@ class AppShadingNetwork(nn.Module):
                 intermediate_results['human_light'] = linear_to_srgb(human_light)
             return color, occ_info, intermediate_results
         else:
-            return color, occ_info
+            return color, occ_info, albedo, color
 
     def predict_materials(self, points, feature_vectors):
         metallic = self.metallic_predictor(torch.cat([feature_vectors, points], -1))
