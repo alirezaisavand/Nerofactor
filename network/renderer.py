@@ -496,7 +496,7 @@ class NeROShapeRenderer(nn.Module):
         for k, v in ray_batch.items(): ray_batch[k] = v.cuda()
 
         trn = self.cfg['test_ray_num']
-        outputs_keys = ['ray_rgb', 'gradient_error', 'normal', 'depth']
+        outputs_keys = ['ray_rgb', 'gradient_error', 'normal', 'depth', 'k_s']
         # outputs_keys += [
         #     'diffuse_albedo', 'diffuse_light', 'diffuse_color',
         #     'specular_albedo', 'specular_light', 'specular_color', 'specular_ref',
@@ -523,6 +523,7 @@ class NeROShapeRenderer(nn.Module):
         outputs['loss_rgb'] = self.compute_rgb_loss(outputs['ray_rgb'], ray_batch['rgbs'], outputs['w_s'])  # ray_loss
         outputs['gt_rgb'] = ray_batch['rgbs'].reshape(h, w, 3)
         outputs['ray_rgb'] = outputs['ray_rgb'].reshape(h, w, 3)
+        outputs['k_s'] = outputs['k_s'].reshape(h, w, 3)
 
         # used in evaluation
         outputs['gt_depth'] = gt_depth.unsqueeze(-1)
