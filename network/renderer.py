@@ -224,7 +224,7 @@ class NeROShapeRenderer(nn.Module):
 
         "fixed_camera": False,
         'score_weight_max': 1.5,
-        'curvature_weight': 0,
+        'curvature_weight': 0.01,
         'curvature_reduce_start': 50000,
         'curvature_reduce_step': 2000,
     }
