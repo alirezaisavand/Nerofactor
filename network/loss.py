@@ -159,7 +159,7 @@ class CurvLoss(Loss):
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         outputs = {}
         if 'loss_curv' in data_pr:
-            outputs['loss_curv'] = data_pr['loss_curve'].reshape(1) * self.cfg['curv_loss_weight']
+            outputs['loss_curv'] = data_pr['loss_curv'].reshape(1) * self.cfg['curv_loss_weight']
         return outputs
 
 name2loss = {
