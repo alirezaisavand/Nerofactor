@@ -588,12 +588,13 @@ class NeROShapeRenderer(nn.Module):
     #     self.train()
     #     return outputs
     def ref_score_wrapper(self, loss, weight=None):
-        assert (weight >= 0).all()
         if weight is None:
             weight = torch.ones_like(loss)
         else:
+            assert (weight >= 0).all()
             weight = 1 / (weight + 1e-4)
             weight = weight.clamp(min=0.0, max=self.cfg["score_weight_max"])
+
         score_loss = loss * weight
         return torch.sum(score_loss, -1)
 
