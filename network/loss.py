@@ -150,7 +150,7 @@ class MaskLoss(Loss):
 
 class CurvLoss(Loss):
     default_cfg = {
-        'curv_loss_weight': 0.1, #changed here from 0.01 to 0.1
+        'curv_loss_weight': 1,
     }
 
     def __init__(self, cfg):
