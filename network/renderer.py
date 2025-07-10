@@ -500,7 +500,9 @@ class NeROShapeRenderer(nn.Module):
         for k, v in ray_batch.items(): ray_batch[k] = v.cuda()
 
         trn = self.cfg['test_ray_num']
-        outputs_keys = ['ray_rgb', 'gradient_error', 'normal', 'depth', 'w_s']
+        outputs_keys = ['ray_rgb', 'gradient_error', 'normal', 'depth']
+        if self.cfg['use_refscores']:
+            outputs_keys += ['w_s']
         # outputs_keys += [
         #     'diffuse_albedo', 'diffuse_light', 'diffuse_color',
         #     'specular_albedo', 'specular_light', 'specular_color', 'specular_ref',
@@ -524,10 +526,13 @@ class NeROShapeRenderer(nn.Module):
             for k in outputs_keys: outputs[k].append(cur_outputs[k].detach())
 
         for k in outputs_keys: outputs[k] = torch.cat(outputs[k], 0)
-        outputs['loss_rgb'] = self.compute_rgb_loss(outputs['ray_rgb'], ray_batch['rgbs'], outputs['w_s'])  # ray_loss
+        w_s = None
+        if self.cfg['use_refscores']:
+            w_s = outputs['w_s']
+        outputs['loss_rgb'] = self.compute_rgb_loss(outputs['ray_rgb'], ray_batch['rgbs'], w_s)  # ray_loss
         outputs['gt_rgb'] = ray_batch['rgbs'].reshape(h, w, 3)
         outputs['ray_rgb'] = outputs['ray_rgb'].reshape(h, w, 3)
-        if outputs['w_s'] is not None:
+        if 'w_s' in outputs:
             outputs['w_s'] = outputs['w_s'].reshape(h, w, 3)
 
         # used in evaluation
@@ -550,7 +555,10 @@ class NeROShapeRenderer(nn.Module):
 
         outputs = self.render(rays_o, rays_d, near, far, human_poses, -1, self.get_anneal_val(step), is_train=True,
                               step=step, is_nerf=is_nerf)
-        outputs['loss_rgb'] = self.compute_rgb_loss(outputs['ray_rgb'], train_ray_batch['rgbs'], outputs['w_s'])  # ray_loss
+        w_s = None
+        if self.cfg['use_refscores']:
+            w_s = outputs['w_s']
+        outputs['loss_rgb'] = self.compute_rgb_loss(outputs['ray_rgb'], train_ray_batch['rgbs'], w_s)  # ray_loss
         if is_nerf:  # only nerf dataset add loss_mask
             outputs['loss_mask'] = F.l1_loss(train_ray_batch['masks'], outputs['acc'], reduction='mean')
         return outputs
@@ -600,22 +608,18 @@ class NeROShapeRenderer(nn.Module):
     def compute_rgb_loss(self, rgb_pr, rgb_gt, w_s=None):
         if self.cfg['rgb_loss'] == 'l2':
             l2 = (rgb_pr - rgb_gt) ** 2
-            # rgb_loss = self.ref_score_wrapper(l2, w_s)
-            rgb_loss = self.ref_score_wrapper(l2)
+            rgb_loss = self.ref_score_wrapper(l2, w_s)
         elif self.cfg['rgb_loss'] == 'l1':
             l1 = F.l1_loss(rgb_pr, rgb_gt, reduction='none')
-            # rgb_loss = self.ref_score_wrapper(l1, w_s)
-            rgb_loss = self.ref_score_wrapper(l1)
+            rgb_loss = self.ref_score_wrapper(l1, w_s)
 
         elif self.cfg['rgb_loss'] == 'smooth_l1':
             smooth_l1 = F.smooth_l1_loss(rgb_pr, rgb_gt, reduction='none', beta=0.25)
-            # rgb_loss = self.ref_score_wrapper(smooth_l1, w_s)
-            rgb_loss = self.ref_score_wrapper(smooth_l1)
+            rgb_loss = self.ref_score_wrapper(smooth_l1, w_s)
         elif self.cfg['rgb_loss'] == 'charbonier':
             epsilon = 0.001
             l2 = (rgb_gt - rgb_pr) ** 2
-            # rgb_loss = torch.sqrt(self.ref_score_wrapper(l2, w_s) + epsilon)
-            rgb_loss = torch.sqrt(self.ref_score_wrapper(l2) + epsilon)
+            rgb_loss = torch.sqrt(self.ref_score_wrapper(l2, w_s) + epsilon)
         else:
             raise NotImplementedError
         return rgb_loss
@@ -927,7 +931,6 @@ class NeROShapeRenderer(nn.Module):
             'ray_rgb': color,  # rn,3
             'gradient_error': gradient_error,  # rn
             'acc': acc,  # rn
-            'w_s': None,
             'loss_curv': global_weight * curvature.mean()
         }
         if use_refscores:
