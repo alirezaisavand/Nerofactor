@@ -2409,7 +2409,7 @@ class AppShadingNetwork(nn.Module):
                 intermediate_results['human_light'] = linear_to_srgb(human_light)
             return color, occ_info, intermediate_results
         else:
-            return color, occ_info, albedo, color
+            return color, occ_info, diffuse_albedo, color
 
     def predict_materials(self, points, feature_vectors):
         metallic = self.metallic_predictor(torch.cat([feature_vectors, points], -1))
