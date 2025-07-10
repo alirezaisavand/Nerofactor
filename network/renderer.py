@@ -585,28 +585,35 @@ class NeROShapeRenderer(nn.Module):
 
     #     self.train()
     #     return outputs
-    def ref_score_wrapper(self, loss, weight):
+    def ref_score_wrapper(self, loss, weight=None):
         assert (weight >= 0).all()
-        weight = 1 / (weight + 1e-4)
-
-        weight = weight.clamp(min=0.0, max=self.cfg["score_weight_max"])
+        if weight is None:
+            weight = torch.ones_like(loss)
+        else:
+            weight = 1 / (weight + 1e-4)
+            weight = weight.clamp(min=0.0, max=self.cfg["score_weight_max"])
         score_loss = loss * weight
         return torch.sum(score_loss, -1)
 
     def compute_rgb_loss(self, rgb_pr, rgb_gt, w_s):
         if self.cfg['rgb_loss'] == 'l2':
             l2 = (rgb_pr - rgb_gt) ** 2
-            rgb_loss = self.ref_score_wrapper(l2, w_s)
+            # rgb_loss = self.ref_score_wrapper(l2, w_s)
+            rgb_loss = self.ref_score_wrapper(l2)
         elif self.cfg['rgb_loss'] == 'l1':
             l1 = F.l1_loss(rgb_pr, rgb_gt, reduction='none')
-            rgb_loss = self.ref_score_wrapper(l1, w_s)
+            # rgb_loss = self.ref_score_wrapper(l1, w_s)
+            rgb_loss = self.ref_score_wrapper(l1)
+
         elif self.cfg['rgb_loss'] == 'smooth_l1':
             smooth_l1 = F.smooth_l1_loss(rgb_pr, rgb_gt, reduction='none', beta=0.25)
-            rgb_loss = self.ref_score_wrapper(smooth_l1, w_s)
+            # rgb_loss = self.ref_score_wrapper(smooth_l1, w_s)
+            rgb_loss = self.ref_score_wrapper(smooth_l1)
         elif self.cfg['rgb_loss'] == 'charbonier':
             epsilon = 0.001
             l2 = (rgb_gt - rgb_pr) ** 2
-            rgb_loss = torch.sqrt(self.ref_score_wrapper(l2, w_s) + epsilon)
+            # rgb_loss = torch.sqrt(self.ref_score_wrapper(l2, w_s) + epsilon)
+            rgb_loss = torch.sqrt(self.ref_score_wrapper(l2) + epsilon)
         else:
             raise NotImplementedError
         return rgb_loss
