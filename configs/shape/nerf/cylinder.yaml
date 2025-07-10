@@ -4,7 +4,7 @@ name: cylinder_shape
 network: shape
 database_name: nerf/cylinder
 apply_acc_loss: true
-occ_loss_step: 20000
+occ_loss_step: 25000 # changed here from 20000 to 25000
 is_nerf: true
 
 ######loss######
@@ -12,7 +12,7 @@ loss: ['nerf_render','eikonal','std','init_sdf_reg','occ','mask', 'curv']
 val_metric: ['shape_render']
 key_metric_name: psnr
 eikonal_weight: 0.1
-freeze_inv_s_step: 15000
+freeze_inv_s_step: 20000 # changed here from 15000 to 20000
 
 ####dataset#####
 train_dataset_type: dummy
