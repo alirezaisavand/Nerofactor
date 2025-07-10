@@ -227,6 +227,7 @@ class NeROShapeRenderer(nn.Module):
         'curvature_weight': 0.1,
         'curvature_reduce_start': 50000,
         'curvature_reduce_step': 2000,
+        'use_refscore': False,
     }
 
     def __init__(self, cfg, training=True):
@@ -861,7 +862,8 @@ class NeROShapeRenderer(nn.Module):
         return  curvature
 
     def render_core(self, rays_o, rays_d, z_vals, human_poses, cos_anneal_ratio=0.0, step=None, is_train=True,
-                    is_nerf=False, use_refscores=False):
+                    is_nerf=False):
+        use_refscores = self.cfg['use_refscores']
         batch_size, n_samples = z_vals.shape
 
         # section length in original space
