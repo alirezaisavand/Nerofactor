@@ -148,6 +148,19 @@ class MaskLoss(Loss):
             outputs['loss_mask'] = data_pr['loss_mask'].reshape(1) * self.cfg['mask_loss_weight']
         return outputs
 
+class CurvLoss(Loss):
+    default_cfg = {
+        'curv_loss_weight': 0.1, #changed here from 0.01 to 0.1
+    }
+
+    def __init__(self, cfg):
+        self.cfg = {**self.default_cfg, **cfg}
+
+    def __call__(self, data_pr, data_gt, step, *args, **kwargs):
+        outputs = {}
+        if 'loss_curv' in data_pr:
+            outputs['loss_curv'] = data_pr['loss_curve'].reshape(1) * self.cfg['curv_loss_weight']
+        return outputs
 
 name2loss = {
     'nerf_render': NeRFRenderLoss,
@@ -158,4 +171,5 @@ name2loss = {
     'mask': MaskLoss,
 
     'mat_reg': MaterialRegLoss,
+    'curv': CurvLoss,
 }
