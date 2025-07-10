@@ -526,7 +526,8 @@ class NeROShapeRenderer(nn.Module):
         outputs['loss_rgb'] = self.compute_rgb_loss(outputs['ray_rgb'], ray_batch['rgbs'], outputs['w_s'])  # ray_loss
         outputs['gt_rgb'] = ray_batch['rgbs'].reshape(h, w, 3)
         outputs['ray_rgb'] = outputs['ray_rgb'].reshape(h, w, 3)
-        outputs['w_s'] = outputs['w_s'].reshape(h, w, 3)
+        if outputs['w_s'] is not None:
+            outputs['w_s'] = outputs['w_s'].reshape(h, w, 3)
 
         # used in evaluation
         outputs['gt_depth'] = gt_depth.unsqueeze(-1)
@@ -595,7 +596,7 @@ class NeROShapeRenderer(nn.Module):
         score_loss = loss * weight
         return torch.sum(score_loss, -1)
 
-    def compute_rgb_loss(self, rgb_pr, rgb_gt, w_s):
+    def compute_rgb_loss(self, rgb_pr, rgb_gt, w_s=None):
         if self.cfg['rgb_loss'] == 'l2':
             l2 = (rgb_pr - rgb_gt) ** 2
             # rgb_loss = self.ref_score_wrapper(l2, w_s)
@@ -860,7 +861,7 @@ class NeROShapeRenderer(nn.Module):
         return  curvature
 
     def render_core(self, rays_o, rays_d, z_vals, human_poses, cos_anneal_ratio=0.0, step=None, is_train=True,
-                    is_nerf=False):
+                    is_nerf=False, use_refscores=False):
         batch_size, n_samples = z_vals.shape
 
         # section length in original space
@@ -876,7 +877,8 @@ class NeROShapeRenderer(nn.Module):
         human_poses_pt = human_poses.unsqueeze(-3).expand(batch_size, n_samples, 3, 4)
         dirs = F.normalize(dirs, dim=-1)
         alpha, sampled_color = torch.zeros(batch_size, n_samples), torch.zeros(batch_size, n_samples, 3)
-        ref_scores = torch.zeros(batch_size, n_samples, 3)
+        if use_refscores:
+            ref_scores = torch.zeros(batch_size, n_samples, 3)
         if torch.sum(outer_mask) > 0:
             if is_nerf:
                 alpha[outer_mask] = torch.zeros_like(alpha[outer_mask])
@@ -906,7 +908,7 @@ class NeROShapeRenderer(nn.Module):
 
         color = (sampled_color * weights[..., None]).sum(dim=1)
 
-        if torch.sum(inner_mask) > 0:
+        if torch.sum(inner_mask) > 0 and use_refscores:
             ref_scores[inner_mask] = F.mse_loss(
                 albedo_color, shaded_color, reduction="none"
             )
@@ -923,9 +925,12 @@ class NeROShapeRenderer(nn.Module):
             'ray_rgb': color,  # rn,3
             'gradient_error': gradient_error,  # rn
             'acc': acc,  # rn
-            'w_s': vol_fn(weights, ref_scores),  # rn,sn
+            'w_s': None,
             'loss_curv': global_weight * curvature.mean()
         }
+        if use_refscores:
+            outputs['w_s'] = vol_fn(weights, ref_scores),  # rn,sn
+
 
         if torch.sum(inner_mask) > 0:
             outputs['std'] = torch.mean(1 / inv_s)
