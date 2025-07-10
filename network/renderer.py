@@ -917,7 +917,7 @@ class NeROShapeRenderer(nn.Module):
             'gradient_error': gradient_error,  # rn
             'acc': acc,  # rn
             'w_s': vol_fn(weights, ref_scores),  # rn,sn
-            'loss_curv': global_weight * self.cfg['curvature_weight'] * curvature.mean()
+            'loss_curv': global_weight * curvature.mean()
         }
 
         if torch.sum(inner_mask) > 0:
