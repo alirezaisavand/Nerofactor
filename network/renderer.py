@@ -589,14 +589,13 @@ class NeROShapeRenderer(nn.Module):
     #     return outputs
     def ref_score_wrapper(self, loss, weight=None):
         if weight is None:
-            weight = torch.ones_like(loss)
+            return torch.sum(loss, -1)
         else:
             assert (weight >= 0).all()
             weight = 1 / (weight + 1e-4)
             weight = weight.clamp(min=0.0, max=self.cfg["score_weight_max"])
-
-        score_loss = loss * weight
-        return torch.sum(score_loss, -1)
+            score_loss = loss * weight
+            return torch.sum(score_loss, -1)
 
     def compute_rgb_loss(self, rgb_pr, rgb_gt, w_s=None):
         if self.cfg['rgb_loss'] == 'l2':
