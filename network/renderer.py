@@ -227,7 +227,7 @@ class NeROShapeRenderer(nn.Module):
         'curvature_weight': 0.1,
         'curvature_reduce_start': 50000,
         'curvature_reduce_step': 2000,
-        'use_refscore': False,
+        'use_refscores': False,
     }
 
     def __init__(self, cfg, training=True):
