@@ -87,15 +87,16 @@ class StdRecorder(Loss):
 
 
 class OccLoss(Loss):
-    default_cfg = {}
+    default_cfg = {
+        'occ_loss_weight': 0.1,  # changed here from 0.01 to 0.1
+    }
 
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
-
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         outputs = {}
         if 'loss_occ' in data_pr:
-            outputs['loss_occ'] = torch.mean(data_pr['loss_occ']).reshape(1)
+            outputs['loss_occ'] = torch.mean(data_pr['loss_occ']).reshape(1) * self.cfg['occ_loss_weight']
         return outputs
 
 
