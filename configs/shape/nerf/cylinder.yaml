@@ -4,7 +4,7 @@ name: cylinder_shape
 network: shape
 database_name: nerf/cylinder
 apply_acc_loss: true
-occ_loss_step: 25000 # changed here from 20000 to 25000
+occ_loss_step: 22000 # changed here from 20000 to 25000
 is_nerf: true
 
 ######loss######
