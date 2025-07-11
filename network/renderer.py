@@ -925,13 +925,13 @@ class NeROShapeRenderer(nn.Module):
 
         start = self.cfg['curvature_reduce_start']
         end = start + self.cfg['curvature_reduce_step']
-        global_weight = map_range_val(step, start, end, 1, 0)
+        # global_weight = map_range_val(step, start, end, 1, 0)
         curvature =  self.get_curvature_loss(points[inner_mask], gradients)
         outputs = {
             'ray_rgb': color,  # rn,3
             'gradient_error': gradient_error,  # rn
             'acc': acc,  # rn
-            'loss_curv': global_weight * curvature.mean()
+            'loss_curv': curvature.mean() # * global_weight
         }
         if use_refscores:
             outputs['w_s'] = vol_fn(weights, ref_scores),  # rn,sn
