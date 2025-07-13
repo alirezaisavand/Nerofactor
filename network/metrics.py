@@ -33,9 +33,10 @@ def get_key_images(data_pr, keys, h, w):
 
 
 def draw_materials(data_pr, h, w):
-    keys = ['diffuse_albedo', 'diffuse_light', 'diffuse_color',
-            'specular_albedo', 'specular_light', 'specular_color', 'specular_ref',
-            'metallic', 'roughness', 'occ_prob', 'indirect_light']
+    keys = ['diffuse_albedo',
+            'diffuse_light', 'diffuse_color', 'specular_albedo', 'specular_light',
+            'specular_color', 'specular_ref', 'metallic', 'roughness',
+            'occ_prob', 'indirect_light']
     # keys = ['diffuse_albedo', 'diffuse_light', 'diffuse_color',
     #         'specular_albedo', 'specular_light', 'specular_color', 'specular_ref',
     #         'occ_prob', 'indirect_light', 'spec_brdf']
