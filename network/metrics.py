@@ -106,7 +106,8 @@ class MaterialRenderMetrics(Loss):
             if img.shape[-1] == 1: img = np.repeat(img, 3, axis=-1)
             imgs.append(img)
 
-        output_imgs = [concat_images_list(*imgs[:5]), concat_images_list(*imgs[5:])]
+        output_imgs = [concat_images_list(*imgs[:5]), concat_images_list(*imgs[5:10]),
+                       concat_images_list(*imgs[10:15]), concat_images_list(*imgs[15:])]
 
         # output image
         data_index = kwargs['data_index']
