@@ -3004,6 +3004,62 @@ class MCShadingNetwork(nn.Module):
 
         return h.float(), wi.float(), cos_theta_h.float(), pdf.float(), x, y, z, theta_h, phi_h
 
+    # def sample_aniso_ggx_directions2(self,
+    #                                 mesh,
+    #                                 tangents,
+    #                                 bitangents,
+    #                                 tree,
+    #                                 pts: torch.Tensor,
+    #                                 m_x: torch.Tensor,
+    #                                 m_y: torch.Tensor,
+    #                                 wo: torch.Tensor,
+    #                                 M: int,
+    #                                 normals: torch.Tensor,
+    #                                 device: torch.device = None,
+    #                                 eps: float = 1e-6):
+    #     if device is None:
+    #         device = wo.device
+    #
+    #     z = normals  # pn,3
+    #
+    #     # x = self.get_orthogonal_directions(normals)  # pn,3
+    #     # y = torch.cross(z, x, dim=-1)  # pn,3
+    #
+    #     # T = tangents.to(device)
+    #     # B = bitangents.to(device)
+    #     # vertices = torch.from_numpy(np.asarray(mesh.vertices)).to(device)
+    #     # faces = torch.from_numpy(np.asarray(mesh.triangles, dtype=np.int64)).to(device)
+    #     # x, y = self.get_tangent_bitangent_via_kdtree(vertices, faces, T, B, pts, normals, tree)
+    #
+    #     x, y = self.compute_tangent_bitangent_flat(normals)
+    #
+    #     m_x = m_x.to(device)  # (N,1)
+    #     m_y = m_y.to(device)  # (N,1)
+    #     wo = wo.to(device)  # (N,3)
+    #     N = wo.shape[0]
+    #
+    #     # 1) Uniformsk
+    #     xi1 = torch.rand((N, M), device=device).clamp(min=eps)
+    #     xi2 = torch.rand((N, M), device=device)
+    #
+    #     two_pi_xi1 = 2.0 * np.pi * xi1  # (N,M)
+    #     sin_two_pi_xi1 = torch.sin(two_pi_xi1) # (N,M)
+    #     cos_two_pi_xi1 = torch.cos(two_pi_xi1) # (N,M)
+    #     sq_xi2 = torch.sqrt(xi2 / (1 - xi2)) # (N, M)
+    #
+    #     x_expand = x.unsqueeze(1).expand(N, M, 3)
+    #     y_expand = y.unsqueeze(1).expand(N, M, 3)
+    #     z_expand = z.unsqueeze(1).expand(N, M, 3)
+    #     h_p = sq_xi2 * ((m_x * cos_two_pi_xi1).unsqueeze(2) * x_expand + (m_y * sin_two_pi_xi1).unsqueeze(2) * y_expand) + z_expand
+    #     h = torch.nn.functional.normalize(h_p, dim=-1, eps=eps)
+    #
+    #     dot = (wo.unsqueeze(1) * h).sum(-1, keepdim=True)
+    #     wi = 2 * dot * h - wo.unsqueeze(1)
+    #     wi = torch.nn.functional.normalize(wi, dim=-1, eps=eps)
+    #
+    #     return h.float(), wi.float(), cos_theta_h.float(), pdf.float(), x, y, z, theta_h, phi_h
+
+
     def compute_radiance(self,
                          f_d: torch.Tensor,
                          diffuse_lights: torch.Tensor,
@@ -3093,6 +3149,7 @@ class MCShadingNetwork(nn.Module):
         denom = cos_theta_h * pow_on + eps  # (N,M,1)
         f_s = (k_s_exp * F * pow_in / denom) * mask.unsqueeze(-1)
         spec_brdf = (k_s_exp * F * pow_in_denom * pdf / denom) * mask.unsqueeze(-1)
+        weighted_specular_light = (k_s_exp * pow_in_denom * pdf / denom) * mask.unsqueeze(-1) * specular_lights
         # print("pdf shape:", pdf.shape, spec_brdf.shape)
         spec_weighted = f_s * specular_lights  # (N,M,3)
         specular = spec_weighted.sum(dim=1) / valid_counts  # (N,3)
@@ -3104,7 +3161,7 @@ class MCShadingNetwork(nn.Module):
         tem = 1
         L_spec = self.compute_spec_loss(tem, f_d, mx, my, theta_h, phi_h)
         L_spec = torch.sum(L_spec * f_d * mask.unsqueeze(-1), dim=1) / (valid_counts*3)
-        return R, diffuse, specular, f_d_sum, f_s_sum, L_spec
+        return R, diffuse, specular, f_d_sum, f_s_sum, L_spec, weighted_specular_light
 
     def nan_inf_check(self, A, name):
         if torch.isinf(A).any():
@@ -3354,7 +3411,7 @@ class MCShadingNetwork(nn.Module):
         f_d = self.diffuse_term(kd, F, is_seperate)
         self.nan_inf_check(f_d, 'diffuse term (f_d)')
 
-        R, diffuse_color, specular_color, f_d_sum, f_s_sum, L_spec  = self.compute_radiance(f_d, diffuse_lights, specular_lights, ks, F, diffuse_directions, wis, normals, alpha, cos_ths, view_dirs, pdfs, theta_h, phi_h, mx, my)
+        R, diffuse_color, specular_color, f_d_sum, f_s_sum, L_spec, weighted_specular_lights  = self.compute_radiance(f_d, diffuse_lights, specular_lights, ks, F, diffuse_directions, wis, normals, alpha, cos_ths, view_dirs, pdfs, theta_h, phi_h, mx, my)
         self.nan_inf_check(R, 'R')
         self.nan_inf_check(diffuse_color, 'diffuse_color')
         self.nan_inf_check(specular_color, 'specular_color')
@@ -3384,7 +3441,7 @@ class MCShadingNetwork(nn.Module):
         outputs['diffuse_color'] = diffuse_color
         outputs['specular_color'] = specular_color
         outputs['diffuse_light'] = torch.clamp(linear_to_srgb(torch.mean(diffuse_lights, dim=1)), min=0, max=1)
-        outputs['specular_light'] = torch.clamp(linear_to_srgb(torch.mean(specular_lights, dim=1)), min=0, max=1)
+        outputs['specular_light'] = torch.clamp(linear_to_srgb(torch.mean(weighted_specular_lights, dim=1)), min=0, max=1)
         outputs['f_d_sum'] = f_d_sum
         outputs['f_s_sum'] = f_s_sum
         outputs['L_spec'] = L_spec
