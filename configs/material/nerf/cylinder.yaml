@@ -220,14 +220,14 @@ max_alpha_exp: 10
 n_lobes: 2
 
 reg_diffuse_light: true
-reg_diffuse_light_lambda: 0.01
+reg_diffuse_light_lambda: 0.002 # Changed here from 0.010 to 0.002
 
 # Changed here
 reg_energy_loss: true
-reg_energy_loss_lambda: 0.01
+reg_energy_loss_lambda: 0.001 # Changed here from 0.01 to 0.001
 
 reg_spec_loss: true
-reg_spec_loss_lambda: 0.01
+reg_spec_loss_lambda: 0.001 # Changed here from 0.01 to 0.001
 
 reg_mat: true
 shader_cfg:
