@@ -2936,6 +2936,33 @@ class MCShadingNetwork(nn.Module):
 
         return p  # (N, M, 1)
 
+    def compute_pdf_aniso_ggx2(self,
+            m_x: torch.Tensor,  # (N,1)
+            m_y: torch.Tensor,  # (N,1)
+            w_o: torch.Tensor,  # (N, 3)
+            h: torch.Tensor,  # (N, M, 3), half‐vectors in tangent‐space
+            theta_h,
+            phi_h,
+            eps: float = 1e-8
+    ) -> torch.Tensor:
+        """
+        Returns:
+          p: (N, M, 1) the sampling PDF p(ω_i | ω_o) per Eqn.(20)&(4).
+        """
+        N, M, _ = h.shape
+        sin_theta_h = torch.sin(theta_h)
+        cos_theta_h = torch.cos(theta_h)
+        sin_phi_h = torch.sin(phi_h)
+        cos_phi_h = torch.cos(phi_h)
+
+        denom = sin_theta_h*sin_theta_h * ((cos_phi_h*cos_phi_h)/ (m_x*m_x) + (sin_phi_h*sin_phi_h) / (m_y*m_y)) + cos_theta_h*cos_theta_h
+        D = (1 / np.pi) * (1 / (m_x*m_y)) * (1 / (denom * denom))
+        pdf_h = D * cos_theta_h
+        pdf_h = pdf_h.unsqueeze(2)
+
+
+        return pdf_h  # (N, M, 1)
+
     def sample_aniso_ggx_directions(self,
                                     mesh,
                                     tangents,
@@ -3005,60 +3032,70 @@ class MCShadingNetwork(nn.Module):
 
         return h.float(), wi.float(), cos_theta_h.float(), pdf.float(), x, y, z, theta_h, phi_h
 
-    # def sample_aniso_ggx_directions2(self,
-    #                                 mesh,
-    #                                 tangents,
-    #                                 bitangents,
-    #                                 tree,
-    #                                 pts: torch.Tensor,
-    #                                 m_x: torch.Tensor,
-    #                                 m_y: torch.Tensor,
-    #                                 wo: torch.Tensor,
-    #                                 M: int,
-    #                                 normals: torch.Tensor,
-    #                                 device: torch.device = None,
-    #                                 eps: float = 1e-6):
-    #     if device is None:
-    #         device = wo.device
-    #
-    #     z = normals  # pn,3
-    #
-    #     # x = self.get_orthogonal_directions(normals)  # pn,3
-    #     # y = torch.cross(z, x, dim=-1)  # pn,3
-    #
-    #     # T = tangents.to(device)
-    #     # B = bitangents.to(device)
-    #     # vertices = torch.from_numpy(np.asarray(mesh.vertices)).to(device)
-    #     # faces = torch.from_numpy(np.asarray(mesh.triangles, dtype=np.int64)).to(device)
-    #     # x, y = self.get_tangent_bitangent_via_kdtree(vertices, faces, T, B, pts, normals, tree)
-    #
-    #     x, y = self.compute_tangent_bitangent_flat(normals)
-    #
-    #     m_x = m_x.to(device)  # (N,1)
-    #     m_y = m_y.to(device)  # (N,1)
-    #     wo = wo.to(device)  # (N,3)
-    #     N = wo.shape[0]
-    #
-    #     # 1) Uniformsk
-    #     xi1 = torch.rand((N, M), device=device).clamp(min=eps)
-    #     xi2 = torch.rand((N, M), device=device)
-    #
-    #     two_pi_xi1 = 2.0 * np.pi * xi1  # (N,M)
-    #     sin_two_pi_xi1 = torch.sin(two_pi_xi1) # (N,M)
-    #     cos_two_pi_xi1 = torch.cos(two_pi_xi1) # (N,M)
-    #     sq_xi2 = torch.sqrt(xi2 / (1 - xi2)) # (N, M)
-    #
-    #     x_expand = x.unsqueeze(1).expand(N, M, 3)
-    #     y_expand = y.unsqueeze(1).expand(N, M, 3)
-    #     z_expand = z.unsqueeze(1).expand(N, M, 3)
-    #     h_p = sq_xi2 * ((m_x * cos_two_pi_xi1).unsqueeze(2) * x_expand + (m_y * sin_two_pi_xi1).unsqueeze(2) * y_expand) + z_expand
-    #     h = torch.nn.functional.normalize(h_p, dim=-1, eps=eps)
-    #
-    #     dot = (wo.unsqueeze(1) * h).sum(-1, keepdim=True)
-    #     wi = 2 * dot * h - wo.unsqueeze(1)
-    #     wi = torch.nn.functional.normalize(wi, dim=-1, eps=eps)
-    #
-    #     return h.float(), wi.float(), cos_theta_h.float(), pdf.float(), x, y, z, theta_h, phi_h
+    def sample_aniso_ggx_directions2(self,
+                                    mesh,
+                                    tangents,
+                                    bitangents,
+                                    tree,
+                                    pts: torch.Tensor,
+                                    m_x: torch.Tensor,
+                                    m_y: torch.Tensor,
+                                    wo: torch.Tensor,
+                                    M: int,
+                                    normals: torch.Tensor,
+                                    device: torch.device = None,
+                                    eps: float = 1e-6):
+        if device is None:
+            device = wo.device
+
+        z = normals  # pn,3
+
+        # x = self.get_orthogonal_directions(normals)  # pn,3
+        # y = torch.cross(z, x, dim=-1)  # pn,3
+
+        # T = tangents.to(device)
+        # B = bitangents.to(device)
+        # vertices = torch.from_numpy(np.asarray(mesh.vertices)).to(device)
+        # faces = torch.from_numpy(np.asarray(mesh.triangles, dtype=np.int64)).to(device)
+        # x, y = self.get_tangent_bitangent_via_kdtree(vertices, faces, T, B, pts, normals, tree)
+
+        x, y = self.compute_tangent_bitangent_flat(normals)
+
+        m_x = m_x.to(device)  # (N,1)
+        m_y = m_y.to(device)  # (N,1)
+        wo = wo.to(device)  # (N,3)
+        N = wo.shape[0]
+
+        # 1) Uniformsk
+        xi1 = torch.rand((N, M), device=device).clamp(min=eps)
+        xi2 = torch.rand((N, M), device=device)
+
+        two_pi_xi1 = 2.0 * np.pi * xi1  # (N,M)
+        sin_two_pi_xi1 = torch.sin(two_pi_xi1) # (N,M)
+        cos_two_pi_xi1 = torch.cos(two_pi_xi1) # (N,M)
+        sq_xi2 = torch.sqrt(xi2 / (1 - xi2)) # (N, M)
+
+        x_expand = x.unsqueeze(1).expand(N, M, 3)
+        y_expand = y.unsqueeze(1).expand(N, M, 3)
+        z_expand = z.unsqueeze(1).expand(N, M, 3)
+        h_p = sq_xi2 * ((m_x * cos_two_pi_xi1).unsqueeze(2) * x_expand + (m_y * sin_two_pi_xi1).unsqueeze(2) * y_expand) + z_expand #(N, M, 3)
+        h = torch.nn.functional.normalize(h_p, dim=-1, eps=eps) #(N,M,3)
+
+        dot = (wo.unsqueeze(1) * h).sum(-1, keepdim=True) #(N, M, 1)
+        wi = 2 * dot * h - wo.unsqueeze(1)  #(N, M, 3)
+        wi = torch.nn.functional.normalize(wi, dim=-1, eps=eps) #(N, M, 3)
+
+        phi_h = torch.atan2(m_y / m_x * torch.tan(two_pi_xi1)) #(N, M)
+        cos_phi_h = torch.cos(phi_h) #(N, M)
+        sin_phi_h = torch.sin(phi_h) #(N, M)
+        # cos_theta_h = torch.sqrt((1 - xi2) / (1 + (1 / ((cos_phi_h*cos_phi_h) / (m_x*m_x) + (sin_phi_h*sin_phi_h)/(m_y*m_y)) - 1) * xi2))
+
+        r = torch.sqrt(1 / ((cos_phi_h*cos_phi_h)/(m_x*m_x) + (sin_phi_h*sin_phi_h) / (m_y*m_y))) #(N, M)
+        theta_h = torch.atan2(r * sq_xi2)
+        cos_theta_h = torch.cos(theta_h)
+        pdf = self.compute_pdf_aniso_ggx2(m_x, m_y, wo, h, theta_h, phi_h)
+
+        return h.float(), wi.float(), cos_theta_h.float(), pdf.float(), x, y, z, theta_h, phi_h
 
 
     def compute_radiance(self,
@@ -3525,8 +3562,8 @@ class MCShadingNetwork(nn.Module):
             reg = reg + torch.mean(
                 (torch.abs(kd - kd_ch) +
                  torch.abs(ks - ks_ch) +
-                 torch.abs(mx - mx_ch) +
-                 torch.abs(my - my_ch) +
+                 # torch.abs(mx - mx_ch) +
+                 # torch.abs(my - my_ch) +
                  torch.abs(alpha - alpha_ch) +
                  torch.abs(F0 - F0_ch)) *
                 self.cfg['reg_lambda1'],
