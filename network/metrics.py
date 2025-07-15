@@ -33,10 +33,9 @@ def get_key_images(data_pr, keys, h, w):
 
 
 def draw_materials(data_pr, h, w):
-    keys = ['diffuse_albedo',
-            'diffuse_light', 'diffuse_color', 'specular_albedo', 'specular_light',
-            'specular_color', 'specular_ref', 'metallic', 'roughness',
-            'occ_prob', 'indirect_light']
+    keys = [
+            'diffuse_albedo', 'diffuse_light', 'diffuse_color', 'specular_albedo', 'specular_light',
+            'specular_color', 'specular_ref', 'metallic', 'roughness', 'occ_prob', 'indirect_light']
     # keys = ['diffuse_albedo', 'diffuse_light', 'diffuse_color',
     #         'specular_albedo', 'specular_light', 'specular_color', 'specular_ref',
     #         'occ_prob', 'indirect_light', 'spec_brdf']
@@ -97,7 +96,9 @@ class MaterialRenderMetrics(Loss):
 
         # additional_keys = ['albedo', 'metallic', 'roughness', 'specular_light', 'specular_color', 'diffuse_light',
         #                    'diffuse_color']
-        additional_keys = ['tangents', 'bitangents', 'normals', 'kd', 'ks', 'specular_light', 'diffuse_light', 'F0', 'alpha', 'specular_color', 'diffuse_color', 'mx', 'my',
+        additional_keys = ['tangents', 'bitangents', 'normals',
+                           'kd', 'ks', 'specular_light', 'diffuse_light', 'F0',
+                           'alpha', 'specular_color', 'diffuse_color', 'mx', 'my',
                            'f_d_sum', 'f_s_sum', 'L_spec']
         # additional_keys = ['albedo', 'specular_light', 'specular_color', 'diffuse_light',
         #                    'diffuse_color', 'spec_brdf']
