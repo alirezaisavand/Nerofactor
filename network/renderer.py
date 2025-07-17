@@ -17,7 +17,7 @@ from tqdm import trange
 from scipy.spatial import cKDTree
 
 
-def load_masks(input_folder, as_bool=True, ignore_segmentation=False, h=0, w=0):
+def load_masks(input_folder, as_bool=True, ignore_segmentation=True, h=0, w=0):
     import os
     """
     Loads a list of 2D masks (numpy arrays) from the specified folder.
