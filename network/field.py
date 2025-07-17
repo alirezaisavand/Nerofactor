@@ -3550,7 +3550,7 @@ class MCShadingNetwork(nn.Module):
 
             outputs['ks'] = ks
             outputs['F0'] = F0
-            outputs['alpha'] alpha
+            outputs['alpha'] = alpha
             outputs['mx'] = mx
             outputs['my'] = my
             outputs['specular_color'] = specular_colors[0] + specular_colors[1]
