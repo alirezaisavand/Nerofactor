@@ -2479,7 +2479,7 @@ class MCShadingNetwork(nn.Module):
         'reg_energy_loss_lambda': 0.01,
         'reg_spec_loss': True,
         'reg_spec_loss_lambda': 0.01,
-        'n_lobes': 2
+        'n_lobes': 1
     }
 
     def __init__(self, cfg, ray_trace_fun):
@@ -2503,7 +2503,7 @@ class MCShadingNetwork(nn.Module):
             self.ks_predictor = make_predictor(256 + 3, 3)
             self.rotation_predictor = make_predictor(256 + 3, 2)
 
-            if self.cfg['n_lobes']:
+            if self.cfg['n_lobes'] > 1:
                 self.mx_predictor2 = make_predictor(256 + 3, 1)
                 self.my_predictor2 = make_predictor(256 + 3, 1)
                 self.alpha_predictor2 = make_predictor(256 + 3, 1)
