@@ -2499,9 +2499,18 @@ class MCShadingNetwork(nn.Module):
             self.my_predictor = make_predictor(256 + 3, 1)
             self.alpha_predictor = make_predictor(256 + 3, 1)
             self.F0_predictor = make_predictor(256 + 3, 1)
-            self.kd_predictor = make_predictor(256 + 3, 3)
             self.ks_predictor = make_predictor(256 + 3, 3)
             self.rotation_predictor = make_predictor(256 + 3, 2)
+
+            if self.cfg['n_lobes']:
+                self.mx_predictor2 = make_predictor(256 + 3, 1)
+                self.my_predictor2 = make_predictor(256 + 3, 1)
+                self.alpha_predictor2 = make_predictor(256 + 3, 1)
+                self.F0_predictor2 = make_predictor(256 + 3, 1)
+                self.ks_predictor2 = make_predictor(256 + 3, 3)
+                self.rotation_predictor2 = make_predictor(256 + 3, 2)
+
+            self.kd_predictor = make_predictor(256 + 3, 3)
 
         # light part
         self.sph_enc = generate_ide_fn(5)
@@ -2846,8 +2855,6 @@ class MCShadingNetwork(nn.Module):
 
     def predict_anisotropic_components(self, pts):
         feats = self.feats_network(pts)
-        # mx_min, mx_max = 0.01, 1.0
-        # my_min, my_max = 0.01, 1.0
         mx = self.mx_predictor(torch.cat([feats, pts], -1))
         # mx = mx_min + (mx_max - mx_min)*mx
         my = self.my_predictor(torch.cat([feats, pts], -1))
@@ -2859,7 +2866,18 @@ class MCShadingNetwork(nn.Module):
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
         rotation = self.rotation_predictor(torch.cat([feats, pts], -1))
         rotation = F.normalize(rotation, dim=-1)
-        return mx, my, alpha, F0, kd, ks, rotation
+        if self.cfg['n_lobes'] == 1:
+            return mx, my, alpha, F0, kd, ks, rotation
+        else:
+            mx2 = self.mx_predictor2(torch.cat([feats, pts], -1))
+            my2 = self.my_predictor2(torch.cat([feats, pts], -1))
+            alpha2 = self.alpha_predictor2(torch.cat([feats, pts], -1))
+            F02 = self.F0_predictor2(torch.cat([feats, pts], -1))
+            ks2 = self.ks_predictor2(torch.cat([feats, pts], -1))
+            rotation2 = self.rotation_predictor2(torch.cat([feats, pts], -1))
+            rotation2 = F.normalize(rotation2, dim=-1)
+            return [mx, mx2], [my, my2], [alpha, alpha2], [F0, F02], kd, [ks, ks2], [rotation, rotation2]
+
 
     def compute_Dh(self, m_x, m_y, theta_h, phi_h):
         """
@@ -3424,81 +3442,129 @@ class MCShadingNetwork(nn.Module):
 
         return t_norm, b_norm
 
-    def shade_anisotropic_mixed(self, mesh, tangents, bitangents, tree, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, rotation, human_poses, is_train, is_seperate=True):
-        self.nan_inf_check(normals, 'normals')
-        self.nan_inf_check(mx, 'mx')
-        self.nan_inf_check(my, 'my')
-        self.nan_inf_check(alpha, 'alpha')
-        self.nan_inf_check(F0, 'F0')
-        self.nan_inf_check(kd, 'kd')
-        self.nan_inf_check(ks, 'ks')
+    def shade_anisotropic_mixed(self, mesh, tangents, bitangents, tree, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, rotation, human_poses, is_train):
 
         num_spec_samples = self.cfg['specular_sample_num']
 
-        hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(mesh, tangents, bitangents, rotation, tree, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
-        self.nan_inf_check(hs, 'hs')
-        self.nan_inf_check(wis, 'wis')
-        self.nan_inf_check(cos_ths, 'cos_ths')
-        if is_seperate:
+        if self.cfg['n_lobes'] == 1:
+
+            hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(mesh, tangents, bitangents, rotation, tree, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
             diffuse_directions = self.sample_diffuse_directions(normals, is_train)
+
+            point_num, diffuse_num, _ = diffuse_directions.shape
+
+            pts_ = pts.unsqueeze(1).repeat(1, num_spec_samples+diffuse_num, 1)
+            directions = torch.cat([diffuse_directions, wis], 1)
+            sn = diffuse_num + num_spec_samples
+            human_poses = human_poses.unsqueeze(1).repeat(1, sn, 1, 1) if human_poses is not None else None
+            lights, hl, light_pts, light_normals, light_pts_mask = self.get_lights(pts_, directions, human_poses)
+
+            diffuse_lights = lights[:, :diffuse_num]
+            specular_lights = lights[:, diffuse_num:]
+
+            F = self.fresnel_schlick_batch(F0, view_dirs, hs)
+
+            f_d = self.diffuse_term(kd, F)
+
+            R, diffuse_color, specular_color, f_d_sum, f_s_sum, L_spec, weighted_specular_lights  = self.compute_radiance(f_d, diffuse_lights, specular_lights, ks, F, diffuse_directions, wis, normals, alpha, cos_ths, view_dirs, pdfs, theta_h, phi_h, mx, my)
+
+            colors = linear_to_srgb(R)
+
+            diffuse_color = linear_to_srgb(diffuse_color)
+
+            specular_color = linear_to_srgb(specular_color)
+
+            outputs = {}
+            outputs['tangents'] = (t + 1) / 2
+            outputs['bitangents'] = (b + 1) /2
+            outputs['normals'] = (n + 1) / 2
+            outputs['human_lights'] = hl.reshape(-1, 3)
+            outputs['kd'] = kd
+            outputs['ks'] = ks
+            outputs['F0'] = F0
+            outputs['alpha'] = alpha
+            outputs['mx'] = mx
+            outputs['my'] = my
+            outputs['diffuse_color'] = diffuse_color
+            outputs['specular_color'] = specular_color
+            outputs['diffuse_light'] = torch.clamp(linear_to_srgb(torch.mean(diffuse_lights, dim=1)), min=0, max=1)
+            outputs['specular_light'] = torch.clamp(linear_to_srgb(torch.mean(weighted_specular_lights, dim=1)), min=0, max=1)
+            outputs['f_d_sum'] = f_d_sum
+            outputs['f_s_sum'] = f_s_sum
+            outputs['L_spec'] = L_spec
+            outputs['rotation'] = rotation
+            return colors, outputs
         else:
-            diffuse_directions = wis
-        point_num, diffuse_num, _ = diffuse_directions.shape
+            diffuse_directions = self.sample_diffuse_directions(normals, is_train)
+            point_num, diffuse_num, _ = diffuse_directions.shape
+            sn = diffuse_num + num_spec_samples
+            human_poses = human_poses.unsqueeze(1).repeat(1, sn, 1, 1) if human_poses is not None else None
 
-        self.nan_inf_check(diffuse_directions, 'diffuse_directions')
+            outputs = {}
+            diffuse_colors = []
+            specular_colors = []
+            f_s_sums = []
+            weighted_specular_lights = []
+            L_specs = []
+            for i in range(self.cfg['n_lobes']):
+                hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(mesh, tangents,
+                                                                                                   bitangents, rotation[i],
+                                                                                                   tree, pts, mx[i], my[i],
+                                                                                                   view_dirs,
+                                                                                                   num_spec_samples,
+                                                                                                   normals, 'cuda')
 
-        pts_ = pts.unsqueeze(1).repeat(1, num_spec_samples+diffuse_num, 1)
-        directions = torch.cat([diffuse_directions, wis], 1)
-        sn = diffuse_num + num_spec_samples
-        human_poses = human_poses.unsqueeze(1).repeat(1, sn, 1, 1) if human_poses is not None else None
-        lights, hl, light_pts, light_normals, light_pts_mask = self.get_lights(pts_, directions, human_poses)
+                pts_ = pts.unsqueeze(1).repeat(1, num_spec_samples + diffuse_num, 1)
+                directions = torch.cat([diffuse_directions, wis], 1)
 
-        diffuse_lights = lights[:, :diffuse_num]
-        specular_lights = lights[:, diffuse_num:]
-        self.nan_inf_check(lights, 'lights')
+                lights, hl, light_pts, light_normals, light_pts_mask = self.get_lights(pts_, directions, human_poses)
+                diffuse_lights = lights[:, :diffuse_num]
+                specular_lights = lights[:, diffuse_num:]
 
-        F = self.fresnel_schlick_batch(F0, view_dirs, hs)
-        self.nan_inf_check(F, 'F (fresnel schlick)')
+                F = self.fresnel_schlick_batch(F0[i], view_dirs, hs[i])
+                f_d = self.diffuse_term(kd, F)
 
-        f_d = self.diffuse_term(kd, F, is_seperate)
-        self.nan_inf_check(f_d, 'diffuse term (f_d)')
+                R, diffuse_color, specular_color, f_d_sum, f_s_sum, L_spec, weighted_specular_light = self.compute_radiance(
+                    f_d, diffuse_lights, specular_lights, ks[i], F, diffuse_directions, wis, normals, alpha[i], cos_ths[i],
+                    view_dirs, pdfs[i], theta_h[i], phi_h[i], mx[i], my[i])
 
-        R, diffuse_color, specular_color, f_d_sum, f_s_sum, L_spec, weighted_specular_lights  = self.compute_radiance(f_d, diffuse_lights, specular_lights, ks, F, diffuse_directions, wis, normals, alpha, cos_ths, view_dirs, pdfs, theta_h, phi_h, mx, my)
-        self.nan_inf_check(R, 'R')
-        self.nan_inf_check(diffuse_color, 'diffuse_color')
-        self.nan_inf_check(specular_color, 'specular_color')
+                specular_colors.append(specular_color)
+                f_s_sums.append(f_s_sum)
+                weighted_specular_lights.append(weighted_specular_light)
+                L_specs.append(L_spec)
+                diffuse_colors.append(diffuse_color)
+
+                diffuse_color = linear_to_srgb(diffuse_color)
+                specular_color = linear_to_srgb(specular_color)
+                outputs['tangents'] = (t + 1) / 2
+                outputs['bitangents'] = (b + 1) / 2
+                outputs['normals'] = (n + 1) / 2
+                outputs['human_lights'] = hl.reshape(-1, 3)
+                outputs['kd'] = kd
+                outputs['diffuse_color'] = diffuse_color
+                outputs['diffuse_light'] = torch.clamp(linear_to_srgb(torch.mean(diffuse_lights, dim=1)), min=0, max=1)
+                outputs['f_d_sum'] = f_d_sum
 
 
 
-        colors = linear_to_srgb(R)
-        self.nan_inf_check(colors, 'colors')
+            outputs['ks'] = (ks[0] + ks[1]) / 2
+            outputs['F0'] = (F0[0] + F0[1]) / 2
+            outputs['alpha'] = (alpha[0] + alpha[1])/2
+            outputs['mx'] = (mx[0] + mx[1]) / 2
+            outputs['my'] = (my[0] + my[1]) / 2
 
-        diffuse_color = linear_to_srgb(diffuse_color)
-        self.nan_inf_check(diffuse_color, 'diffuse_color_srgb')
+            outputs['specular_color'] = specular_colors[0] + specular_colors[1]
 
-        specular_color = linear_to_srgb(specular_color)
-        self.nan_inf_check(specular_color, 'specular_color_srgb')
+            outputs['specular_light'] = torch.clamp(linear_to_srgb(torch.mean(weighted_specular_lights[0], dim=1) +
+                                                                   torch.mean(weighted_specular_lights[1], dim=1)),
+                                                                    min=0, max=1)
 
-        outputs = {}
-        outputs['tangents'] = (t + 1) / 2
-        outputs['bitangents'] = (b + 1) /2
-        outputs['normals'] = (n + 1) / 2
-        outputs['human_lights'] = hl.reshape(-1, 3)
-        outputs['kd'] = kd
-        outputs['ks'] = ks
-        outputs['F0'] = F0
-        outputs['alpha'] = alpha
-        outputs['mx'] = mx
-        outputs['my'] = my
-        outputs['diffuse_color'] = diffuse_color
-        outputs['specular_color'] = specular_color
-        outputs['diffuse_light'] = torch.clamp(linear_to_srgb(torch.mean(diffuse_lights, dim=1)), min=0, max=1)
-        outputs['specular_light'] = torch.clamp(linear_to_srgb(torch.mean(weighted_specular_lights, dim=1)), min=0, max=1)
-        outputs['f_d_sum'] = f_d_sum
-        outputs['f_s_sum'] = f_s_sum
-        outputs['L_spec'] = L_spec
-        outputs['rotation'] = rotation
-        return colors, outputs
+            outputs['f_s_sum'] = f_s_sums[0] + f_s_sums[1]
+            outputs['L_spec'] = L_specs[0] + L_specs[1]
+            outputs['rotation'] = (rotation[0] + rotation[1])
+            colors = diffuse_colors[0] + specular_colors[0] + specular_colors[1]
+            return colors, outputs
+
 
 
     def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh, tangents, bitangents, tree, is_seperate=True):
