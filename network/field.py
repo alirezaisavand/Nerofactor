@@ -3641,20 +3641,38 @@ class MCShadingNetwork(nn.Module):
                 raise NotImplementedError
 
             mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch = self.predict_anisotropic_components(pts + change)
-            reg = reg + torch.mean(
-                (torch.abs(kd - kd_ch) +
-                 torch.abs(ks - ks_ch) +
-                 torch.abs(mx - mx_ch) +
-                 torch.abs(my - my_ch) +
-                 torch.abs(alpha - alpha_ch) +
-                 torch.abs(F0 - F0_ch)) *
-                self.cfg['reg_lambda1'],
-                        dim=1)
 
-            # reg = reg + torch.mean(
-            #     torch.abs(mx),
-            #     dim=1
-            # ) * self.cfg['reg_lambda1']
+            if self.cfg['n_lobes'] == 1:
+                reg = reg + torch.mean(
+                    (torch.abs(kd - kd_ch) +
+                     torch.abs(ks - ks_ch) +
+                     torch.abs(mx - mx_ch) +
+                     torch.abs(my - my_ch) +
+                     torch.abs(alpha - alpha_ch) +
+                     torch.abs(F0 - F0_ch)) *
+                    self.cfg['reg_lambda1'],
+                            dim=1)
+            else:
+                reg = reg + torch.mean(
+                    (torch.abs(kd - kd_ch) +
+
+                     torch.abs(ks[0] - ks_ch[0]) +
+                     torch.abs(ks[1] - ks_ch[1]) +
+
+                     torch.abs(mx[0] - mx_ch[0]) +
+                     torch.abs(mx[1] - mx_ch[1]) +
+
+                     torch.abs(my[0] - my_ch[0]) +
+                     torch.abs(my[1] - my_ch[1]) +
+
+                     torch.abs(alpha[0] - alpha_ch[0]) +
+                     torch.abs(alpha[1] - alpha_ch[1]) +
+
+                     torch.abs(F0[0] - F0_ch[0]) +
+                     torch.abs(F0[1] - F0_ch[1])) *
+                    self.cfg['reg_lambda1'],
+                    dim=1)
+
             if self.cfg['reg_energy_loss']:
                 f_r_loss = 2 * np.pi * (f_d_sum + f_s_sum) - 1
                 f_r_loss = torch.nn.functional.relu(f_r_loss)
@@ -3668,6 +3686,7 @@ class MCShadingNetwork(nn.Module):
                     L_spec.sum(dim=1),
                     dim=0
                 ) * self.cfg['reg_spec_loss_lambda']
+
         return reg
 
     def material_regularization(self, pts, normals, metallic, roughness, albedo, step):
