@@ -2478,7 +2478,8 @@ class MCShadingNetwork(nn.Module):
         'reg_energy_loss': True,
         'reg_energy_loss_lambda': 0.01,
         'reg_spec_loss': True,
-        'reg_spec_loss_lambda': 0.01
+        'reg_spec_loss_lambda': 0.01,
+        'n_lobes': 2
     }
 
     def __init__(self, cfg, ray_trace_fun):
