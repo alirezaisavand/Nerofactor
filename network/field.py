@@ -3522,7 +3522,7 @@ class MCShadingNetwork(nn.Module):
                 diffuse_lights = lights[:, :diffuse_num]
                 specular_lights = lights[:, diffuse_num:]
 
-                F = self.fresnel_schlick_batch(F0[i], view_dirs, hs[i])
+                F = self.fresnel_schlick_batch(F0[i], view_dirs, hs)
                 f_d = self.diffuse_term(kd, F)
 
                 R, diffuse_color, specular_color, f_d_sum, f_s_sum, L_spec, weighted_specular_light = self.compute_radiance(
