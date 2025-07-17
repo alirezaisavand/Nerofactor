@@ -3554,7 +3554,6 @@ class MCShadingNetwork(nn.Module):
             outputs['my'] = (my[0] + my[1]) / 2
 
             outputs['specular_color'] = specular_colors[0] + specular_colors[1]
-
             outputs['specular_color'] = linear_to_srgb(outputs['specular_color'])
 
             outputs['specular_light'] = torch.clamp(linear_to_srgb(torch.mean(weighted_specular_lights[0], dim=1) +
