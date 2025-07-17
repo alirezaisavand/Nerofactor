@@ -232,7 +232,7 @@ reg_spec_loss_lambda: 0.01
 reg_mat: true
 shader_cfg:
   diffuse_sample_num: 1024
-  specular_sample_num: 2048
+  specular_sample_num: 1024
   outer_light_version: direction
   light_exp_max: 20 #changed from 20 to 10
   inner_light_exp_max: 20 #changed from 20 to 10
