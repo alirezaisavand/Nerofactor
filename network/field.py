@@ -2501,6 +2501,7 @@ class MCShadingNetwork(nn.Module):
             self.F0_predictor = make_predictor(256 + 3, 1)
             self.kd_predictor = make_predictor(256 + 3, 3)
             self.ks_predictor = make_predictor(256 + 3, 3)
+            self.rotation_predictor = make_predictor(256 + 3, 2)
 
         # light part
         self.sph_enc = generate_ide_fn(5)
@@ -2856,7 +2857,9 @@ class MCShadingNetwork(nn.Module):
         F0 = self.F0_predictor(torch.cat([feats, pts], -1))
         kd = self.kd_predictor(torch.cat([feats, pts], -1))
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
-        return mx, my, alpha, F0, kd, ks
+        rotation = self.rotation_predictor(torch.cat([feats, pts], -1))
+        rotation = F.normalize(rotation, dim=-1)
+        return mx, my, alpha, F0, kd, ks, rotation
 
     def compute_Dh(self, m_x, m_y, theta_h, phi_h):
         """
@@ -2963,10 +2966,16 @@ class MCShadingNetwork(nn.Module):
 
         return pdf_h  # (N, M, 1)
 
+    def rotate_tangent_bitangent(self, tangent, bitangent, cos_theta, sin_theta):
+        T_rot = cos_theta * tangent + sin_theta * bitangent
+        B_rot = -sin_theta * tangent + cos_theta * bitangent
+        return T_rot, B_rot
+
     def sample_aniso_ggx_directions(self,
                                     mesh,
                                     tangents,
                                     bitangents,
+                                    rotation: torch.Tensor,
                                     tree,
                                     pts: torch.Tensor,
                                     m_x: torch.Tensor,
@@ -2990,7 +2999,12 @@ class MCShadingNetwork(nn.Module):
         # faces = torch.from_numpy(np.asarray(mesh.triangles, dtype=np.int64)).to(device)
         # x, y = self.get_tangent_bitangent_via_kdtree(vertices, faces, T, B, pts, normals, tree)
 
+        rotation_cos = rotation[:, :1]
+        rotation_sin = rotation[:, 1:]
+
         x, y = self.compute_tangent_bitangent_flat(normals)
+
+        x, y = self.rotate_tangent_bitangent(x, y, rotation_cos, rotation_sin)
 
         m_x = m_x.to(device)  # (N,1)
         m_y = m_y.to(device)  # (N,1)
@@ -3410,7 +3424,7 @@ class MCShadingNetwork(nn.Module):
 
         return t_norm, b_norm
 
-    def shade_anisotropic_mixed(self, mesh, tangents, bitangents, tree, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train, is_seperate=True):
+    def shade_anisotropic_mixed(self, mesh, tangents, bitangents, tree, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, rotation, human_poses, is_train, is_seperate=True):
         self.nan_inf_check(normals, 'normals')
         self.nan_inf_check(mx, 'mx')
         self.nan_inf_check(my, 'my')
@@ -3421,7 +3435,7 @@ class MCShadingNetwork(nn.Module):
 
         num_spec_samples = self.cfg['specular_sample_num']
 
-        hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(mesh, tangents, bitangents, tree, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
+        hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(mesh, tangents, bitangents, rotation, tree, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
         self.nan_inf_check(hs, 'hs')
         self.nan_inf_check(wis, 'wis')
         self.nan_inf_check(cos_ths, 'cos_ths')
@@ -3483,13 +3497,14 @@ class MCShadingNetwork(nn.Module):
         outputs['f_d_sum'] = f_d_sum
         outputs['f_s_sum'] = f_s_sum
         outputs['L_spec'] = L_spec
+        outputs['rotation'] = rotation
         return colors, outputs
 
 
     def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh, tangents, bitangents, tree, is_seperate=True):
         # print('anisotropic_forward:')
-        mx, my, alpha, F0, kd, ks = self.predict_anisotropic_components(pts)
-        return self.shade_anisotropic_mixed(mesh, tangents, bitangents, tree, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, human_poses, is_train, is_seperate)
+        mx, my, alpha, F0, kd, ks, rotation = self.predict_anisotropic_components(pts)
+        return self.shade_anisotropic_mixed(mesh, tangents, bitangents, tree, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, rotation, human_poses, is_train, is_seperate)
 
 
     def forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh, tangents, bitangents, tree):
@@ -3543,7 +3558,7 @@ class MCShadingNetwork(nn.Module):
     def get_env_light(self):
         return self.predict_outer_lights_pts(self.light_pts)
 
-    def anisotropic_regularization(self, pts, normals, mx, my, alpha, F0, kd, ks, f_d_sum, f_s_sum, L_spec):
+    def anisotropic_regularization(self, pts, normals, mx, my, alpha, F0, kd, ks, f_d_sum, f_s_sum, L_spec, rotation):
         reg = 0
         if self.cfg['reg_change']:
             normals = F.normalize(normals, dim=-1)
@@ -3558,7 +3573,7 @@ class MCShadingNetwork(nn.Module):
             else:
                 raise NotImplementedError
 
-            mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch = self.predict_anisotropic_components(pts + change)
+            mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch = self.predict_anisotropic_components(pts + change)
             reg = reg + torch.mean(
                 (torch.abs(kd - kd_ch) +
                  torch.abs(ks - ks_ch) +
