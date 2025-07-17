@@ -2467,7 +2467,7 @@ class MCShadingNetwork(nn.Module):
         'reg_change': True,
         'change_eps': 0.05,
         'change_type': 'gaussian',
-        'reg_lambda1': 0.01 , # Prev value was 0.05
+        'reg_lambda1': 0.05 , # Prev value was 0.05
         'reg_min_max': True,
 
         'random_azimuth': True,
@@ -2496,6 +2496,8 @@ class MCShadingNetwork(nn.Module):
             #
             # self.my_predictor = make_predictor(256 + 3, 1, activation='exp', exp_max=self.cfg['max_n_exp'])
             self.mx_predictor = make_predictor(256 + 3, 1)
+            self.roughness_predictor = make_predictor(256 + 3, 1)
+            self.anisotropy = make_predictor()
             self.my_predictor = make_predictor(256 + 3, 1)
             self.alpha_predictor = make_predictor(256 + 3, 1)
             self.F0_predictor = make_predictor(256 + 3, 1)
@@ -3577,8 +3579,8 @@ class MCShadingNetwork(nn.Module):
             reg = reg + torch.mean(
                 (torch.abs(kd - kd_ch) +
                  torch.abs(ks - ks_ch) +
-                 # torch.abs(mx - mx_ch) +
-                 # torch.abs(my - my_ch) +
+                 torch.abs(mx - mx_ch) +
+                 torch.abs(my - my_ch) +
                  torch.abs(alpha - alpha_ch) +
                  torch.abs(F0 - F0_ch)) *
                 self.cfg['reg_lambda1'],

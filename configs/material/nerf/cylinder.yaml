@@ -220,22 +220,22 @@ max_alpha_exp: 10
 n_lobes: 2
 
 reg_diffuse_light: true
-reg_diffuse_light_lambda: 0.002 # Changed here from 0.010 to 0.002
+reg_diffuse_light_lambda: 0.01 # Changed here from 0.010 to 0.002
 
 # Changed here
 reg_energy_loss: true
-reg_energy_loss_lambda: 0.001 # Changed here from 0.01 to 0.001
+reg_energy_loss_lambda: 0.01 # Changed here from 0.01 to 0.001
 
-reg_spec_loss: false
-reg_spec_loss_lambda: 0 # Changed here from 0.01 to 0.001
+reg_spec_loss: true
+reg_spec_loss_lambda: 0.01 # Changed here from 0.01 to 0.001
 
 reg_mat: true
 shader_cfg:
   diffuse_sample_num: 512
-  specular_sample_num: 4096
+  specular_sample_num: 2048
   outer_light_version: direction
-  light_exp_max: 15 # Changed here from 20 to 15
-  inner_light_exp_max: 15 # Changed here from 20 to 15
+  light_exp_max: 20 # Changed here from 20 to 15
+  inner_light_exp_max: 20 # Changed here from 20 to 15
   human_lights: false
   # Here should have same value as the one in the main config file
   shading_feature_num: 256
