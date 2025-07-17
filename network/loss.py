@@ -87,15 +87,16 @@ class StdRecorder(Loss):
 
 
 class OccLoss(Loss):
-    default_cfg = {}
+    default_cfg = {
+        'occ_loss_weight': 0.01,  # changed here from 0.01 to 0.1
+    }
 
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
-
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         outputs = {}
         if 'loss_occ' in data_pr:
-            outputs['loss_occ'] = torch.mean(data_pr['loss_occ']).reshape(1)
+            outputs['loss_occ'] = torch.mean(data_pr['loss_occ']).reshape(1) * self.cfg['occ_loss_weight']
         return outputs
 
 
@@ -136,7 +137,7 @@ class InitSDFRegLoss(Loss):
 
 class MaskLoss(Loss):
     default_cfg = {
-        'mask_loss_weight': 0.01,
+        'mask_loss_weight': 0.1, #changed here from 0.01 to 0.1
     }
 
     def __init__(self, cfg):
@@ -148,6 +149,19 @@ class MaskLoss(Loss):
             outputs['loss_mask'] = data_pr['loss_mask'].reshape(1) * self.cfg['mask_loss_weight']
         return outputs
 
+class CurvLoss(Loss):
+    default_cfg = {
+        'curv_loss_weight': 1,
+    }
+
+    def __init__(self, cfg):
+        self.cfg = {**self.default_cfg, **cfg}
+
+    def __call__(self, data_pr, data_gt, step, *args, **kwargs):
+        outputs = {}
+        if 'loss_curv' in data_pr:
+            outputs['loss_curv'] = data_pr['loss_curv'].reshape(1) * self.cfg['curv_loss_weight']
+        return outputs
 
 name2loss = {
     'nerf_render': NeRFRenderLoss,
@@ -158,4 +172,5 @@ name2loss = {
     'mask': MaskLoss,
 
     'mat_reg': MaterialRegLoss,
+    'curv': CurvLoss,
 }
