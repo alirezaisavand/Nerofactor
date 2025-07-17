@@ -1023,6 +1023,7 @@ class NeROMaterialRenderer(nn.Module):
         'reg_diffuse_light': True,
         'reg_diffuse_light_lambda': 0.1,
         'fixed_camera': False,
+        'n_lobes': 2
     }
 
     def __init__(self, cfg, is_train=True):
@@ -1615,17 +1616,11 @@ class NeROMaterialRenderer(nn.Module):
                 human_poses = ray_batch['human_poses'][ri:ri + trn][hit_mask]
 
                 shade_outputs = self.shade(pts, view_dirs, normals, human_poses, False)
-
                 outputs_cur['rgb_pr'][hit_mask] = shade_outputs['rgb_pr']
                 outputs_cur['rgb_gt'][hit_mask] = rgb_gt
                 outputs_cur['specular_light'][hit_mask] = shade_outputs['specular_light']
                 outputs_cur['diffuse_light'][hit_mask] = shade_outputs['diffuse_light']
-                outputs_cur['ks'][hit_mask] = shade_outputs['ks']
                 outputs_cur['kd'][hit_mask] = shade_outputs['kd']
-                outputs_cur['F0'][hit_mask] = shade_outputs['F0']
-                outputs_cur['mx'][hit_mask] = shade_outputs['mx']
-                outputs_cur['my'][hit_mask] = shade_outputs['my']
-                outputs_cur['alpha'][hit_mask] = shade_outputs['alpha']
                 outputs_cur['diffuse_color'][hit_mask] = shade_outputs['diffuse_color']
                 outputs_cur['specular_color'][hit_mask] = shade_outputs['specular_color']
                 outputs_cur['f_d_sum'][hit_mask] = shade_outputs['f_d_sum'].float()
@@ -1634,8 +1629,18 @@ class NeROMaterialRenderer(nn.Module):
                 outputs_cur['tangents'][hit_mask] = shade_outputs['tangents'].float()
                 outputs_cur['bitangents'][hit_mask] = shade_outputs['bitangents'].float()
                 outputs_cur['normals'][hit_mask] = shade_outputs['normals'].float()
-                # outputs_cur['spec_brdf'][hit_mask] = shade_outputs['spec_brdf']
-
+                if self.cfg['n_lobes'] == 1:
+                    outputs_cur['ks'][hit_mask] = shade_outputs['ks']
+                    outputs_cur['F0'][hit_mask] = shade_outputs['F0']
+                    outputs_cur['mx'][hit_mask] = shade_outputs['mx']
+                    outputs_cur['my'][hit_mask] = shade_outputs['my']
+                    outputs_cur['alpha'][hit_mask] = shade_outputs['alpha']
+                else:
+                    outputs_cur['ks'][hit_mask] = shade_outputs['ks'][0]
+                    outputs_cur['F0'][hit_mask] = shade_outputs['F0'][0]
+                    outputs_cur['mx'][hit_mask] = shade_outputs['mx'][0]
+                    outputs_cur['my'][hit_mask] = shade_outputs['my'][0]
+                    outputs_cur['alpha'][hit_mask] = shade_outputs['alpha'][0]
             for k in output_keys.keys():
                 outputs[k].append(outputs_cur[k])
 

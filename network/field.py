@@ -2479,7 +2479,7 @@ class MCShadingNetwork(nn.Module):
         'reg_energy_loss_lambda': 0.01,
         'reg_spec_loss': True,
         'reg_spec_loss_lambda': 0.01,
-        'n_lobes': 1
+        'n_lobes': 2
     }
 
     def __init__(self, cfg, ray_trace_fun):
@@ -3499,6 +3499,7 @@ class MCShadingNetwork(nn.Module):
             diffuse_directions = self.sample_diffuse_directions(normals, is_train)
             point_num, diffuse_num, _ = diffuse_directions.shape
             sn = diffuse_num + num_spec_samples
+            pts_ = pts.unsqueeze(1).repeat(1, sn, 1)
             human_poses = human_poses.unsqueeze(1).repeat(1, sn, 1, 1) if human_poses is not None else None
 
             outputs = {}
@@ -3515,7 +3516,7 @@ class MCShadingNetwork(nn.Module):
                                                                                                    num_spec_samples,
                                                                                                    normals, 'cuda')
 
-                pts_ = pts.unsqueeze(1).repeat(1, num_spec_samples + diffuse_num, 1)
+
                 directions = torch.cat([diffuse_directions, wis], 1)
 
                 lights, hl, light_pts, light_normals, light_pts_mask = self.get_lights(pts_, directions, human_poses)
@@ -3526,8 +3527,8 @@ class MCShadingNetwork(nn.Module):
                 f_d = self.diffuse_term(kd, F)
 
                 R, diffuse_color, specular_color, f_d_sum, f_s_sum, L_spec, weighted_specular_light = self.compute_radiance(
-                    f_d, diffuse_lights, specular_lights, ks[i], F, diffuse_directions, wis, normals, alpha[i], cos_ths[i],
-                    view_dirs, pdfs[i], theta_h[i], phi_h[i], mx[i], my[i])
+                    f_d, diffuse_lights, specular_lights, ks[i], F, diffuse_directions, wis, normals, alpha[i], cos_ths,
+                    view_dirs, pdfs, theta_h, phi_h, mx[i], my[i])
 
                 specular_colors.append(specular_color)
                 f_s_sums.append(f_s_sum)
@@ -3547,12 +3548,11 @@ class MCShadingNetwork(nn.Module):
 
 
 
-            outputs['ks'] = (ks[0] + ks[1]) / 2
-            outputs['F0'] = (F0[0] + F0[1]) / 2
-            outputs['alpha'] = (alpha[0] + alpha[1])/2
-            outputs['mx'] = (mx[0] + mx[1]) / 2
-            outputs['my'] = (my[0] + my[1]) / 2
-
+            outputs['ks'] = ks
+            outputs['F0'] = F0
+            outputs['alpha'] alpha
+            outputs['mx'] = mx
+            outputs['my'] = my
             outputs['specular_color'] = specular_colors[0] + specular_colors[1]
             outputs['specular_color'] = linear_to_srgb(outputs['specular_color'])
 
@@ -3562,7 +3562,7 @@ class MCShadingNetwork(nn.Module):
 
             outputs['f_s_sum'] = f_s_sums[0] + f_s_sums[1]
             outputs['L_spec'] = L_specs[0] + L_specs[1]
-            outputs['rotation'] = (rotation[0] + rotation[1])
+            outputs['rotation'] = rotation
             colors = diffuse_colors[0] + specular_colors[0] + specular_colors[1]
             colors = linear_to_srgb(colors)
             return colors, outputs
