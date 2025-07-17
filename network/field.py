@@ -3536,7 +3536,6 @@ class MCShadingNetwork(nn.Module):
                 diffuse_colors.append(diffuse_color)
 
                 diffuse_color = linear_to_srgb(diffuse_color)
-                specular_color = linear_to_srgb(specular_color)
                 outputs['tangents'] = (t + 1) / 2
                 outputs['bitangents'] = (b + 1) / 2
                 outputs['normals'] = (n + 1) / 2
@@ -3556,6 +3555,8 @@ class MCShadingNetwork(nn.Module):
 
             outputs['specular_color'] = specular_colors[0] + specular_colors[1]
 
+            outputs['specular_color'] = linear_to_srgb(outputs['specular_color'])
+
             outputs['specular_light'] = torch.clamp(linear_to_srgb(torch.mean(weighted_specular_lights[0], dim=1) +
                                                                    torch.mean(weighted_specular_lights[1], dim=1)),
                                                                     min=0, max=1)
@@ -3564,6 +3565,7 @@ class MCShadingNetwork(nn.Module):
             outputs['L_spec'] = L_specs[0] + L_specs[1]
             outputs['rotation'] = (rotation[0] + rotation[1])
             colors = diffuse_colors[0] + specular_colors[0] + specular_colors[1]
+            colors = linear_to_srgb(colors)
             return colors, outputs
 
 
