@@ -16,6 +16,13 @@ shader_cfg:
   inner_light_exp_max: 5.0
   human_lights: true
 
+# Changed here
+reg_energy_loss: true
+reg_energy_loss_lambda: 0.01 # Changed here from 0.01 to 0.001
+reg_spec_loss: true
+reg_spec_loss_lambda: 0.01 # Changed here from 0.01 to 0.001
+n_lobes: 2
+
 ######loss######
 loss: ['nerf_render','mat_reg']
 val_metric: ['mat_render']
