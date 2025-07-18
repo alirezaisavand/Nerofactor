@@ -98,7 +98,7 @@ def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
         images_cv2 = [database.get_image_cv2(img_id) for img_id in img_ids]
         images_cv2 = np.stack(images_cv2, 0)
         h, w = images[0].shape[:2]
-        seg_masks = load_masks('/home/NeRO/seg_masks', as_bool=True, ignore_segmentation=True, h=h, w=w)
+        seg_masks = load_masks('/home/NeRO/seg_masks', as_bool=True, ignore_segmentation=False, h=h, w=w)
         segmentation_masks = [seg_masks[int(img_id)] for img_id in img_ids]
         segmentation_masks = np.stack(segmentation_masks, 0)
 
