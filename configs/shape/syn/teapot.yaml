@@ -4,10 +4,10 @@ name: teapot_shape
 network: shape
 database_name: syn/teapot
 apply_occ_loss: true
-occ_loss_step: 20000
+occ_loss_step: 22000
 
 ######loss######
-loss: ['nerf_render','eikonal','std','init_sdf_reg','occ']
+loss: ['nerf_render','eikonal','std','init_sdf_reg','curv'] #,'occ']
 val_metric: ['shape_render']
 key_metric_name: psnr
 eikonal_weight: 0.1
@@ -30,7 +30,7 @@ optimizer_type: adam
 lr_type: warm_up_cos
 lr_cfg: {}
 total_step: 300000
-val_interval: 5000
+val_interval: 1000
 save_interval: 1000
 train_log_step: 20
 
