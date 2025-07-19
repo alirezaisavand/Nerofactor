@@ -1023,7 +1023,7 @@ class NeROMaterialRenderer(nn.Module):
         'reg_diffuse_light': True,
         'reg_diffuse_light_lambda': 0.1,
         'fixed_camera': False,
-        'n_lobes': 2
+        'n_lobes': 1
     }
 
     def __init__(self, cfg, is_train=True):
