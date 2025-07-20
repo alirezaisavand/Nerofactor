@@ -905,8 +905,12 @@ class NeROShapeRenderer(nn.Module):
                                                                      step=step)
             # Eikonal loss
             gradient_error = (torch.linalg.norm(gradients, ord=2, dim=-1) - 1.0) ** 2
+            curvature = self.get_curvature_loss(points[inner_mask], gradients)
         else:
             gradient_error = torch.zeros(1)
+            curvature = torch.zeros(1)
+
+
 
         weights = alpha * torch.cumprod(torch.cat([torch.ones([batch_size, 1]), 1. - alpha + 1e-7], -1), -1)[...,
                           :-1]  # rn,sn
@@ -926,7 +930,7 @@ class NeROShapeRenderer(nn.Module):
         start = self.cfg['curvature_reduce_start']
         end = start + self.cfg['curvature_reduce_step']
         # global_weight = map_range_val(step, start, end, 1, 0)
-        curvature =  self.get_curvature_loss(points[inner_mask], gradients)
+
         outputs = {
             'ray_rgb': color,  # rn,3
             'gradient_error': gradient_error,  # rn
