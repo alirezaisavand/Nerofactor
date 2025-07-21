@@ -15,9 +15,6 @@ eikonal_weight: 0.1
 freeze_inv_s_step: 15000 # changed here from 15000 to 20000
 
 'apply_opacity_loss': True,
-'opacity_loss_weight': 0.01,
-
-'curv_loss_weight': 0.001,
 
 ####dataset#####
 train_dataset_type: dummy
