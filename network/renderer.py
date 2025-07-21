@@ -228,6 +228,10 @@ class NeROShapeRenderer(nn.Module):
         'curvature_reduce_start': 50000,
         'curvature_reduce_step': 2000,
         'use_refscores': False,
+        'apply_opacity_loss': True,
+        'opacity_loss_weight': 0.01,
+
+        'curv_loss_weight': 0.001,
     }
 
     def __init__(self, cfg, training=True):
@@ -865,6 +869,12 @@ class NeROShapeRenderer(nn.Module):
         curvature = angle / np.pi  # map to [0,1 range]
         return  curvature
 
+    def binary_cross_entropy(self, input, target):
+        """
+        F.binary_cross_entropy is not numerically stable in mixed-precision training.
+        """
+        return -(target * torch.log(input) + (1 - target) * torch.log(1 - input)).mean()
+
     def render_core(self, rays_o, rays_d, z_vals, human_poses, cos_anneal_ratio=0.0, step=None, is_train=True,
                     is_nerf=False):
         use_refscores = self.cfg['use_refscores']
@@ -906,12 +916,12 @@ class NeROShapeRenderer(nn.Module):
             # Eikonal loss
             gradient_error = (torch.linalg.norm(gradients, ord=2, dim=-1) - 1.0) ** 2
             curvature = self.get_curvature_loss(points[inner_mask], gradients)
+
         else:
             gradient_error = torch.zeros(1)
             curvature = torch.zeros(1)
 
-
-
+        opacity_loss = self.binary_cross_entropy(alpha, alpha)
         weights = alpha * torch.cumprod(torch.cat([torch.ones([batch_size, 1]), 1. - alpha + 1e-7], -1), -1)[...,
                           :-1]  # rn,sn
         vol_fn = lambda weights, value: (value * weights[..., None]).sum(dim=1)
@@ -927,15 +937,15 @@ class NeROShapeRenderer(nn.Module):
         if is_nerf:
             color = color + (1. - acc[..., None])
 
-        start = self.cfg['curvature_reduce_start']
-        end = start + self.cfg['curvature_reduce_step']
+        # start = self.cfg['curvature_reduce_start']
+        # end = start + self.cfg['curvature_reduce_step']
         # global_weight = map_range_val(step, start, end, 1, 0)
 
         outputs = {
             'ray_rgb': color,  # rn,3
             'gradient_error': gradient_error,  # rn
             'acc': acc,  # rn
-            'loss_curv': curvature.mean() # * global_weight
+            'loss_curv': curvature.mean() * self.cfg['curv_loss_weight']# * global_weight
         }
         if use_refscores:
             outputs['w_s'] = vol_fn(weights, ref_scores),  # rn,sn
@@ -958,6 +968,9 @@ class NeROShapeRenderer(nn.Module):
                                                             dirs[inner_mask], step)
             else:
                 outputs['loss_occ'] = torch.zeros(1)
+
+        if self.cfg['apply_opacity_loss']:
+            outputs['loss_opacity'] = opacity_loss * self.cfg['opacity_loss_weight']
 
         if not is_train:
             outputs.update(self.compute_validation_info(z_vals, rays_o, rays_d, weights, human_poses, step))
