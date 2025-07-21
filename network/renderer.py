@@ -970,7 +970,7 @@ class NeROShapeRenderer(nn.Module):
                 outputs['loss_occ'] = torch.zeros(1)
 
         if self.cfg['apply_opacity_loss']:
-            outputs['loss_opacity'] = opacity_loss * self.cfg['opacity_loss_weight']
+            outputs['loss_opacity'] = opacity_loss
 
         if not is_train:
             outputs.update(self.compute_validation_info(z_vals, rays_o, rays_d, weights, human_poses, step))

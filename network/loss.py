@@ -165,6 +165,7 @@ class CurvLoss(Loss):
 
 class OpacityLoss(Loss):
     default_cfg = {
+        'opacity_loss_weight': 0.01,
     }
 
     def __init__(self, cfg):
@@ -173,7 +174,7 @@ class OpacityLoss(Loss):
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         outputs = {}
         if 'loss_opacity' in data_pr:
-            outputs['loss_opacity'] = data_pr['loss_opacity'].reshape(1)
+            outputs['loss_opacity'] = data_pr['loss_opacity'].reshape(1)  * self.cfg['opacity_loss_weight']
         return outputs
 
 name2loss = {
