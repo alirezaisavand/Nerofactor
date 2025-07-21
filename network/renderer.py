@@ -945,8 +945,8 @@ class NeROShapeRenderer(nn.Module):
             'ray_rgb': color,  # rn,3
             'gradient_error': gradient_error,  # rn
             'acc': acc,  # rn
-            'loss_curv': curvature.mean() * self.cfg['curv_loss_weight']# * global_weight
         }
+        outputs['loss_curv'] = curvature.mean().reshape[1] * self.cfg['curv_loss_weight']
         if use_refscores:
             outputs['w_s'] = vol_fn(weights, ref_scores),  # rn,sn
 
