@@ -920,7 +920,7 @@ class NeROShapeRenderer(nn.Module):
         else:
             gradient_error = torch.zeros(1)
             curvature = torch.zeros(1)
-
+        opacity = torch.clamp(alpha.squeeze(-1), 1.e-3, 1. - 1.e-3)
         opacity_loss = self.binary_cross_entropy(alpha, alpha)
         weights = alpha * torch.cumprod(torch.cat([torch.ones([batch_size, 1]), 1. - alpha + 1e-7], -1), -1)[...,
                           :-1]  # rn,sn
