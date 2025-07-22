@@ -14,7 +14,7 @@ key_metric_name: psnr
 eikonal_weight: 0.1
 freeze_inv_s_step: 15000 # changed here from 15000 to 20000
 
-'apply_opacity_loss': True,
+'apply_opacity_loss': False,
 
 ####dataset#####
 train_dataset_type: dummy
