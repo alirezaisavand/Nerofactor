@@ -582,7 +582,7 @@ class AppShadingNetwork(nn.Module):
         # Todo reset to isotropic roughness
         ref_roughness_x = self.sph_enc(reflective, roughness_x)
         ref_roughness_y = self.sph_enc(reflective, roughness_y)
-        roughness = torch.sqrt(roughness_x * roughness_y)  # pn,1
+        roughness = torch.sqrt(roughness_x * roughness_y + 1e-6)  # pn,1
         ref_roughness = torch.cat([ref_roughness_x, ref_roughness_y], -1)  # pn,72*2
         pts = self.pos_enc(points)
         if self.cfg['sphere_direction']:
@@ -610,7 +610,7 @@ class AppShadingNetwork(nn.Module):
     def predict_diffuse_lights(self, points, feature_vectors, normals):
         roughness_x = torch.ones([normals.shape[0], 1])
         roughness_y = torch.ones([normals.shape[0], 1])
-        roughness = torch.sqrt(roughness_x * roughness_y)
+        roughness = torch.sqrt(roughness_x * roughness_y + 1e-6)
         ref_x = self.sph_enc(normals, roughness_x)  # von Mises-Fisher distribution
         ref_y = self.sph_enc(normals, roughness_y)  # von Mises-Fisher distribution
         ref = torch.cat([ref_x, ref_y], -1)  # pn,72*2
@@ -634,7 +634,7 @@ class AppShadingNetwork(nn.Module):
         # roughness = self.roughness_predictor(torch.cat([feature_vectors, points], -1))
         roughness_x = self.roughness_predictor_x(torch.cat([feature_vectors, points], -1))
         roughness_y = self.roughness_predictor_y(torch.cat([feature_vectors, points], -1))
-        roughness = torch.sqrt(roughness_x * roughness_y)
+        roughness = torch.sqrt(roughness_x * roughness_y + 1e-6)
         albedo = self.albedo_predictor(torch.cat([feature_vectors, points], -1))
 
         # diffuse light
@@ -702,7 +702,7 @@ class AppShadingNetwork(nn.Module):
         # roughness = self.roughness_predictor(torch.cat([feature_vectors, points], -1))
         roughness_x = self.roughness_predictor_x(torch.cat([feature_vectors, points], -1))
         roughness_y = self.roughness_predictor_y(torch.cat([feature_vectors, points], -1))
-        roughness = torch.sqrt(roughness_x * roughness_y)
+        roughness = torch.sqrt(roughness_x * roughness_y + 1e-6)
         albedo = self.albedo_predictor(torch.cat([feature_vectors, points], -1))
         return metallic, roughness, albedo
 
