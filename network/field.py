@@ -608,8 +608,12 @@ class AppShadingNetwork(nn.Module):
         return light, occ_prob, indirect_light, human_light * human_weight
 
     def predict_diffuse_lights(self, points, feature_vectors, normals):
-        roughness = torch.ones([normals.shape[0], 1])
-        ref = self.sph_enc(normals, roughness)  # von Mises-Fisher distribution
+        roughness_x = torch.ones([normals.shape[0], 1])
+        roughness_y = torch.ones([normals.shape[0], 1])
+        roughness = torch.sqrt(roughness_x * roughness_y)
+        ref_x = self.sph_enc(normals, roughness_x)  # von Mises-Fisher distribution
+        ref_y = self.sph_enc(normals, roughness_y)  # von Mises-Fisher distribution
+        ref = torch.cat([ref_x, ref_y], -1)  # pn,72*2
         if self.cfg['sphere_direction']:
             sph_points = offset_points_to_sphere(points)
             sph_points = F.normalize(sph_points + normals * get_sphere_intersection(sph_points, normals), dim=-1)
