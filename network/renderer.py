@@ -834,7 +834,7 @@ class NeROShapeRenderer(nn.Module):
                                                                  points[mask], reflective[mask], sn0=64,
                                                                  sn1=16)  # pn,sn-1
             occ_prob_gt = torch.sum(inter_prob, -1, keepdim=True)
-            return F.l1_loss(occ_prob[mask], occ_prob_gt.detach())
+            return F.l1_loss(occ_prob[mask], occ_prob_gt)
         else:
             return torch.zeros(1)
 
