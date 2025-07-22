@@ -233,7 +233,7 @@ class GlossyRealDatabase(BaseDatabase):
     def get_depth(self, img_id):
         img = self.get_image(img_id)
         h, w, _ = img.shape
-        return np.ones([h, w], np.float32), np.ones([h, w], np.bool)
+        return np.ones([h, w], np.float32), np.ones([h, w], bool)
 
 
 class GlossySyntheticDatabase(BaseDatabase):
@@ -410,7 +410,7 @@ class CustomDatabase(BaseDatabase):
     def get_depth(self, img_id):
         img = self.get_image(img_id)
         h, w, _ = img.shape
-        return np.ones([h,w],np.float32), np.ones([h, w], np.bool)
+        return np.ones([h,w],np.float32), np.ones([h, w], bool)
 
 
 class NeRFSyntheticDatabase(BaseDatabase):

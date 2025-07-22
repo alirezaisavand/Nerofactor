@@ -57,7 +57,7 @@ def rasterize_depth_map(mesh,pose,K,shape):
     rast, _ = dr.rasterize(ctx, pts_clip, indices, (h, w)) # [1,h,w,4]
     depth = (rast[0,:,:,2]+1)/2*(far-near)+near
     mask = rast[0,:,:,-1]!=0
-    return depth.cpu().numpy(), mask.cpu().numpy().astype(np.bool)
+    return depth.cpu().numpy(), mask.cpu().numpy().astype(bool)
 
 def get_mesh_eval_points(database):
     if isinstance(database, GlossySyntheticDatabase):
