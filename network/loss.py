@@ -153,8 +153,8 @@ class CurvLoss(Loss):
     default_cfg = {
         'curv_loss_weight_begin': 0.1,
         'curv_loss_weight_end': 0.001,
-        'curv_weight_decay_begin': 25000,
-        'curv_weight_decay_end': 100000,
+        'curv_weight_decay_begin': 20000,
+        'curv_weight_decay_end': 50000,
     }
 
     def map_range_val(self, input_val, input_start, input_end, output_start, output_end):
