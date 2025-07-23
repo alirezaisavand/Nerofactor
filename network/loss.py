@@ -1,6 +1,8 @@
 import numpy as np
 import torch
 
+from NeRO.utils.base_utils import map_range_val
+
 
 class Loss:
     def __call__(self, data_pr, data_gt, step, **kwargs):
@@ -151,8 +153,24 @@ class MaskLoss(Loss):
 
 class CurvLoss(Loss):
     default_cfg = {
-        'curv_loss_weight': 0.1
+        'curv_loss_weight_begin': 0.1,
+        'curv_loss_weight_end': 0.001,
+        'curv_weight_decay_begin': 25000,
+        'curv_weight_decay_end': 100000,
     }
+
+    def map_range_val(self, input_val, input_start, input_end, output_start, output_end):
+        input_clamped = max(input_start, min(input_end, input_val))
+        return output_start + ((output_end - output_start) / (input_end - input_start)) * (
+                input_clamped - input_start
+        )
+
+    def get_curvature_weight(self, step):
+        return self.map_range_val(step,
+                                  self.cfg['curv_weight_decay_begin'],
+                                  self.cfg['curv_weight_decay_end'],
+                                  self.cfg['curv_loss_weight_begin'],
+                                  self.cfg['curv_loss_weight_end'])
 
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
@@ -160,7 +178,7 @@ class CurvLoss(Loss):
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         outputs = {}
         if 'loss_curv' in data_pr:
-            outputs['loss_curv'] = data_pr['loss_curv'].reshape(1) * self.cfg['curv_loss_weight']
+            outputs['loss_curv'] = data_pr['loss_curv'].reshape(1) * self.get_curvature_weight(step)
         return outputs
 
 class OpacityLoss(Loss):
