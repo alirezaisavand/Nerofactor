@@ -227,7 +227,7 @@ class NeROShapeRenderer(nn.Module):
         'curvature_reduce_start': 50000,
         'curvature_reduce_step': 2000,
         'use_refscores': False,
-        'apply_opacity_loss': False,
+        'apply_opacity_loss': True,
         'opacity_loss_weight': 0.01,
 
         'curv_loss_weight': 0.001,
