@@ -151,7 +151,7 @@ class MaskLoss(Loss):
 
 class CurvLoss(Loss):
     default_cfg = {
-        'curv_loss_weight_begin': 0.1,
+        'curv_loss_weight_begin': 0.001,
         'curv_loss_weight_end': 0.001,
         'curv_weight_decay_begin': 15000,
         'curv_weight_decay_end': 25000,
