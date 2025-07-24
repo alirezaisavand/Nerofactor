@@ -164,12 +164,12 @@ class CurvLoss(Loss):
         )
 
     def get_curvature_weight(self, step):
-        return self.cfg['curv_loss_weight_begin']
-        # return self.map_range_val(step,
-        #                           self.cfg['curv_weight_decay_begin'],
-        #                           self.cfg['curv_weight_decay_end'],
-        #                           self.cfg['curv_loss_weight_begin'],
-        #                           self.cfg['curv_loss_weight_end'])
+        # return self.cfg['curv_loss_weight_begin']
+        return self.map_range_val(step,
+                                  self.cfg['curv_weight_decay_begin'],
+                                  self.cfg['curv_weight_decay_end'],
+                                  self.cfg['curv_loss_weight_begin'],
+                                  self.cfg['curv_loss_weight_end'])
 
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
