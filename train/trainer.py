@@ -156,6 +156,7 @@ class Trainer:
                 torch.cuda.empty_cache()
                 val_results = {}
                 val_para = 0
+
                 for vi, val_set in enumerate(self.val_set_list):
                     val_results_cur, val_para_cur = self.val_evaluator(
                         self.network, self.val_losses + self.val_metrics, val_set, step,
@@ -176,6 +177,8 @@ class Trainer:
                 save_fn = None
                 self._save_model(step + 1, best_para, save_fn=save_fn)
 
+            if (step + 1) == self.cfg['total_step']:
+                pass
             pbar.set_postfix(loss=float(loss.detach().cpu().numpy()), lr=lr)
             pbar.update(1)
             del loss, log_info

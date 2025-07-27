@@ -88,7 +88,7 @@ class StdRecorder(Loss):
 
 class OccLoss(Loss):
     default_cfg = {
-        'occ_loss_weight': 0.01,  # changed here from 0.01 to 0.1
+        'occ_loss_weight': 1,  # changed here from 0.01 to 1
     }
 
     def __init__(self, cfg):
