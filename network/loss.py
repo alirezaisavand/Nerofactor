@@ -95,10 +95,6 @@ class OccLoss(Loss):
         'occ_weight_decay_end': 50000,
     }
 
-    default_cfg = {
-
-    }
-
     def map_range_val(self, input_val, input_start, input_end, output_start, output_end):
         input_clamped = max(input_start, min(input_end, input_val))
         return output_start + ((output_end - output_start) / (input_end - input_start)) * (
