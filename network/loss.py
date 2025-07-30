@@ -89,14 +89,36 @@ class StdRecorder(Loss):
 class OccLoss(Loss):
     default_cfg = {
         'occ_loss_weight': 1,  # changed here from 0.01 to 1
+        'occ_loss_weight_begin': 0.01,
+        'occ_loss_weight_end': 1,
+        'occ_weight_decay_begin': 20000,
+        'occ_weight_decay_end': 50000,
     }
+
+    default_cfg = {
+
+    }
+
+    def map_range_val(self, input_val, input_start, input_end, output_start, output_end):
+        input_clamped = max(input_start, min(input_end, input_val))
+        return output_start + ((output_end - output_start) / (input_end - input_start)) * (
+                input_clamped - input_start
+        )
+
+    def get_occlusion_weight(self, step):
+        # return self.cfg['occ_loss_weight']
+        return self.map_range_val(step,
+                                  self.cfg['occ_weight_decay_begin'],
+                                  self.cfg['occ_weight_decay_end'],
+                                  self.cfg['occ_loss_weight_begin'],
+                                  self.cfg['occ_loss_weight_end'])
 
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         outputs = {}
         if 'loss_occ' in data_pr:
-            outputs['loss_occ'] = torch.mean(data_pr['loss_occ']).reshape(1) * self.cfg['occ_loss_weight']
+            outputs['loss_occ'] = torch.mean(data_pr['loss_occ']).reshape(1) * self.get_occlusion_weight(step)
         return outputs
 
 
