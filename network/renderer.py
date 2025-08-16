@@ -937,8 +937,8 @@ class NeROShapeRenderer(nn.Module):
 
         acc = torch.sum(weights, -1)
         # Todo changed here to remove masks
-        if is_nerf:
-            color = color + (1. - acc[..., None])
+        # if is_nerf:
+        #     color = color + (1. - acc[..., None])
 
         # start = self.cfg['curvature_reduce_start']
         # end = start + self.cfg['curvature_reduce_step']
