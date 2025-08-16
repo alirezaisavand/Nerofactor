@@ -94,13 +94,13 @@ def load_masks(input_folder, as_bool=True, ignore_segmentation=True, h=0, w=0):
 def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
     images = [database.get_image(img_id) for img_id in img_ids]
     print('images len:', len(images))
-    if is_nerf:
-        images_cv2 = [database.get_image_cv2(img_id) for img_id in img_ids]
-        images_cv2 = np.stack(images_cv2, 0)
-        h, w = images[0].shape[:2]
-        seg_masks = load_masks('/home/NeRO/seg_masks', as_bool=True, ignore_segmentation=True, h=h, w=w)
-        segmentation_masks = [seg_masks[int(img_id)] for img_id in img_ids]
-        segmentation_masks = np.stack(segmentation_masks, 0)
+    # if is_nerf:
+    #     images_cv2 = [database.get_image_cv2(img_id) for img_id in img_ids]
+    #     images_cv2 = np.stack(images_cv2, 0)
+    #     h, w = images[0].shape[:2]
+    #     seg_masks = load_masks('/home/NeRO/seg_masks', as_bool=True, ignore_segmentation=True, h=h, w=w)
+    #     segmentation_masks = [seg_masks[int(img_id)] for img_id in img_ids]
+    #     segmentation_masks = np.stack(segmentation_masks, 0)
 
     poses = [database.get_pose(img_id) for img_id in img_ids]
     Ks = [database.get_K(img_id) for img_id in img_ids]
@@ -127,10 +127,10 @@ def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
 
     if is_nerf:
         imgs_info['masks'] = masks
-        imgs_info['seg_masks'] = segmentation_masks
-        imgs_info['cv2_imgs'] = images_cv2
-        for img in images_cv2:
-            ok = cv2.imwrite("above_images/frame_0001.jpg", img)
+        # imgs_info['seg_masks'] = segmentation_masks
+        # imgs_info['cv2_imgs'] = images_cv2
+        # for img in images_cv2:
+        #     ok = cv2.imwrite("above_images/frame_0001.jpg", img)
     print('above images are saved')
     return imgs_info
 
@@ -562,8 +562,10 @@ class NeROShapeRenderer(nn.Module):
         if self.cfg['use_refscores']:
             w_s = outputs['w_s']
         outputs['loss_rgb'] = self.compute_rgb_loss(outputs['ray_rgb'], train_ray_batch['rgbs'], w_s)  # ray_loss
-        if is_nerf:  # only nerf dataset add loss_mask
-            outputs['loss_mask'] = F.l1_loss(train_ray_batch['masks'], outputs['acc'], reduction='mean')
+
+        # Todo changed here for removing mask
+        # if is_nerf:  # only nerf dataset add loss_mask
+        #     outputs['loss_mask'] = F.l1_loss(train_ray_batch['masks'], outputs['acc'], reduction='mean')
         return outputs
 
     # def render_step(self, step):
@@ -895,14 +897,15 @@ class NeROShapeRenderer(nn.Module):
         if use_refscores:
             ref_scores = torch.zeros(batch_size, n_samples, 3)
         if torch.sum(outer_mask) > 0:
-            if is_nerf:
-                alpha[outer_mask] = torch.zeros_like(alpha[outer_mask])
-                sampled_color[outer_mask] = torch.zeros_like(sampled_color[outer_mask])
-            else:
-                alpha[outer_mask], sampled_color[outer_mask] = self.compute_density_alpha(points[outer_mask],
-                                                                                          dists[outer_mask],
-                                                                                          -dirs[outer_mask],
-                                                                                          self.outer_nerf)
+            # Todo changed here for removing masks
+            # if is_nerf:
+                # alpha[outer_mask] = torch.zeros_like(alpha[outer_mask])
+                # sampled_color[outer_mask] = torch.zeros_like(sampled_color[outer_mask])
+            # else:
+            alpha[outer_mask], sampled_color[outer_mask] = self.compute_density_alpha(points[outer_mask],
+                                                                                      dists[outer_mask],
+                                                                                      -dirs[outer_mask],
+                                                                                      self.outer_nerf)
 
         if torch.sum(inner_mask) > 0:
             alpha[inner_mask], gradients, feature_vector, inv_s, sdf = self.compute_sdf_alpha(points[inner_mask],
@@ -1517,8 +1520,8 @@ class NeROMaterialRenderer(nn.Module):
 
         inters, normals, depth, hit_mask = inters.reshape(imn, h * w, 3), normals.reshape(imn, h * w, 3), depth.reshape(
             imn, h * w, 1), hit_mask.reshape(imn, h * w)
-        seg_masks = imgs_info['seg_masks'].reshape(imn, h * w)
-        hit_mask &= seg_masks
+        # seg_masks = imgs_info['seg_masks'].reshape(imn, h * w)
+        # hit_mask &= seg_masks
         poses = poses.unsqueeze(1).repeat(1, h * w, 1, 1)
 
         if is_train:
