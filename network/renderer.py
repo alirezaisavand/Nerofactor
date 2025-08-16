@@ -936,6 +936,7 @@ class NeROShapeRenderer(nn.Module):
             )
 
         acc = torch.sum(weights, -1)
+        # Todo changed here to remove masks
         if is_nerf:
             color = color + (1. - acc[..., None])
 
