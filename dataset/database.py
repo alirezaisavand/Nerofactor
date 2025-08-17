@@ -420,7 +420,7 @@ class NeRFSyntheticDatabase(BaseDatabase):
         RENDER_ROOT = dataset_dir
         # RENDER_ROOT = '/media/data_nix/yzy/Git_Project/data/nerf_synthetic'
         self.root = f'{RENDER_ROOT}/{model_name}'
-        self.scale_factor = 4.0
+        self.scale_factor = 1 / 4.0
 
         # splits = ['train', 'test']
         splits = ['train']
