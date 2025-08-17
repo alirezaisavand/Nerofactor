@@ -411,8 +411,8 @@ class NeROShapeRenderer(nn.Module):
         a = torch.sum(rays_d ** 2, dim=-1, keepdim=True)
         b = 2.0 * torch.sum(rays_o * rays_d, dim=-1, keepdim=True)
         mid = 0.5 * (-b) / a
-        near = mid - 1.0
-        far = mid + 1.0
+        near = mid - 4.0
+        far = mid + 4.0
         near = torch.clamp(near, min=1e-3)
         return near, far
 
