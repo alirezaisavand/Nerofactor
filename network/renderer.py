@@ -1169,15 +1169,15 @@ class NeROMaterialRenderer(nn.Module):
 
         print('segmentation masks are loaded')
 
-        # all_imgs_info = build_imgs_info(self.database, np.asarray(self.database.get_img_ids()), self.is_nerf)
+        all_imgs_info = build_imgs_info(self.database, np.asarray(self.database.get_img_ids()), self.is_nerf)
 
-        # all_imgs_info = imgs_info_to_torch(all_imgs_info, 'cpu')
-        # self.seg_masks, self.projected_masks = self._construct_nerf_segmentation_masks(all_imgs_info)
-        # print('segmentation masks are created')
-        # self.save_masks(self.seg_masks, '/home/NeRO/seg_masks')
-        # self.save_masks(self.projected_masks, '/home/NeRO/projected_masks')
-        # print('seg_masks shape:', len(self.seg_masks))
-        # print('segmentation masks are saved')
+        all_imgs_info = imgs_info_to_torch(all_imgs_info, 'cpu')
+        self.seg_masks, self.projected_masks = self._construct_nerf_segmentation_masks(all_imgs_info)
+        print('segmentation masks are created')
+        self.save_masks(self.seg_masks, '/home/NeRO/seg_masks')
+        self.save_masks(self.projected_masks, '/home/NeRO/projected_masks')
+        print('seg_masks shape:', len(self.seg_masks))
+        print('segmentation masks are saved')
 
         if is_train:
             self.train_imgs_info = build_imgs_info(self.database, self.train_ids, self.is_nerf)
