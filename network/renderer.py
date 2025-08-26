@@ -284,6 +284,20 @@ class NeROShapeRenderer(nn.Module):
 
         self._shuffle_train_batch()
 
+        print('segmentation masks are begin created...')
+
+        all_imgs_info = build_imgs_info(self.database, np.asarray(self.database.get_img_ids()), self.is_nerf)
+
+        all_imgs_info = imgs_info_to_torch(all_imgs_info, 'cpu')
+        self.seg_masks, self.projected_masks = self._construct_nerf_segmentation_masks(all_imgs_info)
+        print('segmentation masks are created')
+        self.save_masks(self.seg_masks, '/home/NeRO/seg_masks')
+        self.save_masks(self.projected_masks, '/home/NeRO/projected_masks')
+        print('seg_masks shape:', len(self.seg_masks))
+        print('segmentation masks are saved')
+
+
+
     def _shuffle_train_batch(self):
         self.train_batch_i = 0
         shuffle_idxs = torch.randperm(self.tbn, device='cpu')  # shuffle
