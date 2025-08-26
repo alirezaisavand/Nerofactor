@@ -94,9 +94,9 @@ def load_masks(input_folder, as_bool=True, ignore_segmentation=True, h=0, w=0):
 def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
     images = [database.get_image(img_id) for img_id in img_ids]
     print('images len:', len(images))
-    # if is_nerf:
-    #     images_cv2 = [database.get_image_cv2(img_id) for img_id in img_ids]
-    #     images_cv2 = np.stack(images_cv2, 0)
+    if is_nerf:
+        images_cv2 = [database.get_image_cv2(img_id) for img_id in img_ids]
+        images_cv2 = np.stack(images_cv2, 0)
     #     h, w = images[0].shape[:2]
     #     seg_masks = load_masks('/home/NeRO/seg_masks', as_bool=True, ignore_segmentation=True, h=h, w=w)
     #     segmentation_masks = [seg_masks[int(img_id)] for img_id in img_ids]
@@ -128,7 +128,7 @@ def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
     if is_nerf:
         imgs_info['masks'] = masks
         # imgs_info['seg_masks'] = segmentation_masks
-        # imgs_info['cv2_imgs'] = images_cv2
+        imgs_info['cv2_imgs'] = images_cv2
         # for img in images_cv2:
         #     ok = cv2.imwrite("above_images/frame_0001.jpg", img)
     print('above images are saved')
