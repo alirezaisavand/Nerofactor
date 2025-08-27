@@ -123,7 +123,7 @@ class InitSDFRegLoss(Loss):
         pass
 
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
-        reg_step = 1000
+        reg_step = 3000
         small_threshold = 0.1
         large_threshold = 1.05
         if 'sdf_vals' in data_pr and 'sdf_pts' in data_pr and step < reg_step:
