@@ -962,7 +962,7 @@ class NeROShapeRenderer(nn.Module):
         else:
             outputs['std'] = torch.zeros(1)
 
-        if step < 1000:
+        if step < 3000:
             mask = torch.norm(points, dim=-1) < 1.2
             outputs['sdf_pts'] = points[mask]
             outputs['sdf_vals'] = self.sdf_network.sdf(points[mask])[..., 0]
