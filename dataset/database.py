@@ -544,8 +544,6 @@ class NeRFSyntheticDatabase(BaseDatabase):
         mask = self.imgs[int(img_id)][..., -1]
         return depth, mask
 
-    def get_mask(self, img_id):
-        raise NotImplementedError
 
 
 def parse_database_name(database_name: str, dataset_dir: str) -> BaseDatabase:

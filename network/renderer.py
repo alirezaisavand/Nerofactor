@@ -111,7 +111,7 @@ def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
 
     # above_imgs_ids = filter_bottom_images(poses, Ks)
     if is_nerf:
-        masks = [database.get_mask(img_id)[1] for img_id in img_ids]
+        masks = [database.get_mask(img_id) for img_id in img_ids]
         masks = np.stack(masks, 0)
     else:
         images = color_map_forward(images).astype(np.float32)
@@ -971,7 +971,7 @@ class NeROShapeRenderer(nn.Module):
         else:
             outputs['std'] = torch.zeros(1)
 
-        if step < 3000:
+        if step < 1000:
             mask = torch.norm(points, dim=-1) < 1.2
             outputs['sdf_pts'] = points[mask]
             outputs['sdf_vals'] = self.sdf_network.sdf(points[mask])[..., 0]
