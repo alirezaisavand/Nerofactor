@@ -167,6 +167,20 @@ class MaskLoss(Loss):
             outputs['loss_mask'] = data_pr['loss_mask'].reshape(1) * self.cfg['mask_loss_weight']
         return outputs
 
+class FGLoss(Loss):
+    default_cfg = {
+        'fg_loss_weight': 1, #changed here from 0.01 to 0.1
+    }
+
+    def __init__(self, cfg):
+        self.cfg = {**self.default_cfg, **cfg}
+
+    def __call__(self, data_pr, data_gt, step, *args, **kwargs):
+        outputs = {}
+        if 'loss_fg' in data_pr:
+            outputs['loss_fg'] = data_pr['loss_fg'].reshape(1) * self.cfg['fg_loss_weight']
+        return outputs
+
 class CurvLoss(Loss):
     default_cfg = {
         'curv_loss_weight_begin': 1,
@@ -223,4 +237,5 @@ name2loss = {
     'mat_reg': MaterialRegLoss,
     'curv': CurvLoss,
     'opacity': OpacityLoss,
+    'fg': FGLoss
 }
