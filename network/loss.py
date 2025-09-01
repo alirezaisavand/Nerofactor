@@ -178,7 +178,7 @@ class FGLoss(Loss):
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         outputs = {}
         if 'loss_fg' in data_pr:
-            outputs['loss_fg'] = data_pr['loss_fg'].reshape(1) * self.cfg['fg_loss_weight']
+            outputs['loss_fg'] = data_pr['loss_fg'] * self.cfg['fg_loss_weight']
         return outputs
 
 class CurvLoss(Loss):
