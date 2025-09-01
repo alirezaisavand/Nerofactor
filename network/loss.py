@@ -89,7 +89,7 @@ class StdRecorder(Loss):
 class OccLoss(Loss):
     default_cfg = {
         'occ_loss_weight': 1,  # changed here from 0.01 to 1
-        'occ_loss_weight_begin': 1,
+        'occ_loss_weight_begin': 0.01,
         'occ_loss_weight_end': 1,
         'occ_weight_decay_begin': 10000,
         'occ_weight_decay_end': 50000,
@@ -183,8 +183,8 @@ class FGLoss(Loss):
 
 class CurvLoss(Loss):
     default_cfg = {
-        'curv_loss_weight_begin': 0.01,
-        'curv_loss_weight_end': 0.01,
+        'curv_loss_weight_begin': 0.1,
+        'curv_loss_weight_end': 0.001,
         'curv_weight_decay_begin': 15000,
         'curv_weight_decay_end': 50000,
     }
