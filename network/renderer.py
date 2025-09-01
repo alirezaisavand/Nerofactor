@@ -111,7 +111,7 @@ def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
 
     # above_imgs_ids = filter_bottom_images(poses, Ks)
     if is_nerf:
-        masks = [database.get_depth(img_id)[1] for img_id in img_ids]
+        masks = [database.get_mask(img_id)[1] for img_id in img_ids]
         masks = np.stack(masks, 0)
     else:
         images = color_map_forward(images).astype(np.float32)
@@ -565,7 +565,7 @@ class NeROShapeRenderer(nn.Module):
         if self.cfg['use_refscores']:
             w_s = outputs['w_s']
         outputs['loss_rgb'] = self.compute_rgb_loss(outputs['ray_rgb'], train_ray_batch['rgbs'], w_s)  # ray_loss
-
+        outputs['loss_fg'] = self.compute_rgb_loss(outputs['ray_rgb'] * train_ray_batch['masks'], train_ray_batch['masks'] * outputs['fg_rgb'])
         # Todo changed here for removing mask
         # if is_nerf:  # only nerf dataset add loss_mask
         #     outputs['loss_mask'] = F.l1_loss(train_ray_batch['masks'], outputs['acc'], reduction='mean')
@@ -631,6 +631,8 @@ class NeROShapeRenderer(nn.Module):
         else:
             raise NotImplementedError
         return rgb_loss
+
+
 
     def density_activation(self, density, dists):
         return 1.0 - torch.exp(-F.softplus(density) * dists)
@@ -897,6 +899,7 @@ class NeROShapeRenderer(nn.Module):
         human_poses_pt = human_poses.unsqueeze(-3).expand(batch_size, n_samples, 3, 4)
         dirs = F.normalize(dirs, dim=-1)
         alpha, sampled_color = torch.zeros(batch_size, n_samples), torch.zeros(batch_size, n_samples, 3)
+        alpha_inner, sampled_inner = torch.zeros(batch_size, n_samples), torch.zeros(batch_size, n_samples, 3)
         if use_refscores:
             ref_scores = torch.zeros(batch_size, n_samples, 3)
         if torch.sum(outer_mask) > 0:
@@ -909,7 +912,8 @@ class NeROShapeRenderer(nn.Module):
                                                                                       dists[outer_mask],
                                                                                       -dirs[outer_mask],
                                                                                       self.outer_nerf)
-
+            alpha_inner[outer_mask] = torch.zeros_like(alpha_inner[outer_mask])
+            sampled_inner[outer_mask] = torch.zeros_like(sampled_inner[outer_mask])
         if torch.sum(inner_mask) > 0:
             alpha[inner_mask], gradients, feature_vector, inv_s, sdf = self.compute_sdf_alpha(points[inner_mask],
                                                                                               dists[inner_mask],
@@ -918,6 +922,8 @@ class NeROShapeRenderer(nn.Module):
             sampled_color[inner_mask], occ_info, albedo_color, shaded_color = self.color_network(points[inner_mask], gradients, -dirs[inner_mask],
                                                                      feature_vector, human_poses_pt[inner_mask],
                                                                      step=step)
+            alpha_inner[inner_mask] = alpha[inner_mask]
+            sampled_inner[inner_mask] = sampled_color[inner_mask]
             # Eikonal loss
             gradient_error = (torch.linalg.norm(gradients, ord=2, dim=-1) - 1.0) ** 2
             curvature = self.get_curvature_loss(points[inner_mask], gradients)
@@ -929,10 +935,12 @@ class NeROShapeRenderer(nn.Module):
         opacity_loss = self.binary_cross_entropy(opacity, opacity)
         weights = alpha * torch.cumprod(torch.cat([torch.ones([batch_size, 1]), 1. - alpha + 1e-7], -1), -1)[...,
                           :-1]  # rn,sn
+        weights_inner = alpha_inner * torch.cumprod(torch.cat([torch.ones([batch_size, 1]), 1. - alpha_inner + 1e-7], -1), -1)[...,
+                          :-1]  # rn,sn
         vol_fn = lambda weights, value: (value * weights[..., None]).sum(dim=1)
 
         color = (sampled_color * weights[..., None]).sum(dim=1)
-
+        color_inner = (sampled_inner * weights_inner[..., None]).sum(dim=1)
         if torch.sum(inner_mask) > 0 and use_refscores:
             ref_scores[inner_mask] = F.mse_loss(
                 albedo_color, shaded_color, reduction="none"
@@ -949,6 +957,7 @@ class NeROShapeRenderer(nn.Module):
 
         outputs = {
             'ray_rgb': color,  # rn,3
+            'fg_rgb': color_inner,
             'gradient_error': gradient_error,  # rn
             'acc': acc,  # rn
         }

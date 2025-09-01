@@ -433,6 +433,7 @@ class NeRFSyntheticDatabase(BaseDatabase):
         all_imgs = []
         all_imgs_cv2 = []
         all_poses = []
+        all_masks = []
         counts = [0]
         # bottom_images = {'train': [9, 12, 20, 23, 26, 31, 32, 35, 37, 45, 48, 49, 53, 56, 58, 75, 86, 90, 93],
         #                  'test': [56, 64, 72, 80, 88, 96, 104, 112, 120, 128]}
@@ -443,6 +444,7 @@ class NeRFSyntheticDatabase(BaseDatabase):
             imgs = []
             imgs_cv2 = []
             poses = []
+            masks = []
             if s == 'train' or testskip == 0:
                 skip = 1
             else:
@@ -450,9 +452,13 @@ class NeRFSyntheticDatabase(BaseDatabase):
 
             for frame in meta['frames'][::skip]:
                 print(frame['file_path'])
-
+                mask_folder = os.path.join(self.root, 'masks_'+s)
                 folder, name = frame['file_path'].split('\\')
                 fname = os.path.join(self.root, folder, name)
+                itr = 0
+                while name[itr] == '0':
+                    itr += 1
+                mask_fname = os.path.join(mask_folder, name[itr:])
 
                 # fname = os.path.join(self.root, frame['file_path'] + '.png')
                 # fname_number = int(frame['file_path'].split('_')[-1])
@@ -461,22 +467,32 @@ class NeRFSyntheticDatabase(BaseDatabase):
                 #     continue
 
                 imgs.append(imageio.imread(fname))
+
+                mask_img = cv2.imread(mask_fname, cv2.IMREAD_GRAYSCALE)
+                # Convert from 0-255 to 0-1 by dividing by 255.
+                mask = mask_img.astype(np.float32) / 255.0
+                mask = mask > 0.5
+                masks.append(mask)
                 img_cv2 = cv2.imread(fname)
                 img_cv2 = cv2.cvtColor(img_cv2, cv2.COLOR_BGR2RGB)
                 imgs_cv2.append(img_cv2)
 
                 poses.append(np.array(frame['transform_matrix']))
             imgs = (np.array(imgs) / 255.).astype(np.float32)  # keep all 4 channels (RGBA)
-            imgs_cv2 = np.array(imgs_cv2)
 
+
+            imgs_cv2 = np.array(imgs_cv2)
             poses = np.array(poses).astype(np.float32)
             counts.append(counts[-1] + imgs.shape[0])
+            masks = np.array(masks).astype(bool)
             all_imgs.append(imgs)
             all_imgs_cv2.append(imgs_cv2)
             all_poses.append(poses)
+            all_masks.append(masks)
 
         self.imgs = np.concatenate(all_imgs, 0)
         self.imgs_cv2 = np.concatenate(all_imgs_cv2, 0)
+        self.masks = np.concatenate(all_masks, 0)
         self.poses = np.concatenate(all_poses, 0)
         self.poses[..., :3, 3] /= 2
 
@@ -496,6 +512,10 @@ class NeRFSyntheticDatabase(BaseDatabase):
     def get_image(self, img_id):
         imgs = self.imgs[int(img_id)]
         return imgs[..., :3] * imgs[..., -1:] + (1 - imgs[..., -1:])
+
+    def get_mask(self, img_id):
+        mask = self.masks[int(img_id)]
+        return mask
 
     def get_image_cv2(self, img_id):
         img = self.imgs_cv2[int(img_id)]
