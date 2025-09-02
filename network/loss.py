@@ -91,8 +91,8 @@ class OccLoss(Loss):
         'occ_loss_weight': 1,  # changed here from 0.01 to 1
         'occ_loss_weight_begin': 0.01,
         'occ_loss_weight_end': 1,
-        'occ_weight_decay_begin': 10000,
-        'occ_weight_decay_end': 50000,
+        'occ_weight_decay_begin': 20000,
+        'occ_weight_decay_end': 40000,
     }
 
     def map_range_val(self, input_val, input_start, input_end, output_start, output_end):
@@ -103,11 +103,12 @@ class OccLoss(Loss):
 
     def get_occlusion_weight(self, step):
         # return self.cfg['occ_loss_weight']
-        return self.map_range_val(step,
-                                  self.cfg['occ_weight_decay_begin'],
-                                  self.cfg['occ_weight_decay_end'],
-                                  self.cfg['occ_loss_weight_begin'],
-                                  self.cfg['occ_loss_weight_end'])
+        nom = max(0, step - self.cfg['occ_weight_decay_begin'])
+        denom = self.cfg['occ_weight_decay_end'] - self.cfg['occ_weight_decay_begin']
+        coef = self.cfg['occ_loss_weight_end'] - self.cfg['occ_loss_weight_begin']
+        bias = self.cfg['occ_loss_weight_begin']
+        anneal_weights = (np.cos((nom / denom) * np.pi + np.pi) + 1) / 2 #[0-1]
+        return anneal_weights * coef + bias # [begin-end]
 
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
@@ -185,8 +186,8 @@ class CurvLoss(Loss):
     default_cfg = {
         'curv_loss_weight_begin': 0.1,
         'curv_loss_weight_end': 0.001,
-        'curv_weight_decay_begin': 15000,
-        'curv_weight_decay_end': 50000,
+        'curv_weight_decay_begin': 20000,
+        'curv_weight_decay_end': 40000,
     }
 
     def map_range_val(self, input_val, input_start, input_end, output_start, output_end):
@@ -197,11 +198,13 @@ class CurvLoss(Loss):
 
     def get_curvature_weight(self, step):
         # return self.cfg['curv_loss_weight_begin']
-        return self.map_range_val(step,
-                                  self.cfg['curv_weight_decay_begin'],
-                                  self.cfg['curv_weight_decay_end'],
-                                  self.cfg['curv_loss_weight_begin'],
-                                  self.cfg['curv_loss_weight_end'])
+        nom = max(step - self.cfg['curv_weight_decay_begin'], 0)
+        denom = self.cfg['curv_weight_decay_end'] - self.cfg['curv_weight_decay_begin']
+        coef = self.cfg['curv_loss_weight_begin'] - self.cfg['curv_loss_weight_end']
+        bias = self.cfg['curv_loss_weight_end']
+        anneal_weights = (np.cos((nom / denom) * np.pi) + 1) / 2
+
+        return anneal_weights * coef + bias
 
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
