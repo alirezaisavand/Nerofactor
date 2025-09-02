@@ -170,7 +170,7 @@ class MaskLoss(Loss):
 
 class FGLoss(Loss):
     default_cfg = {
-        'fg_loss_weight': 0.1, #changed here from 0.01 to 0.1
+        'fg_loss_weight': 1, #changed here from 0.01 to 0.1
     }
 
     def __init__(self, cfg):
