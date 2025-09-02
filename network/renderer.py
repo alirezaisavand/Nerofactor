@@ -932,7 +932,7 @@ class NeROShapeRenderer(nn.Module):
             sampled_inner[inner_mask] = sampled_color[inner_mask]
 
             alpha_outer[inner_mask] = torch.zeros_like(alpha_outer[inner_mask])
-            sampled_outer[inner_mask] = torch.zeros_like(samples_outer[inner_mask])
+            sampled_outer[inner_mask] = torch.zeros_like(sampled_outer[inner_mask])
             # Eikonal loss
             gradient_error = (torch.linalg.norm(gradients, ord=2, dim=-1) - 1.0) ** 2
             curvature = self.get_curvature_loss(points[inner_mask], gradients)
