@@ -170,7 +170,7 @@ class MaskLoss(Loss):
 
 class FGLoss(Loss):
     default_cfg = {
-        'fg_loss_weight': 1, #changed here from 0.01 to 0.1
+        'fg_loss_weight': 0.1, #changed here from 0.01 to 0.1
     }
 
     def __init__(self, cfg):
@@ -184,9 +184,9 @@ class FGLoss(Loss):
 
 class CurvLoss(Loss):
     default_cfg = {
-        'curv_loss_weight_begin': 0.1,
+        'curv_loss_weight_begin': 1,
         'curv_loss_weight_end': 0.001,
-        'curv_weight_decay_begin': 20000,
+        'curv_weight_decay_begin': 10000,
         'curv_weight_decay_end': 40000,
     }
 
