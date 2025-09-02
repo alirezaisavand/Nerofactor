@@ -569,7 +569,7 @@ class NeROShapeRenderer(nn.Module):
         outputs['loss_fg'] = self.compute_rgb_loss(outputs['ray_rgb'] * masks_reshaped, masks_reshaped * outputs['fg_rgb'])
         # Todo changed here for removing mask
         # if is_nerf:  # only nerf dataset add loss_mask
-        #     outputs['loss_mask'] = F.l1_loss(train_ray_batch['masks'], outputs['acc'], reduction='mean')
+        outputs['loss_mask'] = F.l1_loss(train_ray_batch['masks'], train_ray_batch['masks'] * outputs['fg_acc'], reduction='mean')
         return outputs
 
     # def render_step(self, step):
@@ -948,6 +948,7 @@ class NeROShapeRenderer(nn.Module):
             )
 
         acc = torch.sum(weights, -1)
+        fg_acc = torch.sum(weights_inner, -1)
         # Todo changed here to remove masks
         # if is_nerf:
         #     color = color + (1. - acc[..., None])
@@ -959,6 +960,7 @@ class NeROShapeRenderer(nn.Module):
         outputs = {
             'ray_rgb': color,  # rn,3
             'fg_rgb': color_inner,
+            'fg_acc': fg_acc,
             'gradient_error': gradient_error,  # rn
             'acc': acc,  # rn
         }
