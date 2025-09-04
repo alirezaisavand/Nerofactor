@@ -89,10 +89,10 @@ class StdRecorder(Loss):
 class OccLoss(Loss):
     default_cfg = {
         'occ_loss_weight': 1,  # changed here from 0.01 to 1
-        'occ_loss_weight_begin': 0.01,
+        'occ_loss_weight_begin': 0.001,
         'occ_loss_weight_end': 1,
         'occ_weight_decay_begin': 22000,
-        'occ_weight_decay_end': 40000,
+        'occ_weight_decay_end': 50000,
     }
 
     def map_range_val(self, input_val, input_start, input_end, output_start, output_end):
@@ -156,16 +156,29 @@ class InitSDFRegLoss(Loss):
 
 class MaskLoss(Loss):
     default_cfg = {
-        'mask_loss_weight': 1, #changed here from 0.01 to 0.1
+        'mask_loss_weight_begin': 1,
+        'mask_loss_weight_end': 0,
+        'mask_weight_decay_begin': 10000,
+        'mask_weight_decay_end': 40000,
     }
+
+    def get_mask_weight(self, step):
+        nom = max(step - self.cfg['mask_weight_decay_begin'], 0)
+        denom = self.cfg['mask_weight_decay_end'] - self.cfg['mask_weight_decay_begin']
+        coef = self.cfg['mask_loss_weight_begin'] - self.cfg['mask_loss_weight_end']
+        bias = self.cfg['mask_loss_weight_end']
+        anneal_weights = (np.cos((nom / denom) * np.pi) + 1) / 2
+
+        return anneal_weights * coef + bias
 
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
 
+
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         outputs = {}
         if 'loss_mask' in data_pr:
-            outputs['loss_mask'] = data_pr['loss_mask'].reshape(1) * self.cfg['mask_loss_weight']
+            outputs['loss_mask'] = data_pr['loss_mask'].reshape(1) * self.get_mask_weight(step)
         return outputs
 
 class FGLoss(Loss):
@@ -201,7 +214,7 @@ class CurvLoss(Loss):
         'curv_loss_weight_begin': 1,
         'curv_loss_weight_end': 0.001,
         'curv_weight_decay_begin': 10000,
-        'curv_weight_decay_end': 40000,
+        'curv_weight_decay_end': 50000,
     }
 
     def map_range_val(self, input_val, input_start, input_end, output_start, output_end):
