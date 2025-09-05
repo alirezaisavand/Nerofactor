@@ -991,16 +991,16 @@ class NeROShapeRenderer(nn.Module):
             outputs['sdf_pts'] = points[mask]
             outputs['sdf_vals'] = self.sdf_network.sdf(points[mask])[..., 0]
 
-        if self.cfg['apply_occ_loss']:
-            # occlusion loss
-            if torch.sum(inner_mask) > 0:
-                outputs['loss_occ'] = self.compute_occ_loss(occ_info, points[inner_mask], sdf, gradients,
-                                                            dirs[inner_mask], step)
-            else:
-                outputs['loss_occ'] = torch.zeros(1)
 
-        if self.cfg['apply_opacity_loss']:
-            outputs['loss_opacity'] = opacity_loss
+        # occlusion loss
+        if torch.sum(inner_mask) > 0:
+            outputs['loss_occ'] = self.compute_occ_loss(occ_info, points[inner_mask], sdf, gradients,
+                                                        dirs[inner_mask], step)
+        else:
+            outputs['loss_occ'] = torch.zeros(1)
+
+
+        outputs['loss_opacity'] = opacity_loss
 
         if not is_train:
             outputs.update(self.compute_validation_info(z_vals, rays_o, rays_d, weights, human_poses, step))

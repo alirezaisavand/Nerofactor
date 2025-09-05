@@ -177,7 +177,7 @@ class MaskLoss(Loss):
 
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         outputs = {}
-        if 'loss_mask' in data_pr:
+        if 'loss_mask' in data_pr and step < self.cfg['mask_weight_decay_end']:
             outputs['loss_mask'] = data_pr['loss_mask'].reshape(1) * self.get_mask_weight(step)
         return outputs
 
