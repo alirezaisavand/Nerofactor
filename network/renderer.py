@@ -462,8 +462,8 @@ class NeROShapeRenderer(nn.Module):
         # rays_o = poses[:, :, -1].expand(rays_d.shape)
         rays_d = F.normalize(rays_d, dim=-1)
         # Todo changed here for removing masks
-        # near, far = torch.full((rays_o.shape[0], 1), 1.0), torch.full((rays_o.shape[0], 1), 3.0)
-        near, far = self.near_far_from_sphere(rays_o, rays_d)
+        near, far = torch.full((rays_o.shape[0], 1), 1.0), torch.full((rays_o.shape[0], 1), 3.0)
+        # near, far = self.near_far_from_sphere(rays_o, rays_d)
         return rays_o, rays_d, near, far, poses[idxs]  # rn, 3, 4
 
     # def _process_render_ray_batch(self, ray_batch, poses):

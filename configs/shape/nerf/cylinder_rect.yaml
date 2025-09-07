@@ -1,0 +1,39 @@
+name: cylinder_rect_shape
+
+####network#####
+network: shape
+database_name: nerf/cylinder_rect
+apply_acc_loss: true
+occ_loss_step: 22000 # changed here from 20000 to 25000
+is_nerf: true
+
+######loss######
+loss: ['nerf_render','eikonal','std','init_sdf_reg', 'occ', 'fg', 'curv', 'opacity', 'mask'] #opacity, curv
+val_metric: ['shape_render']
+key_metric_name: psnr
+eikonal_weight: 0.1
+freeze_inv_s_step: 15000 # changed here from 15000 to 20000
+
+'apply_opacity_loss': True,
+
+####dataset#####
+train_dataset_type: dummy
+dataset_dir: data/nerf_synthetic
+train_dataset_cfg:
+  database_name: nerf/cylinder_rect
+val_set_list:
+  -
+    name: val
+    type: dummy
+    cfg:
+      database_name: nerf/cylinder_rect
+
+####trainier####
+optimizer_type: adam
+lr_type: warm_up_cos
+lr_cfg: {}
+total_step: 300000
+val_interval: 1000
+save_interval: 1000
+train_log_step: 20
+
