@@ -458,7 +458,7 @@ class NeRFSyntheticDatabase(BaseDatabase):
                 itr = 0
                 while name[itr] == '0':
                     itr += 1
-                mask_fname = os.path.join(mask_folder, name[itr:])
+                mask_fname = os.path.join(mask_folder, name)
 
                 # fname = os.path.join(self.root, frame['file_path'] + '.png')
                 # fname_number = int(frame['file_path'].split('_')[-1])
