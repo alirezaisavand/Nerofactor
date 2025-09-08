@@ -159,7 +159,7 @@ class MaskLoss(Loss):
         'mask_loss_weight_begin': 1,
         'mask_loss_weight_end': 0,
         'mask_weight_decay_begin': 10000,
-        'mask_weight_decay_end': 40000,
+        'mask_weight_decay_end': 50000,
     }
 
     def get_mask_weight(self, step):
