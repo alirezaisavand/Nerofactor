@@ -25,7 +25,7 @@ class NeRFRenderLoss(Loss):
 
 class EikonalLoss(Loss):
     default_cfg = {
-        "eikonal_weight": 0.1,
+        "eikonal_weight": 1,
         'eikonal_weight_anneal_begin': 0,
         'eikonal_weight_anneal_end': 0,
     }
@@ -156,7 +156,7 @@ class InitSDFRegLoss(Loss):
 
 class MaskLoss(Loss):
     default_cfg = {
-        'mask_loss_weight_begin': 1,
+        'mask_loss_weight_begin': 5,
         'mask_loss_weight_end': 1,
         'mask_weight_decay_begin': 10000,
         'mask_weight_decay_end': 50000,
@@ -211,8 +211,8 @@ class BGLoss(Loss):
 
 class CurvLoss(Loss):
     default_cfg = {
-        'curv_loss_weight_begin': 1,
-        'curv_loss_weight_end': 0.001,
+        'curv_loss_weight_begin': 10,
+        'curv_loss_weight_end': 1,
         'curv_weight_decay_begin': 20000,
         'curv_weight_decay_end': 50000,
     }
@@ -244,7 +244,7 @@ class CurvLoss(Loss):
 
 class OpacityLoss(Loss):
     default_cfg = {
-        'opacity_loss_weight': 0.01,
+        'opacity_loss_weight': 0.1,
     }
 
     def __init__(self, cfg):
