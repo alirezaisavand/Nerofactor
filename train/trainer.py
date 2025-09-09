@@ -147,7 +147,7 @@ class Trainer:
             for k, v in log_info.items():
                 if k.startswith('loss'):
                     loss = loss + torch.mean(v)
-                    loss_str += ', ' + k + ": " + str(float(torch.mean(v).detach().cpu().numpy()))
+                    loss_str += ', ' + k + ": " + str(torch.mean(v).detach().cpu().numpy())
 
             loss.backward()
             self.optimizer.step()
@@ -181,7 +181,7 @@ class Trainer:
 
             if (step + 1) == self.cfg['total_step']:
                 pass
-            pbar.set_postfix(loss=float(loss.detach().cpu().numpy()), lr=lr, loss_str=loss_str)
+            pbar.set_postfix(loss=float(loss.detach().cpu().numpy()), lr=lr, others=loss_str)
             pbar.update(1)
             del loss, log_info
 
