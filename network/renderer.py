@@ -517,7 +517,7 @@ class NeROShapeRenderer(nn.Module):
         outputs_keys += [
             'diffuse_albedo', 'diffuse_light', 'diffuse_color',
             'specular_albedo', 'specular_light', 'specular_color', 'specular_ref',
-            'occ_prob', 'indirect_light', 'occ_prob_gt',
+            'occ_prob', 'indirect_light', 'occ_prob_gt', 'fg_rgb, bg_rgb, fg_acc',
         ]
         if self.color_network.cfg['human_light']:
             outputs_keys += ['human_light']

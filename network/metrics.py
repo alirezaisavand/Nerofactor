@@ -43,7 +43,8 @@ def draw_materials(data_pr, h, w):
     #         'specular_albedo', 'specular_light', 'specular_color', 'specular_ref',
     #         'occ_prob', 'indirect_light', 'spec_brdf']
     results = get_key_images(data_pr, keys, h, w)
-    results = [concat_images_list(*results[0:3]), concat_images_list(*results[3:7]), concat_images_list(*results[7:])]
+    results = [concat_images_list(*results[0:3]), concat_images_list(*results[3:7]), concat_images_list(*results[7:11]),
+               concat_images_list(*results[11:])]
     return results
 
 
