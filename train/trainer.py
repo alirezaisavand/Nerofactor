@@ -147,7 +147,7 @@ class Trainer:
             for k, v in log_info.items():
                 if k.startswith('loss'):
                     loss = loss + torch.mean(v)
-                    loss_str += k + ": " + str(torch.mean(v).detach().cpu().numpy())
+                    loss_str += ', ' + k + ": " + str(torch.mean(v).detach().cpu().numpy())
 
             loss.backward()
             self.optimizer.step()
