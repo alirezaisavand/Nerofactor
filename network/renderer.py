@@ -408,7 +408,7 @@ class NeROShapeRenderer(nn.Module):
         else:
             return np.min([1.0, step / self.cfg['anneal_end']])
 
-    @staticmethod
+    # @staticmethod
     # def near_far_from_sphere(rays_o, rays_d):
     #     a = torch.sum(rays_d ** 2, dim=-1, keepdim=True)
     #     b = 2.0 * torch.sum(rays_o * rays_d, dim=-1, keepdim=True)
