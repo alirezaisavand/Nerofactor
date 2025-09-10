@@ -418,8 +418,7 @@ class NeROShapeRenderer(nn.Module):
     #     near = torch.clamp(near, min=1e-3)
     #     return near, far
 
-    @staticmethod
-    def near_far_from_sphere(o, d, radius=1.0):
+    def near_far_from_sphere(self, o, d, radius=1.0):
         d = F.normalize(d, dim=-1)
         a = (d * d).sum(-1, keepdim=True)  # =1
         b = 2.0 * (o * d).sum(-1, keepdim=True)
