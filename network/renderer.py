@@ -409,13 +409,28 @@ class NeROShapeRenderer(nn.Module):
             return np.min([1.0, step / self.cfg['anneal_end']])
 
     @staticmethod
-    def near_far_from_sphere(rays_o, rays_d):
-        a = torch.sum(rays_d ** 2, dim=-1, keepdim=True)
-        b = 2.0 * torch.sum(rays_o * rays_d, dim=-1, keepdim=True)
-        mid = 0.5 * (-b) / a
-        near = mid - 1.0
-        far = mid + 1.0
-        near = torch.clamp(near, min=1e-3)
+    # def near_far_from_sphere(rays_o, rays_d):
+    #     a = torch.sum(rays_d ** 2, dim=-1, keepdim=True)
+    #     b = 2.0 * torch.sum(rays_o * rays_d, dim=-1, keepdim=True)
+    #     mid = 0.5 * (-b) / a
+    #     near = mid - 1.0
+    #     far = mid + 1.0
+    #     near = torch.clamp(near, min=1e-3)
+    #     return near, far
+
+    @staticmethod
+    def near_far_from_sphere(o, d, radius=1.0):
+        d = F.normalize(d, dim=-1)
+        a = (d * d).sum(-1, keepdim=True)  # =1
+        b = 2.0 * (o * d).sum(-1, keepdim=True)
+        c = (o * o).sum(-1, keepdim=True) - radius * radius
+        disc = b * b - 4 * a * c
+        sqrt_disc = torch.sqrt(torch.clamp(disc, min=0.0))
+        t0 = (-b - sqrt_disc) / (2 * a)
+        t1 = (-b + sqrt_disc) / (2 * a)
+        near = torch.clamp_min(t0, 1e-3)  # if inside sphere, t0<0 → clamp
+        far = torch.maximum(t1, near + 1e-3)  # ensure far>near
+        hit = disc >= 0
         return near, far
 
     def get_human_coordinate_poses(self, poses):
@@ -790,8 +805,11 @@ class NeROShapeRenderer(nn.Module):
 
         if self.cfg['freeze_inv_s_step'] is not None and step < self.cfg['freeze_inv_s_step']:
             inv_s = inv_s.detach()
-
-        true_cos = (dirs * gradients).sum(-1)  # [...]
+        # Todo changed here for degenerated geometry
+        n = F.normalize(gradients, dim=-1)
+        v = F.normalize(dirs, dim=-1)
+        true_cos = (n * v).sum(-1).detach()  # <- detach is important
+        # true_cos = (dirs * gradients).sum(-1)  # [...]
         iter_cos = -(F.relu(-true_cos * 0.5 + 0.5) * (1.0 - cos_anneal_ratio) +
                      F.relu(-true_cos) * cos_anneal_ratio)  # always non-positive
 
