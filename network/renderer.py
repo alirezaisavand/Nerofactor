@@ -805,10 +805,10 @@ class NeROShapeRenderer(nn.Module):
         if self.cfg['freeze_inv_s_step'] is not None and step < self.cfg['freeze_inv_s_step']:
             inv_s = inv_s.detach()
         # Todo changed here for degenerated geometry
-        n = F.normalize(gradients, dim=-1)
-        v = F.normalize(dirs, dim=-1)
-        true_cos = (n * v).sum(-1).detach()  # <- detach is important
-        # true_cos = (dirs * gradients).sum(-1)  # [...]
+        # n = F.normalize(gradients, dim=-1)
+        # v = F.normalize(dirs, dim=-1)
+        # true_cos = (n * v).sum(-1).detach()  # <- detach is important
+        true_cos = (dirs * gradients).sum(-1)  # [...]
         iter_cos = -(F.relu(-true_cos * 0.5 + 0.5) * (1.0 - cos_anneal_ratio) +
                      F.relu(-true_cos) * cos_anneal_ratio)  # always non-positive
 
