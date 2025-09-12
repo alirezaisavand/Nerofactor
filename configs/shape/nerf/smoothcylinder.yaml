@@ -8,7 +8,7 @@ occ_loss_step: 20000 # changed here from 20000 to 25000
 is_nerf: true
 
 ######loss######
-loss: ['nerf_render','eikonal','std','init_sdf_reg', 'occ', 'curv'] #opacity, curv
+loss: ['nerf_render','eikonal','std','init_sdf_reg', 'occ', 'curv', 'mask', 'fg'] #opacity, curv
 val_metric: ['shape_render']
 key_metric_name: psnr
 eikonal_weight: 0.1
