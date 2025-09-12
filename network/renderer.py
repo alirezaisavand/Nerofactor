@@ -302,8 +302,8 @@ class NeROShapeRenderer(nn.Module):
         coords = coords.reshape(imn, h * w, 2)
         coords = torch.cat([coords + 0.5, torch.ones(imn, h * w, 1, dtype=torch.float32, device=device)],
                            2)  # imn,h*w,3
-
-        masks = imgs_info['masks'].reshape(imn, h * w)
+        if is_train:
+            masks = imgs_info['masks'].reshape(imn, h * w)
         # imn,h*w,3 @ imn,3,3 => imn,h*w,3
         dirs = coords @ torch.inverse(imgs_info['Ks']).permute(0, 2, 1)
         imgs = imgs_info['imgs'].permute(0, 2, 3, 1).reshape(imn, h * w, 3)  # imn,h*w,3
