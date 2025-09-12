@@ -114,6 +114,8 @@ def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
         masks = [database.get_mask(img_id) for img_id in img_ids]
         masks = np.stack(masks, 0)
     else:
+        masks = [database.get_mask(img_id) for img_id in img_ids]
+        masks = np.stack(masks, 0)
         images = color_map_forward(images).astype(np.float32)
 
     Ks = np.stack(Ks, 0).astype(np.float32)
@@ -124,9 +126,9 @@ def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
         'Ks': Ks,
         'poses': poses,
     }
-
+    imgs_info['masks'] = masks
     if is_nerf:
-        imgs_info['masks'] = masks
+
         # imgs_info['seg_masks'] = segmentation_masks
         imgs_info['cv2_imgs'] = images_cv2
         # for img in images_cv2:
@@ -301,6 +303,7 @@ class NeROShapeRenderer(nn.Module):
         coords = torch.cat([coords + 0.5, torch.ones(imn, h * w, 1, dtype=torch.float32, device=device)],
                            2)  # imn,h*w,3
 
+        masks = imgs_info['masks'].reshape(imn, h * w)
         # imn,h*w,3 @ imn,3,3 => imn,h*w,3
         dirs = coords @ torch.inverse(imgs_info['Ks']).permute(0, 2, 1)
         imgs = imgs_info['imgs'].permute(0, 2, 3, 1).reshape(imn, h * w, 3)  # imn,h*w,3
@@ -313,6 +316,7 @@ class NeROShapeRenderer(nn.Module):
             'rgbs': imgs.float().reshape(rn, 3).to(device),
             'idxs': idxs.long().reshape(rn, 1).to(device),
         }
+        ray_batch['masks'] = masks.float().reshape(rn).to(device)
         return ray_batch, poses, rn, h, w
 
     def _construct_nerf_ray_batch(self, imgs_info, device='cpu', is_train=True):
