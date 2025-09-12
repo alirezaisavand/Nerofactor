@@ -271,7 +271,7 @@ class GlossySyntheticDatabase(BaseDatabase):
         return depth, mask
 
     def get_mask(self, img_id):
-        raise NotImplementedError
+        return imread(f'{self.root}/masks_train/{img_id}.png')
 
 class CustomDatabase(BaseDatabase):
     def __init__(self, database_name, dataset_dir):
