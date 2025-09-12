@@ -413,29 +413,16 @@ class NeROShapeRenderer(nn.Module):
         else:
             return np.min([1.0, step / self.cfg['anneal_end']])
 
-    # @staticmethod
-    # def near_far_from_sphere(rays_o, rays_d):
-    #     a = torch.sum(rays_d ** 2, dim=-1, keepdim=True)
-    #     b = 2.0 * torch.sum(rays_o * rays_d, dim=-1, keepdim=True)
-    #     mid = 0.5 * (-b) / a
-    #     near = mid - 1.0
-    #     far = mid + 1.0
-    #     near = torch.clamp(near, min=1e-3)
-    #     return near, far
 
-    def near_far_from_sphere(self, o, d, radius=1.0):
-        d = F.normalize(d, dim=-1)
-        a = (d * d).sum(-1, keepdim=True)  # =1
-        b = 2.0 * (o * d).sum(-1, keepdim=True)
-        c = (o * o).sum(-1, keepdim=True) - radius * radius
-        disc = b * b - 4 * a * c
-        sqrt_disc = torch.sqrt(torch.clamp(disc, min=0.0))
-        t0 = (-b - sqrt_disc) / (2 * a)
-        t1 = (-b + sqrt_disc) / (2 * a)
-        near = torch.clamp_min(t0, 1e-3)  # if inside sphere, t0<0 → clamp
-        far = torch.maximum(t1, near + 1e-3)  # ensure far>near
-        hit = disc >= 0
+    def near_far_from_sphere(self, rays_o, rays_d):
+        a = torch.sum(rays_d ** 2, dim=-1, keepdim=True)
+        b = 2.0 * torch.sum(rays_o * rays_d, dim=-1, keepdim=True)
+        mid = 0.5 * (-b) / a
+        near = mid - 1.0
+        far = mid + 1.0
+        near = torch.clamp(near, min=1e-3)
         return near, far
+
 
     def get_human_coordinate_poses(self, poses):
         pn = poses.shape[0]
