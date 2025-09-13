@@ -576,7 +576,7 @@ class NeROShapeRenderer(nn.Module):
         outputs['loss_bg'] = self.compute_rgb_loss(outputs['ray_rgb'] * (1 - masks_reshaped), (1 - masks_reshaped) * outputs['bg_rgb'])
         # Todo changed here for removing mask
         # if is_nerf:  # only nerf dataset add loss_mask
-        # outputs['loss_mask'] = F.l1_loss(train_ray_batch['masks'], train_ray_batch['masks'] * outputs['fg_acc'], reduction='mean')
+        outputs['loss_mask'] = F.l1_loss(train_ray_batch['masks'], train_ray_batch['masks'] * outputs['fg_acc'], reduction='mean')
         return outputs
 
     # def render_step(self, step):
