@@ -157,10 +157,10 @@ class InitSDFRegLoss(Loss):
 
 class MaskLoss(Loss):
     default_cfg = {
-        'mask_loss_weight_begin': 0.1,
+        'mask_loss_weight_begin': 1,
         'mask_loss_weight_end': 0.1,
-        'mask_weight_decay_begin': 10000,
-        'mask_weight_decay_end': 50000,
+        'mask_weight_decay_begin': 5000,
+        'mask_weight_decay_end': 20000,
     }
 
     def get_mask_weight(self, step):
