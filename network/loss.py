@@ -89,10 +89,10 @@ class StdRecorder(Loss):
 class OccLoss(Loss):
     default_cfg = {
         'occ_loss_weight': 1,  # changed here from 0.01 to 1
-        'occ_loss_weight_begin': 0.01,
+        'occ_loss_weight_begin': 0.001,
         'occ_loss_weight_end': 1,
         'occ_weight_decay_begin': 20000,
-        'occ_weight_decay_end': 40000,
+        'occ_weight_decay_end': 50000,
     }
 
     def map_range_val(self, input_val, input_start, input_end, output_start, output_end):
