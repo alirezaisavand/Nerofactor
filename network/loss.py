@@ -159,16 +159,11 @@ class MaskLoss(Loss):
     default_cfg = {
         'mask_loss_weight_begin': 1,
         'mask_loss_weight_end': 0.1,
-        'mask_weight_decay_begin': 5000,
+        'mask_weight_decay_begin': 0,
         'mask_weight_decay_end': 20000,
-        'mask_loss_stop': 5000
     }
 
     def get_mask_weight(self, step):
-        if step > self.cfg['mask_loss_stop']:
-            return 0.0
-        else:
-            return 1.0
         nom = max(step - self.cfg['mask_weight_decay_begin'], 0)
         denom = self.cfg['mask_weight_decay_end'] - self.cfg['mask_weight_decay_begin']
         nom = min(nom, denom)
