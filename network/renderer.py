@@ -967,9 +967,11 @@ class NeROShapeRenderer(nn.Module):
             )
 
         acc = torch.sum(weights, -1)
-        acc_clamped = torch.clamp(acc, 1.e-3, 1. - 1.e-3)
-        opacity_loss = self.binary_cross_entropy(acc_clamped, acc_clamped)
+
+
         fg_acc = torch.sum(weights_inner, -1)
+        fg_acc_clamped = torch.clamp(fg_acc, 1.e-3, 1. - 1.e-3)
+        opacity_loss = self.binary_cross_entropy(fg_acc_clamped, fg_acc_clamped)
         # Todo changed here to remove masks
         # if is_nerf:
         #     color = color + (1. - acc[..., None])
