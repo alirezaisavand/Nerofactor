@@ -950,7 +950,6 @@ class NeROShapeRenderer(nn.Module):
             gradient_error = torch.zeros(1)
             curvature = torch.zeros(1)
         opacity = torch.clamp(alpha.squeeze(-1), 1.e-3, 1. - 1.e-3)
-        opacity_loss = self.binary_cross_entropy(opacity, opacity)
         weights = alpha * torch.cumprod(torch.cat([torch.ones([batch_size, 1]), 1. - alpha + 1e-7], -1), -1)[...,
                           :-1]  # rn,sn
         weights_inner = alpha_inner * torch.cumprod(torch.cat([torch.ones([batch_size, 1]), 1. - alpha_inner + 1e-7], -1), -1)[...,
@@ -968,6 +967,8 @@ class NeROShapeRenderer(nn.Module):
             )
 
         acc = torch.sum(weights, -1)
+        acc_clamped = torch.clamp(acc, 1.e-3, 1. - 1.e-3)
+        opacity_loss = self.binary_cross_entropy(acc_clamped, acc_clamped)
         fg_acc = torch.sum(weights_inner, -1)
         # Todo changed here to remove masks
         # if is_nerf:
