@@ -247,8 +247,22 @@ class CurvLoss(Loss):
 
 class OpacityLoss(Loss):
     default_cfg = {
-        'opacity_loss_weight': 0.01,
+        'opacity_loss_weight': 1,  # changed here from 0.01 to 1
+        'opacity_loss_weight_begin': 0.001,
+        'opacity_loss_weight_end': 0.01,
+        'opacity_weight_decay_begin': 20000,
+        'opacity_weight_decay_end': 50000,
     }
+
+
+    def get_opacity_weight(self, step):
+        nom = max(0, step - self.cfg['opacity_weight_decay_begin'])
+        denom = self.cfg['opacity_weight_decay_end'] - self.cfg['opacity_weight_decay_begin']
+        nom = min(nom, denom)
+        coef = self.cfg['opacity_loss_weight_end'] - self.cfg['opacity_loss_weight_begin']
+        bias = self.cfg['opacity_loss_weight_begin']
+        anneal_weights = (np.cos((nom / denom) * np.pi + np.pi) + 1) / 2 #[0-1]
+        return anneal_weights * coef + bias # [begin-end]
 
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
@@ -256,7 +270,7 @@ class OpacityLoss(Loss):
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         outputs = {}
         if 'loss_opacity' in data_pr:
-            outputs['loss_opacity'] = data_pr['loss_opacity'].reshape(1)  * self.cfg['opacity_loss_weight']
+            outputs['loss_opacity'] = data_pr['loss_opacity'].reshape(1)  * self.get_opacity_weight(step)
         return outputs
 
 name2loss = {
