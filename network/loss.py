@@ -141,6 +141,8 @@ class InitSDFRegLoss(Loss):
                 small_loss = torch.zeros(1)
 
             large_mask = norm > large_threshold
+
+            
             if torch.sum(large_mask) > 0:
                 bounds = norm[large_mask] - large_threshold  # 0 -> 1 - large_threshold
                 # we want sdf - bounds > 0 => bounds - sdf < 0
@@ -157,19 +159,19 @@ class InitSDFRegLoss(Loss):
 
 class MaskLoss(Loss):
     default_cfg = {
-        'mask_loss_weight_begin': 1,
-        'mask_loss_weight_end': 0.1,
+        'mask_loss_weight_begin': 0.1,
+        'mask_loss_weight_end': 1,
         'mask_weight_decay_begin': 0,
-        'mask_weight_decay_end': 20000,
+        'mask_weight_decay_end': 30000,
     }
 
     def get_mask_weight(self, step):
         nom = max(step - self.cfg['mask_weight_decay_begin'], 0)
         denom = self.cfg['mask_weight_decay_end'] - self.cfg['mask_weight_decay_begin']
         nom = min(nom, denom)
-        coef = self.cfg['mask_loss_weight_begin'] - self.cfg['mask_loss_weight_end']
-        bias = self.cfg['mask_loss_weight_end']
-        anneal_weights = (np.cos((nom / denom) * np.pi) + 1) / 2
+        coef = self.cfg['mask_loss_weight_end'] - self.cfg['mask_loss_weight_begin']
+        bias = self.cfg['mask_loss_weight_begin']
+        anneal_weights = (np.cos((nom / denom) * np.pi + np.pi) + 1) / 2
 
         return anneal_weights * coef + bias
 
