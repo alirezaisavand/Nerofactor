@@ -230,7 +230,7 @@ class GlossyRealDatabase(BaseDatabase):
     def get_mask(self, img_id):
         mask_name = self.image_names[img_id]
         mask_name = mask_name.split('.')[0]+'.png'
-        mask_fname = f'{self.root}/masks_train/{mask_name}'
+        mask_fname = f'{self.root}/images_{self.max_len}/masks_train/{mask_name}'
         mask_img = cv2.imread(mask_fname, cv2.IMREAD_GRAYSCALE)
         # Convert from 0-255 to 0-1 by dividing by 255.
         mask = mask_img.astype(np.float32) / 255.0
