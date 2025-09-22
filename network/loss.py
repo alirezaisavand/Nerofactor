@@ -159,7 +159,7 @@ class InitSDFRegLoss(Loss):
 
 class MaskLoss(Loss):
     default_cfg = {
-        'mask_loss_weight_begin': 0.3,
+        'mask_loss_weight_begin': 0.2,
         'mask_loss_weight_end': 1,
         'mask_weight_decay_begin': 0,
         'mask_weight_decay_end': 15000,
