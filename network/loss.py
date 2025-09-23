@@ -160,18 +160,23 @@ class InitSDFRegLoss(Loss):
 class MaskLoss(Loss):
     default_cfg = {
         'mask_loss_weight_begin': 0.3,
-        'mask_loss_weight_end': 0.3,
-        'mask_weight_decay_begin': 0,
-        'mask_weight_decay_end': 15000,
+        'mask_loss_weight_end': 0.001,
+        'mask_weight_decay_begin': 3000,
+        'mask_weight_decay_end': 10000,
     }
 
     def get_mask_weight(self, step):
         nom = max(step - self.cfg['mask_weight_decay_begin'], 0)
+        mx = max(self.cfg['mask_loss_weight_end'], self.cfg['mask_loss_weight_begin'])
+        mn = min(self.cfg['mask_loss_weight_end'], self.cfg['mask_loss_weight_begin'])
         denom = self.cfg['mask_weight_decay_end'] - self.cfg['mask_weight_decay_begin']
         nom = min(nom, denom)
-        coef = self.cfg['mask_loss_weight_end'] - self.cfg['mask_loss_weight_begin']
-        bias = self.cfg['mask_loss_weight_begin']
-        anneal_weights = (np.cos((nom / denom) * np.pi + np.pi) + 1) / 2
+        coef = mx - mn
+        bias = mn
+        rot = 0
+        if self.cfg['mask_loss_weight_end'] - self.cfg['mask_loss_weight_begin'] > 0:
+            rot = np.pi
+        anneal_weights = (np.cos((nom / denom) * np.pi + rot) + 1) / 2
 
         return anneal_weights * coef + bias
 
