@@ -122,14 +122,14 @@ class OccLoss(Loss):
 
 class InitSDFRegLoss(Loss):
     default_cfg = {
-        'SDF_loss_weight': 5,
+        'SDF_loss_weight': 3,
     }
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
 
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         reg_step = 1000
-        small_threshold = 0.05
+        small_threshold = 0.1
         large_threshold = 1.05
         if 'sdf_vals' in data_pr and 'sdf_pts' in data_pr and step < reg_step:
             norm = torch.norm(data_pr['sdf_pts'], dim=-1)
@@ -166,7 +166,7 @@ class MaskLoss(Loss):
         'mask_loss_weight_begin': 0.3,
         'mask_loss_weight_end': 1,
         'mask_weight_decay_begin': 0,
-        'mask_weight_decay_end': 20000,
+        'mask_weight_decay_end': 30000,
     }
 
     def get_mask_weight(self, step):
