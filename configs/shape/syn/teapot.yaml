@@ -15,7 +15,6 @@ freeze_inv_s_step: 15000
 
 apply_opacity_loss: True
 
-
 ####dataset#####
 train_dataset_type: dummy
 dataset_dir: data/GlossySynthetic
