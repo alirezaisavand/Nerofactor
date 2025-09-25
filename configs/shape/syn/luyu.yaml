@@ -7,7 +7,7 @@ apply_occ_loss: true
 occ_loss_step: 20000
 
 ######loss######
-loss: ['nerf_render','eikonal','std','init_sdf_reg','occ']
+loss: ['nerf_render','eikonal','std','init_sdf_reg','occ', 'mask', 'curv', 'opacity']
 val_metric: ['shape_render']
 key_metric_name: psnr
 eikonal_weight: 0.1
@@ -15,7 +15,7 @@ freeze_inv_s_step: 15000
 
 ####dataset#####
 train_dataset_type: dummy
-dataset_dir: your_dataset_dir
+dataset_dir: data/GlossySynthetic
 train_dataset_cfg:
   database_name: syn/luyu
 val_set_list:
@@ -30,7 +30,7 @@ optimizer_type: adam
 lr_type: warm_up_cos
 lr_cfg: {}
 total_step: 300000
-val_interval: 5000
+val_interval: 1000
 save_interval: 1000
 train_log_step: 20
 
