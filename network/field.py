@@ -789,7 +789,7 @@ class MCShadingNetwork(nn.Module):
             self.alpha_predictor = make_predictor(256 + 3, 1)
             self.F0_predictor = make_predictor(256 + 3, 1)
             self.ks_predictor = make_predictor(256 + 3, 3)
-            self.rotation_predictor = make_predictor(256 + 3, 2)
+            self.rotation_predictor = make_predictor(256 + 3, 2, activation='none')
 
 
 
@@ -1150,13 +1150,12 @@ class MCShadingNetwork(nn.Module):
         kd = self.kd_predictor(torch.cat([feats, pts], -1))
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
         rotation = self.rotation_predictor(torch.cat([feats, pts], -1))
-        rotation = 2 * rotation - 1
-        rotation = F.normalize(rotation, dim=-1, eps=1e-6)
-        cos_2rot = rotation[:, 0:1]  # (N,1)
-        sin_2rot = rotation[:, 1:2]  # (N,1
-        cos_rot = torch.sqrt((cos_2rot + 1) / 2)
-        sin_rot =  torch.sign(sin_2rot) * torch.sqrt((1 - cos_2rot) / 2)
-        rotation = torch.cat([cos_rot, sin_rot], -1)
+        # rotation = F.normalize(rotation, dim=-1, eps=1e-6)
+        # cos_2rot = rotation[:, 0:1]  # (N,1)
+        # sin_2rot = rotation[:, 1:2]  # (N,1
+        # cos_rot = torch.sqrt((cos_2rot + 1) / 2)
+        # sin_rot =  torch.sign(sin_2rot) * torch.sqrt((1 - cos_2rot) / 2)
+        # rotation = torch.cat([cos_rot, sin_rot], -1)
         return mx, my, alpha, F0, kd, ks, rotation
 
 
@@ -1857,6 +1856,7 @@ class MCShadingNetwork(nn.Module):
 
             mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch = self.predict_anisotropic_components(pts + change)
             tau = 0.5
+
             rot_len_loss = torch.max(torch.zeros_like(mx), tau - torch.norm(rotation, dim=-1, keepdim=True))
 
             reg = reg + torch.mean(
@@ -1865,8 +1865,8 @@ class MCShadingNetwork(nn.Module):
                     torch.abs(mx - mx_ch) +
                     torch.abs(my - my_ch) +
                     torch.abs(alpha - alpha_ch) +
-                    torch.abs(F0 - F0_ch)
-                    # rot_len_loss * 0.01
+                    torch.abs(F0 - F0_ch) +
+                    rot_len_loss * 0.01
                 ) *
                 self.cfg['reg_lambda1'],
                         dim=1)
