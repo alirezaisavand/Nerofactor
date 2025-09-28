@@ -13,7 +13,7 @@ class NeRFRenderLoss(Loss):
 
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         outputs = {}
-        if 'loss_rgb' in data_pr: outputs['loss_rgb'] = data_pr['loss_rgb']
+        if 'loss_rgb' in data_pr: outputs['loss_rgb'] = data_pr['loss_rgb'] * 10
         if 'loss_rgb_fine' in data_pr: outputs['loss_rgb_fine'] = data_pr['loss_rgb_fine']
         if 'loss_global_rgb' in data_pr: outputs['loss_global_rgb'] = data_pr['loss_global_rgb']
         if 'loss_rgb_inner' in data_pr: outputs['loss_rgb_inner'] = data_pr['loss_rgb_inner']
@@ -129,7 +129,7 @@ class InitSDFRegLoss(Loss):
 
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         reg_step = 1000
-        small_threshold = 0.02   
+        small_threshold = 0.1   
         large_threshold = 1.05
         if 'sdf_vals' in data_pr and 'sdf_pts' in data_pr and step < reg_step:
             norm = torch.norm(data_pr['sdf_pts'], dim=-1)
