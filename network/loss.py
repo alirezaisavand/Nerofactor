@@ -25,7 +25,7 @@ class NeRFRenderLoss(Loss):
 
 class EikonalLoss(Loss):
     default_cfg = {
-        "eikonal_weight": 1, # changed from 0.1
+        "eikonal_weight": 0.1, # changed from 0.1
         'eikonal_weight_anneal_begin': 0,
         'eikonal_weight_anneal_end': 0,
     }
@@ -129,7 +129,7 @@ class InitSDFRegLoss(Loss):
 
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         reg_step = 1000
-        small_threshold = 0.1   
+        small_threshold = 0.02   
         large_threshold = 1.05
         if 'sdf_vals' in data_pr and 'sdf_pts' in data_pr and step < reg_step:
             norm = torch.norm(data_pr['sdf_pts'], dim=-1)
