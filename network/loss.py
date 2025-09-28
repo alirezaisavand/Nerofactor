@@ -122,7 +122,7 @@ class OccLoss(Loss):
 
 class InitSDFRegLoss(Loss):
     default_cfg = {
-        'SDF_loss_weight': 1,
+        'SDF_loss_weight': 5,
     }
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
