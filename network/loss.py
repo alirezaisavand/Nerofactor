@@ -122,7 +122,7 @@ class OccLoss(Loss):
 
 class InitSDFRegLoss(Loss):
     default_cfg = {
-        'SDF_loss_weight': 5,
+        'SDF_loss_weight': 1,
     }
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
@@ -211,15 +211,27 @@ class FGLoss(Loss):
 class BGLoss(Loss):
     default_cfg = {
         'bg_loss_weight': 0.1, #changed here from 0.01 to 0.1
+        'bg_weight_decay_begin': 0,
+        'bg_weight_decay_end': 0,
     }
 
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
 
+    def get_bg_cosine_weight(self, step):
+        begin = self.cfg.get('bg_weight_decay_begin', 0)
+        end = self.cfg.get('bg_weight_decay_end', begin)
+        if end <= begin:
+            return 1.0
+        span = end - begin
+        nom = np.clip(step - begin, 0, span)
+        return (np.cos((nom / span) * np.pi) + 1.0) * 0.5
+
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         outputs = {}
         if 'loss_bg' in data_pr:
-            outputs['loss_bg'] = data_pr['loss_bg'] * self.cfg['bg_loss_weight']
+            weight = self.cfg['bg_loss_weight'] * self.get_bg_cosine_weight(step)
+            outputs['loss_bg'] = data_pr['loss_bg'] * weight
         return outputs
 
 class CurvLoss(Loss):
