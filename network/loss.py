@@ -25,7 +25,7 @@ class NeRFRenderLoss(Loss):
 
 class EikonalLoss(Loss):
     default_cfg = {
-        "eikonal_weight": 0.1, # changed from 0.1
+        "eikonal_weight": 1, # changed from 0.1
         'eikonal_weight_anneal_begin': 0,
         'eikonal_weight_anneal_end': 0,
     }
@@ -122,7 +122,7 @@ class OccLoss(Loss):
 
 class InitSDFRegLoss(Loss):
     default_cfg = {
-        'SDF_loss_weight': 1,
+        'SDF_loss_weight': 5,
     }
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
