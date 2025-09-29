@@ -20,7 +20,7 @@ class NeRFRenderLoss(Loss):
         self.cfg = {**self.default_cfg, **cfg}
 
 
-    def cosine_weight_schedule(step: int, cfg: dict = default_cfg) -> float:
+    def cosine_weight_schedule(self, step: int) -> float:
         """
         Cosine up-then-down schedule:
         - At steps <= begin: weight = begin_value
@@ -28,11 +28,11 @@ class NeRFRenderLoss(Loss):
         - From mid -> end:  cosine decrease back to begin_value
         - After end:        weight = begin_value
         """
-        w0  = cfg['render_loss_weight_begin']   # initial value
-        wpk = cfg['render_loss_weight_end']     # peak value (at mid)
-        s0  = cfg['render_weight_decay_begin']  # start increasing
-        sm  = cfg['render_weight_decay_mid']    # peak step
-        s1  = cfg['render_weight_decay_end']    # return to initial
+        w0  = self.cfg['render_loss_weight_begin']   # initial value
+        wpk = self.cfg['render_loss_weight_end']     # peak value (at mid)
+        s0  = self.cfg['render_weight_decay_begin']  # start increasing
+        sm  = self.cfg['render_weight_decay_mid']    # peak step
+        s1  = self.cfg['render_weight_decay_end']    # return to initial
 
         if not (s0 < sm < s1):
             raise ValueError("Require begin < mid < end for the schedule.")
@@ -52,8 +52,7 @@ class NeRFRenderLoss(Loss):
 
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         outputs = {}
-        if step > 
-        if 'loss_rgb' in data_pr: outputs['loss_rgb'] = data_pr['loss_rgb'] * self.get_render_weight(step)
+        if 'loss_rgb' in data_pr: outputs['loss_rgb'] = data_pr['loss_rgb'] * self.cosine_weight_schedule(step)
         if 'loss_rgb_fine' in data_pr: outputs['loss_rgb_fine'] = data_pr['loss_rgb_fine']
         if 'loss_global_rgb' in data_pr: outputs['loss_global_rgb'] = data_pr['loss_global_rgb']
         if 'loss_rgb_inner' in data_pr: outputs['loss_rgb_inner'] = data_pr['loss_rgb_inner']
