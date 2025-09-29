@@ -8,15 +8,16 @@ class Loss:
 
 
 class NeRFRenderLoss(Loss):
-    def __init__(self, cfg):
-        pass
-
-        default_cfg = {
+    default_cfg = {
         'render_loss_weight_begin': 1,
         'render_loss_weight_end': 5,
         'render_weight_decay_begin': 1000,
         'render_weight_decay_end': 5000,
     }
+    def __init__(self, cfg):
+        self.cfg = {**self.default_cfg, **cfg}
+
+
 
     def get_render_weight(self, step):
         nom = max(step - self.cfg['render_weight_decay_begin'], 0)
