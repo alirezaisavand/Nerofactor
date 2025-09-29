@@ -11,7 +11,7 @@ class NeRFRenderLoss(Loss):
     default_cfg = {
         'render_loss_weight_begin': 1,
         'render_loss_weight_end': 5,
-        'render_weight_decay_begin': 1000,
+        'render_weight_decay_begin': 0,
         'render_weight_decay_end': 5000,
     }
     def __init__(self, cfg):
