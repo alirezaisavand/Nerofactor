@@ -180,7 +180,7 @@ class InitSDFRegLoss(Loss):
 
             anneal_weights = (np.cos((step / reg_step) * np.pi) + 1) / 2
             anneal_weights = anneal_weights * self.cfg['SDF_loss_weight']
-            return {'loss_sdf_large': large_loss * anneal_weights, 'loss_sdf_small': small_loss * anneal_weights}
+            return {'loss_sdf_large': large_loss * anneal_weights, 'loss_sdf_small': small_loss * 0}
         else:
             return {}
 
