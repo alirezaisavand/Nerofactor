@@ -13,7 +13,7 @@ class NeRFRenderLoss(Loss):
 
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         outputs = {}
-        if 'loss_rgb' in data_pr: outputs['loss_rgb'] = data_pr['loss_rgb'] * 5
+        if 'loss_rgb' in data_pr: outputs['loss_rgb'] = data_pr['loss_rgb'] * 3
         if 'loss_rgb_fine' in data_pr: outputs['loss_rgb_fine'] = data_pr['loss_rgb_fine']
         if 'loss_global_rgb' in data_pr: outputs['loss_global_rgb'] = data_pr['loss_global_rgb']
         if 'loss_rgb_inner' in data_pr: outputs['loss_rgb_inner'] = data_pr['loss_rgb_inner']
@@ -122,7 +122,7 @@ class OccLoss(Loss):
 
 class InitSDFRegLoss(Loss):
     default_cfg = {
-        'SDF_loss_weight': 5,
+        'SDF_loss_weight': 3,
     }
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
