@@ -11,9 +11,32 @@ class NeRFRenderLoss(Loss):
     def __init__(self, cfg):
         pass
 
+        default_cfg = {
+        'render_loss_weight_begin': 1,
+        'render_loss_weight_end': 5,
+        'render_weight_decay_begin': 1000,
+        'render_weight_decay_end': 5000,
+    }
+
+    def get_render_weight(self, step):
+        nom = max(step - self.cfg['render_weight_decay_begin'], 0)
+        mx = max(self.cfg['render_loss_weight_end'], self.cfg['render_loss_weight_begin'])
+        mn = min(self.cfg['render_loss_weight_end'], self.cfg['render_loss_weight_begin'])
+        denom = self.cfg['render_weight_decay_end'] - self.cfg['render_weight_decay_begin']
+        nom = min(nom, denom)
+        coef = mx - mn
+        bias = mn
+        rot = 0
+        if self.cfg['render_loss_weight_end'] - self.cfg['render_loss_weight_begin'] > 0:
+            rot = np.pi
+        anneal_weights = (np.cos((nom / denom) * np.pi + rot) + 1) / 2
+
+        return anneal_weights * coef + bias
+
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         outputs = {}
-        if 'loss_rgb' in data_pr: outputs['loss_rgb'] = data_pr['loss_rgb']
+
+        if 'loss_rgb' in data_pr: outputs['loss_rgb'] = data_pr['loss_rgb'] * self.get_render_weight(step)
         if 'loss_rgb_fine' in data_pr: outputs['loss_rgb_fine'] = data_pr['loss_rgb_fine']
         if 'loss_global_rgb' in data_pr: outputs['loss_global_rgb'] = data_pr['loss_global_rgb']
         if 'loss_rgb_inner' in data_pr: outputs['loss_rgb_inner'] = data_pr['loss_rgb_inner']
