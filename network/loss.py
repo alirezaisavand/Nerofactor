@@ -162,7 +162,7 @@ class OccLoss(Loss):
 
 class InitSDFRegLoss(Loss):
     default_cfg = {
-        'SDF_loss_weight': 3,
+        'SDF_loss_weight': 2,
     }
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
@@ -193,8 +193,11 @@ class InitSDFRegLoss(Loss):
                 large_loss = torch.sum(large_loss) / (torch.sum(large_loss > 1e-5) + 1e-3)
             else:
                 large_loss = torch.zeros(1)
-
-            anneal_weights = (np.cos((step / reg_step) * np.pi) + 1) / 2
+            anneal_begin = 500
+            if step < anneal_begin:
+                anneal_weights = 1
+            else:
+                anneal_weights = (np.cos(((step-anneal_begin) / (reg_step-anneal_begin)) * np.pi) + 1) / 2
             anneal_weights = anneal_weights * self.cfg['SDF_loss_weight']
             return {'loss_sdf_large': large_loss * anneal_weights, 'loss_sdf_small': small_loss * anneal_weights}
         else:
