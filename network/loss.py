@@ -13,8 +13,8 @@ class NeRFRenderLoss(Loss):
         'render_loss_weight_begin': 1,
         'render_loss_weight_end': 5,
         'render_weight_decay_begin': 0,
-        'render_weight_decay_mid': 3000,
-        'render_weight_decay_end': 6000,
+        'render_weight_decay_mid': 5000,
+        'render_weight_decay_end': 10000,
     }
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
@@ -28,7 +28,6 @@ class NeRFRenderLoss(Loss):
         - From mid -> end:  cosine decrease back to begin_value
         - After end:        weight = begin_value
         """
-        return 1
         w0  = self.cfg['render_loss_weight_begin']   # initial value
         wpk = self.cfg['render_loss_weight_end']     # peak value (at mid)
         s0  = self.cfg['render_weight_decay_begin']  # start increasing
