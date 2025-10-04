@@ -235,7 +235,7 @@ class GlossyRealDatabase(BaseDatabase):
         mask_img = cv2.imread(mask_fname, cv2.IMREAD_GRAYSCALE)
         # Convert from 0-255 to 0-1 by dividing by 255.
         mask = mask_img.astype(np.float32) / 255.0
-        # mask = mask > 0.5
+        mask = mask > 0.5
         return mask
 
     def get_depth(self, img_id):
