@@ -84,7 +84,7 @@ def get_mesh_eval_points(database):
         raise NotImplementedError
 
 def main():
-    database = parse_database_name(f'syn/{args.object}')
+    database = parse_database_name(f'syn/{args.object}', 'data/GlossySynthetic')
     pts_gt = get_database_eval_points(database)
     pts_pr = get_mesh_eval_points(database)
 
