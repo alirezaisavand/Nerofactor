@@ -53,7 +53,8 @@ def rasterize_depth_map(mesh,pose,K,shape):
     pts_clip = torch.from_numpy(pts_clip.astype(np.float32)).cuda()
     indices = torch.from_numpy(faces.astype(np.int32)).cuda()
     pts_clip = torch.cat([pts_clip,torch.ones_like(pts_clip[...,0:1])],1).unsqueeze(0)
-    ctx = dr.RasterizeGLContext()
+    # ctx = dr.RasterizeGLContext()
+    ctx = dr.RasterizeCudaContext()  
     rast, _ = dr.rasterize(ctx, pts_clip, indices, (h, w)) # [1,h,w,4]
     depth = (rast[0,:,:,2]+1)/2*(far-near)+near
     mask = rast[0,:,:,-1]!=0
