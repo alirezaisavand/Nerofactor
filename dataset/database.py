@@ -517,7 +517,7 @@ class NeRFSyntheticDatabase(BaseDatabase):
         focal = .5 * W / np.tan(.5 * camera_angle_x)
         self.Ks = np.array([
             [focal, 0, 0.5 * W],
-            [0, focal, 0.5 * H],
+            [0, focal * (H/W), 0.5 * H],
             [0, 0, 1]
         ])
 
@@ -575,7 +575,7 @@ def get_database_split(database: BaseDatabase, split_type='validation'):
     if split_type == 'validation':
         random.seed(6033)
         img_ids = database.get_img_ids().copy()
-        img_num = 1
+        img_num = 8
         # random.shuffle(img_ids)
         test_ids = img_ids[img_num-1:img_num]
         if img_num > 1:
