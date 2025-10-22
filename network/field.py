@@ -1913,7 +1913,7 @@ class MCShadingNetwork(nn.Module):
             else:
                 raise NotImplementedError
 
-            dot = (sources * normals).sum(dim=-1)
+            dot = (sources * normals).sum(dim=-1, keepdim=True)
 
             # Penalize alignment (i.e., |dot| close to 1)
             # Using squared absolute dot product ensures smoothness and symmetry
@@ -1923,7 +1923,7 @@ class MCShadingNetwork(nn.Module):
             print(f"sources shape: {sources.shape}")
             print(f"mx shape: {mx.shape}")
             print(f"dot shape: {dot.shape}")
-            print(f"((sources-sources_ch)**2).sum(dim=-1) shape: {((sources-sources_ch)**2).sum(dim=-1).shape}")
+            print(f"((sources-sources_ch)**2).sum(dim=-1) shape: {((sources-sources_ch)**2).sum(dim=-1, keepdim=True).shape}")
             reg = reg + torch.mean(
                 (torch.abs(kd - kd_ch) +
                     torch.abs(ks - ks_ch) +
@@ -1931,7 +1931,7 @@ class MCShadingNetwork(nn.Module):
                     torch.abs(my - my_ch) +
                     torch.abs(alpha - alpha_ch) +
                     torch.abs(F0 - F0_ch)+
-                    ((sources-sources_ch)**2).sum(dim=-1)+
+                    ((sources-sources_ch)**2).sum(dim=-1, keepdim=True)+
                     dot.abs()**2
                     ) *
                 self.cfg['reg_lambda1'],
