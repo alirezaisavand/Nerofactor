@@ -846,51 +846,56 @@ class MCShadingNetwork(nn.Module):
         otho = F.normalize(otho, dim=-1)
         return otho
 
-    def compute_tangent_bitangent_flat(self, normals):
+    def compute_tangent_bitangent_flat(self, normals, switch_width=0.15):
         """
-        Build a continuous orthonormal basis (tangent, bitangent) from normals
-        using the branchless Duff/Frisvad ONB. Works without UVs and avoids
-        boundary artifacts from reference-vector switching.
+        Smooth reference-vector method: blend between X- and Y-axis bases
+        to avoid discontinuities when the normal aligns with a reference axis.
 
         Args:
-            normals (torch.Tensor): (N, 3) tensor of (approximately) unit normals
+            normals (torch.Tensor): (N, 3) unit (or near-unit) normals
+            switch_width (float): width of the smooth transition near |nx|≈1
 
         Returns:
-            (tangent, bitangent): each (N, 3), orthonormal with the input normal
+            tangent (N,3), bitangent (N,3)
         """
-        # Ensure unit normals (cheap and prevents drift)
-        n = torch.nn.functional.normalize(normals, dim=-1)
+        import torch
+        import torch.nn.functional as F
 
-        nx, ny, nz = n.unbind(-1)
-        one = torch.ones_like(nz)
-        minus_one = -one
+        n = F.normalize(normals, dim=-1)
+        device, dtype = n.device, n.dtype
 
-        # branchless "sign" of nz
-        sign = torch.where(nz >= 0, one, minus_one)
+        v0 = torch.tensor([1.0, 0.0, 0.0], device=device, dtype=dtype)  # X
+        v1 = torch.tensor([0.0, 1.0, 0.0], device=device, dtype=dtype)  # Y
 
-        # Duff/Frisvad constants (epsilon for numerical safety)
-        eps = 1e-8
-        a = -1.0 / (sign + nz + eps)
-        b = nx * ny * a
+        # How parallel is n to X? (|cos θ_x|)
+        a = n[..., 0].abs()
 
-        # Tangent and bitangent (already orthogonal to n up to fp error)
-        t = torch.stack([
-            1.0 + sign * nx * nx * a,
-            sign * b,
-            -sign * nx
-        ], dim=-1)
+        # Smoothstep from (1 - switch_width) → 1
+        # t in [0,1] only near |nx| ~ 1; elsewhere ~0
+        edge0 = 1.0 - switch_width
+        edge1 = 1.0
+        t = torch.clamp((a - edge0) / (edge1 - edge0 + 1e-8), 0.0, 1.0)
+        w = t * t * (3.0 - 2.0 * t)  # smoothstep
 
-        bvec = torch.stack([
-            b,
-            sign + ny * ny * a,
-            -ny
-        ], dim=-1)
+        # Blend the base direction: near X-alignment, slide toward Y
+        base = (1.0 - w).unsqueeze(-1) * v0 + w.unsqueeze(-1) * v1
 
-        # Final re-orthonormalization (robust to fp noise)
-        t = torch.nn.functional.normalize(t - (t * n).sum(-1, keepdim=True) * n, dim=-1)
-        bvec = torch.nn.functional.normalize(torch.cross(n, t, dim=-1), dim=-1)
+        # Tangent ⟂ n via cross with blended base
+        tangent = torch.cross(n, base.expand_as(n), dim=-1)
 
-        return t, bvec
+        # Rare numerical degeneracy guard (e.g., if n not normalized initially)
+        zero_mask = tangent.norm(dim=-1) < 1e-8
+        if zero_mask.any():
+            v2 = torch.tensor([0.0, 0.0, 1.0], device=device, dtype=dtype)
+            tangent[zero_mask] = torch.cross(n[zero_mask], v2.unsqueeze(0), dim=-1)
+
+        tangent = F.normalize(tangent, dim=-1)
+
+        # Bitangent from right-handed frame
+        bitangent = F.normalize(torch.cross(n, tangent, dim=-1), dim=-1)
+
+        return tangent, bitangent
+
 
     # def compute_tangent_bitangent_flat(self, normals):
     #     """
