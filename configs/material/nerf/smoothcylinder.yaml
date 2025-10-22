@@ -1,0 +1,63 @@
+name: smoothcylinder_material
+
+####network#####
+network: material
+database_name: nerf/smoothcylinder
+mesh: data/meshes/smoothcylinder_shape-300000.ply
+is_nerf: true
+anisotropy: true
+max_n_exp: 15
+max_alpha_exp: 10
+n_lobes: 2
+
+reg_diffuse_light: true
+reg_diffuse_light_lambda: 0.01 # Changed here from 0.010 to 0.002
+
+# Changed here
+reg_energy_loss: true
+reg_energy_loss_lambda: 0.01 # Changed here from 0.01 to 0.001
+
+reg_spec_loss: true
+reg_spec_loss_lambda: 0.01 # Changed here from 0.01 to 0.001
+
+reg_mat: true
+shader_cfg:
+  diffuse_sample_num: 512
+  specular_sample_num: 256
+  outer_light_version: direction
+  light_exp_max: 20 # Changed here from 20 to 15
+  inner_light_exp_max: 20 # Changed here from 20 to 15
+  human_lights: false
+  # Here should have same value as the one in the main config file
+  shading_feature_num: 256
+  num_viewdir_freqs: 0 #6
+
+######loss######
+loss: ['nerf_render','mat_reg']
+val_metric: ['mat_render']
+key_metric_name: psnr
+
+####dataset#####
+train_dataset_type: dummy
+dataset_dir: data/nerf_synthetic
+train_dataset_cfg:
+  database_name: nerf/smoothcylinder
+  dataset_dir: data/nerf_synthetic
+val_set_list:
+  -
+    name: val
+    type: dummy
+    cfg:
+      database_name: nerf/smoothcylinder
+      dataset_dir: data/nerf_synthetic
+
+####trainier####
+optimizer_type: adam
+lr_type: warm_up_cos
+lr_cfg:
+  end_warm: 1000
+  end_iter: 100000
+total_step: 100000
+val_interval: 1000
+save_interval: 1000
+train_log_step: 10
