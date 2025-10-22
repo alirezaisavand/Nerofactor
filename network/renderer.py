@@ -17,45 +17,45 @@ from tqdm import trange
 from scipy.spatial import cKDTree
 
 
-def load_masks(input_folder, as_bool=True, ignore_segmentation=True, h=0, w=0):
-    import os
-    """
-    Loads a list of 2D masks (numpy arrays) from the specified folder.
+# def load_masks(input_folder, as_bool=True, ignore_segmentation=True, h=0, w=0):
+#     import os
+#     """
+#     Loads a list of 2D masks (numpy arrays) from the specified folder.
 
-    Parameters:
-      input_folder (str): Directory path where the mask images are saved.
-      as_bool (bool): If True, returns masks as boolean arrays (True for mask, False for background);
-                      otherwise returns masks as floats in the range [0, 1].
+#     Parameters:
+#       input_folder (str): Directory path where the mask images are saved.
+#       as_bool (bool): If True, returns masks as boolean arrays (True for mask, False for background);
+#                       otherwise returns masks as floats in the range [0, 1].
 
-    Returns:
-      list of np.ndarray: Each array is of shape (H, W) representing a mask.
-    """
-    # List all files that follow the naming pattern used in save_masks (e.g., mask_000.png, mask_001.png, etc.)
-    mask_files = sorted([
-        os.path.join(input_folder, f)
-        for f in os.listdir(input_folder)
-        if f.startswith("mask_") and f.endswith(".png")
-    ])
+#     Returns:
+#       list of np.ndarray: Each array is of shape (H, W) representing a mask.
+#     """
+#     # List all files that follow the naming pattern used in save_masks (e.g., mask_000.png, mask_001.png, etc.)
+#     mask_files = sorted([
+#         os.path.join(input_folder, f)
+#         for f in os.listdir(input_folder)
+#         if f.startswith("mask_") and f.endswith(".png")
+#     ])
 
-    masks = []
-    for file_path in mask_files:
-        # Read the image as a grayscale image.
-        mask_img = cv2.imread(file_path, cv2.IMREAD_GRAYSCALE)
-        if mask_img is None:
-            print(f"Warning: Could not read image {file_path}.")
-            continue
+#     masks = []
+#     for file_path in mask_files:
+#         # Read the image as a grayscale image.
+#         mask_img = cv2.imread(file_path, cv2.IMREAD_GRAYSCALE)
+#         if mask_img is None:
+#             print(f"Warning: Could not read image {file_path}.")
+#             continue
 
-        # Convert from 0-255 to 0-1 by dividing by 255.
-        mask = mask_img.astype(np.float32) / 255.0
+#         # Convert from 0-255 to 0-1 by dividing by 255.
+#         mask = mask_img.astype(np.float32) / 255.0
 
-        if as_bool:
-            # Convert to boolean using a threshold.
-            mask = mask > 0.5
-        if ignore_segmentation:
-            print(mask.shape)
-            mask = np.ones((h, w), dtype=bool)  # ignore segmentation, use all pixels
-        masks.append(mask)
-    return np.stack(masks, 0)
+#         if as_bool:
+#             # Convert to boolean using a threshold.
+#             mask = mask > 0.5
+#         if ignore_segmentation:
+#             print(mask.shape)
+#             mask = np.ones((h, w), dtype=bool)  # ignore segmentation, use all pixels
+#         masks.append(mask)
+#     return np.stack(masks, 0)
 
 
 #
@@ -1205,17 +1205,17 @@ class NeROMaterialRenderer(nn.Module):
         self.train_ids = np.asarray(self.train_ids)
         # This part is for genetaring sementation masks
 
-        print('segmentation masks are loaded')
+        # print('segmentation masks are loaded')
 
         all_imgs_info = build_imgs_info(self.database, np.asarray(self.database.get_img_ids()), self.is_nerf)
 
         all_imgs_info = imgs_info_to_torch(all_imgs_info, 'cpu')
-        self.seg_masks, self.projected_masks = self._construct_nerf_segmentation_masks(all_imgs_info)
-        print('segmentation masks are created')
-        self.save_masks(self.seg_masks, '/home/NeRO/seg_masks')
-        self.save_masks(self.projected_masks, '/home/NeRO/projected_masks')
-        print('seg_masks shape:', len(self.seg_masks))
-        print('segmentation masks are saved')
+        # self.seg_masks, self.projected_masks = self._construct_nerf_segmentation_masks(all_imgs_info)
+        # print('segmentation masks are created')
+        # self.save_masks(self.seg_masks, '/home/NeRO/seg_masks')
+        # self.save_masks(self.projected_masks, '/home/NeRO/projected_masks')
+        # print('seg_masks shape:', len(self.seg_masks))
+        # print('segmentation masks are saved')
 
         if is_train:
             self.train_imgs_info = build_imgs_info(self.database, self.train_ids, self.is_nerf)
@@ -1342,39 +1342,39 @@ class NeROMaterialRenderer(nn.Module):
         return ray_batch
 
     # This part is for generating segmentation masks
-    def _construct_nerf_segmentation_masks(self, imgs_info, device='cpu', is_train=True):
-        imn, h, w, _ = imgs_info['cv2_imgs'].shape
+    # def _construct_nerf_segmentation_masks(self, imgs_info, device='cpu', is_train=True):
+    #     imn, h, w, _ = imgs_info['cv2_imgs'].shape
 
-        i, j = torch.meshgrid(torch.linspace(0, w - 1, w),
-                              torch.linspace(0, h - 1, h))  # pytorch's meshgrid has indexing='ij'
-        i = i.t()
-        j = j.t()
+    #     i, j = torch.meshgrid(torch.linspace(0, w - 1, w),
+    #                           torch.linspace(0, h - 1, h))  # pytorch's meshgrid has indexing='ij'
+    #     i = i.t()
+    #     j = j.t()
 
-        K = imgs_info['Ks'][0]
-        dirs = torch.stack([(i - K[0][2]) / K[0][0], -(j - K[1][2]) / K[1][1], -torch.ones_like(i)], -1)
+    #     K = imgs_info['Ks'][0]
+    #     dirs = torch.stack([(i - K[0][2]) / K[0][0], -(j - K[1][2]) / K[1][1], -torch.ones_like(i)], -1)
 
-        imgs = imgs_info['cv2_imgs']  # imn,h*w,3
-        poses = imgs_info['poses']  # imn,3,4
-        # if is_train:
-        #     masks = imgs_info['masks'].reshape(imn, h * w)
+    #     imgs = imgs_info['cv2_imgs']  # imn,h*w,3
+    #     poses = imgs_info['poses']  # imn,3,4
+    #     # if is_train:
+    #     #     masks = imgs_info['masks'].reshape(imn, h * w)
 
-        rays_d = [torch.sum(dirs[..., None, :].cpu() * poses[i, :3, :3], -1) for i in range(imn)]
-        rays_d = torch.stack(rays_d, 0).reshape(imn, h, w, 3)
-        rays_o = [poses[i, :3, -1].expand(rays_d[0].shape) for i in range(imn)]
-        rays_o = torch.stack(rays_o, 0).reshape(imn, h, w, 3)
-        self._warn_ray_tracing(rays_o)
-        poses = poses.unsqueeze(1).repeat(1, h * w, 1, 1)
-        from segment_anything import SamAutomaticMaskGenerator, sam_model_registry
-        sam_checkpoint = "/home/NeRO/sam_vit_h_4b8939.pth"
-        device = "cuda"
-        sam = sam_model_registry["vit_h"](checkpoint=sam_checkpoint)
-        sam.to(device=device)
-        mask_generator = SamAutomaticMaskGenerator(sam)
+    #     rays_d = [torch.sum(dirs[..., None, :].cpu() * poses[i, :3, :3], -1) for i in range(imn)]
+    #     rays_d = torch.stack(rays_d, 0).reshape(imn, h, w, 3)
+    #     rays_o = [poses[i, :3, -1].expand(rays_d[0].shape) for i in range(imn)]
+    #     rays_o = torch.stack(rays_o, 0).reshape(imn, h, w, 3)
+    #     self._warn_ray_tracing(rays_o)
+    #     poses = poses.unsqueeze(1).repeat(1, h * w, 1, 1)
+    #     from segment_anything import SamAutomaticMaskGenerator, sam_model_registry
+    #     sam_checkpoint = "/home/NeRO/sam_vit_h_4b8939.pth"
+    #     device = "cuda"
+    #     sam = sam_model_registry["vit_h"](checkpoint=sam_checkpoint)
+    #     sam.to(device=device)
+    #     mask_generator = SamAutomaticMaskGenerator(sam)
 
-        segmentation_masks, projected_masks = self.propagate_masks(imgs, rays_o, rays_d, poses, imgs_info['Ks'],
-                                                                   mask_generator,
-                                                                   self.trace_in_batch)
-        return segmentation_masks, projected_masks
+    #     segmentation_masks, projected_masks = self.propagate_masks(imgs, rays_o, rays_d, poses, imgs_info['Ks'],
+    #                                                                mask_generator,
+    #                                                                self.trace_in_batch)
+    #     return segmentation_masks, projected_masks
 
     def project(self, pts, pose, K):
         """
@@ -1404,43 +1404,43 @@ class NeROMaterialRenderer(nn.Module):
 
         return pts_img_hom.cpu().numpy()
 
-    def choose_matching_mask(self, pointcloud, pose, K, seg_masks, H, W):
-        """
-        Projects the source pointcloud into the target view and compares the
-        resulting footprint with each segmentation mask.
-        - pointcloud: (N,3) array from image 0.
-        - pose: (3,4) camera pose for the target view.
-        - K: (3,3) intrinsic matrix for the target view.
-        - seg_masks: list/array of binary segmentation masks (each shape (H, W)).
-        - H, W: dimensions of the image.
-        Returns:
-          best_idx: index of the segmentation mask with maximum overlap (or None if no overlap).
-          overlap: the pixel overlap count.
-        """
-        uv = self.project(pointcloud, pose, K)
-        # Round to integer pixel coordinates.
-        uv_round = np.round(uv).astype(int)
-        # Filter points that lie within the image bounds.
-        valid = (uv_round[:, 0] >= 0) & (uv_round[:, 0] < W) & \
-                (uv_round[:, 1] >= 0) & (uv_round[:, 1] < H)
-        uv_valid = uv_round[valid]
-        if uv_valid.shape[0] == 0:
-            return None, 0, np.zeros((H, W), dtype=bool)
-        # Build a footprint mask from the projected points.
-        footprint = np.zeros((H, W), dtype=bool)
-        footprint[uv_valid[:, 1], uv_valid[:, 0]] = True
+    # def choose_matching_mask(self, pointcloud, pose, K, seg_masks, H, W):
+    #     """
+    #     Projects the source pointcloud into the target view and compares the
+    #     resulting footprint with each segmentation mask.
+    #     - pointcloud: (N,3) array from image 0.
+    #     - pose: (3,4) camera pose for the target view.
+    #     - K: (3,3) intrinsic matrix for the target view.
+    #     - seg_masks: list/array of binary segmentation masks (each shape (H, W)).
+    #     - H, W: dimensions of the image.
+    #     Returns:
+    #       best_idx: index of the segmentation mask with maximum overlap (or None if no overlap).
+    #       overlap: the pixel overlap count.
+    #     """
+    #     uv = self.project(pointcloud, pose, K)
+    #     # Round to integer pixel coordinates.
+    #     uv_round = np.round(uv).astype(int)
+    #     # Filter points that lie within the image bounds.
+    #     valid = (uv_round[:, 0] >= 0) & (uv_round[:, 0] < W) & \
+    #             (uv_round[:, 1] >= 0) & (uv_round[:, 1] < H)
+    #     uv_valid = uv_round[valid]
+    #     if uv_valid.shape[0] == 0:
+    #         return None, 0, np.zeros((H, W), dtype=bool)
+    #     # Build a footprint mask from the projected points.
+    #     footprint = np.zeros((H, W), dtype=bool)
+    #     footprint[uv_valid[:, 1], uv_valid[:, 0]] = True
 
-        # Compute overlap with each segmentation mask.
-        overlaps = []
-        for m in seg_masks:
-            m_bool = m['segmentation'].astype(bool)
-            overlaps.append(np.sum(footprint & m_bool))
-        if len(overlaps) == 0:
-            return None, 0, footprint
-        best_idx = int(np.argmax(overlaps))
-        if overlaps[best_idx] == 0:
-            return None, 0, footprint
-        return best_idx, overlaps[best_idx], footprint
+    #     # Compute overlap with each segmentation mask.
+    #     overlaps = []
+    #     for m in seg_masks:
+    #         m_bool = m['segmentation'].astype(bool)
+    #         overlaps.append(np.sum(footprint & m_bool))
+    #     if len(overlaps) == 0:
+    #         return None, 0, footprint
+    #     best_idx = int(np.argmax(overlaps))
+    #     if overlaps[best_idx] == 0:
+    #         return None, 0, footprint
+    #     return best_idx, overlaps[best_idx], footprint
 
     def build_pointcloud(self, src_mask, ray_origins, ray_dirs, trace_fn):
         """
@@ -1469,70 +1469,70 @@ class NeROMaterialRenderer(nn.Module):
         # Save point cloud to a file (e.g., 'cloud.ply')
         o3d.io.write_point_cloud("cloud.ply", pcd)
 
-    def propagate_masks(self, imgs, ray_origins, ray_dirs, camera_poses, Ks, seg_model, trace_fn):
-        """
-        Iterates over all images and for each, selects the instance mask
-        that best overlaps with the projected source object.
-        - imgs: list of images.
-        - ray_origins: list/array of ray origins per image; each has shape (H, W, 3).
-        - ray_dirs: list/array of ray directions per image; each has shape (H, W, 3).
-        - camera_poses: (n, 3, 4) camera poses.
-        - Ks: list of (3,3) intrinsics matrices for each image.
-        - seg_model: function that takes an image and returns segmentation masks
-                     (list/array of binary masks, each shape (H, W)).
-        - trace_fn: function trace_in_batch(ray_origins, ray_dirs).
-        Returns:
-          selected_masks: list of selected object masks (one per image).
-        """
-        imgs = imgs.cpu().numpy()
-        n = len(imgs)
-        H, W = imgs[0].shape[:2]
+    # def propagate_masks(self, imgs, ray_origins, ray_dirs, camera_poses, Ks, seg_model, trace_fn):
+    #     """
+    #     Iterates over all images and for each, selects the instance mask
+    #     that best overlaps with the projected source object.
+    #     - imgs: list of images.
+    #     - ray_origins: list/array of ray origins per image; each has shape (H, W, 3).
+    #     - ray_dirs: list/array of ray directions per image; each has shape (H, W, 3).
+    #     - camera_poses: (n, 3, 4) camera poses.
+    #     - Ks: list of (3,3) intrinsics matrices for each image.
+    #     - seg_model: function that takes an image and returns segmentation masks
+    #                  (list/array of binary masks, each shape (H, W)).
+    #     - trace_fn: function trace_in_batch(ray_origins, ray_dirs).
+    #     Returns:
+    #       selected_masks: list of selected object masks (one per image).
+    #     """
+    #     imgs = imgs.cpu().numpy()
+    #     n = len(imgs)
+    #     H, W = imgs[0].shape[:2]
 
-        # For image 0, assume you have a manually selected mask (or one chosen via seg_model).
-        src_masks = seg_model.generate(imgs[0])
+    #     # For image 0, assume you have a manually selected mask (or one chosen via seg_model).
+    #     src_masks = seg_model.generate(imgs[0])
 
-        src_mask = src_masks[1]['segmentation']
-        # Here, we assume src_mask is the binary mask of the target object.
-        selected_masks = []
-        projected_masks = []
-        # Build the object's 3D pointcloud from image 0.
+    #     src_mask = src_masks[1]['segmentation']
+    #     # Here, we assume src_mask is the binary mask of the target object.
+    #     selected_masks = []
+    #     projected_masks = []
+    #     # Build the object's 3D pointcloud from image 0.
 
-        pts3d = self.build_pointcloud(src_mask, ray_origins[0], ray_dirs[0], trace_fn)
-        self.save_pointcloud(pts3d)
-        # Process images 1 ... n-1.
+    #     pts3d = self.build_pointcloud(src_mask, ray_origins[0], ray_dirs[0], trace_fn)
+    #     self.save_pointcloud(pts3d)
+    #     # Process images 1 ... n-1.
 
-        for i in range(0, n):
-            # Get segmentation masks for image i.
-            seg_masks = seg_model.generate(imgs[i])
-            # Use the previously computed pointcloud to find the best match.
-            best_idx, overlap, projected_mask = self.choose_matching_mask(pts3d, camera_poses[i][0], Ks[0], seg_masks,
-                                                                          H, W)
-            projected_masks.append(projected_mask)
-            if best_idx is None:
-                # No good match found; return an empty mask.
-                selected_masks.append(np.zeros((H, W), dtype=np.uint8))
-            else:
-                selected_masks.append(seg_masks[best_idx]['segmentation'])
-        return selected_masks, projected_masks
+    #     for i in range(0, n):
+    #         # Get segmentation masks for image i.
+    #         seg_masks = seg_model.generate(imgs[i])
+    #         # Use the previously computed pointcloud to find the best match.
+    #         best_idx, overlap, projected_mask = self.choose_matching_mask(pts3d, camera_poses[i][0], Ks[0], seg_masks,
+    #                                                                       H, W)
+    #         projected_masks.append(projected_mask)
+    #         if best_idx is None:
+    #             # No good match found; return an empty mask.
+    #             selected_masks.append(np.zeros((H, W), dtype=np.uint8))
+    #         else:
+    #             selected_masks.append(seg_masks[best_idx]['segmentation'])
+    #     return selected_masks, projected_masks
 
-    def save_masks(self, masks, output_folder):
-        """
-        Saves a list of 2D masks (numpy arrays) to the specified folder.
+    # def save_masks(self, masks, output_folder):
+    #     """
+    #     Saves a list of 2D masks (numpy arrays) to the specified folder.
 
-        Parameters:
-          masks (list of np.ndarray): List of masks (each of shape (H, W)).
-          output_folder (str): Directory path to save the mask images.
-        """
-        import os
-        import cv2
-        os.makedirs(output_folder, exist_ok=True)
+    #     Parameters:
+    #       masks (list of np.ndarray): List of masks (each of shape (H, W)).
+    #       output_folder (str): Directory path to save the mask images.
+    #     """
+    #     import os
+    #     import cv2
+    #     os.makedirs(output_folder, exist_ok=True)
 
-        for i, mask in enumerate(masks):
-            # Ensure the mask is uint8 (0-255) if it isn't already.
-            mask_uint8 = (255 * mask).astype(np.uint8)
-            file_path = os.path.join(output_folder, f"mask_{i:03d}.png")
-            cv2.imwrite(file_path, mask_uint8)
-            print(f"Saved mask {i} to {file_path}")
+    #     for i, mask in enumerate(masks):
+    #         # Ensure the mask is uint8 (0-255) if it isn't already.
+    #         mask_uint8 = (255 * mask).astype(np.uint8)
+    #         file_path = os.path.join(output_folder, f"mask_{i:03d}.png")
+    #         cv2.imwrite(file_path, mask_uint8)
+    #         print(f"Saved mask {i} to {file_path}")
 
     def _construct_nerf_ray_batch(self, imgs_info, device='cpu', is_train=True):
         imn, _, h, w = imgs_info['imgs'].shape
