@@ -1280,9 +1280,6 @@ class MCShadingNetwork(nn.Module):
         return T_rot, B_rot
 
     def sample_aniso_ggx_directions(self,
-                                    mesh,
-                                    tangents,
-                                    bitangents,
                                     rotation: torch.Tensor,
                                     tree,
                                     pts: torch.Tensor,
@@ -1732,13 +1729,13 @@ class MCShadingNetwork(nn.Module):
 
         return t_norm, b_norm
 
-    def shade_anisotropic_mixed(self, mesh, tangents, bitangents, tree, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, rotation, human_poses, is_train):
+    def shade_anisotropic_mixed(self, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, rotation, human_poses, is_train):
 
         num_spec_samples = self.cfg['specular_sample_num']
 
         if self.cfg['n_lobes'] == 1:
 
-            hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(mesh, tangents, bitangents, rotation, tree, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
+            hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rotation, tree, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
             diffuse_directions = self.sample_diffuse_directions(normals, is_train)
 
             point_num, diffuse_num, _ = diffuse_directions.shape
@@ -1858,15 +1855,15 @@ class MCShadingNetwork(nn.Module):
 
 
 
-    def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh, tangents, bitangents, tree, is_seperate=True):
+    def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, is_seperate=True):
         # print('anisotropic_forward:')
         mx, my, alpha, F0, kd, ks, rotation = self.predict_anisotropic_components(pts)
-        return self.shade_anisotropic_mixed(mesh, tangents, bitangents, tree, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, rotation, human_poses, is_train)
+        return self.shade_anisotropic_mixed(pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, rotation, human_poses, is_train)
 
 
-    def forward(self, pts, view_dirs, normals, human_poses, step, is_train, mesh, tangents, bitangents, tree):
-        if mesh is not None:
-            return self.anisotropic_forward(pts, view_dirs, normals, human_poses, step, is_train, mesh, tangents, bitangents, tree, is_seperate=True)
+    def forward(self, pts, view_dirs, normals, human_poses, step, is_train):
+        if self.cfg['anisotropy']:
+            return self.anisotropic_forward(pts, view_dirs, normals, human_poses, step, is_train, is_seperate=True)
         view_dirs, normals = F.normalize(view_dirs, dim=-1), F.normalize(normals, dim=-1)
         reflections = torch.sum(view_dirs * normals, -1, keepdim=True) * normals * 2 - view_dirs
         metallic, roughness, albedo = self.predict_materials(pts)  # [pn,1] [pn,1] [pn,3]

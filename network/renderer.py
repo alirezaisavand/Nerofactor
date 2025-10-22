@@ -1094,91 +1094,91 @@ class NeROMaterialRenderer(nn.Module):
         self._init_dataset(is_train)
         self._init_shader()
 
-    def compute_pca_tangent_frame(self):
-        """
-        mesh: object with
-          mesh.vertices   : (V,3) array of vertex positions
-          mesh.adjacency  : list of lists of neighbor indices for each vertex
-          mesh.normals    : (V,3) array of normals (unit length)
-        Returns:
-          T, B arrays of shape (V,3) each
-        """
-        mesh = self.mesh
-        V = len(mesh.vertices)
-        T = np.zeros((V, 3))
-        B = np.zeros((V, 3))
+    # def compute_pca_tangent_frame(self):
+    #     """
+    #     mesh: object with
+    #       mesh.vertices   : (V,3) array of vertex positions
+    #       mesh.adjacency  : list of lists of neighbor indices for each vertex
+    #       mesh.normals    : (V,3) array of normals (unit length)
+    #     Returns:
+    #       T, B arrays of shape (V,3) each
+    #     """
+    #     mesh = self.mesh
+    #     V = len(mesh.vertices)
+    #     T = np.zeros((V, 3))
+    #     B = np.zeros((V, 3))
 
-        for i in range(V):
-            p = mesh.vertices[i]
-            N = mesh.vertex_normals[i]
-            # gather neighbor positions
-            neigh_idx = self.adjacency[i]
-            neigh_pts = np.asarray(mesh.vertices)[neigh_idx]
+    #     for i in range(V):
+    #         p = mesh.vertices[i]
+    #         N = mesh.vertex_normals[i]
+    #         # gather neighbor positions
+    #         neigh_idx = self.adjacency[i]
+    #         neigh_pts = np.asarray(mesh.vertices)[neigh_idx]
 
-            # project neighbors into tangent plane
-            offsets = neigh_pts - p  # (k,3)
-            proj = offsets - np.outer(offsets.dot(N), N)  # remove normal component
+    #         # project neighbors into tangent plane
+    #         offsets = neigh_pts - p  # (k,3)
+    #         proj = offsets - np.outer(offsets.dot(N), N)  # remove normal component
 
-            if proj.shape[0] < 3:
-                # fallback to arbitrary frame if too few neighbors
-                ref = np.array([0, 1, 0])
-                if abs(N.dot(ref)) > 0.99: ref = np.array([1, 0, 0])
-                t = ref - N * (N.dot(ref))
-                t /= np.linalg.norm(t)
-            else:
-                # PCA: covariance of planar offsets
-                C = proj.T @ proj  # (3×3), but rank-2
-                eigvals, eigvecs = np.linalg.eigh(C)
-                # eigenvector with largest eigenvalue in plane
-                t = eigvecs[:, np.argmax(eigvals)]
-                # ensure t ⟂ N
-                t = t - N * (N.dot(t))
-                t /= np.linalg.norm(t)
+    #         if proj.shape[0] < 3:
+    #             # fallback to arbitrary frame if too few neighbors
+    #             ref = np.array([0, 1, 0])
+    #             if abs(N.dot(ref)) > 0.99: ref = np.array([1, 0, 0])
+    #             t = ref - N * (N.dot(ref))
+    #             t /= np.linalg.norm(t)
+    #         else:
+    #             # PCA: covariance of planar offsets
+    #             C = proj.T @ proj  # (3×3), but rank-2
+    #             eigvals, eigvecs = np.linalg.eigh(C)
+    #             # eigenvector with largest eigenvalue in plane
+    #             t = eigvecs[:, np.argmax(eigvals)]
+    #             # ensure t ⟂ N
+    #             t = t - N * (N.dot(t))
+    #             t /= np.linalg.norm(t)
 
-            b = np.cross(N, t)
-            b /= np.linalg.norm(b)
-            T[i] = t
-            B[i] = b
+    #         b = np.cross(N, t)
+    #         b /= np.linalg.norm(b)
+    #         T[i] = t
+    #         B[i] = b
 
-        return torch.from_numpy(T), torch.from_numpy(B)
+    #     return torch.from_numpy(T), torch.from_numpy(B)
 
-    def build_vertex_adjacency(self):
-        """
-        faces: (M×3) iterable of int triplets
-        num_vertices: total number of vertices V
-        returns: list of sets, adjacency[i] = set of neighbor vertex indices of i
-        """
-        faces = self.mesh.triangles
-        num_vertices = len(self.mesh.vertices)
-        adjacency = [set() for _ in range(num_vertices)]
-        for tri in faces:
-            i, j, k = tri
-            adjacency[i].update([j, k])
-            adjacency[j].update([i, k])
-            adjacency[k].update([i, j])
-        # convert sets to sorted lists
-        for i in range(num_vertices):
-            adjacency[i] = np.asarray(sorted(adjacency[i]), dtype=np.int32)
+    # def build_vertex_adjacency(self):
+    #     """
+    #     faces: (M×3) iterable of int triplets
+    #     num_vertices: total number of vertices V
+    #     returns: list of sets, adjacency[i] = set of neighbor vertex indices of i
+    #     """
+    #     faces = self.mesh.triangles
+    #     num_vertices = len(self.mesh.vertices)
+    #     adjacency = [set() for _ in range(num_vertices)]
+    #     for tri in faces:
+    #         i, j, k = tri
+    #         adjacency[i].update([j, k])
+    #         adjacency[j].update([i, k])
+    #         adjacency[k].update([i, j])
+    #     # convert sets to sorted lists
+    #     for i in range(num_vertices):
+    #         adjacency[i] = np.asarray(sorted(adjacency[i]), dtype=np.int32)
 
-        return adjacency
+    #     return adjacency
 
-    def build_triangle_kdtree(self, verts: torch.Tensor, faces: torch.LongTensor):
-        """
-        Build a KD-tree over triangle centroids.
+    # def build_triangle_kdtree(self, verts: torch.Tensor, faces: torch.LongTensor):
+    #     """
+    #     Build a KD-tree over triangle centroids.
 
-        Args:
-          verts: (V,3) tensor of vertex positions
-          faces: (F,3) LongTensor of triangle indices
+    #     Args:
+    #       verts: (V,3) tensor of vertex positions
+    #       faces: (F,3) LongTensor of triangle indices
 
-        Returns:
-          tree: cKDTree over centroids
-          centroids: (F,3) numpy array of triangle centroids
-        """
-        # Compute centroids
-        tri_verts = verts[faces].cpu().numpy()  # (F,3,3)
-        centroids = tri_verts.mean(axis=1)  # (F,3)
-        tree = cKDTree(centroids)
-        return tree, centroids
+    #     Returns:
+    #       tree: cKDTree over centroids
+    #       centroids: (F,3) numpy array of triangle centroids
+    #     """
+    #     # Compute centroids
+    #     tri_verts = verts[faces].cpu().numpy()  # (F,3,3)
+    #     centroids = tri_verts.mean(axis=1)  # (F,3)
+    #     tree = cKDTree(centroids)
+    #     return tree, centroids
 
     def _init_geometry(self):
         device = torch.device('cuda')
@@ -1187,16 +1187,16 @@ class NeROMaterialRenderer(nn.Module):
         if not self.mesh.has_vertex_normals():
             print("Computing vertex normals...")
             self.mesh.compute_vertex_normals()
-        faces_np = np.asarray(self.mesh.triangles, dtype=np.int64)
-        faces = torch.from_numpy(faces_np).to(device=device, dtype=torch.long)
-        self.tree, centroids = self.build_triangle_kdtree(
-            torch.from_numpy(np.asarray(self.mesh.vertices)).to(device=device),
-            faces)
+        # faces_np = np.asarray(self.mesh.triangles, dtype=np.int64)
+        # faces = torch.from_numpy(faces_np).to(device=device, dtype=torch.long)
+        # self.tree, centroids = self.build_triangle_kdtree(
+            # torch.from_numpy(np.asarray(self.mesh.vertices)).to(device=device),
+            # faces)
 
-        print('calculating tangents for mesh vertices')
-        self.adjacency = self.build_vertex_adjacency()
+        # print('calculating tangents for mesh vertices')
+        # self.adjacency = self.build_vertex_adjacency()
 
-        self.T, self.B = self.compute_pca_tangent_frame()
+        # self.T, self.B = self.compute_pca_tangent_frame()
 
     def _init_dataset(self, is_train):
         # train/test split
@@ -1599,8 +1599,7 @@ class NeROMaterialRenderer(nn.Module):
             self.train_batch[k] = v[shuffle_idxs]
 
     def shade(self, pts, view_dirs, normals, human_poses, is_train, step=None):
-        rgb_pr, outputs = self.shader_network(pts, view_dirs, normals, human_poses, step, is_train, self.mesh, self.T,
-                                              self.B, self.tree)
+        rgb_pr, outputs = self.shader_network(pts, view_dirs, normals, human_poses, step, is_train)
         outputs['rgb_pr'] = rgb_pr
         return outputs
 
