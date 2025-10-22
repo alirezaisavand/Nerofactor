@@ -1281,7 +1281,6 @@ class MCShadingNetwork(nn.Module):
 
     def sample_aniso_ggx_directions(self,
                                     rotation: torch.Tensor,
-                                    tree,
                                     pts: torch.Tensor,
                                     m_x: torch.Tensor,
                                     m_y: torch.Tensor,
@@ -1598,136 +1597,136 @@ class MCShadingNetwork(nn.Module):
 
         return f_d
 
-    def find_triangles_and_barycentrics_kdtree(
-            self,
-            verts: torch.Tensor,
-            faces: torch.LongTensor,
-            pts: torch.Tensor,
-            tree: cKDTree,
-            k: int = 5,
-    ):
-        """
-        For each point in pts, search k nearest triangle centroids,
-        test barycentric coordinates, and return the containing triangle.
+    # def find_triangles_and_barycentrics_kdtree(
+    #         self,
+    #         verts: torch.Tensor,
+    #         faces: torch.LongTensor,
+    #         pts: torch.Tensor,
+    #         tree: cKDTree,
+    #         k: int = 5,
+    # ):
+    #     """
+    #     For each point in pts, search k nearest triangle centroids,
+    #     test barycentric coordinates, and return the containing triangle.
 
-        Args:
-          verts: (V,3)
-          faces: (F,3)
-          pts: (N,3)
-          tree: cKDTree over centroids
-          centroids: (F,3) numpy array
-          k: number of candidate triangles
+    #     Args:
+    #       verts: (V,3)
+    #       faces: (F,3)
+    #       pts: (N,3)
+    #       tree: cKDTree over centroids
+    #       centroids: (F,3) numpy array
+    #       k: number of candidate triangles
 
-        Returns:
-          tri_indices: (N,) LongTensor of face IDs
-          bary_coords: (N,3) tensor of barycentric coords
-        """
-        device = pts.device
-        pts_np = pts.cpu().numpy()  # (N,3)
-        _, idxs = tree.query(pts_np, k=k)  # (N,k)
-        tri_indices = []
-        bary_coords = []
-        for pi, candidates in enumerate(idxs):
-            p = pts[pi]
-            for fid in candidates:
-                tri = verts[faces[fid]]  # (3,3)
-                v0, v1 = tri[1] - tri[0], tri[2] - tri[0]
-                v2 = p - tri[0]
-                d00 = torch.dot(v0, v0);
-                d01 = torch.dot(v0, v1)
-                d11 = torch.dot(v1, v1);
-                d20 = torch.dot(v2, v0)
-                d21 = torch.dot(v2, v1)
-                denom = d00 * d11 - d01 * d01 + 1e-8
-                v = (d11 * d20 - d01 * d21) / denom
-                w = (d00 * d21 - d01 * d20) / denom
-                u = 1 - v - w
-                bary = torch.stack([u, v, w])
-                if (bary >= -1e-3).all() and (bary <= 1 + 1e-3).all():
-                    tri_indices.append(int(fid))
-                    bary_coords.append(bary)
-                    break
+    #     Returns:
+    #       tri_indices: (N,) LongTensor of face IDs
+    #       bary_coords: (N,3) tensor of barycentric coords
+    #     """
+    #     device = pts.device
+    #     pts_np = pts.cpu().numpy()  # (N,3)
+    #     _, idxs = tree.query(pts_np, k=k)  # (N,k)
+    #     tri_indices = []
+    #     bary_coords = []
+    #     for pi, candidates in enumerate(idxs):
+    #         p = pts[pi]
+    #         for fid in candidates:
+    #             tri = verts[faces[fid]]  # (3,3)
+    #             v0, v1 = tri[1] - tri[0], tri[2] - tri[0]
+    #             v2 = p - tri[0]
+    #             d00 = torch.dot(v0, v0);
+    #             d01 = torch.dot(v0, v1)
+    #             d11 = torch.dot(v1, v1);
+    #             d20 = torch.dot(v2, v0)
+    #             d21 = torch.dot(v2, v1)
+    #             denom = d00 * d11 - d01 * d01 + 1e-8
+    #             v = (d11 * d20 - d01 * d21) / denom
+    #             w = (d00 * d21 - d01 * d20) / denom
+    #             u = 1 - v - w
+    #             bary = torch.stack([u, v, w])
+    #             if (bary >= -1e-3).all() and (bary <= 1 + 1e-3).all():
+    #                 tri_indices.append(int(fid))
+    #                 bary_coords.append(bary)
+    #                 break
 
-        tri_indices = torch.LongTensor(tri_indices).to(device)
-        bary_coords = torch.stack(bary_coords, dim=0).to(device)
-        return tri_indices, bary_coords
+    #     tri_indices = torch.LongTensor(tri_indices).to(device)
+    #     bary_coords = torch.stack(bary_coords, dim=0).to(device)
+    #     return tri_indices, bary_coords
 
-    def get_tangent_bitangent_via_kdtree(
-            self,
-            verts: torch.Tensor,
-            faces: torch.LongTensor,
-            vert_tangents: torch.Tensor,
-            vert_bitangents: torch.Tensor,
-            pts: torch.Tensor,
-            query_normals: torch.Tensor,
-            tree: cKDTree,
-            k: int = 5,
-    ):
-        """
-        Full pipeline: KD-tree lookup → barycentric coords → frame interpolation.
+    # def get_tangent_bitangent_via_kdtree(
+    #         self,
+    #         verts: torch.Tensor,
+    #         faces: torch.LongTensor,
+    #         vert_tangents: torch.Tensor,
+    #         vert_bitangents: torch.Tensor,
+    #         pts: torch.Tensor,
+    #         query_normals: torch.Tensor,
+    #         tree: cKDTree,
+    #         k: int = 5,
+    # ):
+    #     """
+    #     Full pipeline: KD-tree lookup → barycentric coords → frame interpolation.
 
-        Returns:
-          (tangents, bitangents): each (N,3)
-        """
-        # 1) find face IDs and barycentrics via KD-tree
-        tri_idx, baryc = self.find_triangles_and_barycentrics_kdtree(
-            verts, faces, pts, tree, k
-        )
+    #     Returns:
+    #       (tangents, bitangents): each (N,3)
+    #     """
+    #     # 1) find face IDs and barycentrics via KD-tree
+    #     tri_idx, baryc = self.find_triangles_and_barycentrics_kdtree(
+    #         verts, faces, pts, tree, k
+    #     )
 
-        # 2) interpolate & orthonormalize
-        return self.interpolate_tangent_bitangent(
-            vert_tangents, vert_bitangents, faces,
-            tri_idx, baryc, query_normals
-        )
+    #     # 2) interpolate & orthonormalize
+    #     return self.interpolate_tangent_bitangent(
+    #         vert_tangents, vert_bitangents, faces,
+    #         tri_idx, baryc, query_normals
+    #     )
 
-    def interpolate_tangent_bitangent(
-            self,
-            vert_tangents: torch.Tensor,
-            vert_bitangents: torch.Tensor,
-            faces: torch.LongTensor,
-            tri_indices: torch.LongTensor,
-            barycentric_coords: torch.Tensor,
-            query_normals: torch.Tensor,
-    ):
-        """
-        vert_tangents:       (V, 3) per-vertex tangent vectors
-        vert_bitangents:     (V, 3) per-vertex bitangent vectors
-        faces:               (F, 3) triangle vertex indices
-        tri_indices:         (N,) face index for each query point
-        barycentric_coords:  (N, 3) barycentric coords per query point
-        query_normals:       (N, 3) interpolated normals at query points
+    # def interpolate_tangent_bitangent(
+    #         self,
+    #         vert_tangents: torch.Tensor,
+    #         vert_bitangents: torch.Tensor,
+    #         faces: torch.LongTensor,
+    #         tri_indices: torch.LongTensor,
+    #         barycentric_coords: torch.Tensor,
+    #         query_normals: torch.Tensor,
+    # ):
+    #     """
+    #     vert_tangents:       (V, 3) per-vertex tangent vectors
+    #     vert_bitangents:     (V, 3) per-vertex bitangent vectors
+    #     faces:               (F, 3) triangle vertex indices
+    #     tri_indices:         (N,) face index for each query point
+    #     barycentric_coords:  (N, 3) barycentric coords per query point
+    #     query_normals:       (N, 3) interpolated normals at query points
 
-        Returns:
-          (tangents, bitangents): each (N, 3)
-        """
-        # 1. Gather the three vertex indices for each sampled point
-        face_verts = faces[tri_indices]  # shape: (N, 3)
+    #     Returns:
+    #       (tangents, bitangents): each (N, 3)
+    #     """
+    #     # 1. Gather the three vertex indices for each sampled point
+    #     face_verts = faces[tri_indices]  # shape: (N, 3)
 
-        # 2. Pull per-vertex tangents & bitangents
-        t0 = vert_tangents[face_verts[:, 0].cpu()]
-        t1 = vert_tangents[face_verts[:, 1].cpu()]
-        t2 = vert_tangents[face_verts[:, 2].cpu()]
-        b0 = vert_bitangents[face_verts[:, 0].cpu()]
-        b1 = vert_bitangents[face_verts[:, 1].cpu()]
-        b2 = vert_bitangents[face_verts[:, 2].cpu()]
+    #     # 2. Pull per-vertex tangents & bitangents
+    #     t0 = vert_tangents[face_verts[:, 0].cpu()]
+    #     t1 = vert_tangents[face_verts[:, 1].cpu()]
+    #     t2 = vert_tangents[face_verts[:, 2].cpu()]
+    #     b0 = vert_bitangents[face_verts[:, 0].cpu()]
+    #     b1 = vert_bitangents[face_verts[:, 1].cpu()]
+    #     b2 = vert_bitangents[face_verts[:, 2].cpu()]
 
-        # 3. Barycentric interpolation
-        bc = barycentric_coords
-        t_interp = t0 * bc[:, 0:1] + t1 * bc[:, 1:2] + t2 * bc[:, 2:3]
-        b_interp = b0 * bc[:, 0:1] + b1 * bc[:, 1:2] + b2 * bc[:, 2:3]
+    #     # 3. Barycentric interpolation
+    #     bc = barycentric_coords
+    #     t_interp = t0 * bc[:, 0:1] + t1 * bc[:, 1:2] + t2 * bc[:, 2:3]
+    #     b_interp = b0 * bc[:, 0:1] + b1 * bc[:, 1:2] + b2 * bc[:, 2:3]
 
-        # 4. Orthonormalize the tangent relative to the normal
-        n = query_normals
-        t_proj = t_interp - n * torch.sum(n * t_interp, dim=1, keepdim=True)
-        t_norm = F.normalize(t_proj, eps=1e-6, dim=1)
+    #     # 4. Orthonormalize the tangent relative to the normal
+    #     n = query_normals
+    #     t_proj = t_interp - n * torch.sum(n * t_interp, dim=1, keepdim=True)
+    #     t_norm = F.normalize(t_proj, eps=1e-6, dim=1)
 
-        # 5. Orthonormalize the bitangent relative to both normal & tangent
-        b_proj = b_interp
-        b_proj = b_proj - n * torch.sum(n * b_proj, dim=1, keepdim=True)
-        b_proj = b_proj - t_norm * torch.sum(t_norm * b_proj, dim=1, keepdim=True)
-        b_norm = F.normalize(b_proj, eps=1e-6, dim=1)
+    #     # 5. Orthonormalize the bitangent relative to both normal & tangent
+    #     b_proj = b_interp
+    #     b_proj = b_proj - n * torch.sum(n * b_proj, dim=1, keepdim=True)
+    #     b_proj = b_proj - t_norm * torch.sum(t_norm * b_proj, dim=1, keepdim=True)
+    #     b_norm = F.normalize(b_proj, eps=1e-6, dim=1)
 
-        return t_norm, b_norm
+    #     return t_norm, b_norm
 
     def shade_anisotropic_mixed(self, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, rotation, human_poses, is_train):
 
