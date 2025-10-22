@@ -1928,7 +1928,7 @@ class MCShadingNetwork(nn.Module):
                     torch.abs(my - my_ch) +
                     torch.abs(alpha - alpha_ch) +
                     torch.abs(F0 - F0_ch)+
-                    # ((sources-sources_ch)**2).sum(dim=-1, keepdim=True)+
+                    ((sources-sources_ch)**2).sum(dim=-1, keepdim=True)+
                     alignment_loss
                     ) *
                 self.cfg['reg_lambda1'],
