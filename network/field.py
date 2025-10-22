@@ -1891,7 +1891,8 @@ class MCShadingNetwork(nn.Module):
                 raise NotImplementedError
 
             mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch = self.predict_anisotropic_components(pts + change)
-
+            dot = (rotation * rotation_ch).sum(dim=-1).clamp(-1.0, 1.0)
+            l_smooth = 2.0 * (1.0 - dot)
             reg = reg + torch.mean(
                 (torch.abs(kd - kd_ch) +
                     torch.abs(ks - ks_ch) +
@@ -1899,7 +1900,7 @@ class MCShadingNetwork(nn.Module):
                     torch.abs(my - my_ch) +
                     torch.abs(alpha - alpha_ch) +
                     torch.abs(F0 - F0_ch)+
-                    torch.abs(rotation - rotation_ch)
+                    reg
                     ) *
                 self.cfg['reg_lambda1'],
                         dim=1)
