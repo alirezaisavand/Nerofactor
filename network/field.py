@@ -1735,7 +1735,7 @@ class MCShadingNetwork(nn.Module):
 
         if self.cfg['n_lobes'] == 1:
 
-            hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rotation, tree, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
+            hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rotation, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
             diffuse_directions = self.sample_diffuse_directions(normals, is_train)
 
             point_num, diffuse_num, _ = diffuse_directions.shape
