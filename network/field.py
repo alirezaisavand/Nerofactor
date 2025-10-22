@@ -1919,9 +1919,11 @@ class MCShadingNetwork(nn.Module):
             # Using squared absolute dot product ensures smoothness and symmetry
             
             mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch, sources_ch = self.predict_anisotropic_components(pts + change)
-            
 
-
+            print(f"sources shape: {sources.shape}")
+            print(f"mx shape: {mx.shape}")
+            print(f"dot shape: {dot.shape}")
+            print(f"((sources-sources_ch)**2).sum(dim=-1) shape: {((sources-sources_ch)**2).sum(dim=-1).shape}")
             reg = reg + torch.mean(
                 (torch.abs(kd - kd_ch) +
                     torch.abs(ks - ks_ch) +
