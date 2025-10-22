@@ -756,7 +756,7 @@ class MCShadingNetwork(nn.Module):
         'reg_change': True,
         'change_eps': 0.05,
         'change_type': 'gaussian',
-        'reg_lambda1': 0.05 , # Prev value was 0.05
+        'reg_lambda1': 0.1 , # Prev value was 0.05
         'reg_min_max': True,
 
         'random_azimuth': True,
@@ -1927,7 +1927,7 @@ class MCShadingNetwork(nn.Module):
                     torch.abs(my - my_ch) +
                     torch.abs(alpha - alpha_ch) +
                     torch.abs(F0 - F0_ch)+
-                    ((sources-sources_ch)**2).sum(dim=-1, keepdim=True)+
+                    # ((sources-sources_ch)**2).sum(dim=-1, keepdim=True)+
                     dot.abs()**2
                     ) *
                 self.cfg['reg_lambda1'],
