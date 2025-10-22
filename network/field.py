@@ -848,38 +848,84 @@ class MCShadingNetwork(nn.Module):
 
     def compute_tangent_bitangent_flat(self, normals):
         """
-        Compute tangents and bitangents for flat surfaces with no UVs using a reference direction.
+        Build a continuous orthonormal basis (tangent, bitangent) from normals
+        using the branchless Duff/Frisvad ONB. Works without UVs and avoids
+        boundary artifacts from reference-vector switching.
 
         Args:
-            normals (torch.Tensor): (N, 3) tensor of vertex normals
+            normals (torch.Tensor): (N, 3) tensor of (approximately) unit normals
 
         Returns:
-            torch.Tensor: (N, 3) tensor of tangents
-            torch.Tensor: (N, 3) tensor of bitangents
+            (tangent, bitangent): each (N, 3), orthonormal with the input normal
         """
-        # Set a global reference direction (here, along the X-axis)
-        ref_dir = torch.tensor([1.0, 0.0, 0.0], dtype=torch.float32)  # Example: X-axis
+        # Ensure unit normals (cheap and prevents drift)
+        n = torch.nn.functional.normalize(normals, dim=-1)
 
-        # Compute tangent by crossing the normal with the reference direction
-        tangent = torch.cross(normals, ref_dir.unsqueeze(0).expand(normals.size(0), -1), dim=-1)
+        nx, ny, nz = n.unbind(-1)
+        one = torch.ones_like(nz)
+        minus_one = -one
 
-        # Handle cases where tangent is zero due to alignment with the reference direction
-        zero_tangent_mask = tangent.norm(dim=1) < 1e-6
-        if zero_tangent_mask.any():
-            # Recalculate tangent using the Y-axis if the normal is aligned with X-axis
-            ref_dir = torch.tensor([0.0, 1.0, 0.0], dtype=torch.float32)  # Example: Y-axis
-            tangent[zero_tangent_mask] = torch.cross(normals[zero_tangent_mask], ref_dir.unsqueeze(0), dim=-1)
+        # branchless "sign" of nz
+        sign = torch.where(nz >= 0, one, minus_one)
 
-        # Normalize the tangents
-        tangent = torch.nn.functional.normalize(tangent, p=2, dim=-1)
+        # Duff/Frisvad constants (epsilon for numerical safety)
+        eps = 1e-8
+        a = -1.0 / (sign + nz + eps)
+        b = nx * ny * a
 
-        # Compute bitangent via cross product with normal
-        bitangent = torch.cross(normals, tangent, dim=-1)
+        # Tangent and bitangent (already orthogonal to n up to fp error)
+        t = torch.stack([
+            1.0 + sign * nx * nx * a,
+            sign * b,
+            -sign * nx
+        ], dim=-1)
 
-        # Normalize bitangents
-        bitangent = torch.nn.functional.normalize(bitangent, p=2, dim=-1)
+        bvec = torch.stack([
+            b,
+            sign + ny * ny * a,
+            -ny
+        ], dim=-1)
 
-        return tangent, bitangent
+        # Final re-orthonormalization (robust to fp noise)
+        t = torch.nn.functional.normalize(t - (t * n).sum(-1, keepdim=True) * n, dim=-1)
+        bvec = torch.nn.functional.normalize(torch.cross(n, t, dim=-1), dim=-1)
+
+        return t, bvec
+
+    # def compute_tangent_bitangent_flat(self, normals):
+    #     """
+    #     Compute tangents and bitangents for flat surfaces with no UVs using a reference direction.
+
+    #     Args:
+    #         normals (torch.Tensor): (N, 3) tensor of vertex normals
+
+    #     Returns:
+    #         torch.Tensor: (N, 3) tensor of tangents
+    #         torch.Tensor: (N, 3) tensor of bitangents
+    #     """
+    #     # Set a global reference direction (here, along the X-axis)
+    #     ref_dir = torch.tensor([1.0, 0.0, 0.0], dtype=torch.float32)  # Example: X-axis
+
+    #     # Compute tangent by crossing the normal with the reference direction
+    #     tangent = torch.cross(normals, ref_dir.unsqueeze(0).expand(normals.size(0), -1), dim=-1)
+
+    #     # Handle cases where tangent is zero due to alignment with the reference direction
+    #     zero_tangent_mask = tangent.norm(dim=1) < 1e-6
+    #     if zero_tangent_mask.any():
+    #         # Recalculate tangent using the Y-axis if the normal is aligned with X-axis
+    #         ref_dir = torch.tensor([0.0, 1.0, 0.0], dtype=torch.float32)  # Example: Y-axis
+    #         tangent[zero_tangent_mask] = torch.cross(normals[zero_tangent_mask], ref_dir.unsqueeze(0), dim=-1)
+
+    #     # Normalize the tangents
+    #     tangent = torch.nn.functional.normalize(tangent, p=2, dim=-1)
+
+    #     # Compute bitangent via cross product with normal
+    #     bitangent = torch.cross(normals, tangent, dim=-1)
+
+    #     # Normalize bitangents
+    #     bitangent = torch.nn.functional.normalize(bitangent, p=2, dim=-1)
+
+    #     return tangent, bitangent
 
     def sample_diffuse_directions(self, normals, is_train):
         # normals [pn,3]
