@@ -11,7 +11,7 @@ class NeRFRenderLoss(Loss):
 
     default_cfg = {
         'render_loss_weight_begin': 1,
-        'render_loss_weight_end': 1,
+        'render_loss_weight_end': 5,
         'render_weight_decay_begin': 0,
         'render_weight_decay_mid': 5000,
         'render_weight_decay_end': 10000,
@@ -161,7 +161,7 @@ class OccLoss(Loss):
 
 class InitSDFRegLoss(Loss):
     default_cfg = {
-        'SDF_loss_weight': 3,
+        'SDF_loss_weight': 1,
     }
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
