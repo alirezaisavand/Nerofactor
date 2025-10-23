@@ -790,7 +790,7 @@ class MCShadingNetwork(nn.Module):
             self.F0_predictor = make_predictor(256 + 3, 1)
             self.ks_predictor = make_predictor(256 + 3, 3)
             self.rotation_predictor = make_predictor(256 + 3, 2)
-            self.source_predictor = make_predictor(256 + 3, 3)
+            self.source_predictor = make_predictor(256 + 3, 3, activation='none')
 
 
 
