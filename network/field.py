@@ -1920,11 +1920,9 @@ class MCShadingNetwork(nn.Module):
             # Using squared absolute dot product ensures smoothness and symmetry
             mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch, sources_ch = self.predict_anisotropic_components(pts + change)
             curv_dot = (sources * sources_ch).sum(dim=-1, keepdim=True)
+            curv_loss = torch.abs(1 - curv_dot)
             # the dot would assign low weight importance to normals that are almost the same, and increasing error the more they deviate. So it's something like and L2 loss. But we want a L1 loss so we get the angle, and then we map it to range [0,1]
-            angle = torch.acos(
-                torch.clamp(curv_dot, -1.0 + 1e-6, 1.0 - 1e-6)
-            )  # goes to range 0 when the angle is the same and pi when is opposite
-            curvature_loss = angle / np.pi  # map to [0,1 range]
+
             reg = reg + torch.mean(
                 (torch.abs(kd - kd_ch) +
                     torch.abs(ks - ks_ch) +
@@ -1932,7 +1930,8 @@ class MCShadingNetwork(nn.Module):
                     torch.abs(my - my_ch) +
                     torch.abs(alpha - alpha_ch) +
                     torch.abs(F0 - F0_ch)+
-                    alignment_loss 
+                    alignment_loss +
+                    curv_loss
                     # curvature_loss
                     ) *
                 self.cfg['reg_lambda1'],
