@@ -161,7 +161,7 @@ class OccLoss(Loss):
 
 class InitSDFRegLoss(Loss):
     default_cfg = {
-        'SDF_loss_weight': 3,
+        'SDF_loss_weight': 4,
     }
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
@@ -206,7 +206,7 @@ class InitSDFRegLoss(Loss):
 class MaskLoss(Loss):
     default_cfg = {
         'mask_loss_weight_begin': 0.3,
-        'mask_loss_weight_end': 0.7,
+        'mask_loss_weight_end': 1,
         'mask_weight_decay_begin': 0,
         'mask_weight_decay_end': 30000,
     }
