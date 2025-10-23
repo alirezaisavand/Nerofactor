@@ -313,7 +313,7 @@ class CurvLoss(Loss):
 class OpacityLoss(Loss):
     default_cfg = {
         'opacity_loss_weight': 1,  # changed here from 0.01 to 1
-        'opacity_loss_weight_begin': 0.001,
+        'opacity_loss_weight_begin': 0.0001,
         'opacity_loss_weight_end': 0.01,
         'opacity_weight_decay_begin': 20000,
         'opacity_weight_decay_end': 50000,
