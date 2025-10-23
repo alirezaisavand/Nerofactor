@@ -756,7 +756,7 @@ class MCShadingNetwork(nn.Module):
         'reg_change': True,
         'change_eps': 0.05,
         'change_type': 'gaussian',
-        'reg_lambda1': 0.1 , # Prev value was 0.05
+        'reg_lambda1': 0.05 , # Prev value was 0.05
         'reg_min_max': True,
 
         'random_azimuth': True,
@@ -1223,7 +1223,7 @@ class MCShadingNetwork(nn.Module):
         rotation = F.normalize(rotation, dim=-1)
         sources = self.source_predictor(torch.cat([feats, pts], -1))
         sources = sources * 2.0 - 1.0
-        sources = sources / (torch.norm(sources, dim=-1, keepdim=True) + 1e-6)
+        sources = F.normalize(sources, eps=1e-8, dim=-1)
         return mx, my, alpha, F0, kd, ks, rotation, sources
 
 
@@ -1311,33 +1311,6 @@ class MCShadingNetwork(nn.Module):
         p = q / (denom + eps)
 
         return p  # (N, M, 1)
-
-    def compute_pdf_aniso_ggx2(self,
-            m_x: torch.Tensor,  # (N,1)
-            m_y: torch.Tensor,  # (N,1)
-            w_o: torch.Tensor,  # (N, 3)
-            h: torch.Tensor,  # (N, M, 3), half‐vectors in tangent‐space
-            theta_h,
-            phi_h,
-            eps: float = 1e-8
-    ) -> torch.Tensor:
-        """
-        Returns:
-          p: (N, M, 1) the sampling PDF p(ω_i | ω_o) per Eqn.(20)&(4).
-        """
-        N, M, _ = h.shape
-        sin_theta_h = torch.sin(theta_h)
-        cos_theta_h = torch.cos(theta_h)
-        sin_phi_h = torch.sin(phi_h)
-        cos_phi_h = torch.cos(phi_h)
-
-        denom = sin_theta_h*sin_theta_h * ((cos_phi_h*cos_phi_h)/ (m_x*m_x) + (sin_phi_h*sin_phi_h) / (m_y*m_y)) + cos_theta_h*cos_theta_h
-        D = (1 / np.pi) * (1 / (m_x*m_y)) * (1 / (denom * denom))
-        pdf_h = D * cos_theta_h
-        pdf_h = pdf_h.unsqueeze(2)
-
-
-        return pdf_h  # (N, M, 1)
 
     def rotate_tangent_bitangent(self, tangent, bitangent, cos_theta, sin_theta):
         T_rot = cos_theta * tangent + sin_theta * bitangent
