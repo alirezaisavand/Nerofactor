@@ -1947,6 +1947,7 @@ class MCShadingNetwork(nn.Module):
                     dim=0
                 ) * self.cfg['reg_energy_loss_lambda']
                 reg = reg + energy_reg
+                print(f"f_d_sum shape: {f_d_sum.shape}, f_s_sum shape: {f_s_sum.shape}")
                 print(f"energy_reg shape: {energy_reg.shape}")
 
             if self.cfg['reg_spec_loss']:
@@ -1955,6 +1956,7 @@ class MCShadingNetwork(nn.Module):
                     dim=0
                 ) * self.cfg['reg_spec_loss_lambda']
                 reg = reg + spec_reg
+                print(f"L_spec shape: {L_spec.shape}")
                 print(f"spec_reg shape: {spec_reg.shape}")
 
         return reg
