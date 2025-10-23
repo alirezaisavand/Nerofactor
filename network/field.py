@@ -1915,7 +1915,7 @@ class MCShadingNetwork(nn.Module):
                 raise NotImplementedError
 
             dot = (sources * normals).sum(dim=-1, keepdim=True)
-            alignment_loss = (dot.abs() ** 2)
+            alignment_loss = (dot ** 2)
             # Penalize alignment (i.e., |dot| close to 1)
             # Using squared absolute dot product ensures smoothness and symmetry
             mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch, sources_ch = self.predict_anisotropic_components(pts + change)
@@ -1930,8 +1930,8 @@ class MCShadingNetwork(nn.Module):
                     torch.abs(my - my_ch) +
                     torch.abs(alpha - alpha_ch) +
                     torch.abs(F0 - F0_ch)+
-                    alignment_loss +
-                    curv_loss
+                    alignment_loss * 0.2 +
+                    curv_loss * 0.2
                     # curvature_loss
                     ) *
                 self.cfg['reg_lambda1'],
