@@ -1922,6 +1922,7 @@ class MCShadingNetwork(nn.Module):
             mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch, sources_ch = self.predict_anisotropic_components(pts + change)
             curv_dot = (sources * sources_ch).sum(dim=-1, keepdim=True)
             curv_loss = (1 - curv_dot)**2
+            print(f"mx shape: {mx.shape}, curv_loss shape: {curv_loss.shape}, alignment_loss shape: {alignment_loss.shape}")
             # the dot would assign low weight importance to normals that are almost the same, and increasing error the more they deviate. So it's something like and L2 loss. But we want a L1 loss so we get the angle, and then we map it to range [0,1]
             print("torch.mean alignment loss:", torch.mean(alignment_loss, dim=1).item())
             print("torch.mean curvature loss:", torch.mean(curv_loss, dim=1).item())
