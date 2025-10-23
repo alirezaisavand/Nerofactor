@@ -1208,10 +1208,12 @@ class MCShadingNetwork(nn.Module):
 
     def predict_anisotropic_components(self, pts):
         feats = self.feats_network(pts)
+        mx_min, mx_max = 0.03, 1.0
+        my_min, my_max = 0.03, 1.0
         mx = self.mx_predictor(torch.cat([feats, pts], -1))
-        # mx = mx_min + (mx_max - mx_min)*mx
+        mx = mx_min + (mx_max - mx_min)*mx
         my = self.my_predictor(torch.cat([feats, pts], -1))
-        # my = my_min + (my_max - my_min)*my
+        my = my_min + (my_max - my_min)*my
         alpha = self.alpha_predictor(torch.cat([feats, pts], -1))
         # alpha = torch.ones_like(mx)
         F0 = self.F0_predictor(torch.cat([feats, pts], -1))
@@ -1221,8 +1223,7 @@ class MCShadingNetwork(nn.Module):
         rotation = F.normalize(rotation, dim=-1)
         sources = self.source_predictor(torch.cat([feats, pts], -1))
         sources = sources * 2.0 - 1.0
-        sources = F.normalize(sources, dim=-1)
-        #Todo return sources
+        sources = sources / (torch.norm(sources, dim=-1, keepdim=True) + 1e-6)
         return mx, my, alpha, F0, kd, ks, rotation, sources
 
 
@@ -1254,7 +1255,7 @@ class MCShadingNetwork(nn.Module):
         )
 
         # Step 2: Compute D(h) based on the formula
-        D_h = (1 / (np.pi * m_x * m_y * cos_theta_h ** 4)) * q_h  # (N, M, 1)
+        D_h = (1 / (np.pi * m_x * m_y * cos_theta_h ** 4 + 1e-6)) * q_h  # (N, M, 1)
 
         return D_h.unsqueeze(-1)
 
@@ -1922,7 +1923,8 @@ class MCShadingNetwork(nn.Module):
             curv_dot = (sources * sources_ch).sum(dim=-1, keepdim=True)
             curv_loss = (1 - curv_dot)**2
             # the dot would assign low weight importance to normals that are almost the same, and increasing error the more they deviate. So it's something like and L2 loss. But we want a L1 loss so we get the angle, and then we map it to range [0,1]
-
+            print("torch.mean alignment loss:", torch.mean(alignment_loss, dim=1).item())
+            print("torch.mean curvature loss:", torch.mean(curv_loss, dim=1).item())
             reg = reg + torch.mean(
                 (torch.abs(kd - kd_ch) +
                     torch.abs(ks - ks_ch) +
