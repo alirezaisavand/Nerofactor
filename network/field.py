@@ -1937,21 +1937,25 @@ class MCShadingNetwork(nn.Module):
                 self.cfg['reg_lambda1'],
                         dim=1)
             reg = reg + mat_reg
-            print(f"mx shape: {mx.shape}, curv_loss shape: {curv_loss.shape}, alignment_loss shape: {alignment_loss.shape},mat_reg shape: {mat_reg.shape}")
+            print(f"mx shape: {mx.shape}, curv_loss shape: {curv_loss.shape}, alignment_loss shape: {alignment_loss.shape}")
             
             if self.cfg['reg_energy_loss']:
                 f_r_loss = 2 * np.pi * (f_d_sum + f_s_sum) - 1
                 f_r_loss = torch.nn.functional.relu(f_r_loss)
-                reg = reg + torch.mean(
+                energy_reg = torch.mean(
                     f_r_loss.sum(dim=1),
                     dim=0
                 ) * self.cfg['reg_energy_loss_lambda']
+                reg = reg + energy_reg
+                print(f"energy_reg shape: {energy_reg.shape}")
 
             if self.cfg['reg_spec_loss']:
-                reg = reg + torch.mean(
+                spec_reg = torch.mean(
                     L_spec.sum(dim=1),
                     dim=0
                 ) * self.cfg['reg_spec_loss_lambda']
+                reg = reg + spec_reg
+                print(f"spec_reg shape: {spec_reg.shape}")
 
         return reg
 
