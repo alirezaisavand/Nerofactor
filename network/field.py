@@ -1724,7 +1724,7 @@ class MCShadingNetwork(nn.Module):
                     torch.abs(alpha - alpha_ch) +
                     torch.abs(F0 - F0_ch)+
                     alignment_loss +
-                    curv_loss + 
+                    # curv_loss + 
                     length_loss * 0.1
                     # curvature_loss
                     ) *
