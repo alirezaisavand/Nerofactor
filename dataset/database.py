@@ -124,6 +124,7 @@ class GlossyRealDatabase(BaseDatabase):
                 self.Ks[img_id] = np.diag([rw, rh, 1.0]) @ K
 
     def _parse_colmap(self):
+        print(f'{self.root}/cache.pkl')
         if Path(f'{self.root}/cache.pkl').exists():
             self.poses, self.Ks, self.image_names, self.img_ids = read_pickle(f'{self.root}/cache.pkl')
         else:
