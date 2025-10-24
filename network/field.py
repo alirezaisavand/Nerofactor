@@ -1603,7 +1603,7 @@ class MCShadingNetwork(nn.Module):
         outputs['f_s_sum'] = f_s_sum
         outputs['L_spec'] = L_spec
         outputs['rotation'] = rotation
-        outputs['sources'] = (sources + 1) / 2
+        outputs['sources'] = (sources_norm + 1) / 2
         return colors, outputs
         
 
