@@ -1663,7 +1663,7 @@ class NeROMaterialRenderer(nn.Module):
         #                'diffuse_color': 3, 'albedo': 3, 'metallic': 1, 'roughness': 1}
         output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'diffuse_light': 3,
                        'kd': 3, 'ks': 3, 'F0': 1, "alpha": 1, 'diffuse_color': 3, 'specular_color': 3, 'mx': 1, 'my': 1,
-                       'f_d_sum': 3, 'f_s_sum': 3, 'tangents': 3, 'bitangents': 3, 'sources': 3, 'normals': 3, 'L_spec': 3, }
+                       'f_d_sum': 3, 'f_s_sum': 3, 'tangents': 3, 'bitangents': 3, 'sources': 3, 'sources_norm': 3, 'normals': 3, 'L_spec': 3}
         outputs = {k: [] for k in output_keys.keys()}
         rn = ray_batch['rays_o'].shape[0]
         for ri in range(0, rn, trn):
@@ -1690,6 +1690,7 @@ class NeROMaterialRenderer(nn.Module):
                 outputs_cur['tangents'][hit_mask] = shade_outputs['tangents'].float()
                 outputs_cur['bitangents'][hit_mask] = shade_outputs['bitangents'].float()
                 outputs_cur['sources'][hit_mask] = shade_outputs['sources'].float()
+                outputs_cur['sources_norm'][hit_mask] = shade_outputs['sources_norm'].float()
                 outputs_cur['normals'][hit_mask] = shade_outputs['normals'].float()
                 if self.cfg['n_lobes'] == 1:
                     outputs_cur['ks'][hit_mask] = shade_outputs['ks']
