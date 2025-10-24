@@ -1555,7 +1555,7 @@ class MCShadingNetwork(nn.Module):
 
 
     def shade_anisotropic_mixed(self, pts, normals, sources, view_dirs, mx, my, alpha, F0, kd, ks, rotation, human_poses, is_train):
-        sources_norm = F.normalize(sources, dim=-1)
+        sources_norm = torch.nn.functional.normalize(sources, dim=-1)
         num_spec_samples = self.cfg['specular_sample_num']
 
         hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rotation, pts, mx, my, view_dirs, num_spec_samples, normals, sources_norm, 'cuda')
