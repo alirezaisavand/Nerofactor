@@ -1222,9 +1222,9 @@ class MCShadingNetwork(nn.Module):
         rotation = self.rotation_predictor(torch.cat([feats, pts], -1))
         rotation = F.normalize(rotation, dim=-1)
         sources = self.source_predictor(torch.cat([feats, pts], -1))
-        sources[:, :2] = sources[:, :2] * 2.0 - 1.0
-        sources = F.normalize(sources, eps=1e-8, dim=-1)
-        return mx, my, alpha, F0, kd, ks, rotation, sources
+        sources_out = torch.stack([sources[:, :2] * 2.0 - 1.0, sources[:, 2:3]], dim=-1)
+        sources_out = F.normalize(sources_out, eps=1e-8, dim=-1)
+        return mx, my, alpha, F0, kd, ks, rotation, sources_out
 
 
 
