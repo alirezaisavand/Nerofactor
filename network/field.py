@@ -1727,7 +1727,7 @@ class MCShadingNetwork(nn.Module):
                 ) ,
                 dim=1)
             print(f"length loss: {length_loss.mean().item():.6f}, alignment loss: {alignment_loss.mean().item():.6f}, mat reg loss: {mat_reg.mean().item():.6f}")
-            source_loss = alignment_loss + length_loss * 0.1
+            source_loss = (alignment_loss + length_loss) * 0.001
             reg = reg + (mat_reg + source_loss) * self.cfg['reg_lambda1']
             if self.cfg['reg_energy_loss']:
                 f_r_loss = 2 * np.pi * (f_d_sum + f_s_sum) - 1
