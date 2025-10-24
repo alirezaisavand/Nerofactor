@@ -1730,8 +1730,7 @@ class MCShadingNetwork(nn.Module):
                     torch.abs(mx - mx_ch) +
                     torch.abs(my - my_ch) +
                     torch.abs(alpha - alpha_ch) +
-                    torch.abs(F0 - F0_ch) + 
-                    curv_loss * 0.001
+                    torch.abs(F0 - F0_ch)
                 ) ,
                 dim=1)
             # print(f"length loss: {length_loss.mean().item():.6f}, alignment loss: {alignment_loss.mean().item():.6f}, mat reg loss: {mat_reg.mean().item():.6f}")
