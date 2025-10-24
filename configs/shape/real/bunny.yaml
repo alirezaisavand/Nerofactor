@@ -11,14 +11,14 @@ clip_sample_variance: false
 fixed_camera: true
 
 ######loss######
-loss: ['nerf_render','eikonal','std','init_sdf_reg','occ']
+loss: ['nerf_render','eikonal','std','init_sdf_reg','occ', 'opacity', 'curv', 'mask']
 val_metric: ['shape_render']
 key_metric_name: psnr
 eikonal_weight: 0.1
 
 ####dataset#####
 train_dataset_type: dummy
-dataset_dir: your_dataset_dir
+dataset_dir: data/GlossyReal
 train_dataset_cfg:
   database_name: real/bunny/raw_1024
 val_set_list:
