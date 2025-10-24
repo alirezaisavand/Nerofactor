@@ -1718,10 +1718,11 @@ class MCShadingNetwork(nn.Module):
             mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch, sources_ch = self.predict_anisotropic_components(pts + change)
             
             # sources_ch_normalized = F.normalize(sources_ch, dim=-1)
-            # curv_dot = (sources_normalized * sources_ch_normalized).sum(dim=-1, keepdim=True)
-            # curv_loss = (1 - curv_dot)**2
+            curv_dot = (rotation * rotation_ch).sum(dim=-1, keepdim=True)
+            curv_loss = (1 - curv_dot)**2
             # length_loss = self.unit_norm_prior(sources, kind="huber", delta=0.1)
             # the dot would assign low weight importance to normals that are almost the same, and increasing error the more they deviate. So it's something like and L2 loss. But we want a L1 loss so we get the angle, and then we map it to range [0,1]
+            
             mat_reg = torch.mean(
                 (
                     torch.abs(kd - kd_ch) +
@@ -1730,7 +1731,7 @@ class MCShadingNetwork(nn.Module):
                     torch.abs(my - my_ch) +
                     torch.abs(alpha - alpha_ch) +
                     torch.abs(F0 - F0_ch) + 
-                    torch.abs(rotation - rotation_ch)
+                    curv_loss
                 ) ,
                 dim=1)
             # print(f"length loss: {length_loss.mean().item():.6f}, alignment loss: {alignment_loss.mean().item():.6f}, mat reg loss: {mat_reg.mean().item():.6f}")
