@@ -1603,7 +1603,7 @@ class MCShadingNetwork(nn.Module):
         outputs['f_s_sum'] = f_s_sum
         outputs['L_spec'] = L_spec
         outputs['rotation'] = rotation
-        outputs['sources'] = sources
+        outputs['sources'] = (sources + 1) / 2
         return colors, outputs
         
 
@@ -1726,7 +1726,6 @@ class MCShadingNetwork(nn.Module):
                     alignment_loss +
                     # curv_loss + 
                     length_loss * 0.1
-                    # curvature_loss
                     ) *
                 self.cfg['reg_lambda1'],
                         dim=1)
