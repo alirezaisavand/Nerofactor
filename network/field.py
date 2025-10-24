@@ -1224,7 +1224,7 @@ class MCShadingNetwork(nn.Module):
         sin_raw = rotation[:, 1:2] * 2.0 - 1.0  # [-1, 1]
 
         rotation = torch.cat([cos_raw, sin_raw], dim=-1)
-        rotation = F.normalize(rotation, dim=-1)    # ensure unit-length
+        # rotation = F.normalize(rotation, dim=-1)    # ensure unit-length
         sources = self.source_predictor(torch.cat([feats, pts], -1))
         sources = sources * 2.0 - 1.0
         return mx, my, alpha, F0, kd, ks, rotation, sources
@@ -1565,8 +1565,9 @@ class MCShadingNetwork(nn.Module):
     def shade_anisotropic_mixed(self, pts, normals, sources, view_dirs, mx, my, alpha, F0, kd, ks, rotation, human_poses, is_train):
         sources_norm = torch.nn.functional.normalize(sources, dim=-1)
         num_spec_samples = self.cfg['specular_sample_num']
+        rotation_norm = F.normalize(rotation, dim=-1)
         #Todo sources is not passed here
-        hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rotation, pts, mx, my, view_dirs, num_spec_samples, normals, None, 'cuda')
+        hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rotation_norm, pts, mx, my, view_dirs, num_spec_samples, normals, None, 'cuda')
         diffuse_directions = self.sample_diffuse_directions(normals, is_train)
 
         point_num, diffuse_num, _ = diffuse_directions.shape
@@ -1701,6 +1702,7 @@ class MCShadingNetwork(nn.Module):
 
     def anisotropic_regularization(self, pts, normals, sources, t, b, mx, my, alpha, F0, kd, ks, f_d_sum, f_s_sum, L_spec, rotation):
         reg = 0
+
         if self.cfg['reg_change']:
             normals = F.normalize(normals, dim=-1)
             x = self.get_orthogonal_directions(normals)
@@ -1721,11 +1723,10 @@ class MCShadingNetwork(nn.Module):
             mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch, sources_ch = self.predict_anisotropic_components(pts + change)
             
             # sources_ch_normalized = F.normalize(sources_ch, dim=-1)
-            curv_dot = (rotation * rotation_ch).sum(dim=-1, keepdim=True)
-            curv_loss = (1 - curv_dot)**2
+
             # length_loss = self.unit_norm_prior(sources, kind="huber", delta=0.1)
             # the dot would assign low weight importance to normals that are almost the same, and increasing error the more they deviate. So it's something like and L2 loss. But we want a L1 loss so we get the angle, and then we map it to range [0,1]
-            
+            length_loss = self.unit_norm_prior(rotation, kind="huber", delta=0.1)
             mat_reg = torch.mean(
                 (
                     torch.abs(kd - kd_ch) +
@@ -1733,7 +1734,8 @@ class MCShadingNetwork(nn.Module):
                     torch.abs(mx - mx_ch) +
                     torch.abs(my - my_ch) +
                     torch.abs(alpha - alpha_ch) +
-                    torch.abs(F0 - F0_ch)
+                    torch.abs(F0 - F0_ch) + 
+                    length_loss * 0.001
                 ) ,
                 dim=1)
             # print(f"length loss: {length_loss.mean().item():.6f}, alignment loss: {alignment_loss.mean().item():.6f}, mat reg loss: {mat_reg.mean().item():.6f}")
