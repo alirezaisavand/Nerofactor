@@ -1220,6 +1220,7 @@ class MCShadingNetwork(nn.Module):
         kd = self.kd_predictor(torch.cat([feats, pts], -1))
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
         rotation = self.rotation_predictor(torch.cat([feats, pts], -1))
+        rotation = rotation * 2.0 - 1.0
         rotation = F.normalize(rotation, dim=-1)
         sources = self.source_predictor(torch.cat([feats, pts], -1))
         sources = sources * 2.0 - 1.0
@@ -1333,7 +1334,11 @@ class MCShadingNetwork(nn.Module):
         z = normals  # pn,3
 
         x, y = self.compute_tangent_bitangent_flat(normals, sources)
-
+        # rotate tangent and bitangent
+        cos_theta = rotation[:, 0:1]  # (N,1)
+        sin_theta = rotation[:, 1:2]  # (N,1)
+        if sources is None:
+            x, y = self.rotate_tangent_bitangent(x, y, cos_theta, sin_theta)
 
         m_x = m_x.to(device)  # (N,1)
         m_y = m_y.to(device)  # (N,1)
@@ -1557,8 +1562,8 @@ class MCShadingNetwork(nn.Module):
     def shade_anisotropic_mixed(self, pts, normals, sources, view_dirs, mx, my, alpha, F0, kd, ks, rotation, human_poses, is_train):
         sources_norm = torch.nn.functional.normalize(sources, dim=-1)
         num_spec_samples = self.cfg['specular_sample_num']
-
-        hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rotation, pts, mx, my, view_dirs, num_spec_samples, normals, sources_norm, 'cuda')
+        #Todo sources is not passed here
+        hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rotation, pts, mx, my, view_dirs, num_spec_samples, normals, None, 'cuda')
         diffuse_directions = self.sample_diffuse_directions(normals, is_train)
 
         point_num, diffuse_num, _ = diffuse_directions.shape
@@ -1705,17 +1710,17 @@ class MCShadingNetwork(nn.Module):
                 change = (torch.cos(ang) * x + torch.sin(ang) * y) * eps
             else:
                 raise NotImplementedError
-            sources_normalized = F.normalize(sources, dim=-1)
-            dot = (sources_normalized * normals).sum(dim=-1, keepdim=True)
-            alignment_loss = (dot ** 2)
+            # sources_normalized = F.normalize(sources, dim=-1)
+            # dot = (sources_normalized * normals).sum(dim=-1, keepdim=True)
+            # alignment_loss = (dot ** 2)
             # Penalize alignment (i.e., |dot| close to 1)
             # Using squared absolute dot product ensures smoothness and symmetry
             mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch, sources_ch = self.predict_anisotropic_components(pts + change)
             
-            sources_ch_normalized = F.normalize(sources_ch, dim=-1)
-            curv_dot = (sources_normalized * sources_ch_normalized).sum(dim=-1, keepdim=True)
-            curv_loss = (1 - curv_dot)**2
-            length_loss = self.unit_norm_prior(sources, kind="huber", delta=0.1)
+            # sources_ch_normalized = F.normalize(sources_ch, dim=-1)
+            # curv_dot = (sources_normalized * sources_ch_normalized).sum(dim=-1, keepdim=True)
+            # curv_loss = (1 - curv_dot)**2
+            # length_loss = self.unit_norm_prior(sources, kind="huber", delta=0.1)
             # the dot would assign low weight importance to normals that are almost the same, and increasing error the more they deviate. So it's something like and L2 loss. But we want a L1 loss so we get the angle, and then we map it to range [0,1]
             mat_reg = torch.mean(
                 (
@@ -1724,12 +1729,13 @@ class MCShadingNetwork(nn.Module):
                     torch.abs(mx - mx_ch) +
                     torch.abs(my - my_ch) +
                     torch.abs(alpha - alpha_ch) +
-                    torch.abs(F0 - F0_ch)
+                    torch.abs(F0 - F0_ch) + 
+                    torch.abs(rotation - rotation_ch)
                 ) ,
                 dim=1)
-            print(f"length loss: {length_loss.mean().item():.6f}, alignment loss: {alignment_loss.mean().item():.6f}, mat reg loss: {mat_reg.mean().item():.6f}")
-            source_loss = (alignment_loss + length_loss) * 0.001
-            reg = reg + (mat_reg + source_loss) * self.cfg['reg_lambda1']
+            # print(f"length loss: {length_loss.mean().item():.6f}, alignment loss: {alignment_loss.mean().item():.6f}, mat reg loss: {mat_reg.mean().item():.6f}")
+            # source_loss = (alignment_loss + length_loss) * 0.001
+            reg = reg + (mat_reg) * self.cfg['reg_lambda1']
             if self.cfg['reg_energy_loss']:
                 f_r_loss = 2 * np.pi * (f_d_sum + f_s_sum) - 1
                 f_r_loss = torch.nn.functional.relu(f_r_loss)
