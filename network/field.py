@@ -1222,9 +1222,8 @@ class MCShadingNetwork(nn.Module):
         rotation = self.rotation_predictor(torch.cat([feats, pts], -1))
         rotation = F.normalize(rotation, dim=-1)
         sources = self.source_predictor(torch.cat([feats, pts], -1))
-        sources_out = torch.stack([sources[:, :2] * 2.0 - 1.0, sources[:, 2:3]], dim=-1)
-        sources_out = F.normalize(sources_out, eps=1e-8, dim=-1)
-        return mx, my, alpha, F0, kd, ks, rotation, sources_out
+        sources = sources * 2.0 - 1.0
+        return mx, my, alpha, F0, kd, ks, rotation, sources
 
 
 
@@ -1556,10 +1555,10 @@ class MCShadingNetwork(nn.Module):
 
 
     def shade_anisotropic_mixed(self, pts, normals, sources, view_dirs, mx, my, alpha, F0, kd, ks, rotation, human_poses, is_train):
-
+        sources_norm = F.normalize(sources, dim=-1)
         num_spec_samples = self.cfg['specular_sample_num']
 
-        hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rotation, pts, mx, my, view_dirs, num_spec_samples, normals, sources, 'cuda')
+        hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rotation, pts, mx, my, view_dirs, num_spec_samples, normals, sources_norm, 'cuda')
         diffuse_directions = self.sample_diffuse_directions(normals, is_train)
 
         point_num, diffuse_num, _ = diffuse_directions.shape
@@ -1667,6 +1666,30 @@ class MCShadingNetwork(nn.Module):
     def get_env_light(self):
         return self.predict_outer_lights_pts(self.light_pts)
 
+    def length_floor_loss(self, s, tau=0.2, beta=5, eps=1e-8):
+        r = s.norm(dim=-1) # (...,)
+
+        if beta is None:
+            # squared hinge
+            return torch.relu(tau - r).pow(2).mean()
+        else:
+            # smooth hinge via softplus
+            z = beta * (tau - r)
+            return (F.softplus(z).pow(2) / (beta * beta))
+
+    def unit_norm_prior(self, s, kind="huber", delta=0.1, eps=1e-8):
+        r = (s.pow(2).sum(dim=-1) + eps).sqrt()  # safe radius
+        if kind == "l2":          # (r-1)^2
+            e = r - 1.0
+            return (e * e).mean()
+        elif kind == "huber":     # robust
+            e = (r - 1.0).abs()
+            return torch.where(e < delta, 0.5 * e * e / delta, e - 0.5 * delta).mean()
+        elif kind == "log":       # (log r)^2
+            return (r.log().pow(2)).mean()
+        else:
+            raise ValueError("unknown kind")
+
     def anisotropic_regularization(self, pts, normals, sources, t, b, mx, my, alpha, F0, kd, ks, f_d_sum, f_s_sum, L_spec, rotation):
         reg = 0
         if self.cfg['reg_change']:
@@ -1681,14 +1704,17 @@ class MCShadingNetwork(nn.Module):
                 change = (torch.cos(ang) * x + torch.sin(ang) * y) * eps
             else:
                 raise NotImplementedError
-
-            dot = (sources * normals).sum(dim=-1, keepdim=True)
+            sources_normalized = F.normalize(sources, dim=-1)
+            dot = (sources_normalized * normals).sum(dim=-1, keepdim=True)
             alignment_loss = (dot ** 2)
             # Penalize alignment (i.e., |dot| close to 1)
             # Using squared absolute dot product ensures smoothness and symmetry
             mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch, sources_ch = self.predict_anisotropic_components(pts + change)
-            curv_dot = (sources * sources_ch).sum(dim=-1, keepdim=True)
+            
+            sources_ch_normalized = F.normalize(sources_ch, dim=-1)
+            curv_dot = (sources_normalized * sources_ch_normalized).sum(dim=-1, keepdim=True)
             curv_loss = (1 - curv_dot)**2
+            length_loss = self.unit_norm_prior(sources, kind="huber", delta=0.1)
             # the dot would assign low weight importance to normals that are almost the same, and increasing error the more they deviate. So it's something like and L2 loss. But we want a L1 loss so we get the angle, and then we map it to range [0,1]
             mat_reg = torch.mean(
                 (torch.abs(kd - kd_ch) +
@@ -1698,7 +1724,8 @@ class MCShadingNetwork(nn.Module):
                     torch.abs(alpha - alpha_ch) +
                     torch.abs(F0 - F0_ch)+
                     alignment_loss +
-                    curv_loss
+                    curv_loss + 
+                    length_loss * 0.1
                     # curvature_loss
                     ) *
                 self.cfg['reg_lambda1'],
