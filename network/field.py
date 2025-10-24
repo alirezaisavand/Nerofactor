@@ -1717,19 +1717,18 @@ class MCShadingNetwork(nn.Module):
             length_loss = self.unit_norm_prior(sources, kind="huber", delta=0.1)
             # the dot would assign low weight importance to normals that are almost the same, and increasing error the more they deviate. So it's something like and L2 loss. But we want a L1 loss so we get the angle, and then we map it to range [0,1]
             mat_reg = torch.mean(
-                (torch.abs(kd - kd_ch) +
+                (
+                    torch.abs(kd - kd_ch) +
                     torch.abs(ks - ks_ch) +
                     torch.abs(mx - mx_ch) +
                     torch.abs(my - my_ch) +
                     torch.abs(alpha - alpha_ch) +
-                    torch.abs(F0 - F0_ch)+
-                    alignment_loss +
-                    # curv_loss + 
-                    length_loss * 0.1
-                    ) *
-                self.cfg['reg_lambda1'],
-                        dim=1)
-            reg = reg + mat_reg
+                    torch.abs(F0 - F0_ch)
+                ) ,
+                dim=1)
+            print(f"length loss: {length_loss.mean().item():.6f}, alignment loss: {alignment_loss.mean().item():.6f}, mat reg loss: {mat_reg.mean().item():.6f}")
+            source_loss = alignment_loss + length_loss * 0.1
+            reg = reg + (mat_reg + source_loss) * self.cfg['reg_lambda1']
             if self.cfg['reg_energy_loss']:
                 f_r_loss = 2 * np.pi * (f_d_sum + f_s_sum) - 1
                 f_r_loss = torch.nn.functional.relu(f_r_loss)
