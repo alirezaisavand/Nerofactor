@@ -1152,7 +1152,7 @@ class MCShadingNetwork(nn.Module):
         sin_raw = rotation[:, 1:2]
         cos_raw = cos_raw * 2 - 1
         rotation = torch.cat([cos_raw, sin_raw], -1)
-        rotation = F.normalize(rotation, dim=-1)
+        # rotation = F.normalize(rotation, dim=-1)
         
         return mx, my, alpha, F0, kd, ks, rotation
 
@@ -1718,10 +1718,10 @@ class MCShadingNetwork(nn.Module):
     #     return t_norm, b_norm
 
     def shade_anisotropic_mixed(self, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, rotation, human_poses, is_train):
-
+        rot_normalized = torch.nn.functional.normalize(rotation, dim=-1)
         num_spec_samples = self.cfg['specular_sample_num']
 
-        hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rotation, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
+        hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rot_normalized, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
         diffuse_directions = self.sample_diffuse_directions(normals, is_train)
 
         point_num, diffuse_num, _ = diffuse_directions.shape
@@ -1830,6 +1830,7 @@ class MCShadingNetwork(nn.Module):
 
     def anisotropic_regularization(self, pts, normals, mx, my, alpha, F0, kd, ks, f_d_sum, f_s_sum, L_spec, rotation):
         reg = 0
+        rot_normalized = torch.nn.functional.normalize(rotation, dim=-1)
         if self.cfg['reg_change']:
             normals = F.normalize(normals, dim=-1)
             x = self.get_orthogonal_directions(normals)
@@ -1844,6 +1845,8 @@ class MCShadingNetwork(nn.Module):
                 raise NotImplementedError
 
             mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch = self.predict_anisotropic_components(pts + change)
+            tau = 0.5
+            rot_len_loss = torch.max(torch.zeros_like(mx), tau - torch.norm(rotation, dim=-1, keepdim=True))
 
             reg = reg + torch.mean(
                 (torch.abs(kd - kd_ch) +
@@ -1851,7 +1854,9 @@ class MCShadingNetwork(nn.Module):
                     torch.abs(mx - mx_ch) +
                     torch.abs(my - my_ch) +
                     torch.abs(alpha - alpha_ch) +
-                    torch.abs(F0 - F0_ch)) *
+                    torch.abs(F0 - F0_ch) +
+                    rot_len_loss * 0.01
+                ) *
                 self.cfg['reg_lambda1'],
                         dim=1)
 
