@@ -1151,7 +1151,7 @@ class MCShadingNetwork(nn.Module):
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
         rotation = self.rotation_predictor(torch.cat([feats, pts], -1))
         rotation = 2 * rotation - 1
-        rotation = F.normalize(rotation, dim=-1)
+        rotation = F.normalize(rotation, dim=-1, eps=1e-6)
         cos_2rot = rotation[:, 0:1]  # (N,1)
         sin_2rot = rotation[:, 1:2]  # (N,1
         cos_rot = torch.sqrt((cos_2rot + 1) / 2)
@@ -1226,9 +1226,9 @@ class MCShadingNetwork(nn.Module):
         #  -> (h_x^2 + h_y^2)/h_z^2 * ( h_x^2/(h_x^2+h_y^2)/m_x^2 + h_y^2/(h_x^2+h_y^2)/m_y^2 )
         # simplifies to:
         # print('tan_th, cos_phi, sin_phi, cos_th:', tan_th.shape, cos_phi.shape, sin_phi.shape, cos_th.shape)
-        exp_term = (tan_th * tan_th) * ((sin_phi * sin_phi) / (m_y * m_y) + (cos_phi * cos_phi) / (m_x * m_x))
+        exp_term = -(tan_th * tan_th) * ((sin_phi * sin_phi) / (m_y * m_y) + (cos_phi * cos_phi) / (m_x * m_x))
         # print((cos_phi / m_x).shape)
-        q = torch.exp(-exp_term)
+        q = torch.exp(exp_term.clamp(min=-50.0, max=50.0))  # (N,M,1)
 
         # denominator: 4π m_x m_y cos^3θ_h (ω_o · h)
         #   compute dot(ω_o, h) → (N,M,1)
@@ -1310,7 +1310,7 @@ class MCShadingNetwork(nn.Module):
 
         # 1) Uniformsk
         xi1 = torch.rand((N, M), device=device).clamp(min=eps)
-        xi2 = torch.rand((N, M), device=device)
+        xi2 = torch.rand((N, M), device=device).clamp(min=eps)
 
         two_pi_xi2 = 2.0 * np.pi * xi2  # (N,M)
 
