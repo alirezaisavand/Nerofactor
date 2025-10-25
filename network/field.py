@@ -1155,7 +1155,7 @@ class MCShadingNetwork(nn.Module):
         cos_2rot = rotation[:, 0:1]  # (N,1)
         sin_2rot = rotation[:, 1:2]  # (N,1
         cos_rot = torch.sqrt((cos_2rot + 1) / 2)
-        sin_rot =  torch.sqrt((1 - cos_2rot) / 2)
+        sin_rot =  torch.sign(sin_2rot) * torch.sqrt((1 - cos_2rot) / 2)
         rotation = torch.cat([cos_rot, sin_rot], -1)
         return mx, my, alpha, F0, kd, ks, rotation
 
