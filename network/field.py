@@ -1150,12 +1150,13 @@ class MCShadingNetwork(nn.Module):
         kd = self.kd_predictor(torch.cat([feats, pts], -1))
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
         rotation = self.rotation_predictor(torch.cat([feats, pts], -1))
-        cos_raw = rotation[:, 0:1]
-        sin_raw = rotation[:, 1:2]
-        cos_raw = cos_raw * 2 - 1
-        rotation = torch.cat([cos_raw, sin_raw], -1)
-        # rotation = F.normalize(rotation, dim=-1)
-        
+        rotation = 2 * rotation - 1
+        rotation = F.normalize(rotation, dim=-1)
+        cos_2rot = rotation[:, 0:1]  # (N,1)
+        sin_2rot = rotation[:, 1:2]  # (N,1
+        cos_rot = torch.sqrt((cos_2rot + 1) / 2)
+        sin_rot =  torch.sqrt((1 - cos_2rot) / 2)
+        rotation = torch.cat([cos_rot, sin_rot], -1)
         return mx, my, alpha, F0, kd, ks, rotation
 
 
@@ -1864,8 +1865,8 @@ class MCShadingNetwork(nn.Module):
                     torch.abs(mx - mx_ch) +
                     torch.abs(my - my_ch) +
                     torch.abs(alpha - alpha_ch) +
-                    torch.abs(F0 - F0_ch) +
-                    rot_len_loss * 0.01
+                    torch.abs(F0 - F0_ch)
+                    # rot_len_loss * 0.01
                 ) *
                 self.cfg['reg_lambda1'],
                         dim=1)
