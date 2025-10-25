@@ -100,10 +100,10 @@ class MaterialRenderMetrics(Loss):
 
         # additional_keys = ['albedo', 'metallic', 'roughness', 'specular_light', 'specular_color', 'diffuse_light',
         #                    'diffuse_color']
-        additional_keys = ['tangents', 'bitangents', 'normals',
-                           'kd', 'ks', 'specular_light', 'diffuse_light', 'F0',
-                           'alpha', 'specular_color', 'diffuse_color', 'mx', 'my',
-                           'f_d_sum', 'f_s_sum', 'L_spec']
+        additional_keys = ['sources', 'sources_norm', 'tangents', 
+                           'bitangents', 'normals', 'kd', 'ks', 'specular_light', 
+                           'diffuse_light', 'specular_color', 'diffuse_color', 'mx', 'my',
+                           'F0', 'alpha', 'f_d_sum', 'f_s_sum', 'L_spec']
         # additional_keys = ['albedo', 'specular_light', 'specular_color', 'diffuse_light',
         #                    'diffuse_color', 'spec_brdf']
         for k in additional_keys:
