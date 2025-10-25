@@ -1718,18 +1718,18 @@ class MCShadingNetwork(nn.Module):
     #     return t_norm, b_norm
 
     def shade_anisotropic_mixed(self, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, rotation, human_poses, is_train):
-        print(self.nan_inf_check(mx, 'mx'), self.nan_inf_check(my, 'my'), self.nan_inf_check(alpha, 'alpha'))
-        print(self.nan_inf_check(F0, 'F0'), self.nan_inf_check(kd, 'kd'), self.nan_inf_check(ks, 'ks'))
-        print(self.nan_inf_check(rotation, 'rotation'))
+        self.nan_inf_check(mx, 'mx'), self.nan_inf_check(my, 'my'), self.nan_inf_check(alpha, 'alpha')
+        self.nan_inf_check(F0, 'F0'), self.nan_inf_check(kd, 'kd'), self.nan_inf_check(ks, 'ks')
+        self.nan_inf_check(rotation, 'rotation')
         rot_normalized = torch.nn.functional.normalize(rotation, dim=-1)
         num_spec_samples = self.cfg['specular_sample_num']
 
         hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rot_normalized, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
-        print(self.nan_inf_check(hs, 'hs'), self.nan_inf_check(wis, 'wis'), self.nan_inf_check(cos_ths, 'cos_ths'))
-        print(self.nan_inf_check(pdfs, 'pdfs'), self.nan_inf_check(t, 'tangents'), self.nan_inf_check(b, 'bitangents'), self.nan_inf_check(n, 'normals'))
-        print(self.nan_inf_check(theta_h, 'theta_h'), self.nan_inf_check(phi_h, 'phi_h'))
+        self.nan_inf_check(hs, 'hs'), self.nan_inf_check(wis, 'wis'), self.nan_inf_check(cos_ths, 'cos_ths')
+        self.nan_inf_check(pdfs, 'pdfs'), self.nan_inf_check(t, 'tangents'), self.nan_inf_check(b, 'bitangents'), self.nan_inf_check(n, 'normals')
+        self.nan_inf_check(theta_h, 'theta_h'), self.nan_inf_check(phi_h, 'phi_h')
         diffuse_directions = self.sample_diffuse_directions(normals, is_train)
-        print(self.nan_inf_check(diffuse_directions, 'diffuse_directions'))
+        self.nan_inf_check(diffuse_directions, 'diffuse_directions')
         point_num, diffuse_num, _ = diffuse_directions.shape
 
         pts_ = pts.unsqueeze(1).repeat(1, num_spec_samples+diffuse_num, 1)
@@ -1742,12 +1742,12 @@ class MCShadingNetwork(nn.Module):
         specular_lights = lights[:, diffuse_num:]
 
         F = self.fresnel_schlick_batch(F0, view_dirs, hs)
-        print(self.nan_inf_check(F, 'F'))
+        self.nan_inf_check(F, 'F')
         f_d = self.diffuse_term(kd, F)
-        print(self.nan_inf_check(f_d, 'f_d'))
+        self.nan_inf_check(f_d, 'f_d')
         R, diffuse_color, specular_color, f_d_sum, f_s_sum, L_spec, weighted_specular_lights  = self.compute_radiance(f_d, diffuse_lights, specular_lights, ks, F, diffuse_directions, wis, normals, alpha, cos_ths, view_dirs, pdfs, theta_h, phi_h, mx, my)
-        print(self.nan_inf_check(R, 'R'), self.nan_inf_check(diffuse_color, 'diffuse_color'), self.nan_inf_check(specular_color, 'specular_color'))
-        print(self.nan_inf_check(f_d_sum, 'f_d_sum'), self.nan_inf_check(f_s_sum, 'f_s_sum'), self.nan_inf_check(L_spec, 'L_spec'), self.nan_inf_check(weighted_specular_lights, 'weighted_specular_lights'))
+        self.nan_inf_check(R, 'R'), self.nan_inf_check(diffuse_color, 'diffuse_color'), self.nan_inf_check(specular_color, 'specular_color')
+        self.nan_inf_check(f_d_sum, 'f_d_sum'), self.nan_inf_check(f_s_sum, 'f_s_sum'), self.nan_inf_check(L_spec, 'L_spec'), self.nan_inf_check(weighted_specular_lights, 'weighted_specular_lights')
         colors = linear_to_srgb(R)
 
         diffuse_color = linear_to_srgb(diffuse_color)
