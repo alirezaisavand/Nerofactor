@@ -1220,10 +1220,11 @@ class MCShadingNetwork(nn.Module):
         kd = self.kd_predictor(torch.cat([feats, pts], -1))
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
         rotation = self.rotation_predictor(torch.cat([feats, pts], -1))
-        cos_raw = rotation[:, 0:1]              # [0, 1]
-        sin_raw = rotation[:, 1:2] * 2.0 - 1.0  # [-1, 1]
-
-        rotation = torch.cat([cos_raw, sin_raw], dim=-1)
+        # cos_raw = rotation[:, 0:1]              # [0, 1]
+        # sin_raw = rotation[:, 1:2] * 2.0 - 1.0  # [-1, 1]
+        # rotation = torch.cat([cos_raw, sin_raw], dim=-1)
+        
+        rotation = rotation * 2.0 - 1.0
         # rotation = F.normalize(rotation, dim=-1)    # ensure unit-length
         sources = self.source_predictor(torch.cat([feats, pts], -1))
         sources = sources * 2.0 - 1.0
