@@ -1138,10 +1138,12 @@ class MCShadingNetwork(nn.Module):
 
     def predict_anisotropic_components(self, pts):
         feats = self.feats_network(pts)
+        mx_min, mx_max = 0.005, 1.0
+        my_min, my_max = 0.005, 1.0
         mx = self.mx_predictor(torch.cat([feats, pts], -1))
-        # mx = mx_min + (mx_max - mx_min)*mx
+        mx = mx_min + (mx_max - mx_min)*mx
         my = self.my_predictor(torch.cat([feats, pts], -1))
-        # my = my_min + (my_max - my_min)*my
+        my = my_min + (my_max - my_min)*my
         alpha = self.alpha_predictor(torch.cat([feats, pts], -1))
         # alpha = torch.ones_like(mx)
         F0 = self.F0_predictor(torch.cat([feats, pts], -1))
@@ -1178,10 +1180,11 @@ class MCShadingNetwork(nn.Module):
         cos_theta_h = torch.cos(theta_h)  # (N, M)
 
         # Calculate q(h)
-        q_h = torch.exp(
-            -torch.tan(theta_h) ** 2 * (
+        log_q = -torch.tan(theta_h) ** 2 * (
                     (cos_phi_h ** 2) / (m_x ** 2) + (sin_phi_h ** 2) / (m_y ** 2)
-            )
+                )
+        q_h = torch.exp(
+            log_q.clamp(min=-50.0, max=50.0)
         )
 
         # Step 2: Compute D(h) based on the formula
