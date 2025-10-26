@@ -789,7 +789,7 @@ class MCShadingNetwork(nn.Module):
             self.alpha_predictor = make_predictor(256 + 3, 1)
             self.F0_predictor = make_predictor(256 + 3, 1)
             self.ks_predictor = make_predictor(256 + 3, 3)
-            self.rotation_predictor = make_predictor(256 + 3, 2, activation='none')
+            self.rotation_predictor = make_predictor(256 + 3, 2)
             self.source_predictor = make_predictor(256 + 3, 3, activation='none')
 
 
@@ -1153,6 +1153,7 @@ class MCShadingNetwork(nn.Module):
         source = self.source_predictor(torch.cat([feats, pts], -1))
         print(f"rotation[:,0] min: {rotation[:,0].min().item()}, max: {rotation[:,0].max().item()}")
         print(f"rotation[:,1] min: {rotation[:,1].min().item()}, max: {rotation[:,1].max().item()}")
+        rotation = rotation * 2.0 - 1.0  # map to [-1,1]
         # rotation = F.normalize(rotation, dim=-1, eps=1e-6)
         # cos_2rot = rotation[:, 0:1]  # (N,1)
         # sin_2rot = rotation[:, 1:2]  # (N,1
@@ -1891,7 +1892,7 @@ class MCShadingNetwork(nn.Module):
             curv_loss = (1 - torch.sum(rot_normalized*rot_ch_normalized, dim=-1, keepdim=True).abs())**2
             tau = 0.5
 
-            rot_len_loss = torch.max(torch.zeros_like(mx), tau - torch.norm(rotation, dim=-1, keepdim=True))
+            rot_len_loss = torch.max(torch.zeros_like(mx), tau - torch.norm(rotation, dim=-1, keepdim=True))**2
 
             reg = reg + torch.mean(
                 (torch.abs(kd - kd_ch) +
@@ -1899,9 +1900,9 @@ class MCShadingNetwork(nn.Module):
                     torch.abs(mx - mx_ch) +
                     torch.abs(my - my_ch) +
                     torch.abs(alpha - alpha_ch) +
-                    torch.abs(F0 - F0_ch)
-                    # curv_loss +
-                    # rot_len_loss
+                    torch.abs(F0 - F0_ch) +
+                    curv_loss +
+                    rot_len_loss * 10
                 ) *
                 self.cfg['reg_lambda1'],
                         dim=1)
