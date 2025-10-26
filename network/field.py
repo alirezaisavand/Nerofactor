@@ -789,7 +789,7 @@ class MCShadingNetwork(nn.Module):
             self.alpha_predictor = make_predictor(256 + 3, 1)
             self.F0_predictor = make_predictor(256 + 3, 1)
             self.ks_predictor = make_predictor(256 + 3, 3)
-            self.rotation_predictor = make_predictor(256 + 3, 2)
+            self.rotation_predictor = make_predictor(256 + 3, 2, activation='none')
             self.source_predictor = make_predictor(256 + 3, 3, activation='none')
 
 
@@ -1753,8 +1753,7 @@ class MCShadingNetwork(nn.Module):
         self.nan_inf_check(mx, 'mx'), self.nan_inf_check(my, 'my'), self.nan_inf_check(alpha, 'alpha')
         self.nan_inf_check(F0, 'F0'), self.nan_inf_check(kd, 'kd'), self.nan_inf_check(ks, 'ks')
         self.nan_inf_check(rotation, 'rotation')
-        rot_normalized = rotation * 2.0 - 1.0  # map to [-1,1]
-        rot_normalized = torch.nn.functional.normalize(rot_normalized, dim=-1)
+        rot_normalized = torch.nn.functional.normalize(rotation, dim=-1)
         num_spec_samples = self.cfg['specular_sample_num']
 
         hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rot_normalized, pts, mx, my, view_dirs, num_spec_samples, normals, source, 'cuda')
@@ -1872,8 +1871,7 @@ class MCShadingNetwork(nn.Module):
 
     def anisotropic_regularization(self, pts, normals, source, mx, my, alpha, F0, kd, ks, f_d_sum, f_s_sum, L_spec, rotation):
         reg = 0
-        rot_normalized = rotation * 2.0 - 1.0  # map to [-1,1]
-        rot_normalized = torch.nn.functional.normalize(rot_normalized, dim=-1)
+        rot_normalized = torch.nn.functional.normalize(rotation, dim=-1)
         # source_normalized = torch.nn.functional.normalize(source, dim=-1)
         if self.cfg['reg_change']:
             normals = F.normalize(normals, dim=-1)
@@ -1889,8 +1887,7 @@ class MCShadingNetwork(nn.Module):
                 raise NotImplementedError
 
             mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch, source_ch = self.predict_anisotropic_components(pts + change)
-            rot_ch_normalized = rotation_ch * 2.0 - 1.0  # map to [-1,1]
-            rot_ch_normalized = F.normalize(rot_ch_normalized, dim=-1)
+            rot_ch_normalized = F.normalize(rotation_ch, dim=-1)
             # source_ch_normalized = F.normalize(source_ch, dim=-1)
             curv_loss = (1 - torch.sum(rot_normalized*rot_ch_normalized, dim=-1, keepdim=True).abs())**2
             tau = 0.3
@@ -1905,7 +1902,7 @@ class MCShadingNetwork(nn.Module):
                     torch.abs(alpha - alpha_ch) +
                     torch.abs(F0 - F0_ch) +
                     curv_loss * 0.001 +
-                    rot_len_loss*0.001
+                    rot_len_loss * 0.001
                 ) *
                 self.cfg['reg_lambda1'],
                         dim=1)
