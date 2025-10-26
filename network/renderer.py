@@ -1634,7 +1634,7 @@ class NeROMaterialRenderer(nn.Module):
             # shade_outputs['loss_mat_reg'] = self.shader_network.material_regularization(
             #     pts, normals, shade_outputs['metallic'], shade_outputs['roughness'], shade_outputs['albedo'], step)
             shade_outputs['loss_mat_reg'] = self.shader_network.anisotropic_regularization(
-                pts, normals, shade_outputs['mx'], shade_outputs['my'], shade_outputs['alpha'], shade_outputs['F0'],
+                pts, normals, shade_outputs['source'], shade_outputs['mx'], shade_outputs['my'], shade_outputs['alpha'], shade_outputs['F0'],
                 shade_outputs['kd'], shade_outputs['ks'], shade_outputs['f_d_sum'], shade_outputs['f_s_sum'],
                 shade_outputs['L_spec'], shade_outputs['rotation']
             )
@@ -1660,7 +1660,7 @@ class NeROMaterialRenderer(nn.Module):
         #                'diffuse_color': 3, 'albedo': 3, 'metallic': 1, 'roughness': 1}
         output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'diffuse_light': 3,
                        'kd': 3, 'ks': 3, 'F0': 1, "alpha": 1, 'diffuse_color': 3, 'specular_color': 3, 'mx': 1, 'my': 1,
-                       'f_d_sum': 3, 'f_s_sum': 3, 'tangents': 3, 'bitangents': 3, 'normals': 3, 'L_spec': 3, }
+                       'f_d_sum': 3, 'f_s_sum': 3, 'tangents': 3, 'bitangents': 3, 'normals': 3, 'source': 3,'L_spec': 3, }
         outputs = {k: [] for k in output_keys.keys()}
         rn = ray_batch['rays_o'].shape[0]
         for ri in range(0, rn, trn):
@@ -1687,6 +1687,7 @@ class NeROMaterialRenderer(nn.Module):
                 outputs_cur['tangents'][hit_mask] = shade_outputs['tangents'].float()
                 outputs_cur['bitangents'][hit_mask] = shade_outputs['bitangents'].float()
                 outputs_cur['normals'][hit_mask] = shade_outputs['normals'].float()
+                outputs_cur['source'][hit_mask] = shade_outputs['source'].float()
                 if self.cfg['n_lobes'] == 1:
                     outputs_cur['ks'][hit_mask] = shade_outputs['ks']
                     outputs_cur['F0'][hit_mask] = shade_outputs['F0']

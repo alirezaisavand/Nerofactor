@@ -790,7 +790,7 @@ class MCShadingNetwork(nn.Module):
             self.F0_predictor = make_predictor(256 + 3, 1)
             self.ks_predictor = make_predictor(256 + 3, 3)
             self.rotation_predictor = make_predictor(256 + 3, 2, activation='none')
-
+            self.source_predictor = make_predictor(256 + 3 + 3, 3, activation='none')
 
 
             self.kd_predictor = make_predictor(256 + 3, 3)
@@ -1150,13 +1150,14 @@ class MCShadingNetwork(nn.Module):
         kd = self.kd_predictor(torch.cat([feats, pts], -1))
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
         rotation = self.rotation_predictor(torch.cat([feats, pts], -1))
+        source = self.source_predictor(torch.cat([feats, pts], -1))
         # rotation = F.normalize(rotation, dim=-1, eps=1e-6)
         # cos_2rot = rotation[:, 0:1]  # (N,1)
         # sin_2rot = rotation[:, 1:2]  # (N,1
         # cos_rot = torch.sqrt((cos_2rot + 1) / 2)
         # sin_rot =  torch.sign(sin_2rot) * torch.sqrt((1 - cos_2rot) / 2)
         # rotation = torch.cat([cos_rot, sin_rot], -1)
-        return mx, my, alpha, F0, kd, ks, rotation
+        return mx, my, alpha, F0, kd, ks, rotation, source
 
 
 
@@ -1271,6 +1272,30 @@ class MCShadingNetwork(nn.Module):
         B_rot = -sin_theta * tangent + cos_theta * bitangent
         return T_rot, B_rot
 
+    def compute_tangent_bitangent_via_source(self, source, normals):
+        """
+        Compute tangents and bitangents for flat surfaces with no UVs using a reference direction.
+
+        Args:
+            source (torch.Tensor): (N, 3) tensor of source directions
+            normals (torch.Tensor): (N, 3) tensor of vertex normals
+
+        Returns:
+            torch.Tensor: (N, 3) tensor of tangents
+            torch.Tensor: (N, 3) tensor of bitangents
+        """
+        # Project the source direction onto the tangent plane
+        source_proj = source - torch.sum(source * normals, dim=-1, keepdim=True) * normals
+        tangent = torch.nn.functional.normalize(source_proj, p=2, dim=-1)
+
+        # Compute bitangent via cross product with normal
+        bitangent = torch.cross(normals, tangent, dim=-1)
+
+        # Normalize bitangents
+        bitangent = torch.nn.functional.normalize(bitangent, p=2, dim=-1)
+
+        return tangent, bitangent
+
     def sample_aniso_ggx_directions(self,
                                     rotation: torch.Tensor,
                                     pts: torch.Tensor,
@@ -1279,6 +1304,7 @@ class MCShadingNetwork(nn.Module):
                                     wo: torch.Tensor,
                                     M: int,
                                     normals: torch.Tensor,
+                                    source: torch.Tensor,
                                     device: torch.device = None,
                                     eps: float = 1e-6):
         if device is None:
@@ -1295,12 +1321,12 @@ class MCShadingNetwork(nn.Module):
         # faces = torch.from_numpy(np.asarray(mesh.triangles, dtype=np.int64)).to(device)
         # x, y = self.get_tangent_bitangent_via_kdtree(vertices, faces, T, B, pts, normals, tree)
 
-        rotation_cos = rotation[:, :1]
-        rotation_sin = rotation[:, 1:]
+        # rotation_cos = rotation[:, :1]
+        # rotation_sin = rotation[:, 1:]
 
-        x, y = self.compute_tangent_bitangent_flat(normals)
-
-        x, y = self.rotate_tangent_bitangent(x, y, rotation_cos, rotation_sin)
+        # x, y = self.compute_tangent_bitangent_flat(normals)
+        # x, y = self.rotate_tangent_bitangent(x, y, rotation_cos, rotation_sin)
+        x, y = self.compute_tangent_bitangent_via_source(source, normals)
 
         m_x = m_x.to(device)  # (N,1)
         m_y = m_y.to(device)  # (N,1)
@@ -1720,14 +1746,14 @@ class MCShadingNetwork(nn.Module):
 
     #     return t_norm, b_norm
 
-    def shade_anisotropic_mixed(self, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, rotation, human_poses, is_train):
+    def shade_anisotropic_mixed(self, pts, normals, source, view_dirs, mx, my, alpha, F0, kd, ks, rotation, human_poses, is_train):
         self.nan_inf_check(mx, 'mx'), self.nan_inf_check(my, 'my'), self.nan_inf_check(alpha, 'alpha')
         self.nan_inf_check(F0, 'F0'), self.nan_inf_check(kd, 'kd'), self.nan_inf_check(ks, 'ks')
         self.nan_inf_check(rotation, 'rotation')
         rot_normalized = torch.nn.functional.normalize(rotation, dim=-1)
         num_spec_samples = self.cfg['specular_sample_num']
 
-        hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rot_normalized, pts, mx, my, view_dirs, num_spec_samples, normals,'cuda')
+        hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rot_normalized, pts, mx, my, view_dirs, num_spec_samples, normals, source, 'cuda')
         self.nan_inf_check(hs, 'hs'), self.nan_inf_check(wis, 'wis'), self.nan_inf_check(cos_ths, 'cos_ths')
         self.nan_inf_check(pdfs, 'pdfs'), self.nan_inf_check(t, 'tangents'), self.nan_inf_check(b, 'bitangents'), self.nan_inf_check(n, 'normals')
         self.nan_inf_check(theta_h, 'theta_h'), self.nan_inf_check(phi_h, 'phi_h')
@@ -1776,6 +1802,7 @@ class MCShadingNetwork(nn.Module):
         outputs['f_s_sum'] = f_s_sum
         outputs['L_spec'] = L_spec
         outputs['rotation'] = rotation
+        outputs['source'] = source
         return colors, outputs
         
 
@@ -1783,12 +1810,9 @@ class MCShadingNetwork(nn.Module):
 
     def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, is_seperate=True):
         # print('anisotropic_forward:')
-        mx, my, alpha, F0, kd, ks, rotation = self.predict_anisotropic_components(pts)
-        print(f"rotation[:, 0].max():{rotation[:, 0].max()},"
-              f"rotation[:, 0].min():{rotation[:, 0].min()},"
-              f"rotation[:, 1].max():{rotation[:, 1].max()},"
-              f"rotation[:, 1].min():{rotation[:, 1].min()}")
-        return self.shade_anisotropic_mixed(pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, rotation, human_poses, is_train)
+        mx, my, alpha, F0, kd, ks, rotation, source = self.predict_anisotropic_components(pts)
+
+        return self.shade_anisotropic_mixed(pts, normals, source, view_dirs, mx, my, alpha, F0, kd, ks, rotation, human_poses, is_train)
 
 
     def forward(self, pts, view_dirs, normals, human_poses, step, is_train):
@@ -1842,9 +1866,10 @@ class MCShadingNetwork(nn.Module):
     def get_env_light(self):
         return self.predict_outer_lights_pts(self.light_pts)
 
-    def anisotropic_regularization(self, pts, normals, mx, my, alpha, F0, kd, ks, f_d_sum, f_s_sum, L_spec, rotation):
+    def anisotropic_regularization(self, pts, normals, source, mx, my, alpha, F0, kd, ks, f_d_sum, f_s_sum, L_spec, rotation):
         reg = 0
         rot_normalized = torch.nn.functional.normalize(rotation, dim=-1)
+        source_normalized = torch.nn.functional.normalize(source, dim=-1)
         if self.cfg['reg_change']:
             normals = F.normalize(normals, dim=-1)
             x = self.get_orthogonal_directions(normals)
@@ -1858,12 +1883,13 @@ class MCShadingNetwork(nn.Module):
             else:
                 raise NotImplementedError
 
-            mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch = self.predict_anisotropic_components(pts + change)
+            mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch, source_ch = self.predict_anisotropic_components(pts + change)
             rot_ch_normalized = F.normalize(rotation_ch, dim=-1)
-            curv_loss = (1 - torch.sum(rot_normalized * rot_ch_normalized, dim=-1, keepdim=True))**2
+            source_ch_normalized = F.normalize(source_ch, dim=-1)
+            curv_loss = (1 - torch.sum(source_normalized*source_ch_normalized, dim=-1, keepdim=True))**2
             tau = 0.5
 
-            rot_len_loss = torch.max(torch.zeros_like(mx), tau - torch.norm(rotation, dim=-1, keepdim=True))
+            source_len_loss = torch.max(torch.zeros_like(mx), tau - torch.norm(source, dim=-1, keepdim=True))
 
             reg = reg + torch.mean(
                 (torch.abs(kd - kd_ch) +
@@ -1872,8 +1898,8 @@ class MCShadingNetwork(nn.Module):
                     torch.abs(my - my_ch) +
                     torch.abs(alpha - alpha_ch) +
                     torch.abs(F0 - F0_ch) +
-                    rot_len_loss * 0.01
-                    # curv_loss * 0.001
+                    source_len_loss * 0.01 +
+                    curv_loss * 0.001
 
                 ) *
                 self.cfg['reg_lambda1'],
