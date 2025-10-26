@@ -1901,8 +1901,7 @@ class MCShadingNetwork(nn.Module):
                     torch.abs(alpha - alpha_ch) +
                     torch.abs(F0 - F0_ch) +
                     curv_loss +
-
-
+                    rot_len_loss
                 ) *
                 self.cfg['reg_lambda1'],
                         dim=1)
