@@ -765,9 +765,9 @@ class MCShadingNetwork(nn.Module):
         'max_n_exp': 20,
         'max_alpha_exp': 10,
         'reg_energy_loss': True,
-        'reg_energy_loss_lambda': 0.01,
+        'reg_energy_loss_lambda': 0.1,
         'reg_spec_loss': True,
-        'reg_spec_loss_lambda': 0.01,
+        'reg_spec_loss_lambda': 0.1,
     }
 
     def __init__(self, cfg, ray_trace_fun):
