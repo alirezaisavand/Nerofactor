@@ -1153,6 +1153,7 @@ class MCShadingNetwork(nn.Module):
         source = self.source_predictor(torch.cat([feats, pts], -1))
         print(f"source[:,0] min: {source[:,0].min().item()}, max: {source[:,0].max().item()}")
         print(f"source[:,1] min: {source[:,1].min().item()}, max: {source[:,1].max().item()}")
+        print(f"source[:,2] min: {source[:,2].min().item()}, max: {source[:,2].max().item()}")
         # rotation = F.normalize(rotation, dim=-1, eps=1e-6)
         # cos_2rot = rotation[:, 0:1]  # (N,1)
         # sin_2rot = rotation[:, 1:2]  # (N,1
