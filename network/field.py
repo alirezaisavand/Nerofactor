@@ -1763,7 +1763,7 @@ class MCShadingNetwork(nn.Module):
         # rot_normalized = torch.nn.functional.normalize(rot_normalized, dim=-1)
         num_spec_samples = self.cfg['specular_sample_num']
 
-        hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rot_normalized, pts, mx, my, view_dirs, num_spec_samples, normals, source, 'cuda')
+        hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rotation, pts, mx, my, view_dirs, num_spec_samples, normals, source, 'cuda')
         self.nan_inf_check(hs, 'hs'), self.nan_inf_check(wis, 'wis'), self.nan_inf_check(cos_ths, 'cos_ths')
         self.nan_inf_check(pdfs, 'pdfs'), self.nan_inf_check(t, 'tangents'), self.nan_inf_check(b, 'bitangents'), self.nan_inf_check(n, 'normals')
         self.nan_inf_check(theta_h, 'theta_h'), self.nan_inf_check(phi_h, 'phi_h')
