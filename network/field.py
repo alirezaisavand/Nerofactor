@@ -316,8 +316,12 @@ class ExpActivation(nn.Module):
         return torch.exp(torch.clamp(x, max=self.max_light))
 
 
-def make_predictor(feats_dim: object, output_dim: object, weight_norm: object = True, activation='sigmoid',
+def make_predictor(feats_dim: object, output_dim: object, weight_norm: object = True, hidden_activation='relu',activation='sigmoid',
                    exp_max=0.0) -> object:
+    if hidden_activation=='relu':
+        hidden_activation = nn.ReLU()
+    else:
+        hidden_activation = nn.GeLU()
     if activation == 'sigmoid':
         activation = nn.Sigmoid()
     elif activation == 'exp':
@@ -333,22 +337,22 @@ def make_predictor(feats_dim: object, output_dim: object, weight_norm: object = 
     if weight_norm:
         module = nn.Sequential(
             nn.utils.weight_norm(nn.Linear(feats_dim, run_dim)),
-            nn.ReLU(),
+            hidden_activation,
             nn.utils.weight_norm(nn.Linear(run_dim, run_dim)),
-            nn.ReLU(),
+            hidden_activation,
             nn.utils.weight_norm(nn.Linear(run_dim, run_dim)),
-            nn.ReLU(),
+            hidden_activation,
             nn.utils.weight_norm(nn.Linear(run_dim, output_dim)),
             activation,
         )
     else:
         module = nn.Sequential(
             nn.Linear(feats_dim, run_dim),
-            nn.ReLU(),
+            hidden_activation,
             nn.Linear(run_dim, run_dim),
-            nn.ReLU(),
+            hidden_activation,
             nn.Linear(run_dim, run_dim),
-            nn.ReLU(),
+            hidden_activation,
             nn.Linear(run_dim, output_dim),
             activation,
         )
@@ -789,7 +793,7 @@ class MCShadingNetwork(nn.Module):
             self.alpha_predictor = make_predictor(256 + 3, 1)
             self.F0_predictor = make_predictor(256 + 3, 1)
             self.ks_predictor = make_predictor(256 + 3, 3)
-            self.rotation_predictor = make_predictor(256 + 3, 2, activation='none')
+            self.rotation_predictor = make_predictor(256 + 3, 2, hidden_activation='gelu', activation='none')
             self.source_predictor = make_predictor(256 + 3, 3, activation='none')
 
 
