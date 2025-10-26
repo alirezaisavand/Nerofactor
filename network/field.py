@@ -1784,6 +1784,10 @@ class MCShadingNetwork(nn.Module):
     def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, is_seperate=True):
         # print('anisotropic_forward:')
         mx, my, alpha, F0, kd, ks, rotation = self.predict_anisotropic_components(pts)
+        print(f"rotation[:, 0].max():{rotation[:, 0].max()},"
+              f"rotation[:, 0].min():{rotation[:, 0].min()},"
+              f"rotation[:, 1].max():{rotation[:, 1].max()},"
+              f"rotation[:, 1].min():{rotation[:, 1].min()}")
         return self.shade_anisotropic_mixed(pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, rotation, human_poses, is_train)
 
 
