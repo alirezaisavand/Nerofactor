@@ -1151,9 +1151,8 @@ class MCShadingNetwork(nn.Module):
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
         rotation = self.rotation_predictor(torch.cat([feats, pts], -1))
         source = self.source_predictor(torch.cat([feats, pts], -1))
-        print(f"source[:,0] min: {source[:,0].min().item()}, max: {source[:,0].max().item()}")
-        print(f"source[:,1] min: {source[:,1].min().item()}, max: {source[:,1].max().item()}")
-        print(f"source[:,2] min: {source[:,2].min().item()}, max: {source[:,2].max().item()}")
+        print(f"rotation[:,0] min: {rotation[:,0].min().item()}, max: {rotation[:,0].max().item()}")
+        print(f"rotation[:,1] min: {rotation[:,1].min().item()}, max: {rotation[:,1].max().item()}")
         # rotation = F.normalize(rotation, dim=-1, eps=1e-6)
         # cos_2rot = rotation[:, 0:1]  # (N,1)
         # sin_2rot = rotation[:, 1:2]  # (N,1
@@ -1324,12 +1323,12 @@ class MCShadingNetwork(nn.Module):
         # faces = torch.from_numpy(np.asarray(mesh.triangles, dtype=np.int64)).to(device)
         # x, y = self.get_tangent_bitangent_via_kdtree(vertices, faces, T, B, pts, normals, tree)
 
-        # rotation_cos = rotation[:, :1]
-        # rotation_sin = rotation[:, 1:]
+        rotation_cos = rotation[:, :1]
+        rotation_sin = rotation[:, 1:]
 
-        # x, y = self.compute_tangent_bitangent_flat(normals)
-        # x, y = self.rotate_tangent_bitangent(x, y, rotation_cos, rotation_sin)
-        x, y = self.compute_tangent_bitangent_via_source(source, normals)
+        x, y = self.compute_tangent_bitangent_flat(normals)
+        x, y = self.rotate_tangent_bitangent(x, y, rotation_cos, rotation_sin)
+        # x, y = self.compute_tangent_bitangent_via_source(source, normals)
 
         m_x = m_x.to(device)  # (N,1)
         m_y = m_y.to(device)  # (N,1)
@@ -1872,7 +1871,7 @@ class MCShadingNetwork(nn.Module):
     def anisotropic_regularization(self, pts, normals, source, mx, my, alpha, F0, kd, ks, f_d_sum, f_s_sum, L_spec, rotation):
         reg = 0
         rot_normalized = torch.nn.functional.normalize(rotation, dim=-1)
-        source_normalized = torch.nn.functional.normalize(source, dim=-1)
+        # source_normalized = torch.nn.functional.normalize(source, dim=-1)
         if self.cfg['reg_change']:
             normals = F.normalize(normals, dim=-1)
             x = self.get_orthogonal_directions(normals)
@@ -1888,11 +1887,11 @@ class MCShadingNetwork(nn.Module):
 
             mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch, source_ch = self.predict_anisotropic_components(pts + change)
             rot_ch_normalized = F.normalize(rotation_ch, dim=-1)
-            source_ch_normalized = F.normalize(source_ch, dim=-1)
-            curv_loss = (1 - torch.sum(source_normalized*source_ch_normalized, dim=-1, keepdim=True).abs())**2
+            # source_ch_normalized = F.normalize(source_ch, dim=-1)
+            curv_loss = (1 - torch.sum(rot_normalized*rot_ch_normalized, dim=-1, keepdim=True).abs())**2
             tau = 0.5
 
-            source_len_loss = torch.max(torch.zeros_like(mx), tau - torch.norm(source, dim=-1, keepdim=True))
+            rot_len_loss = torch.max(torch.zeros_like(mx), tau - torch.norm(rotation, dim=-1, keepdim=True))
 
             reg = reg + torch.mean(
                 (torch.abs(kd - kd_ch) +
@@ -1901,8 +1900,8 @@ class MCShadingNetwork(nn.Module):
                     torch.abs(my - my_ch) +
                     torch.abs(alpha - alpha_ch) +
                     torch.abs(F0 - F0_ch) +
-                    source_len_loss * 0.01 +
-                    curv_loss
+                    curv_loss +
+
 
                 ) *
                 self.cfg['reg_lambda1'],
