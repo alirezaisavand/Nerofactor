@@ -1889,7 +1889,7 @@ class MCShadingNetwork(nn.Module):
             mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch, source_ch = self.predict_anisotropic_components(pts + change)
             rot_ch_normalized = F.normalize(rotation_ch, dim=-1)
             source_ch_normalized = F.normalize(source_ch, dim=-1)
-            curv_loss = (1 - torch.sum(source_normalized*source_ch_normalized, dim=-1, keepdim=True))**2
+            curv_loss = (1 - torch.sum(source_normalized*source_ch_normalized, dim=-1, keepdim=True).abs())**2
             tau = 0.5
 
             source_len_loss = torch.max(torch.zeros_like(mx), tau - torch.norm(source, dim=-1, keepdim=True))
@@ -1902,7 +1902,7 @@ class MCShadingNetwork(nn.Module):
                     torch.abs(alpha - alpha_ch) +
                     torch.abs(F0 - F0_ch) +
                     source_len_loss * 0.01 +
-                    curv_loss * 0.001
+                    curv_loss *
 
                 ) *
                 self.cfg['reg_lambda1'],
