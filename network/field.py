@@ -321,7 +321,7 @@ def make_predictor(feats_dim: object, output_dim: object, weight_norm: object = 
     if hidden_activation=='relu':
         hidden_activation = nn.ReLU()
     else:
-        hidden_activation = nn.GeLU()
+        hidden_activation = nn.GELU()
     if activation == 'sigmoid':
         activation = nn.Sigmoid()
     elif activation == 'exp':
