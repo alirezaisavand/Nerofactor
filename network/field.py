@@ -1891,7 +1891,7 @@ class MCShadingNetwork(nn.Module):
             rot_ch_normalized = F.normalize(rotation_ch, dim=-1)
             # source_ch_normalized = F.normalize(source_ch, dim=-1)
             curv_loss = (1 - torch.sum(rot_normalized*rot_ch_normalized, dim=-1, keepdim=True))**2
-            tau = 0.3
+            tau = 0.5
 
             rot_len_loss = torch.max(torch.zeros_like(mx), tau - torch.norm(rotation, dim=-1, keepdim=True))**2
 
