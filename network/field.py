@@ -875,13 +875,13 @@ class MCShadingNetwork(nn.Module):
             tangent[zero_tangent_mask] = torch.cross(normals[zero_tangent_mask], ref_dir.unsqueeze(0), dim=-1)
 
         # Normalize the tangents
-        tangent = torch.nn.functional.normalize(tangent, p=2, dim=-1)
+        tangent = torch.nn.functional.normalize(tangent, p=2, dim=-1, eps=1e-6)
 
         # Compute bitangent via cross product with normal
         bitangent = torch.cross(normals, tangent, dim=-1)
 
         # Normalize bitangents
-        bitangent = torch.nn.functional.normalize(bitangent, p=2, dim=-1)
+        bitangent = torch.nn.functional.normalize(bitangent, p=2, dim=-1, eps=1e-6)
 
         return tangent, bitangent
 
@@ -1295,13 +1295,13 @@ class MCShadingNetwork(nn.Module):
         """
         # Project the source direction onto the tangent plane
         source_proj = source - torch.sum(source * normals, dim=-1, keepdim=True) * normals
-        tangent = torch.nn.functional.normalize(source_proj, p=2, dim=-1)
+        tangent = torch.nn.functional.normalize(source_proj, p=2, dim=-1, eps=1e-6)
 
         # Compute bitangent via cross product with normal
         bitangent = torch.cross(normals, tangent, dim=-1)
 
         # Normalize bitangents
-        bitangent = torch.nn.functional.normalize(bitangent, p=2, dim=-1)
+        bitangent = torch.nn.functional.normalize(bitangent, p=2, dim=-1, eps=1e-6)
 
         return tangent, bitangent
 
@@ -1760,7 +1760,7 @@ class MCShadingNetwork(nn.Module):
         self.nan_inf_check(F0, 'F0'), self.nan_inf_check(kd, 'kd'), self.nan_inf_check(ks, 'ks')
         self.nan_inf_check(rotation, 'rotation')
         rot_normalized = rotation * 2.0 - 1.0
-        rot_normalized = torch.nn.functional.normalize(rot_normalized, dim=-1)
+        rot_normalized = torch.nn.functional.normalize(rot_normalized, dim=-1, eps=1e-6)
         num_spec_samples = self.cfg['specular_sample_num']
 
         hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rot_normalized, pts, mx, my, view_dirs, num_spec_samples, normals, source, 'cuda')
@@ -1828,7 +1828,7 @@ class MCShadingNetwork(nn.Module):
     def forward(self, pts, view_dirs, normals, human_poses, step, is_train):
         if self.cfg['anisotropy']:
             return self.anisotropic_forward(pts, view_dirs, normals, human_poses, step, is_train, is_seperate=True)
-        view_dirs, normals = F.normalize(view_dirs, dim=-1), F.normalize(normals, dim=-1)
+        view_dirs, normals = F.normalize(view_dirs, dim=-1, eps=1e-6), F.normalize(normals, dim=-1, eps=1e-6)
         reflections = torch.sum(view_dirs * normals, -1, keepdim=True) * normals * 2 - view_dirs
         metallic, roughness, albedo = self.predict_materials(pts)  # [pn,1] [pn,1] [pn,3]
         return self.shade_mixed(pts, normals, view_dirs, reflections, metallic, roughness, albedo, human_poses,
@@ -1879,10 +1879,10 @@ class MCShadingNetwork(nn.Module):
     def anisotropic_regularization(self, pts, normals, source, mx, my, alpha, F0, kd, ks, f_d_sum, f_s_sum, L_spec, rotation, step):
         reg = 0
         rot_normalized = rotation * 2.0 - 1.0
-        rot_normalized = torch.nn.functional.normalize(rot_normalized, dim=-1)
+        rot_normalized = torch.nn.functional.normalize(rot_normalized, dim=-1, eps=1e-6)
         # source_normalized = torch.nn.functional.normalize(source, dim=-1)
         if self.cfg['reg_change']:
-            normals = F.normalize(normals, dim=-1)
+            normals = F.normalize(normals, dim=-1, eps=1e-6)
             x = self.get_orthogonal_directions(normals)
             y = torch.cross(normals, x)
             ang = torch.rand(pts.shape[0], 1) * np.pi * 2
@@ -1897,7 +1897,7 @@ class MCShadingNetwork(nn.Module):
 
             mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch, source_ch = self.predict_anisotropic_components(pts + change)
             rot_ch_normalized = rotation_ch * 2.0 - 1.0
-            rot_ch_normalized = F.normalize(rotation_ch, dim=-1)
+            rot_ch_normalized = F.normalize(rot_ch_normalized, dim=-1, eps=1e-6)
             # source_ch_normalized = F.normalize(source_ch, dim=-1)
             # curv_loss = (1 - torch.sum(rot_normalized*rot_ch_normalized, dim=-1, keepdim=True))**2
             tau = 0.5
