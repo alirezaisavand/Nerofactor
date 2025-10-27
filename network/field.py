@@ -766,7 +766,7 @@ class MCShadingNetwork(nn.Module):
         'reg_energy_loss': True,
         'reg_energy_loss_lambda': 0.01,
         'reg_spec_loss': True,
-        'reg_spec_loss_lambda': 0.1,
+        'reg_spec_loss_lambda': 0.01,
     }
 
     def __init__(self, cfg, ray_trace_fun):
@@ -1324,7 +1324,7 @@ class MCShadingNetwork(nn.Module):
 
         z = normals  # pn,3
 
-        x, y = self.compute_tangent_bitangent_flat(normals, sources)  # pn,3
+        x, y = self.compute_tangent_bitangent_flat(normals, sources)
         # rotate tangent and bitangent
         cos_2rot = rotation[:, 0:1]  # (N,1)
         sin_2rot = rotation[:, 1:2]  # (N,1)
@@ -1459,11 +1459,10 @@ class MCShadingNetwork(nn.Module):
         pow_in_denom = torch.pow(cos_in + eps, -alpha_exp)
 
         pow_on = torch.pow(cos_on_exp + eps, alpha_exp)  # (N,1,1)
-        denom = (cos_theta_h * pow_on).clamp(min=eps)  # (N,M,1)
+        denom = cos_theta_h * pow_on + eps  # (N,M,1)
         f_s = (k_s_exp * F * pow_in / denom) * mask.unsqueeze(-1)
         spec_brdf = (k_s_exp * F * pow_in_denom * pdf / denom) * mask.unsqueeze(-1)
         weighted_specular_light = (k_s_exp * pow_in_denom * pdf / denom) * mask.unsqueeze(-1) * specular_lights
-        masked_specular_light = (k_s_exp * pdf / denom) * mask.unsqueeze(-1) * specular_lights
 
         spec_weighted = f_s * specular_lights  # (N,M,3)
         specular = spec_weighted.sum(dim=1) / valid_counts  # (N,3)
@@ -1474,7 +1473,7 @@ class MCShadingNetwork(nn.Module):
         tem = 1
         L_spec = self.compute_spec_loss(tem, f_d, mx, my, theta_h, phi_h)
         L_spec = torch.sum(L_spec * f_d * mask.unsqueeze(-1), dim=1) / (valid_counts * 3)
-        return R, diffuse, specular, f_d_sum, f_s_sum, L_spec, weighted_specular_light, masked_specular_light
+        return R, diffuse, specular, f_d_sum, f_s_sum, L_spec, weighted_specular_light
 
     def nan_inf_check(self, A, name):
         if torch.isinf(A).any():
@@ -1577,9 +1576,9 @@ class MCShadingNetwork(nn.Module):
 
         F = self.fresnel_schlick_batch(F0, view_dirs, hs)
 
-        f_d = self.diffuse_term(kd, F, False)
+        f_d = self.diffuse_term(kd, F)
 
-        R, diffuse_color, specular_color, f_d_sum, f_s_sum, L_spec, weighted_specular_lights, masked_specular_lights = self.compute_radiance(
+        R, diffuse_color, specular_color, f_d_sum, f_s_sum, L_spec, weighted_specular_lights = self.compute_radiance(
             f_d, diffuse_lights, specular_lights, ks, F, diffuse_directions, wis, normals, alpha, cos_ths, view_dirs,
             pdfs, theta_h, phi_h, mx, my)
 
