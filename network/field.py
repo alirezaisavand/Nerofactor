@@ -1711,7 +1711,7 @@ class MCShadingNetwork(nn.Module):
             rotation_raw_mapped = 2.0 * rotation_raw - 1.0
             tau = 0.3
             non_zero_loss = torch.max(torch.zeros_like(mx), tau-torch.norm(rotation_raw_mapped, dim=-1, keepdim=True))**2
-            lambda_non_zero = step / (100.0 * 1000.0)
+            lambda_non_zero = step*0.1 / (100.0 * 1000.0)
             mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch, rotation_raw_ch, sources_ch = self.predict_anisotropic_components(
                 pts + change)
 
