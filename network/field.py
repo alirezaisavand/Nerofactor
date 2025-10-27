@@ -1556,7 +1556,7 @@ class MCShadingNetwork(nn.Module):
 
         diffuse_lights = lights[:, :diffuse_num]
         specular_lights = lights[:, diffuse_num:]
-        F, H, HoV = self.fresnel_schlick_directions(f0.unsqueeze(1), view_dirs, wis)
+        F, H, HoV = self.fresnel_schlick_directions(f0.unsqueeze(1), view_dirs.unsqueeze(1), wis)
 
         f_d = self.diffuse_term(kd, metallic, is_seperate=False)
 
