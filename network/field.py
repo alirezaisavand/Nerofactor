@@ -1142,12 +1142,12 @@ class MCShadingNetwork(nn.Module):
 
     def predict_anisotropic_components(self, pts):
         feats = self.feats_network(pts)
-        # mx_min, mx_max = 0.005, 1.0
-        # my_min, my_max = 0.005, 1.0
+        mx_min, mx_max = 0.005, 1.0
+        my_min, my_max = 0.005, 1.0
         mx = self.mx_predictor(torch.cat([feats, pts], -1))
-        # mx = mx_min + (mx_max - mx_min)*mx
+        mx = mx_min + (mx_max - mx_min)*mx
         my = self.my_predictor(torch.cat([feats, pts], -1))
-        # my = my_min + (my_max - my_min)*my
+        my = my_min + (my_max - my_min)*my
         alpha = self.alpha_predictor(torch.cat([feats, pts], -1))
         # alpha = torch.ones_like(mx)
         F0 = self.F0_predictor(torch.cat([feats, pts], -1))
@@ -1157,15 +1157,11 @@ class MCShadingNetwork(nn.Module):
         # rotation = rotation * 2.0 - 1.0  # map to [-1,1]
         # rotation = F.normalize(rotation, dim=-1, eps=1e-6)
         source = self.source_predictor(torch.cat([feats, pts], -1))
-        print(f"rotation[:,0] min: {rotation[:,0].min().item()}, max: {rotation[:,0].max().item()}")
-        print(f"rotation[:,1] min: {rotation[:,1].min().item()}, max: {rotation[:,1].max().item()}")
-          # map to [-1,1]
-        # rotation = F.normalize(rotation, dim=-1, eps=1e-6)
-        # cos_2rot = rotation[:, 0:1]  # (N,1)
-        # sin_2rot = rotation[:, 1:2]  # (N,1
-        # cos_rot = torch.sqrt((cos_2rot + 1) / 2)
-        # sin_rot =  torch.sign(sin_2rot) * torch.sqrt((1 - cos_2rot) / 2)
-        # rotation = torch.cat([cos_rot, sin_rot], -1)
+        print(f"source[:,0] min: {source[:,0].min().item()}, max: {source[:,0].max().item()}")
+        print(f"source[:,1] min: {source[:,1].min().item()}, max: {source[:,1].max().item()}")
+        print(f"source[:,2] min: {source[:,2].min().item()}, max: {source[:,2].max().item()}")
+        source = torch.tanh(source)
+        source = F.normalize(source, dim=-1, eps=1e-6)
         return mx, my, alpha, F0, kd, ks, rotation, source
 
 
@@ -1333,9 +1329,9 @@ class MCShadingNetwork(nn.Module):
         rotation_cos = rotation[:, :1]
         rotation_sin = rotation[:, 1:]
 
-        x, y = self.compute_tangent_bitangent_flat(normals)
-        x, y = self.rotate_tangent_bitangent(x, y, rotation_cos, rotation_sin)
-        # x, y = self.compute_tangent_bitangent_via_source(source, normals)
+        # x, y = self.compute_tangent_bitangent_flat(normals)
+        # x, y = self.rotate_tangent_bitangent(x, y, rotation_cos, rotation_sin)
+        x, y = self.compute_tangent_bitangent_via_source(source, normals)
 
         m_x = m_x.to(device)  # (N,1)
         m_y = m_y.to(device)  # (N,1)
