@@ -1459,11 +1459,11 @@ class MCShadingNetwork(nn.Module):
         pow_in_denom = torch.pow(cos_in + eps, -alpha_exp)
 
         pow_on = torch.pow(cos_on_exp + eps, alpha_exp)  # (N,1,1)
-        denom = cos_theta_h * pow_on + eps  # (N,M,1)
+        denom = (cos_theta_h * pow_on).clamp(min=eps)  # (N,M,1)
         f_s = (k_s_exp * F * pow_in / denom) * mask.unsqueeze(-1)
         spec_brdf = (k_s_exp * F * pow_in_denom * pdf / denom) * mask.unsqueeze(-1)
         weighted_specular_light = (k_s_exp * pow_in_denom * pdf / denom) * mask.unsqueeze(-1) * specular_lights
-        masked_specular_light = specular_lights * mask.unsqueeze(-1)
+        masked_specular_light = (pow_in_denom * pdf / denom) * mask.unsqueeze(-1) * specular_lights
 
         spec_weighted = f_s * specular_lights  # (N,M,3)
         specular = spec_weighted.sum(dim=1) / valid_counts  # (N,3)
