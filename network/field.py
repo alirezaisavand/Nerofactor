@@ -1324,7 +1324,7 @@ class MCShadingNetwork(nn.Module):
 
         z = normals  # pn,3
 
-        x, y = self.compute_tangent_bitangent_flat(normals, sources)
+        x, y = self.compute_tangent_bitangent_flat(normals, sources)  # pn,3
         # rotate tangent and bitangent
         cos_2rot = rotation[:, 0:1]  # (N,1)
         sin_2rot = rotation[:, 1:2]  # (N,1)
@@ -1577,7 +1577,7 @@ class MCShadingNetwork(nn.Module):
 
         F = self.fresnel_schlick_batch(F0, view_dirs, hs)
 
-        f_d = self.diffuse_term(kd, F)
+        f_d = self.diffuse_term(kd, F, False)
 
         R, diffuse_color, specular_color, f_d_sum, f_s_sum, L_spec, weighted_specular_lights, masked_specular_lights = self.compute_radiance(
             f_d, diffuse_lights, specular_lights, ks, F, diffuse_directions, wis, normals, alpha, cos_ths, view_dirs,
