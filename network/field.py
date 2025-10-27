@@ -1210,6 +1210,9 @@ class MCShadingNetwork(nn.Module):
         kd = self.kd_predictor(torch.cat([feats, pts], -1))
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
         rotation = self.rotation_predictor(torch.cat([feats, pts], -1))
+        print(f"rotatotion[:,0] min: {rotation[:,0].min()}, max: {rotation[:,0].max()}")
+        print(f"rotatotion[:,1] min: {rotation[:,1].min()}, max: {rotation[:,1].max()}")
+        print(f"rotation norm min: {torch.norm(rotation, dim=-1).min()}, max: {torch.norm(rotation, dim=-1).max()}")
         rotation = rotation * 2.0 - 1.0
         rotation = F.normalize(rotation, dim=-1)
         sources = self.source_predictor(torch.cat([feats, pts], -1))
