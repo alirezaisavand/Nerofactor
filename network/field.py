@@ -1209,15 +1209,15 @@ class MCShadingNetwork(nn.Module):
         F0 = self.F0_predictor(torch.cat([feats, pts], -1))
         kd = self.kd_predictor(torch.cat([feats, pts], -1))
         ks = self.ks_predictor(torch.cat([feats, pts], -1))
-        rotation = self.rotation_predictor(torch.cat([feats, pts], -1))
-        print(f"rotatotion[:,0] min: {rotation[:,0].min()}, max: {rotation[:,0].max()}")
-        print(f"rotatotion[:,1] min: {rotation[:,1].min()}, max: {rotation[:,1].max()}")
-        print(f"rotation norm min: {torch.norm(rotation, dim=-1).min()}, max: {torch.norm(rotation, dim=-1).max()}")
-        rotation = rotation * 2.0 - 1.0
+        rotation_raw = self.rotation_predictor(torch.cat([feats, pts], -1))
+        print(f"rotatotion[:,0] min: {rotation_raw[:,0].min()}, max: {rotation_raw[:,0].max()}")
+        print(f"rotatotion[:,1] min: {rotation_raw[:,1].min()}, max: {rotation_raw[:,1].max()}")
+        print(f"rotation norm min: {torch.norm(rotation_raw, dim=-1).min()}, max: {torch.norm(rotation_raw, dim=-1).max()}")
+        rotation = rotation_raw * 2.0 - 1.0
         rotation = F.normalize(rotation, dim=-1)
         sources = self.source_predictor(torch.cat([feats, pts], -1))
         sources = sources * 2.0 - 1.0
-        return mx, my, alpha, F0, kd, ks, rotation, sources
+        return mx, my, alpha, F0, kd, ks, rotation, rotation_raw, sources
 
     def compute_Dh(self, m_x, m_y, theta_h, phi_h):
         """
@@ -1547,7 +1547,7 @@ class MCShadingNetwork(nn.Module):
 
         return f_d
 
-    def shade_anisotropic_mixed(self, pts, normals, sources, view_dirs, mx, my, alpha, F0, kd, ks, rotation,
+    def shade_anisotropic_mixed(self, pts, normals, sources, view_dirs, mx, my, alpha, F0, kd, ks, rotation, rotation_raw,
                                 human_poses, is_train):
         sources_norm = torch.nn.functional.normalize(sources, dim=-1)
         num_spec_samples = self.cfg['specular_sample_num']
@@ -1604,12 +1604,13 @@ class MCShadingNetwork(nn.Module):
         outputs['rotation'] = rotation
         outputs['sources'] = (sources + 1) / 2
         outputs['sources_norm'] = (sources_norm + 1) / 2
+        outputs['rotation_raw'] = rotation_raw
         return colors, outputs
 
     def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, is_seperate=True):
         # print('anisotropic_forward:')
-        mx, my, alpha, F0, kd, ks, rotation, sources = self.predict_anisotropic_components(pts)
-        return self.shade_anisotropic_mixed(pts, normals, sources, view_dirs, mx, my, alpha, F0, kd, ks, rotation,
+        mx, my, alpha, F0, kd, ks, rotation, rotation_raw, sources = self.predict_anisotropic_components(pts)
+        return self.shade_anisotropic_mixed(pts, normals, sources, view_dirs, mx, my, alpha, F0, kd, ks, rotation, rotation_raw,
                                             human_poses, is_train)
 
     def forward(self, pts, view_dirs, normals, human_poses, step, is_train):
@@ -1688,7 +1689,7 @@ class MCShadingNetwork(nn.Module):
             raise ValueError("unknown kind")
 
     def anisotropic_regularization(self, pts, normals, sources, t, b, mx, my, alpha, F0, kd, ks, f_d_sum, f_s_sum,
-                                   L_spec, rotation):
+                                   L_spec, rotation, rotation_raw, step):
         reg = 0
         if self.cfg['reg_change']:
             normals = F.normalize(normals, dim=-1)
@@ -1707,7 +1708,11 @@ class MCShadingNetwork(nn.Module):
             # alignment_loss = (dot ** 2)
             # Penalize alignment (i.e., |dot| close to 1)
             # Using squared absolute dot product ensures smoothness and symmetry
-            mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch, sources_ch = self.predict_anisotropic_components(
+            rotation_raw_mapped = 2.0 * rotation_raw - 1.0
+            tau = 0.3
+            non_zero_loss = torch.max(torch.zeros_like(mx), tau-F.normalize(rotation_raw_mapped, dim=-1))**2
+            lambda_non_zero = step / (100.0 * 1000.0)
+            mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch, rotation_raw_ch, sources_ch = self.predict_anisotropic_components(
                 pts + change)
 
             # sources_ch_normalized = F.normalize(sources_ch, dim=-1)
@@ -1723,7 +1728,8 @@ class MCShadingNetwork(nn.Module):
                         torch.abs(mx - mx_ch) +
                         torch.abs(my - my_ch) +
                         torch.abs(alpha - alpha_ch) +
-                        torch.abs(F0 - F0_ch)
+                        torch.abs(F0 - F0_ch) +
+                        non_zero_loss * lambda_non_zero
                 ),
                 dim=1)
             # print(f"length loss: {length_loss.mean().item():.6f}, alignment loss: {alignment_loss.mean().item():.6f}, mat reg loss: {mat_reg.mean().item():.6f}")
