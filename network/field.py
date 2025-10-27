@@ -766,7 +766,7 @@ class MCShadingNetwork(nn.Module):
         'reg_energy_loss': True,
         'reg_energy_loss_lambda': 0.01,
         'reg_spec_loss': True,
-        'reg_spec_loss_lambda': 0.01,
+        'reg_spec_loss_lambda': 0.001,
     }
 
     def __init__(self, cfg, ray_trace_fun):
@@ -1298,7 +1298,7 @@ class MCShadingNetwork(nn.Module):
         dot_wo_h = (wo * h).sum(dim=-1, keepdim=True)  # (N,M,1)
         # print('cos_th, mx, my, dot_wo, q:', cos_th.shape, m_x.shape, m_y.shape, dot_wo_h.shape, q.shape)
         denom = (4.0 * np.pi) * m_x * m_y * (cos_th ** 3) * dot_wo_h
-        p = q / (denom + eps)
+        p = q / (denom.clamp(min=0) + eps)
 
         return p  # (N, M, 1)
 
