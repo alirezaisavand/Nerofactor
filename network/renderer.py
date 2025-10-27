@@ -1662,7 +1662,7 @@ class NeROMaterialRenderer(nn.Module):
         # output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'specular_color': 3, 'diffuse_light': 3,
         #                'diffuse_color': 3, 'albedo': 3, 'metallic': 1, 'roughness': 1}
         output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'diffuse_light': 3,
-                       'kd': 3, 'ks': 3, 'F0': 1, "alpha": 1, 'diffuse_color': 3, 'specular_color': 3, 'mx': 1, 'my': 1,
+                       'kd': 3, 'metallic': 1, "alpha": 1, 'diffuse_color': 3, 'specular_color': 3, 'mx': 1, 'my': 1,
                        'f_d': 3, 'f_s_sum': 3, 'tangents': 3, 'bitangents': 3, 'sources': 3, 'sources_norm': 3, 'normals': 3, 'L_spec': 3}
         outputs = {k: [] for k in output_keys.keys()}
         rn = ray_batch['rays_o'].shape[0]
@@ -1693,14 +1693,12 @@ class NeROMaterialRenderer(nn.Module):
                 outputs_cur['sources_norm'][hit_mask] = shade_outputs['sources_norm'].float()
                 outputs_cur['normals'][hit_mask] = shade_outputs['normals'].float()
                 if self.cfg['n_lobes'] == 1:
-                    outputs_cur['ks'][hit_mask] = shade_outputs['ks']
-                    outputs_cur['F0'][hit_mask] = shade_outputs['F0']
+                    outputs_cur['metallic'][hit_mask] = shade_outputs['metallic']
                     outputs_cur['mx'][hit_mask] = shade_outputs['mx']
                     outputs_cur['my'][hit_mask] = shade_outputs['my']
                     outputs_cur['alpha'][hit_mask] = shade_outputs['alpha']
                 else:
-                    outputs_cur['ks'][hit_mask] = shade_outputs['ks'][0]
-                    outputs_cur['F0'][hit_mask] = shade_outputs['F0'][0]
+                    outputs_cur['metallic'][hit_mask] = shade_outputs['metallic'][0]
                     outputs_cur['mx'][hit_mask] = shade_outputs['mx'][0]
                     outputs_cur['my'][hit_mask] = shade_outputs['my'][0]
                     outputs_cur['alpha'][hit_mask] = shade_outputs['alpha'][0]
