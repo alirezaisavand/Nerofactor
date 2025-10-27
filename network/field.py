@@ -587,7 +587,7 @@ class AppShadingNetwork(nn.Module):
         pts = self.pos_enc(points)
         if self.cfg['sphere_direction']:
             sph_points = offset_points_to_sphere(points)
-            sph_points = F.normalize(sph_points + reflective * get_sphere_intersection(sph_points, reflective), dim=-1)
+            sph_points = F.normalize(sph_points + reflective * get_sphere_intersection(sph_points, reflective), dim=-1, eps=1e-6)
             sph_points = self.sph_enc(sph_points, roughness)
             direct_light = self.outer_light(torch.cat([ref_roughness, sph_points], -1))
         else:
@@ -616,7 +616,7 @@ class AppShadingNetwork(nn.Module):
         ref = torch.cat([ref_x, ref_y], -1)  # pn,72*2
         if self.cfg['sphere_direction']:
             sph_points = offset_points_to_sphere(points)
-            sph_points = F.normalize(sph_points + normals * get_sphere_intersection(sph_points, normals), dim=-1)
+            sph_points = F.normalize(sph_points + normals * get_sphere_intersection(sph_points, normals), dim=-1, eps=1e-6)
             sph_points = self.sph_enc(sph_points, roughness)
             light = self.outer_light(torch.cat([ref, sph_points], -1))
         else:
@@ -766,7 +766,7 @@ class MCShadingNetwork(nn.Module):
         'reg_energy_loss': True,
         'reg_energy_loss_lambda': 0.01,
         'reg_spec_loss': True,
-        'reg_spec_loss_lambda': 0.05,
+        'reg_spec_loss_lambda': 0.01,
     }
 
     def __init__(self, cfg, ray_trace_fun):
@@ -921,13 +921,13 @@ class MCShadingNetwork(nn.Module):
                 tangent[zero_tangent_mask] = torch.cross(normals[zero_tangent_mask], ref_dir.unsqueeze(0), dim=-1)
 
             # Normalize the tangents
-            tangent = torch.nn.functional.normalize(tangent, p=2, dim=-1)
+            tangent = torch.nn.functional.normalize(tangent, p=2, dim=-1, eps=1e-6)
 
             # Compute bitangent via cross product with normal
             bitangent = torch.cross(normals, tangent, dim=-1)
 
             # Normalize bitangents
-            bitangent = torch.nn.functional.normalize(bitangent, p=2, dim=-1)
+            bitangent = torch.nn.functional.normalize(bitangent, p=2, dim=-1, eps=1e-6)
 
             return tangent, bitangent
         else:
@@ -938,13 +938,13 @@ class MCShadingNetwork(nn.Module):
             tangent = torch.cross(normals, ref_dirs, dim=-1)
 
             # Normalize the tangents
-            tangent = torch.nn.functional.normalize(tangent, p=2, dim=-1)
+            tangent = torch.nn.functional.normalize(tangent, p=2, dim=-1, eps=1e-6)
 
             # Compute bitangent via cross product with normal
             bitangent = torch.cross(normals, tangent, dim=-1)
 
             # Normalize bitangents
-            bitangent = torch.nn.functional.normalize(bitangent, p=2, dim=-1)
+            bitangent = torch.nn.functional.normalize(bitangent, p=2, dim=-1, eps=1e-6)
 
             return tangent, bitangent
 
@@ -994,8 +994,8 @@ class MCShadingNetwork(nn.Module):
 
     def get_inner_lights(self, points, view_dirs, normals):
         pos_enc = self.pos_enc(points)
-        normals = F.normalize(normals, dim=-1)
-        view_dirs = F.normalize(view_dirs, dim=-1)
+        normals = F.normalize(normals, dim=-1, eps=1e-6)
+        view_dirs = F.normalize(view_dirs, dim=-1, eps=1e-6)
         reflections = torch.sum(view_dirs * normals, -1, keepdim=True) * normals * 2 - view_dirs
 
         # Todo changed here dir_enc = self.sph_enc(reflections, 0)
@@ -1077,7 +1077,7 @@ class MCShadingNetwork(nn.Module):
 
     def fresnel_schlick_directions(self, F0, view_dirs, directions):
         H = (view_dirs + directions)  # [pn,sn0,3]
-        H = F.normalize(H, dim=-1)
+        H = F.normalize(H, dim=-1, eps=1e-6)
         HoV = torch.clamp(torch.sum(H * view_dirs, dim=-1, keepdim=True), min=0.0, max=1.0)  # [pn,sn0,1]
         fresnel = self.fresnel_schlick(F0, HoV)  # [pn,sn0,1]
         return fresnel, H, HoV
@@ -1146,7 +1146,7 @@ class MCShadingNetwork(nn.Module):
 
         # specualr sample prob
         H_s = (view_dirs.unsqueeze(1) + specular_directions)  # [pn,sn0,3] half vector
-        H_s = F.normalize(H_s, dim=-1)
+        H_s = F.normalize(H_s, dim=-1, eps=1e-6)
         NoH_s = saturate_dot(normals.unsqueeze(1), H_s)
         VoH_s = saturate_dot(view_dirs.unsqueeze(1), H_s)
         specular_probability = self.distribution_ggx(NoH_s, roughness.unsqueeze(1)) * NoH_s / (4 * VoH_s + 1e-5) * (
@@ -1214,7 +1214,7 @@ class MCShadingNetwork(nn.Module):
         print(f"rotatotion[:,1] min: {rotation_raw[:,1].min()}, max: {rotation_raw[:,1].max()}")
         print(f"rotation norm min: {torch.norm(rotation_raw, dim=-1).min()}, max: {torch.norm(rotation_raw, dim=-1).max()}")
         rotation = rotation_raw * 2.0 - 1.0
-        rotation = F.normalize(rotation, dim=-1)
+        rotation = F.normalize(rotation, dim=-1, eps=1e-6)
         sources = self.source_predictor(torch.cat([feats, pts], -1))
         sources = sources * 2.0 - 1.0
         return mx, my, alpha, F0, kd, ks, rotation, rotation_raw, sources
@@ -1245,11 +1245,12 @@ class MCShadingNetwork(nn.Module):
         log_q = -tan2 * (
                 (cos_phi_h ** 2) / (m_x ** 2) + (sin_phi_h ** 2) / (m_y ** 2)
         )
-        log_q = torch.clamp(log_q, min=-50.0, max=50.0)  # prevent overflow
+        log_q = torch.clamp(log_q, min=-40.0, max=40.0)  # prevent overflow
         q_h = torch.exp(log_q)
 
         # Step 2: Compute D(h) based on the formula
-        D_h = (1 / (np.pi * m_x * m_y * cos_theta_h ** 4 + 1e-6)) * q_h  # (N, M, 1)
+        denom = (np.pi * m_x * m_y * cos_theta_h ** 4).clamp(min=eps)
+        D_h = (1 / denom) * q_h  # (N, M, 1)
 
         return D_h.unsqueeze(-1)
 
@@ -1298,7 +1299,7 @@ class MCShadingNetwork(nn.Module):
         dot_wo_h = (wo * h).sum(dim=-1, keepdim=True)  # (N,M,1)
         # print('cos_th, mx, my, dot_wo, q:', cos_th.shape, m_x.shape, m_y.shape, dot_wo_h.shape, q.shape)
         denom = (4.0 * np.pi) * m_x * m_y * (cos_th ** 3) * dot_wo_h
-        p = q / (denom + eps)
+        p = q / (denom.clamp(min=0) + eps)
 
         return p  # (N, M, 1)
 
@@ -1554,7 +1555,7 @@ class MCShadingNetwork(nn.Module):
 
     def shade_anisotropic_mixed(self, pts, normals, sources, view_dirs, mx, my, alpha, F0, kd, ks, rotation, rotation_raw,
                                 human_poses, is_train):
-        sources_norm = torch.nn.functional.normalize(sources, dim=-1)
+        sources_norm = torch.nn.functional.normalize(sources, dim=-1, eps=1e-6)
         num_spec_samples = self.cfg['specular_sample_num']
         # Todo sources is not passed here
         hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rotation, pts, mx, my,
@@ -1621,7 +1622,7 @@ class MCShadingNetwork(nn.Module):
     def forward(self, pts, view_dirs, normals, human_poses, step, is_train):
         if self.cfg['anisotropy']:
             return self.anisotropic_forward(pts, view_dirs, normals, human_poses, step, is_train, is_seperate=True)
-        view_dirs, normals = F.normalize(view_dirs, dim=-1), F.normalize(normals, dim=-1)
+        view_dirs, normals = F.normalize(view_dirs, dim=-1 , eps=1e-6), F.normalize(normals, dim=-1 , eps=1e-6)
         reflections = torch.sum(view_dirs * normals, -1, keepdim=True) * normals * 2 - view_dirs
         metallic, roughness, albedo = self.predict_materials(pts)  # [pn,1] [pn,1] [pn,3]
         return self.shade_mixed(pts, normals, view_dirs, reflections, metallic, roughness, albedo, human_poses,
@@ -1697,7 +1698,7 @@ class MCShadingNetwork(nn.Module):
                                    L_spec, rotation, rotation_raw, step):
         reg = 0
         if self.cfg['reg_change']:
-            normals = F.normalize(normals, dim=-1)
+            normals = F.normalize(normals, dim=-1, eps=1e-6)
             x = self.get_orthogonal_directions(normals)
             y = torch.cross(normals, x)
             ang = torch.rand(pts.shape[0], 1) * np.pi * 2
@@ -1764,7 +1765,7 @@ class MCShadingNetwork(nn.Module):
         reg = 0
 
         if self.cfg['reg_change']:
-            normals = F.normalize(normals, dim=-1)
+            normals = F.normalize(normals, dim=-1, eps=1e-6)
             x = self.get_orthogonal_directions(normals)
             y = torch.cross(normals, x)
             ang = torch.rand(pts.shape[0], 1) * np.pi * 2
