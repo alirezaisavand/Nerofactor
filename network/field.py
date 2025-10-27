@@ -1325,8 +1325,10 @@ class MCShadingNetwork(nn.Module):
 
         x, y = self.compute_tangent_bitangent_flat(normals, sources)
         # rotate tangent and bitangent
-        cos_rot = rotation[:, 0:1]  # (N,1)
-        sin_rot = rotation[:, 1:2]  # (N,1)
+        cos_2rot = rotation[:, 0:1]  # (N,1)
+        sin_2rot = rotation[:, 1:2]  # (N,1)
+        cos_rot = torch.sqrt((cos_2rot + 1.0) / 2.0).clamp(min=0.0, max=1.0)  # (N,1)
+        sin_rot = torch.sign(sin_2rot) * torch.sqrt((1.0 - cos_2rot) / 2.0).clamp(min=0.0, max=1.0)  # (N,1)
         if sources is None:
             x, y = self.rotate_tangent_bitangent(x, y, cos_rot, sin_rot)
 
@@ -1728,9 +1730,9 @@ class MCShadingNetwork(nn.Module):
                         torch.abs(mx - mx_ch) +
                         torch.abs(my - my_ch) +
                         torch.abs(alpha - alpha_ch) +
-                        torch.abs(F0 - F0_ch) +
-                        non_zero_loss * lambda_non_zero +
-                        curv_loss * lambda_non_zero
+                        torch.abs(F0 - F0_ch)
+                        + non_zero_loss * lambda_non_zero
+                        # + curv_loss * lambda_non_zero
                 ),
                 dim=1)
             # print(f"length loss: {length_loss.mean().item():.6f}, alignment loss: {alignment_loss.mean().item():.6f}, mat reg loss: {mat_reg.mean().item():.6f}")
