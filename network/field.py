@@ -1463,6 +1463,7 @@ class MCShadingNetwork(nn.Module):
         f_s = (k_s_exp * F * pow_in / denom) * mask.unsqueeze(-1)
         spec_brdf = (k_s_exp * F * pow_in_denom * pdf / denom) * mask.unsqueeze(-1)
         weighted_specular_light = (k_s_exp * pow_in_denom * pdf / denom) * mask.unsqueeze(-1) * specular_lights
+        masked_specular_light = specular_lights * mask.unsqueeze(-1)
 
         spec_weighted = f_s * specular_lights  # (N,M,3)
         specular = spec_weighted.sum(dim=1) / valid_counts  # (N,3)
@@ -1473,7 +1474,7 @@ class MCShadingNetwork(nn.Module):
         tem = 1
         L_spec = self.compute_spec_loss(tem, f_d, mx, my, theta_h, phi_h)
         L_spec = torch.sum(L_spec * f_d * mask.unsqueeze(-1), dim=1) / (valid_counts * 3)
-        return R, diffuse, specular, f_d_sum, f_s_sum, L_spec, weighted_specular_light
+        return R, diffuse, specular, f_d_sum, f_s_sum, L_spec, weighted_specular_light, masked_specular_light
 
     def nan_inf_check(self, A, name):
         if torch.isinf(A).any():
@@ -1578,7 +1579,7 @@ class MCShadingNetwork(nn.Module):
 
         f_d = self.diffuse_term(kd, F)
 
-        R, diffuse_color, specular_color, f_d_sum, f_s_sum, L_spec, weighted_specular_lights = self.compute_radiance(
+        R, diffuse_color, specular_color, f_d_sum, f_s_sum, L_spec, weighted_specular_lights, masked_specular_lights = self.compute_radiance(
             f_d, diffuse_lights, specular_lights, ks, F, diffuse_directions, wis, normals, alpha, cos_ths, view_dirs,
             pdfs, theta_h, phi_h, mx, my)
 
@@ -1602,7 +1603,7 @@ class MCShadingNetwork(nn.Module):
         outputs['diffuse_color'] = diffuse_color
         outputs['specular_color'] = specular_color
         outputs['diffuse_light'] = torch.clamp(linear_to_srgb(torch.mean(diffuse_lights, dim=1)), min=0, max=1)
-        outputs['specular_light'] = torch.clamp(linear_to_srgb(torch.mean(specular_lights, dim=1)), min=0,
+        outputs['specular_light'] = torch.clamp(linear_to_srgb(torch.mean(masked_specular_lights, dim=1)), min=0,
                                                 max=1)
         outputs['f_d_sum'] = f_d_sum
         outputs['f_s_sum'] = f_s_sum
