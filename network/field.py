@@ -1602,7 +1602,7 @@ class MCShadingNetwork(nn.Module):
         outputs['diffuse_color'] = diffuse_color
         outputs['specular_color'] = specular_color
         outputs['diffuse_light'] = torch.clamp(linear_to_srgb(torch.mean(diffuse_lights, dim=1)), min=0, max=1)
-        outputs['specular_light'] = torch.clamp(linear_to_srgb(torch.mean(weighted_specular_lights, dim=1)), min=0,
+        outputs['specular_light'] = torch.clamp(linear_to_srgb(torch.mean(specular_lights, dim=1)), min=0,
                                                 max=1)
         outputs['f_d_sum'] = f_d_sum
         outputs['f_s_sum'] = f_s_sum
