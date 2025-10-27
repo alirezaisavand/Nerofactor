@@ -1637,8 +1637,8 @@ class NeROMaterialRenderer(nn.Module):
             # shade_outputs['loss_mat_reg'] = self.shader_network.material_regularization(
             #     pts, normals, shade_outputs['metallic'], shade_outputs['roughness'], shade_outputs['albedo'], step)
             shade_outputs['loss_mat_reg'] = self.shader_network.anisotropic_regularization(
-                pts, normals,  shade_outputs['sources']*2.0-1.0, shade_outputs['tangents'], shade_outputs['bitangents'], shade_outputs['mx'], shade_outputs['my'], shade_outputs['alpha'], shade_outputs['F0'],
-                shade_outputs['kd'], shade_outputs['ks'], shade_outputs['f_d_sum'], shade_outputs['f_s_sum'],
+                pts, normals,  shade_outputs['sources']*2.0-1.0, shade_outputs['tangents'], shade_outputs['bitangents'], shade_outputs['mx'], shade_outputs['my'], shade_outputs['alpha'], shade_outputs['metallic'],
+                shade_outputs['kd'], shade_outputs['f_d'], shade_outputs['f_s_sum'],
                 shade_outputs['L_spec'], shade_outputs['rotation'], shade_outputs['rotation_raw'], step
             )
             # shade_outputs['loss_mat_reg'] = self.shader_network.material_regularization(
@@ -1663,7 +1663,7 @@ class NeROMaterialRenderer(nn.Module):
         #                'diffuse_color': 3, 'albedo': 3, 'metallic': 1, 'roughness': 1}
         output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'diffuse_light': 3,
                        'kd': 3, 'ks': 3, 'F0': 1, "alpha": 1, 'diffuse_color': 3, 'specular_color': 3, 'mx': 1, 'my': 1,
-                       'f_d_sum': 3, 'f_s_sum': 3, 'tangents': 3, 'bitangents': 3, 'sources': 3, 'sources_norm': 3, 'normals': 3, 'L_spec': 3}
+                       'f_d': 3, 'f_s_sum': 3, 'tangents': 3, 'bitangents': 3, 'sources': 3, 'sources_norm': 3, 'normals': 3, 'L_spec': 3}
         outputs = {k: [] for k in output_keys.keys()}
         rn = ray_batch['rays_o'].shape[0]
         for ri in range(0, rn, trn):
@@ -1684,7 +1684,7 @@ class NeROMaterialRenderer(nn.Module):
                 outputs_cur['kd'][hit_mask] = shade_outputs['kd']
                 outputs_cur['diffuse_color'][hit_mask] = shade_outputs['diffuse_color']
                 outputs_cur['specular_color'][hit_mask] = shade_outputs['specular_color']
-                outputs_cur['f_d_sum'][hit_mask] = shade_outputs['f_d_sum'].float()
+                outputs_cur['f_d'][hit_mask] = shade_outputs['f_d'].float()
                 outputs_cur['f_s_sum'][hit_mask] = shade_outputs['f_s_sum'].float()
                 outputs_cur['L_spec'][hit_mask] = shade_outputs['L_spec'].float()
                 outputs_cur['tangents'][hit_mask] = shade_outputs['tangents'].float()
