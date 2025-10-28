@@ -1706,8 +1706,8 @@ class MCShadingNetwork(nn.Module):
 
             # length_loss = self.unit_norm_prior(sources, kind="huber", delta=0.1)
             # the dot would assign low weight importance to normals that are almost the same, and increasing error the more they deviate. So it's something like and L2 loss. But we want a L1 loss so we get the angle, and then we map it to range [0,1]
-            total_steps = 100 * 1000.0
-
+            total_steps = 50 * 1000.0
+            st = min(total_steps, step)
             len_loss_weight = 0.01 * (np.cos((step / total_steps) * np.pi + np.pi) + 1.0) / 2.0
             mat_reg = torch.mean(
                 (
