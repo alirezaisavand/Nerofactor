@@ -36,8 +36,8 @@ def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
         'poses': poses,
     }
 
-    if is_nerf:
-        imgs_info['masks'] = masks
+    # if is_nerf:
+    #     imgs_info['masks'] = masks
 
     return imgs_info
 
@@ -446,8 +446,8 @@ class NeROShapeRenderer(nn.Module):
         outputs = self.render(rays_o, rays_d, near, far, human_poses, -1, self.get_anneal_val(step), is_train=True,
                               step=step, is_nerf=is_nerf)
         outputs['loss_rgb'] = self.compute_rgb_loss(outputs['ray_rgb'], train_ray_batch['rgbs'])  # ray_loss
-        if is_nerf:  # only nerf dataset add loss_mask
-            outputs['loss_mask'] = F.l1_loss(train_ray_batch['masks'], outputs['acc'], reduction='mean')
+        # if is_nerf:  # only nerf dataset add loss_mask
+        #     outputs['loss_mask'] = F.l1_loss(train_ray_batch['masks'], outputs['acc'], reduction='mean')
         return outputs
 
     # def render_step(self, step):
@@ -726,14 +726,14 @@ class NeROShapeRenderer(nn.Module):
         alpha, sampled_color = torch.zeros(batch_size, n_samples), torch.zeros(batch_size, n_samples, 3)
 
         if torch.sum(outer_mask) > 0:
-            if is_nerf:
-                alpha[outer_mask] = torch.zeros_like(alpha[outer_mask])
-                sampled_color[outer_mask] = torch.zeros_like(sampled_color[outer_mask])
-            else:
-                alpha[outer_mask], sampled_color[outer_mask] = self.compute_density_alpha(points[outer_mask],
-                                                                                          dists[outer_mask],
-                                                                                          -dirs[outer_mask],
-                                                                                          self.outer_nerf)
+            # if is_nerf:
+            #     alpha[outer_mask] = torch.zeros_like(alpha[outer_mask])
+            #     sampled_color[outer_mask] = torch.zeros_like(sampled_color[outer_mask])
+            # else:
+            alpha[outer_mask], sampled_color[outer_mask] = self.compute_density_alpha(points[outer_mask],
+                                                                                      dists[outer_mask],
+                                                                                      -dirs[outer_mask],
+                                                                                      self.outer_nerf)
 
         if torch.sum(inner_mask) > 0:
             alpha[inner_mask], gradients, feature_vector, inv_s, sdf = self.compute_sdf_alpha(points[inner_mask],
@@ -752,8 +752,8 @@ class NeROShapeRenderer(nn.Module):
                           :-1]  # rn,sn
         color = (sampled_color * weights[..., None]).sum(dim=1)
         acc = torch.sum(weights, -1)
-        if is_nerf:
-            color = color + (1. - acc[..., None])
+        # if is_nerf:
+        #     color = color + (1. - acc[..., None])
 
         outputs = {
             'ray_rgb': color,  # rn,3
