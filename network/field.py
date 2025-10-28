@@ -1698,7 +1698,7 @@ class MCShadingNetwork(nn.Module):
             rotation_raw_mapped = 2.0 * rotation_raw - 1.0
             tau = 0.3
             non_zero_loss = torch.max(torch.zeros_like(mx), tau-torch.norm(rotation_raw_mapped, dim=-1, keepdim=True))**2
-            lambda_non_zero = step*0.1 / (100.0 * 1000.0)
+
             mx_ch, my_ch, alpha_ch, metallic_ch, kd_ch, rotation_ch, rotation_raw_ch, sources_ch = self.predict_anisotropic_components(
                 pts + change)
 
@@ -1706,7 +1706,9 @@ class MCShadingNetwork(nn.Module):
 
             # length_loss = self.unit_norm_prior(sources, kind="huber", delta=0.1)
             # the dot would assign low weight importance to normals that are almost the same, and increasing error the more they deviate. So it's something like and L2 loss. But we want a L1 loss so we get the angle, and then we map it to range [0,1]
+            total_steps = 100 * 1000.0
 
+            len_loss_weight = 0.001 * (np.cos((step / total_steps) * np.pi + np.pi) + 1.0) / 2.0
             mat_reg = torch.mean(
                 (
                         torch.abs(kd - kd_ch) +
@@ -1714,8 +1716,8 @@ class MCShadingNetwork(nn.Module):
                         torch.abs(my - my_ch) +
                         torch.abs(alpha - alpha_ch) +
                         torch.abs(metallic - metallic_ch)
-                        # + non_zero_loss * lambda_non_zero
-                        + ((rotation - rotation_ch)**2).sum(dim=-1) * lambda_non_zero
+                        + non_zero_loss * len_loss_weight
+                        + ((rotation - rotation_ch)**2).sum(dim=-1) * 0.001
                 ),
                 dim=1)
             # print(f"length loss: {length_loss.mean().item():.6f}, alignment loss: {alignment_loss.mean().item():.6f}, mat reg loss: {mat_reg.mean().item():.6f}")
