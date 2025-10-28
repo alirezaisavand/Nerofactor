@@ -3,7 +3,7 @@ name: angel_material
 ####network#####
 network: material
 database_name: syn/angel
-mesh: data/meshes/angel_shape-300000.ply
+mesh: data/meshes/angel.ply
 anisotropy: true
 
 reg_diffuse_light: true
