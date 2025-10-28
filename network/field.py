@@ -787,7 +787,7 @@ class MCShadingNetwork(nn.Module):
             self.my_predictor = make_predictor(256 + 3, 1)
             self.alpha_predictor = make_predictor(256 + 3, 1)
             self.metallic_predictor = make_predictor(256 + 3, 1)
-            self.rotation_predictor = make_predictor(256 + 3, 2)
+            self.rotation_predictor = make_predictor(256 + 3, 2, activation='none')
             # self.source_predictor = make_predictor(256 + 3, 3)
 
             self.kd_predictor = make_predictor(256 + 3, 3)
@@ -1211,8 +1211,8 @@ class MCShadingNetwork(nn.Module):
         print(f"rotatotion[:,0] min: {rotation_raw[:,0].min()}, max: {rotation_raw[:,0].max()}")
         print(f"rotatotion[:,1] min: {rotation_raw[:,1].min()}, max: {rotation_raw[:,1].max()}")
         print(f"rotation norm min: {torch.norm(rotation_raw, dim=-1).min()}, max: {torch.norm(rotation_raw, dim=-1).max()}")
-        rotation = rotation_raw * 2.0 - 1.0
-        rotation = F.normalize(rotation, dim=-1, eps=1e-6)
+        # rotation = rotation_raw * 2.0 - 1.0
+        rotation = F.normalize(rotation_raw, dim=-1, eps=1e-6)
         # sources = self.source_predictor(torch.cat([feats, pts], -1))
         # sources = sources * 2.0 - 1.0
         return mx, my, alpha, metallic, kd, rotation, rotation_raw
@@ -1697,7 +1697,7 @@ class MCShadingNetwork(nn.Module):
             # Using squared absolute dot product ensures smoothness and symmetry
             rotation_raw_mapped = 2.0 * rotation_raw - 1.0
             tau = 0.3
-            non_zero_loss = torch.max(torch.zeros_like(mx), tau-torch.norm(rotation_raw_mapped, dim=-1, keepdim=True))**2
+            # non_zero_loss = torch.max(torch.zeros_like(mx), tau-torch.norm(rotation_raw_mapped, dim=-1, keepdim=True))**2
 
             mx_ch, my_ch, alpha_ch, metallic_ch, kd_ch, rotation_ch, rotation_raw_ch = self.predict_anisotropic_components(
                 pts + change)
@@ -1716,7 +1716,7 @@ class MCShadingNetwork(nn.Module):
                         torch.abs(my - my_ch) +
                         torch.abs(alpha - alpha_ch) +
                         torch.abs(metallic - metallic_ch)
-                        + non_zero_loss * len_loss_weight
+                        # + non_zero_loss * len_loss_weight
                         + ((rotation - rotation_ch)**2).sum(dim=-1, keepdim=True) * 0.001
                 ),
                 dim=1)
