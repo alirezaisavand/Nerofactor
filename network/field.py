@@ -1213,10 +1213,9 @@ class MCShadingNetwork(nn.Module):
         # print(f"rotation norm min: {torch.norm(rotation_raw, dim=-1).min()}, max: {torch.norm(rotation_raw, dim=-1).max()}")
         rotation = rotation_raw * 2.0 - 1.0
         rotation = F.normalize(rotation, dim=-1, eps=1e-6)
-        sources_raw = self.source_predictor(torch.cat([feats, pts], -1))
-        sources = sources_raw * 2.0 - 1.0
-        sources = F.normalize(sources, dim=-1, eps=1e-6)
-        return mx, my, alpha, metallic, kd, rotation, rotation_raw, sources, sources_raw
+        sources = self.source_predictor(torch.cat([feats, pts], -1))
+        sources = sources * 2.0 - 1.0
+        return mx, my, alpha, metallic, kd, rotation, rotation_raw, sources
 
     def compute_Dh(self, m_x, m_y, theta_h, phi_h):
         """
@@ -1536,14 +1535,14 @@ class MCShadingNetwork(nn.Module):
         f_d = kd * (1-metallic)  # (N,3)
         return f_d
 
-    def shade_anisotropic_mixed(self, pts, normals, sources, sources_raw, view_dirs, mx, my, alpha, metallic, kd, rotation, rotation_raw,
+    def shade_anisotropic_mixed(self, pts, normals, sources, view_dirs, mx, my, alpha, metallic, kd, rotation, rotation_raw,
                                 human_poses, is_train):
         sources_norm = torch.nn.functional.normalize(sources, dim=-1, eps=1e-6)
         num_spec_samples = self.cfg['specular_sample_num']
         # Todo sources is not passed here
         hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rotation, pts, mx, my,
                                                                                            view_dirs, num_spec_samples,
-                                                                                           normals, sources, 'cuda')
+                                                                                           normals, None, 'cuda')
         f0 = 0.04 * (1 - metallic) + metallic * kd  # [pn,1]
         diffuse_directions = self.sample_diffuse_directions(normals, is_train)
 
@@ -1593,13 +1592,12 @@ class MCShadingNetwork(nn.Module):
         outputs['sources'] = (sources + 1) / 2
         outputs['sources_norm'] = (sources_norm + 1) / 2
         outputs['rotation_raw'] = rotation_raw
-        outputs['sources_raw'] = sources_raw
         return colors, outputs
 
     def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, is_seperate=True):
         # print('anisotropic_forward:')
-        mx, my, alpha, metallic, kd, rotation, rotation_raw, sources, sources_raw = self.predict_anisotropic_components(pts)
-        return self.shade_anisotropic_mixed(pts, normals, sources, sources_raw, view_dirs, mx, my, alpha, metallic, kd, rotation, rotation_raw,
+        mx, my, alpha, metallic, kd, rotation, rotation_raw, sources = self.predict_anisotropic_components(pts)
+        return self.shade_anisotropic_mixed(pts, normals, sources, view_dirs, mx, my, alpha, metallic, kd, rotation, rotation_raw,
                                             human_poses, is_train)
 
     def forward(self, pts, view_dirs, normals, human_poses, step, is_train):
@@ -1677,7 +1675,7 @@ class MCShadingNetwork(nn.Module):
         else:
             raise ValueError("unknown kind")
 
-    def anisotropic_regularization(self, pts, normals, sources, sources_raw, t, b, mx, my, alpha, metallic, kd, f_d, f_s_sum,
+    def anisotropic_regularization(self, pts, normals, sources, t, b, mx, my, alpha, metallic, kd, f_d, f_s_sum,
                                    L_spec, rotation, rotation_raw, step):
         reg = 0
         if self.cfg['reg_change']:
@@ -1692,20 +1690,23 @@ class MCShadingNetwork(nn.Module):
                 change = (torch.cos(ang) * x + torch.sin(ang) * y) * eps
             else:
                 raise NotImplementedError
+            # sources_normalized = F.normalize(sources, dim=-1)
+            # dot = (sources_normalized * normals).sum(dim=-1, keepdim=True)
+            # alignment_loss = (dot ** 2)
+            # Penalize alignment (i.e., |dot| close to 1)
+            # Using squared absolute dot product ensures smoothness and symmetry
             rotation_raw_mapped = 2.0 * rotation_raw - 1.0
-            sources_raw_mapped = 2.0 * sources_raw - 1.0
             tau = 0.3
-            non_zero_loss_rotation = torch.max(torch.zeros_like(mx), tau-torch.norm(rotation_raw_mapped, dim=-1, keepdim=True))**2
-            non_zero_loss_sources = torch.max(torch.zeros_like(mx), tau - torch.norm(sources_raw_mapped, dim=-1, keepdim=True))**2
+            non_zero_loss = torch.max(torch.zeros_like(mx), tau-torch.norm(rotation_raw_mapped, dim=-1, keepdim=True))**2
             lambda_non_zero = step*0.1 / (100.0 * 1000.0)
-            mx_ch, my_ch, alpha_ch, metallic_ch, kd_ch, rotation_ch, rotation_raw_ch, sources_ch, sources_raw_ch = self.predict_anisotropic_components(
+            mx_ch, my_ch, alpha_ch, metallic_ch, kd_ch, rotation_ch, rotation_raw_ch, sources_ch = self.predict_anisotropic_components(
                 pts + change)
 
-            curv_dot_rotation = (rotation * rotation_ch).sum(dim=-1, keepdim=True)
-            curv_loss_rotation = (1 - curv_dot_rotation) ** 2
-
-            curv_dot_sources = (sources * sources_ch).sum(dim=-1, keepdim=True)
-            curv_loss_sources = (1 - curv_dot_sources) ** 2
+            # sources_ch_normalized = F.normalize(sources_ch, dim=-1)
+            curv_dot = (rotation * rotation_ch).sum(dim=-1, keepdim=True)
+            curv_loss = (1 - curv_dot) ** 2
+            # length_loss = self.unit_norm_prior(sources, kind="huber", delta=0.1)
+            # the dot would assign low weight importance to normals that are almost the same, and increasing error the more they deviate. So it's something like and L2 loss. But we want a L1 loss so we get the angle, and then we map it to range [0,1]
 
             mat_reg = torch.mean(
                 (
@@ -1714,10 +1715,12 @@ class MCShadingNetwork(nn.Module):
                         torch.abs(my - my_ch) +
                         torch.abs(alpha - alpha_ch) +
                         torch.abs(metallic - metallic_ch)
-                        # + non_zero_loss_rotation * lambda_non_zero
+                        + non_zero_loss * lambda_non_zero
                         # + curv_loss * lambda_non_zero
                 ),
                 dim=1)
+            # print(f"length loss: {length_loss.mean().item():.6f}, alignment loss: {alignment_loss.mean().item():.6f}, mat reg loss: {mat_reg.mean().item():.6f}")
+            # source_loss = (alignment_loss + length_loss) * 0.001
             reg = reg + (mat_reg) * self.cfg['reg_lambda1']
             if self.cfg['reg_energy_loss']:
                 f_r_loss = (f_d + f_s_sum) - 1
