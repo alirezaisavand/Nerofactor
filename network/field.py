@@ -1703,8 +1703,7 @@ class MCShadingNetwork(nn.Module):
                 pts + change)
 
             # sources_ch_normalized = F.normalize(sources_ch, dim=-1)
-            curv_dot = (rotation * rotation_ch).sum(dim=-1, keepdim=True)
-            curv_loss = (1 - curv_dot) ** 2
+
             # length_loss = self.unit_norm_prior(sources, kind="huber", delta=0.1)
             # the dot would assign low weight importance to normals that are almost the same, and increasing error the more they deviate. So it's something like and L2 loss. But we want a L1 loss so we get the angle, and then we map it to range [0,1]
 
@@ -1716,7 +1715,7 @@ class MCShadingNetwork(nn.Module):
                         torch.abs(alpha - alpha_ch) +
                         torch.abs(metallic - metallic_ch)
                         # + non_zero_loss * lambda_non_zero
-                        + curv_loss * lambda_non_zero
+                        + ((rotation - rotation_ch)**2).sum(dim=-1) * lambda_non_zero
                 ),
                 dim=1)
             # print(f"length loss: {length_loss.mean().item():.6f}, alignment loss: {alignment_loss.mean().item():.6f}, mat reg loss: {mat_reg.mean().item():.6f}")
