@@ -1637,7 +1637,7 @@ class NeROMaterialRenderer(nn.Module):
             # shade_outputs['loss_mat_reg'] = self.shader_network.material_regularization(
             #     pts, normals, shade_outputs['metallic'], shade_outputs['roughness'], shade_outputs['albedo'], step)
             shade_outputs['loss_mat_reg'] = self.shader_network.anisotropic_regularization(
-                pts, normals,  shade_outputs['sources'], shade_outputs['sources_raw'], shade_outputs['tangents'], shade_outputs['bitangents'], shade_outputs['mx'], shade_outputs['my'], shade_outputs['alpha'], shade_outputs['metallic'],
+                pts, normals,  shade_outputs['sources']*2-1, shade_outputs['sources_raw'], shade_outputs['tangents'], shade_outputs['bitangents'], shade_outputs['mx'], shade_outputs['my'], shade_outputs['alpha'], shade_outputs['metallic'],
                 shade_outputs['kd'], shade_outputs['f_d'], shade_outputs['f_s_sum'],
                 shade_outputs['L_spec'], shade_outputs['rotation'], shade_outputs['rotation_raw'], step
             )
