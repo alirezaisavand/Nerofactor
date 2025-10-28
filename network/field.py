@@ -920,7 +920,7 @@ class MCShadingNetwork(nn.Module):
             if zero_tangent_mask.any():
                 # Recalculate tangent using the Y-axis if the normal is aligned with X-axis
                 ref_dir = torch.tensor([0.0, 1.0, 0.0], dtype=torch.float32)  # Example: Y-axis
-                tangent[zero_tangent_mask] = torch.cross(normals[zero_tangent_mask], ref_dir.unsqueeze(0), dim=-1)
+                tangent[zero_tangent_mask] = torch.cross(normals[zero_tangent_mask], ref_dir.unsqueeze(0).expand(normals.size(0), -1), dim=-1)
 
             # Normalize the tangents
             tangent = torch.nn.functional.normalize(tangent, p=2, dim=-1, eps=1e-6)
