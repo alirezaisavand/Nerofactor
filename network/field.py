@@ -1543,7 +1543,7 @@ class MCShadingNetwork(nn.Module):
         # Todo sources is not passed here
         hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rotation, pts, mx, my,
                                                                                            view_dirs, num_spec_samples,
-                                                                                           normals, sources, 'cuda')
+                                                                                           normals, None, 'cuda')
         f0 = 0.04 * (1 - metallic) + metallic * kd  # [pn,1]
         diffuse_directions = self.sample_diffuse_directions(normals, is_train)
 
@@ -1714,7 +1714,7 @@ class MCShadingNetwork(nn.Module):
                         torch.abs(my - my_ch) +
                         torch.abs(alpha - alpha_ch) +
                         torch.abs(metallic - metallic_ch)
-                        # + non_zero_loss_sources * lambda_non_zero
+                        + non_zero_loss_rotation * lambda_non_zero
                         # + curv_loss * lambda_non_zero
                 ),
                 dim=1)
