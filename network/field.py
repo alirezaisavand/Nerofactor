@@ -1708,12 +1708,12 @@ class MCShadingNetwork(nn.Module):
             # the dot would assign low weight importance to normals that are almost the same, and increasing error the more they deviate. So it's something like and L2 loss. But we want a L1 loss so we get the angle, and then we map it to range [0,1]
             total_steps = 40 * 1000.0
             st = min(total_steps, step)
-            len_loss_weight = 0.01 * (np.cos((st / total_steps) * np.pi + np.pi) + 1.0) / 2.0
+            len_loss_weight = 0.001 * (np.cos((st / total_steps) * np.pi + np.pi) + 1.0) / 2.0
             mat_reg = torch.mean(
                 (
                         torch.abs(kd - kd_ch) +
-                        torch.abs(mx - mx_ch)*5 +
-                        torch.abs(my - my_ch)*5 +
+                        torch.abs(mx - mx_ch) +
+                        torch.abs(my - my_ch) +
                         torch.abs(alpha - alpha_ch) +
                         torch.abs(metallic - metallic_ch)
                         + non_zero_loss * len_loss_weight
