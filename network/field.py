@@ -788,7 +788,7 @@ class MCShadingNetwork(nn.Module):
             self.alpha_predictor = make_predictor(256 + 3, 1)
             self.metallic_predictor = make_predictor(256 + 3, 1)
             self.rotation_predictor = make_predictor(256 + 3, 2)
-            self.source_predictor = make_predictor(256 + 3, 3)
+            # self.source_predictor = make_predictor(256 + 3, 3)
 
             self.kd_predictor = make_predictor(256 + 3, 3)
 
@@ -1213,9 +1213,9 @@ class MCShadingNetwork(nn.Module):
         # print(f"rotation norm min: {torch.norm(rotation_raw, dim=-1).min()}, max: {torch.norm(rotation_raw, dim=-1).max()}")
         rotation = rotation_raw * 2.0 - 1.0
         rotation = F.normalize(rotation, dim=-1, eps=1e-6)
-        sources = self.source_predictor(torch.cat([feats, pts], -1))
-        sources = sources * 2.0 - 1.0
-        return mx, my, alpha, metallic, kd, rotation, rotation_raw, sources
+        # sources = self.source_predictor(torch.cat([feats, pts], -1))
+        # sources = sources * 2.0 - 1.0
+        return mx, my, alpha, metallic, kd, rotation, rotation_raw
 
     def compute_Dh(self, m_x, m_y, theta_h, phi_h):
         """
@@ -1535,9 +1535,9 @@ class MCShadingNetwork(nn.Module):
         f_d = kd * (1-metallic)  # (N,3)
         return f_d
 
-    def shade_anisotropic_mixed(self, pts, normals, sources, view_dirs, mx, my, alpha, metallic, kd, rotation, rotation_raw,
+    def shade_anisotropic_mixed(self, pts, normals, view_dirs, mx, my, alpha, metallic, kd, rotation, rotation_raw,
                                 human_poses, is_train):
-        sources_norm = torch.nn.functional.normalize(sources, dim=-1, eps=1e-6)
+        # sources_norm = torch.nn.functional.normalize(sources, dim=-1, eps=1e-6)
         num_spec_samples = self.cfg['specular_sample_num']
         # Todo sources is not passed here
         hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rotation, pts, mx, my,
@@ -1589,15 +1589,15 @@ class MCShadingNetwork(nn.Module):
         outputs['f_s_sum'] = f_s_sum
         outputs['L_spec'] = L_spec
         outputs['rotation'] = rotation
-        outputs['sources'] = (sources + 1) / 2
-        outputs['sources_norm'] = (sources_norm + 1) / 2
+        # outputs['sources'] = (sources + 1) / 2
+        # outputs['sources_norm'] = (sources_norm + 1) / 2
         outputs['rotation_raw'] = rotation_raw
         return colors, outputs
 
     def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, is_seperate=True):
         # print('anisotropic_forward:')
-        mx, my, alpha, metallic, kd, rotation, rotation_raw, sources = self.predict_anisotropic_components(pts)
-        return self.shade_anisotropic_mixed(pts, normals, sources, view_dirs, mx, my, alpha, metallic, kd, rotation, rotation_raw,
+        mx, my, alpha, metallic, kd, rotation, rotation_raw = self.predict_anisotropic_components(pts)
+        return self.shade_anisotropic_mixed(pts, normals, view_dirs, mx, my, alpha, metallic, kd, rotation, rotation_raw,
                                             human_poses, is_train)
 
     def forward(self, pts, view_dirs, normals, human_poses, step, is_train):
@@ -1675,7 +1675,7 @@ class MCShadingNetwork(nn.Module):
         else:
             raise ValueError("unknown kind")
 
-    def anisotropic_regularization(self, pts, normals, sources, t, b, mx, my, alpha, metallic, kd, f_d, f_s_sum,
+    def anisotropic_regularization(self, pts, normals, t, b, mx, my, alpha, metallic, kd, f_d, f_s_sum,
                                    L_spec, rotation, rotation_raw, step):
         reg = 0
         if self.cfg['reg_change']:
@@ -1699,7 +1699,7 @@ class MCShadingNetwork(nn.Module):
             tau = 0.3
             non_zero_loss = torch.max(torch.zeros_like(mx), tau-torch.norm(rotation_raw_mapped, dim=-1, keepdim=True))**2
 
-            mx_ch, my_ch, alpha_ch, metallic_ch, kd_ch, rotation_ch, rotation_raw_ch, sources_ch = self.predict_anisotropic_components(
+            mx_ch, my_ch, alpha_ch, metallic_ch, kd_ch, rotation_ch, rotation_raw_ch = self.predict_anisotropic_components(
                 pts + change)
 
             # sources_ch_normalized = F.normalize(sources_ch, dim=-1)
