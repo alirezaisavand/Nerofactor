@@ -1712,8 +1712,8 @@ class MCShadingNetwork(nn.Module):
             mat_reg = torch.mean(
                 (
                         torch.abs(kd - kd_ch) +
-                        torch.abs(mx - mx_ch) +
-                        torch.abs(my - my_ch) +
+                        torch.abs(mx - mx_ch)*5 +
+                        torch.abs(my - my_ch)*5 +
                         torch.abs(alpha - alpha_ch) +
                         torch.abs(metallic - metallic_ch)
                         + non_zero_loss * len_loss_weight
