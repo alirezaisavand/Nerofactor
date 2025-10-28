@@ -32,7 +32,7 @@ key_metric_name: psnr
 
 ####dataset#####
 train_dataset_type: dummy
-dataset_dir: data/GlossyReal
+dataset_dir: data/GlossySynthetic
 train_dataset_cfg:
   database_name: syn/angel
 val_set_list:
