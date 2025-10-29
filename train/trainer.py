@@ -147,7 +147,8 @@ class Trainer:
             for k, v in log_info.items():
                 if k.startswith('loss'):
                     loss = loss + torch.mean(v)
-                    loss_str += ', ' + k + ": " + str(torch.mean(v).detach().cpu().numpy())
+                    x = torch.mean(v).detach().cpu().numpy()
+                    loss_str += ', ' + k + ": " + f"{x:.2f}"
 
             loss.backward()
             max_grad_norm = 1.0
