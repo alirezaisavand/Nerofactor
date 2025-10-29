@@ -913,7 +913,7 @@ class MCShadingNetwork(nn.Module):
             tangent = torch.cross(normals, ref_dir.unsqueeze(0).expand(normals.size(0), -1), dim=-1)
 
             # Handle cases where tangent is zero due to alignment with the reference direction
-            zero_tangent_mask = tangent.norm(dim=1) < 1e-1
+            zero_tangent_mask = tangent.norm(dim=1) < 0.1
             if zero_tangent_mask.any():
                 # Recalculate tangent using the Y-axis if the normal is aligned with X-axis
                 ref_dir = torch.tensor([0.0, 1.0, 0.0], dtype=torch.float32)  # Example: Y-axis
@@ -1265,7 +1265,7 @@ class MCShadingNetwork(nn.Module):
                               h: torch.Tensor,  # (N, M, 3), half‐vectors in tangent‐space
                               theta_h,
                               phi_h,
-                              eps: float = 1e-8
+                              eps: float = 1e-6
                               ) -> torch.Tensor:
         """
         Returns:
@@ -1294,7 +1294,7 @@ class MCShadingNetwork(nn.Module):
         # denominator: 4π m_x m_y cos^3θ_h (ω_o · h)
         #   compute dot(ω_o, h) → (N,M,1)
         wo = w_o.unsqueeze(1)  # (N,1,3)
-        dot_wo_h = (wo * h).sum(dim=-1, keepdim=True)  # (N,M,1)
+        dot_wo_h = (wo * h).sum(dim=-1, keepdim=True).clamp(min=0.0, max=1.0)  # (N,M,1)
         # print('cos_th, mx, my, dot_wo, q:', cos_th.shape, m_x.shape, m_y.shape, dot_wo_h.shape, q.shape)
         denom = (4.0 * np.pi) * m_x * m_y * (cos_th ** 3) * dot_wo_h
         p = q / denom.clamp(min=eps)
@@ -1365,7 +1365,7 @@ class MCShadingNetwork(nn.Module):
              coeff_y.unsqueeze(2) * y.unsqueeze(1).expand(coeff_x.shape[0], coeff_x.shape[1], 3) +
              coeff_z.unsqueeze(2) * z.unsqueeze(1).expand(coeff_x.shape[0], coeff_x.shape[1], 3))
 
-        dot = (wo.unsqueeze(1) * h).sum(-1, keepdim=True)
+        dot = (wo.unsqueeze(1) * h).sum(-1, keepdim=True).clamp(min=0.0, max=1.0)
         wi = 2 * dot * h - wo.unsqueeze(1)
         wi = torch.nn.functional.normalize(wi, dim=-1, eps=eps)
 
