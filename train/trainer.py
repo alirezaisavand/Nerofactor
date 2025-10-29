@@ -79,7 +79,14 @@ class Trainer:
             self.train_losses = self.val_losses
 
         if self.cfg['optimizer_type'] == 'adam':
-            self.optimizer = Adam
+            angle_params = [self.train_network.rotation_predictor]  # shape (...,2), your (cos2θ_raw, sin2θ_raw) param
+            other_params = [p for n, p in self.train_network.named_parameters() if p is not self.train_network.rotation_predictor]
+
+            self.optimizer = torch.optim.AdamW([
+                {"params": angle_params, "lr": 5e-5, "betas": (0.9, 0.9997), "weight_decay": 0.0},
+                {"params": other_params, "lr": 2e-4, "betas": (0.9, 0.9995), "weight_decay": 1e-4},
+            ], eps=1e-8)
+            # self.optimizer = Adam
         elif self.cfg['optimizer_type'] == 'sgd':
             self.optimizer = SGD
         else:

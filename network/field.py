@@ -753,7 +753,7 @@ class MCShadingNetwork(nn.Module):
         'geometry_type': 'schlick',
 
         'reg_change': True,
-        'change_eps': 0.05,
+        'change_eps': 0.02,
         'change_type': 'gaussian',
         'reg_lambda1': 0.05,  # Prev value was 0.05
         'reg_min_max': True,
@@ -1700,8 +1700,10 @@ class MCShadingNetwork(nn.Module):
             # length_loss = self.unit_norm_prior(sources, kind="huber", delta=0.1)
             # the dot would assign low weight importance to normals that are almost the same, and increasing error the more they deviate. So it's something like and L2 loss. But we want a L1 loss so we get the angle, and then we map it to range [0,1]
             total_steps = 100 * 1000.0
-            st = min(total_steps, step)
-            len_loss_weight = 0.001 * (np.cos((st / total_steps) * np.pi + np.pi) + 1.0) / 2.0
+            decay_weight = 0.001 * (np.cos((step / total_steps) * np.pi) + 1.0) / 2.0
+            min_weight = 1e-4
+            max_weight = 1e-3
+            decay_weight = (max_weight-min_weight) * decay_weight + min_weight
             mat_reg = torch.mean(
                 (
                         torch.abs(kd - kd_ch) +
@@ -1710,7 +1712,7 @@ class MCShadingNetwork(nn.Module):
                         # torch.abs(alpha - alpha_ch) +
                         torch.abs(metallic - metallic_ch)
                         # + non_zero_loss * len_loss_weight
-                        + ((rotation - rotation_ch)**2).sum(dim=-1, keepdim=True) * 0.001
+                        + ((rotation - rotation_ch)**2).sum(dim=-1, keepdim=True) * decay_weight
                 ),
                 dim=1)
             # print(f"length loss: {length_loss.mean().item():.6f}, alignment loss: {alignment_loss.mean().item():.6f}, mat reg loss: {mat_reg.mean().item():.6f}")
