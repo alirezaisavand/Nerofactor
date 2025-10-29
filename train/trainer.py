@@ -151,7 +151,7 @@ class Trainer:
                     loss_str += ', ' + k + ": " + f"{x:.4f}"
 
             loss.backward()
-            max_grad_norm = 1.0
+            max_grad_norm = 0.7
             total_norm = torch.nn.utils.clip_grad_norm_(self.train_network.parameters(), max_norm=max_grad_norm)
             self.optimizer.step()
             if ((step + 1) % self.cfg['train_log_step']) == 0:
