@@ -23,7 +23,7 @@ class WarmUpCosLR(LearningRateManager):
     default_cfg = {
         'end_warm': 5000,
         'end_iter': 300000,
-        'lr': 1e-4,
+        'lr': 5e-4,
     }
 
     def __init__(self, cfg):
