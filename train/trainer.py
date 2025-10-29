@@ -79,14 +79,7 @@ class Trainer:
             self.train_losses = self.val_losses
 
         if self.cfg['optimizer_type'] == 'adam':
-            self.angle_params = [self.train_network.shader_network.rotation_predictor]  # shape (...,2), your (cos2θ_raw, sin2θ_raw) param
-            self.other_params = [p for n, p in self.train_network.shader_network.named_parameters() if p is not self.train_network.shader_network.rotation_predictor] + [p for n, p in self.train_network.named_parameters() if p is not self.train_network.shader_network]
-
-            self.optimizer = torch.optim.AdamW([
-                {"params": self.angle_params, "lr": 5e-5, "betas": (0.9, 0.9997), "weight_decay": 0.0},
-                {"params": self.other_params, "lr": 2e-4, "betas": (0.9, 0.9995), "weight_decay": 1e-4},
-            ], eps=1e-8)
-            # self.optimizer = Adam
+            self.optimizer = Adam
         elif self.cfg['optimizer_type'] == 'sgd':
             self.optimizer = SGD
         else:
@@ -159,8 +152,7 @@ class Trainer:
 
             loss.backward()
             max_grad_norm = 1.0
-            torch.nn.utils.clip_grad_norm_(self.angle_params, 0.25)
-            torch.nn.utils.clip_grad_norm_(self.other_params, max_norm=1.0)
+            total_norm = torch.nn.utils.clip_grad_norm_(self.train_network.parameters(), max_norm=max_grad_norm)
             self.optimizer.step()
             if ((step + 1) % self.cfg['train_log_step']) == 0:
                 self._log_data(log_info, step + 1, 'train')
