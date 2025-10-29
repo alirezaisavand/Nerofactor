@@ -80,7 +80,7 @@ class Trainer:
 
         if self.cfg['optimizer_type'] == 'adam':
             self.angle_params = [self.train_network.shader_network.rotation_predictor]  # shape (...,2), your (cos2θ_raw, sin2θ_raw) param
-            self.other_params = [p for n, p in self.train_network.shader_network.named_parameters() if p is not self.train_network.shader_network.rotation_predictor.named_parameters()] + [p for n, p in self.train_network if p not in self.train_network.shader_network.named_parameters()]
+            self.other_params = [p for n, p in self.train_network.shader_network.named_parameters() if p is not self.train_network.shader_network.rotation_predictor] + [p for n, p in self.train_network.named_parameters() if p is not self.train_network.shader_network]
 
             self.optimizer = torch.optim.AdamW([
                 {"params": self.angle_params, "lr": 5e-5, "betas": (0.9, 0.9997), "weight_decay": 0.0},
