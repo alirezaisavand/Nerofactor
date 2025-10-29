@@ -787,7 +787,7 @@ class MCShadingNetwork(nn.Module):
             self.my_predictor = make_predictor(256 + 3, 1)
             # self.alpha_predictor = make_predictor(256 + 3, 1)
             self.metallic_predictor = make_predictor(256 + 3, 1)
-            self.rotation_predictor = make_predictor(256 + 3, 2, activation='none')
+            self.rotation_predictor = make_predictor(256 + 3, 2)
             # self.source_predictor = make_predictor(256 + 3, 3)
 
             self.kd_predictor = make_predictor(256 + 3, 3)
@@ -1210,8 +1210,8 @@ class MCShadingNetwork(nn.Module):
         print(f"rotatotion[:,0] min: {rotation_raw[:,0].min()}, max: {rotation_raw[:,0].max()}")
         print(f"rotatotion[:,1] min: {rotation_raw[:,1].min()}, max: {rotation_raw[:,1].max()}")
         print(f"rotation norm min: {torch.norm(rotation_raw, dim=-1).min()}, max: {torch.norm(rotation_raw, dim=-1).max()}")
-        # rotation = rotation_raw * 2.0 - 1.0
-        rotation = F.normalize(rotation_raw, dim=-1, eps=1e-6)
+        rotation = rotation_raw * 2.0 - 1.0
+        rotation = F.normalize(rotation, dim=-1, eps=1e-6)
         # sources = self.source_predictor(torch.cat([feats, pts], -1))
         # sources = sources * 2.0 - 1.0
         return (mx, my,
