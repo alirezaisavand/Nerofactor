@@ -226,8 +226,8 @@ class NeROShapeRenderer(nn.Module):
         imgs = imgs_info['imgs'].permute(0, 2, 3, 1).reshape(imn, h * w, 3)  # imn,h*w,3
         idxs = torch.arange(imn, dtype=torch.int64, device=device)[:, None, None].repeat(1, h * w, 1)  # imn,h*w,1
         poses = imgs_info['poses']  # imn,3,4
-        if is_train:
-            masks = imgs_info['masks'].reshape(imn, h * w)
+        # if is_train:
+        #     masks = imgs_info['masks'].reshape(imn, h * w)
 
         rays_d = [torch.sum(dirs[..., None, :].cpu() * poses[i, :3, :3], -1) for i in range(imn)]
         rays_d = torch.stack(rays_d, 0).reshape(imn, h * w, 3)
@@ -241,8 +241,8 @@ class NeROShapeRenderer(nn.Module):
             'rays_o': rays_o.float().reshape(rn, 3).to(device),
             'rays_d': rays_d.float().reshape(rn, 3).to(device),
         }
-        if is_train:
-            ray_batch['masks'] = masks.float().reshape(rn).to(device)
+        # if is_train:
+        #     ray_batch['masks'] = masks.float().reshape(rn).to(device)
         return ray_batch, poses, rn, h, w
 
     # def _construct_render_batch(self, imgs_info, device='cpu'):
