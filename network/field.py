@@ -1298,7 +1298,7 @@ class MCShadingNetwork(nn.Module):
         dot_wo_h = (wo * h).sum(dim=-1, keepdim=True)  # (N,M,1)
         # print('cos_th, mx, my, dot_wo, q:', cos_th.shape, m_x.shape, m_y.shape, dot_wo_h.shape, q.shape)
         denom = (4.0 * np.pi) * m_x * m_y * (cos_th ** 3) * dot_wo_h
-        p = q / (denom.clamp(min=0) + eps)
+        p = q / denom.clamp(min=eps)
 
         return p  # (N, M, 1)
 
@@ -1353,7 +1353,7 @@ class MCShadingNetwork(nn.Module):
         cos_phi = torch.cos(phi_h)
         sin_phi = torch.sin(phi_h)
         denom = (cos_phi * cos_phi) / (m_x * m_x) + (sin_phi * sin_phi) / (m_y * m_y)
-        theta_h = torch.atan2(torch.sqrt(-torch.log(xi1)), torch.sqrt(denom + eps))
+        theta_h = torch.atan2(torch.sqrt(-torch.log(xi1)), torch.sqrt(denom.clamp(min=eps)))  # (N,M)
 
         # 4) half-vector
         sin_th = torch.sin(theta_h)
@@ -1673,18 +1673,6 @@ class MCShadingNetwork(nn.Module):
             z = beta * (tau - r)
             return (F.softplus(z).pow(2) / (beta * beta))
 
-    def unit_norm_prior(self, s, kind="huber", delta=0.1, eps=1e-8):
-        r = (s.pow(2).sum(dim=-1) + eps).sqrt()  # safe radius
-        if kind == "l2":  # (r-1)^2
-            e = r - 1.0
-            return (e * e).mean()
-        elif kind == "huber":  # robust
-            e = (r - 1.0).abs()
-            return torch.where(e < delta, 0.5 * e * e / delta, e - 0.5 * delta).mean()
-        elif kind == "log":  # (log r)^2
-            return (r.log().pow(2)).mean()
-        else:
-            raise ValueError("unknown kind")
 
     def anisotropic_regularization(self, pts, normals, t, b, mx, my,
                                    # alpha,
