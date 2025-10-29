@@ -1274,7 +1274,6 @@ class MCShadingNetwork(nn.Module):
         N, M, _ = h.shape
         cos_phi = torch.cos(phi_h).unsqueeze(-1)
         sin_phi = torch.sin(phi_h).unsqueeze(-1)
-        tan_th = torch.tan(theta_h).unsqueeze(-1)
         cos_th = torch.cos(theta_h).unsqueeze(-1)
         cos_th2 = (cos_th * cos_th).clamp_min(eps)
         sin_th = torch.sin(theta_h).unsqueeze(-1)
@@ -1289,7 +1288,7 @@ class MCShadingNetwork(nn.Module):
         # print('tan_th, cos_phi, sin_phi, cos_th:', tan_th.shape, cos_phi.shape, sin_phi.shape, cos_th.shape)
         exp_term = (-tan2) * ((sin_phi * sin_phi) / (m_y * m_y) + (cos_phi * cos_phi) / (m_x * m_x))
         # print((cos_phi / m_x).shape)
-        exp_term = torch.clamp(exp_term, min=-50.0, max=50.0)  # prevent overflow
+        exp_term = torch.clamp(exp_term, min=-40.0, max=40.0)  # prevent overflow
         q = torch.exp(exp_term)
 
         # denominator: 4π m_x m_y cos^3θ_h (ω_o · h)
@@ -1328,9 +1327,9 @@ class MCShadingNetwork(nn.Module):
         cos_2rot = rotation[:, 0:1]  # (N,1)
         sin_2rot = rotation[:, 1:2]  # (N,1)
 
-        cos_rot = torch.sqrt(eps + (cos_2rot + 1.0) / 2.0).clamp(min=0.0, max=1.0)  # (N,1)
+        cos_rot = torch.sqrt(((cos_2rot + 1.0) / 2.0).clamp(min=eps)).clamp(min=0.0, max=1.0)  # (N,1)
         self.nan_inf_check(cos_rot, 'cos_rot')
-        sin_rot = torch.sign(sin_2rot) * torch.sqrt(eps + (1.0 - cos_2rot) / 2.0).clamp(min=0.0, max=1.0)  # (N,1)
+        sin_rot = torch.sign(sin_2rot) * torch.sqrt(((1.0 - cos_2rot) / 2.0).clamp(min=eps)).clamp(min=0.0, max=1.0)  # (N,1)
         self.nan_inf_check(sin_rot, 'sin_rot')
         if sources is None:
             x, y = self.rotate_tangent_bitangent(x, y, cos_rot, sin_rot)
@@ -1662,16 +1661,7 @@ class MCShadingNetwork(nn.Module):
     def get_env_light(self):
         return self.predict_outer_lights_pts(self.light_pts)
 
-    def length_floor_loss(self, s, tau=0.2, beta=5, eps=1e-8):
-        r = s.norm(dim=-1)  # (...,)
 
-        if beta is None:
-            # squared hinge
-            return torch.relu(tau - r).pow(2).mean()
-        else:
-            # smooth hinge via softplus
-            z = beta * (tau - r)
-            return (F.softplus(z).pow(2) / (beta * beta))
 
 
     def anisotropic_regularization(self, pts, normals, t, b, mx, my,
