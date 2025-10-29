@@ -23,7 +23,7 @@ class WarmUpCosLR(LearningRateManager):
     default_cfg = {
         'end_warm': 5000,
         'end_iter': 300000,
-        'lr': 5e-4,
+        'lr': 3e-4,
     }
 
     def __init__(self, cfg):
@@ -37,8 +37,10 @@ class WarmUpCosLR(LearningRateManager):
         if step < self.warm_up_end:
             learning_factor = step / self.warm_up_end
         else:
+            end_iter = 40000
+            nom = min(step, end_iter)
             alpha = self.learning_rate_alpha
-            progress = (step - self.warm_up_end) / (self.end_iter - self.warm_up_end)
+            progress = (nom - self.warm_up_end) / (end_iter - self.warm_up_end)
             learning_factor = (np.cos(np.pi * progress) + 1.0) * 0.5 * (1 - alpha) + alpha
 
         lr = self.learning_rate * learning_factor
