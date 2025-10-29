@@ -1637,7 +1637,9 @@ class NeROMaterialRenderer(nn.Module):
             # shade_outputs['loss_mat_reg'] = self.shader_network.material_regularization(
             #     pts, normals, shade_outputs['metallic'], shade_outputs['roughness'], shade_outputs['albedo'], step)
             shade_outputs['loss_mat_reg'] = self.shader_network.anisotropic_regularization(
-                pts, normals, shade_outputs['tangents'], shade_outputs['bitangents'], shade_outputs['mx'], shade_outputs['my'], shade_outputs['alpha'], shade_outputs['metallic'],
+                pts, normals, shade_outputs['tangents'], shade_outputs['bitangents'], shade_outputs['mx'], shade_outputs['my'],
+                # shade_outputs['alpha'],
+                shade_outputs['metallic'],
                 shade_outputs['kd'], shade_outputs['f_d'], shade_outputs['f_s_sum'],
                 shade_outputs['L_spec'], shade_outputs['rotation'], shade_outputs['rotation_raw'], step
             )
@@ -1696,12 +1698,12 @@ class NeROMaterialRenderer(nn.Module):
                     outputs_cur['metallic'][hit_mask] = shade_outputs['metallic']
                     outputs_cur['mx'][hit_mask] = shade_outputs['mx']
                     outputs_cur['my'][hit_mask] = shade_outputs['my']
-                    outputs_cur['alpha'][hit_mask] = shade_outputs['alpha']
+                    # outputs_cur['alpha'][hit_mask] = shade_outputs['alpha']
                 else:
                     outputs_cur['metallic'][hit_mask] = shade_outputs['metallic'][0]
                     outputs_cur['mx'][hit_mask] = shade_outputs['mx'][0]
                     outputs_cur['my'][hit_mask] = shade_outputs['my'][0]
-                    outputs_cur['alpha'][hit_mask] = shade_outputs['alpha'][0]
+                    # outputs_cur['alpha'][hit_mask] = shade_outputs['alpha'][0]
             for k in output_keys.keys():
                 outputs[k].append(outputs_cur[k])
 

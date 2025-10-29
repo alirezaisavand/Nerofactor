@@ -785,7 +785,7 @@ class MCShadingNetwork(nn.Module):
             # self.my_predictor = make_predictor(256 + 3, 1, activation='exp', exp_max=self.cfg['max_n_exp'])
             self.mx_predictor = make_predictor(256 + 3, 1)
             self.my_predictor = make_predictor(256 + 3, 1)
-            self.alpha_predictor = make_predictor(256 + 3, 1)
+            # self.alpha_predictor = make_predictor(256 + 3, 1)
             self.metallic_predictor = make_predictor(256 + 3, 1)
             self.rotation_predictor = make_predictor(256 + 3, 2, activation='none')
             # self.source_predictor = make_predictor(256 + 3, 3)
@@ -1203,8 +1203,7 @@ class MCShadingNetwork(nn.Module):
         mx = mx_min + (mx_max - mx_min) * mx
         my = self.my_predictor(torch.cat([feats, pts], -1))
         my = my_min + (my_max - my_min) * my
-        alpha = self.alpha_predictor(torch.cat([feats, pts], -1))
-        # alpha = torch.ones_like(mx)
+        # alpha = self.alpha_predictor(torch.cat([feats, pts], -1))
         metallic = self.metallic_predictor(torch.cat([feats, pts], -1))
         kd = self.kd_predictor(torch.cat([feats, pts], -1))
         rotation_raw = self.rotation_predictor(torch.cat([feats, pts], -1))
@@ -1215,7 +1214,9 @@ class MCShadingNetwork(nn.Module):
         rotation = F.normalize(rotation_raw, dim=-1, eps=1e-6)
         # sources = self.source_predictor(torch.cat([feats, pts], -1))
         # sources = sources * 2.0 - 1.0
-        return mx, my, alpha, metallic, kd, rotation, rotation_raw
+        return (mx, my,
+                # alpha,
+                metallic, kd, rotation, rotation_raw)
 
     def compute_Dh(self, m_x, m_y, theta_h, phi_h):
         """
@@ -1382,7 +1383,7 @@ class MCShadingNetwork(nn.Module):
                          diffuse_directions: torch.Tensor,
                          wi: torch.Tensor,
                          n: torch.Tensor,
-                         alpha: torch.Tensor,
+                         # alpha: torch.Tensor,
                          cos_theta_h: torch.Tensor,
                          wo: torch.Tensor,
                          pdf: torch.Tensor,
@@ -1432,7 +1433,7 @@ class MCShadingNetwork(nn.Module):
         valid_counts = mask.sum(dim=1).clamp(min=1).unsqueeze(-1)
 
         # Expand k_s, alpha, wo·n to match (N, M, *)
-        alpha_exp = alpha.unsqueeze(1)  # (N, 1, 1)
+        # alpha_exp = alpha.unsqueeze(1)  # (N, 1, 1)
         cos_on = torch.clamp((wo * n).sum(dim=1, keepdim=True), min=0.0)  # (N,1)
         cos_on_exp = cos_on.unsqueeze(1)  # (N,1,1)
 
@@ -1447,17 +1448,19 @@ class MCShadingNetwork(nn.Module):
         # term1 = L * k_s * F
 
         # term2 = (wi·n)^(1-alpha)
-        exponent = 1.0 - alpha_exp  # (N,1,1)
+        # exponent = 1.0 - alpha_exp  # (N,1,1)
 
-        pow_in = torch.pow(cos_in + eps, exponent)  # (N,M,1)
-        pow_in_denom = torch.pow(cos_in + eps, -alpha_exp)
+        # pow_in = torch.pow(cos_in + eps, exponent)  # (N,M,1)
+        # pow_in_denom = torch.pow(cos_in + eps, -alpha_exp)
 
-        pow_on = torch.pow(cos_on_exp + eps, alpha_exp) # (N,1,1)
-        denom = (cos_theta_h * pow_on).clamp(min=1e-6)  # (N,M,1)
-        f_s = (F * pow_in / denom) * mask.unsqueeze(-1) # (N,M,3)
+        # pow_on = torch.pow(cos_on_exp + eps, alpha_exp) # (N,1,1)
+        # denom = (cos_theta_h * pow_on).clamp(min=1e-6)  # (N,M,1)
+        denom = cos_theta_h.clamp(min=1e-6)  # (N,M,1)
+        # f_s = (F * pow_in / denom) * mask.unsqueeze(-1) # (N,M,3)
+        f_s = (F * cos_in / denom) * mask.unsqueeze(-1)  # (N,M,3)
         # spec_brdf = (F * pow_in_denom * pdf / denom) * mask.unsqueeze(-1)
-        weighted_specular_light = (pow_in_denom * pdf / denom) * mask.unsqueeze(-1) * specular_lights
-
+        # weighted_specular_light = (pow_in_denom * pdf / denom) * mask.unsqueeze(-1) * specular_lights
+        weighted_specular_light = (pdf / denom) * mask.unsqueeze(-1) * specular_lights
         spec_weighted = f_s * specular_lights  # (N,M,3)
         specular = spec_weighted.sum(dim=1) / valid_counts  # (N,3)
         f_s_sum = f_s.sum(dim=1) / valid_counts # (N,3)
@@ -1535,7 +1538,9 @@ class MCShadingNetwork(nn.Module):
         f_d = kd * (1-metallic)  # (N,3)
         return f_d
 
-    def shade_anisotropic_mixed(self, pts, normals, view_dirs, mx, my, alpha, metallic, kd, rotation, rotation_raw,
+    def shade_anisotropic_mixed(self, pts, normals, view_dirs, mx, my,
+                                # alpha,
+                                metallic, kd, rotation, rotation_raw,
                                 human_poses, is_train):
         # sources_norm = torch.nn.functional.normalize(sources, dim=-1, eps=1e-6)
         num_spec_samples = self.cfg['specular_sample_num']
@@ -1561,7 +1566,9 @@ class MCShadingNetwork(nn.Module):
         f_d = self.diffuse_term(kd, metallic, is_seperate=False)
 
         R, diffuse_color, specular_color, f_s_sum, L_spec, weighted_specular_lights = self.compute_radiance(
-            f_d, diffuse_lights, specular_lights, F, diffuse_directions, wis, normals, alpha, cos_ths, view_dirs,
+            f_d, diffuse_lights, specular_lights, F, diffuse_directions, wis, normals,
+            # alpha,
+            cos_ths, view_dirs,
             pdfs, theta_h, phi_h, mx, my)
 
         colors = linear_to_srgb(R)
@@ -1577,7 +1584,7 @@ class MCShadingNetwork(nn.Module):
         outputs['human_lights'] = hl.reshape(-1, 3)
         outputs['kd'] = kd
         outputs['metallic'] = metallic
-        outputs['alpha'] = alpha
+        # outputs['alpha'] = alpha
         outputs['mx'] = mx
         outputs['my'] = my
         outputs['diffuse_color'] = diffuse_color
@@ -1596,8 +1603,12 @@ class MCShadingNetwork(nn.Module):
 
     def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, is_seperate=True):
         # print('anisotropic_forward:')
-        mx, my, alpha, metallic, kd, rotation, rotation_raw = self.predict_anisotropic_components(pts)
-        return self.shade_anisotropic_mixed(pts, normals, view_dirs, mx, my, alpha, metallic, kd, rotation, rotation_raw,
+        (mx, my,
+         # alpha,
+         metallic, kd, rotation, rotation_raw) = self.predict_anisotropic_components(pts)
+        return self.shade_anisotropic_mixed(pts, normals, view_dirs, mx, my,
+                                            # alpha,
+                                            metallic, kd, rotation, rotation_raw,
                                             human_poses, is_train)
 
     def forward(self, pts, view_dirs, normals, human_poses, step, is_train):
@@ -1675,7 +1686,9 @@ class MCShadingNetwork(nn.Module):
         else:
             raise ValueError("unknown kind")
 
-    def anisotropic_regularization(self, pts, normals, t, b, mx, my, alpha, metallic, kd, f_d, f_s_sum,
+    def anisotropic_regularization(self, pts, normals, t, b, mx, my,
+                                   # alpha,
+                                   metallic, kd, f_d, f_s_sum,
                                    L_spec, rotation, rotation_raw, step):
         reg = 0
         if self.cfg['reg_change']:
@@ -1699,7 +1712,9 @@ class MCShadingNetwork(nn.Module):
             tau = 0.3
             # non_zero_loss = torch.max(torch.zeros_like(mx), tau-torch.norm(rotation_raw_mapped, dim=-1, keepdim=True))**2
 
-            mx_ch, my_ch, alpha_ch, metallic_ch, kd_ch, rotation_ch, rotation_raw_ch = self.predict_anisotropic_components(
+            (mx_ch, my_ch,
+             # alpha_ch,
+             metallic_ch, kd_ch, rotation_ch, rotation_raw_ch) = self.predict_anisotropic_components(
                 pts + change)
 
             # sources_ch_normalized = F.normalize(sources_ch, dim=-1)
@@ -1714,7 +1729,7 @@ class MCShadingNetwork(nn.Module):
                         torch.abs(kd - kd_ch) +
                         torch.abs(mx - mx_ch) +
                         torch.abs(my - my_ch) +
-                        torch.abs(alpha - alpha_ch) +
+                        # torch.abs(alpha - alpha_ch) +
                         torch.abs(metallic - metallic_ch)
                         # + non_zero_loss * len_loss_weight
                         + ((rotation - rotation_ch)**2).sum(dim=-1, keepdim=True) * 0.001
