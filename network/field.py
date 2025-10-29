@@ -1710,7 +1710,7 @@ class MCShadingNetwork(nn.Module):
                         # torch.abs(alpha - alpha_ch) +
                         torch.abs(metallic - metallic_ch)
                         # + non_zero_loss * len_loss_weight
-                        + ((rotation - rotation_ch)**2).sum(dim=-1, keepdim=True) * 0.0001
+                        + ((rotation - rotation_ch)**2).sum(dim=-1, keepdim=True) * 0.001
                 ),
                 dim=1)
             # print(f"length loss: {length_loss.mean().item():.6f}, alignment loss: {alignment_loss.mean().item():.6f}, mat reg loss: {mat_reg.mean().item():.6f}")
