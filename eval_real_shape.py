@@ -2,7 +2,7 @@ import argparse
 from pathlib import Path
 
 import numpy as np
-import open3d
+import open3d as o3d
 
 from eval_synthetic_shape import nearest_dist
 
@@ -12,10 +12,16 @@ if __name__=="__main__":
     parser.add_argument('--gt',type=str,)
     args = parser.parse_args()
 
-    mesh_pr = open3d.io.read_triangle_mesh(f'{args.pr}')
-    pts_pr = np.asarray(mesh_pr.vertices)
-    mesh_gt = open3d.io.read_triangle_mesh(f'{args.gt}')
-    pts_gt = np.asarray(mesh_gt.vertices)
+    pcd_gt = o3d.io.read_point_cloud(f'{args.gt}')
+    pts_gt = np.asarray(pcd_gt.points)
+
+    pcd_pr = o3d.io.read_point_cloud(f'{args.pr}')
+    pts_pr = np.asarray(pcd_pr.points)
+
+    # mesh_pr = open3d.io.read_triangle_mesh(f'{args.pr}')
+    # pts_pr = np.asarray(mesh_pr.vertices)
+    # mesh_gt = open3d.io.read_triangle_mesh(f'{args.gt}')
+    # pts_gt = np.asarray(mesh_gt.vertices)
 
     bn = 512
     dist_gt = nearest_dist(pts_gt, pts_pr, bn)
