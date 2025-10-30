@@ -79,7 +79,7 @@ class Trainer:
             self.train_losses = self.val_losses
 
         if self.cfg['optimizer_type'] == 'adam':
-            self.optimizer = Adam(eps=1e-5)
+            self.optimizer = Adam
         elif self.cfg['optimizer_type'] == 'sgd':
             self.optimizer = SGD
         else:

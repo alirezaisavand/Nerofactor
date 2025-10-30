@@ -12,7 +12,7 @@ class LearningRateManager(abc.ABC):
         # may specify different lr for different parts
         # use group to set learning rate
         paras = network.parameters()
-        return optimizer(paras, lr=1e-3)
+        return optimizer(paras, lr=1e-3, eps=1e-5)
 
     @abc.abstractmethod
     def __call__(self, optimizer, step, *args, **kwargs):
