@@ -1732,7 +1732,7 @@ class NeROMaterialRenderer(nn.Module):
         tot_ssim = 0
         from skimage.metrics import structural_similarity
         from pathlib import Path
-        log_path = Path(log_path_str)
+        log_path = Path(os.path.join(log_path_str, 'log.txt'))
         with log_path.open("a", encoding="utf-8") as f:
             for index in self.nvs_ids:
                 outputs = self.test_step(index)
