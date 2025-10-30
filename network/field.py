@@ -1459,7 +1459,7 @@ class MCShadingNetwork(nn.Module):
         f_s = (F * cos_in / denom) * mask.unsqueeze(-1)  # (N,M,3)
         # spec_brdf = (F * pow_in_denom * pdf / denom) * mask.unsqueeze(-1)
         # weighted_specular_light = (pow_in_denom * pdf / denom) * mask.unsqueeze(-1) * specular_lights
-        weighted_specular_light = (pdf / denom) * mask.unsqueeze(-1) * specular_lights
+        weighted_specular_light = (cos_in / denom) * mask.unsqueeze(-1) * specular_lights
         spec_weighted = f_s * specular_lights  # (N,M,3)
         specular = spec_weighted.sum(dim=1) / valid_counts  # (N,3)
         f_s_sum = f_s.sum(dim=1) / valid_counts # (N,3)
