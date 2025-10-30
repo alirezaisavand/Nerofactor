@@ -1238,6 +1238,7 @@ class NeROMaterialRenderer(nn.Module):
             self.train_num = len(self.train_ids)
 
             self.test_imgs_info = build_imgs_info(self.database, self.test_ids, self.is_nerf)
+            self.nvs_imgs_info = build_imgs_info(self.database, self.nvs_ids, self.is_nerf)
             self.test_imgs_info = imgs_info_to_torch(self.test_imgs_info, 'cpu')
             self.test_num = len(self.test_ids)
 
@@ -1665,8 +1666,11 @@ class NeROMaterialRenderer(nn.Module):
         if self.train_batch_i + rn >= self.tbn: self._shuffle_train_batch()
         return shade_outputs
 
-    def test_step(self, index):
-        test_imgs_info = imgs_info_slice(self.test_imgs_info, torch.from_numpy(np.asarray([index], np.int64)))
+    def test_step(self, index, is_nvs=False):
+        if is_nvs:
+            test_imgs_info = imgs_info_slice(self.nvs_imgs_info, torch.from_numpy(np.asarray([index], np.int64)))
+        else:
+            test_imgs_info = imgs_info_slice(self.test_imgs_info, torch.from_numpy(np.asarray([index], np.int64)))
         _, _, h, w = test_imgs_info['imgs'].shape
         ray_batch = self._construct_nerf_ray_batch(test_imgs_info, 'cuda',
                                                    False) if self.is_nerf else self._construct_ray_batch(test_imgs_info,
@@ -1734,19 +1738,19 @@ class NeROMaterialRenderer(nn.Module):
         from pathlib import Path
         log_path = Path(os.path.join(log_dir_str, 'log.txt'))
         with log_path.open("a", encoding="utf-8") as f:
-            for index in self.nvs_ids:
+            for index in range(len(self.nvs_ids)):
                 outputs = self.test_step(index)
                 all_outputs.append(outputs)
                 import imageio
                 rgb_pr = outputs['rgb_pr'].cpu().numpy()
                 rgb_gt = outputs['rgb_gt'].cpu().numpy()
-                imageio.imwrite(os.path.join(imgs_dir, "test_{}.png".format(index)), rgb_pr.cpu())
+                imageio.imwrite(os.path.join(imgs_dir, "test_{}.png".format(self.nvs_ids[index])), rgb_pr.cpu())
                 psnr = compute_psnr(rgb_gt, rgb_pr)
                 ssim = structural_similarity(rgb_gt, rgb_pr, win_size=11, channel_axis=2, data_range=255)
                 tot_psnr += psnr
                 tot_ssim += ssim
                 f.write(f"PSNR: {psnr:.5f}, SSIM: {ssim:.5f}\n")
-                print(f"Test image {index}: PSNR: {psnr:.5f}, SSIM: {ssim:.5f}\n")
+                print(f"Test image {self.nvs_ids[index]}: PSNR: {psnr:.5f}, SSIM: {ssim:.5f}\n")
             avg_psnr = tot_psnr / len(self.nvs_ids)
             avg_ssim = tot_ssim / len(self.nvs_ids)
             f.write(f"Average PSNR: {avg_psnr:.5f}, Average SSIM: {avg_ssim:.5f}\n")
