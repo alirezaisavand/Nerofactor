@@ -1734,12 +1734,12 @@ class NeROMaterialRenderer(nn.Module):
                 ssim = structural_similarity(rgb_gt, rgb_pr, win_size=11, channel_axis=2, data_range=255)
                 tot_psnr += psnr
                 tot_ssim ++ ssim
-                f.write(f"PSNR: {psnr}, SSIM: {ssim}\n")
-                print(f"Test image {index}: PSNR: {psnr}, SSIM: {ssim}\n")
+                f.write(f"PSNR: {psnr:.5f}, SSIM: {ssim:.5f}\n")
+                print(f"Test image {index}: PSNR: {psnr:.5f}, SSIM: {ssim:.5f}\n")
             avg_psnr = tot_psnr / len(self.nvs_ids)
             avg_ssim = tot_ssim / len(self.nvs_ids)
-            f.write(f"Average PSNR: {avg_psnr}, Average SSIM: {avg_ssim}\n")
-            print(f"Average PSNR: {avg_psnr}, Average SSIM: {avg_ssim}\n")
+            f.write(f"Average PSNR: {avg_psnr:.5f}, Average SSIM: {avg_ssim:.5f}\n")
+            print(f"Average PSNR: {avg_psnr:.5f}, Average SSIM: {avg_ssim:.5f}\n")
         return all_outputs
 
     def forward(self, data):

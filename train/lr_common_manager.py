@@ -12,7 +12,7 @@ class LearningRateManager(abc.ABC):
         # may specify different lr for different parts
         # use group to set learning rate
         paras = network.parameters()
-        return optimizer(paras, lr=1e-3)
+        return optimizer(paras, lr=1e-3, eps=1e-4, amsgrad=True)
 
     @abc.abstractmethod
     def __call__(self, optimizer, step, *args, **kwargs):
@@ -29,7 +29,7 @@ class WarmUpCosLR(LearningRateManager):
     def __init__(self, cfg):
         cfg = {**self.default_cfg, **cfg}
         self.warm_up_end = cfg['end_warm']
-        self.learning_rate_alpha = 0.05
+        self.learning_rate_alpha = 0.2
         self.end_iter = cfg['end_iter']
         self.learning_rate = cfg['lr']
 
@@ -37,8 +37,10 @@ class WarmUpCosLR(LearningRateManager):
         if step < self.warm_up_end:
             learning_factor = step / self.warm_up_end
         else:
+            end_iter = 100 * 1000
+            nom = min(step, end_iter)
             alpha = self.learning_rate_alpha
-            progress = (step - self.warm_up_end) / (self.end_iter - self.warm_up_end)
+            progress = (nom - self.warm_up_end) / (end_iter - self.warm_up_end)
             learning_factor = (np.cos(np.pi * progress) + 1.0) * 0.5 * (1 - alpha) + alpha
 
         lr = self.learning_rate * learning_factor
