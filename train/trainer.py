@@ -192,7 +192,7 @@ class Trainer:
         nvs_imgs_dir = os.path.join('nvs_imgs', self.cfg['name'])
         os.makedirs(logs_dir, exist_ok=True)
         os.makedirs(nvs_imgs_dir, exist_ok=True)
-        eval_results = self.train_network.nvs(log_path=logs_dir,
+        eval_results = self.train_network.nvs(log_path_str=logs_dir,
                                               imgs_dir=nvs_imgs_dir)
         pbar.close()
 

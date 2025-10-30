@@ -1744,7 +1744,7 @@ class NeROMaterialRenderer(nn.Module):
                 psnr = compute_psnr(rgb_gt, rgb_pr)
                 ssim = structural_similarity(rgb_gt, rgb_pr, win_size=11, channel_axis=2, data_range=255)
                 tot_psnr += psnr
-                tot_ssim ++ ssim
+                tot_ssim += ssim
                 f.write(f"PSNR: {psnr:.5f}, SSIM: {ssim:.5f}\n")
                 print(f"Test image {index}: PSNR: {psnr:.5f}, SSIM: {ssim:.5f}\n")
             avg_psnr = tot_psnr / len(self.nvs_ids)
