@@ -1238,8 +1238,9 @@ class NeROMaterialRenderer(nn.Module):
             self.train_num = len(self.train_ids)
 
             self.test_imgs_info = build_imgs_info(self.database, self.test_ids, self.is_nerf)
-            self.nvs_imgs_info = build_imgs_info(self.database, self.nvs_ids, self.is_nerf)
             self.test_imgs_info = imgs_info_to_torch(self.test_imgs_info, 'cpu')
+            self.nvs_imgs_info = build_imgs_info(self.database, self.nvs_ids, self.is_nerf)
+            self.nvs_imgs_info = imgs_info_to_torch(self.nvs_imgs_info, 'cpu')
             self.test_num = len(self.test_ids)
 
             self.train_batch = self._construct_nerf_ray_batch(
