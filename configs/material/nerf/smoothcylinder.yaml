@@ -51,7 +51,7 @@ val_set_list:
       dataset_dir: data/nerf_synthetic
 
 ####trainier####
-optimizer_type: adam
+optimizer_type: sgd
 lr_type: warm_up_cos
 lr_cfg:
   end_warm: 1000

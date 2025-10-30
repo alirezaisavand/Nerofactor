@@ -23,13 +23,13 @@ class WarmUpCosLR(LearningRateManager):
     default_cfg = {
         'end_warm': 5000,
         'end_iter': 300000,
-        'lr': 4e-4,
+        'lr': 2e-4,
     }
 
     def __init__(self, cfg):
         cfg = {**self.default_cfg, **cfg}
         self.warm_up_end = cfg['end_warm']
-        self.learning_rate_alpha = 0.01
+        self.learning_rate_alpha = 0.05
         self.end_iter = cfg['end_iter']
         self.learning_rate = cfg['lr']
 
