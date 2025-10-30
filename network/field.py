@@ -1441,6 +1441,7 @@ class MCShadingNetwork(nn.Module):
 
         # --- Diffuse component: (1/M) ∑ f_d * Li ---
         diff_weighted = diffuse_lights * f_d.unsqueeze(1)  # (N,M,3)
+        print(f"diffuse_light shape:{diffuse_lights.shape}, f_d shape:{f_d.shape}, diff_weighted shape:{diff_weighted.shape}")
         diffuse = diff_weighted.sum(dim=1) / M_diff  # (N,3)
 
         # --- Specular component ---
