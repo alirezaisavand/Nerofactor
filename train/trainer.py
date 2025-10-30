@@ -184,17 +184,16 @@ class Trainer:
                 save_fn = None
                 self._save_model(step + 1, best_para, save_fn=save_fn)
 
-            if (step + 1) == self.cfg['total_step']:
-                logs_dir = os.path.join('logs', 'log' + self.cfg['name'] + '.txt')
-                nvs_imgs_dir = os.path.join('nvs_imgs', self.cfg['name'])
-                os.makedirs(logs_dir, exist_ok=True)
-                os.makedirs(nvs_imgs_dir, exist_ok=True)
-                eval_results = self.train_network.nvs(log_path=logs_dir,
-                                                      imgs_dir=nvs_imgs_dir)
+
             pbar.set_postfix(loss=float(loss.detach().cpu().numpy()), lr=lr, others=loss_str)
             pbar.update(1)
             del loss, log_info
-
+        logs_dir = os.path.join('logs', 'log' + self.cfg['name'] + '.txt')
+        nvs_imgs_dir = os.path.join('nvs_imgs', self.cfg['name'])
+        os.makedirs(logs_dir, exist_ok=True)
+        os.makedirs(nvs_imgs_dir, exist_ok=True)
+        eval_results = self.train_network.nvs(log_path=logs_dir,
+                                              imgs_dir=nvs_imgs_dir)
         pbar.close()
 
     def _load_model(self):
