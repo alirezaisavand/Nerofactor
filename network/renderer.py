@@ -1,3 +1,5 @@
+import os.path
+
 import cv2
 
 import raytracing
@@ -8,6 +10,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from dataset.database import parse_database_name, get_database_split, BaseDatabase
+from keras.src.saving.legacy.saved_model.serialized_attributes import metrics
 from network.field import SDFNetwork, SingleVarianceNetwork, NeRFNetwork, AppShadingNetwork, get_intersection, \
     extract_geometry, sample_pdf, MCShadingNetwork
 from utils.base_utils import color_map_forward, downsample_gaussian_blur, map_range_val
@@ -1204,7 +1207,7 @@ class NeROMaterialRenderer(nn.Module):
     def _init_dataset(self, is_train):
         # train/test split
         self.database = parse_database_name(self.cfg['database_name'], self.cfg['dataset_dir'])
-        self.train_ids, self.test_ids = get_database_split(self.database, 'validation')
+        self.train_ids, self.test_ids, self.nvs_ids = get_database_split(self.database, 'validation')
         self.train_ids = np.asarray(self.train_ids)
         # This part is for genetaring sementation masks
 
@@ -1709,8 +1712,35 @@ class NeROMaterialRenderer(nn.Module):
 
         for k in output_keys.keys():
             outputs[k] = torch.cat(outputs[k], 0).reshape(h, w, -1)
-
+        outputs['h'] = h
+        outputs['w'] = w
         return outputs
+
+    def nvs(self, log_path, imgs_dir):
+        self.eval()
+        all_outputs = []
+        tot_psnr = 0.0
+        tot_ssim = 0
+        from skimage.metrics import structural_similarity
+        with log_path.open("a", encoding="utf-8") as f:
+            for index in self.nvs_ids:
+                outputs = self.test_step(index)
+                all_outputs.append(outputs)
+                import imageio
+                rgb_pr = outputs['rgb_pr'].cpu().numpy()
+                rgb_gt = outputs['rgb_gt'].cpu().numpy()
+                imageio.imwrite(os.path.join(imgs_dir, "test_{}.png".format(index)), rgb_pr.cpu())
+                psnr = metrics.compute_psnr(rgb_gt, rgb_pr)
+                ssim = structural_similarity(rgb_gt, rgb_pr, win_size=11, channel_axis=2, data_range=255)
+                tot_psnr += psnr
+                tot_ssim ++ ssim
+                f.write(f"PSNR: {psnr}, SSIM: {ssim}\n")
+                print(f"Test image {index}: PSNR: {psnr}, SSIM: {ssim}\n")
+            avg_psnr = tot_psnr / len(self.nvs_ids)
+            avg_ssim = tot_ssim / len(self.nvs_ids)
+            f.write(f"Average PSNR: {avg_psnr}, Average SSIM: {avg_ssim}\n")
+            print(f"Average PSNR: {avg_psnr}, Average SSIM: {avg_ssim}\n")
+        return all_outputs
 
     def forward(self, data):
         torch.set_default_tensor_type('torch.cuda.FloatTensor')

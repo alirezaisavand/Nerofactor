@@ -576,18 +576,17 @@ def get_database_split(database: BaseDatabase, split_type='validation'):
     if split_type == 'validation':
         random.seed(6033)
         img_ids = database.get_img_ids().copy()
-        img_num = 8
-        # random.shuffle(img_ids)
-        test_ids = img_ids[img_num-1:img_num]
-        if img_num > 1:
-            train_ids = img_ids[:img_num-1] + img_ids[img_num:]
-        else:
-            train_ids = img_ids[img_num:]
+        num_nvs_imgs = 5
+        random.shuffle(img_ids)
+        nvs_ids = img_ids[:num_nvs_imgs]
+        test_ids = img_ids[num_nvs_imgs:num_nvs_imgs+1]
+        train_ids = img_ids[num_nvs_imgs+1:]
     elif split_type=='test':
         test_ids, train_ids = read_pickle('configs/synthetic_split_128.pkl')
+        nvs_ids = None
     else:
         raise NotImplementedError
-    return train_ids, test_ids
+    return train_ids, test_ids, nvs_ids
 
 
 def get_database_eval_points(database):
