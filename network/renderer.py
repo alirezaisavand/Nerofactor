@@ -10,7 +10,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from dataset.database import parse_database_name, get_database_split, BaseDatabase
-from keras.src.saving.legacy.saved_model.serialized_attributes import metrics
+# from keras.src.saving.legacy.saved_model.serialized_attributes import metrics
 from network.field import SDFNetwork, SingleVarianceNetwork, NeRFNetwork, AppShadingNetwork, get_intersection, \
     extract_geometry, sample_pdf, MCShadingNetwork
 from utils.base_utils import color_map_forward, downsample_gaussian_blur, map_range_val
@@ -94,6 +94,15 @@ from scipy.spatial import cKDTree
 #     print('number of above images:', len(to_keep), len(poses))
 #     return np.asarray(to_keep).astype(int)
 #
+
+def compute_psnr(img_gt, img_pr):
+    img_gt = img_gt.reshape([-1, 3]).astype(np.float32)
+    img_pr = img_pr.reshape([-1, 3]).astype(np.float32)
+    mse = np.mean((img_gt - img_pr) ** 2, 0)
+    mse = np.mean(mse)
+    psnr = 10 * np.log10(255 * 255 / mse)
+    return psnr
+
 def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
     images = [database.get_image(img_id) for img_id in img_ids]
     print('images len:', len(images))
@@ -1730,7 +1739,7 @@ class NeROMaterialRenderer(nn.Module):
                 rgb_pr = outputs['rgb_pr'].cpu().numpy()
                 rgb_gt = outputs['rgb_gt'].cpu().numpy()
                 imageio.imwrite(os.path.join(imgs_dir, "test_{}.png".format(index)), rgb_pr.cpu())
-                psnr = metrics.compute_psnr(rgb_gt, rgb_pr)
+                psnr = compute_psnr(rgb_gt, rgb_pr)
                 ssim = structural_similarity(rgb_gt, rgb_pr, win_size=11, channel_axis=2, data_range=255)
                 tot_psnr += psnr
                 tot_ssim ++ ssim
