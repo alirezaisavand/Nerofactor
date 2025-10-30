@@ -1725,12 +1725,14 @@ class NeROMaterialRenderer(nn.Module):
         outputs['w'] = w
         return outputs
 
-    def nvs(self, log_path, imgs_dir):
+    def nvs(self, log_path_str, imgs_dir):
         self.eval()
         all_outputs = []
         tot_psnr = 0.0
         tot_ssim = 0
         from skimage.metrics import structural_similarity
+        from pathlib import Path
+        log_path = Path(log_path_str)
         with log_path.open("a", encoding="utf-8") as f:
             for index in self.nvs_ids:
                 outputs = self.test_step(index)
