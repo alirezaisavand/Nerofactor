@@ -1440,8 +1440,7 @@ class MCShadingNetwork(nn.Module):
         cos_in = torch.clamp((wi * n.unsqueeze(1)).sum(dim=2, keepdim=True), min=0.0)  # (N,M,1)
 
         # --- Diffuse component: (1/M) ∑ f_d * Li ---
-        diff_weighted = diffuse_lights * f_d.unsqueeze(1)  # (N,M,3)
-        print(f"diffuse_light shape:{diffuse_lights.shape}, f_d shape:{f_d.shape}, diff_weighted shape:{diff_weighted.shape}")
+        diff_weighted = diffuse_lights * f_d  # (N,M,3)
         diffuse = diff_weighted.sum(dim=1) / M_diff  # (N,3)
 
         # --- Specular component ---
