@@ -10,7 +10,7 @@ reg_diffuse_light_lambda: 0.1
 reg_mat: true
 shader_cfg:
   diffuse_sample_num: 512
-  specular_sample_num: 256
+  specular_sample_num: 1024
   outer_light_version: sphere_direction
   light_exp_max: 5.0
   inner_light_exp_max: 5.0
@@ -47,6 +47,6 @@ lr_cfg:
   end_warm: 1000
   end_iter: 100000
 total_step: 100000
-val_interval: 1000
-save_interval: 500
+val_interval: 2000
+save_interval: 2000
 train_log_step: 10
