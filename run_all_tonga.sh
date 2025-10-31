@@ -30,7 +30,7 @@ wait_for_gpu() {
 # List ONLY the suffix after "configs/material/"
 CONFIGS=(
   "syn/angel.yaml"
-  "nerf/bell.yaml"
+  "syn/bell.yaml"
 )
 
 # You can also auto-discover with a glob, e.g.:

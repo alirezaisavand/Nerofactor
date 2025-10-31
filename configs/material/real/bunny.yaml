@@ -3,7 +3,7 @@ name: bunny_material
 ####network#####
 network: material
 database_name: real/bunny/raw_1024
-mesh: data/meshes/bunny_shape-300000.ply
+mesh: data/meshes-pretrained/real/bunny.ply
 
 reg_diffuse_light: true
 reg_diffuse_light_lambda: 0.1
