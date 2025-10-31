@@ -1689,11 +1689,11 @@ class NeROMaterialRenderer(nn.Module):
             hit_mask = ray_batch['hit_mask'][ri:ri + trn]
             outputs_cur = {k: torch.zeros(hit_mask.shape[0], d) for k, d in output_keys.items()}
             if torch.sum(hit_mask) > 0:
-                pts = ray_batch['inters'][ri:ri + trn][hit_mask]
-                view_dirs = -ray_batch['rays_d'][ri:ri + trn][hit_mask]
-                normals = ray_batch['normals'][ri:ri + trn][hit_mask]
-                rgb_gt = ray_batch['rgb'][ri:ri + trn][hit_mask]
-                human_poses = ray_batch['human_poses'][ri:ri + trn][hit_mask]
+                pts = ray_batch['inters'][ri:ri + trn][hit_mask].cuda()
+                view_dirs = -ray_batch['rays_d'][ri:ri + trn][hit_mask].cuda()
+                normals = ray_batch['normals'][ri:ri + trn][hit_mask].cuda()
+                rgb_gt = ray_batch['rgb'][ri:ri + trn][hit_mask].cuda()
+                human_poses = ray_batch['human_poses'][ri:ri + trn][hit_mask].cuda()
 
                 shade_outputs = self.shade(pts, view_dirs, normals, human_poses, False)
                 outputs_cur['rgb_pr'][hit_mask] = shade_outputs['rgb_pr']
