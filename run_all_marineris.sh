@@ -29,9 +29,9 @@ wait_for_gpu() {
 # --- [CONFIGS TO RUN] ---------------------------------------------------------
 # List ONLY the suffix after "configs/material/"
 CONFIGS=(
-  "nerf_synthetic/cube.yaml"
-  "nerf_synthetic/sphere.yaml"
-  "nerf_synthetic/smoothcylinder.yaml"
+  "nerf/cube.yaml"
+  "nerf/sphere.yaml"
+  "nerf/smoothcylinder.yaml"
 )
 
 # You can also auto-discover with a glob, e.g.:
