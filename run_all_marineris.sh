@@ -30,7 +30,7 @@ wait_for_gpu() {
 # List ONLY the suffix after "configs/material/"
 CONFIGS=(
   "nerf/cube.yaml"
-  "nerf/sphere.yaml"
+  "nerf/donut.yaml"
   "nerf/smoothcylinder.yaml"
 )
 
