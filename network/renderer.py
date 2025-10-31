@@ -1747,6 +1747,7 @@ class NeROMaterialRenderer(nn.Module):
                 import imageio
                 rgb_pr = outputs['rgb_pr'].detach().cpu().numpy()
                 rgb_gt = outputs['rgb_gt'].detach().cpu().numpy()
+                print(f"rgb_gt shape: {rgb_gt.shape}, rgb_pr shape: {rgb_pr.shape}")
                 imageio.imwrite(os.path.join(imgs_dir, "test_{}.png".format(self.nvs_ids[index])), rgb_pr)
                 psnr = compute_psnr(rgb_gt, rgb_pr)
                 ssim = structural_similarity(rgb_gt, rgb_pr, win_size=11, channel_axis=2, data_range=255)
