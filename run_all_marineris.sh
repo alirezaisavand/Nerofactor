@@ -43,7 +43,7 @@ LOG_ROOT="logs/run_${STAMP}"
 mkdir -p "$LOG_ROOT"
 
 # --- [RUN] --------------------------------------------------------------------
-PREFIX="python3 run_training --cfg configs/material"
+PREFIX="python3 run_training.py --cfg configs/material"
 
 echo "[INFO] Starting sequential runs: ${#CONFIGS[@]} configs"
 echo "[INFO] Logs: $LOG_ROOT"
