@@ -3,7 +3,7 @@ name: luyu_material
 ####network#####
 network: material
 database_name: syn/luyu
-mesh: data/meshes/luyu_shape-300000.ply
+mesh: data/meshes-pretrained/syn/luyu.ply
 
 reg_diffuse_light: true
 reg_diffuse_light_lambda: 0.1
