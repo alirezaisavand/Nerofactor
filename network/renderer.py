@@ -508,7 +508,7 @@ class NeROShapeRenderer(nn.Module):
     #     human_poses = self.get_human_coordinate_poses(poses)
     #     return rays_o, rays_d, near, far, human_poses  # rn, 3, 4
 
-    def test_step(self, index, step, ):
+    def test_step(self, index, step):
         target_imgs_info, target_img_ids = self.test_imgs_info, self.test_ids
         imgs_info = imgs_info_slice(target_imgs_info, torch.from_numpy(np.asarray([index], np.int64)))
         gt_depth, gt_mask = self.database.get_depth(target_img_ids[index])  # used in evaluation
@@ -1744,7 +1744,7 @@ class NeROMaterialRenderer(nn.Module):
             for index in range(len(self.nvs_ids)):
                 torch.set_default_tensor_type('torch.cuda.FloatTensor')
 
-                outputs = self.test_step(index)
+                outputs = self.test_step(index, is_nvs=True)
                 torch.set_default_tensor_type('torch.FloatTensor')
                 import imageio
                 rgb_pr = outputs['rgb_pr'].detach().cpu().numpy()
@@ -1776,7 +1776,7 @@ class NeROMaterialRenderer(nn.Module):
             outputs = self.train_step(step)
         else:
             index = data['index']
-            outputs = self.test_step(index, is_nvs=True)
+            outputs = self.test_step(index)
 
         torch.set_default_tensor_type('torch.FloatTensor')
         return outputs
