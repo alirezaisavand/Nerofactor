@@ -13,7 +13,7 @@ from dataset.database import parse_database_name, get_database_split, BaseDataba
 # from keras.src.saving.legacy.saved_model.serialized_attributes import metrics
 from network.field import SDFNetwork, SingleVarianceNetwork, NeRFNetwork, AppShadingNetwork, get_intersection, \
     extract_geometry, sample_pdf, MCShadingNetwork
-from utils.base_utils import color_map_forward, downsample_gaussian_blur, map_range_val
+from utils.base_utils import color_map_forward, downsample_gaussian_blur, map_range_val, color_map_backward
 from utils.raw_utils import linear_to_srgb
 
 from tqdm import trange
@@ -1748,7 +1748,9 @@ class NeROMaterialRenderer(nn.Module):
                 torch.set_default_tensor_type('torch.FloatTensor')
                 import imageio
                 rgb_pr = outputs['rgb_pr'].detach().cpu().numpy()
+                rgb_pr = color_map_backward(rgb_pr)
                 rgb_gt = outputs['rgb_gt'].detach().cpu().numpy()
+                rgb_gt = color_map_backward(rgb_gt)
                 imgs = [rgb_gt, rgb_pr]
                 print(f"rgb_gt shape: {rgb_gt.shape}, rgb_pr shape: {rgb_pr.shape}")
                 imsave(os.path.join(imgs_dir, "test_{}.png".format(self.nvs_ids[index])), concat_images_list(*imgs, vert=True))
