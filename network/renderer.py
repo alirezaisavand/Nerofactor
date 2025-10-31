@@ -1731,7 +1731,7 @@ class NeROMaterialRenderer(nn.Module):
         return outputs
 
     def nvs(self, log_dir_str, imgs_dir):
-        # self.eval()
+        self.eval()
         all_outputs = []
         tot_psnr = 0.0
         tot_ssim = 0
@@ -1746,8 +1746,8 @@ class NeROMaterialRenderer(nn.Module):
                 torch.set_default_tensor_type('torch.FloatTensor')
                 all_outputs.append(outputs)
                 import imageio
-                rgb_pr = outputs['rgb_pr'].cpu().numpy()
-                rgb_gt = outputs['rgb_gt'].cpu().numpy()
+                rgb_pr = outputs['rgb_pr'].detach().cpu().numpy()
+                rgb_gt = outputs['rgb_gt'].detach().cpu().numpy()
                 imageio.imwrite(os.path.join(imgs_dir, "test_{}.png".format(self.nvs_ids[index])), rgb_pr.cpu())
                 psnr = compute_psnr(rgb_gt, rgb_pr)
                 ssim = structural_similarity(rgb_gt, rgb_pr, win_size=11, channel_axis=2, data_range=255)
