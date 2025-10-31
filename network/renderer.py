@@ -1731,7 +1731,7 @@ class NeROMaterialRenderer(nn.Module):
         return outputs
 
     def nvs(self, log_dir_str, imgs_dir):
-        self.eval()
+        # self.eval()
         all_outputs = []
         tot_psnr = 0.0
         tot_ssim = 0
@@ -1740,7 +1740,10 @@ class NeROMaterialRenderer(nn.Module):
         log_path = Path(os.path.join(log_dir_str, 'log.txt'))
         with log_path.open("a", encoding="utf-8") as f:
             for index in range(len(self.nvs_ids)):
+                torch.set_default_tensor_type('torch.cuda.FloatTensor')
+
                 outputs = self.test_step(index)
+                torch.set_default_tensor_type('torch.FloatTensor')
                 all_outputs.append(outputs)
                 import imageio
                 rgb_pr = outputs['rgb_pr'].cpu().numpy()
