@@ -1240,7 +1240,7 @@ class NeROMaterialRenderer(nn.Module):
             self.test_imgs_info = build_imgs_info(self.database, self.test_ids, self.is_nerf)
             self.test_imgs_info = imgs_info_to_torch(self.test_imgs_info, 'cpu')
             self.nvs_imgs_info = build_imgs_info(self.database, self.nvs_ids, self.is_nerf)
-            self.nvs_imgs_info = imgs_info_to_torch(self.nvs_imgs_info, 'cuda')
+            self.nvs_imgs_info = imgs_info_to_torch(self.nvs_imgs_info, 'cpu')
             self.test_num = len(self.test_ids)
 
             self.train_batch = self._construct_nerf_ray_batch(
@@ -1767,7 +1767,7 @@ class NeROMaterialRenderer(nn.Module):
             outputs = self.train_step(step)
         else:
             index = data['index']
-            outputs = self.test_step(index)
+            outputs = self.test_step(index, is_nvs=True)
 
         torch.set_default_tensor_type('torch.FloatTensor')
         return outputs
