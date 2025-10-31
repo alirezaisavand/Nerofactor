@@ -1752,7 +1752,6 @@ class NeROMaterialRenderer(nn.Module):
                 rgb_gt = outputs['rgb_gt'].detach().cpu().numpy()
                 rgb_gt = color_map_backward(rgb_gt)
                 imgs = [rgb_gt, rgb_pr]
-                print(f"rgb_gt shape: {rgb_gt.shape}, rgb_pr shape: {rgb_pr.shape}")
                 imsave(os.path.join(imgs_dir, "test_{}.png".format(self.nvs_ids[index])), concat_images_list(*imgs, vert=True))
 
                 psnr = compute_psnr(rgb_gt, rgb_pr)
