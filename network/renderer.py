@@ -1730,9 +1730,9 @@ class NeROMaterialRenderer(nn.Module):
         outputs['w'] = w
         return outputs
 
+    @torch.no_grad()
     def nvs(self, log_dir_str, imgs_dir):
         self.eval()
-        all_outputs = []
         tot_psnr = 0.0
         tot_ssim = 0
         from skimage.metrics import structural_similarity
@@ -1744,7 +1744,6 @@ class NeROMaterialRenderer(nn.Module):
 
                 outputs = self.test_step(index)
                 torch.set_default_tensor_type('torch.FloatTensor')
-                all_outputs.append(outputs)
                 import imageio
                 rgb_pr = outputs['rgb_pr'].detach().cpu().numpy()
                 rgb_gt = outputs['rgb_gt'].detach().cpu().numpy()
@@ -1759,7 +1758,7 @@ class NeROMaterialRenderer(nn.Module):
             avg_ssim = tot_ssim / len(self.nvs_ids)
             f.write(f"Average PSNR: {avg_psnr:.5f}, Average SSIM: {avg_ssim:.5f}\n")
             print(f"Average PSNR: {avg_psnr:.5f}, Average SSIM: {avg_ssim:.5f}\n")
-        return all_outputs
+        return
 
     def forward(self, data):
         torch.set_default_tensor_type('torch.cuda.FloatTensor')
