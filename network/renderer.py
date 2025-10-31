@@ -1737,6 +1737,8 @@ class NeROMaterialRenderer(nn.Module):
         tot_ssim = 0
         from skimage.metrics import structural_similarity
         from pathlib import Path
+        from skimage.io import imsave
+        from utils.draw_utils import concat_images_list
         log_path = Path(os.path.join(log_dir_str, 'log.txt'))
         with log_path.open("a", encoding="utf-8") as f:
             for index in range(len(self.nvs_ids)):
@@ -1747,8 +1749,10 @@ class NeROMaterialRenderer(nn.Module):
                 import imageio
                 rgb_pr = outputs['rgb_pr'].detach().cpu().numpy()
                 rgb_gt = outputs['rgb_gt'].detach().cpu().numpy()
+                imgs = [rgb_gt, rgb_pr]
                 print(f"rgb_gt shape: {rgb_gt.shape}, rgb_pr shape: {rgb_pr.shape}")
-                imageio.imwrite(os.path.join(imgs_dir, "test_{}.png".format(self.nvs_ids[index])), rgb_pr)
+                imsave(os.path.join(imgs_dir, "test_{}.png".format(self.nvs_ids[index])), concat_images_list(*imgs, vert=True))
+
                 psnr = compute_psnr(rgb_gt, rgb_pr)
                 ssim = structural_similarity(rgb_gt, rgb_pr, win_size=11, channel_axis=2, data_range=255)
                 tot_psnr += psnr
