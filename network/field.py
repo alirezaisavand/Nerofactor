@@ -907,16 +907,17 @@ class MCShadingNetwork(nn.Module):
         """
         if sources is None:
             # Set a global reference direction (here, along the X-axis)
-            ref_dir = torch.tensor([1.0, 0.0, 0.0], dtype=torch.float32)  # Example: X-axis
+            ref_dir = torch.tensor([1.0, 0.0, 0.0], dtype=torch.float32).to(normals.device)  # Example: X-axis
 
             # Compute tangent by crossing the normal with the reference direction
+            print(f"normals:{normals.device}, ref_dir{ref_dir.device}")
             tangent = torch.cross(normals, ref_dir.unsqueeze(0).expand(normals.size(0), -1), dim=-1)
 
             # Handle cases where tangent is zero due to alignment with the reference direction
             zero_tangent_mask = tangent.norm(dim=1) < 0.1
             if zero_tangent_mask.any():
                 # Recalculate tangent using the Y-axis if the normal is aligned with X-axis
-                ref_dir = torch.tensor([0.0, 1.0, 0.0], dtype=torch.float32)  # Example: Y-axis
+                ref_dir = torch.tensor([0.0, 1.0, 0.0], dtype=torch.float32).to(normals.device)  # Example: Y-axis
                 tangent[zero_tangent_mask] = torch.cross(normals[zero_tangent_mask], ref_dir.unsqueeze(0).expand(normals[zero_tangent_mask].shape[0], -1), dim=-1)
 
             # Normalize the tangents
