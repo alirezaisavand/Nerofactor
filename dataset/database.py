@@ -589,7 +589,7 @@ def get_database_split(database: BaseDatabase, split_type='validation'):
 
 
 def get_database_eval_points(database):
-    if isinstance(database, GlossySyntheticDatabase):
+    if isinstance(database, GlossySyntheticDatabase) or isinstance(database, NeRFSyntheticDatabase):
         fn = f'{database.root}/eval_pts.ply'
         if os.path.exists(fn):
             pcd = o3d.io.read_point_cloud(str(fn))
