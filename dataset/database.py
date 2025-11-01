@@ -554,7 +554,7 @@ class NeRFSyntheticDatabase(BaseDatabase):
         str_id = str(int(img_id) + 1)
         prefix = '0' * (4 - len(str_id))
         depth_name = "Image"+prefix + str_id + ".png"
-        depth = imread(os.path.join(self.root, depth_name))
+        depth = imread(os.path.join(self.root, 'depth', depth_name))
         depth = depth.astype(np.float32) / 65535 * 15
         mask = depth < 14.5
         return depth, mask
