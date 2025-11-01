@@ -1,5 +1,3 @@
-
-
 import os
 import random
 from pathlib import Path
@@ -149,12 +147,9 @@ class Trainer:
             for k, v in log_info.items():
                 if k.startswith('loss'):
                     loss = loss + torch.mean(v)
-                    x = torch.mean(v).detach().cpu().numpy()
-                    loss_str += ', ' + k + ": " + f"{x:.4f}"
+                    loss_str += ', ' + k + ": " + str(torch.mean(v).detach().cpu().numpy())
 
             loss.backward()
-            max_grad_norm = 0.7
-            total_norm = torch.nn.utils.clip_grad_norm_(self.train_network.parameters(), max_norm=max_grad_norm)
             self.optimizer.step()
             if ((step + 1) % self.cfg['train_log_step']) == 0:
                 self._log_data(log_info, step + 1, 'train')
@@ -184,17 +179,11 @@ class Trainer:
                 save_fn = None
                 self._save_model(step + 1, best_para, save_fn=save_fn)
 
-
+            if (step + 1) == self.cfg['total_step']:
+                pass
             pbar.set_postfix(loss=float(loss.detach().cpu().numpy()), lr=lr, others=loss_str)
             pbar.update(1)
             del loss, log_info
-        logs_dir = os.path.join('logs', self.cfg['name'])
-        logs_path = os.path.join(logs_dir, 'logs.txt')
-        nvs_imgs_dir = os.path.join('nvs_imgs', self.cfg['name'])
-        os.makedirs(logs_dir, exist_ok=True)
-        os.makedirs(nvs_imgs_dir, exist_ok=True)
-        self.train_network.nvs(log_dir_str=logs_dir,
-                                              imgs_dir=nvs_imgs_dir)
 
         pbar.close()
 

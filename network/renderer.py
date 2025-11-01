@@ -1,5 +1,3 @@
-import os.path
-
 import cv2
 
 import raytracing
@@ -10,10 +8,9 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from dataset.database import parse_database_name, get_database_split, BaseDatabase
-# from keras.src.saving.legacy.saved_model.serialized_attributes import metrics
 from network.field import SDFNetwork, SingleVarianceNetwork, NeRFNetwork, AppShadingNetwork, get_intersection, \
     extract_geometry, sample_pdf, MCShadingNetwork
-from utils.base_utils import color_map_forward, downsample_gaussian_blur, map_range_val, color_map_backward
+from utils.base_utils import color_map_forward, downsample_gaussian_blur, map_range_val
 from utils.raw_utils import linear_to_srgb
 
 from tqdm import trange
@@ -94,15 +91,6 @@ from scipy.spatial import cKDTree
 #     print('number of above images:', len(to_keep), len(poses))
 #     return np.asarray(to_keep).astype(int)
 #
-
-def compute_psnr(img_gt, img_pr):
-    img_gt = img_gt.reshape([-1, 3]).astype(np.float32)
-    img_pr = img_pr.reshape([-1, 3]).astype(np.float32)
-    mse = np.mean((img_gt - img_pr) ** 2, 0)
-    mse = np.mean(mse)
-    psnr = 10 * np.log10(255 * 255 / mse)
-    return psnr
-
 def build_imgs_info(database: BaseDatabase, img_ids, is_nerf=False):
     images = [database.get_image(img_id) for img_id in img_ids]
     print('images len:', len(images))
@@ -235,9 +223,6 @@ class NeROShapeRenderer(nn.Module):
         'occ_loss_step': 20000,
         'occ_loss_max_pn': 2048,
         'occ_sdf_thresh': 0.01,
-
-
-
 
         "fixed_camera": False,
         'score_weight_max': 1.5,
@@ -508,7 +493,7 @@ class NeROShapeRenderer(nn.Module):
     #     human_poses = self.get_human_coordinate_poses(poses)
     #     return rays_o, rays_d, near, far, human_poses  # rn, 3, 4
 
-    def test_step(self, index, step):
+    def test_step(self, index, step, ):
         target_imgs_info, target_img_ids = self.test_imgs_info, self.test_ids
         imgs_info = imgs_info_slice(target_imgs_info, torch.from_numpy(np.asarray([index], np.int64)))
         gt_depth, gt_mask = self.database.get_depth(target_img_ids[index])  # used in evaluation
@@ -1216,7 +1201,7 @@ class NeROMaterialRenderer(nn.Module):
     def _init_dataset(self, is_train):
         # train/test split
         self.database = parse_database_name(self.cfg['database_name'], self.cfg['dataset_dir'])
-        self.train_ids, self.test_ids, self.nvs_ids = get_database_split(self.database, 'validation')
+        self.train_ids, self.test_ids = get_database_split(self.database, 'validation')
         self.train_ids = np.asarray(self.train_ids)
         # This part is for genetaring sementation masks
 
@@ -1239,8 +1224,6 @@ class NeROMaterialRenderer(nn.Module):
 
             self.test_imgs_info = build_imgs_info(self.database, self.test_ids, self.is_nerf)
             self.test_imgs_info = imgs_info_to_torch(self.test_imgs_info, 'cpu')
-            self.nvs_imgs_info = build_imgs_info(self.database, self.nvs_ids, self.is_nerf)
-            self.nvs_imgs_info = imgs_info_to_torch(self.nvs_imgs_info, 'cpu')
             self.test_num = len(self.test_ids)
 
             self.train_batch = self._construct_nerf_ray_batch(
@@ -1651,11 +1634,9 @@ class NeROMaterialRenderer(nn.Module):
             # shade_outputs['loss_mat_reg'] = self.shader_network.material_regularization(
             #     pts, normals, shade_outputs['metallic'], shade_outputs['roughness'], shade_outputs['albedo'], step)
             shade_outputs['loss_mat_reg'] = self.shader_network.anisotropic_regularization(
-                pts, normals, shade_outputs['tangents'], shade_outputs['bitangents'], shade_outputs['mx'], shade_outputs['my'],
-                # shade_outputs['alpha'],
-                shade_outputs['metallic'],
-                shade_outputs['kd'], shade_outputs['f_d'], shade_outputs['f_s_sum'],
-                shade_outputs['L_spec'], shade_outputs['rotation'], shade_outputs['rotation_raw'], step
+                pts, normals, shade_outputs['mx'], shade_outputs['my'], shade_outputs['alpha'], shade_outputs['F0'],
+                shade_outputs['kd'], shade_outputs['ks'], shade_outputs['f_d_sum'], shade_outputs['f_s_sum'],
+                shade_outputs['L_spec'], shade_outputs['rotation']
             )
             # shade_outputs['loss_mat_reg'] = self.shader_network.material_regularization(
             #     pts, normals, shade_outputs['albedo'], step)
@@ -1667,11 +1648,8 @@ class NeROMaterialRenderer(nn.Module):
         if self.train_batch_i + rn >= self.tbn: self._shuffle_train_batch()
         return shade_outputs
 
-    def test_step(self, index, is_nvs=False):
-        if is_nvs:
-            test_imgs_info = imgs_info_slice(self.nvs_imgs_info, torch.from_numpy(np.asarray([index], np.int64)))
-        else:
-            test_imgs_info = imgs_info_slice(self.test_imgs_info, torch.from_numpy(np.asarray([index], np.int64)))
+    def test_step(self, index):
+        test_imgs_info = imgs_info_slice(self.test_imgs_info, torch.from_numpy(np.asarray([index], np.int64)))
         _, _, h, w = test_imgs_info['imgs'].shape
         ray_batch = self._construct_nerf_ray_batch(test_imgs_info, 'cuda',
                                                    False) if self.is_nerf else self._construct_ray_batch(test_imgs_info,
@@ -1681,19 +1659,19 @@ class NeROMaterialRenderer(nn.Module):
         # output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'specular_color': 3, 'diffuse_light': 3,
         #                'diffuse_color': 3, 'albedo': 3, 'metallic': 1, 'roughness': 1}
         output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'diffuse_light': 3,
-                       'kd': 3, 'metallic': 1, "alpha": 1, 'diffuse_color': 3, 'specular_color': 3, 'mx': 1, 'my': 1,
-                       'f_d': 3, 'f_s_sum': 3, 'tangents': 3, 'bitangents': 3, 'normals': 3, 'L_spec': 3}
+                       'kd': 3, 'ks': 3, 'F0': 1, "alpha": 1, 'diffuse_color': 3, 'specular_color': 3, 'mx': 1, 'my': 1,
+                       'f_d_sum': 3, 'f_s_sum': 3, 'tangents': 3, 'bitangents': 3, 'normals': 3, 'L_spec': 3, }
         outputs = {k: [] for k in output_keys.keys()}
         rn = ray_batch['rays_o'].shape[0]
         for ri in range(0, rn, trn):
             hit_mask = ray_batch['hit_mask'][ri:ri + trn]
             outputs_cur = {k: torch.zeros(hit_mask.shape[0], d) for k, d in output_keys.items()}
             if torch.sum(hit_mask) > 0:
-                pts = ray_batch['inters'][ri:ri + trn][hit_mask].cuda()
-                view_dirs = -ray_batch['rays_d'][ri:ri + trn][hit_mask].cuda()
-                normals = ray_batch['normals'][ri:ri + trn][hit_mask].cuda()
-                rgb_gt = ray_batch['rgb'][ri:ri + trn][hit_mask].cuda()
-                human_poses = ray_batch['human_poses'][ri:ri + trn][hit_mask].cuda()
+                pts = ray_batch['inters'][ri:ri + trn][hit_mask]
+                view_dirs = -ray_batch['rays_d'][ri:ri + trn][hit_mask]
+                normals = ray_batch['normals'][ri:ri + trn][hit_mask]
+                rgb_gt = ray_batch['rgb'][ri:ri + trn][hit_mask]
+                human_poses = ray_batch['human_poses'][ri:ri + trn][hit_mask]
 
                 shade_outputs = self.shade(pts, view_dirs, normals, human_poses, False)
                 outputs_cur['rgb_pr'][hit_mask] = shade_outputs['rgb_pr']
@@ -1703,68 +1681,31 @@ class NeROMaterialRenderer(nn.Module):
                 outputs_cur['kd'][hit_mask] = shade_outputs['kd']
                 outputs_cur['diffuse_color'][hit_mask] = shade_outputs['diffuse_color']
                 outputs_cur['specular_color'][hit_mask] = shade_outputs['specular_color']
-                outputs_cur['f_d'][hit_mask] = shade_outputs['f_d'].float()
+                outputs_cur['f_d_sum'][hit_mask] = shade_outputs['f_d_sum'].float()
                 outputs_cur['f_s_sum'][hit_mask] = shade_outputs['f_s_sum'].float()
                 outputs_cur['L_spec'][hit_mask] = shade_outputs['L_spec'].float()
                 outputs_cur['tangents'][hit_mask] = shade_outputs['tangents'].float()
                 outputs_cur['bitangents'][hit_mask] = shade_outputs['bitangents'].float()
-                # outputs_cur['sources'][hit_mask] = shade_outputs['sources'].float()
-                # outputs_cur['sources_norm'][hit_mask] = shade_outputs['sources_norm'].float()
                 outputs_cur['normals'][hit_mask] = shade_outputs['normals'].float()
                 if self.cfg['n_lobes'] == 1:
-                    outputs_cur['metallic'][hit_mask] = shade_outputs['metallic']
+                    outputs_cur['ks'][hit_mask] = shade_outputs['ks']
+                    outputs_cur['F0'][hit_mask] = shade_outputs['F0']
                     outputs_cur['mx'][hit_mask] = shade_outputs['mx']
                     outputs_cur['my'][hit_mask] = shade_outputs['my']
-                    # outputs_cur['alpha'][hit_mask] = shade_outputs['alpha']
+                    outputs_cur['alpha'][hit_mask] = shade_outputs['alpha']
                 else:
-                    outputs_cur['metallic'][hit_mask] = shade_outputs['metallic'][0]
+                    outputs_cur['ks'][hit_mask] = shade_outputs['ks'][0]
+                    outputs_cur['F0'][hit_mask] = shade_outputs['F0'][0]
                     outputs_cur['mx'][hit_mask] = shade_outputs['mx'][0]
                     outputs_cur['my'][hit_mask] = shade_outputs['my'][0]
-                    # outputs_cur['alpha'][hit_mask] = shade_outputs['alpha'][0]
+                    outputs_cur['alpha'][hit_mask] = shade_outputs['alpha'][0]
             for k in output_keys.keys():
                 outputs[k].append(outputs_cur[k])
 
         for k in output_keys.keys():
             outputs[k] = torch.cat(outputs[k], 0).reshape(h, w, -1)
-        outputs['h'] = h
-        outputs['w'] = w
+
         return outputs
-
-    @torch.no_grad()
-    def nvs(self, log_dir_str, imgs_dir):
-        self.eval()
-        tot_psnr = 0.0
-        tot_ssim = 0
-        from skimage.metrics import structural_similarity
-        from pathlib import Path
-        from skimage.io import imsave
-        from utils.draw_utils import concat_images_list
-        log_path = Path(os.path.join(log_dir_str, 'log.txt'))
-        with log_path.open("a", encoding="utf-8") as f:
-            for index in range(len(self.nvs_ids)):
-                torch.set_default_tensor_type('torch.cuda.FloatTensor')
-
-                outputs = self.test_step(index, is_nvs=True)
-                torch.set_default_tensor_type('torch.FloatTensor')
-                import imageio
-                rgb_pr = outputs['rgb_pr'].detach().cpu().numpy()
-                rgb_pr = color_map_backward(rgb_pr)
-                rgb_gt = outputs['rgb_gt'].detach().cpu().numpy()
-                rgb_gt = color_map_backward(rgb_gt)
-                imgs = [rgb_gt, rgb_pr]
-                imsave(os.path.join(imgs_dir, "test_{}.png".format(self.nvs_ids[index])), concat_images_list(*imgs, vert=True))
-
-                psnr = compute_psnr(rgb_gt, rgb_pr)
-                ssim = structural_similarity(rgb_gt, rgb_pr, win_size=11, channel_axis=2, data_range=255)
-                tot_psnr += psnr
-                tot_ssim += ssim
-                f.write(f"PSNR: {psnr:.5f}, SSIM: {ssim:.5f}\n")
-                print(f"Test image {self.nvs_ids[index]}: PSNR: {psnr:.5f}, SSIM: {ssim:.5f}\n")
-            avg_psnr = tot_psnr / len(self.nvs_ids)
-            avg_ssim = tot_ssim / len(self.nvs_ids)
-            f.write(f"Average PSNR: {avg_psnr:.5f}, Average SSIM: {avg_ssim:.5f}\n")
-            print(f"Average PSNR: {avg_psnr:.5f}, Average SSIM: {avg_ssim:.5f}\n")
-        return
 
     def forward(self, data):
         torch.set_default_tensor_type('torch.cuda.FloatTensor')

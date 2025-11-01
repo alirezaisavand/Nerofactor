@@ -124,7 +124,6 @@ class GlossyRealDatabase(BaseDatabase):
                 self.Ks[img_id] = np.diag([rw, rh, 1.0]) @ K
 
     def _parse_colmap(self):
-        print(f'{self.root}/cache.pkl')
         if Path(f'{self.root}/cache.pkl').exists():
             self.poses, self.Ks, self.image_names, self.img_ids = read_pickle(f'{self.root}/cache.pkl')
         else:
@@ -551,12 +550,10 @@ class NeRFSyntheticDatabase(BaseDatabase):
 
     def get_depth(self, img_id):
         assert (self.scale_factor == 1.0)
-        str_id = str(int(img_id) + 1)
-        prefix = '0' * (4 - len(str_id))
-        depth_name = "Image"+prefix + str_id + ".png"
-        depth = imread(os.path.join(self.root, 'depth', depth_name))
+        depth = torch.randn(800, 800).cpu().numpy()
+        # depth = imread(f'{self.root}/test/r_{img_id}_depth_0001.png')
         depth = depth.astype(np.float32) / 65535 * 15
-        mask = depth < 14.5
+        mask = self.imgs[int(img_id)][..., -1]
         return depth, mask
 
 
@@ -575,28 +572,30 @@ def parse_database_name(database_name: str, dataset_dir: str) -> BaseDatabase:
         raise NotImplementedError
 
 def get_database_split(database: BaseDatabase, split_type='validation'):
-    random.seed(6033)
-    img_ids = database.get_img_ids().copy()
-    num_nvs_imgs = 5
-    random.shuffle(img_ids)
-    nvs_ids = img_ids[:num_nvs_imgs]
     if split_type == 'validation':
-        test_ids = img_ids[num_nvs_imgs:num_nvs_imgs+1]
-        train_ids = img_ids[num_nvs_imgs+1:]
+        random.seed(6033)
+        img_ids = database.get_img_ids().copy()
+        img_num = 8
+        # random.shuffle(img_ids)
+        test_ids = img_ids[img_num-1:img_num]
+        if img_num > 1:
+            train_ids = img_ids[:img_num-1] + img_ids[img_num:]
+        else:
+            train_ids = img_ids[img_num:]
     elif split_type=='test':
         test_ids, train_ids = read_pickle('configs/synthetic_split_128.pkl')
     else:
         raise NotImplementedError
-    return train_ids, test_ids, nvs_ids
+    return train_ids, test_ids
 
 
 def get_database_eval_points(database):
-    if isinstance(database, GlossySyntheticDatabase) or isinstance(database, NeRFSyntheticDatabase):
+    if isinstance(database, GlossySyntheticDatabase):
         fn = f'{database.root}/eval_pts.ply'
         if os.path.exists(fn):
             pcd = o3d.io.read_point_cloud(str(fn))
             return np.asarray(pcd.points)
-        _, _, test_ids = get_database_split(database, 'test')
+        _, test_ids = get_database_split(database, 'test')
         pts = []
         for img_id in test_ids:
             depth, mask = database.get_depth(img_id)

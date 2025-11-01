@@ -8,7 +8,6 @@ class Loss:
 
 
 class NeRFRenderLoss(Loss):
-
     default_cfg = {
         'render_loss_weight_begin': 1,
         'render_loss_weight_end': 5,
@@ -16,9 +15,9 @@ class NeRFRenderLoss(Loss):
         'render_weight_decay_mid': 5000,
         'render_weight_decay_end': 10000,
     }
+
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
-
 
     def cosine_weight_schedule(self, step: int) -> float:
         """
@@ -28,11 +27,11 @@ class NeRFRenderLoss(Loss):
         - From mid -> end:  cosine decrease back to begin_value
         - After end:        weight = begin_value
         """
-        w0  = self.cfg['render_loss_weight_begin']   # initial value
-        wpk = self.cfg['render_loss_weight_end']     # peak value (at mid)
-        s0  = self.cfg['render_weight_decay_begin']  # start increasing
-        sm  = self.cfg['render_weight_decay_mid']    # peak step
-        s1  = self.cfg['render_weight_decay_end']    # return to initial
+        w0 = self.cfg['render_loss_weight_begin']  # initial value
+        wpk = self.cfg['render_loss_weight_end']  # peak value (at mid)
+        s0 = self.cfg['render_weight_decay_begin']  # start increasing
+        sm = self.cfg['render_weight_decay_mid']  # peak step
+        s1 = self.cfg['render_weight_decay_end']  # return to initial
 
         if not (s0 < sm < s1):
             raise ValueError("Require begin < mid < end for the schedule.")
@@ -49,7 +48,6 @@ class NeRFRenderLoss(Loss):
             return wpk - 0.5 * (1 - np.cos(np.pi * t)) * (wpk - w0)
         return w0
 
-
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         outputs = {}
         if 'loss_rgb' in data_pr: outputs['loss_rgb'] = data_pr['loss_rgb'] * self.cosine_weight_schedule(step)
@@ -64,7 +62,7 @@ class NeRFRenderLoss(Loss):
 
 class EikonalLoss(Loss):
     default_cfg = {
-        "eikonal_weight": 0.1, # changed from 0.1
+        "eikonal_weight": 0.1,  # changed from 0.1
         'eikonal_weight_anneal_begin': 0,
         'eikonal_weight_anneal_end': 0,
     }
@@ -147,11 +145,12 @@ class OccLoss(Loss):
         nom = min(nom, denom)
         coef = self.cfg['occ_loss_weight_end'] - self.cfg['occ_loss_weight_begin']
         bias = self.cfg['occ_loss_weight_begin']
-        anneal_weights = (np.cos((nom / denom) * np.pi + np.pi) + 1) / 2 #[0-1]
-        return anneal_weights * coef + bias # [begin-end]
+        anneal_weights = (np.cos((nom / denom) * np.pi + np.pi) + 1) / 2  # [0-1]
+        return anneal_weights * coef + bias  # [begin-end]
 
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
+
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         outputs = {}
         if 'loss_occ' in data_pr:
@@ -163,12 +162,13 @@ class InitSDFRegLoss(Loss):
     default_cfg = {
         'SDF_loss_weight': 3,
     }
+
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
 
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         reg_step = 1000
-        small_threshold = 0.1   
+        small_threshold = 0.1
         large_threshold = 1.05
         if 'sdf_vals' in data_pr and 'sdf_pts' in data_pr and step < reg_step:
             norm = torch.norm(data_pr['sdf_pts'], dim=-1)
@@ -184,7 +184,6 @@ class InitSDFRegLoss(Loss):
 
             large_mask = norm > large_threshold
 
-            
             if torch.sum(large_mask) > 0:
                 bounds = norm[large_mask] - large_threshold  # 0 -> 1 - large_threshold
                 # we want sdf - bounds > 0 => bounds - sdf < 0
@@ -196,7 +195,7 @@ class InitSDFRegLoss(Loss):
             if step < anneal_begin:
                 anneal_weights = 1
             else:
-                anneal_weights = (np.cos(((step-anneal_begin) / (reg_step-anneal_begin)) * np.pi) + 1) / 2
+                anneal_weights = (np.cos(((step - anneal_begin) / (reg_step - anneal_begin)) * np.pi) + 1) / 2
             anneal_weights = anneal_weights * self.cfg['SDF_loss_weight']
             return {'loss_sdf_large': large_loss * anneal_weights, 'loss_sdf_small': small_loss * anneal_weights}
         else:
@@ -229,16 +228,17 @@ class MaskLoss(Loss):
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
 
-
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         outputs = {}
-        if 'loss_mask' in data_pr and (step < self.cfg['mask_weight_decay_end'] or self.cfg['mask_loss_weight_end'] > 0):
+        if 'loss_mask' in data_pr and (
+                step < self.cfg['mask_weight_decay_end'] or self.cfg['mask_loss_weight_end'] > 0):
             outputs['loss_mask'] = data_pr['loss_mask'].reshape(1) * self.get_mask_weight(step)
         return outputs
 
+
 class FGLoss(Loss):
     default_cfg = {
-        'fg_loss_weight': 4, #changed here from 0.01 to 0.1
+        'fg_loss_weight': 4,  # changed here from 0.01 to 0.1
     }
 
     def __init__(self, cfg):
@@ -250,9 +250,10 @@ class FGLoss(Loss):
             outputs['loss_fg'] = data_pr['loss_fg'] * self.cfg['fg_loss_weight']
         return outputs
 
+
 class BGLoss(Loss):
     default_cfg = {
-        'bg_loss_weight': 0.1, #changed here from 0.01 to 0.1
+        'bg_loss_weight': 0.1,  # changed here from 0.01 to 0.1
         'bg_weight_decay_begin': 0,
         'bg_weight_decay_end': 0,
     }
@@ -275,6 +276,7 @@ class BGLoss(Loss):
             weight = self.cfg['bg_loss_weight'] * self.get_bg_cosine_weight(step)
             outputs['loss_bg'] = data_pr['loss_bg'] * weight
         return outputs
+
 
 class CurvLoss(Loss):
     default_cfg = {
@@ -310,15 +312,15 @@ class CurvLoss(Loss):
             outputs['loss_curv'] = data_pr['loss_curv'].reshape(1) * self.get_curvature_weight(step)
         return outputs
 
+
 class OpacityLoss(Loss):
     default_cfg = {
         'opacity_loss_weight': 1,  # changed here from 0.01 to 1
-        'opacity_loss_weight_begin': 0,
+        'opacity_loss_weight_begin': 0.001,
         'opacity_loss_weight_end': 0.01,
-        'opacity_weight_decay_begin': 10000,
+        'opacity_weight_decay_begin': 20000,
         'opacity_weight_decay_end': 50000,
     }
-
 
     def get_opacity_weight(self, step):
         nom = max(0, step - self.cfg['opacity_weight_decay_begin'])
@@ -326,8 +328,8 @@ class OpacityLoss(Loss):
         nom = min(nom, denom)
         coef = self.cfg['opacity_loss_weight_end'] - self.cfg['opacity_loss_weight_begin']
         bias = self.cfg['opacity_loss_weight_begin']
-        anneal_weights = (np.cos((nom / denom) * np.pi + np.pi) + 1) / 2 #[0-1]
-        return anneal_weights * coef + bias # [begin-end]
+        anneal_weights = (np.cos((nom / denom) * np.pi + np.pi) + 1) / 2  # [0-1]
+        return anneal_weights * coef + bias  # [begin-end]
 
     def __init__(self, cfg):
         self.cfg = {**self.default_cfg, **cfg}
@@ -335,8 +337,9 @@ class OpacityLoss(Loss):
     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
         outputs = {}
         if 'loss_opacity' in data_pr:
-            outputs['loss_opacity'] = data_pr['loss_opacity'].reshape(1)  * self.get_opacity_weight(step)
+            outputs['loss_opacity'] = data_pr['loss_opacity'].reshape(1) * self.get_opacity_weight(step)
         return outputs
+
 
 name2loss = {
     'nerf_render': NeRFRenderLoss,

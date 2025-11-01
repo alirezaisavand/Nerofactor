@@ -587,7 +587,7 @@ class AppShadingNetwork(nn.Module):
         pts = self.pos_enc(points)
         if self.cfg['sphere_direction']:
             sph_points = offset_points_to_sphere(points)
-            sph_points = F.normalize(sph_points + reflective * get_sphere_intersection(sph_points, reflective), dim=-1, eps=1e-6)
+            sph_points = F.normalize(sph_points + reflective * get_sphere_intersection(sph_points, reflective), dim=-1)
             sph_points = self.sph_enc(sph_points, roughness)
             direct_light = self.outer_light(torch.cat([ref_roughness, sph_points], -1))
         else:
@@ -616,7 +616,7 @@ class AppShadingNetwork(nn.Module):
         ref = torch.cat([ref_x, ref_y], -1)  # pn,72*2
         if self.cfg['sphere_direction']:
             sph_points = offset_points_to_sphere(points)
-            sph_points = F.normalize(sph_points + normals * get_sphere_intersection(sph_points, normals), dim=-1, eps=1e-6)
+            sph_points = F.normalize(sph_points + normals * get_sphere_intersection(sph_points, normals), dim=-1)
             sph_points = self.sph_enc(sph_points, roughness)
             light = self.outer_light(torch.cat([ref, sph_points], -1))
         else:
@@ -753,7 +753,7 @@ class MCShadingNetwork(nn.Module):
         'geometry_type': 'schlick',
 
         'reg_change': True,
-        'change_eps': 0.02,
+        'change_eps': 0.05,
         'change_type': 'gaussian',
         'reg_lambda1': 0.05,  # Prev value was 0.05
         'reg_min_max': True,
@@ -764,9 +764,9 @@ class MCShadingNetwork(nn.Module):
         'max_n_exp': 20,
         'max_alpha_exp': 10,
         'reg_energy_loss': True,
-        'reg_energy_loss_lambda': 0.05,
+        'reg_energy_loss_lambda': 0.01,
         'reg_spec_loss': True,
-        'reg_spec_loss_lambda': 0.05,
+        'reg_spec_loss_lambda': 0.01,
     }
 
     def __init__(self, cfg, ray_trace_fun):
@@ -785,10 +785,10 @@ class MCShadingNetwork(nn.Module):
             # self.my_predictor = make_predictor(256 + 3, 1, activation='exp', exp_max=self.cfg['max_n_exp'])
             self.mx_predictor = make_predictor(256 + 3, 1)
             self.my_predictor = make_predictor(256 + 3, 1)
-            # self.alpha_predictor = make_predictor(256 + 3, 1)
-            self.metallic_predictor = make_predictor(256 + 3, 1)
+            self.alpha_predictor = make_predictor(256 + 3, 1)
+            self.F0_predictor = make_predictor(256 + 3, 1)
+            self.ks_predictor = make_predictor(256 + 3, 3)
             self.rotation_predictor = make_predictor(256 + 3, 2)
-            # self.source_predictor = make_predictor(256 + 3, 3)
 
             self.kd_predictor = make_predictor(256 + 3, 3)
 
@@ -844,57 +844,7 @@ class MCShadingNetwork(nn.Module):
         otho = F.normalize(otho, dim=-1)
         return otho
 
-    # def compute_tangent_bitangent_flat(self, normals, switch_width=0.15):
-    #     """
-    #     Smooth reference-vector method: blend between X- and Y-axis bases
-    #     to avoid discontinuities when the normal aligns with a reference axis.
-
-    #     Args:
-    #         normals (torch.Tensor): (N, 3) unit (or near-unit) normals
-    #         switch_width (float): width of the smooth transition near |nx|≈1
-
-    #     Returns:
-    #         tangent (N,3), bitangent (N,3)
-    #     """
-    #     import torch
-    #     import torch.nn.functional as F
-
-    #     n = F.normalize(normals, dim=-1)
-    #     device, dtype = n.device, n.dtype
-
-    #     v0 = torch.tensor([1.0, 0.0, 0.0], device=device, dtype=dtype)  # X
-    #     v1 = torch.tensor([0.0, 1.0, 0.0], device=device, dtype=dtype)  # Y
-
-    #     # How parallel is n to X? (|cos θ_x|)
-    #     a = n[..., 0].abs()
-
-    #     # Smoothstep from (1 - switch_width) → 1
-    #     # t in [0,1] only near |nx| ~ 1; elsewhere ~0
-    #     edge0 = 1.0 - switch_width
-    #     edge1 = 1.0
-    #     t = torch.clamp((a - edge0) / (edge1 - edge0 + 1e-8), 0.0, 1.0)
-    #     w = t * t * (3.0 - 2.0 * t)  # smoothstep
-
-    #     # Blend the base direction: near X-alignment, slide toward Y
-    #     base = (1.0 - w).unsqueeze(-1) * v0 + w.unsqueeze(-1) * v1
-
-    #     # Tangent ⟂ n via cross with blended base
-    #     tangent = torch.cross(n, base.expand_as(n), dim=-1)
-
-    #     # Rare numerical degeneracy guard (e.g., if n not normalized initially)
-    #     zero_mask = tangent.norm(dim=-1) < 1e-8
-    #     if zero_mask.any():
-    #         v2 = torch.tensor([0.0, 0.0, 1.0], device=device, dtype=dtype)
-    #         tangent[zero_mask] = torch.cross(n[zero_mask], v2.unsqueeze(0), dim=-1)
-
-    #     tangent = F.normalize(tangent, dim=-1)
-
-    #     # Bitangent from right-handed frame
-    #     bitangent = F.normalize(torch.cross(n, tangent, dim=-1), dim=-1)
-
-    #     return tangent, bitangent
-
-    def compute_tangent_bitangent_flat(self, normals, sources):
+    def compute_tangent_bitangent_flat(self, normals):
         """
         Compute tangents and bitangents for flat surfaces with no UVs using a reference direction.
 
@@ -905,47 +855,29 @@ class MCShadingNetwork(nn.Module):
             torch.Tensor: (N, 3) tensor of tangents
             torch.Tensor: (N, 3) tensor of bitangents
         """
-        if sources is None:
-            # Set a global reference direction (here, along the X-axis)
-            ref_dir = torch.tensor([1.0, 0.0, 0.0], dtype=torch.float32)  # Example: X-axis
+        # Set a global reference direction (here, along the X-axis)
+        ref_dir = torch.tensor([1.0, 0.0, 0.0], dtype=torch.float32)  # Example: X-axis
 
-            # Compute tangent by crossing the normal with the reference direction
-            tangent = torch.cross(normals, ref_dir.unsqueeze(0).expand(normals.size(0), -1), dim=-1)
+        # Compute tangent by crossing the normal with the reference direction
+        tangent = torch.cross(normals, ref_dir.unsqueeze(0).expand(normals.size(0), -1), dim=-1)
 
-            # Handle cases where tangent is zero due to alignment with the reference direction
-            zero_tangent_mask = tangent.norm(dim=1) < 0.1
-            if zero_tangent_mask.any():
-                # Recalculate tangent using the Y-axis if the normal is aligned with X-axis
-                ref_dir = torch.tensor([0.0, 1.0, 0.0], dtype=torch.float32)  # Example: Y-axis
-                tangent[zero_tangent_mask] = torch.cross(normals[zero_tangent_mask], ref_dir.unsqueeze(0).expand(normals[zero_tangent_mask].shape[0], -1), dim=-1)
+        # Handle cases where tangent is zero due to alignment with the reference direction
+        zero_tangent_mask = tangent.norm(dim=1) < 1e-6
+        if zero_tangent_mask.any():
+            # Recalculate tangent using the Y-axis if the normal is aligned with X-axis
+            ref_dir = torch.tensor([0.0, 1.0, 0.0], dtype=torch.float32)  # Example: Y-axis
+            tangent[zero_tangent_mask] = torch.cross(normals[zero_tangent_mask], ref_dir.unsqueeze(0), dim=-1)
 
-            # Normalize the tangents
-            tangent = torch.nn.functional.normalize(tangent, p=2, dim=-1, eps=1e-6)
+        # Normalize the tangents
+        tangent = torch.nn.functional.normalize(tangent, p=2, dim=-1)
 
-            # Compute bitangent via cross product with normal
-            bitangent = torch.cross(normals, tangent, dim=-1)
+        # Compute bitangent via cross product with normal
+        bitangent = torch.cross(normals, tangent, dim=-1)
 
-            # Normalize bitangents
-            bitangent = torch.nn.functional.normalize(bitangent, p=2, dim=-1, eps=1e-6)
+        # Normalize bitangents
+        bitangent = torch.nn.functional.normalize(bitangent, p=2, dim=-1)
 
-            return tangent, bitangent
-        else:
-            # Set a global reference direction (here, along the X-axis)
-            ref_dirs = sources
-
-            # Compute tangent by crossing the normal with the reference direction
-            tangent = torch.cross(normals, ref_dirs, dim=-1)
-
-            # Normalize the tangents
-            tangent = torch.nn.functional.normalize(tangent, p=2, dim=-1, eps=1e-6)
-
-            # Compute bitangent via cross product with normal
-            bitangent = torch.cross(normals, tangent, dim=-1)
-
-            # Normalize bitangents
-            bitangent = torch.nn.functional.normalize(bitangent, p=2, dim=-1, eps=1e-6)
-
-            return tangent, bitangent
+        return tangent, bitangent
 
     def sample_diffuse_directions(self, normals, is_train):
         # normals [pn,3]
@@ -993,8 +925,8 @@ class MCShadingNetwork(nn.Module):
 
     def get_inner_lights(self, points, view_dirs, normals):
         pos_enc = self.pos_enc(points)
-        normals = F.normalize(normals, dim=-1, eps=1e-6)
-        view_dirs = F.normalize(view_dirs, dim=-1, eps=1e-6)
+        normals = F.normalize(normals, dim=-1)
+        view_dirs = F.normalize(view_dirs, dim=-1)
         reflections = torch.sum(view_dirs * normals, -1, keepdim=True) * normals * 2 - view_dirs
 
         # Todo changed here dir_enc = self.sph_enc(reflections, 0)
@@ -1076,7 +1008,7 @@ class MCShadingNetwork(nn.Module):
 
     def fresnel_schlick_directions(self, F0, view_dirs, directions):
         H = (view_dirs + directions)  # [pn,sn0,3]
-        H = F.normalize(H, dim=-1, eps=1e-6)
+        H = F.normalize(H, dim=-1)
         HoV = torch.clamp(torch.sum(H * view_dirs, dim=-1, keepdim=True), min=0.0, max=1.0)  # [pn,sn0,1]
         fresnel = self.fresnel_schlick(F0, HoV)  # [pn,sn0,1]
         return fresnel, H, HoV
@@ -1145,7 +1077,7 @@ class MCShadingNetwork(nn.Module):
 
         # specualr sample prob
         H_s = (view_dirs.unsqueeze(1) + specular_directions)  # [pn,sn0,3] half vector
-        H_s = F.normalize(H_s, dim=-1, eps=1e-6)
+        H_s = F.normalize(H_s, dim=-1)
         NoH_s = saturate_dot(normals.unsqueeze(1), H_s)
         VoH_s = saturate_dot(view_dirs.unsqueeze(1), H_s)
         specular_probability = self.distribution_ggx(NoH_s, roughness.unsqueeze(1)) * NoH_s / (4 * VoH_s + 1e-5) * (
@@ -1197,26 +1129,19 @@ class MCShadingNetwork(nn.Module):
 
     def predict_anisotropic_components(self, pts):
         feats = self.feats_network(pts)
-        mx_min, mx_max = 0.04, 1.0
-        my_min, my_max = 0.04, 1.0
         mx = self.mx_predictor(torch.cat([feats, pts], -1))
-        mx = mx_min + (mx_max - mx_min) * mx
+        # mx = mx_min + (mx_max - mx_min)*mx
         my = self.my_predictor(torch.cat([feats, pts], -1))
-        my = my_min + (my_max - my_min) * my
-        # alpha = self.alpha_predictor(torch.cat([feats, pts], -1))
-        metallic = self.metallic_predictor(torch.cat([feats, pts], -1))
+        # my = my_min + (my_max - my_min)*my
+        alpha = self.alpha_predictor(torch.cat([feats, pts], -1))
+        # alpha = torch.ones_like(mx)
+        F0 = self.F0_predictor(torch.cat([feats, pts], -1))
         kd = self.kd_predictor(torch.cat([feats, pts], -1))
-        rotation_raw = self.rotation_predictor(torch.cat([feats, pts], -1))
-        # print(f"rotatotion[:,0] min: {rotation_raw[:,0].min()}, max: {rotation_raw[:,0].max()}")
-        # print(f"rotatotion[:,1] min: {rotation_raw[:,1].min()}, max: {rotation_raw[:,1].max()}")
-        # print(f"rotation norm min: {torch.norm(rotation_raw, dim=-1).min()}, max: {torch.norm(rotation_raw, dim=-1).max()}")
-        rotation = rotation_raw * 2.0 - 1.0
-        rotation = F.normalize(rotation, dim=-1, eps=1e-6)
-        # sources = self.source_predictor(torch.cat([feats, pts], -1))
-        # sources = sources * 2.0 - 1.0
-        return (mx, my,
-                # alpha,
-                metallic, kd, rotation, rotation_raw)
+        ks = self.ks_predictor(torch.cat([feats, pts], -1))
+        rotation = self.rotation_predictor(torch.cat([feats, pts], -1))
+        rotation = F.normalize(rotation, dim=-1)
+
+        return mx, my, alpha, F0, kd, ks, rotation
 
     def compute_Dh(self, m_x, m_y, theta_h, phi_h):
         """
@@ -1236,24 +1161,20 @@ class MCShadingNetwork(nn.Module):
         sin_phi_h = torch.sin(phi_h)  # (N, M)
 
         cos_theta_h = torch.cos(theta_h)  # (N, M)
-        sin_theta_h = torch.sin(theta_h)  # (N, M)
-        eps = 1e-6
-        cos_th2 = (cos_theta_h * cos_theta_h).clamp_min(eps)  # avoid blow-up at grazing
-        tan2 = (sin_theta_h * sin_theta_h) / cos_th2
+
         # Calculate q(h)
-        log_q = -tan2 * (
-                (cos_phi_h ** 2) / (m_x ** 2) + (sin_phi_h ** 2) / (m_y ** 2)
+        q_h = torch.exp(
+            -torch.tan(theta_h) ** 2 * (
+                    (cos_phi_h ** 2) / (m_x ** 2) + (sin_phi_h ** 2) / (m_y ** 2)
+            )
         )
-        log_q = torch.clamp(log_q, min=-40.0, max=40.0)  # prevent overflow
-        q_h = torch.exp(log_q)
 
         # Step 2: Compute D(h) based on the formula
-        denom = (np.pi * m_x * m_y * cos_theta_h ** 4).clamp(min=eps)
-        D_h = (1 / denom) * q_h  # (N, M, 1)
+        D_h = (1 / (np.pi * m_x * m_y * cos_theta_h ** 4)) * q_h  # (N, M, 1)
 
         return D_h.unsqueeze(-1)
 
-    def compute_spec_loss(self, tem, m_x, m_y, theta_h, phi_h):
+    def compute_spec_loss(self, tem, fd, m_x, m_y, theta_h, phi_h):
         D = self.compute_Dh(m_x, m_y, theta_h, phi_h).detach()
         soft_d = torch.nn.functional.softmax(D / tem, dim=1)
         return soft_d
@@ -1265,7 +1186,7 @@ class MCShadingNetwork(nn.Module):
                               h: torch.Tensor,  # (N, M, 3), half‐vectors in tangent‐space
                               theta_h,
                               phi_h,
-                              eps: float = 1e-6
+                              eps: float = 1e-8
                               ) -> torch.Tensor:
         """
         Returns:
@@ -1274,10 +1195,9 @@ class MCShadingNetwork(nn.Module):
         N, M, _ = h.shape
         cos_phi = torch.cos(phi_h).unsqueeze(-1)
         sin_phi = torch.sin(phi_h).unsqueeze(-1)
+        tan_th = torch.tan(theta_h).unsqueeze(-1)
         cos_th = torch.cos(theta_h).unsqueeze(-1)
-        cos_th2 = (cos_th * cos_th).clamp_min(eps)
-        sin_th = torch.sin(theta_h).unsqueeze(-1)
-        tan2 = (sin_th * sin_th) / cos_th2
+
         # reshape roughness for broadcast
         m_x = m_x.view(N, 1, 1)  # (N,1,1)
         m_y = m_y.view(N, 1, 1)
@@ -1286,20 +1206,46 @@ class MCShadingNetwork(nn.Module):
         #  -> (h_x^2 + h_y^2)/h_z^2 * ( h_x^2/(h_x^2+h_y^2)/m_x^2 + h_y^2/(h_x^2+h_y^2)/m_y^2 )
         # simplifies to:
         # print('tan_th, cos_phi, sin_phi, cos_th:', tan_th.shape, cos_phi.shape, sin_phi.shape, cos_th.shape)
-        exp_term = (-tan2) * ((sin_phi * sin_phi) / (m_y * m_y) + (cos_phi * cos_phi) / (m_x * m_x))
+        exp_term = (tan_th * tan_th) * ((sin_phi * sin_phi) / (m_y * m_y) + (cos_phi * cos_phi) / (m_x * m_x))
         # print((cos_phi / m_x).shape)
-        exp_term = torch.clamp(exp_term, min=-40.0, max=40.0)  # prevent overflow
-        q = torch.exp(exp_term)
+        q = torch.exp(-exp_term)
 
         # denominator: 4π m_x m_y cos^3θ_h (ω_o · h)
         #   compute dot(ω_o, h) → (N,M,1)
         wo = w_o.unsqueeze(1)  # (N,1,3)
-        dot_wo_h = (wo * h).sum(dim=-1, keepdim=True).clamp(min=0.0, max=1.0)  # (N,M,1)
+        dot_wo_h = (wo * h).sum(dim=-1, keepdim=True)  # (N,M,1)
         # print('cos_th, mx, my, dot_wo, q:', cos_th.shape, m_x.shape, m_y.shape, dot_wo_h.shape, q.shape)
         denom = (4.0 * np.pi) * m_x * m_y * (cos_th ** 3) * dot_wo_h
-        p = q / denom.clamp(min=eps)
+        p = q / (denom + eps)
 
         return p  # (N, M, 1)
+
+    def compute_pdf_aniso_ggx2(self,
+                               m_x: torch.Tensor,  # (N,1)
+                               m_y: torch.Tensor,  # (N,1)
+                               w_o: torch.Tensor,  # (N, 3)
+                               h: torch.Tensor,  # (N, M, 3), half‐vectors in tangent‐space
+                               theta_h,
+                               phi_h,
+                               eps: float = 1e-8
+                               ) -> torch.Tensor:
+        """
+        Returns:
+          p: (N, M, 1) the sampling PDF p(ω_i | ω_o) per Eqn.(20)&(4).
+        """
+        N, M, _ = h.shape
+        sin_theta_h = torch.sin(theta_h)
+        cos_theta_h = torch.cos(theta_h)
+        sin_phi_h = torch.sin(phi_h)
+        cos_phi_h = torch.cos(phi_h)
+
+        denom = sin_theta_h * sin_theta_h * ((cos_phi_h * cos_phi_h) / (m_x * m_x) + (sin_phi_h * sin_phi_h) / (
+                    m_y * m_y)) + cos_theta_h * cos_theta_h
+        D = (1 / np.pi) * (1 / (m_x * m_y)) * (1 / (denom * denom))
+        pdf_h = D * cos_theta_h
+        pdf_h = pdf_h.unsqueeze(2)
+
+        return pdf_h  # (N, M, 1)
 
     def rotate_tangent_bitangent(self, tangent, bitangent, cos_theta, sin_theta):
         T_rot = cos_theta * tangent + sin_theta * bitangent
@@ -1314,7 +1260,6 @@ class MCShadingNetwork(nn.Module):
                                     wo: torch.Tensor,
                                     M: int,
                                     normals: torch.Tensor,
-                                    sources: torch.Tensor,
                                     device: torch.device = None,
                                     eps: float = 1e-6):
         if device is None:
@@ -1322,17 +1267,21 @@ class MCShadingNetwork(nn.Module):
 
         z = normals  # pn,3
 
-        x, y = self.compute_tangent_bitangent_flat(normals, sources)
-        # rotate tangent and bitangent
-        cos_2rot = rotation[:, 0:1]  # (N,1)
-        sin_2rot = rotation[:, 1:2]  # (N,1)
+        # x = self.get_orthogonal_directions(normals)  # pn,3
+        # y = torch.cross(z, x, dim=-1)  # pn,3
 
-        cos_rot = torch.sqrt(((cos_2rot + 1.0) / 2.0).clamp(min=eps)).clamp(min=0.0, max=1.0)  # (N,1)
-        self.nan_inf_check(cos_rot, 'cos_rot')
-        sin_rot = torch.sign(sin_2rot) * torch.sqrt(((1.0 - cos_2rot) / 2.0).clamp(min=eps)).clamp(min=0.0, max=1.0)  # (N,1)
-        self.nan_inf_check(sin_rot, 'sin_rot')
-        if sources is None:
-            x, y = self.rotate_tangent_bitangent(x, y, cos_rot, sin_rot)
+        # T = tangents.to(device)
+        # B = bitangents.to(device)
+        # vertices = torch.from_numpy(np.asarray(mesh.vertices)).to(device)
+        # faces = torch.from_numpy(np.asarray(mesh.triangles, dtype=np.int64)).to(device)
+        # x, y = self.get_tangent_bitangent_via_kdtree(vertices, faces, T, B, pts, normals, tree)
+
+        rotation_cos = rotation[:, :1]
+        rotation_sin = rotation[:, 1:]
+
+        x, y = self.compute_tangent_bitangent_flat(normals)
+
+        x, y = self.rotate_tangent_bitangent(x, y, rotation_cos, rotation_sin)
 
         m_x = m_x.to(device)  # (N,1)
         m_y = m_y.to(device)  # (N,1)
@@ -1344,15 +1293,15 @@ class MCShadingNetwork(nn.Module):
         xi2 = torch.rand((N, M), device=device)
 
         two_pi_xi2 = 2.0 * np.pi * xi2  # (N,M)
-        s, c = torch.sin(two_pi_xi2), torch.cos(two_pi_xi2)
+
         # 2) Azimuth via atan2
-        phi_h = torch.atan2(m_y * s, m_x * c)  # <-- full-range
+        phi_h = torch.atan2(m_y * torch.tan(two_pi_xi2), m_x)  # <-- full-range
 
         # 3) Elevation
         cos_phi = torch.cos(phi_h)
         sin_phi = torch.sin(phi_h)
         denom = (cos_phi * cos_phi) / (m_x * m_x) + (sin_phi * sin_phi) / (m_y * m_y)
-        theta_h = torch.atan2(torch.sqrt(-torch.log(xi1)), torch.sqrt(denom.clamp(min=eps)))  # (N,M)
+        theta_h = torch.atan2(torch.sqrt(-torch.log(xi1)), torch.sqrt(denom + eps))
 
         # 4) half-vector
         sin_th = torch.sin(theta_h)
@@ -1365,7 +1314,7 @@ class MCShadingNetwork(nn.Module):
              coeff_y.unsqueeze(2) * y.unsqueeze(1).expand(coeff_x.shape[0], coeff_x.shape[1], 3) +
              coeff_z.unsqueeze(2) * z.unsqueeze(1).expand(coeff_x.shape[0], coeff_x.shape[1], 3))
 
-        dot = (wo.unsqueeze(1) * h).sum(-1, keepdim=True).clamp(min=0.0, max=1.0)
+        dot = (wo.unsqueeze(1) * h).sum(-1, keepdim=True)
         wi = 2 * dot * h - wo.unsqueeze(1)
         wi = torch.nn.functional.normalize(wi, dim=-1, eps=eps)
 
@@ -1374,15 +1323,82 @@ class MCShadingNetwork(nn.Module):
 
         return h.float(), wi.float(), cos_theta_h.float(), pdf.float(), x, y, z, theta_h, phi_h
 
+    def sample_aniso_ggx_directions2(self,
+                                     mesh,
+                                     tangents,
+                                     bitangents,
+                                     tree,
+                                     pts: torch.Tensor,
+                                     m_x: torch.Tensor,
+                                     m_y: torch.Tensor,
+                                     wo: torch.Tensor,
+                                     M: int,
+                                     normals: torch.Tensor,
+                                     device: torch.device = None,
+                                     eps: float = 1e-6):
+        if device is None:
+            device = wo.device
+
+        z = normals  # pn,3
+
+        # x = self.get_orthogonal_directions(normals)  # pn,3
+        # y = torch.cross(z, x, dim=-1)  # pn,3
+
+        # T = tangents.to(device)
+        # B = bitangents.to(device)
+        # vertices = torch.from_numpy(np.asarray(mesh.vertices)).to(device)
+        # faces = torch.from_numpy(np.asarray(mesh.triangles, dtype=np.int64)).to(device)
+        # x, y = self.get_tangent_bitangent_via_kdtree(vertices, faces, T, B, pts, normals, tree)
+
+        x, y = self.compute_tangent_bitangent_flat(normals)
+
+        m_x = m_x.to(device)  # (N,1)
+        m_y = m_y.to(device)  # (N,1)
+        wo = wo.to(device)  # (N,3)
+        N = wo.shape[0]
+
+        # 1) Uniformsk
+        xi1 = torch.rand((N, M), device=device).clamp(min=eps)
+        xi2 = torch.rand((N, M), device=device)
+
+        two_pi_xi1 = 2.0 * np.pi * xi1  # (N,M)
+        sin_two_pi_xi1 = torch.sin(two_pi_xi1)  # (N,M)
+        cos_two_pi_xi1 = torch.cos(two_pi_xi1)  # (N,M)
+        sq_xi2 = torch.sqrt(xi2 / (1 - xi2))  # (N, M)
+
+        x_expand = x.unsqueeze(1).expand(N, M, 3)
+        y_expand = y.unsqueeze(1).expand(N, M, 3)
+        z_expand = z.unsqueeze(1).expand(N, M, 3)
+        h_p = sq_xi2 * ((m_x * cos_two_pi_xi1).unsqueeze(2) * x_expand + (m_y * sin_two_pi_xi1).unsqueeze(
+            2) * y_expand) + z_expand  # (N, M, 3)
+        h = torch.nn.functional.normalize(h_p, dim=-1, eps=eps)  # (N,M,3)
+
+        dot = (wo.unsqueeze(1) * h).sum(-1, keepdim=True)  # (N, M, 1)
+        wi = 2 * dot * h - wo.unsqueeze(1)  # (N, M, 3)
+        wi = torch.nn.functional.normalize(wi, dim=-1, eps=eps)  # (N, M, 3)
+
+        phi_h = torch.atan2(m_y / m_x * torch.tan(two_pi_xi1))  # (N, M)
+        cos_phi_h = torch.cos(phi_h)  # (N, M)
+        sin_phi_h = torch.sin(phi_h)  # (N, M)
+        # cos_theta_h = torch.sqrt((1 - xi2) / (1 + (1 / ((cos_phi_h*cos_phi_h) / (m_x*m_x) + (sin_phi_h*sin_phi_h)/(m_y*m_y)) - 1) * xi2))
+
+        r = torch.sqrt(1 / ((cos_phi_h * cos_phi_h) / (m_x * m_x) + (sin_phi_h * sin_phi_h) / (m_y * m_y)))  # (N, M)
+        theta_h = torch.atan2(r * sq_xi2)
+        cos_theta_h = torch.cos(theta_h)
+        pdf = self.compute_pdf_aniso_ggx2(m_x, m_y, wo, h, theta_h, phi_h)
+
+        return h.float(), wi.float(), cos_theta_h.float(), pdf.float(), x, y, z, theta_h, phi_h
+
     def compute_radiance(self,
                          f_d: torch.Tensor,
                          diffuse_lights: torch.Tensor,
                          specular_lights: torch.Tensor,
-                         F: torch.Tensor, #(N, M, 3)
+                         k_s: torch.Tensor,
+                         F: torch.Tensor,
                          diffuse_directions: torch.Tensor,
                          wi: torch.Tensor,
                          n: torch.Tensor,
-                         # alpha: torch.Tensor,
+                         alpha: torch.Tensor,
                          cos_theta_h: torch.Tensor,
                          wo: torch.Tensor,
                          pdf: torch.Tensor,
@@ -1403,7 +1419,9 @@ class MCShadingNetwork(nn.Module):
             Diffuse BRDF term per sample.
         lights : Tensor (N, M, 3)
             Incoming radiance Li per sample.
-        F : Tensor (N, M, 3)
+        k_s : Tensor (N, 3)
+            Specular reflectivity per point.
+        F : Tensor (N, M, 1)
             Fresnel term per sample.
         wi : Tensor (N, M, 3)
             Incident directions per sample.
@@ -1423,7 +1441,6 @@ class MCShadingNetwork(nn.Module):
         R : Tensor (N, 3)
             Estimated outgoing radiance per point.
         """
-        f_d = f_d.unsqueeze(1)  # (N,1,3)
         N_spec, M_spec, _ = specular_lights.shape
         N_diff, M_diff, _ = diffuse_lights.shape
 
@@ -1432,7 +1449,8 @@ class MCShadingNetwork(nn.Module):
         valid_counts = mask.sum(dim=1).clamp(min=1).unsqueeze(-1)
 
         # Expand k_s, alpha, wo·n to match (N, M, *)
-        # alpha_exp = alpha.unsqueeze(1)  # (N, 1, 1)
+        k_s_exp = k_s.unsqueeze(1)  # (N, 1, 3)
+        alpha_exp = alpha.unsqueeze(1)  # (N, 1, 1)
         cos_on = torch.clamp((wo * n).sum(dim=1, keepdim=True), min=0.0)  # (N,1)
         cos_on_exp = cos_on.unsqueeze(1)  # (N,1,1)
 
@@ -1441,35 +1459,38 @@ class MCShadingNetwork(nn.Module):
 
         # --- Diffuse component: (1/M) ∑ f_d * Li ---
         diff_weighted = diffuse_lights * f_d  # (N,M,3)
+        f_d_sum = f_d.sum(dim=1) / M_diff
         diffuse = diff_weighted.sum(dim=1) / M_diff  # (N,3)
 
         # --- Specular component ---
         # term1 = L * k_s * F
 
         # term2 = (wi·n)^(1-alpha)
-        # exponent = 1.0 - alpha_exp  # (N,1,1)
+        exponent = 1.0 - alpha_exp  # (N,1,1)
 
-        # pow_in = torch.pow(cos_in + eps, exponent)  # (N,M,1)
-        # pow_in_denom = torch.pow(cos_in + eps, -alpha_exp)
+        pow_in = torch.pow(cos_in + eps, exponent)  # (N,M,1)
+        pow_in_denom = torch.pow(cos_in + eps, -alpha_exp)
+        # if cos_in.min() <= 0:
+        #     print('cos wi.n min:', cos_in.min(), torch.pow(cos_in + eps, exponent))
 
-        # pow_on = torch.pow(cos_on_exp + eps, alpha_exp) # (N,1,1)
-        # denom = (cos_theta_h * pow_on).clamp(min=1e-6)  # (N,M,1)
-        denom = cos_theta_h.clamp(min=1e-6)  # (N,M,1)
-        # f_s = (F * pow_in / denom) * mask.unsqueeze(-1) # (N,M,3)
-        f_s = (F * cos_in / denom) * mask.unsqueeze(-1)  # (N,M,3)
-        # spec_brdf = (F * pow_in_denom * pdf / denom) * mask.unsqueeze(-1)
-        # weighted_specular_light = (pow_in_denom * pdf / denom) * mask.unsqueeze(-1) * specular_lights
-        weighted_specular_light = (cos_in / denom) * mask.unsqueeze(-1) * specular_lights
+        # denom = cos_theta_h * (wo·n)^alpha
+        pow_on = torch.pow(cos_on_exp + eps, alpha_exp)  # (N,1,1)
+        denom = cos_theta_h * pow_on + eps  # (N,M,1)
+        f_s = (k_s_exp * F * pow_in / denom) * mask.unsqueeze(-1)
+        spec_brdf = (k_s_exp * F * pow_in_denom * pdf / denom) * mask.unsqueeze(-1)
+        weighted_specular_light = (k_s_exp * pow_in_denom * pdf / denom) * mask.unsqueeze(-1) * specular_lights
+        # print("pdf shape:", pdf.shape, spec_brdf.shape)
         spec_weighted = f_s * specular_lights  # (N,M,3)
         specular = spec_weighted.sum(dim=1) / valid_counts  # (N,3)
-        f_s_sum = f_s.sum(dim=1) / valid_counts # (N,3)
+        # print('spec BRDF valid counts:', spec_brdf.sum(dim=1).shape, valid_counts.shape)
+        f_s_sum = spec_brdf.sum(dim=1) / valid_counts
         # Total radiance
         R = diffuse + specular  # (N,3)
 
         tem = 1
-        L_spec = self.compute_spec_loss(tem, mx, my, theta_h, phi_h)
+        L_spec = self.compute_spec_loss(tem, f_d, mx, my, theta_h, phi_h)
         L_spec = torch.sum(L_spec * f_d * mask.unsqueeze(-1), dim=1) / (valid_counts * 3)
-        return R, diffuse, specular, f_s_sum, L_spec, weighted_specular_light
+        return R, diffuse, specular, f_d_sum, f_s_sum, L_spec, weighted_specular_light
 
     def nan_inf_check(self, A, name):
         if torch.isinf(A).any():
@@ -1516,7 +1537,7 @@ class MCShadingNetwork(nn.Module):
 
     def diffuse_term(self,
                      kd: torch.Tensor,
-                     metallic: torch.Tensor,
+                     F: torch.Tensor,
                      is_seperate: bool = True) -> torch.Tensor:
         """
         Compute the diffuse term f_d = (k_d / π) * (1 - F) for anisotropic Cook-Torrance.
@@ -1534,20 +1555,160 @@ class MCShadingNetwork(nn.Module):
         f_d : torch.Tensor
             Diffuse BRDF term, shape (N, M, 3).
         """
-        f_d = kd * (1-metallic)  # (N,3)
+        # Ensure shapes
+        # kd: (N,3) -> (N,1,3)
+        kd_exp = kd.unsqueeze(1)  # (N,1,3)
+
+        # (1 - F): shape (N, M, 1)
+        one_minus_F = 1.0 - F  # broadcastable to (N,M,3)
+
+        # f_d = (k_d / π) * (1 - F)
+        if is_seperate:
+            f_d = kd_exp / np.pi  # (N,M,3)
+        else:
+            f_d = kd_exp / np.pi * one_minus_F  # (N,M,3)
+
         return f_d
 
-    def shade_anisotropic_mixed(self, pts, normals, view_dirs, mx, my,
-                                # alpha,
-                                metallic, kd, rotation, rotation_raw,
-                                human_poses, is_train):
-        # sources_norm = torch.nn.functional.normalize(sources, dim=-1, eps=1e-6)
+    # def find_triangles_and_barycentrics_kdtree(
+    #         self,
+    #         verts: torch.Tensor,
+    #         faces: torch.LongTensor,
+    #         pts: torch.Tensor,
+    #         tree: cKDTree,
+    #         k: int = 5,
+    # ):
+    #     """
+    #     For each point in pts, search k nearest triangle centroids,
+    #     test barycentric coordinates, and return the containing triangle.
+
+    #     Args:
+    #       verts: (V,3)
+    #       faces: (F,3)
+    #       pts: (N,3)
+    #       tree: cKDTree over centroids
+    #       centroids: (F,3) numpy array
+    #       k: number of candidate triangles
+
+    #     Returns:
+    #       tri_indices: (N,) LongTensor of face IDs
+    #       bary_coords: (N,3) tensor of barycentric coords
+    #     """
+    #     device = pts.device
+    #     pts_np = pts.cpu().numpy()  # (N,3)
+    #     _, idxs = tree.query(pts_np, k=k)  # (N,k)
+    #     tri_indices = []
+    #     bary_coords = []
+    #     for pi, candidates in enumerate(idxs):
+    #         p = pts[pi]
+    #         for fid in candidates:
+    #             tri = verts[faces[fid]]  # (3,3)
+    #             v0, v1 = tri[1] - tri[0], tri[2] - tri[0]
+    #             v2 = p - tri[0]
+    #             d00 = torch.dot(v0, v0);
+    #             d01 = torch.dot(v0, v1)
+    #             d11 = torch.dot(v1, v1);
+    #             d20 = torch.dot(v2, v0)
+    #             d21 = torch.dot(v2, v1)
+    #             denom = d00 * d11 - d01 * d01 + 1e-8
+    #             v = (d11 * d20 - d01 * d21) / denom
+    #             w = (d00 * d21 - d01 * d20) / denom
+    #             u = 1 - v - w
+    #             bary = torch.stack([u, v, w])
+    #             if (bary >= -1e-3).all() and (bary <= 1 + 1e-3).all():
+    #                 tri_indices.append(int(fid))
+    #                 bary_coords.append(bary)
+    #                 break
+
+    #     tri_indices = torch.LongTensor(tri_indices).to(device)
+    #     bary_coords = torch.stack(bary_coords, dim=0).to(device)
+    #     return tri_indices, bary_coords
+
+    # def get_tangent_bitangent_via_kdtree(
+    #         self,
+    #         verts: torch.Tensor,
+    #         faces: torch.LongTensor,
+    #         vert_tangents: torch.Tensor,
+    #         vert_bitangents: torch.Tensor,
+    #         pts: torch.Tensor,
+    #         query_normals: torch.Tensor,
+    #         tree: cKDTree,
+    #         k: int = 5,
+    # ):
+    #     """
+    #     Full pipeline: KD-tree lookup → barycentric coords → frame interpolation.
+
+    #     Returns:
+    #       (tangents, bitangents): each (N,3)
+    #     """
+    #     # 1) find face IDs and barycentrics via KD-tree
+    #     tri_idx, baryc = self.find_triangles_and_barycentrics_kdtree(
+    #         verts, faces, pts, tree, k
+    #     )
+
+    #     # 2) interpolate & orthonormalize
+    #     return self.interpolate_tangent_bitangent(
+    #         vert_tangents, vert_bitangents, faces,
+    #         tri_idx, baryc, query_normals
+    #     )
+
+    # def interpolate_tangent_bitangent(
+    #         self,
+    #         vert_tangents: torch.Tensor,
+    #         vert_bitangents: torch.Tensor,
+    #         faces: torch.LongTensor,
+    #         tri_indices: torch.LongTensor,
+    #         barycentric_coords: torch.Tensor,
+    #         query_normals: torch.Tensor,
+    # ):
+    #     """
+    #     vert_tangents:       (V, 3) per-vertex tangent vectors
+    #     vert_bitangents:     (V, 3) per-vertex bitangent vectors
+    #     faces:               (F, 3) triangle vertex indices
+    #     tri_indices:         (N,) face index for each query point
+    #     barycentric_coords:  (N, 3) barycentric coords per query point
+    #     query_normals:       (N, 3) interpolated normals at query points
+
+    #     Returns:
+    #       (tangents, bitangents): each (N, 3)
+    #     """
+    #     # 1. Gather the three vertex indices for each sampled point
+    #     face_verts = faces[tri_indices]  # shape: (N, 3)
+
+    #     # 2. Pull per-vertex tangents & bitangents
+    #     t0 = vert_tangents[face_verts[:, 0].cpu()]
+    #     t1 = vert_tangents[face_verts[:, 1].cpu()]
+    #     t2 = vert_tangents[face_verts[:, 2].cpu()]
+    #     b0 = vert_bitangents[face_verts[:, 0].cpu()]
+    #     b1 = vert_bitangents[face_verts[:, 1].cpu()]
+    #     b2 = vert_bitangents[face_verts[:, 2].cpu()]
+
+    #     # 3. Barycentric interpolation
+    #     bc = barycentric_coords
+    #     t_interp = t0 * bc[:, 0:1] + t1 * bc[:, 1:2] + t2 * bc[:, 2:3]
+    #     b_interp = b0 * bc[:, 0:1] + b1 * bc[:, 1:2] + b2 * bc[:, 2:3]
+
+    #     # 4. Orthonormalize the tangent relative to the normal
+    #     n = query_normals
+    #     t_proj = t_interp - n * torch.sum(n * t_interp, dim=1, keepdim=True)
+    #     t_norm = F.normalize(t_proj, eps=1e-6, dim=1)
+
+    #     # 5. Orthonormalize the bitangent relative to both normal & tangent
+    #     b_proj = b_interp
+    #     b_proj = b_proj - n * torch.sum(n * b_proj, dim=1, keepdim=True)
+    #     b_proj = b_proj - t_norm * torch.sum(t_norm * b_proj, dim=1, keepdim=True)
+    #     b_norm = F.normalize(b_proj, eps=1e-6, dim=1)
+
+    #     return t_norm, b_norm
+
+    def shade_anisotropic_mixed(self, pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, rotation, human_poses,
+                                is_train):
+
         num_spec_samples = self.cfg['specular_sample_num']
-        # Todo sources is not passed here
+
         hs, wis, cos_ths, pdfs, t, b, n, theta_h, phi_h = self.sample_aniso_ggx_directions(rotation, pts, mx, my,
                                                                                            view_dirs, num_spec_samples,
-                                                                                           normals, None, 'cuda')
-        f0 = 0.04 * (1 - metallic) + metallic * kd  # [pn,1]
+                                                                                           normals, 'cuda')
         diffuse_directions = self.sample_diffuse_directions(normals, is_train)
 
         point_num, diffuse_num, _ = diffuse_directions.shape
@@ -1560,14 +1721,13 @@ class MCShadingNetwork(nn.Module):
 
         diffuse_lights = lights[:, :diffuse_num]
         specular_lights = lights[:, diffuse_num:]
-        F, H, HoV = self.fresnel_schlick_directions(f0.unsqueeze(1), view_dirs.unsqueeze(1), wis)
 
-        f_d = self.diffuse_term(kd, metallic, is_seperate=False)
+        F = self.fresnel_schlick_batch(F0, view_dirs, hs)
 
-        R, diffuse_color, specular_color, f_s_sum, L_spec, weighted_specular_lights = self.compute_radiance(
-            f_d, diffuse_lights, specular_lights, F, diffuse_directions, wis, normals,
-            # alpha,
-            cos_ths, view_dirs,
+        f_d = self.diffuse_term(kd, F)
+
+        R, diffuse_color, specular_color, f_d_sum, f_s_sum, L_spec, weighted_specular_lights = self.compute_radiance(
+            f_d, diffuse_lights, specular_lights, ks, F, diffuse_directions, wis, normals, alpha, cos_ths, view_dirs,
             pdfs, theta_h, phi_h, mx, my)
 
         colors = linear_to_srgb(R)
@@ -1582,8 +1742,9 @@ class MCShadingNetwork(nn.Module):
         outputs['normals'] = (n + 1) / 2
         outputs['human_lights'] = hl.reshape(-1, 3)
         outputs['kd'] = kd
-        outputs['metallic'] = metallic
-        # outputs['alpha'] = alpha
+        outputs['ks'] = ks
+        outputs['F0'] = F0
+        outputs['alpha'] = alpha
         outputs['mx'] = mx
         outputs['my'] = my
         outputs['diffuse_color'] = diffuse_color
@@ -1591,29 +1752,22 @@ class MCShadingNetwork(nn.Module):
         outputs['diffuse_light'] = torch.clamp(linear_to_srgb(torch.mean(diffuse_lights, dim=1)), min=0, max=1)
         outputs['specular_light'] = torch.clamp(linear_to_srgb(torch.mean(weighted_specular_lights, dim=1)), min=0,
                                                 max=1)
-        outputs['f_d'] = f_d
+        outputs['f_d_sum'] = f_d_sum
         outputs['f_s_sum'] = f_s_sum
         outputs['L_spec'] = L_spec
         outputs['rotation'] = rotation
-        # outputs['sources'] = (sources + 1) / 2
-        # outputs['sources_norm'] = (sources_norm + 1) / 2
-        outputs['rotation_raw'] = rotation_raw
         return colors, outputs
 
     def anisotropic_forward(self, pts, view_dirs, normals, human_poses, step, is_train, is_seperate=True):
         # print('anisotropic_forward:')
-        (mx, my,
-         # alpha,
-         metallic, kd, rotation, rotation_raw) = self.predict_anisotropic_components(pts)
-        return self.shade_anisotropic_mixed(pts, normals, view_dirs, mx, my,
-                                            # alpha,
-                                            metallic, kd, rotation, rotation_raw,
-                                            human_poses, is_train)
+        mx, my, alpha, F0, kd, ks, rotation = self.predict_anisotropic_components(pts)
+        return self.shade_anisotropic_mixed(pts, normals, view_dirs, mx, my, alpha, F0, kd, ks, rotation, human_poses,
+                                            is_train)
 
     def forward(self, pts, view_dirs, normals, human_poses, step, is_train):
         if self.cfg['anisotropy']:
             return self.anisotropic_forward(pts, view_dirs, normals, human_poses, step, is_train, is_seperate=True)
-        view_dirs, normals = F.normalize(view_dirs, dim=-1 , eps=1e-6), F.normalize(normals, dim=-1 , eps=1e-6)
+        view_dirs, normals = F.normalize(view_dirs, dim=-1), F.normalize(normals, dim=-1)
         reflections = torch.sum(view_dirs * normals, -1, keepdim=True) * normals * 2 - view_dirs
         metallic, roughness, albedo = self.predict_materials(pts)  # [pn,1] [pn,1] [pn,3]
         return self.shade_mixed(pts, normals, view_dirs, reflections, metallic, roughness, albedo, human_poses,
@@ -1661,16 +1815,10 @@ class MCShadingNetwork(nn.Module):
     def get_env_light(self):
         return self.predict_outer_lights_pts(self.light_pts)
 
-
-
-
-    def anisotropic_regularization(self, pts, normals, t, b, mx, my,
-                                   # alpha,
-                                   metallic, kd, f_d, f_s_sum,
-                                   L_spec, rotation, rotation_raw, step):
+    def anisotropic_regularization(self, pts, normals, mx, my, alpha, F0, kd, ks, f_d_sum, f_s_sum, L_spec, rotation):
         reg = 0
         if self.cfg['reg_change']:
-            normals = F.normalize(normals, dim=-1, eps=1e-6)
+            normals = F.normalize(normals, dim=-1)
             x = self.get_orthogonal_directions(normals)
             y = torch.cross(normals, x)
             ang = torch.rand(pts.shape[0], 1) * np.pi * 2
@@ -1681,58 +1829,32 @@ class MCShadingNetwork(nn.Module):
                 change = (torch.cos(ang) * x + torch.sin(ang) * y) * eps
             else:
                 raise NotImplementedError
-            # sources_normalized = F.normalize(sources, dim=-1)
-            # dot = (sources_normalized * normals).sum(dim=-1, keepdim=True)
-            # alignment_loss = (dot ** 2)
-            # Penalize alignment (i.e., |dot| close to 1)
-            # Using squared absolute dot product ensures smoothness and symmetry
-            rotation_raw_mapped = 2.0 * rotation_raw - 1.0
-            tau = 0.3
-            # non_zero_loss = torch.max(torch.zeros_like(mx), tau-torch.norm(rotation_raw_mapped, dim=-1, keepdim=True))**2
 
-            (mx_ch, my_ch,
-             # alpha_ch,
-             metallic_ch, kd_ch, rotation_ch, rotation_raw_ch) = self.predict_anisotropic_components(
-                pts + change)
+            mx_ch, my_ch, alpha_ch, F0_ch, kd_ch, ks_ch, rotation_ch = self.predict_anisotropic_components(pts + change)
 
-            # sources_ch_normalized = F.normalize(sources_ch, dim=-1)
-
-            # length_loss = self.unit_norm_prior(sources, kind="huber", delta=0.1)
-            # the dot would assign low weight importance to normals that are almost the same, and increasing error the more they deviate. So it's something like and L2 loss. But we want a L1 loss so we get the angle, and then we map it to range [0,1]
-            total_steps = 100 * 1000.0
-            decay_weight = 0.001 * (np.cos((step / total_steps) * np.pi) + 1.0) / 2.0
-            min_weight = 1e-4
-            max_weight = 1e-3
-            decay_weight = (max_weight-min_weight) * decay_weight + min_weight
-            mat_reg = torch.mean(
-                (
-                        torch.abs(kd - kd_ch) +
-                        torch.abs(mx - mx_ch) +
-                        torch.abs(my - my_ch) +
-                        # torch.abs(alpha - alpha_ch) +
-                        torch.abs(metallic - metallic_ch)
-                        # + non_zero_loss * len_loss_weight
-                        + ((rotation - rotation_ch)**2).sum(dim=-1, keepdim=True) * decay_weight
-                ),
+            reg = reg + torch.mean(
+                (torch.abs(kd - kd_ch) +
+                 torch.abs(ks - ks_ch) +
+                 torch.abs(mx - mx_ch) +
+                 torch.abs(my - my_ch) +
+                 torch.abs(alpha - alpha_ch) +
+                 torch.abs(F0 - F0_ch)) *
+                self.cfg['reg_lambda1'],
                 dim=1)
-            # print(f"length loss: {length_loss.mean().item():.6f}, alignment loss: {alignment_loss.mean().item():.6f}, mat reg loss: {mat_reg.mean().item():.6f}")
-            # source_loss = (alignment_loss + length_loss) * 0.001
-            reg = reg + (mat_reg) * self.cfg['reg_lambda1']
+
             if self.cfg['reg_energy_loss']:
-                f_r_loss = (f_d + f_s_sum) - 1
+                f_r_loss = 2 * np.pi * (f_d_sum + f_s_sum) - 1
                 f_r_loss = torch.nn.functional.relu(f_r_loss)
-                energy_reg = torch.mean(
+                reg = reg + torch.mean(
                     f_r_loss.sum(dim=1),
                     dim=0
                 ) * self.cfg['reg_energy_loss_lambda']
-                reg = reg + energy_reg
 
             if self.cfg['reg_spec_loss']:
-                spec_reg = torch.mean(
+                reg = reg + torch.mean(
                     L_spec.sum(dim=1),
                     dim=0
                 ) * self.cfg['reg_spec_loss_lambda']
-                reg = reg + spec_reg
 
         return reg
 
@@ -1741,7 +1863,7 @@ class MCShadingNetwork(nn.Module):
         reg = 0
 
         if self.cfg['reg_change']:
-            normals = F.normalize(normals, dim=-1, eps=1e-6)
+            normals = F.normalize(normals, dim=-1)
             x = self.get_orthogonal_directions(normals)
             y = torch.cross(normals, x)
             ang = torch.rand(pts.shape[0], 1) * np.pi * 2
