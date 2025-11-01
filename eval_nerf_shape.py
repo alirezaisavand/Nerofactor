@@ -8,7 +8,7 @@ import trimesh
 from skimage.io import imsave
 from tqdm import tqdm
 
-from dataset.database import parse_database_name, get_database_split, get_database_eval_points, GlossySyntheticDatabase
+from dataset.database import parse_database_name, get_database_split, get_database_eval_points, GlossySyntheticDatabase, NeRFSyntheticDatabase
 from utils.base_utils import mask_depth_to_pts, project_points, color_map_backward, pose_inverse, pose_apply
 import open3d as o3d
 
@@ -61,7 +61,7 @@ def rasterize_depth_map(mesh,pose,K,shape):
     return depth.cpu().numpy(), mask.cpu().numpy().astype(bool)
 
 def get_mesh_eval_points(database):
-    if isinstance(database, GlossySyntheticDatabase):
+    if isinstance(database, GlossySyntheticDatabase) or isinstance(database, NeRFSyntheticDatabase):
         _, _, test_ids = get_database_split(database, 'test')
         mesh = trimesh.load_mesh(args.mesh)
         pbar = tqdm(len(test_ids))
