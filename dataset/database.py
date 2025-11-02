@@ -722,48 +722,101 @@ def get_database_eval_points(database):
     else:
         raise NotImplementedError
 
+def to_4x4(M):
+    M = np.asarray(M, dtype=np.float32)
+    if M.shape == (4,4): return M
+    if M.shape == (3,4): return np.vstack([M, np.array([[0,0,0,1]], np.float32)])
+    raise ValueError(f"Pose must be (3,4) or (4,4), got {M.shape}")
+
 def transform_points_col(pts_N3, T4x4):
-    """Column-vector convention: X' = T @ X. pts:(N,3) -> (N,3)."""
     pts = np.asarray(pts_N3, dtype=np.float32)
+    if pts.size == 0: return pts
     ones = np.ones((pts.shape[0], 1), dtype=np.float32)
-    ph = np.concatenate([pts, ones], axis=1)            # (N,4)
-    wh = (T4x4 @ ph.T).T                                # (N,4)
-    w = wh[:, 3:4]
-    w = np.where(np.abs(w) < 1e-8, 1.0, w)
+    ph   = np.concatenate([pts, ones], axis=1)      # (N,4)
+    wh   = (T4x4 @ ph.T).T                          # (N,4)
+    w    = np.where(np.abs(wh[:,3:4]) < 1e-8, 1.0, wh[:,3:4])
     return (wh[:, :3] / w).astype(np.float32)
+
+def backproject_opengl_from_depth(depth, K, mask=None, assume_ray_length=True):
+    """
+    Back-project a depth map in an OpenGL camera to 3D camera points.
+
+    OpenGL camera: x right, y up, camera looks along -Z.
+
+    If assume_ray_length=True (typical for NeRF synthetic GT):
+      - 'depth' is the distance along the pixel ray (ray length).
+      - Build unit ray dir in GL cam: d = normalize([ (u-cx)/fx, -(v-cy)/fy, -1 ])
+      - X_cam_gl = d * depth
+
+    If assume_ray_length=False (z-depth case):
+      - Treat 'depth' as distance along -Z:
+      - X_cam_gl = [ (u-cx)/fx * depth, -(v-cy)/fy * depth, -depth ]
+
+    Returns: (N,3) points in OpenGL camera frame.
+    """
+    H, W = depth.shape
+    yy, xx = np.meshgrid(np.arange(H, dtype=np.float32),
+                         np.arange(W, dtype=np.float32), indexing='ij')
+    if mask is None:
+        mask = depth > 0
+    else:
+        mask = mask.astype(bool) & (depth > 0)
+
+    if not np.any(mask):
+        return np.zeros((0,3), dtype=np.float32)
+
+    fx, fy = K[0,0], K[1,1]
+    cx, cy = K[0,2], K[1,2]
+
+    u = xx[mask]
+    v = yy[mask]
+    d = depth[mask]
+
+    x = (u - cx) / (fx + 1e-8)
+    y = (v - cy) / (fy + 1e-8)
+
+    if assume_ray_length:
+        # Unit ray in GL cam: [x, -y, -1], normalized
+        dirs = np.stack([x, -y, -np.ones_like(x)], axis=1)
+        norms = np.linalg.norm(dirs, axis=1, keepdims=True) + 1e-8
+        dirs  = dirs / norms
+        pts_cam_gl = dirs * d[:, None]
+    else:
+        # z-depth case
+        pts_cam_gl = np.stack([x * d, -y * d, -d], axis=1)
+
+    return pts_cam_gl.astype(np.float32)
 
 def get_database_eval_points_nerf(database):
     """
-    GT world cloud from NeRF Synthetic depths.
-
-    For each view:
-      depth,mask,K
-      -> pts_cam_cv  = mask_depth_to_pts(mask, depth, K)              (OpenCV camera)
-      -> T_camcv2w   = C2W_gl @ S4
-      -> pts_world   = transform_points_col(pts_cam_cv, T_camcv2w)
+    Build GT world-space point cloud for NeRF Synthetic by explicitly
+    back-projecting OpenGL depth as RAY LENGTH and transforming with c2w.
     """
-
+    from dataset.database import get_database_split, NeRFSyntheticDatabase
     assert isinstance(database, NeRFSyntheticDatabase)
+
+    pts_all = []
     _, _, test_ids = get_database_split(database, 'test')
 
-    all_pts = []
-    for img_id in tqdm(test_ids, desc='GT->world'):
-        depth, mask = database.get_depth(img_id)
-        K = database.get_K(img_id)
-        c2w_gl = to_4x4(database.get_pose(img_id))
+    for img_id in tqdm(test_ids, desc='GT (explicit backproj)'):
+        depth, mask = database.get_depth(img_id)          # depth from dataset
+        K          = database.get_K(img_id)
+        c2w_gl     = to_4x4(database.get_pose(img_id))    # OpenGL c2w
 
-        pts_cam_cv = mask_depth_to_pts(mask, depth, K)      # (N,3), OpenCV camera frame
-        T_camcv2w = c2w_gl @ S4                              # (4,4)
-        # pts_cam_cv[:, 0] = -pts_cam_cv[:, 0]  # Convert OpenCV to OpenGL camera frame
-        pts_world = transform_points_col(pts_cam_cv, T_camcv2w)
+        # ---- back-project in GL camera frame (assumed ray-length) ----
+        pts_cam_gl = backproject_opengl_from_depth(depth, K, mask, assume_ray_length=True)
+
+        # ---- to world (OpenGL c2w) ----
+        pts_world = transform_points_col(pts_cam_gl, c2w_gl)
         if pts_world.size:
-            all_pts.append(pts_world)
+            pts_all.append(pts_world)
 
-    if not all_pts:
-        return np.zeros((0,3), np.float32)
+    if not pts_all:
+        return np.zeros((0,3), dtype=np.float32)
 
-    pts = np.concatenate(all_pts, 0).astype(np.float32)
+    # (Optional) downsample like before
+    pts_world = np.concatenate(pts_all, axis=0).astype(np.float32)
     pcd = o3d.geometry.PointCloud()
-    pcd.points = o3d.utility.Vector3dVector(pts.astype(np.float64))
-    down = pcd.voxel_down_sample(voxel_size=0.01)
-    return np.asarray(down.points, np.float32)
+    pcd.points = o3d.utility.Vector3dVector(pts_world.astype(np.float64))
+    downpcd = pcd.voxel_down_sample(voxel_size=0.01)
+    return np.asarray(downpcd.points, np.float32)
