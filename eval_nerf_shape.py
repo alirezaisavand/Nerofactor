@@ -88,7 +88,8 @@ def main():
     database = parse_database_name(f'nerf/{args.object}', 'data/nerf_synthetic')
     pts_gt = get_database_eval_points(database)
     pts_pr = get_mesh_eval_points(database)
-
+    print(f"pts_gt min: {pts_gt.min()}, max: {pts_gt.max()}, num: {pts_gt.shape}")
+    print(f"pts_pr min: {pts_pr.min()}, max: {pts_pr.max()}, num: {pts_pr.shape}")
     dist_gt = nearest_dist(pts_gt, pts_pr, args.batch_size)
     dist_pr = nearest_dist(pts_pr, pts_gt, args.batch_size)
 
