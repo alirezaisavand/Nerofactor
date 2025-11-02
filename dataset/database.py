@@ -589,6 +589,27 @@ def get_database_split(database: BaseDatabase, split_type='validation'):
         raise NotImplementedError
     return train_ids, test_ids, nvs_ids
 
+def to_4x4(pose):
+    """
+    Normalize pose to a homogeneous 4x4 matrix (row-major).
+    Accepts:
+      - (4,4) -> returned as-is
+      - (3,4) -> append [0,0,0,1]
+      - (12,) or (16,) -> reshaped to (3,4) or (4,4) respectively (row-major)
+    """
+    pose = np.asarray(pose).astype(np.float32)
+    if pose.shape == (4, 4):
+        return pose
+    if pose.shape == (3, 4):
+        bottom = np.array([[0, 0, 0, 1]], dtype=np.float32)
+        return np.vstack([pose, bottom])
+    if pose.shape == (12,):
+        pose34 = pose.reshape(3, 4)
+        bottom = np.array([[0, 0, 0, 1]], dtype=np.float32)
+        return np.vstack([pose34, bottom])
+    if pose.shape == (16,):
+        return pose.reshape(4, 4)
+    raise ValueError(f"Unsupported pose shape {pose.shape}; expected (3,4), (4,4), (12,), or (16,)")
 
 def get_database_eval_points(database):
     """
@@ -611,6 +632,7 @@ def get_database_eval_points(database):
             K = database.get_K(img_id)
             pts_cam = mask_depth_to_pts(mask, depth, K)
             c2w = database.get_pose(img_id)            # c2w
+            c2w = to_4x4(c2w)
             pts_world = pose_apply(c2w, pts_cam)       # camera->world
             pts.append(pts_world)
             pbar.update(1)

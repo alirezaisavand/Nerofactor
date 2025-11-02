@@ -37,6 +37,7 @@ def project_points_opengl(vertices_world: np.ndarray,
         valid: (N,) boolean for depth > 0
     """
     H, W = img_shape
+    c2w = to_4x4(c2w)
     w2c = np.linalg.inv(c2w).astype(np.float32)
 
     v_h = np.concatenate([vertices_world.astype(np.float32), np.ones((vertices_world.shape[0], 1), np.float32)], axis=1)
@@ -71,7 +72,7 @@ def rasterize_depth_map(mesh, pose_c2w, K, shape, near=5e-1, far=1e2):
         mask:  (H,W) bool
     """
     import nvdiffrast.torch as dr
-
+    pose_c2w = to_4x4(pose_c2w)
     vertices = np.asarray(mesh.vertices, dtype=np.float32)
     faces = np.asarray(mesh.faces, dtype=np.int32)
     H, W = shape
@@ -142,6 +143,7 @@ def get_mesh_eval_points(database):
         for test_id in test_ids:
             K = database.get_K(test_id)          # (3,3)
             c2w = database.get_pose(test_id)     # (4,4), camera-to-world
+            c2w = to_4x4(c2w)
             H, W, _ = database.get_image(test_id).shape
 
             depth_pr, mask_pr = rasterize_depth_map(mesh, c2w, K, (H, W))
@@ -161,6 +163,30 @@ def get_mesh_eval_points(database):
         raise NotImplementedError("For GlossySyntheticDatabase, use the OpenCV-convention version.")
     else:
         raise NotImplementedError
+
+# --- add this near the top (with other helpers) ---
+
+def to_4x4(pose):
+    """
+    Normalize pose to a homogeneous 4x4 matrix (row-major).
+    Accepts:
+      - (4,4) -> returned as-is
+      - (3,4) -> append [0,0,0,1]
+      - (12,) or (16,) -> reshaped to (3,4) or (4,4) respectively (row-major)
+    """
+    pose = np.asarray(pose).astype(np.float32)
+    if pose.shape == (4, 4):
+        return pose
+    if pose.shape == (3, 4):
+        bottom = np.array([[0, 0, 0, 1]], dtype=np.float32)
+        return np.vstack([pose, bottom])
+    if pose.shape == (12,):
+        pose34 = pose.reshape(3, 4)
+        bottom = np.array([[0, 0, 0, 1]], dtype=np.float32)
+        return np.vstack([pose34, bottom])
+    if pose.shape == (16,):
+        return pose.reshape(4, 4)
+    raise ValueError(f"Unsupported pose shape {pose.shape}; expected (3,4), (4,4), (12,), or (16,)")
 
 
 
