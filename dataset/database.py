@@ -792,33 +792,73 @@ def backproject_opengl_from_depth(depth, K, mask=None, assume_ray_length=True):
 
 def get_database_eval_points_nerf(database):
     """
-    Build GT world-space point cloud for NeRF Synthetic by explicitly
-    back-projecting OpenGL depth as RAY LENGTH and transforming with c2w.
+    GT world cloud for NeRF Synthetic when depth maps are Blender Z pass (ray length).
+
+    For each view:
+      depth_raylen, mask, K
+        -> build GL unit ray: dirs_gl = normalize([ (u-cx)/fx, -(v-cy)/fy, -1 ])
+        -> z_cv = depth_raylen * (-dirs_gl[:,2])     # convert ray length -> OpenCV z-depth
+        -> pts_cam_cv = [ x*z, y*z, z ] in OpenCV camera frame
+        -> T_camcv2w = C2W_gl @ S4
+        -> pts_world = transform_points_col(pts_cam_cv, T_camcv2w)
     """
     assert isinstance(database, NeRFSyntheticDatabase)
 
-    pts_all = []
     _, _, test_ids = get_database_split(database, 'test')
+    all_pts = []
 
-    for img_id in tqdm(test_ids, desc='GT (explicit backproj)'):
-        depth, mask = database.get_depth(img_id)          # depth from dataset
-        K          = database.get_K(img_id)
-        c2w_gl     = to_4x4(database.get_pose(img_id))    # OpenGL c2w
+    for img_id in tqdm(test_ids, desc='GT->world (Z pass ray-length)'):
+        depth_ray, mask = database.get_depth(img_id)     # HxW ray length
+        K = database.get_K(img_id)
+        c2w_gl = to_4x4(database.get_pose(img_id))
 
-        # ---- back-project in GL camera frame (assumed ray-length) ----
-        pts_cam_gl = backproject_opengl_from_depth(depth, K, mask, assume_ray_length=True)
+        H, W = depth_ray.shape
+        fx, fy = K[0, 0], K[1, 1]
+        cx, cy = K[0, 2], K[1, 2]
 
-        # ---- to world (OpenGL c2w) ----
-        pts_world = transform_points_col(pts_cam_gl, c2w_gl)
+        # valid pixels
+        if mask is None:
+            valid = depth_ray > 0
+        else:
+            valid = (mask.astype(bool)) & (depth_ray > 0)
+        if not np.any(valid):
+            continue
+
+        # pixel grids (OpenCV image coords: u right, v down)
+        vv, uu = np.meshgrid(np.arange(H, dtype=np.float32),
+                             np.arange(W, dtype=np.float32), indexing='ij')
+        u = uu[valid]; v = vv[valid]
+        r = depth_ray[valid]
+
+        # GL unit ray dir from pixel (note y-up and -Z forward in GL)
+        x = (u - cx) / (fx + 1e-8)
+        y = (v - cy) / (fy + 1e-8)
+        dirs_gl = np.stack([x, -y, -np.ones_like(x)], axis=1)
+        dirs_gl /= (np.linalg.norm(dirs_gl, axis=1, keepdims=True) + 1e-8)
+
+        # Convert Blender ray length -> OpenCV z-depth
+        z_cv = r * (-dirs_gl[:, 2])             # positive
+
+        # Back-project in OpenCV camera frame
+        x_cv = x * z_cv
+        y_cv = y * z_cv
+        pts_cam_cv = np.stack([x_cv, y_cv, z_cv], axis=1).astype(np.float32)
+
+        # To world with the SAME transform as your mesh path
+        T_camcv2w = c2w_gl @ S4                 # S4 = diag(1,-1,-1,1)
+        pts_world  = transform_points_col(pts_cam_cv, T_camcv2w)
         if pts_world.size:
-            pts_all.append(pts_world)
+            all_pts.append(pts_world.astype(np.float32))
 
-    if not pts_all:
-        return np.zeros((0,3), dtype=np.float32)
+    if not all_pts:
+        return np.zeros((0, 3), np.float32)
 
-    # (Optional) downsample like before
-    pts_world = np.concatenate(pts_all, axis=0).astype(np.float32)
+    pts = np.concatenate(all_pts, axis=0).astype(np.float32)
     pcd = o3d.geometry.PointCloud()
-    pcd.points = o3d.utility.Vector3dVector(pts_world.astype(np.float64))
-    downpcd = pcd.voxel_down_sample(voxel_size=0.01)
-    return np.asarray(downpcd.points, np.float32)
+    pcd.points = o3d.utility.Vector3dVector(pts.astype(np.float64))
+    down = pcd.voxel_down_sample(voxel_size=0.01)
+
+    # Save like your mesh function does (adjust path/name if you want)
+    o3d.io.write_point_cloud("data/eval_gt.ply", down)
+
+    return np.asarray(down.points, np.float32)
