@@ -473,7 +473,7 @@ class NeRFSyntheticDatabase(BaseDatabase):
                 while name[itr] == '0':
                     itr += 1
                 mask_fname = os.path.join(mask_folder, name)
-
+                print(f"mask_fname: {mask_fname}")
                 # fname = os.path.join(self.root, frame['file_path'] + '.png')
                 # fname_number = int(frame['file_path'].split('_')[-1])
                 # if fname_number in bottom_images[s]:
