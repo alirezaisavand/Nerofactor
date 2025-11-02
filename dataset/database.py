@@ -672,8 +672,9 @@ def get_database_eval_points(database):
         for img_id in test_ids:
             depth, mask = database.get_depth(img_id)
             K = database.get_K(img_id)
-            pose = pose_inverse(database.get_pose(img_id))
+            pose = database.get_pose(img_id)
             K, pose = gl_c2w_to_cv_w2c(K, pose, out_shape="3x4")
+            pose = pose_inverse(pose)
             pts_ = mask_depth_to_pts(mask, depth, K)
             pts_ = pose_apply(pose, pts_)
             pts.append(pts_)

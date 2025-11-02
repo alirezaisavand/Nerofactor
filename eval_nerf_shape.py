@@ -118,7 +118,7 @@ def get_mesh_eval_points(database):
             h, w, _ = database.get_image(test_id).shape
             depth_pr, mask_pr = rasterize_depth_map(mesh, pose, K, (h, w)) # (H, W), depth in camera frame
             pts_ = mask_depth_to_pts(mask_pr, depth_pr, K) # (N, 3), in camera frame
-            pose = pose_inverse(database.get_pose(test_id)) # (3,4)
+            pose = pose_inverse(pose) # (3,4)
             print(f"pose shape: {pose.shape}, pts_ shape: {pts_.shape}, depth_pr shape: {depth_pr.shape}, mask_pr shape: {mask_pr.shape}")
             pts_pr.append(pose_apply(pose, pts_)) # (N, 3), in world frame
             print(f"shape after pose_apply(): {pts_pr[-1].shape}")
