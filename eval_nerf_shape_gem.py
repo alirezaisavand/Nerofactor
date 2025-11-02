@@ -235,7 +235,7 @@ def main(args):
 
     if args.dataset_type == 'nerf':
         # Example for NeRF Synthetic
-        database_name = f'nerf_synthetic/{args.object}'
+        database_name = f'nerf/{args.object}'
         database_root = 'data/nerf_synthetic'  # Adjust path
     elif args.dataset_type == 'glossy':
         # Example for Glossy Synthetic
