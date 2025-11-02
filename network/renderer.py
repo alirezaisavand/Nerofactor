@@ -1131,7 +1131,7 @@ class NeROMaterialRenderer(nn.Module):
             if torch.sum(hit_mask) > 0:
                 pts = ray_batch['inters'][ri:ri + trn][hit_mask].cuda()
                 view_dirs = -ray_batch['rays_d'][ri:ri + trn][hit_mask].cuda()
-                normals = ray_batch['normal'][ri:ri + trn][hit_mask].cuda()
+                normals = ray_batch['normals'][ri:ri + trn][hit_mask].cuda()
                 rgb_gt = ray_batch['rgb'][ri:ri + trn][hit_mask].cuda()
                 human_poses = ray_batch['human_poses'][ri:ri + trn][hit_mask].cuda()
 
