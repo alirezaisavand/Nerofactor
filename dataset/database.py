@@ -792,14 +792,17 @@ def backproject_opengl_from_depth(depth, K, mask=None, assume_ray_length=True):
 
 def get_database_eval_points_nerf(database):
     """
-    GT world cloud for NeRF Synthetic when depth maps are *z-depth* (not ray length).
+    GT world cloud for NeRF Synthetic when depth maps are Blender z-depth
+    (distance along the camera's -Z axis in the OpenGL camera frame).
 
     For each view:
       depth_z, mask, K
-        -> back-project in OpenCV camera (z-depth):
-             x_cv = (u-cx)/fx * z,  y_cv = (v-cy)/fy * z,  z_cv = z
-        -> T_camcv2w = C2W_gl @ S4
-        -> pts_world = transform_points_col(pts_cam_cv, T_camcv2w)
+        -> back-project in OpenGL camera (z-depth):
+             x_gl = (u-cx)/fx * d
+             y_gl = -(v-cy)/fy * d
+             z_gl = -d
+        -> pts_world = c2w_gl @ pts_cam_gl
+    Saves to data/eval_gt.ply (downsampled).
     """
     from dataset.database import get_database_split, NeRFSyntheticDatabase
     assert isinstance(database, NeRFSyntheticDatabase)
@@ -807,8 +810,8 @@ def get_database_eval_points_nerf(database):
     _, _, test_ids = get_database_split(database, 'test')
     all_pts = []
 
-    for img_id in tqdm(test_ids, desc='GT->world (z-depth)'):
-        depth_z, mask = database.get_depth(img_id)   # HxW, z-depth (distance along camera Z)
+    for img_id in tqdm(test_ids, desc='GT->world (z-depth, OpenGL)'):
+        depth_z, mask = database.get_depth(img_id)     # HxW, z-depth along -Z (OpenGL cam)
         K       = database.get_K(img_id)
         c2w_gl  = to_4x4(database.get_pose(img_id))
         H, W    = depth_z.shape
@@ -816,27 +819,26 @@ def get_database_eval_points_nerf(database):
         fx, fy = K[0, 0], K[1, 1]
         cx, cy = K[0, 2], K[1, 2]
 
-        # valid mask
+        # valid pixels
         valid = (depth_z > 0) if mask is None else (mask.astype(bool) & (depth_z > 0))
         if not np.any(valid):
             continue
 
-        # pixel grid (OpenCV image coords: u right, v down)
+        # pixel grid (u right, v down)
         vv, uu = np.meshgrid(np.arange(H, dtype=np.float32),
                              np.arange(W, dtype=np.float32), indexing='ij')
-        u = uu[valid]; v = vv[valid]; z = depth_z[valid].astype(np.float32)
+        u = uu[valid]
+        v = vv[valid]
+        d = depth_z[valid].astype(np.float32)
 
-        # OpenCV camera back-projection with z-depth
-        x = (u - cx) / (fx + 1e-8)
-        y = (v - cy) / (fy + 1e-8)
-        x_cv = x * z
-        y_cv = y * z
-        z_cv = z
-        pts_cam_cv = np.stack([x_cv, y_cv, z_cv], axis=1).astype(np.float32)
+        # -------- OpenGL camera back-projection (z-depth along -Z) --------
+        x_gl = (u - cx) / (fx + 1e-8) * d
+        y_gl = - (v - cy) / (fy + 1e-8) * d
+        z_gl = - d
+        pts_cam_gl = np.stack([x_gl, y_gl, z_gl], axis=1).astype(np.float32)
 
-        # Same handoff as mesh path: OpenCV-cam -> world
-        T_camcv2w = c2w_gl @ S4          # S4 = diag(1,-1,-1,1)
-        pts_world = transform_points_col(pts_cam_cv, T_camcv2w)
+        # -------- OpenGL camera -> world --------
+        pts_world = transform_points_col(pts_cam_gl, c2w_gl)
         if pts_world.size:
             all_pts.append(pts_world.astype(np.float32))
 
