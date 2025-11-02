@@ -1118,7 +1118,7 @@ class NeROMaterialRenderer(nn.Module):
 
         # output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'specular_color': 3, 'diffuse_light': 3,
         #                'diffuse_color': 3, 'albedo': 3, 'metallic': 1, 'roughness': 1}
-        output_keys = {'rgb_pr':3, 'rgb_gt':3, 'gradient_error':3, 'normal':3, 'depth':3,
+        output_keys = {'rgb_pr':3, 'rgb_gt':3, 'gradient_error':3, 'normals':3, 'depth':3,
             'diffuse_albedo':3, 'diffuse_light':3, 'diffuse_color':3,
             'specular_albedo':3, 'specular_light':3, 'specular_color':3, 'specular_ref':3,
             'metallic':1, 'roughness':1, 'occ_prob':1, 'indirect_light':3, 'occ_prob_gt':1,
