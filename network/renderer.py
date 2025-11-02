@@ -1118,12 +1118,11 @@ class NeROMaterialRenderer(nn.Module):
 
         # output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'specular_color': 3, 'diffuse_light': 3,
         #                'diffuse_color': 3, 'albedo': 3, 'metallic': 1, 'roughness': 1}
-        output_keys = ['ray_rgb', 'gradient_error', 'normal', 'depth']
-        output_keys += [
+        output_keys = {'ray_rgb', 'gradient_error', 'normal', 'depth',
             'diffuse_albedo', 'diffuse_light', 'diffuse_color',
             'specular_albedo', 'specular_light', 'specular_color', 'specular_ref',
             'metallic', 'roughness', 'occ_prob', 'indirect_light', 'occ_prob_gt',
-        ]
+                       }
         outputs = {k: [] for k in output_keys.keys()}
         rn = ray_batch['rays_o'].shape[0]
         for ri in range(0, rn, trn):
