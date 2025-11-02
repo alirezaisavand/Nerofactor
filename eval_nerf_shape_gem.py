@@ -288,7 +288,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--mesh', type=str, required=True, help="Path to the reconstructed .ply or .obj mesh.")
     parser.add_argument('--object', type=str, required=True, help="Object name (e.g., 'lego', 'drum').")
-    parser.add_argument('--dataset_type', type=str, required=True, choices=['nerf', 'glossy'],
+    parser.add_argument('--dataset_type', type=str, default='nerf', choices=['nerf', 'glossy'],
                         help="Type of dataset (nerf or glossy).")
     parser.add_argument('--batch_size', type=int, default=1024)
     args = parser.parse_args()
