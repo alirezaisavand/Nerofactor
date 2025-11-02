@@ -1118,7 +1118,7 @@ class NeROMaterialRenderer(nn.Module):
 
         # output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'specular_color': 3, 'diffuse_light': 3,
         #                'diffuse_color': 3, 'albedo': 3, 'metallic': 1, 'roughness': 1}
-        output_keys = {'rgb_pr':3, 'rgb_gt':3, 'gradient_error':3, 'normal':3, 'depth':3,
+        output_keys = {'rgb_pr':3, 'rgb_gt':3, 'gradient_error':3, 'depth':3,
             'diffuse_albedo':3, 'diffuse_light':3, 'diffuse_color':3,
             'specular_albedo':3, 'specular_light':3, 'specular_color':3, 'specular_ref':3,
             'metallic':1, 'roughness':1, 'occ_prob':1, 'indirect_light':3, 'occ_prob_gt':1,
@@ -1144,7 +1144,6 @@ class NeROMaterialRenderer(nn.Module):
                 outputs_cur['specular_color'][hit_mask] = shade_outputs['specular_color']
                 # outputs_cur['sources'][hit_mask] = shade_outputs['sources'].float()
                 # outputs_cur['sources_norm'][hit_mask] = shade_outputs['sources_norm'].float()
-                outputs_cur['normal'][hit_mask] = shade_outputs['normal'].float()
 
                 outputs_cur['metallic'][hit_mask] = shade_outputs['metallic']
                     # outputs_cur['alpha'][hit_mask] = shade_outputs['alpha']
