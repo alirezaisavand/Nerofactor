@@ -611,6 +611,82 @@ def to_4x4(pose):
         return pose.reshape(4, 4)
     raise ValueError(f"Unsupported pose shape {pose.shape}; expected (3,4), (4,4), (12,), or (16,)")
 
+def gl_to_cv_camera(K_gl, pose_gl, pose_type="c2w"):
+    """
+    Convert camera intrinsics/extrinsics from OpenGL (Blender/NeRF) to OpenCV convention.
+
+    Conventions
+    ----------
+    OpenGL/Blender camera coords : x right, y up,   z backward (camera looks along -Z)
+    OpenCV camera coords         : x right, y down, z forward
+
+    The fixed transform between camera frames is:
+        X_cv = S * X_gl,  where  S = diag(1, -1, -1)
+
+    Therefore, extrinsics convert as:
+        If pose_gl is C2W (camera->world):   C2W_cv = C2W_gl * S
+        If pose_gl is W2C (world->camera):   W2C_cv = S * W2C_gl
+
+    Intrinsics K
+    ------------
+    K is defined in pixel coordinates (u right, v down). As long as you convert the
+    camera frame via S as above, K does not need to change numerically.
+    So we return K_cv = K_gl (copy).
+
+    Parameters
+    ----------
+    K_gl      : (3,3) intrinsics (fx, fy, cx, cy) in pixel units
+    pose_gl   : (3,4) or (4,4) extrinsics in OpenGL convention
+                - If pose_type == "c2w": pose maps camera coords to world (C2W)
+                - If pose_type == "w2c": pose maps world coords to camera (W2C)
+    pose_type : str, "c2w" or "w2c"
+
+    Returns
+    -------
+    K_cv    : (3,3) intrinsics (unchanged numerically)
+    pose_cv : (3,4) or (4,4) extrinsics in OpenCV convention (same shape as input)
+
+    Notes
+    -----
+    - This assumes row-major matrices with the last column as translation for (3,4)/(4,4).
+    - The transform S is its own inverse (S == S^{-1}).
+    - If your downstream code expects 3x4, we preserve the input shape.
+    """
+    # Normalize pose to 4x4
+    pose_gl = np.asarray(pose_gl, dtype=np.float32)
+    if pose_gl.shape == (3, 4):
+        pose4 = np.vstack([pose_gl, np.array([[0, 0, 0, 1]], dtype=np.float32)])
+        out_shape = (3, 4)
+    elif pose_gl.shape == (4, 4):
+        pose4 = pose_gl.copy()
+        out_shape = (4, 4)
+    else:
+        raise ValueError(f"pose_gl must be (3,4) or (4,4), got {pose_gl.shape}")
+
+    # Fixed OpenGL->OpenCV camera-frame conversion
+    S = np.diag([1.0, -1.0, -1.0, 1.0]).astype(np.float32)
+
+    if pose_type.lower() == "c2w":
+        # X_w = C2W_gl * X_gl  and  X_gl = S * X_cv  =>  C2W_cv = C2W_gl * S
+        pose_cv4 = pose4 @ S
+    elif pose_type.lower() == "w2c":
+        # X_gl = W2C_gl * X_w  and  X_cv = S * X_gl  =>  W2C_cv = S * W2C_gl
+        pose_cv4 = S @ pose4
+    else:
+        raise ValueError("pose_type must be 'c2w' or 'w2c'")
+
+    # Return to original shape
+    if out_shape == (3, 4):
+        pose_cv = pose_cv4[:3, :]
+    else:
+        pose_cv = pose_cv4
+
+    K_gl = np.asarray(K_gl, dtype=np.float32)
+    if K_gl.shape != (3, 3):
+        raise ValueError(f"K_gl must be (3,3), got {K_gl.shape}")
+
+    K_cv = K_gl.copy()  # numerically unchanged
+    return K_cv, pose_cv
 
 def get_database_eval_points(database):
     """
@@ -619,34 +695,8 @@ def get_database_eval_points(database):
     - For NeRFSyntheticDatabase: poses are c2w (4x4), so transform camera->world with c2w (no inverse).
     - For GlossySyntheticDatabase: keep original OpenCV-style behavior (invert pose).
     """
-    if isinstance(database, NeRFSyntheticDatabase):
-        fn = f'{database.root}/eval_pts.ply'
-        if os.path.exists(fn):
-            pcd = o3d.io.read_point_cloud(str(fn))
-            return np.asarray(pcd.points)
 
-        _, _, test_ids = get_database_split(database, 'test')
-        pts = []
-        pbar = tqdm(total=len(test_ids), desc='gt->pts (NeRF)')
-        for img_id in test_ids:
-            depth, mask = database.get_depth(img_id)   # camera-frame depth
-            K = database.get_K(img_id)
-            pts_cam = mask_depth_to_pts(mask, depth, K)
-            c2w_raw = database.get_pose(img_id)            # c2w
-            c2w = to_4x4(c2w_raw)
-            pts_world = pose_apply(c2w_raw, pts_cam)       # camera->world
-            pts.append(pts_world)
-            pbar.update(1)
-
-        pts = np.concatenate(pts, 0).astype(np.float32)
-        pcd = o3d.geometry.PointCloud()
-        pcd.points = o3d.utility.Vector3dVector(pts)
-        downpcd = pcd.voxel_down_sample(voxel_size=0.01)
-        o3d.io.write_point_cloud(fn, downpcd)
-        print(f'point number {len(downpcd.points)} ...')
-        return np.asarray(downpcd.points, np.float32)
-
-    elif isinstance(database, GlossySyntheticDatabase):
+    if isinstance(database, GlossySyntheticDatabase):
         fn = f'{database.root}/eval_pts.ply'
         if os.path.exists(fn):
             pcd = o3d.io.read_point_cloud(str(fn))
@@ -667,6 +717,27 @@ def get_database_eval_points(database):
         o3d.io.write_point_cloud(fn, downpcd)
         print(f'point number {len(downpcd.points)} ...')
         return np.asarray(downpcd.points, np.float32)
-
+    elif isinstance(database, GlossySyntheticDatabase):
+        fn = f'{database.root}/eval_pts.ply'
+        if os.path.exists(fn):
+            pcd = o3d.io.read_point_cloud(str(fn))
+            return np.asarray(pcd.points)
+        _, _, test_ids = get_database_split(database, 'test')
+        pts = []
+        for img_id in test_ids:
+            depth, mask = database.get_depth(img_id)
+            K = database.get_K(img_id)
+            pose = pose_inverse(database.get_pose(img_id))
+            K, pose = gl_to_cv_camera(K, pose, pose_type="c2w")
+            pts_ = mask_depth_to_pts(mask, depth, K)
+            pts_ = pose_apply(pose, pts_)
+            pts.append(pts_)
+        pts = np.concatenate(pts, 0).astype(np.float32)
+        pcd = o3d.geometry.PointCloud()
+        pcd.points = o3d.utility.Vector3dVector(pts)
+        downpcd = pcd.voxel_down_sample(voxel_size=0.01)
+        o3d.io.write_point_cloud(fn, downpcd)
+        print(f'point number {len(downpcd.points)} ...')
+        return np.asarray(downpcd.points, np.float32)
     else:
         raise NotImplementedError
