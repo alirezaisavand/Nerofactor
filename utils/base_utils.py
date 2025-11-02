@@ -50,13 +50,9 @@ def mask_depth_to_pts(mask, depth, K, rgb=None):
     pts = np.asarray([ws, hs, depth], np.float32).transpose()
     pts[:, :2] *= pts[:, 2:]
     if rgb is not None:
-        pts_3d_cam = np.dot(pts, np.linalg.inv(K).transpose())
-        pts_3d_cam[:, 0] = -pts_3d_cam[:, 0]
-        return pts_3d_cam, rgb[hs, ws]
+        return np.dot(pts, np.linalg.inv(K).transpose()), rgb[hs, ws]
     else:
-        pts_3d_cam = np.dot(pts, np.linalg.inv(K).transpose())
-        pts_3d_cam[:, 0] = -pts_3d_cam[:, 0]
-        return pts_3d_cam
+        return np.dot(pts, np.linalg.inv(K).transpose())
 
 
 def read_render_zbuffer(dpt_pth, max_depth, min_depth):
@@ -81,7 +77,6 @@ def zbuffer_to_depth(zbuffer, K):
 
 def project_points(pts, RT, K):
     pts = np.matmul(pts, RT[:, :3].transpose()) + RT[:, 3:].transpose()
-    pts[:,0] = -pts[:,0]
     pts = np.matmul(pts, K.transpose())
     dpt = pts[:, 2]
     mask0 = (np.abs(dpt) < 1e-4) & (np.abs(dpt) > 0)

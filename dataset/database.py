@@ -654,6 +654,9 @@ def gl_c2w_to_cv_w2c(K_gl, c2w_gl, out_shape="3x4"):
     K_cv = K_gl.copy()  # numerically unchanged
     return K_cv, w2c_cv
 
+S4 = np.diag([1.0, -1.0, -1.0, 1.0]).astype(np.float32)
+S3 = np.diag([1.0, -1.0, -1.0]).astype(np.float32)
+
 def get_database_eval_points(database):
     """
     Collect GT depth point clouds across test views.
@@ -688,21 +691,30 @@ def get_database_eval_points(database):
         if os.path.exists(fn):
             pcd = o3d.io.read_point_cloud(str(fn))
             return np.asarray(pcd.points)
+
         _, _, test_ids = get_database_split(database, 'test')
-        pts = []
+        pts_chunks = []
+        pbar = tqdm(total=len(test_ids), desc='gt->pts (NeRF)')
         for img_id in test_ids:
             depth, mask = database.get_depth(img_id)
             K = database.get_K(img_id)
-            pose_c2w = database.get_pose(img_id)
-            pose_w2c = pose_inverse(pose_c2w)
-            # K, pose = gl_c2w_to_cv_w2c(K, pose, out_shape="3x4")
-            # pose = pose_inverse(pose)
-            pts_ = mask_depth_to_pts(mask, -depth, K)
-            pts_ = pose_apply(pose_c2w, pts_)
-            pts.append(pts_)
-        pts = np.concatenate(pts, 0).astype(np.float32)
+            H, W, _ = database.get_image(img_id).shape
+
+            # camera-frame points in OpenCV convention
+            pts_cam_cv = mask_depth_to_pts(mask, depth, K)  # (N,3) CV cam
+            # convert to OpenGL camera frame
+            pts_cam_gl = (S3 @ pts_cam_cv.T).T  # (N,3) GL cam
+            # apply c2w (OpenGL)
+            c2w_gl = to_4x4(database.get_pose(img_id))
+            pts_world = pose_apply(c2w_gl, pts_cam_gl)  # (N,3) world
+            if pts_world.shape[1] == 4:
+                pts_world = pts_world[:, :3] / np.maximum(1e-8, pts_world[:, 3:4])
+            pts_chunks.append(pts_world.astype(np.float32))
+            pbar.update(1)
+
+        pts = np.concatenate(pts_chunks, 0).astype(np.float32)
         pcd = o3d.geometry.PointCloud()
-        pcd.points = o3d.utility.Vector3dVector(pts)
+        pcd.points = o3d.utility.Vector3dVector(pts.astype(np.float64))
         downpcd = pcd.voxel_down_sample(voxel_size=0.01)
         o3d.io.write_point_cloud(fn, downpcd)
         print(f'point number {len(downpcd.points)} ...')
