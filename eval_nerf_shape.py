@@ -60,82 +60,48 @@ def rasterize_depth_map(mesh,pose,K,shape):
     mask = rast[0,:,:,-1]!=0
     return depth.cpu().numpy(), mask.cpu().numpy().astype(bool)
 
-def gl_to_cv_camera(K_gl, pose_gl, pose_type="c2w"):
+def gl_c2w_to_cv_w2c(K_gl, c2w_gl, out_shape="3x4"):
     """
-    Convert camera intrinsics/extrinsics from OpenGL (Blender/NeRF) to OpenCV convention.
+    Convert OpenGL/Blender camera-to-world (c2w) to OpenCV world-to-camera (w2c).
 
-    Conventions
-    ----------
-    OpenGL/Blender camera coords : x right, y up,   z backward (camera looks along -Z)
-    OpenCV camera coords         : x right, y down, z forward
+    Args:
+        K_gl    : (3,3) intrinsics (fx, fy, cx, cy) in pixels.
+        c2w_gl  : (3,4) or (4,4) OpenGL c2w (x right, y up, camera looks along -Z).
+        out_shape: "3x4" or "4x4" for the returned extrinsic.
 
-    The fixed transform between camera frames is:
-        X_cv = S * X_gl,  where  S = diag(1, -1, -1)
-
-    Therefore, extrinsics convert as:
-        If pose_gl is C2W (camera->world):   C2W_cv = C2W_gl * S
-        If pose_gl is W2C (world->camera):   W2C_cv = S * W2C_gl
-
-    Intrinsics K
-    ------------
-    K is defined in pixel coordinates (u right, v down). As long as you convert the
-    camera frame via S as above, K does not need to change numerically.
-    So we return K_cv = K_gl (copy).
-
-    Parameters
-    ----------
-    K_gl      : (3,3) intrinsics (fx, fy, cx, cy) in pixel units
-    pose_gl   : (3,4) or (4,4) extrinsics in OpenGL convention
-                - If pose_type == "c2w": pose maps camera coords to world (C2W)
-                - If pose_type == "w2c": pose maps world coords to camera (W2C)
-    pose_type : str, "c2w" or "w2c"
-
-    Returns
-    -------
-    K_cv    : (3,3) intrinsics (unchanged numerically)
-    pose_cv : (3,4) or (4,4) extrinsics in OpenCV convention (same shape as input)
-
-    Notes
-    -----
-    - This assumes row-major matrices with the last column as translation for (3,4)/(4,4).
-    - The transform S is its own inverse (S == S^{-1}).
-    - If your downstream code expects 3x4, we preserve the input shape.
+    Returns:
+        K_cv    : (3,3) intrinsics (unchanged numerically).
+        w2c_cv  : (3,4) or (4,4) OpenCV w2c (x right, y down, camera looks along +Z).
     """
-    # Normalize pose to 4x4
-    pose_gl = np.asarray(pose_gl, dtype=np.float32)
-    if pose_gl.shape == (3, 4):
-        pose4 = np.vstack([pose_gl, np.array([[0, 0, 0, 1]], dtype=np.float32)])
-        out_shape = (3, 4)
-    elif pose_gl.shape == (4, 4):
-        pose4 = pose_gl.copy()
-        out_shape = (4, 4)
-    else:
-        raise ValueError(f"pose_gl must be (3,4) or (4,4), got {pose_gl.shape}")
-
-    # Fixed OpenGL->OpenCV camera-frame conversion
-    S = np.diag([1.0, -1.0, -1.0, 1.0]).astype(np.float32)
-
-    if pose_type.lower() == "c2w":
-        # X_w = C2W_gl * X_gl  and  X_gl = S * X_cv  =>  C2W_cv = C2W_gl * S
-        pose_cv4 = pose4 @ S
-    elif pose_type.lower() == "w2c":
-        # X_gl = W2C_gl * X_w  and  X_cv = S * X_gl  =>  W2C_cv = S * W2C_gl
-        pose_cv4 = S @ pose4
-    else:
-        raise ValueError("pose_type must be 'c2w' or 'w2c'")
-
-    # Return to original shape
-    if out_shape == (3, 4):
-        pose_cv = pose_cv4[:3, :]
-    else:
-        pose_cv = pose_cv4
-
     K_gl = np.asarray(K_gl, dtype=np.float32)
     if K_gl.shape != (3, 3):
         raise ValueError(f"K_gl must be (3,3), got {K_gl.shape}")
 
+    pose = np.asarray(c2w_gl, dtype=np.float32)
+    if pose.shape == (3, 4):
+        c2w4 = np.vstack([pose, np.array([[0, 0, 0, 1]], dtype=np.float32)])
+    elif pose.shape == (4, 4):
+        c2w4 = pose
+    else:
+        raise ValueError(f"c2w_gl must be (3,4) or (4,4), got {pose.shape}")
+
+    # Fixed OpenGL->OpenCV camera-frame transform
+    S = np.diag([1.0, -1.0, -1.0, 1.0]).astype(np.float32)
+
+    # OpenCV w2c from OpenGL c2w:
+    # X_cv = W2C_cv * X_w, with X_cv = S * X_gl and X_gl = inv(C2W_gl) * X_w
+    # => W2C_cv = S * inv(C2W_gl)
+    w2c_cv_4x4 = S @ np.linalg.inv(c2w4)
+
+    if out_shape == "3x4":
+        w2c_cv = w2c_cv_4x4[:3, :]
+    elif out_shape == "4x4":
+        w2c_cv = w2c_cv_4x4
+    else:
+        raise ValueError("out_shape must be '3x4' or '4x4'")
+
     K_cv = K_gl.copy()  # numerically unchanged
-    return K_cv, pose_cv
+    return K_cv, w2c_cv
 
 def get_mesh_eval_points(database):
     if isinstance(database, GlossySyntheticDatabase):
@@ -146,7 +112,7 @@ def get_mesh_eval_points(database):
         for index, test_id in enumerate(test_ids):
             K = database.get_K(test_id) #(3, 3)
             pose = database.get_pose(test_id) # (3, 4)
-            K, pose = gl_to_cv_camera(K, pose, pose_type="c2w")
+            K, pose = gl_c2w_to_cv_w2c(K, pose, out_shape="3x4")
             print(f"pose shape before inverse: {pose.shape}")
             print(f"K shape: {K.shape}")
             h, w, _ = database.get_image(test_id).shape
