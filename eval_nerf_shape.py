@@ -144,8 +144,6 @@ def get_mesh_eval_points(database):
             K = database.get_K(test_id)          # (3,3)
 
             c2w_raw = database.get_pose(test_id)     # (3,4), camera-to-world
-            print(f"pose shape before inverse: {c2w_raw.shape}")
-            print(f"K shape: {K.shape}")
             c2w = to_4x4(c2w_raw)                     # (4,4)
             H, W, _ = database.get_image(test_id).shape
 
@@ -153,16 +151,14 @@ def get_mesh_eval_points(database):
             pts_cam = mask_depth_to_pts(mask_pr, depth_pr, K)  # camera-frame points (N,3)
             pts_world = pose_apply(c2w_raw, pts_cam)               # camera->world (no inverse) (N,4)
             pts_pr.append(pts_world)
-            print(
-                f"pts_cam shape: {pts_cam.shape}, pts_world shape: {pts_world.shape}, depth_pr shape: {depth_pr.shape}, mask_pr shape: {mask_pr.shape}")
 
             pbar.update(1)
 
         pts_pr = np.concatenate(pts_pr, axis=0).astype(np.float32)
         pcd = o3d.geometry.PointCloud()
-        print(pts_pr.shape, pts_pr.dtype)
         pcd.points = o3d.utility.Vector3dVector(pts_pr)
         downpcd = pcd.voxel_down_sample(voxel_size=0.01)
+        o3d.io.write_point_cloud("data/pts_pr.ply", downpcd)
         return np.asarray(downpcd.points, np.float32)
 
     elif isinstance(database, GlossySyntheticDatabase):
@@ -194,32 +190,6 @@ def to_4x4(pose):
     if pose.shape == (16,):
         return pose.reshape(4, 4)
     raise ValueError(f"Unsupported pose shape {pose.shape}; expected (3,4), (4,4), (12,), or (16,)")
-
-
-def _as_o3d_points(pts_list_or_array):
-    """
-    Accepts a list of arrays or a single array of points.
-    Returns a contiguous (N,3) float64 ndarray suitable for Open3D.
-    """
-    if isinstance(pts_list_or_array, list):
-        if len(pts_list_or_array) == 0:
-            return np.zeros((0, 3), dtype=np.float64)
-        pts = np.concatenate(pts_list_or_array, axis=0)
-    else:
-        pts = np.asarray(pts_list_or_array)
-
-    # Fix common shape issues: (3, N) -> (N, 3)
-    if pts.ndim != 2:
-        raise ValueError(f"Points must be 2D, got shape {pts.shape}")
-    if pts.shape[1] != 3 and pts.shape[0] == 3:
-        pts = pts.T
-    if pts.shape[1] != 3:
-        raise ValueError(f"Points must have shape (N,3), got {pts.shape}")
-
-    # Open3D is happy with float64
-    pts = np.ascontiguousarray(pts, dtype=np.float64)
-    return pts
-
 
 
 # ------------------------

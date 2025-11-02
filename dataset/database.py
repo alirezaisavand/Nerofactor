@@ -611,30 +611,6 @@ def to_4x4(pose):
         return pose.reshape(4, 4)
     raise ValueError(f"Unsupported pose shape {pose.shape}; expected (3,4), (4,4), (12,), or (16,)")
 
-def _as_o3d_points(pts_list_or_array):
-    """
-    Accepts a list of arrays or a single array of points.
-    Returns a contiguous (N,3) float64 ndarray suitable for Open3D.
-    """
-    if isinstance(pts_list_or_array, list):
-        if len(pts_list_or_array) == 0:
-            return np.zeros((0, 3), dtype=np.float64)
-        pts = np.concatenate(pts_list_or_array, axis=0)
-    else:
-        pts = np.asarray(pts_list_or_array)
-
-    # Fix common shape issues: (3, N) -> (N, 3)
-    if pts.ndim != 2:
-        raise ValueError(f"Points must be 2D, got shape {pts.shape}")
-    if pts.shape[1] != 3 and pts.shape[0] == 3:
-        pts = pts.T
-    if pts.shape[1] != 3:
-        raise ValueError(f"Points must have shape (N,3), got {pts.shape}")
-
-    # Open3D is happy with float64
-    pts = np.ascontiguousarray(pts, dtype=np.float64)
-    return pts
-
 
 def get_database_eval_points(database):
     """
