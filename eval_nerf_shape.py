@@ -111,17 +111,14 @@ def get_mesh_eval_points(database):
         pts_pr = []
         for index, test_id in enumerate(test_ids):
             K = database.get_K(test_id) #(3, 3)
-            pose = database.get_pose(test_id) # (3, 4)
-            K, pose = gl_c2w_to_cv_w2c(K, pose, out_shape="3x4")
-            print(f"pose shape before inverse: {pose.shape}")
-            print(f"K shape: {K.shape}")
+            pose_c2w = database.get_pose(test_id) # (3, 4)
+            # K, pose = gl_c2w_to_cv_w2c(K, pose, out_shape="3x4")
             h, w, _ = database.get_image(test_id).shape
-            depth_pr, mask_pr = rasterize_depth_map(mesh, pose, K, (h, w)) # (H, W), depth in camera frame
+            pose_w2c = pose_inverse(pose_c2w)
+            depth_pr, mask_pr = rasterize_depth_map(mesh, pose_w2c, K, (h, w)) # (H, W), depth in camera frame
             pts_ = mask_depth_to_pts(mask_pr, depth_pr, K) # (N, 3), in camera frame
-            pose = pose_inverse(pose) # (3,4)
-            print(f"pose shape: {pose.shape}, pts_ shape: {pts_.shape}, depth_pr shape: {depth_pr.shape}, mask_pr shape: {mask_pr.shape}")
-            pts_pr.append(pose_apply(pose, pts_)) # (N, 3), in world frame
-            print(f"shape after pose_apply(): {pts_pr[-1].shape}")
+            # pose = pose_inverse(pose) # (3,4)
+            pts_pr.append(pose_apply(pose_c2w, pts_)) # (N, 3), in world frame
             pbar.update(1)
 
         pts_pr = np.concatenate(pts_pr, 0).astype(np.float32)
