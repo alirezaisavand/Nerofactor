@@ -136,6 +136,7 @@ def get_mesh_eval_points_nerf(database, mesh_path):
     pcd = o3d.geometry.PointCloud()
     pcd.points = o3d.utility.Vector3dVector(pts.astype(np.float64))
     down = pcd.voxel_down_sample(voxel_size=0.01)
+    o3d.io.write_point_cloud("data", down)
     return np.asarray(down.points, np.float32)
 
 # -------------------------
