@@ -8,7 +8,7 @@ import trimesh
 from skimage.io import imsave
 from tqdm import tqdm
 
-from dataset.database import parse_database_name, get_database_split, get_database_eval_points, GlossySyntheticDatabase
+from dataset.database import parse_database_name, get_database_split, get_database_eval_points, GlossySyntheticDatabase, NeRFSyntheticDatabase
 from utils.base_utils import mask_depth_to_pts, project_points, color_map_backward, pose_inverse, pose_apply
 import open3d as o3d
 
@@ -104,7 +104,7 @@ def gl_c2w_to_cv_w2c(K_gl, c2w_gl, out_shape="3x4"):
     return K_cv, w2c_cv
 
 def get_mesh_eval_points(database):
-    if isinstance(database, GlossySyntheticDatabase):
+    if isinstance(database, NeRFSyntheticDatabase):
         _, test_ids, _ = get_database_split(database, 'test')
         mesh = trimesh.load_mesh(args.mesh)
         pbar = tqdm(len(test_ids))
@@ -134,7 +134,7 @@ def get_mesh_eval_points(database):
         raise NotImplementedError
 
 def main():
-    database = parse_database_name(f'syn/{args.object}', 'data/GlossySynthetic')
+    database = parse_database_name(f'nerf/{args.object}', 'data/nerf_synthetic')
     pts_gt = get_database_eval_points(database)
     pts_pr = get_mesh_eval_points(database)
 
