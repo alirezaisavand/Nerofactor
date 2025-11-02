@@ -62,7 +62,7 @@ def rasterize_depth_map(mesh,pose,K,shape):
 
 def get_mesh_eval_points(database):
     if isinstance(database, GlossySyntheticDatabase):
-        _, test_ids = get_database_split(database, 'test')
+        _, test_ids, _ = get_database_split(database, 'test')
         mesh = trimesh.load_mesh(args.mesh)
         pbar = tqdm(len(test_ids))
         pts_pr = []
