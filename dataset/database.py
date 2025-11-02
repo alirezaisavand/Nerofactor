@@ -632,9 +632,9 @@ def get_database_eval_points(database):
             depth, mask = database.get_depth(img_id)   # camera-frame depth
             K = database.get_K(img_id)
             pts_cam = mask_depth_to_pts(mask, depth, K)
-            c2w = database.get_pose(img_id)            # c2w
-            c2w = to_4x4(c2w)
-            pts_world = pose_apply(c2w, pts_cam)       # camera->world
+            c2w_raw = database.get_pose(img_id)            # c2w
+            c2w = to_4x4(c2w_raw)
+            pts_world = pose_apply(c2w_raw, pts_cam)       # camera->world
             pts.append(pts_world)
             pbar.update(1)
 
