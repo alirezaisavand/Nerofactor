@@ -550,14 +550,17 @@ class NeRFSyntheticDatabase(BaseDatabase):
         return self.img_ids
 
     def get_depth(self, img_id):
-        assert (self.scale_factor == 1.0)
-        str_id = str(int(img_id) + 1)
-        prefix = '0' * (4 - len(str_id))
-        depth_name = "Image"+prefix + str_id + ".png"
-        depth = imread(os.path.join(self.root, 'depth', depth_name))
-        depth = depth.astype(np.float32) / 65535 * 15
-        mask = depth < 14.5
-        return depth, mask
+        img = self.get_image(img_id)
+        h, w, _ = img.shape
+        return np.ones([h, w], np.float32), np.ones([h, w], bool)
+        # assert (self.scale_factor == 1.0)
+        # str_id = str(int(img_id) + 1)
+        # prefix = '0' * (4 - len(str_id))
+        # depth_name = "Image"+prefix + str_id + ".png"
+        # depth = imread(os.path.join(self.root, 'depth', depth_name))
+        # depth = depth.astype(np.float32) / 65535 * 15
+        # mask = depth < 14.5
+        # return depth, mask
 
 
 
