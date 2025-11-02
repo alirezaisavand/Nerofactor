@@ -5,7 +5,6 @@ import numpy as np
 import argparse
 
 import trimesh
-from skimage.io import imsave
 from tqdm import tqdm
 
 from dataset.database import parse_database_name, get_database_split, get_database_eval_points, GlossySyntheticDatabase
@@ -23,18 +22,6 @@ def nearest_dist(pts0, pts1, batch_size=512):
         dists.append(torch.min(dist,1)[0])
     dists = torch.cat(dists,0)
     return dists.cpu().numpy()
-    # knn = KNN(1)
-    # dists = []
-    # for i in tqdm(range(0, pn0, batch_size), desc='evaluting...'):
-    #     batch_size_ = pn1//20
-    #     dist = []
-    #     for k in range(0, pn1, batch_size_):
-    #         dist_, _ = knn(pts1[None,k:k+batch_size_,:].permute(0,2,1), pts0[None,i:i+batch_size,:].permute(0,2,1))
-    #         dist.append(dist_[0,0])
-    #     # dist = torch.norm(pts0[i:i+batch_size,None,:] - pts1[None,:,:], dim=-1)
-    #     dists.append(torch.min(torch.stack(dist, 1),dim=1)[0])
-    # dists = torch.cat(dists,0)
-    # return dists
 
 def rasterize_depth_map(mesh,pose,K,shape):
     import nvdiffrast.torch as dr

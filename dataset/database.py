@@ -686,39 +686,6 @@ def get_database_eval_points(database):
         o3d.io.write_point_cloud(fn, downpcd)
         print(f'point number {len(downpcd.points)} ...')
         return np.asarray(downpcd.points, np.float32)
-    elif isinstance(database, NeRFSyntheticDatabase):
-        fn = f'{database.root}/eval_pts.ply'
-        if os.path.exists(fn):
-            pcd = o3d.io.read_point_cloud(str(fn))
-            return np.asarray(pcd.points)
-
-        _, _, test_ids = get_database_split(database, 'test')
-        pts_chunks = []
-        pbar = tqdm(total=len(test_ids), desc='gt->pts (NeRF)')
-        for img_id in test_ids:
-            depth, mask = database.get_depth(img_id)
-            K = database.get_K(img_id)
-            H, W, _ = database.get_image(img_id).shape
-
-            # camera-frame points in OpenCV convention
-            pts_cam_cv = mask_depth_to_pts(mask, depth, K)  # (N,3) CV cam
-            # convert to OpenGL camera frame
-            pts_cam_gl = (S3 @ pts_cam_cv.T).T  # (N,3) GL cam
-            # apply c2w (OpenGL)
-            c2w_gl = to_4x4(database.get_pose(img_id))
-            pts_world = pose_apply(c2w_gl, pts_cam_gl)  # (N,3) world
-            if pts_world.shape[1] == 4:
-                pts_world = pts_world[:, :3] / np.maximum(1e-8, pts_world[:, 3:4])
-            pts_chunks.append(pts_world.astype(np.float32))
-            pbar.update(1)
-
-        pts = np.concatenate(pts_chunks, 0).astype(np.float32)
-        pcd = o3d.geometry.PointCloud()
-        pcd.points = o3d.utility.Vector3dVector(pts.astype(np.float64))
-        downpcd = pcd.voxel_down_sample(voxel_size=0.01)
-        o3d.io.write_point_cloud(fn, downpcd)
-        print(f'point number {len(downpcd.points)} ...')
-        return np.asarray(downpcd.points, np.float32)
     else:
         raise NotImplementedError
 
@@ -825,3 +792,95 @@ def get_database_eval_points_nerf(database, voxel_size=0.01, save_path="data/eva
     o3d.io.write_point_cloud(save_path, down)
 
     return np.asarray(down.points, np.float32)
+
+def pose_apply_4x4(pose, pts):
+    """
+    Applies a 4x4 pose to 3D points (N, 3).
+    """
+    pts_h = np.concatenate([pts, np.ones((pts.shape[0], 1))], axis=-1)  # (N, 4)
+    # (4, 4) @ (4, N) -> (4, N) -> (N, 4)
+    pts_transformed_h = (pose @ pts_h.T).T
+    # Normalize by w
+    pts_transformed = pts_transformed_h[:, :3] / np.where(
+        pts_transformed_h[:, 3:4] == 0, 1e-6, pts_transformed_h[:, 3:4]
+    )
+    return pts_transformed
+
+T_cv_gl = np.array([
+    [1, 0, 0, 0],
+    [0, -1, 0, 0],
+    [0, 0, -1, 0],
+    [0, 0, 0, 1]
+], dtype=np.float32)
+
+T_gl_cv = T_cv_gl
+
+def get_database_eval_points_gem(database):
+    """
+    Collects GT depth point clouds across test views.
+    Handles both GlossySynthetic (OpenCV) and NeRFSynthetic (OpenGL).
+    """
+    # Use object name for caching, assuming database.root is dataset root
+    obj_name = Path(database.root).name
+    fn = f'{database.root}/../eval_pts_{obj_name}.ply'  # Cache in parent dir
+
+    print(f"Generating GT points (cache not found at {fn})")
+    _, _, test_ids = get_database_split(database, 'test')
+    pts = []
+
+    pbar = tqdm(test_ids, desc="Loading GT depths")
+    for img_id in pbar:
+        # Assumes get_depth() returns depth along +z (OpenCV style)
+        depth, mask = database.get_depth(img_id)
+        if depth is None or mask is None:
+            print(f"Warning: Skipping img_id {img_id}, no depth/mask.")
+            continue
+
+        K = database.get_K(img_id)
+
+        # 1. Unproject points (to OpenCV camera space)
+        # This uses original mask_depth_to_pts, assumes depth is +z
+        pts_cv = mask_depth_to_pts(mask, depth, K)  # (N, 3)
+        if pts_cv.shape[0] == 0:
+            continue
+
+        if isinstance(database, NeRFSyntheticDatabase):
+            # NeRF: pose is (4, 4) c2w, OpenGL convention
+            pose_c2w_gl = database.get_pose(img_id)
+
+            # 2. Transform points to world space
+            # OpenCV_cam -> OpenGL_cam -> World
+            pts_gl = pose_apply_4x4(T_gl_cv, pts_cv)
+            pts_world = pose_apply_4x4(pose_c2w_gl, pts_gl)
+            pts.append(pts_world)
+
+        elif isinstance(database, GlossySyntheticDatabase):
+            # Glossy: pose is (3, 4) w2c, OpenCV convention
+            pose_w2c_cv = database.get_pose(img_id)
+
+            # 2. Transform points to world space
+            pose_c2w_cv = pose_inverse(pose_w2c_cv)
+            pts_world = pose_apply(pose_c2w_cv, pts_cv)
+            pts.append(pts_world)
+
+        else:
+            raise NotImplementedError(f"Database type {type(database)} not supported.")
+
+    if not pts:
+        print("Error: No GT points generated.")
+        return None
+
+    pts = np.concatenate(pts, 0).astype(np.float32)
+    print(f"GT points before downsample: {pts.shape}")
+    pcd = o3d.geometry.PointCloud()
+    pcd.points = o3d.utility.Vector3dVector(pts)
+    downpcd = pcd.voxel_down_sample(voxel_size=0.01)  # Voxel size as in original
+
+    try:
+        o3d.io.write_point_cloud(fn, downpcd)
+        print(f'GT points cached to {fn}')
+    except Exception as e:
+        print(f"Warning: Could not cache GT points to {fn}. Error: {e}")
+
+    print(f'GT points after downsample: {len(downpcd.points)}')
+    return np.asarray(downpcd.points, np.float32)
