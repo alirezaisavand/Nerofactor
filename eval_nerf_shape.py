@@ -105,7 +105,7 @@ def gl_c2w_to_cv_w2c(K_gl, c2w_gl, out_shape="3x4"):
 
 def get_mesh_eval_points(database):
     if isinstance(database, NeRFSyntheticDatabase):
-        _, test_ids, _ = get_database_split(database, 'test')
+        _, _, test_ids = get_database_split(database, 'test')
         mesh = trimesh.load_mesh(args.mesh)
         pbar = tqdm(len(test_ids))
         pts_pr = []
