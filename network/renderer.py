@@ -1096,68 +1096,59 @@ class NeROMaterialRenderer(nn.Module):
         if self.train_batch_i + rn >= self.tbn: self._shuffle_train_batch()
         return shade_outputs
 
-
-    def test_step(self, index, is_nvs=False):
+    def test_step(self, index, step, is_nvs=False):
         if is_nvs:
-            test_imgs_info = imgs_info_slice(self.nvs_imgs_info, torch.from_numpy(np.asarray([index], np.int64)))
+            target_imgs_info = imgs_info_slice(self.nvs_imgs_info, torch.from_numpy(np.asarray([index], np.int64)))
+            target_img_ids = self.nvs_ids
         else:
-            test_imgs_info = imgs_info_slice(self.test_imgs_info, torch.from_numpy(np.asarray([index], np.int64)))
-        _, _, h, w = test_imgs_info['imgs'].shape
-        ray_batch = self._construct_nerf_ray_batch(test_imgs_info, 'cuda',
-                                                   False) if self.is_nerf else self._construct_ray_batch(test_imgs_info,
-                                                                                                         'cuda', False)
+            target_imgs_info = imgs_info_slice(self.test_imgs_info, torch.from_numpy(np.asarray([index], np.int64)))
+            target_img_ids = self.test_ids
+
+        imgs_info = imgs_info_slice(target_imgs_info, torch.from_numpy(np.asarray([index], np.int64)))
+        gt_depth, gt_mask = self.database.get_depth(target_img_ids[index])  # used in evaluation
+        is_nerf = self.is_nerf
+        if self.cfg['test_downsample_ratio']:
+            imgs_info = imgs_info_downsample(imgs_info, self.cfg['downsample_ratio'])
+            h, w = gt_depth.shape
+            dh, dw = int(self.cfg['downsample_ratio'] * h), int(self.cfg['downsample_ratio'] * w)
+            gt_depth, gt_mask = cv2.resize(gt_depth, (dw, dh), interpolation=cv2.INTER_NEAREST), \
+                cv2.resize(gt_mask.astype(np.uint8), (dw, dh), interpolation=cv2.INTER_NEAREST)
+        gt_depth, gt_mask = torch.from_numpy(gt_depth), torch.from_numpy(gt_mask.astype(np.int32))
+        ray_batch, input_poses, rn, h, w = self._construct_nerf_ray_batch(imgs_info, is_train=False) \
+            if is_nerf else self._construct_ray_batch(imgs_info)
+
+        input_poses = input_poses.float().cuda()
+        for k, v in ray_batch.items(): ray_batch[k] = v.cuda()
+
         trn = self.cfg['test_ray_num']
+        outputs_keys = ['ray_rgb', 'gradient_error', 'normal', 'depth']
+        outputs_keys += [
+            'diffuse_albedo', 'diffuse_light', 'diffuse_color',
+            'specular_albedo', 'specular_light', 'specular_color', 'specular_ref',
+            'metallic', 'roughness', 'occ_prob', 'indirect_light', 'occ_prob_gt',
+        ]
+        if self.color_network.cfg['human_light']:
+            outputs_keys += ['human_light']
 
-        # output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'specular_color': 3, 'diffuse_light': 3,
-        #                'diffuse_color': 3, 'albedo': 3, 'metallic': 1, 'roughness': 1}
-        output_keys = {'rgb_gt': 3, 'rgb_pr': 3, 'specular_light': 3, 'diffuse_light': 3,
-                       'kd': 3, 'metallic': 1, "alpha": 1, 'diffuse_color': 3, 'specular_color': 3, 'mx': 1, 'my': 1,
-                       'f_d': 3, 'f_s_sum': 3, 'tangents': 3, 'bitangents': 3, 'normals': 3, 'L_spec': 3}
-        outputs = {k: [] for k in output_keys.keys()}
-        rn = ray_batch['rays_o'].shape[0]
+        outputs = {k: [] for k in outputs_keys}
         for ri in range(0, rn, trn):
-            hit_mask = ray_batch['hit_mask'][ri:ri + trn]
-            outputs_cur = {k: torch.zeros(hit_mask.shape[0], d) for k, d in output_keys.items()}
-            if torch.sum(hit_mask) > 0:
-                pts = ray_batch['inters'][ri:ri + trn][hit_mask].cuda()
-                view_dirs = -ray_batch['rays_d'][ri:ri + trn][hit_mask].cuda()
-                normals = ray_batch['normals'][ri:ri + trn][hit_mask].cuda()
-                rgb_gt = ray_batch['rgb'][ri:ri + trn][hit_mask].cuda()
-                human_poses = ray_batch['human_poses'][ri:ri + trn][hit_mask].cuda()
+            cur_ray_batch = {k: v[ri:ri + trn] for k, v in ray_batch.items()}
+            rays_o, rays_d, near, far, human_poses = self._process_nerf_ray_batch(cur_ray_batch, input_poses) \
+                if is_nerf else self._process_ray_batch(cur_ray_batch, input_poses)
+            cur_outputs = self.render(rays_o, rays_d, near, far, human_poses, 0, 0, is_train=False, step=step,
+                                      is_nerf=is_nerf)
+            for k in outputs_keys: outputs[k].append(cur_outputs[k].detach())
 
-                shade_outputs = self.shade(pts, view_dirs, normals, human_poses, False)
-                outputs_cur['rgb_pr'][hit_mask] = shade_outputs['rgb_pr']
-                outputs_cur['rgb_gt'][hit_mask] = rgb_gt
-                outputs_cur['specular_light'][hit_mask] = shade_outputs['specular_light']
-                outputs_cur['diffuse_light'][hit_mask] = shade_outputs['diffuse_light']
-                outputs_cur['kd'][hit_mask] = shade_outputs['kd']
-                outputs_cur['diffuse_color'][hit_mask] = shade_outputs['diffuse_color']
-                outputs_cur['specular_color'][hit_mask] = shade_outputs['specular_color']
-                outputs_cur['f_d'][hit_mask] = shade_outputs['f_d'].float()
-                outputs_cur['f_s_sum'][hit_mask] = shade_outputs['f_s_sum'].float()
-                outputs_cur['L_spec'][hit_mask] = shade_outputs['L_spec'].float()
-                outputs_cur['tangents'][hit_mask] = shade_outputs['tangents'].float()
-                outputs_cur['bitangents'][hit_mask] = shade_outputs['bitangents'].float()
-                # outputs_cur['sources'][hit_mask] = shade_outputs['sources'].float()
-                # outputs_cur['sources_norm'][hit_mask] = shade_outputs['sources_norm'].float()
-                outputs_cur['normals'][hit_mask] = shade_outputs['normals'].float()
-                if self.cfg['n_lobes'] == 1:
-                    outputs_cur['metallic'][hit_mask] = shade_outputs['metallic']
-                    outputs_cur['mx'][hit_mask] = shade_outputs['mx']
-                    outputs_cur['my'][hit_mask] = shade_outputs['my']
-                    # outputs_cur['alpha'][hit_mask] = shade_outputs['alpha']
-                else:
-                    outputs_cur['metallic'][hit_mask] = shade_outputs['metallic'][0]
-                    outputs_cur['mx'][hit_mask] = shade_outputs['mx'][0]
-                    outputs_cur['my'][hit_mask] = shade_outputs['my'][0]
-                    # outputs_cur['alpha'][hit_mask] = shade_outputs['alpha'][0]
-            for k in output_keys.keys():
-                outputs[k].append(outputs_cur[k])
+        for k in outputs_keys: outputs[k] = torch.cat(outputs[k], 0)
+        outputs['loss_rgb'] = self.compute_rgb_loss(outputs['ray_rgb'], ray_batch['rgbs'])
+        outputs['gt_rgb'] = ray_batch['rgbs'].reshape(h, w, 3)
+        outputs['ray_rgb'] = outputs['ray_rgb'].reshape(h, w, 3)
 
-        for k in output_keys.keys():
-            outputs[k] = torch.cat(outputs[k], 0).reshape(h, w, -1)
-        outputs['h'] = h
-        outputs['w'] = w
+        # used in evaluation
+        outputs['gt_depth'] = gt_depth.unsqueeze(-1)
+        outputs['gt_mask'] = gt_mask.unsqueeze(-1)
+
+        self.zero_grad()
         return outputs
 
     @torch.no_grad()
