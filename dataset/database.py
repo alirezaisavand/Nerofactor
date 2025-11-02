@@ -804,7 +804,7 @@ def get_database_eval_points_nerf(database):
         c2w_gl     = to_4x4(database.get_pose(img_id))    # OpenGL c2w
 
         # ---- back-project in GL camera frame (assumed ray-length) ----
-        pts_cam_gl = backproject_opengl_from_depth(depth, K, mask, assume_ray_length=True)
+        pts_cam_gl = backproject_opengl_from_depth(depth, K, mask, assume_ray_length=False)
 
         # ---- to world (OpenGL c2w) ----
         pts_world = transform_points_col(pts_cam_gl, c2w_gl)
