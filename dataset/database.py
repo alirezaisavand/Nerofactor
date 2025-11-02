@@ -591,7 +591,39 @@ def get_database_split(database: BaseDatabase, split_type='validation'):
 
 
 def get_database_eval_points(database):
-    if isinstance(database, GlossySyntheticDatabase) or isinstance(database, NeRFSyntheticDatabase):
+    """
+    Collect GT depth point clouds across test views.
+
+    - For NeRFSyntheticDatabase: poses are c2w (4x4), so transform camera->world with c2w (no inverse).
+    - For GlossySyntheticDatabase: keep original OpenCV-style behavior (invert pose).
+    """
+    if isinstance(database, NeRFSyntheticDatabase):
+        fn = f'{database.root}/eval_pts.ply'
+        if os.path.exists(fn):
+            pcd = o3d.io.read_point_cloud(str(fn))
+            return np.asarray(pcd.points)
+
+        _, _, test_ids = get_database_split(database, 'test')
+        pts = []
+        pbar = tqdm(total=len(test_ids), desc='gt->pts (NeRF)')
+        for img_id in test_ids:
+            depth, mask = database.get_depth(img_id)   # camera-frame depth
+            K = database.get_K(img_id)
+            pts_cam = mask_depth_to_pts(mask, depth, K)
+            c2w = database.get_pose(img_id)            # c2w
+            pts_world = pose_apply(c2w, pts_cam)       # camera->world
+            pts.append(pts_world)
+            pbar.update(1)
+
+        pts = np.concatenate(pts, 0).astype(np.float32)
+        pcd = o3d.geometry.PointCloud()
+        pcd.points = o3d.utility.Vector3dVector(pts)
+        downpcd = pcd.voxel_down_sample(voxel_size=0.01)
+        o3d.io.write_point_cloud(fn, downpcd)
+        print(f'point number {len(downpcd.points)} ...')
+        return np.asarray(downpcd.points, np.float32)
+
+    elif isinstance(database, GlossySyntheticDatabase):
         fn = f'{database.root}/eval_pts.ply'
         if os.path.exists(fn):
             pcd = o3d.io.read_point_cloud(str(fn))
@@ -612,5 +644,6 @@ def get_database_eval_points(database):
         o3d.io.write_point_cloud(fn, downpcd)
         print(f'point number {len(downpcd.points)} ...')
         return np.asarray(downpcd.points, np.float32)
+
     else:
         raise NotImplementedError
