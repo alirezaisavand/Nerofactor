@@ -204,7 +204,7 @@ class InitSDFRegLoss(Loss):
 
 class MaskLoss(Loss):
     default_cfg = {
-        'mask_loss_weight_begin': 0.3,
+        'mask_loss_weight_begin': 0.7,
         'mask_loss_weight_end': 1,
         'mask_weight_decay_begin': 0,
         'mask_weight_decay_end': 30000,
@@ -318,7 +318,7 @@ class OpacityLoss(Loss):
         'opacity_loss_weight': 1,  # changed here from 0.01 to 1
         'opacity_loss_weight_begin': 0.001,
         'opacity_loss_weight_end': 0.01,
-        'opacity_weight_decay_begin': 20000,
+        'opacity_weight_decay_begin': 0,
         'opacity_weight_decay_end': 50000,
     }
 
