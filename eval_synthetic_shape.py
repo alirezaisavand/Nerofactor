@@ -77,6 +77,7 @@ def get_mesh_eval_points(database):
             pbar.update(1)
 
         pts_pr = np.concatenate(pts_pr, 0).astype(np.float32)
+        print("Before downsample:", pts_pr.shape)
         pcd = o3d.geometry.PointCloud()
         pcd.points = o3d.utility.Vector3dVector(pts_pr)
         downpcd = pcd.voxel_down_sample(voxel_size=0.01)
