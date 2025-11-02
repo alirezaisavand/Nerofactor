@@ -589,107 +589,6 @@ def get_database_split(database: BaseDatabase, split_type='validation'):
         raise NotImplementedError
     return train_ids, test_ids, nvs_ids
 
-def to_4x4(pose):
-    """
-    Normalize pose to a homogeneous 4x4 matrix (row-major).
-    Accepts:
-      - (4,4) -> returned as-is
-      - (3,4) -> append [0,0,0,1]
-      - (12,) or (16,) -> reshaped to (3,4) or (4,4) respectively (row-major)
-    """
-    pose = np.asarray(pose).astype(np.float32)
-    if pose.shape == (4, 4):
-        return pose
-    if pose.shape == (3, 4):
-        bottom = np.array([[0, 0, 0, 1]], dtype=np.float32)
-        return np.vstack([pose, bottom])
-    if pose.shape == (12,):
-        pose34 = pose.reshape(3, 4)
-        bottom = np.array([[0, 0, 0, 1]], dtype=np.float32)
-        return np.vstack([pose34, bottom])
-    if pose.shape == (16,):
-        return pose.reshape(4, 4)
-    raise ValueError(f"Unsupported pose shape {pose.shape}; expected (3,4), (4,4), (12,), or (16,)")
-
-def gl_c2w_to_cv_w2c(K_gl, c2w_gl, out_shape="3x4"):
-    """
-    Convert OpenGL/Blender camera-to-world (c2w) to OpenCV world-to-camera (w2c).
-
-    Args:
-        K_gl    : (3,3) intrinsics (fx, fy, cx, cy) in pixels.
-        c2w_gl  : (3,4) or (4,4) OpenGL c2w (x right, y up, camera looks along -Z).
-        out_shape: "3x4" or "4x4" for the returned extrinsic.
-
-    Returns:
-        K_cv    : (3,3) intrinsics (unchanged numerically).
-        w2c_cv  : (3,4) or (4,4) OpenCV w2c (x right, y down, camera looks along +Z).
-    """
-    K_gl = np.asarray(K_gl, dtype=np.float32)
-    if K_gl.shape != (3, 3):
-        raise ValueError(f"K_gl must be (3,3), got {K_gl.shape}")
-
-    pose = np.asarray(c2w_gl, dtype=np.float32)
-    if pose.shape == (3, 4):
-        c2w4 = np.vstack([pose, np.array([[0, 0, 0, 1]], dtype=np.float32)])
-    elif pose.shape == (4, 4):
-        c2w4 = pose
-    else:
-        raise ValueError(f"c2w_gl must be (3,4) or (4,4), got {pose.shape}")
-
-    # Fixed OpenGL->OpenCV camera-frame transform
-    S = np.diag([1.0, -1.0, -1.0, 1.0]).astype(np.float32)
-
-    # OpenCV w2c from OpenGL c2w:
-    # X_cv = W2C_cv * X_w, with X_cv = S * X_gl and X_gl = inv(C2W_gl) * X_w
-    # => W2C_cv = S * inv(C2W_gl)
-    w2c_cv_4x4 = S @ np.linalg.inv(c2w4)
-
-    if out_shape == "3x4":
-        w2c_cv = w2c_cv_4x4[:3, :]
-    elif out_shape == "4x4":
-        w2c_cv = w2c_cv_4x4
-    else:
-        raise ValueError("out_shape must be '3x4' or '4x4'")
-
-    K_cv = K_gl.copy()  # numerically unchanged
-    return K_cv, w2c_cv
-
-S4 = np.diag([1.0, -1.0, -1.0, 1.0]).astype(np.float32)
-S3 = np.diag([1.0, -1.0, -1.0]).astype(np.float32)
-
-def get_database_eval_points(database):
-    """
-    Collect GT depth point clouds across test views.
-
-    - For NeRFSyntheticDatabase: poses are c2w (4x4), so transform camera->world with c2w (no inverse).
-    - For GlossySyntheticDatabase: keep original OpenCV-style behavior (invert pose).
-    """
-
-    if isinstance(database, GlossySyntheticDatabase):
-        fn = f'{database.root}/eval_pts.ply'
-        if os.path.exists(fn):
-            pcd = o3d.io.read_point_cloud(str(fn))
-            return np.asarray(pcd.points)
-        _, _, test_ids = get_database_split(database, 'test')
-        pts = []
-        for img_id in test_ids:
-            depth, mask = database.get_depth(img_id)
-            K = database.get_K(img_id)
-            pts_ = mask_depth_to_pts(mask, depth, K)
-            pose = pose_inverse(database.get_pose(img_id))
-            pts_ = pose_apply(pose, pts_)
-            pts.append(pts_)
-        pts = np.concatenate(pts, 0).astype(np.float32)
-        pcd = o3d.geometry.PointCloud()
-        pcd.points = o3d.utility.Vector3dVector(pts)
-        downpcd = pcd.voxel_down_sample(voxel_size=0.01)
-        o3d.io.write_point_cloud(fn, downpcd)
-        print(f'point number {len(downpcd.points)} ...')
-        return np.asarray(downpcd.points, np.float32)
-    else:
-        raise NotImplementedError
-
-
 def _to_4x4(M):
     M = np.asarray(M, dtype=np.float32)
     if M.shape == (4, 4):
@@ -699,7 +598,7 @@ def _to_4x4(M):
     raise ValueError(f"Pose must be (3,4) or (4,4), got {M.shape}")
 
 def _transform_points_col(pts_N3, T4x4):
-    """Column-vector convention: X' = T @ X (pts:(N,3)->(N,3))."""
+    """Column-vector transform: X' = T @ X, pts:(N,3)->(N,3)."""
     pts = np.asarray(pts_N3, dtype=np.float32)
     if pts.size == 0:
         return pts
@@ -709,22 +608,19 @@ def _transform_points_col(pts_N3, T4x4):
     w  = np.where(np.abs(wh[:, 3:4]) < 1e-8, 1.0, wh[:, 3:4])
     return (wh[:, :3] / w).astype(np.float32)
 
-def _backproject_opengl_zdepth(depth_z, K, mask=None):
+def _backproject_opengl_raylength(depth_ray, K, mask=None, depth_scale=1.0):
     """
-    Back-project an OpenGL z-depth map (distance along -Z) to 3D points in the OpenGL camera frame.
-      OpenGL camera axes: x right, y up, camera looks along -Z.
-      For each pixel (u,v) with depth d>0:
-        x_gl = (u - cx)/fx * d
-        y_gl = -(v - cy)/fy * d
-        z_gl = -d
-    Returns (N,3) float32 in OpenGL camera coordinates.
-    """
-    H, W = depth_z.shape
-    if mask is None:
-        valid = depth_z > 0
-    else:
-        valid = mask.astype(bool) & (depth_z > 0)
+    Back-project Blender Z pass (ray-length) to 3D points in the OpenGL camera frame.
 
+    OpenGL camera axes: x right, y up, camera looks along -Z.
+    Per valid pixel (u,v) with ray length r:
+      dir_gl (unnormalized) = [ (u - cx)/fx, -(v - cy)/fy, -1 ]
+      d_unit = dir_gl / ||dir_gl||
+      X_cam_gl = d_unit * (r * depth_scale)
+    Returns: (N,3) float32 in OpenGL camera coordinates.
+    """
+    H, W = depth_ray.shape
+    valid = (depth_ray > 0) if mask is None else (mask.astype(bool) & (depth_ray > 0))
     if not np.any(valid):
         return np.zeros((0, 3), dtype=np.float32)
 
@@ -733,51 +629,66 @@ def _backproject_opengl_zdepth(depth_z, K, mask=None):
 
     vv, uu = np.meshgrid(np.arange(H, dtype=np.float32),
                          np.arange(W, dtype=np.float32), indexing='ij')
-    u = uu[valid]
-    v = vv[valid]
-    d = depth_z[valid].astype(np.float32)
+    u = uu[valid]; v = vv[valid]
+    r = depth_ray[valid].astype(np.float32) * float(depth_scale)
 
-    x_gl = (u - cx) / (fx + 1e-8) * d
-    y_gl = -(v - cy) / (fy + 1e-8) * d
-    z_gl = -d
-    return np.stack([x_gl, y_gl, z_gl], axis=1).astype(np.float32)
+    x = (u - cx) / (fx + 1e-8)
+    y = (v - cy) / (fy + 1e-8)
 
-def get_database_eval_points_nerf(database, voxel_size=0.01, save_path=None):
+    dirs = np.stack([x, -y, -np.ones_like(x)], axis=1)        # OpenGL cam rays
+    norms = np.linalg.norm(dirs, axis=1, keepdims=True) + 1e-8
+    dirs_unit = dirs / norms
+
+    pts_cam_gl = dirs_unit * r[:, None]
+    return pts_cam_gl.astype(np.float32)
+
+def get_database_eval_points_nerf(database, voxel_size=0.01, depth_scale=1.0, save_path=None):
     """
-    Build the GT world-space point cloud for NeRF Synthetic.
+    Build the GT world-space point cloud for NeRF Synthetic given:
+      - c2w poses in OpenGL convention,
+      - depth maps = Blender Z pass (ray length along the pixel ray).
 
-    Assumptions:
-      - database.get_pose(img_id) returns OpenGL c2w (camera->world), shape (3x4) or (4x4)
-      - database.get_depth(img_id) returns (depth_z, mask) with depth_z = z-depth along -Z (OpenGL cam)
-      - database.get_K(img_id) returns 3x3 intrinsics K for the depth resolution
+    IMPORTANT: If you scaled pose translations (e.g., poses[..., :3, 3] /= 2),
+               set depth_scale to the same factor (e.g., depth_scale=0.5).
+
+    For each view:
+      depth_raylen, mask, K
+        -> pts_cam_gl = unit_ray_gl(u,v,K) * (depth * depth_scale)
+        -> pts_world  = c2w_gl @ pts_cam_gl
 
     Returns:
-      (N,3) float32 array of world-space points (voxel-downsampled if voxel_size>0).
+      (N,3) float32 world points (voxel-downsampled if voxel_size>0).
     """
+    from dataset.database import get_database_split, NeRFSyntheticDatabase
     assert isinstance(database, NeRFSyntheticDatabase)
 
-    _, _, test_ids = get_database_split(database, 'test')
+    # Prefer 'test' split; if empty (since your loader only reads 'train'), fall back to 'train'
+    try:
+        _, _, test_ids = get_database_split(database, 'test')
+        ids = test_ids if len(test_ids) > 0 else get_database_split(database, 'train')[2]
+    except Exception:
+        ids = getattr(database, 'img_ids', [])
 
     world_pts_chunks = []
-    for img_id in tqdm(test_ids, desc='GT->world (OpenGL z-depth)'):
-        depth_z, mask = database.get_depth(img_id)   # HxW z-depth (distance along -Z)
-        K = database.get_K(img_id)                   # 3x3
-        c2w_gl = _to_4x4(database.get_pose(img_id))  # 4x4 OpenGL camera->world
+    for img_id in tqdm(ids, desc='GT->world (ray-length, OpenGL)'):
+        depth_ray, mask = database.get_depth(img_id)   # HxW
+        K = database.get_K(img_id)                     # 3x3
+        c2w_gl = _to_4x4(database.get_pose(img_id))    # 4x4 OpenGL camera->world
 
-        # Back-project to OpenGL camera points
-        pts_cam_gl = _backproject_opengl_zdepth(depth_z, K, mask)  # (N,3)
+        # Back-project in OpenGL camera frame using ray length
+        pts_cam_gl = _backproject_opengl_raylength(depth_ray, K, mask, depth_scale=depth_scale)  # (N,3)
 
         # Camera (OpenGL) -> World
-        pts_world = _transform_points_col(pts_cam_gl, c2w_gl)      # (N,3)
+        pts_world = _transform_points_col(pts_cam_gl, c2w_gl)                                     # (N,3)
         if pts_world.size:
-            world_pts_chunks.append(pts_world)
+            world_pts_chunks.append(pts_world.astype(np.float32))
 
     if not world_pts_chunks:
         return np.zeros((0, 3), dtype=np.float32)
 
     pts_world = np.concatenate(world_pts_chunks, axis=0).astype(np.float32)
 
-    # Optional voxel downsample for density control
+    # Optional voxel downsample
     if voxel_size is not None and voxel_size > 0:
         pcd = o3d.geometry.PointCloud()
         pcd.points = o3d.utility.Vector3dVector(pts_world.astype(np.float64))
