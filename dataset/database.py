@@ -793,6 +793,8 @@ def get_database_eval_points_nerf(database, voxel_size=0.01, save_path="data/eva
 
     return np.asarray(down.points, np.float32)
 
+
+
 def pose_apply_4x4(pose, pts):
     """
     Applies a 4x4 pose to 3D points (N, 3).
@@ -800,10 +802,16 @@ def pose_apply_4x4(pose, pts):
     pts_h = np.concatenate([pts, np.ones((pts.shape[0], 1))], axis=-1)  # (N, 4)
     # (4, 4) @ (4, N) -> (4, N) -> (N, 4)
     pts_transformed_h = (pose @ pts_h.T).T
+
     # Normalize by w
-    pts_transformed = pts_transformed_h[:, :3] / np.where(
+    # The slice MUST be [:, 3:4] to keep the shape as (N, 1)
+    w_coords = np.where(
         pts_transformed_h[:, 3:4] == 0, 1e-6, pts_transformed_h[:, 3:4]
     )
+
+    # This division will now be (N, 3) / (N, 1), which broadcasts correctly
+    pts_transformed = pts_transformed_h[:, :3] / w_coords
+
     return pts_transformed
 
 T_cv_gl = np.array([
