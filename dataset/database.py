@@ -754,6 +754,7 @@ def get_database_eval_points_nerf(database):
 
         pts_cam_cv = mask_depth_to_pts(mask, depth, K)      # (N,3), OpenCV camera frame
         T_camcv2w = c2w_gl @ S4                              # (4,4)
+        pts_cam_cv[:, 0] = -pts_cam_cv[:, 0]  # Convert OpenCV to OpenGL camera frame
         pts_world = transform_points_col(pts_cam_cv, T_camcv2w)
         if pts_world.size:
             all_pts.append(pts_world)

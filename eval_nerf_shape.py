@@ -123,6 +123,7 @@ def get_mesh_eval_points_nerf(database, mesh_path):
         depth_pr, mask_pr = rasterize_depth_map(mesh, w2c_cv, K, (H, W))
 
         pts_cam_cv = mask_depth_to_pts(mask_pr, depth_pr, K)
+        pts_cam_cv[:, 0] = -pts_cam_cv[:, 0]  # OpenCV to OpenGL cam x-flip
         T_camcv2w = c2w_gl @ S4
         pts_world = transform_points_col(pts_cam_cv, T_camcv2w)
         if pts_world.size:
