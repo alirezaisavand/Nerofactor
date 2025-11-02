@@ -721,3 +721,48 @@ def get_database_eval_points(database):
         return np.asarray(downpcd.points, np.float32)
     else:
         raise NotImplementedError
+
+def transform_points_col(pts_N3, T4x4):
+    """Column-vector convention: X' = T @ X. pts:(N,3) -> (N,3)."""
+    pts = np.asarray(pts_N3, dtype=np.float32)
+    ones = np.ones((pts.shape[0], 1), dtype=np.float32)
+    ph = np.concatenate([pts, ones], axis=1)            # (N,4)
+    wh = (T4x4 @ ph.T).T                                # (N,4)
+    w = wh[:, 3:4]
+    w = np.where(np.abs(w) < 1e-8, 1.0, w)
+    return (wh[:, :3] / w).astype(np.float32)
+
+def get_database_eval_points_nerf(database):
+    """
+    GT world cloud from NeRF Synthetic depths.
+
+    For each view:
+      depth,mask,K
+      -> pts_cam_cv  = mask_depth_to_pts(mask, depth, K)              (OpenCV camera)
+      -> T_camcv2w   = C2W_gl @ S4
+      -> pts_world   = transform_points_col(pts_cam_cv, T_camcv2w)
+    """
+
+    assert isinstance(database, NeRFSyntheticDatabase)
+    _, _, test_ids = get_database_split(database, 'test')
+
+    all_pts = []
+    for img_id in tqdm(test_ids, desc='GT->world'):
+        depth, mask = database.get_depth(img_id)
+        K = database.get_K(img_id)
+        c2w_gl = to_4x4(database.get_pose(img_id))
+
+        pts_cam_cv = mask_depth_to_pts(mask, depth, K)      # (N,3), OpenCV camera frame
+        T_camcv2w = c2w_gl @ S4                              # (4,4)
+        pts_world = transform_points_col(pts_cam_cv, T_camcv2w)
+        if pts_world.size:
+            all_pts.append(pts_world)
+
+    if not all_pts:
+        return np.zeros((0,3), np.float32)
+
+    pts = np.concatenate(all_pts, 0).astype(np.float32)
+    pcd = o3d.geometry.PointCloud()
+    pcd.points = o3d.utility.Vector3dVector(pts.astype(np.float64))
+    down = pcd.voxel_down_sample(voxel_size=0.01)
+    return np.asarray(down.points, np.float32)
