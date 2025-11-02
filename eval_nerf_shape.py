@@ -154,7 +154,7 @@ def main():
     database = parse_database_name(f'nerf/{args.object}', 'data/nerf_synthetic')
 
     # GT and predicted point clouds in WORLD coordinates
-    pts_gt = get_database_eval_points_nerf(database)
+    pts_gt = get_database_eval_points_nerf(database, 'data/eval_gt.ply')
     pts_pr = get_mesh_eval_points_nerf(database, args.mesh)
 
     print(f"pts_gt min: {pts_gt.min():.5f}, max: {pts_gt.max():.5f}, shape: {pts_gt.shape}")
