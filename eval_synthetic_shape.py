@@ -69,11 +69,15 @@ def get_mesh_eval_points(database):
         for index, test_id in enumerate(test_ids):
             K = database.get_K(test_id)
             pose = database.get_pose(test_id)
+            print(f"pose shape before inverse: {pose.shape}")
+            print(f"K shape: {K.shape}")
             h, w, _ = database.get_image(test_id).shape
             depth_pr, mask_pr = rasterize_depth_map(mesh, pose, K, (h, w))
             pts_ = mask_depth_to_pts(mask_pr, depth_pr, K)
             pose = pose_inverse(database.get_pose(test_id))
+            print(f"pose shape: {pose.shape}, pts_ shape: {pts_.shape}, depth_pr shape: {depth_pr.shape}, mask_pr shape: {mask_pr.shape}")
             pts_pr.append(pose_apply(pose, pts_))
+            print(f"shape after pose_apply(): {pts_pr[-1].shape}")
             pbar.update(1)
 
         pts_pr = np.concatenate(pts_pr, 0).astype(np.float32)

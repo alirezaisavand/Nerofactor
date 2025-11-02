@@ -142,7 +142,10 @@ def get_mesh_eval_points(database):
         pts_pr = []
         for test_id in test_ids:
             K = database.get_K(test_id)          # (3,3)
+
             c2w = database.get_pose(test_id)     # (4,4), camera-to-world
+            print(f"pose shape before inverse: {c2w.shape}")
+            print(f"K shape: {K.shape}")
             c2w = to_4x4(c2w)
             H, W, _ = database.get_image(test_id).shape
 
@@ -150,6 +153,9 @@ def get_mesh_eval_points(database):
             pts_cam = mask_depth_to_pts(mask_pr, depth_pr, K)  # camera-frame points
             pts_world = pose_apply(c2w, pts_cam)               # camera->world (no inverse)
             pts_pr.append(pts_world)
+            print(
+                f"pts_cam shape: {pts_cam.shape}, pts_world shape: {pts_world.shape}, depth_pr shape: {depth_pr.shape}, mask_pr shape: {mask_pr.shape}")
+
             pbar.update(1)
 
         pts_pr = np.concatenate(pts_pr, axis=0).astype(np.float32)
