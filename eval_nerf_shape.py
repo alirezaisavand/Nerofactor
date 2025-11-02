@@ -8,13 +8,12 @@ import trimesh
 from tqdm import tqdm
 import open3d as o3d
 
-from NeRO.dataset.database import get_database_eval_points_nerf
 # ---- your existing utils (we rely on their behavior) ----
 # mask_depth_to_pts returns camera-frame points from (mask, depth, K)
 # project_points expects OpenCV-style W2C extrinsics and K
 from dataset.database import (
     parse_database_name, get_database_split,
-    GlossySyntheticDatabase, NeRFSyntheticDatabase, get_database_eval_points
+    GlossySyntheticDatabase, NeRFSyntheticDatabase, get_database_eval_points, get_database_eval_points_nerf
 )
 from utils.base_utils import (
     mask_depth_to_pts, project_points, pose_apply, pose_inverse # pose_apply -> transform_points_pose under the hood
