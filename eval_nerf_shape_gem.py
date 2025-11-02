@@ -7,7 +7,6 @@ import open3d as o3d
 from pathlib import Path
 from tqdm import tqdm
 
-from NeRO.dataset.database import get_database_eval_points_gem
 # Assuming these imports are in your environment
 from dataset.database import parse_database_name, get_database_split, GlossySyntheticDatabase, \
     NeRFSyntheticDatabase, get_database_eval_points_gem  # Added NeRFSyntheticDatabase
