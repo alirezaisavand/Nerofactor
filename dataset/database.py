@@ -697,7 +697,7 @@ def get_database_eval_points(database):
             pose_w2c = pose_inverse(pose_c2w)
             # K, pose = gl_c2w_to_cv_w2c(K, pose, out_shape="3x4")
             # pose = pose_inverse(pose)
-            pts_ = mask_depth_to_pts(mask, depth, K)
+            pts_ = mask_depth_to_pts(mask, -depth, K)
             pts_ = pose_apply(pose_c2w, pts_)
             pts.append(pts_)
         pts = np.concatenate(pts, 0).astype(np.float32)
