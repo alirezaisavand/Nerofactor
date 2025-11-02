@@ -659,7 +659,6 @@ def get_database_eval_points_nerf(database, voxel_size=0.01, depth_scale=1.0, sa
     Returns:
       (N,3) float32 world points (voxel-downsampled if voxel_size>0).
     """
-    from dataset.database import get_database_split, NeRFSyntheticDatabase
     assert isinstance(database, NeRFSyntheticDatabase)
 
     # Prefer 'test' split; if empty (since your loader only reads 'train'), fall back to 'train'
