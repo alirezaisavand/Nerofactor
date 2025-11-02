@@ -8,6 +8,7 @@ import trimesh
 from tqdm import tqdm
 import open3d as o3d
 
+from NeRO.dataset.database import get_database_eval_points_nerf
 # ---- your existing utils (we rely on their behavior) ----
 # mask_depth_to_pts returns camera-frame points from (mask, depth, K)
 # project_points expects OpenCV-style W2C extrinsics and K
@@ -154,7 +155,7 @@ def main():
     database = parse_database_name(f'nerf/{args.object}', 'data/nerf_synthetic')
 
     # GT and predicted point clouds in WORLD coordinates
-    pts_gt = get_database_eval_points(database)
+    pts_gt = get_database_eval_points_nerf(database)
     pts_pr = get_mesh_eval_points_nerf(database, args.mesh)
 
     print(f"pts_gt min: {pts_gt.min():.5f}, max: {pts_gt.max():.5f}, shape: {pts_gt.shape}")
