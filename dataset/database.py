@@ -517,7 +517,7 @@ class NeRFSyntheticDatabase(BaseDatabase):
         focal = .5 * W / np.tan(.5 * camera_angle_x)
         self.Ks = np.array([
             [focal, 0, 0.5 * W],
-            [0, focal * (H/W), 0.5 * H],
+            [0, focal, 0.5 * H],
             [0, 0, 1]
         ])
 
