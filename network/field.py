@@ -1324,13 +1324,14 @@ class MCShadingNetwork(nn.Module):
 
         x, y = self.compute_tangent_bitangent_flat(normals, sources)
         # rotate tangent and bitangent
-        cos_2rot = rotation[:, 0:1]  # (N,1)
-        sin_2rot = rotation[:, 1:2]  # (N,1)
-
-        cos_rot = torch.sqrt(((cos_2rot + 1.0) / 2.0).clamp(min=eps)).clamp(min=0.0, max=1.0)  # (N,1)
-        self.nan_inf_check(cos_rot, 'cos_rot')
-        sin_rot = torch.sign(sin_2rot) * torch.sqrt(((1.0 - cos_2rot) / 2.0).clamp(min=eps)).clamp(min=0.0, max=1.0)  # (N,1)
-        self.nan_inf_check(sin_rot, 'sin_rot')
+        # cos_2rot = rotation[:, 0:1]  # (N,1)
+        # sin_2rot = rotation[:, 1:2]  # (N,1)
+        cos_rot = rotation[:, 0:1]  # (N,1)
+        sin_rot = rotation[:, 1:2]  # (N,1)
+        # cos_rot = torch.sqrt(((cos_2rot + 1.0) / 2.0).clamp(min=eps)).clamp(min=0.0, max=1.0)  # (N,1)
+        # self.nan_inf_check(cos_rot, 'cos_rot')
+        # sin_rot = torch.sign(sin_2rot) * torch.sqrt(((1.0 - cos_2rot) / 2.0).clamp(min=eps)).clamp(min=0.0, max=1.0)  # (N,1)
+        # self.nan_inf_check(sin_rot, 'sin_rot')
         if sources is None:
             x, y = self.rotate_tangent_bitangent(x, y, cos_rot, sin_rot)
 
