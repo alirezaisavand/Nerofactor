@@ -10,7 +10,7 @@ class Loss:
 class NeRFRenderLoss(Loss):
     default_cfg = {
         'render_loss_weight_begin': 1,
-        'render_loss_weight_end': 5,
+        'render_loss_weight_end': 1,
         'render_weight_decay_begin': 0,
         'render_weight_decay_mid': 5000,
         'render_weight_decay_end': 10000,
@@ -160,7 +160,7 @@ class OccLoss(Loss):
 
 class InitSDFRegLoss(Loss):
     default_cfg = {
-        'SDF_loss_weight': 3.0,
+        'SDF_loss_weight': 1.0,
     }
 
     def __init__(self, cfg):
@@ -204,7 +204,7 @@ class InitSDFRegLoss(Loss):
 
 class MaskLoss(Loss):
     default_cfg = {
-        'mask_loss_weight_begin': 0.3,
+        'mask_loss_weight_begin': 0.5,
         'mask_loss_weight_end': 1,
         'mask_weight_decay_begin': 0,
         'mask_weight_decay_end': 30000,
@@ -316,10 +316,10 @@ class CurvLoss(Loss):
 class OpacityLoss(Loss):
     default_cfg = {
         'opacity_loss_weight': 1,  # changed here from 0.01 to 1
-        'opacity_loss_weight_begin': 0.001,
+        'opacity_loss_weight_begin': 0,
         'opacity_loss_weight_end': 0.01,
-        'opacity_weight_decay_begin': 10000,
-        'opacity_weight_decay_end': 25000,
+        'opacity_weight_decay_begin': 15000,
+        'opacity_weight_decay_end': 30000,
     }
 
     def get_opacity_weight(self, step):
