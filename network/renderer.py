@@ -726,14 +726,10 @@ class NeROShapeRenderer(nn.Module):
         alpha, sampled_color = torch.zeros(batch_size, n_samples), torch.zeros(batch_size, n_samples, 3)
 
         if torch.sum(outer_mask) > 0:
-            if is_nerf:
-                alpha[outer_mask] = torch.zeros_like(alpha[outer_mask])
-                sampled_color[outer_mask] = torch.zeros_like(sampled_color[outer_mask])
-            else:
-                alpha[outer_mask], sampled_color[outer_mask] = self.compute_density_alpha(points[outer_mask],
-                                                                                          dists[outer_mask],
-                                                                                          -dirs[outer_mask],
-                                                                                          self.outer_nerf)
+            alpha[outer_mask], sampled_color[outer_mask] = self.compute_density_alpha(points[outer_mask],
+                                                                                      dists[outer_mask],
+                                                                                      -dirs[outer_mask],
+                                                                                      self.outer_nerf)
 
         if torch.sum(inner_mask) > 0:
             alpha[inner_mask], gradients, feature_vector, inv_s, sdf = self.compute_sdf_alpha(points[inner_mask],
@@ -752,8 +748,7 @@ class NeROShapeRenderer(nn.Module):
                           :-1]  # rn,sn
         color = (sampled_color * weights[..., None]).sum(dim=1)
         acc = torch.sum(weights, -1)
-        if is_nerf:
-            color = color + (1. - acc[..., None])
+
 
         outputs = {
             'ray_rgb': color,  # rn,3
