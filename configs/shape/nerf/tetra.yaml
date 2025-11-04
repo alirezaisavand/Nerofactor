@@ -4,16 +4,16 @@ name: tetra_shape
 network: shape
 database_name: nerf/tetra
 apply_acc_loss: true
+occ_loss_step: 20000
 is_nerf: true
 
 ######loss######
-loss: ['nerf_render','eikonal','std','init_sdf_reg', 'occ', 'mask', 'curv', 'opacity'] # mask,
+loss: ['nerf_render','eikonal','std','init_sdf_reg', 'occ'] # mask,
 val_metric: ['shape_render']
 key_metric_name: psnr
 eikonal_weight: 0.1
 freeze_inv_s_step: 15000 # changed here from 15000 to 20000
 
-'apply_opacity_loss': True,
 
 ####dataset#####
 train_dataset_type: dummy
