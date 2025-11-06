@@ -285,9 +285,11 @@ def main():
 
         # save masked rendered image
         masked_rd = (rd_f * mask[..., None])
+        masked_gt = (gt_f * mask[..., None])
         out_path = save_dir / "masked_rendered" / img_name
+        gt_out_path = save_dir / "masked_rendered" / f"gt_{img_name}"
         imwrite_rgb(out_path, (np.clip(masked_rd, 0, 1) * 255).astype(np.uint8))
-
+        imwrite_rgb(gt_out_path, (np.clip(masked_gt, 0, 1) * 255).astype(np.uint8))
         # metrics over masked region (tight bbox)
         ps = psnr_masked(gt_f, rd_f, mask)
         ss = ssim_masked(gt_f, rd_f, mask)
