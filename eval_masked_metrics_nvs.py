@@ -76,40 +76,87 @@ def rectified_mesh_vertices_faces(mesh, scale, offset, R_rec):
 # ----------------- CPU silhouette rasterization (union of projected triangles) -----------------
 def project_points(K, R, t, V):
     """
-    V: (N,3) world coords (already rectified to DB space).
-    Returns: u,v,Z (N,), with u,v in pixel coords.
+    V: (N,3) world coords (already rectified).
+    R,t: world->cam (OpenCV) so x_c = R x_w + t.
+    Returns: uv (N,2), Z (N,), valid (N,)
     """
     Xc = (R @ V.T + t[:, None]).T  # (N,3)
     Z = Xc[:, 2]
-    # avoid divide by zero
-    valid = Z > 1e-6
+    valid = Z > 1e-6  # simple near-plane
     uv = np.empty((V.shape[0], 2), dtype=np.float32); uv[:] = np.nan
     uv[valid, 0] = K[0, 0] * (Xc[valid, 0] / Z[valid]) + K[0, 2]
     uv[valid, 1] = K[1, 1] * (Xc[valid, 1] / Z[valid]) + K[1, 2]
     return uv, Z, valid
 
-def build_silhouette_mask(V, F, K, R, t, H, W):
+def estimate_front_ratio(K, R, t, V, H, W, sample=20000):
     """
-    Fill each triangle's projection with cv2.fillConvexPoly and OR into a boolean mask.
-    Triangles with any vertex behind the camera (Z<=0) are skipped (simple & robust).
+    Heuristic to decide if (R,t) is world->cam:
+    - fraction of sampled vertices with Z>0
+    - fraction projected inside image
     """
+    n = V.shape[0]
+    idx = np.random.choice(n, size=min(n, sample), replace=False)
+    uv, Z, valid = project_points(K, R, t, V[idx])
+    front = valid.mean()
+    if front <= 0:
+        return 0.0, 0.0
+    u, v = uv[:, 0], uv[:, 1]
+    inside = np.logical_and.reduce((
+        valid,
+        u >= 0, u < W,
+        v >= 0, v < H,
+    )).mean()
+    return float(front), float(inside)
+
+def invert_pose(R, t):
+    """Convert camera->world to world->camera."""
+    Rinv = R.T
+    tinv = -Rinv @ t
+    return Rinv, tinv
+
+def resolve_pose_direction(K, R_in, t_in, V, H, W):
+    """
+    Try both interpretations:
+    - assume (R_in, t_in) is world->cam (w2c)
+    - assume it's camera->world (c2w), so invert to w2c
+    Pick the one that yields more in-front & on-image verts.
+    """
+    front_a, inside_a = estimate_front_ratio(K, R_in, t_in, V, H, W)
+    Rb, tb = invert_pose(R_in, t_in)
+    front_b, inside_b = estimate_front_ratio(K, Rb, tb, V, H, W)
+
+    score_a = front_a * 0.7 + inside_a * 0.3
+    score_b = front_b * 0.7 + inside_b * 0.3
+
+    if score_b > score_a:
+        return Rb.astype(np.float32), tb.astype(np.float32), {"used": "inverted(c2w->w2c)", "front": front_b, "inside": inside_b}
+    else:
+        return R_in.astype(np.float32), t_in.astype(np.float32), {"used": "as-is(w2c)", "front": front_a, "inside": inside_a}
+
+def build_silhouette_mask(V, F, K, R_in, t_in, H, W, debug_print=False):
+    """
+    Union-of-triangles silhouette using OpenCV fill. Auto-resolves pose direction.
+    """
+    # pick the better pose direction
+    R, t, dbg = resolve_pose_direction(K, R_in, t_in, V, H, W)
+    if debug_print:
+        print(f"pose pick: {dbg['used']}, front={dbg['front']:.3f}, inside={dbg['inside']:.3f}")
+
     mask = np.zeros((H, W), dtype=np.uint8)
     uv, Z, valid = project_points(K, R, t, V)
 
-    # iterate triangles
+    # Fill each triangle
     for tri in F:
         i0, i1, i2 = int(tri[0]), int(tri[1]), int(tri[2])
         if not (valid[i0] and valid[i1] and valid[i2]):
-            continue  # skip triangles crossing the near plane
+            continue
         pts = np.array([uv[i0], uv[i1], uv[i2]], dtype=np.float32)
 
-        # quick reject: all outside screen bbox
         minx, miny = np.floor(pts[:,0].min()), np.floor(pts[:,1].min())
         maxx, maxy = np.ceil(pts[:,0].max()),  np.ceil(pts[:,1].max())
         if maxx < 0 or maxy < 0 or minx >= W or miny >= H:
             continue
 
-        # clip polygon to image bounds via OpenCV (fillConvexPoly safely clips)
         cv2.fillConvexPoly(mask, pts.astype(np.int32), 255, lineType=cv2.LINE_AA)
 
     return mask.astype(bool)
