@@ -207,7 +207,7 @@ def main():
         H, W = gt.shape[:2]
 
         # build silhouette mask by projecting all triangles
-        mask = build_silhouette_mask(V_rect, F, K, R, t, H, W)
+        mask = build_silhouette_mask(V_rect, F, K, R, t, H, W, debug_print=True)
 
         gt_f = gt.astype(np.float32) / 255.0
         rd_f = rd.astype(np.float32) / 255.0
@@ -220,6 +220,8 @@ def main():
         # metrics over masked region (tight bbox)
         ps = psnr_masked(gt_f, rd_f, mask)
         ss = ssim_masked(gt_f, rd_f, mask)
+        assert 0 < K[0, 2] < W and 0 < K[1, 2] < H, "cx,cy should lie within image"
+        print(f"Image {img_name}: size=({W}x{H})  fx={K[0, 0]:.1f} fy={K[1, 1]:.1f}  cx={K[0, 2]:.1f} cy={K[1, 2]:.1f}")
 
         results.append({
             "img_id": int(img_id),
