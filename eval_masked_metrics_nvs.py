@@ -10,7 +10,7 @@ from dataclasses import dataclass
 
 # ---- paste/import your GlossyRealDatabase class here ----
 # from your_module import GlossyRealDatabase
-
+from dataset.database import GlossyRealDatabase
 # ---------------------- split ----------------------
 def get_database_split(database, split_type='validation', seed=6033):
     """
