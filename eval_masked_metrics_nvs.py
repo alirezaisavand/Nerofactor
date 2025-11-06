@@ -9,6 +9,52 @@ from dataset.database import GlossyRealDatabase
 # ----------------- paste/import your GlossyRealDatabase here -----------------
 # from your_module import GlossyRealDatabase
 
+def rectified_mesh_vertices_faces__apply(mesh, scale, offset, R_rec):
+    v = np.asarray(mesh.vertices, dtype=np.float32)
+    v_rect = (scale * (v + offset[None, :])) @ R_rec.T
+    f = np.asarray(mesh.triangles, dtype=np.int32)
+    return v_rect, f
+
+def rectified_mesh_vertices_faces__skip(mesh):
+    v = np.asarray(mesh.vertices, dtype=np.float32)
+    f = np.asarray(mesh.triangles, dtype=np.int32)
+    return v, f
+
+def estimate_inside_ratio_for_mesh(V, F, K, R, t, H, W, sample_faces=2000):
+    # Sample some faces and estimate how many pixels would fall inside after projection
+    # Fast proxy: sample face vertices → project → count how many are in-front AND inside image
+    nF = F.shape[0]
+    idx = np.random.choice(nF, size=min(nF, sample_faces), replace=False)
+    verts = np.unique(F[idx].reshape(-1))
+    uv, Z, valid = project_points(K, R, t, V[verts])
+    if valid.sum() == 0:
+        return 0.0, 0.0
+    u, v = uv[:, 0], uv[:, 1]
+    inside = np.logical_and.reduce((valid, u >= 0, u < W, v >= 0, v < H))
+    front_ratio = float(valid.mean())
+    inside_ratio = float(inside.mean())
+    return front_ratio, inside_ratio
+
+def choose_mesh_space(mesh, db, K, R, t, H, W):
+    # Variant A: assume mesh is in original object coords -> APPLY rectification (to x3)
+    V_a, F_a = rectified_mesh_vertices_faces__apply(mesh, db.scale_rect, db.offset_rect, db.R_rect)
+    fa, ia = estimate_inside_ratio_for_mesh(V_a, F_a, K, R, t, H, W)
+
+    # Variant B: assume mesh already in rectified coords -> SKIP rectification
+    V_b, F_b = rectified_mesh_vertices_faces__skip(mesh)
+    fb, ib = estimate_inside_ratio_for_mesh(V_b, F_b, K, R, t, H, W)
+
+    score_a = fa * 0.7 + ia * 0.3
+    score_b = fb * 0.7 + ib * 0.3
+
+    picked = 'apply_rectification' if score_a >= score_b else 'skip_rectification'
+    V, F = (V_a, F_a) if picked == 'apply_rectification' else (V_b, F_b)
+
+    print(f"[mesh-space] pick={picked}  A(front={fa:.3f}, inside={ia:.3f})  "
+          f"B(front={fb:.3f}, inside={ib:.3f})")
+    return V, F, picked
+
+
 # ----------------- same split logic you gave -----------------
 def get_database_split(database, split_type='validation', seed=6033):
     random.seed(seed)
@@ -183,11 +229,36 @@ def main():
     save_dir = Path(args.save_dir)
     (save_dir / "masked_rendered").mkdir(parents=True, exist_ok=True)
 
-    # load mesh & rectify into DB coords
+    # Load mesh once (as you already do)
     gt_mesh = o3d.io.read_triangle_mesh(args.mesh)
     if len(gt_mesh.triangles) == 0:
         raise RuntimeError("GT mesh has no triangles.")
-    V_rect, F = rectified_mesh_vertices_faces(gt_mesh, db.scale_rect, db.offset_rect, db.R_rect)
+
+    # For the first NVS id, resolve both pose direction and mesh space, then reuse
+    first_id = nvs_ids[0]
+    K0 = db.get_K(first_id)
+    pose0 = db.get_pose(first_id);
+    R0, t0 = pose0[:, :3].astype(np.float32), pose0[:, 3].astype(np.float32)
+    gt0 = db.get_image(first_id);
+    H0, W0 = gt0.shape[:2]
+
+    # Make sure we resolve pose direction just like in your mask builder
+    R0_w2c, t0_w2c, _ = resolve_pose_direction(K0, R0, t0, np.array([[0, 0, 0]], np.float32), H0, W0)  # dummy V for now
+
+    # Actually choose mesh space using the proper vertex set
+    # Use apply/skip with the real mesh and the pose resolved above
+    V_rectA, F_rectA = rectified_mesh_vertices_faces__apply(gt_mesh, db.scale_rect, db.offset_rect, db.R_rect)
+    V_rectB, F_rectB = rectified_mesh_vertices_faces__skip(gt_mesh)
+
+    # Now compute with the real vertices
+    fa, ia = estimate_inside_ratio_for_mesh(V_rectA, F_rectA, K0, R0_w2c, t0_w2c, H0, W0)
+    fb, ib = estimate_inside_ratio_for_mesh(V_rectB, F_rectB, K0, R0_w2c, t0_w2c, H0, W0)
+    picked = 'apply_rectification' if (fa * 0.7 + ia * 0.3) >= (fb * 0.7 + ib * 0.3) else 'skip_rectification'
+    print(f"[mesh-space] first-view pick={picked}  A(front={fa:.3f}, inside={ia:.3f})  "
+          f"B(front={fb:.3f}, inside={ib:.3f})")
+
+    # Set V,F accordingly for the whole loop:
+    V_rect, F = (V_rectA, F_rectA) if picked == 'apply_rectification' else (V_rectB, F_rectB)
 
     results = []
     for img_id in nvs_ids:
