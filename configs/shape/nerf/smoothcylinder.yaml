@@ -8,7 +8,7 @@ occ_loss_step: 20000 # changed here from 20000 to 25000
 is_nerf: true
 
 ######loss######
-loss: ['nerf_render','eikonal','std','init_sdf_reg', 'occ', 'mask', 'curv', 'opacity'] # mask,
+loss: ['nerf_render','eikonal','std','init_sdf_reg', 'occ', 'curv', 'opacity'] # mask,
 val_metric: ['shape_render']
 key_metric_name: psnr
 eikonal_weight: 0.1
@@ -32,7 +32,7 @@ val_set_list:
 optimizer_type: adam
 lr_type: warm_up_cos
 lr_cfg: {}
-total_step: 300000
+total_step: 100000
 val_interval: 1000
 save_interval: 1000
 train_log_step: 20
