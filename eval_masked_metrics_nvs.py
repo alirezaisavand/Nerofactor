@@ -100,12 +100,12 @@ def imwrite_rgb(path, img_rgb):
 #         return float("inf")
 #     return 10.0 * math.log10((data_range ** 2) / mse)
 
-def compute_psnr(img_gt, img_pr):
+def compute_psnr(img_gt, img_pr, data_range=1.0):
     img_gt = img_gt.reshape([-1, 3]).astype(np.float32)
     img_pr = img_pr.reshape([-1, 3]).astype(np.float32)
     mse = np.mean((img_gt - img_pr) ** 2, 0)
     mse = np.mean(mse)
-    psnr = 10 * np.log10(255 * 255 / mse)
+    psnr = 10 * np.log10(data_range**2 / mse)
     return psnr
 
 # def ssim_masked(gt, pred, mask):
@@ -300,8 +300,8 @@ def main():
         imwrite_rgb(out_path, (np.clip(masked_rd, 0, 1) * 255).astype(np.uint8))
         imwrite_rgb(gt_out_path, (np.clip(masked_gt, 0, 1) * 255).astype(np.uint8))
         # metrics over masked region (tight bbox)
-        ps = compute_psnr(gt_f, rd_f)
-        ss = structural_similarity(gt_f, rd_f, win_size=11, channel_axis=2, data_range=255)
+        ps = compute_psnr(gt_f, rd_f, data_range=1.0)
+        ss = structural_similarity(gt_f, rd_f, win_size=11, channel_axis=2, data_range=1.0)
         assert 0 < K[0, 2] < W and 0 < K[1, 2] < H, "cx,cy should lie within image"
         print(f"Image {img_name}: size=({W}x{H})  fx={K[0, 0]:.1f} fy={K[1, 1]:.1f}  cx={K[0, 2]:.1f} cy={K[1, 2]:.1f}")
 
