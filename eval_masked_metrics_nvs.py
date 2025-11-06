@@ -172,7 +172,8 @@ def main():
         img_name = db.image_names[img_id]
 
         gt_path = Path(db.root) / f"images_{db.max_len}" / img_name
-        rd_path = Path(args.rendered_dir) / img_name.split('.')[0] + ".png"
+        rd_name = img_name.split('.')[0] + ".png"
+        rd_path = Path(args.rendered_dir) / rd_name
 
         gt = imread_rgb(gt_path)
         rd = imread_rgb(rd_path)
