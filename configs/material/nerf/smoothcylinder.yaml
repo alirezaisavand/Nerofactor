@@ -13,11 +13,11 @@ reg_diffuse_light: true
 reg_diffuse_light_lambda: 0.01 # Changed here from 0.010 to 0.002
 
 # Changed here
-reg_energy_loss: true
-reg_energy_loss_lambda: 0.01 # Changed here from 0.01 to 0.001
+reg_energy_loss: False
+reg_energy_loss_lambda: 0 # Changed here from 0.01 to 0.001
 
-reg_spec_loss: true
-reg_spec_loss_lambda: 0.01 # Changed here from 0.01 to 0.001
+reg_spec_loss: False
+reg_spec_loss_lambda: 0 # Changed here from 0.01 to 0.001
 
 reg_mat: true
 shader_cfg:
