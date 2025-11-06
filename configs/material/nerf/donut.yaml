@@ -57,6 +57,6 @@ lr_cfg:
   end_warm: 1000
   end_iter: 100000
 total_step: 100000
-val_interval: 2000
-save_interval: 2000
+val_interval: 5000
+save_interval: 5000
 train_log_step: 10
