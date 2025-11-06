@@ -283,7 +283,8 @@ def main():
         gt = imread_rgb(gt_path)
         rd = imread_rgb(rd_path)
         if gt.shape[:2] != rd.shape[:2]:
-            rd = cv2.resize(rd, (gt.shape[1], gt.shape[0]), interpolation=cv2.INTER_AREA)
+            print("Error in shapes:", gt.shape, rd.shape)
+        #     rd = cv2.resize(rd, (gt.shape[1], gt.shape[0]), interpolation=cv2.INTER_AREA)
         H, W = gt.shape[:2]
 
         # build silhouette mask by projecting all triangles
@@ -300,8 +301,8 @@ def main():
         imwrite_rgb(out_path, (np.clip(masked_rd, 0, 1) * 255).astype(np.uint8))
         imwrite_rgb(gt_out_path, (np.clip(masked_gt, 0, 1) * 255).astype(np.uint8))
         # metrics over masked region (tight bbox)
-        ps = compute_psnr(gt_f, rd_f, data_range=1.0)
-        ss = structural_similarity(gt_f, rd_f, win_size=11, channel_axis=2, data_range=1.0)
+        ps = compute_psnr(gt* mask[..., None], rd* mask[..., None], data_range=255)
+        ss = structural_similarity(gt* mask[..., None], rd* mask[..., None], win_size=11, channel_axis=2, data_range=255)
         assert 0 < K[0, 2] < W and 0 < K[1, 2] < H, "cx,cy should lie within image"
         print(f"Image {img_name}: size=({W}x{H})  fx={K[0, 0]:.1f} fy={K[1, 1]:.1f}  cx={K[0, 2]:.1f} cy={K[1, 2]:.1f}")
 
