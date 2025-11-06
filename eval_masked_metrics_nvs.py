@@ -5,6 +5,7 @@ import cv2
 from skimage.metrics import structural_similarity as ssim
 import open3d as o3d  # only for PLY IO
 from dataset.database import GlossyRealDatabase
+from skimage.metrics import structural_similarity
 
 # ----------------- paste/import your GlossyRealDatabase here -----------------
 # from your_module import GlossyRealDatabase
@@ -89,28 +90,36 @@ def imwrite_rgb(path, img_rgb):
     bgr = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2BGR)
     cv2.imwrite(str(path), bgr)
 
-def psnr_masked(gt, pred, mask, data_range=1.0):
-    m = mask.astype(np.float32)
-    if m.sum() == 0:
-        return float("nan")
-    diff2 = (gt - pred) ** 2
-    mse = (diff2 * m[..., None]).sum() / (m.sum() * gt.shape[2])
-    if mse <= 0:
-        return float("inf")
-    return 10.0 * math.log10((data_range ** 2) / mse)
+# def psnr_masked(gt, pred, mask, data_range=1.0):
+#     m = mask.astype(np.float32)
+#     if m.sum() == 0:
+#         return float("nan")
+#     diff2 = (gt - pred) ** 2
+#     mse = (diff2 * m[..., None]).sum() / (m.sum() * gt.shape[2])
+#     if mse <= 0:
+#         return float("inf")
+#     return 10.0 * math.log10((data_range ** 2) / mse)
 
-def ssim_masked(gt, pred, mask):
-    ys, xs = np.where(mask)
-    if len(xs) == 0:
-        return float("nan")
-    y0, y1 = ys.min(), ys.max() + 1
-    x0, x1 = xs.min(), xs.max() + 1
-    gt_c = gt[y0:y1, x0:x1]
-    pr_c = pred[y0:y1, x0:x1]
-    try:
-        return float(ssim(gt_c, pr_c, channel_axis=2, data_range=1.0))
-    except TypeError:
-        return float(np.mean([ssim(gt_c[..., c], pr_c[..., c], data_range=1.0) for c in range(3)]))
+def compute_psnr(img_gt, img_pr):
+    img_gt = img_gt.reshape([-1, 3]).astype(np.float32)
+    img_pr = img_pr.reshape([-1, 3]).astype(np.float32)
+    mse = np.mean((img_gt - img_pr) ** 2, 0)
+    mse = np.mean(mse)
+    psnr = 10 * np.log10(255 * 255 / mse)
+    return psnr
+
+# def ssim_masked(gt, pred, mask):
+#     ys, xs = np.where(mask)
+#     if len(xs) == 0:
+#         return float("nan")
+#     y0, y1 = ys.min(), ys.max() + 1
+#     x0, x1 = xs.min(), xs.max() + 1
+#     gt_c = gt[y0:y1, x0:x1]
+#     pr_c = pred[y0:y1, x0:x1]
+#     try:
+#         return float(ssim(gt_c, pr_c, channel_axis=2, data_range=1.0))
+#     except TypeError:
+#         return float(np.mean([ssim(gt_c[..., c], pr_c[..., c], data_range=1.0) for c in range(3)]))
 
 def rectified_mesh_vertices_faces(mesh, scale, offset, R_rec):
     # x3 = R_rec @ (scale * (x0 + offset))
@@ -291,8 +300,8 @@ def main():
         imwrite_rgb(out_path, (np.clip(masked_rd, 0, 1) * 255).astype(np.uint8))
         imwrite_rgb(gt_out_path, (np.clip(masked_gt, 0, 1) * 255).astype(np.uint8))
         # metrics over masked region (tight bbox)
-        ps = psnr_masked(gt_f, rd_f, mask)
-        ss = ssim_masked(gt_f, rd_f, mask)
+        ps = compute_psnr(gt_f, rd_f)
+        ss = structural_similarity(gt_f, rd_f, win_size=11, channel_axis=2, data_range=255)
         assert 0 < K[0, 2] < W and 0 < K[1, 2] < H, "cx,cy should lie within image"
         print(f"Image {img_name}: size=({W}x{H})  fx={K[0, 0]:.1f} fy={K[1, 1]:.1f}  cx={K[0, 2]:.1f} cy={K[1, 2]:.1f}")
 
