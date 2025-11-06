@@ -329,8 +329,8 @@ def main():
         "per_image": results,
         "average": {"psnr_masked": avg_psnr, "ssim_masked": avg_ssim}
     }
-    with open(save_dir / "metrics.json", "w") as f:
-        json.dump(out_json, f, indent=2)
+    # with open(save_dir / "metrics.json", "w") as f:
+    #     json.dump(out_json, f, indent=2)
 
     print("\n=== Summary (NVS) ===")
     for r in results:
