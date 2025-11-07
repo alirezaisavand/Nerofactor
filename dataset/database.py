@@ -577,7 +577,7 @@ def parse_database_name(database_name: str, dataset_dir: str) -> BaseDatabase:
 def get_database_split(database: BaseDatabase, split_type='validation'):
     random.seed(6033)
     img_ids = database.get_img_ids().copy()
-    num_nvs_imgs = 15
+    num_nvs_imgs = 5
     random.shuffle(img_ids)
     nvs_ids = img_ids[:num_nvs_imgs]
     if split_type == 'validation':
