@@ -1,0 +1,143 @@
+# Research and development rules
+
+## Purpose and methodology
+
+This repository develops NeRO-based geometry reconstruction and anisotropic
+material estimation from calibrated multiview images. Geometry training learns
+an implicit surface; mesh extraction supplies geometry to material training.
+Rendering, novel-view synthesis (NVS), and geometry evaluation assess different
+parts of the method and must retain their own protocols and provenance.
+
+The research workflow is: state a hypothesis, identify a reference implementation
+and its exact configuration, define controlled changes and evaluation splits,
+record all runs, and distinguish historical reports from independent evidence.
+An infrastructure refactor must preserve the computation being studied.
+
+## Workspace and repository conventions
+
+The host is `marineris`. The maintained development branch is
+`paper/infrastructure`, initialized at the `anisotropic` baseline.
+
+| Location | Role |
+| --- | --- |
+| `/home/isavand/paper/Nerofactor-paper` | Versioned code, configurations, documentation, and small reviewed fixtures |
+| `/home/isavand/paper/data` | Original input datasets; preserve without modification |
+| `/home/isavand/paper/final_results` | Historical thesis results, meshes, checkpoints, logs, and comparison artifacts; preserve without modification |
+| `/home/isavand/paper/paper_runs` | Future experiment outputs; not yet created in milestone 1D.1 |
+
+Keep code separate from datasets and generated storage. Do not introduce a
+writable repository `data` symlink that combines original inputs with outputs.
+Proposed container paths are `/inputs/datasets` and `/inputs/thesis` read-only,
+and `/outputs` for the selected experiment's writable storage. These mounts are
+planned, not implemented by this document.
+
+Use existing Python/PyTorch/NumPy style, `snake_case` names, and focused diffs.
+Avoid unrelated formatting, dependency upgrades, or configuration rewrites.
+Keep host-specific settings and secrets outside committed files. Ignore rules
+reduce accidental Git additions; they are not filesystem protection.
+
+## Historical branches
+
+The inspected baseline refs and exact hashes are recorded in
+[BASELINE_INVENTORY.md](docs/BASELINE_INVENTORY.md).
+
+| Branch | Historical role and limitation |
+| --- | --- |
+| `anisotropic` | Starting implementation for infrastructure development; contains scene-specific regularization ablations and is not automatically a canonical full-method preset |
+| `aniso_geometry_safe` | Alternative material parameterization, geometry/tangent experiments, optimization settings, and dataset/evaluation interfaces; the name does not establish mathematical correctness |
+| `ablation_anisotropic` | Single-angle ablation plus other configuration and numerical differences; not automatically a controlled one-variable comparison |
+
+Only `anisotropic` has a local historical branch at inspection; the other two
+are available as `origin/...` remote-tracking refs. Inspect historical files with
+`git show` and compare them without changing branches or merging. Do not treat
+any pair of these implementations, checkpoints, or reported metrics as
+equivalent. See [BRANCH_COMPARISON.md](docs/BRANCH_COMPARISON.md).
+
+## Scientific integrity
+
+- Never invent measurements, claim an unexecuted validation passed, or label an
+  old log as an independently reproduced result.
+- Identify historical reported results, newly measured results, and hypotheses
+  separately. Preserve original precision, source paths, and uncertainty.
+- Record failed, interrupted, and excluded runs and the reasons for exclusions.
+  Do not select seeds, views, checkpoints, masks, or metrics after inspecting
+  test outcomes to improve a reported comparison.
+- Separate validation-based checkpoint selection from final reporting. Record
+  exact image IDs, masking, color space, resolution, coordinate frames, scale,
+  point sampling, metric definitions, and aggregation rules.
+- Do not infer training steps from mesh filenames or producing commits from
+  directory names. Mark missing provenance as unknown.
+- Treat cache generation, preprocessing, random-number consumption, numerical
+  tolerances, and dependency versions as potentially scientifically relevant.
+
+## Prohibited destructive operations
+
+- Do not move, delete, overwrite, regenerate in place, or change permissions on
+  original datasets or anything in `final_results`.
+- Do not run cleanup commands against research storage, force-add large or
+  ignored artifacts, rewrite historical Git history, or merge historical
+  branches as part of infrastructure cleanup.
+- Do not overwrite another experiment, implicitly resume by scene name, or write
+  generated caches into an input dataset.
+- Do not start training, expensive evaluation, or Docker containers unless the
+  current task explicitly authorizes that execution.
+- Do not change Docker socket permissions, group membership, system permissions,
+  drivers, or security settings, or bypass restricted access. Report limitations.
+- Do not expose credentials in code, configuration, logs, documentation, or tool
+  output. Inspect only the task-relevant environment and files.
+
+## Changes to numerical behavior
+
+Infrastructure work must not silently change algorithms, optimizer defaults,
+schedules, losses, coefficients, sampling, formulas, tensor precision, epsilon
+values, clipping, or seeds. Preserve the selected legacy behavior before
+introducing alternatives. A suspicious implementation is evidence to document,
+not permission to fix it during cleanup.
+
+For a proposed numerical change, identify the exact legacy commit and execution
+path, explain the mathematical or experimental rationale, isolate the change
+from storage refactoring, obtain authorization within the task scope, and supply
+focused regression evidence with stated tolerances. Give corrected behavior a
+distinct configuration/protocol version. Do not retrofit corrected measurements
+into historical result tables or silently convert old checkpoints.
+
+## Reproducibility requirements for future experiments
+
+Each experiment must have a unique ID and separate persistent output directory.
+Resuming must explicitly name the experiment and checkpoint and verify compatible
+configuration and inputs. A material run must identify its exact geometry mesh,
+source run/checkpoint when known, coordinate convention, and content hash.
+
+Record Git commit and any diff, original and resolved configuration, command,
+dataset identity and split IDs, preprocessing/cache parameters, seed policy,
+optimizer parameters, scheduler semantics, all loss weights, sampling settings,
+environment/dependency versions, image digest when applicable, GPU/driver details,
+start/end times, exit status, and evaluation protocol. Future checkpoints should
+include training progress, optimizer state, and relevant RNG/sampler state.
+Distinguish seeded execution from demonstrated deterministic execution.
+
+Milestone 1D.1 uses lightweight names/counts/sizes and small-file inspection.
+Do not hash entire large datasets here. Later provenance work must hash selected
+meshes/checkpoints and define a dataset content-manifest policy; record the scope
+and any missing hashes rather than implying full integrity verification.
+
+## Review, testing, and milestone boundaries
+
+For every change, report its purpose, changed files, evidence, limitations, and
+whether numerical behavior could change. Verify branch and working-tree state
+before editing, preserve user changes, and keep reviews small enough to assess.
+
+For documentation-only work, validate source/ref/path claims, Markdown links,
+whitespace, ignore behavior, and the exact changed-file scope. Do not run training
+to validate documentation. For later implementation, add focused tests for
+configuration semantics, path containment, write isolation, split IDs,
+optimizer/scheduler parity, and explicit resume. Report CPU checks separately
+from GPU tests; blocked GPU checks are not passes. Do not import training entry
+points merely to inspect metadata, because existing loaders can write inputs.
+
+Current authorized milestone: **1D.1, baseline preservation and documentation**.
+Its permitted repository changes are this file, the three requested documents in
+`docs/`, and necessary `.gitignore` safeguards. Do not implement 1D.2, 1D.3, or
+1D.4 until the user reviews 1D.1 and authorizes the next work. A later explicit
+user instruction updates this boundary. The proposed milestones and acceptance
+criteria are in [INFRASTRUCTURE_PLAN.md](docs/INFRASTRUCTURE_PLAN.md).
