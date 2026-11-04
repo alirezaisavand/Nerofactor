@@ -135,21 +135,31 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Milestone 1D.1 has been reviewed and approved. Current authorized milestone:
-**1D.2A, configuration and path infrastructure only**. Its scope is standalone
-configuration/path/run-allocation modules, CPU-only tests, new-format examples,
-and documentation. Keep existing training entry points, all existing YAML files,
-dataset loaders, renderers, training loops, evaluation algorithms, losses, and
-numerical behavior unchanged. Do not migrate or delete legacy configurations.
+Milestones 1D.1 and 1D.2A have been reviewed and approved. Current authorized
+milestone: **1D.2B-1, dataset and cache isolation only**. Its scope is writer
+inventory, opt-in preprocessing/cache routing, approved config-root confinement,
+focused CPU tests, examples, and documentation. Keep training entry points,
+legacy YAML, renderers, training loops, evaluation protocols, losses, optimizers,
+sampling, seeds, precision, and arithmetic unchanged. Do not migrate legacy
+configurations or repair scientific defects.
 
-The new envelopes are infrastructure inputs only until reviewed integration in
-1D.2B. Preserve shallow legacy merges and the scope of shader fields; top-level
+The new envelopes are not accepted by existing training entry points. Preserve
+shallow legacy merges and the scope of shader fields; top-level
 shader-like fields must not be silently forwarded into `shader_cfg`. Diagnostics
 are evidence, not authorization to correct behavior. Run allocation is tested
 only in disposable fixtures; do not allocate a real experiment for this task.
+Dataset construction without `preprocessing` remains legacy compatibility mode.
+New mode must write derived products only inside the selected experiment cache,
+preserving existing source-side products as read-only inputs. Cache identities
+must distinguish dataset, scene/mode/parameters, and implementation versions.
+Schema-1 loads require an explicitly approved configuration root; references must
+not escape it through traversal or symlinks. Record native-backend skips and
+pre-existing custom-loader/evaluator defects instead of silently fixing them.
 
-Do not begin 1D.2B, 1D.3, or 1D.4 until the user reviews 1D.2A and authorizes that
+Do not begin 1D.2B-2, 1D.3, or 1D.4 until the user reviews 1D.2B-1 and authorizes that
 work. Do not commit or push automatically. A later explicit user instruction
 updates this boundary. See [CONFIGURATION_AND_PATHS.md](docs/CONFIGURATION_AND_PATHS.md)
 for implemented APIs and limitations, and [INFRASTRUCTURE_PLAN.md](docs/INFRASTRUCTURE_PLAN.md)
-for later milestones and acceptance criteria.
+for later milestones and acceptance criteria. The writer inventory, opt-in API,
+preservation assessment, and limitations are in
+[DATASET_CACHE_ISOLATION.md](docs/DATASET_CACHE_ISOLATION.md).

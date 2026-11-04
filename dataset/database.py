@@ -24,6 +24,34 @@ from utils.pose_utils import look_at_crop
 class BaseDatabase(abc.ABC):
     def __init__(self, database_name):
         self.database_name = database_name
+        self.preprocessing = None
+
+    def _init_preprocessing(self, preprocessing, parameters=None):
+        if preprocessing is not None:
+            from infrastructure.cache import PreprocessingCache
+            if not isinstance(preprocessing, PreprocessingCache):
+                raise TypeError('preprocessing must be a PreprocessingCache or None for legacy mode')
+            self.preprocessing = preprocessing.bind(self.database_name, self.root, parameters)
+
+    def _source_path(self, relative):
+        if self.preprocessing is not None:
+            return self.preprocessing.source(relative)
+        return f'{self.root}/{relative}'
+
+    def _derived_path(self, relative):
+        if self.preprocessing is not None:
+            return self.preprocessing.path(relative)
+        return Path(f'{self.root}/{relative}')
+
+    def _read_derived(self, relative):
+        if self.preprocessing is not None:
+            return self.preprocessing.read(relative)
+        return f'{self.root}/{relative}'
+
+    def _write_derived(self, relative, writer):
+        if self.preprocessing is not None:
+            return self.preprocessing.write(relative, writer)
+        return writer(f'{self.root}/{relative}')
 
     @abc.abstractmethod
     def get_image(self, img_id):
@@ -95,11 +123,12 @@ class GlossyRealDatabase(BaseDatabase):
                  'up': np.asarray((-0.01911, -0.738918, -0.673524), np.float32), },
     }
 
-    def __init__(self, database_name, dataset_dir):
+    def __init__(self, database_name, dataset_dir, *, preprocessing=None):
         super().__init__(database_name)
         _, self.object_name, self.max_len = database_name.split('/')
 
         self.root = f'{dataset_dir}/{self.object_name}'
+        self._init_preprocessing(preprocessing, {'max_len': self.max_len})
         self._parse_colmap()
         self._normalize()
         if not self.max_len.startswith('raw'):
@@ -107,28 +136,28 @@ class GlossyRealDatabase(BaseDatabase):
             self.image_dir = ''
             self._crop()
         else:
-            h, w, _ = imread(f'{self.root}/images/{self.image_names[self.img_ids[0]]}').shape
+            h, w, _ = imread(self._source_path(f'images/{self.image_names[self.img_ids[0]]}')).shape
             max_len = int(self.max_len.split('_')[1])
             ratio = float(max_len) / max(h, w)
             th, tw = int(ratio * h), int(ratio * w)
             rh, rw = th / h, tw / w
 
-            Path(f'{self.root}/images_{self.max_len}').mkdir(exist_ok=True, parents=True)
+            self._derived_path(f'images_{self.max_len}').mkdir(exist_ok=True, parents=True)
             for img_id in tqdm(self.img_ids):
-                if not Path(f'{self.root}/images_{self.max_len}/{self.image_names[img_id]}').exists():
-                    img = imread(f'{self.root}/images/{self.image_names[img_id]}')
+                if not Path(self._read_derived(f'images_{self.max_len}/{self.image_names[img_id]}')).exists():
+                    img = imread(self._source_path(f'images/{self.image_names[img_id]}'))
                     img = resize_img(img, ratio)
-                    imsave(f'{self.root}/images_{self.max_len}/{self.image_names[img_id]}', img)
+                    self._write_derived(f'images_{self.max_len}/{self.image_names[img_id]}', lambda path: imsave(path, img))
 
                 K = self.Ks[img_id]
                 self.Ks[img_id] = np.diag([rw, rh, 1.0]) @ K
 
     def _parse_colmap(self):
-        print(f'{self.root}/cache.pkl')
-        if Path(f'{self.root}/cache.pkl').exists():
-            self.poses, self.Ks, self.image_names, self.img_ids = read_pickle(f'{self.root}/cache.pkl')
+        print(self._read_derived('cache.pkl'))
+        if Path(self._read_derived('cache.pkl')).exists():
+            self.poses, self.Ks, self.image_names, self.img_ids = read_pickle(self._read_derived('cache.pkl'))
         else:
-            cameras, images, points3d = read_model(f'{self.root}/colmap/sparse/0')
+            cameras, images, points3d = read_model(self._source_path('colmap/sparse/0'))
 
             self.poses, self.Ks, self.image_names, self.img_ids = {}, {}, {}, []
             for img_id, image in images.items():
@@ -150,7 +179,7 @@ class GlossyRealDatabase(BaseDatabase):
                     raise NotImplementedError
                 self.Ks[img_id] = np.asarray([[f, 0, cx], [0, f, cy], [0, 0, 1], ], np.float32)
 
-            save_pickle([self.poses, self.Ks, self.image_names, self.img_ids], f'{self.root}/cache.pkl')
+            self._write_derived('cache.pkl', lambda path: save_pickle([self.poses, self.Ks, self.image_names, self.img_ids], path))
 
     def _load_point_cloud(self, pcl_path):
         with open(pcl_path, "rb") as f:
@@ -169,7 +198,7 @@ class GlossyRealDatabase(BaseDatabase):
         return R
 
     def _normalize(self):
-        ref_points = self._load_point_cloud(f'{self.root}/object_point_cloud.ply')
+        ref_points = self._load_point_cloud(self._source_path('object_point_cloud.ply'))
         max_pt, min_pt = np.max(ref_points, 0), np.min(ref_points, 0)
         center = (max_pt + min_pt) * 0.5
         offset = -center  # x1 = x0 + offset
@@ -196,25 +225,25 @@ class GlossyRealDatabase(BaseDatabase):
             self.poses[img_id] = np.concatenate([R_new, t_new[:, None]], -1)
 
     def _crop(self):
-        if Path(f'{self.root}/images_{self.max_len}/meta_info.pkl').exists():
-            self.poses, self.Ks = read_pickle(f'{self.root}/images_{self.max_len}/meta_info.pkl')
+        if Path(self._read_derived(f'images_{self.max_len}/meta_info.pkl')).exists():
+            self.poses, self.Ks = read_pickle(self._read_derived(f'images_{self.max_len}/meta_info.pkl'))
         else:
             poses_new, Ks_new = {}, {}
             print('cropping images ...')
-            Path(f'{self.root}/images_{self.max_len}').mkdir(exist_ok=True, parents=True)
+            self._derived_path(f'images_{self.max_len}').mkdir(exist_ok=True, parents=True)
             for img_id in tqdm(self.img_ids):
                 pose, K = self.poses[img_id], self.Ks[img_id]
-                img = imread(f'{self.root}/images/{self.image_names[img_id]}')
+                img = imread(self._source_path(f'images/{self.image_names[img_id]}'))
                 img1, K1, pose1 = crop_by_points(img, self.ref_points, pose, K, self.max_len)
-                imsave(f'{self.root}/images_{self.max_len}/{self.image_names[img_id]}', img1)
+                self._write_derived(f'images_{self.max_len}/{self.image_names[img_id]}', lambda path: imsave(path, img1))
                 poses_new[img_id] = pose1
                 Ks_new[img_id] = K1
 
-            save_pickle([poses_new, Ks_new], f'{self.root}/images_{self.max_len}/meta_info.pkl')
+            self._write_derived(f'images_{self.max_len}/meta_info.pkl', lambda path: save_pickle([poses_new, Ks_new], path))
             self.poses, self.Ks = poses_new, Ks_new
 
     def get_image(self, img_id):
-        path = f'{self.root}/images_{self.max_len}/{self.image_names[img_id]}'
+        path = self._read_derived(f'images_{self.max_len}/{self.image_names[img_id]}')
         img = imread(path)
         return img
 
@@ -231,7 +260,7 @@ class GlossyRealDatabase(BaseDatabase):
     def get_mask(self, img_id):
         mask_name = self.image_names[img_id]
         mask_name = mask_name.split('.')[0]+'.png'
-        mask_fname = f'{self.root}/images_{self.max_len}/masks_train/{mask_name}'
+        mask_fname = self._source_path(f'images_{self.max_len}/masks_train/{mask_name}')
         print(mask_fname)
         mask_img = cv2.imread(mask_fname, cv2.IMREAD_GRAYSCALE)
         # Convert from 0-255 to 0-1 by dividing by 255.
@@ -246,18 +275,19 @@ class GlossyRealDatabase(BaseDatabase):
 
 
 class GlossySyntheticDatabase(BaseDatabase):
-    def __init__(self, database_name, dataset_dir):
+    def __init__(self, database_name, dataset_dir, *, preprocessing=None):
         super().__init__(database_name)
         _, model_name = database_name.split('/')
         RENDER_ROOT = dataset_dir
         self.root = f'{RENDER_ROOT}/{model_name}'
+        self._init_preprocessing(preprocessing)
         self.img_num = len(glob.glob(f'{self.root}/*.pkl'))
         self.img_ids = [str(k) for k in range(self.img_num)]
-        self.cams = [read_pickle(f'{self.root}/{k}-camera.pkl') for k in range(self.img_num)]
+        self.cams = [read_pickle(self._source_path(f'{k}-camera.pkl')) for k in range(self.img_num)]
         self.scale_factor = 1.0
 
     def get_image(self, img_id):
-        return imread(f'{self.root}/{img_id}.png')[..., :3]
+        return imread(self._source_path(f'{img_id}.png'))[..., :3]
 
     def get_K(self, img_id):
         K = self.cams[int(img_id)][1]
@@ -274,13 +304,13 @@ class GlossySyntheticDatabase(BaseDatabase):
 
     def get_depth(self, img_id):
         assert (self.scale_factor == 1.0)
-        depth = imread(f'{self.root}/{img_id}-depth.png')
+        depth = imread(self._source_path(f'{img_id}-depth.png'))
         depth = depth.astype(np.float32) / 65535 * 15
         mask = depth < 14.5
         return depth, mask
 
     def get_mask(self, img_id):
-        mask_fname = f'{self.root}/masks_train/{img_id}.png'
+        mask_fname = self._source_path(f'masks_train/{img_id}.png')
         mask_img = cv2.imread(mask_fname, cv2.IMREAD_GRAYSCALE)
         # Convert from 0-255 to 0-1 by dividing by 255.
         mask = mask_img.astype(np.float32) / 255.0
@@ -288,11 +318,12 @@ class GlossySyntheticDatabase(BaseDatabase):
         return mask
 
 class CustomDatabase(BaseDatabase):
-    def __init__(self, database_name, dataset_dir):
+    def __init__(self, database_name, dataset_dir, *, preprocessing=None):
         super().__init__(database_name)
         _, self.object_name, self.max_len = database_name.split('/')
 
         self.root = f'{dataset_dir}/{self.object_name}'
+        self._init_preprocessing(preprocessing, {'max_len': self.max_len})
         self._parse_colmap()
         self._normalize()
         if not self.max_len.startswith('raw'):
@@ -300,27 +331,27 @@ class CustomDatabase(BaseDatabase):
             self.image_dir = ''
             self._crop()
         else:
-            h, w, _ = imread(f'{self.root}/images/{self.image_names[self.img_ids[0]]}').shape
+            h, w, _ = imread(self._source_path(f'images/{self.image_names[self.img_ids[0]]}')).shape
             max_len = int(self.max_len.split('_')[1])
             ratio = float(max_len) / max(h, w)
             th, tw = int(ratio*h), int(ratio*w)
             rh, rw = th / h, tw / w
 
-            Path(f'{self.root}/images_{self.max_len}').mkdir(exist_ok=True, parents=True)
+            self._derived_path(f'images_{self.max_len}').mkdir(exist_ok=True, parents=True)
             for img_id in tqdm(self.img_ids):
-                if not Path(f'{self.root}/images_{self.max_len}/{self.image_names[img_id]}').exists():
-                    img = imread(f'{self.root}/images/{self.image_names[img_id]}')
+                if not Path(self._read_derived(f'images_{self.max_len}/{self.image_names[img_id]}')).exists():
+                    img = imread(self._source_path(f'images/{self.image_names[img_id]}'))
                     img = resize_img(img, ratio)
-                    imsave(f'{self.root}/images_{self.max_len}/{self.image_names[img_id]}', img)
+                    self._write_derived(f'images_{self.max_len}/{self.image_names[img_id]}', lambda path: imsave(path, img))
 
                 K = self.Ks[img_id]
                 self.Ks[img_id] = np.diag([rw,rh,1.0]) @ K
 
     def _parse_colmap(self):
-        if Path(f'{self.root}/cache.pkl').exists():
-            self.poses, self.Ks, self.image_names, self.img_ids = read_pickle(f'{self.root}/cache.pkl')
+        if Path(self._read_derived('cache.pkl')).exists():
+            self.poses, self.Ks, self.image_names, self.img_ids = read_pickle(self._read_derived('cache.pkl'))
         else:
-            cameras, images, points3d = read_model(f'{self.root}/colmap/sparse/0')
+            cameras, images, points3d = read_model(self._source_path('colmap/sparse/0'))
 
             self.poses, self.Ks, self.image_names, self.img_ids = {}, {}, {}, []
             for img_id, image in images.items():
@@ -342,7 +373,7 @@ class CustomDatabase(BaseDatabase):
                     raise NotImplementedError
                 self.Ks[img_id] = np.asarray([[f, 0, cx], [0, f, cy], [0, 0, 1], ], np.float32)
 
-            save_pickle([self.poses, self.Ks, self.image_names, self.img_ids],f'{self.root}/cache.pkl')
+            self._write_derived('cache.pkl', lambda path: save_pickle([self.poses, self.Ks, self.image_names, self.img_ids], path))
 
     def _load_point_cloud(self, pcl_path):
         with open(pcl_path, "rb") as f:
@@ -361,12 +392,12 @@ class CustomDatabase(BaseDatabase):
         return R
 
     def _normalize(self):
-        ref_points = self._load_point_cloud(f'{self.root}/object_point_cloud.ply')
+        ref_points = self._load_point_cloud(self._source_path('object_point_cloud.ply'))
         max_pt, min_pt = np.max(ref_points, 0), np.min(ref_points, 0)
         center = (max_pt + min_pt) * 0.5
         offset = -center # x1 = x0 + offset
         scale = 1 / np.max(np.linalg.norm(ref_points - center[None,:], 2, 1)) # x2 = scale * x1
-        directions = np.loadtxt(f'{self.root}/meta_info.txt')
+        directions = np.loadtxt(self._source_path('meta_info.txt'))
         up = directions[0]
         forward = directions[1]
         up, forward = up/np.linalg.norm(up), forward/np.linalg.norm(forward)
@@ -390,25 +421,25 @@ class CustomDatabase(BaseDatabase):
             self.poses[img_id] = np.concatenate([R_new, t_new[:,None]], -1)
 
     def _crop(self):
-        if Path(f'{self.root}/images_{self.max_len}/meta_info.pkl').exists():
-            self.poses, self.Ks = read_pickle(f'{self.root}/images_{self.max_len}/meta_info.pkl')
+        if Path(self._read_derived(f'images_{self.max_len}/meta_info.pkl')).exists():
+            self.poses, self.Ks = read_pickle(self._read_derived(f'images_{self.max_len}/meta_info.pkl'))
         else:
             poses_new, Ks_new = {}, {}
             print('cropping images ...')
-            Path(f'{self.root}/images_{self.max_len}').mkdir(exist_ok=True,parents=True)
+            self._derived_path(f'images_{self.max_len}').mkdir(exist_ok=True,parents=True)
             for img_id in tqdm(self.img_ids):
                 pose, K = self.poses[img_id], self.Ks[img_id]
-                img = imread(f'{self.root}/images/{self.image_names[img_id]}')
+                img = imread(self._source_path(f'images/{self.image_names[img_id]}'))
                 img1, K1, pose1 = crop_by_points(img, self.ref_points, pose, K, self.max_len)
-                imsave(f'{self.root}/images_{self.max_len}/{self.image_names[img_id]}', img1)
+                self._write_derived(f'images_{self.max_len}/{self.image_names[img_id]}', lambda path: imsave(path, img1))
                 poses_new[img_id] = pose1
                 Ks_new[img_id] = K1
 
-            save_pickle([poses_new, Ks_new],f'{self.root}/images_{self.max_len}/meta_info.pkl')
+            self._write_derived(f'images_{self.max_len}/meta_info.pkl', lambda path: save_pickle([poses_new, Ks_new], path))
             self.poses, self.Ks = poses_new, Ks_new
 
     def get_image(self, img_id):
-        img = imread(f'{self.root}/images_{self.max_len}/{self.image_names[img_id]}')
+        img = imread(self._read_derived(f'images_{self.max_len}/{self.image_names[img_id]}'))
         return img
 
     def get_K(self, img_id):
@@ -428,12 +459,13 @@ class CustomDatabase(BaseDatabase):
 
 
 class NeRFSyntheticDatabase(BaseDatabase):
-    def __init__(self, database_name, dataset_dir, testskip=8):
+    def __init__(self, database_name, dataset_dir, testskip=8, *, preprocessing=None):
         super().__init__(database_name)
         _, model_name = database_name.split('/')
         RENDER_ROOT = dataset_dir
         # RENDER_ROOT = '/media/data_nix/yzy/Git_Project/data/nerf_synthetic'
         self.root = f'{RENDER_ROOT}/{model_name}'
+        self._init_preprocessing(preprocessing, {'testskip': testskip})
         self.scale_factor = 1.0
 
         # splits = ['train', 'test']
@@ -441,7 +473,7 @@ class NeRFSyntheticDatabase(BaseDatabase):
 
         metas = {}
         for s in splits:
-            with open(os.path.join(self.root, 'transforms_{}.json'.format(s)), 'r') as fp:
+            with open(self._source_path('transforms_{}.json'.format(s)), 'r') as fp:
                 metas[s] = json.load(fp)
 
         all_imgs = []
@@ -469,10 +501,14 @@ class NeRFSyntheticDatabase(BaseDatabase):
                 mask_folder = os.path.join(self.root, 'masks_'+s)
                 folder, name = frame['file_path'].split('\\')
                 fname = os.path.join(self.root, folder, name)
+                if self.preprocessing is not None:
+                    fname = self._source_path(f'{folder}/{name}')
                 itr = 0
                 while name[itr] == '0':
                     itr += 1
                 mask_fname = os.path.join(mask_folder, name)
+                if self.preprocessing is not None:
+                    mask_fname = self._source_path(f'masks_{s}/{name}')
 
                 # fname = os.path.join(self.root, frame['file_path'] + '.png')
                 # fname_number = int(frame['file_path'].split('_')[-1])
@@ -554,14 +590,14 @@ class NeRFSyntheticDatabase(BaseDatabase):
         str_id = str(int(img_id) + 1)
         prefix = '0' * (4 - len(str_id))
         depth_name = "Image"+prefix + str_id + ".png"
-        depth = imread(os.path.join(self.root, 'depth', depth_name))
+        depth = imread(self._source_path(f'depth/{depth_name}'))
         depth = depth.astype(np.float32) / 65535 * 15
         mask = depth < 14.5
         return depth, mask
 
 
 
-def parse_database_name(database_name: str, dataset_dir: str) -> BaseDatabase:
+def parse_database_name(database_name: str, dataset_dir: str, *, preprocessing=None) -> BaseDatabase:
     name2database = {
         'syn': GlossySyntheticDatabase,
         'real': GlossyRealDatabase,
@@ -570,6 +606,8 @@ def parse_database_name(database_name: str, dataset_dir: str) -> BaseDatabase:
     }
     database_type = database_name.split('/')[0]
     if database_type in name2database:
+        if preprocessing is not None:
+            return name2database[database_type](database_name, dataset_dir, preprocessing=preprocessing)
         return name2database[database_type](database_name, dataset_dir)
     else:
         raise NotImplementedError
@@ -683,6 +721,11 @@ def get_database_eval_points_nerf(database, voxel_size=0.01, scene_scale=0.5, sa
     if save_path:
         pcd = o3d.geometry.PointCloud()
         pcd.points = o3d.utility.Vector3dVector(pts.astype(np.float64))
-        o3d.io.write_point_cloud(save_path, pcd)
+        if database.preprocessing is not None:
+            database.preprocessing.write_evaluation(
+                save_path, {'voxel_size': voxel_size, 'scene_scale': scene_scale},
+                lambda path: o3d.io.write_point_cloud(path, pcd))
+        else:
+            o3d.io.write_point_cloud(save_path, pcd)
 
     return pts

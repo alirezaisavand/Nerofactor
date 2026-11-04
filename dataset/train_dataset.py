@@ -8,10 +8,13 @@ class DummyDataset(Dataset):
         'database_name': '',
     }
 
-    def __init__(self, cfg, is_train, dataset_dir=None):
+    def __init__(self, cfg, is_train, dataset_dir=None, *, preprocessing=None):
         self.cfg = {**self.default_cfg, **cfg}
         if not is_train:
-            database = parse_database_name(self.cfg['database_name'], dataset_dir)
+            if preprocessing is None:
+                database = parse_database_name(self.cfg['database_name'], dataset_dir)
+            else:
+                database = parse_database_name(self.cfg['database_name'], dataset_dir, preprocessing=preprocessing)
             train_ids, test_ids, nvs_ids = get_database_split(database, 'validation')
             self.train_num = len(train_ids)
             self.test_num = len(test_ids)

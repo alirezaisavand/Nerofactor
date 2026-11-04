@@ -1,14 +1,20 @@
 # Configuration and path foundation (1D.2A)
 
-The standalone APIs in `infrastructure/` load configuration, resolve declared
-paths, and allocate isolated experiment directories. They import no training,
-rendering, dataset, NumPy, or GPU modules. The only non-stdlib runtime dependency
-is the already-required PyYAML. Python 3.9 syntax is supported.
+Updated for approved 1D.2B-1: opt-in dataset/cache routing is described in
+[DATASET_CACHE_ISOLATION.md](DATASET_CACHE_ISOLATION.md). Training entry points
+remain legacy. Schema-1 loading now requires an explicit `config_root`; this
+intentionally tightens the 1D.2A reference-resolution API.
+
+The configuration/path/run APIs in `infrastructure/` import no training,
+rendering, dataset, NumPy, or GPU modules. Their only non-stdlib runtime dependency
+is the already-required PyYAML. Python 3.9 syntax is supported. The explicit
+dataset factory added in 1D.2B-1 imports dataset dependencies only when invoked.
 
 **Existing training/extraction/evaluation entry points are unchanged. Do not pass
-the new envelopes to `run_training.py`.** Connecting these APIs and redirecting
-writers belongs to 1D.2B after review. This milestone creates no real experiment,
-copies no inputs, loads no tensor checkpoints, and changes no numerical behavior.
+the new envelopes to `run_training.py`.** Opt-in dataset routing is available in
+1D.2B-1; connecting the full pipeline requires later 1D.2B-2 review. This work
+creates no real experiment, copies no inputs, loads no tensor checkpoints, and
+changes no numerical calculations.
 
 ## Versioned envelope and examples
 
@@ -34,11 +40,12 @@ The fields have implemented infrastructure meanings only:
 | --- | --- |
 | `schema_version` | Only integer `1` is supported for new envelopes; absent means unversioned legacy YAML |
 | `stage` | `geometry` or `material`; must agree with effective legacy `network: shape` or `material` |
-| `legacy_config` | Relative reference anchored at the envelope's directory; may contain `..` to reference sibling config directories; must select unversioned YAML |
+| `legacy_config` | Relative reference anchored at the envelope's directory; sibling `..` references must remain inside explicit approved `config_root`; must select unversioned YAML |
 | `inputs.dataset` | Directory relative to the runtime `datasets` root; normally a dataset family matching legacy `dataset_dir` semantics, not a scene name |
 | `inputs.mesh` | Required for material, rejected for geometry; `{root, path}` selects an existing input file |
 | `inputs.checkpoint` | Optional `{root, path}` selecting an existing checkpoint as an input artifact; does not request resume or load weights |
 | `overrides` | Explicit shallow replacement of legacy top-level fields; no deep merge or forwarding into shader settings |
+| `preprocessing.cache` | Implemented in 1D.2B-1: relative experiment cache directory, default `cache/datasets` |
 
 No variant/algorithm selector, automatic configuration migration, training
 launcher, implicit run ID, or environment-variable expansion is implemented.
@@ -46,8 +53,10 @@ Host roots are runtime arguments, never committed in default envelopes.
 
 ```python
 from infrastructure.config import load_config
+from pathlib import Path
 
-cfg = load_config("configs/experiments/material.example.yaml")
+cfg = load_config("configs/experiments/material.example.yaml",
+                  config_root=Path("configs").resolve())
 for diagnostic in cfg.diagnostics:
     print(diagnostic.level, diagnostic.code, diagnostic.field, diagnostic.message)
 
@@ -214,7 +223,8 @@ python3 -B -m unittest discover -s tests/infrastructure -v
 
 Recorded validation on 2026-11-03: **38 tests passed**, using Python 3.9.12 and
 PyYAML 6.0. The working tree started clean on `paper/infrastructure` at
-`74e029d632feea1508d8639cfccb4a1b0765effe`; this milestone is left uncommitted.
+`74e029d632feea1508d8639cfccb4a1b0765effe`; validation used the then-uncommitted
+1D.2A changes. Current 1D.2B-1 results are in the dataset-isolation document.
 
 Tests use disposable temporary directories, text checkpoint fixtures, and no
 permission changes. Legacy characterization parses source AST and executes only
@@ -223,10 +233,11 @@ importing Trainer, renderers, NumPy, or PyTorch. Tests cover original YAML parit
 defaults/overrides, diagnostics, path resolution, missing/invalid paths, root
 overlap, symlink containment, collisions including concurrency, both storage
 layouts, partial allocations, and explicit resume. GPU execution, actual mounts,
-dataset write redirection, scientific checkpoint compatibility, and training
-parity remain unvalidated.
+scientific checkpoint compatibility, and training parity remain unvalidated.
+Follow-up dataset routing tests and native-backend limits are recorded in
+[DATASET_CACHE_ISOLATION.md](DATASET_CACHE_ISOLATION.md).
 
-## Proposed 1D.2B integration after review
+## Original 1D.2B proposal (split into 1D.2B-1 and later 1D.2B-2)
 
 1. Review the wrapper/schema and diagnostics against intended legacy experiments.
    Choose a specific supported reference before adding entry-point integration;
@@ -243,4 +254,5 @@ parity remain unvalidated.
 5. Characterize actual tensor results in an authorized working environment with
    declared tolerances and resource budgets. Keep mathematical fixes, dependency
    changes, Docker execution, and full provenance work in separately reviewed
-   scope. No 1D.2B integration or later milestone is implemented here.
+   scope. Dataset opt-in routing is implemented in 1D.2B-1; full training/output
+   integration and later milestones remain unimplemented.

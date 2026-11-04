@@ -19,6 +19,9 @@ class ConfigTests(unittest.TestCase):
         self.legacy = self.root / "legacy.yaml"
         self.legacy.write_text("network: shape\nname: sample\nrandom_seed: 6033\nlr_cfg: {}\n")
 
+    def load(self, path, **kwargs):
+        return load_config(path, config_root=self.root, **kwargs)
+
     def write(self, text):
         path = self.root / "experiment.yaml"
         path.write_text(text)
@@ -52,25 +55,25 @@ class ConfigTests(unittest.TestCase):
 
     def test_unused_and_unvalidated_fields_are_retained(self):
         path = self.write("network: material\nanisotropy: false\nreg_energy_loss_lambda: 0\nunused_research_note: keep\n")
-        cfg = load_config(path)
+        cfg = self.load(path)
         self.assertEqual(cfg.legacy["unused_research_note"], "keep")
         self.assertFalse(cfg.legacy["anisotropy"])
         self.assertTrue(any(d.code == "not-forwarded" for d in cfg.diagnostics))
         self.assertTrue(any(d.field == "unused_research_note" and d.code == "unvalidated-field" for d in cfg.diagnostics))
 
     def test_full_loader_scalar_alias_and_merge_semantics(self):
-        cfg = load_config(self.write("network: shape\nbase: &base {x: 1, y: 2}\nmerged: {<<: *base, x: 3}\nflag: yes\n"))
+        cfg = self.load(self.write("network: shape\nbase: &base {x: 1, y: 2}\nmerged: {<<: *base, x: 3}\nflag: yes\n"))
         self.assertEqual(cfg.legacy["merged"], {"x": 3, "y": 2})
         self.assertIs(cfg.legacy["flag"], True)
         self.assertFalse(any(d.code == "duplicate-key" for d in cfg.diagnostics))
 
     def test_duplicate_keys_keep_last_value_and_strict_rejects(self):
         path = self.write("network: shape\nrandom_seed: 1\nrandom_seed: 6033\n")
-        cfg = load_config(path)
+        cfg = self.load(path)
         self.assertEqual(cfg.legacy["random_seed"], 6033)
         self.assertTrue(any(d.code == "duplicate-key" for d in cfg.diagnostics))
         with self.assertRaises(ConfigError):
-            load_config(path, strict=True)
+            self.load(path, strict=True)
 
     def test_shallow_default_and_override_behavior(self):
         defaults = {"random_seed": 6033, "lr_cfg": {"lr": 0.0005, "end_iter": 300000}}
@@ -80,7 +83,7 @@ class ConfigTests(unittest.TestCase):
         self.assertEqual(merged["lr_cfg"], {"end_warm": 1000})
         self.assertEqual(merged["random_seed"], 6033)
         path = self.envelope(overrides={"lr_cfg": {"end_iter": 100000}})
-        cfg = load_config(path, overrides=override)
+        cfg = self.load(path, overrides=override)
         self.assertEqual(cfg.legacy["lr_cfg"], {"end_warm": 1000})
         self.assertEqual(cfg.original["overrides"]["lr_cfg"], {"end_iter": 100000})
         override["lr_cfg"]["end_warm"] = 9
@@ -92,7 +95,7 @@ class ConfigTests(unittest.TestCase):
         old = Path.cwd()
         try:
             os.chdir(self.root.parent)
-            cfg = load_config(path)
+            cfg = self.load(path)
         finally:
             os.chdir(old)
         self.assertEqual(cfg.legacy_source, self.legacy)
@@ -103,23 +106,23 @@ class ConfigTests(unittest.TestCase):
     def test_unknown_envelope_field_fails_strict_and_is_diagnostic_in_compatibility(self):
         path = self.envelope(algorithm="unimplemented")
         with self.assertRaises(ConfigError):
-            load_config(path)
-        cfg = load_config(path, strict=False)
+            self.load(path)
+        cfg = self.load(path, strict=False)
         self.assertEqual(cfg.original["algorithm"], "unimplemented")
         self.assertTrue(any(d.code == "unknown-field" for d in cfg.diagnostics))
         self.assertNotIn("algorithm", cfg.legacy)
 
     def test_material_requires_mesh_and_matching_renderer(self):
         with self.assertRaises(ConfigError):
-            load_config(self.envelope(stage="material"))
+            self.load(self.envelope(stage="material"))
         self.legacy.write_text("network: material\n")
-        cfg = load_config(self.envelope(stage="material", inputs={
+        cfg = self.load(self.envelope(stage="material", inputs={
             "dataset": "GlossyReal", "mesh": {"root": "thesis", "path": "meshes/bear.ply"},
             "checkpoint": {"root": "thesis", "path": "model/bear/model.pth"}}))
         self.assertEqual(cfg.inputs.mesh.root, "thesis")
         self.assertEqual(cfg.inputs.checkpoint.path, "model/bear/model.pth")
         with self.assertRaises(ConfigError):
-            load_config(self.envelope())
+            self.load(self.envelope())
 
     def test_invalid_envelope_structures_and_paths(self):
         cases = [
@@ -133,41 +136,41 @@ class ConfigTests(unittest.TestCase):
         ]
         for updates in cases:
             with self.subTest(updates=updates), self.assertRaises(ConfigError):
-                load_config(self.envelope(**updates))
+                self.load(self.envelope(**updates))
         for text in ["[]", "", "key: [", "text"]:
             with self.subTest(text=text), self.assertRaises(ConfigError):
-                load_config(self.write(text))
+                self.load(self.write(text))
 
     def test_no_recursive_envelope_includes(self):
         path = self.envelope(legacy_config="experiment.yaml")
         with self.assertRaises(ConfigError):
-            load_config(path)
+            self.load(path)
 
     def test_invalid_source_paths_and_encoding_are_configuration_errors(self):
         for value in [None, "bad\x00path", self.root / "missing.yaml"]:
             with self.subTest(value=value), self.assertRaises(ConfigError):
-                load_config(value)
+                self.load(value)
         path = self.root / "invalid_encoding.yaml"
         path.write_bytes(b"network: \xff\n")
         with self.assertRaises(ConfigError):
-            load_config(path)
+            self.load(path)
 
     def test_invalid_network_values_are_diagnostic_without_crashing(self):
         for network in [[], {}, True, "unknown", None]:
             path = self.write(yaml.safe_dump({"network": network}))
             with self.subTest(network=network):
-                self.assertIsNone(load_config(path).stage)
+                self.assertIsNone(self.load(path).stage)
                 with self.assertRaises(ConfigError):
-                    load_config(path, strict=True)
+                    self.load(path, strict=True)
 
     def test_stage_override_and_artifact_reference_validation(self):
         with self.assertRaises(ConfigError):
-            load_config(self.envelope(), overrides={"network": "material"})
+            self.load(self.envelope(), overrides={"network": "material"})
         self.legacy.write_text("network: material\n")
         for mesh in ["mesh.ply", {}, {"root": "thesis", "path": "../mesh.ply"},
                      {"root": "thesis", "path": "mesh.ply", "typo": True}]:
             with self.subTest(mesh=mesh), self.assertRaises(ConfigError):
-                load_config(self.envelope(stage="material", inputs={"dataset": "data", "mesh": mesh}))
+                self.load(self.envelope(stage="material", inputs={"dataset": "data", "mesh": mesh}))
 
     def test_invalid_legacy_values_are_not_coerced(self):
         for field, value in [("total_step", "50000"), ("total_step", True),
@@ -177,16 +180,16 @@ class ConfigTests(unittest.TestCase):
                              ("optimizer_type", "sgd"), ("lr_type", "exp_decay")]:
             path = self.write(yaml.safe_dump({"network": "shape", field: value}))
             with self.subTest(field=field, value=value):
-                self.assertEqual(load_config(path).legacy[field], value)
+                self.assertEqual(self.load(path).legacy[field], value)
                 with self.assertRaises(ConfigError):
-                    load_config(path, strict=True)
+                    self.load(path, strict=True)
         for lr in [True, 0, -1, float("nan"), float("inf"), "1e-3"]:
             with self.subTest(lr=lr), self.assertRaises(ConfigError):
-                load_config(self.write(yaml.safe_dump({"network": "shape", "lr_cfg": {"lr": lr}})), strict=True)
+                self.load(self.write(yaml.safe_dump({"network": "shape", "lr_cfg": {"lr": lr}})), strict=True)
 
     def test_checked_in_examples_are_strict_and_preserve_referenced_yaml(self):
         for name in ["geometry.example.yaml", "material.example.yaml"]:
-            cfg = load_config(REPO / "configs/experiments" / name)
+            cfg = load_config(REPO / "configs/experiments" / name, config_root=REPO / "configs")
             self.assertEqual(cfg.schema_version, 1)
             self.assertFalse(any(d.level == "error" for d in cfg.diagnostics))
             self.assertEqual(cfg.legacy, yaml.load(cfg.legacy_source.read_text(), Loader=yaml.FullLoader))

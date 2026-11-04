@@ -1,8 +1,9 @@
 # Incremental infrastructure implementation plan
 
-Status: **1D.1 is approved; 1D.2A is implemented as standalone configuration and
-path infrastructure**. Entry-point/writer integration in 1D.2B and milestones
-1D.3 and 1D.4 still require review and authorization. No branch merge, container
+Status: **1D.1 and 1D.2A are approved; 1D.2B-1 implements opt-in dataset/cache
+isolation and approved configuration roots**. Further entry-point/writer
+integration in 1D.2B-2 and milestones 1D.3 and 1D.4 require review and
+authorization. No branch merge, container
 execution, training, artifact relocation, or numerical correction is included.
 
 The starting implementation is `anisotropic` at
@@ -82,10 +83,24 @@ No original YAML or scientific entry point uses them yet. See
 [CONFIGURATION_AND_PATHS.md](CONFIGURATION_AND_PATHS.md) for conventions,
 preserved behavior, compatibility limits, and the proposed 1D.2B integration.
 
-In particular, path destinations exist as an API; dataset writers have not been
-redirected. Resume validates allocation identity and checkpoint location/existence,
+In 1D.2A, path destinations existed only as an API. Resume still validates
+allocation identity and checkpoint location/existence,
 not scientific state compatibility. Configuration defaults are supplied explicitly
 by their owning code; this foundation does not introduce a new numerical preset.
+
+### 1D.2B-1 implemented boundary
+
+Dataset constructors accept explicit preprocessing storage; a new configuration
+factory passes it without rewriting legacy numerical settings. Camera pickles,
+processed images/crop metadata, and the dataset NeRF point export route to a
+versioned experiment cache. Existing source-side products are preserved read-only.
+Schema-1 references are confined to an explicitly approved configuration root.
+Existing training/evaluation entry points still select legacy execution.
+
+See [DATASET_CACHE_ISOLATION.md](DATASET_CACHE_ISOLATION.md) for the writer
+inventory, metadata identity policy, fixture/native test distinction, retained
+custom-loader defect, and proposed 1D.2B-2 scope. Full pipeline write isolation
+and native-backend numerical parity are not established by this boundary.
 
 ### Proposed implementation
 

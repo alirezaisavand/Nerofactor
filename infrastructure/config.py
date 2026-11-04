@@ -15,6 +15,7 @@ from typing import Mapping, Optional, Tuple
 import yaml
 
 from infrastructure.paths import InputRef, InputSelection, PathError, relative_path
+from infrastructure.cache import PreprocessingSettings
 
 
 @dataclass(frozen=True)
@@ -46,6 +47,8 @@ class Configuration:
     legacy: dict
     inputs: Optional[InputSelection]
     diagnostics: Tuple[Diagnostic, ...]
+    preprocessing: Optional[PreprocessingSettings] = None
+    config_root: Optional[Path] = None
 
     def with_defaults(self, defaults: Mapping) -> dict:
         """Merge only explicitly supplied owner defaults; never deep-merge."""
@@ -210,13 +213,24 @@ def _input_ref(value, field, diagnostics):
         raise ConfigError("{}: {}".format(field, exc)) from exc
 
 
-def load_config(path, overrides=None, strict=None) -> Configuration:
+def load_config(path, overrides=None, strict=None, config_root=None) -> Configuration:
     """Load legacy YAML or schema 1; loading never allocates runs or rewrites paths.
 
     Schema 1 is strict by default; unversioned YAML defaults to compatibility
     diagnostics. Both file and API overrides use legacy shallow replacement.
     """
     source = _config_path(path)
+    approved_root = None
+    if config_root is not None:
+        try:
+            root_path = Path(config_root)
+        except (TypeError, ValueError) as exc:
+            raise ConfigError("Approved configuration root must be a filesystem path") from exc
+        if not root_path.is_absolute():
+            raise ConfigError("Approved configuration root must be absolute")
+        approved_root = _config_path(config_root)
+        if not approved_root.is_dir() or approved_root not in source.parents:
+            raise ConfigError("Configuration source must be inside the approved configuration root")
     original, diagnostics = _read_yaml(source)
     version = original.get("schema_version", 0)
     if type(version) is not int or version not in (0, 1) or (
@@ -226,9 +240,12 @@ def load_config(path, overrides=None, strict=None) -> Configuration:
         raise ConfigError("strict must be True, False, or None")
     strict = version == 1 if strict is None else strict
     selection = None
+    preprocessing = None
     legacy_source = source
     if version == 1:
-        _keys(original, {"schema_version", "stage", "legacy_config", "inputs", "overrides"}, "config", diagnostics)
+        if approved_root is None:
+            raise ConfigError("Schema 1 requires an explicitly approved config_root")
+        _keys(original, {"schema_version", "stage", "legacy_config", "inputs", "overrides", "preprocessing"}, "config", diagnostics)
         stage = original.get("stage")
         if stage not in ("geometry", "material"):
             raise ConfigError("stage must be geometry or material")
@@ -238,6 +255,8 @@ def load_config(path, overrides=None, strict=None) -> Configuration:
                 or any(ord(c) < 32 for c in reference)):
             raise ConfigError("legacy_config must be a relative file path anchored at the envelope")
         legacy_source = _config_path(source.parent / reference)
+        if approved_root not in legacy_source.parents:
+            raise ConfigError("legacy_config escapes the approved configuration root")
         legacy, inherited = _read_yaml(legacy_source)
         diagnostics.extend(inherited)
         if "schema_version" in legacy:
@@ -261,6 +280,14 @@ def load_config(path, overrides=None, strict=None) -> Configuration:
         if stage == "geometry" and mesh is not None:
             raise ConfigError("Geometry envelopes do not consume a mesh input")
         selection = InputSelection(inputs["dataset"], mesh, checkpoint)
+        cache_settings = original.get("preprocessing", {})
+        if not isinstance(cache_settings, dict):
+            raise ConfigError("preprocessing must be a mapping")
+        _keys(cache_settings, {"cache"}, "preprocessing", diagnostics)
+        try:
+            preprocessing = PreprocessingSettings(**{k: v for k, v in cache_settings.items() if k == "cache"})
+        except PathError as exc:
+            raise ConfigError("preprocessing.cache: {}".format(exc)) from exc
     else:
         legacy = deepcopy(original)
         stage = _stage(legacy)
@@ -279,4 +306,4 @@ def load_config(path, overrides=None, strict=None) -> Configuration:
         raise ConfigError("Strict validation failed: " + "; ".join(
             "{}: {}".format(d.field, d.message) for d in diagnostics if d.level == "error"), diagnostics)
     return Configuration(source, legacy_source, version, stage, deepcopy(original),
-                         deepcopy(legacy), selection, tuple(diagnostics))
+                         deepcopy(legacy), selection, tuple(diagnostics), preprocessing, approved_root)

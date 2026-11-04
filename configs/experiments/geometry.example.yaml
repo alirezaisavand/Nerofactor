@@ -4,4 +4,6 @@ stage: geometry
 legacy_config: ../shape/syn/bell.yaml
 inputs:
   dataset: GlossySynthetic
+preprocessing:
+  cache: cache/datasets
 overrides: {}

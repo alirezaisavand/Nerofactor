@@ -7,4 +7,6 @@ inputs:
   mesh:
     root: thesis
     path: meshes-pretrained/real/bear.ply
+preprocessing:
+  cache: cache/datasets
 overrides: {}
