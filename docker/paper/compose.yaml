@@ -1,0 +1,37 @@
+# Proposed runtime only; no build section, no reference image/container reuse.
+services:
+  paper:
+    image: ${PAPER_IMAGE:?select a distinct reviewed reconstruction image tag or digest}
+    user: "${PAPER_UID:?set non-root host UID}:${PAPER_GID:?set host GID}"
+    working_dir: /workspace
+    read_only: true
+    network_mode: none
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    command: [/workspace/run_experiment.py, --help]
+    volumes:
+      - type: bind
+        source: ${PAPER_DATASETS_ROOT:?declare existing original dataset root}
+        target: /inputs/datasets
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${PAPER_THESIS_ROOT:?declare existing historical artifact root}
+        target: /inputs/thesis
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${PAPER_OUTPUT_ROOT:?select one existing owned experiment directory}
+        target: /outputs
+        read_only: false
+        bind:
+          create_host_path: false
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ["${PAPER_GPU:?select a GPU explicitly}"]
+              capabilities: [gpu]

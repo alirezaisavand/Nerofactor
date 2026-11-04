@@ -1,8 +1,8 @@
 # Incremental infrastructure implementation plan
 
-Status: **milestones through 1D.2B-2B are approved; 1D.3A inventories the existing
-GPU environment and proposes the next environment specification for review**.
-1D.3B construction, native GPU smoke tests, standalone extraction/evaluation
+Status: **milestones through 1D.3A are approved; 1D.3B-1 prepares the historical
+paper Docker definition and static validation for review**.
+1D.3B-2 construction, native GPU smoke tests, standalone extraction/evaluation
 refactoring and 1D.4 require separate authorization. No branch merge, image build,
 installation, container lifecycle change, training, artifact relocation or
 numerical correction is included.
@@ -242,10 +242,29 @@ for a compatible working-container stack. Prefer recovering/pinning the actual
 reference tuple over selecting versions from that mixed context or floating
 upstream HEAD. Required pending pins explicitly block a reproducible build claim.
 
-### Proposed 1D.3B implementation
+### 1D.3B-1 definition boundary
+
+The researcher supplied the recovered Python 3.8.10 / Torch 1.8.1+cu111 / CUDA
+11.1 / ABI 0 environment, native source commits/setup hashes and reference binary
+identity. These supersede the previously unknown reference tuple; Codex's separate
+Python 3.9/Torch 2.4/CUDA 13.3 metadata is not the reconstruction target.
+[docker/paper/README.md](../docker/paper/README.md) provides the proposed Dockerfile,
+runtime layouts, source staging procedure, incomplete dependency manifest,
+provenance definitions, historical differences and remaining build gates.
+
+The definition requires a real base digest and complete reviewed offline package
+artifacts rather than guessing missing pins. It removes intermediate repositories,
+retains the exact native sources and nvdiffrast lazy compilation, and isolates
+read-only inputs from non-root persistent outputs. No source staging, package
+installation, build, container execution or native computation is performed.
+Python 3.8 source grammar/static policy checks pass; actual 3.8 runtime remains
+unverified and existing tests use unavailable `ast.unparse`. No interpreter
+upgrade or test/scientific patch is applied. Stop for review at this boundary.
+
+### Proposed 1D.3B-2 implementation
 
 The proposal below requires a new approval; none of its build/install/native
-execution steps is performed by 1D.3A.
+execution steps is performed by 1D.3A or 1D.3B-1.
 
 1. Recover a known working historical environment when accessible. Identify
    Python, PyTorch/CUDA, driver requirements, compiler/toolchain, GPU architecture,

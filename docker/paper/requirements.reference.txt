@@ -1,0 +1,16 @@
+# Verified live version declarations only. NOT a complete install/lock file.
+# Do not pip-install this file: hashes, build dependencies and transitives are missing.
+torch==1.8.1+cu111
+open3d==0.16.0
+PyMCubes==0.1.4
+numpy==1.24.4
+scipy==1.10.1
+opencv-python==4.10.0.84
+scikit-image==0.21.0
+imageio==2.35.1
+tensorboardX==2.6.2.2
+transforms3d==0.4.2
+# Source-built separately: nvdiffrast==0.3.3 and raytracing==0.1.0 (reference.json).
+# Historical only; decide explicitly whether to retain after verifying live state:
+# torchvision==0.9.1+cu111
+# torchaudio==0.8.1

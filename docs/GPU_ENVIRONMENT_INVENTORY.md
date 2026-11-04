@@ -1,5 +1,11 @@
 # Existing GPU environment inventory: 1D.3A
 
+Follow-up 1D.3B-1: the researcher has recovered the historical system Python
+3.8.10 / Torch 1.8.1+cu111 / CUDA 11.1 / ABI 0 reference and exact native source
+commits. See [the Docker definition](../docker/paper/README.md) and its classified
+reference manifest. The original inventory below remains historical evidence of
+what Codex could observe in 1D.3A, not the current reconstruction specification.
+
 Inspection date: 2026-11-04 (America/Denver). Repository:
 `/home/isavand/paper/Nerofactor-paper`, branch `paper/infrastructure`, initially
 clean at `45f895e64c428092e1b62be67d582b171af73116`.

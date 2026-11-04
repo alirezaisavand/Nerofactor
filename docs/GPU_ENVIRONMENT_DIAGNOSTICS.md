@@ -1,5 +1,11 @@
 # Read-only environment recovery commands: 1D.3A
 
+Follow-up: the recovered reference uses the container's **system `python3`**
+(3.8.10), not a Micromamba environment or another `python` executable. Additional
+recovery must use that same interpreter. See
+[the definition and remaining pins](../docker/paper/README.md). No diagnostics or
+container execution is performed in definition-only 1D.3B-1.
+
 Run these in the **regular VS Code Remote SSH terminal on marineris**, where
 Docker already works, not through a permissions workaround in Codex. They inspect
 the existing image/container and run short diagnostic processes inside the already
@@ -10,7 +16,7 @@ retain its error; do not add `sudo`, privileged flags or socket changes.
 The short collection sequence is groups 1–3 below. Group 4 is optional core-Torch
 introspection; source/linkage follow-up is only for identified extension paths.
 Use the actual training interpreter in group 2/4 if it is not the container's
-`python`. No shell activation/install command is proposed.
+`python3`. No shell activation/install command is proposed.
 
 Do not send unfiltered `docker inspect`, image history, `env`/`printenv`,
 `pip config`, registry configuration or credential-bearing VCS/index URLs.
@@ -48,7 +54,7 @@ import `raytracing`, `_raytracing`, nvdiffrast, Torch, Open3D or the research co
 `-B` disables bytecode output, and `/` avoids importing the project accidentally.
 
 ```sh
-docker exec -i --workdir / intelligent_keldysh python -B - <<'PY'
+docker exec -i --workdir / intelligent_keldysh python3 -B - <<'PY'
 import ast
 import hashlib
 import importlib.metadata as md
@@ -156,7 +162,7 @@ does not import rendering extensions, allocate CUDA tensors, build plugins or
 run a model. If it fails, retain the error; package repair is not part of 1D.3A.
 
 ```sh
-docker exec --workdir / intelligent_keldysh python -B -c 'import torch; print("torch", torch.__version__); print("compiled_cuda", torch.version.cuda); print("cxx11_abi", torch._C._GLIBCXX_USE_CXX11_ABI); print(torch.__config__.show())'
+docker exec --workdir / intelligent_keldysh python3 -B -c 'import torch; print("torch", torch.__version__); print("compiled_cuda", torch.version.cuda); print("cxx11_abi", torch._C._GLIBCXX_USE_CXX11_ABI); print(torch.__config__.show())'
 ```
 
 Do not use nvdiffrast/plugin import or rendering calls as inventory commands:

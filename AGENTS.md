@@ -135,15 +135,21 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Milestones through 1D.2B-2B have been reviewed and approved.
-Current authorized milestone: **1D.3A, existing GPU environment inventory only**.
-Its scope is read-only repository/dependency/native-extension inspection,
-access-controlled Docker/GPU diagnostics, documentation of missing runtime facts,
-and a proposed pinned environment/1D.3B plan. Only documentation may be edited.
-Do not build images, install packages, start/stop containers, run native kernels,
-training or NVS, change host configuration/permissions, or bypass Codex access
-restrictions. Separate repository declarations, Codex-visible metadata, actual
-working-container evidence and proposals. Inspect only task-relevant fields;
+Milestones through 1D.3A have been reviewed and approved.
+Current authorized milestone: **1D.3B-1, paper Docker definition only**.
+Its scope is `docker/paper/` definitions/manifests/static validators and supporting
+documentation. Use the recovered system Python 3.8.10 / CUDA 11.1 / Torch
+1.8.1+cu111 / ABI 0 reference; no Micromamba or scientific upgrades. Pin nvdiffrast
+and raytracing to the exact recovered revisions/setup hashes. Record unknown
+package/system versions, hashes and base digest as unresolved; never invent them
+or label an incomplete manifest a complete lock. Do not copy original checkouts
+into Git or change their contents. Only static checks are authorized; do not run
+training-loop fixtures, native imports, package installation, Docker builds/runs,
+container lifecycle operations, source staging/downloads, or GPU code. Preserve
+the existing image/container and all scientific/infrastructure behavior.
+Do not change host configuration/permissions or bypass access controls. Separate
+reference declarations, local observations, Codex metadata and proposals.
+Inspect only task-relevant fields;
 never publish credentials, private environment values, tokens or unfiltered
 container/build configuration. If access fails, report it and supply filtered
 read-only commands for the already-authorized regular terminal.
@@ -209,7 +215,12 @@ writer inventory, preserved behavior, and remaining provenance/native limits.
 The environment evidence and proposed recovery commands are in
 [GPU_ENVIRONMENT_INVENTORY.md](docs/GPU_ENVIRONMENT_INVENTORY.md) and
 [GPU_ENVIRONMENT_DIAGNOSTICS.md](docs/GPU_ENVIRONMENT_DIAGNOSTICS.md).
-Do not begin 1D.3B environment construction, native GPU smoke tests,
+See [docker/paper/README.md](docker/paper/README.md) for the proposed definition,
+unresolved build inputs and Python 3.8 assessment. No interpreter/test backport or
+scientific compatibility fix is authorized here. Before any future build, review
+the full exact dependency/source/artifact resolution and use a distinct candidate
+image tag. Preserve source licences, compiler flags and scientific settings.
+Do not begin 1D.3B-2 builds/environment installation, native GPU smoke tests,
 extraction/evaluation refactoring, 1D.4, or scientific repairs without separate
 user approval. Do not run
 Docker, GPU tests, real training, or expensive experiments in this milestone.

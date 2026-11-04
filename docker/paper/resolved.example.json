@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "reviewed": false,
+  "base_image": null,
+  "workspace_commit": null,
+  "workspace_files": {},
+  "files": {},
+  "python_packages": {},
+  "historical_extras_decision": null,
+  "system_packages": {},
+  "toolchain": {
+    "gcc": null,
+    "g++": null,
+    "eigen": null,
+    "cmake": null,
+    "cxx_flags": null,
+    "nvcc_flags": null,
+    "nvcc": "11.1.105",
+    "cxx11_abi": 0
+  },
+  "sources": {
+    "nvdiffrast": {"commit": "729261dc64c4241ea36efda84fbf532cc8b425b8"},
+    "raytracing": {"commit": "29329268a86921f1c938b05277937369531209a4"}
+  }
+}

@@ -1,0 +1,10 @@
+# Optional override: declare only the selected prior geometry run read-only.
+services:
+  paper:
+    volumes:
+      - type: bind
+        source: ${PAPER_GEOMETRY_ROOT:?declare existing prior geometry input root}
+        target: /inputs/geometry
+        read_only: true
+        bind:
+          create_host_path: false

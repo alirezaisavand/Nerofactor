@@ -1,0 +1,6 @@
+# Artifacts and local runtime settings belong outside this repository.
+inputs/
+context/
+resolved.json
+python-complete.txt
+*.local.env

@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "status": "definition-only; incomplete dependency manifest, not a lockfile",
+  "evidence": "Reference runtime values supplied by the researcher in Step 1D.3B-1; no Docker access or native execution performed by Codex",
+  "image": {
+    "name": "nerofactor",
+    "id": "sha256:36014827ee247e6e4b31576ab1b1da18c54e4b15983e97dff9a5724886e65777",
+    "container": "intelligent_keldysh",
+    "historical_base": "nvidia/cuda:11.1.1-devel-ubuntu20.04",
+    "base_digest": null,
+    "repository_digest": null
+  },
+  "runtime": {
+    "python": "3.8.10",
+    "interpreter": "/usr/bin/python3",
+    "cuda_compiled": "11.1",
+    "nvcc": "11.1.105",
+    "cxx11_abi": 0,
+    "gpu": "NVIDIA A100 80GB",
+    "host_driver": "550.163.01",
+    "proposed_build_sm": "8.0"
+  },
+  "verified_live_packages": {
+    "torch": "1.8.1+cu111",
+    "open3d": "0.16.0",
+    "PyMCubes": "0.1.4",
+    "numpy": "1.24.4",
+    "scipy": "1.10.1",
+    "opencv-python": "4.10.0.84",
+    "scikit-image": "0.21.0",
+    "imageio": "2.35.1",
+    "tensorboardX": "2.6.2.2",
+    "transforms3d": "0.4.2"
+  },
+  "historical_declarations_not_verified_live": {
+    "torchvision": "0.9.1+cu111",
+    "torchaudio": "0.8.1"
+  },
+  "proposed_package_pins": {},
+  "unresolved_python_packages": [
+    "PyYAML", "h5py", "plyfile", "tqdm", "matplotlib", "Pillow",
+    "pip", "setuptools", "wheel", "ninja", "packaging", "pybind11",
+    "all required transitive dependencies"
+  ],
+  "system_package_roles_requiring_exact_versions": [
+    "system Python 3.8.10 and development headers/pip",
+    "GCC/G++ and libc/libstdc++ compatible with CUDA 11.1",
+    "build-essential, CMake, pkg-config, Ninja as required",
+    "Eigen headers selected by the raytracing build",
+    "OpenGL/EGL development libraries for recovered nvdiffrast GL plugin",
+    "OpenCV/Open3D native runtime libraries and complete Debian dependency closure"
+  ],
+  "extensions": {
+    "nvdiffrast": {
+      "version": "0.3.3",
+      "repository": "https://github.com/NVlabs/nvdiffrast",
+      "commit": "729261dc64c4241ea36efda84fbf532cc8b425b8",
+      "setup_py_sha256": "aefa3319314f1783889fde4212bdd51422b5bf3186436e16915fd53b40767bec",
+      "source_tree_sha256": null,
+      "wheel_sha256": null,
+      "plugin_sha256": null,
+      "build": "pip wheel of Python/source distribution; native plugins compile lazily at first use; upstream clears TORCH_CUDA_ARCH_LIST"
+    },
+    "raytracing": {
+      "version": "0.1.0",
+      "repository": "https://github.com/ashawkey/raytracing",
+      "commit": "29329268a86921f1c938b05277937369531209a4",
+      "setup_py_sha256": "7f7e40427d2ed8c1e2658f49b4a2762d1590e68d5ef06b912cbd1022d895f96c",
+      "reference_binary_sha256": "a062810c3023918c3bb7ff842f91691a03263a1209d86de06dcca57c53b3d1c0",
+      "source_tree_sha256": null,
+      "wheel_sha256": null,
+      "build": "compile recovered source against pinned Torch/CUDA/Python/C++ ABI; reference binary hash is evidence, not a promised rebuilt hash"
+    }
+  },
+  "omitted_unless_separately_justified": [
+    "Point-NeRF", "intermediate NeRO checkout/install", "torch-scatter",
+    "inplace-abn", "lpips", "kornia", "warmup-scheduler", "pathtools", "promise",
+    "imageio-ffmpeg", "Blender/COLMAP executable toolchains", "trimesh", "xatlas"
+  ],
+  "missing_reproducibility_evidence": [
+    "base image registry digest and exact build platform",
+    "all wheel hashes, complete dependency closure and missing Python versions",
+    "exact Debian packages/versions/hashes and compatible compiler/Eigen versions",
+    "source tree/export hashes, build flags and built wheel hashes",
+    "runtime-generated nvdiffrast plugin identity and selected GPU architecture",
+    "actual Python 3.8 and Torch 1.8 native/application acceptance tests"
+  ]
+}
