@@ -1,10 +1,11 @@
 # Incremental infrastructure implementation plan
 
-Status: **milestones through 1D.2B-2A.1 are approved; 1D.2B-2B implements isolated
-material integration for review**. Native GPU validation, standalone
-extraction/evaluation refactoring, and milestones 1D.3 and 1D.4 require separate
-authorization. No branch merge, container
-execution, training, artifact relocation, or numerical correction is included.
+Status: **milestones through 1D.2B-2B are approved; 1D.3A inventories the existing
+GPU environment and proposes the next environment specification for review**.
+1D.3B construction, native GPU smoke tests, standalone extraction/evaluation
+refactoring and 1D.4 require separate authorization. No branch merge, image build,
+installation, container lifecycle change, training, artifact relocation or
+numerical correction is included.
 
 The starting implementation is `anisotropic` at
 `e1e859779301faced46d6476691e20b546c27ae0`, on `paper/infrastructure`.
@@ -223,7 +224,28 @@ of supported versus deferred legacy behaviors. Stop for review before 1D.3.
 
 ## 1D.3: Docker and development environment
 
-### Proposed implementation
+### 1D.3A inventory boundary
+
+Read-only source/history/dependency inspection, filtered Docker/GPU queries and
+Codex-visible metadata are recorded in
+[GPU_ENVIRONMENT_INVENTORY.md](GPU_ENVIRONMENT_INVENTORY.md). Docker inspection
+still fails at the socket and NVIDIA-SMI cannot reach the driver in Codex; these
+are not proof of host failure. No security bypass or environment modification is
+attempted. The working `nerofactor` image / `intelligent_keldysh` container remain
+user-reported, with exact versions/digests/revisions pending recovery using the
+[regular-terminal diagnostic sheet](GPU_ENVIRONMENT_DIAGNOSTICS.md).
+
+No Dockerfile/build recipe or CUDA extension sources are available in the checkout
+or reachable ref history; only two current requirements pins are present. Codex
+package files show Torch 2.4.0+cu121 while nvcc reports 13.3, which is not evidence
+for a compatible working-container stack. Prefer recovering/pinning the actual
+reference tuple over selecting versions from that mixed context or floating
+upstream HEAD. Required pending pins explicitly block a reproducible build claim.
+
+### Proposed 1D.3B implementation
+
+The proposal below requires a new approval; none of its build/install/native
+execution steps is performed by 1D.3A.
 
 1. Recover a known working historical environment when accessible. Identify
    Python, PyTorch/CUDA, driver requirements, compiler/toolchain, GPU architecture,

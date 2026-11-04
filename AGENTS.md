@@ -135,12 +135,22 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Milestones through 1D.2B-2A.1 have been reviewed and approved.
-Current authorized milestone: **1D.2B-2B, isolated material training integration**.
-Its scope is a separate material entry point, selected read-only mesh and dataset
-inputs, shared preprocessing caches, isolated checkpoints/logs/validation/NVS/debug
-outputs, compatibility checks, CPU tests and documentation. Geometry behavior
-must remain unchanged, including its split adaptation and final-NVS deferral.
+Milestones through 1D.2B-2B have been reviewed and approved.
+Current authorized milestone: **1D.3A, existing GPU environment inventory only**.
+Its scope is read-only repository/dependency/native-extension inspection,
+access-controlled Docker/GPU diagnostics, documentation of missing runtime facts,
+and a proposed pinned environment/1D.3B plan. Only documentation may be edited.
+Do not build images, install packages, start/stop containers, run native kernels,
+training or NVS, change host configuration/permissions, or bypass Codex access
+restrictions. Separate repository declarations, Codex-visible metadata, actual
+working-container evidence and proposals. Inspect only task-relevant fields;
+never publish credentials, private environment values, tokens or unfiltered
+container/build configuration. If access fails, report it and supply filtered
+read-only commands for the already-authorized regular terminal.
+
+The following integration rules remain in force for later authorized work.
+Geometry behavior must remain unchanged, including its split adaptation and
+final-NVS deferral.
 Preserve the original split helper, call count, train/validation/NVS IDs and RNG effects.
 For geometry, record final NVS as deferred to a separately versioned evaluation
 protocol; do not introduce cameras, renders, or metrics for that protocol. Keep the legacy
@@ -196,8 +206,12 @@ scientific variant must receive a distinct algorithm identity. See
 [MATERIAL_TRAINING.md](docs/MATERIAL_TRAINING.md) for manifest requirements,
 writer inventory, preserved behavior, and remaining provenance/native limits.
 
-Do not begin Docker setup, native GPU validation, extraction/evaluation refactoring,
-1D.3, 1D.4, or scientific repairs without separate user approval. Do not run
+The environment evidence and proposed recovery commands are in
+[GPU_ENVIRONMENT_INVENTORY.md](docs/GPU_ENVIRONMENT_INVENTORY.md) and
+[GPU_ENVIRONMENT_DIAGNOSTICS.md](docs/GPU_ENVIRONMENT_DIAGNOSTICS.md).
+Do not begin 1D.3B environment construction, native GPU smoke tests,
+extraction/evaluation refactoring, 1D.4, or scientific repairs without separate
+user approval. Do not run
 Docker, GPU tests, real training, or expensive experiments in this milestone.
 Do not commit or push automatically. A later explicit user instruction
 updates this boundary. See [CONFIGURATION_AND_PATHS.md](docs/CONFIGURATION_AND_PATHS.md)
