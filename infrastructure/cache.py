@@ -52,6 +52,17 @@ def _record(path, scene):
             "size": stat.st_size, "mtime_ns": stat.st_mtime_ns, "ctime_ns": stat.st_ctime_ns}
 
 
+def source_manifest(scene):
+    """Read-only metadata inventory, shared by cache and training preflight."""
+    sources = []
+    for path in sorted(scene.rglob("*")):
+        if path.is_symlink() and path.is_dir():
+            raise PathError("Dataset directory symlinks require explicit materialization/selection")
+        if path.is_file() or path.is_symlink():
+            sources.append(_record(path, scene))
+    return sources
+
+
 class PreprocessingCache:
     """A factory tied to one declared experiment and its protected input roots.
 
@@ -80,12 +91,7 @@ class PreprocessingCache:
         datasets = self.resolver.input_roots["datasets"]
         if datasets not in scene.parents or not scene.is_dir():
             raise PathError("Scene must be an existing directory inside the datasets root")
-        sources = []
-        for path in sorted(scene.rglob("*")):
-            if path.is_symlink() and path.is_dir():
-                raise PathError("Dataset directory symlinks require explicit materialization/selection")
-            if path.is_file() or path.is_symlink():
-                sources.append(_record(path, scene))
+        sources = source_manifest(scene)
         identity = {"schema_version": 1, "database_name": database_name,
                     "dataset_root": str(datasets), "scene": str(scene),
                     "parameters": parameters or {}, "implementation": _implementation(),

@@ -1,5 +1,10 @@
 # Dataset and cache isolation: 1D.2B-1
 
+Follow-up: 1D.2B-2A connects this opt-in API to the separate geometry entry point.
+See [GEOMETRY_TRAINING.md](GEOMETRY_TRAINING.md) for the current writer inventory,
+CPU evidence, and native-execution blockers. The scope and test counts below
+describe the historical 1D.2B-1 milestone.
+
 Scope: opt-in dataset loading and derived-artifact destinations, from approved
 commit `2f40ca311950a6323727508ac6470f3a21beb768`. Original inputs and historical
 results are preserved. Training entry points, renderers, losses, optimizers,
@@ -51,7 +56,7 @@ work. No system permissions were changed.
 
 `parse_database_name(name, dataset_dir)` or constructors without `preprocessing`
 select **legacy compatibility mode**, including original write locations. Existing
-training/extraction/evaluation entry points still use it. Do not run them against
+legacy training/extraction/evaluation entry points still use it. Do not run them against
 immutable inputs expecting this opt-in change to redirect the entire pipeline.
 
 New mode uses an already selected experiment and an explicit configuration root:
@@ -72,7 +77,8 @@ The factory resolves selected inputs and passes a `PreprocessingCache` to the
 existing constructor. It leaves `cfg.legacy` and `database.root` unchanged.
 Direct callers may construct `PreprocessingCache(resolver, run, settings)` and
 pass keyword-only `preprocessing`. Validation `DummyDataset` accepts the same
-argument; the trainer has not been rewritten to supply it.
+argument. At the 1D.2B-1 boundary the trainer did not supply it; the separate
+geometry mode now supplies the same cache to validation and the shape renderer.
 
 Schema 1 supports the implemented infrastructure field below, also the default
 when omitted. It is a relative destination inside the selected experiment.
@@ -188,5 +194,7 @@ also remain unchanged.
    environment. Review the custom-loader abstract-class defect and evaluator
    issues separately; no implicit scientific repair is approved here.
 
-No 1D.2B-2, Docker setup, real run allocation, training, or expensive evaluation
-is implemented or executed by this milestone.
+At the 1D.2B-1 boundary no training integration was implemented. Geometry routing
+is now implemented separately in 1D.2B-2A; material and standalone tools remain
+deferred. No real run allocation, native training, Docker setup, or expensive
+evaluation was executed in either milestone.

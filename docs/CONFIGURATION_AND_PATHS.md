@@ -1,20 +1,21 @@
 # Configuration and path foundation (1D.2A)
 
-Updated for approved 1D.2B-1: opt-in dataset/cache routing is described in
-[DATASET_CACHE_ISOLATION.md](DATASET_CACHE_ISOLATION.md). Training entry points
-remain legacy. Schema-1 loading now requires an explicit `config_root`; this
-intentionally tightens the 1D.2A reference-resolution API.
+Updated for 1D.2B-2A: the separate geometry entry point and its native-execution
+limitations are documented in [GEOMETRY_TRAINING.md](GEOMETRY_TRAINING.md).
+Opt-in dataset/cache routing is described in
+[DATASET_CACHE_ISOLATION.md](DATASET_CACHE_ISOLATION.md). Schema-1 loading requires
+an explicit `config_root`; this intentionally tightens the original 1D.2A API.
 
 The configuration/path/run APIs in `infrastructure/` import no training,
 rendering, dataset, NumPy, or GPU modules. Their only non-stdlib runtime dependency
 is the already-required PyYAML. Python 3.9 syntax is supported. The explicit
 dataset factory added in 1D.2B-1 imports dataset dependencies only when invoked.
 
-**Existing training/extraction/evaluation entry points are unchanged. Do not pass
-the new envelopes to `run_training.py`.** Opt-in dataset routing is available in
-1D.2B-1; connecting the full pipeline requires later 1D.2B-2 review. This work
-creates no real experiment, copies no inputs, loads no tensor checkpoints, and
-changes no numerical calculations.
+**Existing entry points retain legacy behavior. Do not pass the new envelopes
+to `run_training.py`.** `run_experiment.py` adds explicit geometry-only validation
+or execution using the foundation; material and standalone extraction/evaluation
+integration remain deferred. No real experiment or native training was executed
+in these milestones, and no original input was modified.
 
 ## Versioned envelope and examples
 
@@ -47,8 +48,9 @@ The fields have implemented infrastructure meanings only:
 | `overrides` | Explicit shallow replacement of legacy top-level fields; no deep merge or forwarding into shader settings |
 | `preprocessing.cache` | Implemented in 1D.2B-1: relative experiment cache directory, default `cache/datasets` |
 
-No variant/algorithm selector, automatic configuration migration, training
-launcher, implicit run ID, or environment-variable expansion is implemented.
+No variant/algorithm selector, automatic configuration migration, implicit run
+ID, or environment-variable expansion is implemented. The separate geometry
+launcher requires an explicit run ID and action; material launching is deferred.
 Host roots are runtime arguments, never committed in default envelopes.
 
 ```python
@@ -112,7 +114,7 @@ Characterization tests preserve these observed baseline behaviors:
 - Trainer seed defaults remain 6033. No seeds are set and no Python RNG state is
   consumed by loading or UUID-based run-ID generation.
 - Adam construction still supplies `lr=1e-3`, `eps=1e-4`, and `amsgrad=True`.
-  Gradient clipping remains `0.7`; no optimizer or scientific source is edited.
+  Gradient clipping remains `0.7`; no optimizer implementation is edited.
 - Warm-up and scheduler defaults remain unchanged. In particular, the actual
   cosine schedule still clamps at 100,000 with alpha `0.2`, independently of a
   configured `end_iter`. Tests characterize warm-up and endpoint boundaries.
@@ -205,8 +207,10 @@ all expected directories, and an explicitly selected existing file relative to
 that run's `checkpoints/`. Absolute historical checkpoint paths, symlinks, and
 escapes to another run are rejected. It neither deserializes nor writes the
 checkpoint. Historical checkpoints are selected separately as input artifacts,
-not as resumed writable history. Run identity/location validation is implemented;
-architecture/config/optimizer/progress/RNG compatibility remains deferred.
+not as resumed writable history. `RunStore` checks identity/location only. The
+geometry adapter additionally checks config/input/code/dependency identity and,
+on explicit execution, network keys/shapes/dtypes and optimizer group/progress
+compatibility. RNG/sampler restoration remains deferred.
 
 Path checks cover existing symlinks and recheck output roots between calls.
 They assume a trusted local process owns the declared output storage; they are
@@ -224,7 +228,8 @@ python3 -B -m unittest discover -s tests/infrastructure -v
 Recorded validation on 2026-11-03: **38 tests passed**, using Python 3.9.12 and
 PyYAML 6.0. The working tree started clean on `paper/infrastructure` at
 `74e029d632feea1508d8639cfccb4a1b0765effe`; validation used the then-uncommitted
-1D.2A changes. Current 1D.2B-1 results are in the dataset-isolation document.
+1D.2A changes. Historical 1D.2B-1 results are in the dataset-isolation document;
+current suite results are in the geometry-training document.
 
 Tests use disposable temporary directories, text checkpoint fixtures, and no
 permission changes. Legacy characterization parses source AST and executes only
@@ -254,5 +259,6 @@ Follow-up dataset routing tests and native-backend limits are recorded in
 5. Characterize actual tensor results in an authorized working environment with
    declared tolerances and resource budgets. Keep mathematical fixes, dependency
    changes, Docker execution, and full provenance work in separately reviewed
-   scope. Dataset opt-in routing is implemented in 1D.2B-1; full training/output
-   integration and later milestones remain unimplemented.
+   scope. Dataset opt-in routing is implemented in 1D.2B-1, and geometry routing
+   in 1D.2B-2A. Material/standalone-tool integration and later milestones remain
+   unimplemented. Native geometry defects are documented without repairs.

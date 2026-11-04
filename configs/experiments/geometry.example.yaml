@@ -1,4 +1,5 @@
-# Infrastructure envelope only; existing training entry points do not load it.
+# Geometry envelope for run_experiment.py; run_training.py remains legacy.
+# See docs/GEOMETRY_TRAINING.md for preflight and native-execution limitations.
 schema_version: 1
 stage: geometry
 legacy_config: ../shape/syn/bell.yaml

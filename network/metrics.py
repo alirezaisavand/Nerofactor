@@ -49,8 +49,8 @@ def draw_materials(data_pr, h, w):
 
 
 class ShapeRenderMetrics(Loss):
-    def __init__(self, cfg):
-        pass
+    def __init__(self, cfg, *, output_paths=None):
+        self.output_paths = output_paths
 
     def __call__(self, data_pr, data_gt, step, **kwargs):
         rgb_gt = color_map_backward(data_pr['gt_rgb'].detach().cpu().numpy())  # h,w,3
@@ -79,6 +79,8 @@ class ShapeRenderMetrics(Loss):
         data_index = kwargs['data_index']
         model_name = kwargs['model_name']
         output_path = Path(f'data/train_vis/{model_name}')
+        if self.output_paths is not None:
+            output_path = self.output_paths.output(f'renders/validation/{model_name}')
         output_path.mkdir(exist_ok=True, parents=True)
         imsave(f'{str(output_path)}/{step}-index-{data_index}.jpg', concat_images_list(*imgs, vert=True))
         return outputs

@@ -40,7 +40,12 @@ class Trainer:
     }
 
     def _init_dataset(self):
-        self.train_set = name2dataset[self.cfg['train_dataset_type']](self.cfg['train_dataset_cfg'], True)
+        if self.experiment is None:
+            self.train_set = name2dataset[self.cfg['train_dataset_type']](self.cfg['train_dataset_cfg'], True)
+        else:
+            self.train_set = name2dataset[self.cfg['train_dataset_type']](
+                self.cfg['train_dataset_cfg'], True, dataset_dir=self.cfg['dataset_dir'],
+                preprocessing=self.experiment.preprocessing)
         self.train_set = DataLoader(self.train_set, 1, True, num_workers=self.cfg['worker_num'],
                                     collate_fn=dummy_collate_fn)
         print(f'train set len {len(self.train_set)}')
@@ -48,14 +53,23 @@ class Trainer:
         dataset_dir = self.cfg['dataset_dir']
         for val_set_cfg in self.cfg['val_set_list']:
             name, val_type, val_cfg = val_set_cfg['name'], val_set_cfg['type'], val_set_cfg['cfg']
-            val_set = name2dataset[val_type](val_cfg, False, dataset_dir=dataset_dir)
+            if self.experiment is None:
+                val_set = name2dataset[val_type](val_cfg, False, dataset_dir=dataset_dir)
+            else:
+                val_set = name2dataset[val_type](val_cfg, False, dataset_dir=dataset_dir,
+                                               preprocessing=self.experiment.preprocessing)
             val_set = DataLoader(val_set, 1, False, num_workers=self.cfg['worker_num'], collate_fn=dummy_collate_fn)
             self.val_set_list.append(val_set)
             self.val_set_names.append(name)
             print(f'{name} val set len {len(val_set)}')
 
     def _init_network(self):
-        self.network = name2renderer[self.cfg['network']](self.cfg).cuda()
+        if self.experiment is None:
+            self.network = name2renderer[self.cfg['network']](self.cfg).cuda()
+        else:
+            self.network = name2renderer[self.cfg['network']](
+                self.cfg, preprocessing=self.experiment.preprocessing).cuda()
+            self.experiment.record_owner('renderer', self.network.cfg)
 
         # loss
         self.val_losses = []
@@ -66,7 +80,10 @@ class Trainer:
         # metrics
         for metric_name in self.cfg['val_metric']:
             if metric_name in name2metrics:
-                self.val_metrics.append(name2metrics[metric_name](self.cfg))
+                if self.experiment is not None and metric_name == 'shape_render':
+                    self.val_metrics.append(name2metrics[metric_name](self.cfg, output_paths=self.experiment.run))
+                else:
+                    self.val_metrics.append(name2metrics[metric_name](self.cfg))
             else:
                 self.val_metrics.append(name2loss[metric_name](self.cfg))
 
@@ -91,16 +108,21 @@ class Trainer:
         self.lr_manager = name2lr_manager[self.cfg['lr_type']](self.cfg['lr_cfg'])
         self.optimizer = self.lr_manager.construct_optimizer(self.optimizer, self.network)
 
-    def __init__(self, cfg):
+    def __init__(self, cfg, *, experiment=None):
+        if experiment is not None and cfg.get('network') != 'shape':
+            raise ValueError('Experiment integration is geometry-only')
+        self.experiment = experiment
         self.cfg = {**self.default_cfg, **cfg}
         torch.manual_seed(self.cfg['random_seed'])
         np.random.seed(self.cfg['random_seed'])
         random.seed(self.cfg['random_seed'])
         self.model_name = cfg['name']
-        self.model_dir = os.path.join('data/model', cfg['name'])
+        self.model_dir = os.path.join('data/model', cfg['name']) if experiment is None else str(experiment.run.checkpoints)
         if not os.path.exists(self.model_dir): Path(self.model_dir).mkdir(exist_ok=True, parents=True)
         self.pth_fn = os.path.join(self.model_dir, 'model.pth')
         self.best_pth_fn = os.path.join(self.model_dir, 'model_best.pth')
+        if experiment is not None:
+            experiment.record_owner('trainer', self.cfg)
 
     def run(self):
         self._init_dataset()
@@ -188,9 +210,9 @@ class Trainer:
             pbar.set_postfix(loss=float(loss.detach().cpu().numpy()), lr=lr, others=loss_str)
             pbar.update(1)
             del loss, log_info
-        logs_dir = os.path.join('logs', self.cfg['name'])
+        logs_dir = os.path.join('logs', self.cfg['name']) if self.experiment is None else str(self.experiment.run.output('logs/nvs'))
         logs_path = os.path.join(logs_dir, 'logs.txt')
-        nvs_imgs_dir = os.path.join('nvs_imgs', self.cfg['name'])
+        nvs_imgs_dir = os.path.join('nvs_imgs', self.cfg['name']) if self.experiment is None else str(self.experiment.run.output('renders/nvs'))
         os.makedirs(logs_dir, exist_ok=True)
         os.makedirs(nvs_imgs_dir, exist_ok=True)
         self.train_network.nvs(log_dir_str=logs_dir,
@@ -199,6 +221,8 @@ class Trainer:
         pbar.close()
 
     def _load_model(self):
+        if self.experiment is not None:
+            return self.experiment.restore(self.network, self.optimizer, torch.load, self.cfg['total_step'])
         best_para, start_step = 0, 0
         if os.path.exists(self.pth_fn):
             checkpoint = torch.load(self.pth_fn)
@@ -212,6 +236,13 @@ class Trainer:
 
     def _save_model(self, step, best_para, save_fn=None):
         save_fn = self.pth_fn if save_fn is None else save_fn
+        if self.experiment is not None:
+            return self.experiment.save_checkpoint({
+                'step': step,
+                'best_para': best_para,
+                'network_state_dict': self.network.state_dict(),
+                'optimizer_state_dict': self.optimizer.state_dict(),
+            }, save_fn, torch.save)
         torch.save({
             'step': step,
             'best_para': best_para,
@@ -220,7 +251,7 @@ class Trainer:
         }, save_fn)
 
     def _init_logger(self):
-        self.logger = Logger(self.model_dir)
+        self.logger = Logger(self.model_dir if self.experiment is None else str(self.experiment.run.logs))
 
     def _log_data(self, results, step, prefix='train', verbose=False):
         log_results = {}

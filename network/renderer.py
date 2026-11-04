@@ -250,8 +250,9 @@ class NeROShapeRenderer(nn.Module):
         'curv_loss_weight': 0.001,
     }
 
-    def __init__(self, cfg, training=True):
+    def __init__(self, cfg, training=True, *, preprocessing=None):
         super().__init__()
+        self.preprocessing = preprocessing
         self.cfg = {**self.default_cfg, **cfg}
         self.is_nerf = self.cfg['is_nerf']
 
@@ -277,7 +278,11 @@ class NeROShapeRenderer(nn.Module):
 
     def _init_dataset(self):
         # train/test split
-        self.database = parse_database_name(self.cfg['database_name'], self.cfg['dataset_dir'])
+        if self.preprocessing is None:
+            self.database = parse_database_name(self.cfg['database_name'], self.cfg['dataset_dir'])
+        else:
+            self.database = parse_database_name(self.cfg['database_name'], self.cfg['dataset_dir'],
+                                                preprocessing=self.preprocessing)
         self.train_ids, self.test_ids = get_database_split(self.database)
         self.train_ids = np.asarray(self.train_ids)
 

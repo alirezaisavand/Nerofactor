@@ -1,8 +1,8 @@
 # Incremental infrastructure implementation plan
 
-Status: **1D.1 and 1D.2A are approved; 1D.2B-1 implements opt-in dataset/cache
-isolation and approved configuration roots**. Further entry-point/writer
-integration in 1D.2B-2 and milestones 1D.3 and 1D.4 require review and
+Status: **1D.1, 1D.2A, and 1D.2B-1 are approved; 1D.2B-2A implements isolated
+geometry entry-point integration for review**. Material integration, standalone
+extraction/evaluation refactoring, and milestones 1D.3 and 1D.4 require separate
 authorization. No branch merge, container
 execution, training, artifact relocation, or numerical correction is included.
 
@@ -102,7 +102,34 @@ inventory, metadata identity policy, fixture/native test distinction, retained
 custom-loader defect, and proposed 1D.2B-2 scope. Full pipeline write isolation
 and native-backend numerical parity are not established by this boundary.
 
+### 1D.2B-2A implemented boundary
+
+`run_experiment.py` is the separate geometry-only schema-1 entry point.
+Side-effect-free preflight checks paths, required structure, allocation intent,
+and resume metadata before scientific imports. Explicit execution threads one
+dataset selection and preprocessing cache through training, validation, and the
+shape renderer. Checkpoints, optimizer state, text/TensorBoard/console logs,
+validation images, and conventional runtime caches/temporary files use the
+selected experiment. Existing `run_training.py --cfg ...` remains legacy.
+
+Original envelope/reference bytes, path-resolved settings, partial owning-class
+defaults, and a conservative compatibility identity are saved. New runs reject
+collisions. Resume requires an explicit same-run checkpoint and matching
+config/input metadata/code/dependency identity; historical initialization loads
+weights only into a new run. RNG/sampler state is not added or restored, so no
+exact-resume claim is made. Full provenance remains 1D.4.
+
+CPU fakes exercise the shared loop/evaluator/logger/metrics; no native training
+was executed. Native shape construction has a pre-existing two-versus-three
+split-unpack error, and the trainer's final NVS call has a pre-existing keyword
+signature mismatch. Neither is repaired here. Native execution and GPU parity
+remain unvalidated. See [GEOMETRY_TRAINING.md](GEOMETRY_TRAINING.md) for usage,
+writer inventory, evidence, limitations, and proposed material scope.
+
 ### Proposed implementation
+
+The following list is the broader target; it does not override the implemented
+boundaries or authorize subsequent milestones.
 
 1. Introduce a versioned configuration schema and explicit path resolver.
    Separate geometry/material stage, dataset identity/root, cache root, mesh

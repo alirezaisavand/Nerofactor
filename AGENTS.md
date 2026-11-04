@@ -135,19 +135,30 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Milestones 1D.1 and 1D.2A have been reviewed and approved. Current authorized
-milestone: **1D.2B-1, dataset and cache isolation only**. Its scope is writer
-inventory, opt-in preprocessing/cache routing, approved config-root confinement,
-focused CPU tests, examples, and documentation. Keep training entry points,
-legacy YAML, renderers, training loops, evaluation protocols, losses, optimizers,
+Milestones 1D.1, 1D.2A, and 1D.2B-1 have been reviewed and approved. Current
+authorized milestone: **1D.2B-2A, isolated geometry training integration only**.
+Its scope is a separate schema-1 geometry entry point, explicit dataset/cache
+propagation, contained output routing, explicit checkpoint selection and
+compatibility checks, CPU tests, and documentation. Focused optional I/O hooks in
+the trainer, shape renderer, and shape metrics are authorized. Keep the legacy
+`run_training.py` path and legacy defaults, YAML, training-loop computations,
+network definitions, evaluation protocols, losses, optimizers, scheduler,
 sampling, seeds, precision, and arithmetic unchanged. Do not migrate legacy
 configurations or repair scientific defects.
 
-The new envelopes are not accepted by existing training entry points. Preserve
+The new envelopes are accepted only by the separate `run_experiment.py` geometry
+entry point; existing entry points remain legacy. Preserve
 shallow legacy merges and the scope of shader fields; top-level
 shader-like fields must not be silently forwarded into `shader_cfg`. Diagnostics
-are evidence, not authorization to correct behavior. Run allocation is tested
-only in disposable fixtures; do not allocate a real experiment for this task.
+are evidence, not authorization to correct behavior. Run allocation and the
+shared trainer loop are tested only in disposable CPU fixtures with explicit
+model/device fakes; do not allocate a real experiment or execute native training
+for this task. Configuration validation must not import scientific modules,
+construct models, load tensor checkpoints, or consume scientific RNG state.
+Fresh runs must refuse collisions; same-run continuation requires an explicitly
+named checkpoint and matching identity. Historical initialization is explicitly
+weights-only in a new run. Neither continuation nor old checkpoints establish
+exact resumption without RNG/sampler state.
 Dataset construction without `preprocessing` remains legacy compatibility mode.
 New mode must write derived products only inside the selected experiment cache,
 preserving existing source-side products as read-only inputs. Cache identities
@@ -155,9 +166,14 @@ must distinguish dataset, scene/mode/parameters, and implementation versions.
 Schema-1 loads require an explicitly approved configuration root; references must
 not escape it through traversal or symlinks. Record native-backend skips and
 pre-existing custom-loader/evaluator defects instead of silently fixing them.
+The native shape split-unpack and final NVS signature errors are documented in
+[GEOMETRY_TRAINING.md](docs/GEOMETRY_TRAINING.md). CPU routing tests do not prove
+that native geometry training is runnable or numerically equivalent on GPU.
 
-Do not begin 1D.2B-2, 1D.3, or 1D.4 until the user reviews 1D.2B-1 and authorizes that
-work. Do not commit or push automatically. A later explicit user instruction
+Do not begin material-training integration, extraction/evaluation refactoring,
+1D.3, 1D.4, or scientific repairs without separate user approval. Do not run
+Docker, GPU tests, real training, or expensive experiments in this milestone.
+Do not commit or push automatically. A later explicit user instruction
 updates this boundary. See [CONFIGURATION_AND_PATHS.md](docs/CONFIGURATION_AND_PATHS.md)
 for implemented APIs and limitations, and [INFRASTRUCTURE_PLAN.md](docs/INFRASTRUCTURE_PLAN.md)
 for later milestones and acceptance criteria. The writer inventory, opt-in API,
