@@ -261,6 +261,14 @@ Python 3.8 source grammar/static policy checks pass; actual 3.8 runtime remains
 unverified and existing tests use unavailable `ast.unparse`. No interpreter
 upgrade or test/scientific patch is applied. Stop for review at this boundary.
 
+Review correction 1D.3B-1A includes every validator dependency in the generated
+definition inventory. Before any Debian installation, a mandatory host-side
+Python preflight validates the full reviewed inputs/workspace and definition
+bytes. Its externally supplied receipt SHA-256 gates an offline shell-only
+verification inside the historical base; no base Python is assumed. The Python
+recheck after installation remains defence in depth. Static synthetic regression
+fixtures exercise this boundary; builds/installations remain separately approved.
+
 ### Proposed 1D.3B-2 implementation
 
 The proposal below requires a new approval; none of its build/install/native

@@ -1,4 +1,4 @@
-# Paper environment reconstruction: 1D.3B-1, definition only
+# Paper environment reconstruction: 1D.3B-1 / 1D.3B-1A, definition only
 
 This is a reviewable reconstruction of the recovered CUDA 11.1 / system Python
 3.8 / Torch 1.8 environment. **Do not build, install, stage original sources, or
@@ -24,7 +24,9 @@ with upstream HEAD when the exact public-source URL was unavailable.
 | [requirements.reference.txt](requirements.reference.txt) | Verified live version declarations; **not an install file or complete lock** |
 | [resolved.example.json](resolved.example.json) | Deliberately incomplete external input-resolution template; `reviewed: false` |
 | [validate.py](validate.py) | Read-only definition and optional staged-artifact/hash checks; never builds or copies sources |
+| [preflight.py](preflight.py) | Mandatory future host validation of the complete context; writes only two preflight gate files in the new external context |
 | [static_checks.py](static_checks.py) | Read-only manifest/YAML/shell/AST checks; imports only stdlib and existing PyYAML |
+| [test_definition.py](test_definition.py) | Static regression checks with synthetic temporary context files and shell checksum verification; no installers |
 | [record.py](record.py) | Future approved image-build provenance/core checks; **not executed in 1D.3B-1** |
 | [.dockerignore](.dockerignore) | Generated-context root allowlist and data/secret/history exclusions |
 | [compose.yaml](compose.yaml) | Proposed isolated runtime; no automatic build or execution |
@@ -112,7 +114,15 @@ source checkout as Docker context. A proposed generated layout is:
 <external-context>/
   Dockerfile                  # copy the reviewed definition
   .dockerignore               # copy docker/paper/.dockerignore to this root
-  definition/                 # only Dockerfile, reference.json, validate.py, record.py
+  PREFLIGHT.base-image        # generated only by successful host preflight
+  PREFLIGHT.sha256            # generated full context checksum manifest
+  definition/                 # exact inventory below; no other files
+    Dockerfile
+    reference.json
+    requirements.reference.txt
+    validate.py
+    record.py
+    preflight.py
   workspace/                  # approved committed paper source/assets snapshot
   inputs/
     resolved.json             # reviewed completed resolution + full hash maps
@@ -123,6 +133,13 @@ source checkout as Docker context. A proposed generated layout is:
     sources/nvdiffrast/...    # committed package/source + setup/README/licence
     sources/raytracing/...    # committed build-needed source/includes/licences
 ```
+
+`validate.DEFINITION_FILES` is the canonical definition inventory. Copy each of
+those files byte-for-byte from the approved `docker/paper/` definition. The
+reference requirements file is required by the validator even though it is not
+an install lockfile. `.dockerignore` explicitly retains every inventory member;
+static regression checks run validation against a minimal staged definition and
+verify that removing any member fails clearly.
 
 1. Verify local source HEAD equals the supplied commit and tracked/index changes
    are absent, using `git --no-optional-locks`. A clean tree does not identify the
@@ -170,19 +187,45 @@ source checkout as Docker context. A proposed generated layout is:
    `apt/SHA256SUMS` uses `SHA256` followed by two spaces and a flat `.deb` filename.
    All staged files must be regular files with no symlinks/hardlinks; materialize
    exports into new files and validate the complete sets before any installer runs.
-8. A future **read-only** input preflight can run the following, with real reviewed
-   values, before the separately approved build:
+8. **Mandatory preflight before any future build:** use an available, trusted host
+   Python 3.8 or newer (stdlib only). Do not assume Python is installed in the CUDA
+   base, install a bootstrap interpreter, or skip validation if host Python is
+   unavailable. Stop and recover an approved host preflight environment instead.
+   Run the reviewed script against a fresh completed external context:
 
 ```sh
-python3 -B docker/paper/validate.py \
-  --inputs /ABSOLUTE/EXTERNAL/CONTEXT/inputs \
-  --workspace /ABSOLUTE/EXTERNAL/CONTEXT/workspace \
+python3 -B docker/paper/preflight.py \
+  --context /ABSOLUTE/EXTERNAL/CONTEXT \
   --base-image 'nvidia/cuda:11.1.1-devel-ubuntu20.04@sha256:ACTUAL_VERIFIED_DIGEST'
 ```
 
-The placeholder above deliberately fails validation. No image build/run command
-is prescribed for execution in this milestone. The future operator must also
-review the context-root Dockerfile/ignore rules and definition file hashes. The
+The placeholder deliberately fails validation. Preflight first requires the exact
+reviewed definition files and context Dockerfile/ignore rules, then executes the
+complete existing `validate.inputs` checks (including reviewed resolution, source
+pins, all artifact hashes and workspace inventory). It rejects extra context files
+and existing gate files. Only on success does it create `PREFLIGHT.base-image` and
+`PREFLIGHT.sha256`, covering **every context file** except the checksum manifest
+itself, including `resolved.json`, definitions and the base-selection file. It does
+not change any staged package/source/workspace bytes or install anything.
+
+Save/review the printed `PAPER_PREFLIGHT_SHA256` **outside the context**. During a
+separately approved build, explicitly supply that digest as the required build
+argument, alongside the matching digest-qualified `PAPER_BASE_IMAGE`. Never
+substitute an arbitrary digest, accept a receipt from an untrusted source, or
+generate one without the full preflight. A checksum is an integrity record, not
+proof of researcher review or authenticated proof that validation ran. Keep the
+context exclusively controlled and unchanged from preflight through Docker's
+snapshot; if inputs/definitions change, prepare and validate a new context.
+
+The first Docker RUN uses only the base's Bash/coreutils/find tools: it checks the
+externally supplied receipt hash, regular-file policy, exact file count, all file
+hashes and matching base selection. Missing/filtered/extra or changed files fail
+before any installer runs. These utilities must exist in the recovered base; if
+absent, the build fails closed rather than installing a validator dependency.
+Only after this boundary may `dpkg --unpack`/configuration execute. The subsequent
+Python validator remains an independent recheck after Python becomes available.
+
+No image build/run command is prescribed for execution in this milestone. The
 checker validates file identities and recorded selections; it does not authenticate
 an operator's source declaration, resolve Debian dependencies, inspect wheel
 platform/metadata compatibility or establish native numerical behavior. Offline
@@ -233,14 +276,21 @@ after the later build/runtime checks; they cannot be truthfully known here.
 
 ## Static validation, blockers and Step 1D.3B-2
 
-Run only the definition checker now:
+Run the static checker and synthetic regression fixtures:
 
 ```sh
 python3 -B docker/paper/static_checks.py
+python3 -B -m unittest discover -s docker/paper -p test_definition.py -v
 ```
 
-It parses declarations, Compose policy, Docker RUN shell grammar and Python 3.8
-source grammar. It never stages, downloads, invokes Docker/pip or runs models.
+The checker parses declarations, the complete staged definition allowlist,
+pre-install gate ordering, Compose policy, Docker RUN shell grammar and Python
+3.8 source grammar. The 14 regression tests create only synthetic temporary
+artifacts (not real wheels, Debian packages or extension exports), validate their
+manifests and execute only the first checksum-verification shell command. They
+check missing definition files, unreviewed/changed inputs, receipt anchoring,
+base selection, collisions, file-set changes and symlink rejection. Neither
+command stages original sources, downloads, invokes Docker/pip or runs models.
 See the compatibility report for observed pass counts and limits. The existing
 training/infrastructure unit suite was not executed: this task permits static
 checks only, and Python 3.8 test compatibility is a separate unresolved issue.

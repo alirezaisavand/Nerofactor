@@ -14,9 +14,14 @@ package was installed and the reference container was not executed here.
   definition scripts.
 - Proposed Compose read-only mounts, explicit user/GPU/image/input selections and
   runtime isolation fields; **not** actual Docker Compose engine semantics.
-- Bash syntax parsing of all **4** offline Docker RUN instructions.
-- Python 3.8 grammar parsing of **42** pipeline/infrastructure/helper/definition
+- Bash syntax parsing of all **5** offline Docker RUN instructions (after 1D.3B-1A).
+- Python 3.8 grammar parsing of **44** pipeline/infrastructure/helper/definition
   files, including the two experiment CLIs and used COLMAP reader helpers.
+
+1D.3B-1A adds a stdlib-only host preflight, complete staged-definition inventory
+checks and 14 static artifact/shell regression tests. They do not assume Python
+in the historical base or install a bootstrap interpreter. The regression suite
+runs on the available host interpreter, not the untested reference Python 3.8.
 
 The infrastructure uses stdlib `dataclasses`, `importlib.metadata`, `pathlib`,
 typing aliases and subprocess APIs present in Python 3.8. No obvious post-3.8

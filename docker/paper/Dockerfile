@@ -3,14 +3,30 @@
 ARG PAPER_BASE_IMAGE
 FROM ${PAPER_BASE_IMAGE}
 ARG PAPER_BASE_IMAGE
+ARG PAPER_PREFLIGHT_SHA256
 SHELL ["/bin/bash", "-euo", "pipefail", "-c"]
 
 # inputs/ contains offline hashed .debs, wheels, source exports and resolved.json.
 # This context is deliberately not the repository or an original extension checkout.
-COPY inputs/ /opt/paper-inputs/
-COPY definition/ /opt/paper-environment/
-COPY workspace/ /workspace/
+# Host preflight validates the complete manifest before any installer can execute.
+# Its externally supplied receipt digest anchors all copied bytes, including the
+# reviewed resolution and definitions. No Python in the CUDA base is assumed.
+COPY . /opt/paper-context/
 RUN --network=none [[ "${PAPER_BASE_IMAGE}" =~ ^nvidia/cuda:11\.1\.1-devel-ubuntu20\.04@sha256:[a-f0-9]{64}$ ]] \
+    && [[ "${PAPER_PREFLIGHT_SHA256}" =~ ^[a-f0-9]{64}$ ]] \
+    && cd /opt/paper-context \
+    && test -z "$(find . ! -type d ! -type f -print -quit)" \
+    && test -z "$(find . -type f -links +1 -print -quit)" \
+    && printf '%s  PREFLIGHT.sha256\n' "${PAPER_PREFLIGHT_SHA256}" | sha256sum --strict --check - \
+    && test "$(find . -type f ! -path './PREFLIGHT.sha256' | wc -l)" -eq "$(wc -l < PREFLIGHT.sha256)" \
+    && sha256sum --strict --check PREFLIGHT.sha256 \
+    && test "$(cat PREFLIGHT.base-image)" = "${PAPER_BASE_IMAGE}"
+
+# Only verified bytes may now be relocated and installed. The later Python
+# recheck is defence in depth, not the first validation boundary.
+RUN --network=none mv /opt/paper-context/inputs /opt/paper-inputs \
+    && mv /opt/paper-context/definition /opt/paper-environment \
+    && mv /opt/paper-context/workspace /workspace \
     && cd /opt/paper-inputs/apt \
     && awk 'NF != 2 || length($1) != 64 || $1 !~ /^[a-f0-9]+$/ || $2 !~ /^[A-Za-z0-9_.+%~-]+\.deb$/ || seen[$2]++ {exit 1} END {if (NR == 0) exit 1}' SHA256SUMS \
     && debs=(./*.deb) && test "${#debs[@]}" -eq "$(wc -l < SHA256SUMS)" \

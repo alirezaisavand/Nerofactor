@@ -2,11 +2,15 @@
 **
 !Dockerfile
 !.dockerignore
+!PREFLIGHT.sha256
+!PREFLIGHT.base-image
 !definition/
 !definition/Dockerfile
 !definition/reference.json
+!definition/requirements.reference.txt
 !definition/validate.py
 !definition/record.py
+!definition/preflight.py
 !inputs/
 !inputs/resolved.json
 !inputs/python-complete.txt

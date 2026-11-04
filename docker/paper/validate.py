@@ -12,6 +12,10 @@ HERE = Path(__file__).resolve().parent
 HEX = re.compile(r"[a-f0-9]{64}")
 COMMIT = re.compile(r"[a-f0-9]{40}")
 BASE = re.compile(r"nvidia/cuda:11\.1\.1-devel-ubuntu20\.04@sha256:[a-f0-9]{64}")
+DEFINITION_FILES = (
+    'Dockerfile', 'reference.json', 'requirements.reference.txt',
+    'validate.py', 'record.py', 'preflight.py',
+)
 
 
 def require(condition, message):
@@ -64,6 +68,8 @@ def normalize(name):
 
 
 def definition():
+    require(all((HERE / name).is_file() for name in DEFINITION_FILES),
+            'Missing required staged definition file; expected: ' + ', '.join(DEFINITION_FILES))
     reference = read_json(HERE / 'reference.json')
     require(reference['schema_version'] == 1, 'Unsupported reference schema')
     docker = (HERE / 'Dockerfile').read_text()

@@ -7,11 +7,16 @@ import subprocess
 
 import yaml
 
-from validate import HERE, definition, require
+from validate import DEFINITION_FILES, HERE, definition, require
 
 
 def main():
     definition()
+    ignore = (HERE / '.dockerignore').read_text().splitlines()
+    require(all('!definition/' + name in ignore for name in DEFINITION_FILES),
+            'Required staged definition file excluded from context')
+    require(all('!' + name in ignore for name in ['PREFLIGHT.sha256', 'PREFLIGHT.base-image']),
+            'Preflight gate files excluded from context')
     for name in ['compose.yaml', 'compose.geometry-input.yaml']:
         service = yaml.safe_load((HERE / name).read_text())['services']['paper']
         expected_targets = {'/inputs/geometry'} if name == 'compose.geometry-input.yaml' else {'/inputs/datasets', '/inputs/thesis', '/outputs'}
@@ -29,6 +34,12 @@ def main():
             devices = service['deploy']['resources']['reservations']['devices']
             require(len(devices) == 1 and devices[0]['device_ids'] == ['${PAPER_GPU:?select a GPU explicitly}'], 'Explicit GPU selection required')
     logical = re.sub(r'\\\n\s*', ' ', (HERE / 'Dockerfile').read_text())
+    runs = [line for line in logical.splitlines() if line.startswith('RUN ')]
+    require('ARG PAPER_PREFLIGHT_SHA256\n' in logical and
+            'sha256sum --strict --check PREFLIGHT.sha256' in runs[0], 'Missing mandatory pre-install gate')
+    require(not re.search(r'\b(dpkg|pip|apt-get|python3)\b', runs[0]),
+            'Installer or base Python used before complete context verification')
+    require('dpkg --unpack' in runs[1], 'Debian install must follow preflight gate')
     shell_count = 0
     for line in logical.splitlines():
         if line.startswith('RUN '):
@@ -44,6 +55,7 @@ def main():
     for path in paths:
         ast.parse(path.read_text(), filename=str(path), feature_version=8)
     print('PASS: Compose mount/non-root/GPU policy and {} Docker RUN shell parses'.format(shell_count))
+    print('PASS: complete staged definition allowlist and pre-install validation boundary')
     print('PASS: Python 3.8 grammar for {} source/definition files'.format(len(paths)))
     print('NOT TESTED: Python 3.8 runtime, Docker/Compose engine semantics, package resolution, builds, ABI or GPU behavior')
 

@@ -136,7 +136,13 @@ from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
 Milestones through 1D.3A have been reviewed and approved.
-Current authorized milestone: **1D.3B-1, paper Docker definition only**.
+Current authorized milestone: **1D.3B-1A, focused Docker definition review fixes**.
+The Docker architecture from 1D.3B-1 is accepted. Correct the staged definition
+inventory and require complete reviewed context validation before any package
+installation. A host Python preflight and externally supplied checksum gate may
+avoid assuming Python in the historical base. Static regression checks may write
+synthetic disposable fixtures; they must not stage original sources or execute
+installers. Keep dependency pins and the historical runtime selection unchanged.
 Its scope is `docker/paper/` definitions/manifests/static validators and supporting
 documentation. Use the recovered system Python 3.8.10 / CUDA 11.1 / Torch
 1.8.1+cu111 / ABI 0 reference; no Micromamba or scientific upgrades. Pin nvdiffrast
