@@ -54,7 +54,7 @@ def defaults(path, cls):
                 and any(isinstance(t, ast.Name) and t.id == "default_cfg" for t in n.targets))
 
 
-def trainer_fixture():
+def trainer_fixture(*, legacy_nvs=False):
     events, parses, networks, metrics, writers = [], [], [], [], []
 
     def parse_database(name, root, *, preprocessing=None):
@@ -131,12 +131,15 @@ def trainer_fixture():
         return result
 
     class Renderer:
-        def __init__(self, cfg, *, preprocessing=None):
+        def __init__(self, cfg, *, preprocessing=None, isolated_geometry=False):
             self.cfg = {**defaults("network/renderer.py", "NeROShapeRenderer"), **cfg}
+            self.isolated_geometry = isolated_geometry
             self.loaded = None
             parse_database(cfg["database_name"], cfg["dataset_dir"], preprocessing=preprocessing)
-            # The fake bypasses the known baseline split-unpack defect. Separate
-            # source tests assert that production behavior remains unchanged.
+            # Actual split initialization is exercised separately with device fakes.
+            # Legacy tail characterization alone uses a material-style stand-in.
+            if legacy_nvs:
+                self.nvs = self.legacy_nvs
             networks.append(self)
 
         def cuda(self):
@@ -164,7 +167,10 @@ def trainer_fixture():
             return {"loss_rgb": Tensor([0.2]), "gt_rgb": Tensor(np.full((12, 12, 3), 0.25)),
                     "ray_rgb": Tensor(np.full((12, 12, 3), 0.5)), "normal": Tensor(np.zeros((12, 12, 3)))}
 
-        def nvs(self, *, log_dir_str, imgs_dir):
+        def nvs(self, pose, K, h, w):
+            raise AssertionError("Isolated geometry must defer final NVS")
+
+        def legacy_nvs(self, *, log_dir_str, imgs_dir):
             events.append(("nvs", log_dir_str, imgs_dir))
             Path(log_dir_str, "fixture.txt").write_text("fake only; actual shape NVS has a different signature")
 

@@ -261,4 +261,5 @@ Follow-up dataset routing tests and native-backend limits are recorded in
    changes, Docker execution, and full provenance work in separately reviewed
    scope. Dataset opt-in routing is implemented in 1D.2B-1, and geometry routing
    in 1D.2B-2A. Material/standalone-tool integration and later milestones remain
-   unimplemented. Native geometry defects are documented without repairs.
+   unimplemented. Follow-up 1D.2B-2A.1 adapts the known split and final-NVS
+   interfaces only in isolated geometry mode; scientific corrections remain deferred.

@@ -68,7 +68,7 @@ class Trainer:
             self.network = name2renderer[self.cfg['network']](self.cfg).cuda()
         else:
             self.network = name2renderer[self.cfg['network']](
-                self.cfg, preprocessing=self.experiment.preprocessing).cuda()
+                self.cfg, preprocessing=self.experiment.preprocessing, isolated_geometry=True).cuda()
             self.experiment.record_owner('renderer', self.network.cfg)
 
         # loss
@@ -210,13 +210,16 @@ class Trainer:
             pbar.set_postfix(loss=float(loss.detach().cpu().numpy()), lr=lr, others=loss_str)
             pbar.update(1)
             del loss, log_info
-        logs_dir = os.path.join('logs', self.cfg['name']) if self.experiment is None else str(self.experiment.run.output('logs/nvs'))
-        logs_path = os.path.join(logs_dir, 'logs.txt')
-        nvs_imgs_dir = os.path.join('nvs_imgs', self.cfg['name']) if self.experiment is None else str(self.experiment.run.output('renders/nvs'))
-        os.makedirs(logs_dir, exist_ok=True)
-        os.makedirs(nvs_imgs_dir, exist_ok=True)
-        self.train_network.nvs(log_dir_str=logs_dir,
-                                              imgs_dir=nvs_imgs_dir)
+        if self.experiment is None:
+            logs_dir = os.path.join('logs', self.cfg['name'])
+            logs_path = os.path.join(logs_dir, 'logs.txt')
+            nvs_imgs_dir = os.path.join('nvs_imgs', self.cfg['name'])
+            os.makedirs(logs_dir, exist_ok=True)
+            os.makedirs(nvs_imgs_dir, exist_ok=True)
+            self.train_network.nvs(log_dir_str=logs_dir,
+                                                  imgs_dir=nvs_imgs_dir)
+        else:
+            print('Final geometry NVS deferred to a separately versioned evaluation protocol; see geometry.json.')
 
         pbar.close()
 

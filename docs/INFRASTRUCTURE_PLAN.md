@@ -1,7 +1,7 @@
 # Incremental infrastructure implementation plan
 
-Status: **1D.1, 1D.2A, and 1D.2B-1 are approved; 1D.2B-2A implements isolated
-geometry entry-point integration for review**. Material integration, standalone
+Status: **1D.1, 1D.2A, 1D.2B-1 and 1D.2B-2A are approved; 1D.2B-2A.1 resolves
+isolated geometry interface blockers for review**. Material integration, standalone
 extraction/evaluation refactoring, and milestones 1D.3 and 1D.4 require separate
 authorization. No branch merge, container
 execution, training, artifact relocation, or numerical correction is included.
@@ -120,11 +120,22 @@ weights only into a new run. RNG/sampler state is not added or restored, so no
 exact-resume claim is made. Full provenance remains 1D.4.
 
 CPU fakes exercise the shared loop/evaluator/logger/metrics; no native training
-was executed. Native shape construction has a pre-existing two-versus-three
-split-unpack error, and the trainer's final NVS call has a pre-existing keyword
-signature mismatch. Neither is repaired here. Native execution and GPU parity
-remain unvalidated. See [GEOMETRY_TRAINING.md](GEOMETRY_TRAINING.md) for usage,
+was executed. At this boundary, shape construction retained the two-versus-three
+split-unpack error and the trainer retained the final NVS signature mismatch.
+The approved follow-up below adapts isolated mode only. Native execution and GPU
+parity remain unvalidated. See [GEOMETRY_TRAINING.md](GEOMETRY_TRAINING.md) for usage,
 writer inventory, evidence, limitations, and proposed material scope.
+
+### 1D.2B-2A.1 implemented boundary
+
+The isolated trainer explicitly selects three-list split adaptation in the shape
+renderer. It retains the helper's exact training, validation and novel-view IDs,
+calls the unchanged helper once, and preserves RNG effects. Final geometry NVS
+dispatch is deferred and recorded in run metadata/console output until a
+separately versioned evaluation protocol is reviewed. Legacy entry-point behavior,
+validation/checkpoint selection, and all scientific computations are preserved.
+Focused CPU initialization/split/loop tests complement the full infrastructure
+suite; no real run, native training, Docker or GPU experiment is executed.
 
 ### Proposed implementation
 

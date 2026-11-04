@@ -135,12 +135,13 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Milestones 1D.1, 1D.2A, and 1D.2B-1 have been reviewed and approved. Current
-authorized milestone: **1D.2B-2A, isolated geometry training integration only**.
-Its scope is a separate schema-1 geometry entry point, explicit dataset/cache
-propagation, contained output routing, explicit checkpoint selection and
-compatibility checks, CPU tests, and documentation. Focused optional I/O hooks in
-the trainer, shape renderer, and shape metrics are authorized. Keep the legacy
+Milestones 1D.1, 1D.2A, 1D.2B-1, and 1D.2B-2A have been reviewed and approved.
+Current authorized milestone: **1D.2B-2A.1, isolated geometry interface fixes**.
+Its scope is explicit three-list split adaptation and final-NVS deferral in the
+isolated geometry mode, focused CPU tests, and documentation. Preserve the
+original split helper, call count, train/validation/NVS IDs and RNG effects.
+Record final NVS as deferred to a separately versioned evaluation protocol; do
+not introduce cameras, renders, or metrics for that protocol. Keep the legacy
 `run_training.py` path and legacy defaults, YAML, training-loop computations,
 network definitions, evaluation protocols, losses, optimizers, scheduler,
 sampling, seeds, precision, and arithmetic unchanged. Do not migrate legacy
@@ -166,9 +167,13 @@ must distinguish dataset, scene/mode/parameters, and implementation versions.
 Schema-1 loads require an explicitly approved configuration root; references must
 not escape it through traversal or symlinks. Record native-backend skips and
 pre-existing custom-loader/evaluator defects instead of silently fixing them.
-The native shape split-unpack and final NVS signature errors are documented in
-[GEOMETRY_TRAINING.md](docs/GEOMETRY_TRAINING.md). CPU routing tests do not prove
-that native geometry training is runnable or numerically equivalent on GPU.
+The split-unpack adaptation requires the explicit renderer keyword
+`isolated_geometry=True`, supplied by the experiment trainer. Preprocessing-cache
+opt-in alone must not select it. The legacy split-unpack and final NVS dispatch
+behavior remains unchanged. Isolated execution records the NVS deferral in
+`geometry.json` and the console log. See
+[GEOMETRY_TRAINING.md](docs/GEOMETRY_TRAINING.md). CPU routing/interface tests do
+not prove native geometry training is runnable or numerically equivalent on GPU.
 
 Do not begin material-training integration, extraction/evaluation refactoring,
 1D.3, 1D.4, or scientific repairs without separate user approval. Do not run

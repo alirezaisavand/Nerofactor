@@ -28,6 +28,7 @@ from geometry_fakes import REPO, Tensor, trainer_fixture
 
 
 BASELINE = "52783b0f23dccdf3e46a707faf090c95b311873a"
+INTERFACE_BASELINE = "8194baaf4fba2182e456534d95d21ed27ade5a74"
 
 
 class GeometryTrainingTests(unittest.TestCase):
@@ -146,6 +147,13 @@ class GeometryTrainingTests(unittest.TestCase):
         self.assertTrue(experiment.run.output("logs/events.out.tfevents.fixture").is_file())
         self.assertTrue(experiment.run.output("renders/validation/scene_shape-val/0-index-0.jpg").is_file())
         self.assertTrue(experiment.run.output("logs/console.log").is_file())
+        self.assertTrue(fixture.networks[0].isolated_geometry)
+        self.assertIn("Final geometry NVS deferred", experiment.run.output("logs/console.log").read_text())
+        self.assertEqual(json.loads(experiment.run.output("geometry.json").read_text())["final_nvs"]["status"],
+                         "deferred")
+        self.assertFalse(experiment.run.output("logs/nvs").exists())
+        self.assertFalse(experiment.run.output("renders/nvs").exists())
+        self.assertFalse(any(isinstance(e, tuple) and e[0] == "nvs" for e in fixture.events))
         self.assertEqual(fixture.events.count(("torch_seed", 6033)), 1)
         self.assertIn(("clip", 0.7), fixture.events)
         self.assertEqual(fixture.events.count("optimizer_step"), 1)
@@ -162,7 +170,7 @@ class GeometryTrainingTests(unittest.TestCase):
         plan = self.plan()
         legacy_dir = self.root / "legacy_work"
         legacy_dir.mkdir()
-        old = trainer_fixture()
+        old = trainer_fixture(legacy_nvs=True)
         previous = Path.cwd()
         try:
             os.chdir(legacy_dir)
@@ -175,9 +183,11 @@ class GeometryTrainingTests(unittest.TestCase):
         self.assertTrue((legacy_dir / "data/train_vis/scene_shape-val/0-index-0.jpg").is_file())
         self.assertTrue((legacy_dir / "logs/scene_shape/fixture.txt").is_file())
         self.assertTrue(all(cache is None for _, _, cache in old.parses))
+        self.assertFalse(old.networks[0].isolated_geometry)
         new = trainer_fixture()
         with redirect_stdout(io.StringIO()):
             execute_geometry(prepare_geometry(plan, "isolated"), new.Trainer)
+        self.assertTrue(new.networks[0].isolated_geometry)
         for key in ["loss", "lr_cfg", "random_seed", "n_samples", "rgb_loss", "shader_config"]:
             self.assertEqual(old.networks[0].cfg[key], new.networks[0].cfg[key])
         self.assertEqual([e for e in old.events if isinstance(e, tuple) and e[0] in {"torch_seed", "clip"}],
@@ -187,6 +197,12 @@ class GeometryTrainingTests(unittest.TestCase):
                          (self.output_root / "isolated/logs/val.txt").read_bytes())
         self.assertEqual((legacy_dir / "data/train_vis/scene_shape-val/0-index-0.jpg").read_bytes(),
                          (self.output_root / "isolated/renders/validation/scene_shape-val/0-index-0.jpg").read_bytes())
+        with (legacy_dir / "data/model/scene_shape/model_best.pth").open("rb") as stream:
+            old_best = pickle.load(stream)
+        with (self.output_root / "isolated/checkpoints/model_best.pth").open("rb") as stream:
+            new_best = pickle.load(stream)
+        self.assertEqual((old_best["step"], old_best["best_para"]), (new_best["step"], new_best["best_para"]))
+        self.assertEqual(old_best["optimizer_state_dict"], new_best["optimizer_state_dict"])
 
     def test_resume_requires_explicit_checkpoint_and_matching_run_metadata(self):
         plan = self.plan()
@@ -321,6 +337,46 @@ raise SystemExit(main(sys.argv[1:]))
 
 
 class GeometrySourceCompatibilityTests(unittest.TestCase):
+    def test_scientific_sources_and_legacy_dispatch_are_unchanged(self):
+        def previous(path):
+            return subprocess.check_output(["git", "show", INTERFACE_BASELINE + ":" + path], cwd=REPO)
+
+        for path in ["run_training.py", "dataset/database.py", "dataset/train_dataset.py", "network/field.py",
+                     "network/loss.py", "network/metrics.py", "train/lr_common_manager.py",
+                     "train/train_valid.py", "train/train_tools.py"]:
+            self.assertEqual(previous(path), (REPO / path).read_bytes(), path)
+        old = ast.parse(previous("train/trainer.py"))
+        new = ast.parse((REPO / "train/trainer.py").read_text())
+        def run(tree):
+            trainer = next(n for n in tree.body if isinstance(n, ast.ClassDef) and n.name == "Trainer")
+            return next(n for n in trainer.body if isinstance(n, ast.FunctionDef) and n.name == "run")
+        legacy = run(new).body[-2].body
+        old_body = run(old).body
+        start = next(i for i, statement in enumerate(old_body) if isinstance(statement, ast.Assign)
+                     and any(isinstance(t, ast.Name) and t.id == "logs_dir" for t in statement.targets))
+        original = old_body[start:-1]
+        # Previously ternaries chose legacy paths when experiment was None.
+        for statement in original:
+            if isinstance(statement, ast.Assign) and isinstance(statement.value, ast.IfExp):
+                statement.value = statement.value.body
+        self.assertEqual([ast.dump(n) for n in original], [ast.dump(n) for n in legacy])
+        old_shape = next(n for n in ast.parse(previous("network/renderer.py")).body
+                         if isinstance(n, ast.ClassDef) and n.name == "NeROShapeRenderer")
+        new_shape = next(n for n in ast.parse((REPO / "network/renderer.py").read_text()).body
+                         if isinstance(n, ast.ClassDef) and n.name == "NeROShapeRenderer")
+        def method(node, name):
+            return next(n for n in node.body if isinstance(n, ast.FunctionDef) and n.name == name)
+        constructor = method(new_shape, "__init__")
+        constructor.args.kwonlyargs.pop()
+        constructor.args.kw_defaults.pop()
+        constructor.body = [n for n in constructor.body if not (isinstance(n, ast.Assign) and any(
+            isinstance(t, ast.Attribute) and t.attr == "isolated_geometry" for t in n.targets))]
+        self.assertEqual(ast.dump(method(old_shape, "__init__")), ast.dump(constructor))
+        initialize = method(new_shape, "_init_dataset")
+        initialize.body = [n.orelse[0] if isinstance(n, ast.If) and ast.unparse(n.test) == 'self.isolated_geometry'
+                           else n for n in initialize.body]
+        self.assertEqual(ast.dump(method(old_shape, "_init_dataset")), ast.dump(initialize))
+
     def test_training_loop_and_shape_math_are_unchanged(self):
         def source(path):
             return subprocess.check_output(["git", "show", BASELINE + ":" + path], cwd=REPO, text=True)
@@ -336,7 +392,9 @@ class GeometrySourceCompatibilityTests(unittest.TestCase):
         def prefix(node):
             result = []
             for statement in node.body:
-                if isinstance(statement, ast.Assign) and any(isinstance(t, ast.Name) and t.id == "logs_dir" for t in statement.targets):
+                if ((isinstance(statement, ast.Assign) and any(
+                        isinstance(t, ast.Name) and t.id == "logs_dir" for t in statement.targets))
+                        or (isinstance(statement, ast.If) and ast.unparse(statement.test) == 'self.experiment is None')):
                     break
                 result.append(ast.dump(statement, include_attributes=False))
             return result
@@ -349,7 +407,7 @@ class GeometrySourceCompatibilityTests(unittest.TestCase):
         self.assertEqual(ast.dump(cls(source("network/renderer.py"), "NeROMaterialRenderer")),
                          ast.dump(cls((REPO / "network/renderer.py").read_text(), "NeROMaterialRenderer")))
 
-    def test_preexisting_split_unpack_and_nvs_signature_errors_are_not_repaired(self):
+    def test_legacy_split_unpack_and_shape_nvs_signature_are_preserved(self):
         tree = ast.parse((REPO / "network/renderer.py").read_text())
         shape = next(n for n in tree.body if isinstance(n, ast.ClassDef) and n.name == "NeROShapeRenderer")
         init = next(n for n in shape.body if isinstance(n, ast.FunctionDef) and n.name == "_init_dataset")
@@ -357,12 +415,88 @@ class GeometrySourceCompatibilityTests(unittest.TestCase):
         scope = {"parse_database_name": parse, "get_database_split": lambda db: ([1], [2], [3])}
         exec(compile(ast.Module(body=[init], type_ignores=[]), "shape_dataset", "exec"), scope)
         cache = object()
-        value = SimpleNamespace(cfg={"database_name": "nerf/scene", "dataset_dir": "/selected"}, preprocessing=cache)
+        value = SimpleNamespace(cfg={"database_name": "nerf/scene", "dataset_dir": "/selected"},
+                                preprocessing=cache, isolated_geometry=False)
         with self.assertRaises(ValueError):
             scope["_init_dataset"](value)
         self.assertIs(parse.call_args.kwargs["preprocessing"], cache)
         nvs = next(n for n in shape.body if isinstance(n, ast.FunctionDef) and n.name == "nvs")
         self.assertEqual([arg.arg for arg in nvs.args.args], ["self", "pose", "K", "h", "w"])
+
+
+class GeometrySplitAdaptationTests(unittest.TestCase):
+    def setUp(self):
+        python_state, numpy_state = random.getstate(), np.random.get_state()
+        self.addCleanup(random.setstate, python_state)
+        self.addCleanup(np.random.set_state, numpy_state)
+        database_tree = ast.parse((REPO / "dataset/database.py").read_text())
+        split = next(n for n in database_tree.body if isinstance(n, ast.FunctionDef) and n.name == "get_database_split")
+        scope = {"random": random, "BaseDatabase": object}
+        exec(compile(ast.Module(body=[split], type_ignores=[]), "baseline_split", "exec"), scope)
+        self.split = scope["get_database_split"]
+        shape = next(n for n in ast.parse((REPO / "network/renderer.py").read_text()).body
+                     if isinstance(n, ast.ClassDef) and n.name == "NeROShapeRenderer")
+        init = next(n for n in shape.body if isinstance(n, ast.FunctionDef) and n.name == "_init_dataset")
+        self.database = SimpleNamespace(get_img_ids=lambda: [str(i) for i in range(32)])
+        self.parse = Mock(return_value=self.database)
+        self.split_spy = Mock(wraps=self.split)
+        self.build = Mock(side_effect=lambda db, ids, is_nerf: {"imgs": np.zeros((len(ids), 3, 2, 2))})
+        scope = {"np": np, "parse_database_name": self.parse, "get_database_split": self.split_spy,
+                 "build_imgs_info": self.build, "imgs_info_to_torch": lambda info, device: info}
+        exec(compile(ast.Module(body=[init], type_ignores=[]), "actual_shape_dataset_init", "exec"), scope)
+        self.initialize = scope["_init_dataset"]
+
+    def renderer(self, name, *, isolated=True, preprocessing=None):
+        poses = Mock()
+        poses.float.return_value.cuda.return_value = poses
+        return SimpleNamespace(cfg={"database_name": name, "dataset_dir": "/selected"},
+                               preprocessing=preprocessing, isolated_geometry=isolated,
+                               is_nerf=name.startswith("nerf/"),
+                               _construct_ray_batch=Mock(return_value=({}, poses, 7, 2, 2)),
+                               _construct_nerf_ray_batch=Mock(return_value=({}, poses, 7, 2, 2)),
+                               _shuffle_train_batch=Mock())
+
+    def test_actual_shape_initialization_preserves_all_split_ids_and_rng(self):
+        for name in ["syn/scene", "real/scene/128", "nerf/scene"]:
+            with self.subTest(name=name):
+                random.seed(999)
+                initial = random.getstate()
+                numpy_state = np.random.get_state()
+                train, validation, nvs = self.split(self.database)
+                expected_rng = random.getstate()
+                random.setstate(initial)
+                cache = object()
+                value = self.renderer(name, preprocessing=cache)
+                self.split_spy.reset_mock()
+                with redirect_stdout(io.StringIO()):
+                    self.initialize(value)
+                self.split_spy.assert_called_once_with(self.database)
+                self.parse.assert_called_with(name, "/selected", preprocessing=cache)
+                np.testing.assert_array_equal(value.train_ids, np.asarray(train))
+                self.assertEqual(value.test_ids, validation)
+                self.assertEqual(value.nvs_ids, nvs)
+                self.assertEqual(random.getstate(), expected_rng)
+                for actual, expected in zip(np.random.get_state(), numpy_state):
+                    np.testing.assert_array_equal(actual, expected)
+                self.assertEqual((value.train_num, value.test_num, value.tbn), (len(train), len(validation), 7))
+                self.assertEqual(self.build.call_args_list[-2].args[1].tolist(), train)
+                self.assertEqual(self.build.call_args_list[-1].args[1], validation)
+                value._shuffle_train_batch.assert_called_once_with()
+                (value._construct_nerf_ray_batch if value.is_nerf else value._construct_ray_batch).assert_called_once()
+
+    def test_cache_opt_in_alone_does_not_change_legacy_split_behavior(self):
+        for cache in [None, object()]:
+            with self.subTest(cache=cache):
+                value = self.renderer("nerf/scene", isolated=False, preprocessing=cache)
+                expected = self.split(self.database)
+                expected_rng = random.getstate()
+                self.split_spy.reset_mock()
+                with self.assertRaises(ValueError):
+                    self.initialize(value)
+                self.split_spy.assert_called_once_with(self.database)
+                self.assertEqual(random.getstate(), expected_rng)
+                self.assertFalse(hasattr(value, "nvs_ids"))
+                self.assertEqual(len(expected), 3)
 
 
 if __name__ == "__main__":

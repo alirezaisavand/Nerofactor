@@ -21,8 +21,7 @@ from infrastructure.runs import RunError, RunStore, validate_run_id
 
 CODE_ROOT = Path(__file__).resolve().parents[1]
 KNOWN_LIMITS = [
-    "Baseline shape renderer unpacks two split lists; get_database_split returns three. No repair is applied.",
-    "Baseline trainer's final NVS call uses material-only keyword arguments. No repair is applied.",
+    "Isolated geometry final NVS is deferred to a separately versioned evaluation protocol.",
     "Resume restores network/optimizer/progress with legacy seeding, without RNG/sampler restoration; it is not exact.",
 ]
 _LOSSES = {"nerf_render", "eikonal", "std", "init_sdf_reg", "occ", "mask", "curv", "opacity", "fg", "bg"}
@@ -287,6 +286,8 @@ def prepare_geometry(plan, run_id, mode="new", checkpoint=None, layout="collecti
     run.output("geometry.json").write_text(json.dumps({
         "schema_version": 1, "run_id": run_id, "mode": mode, "signature": experiment.signature,
         "compatibility": plan.identity, "limitations": KNOWN_LIMITS,
+        "final_nvs": {"status": "deferred",
+                      "reason": "Requires a separately versioned evaluation protocol; no final NVS is dispatched."},
         "defaults": "partially unresolved until owner initialization; not a full provenance record",
     }, sort_keys=True, indent=2) + "\n")
     return experiment
