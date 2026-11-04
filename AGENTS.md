@@ -43,7 +43,7 @@ The inspected baseline refs and exact hashes are recorded in
 
 | Branch | Historical role and limitation |
 | --- | --- |
-| `anisotropic` | Starting implementation for infrastructure development; contains scene-specific regularization ablations and is not automatically a canonical full-method preset |
+| `anisotropic` | Starting implementation for infrastructure development; contains ablation-labeled settings whose effective scope needs verification and is not automatically a canonical full-method preset |
 | `aniso_geometry_safe` | Alternative material parameterization, geometry/tangent experiments, optimization settings, and dataset/evaluation interfaces; the name does not establish mathematical correctness |
 | `ablation_anisotropic` | Single-angle ablation plus other configuration and numerical differences; not automatically a controlled one-variable comparison |
 
@@ -135,9 +135,21 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized milestone: **1D.1, baseline preservation and documentation**.
-Its permitted repository changes are this file, the three requested documents in
-`docs/`, and necessary `.gitignore` safeguards. Do not implement 1D.2, 1D.3, or
-1D.4 until the user reviews 1D.1 and authorizes the next work. A later explicit
-user instruction updates this boundary. The proposed milestones and acceptance
-criteria are in [INFRASTRUCTURE_PLAN.md](docs/INFRASTRUCTURE_PLAN.md).
+Milestone 1D.1 has been reviewed and approved. Current authorized milestone:
+**1D.2A, configuration and path infrastructure only**. Its scope is standalone
+configuration/path/run-allocation modules, CPU-only tests, new-format examples,
+and documentation. Keep existing training entry points, all existing YAML files,
+dataset loaders, renderers, training loops, evaluation algorithms, losses, and
+numerical behavior unchanged. Do not migrate or delete legacy configurations.
+
+The new envelopes are infrastructure inputs only until reviewed integration in
+1D.2B. Preserve shallow legacy merges and the scope of shader fields; top-level
+shader-like fields must not be silently forwarded into `shader_cfg`. Diagnostics
+are evidence, not authorization to correct behavior. Run allocation is tested
+only in disposable fixtures; do not allocate a real experiment for this task.
+
+Do not begin 1D.2B, 1D.3, or 1D.4 until the user reviews 1D.2A and authorizes that
+work. Do not commit or push automatically. A later explicit user instruction
+updates this boundary. See [CONFIGURATION_AND_PATHS.md](docs/CONFIGURATION_AND_PATHS.md)
+for implemented APIs and limitations, and [INFRASTRUCTURE_PLAN.md](docs/INFRASTRUCTURE_PLAN.md)
+for later milestones and acceptance criteria.

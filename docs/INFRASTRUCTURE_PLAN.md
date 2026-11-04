@@ -1,9 +1,9 @@
 # Incremental infrastructure implementation plan
 
-Status: milestone **1D.1 only** is implemented by this documentation change.
-Milestones 1D.2, 1D.3, and 1D.4 are proposed work requiring review and subsequent
-authorization. No code refactor, branch merge, container execution, training,
-artifact relocation, or numerical correction is part of 1D.1.
+Status: **1D.1 is approved; 1D.2A is implemented as standalone configuration and
+path infrastructure**. Entry-point/writer integration in 1D.2B and milestones
+1D.3 and 1D.4 still require review and authorization. No branch merge, container
+execution, training, artifact relocation, or numerical correction is included.
 
 The starting implementation is `anisotropic` at
 `e1e859779301faced46d6476691e20b546c27ae0`, on `paper/infrastructure`.
@@ -67,6 +67,25 @@ The inventory provides preservation documentation, not a new backup, content
 hash manifest, verified software environment, or reproduced baseline.
 
 ## 1D.2: Configuration, path, and storage refactor
+
+This milestone is split into 1D.2A (standalone foundation) and 1D.2B (later
+integration). The full proposal below remains the target for the combined work;
+it does not describe capabilities already connected to the research pipeline.
+
+### 1D.2A implemented boundary
+
+`infrastructure/config.py`, `paths.py`, and `runs.py` provide a versioned envelope
+around existing YAML, diagnostics with strict validation, explicit runtime roots,
+contained input/output selections, exclusive run allocation, and explicit
+checkpoint selection. New examples and CPU-only tests exercise these APIs.
+No original YAML or scientific entry point uses them yet. See
+[CONFIGURATION_AND_PATHS.md](CONFIGURATION_AND_PATHS.md) for conventions,
+preserved behavior, compatibility limits, and the proposed 1D.2B integration.
+
+In particular, path destinations exist as an API; dataset writers have not been
+redirected. Resume validates allocation identity and checkpoint location/existence,
+not scientific state compatibility. Configuration defaults are supplied explicitly
+by their owning code; this foundation does not introduce a new numerical preset.
 
 ### Proposed implementation
 

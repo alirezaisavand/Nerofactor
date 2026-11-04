@@ -1,0 +1,7 @@
+# Infrastructure envelope only; existing training entry points do not load it.
+schema_version: 1
+stage: geometry
+legacy_config: ../shape/syn/bell.yaml
+inputs:
+  dataset: GlossySynthetic
+overrides: {}

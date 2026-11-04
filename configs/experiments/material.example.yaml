@@ -1,0 +1,10 @@
+# Infrastructure envelope only; existing training entry points do not load it.
+schema_version: 1
+stage: material
+legacy_config: ../material/real/bear.yaml
+inputs:
+  dataset: GlossyReal
+  mesh:
+    root: thesis
+    path: meshes-pretrained/real/bear.ply
+overrides: {}

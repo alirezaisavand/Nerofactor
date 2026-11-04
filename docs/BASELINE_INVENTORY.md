@@ -238,6 +238,12 @@ They must not replace the reports above or overwrite `final_results`.
 - Existing loaders write dataset-local caches/images. Split generation resets
   global RNG state. Checkpoints saved by the inspected trainer omit RNG state;
   legacy resume is implicit by model name. These are future design inputs.
+- Follow-up 1D.2A characterization distinguishes raw config declarations from
+  effective shader settings: the baseline material renderer forwards `shader_cfg`
+  and derived `is_real`, not top-level energy/specular/anisotropy fields. The
+  shader's default energy/specular coefficients are `0.05`. No historical score
+  or artifact has been reinterpreted or recomputed from this finding; producing
+  configurations and commits remain unknown.
 - The current synthetic shape evaluator imports a helper absent at the A tip;
   the masked evaluator prints a JSON destination with its write commented out.
   These issues require Step 2 review, not automatic corrections.

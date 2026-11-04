@@ -71,7 +71,7 @@ declaring a legacy preset reproduced.
 | --- | --- | --- | --- |
 | `configs/material/real/bear.yaml` | Pretrained mesh; 1,024 specular samples; validation/save every 2,000 | Reconstructed mesh; 256 samples; validation 1,000/save 500 | Same as A |
 | `configs/material/real/bunny.yaml` | Pretrained mesh; 1,024 samples; explicit energy/specular coefficients `0.01`; `n_lobes: 2` | Reconstructed mesh; 256 samples; adds `fixed_camera: true`; removes those explicit overrides | Same as A |
-| `configs/material/syn/angel.yaml` | Energy/specular losses explicitly disabled with zero coefficients; 1,024 specular samples | Removes explicit loss overrides, uses reconstructed mesh and 256 samples; dataset path becomes a placeholder | Enables both losses with coefficients `0.01`; otherwise retains A's sampling settings |
+| `configs/material/syn/angel.yaml` | Top-level energy/specular flags false with zero coefficients; 1,024 specular samples | Removes those top-level declarations, uses reconstructed mesh and 256 samples; dataset path becomes a placeholder | Top-level flags true with coefficients `0.01`; otherwise retains A's sampling settings |
 | `configs/material/nerf/smoothcylinder.yaml` | Energy/specular flags true but coefficients zero; 1,024 samples; 50,000 steps; validation/save 2,000 | File absent | Coefficients `0.01`; 512 samples; 20,000 steps; validation/save 5,000 |
 | `configs/material/nerf/donut.yaml` | 100,000 steps; validation/save 2,000 | File absent | 80,000 steps; validation/save 5,000 |
 | `configs/shape/nerf/smoothcylinder.yaml` | Includes opacity loss; 300,000 steps; validation/save 1,000 | Removes opacity from loss list; 100,000 steps; validation/save 5,000 | Same as A |
@@ -82,10 +82,17 @@ for cube and donut. It changes additional real/synthetic configs, mesh choices,
 and validation/save intervals. B lacks A's material tetra config. File absence
 does not establish that an experiment was never performed.
 
-The A tip is not a uniform full-method configuration: angel disables physical
-regularizers and smoothcylinder assigns them zero weight. The B tip changes
-multiple controls beyond angle encoding, so comparing tip-level metrics is not
-automatically an isolated angle ablation.
+The A tip records disabled/zero top-level regularizer declarations for angel and
+smoothcylinder. **These declarations do not establish the effective shader
+weights.** Follow-up CPU-only characterization in 1D.2A confirms that A's
+`NeROMaterialRenderer._init_shader` forwards only `shader_cfg` plus derived
+`is_real`; it does not forward those top-level regularizer fields. In a fresh
+shader, the default energy/specular coefficients remain `0.05` unless overridden
+inside `shader_cfg`. B has the same renderer setup. The exact producing code for
+historical runs is still unknown. No field is relocated by this finding.
+
+The B tip also changes multiple controls beyond angle encoding, so comparing
+tip-level metrics is not automatically an isolated angle ablation.
 
 ## Dataset/evaluation-related differences
 
