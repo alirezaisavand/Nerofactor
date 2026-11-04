@@ -1,7 +1,7 @@
 # Incremental infrastructure implementation plan
 
-Status: **1D.1, 1D.2A, 1D.2B-1 and 1D.2B-2A are approved; 1D.2B-2A.1 resolves
-isolated geometry interface blockers for review**. Material integration, standalone
+Status: **milestones through 1D.2B-2A.1 are approved; 1D.2B-2B implements isolated
+material integration for review**. Native GPU validation, standalone
 extraction/evaluation refactoring, and milestones 1D.3 and 1D.4 require separate
 authorization. No branch merge, container
 execution, training, artifact relocation, or numerical correction is included.
@@ -136,6 +136,28 @@ separately versioned evaluation protocol is reviewed. Legacy entry-point behavio
 validation/checkpoint selection, and all scientific computations are preserved.
 Focused CPU initialization/split/loop tests complement the full infrastructure
 suite; no real run, native training, Docker or GPU experiment is executed.
+
+### 1D.2B-2B implemented boundary
+
+`run_material_experiment.py` adds schema-1 material preflight/explicit execution
+without changing the legacy or geometry CLIs. Explicit runtime input roots select
+historical or prior-experiment meshes; output and input roots must be disjoint.
+Mesh contents are hashed/read only, and only the runtime mesh/dataset path fields
+are replaced. Training/validation/rendering share the preprocessing cache. Material
+checkpoints, logs, TensorBoard, validation/NVS images and metrics, optional debug
+point clouds, runtime caches and temporaries use the owned run. Existing output
+aliases are rejected before opening logs. Material NVS calculations/splits and
+shader configuration scope are preserved; geometry NVS remains deferred.
+
+Same-run continuation validates identity and explicit checkpoint selection;
+historical initialization loads compatible weights only. Untagged historical
+weights require a reviewed hash-bound baseline-origin declaration, because shape
+checks cannot distinguish mathematically different same-shaped branch variants.
+Original settings, actual renderer/shader configurations and mesh identity are
+recorded separately. Full provenance and RNG/sampler restoration remain 1D.4.
+CPU fakes and source comparisons establish I/O/control-flow preservation only.
+See [MATERIAL_TRAINING.md](MATERIAL_TRAINING.md) for usage, writers, tests, limits
+and proposed environment/native checks. No Docker/native execution is performed.
 
 ### Proposed implementation
 

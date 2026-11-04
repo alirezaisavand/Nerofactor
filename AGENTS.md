@@ -135,21 +135,23 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Milestones 1D.1, 1D.2A, 1D.2B-1, and 1D.2B-2A have been reviewed and approved.
-Current authorized milestone: **1D.2B-2A.1, isolated geometry interface fixes**.
-Its scope is explicit three-list split adaptation and final-NVS deferral in the
-isolated geometry mode, focused CPU tests, and documentation. Preserve the
-original split helper, call count, train/validation/NVS IDs and RNG effects.
-Record final NVS as deferred to a separately versioned evaluation protocol; do
-not introduce cameras, renders, or metrics for that protocol. Keep the legacy
+Milestones through 1D.2B-2A.1 have been reviewed and approved.
+Current authorized milestone: **1D.2B-2B, isolated material training integration**.
+Its scope is a separate material entry point, selected read-only mesh and dataset
+inputs, shared preprocessing caches, isolated checkpoints/logs/validation/NVS/debug
+outputs, compatibility checks, CPU tests and documentation. Geometry behavior
+must remain unchanged, including its split adaptation and final-NVS deferral.
+Preserve the original split helper, call count, train/validation/NVS IDs and RNG effects.
+For geometry, record final NVS as deferred to a separately versioned evaluation
+protocol; do not introduce cameras, renders, or metrics for that protocol. Keep the legacy
 `run_training.py` path and legacy defaults, YAML, training-loop computations,
 network definitions, evaluation protocols, losses, optimizers, scheduler,
 sampling, seeds, precision, and arithmetic unchanged. Do not migrate legacy
 configurations or repair scientific defects.
 
-The new envelopes are accepted only by the separate `run_experiment.py` geometry
-entry point; existing entry points remain legacy. Preserve
-shallow legacy merges and the scope of shader fields; top-level
+The new envelopes are accepted by separate `run_experiment.py` geometry and
+`run_material_experiment.py` material entry points; existing entry points remain
+legacy. Preserve shallow legacy merges and the scope of shader fields; top-level
 shader-like fields must not be silently forwarded into `shader_cfg`. Diagnostics
 are evidence, not authorization to correct behavior. Run allocation and the
 shared trainer loop are tested only in disposable CPU fixtures with explicit
@@ -175,7 +177,26 @@ behavior remains unchanged. Isolated execution records the NVS deferral in
 [GEOMETRY_TRAINING.md](docs/GEOMETRY_TRAINING.md). CPU routing/interface tests do
 not prove native geometry training is runnable or numerically equivalent on GPU.
 
-Do not begin material-training integration, extraction/evaluation refactoring,
+Material runs must select `inputs.mesh` through an explicitly declared input
+root. Keep mesh bytes and coordinate conventions unchanged; computed normals
+remain in-memory legacy behavior. Never forward top-level regularization,
+anisotropy, lobe, or other shader-like fields into `shader_cfg`. Record actual
+renderer and shader settings separately. Material NVS retains its original split,
+rendering, metric, image composition and append/overwrite behavior within the
+explicitly selected run. Debug point export is routed when called, not enabled
+as a new training option.
+
+Before material checkpoint state loading, verify stage/algorithm declaration and
+network keys/shapes/dtypes. Untagged historical initialization requires a reviewed
+manifest under the approved config root binding checkpoint SHA-256 to an approved
+source commit. Same tensor shapes do not establish branch/mathematical equivalence;
+reject foreign origins and conflicting tags. Declarations are evidence supplied
+by the researcher, not independently recovered producing history. A future
+scientific variant must receive a distinct algorithm identity. See
+[MATERIAL_TRAINING.md](docs/MATERIAL_TRAINING.md) for manifest requirements,
+writer inventory, preserved behavior, and remaining provenance/native limits.
+
+Do not begin Docker setup, native GPU validation, extraction/evaluation refactoring,
 1D.3, 1D.4, or scientific repairs without separate user approval. Do not run
 Docker, GPU tests, real training, or expensive experiments in this milestone.
 Do not commit or push automatically. A later explicit user instruction

@@ -342,7 +342,7 @@ class GeometrySourceCompatibilityTests(unittest.TestCase):
             return subprocess.check_output(["git", "show", INTERFACE_BASELINE + ":" + path], cwd=REPO)
 
         for path in ["run_training.py", "dataset/database.py", "dataset/train_dataset.py", "network/field.py",
-                     "network/loss.py", "network/metrics.py", "train/lr_common_manager.py",
+                     "network/loss.py", "train/lr_common_manager.py",
                      "train/train_valid.py", "train/train_tools.py"]:
             self.assertEqual(previous(path), (REPO / path).read_bytes(), path)
         old = ast.parse(previous("train/trainer.py"))
@@ -404,8 +404,13 @@ class GeometrySourceCompatibilityTests(unittest.TestCase):
         for node in old_shape.body:
             if isinstance(node, ast.FunctionDef) and node.name not in {"__init__", "_init_dataset"}:
                 self.assertEqual(ast.dump(node), ast.dump(method(new_shape, node.name)), node.name)
-        self.assertEqual(ast.dump(cls(source("network/renderer.py"), "NeROMaterialRenderer")),
-                         ast.dump(cls((REPO / "network/renderer.py").read_text(), "NeROMaterialRenderer")))
+        # Material I/O hooks are now authorized; material tests characterize those
+        # hooks and retain exact AST comparisons for every other method.
+        old_material = cls(source("network/renderer.py"), "NeROMaterialRenderer")
+        new_material = cls((REPO / "network/renderer.py").read_text(), "NeROMaterialRenderer")
+        for node in old_material.body:
+            if isinstance(node, ast.FunctionDef) and node.name not in {'__init__', '_init_dataset', 'save_pointcloud', 'nvs'}:
+                self.assertEqual(ast.dump(node), ast.dump(method(new_material, node.name)), node.name)
 
     def test_legacy_split_unpack_and_shape_nvs_signature_are_preserved(self):
         tree = ast.parse((REPO / "network/renderer.py").read_text())

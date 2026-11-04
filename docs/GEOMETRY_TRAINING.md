@@ -4,7 +4,12 @@ This milestone adds a separate geometry entry point and optional I/O hooks. The
 review baseline is `52783b0f23dccdf3e46a707faf090c95b311873a` on
 `paper/infrastructure`. Existing `python run_training.py --cfg ...` keeps legacy
 configuration, paths, and implicit legacy checkpoint behavior. No original YAML
-is migrated. Material training and standalone extraction/evaluation are deferred.
+is migrated. At this boundary material and standalone extraction/evaluation
+were deferred.
+
+Follow-up: material training is now integrated separately in 1D.2B-2B; see
+[MATERIAL_TRAINING.md](MATERIAL_TRAINING.md). Geometry behavior and its CLI remain
+unchanged. Historical milestone evidence below retains its original scope.
 
 **1D.2B-2A.1 resolves the two known interface blockers for isolated geometry.**
 Its review baseline is `8194baaf4fba2182e456534d95d21ed27ade5a74`. The experiment
@@ -201,11 +206,12 @@ field/loss and imported utility call sites. `train_tools.save_model`, generic
 by the audited geometry-training path. Dataset evaluation point export already
 supports the cache API but is not invoked by shape validation here.
 
-Remaining legacy writers outside the integrated mode include material metrics,
-material renderer `save_pointcloud` (`cloud.ply`) and NVS, standalone extraction,
+At the geometry milestone, remaining legacy writers outside its integrated mode
+included material metrics, material renderer `save_pointcloud` (`cloud.ply`) and NVS, standalone extraction,
 relighting, geometry evaluation logs/point clouds, masked-evaluation renders, and
-COLMAP preprocessing/export tools. They are unchanged and must not be assumed
-isolated. No active project-owned writer reachable in the supported isolated
+COLMAP preprocessing/export tools. Material writers now have a separate isolated
+mode; standalone tools remain unchanged and must not be assumed isolated.
+No active project-owned writer reachable in the supported isolated
 geometry path was identified outside the selected run; third-party behavior and
 native execution still require authorized environment validation.
 
@@ -280,7 +286,7 @@ budget. Do not run an optimizer step or full training as part of that first
 native smoke check. Agree on inputs and reference/tolerances before GPU execution;
 successful fakes do not establish native scientific parity.
 
-## Proposed next material scope, requiring separate approval
+## Original material proposal (implemented separately in 1D.2B-2B)
 
 Inspect material initialization/metrics/NVS/debug writers, then add a distinct
 material adapter with an explicit selected read-only mesh and dataset/cache

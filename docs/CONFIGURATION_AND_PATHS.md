@@ -1,7 +1,8 @@
 # Configuration and path foundation (1D.2A)
 
-Updated for 1D.2B-2A: the separate geometry entry point and its native-execution
-limitations are documented in [GEOMETRY_TRAINING.md](GEOMETRY_TRAINING.md).
+Updated for 1D.2B-2B: separate geometry and material entry points and their
+native-execution limits are documented in [GEOMETRY_TRAINING.md](GEOMETRY_TRAINING.md)
+and [MATERIAL_TRAINING.md](MATERIAL_TRAINING.md).
 Opt-in dataset/cache routing is described in
 [DATASET_CACHE_ISOLATION.md](DATASET_CACHE_ISOLATION.md). Schema-1 loading requires
 an explicit `config_root`; this intentionally tightens the original 1D.2A API.
@@ -12,10 +13,10 @@ is the already-required PyYAML. Python 3.9 syntax is supported. The explicit
 dataset factory added in 1D.2B-1 imports dataset dependencies only when invoked.
 
 **Existing entry points retain legacy behavior. Do not pass the new envelopes
-to `run_training.py`.** `run_experiment.py` adds explicit geometry-only validation
-or execution using the foundation; material and standalone extraction/evaluation
-integration remain deferred. No real experiment or native training was executed
-in these milestones, and no original input was modified.
+to `run_training.py`.** `run_experiment.py` adds explicit geometry validation or
+execution, and `run_material_experiment.py` adds material validation/execution.
+Standalone extraction/evaluation integration remains deferred. No real experiment
+or native training was executed in these milestones, and no original input was modified.
 
 ## Versioned envelope and examples
 
@@ -50,7 +51,7 @@ The fields have implemented infrastructure meanings only:
 
 No variant/algorithm selector, automatic configuration migration, implicit run
 ID, or environment-variable expansion is implemented. The separate geometry
-launcher requires an explicit run ID and action; material launching is deferred.
+and material launchers require an explicit run ID and action.
 Host roots are runtime arguments, never committed in default envelopes.
 
 ```python
@@ -208,8 +209,8 @@ that run's `checkpoints/`. Absolute historical checkpoint paths, symlinks, and
 escapes to another run are rejected. It neither deserializes nor writes the
 checkpoint. Historical checkpoints are selected separately as input artifacts,
 not as resumed writable history. `RunStore` checks identity/location only. The
-geometry adapter additionally checks config/input/code/dependency identity and,
-on explicit execution, network keys/shapes/dtypes and optimizer group/progress
+geometry/material adapters additionally check config/input/code/dependency identity
+and, on explicit execution, network keys/shapes/dtypes and optimizer group/progress
 compatibility. RNG/sampler restoration remains deferred.
 
 Path checks cover existing symlinks and recheck output roots between calls.
@@ -229,7 +230,8 @@ Recorded validation on 2026-11-03: **38 tests passed**, using Python 3.9.12 and
 PyYAML 6.0. The working tree started clean on `paper/infrastructure` at
 `74e029d632feea1508d8639cfccb4a1b0765effe`; validation used the then-uncommitted
 1D.2A changes. Historical 1D.2B-1 results are in the dataset-isolation document;
-current suite results are in the geometry-training document.
+1D.2B-2A.1 results are in the geometry-training document; current results are in
+the material-training document.
 
 Tests use disposable temporary directories, text checkpoint fixtures, and no
 permission changes. Legacy characterization parses source AST and executes only
@@ -260,6 +262,6 @@ Follow-up dataset routing tests and native-backend limits are recorded in
    declared tolerances and resource budgets. Keep mathematical fixes, dependency
    changes, Docker execution, and full provenance work in separately reviewed
    scope. Dataset opt-in routing is implemented in 1D.2B-1, and geometry routing
-   in 1D.2B-2A. Material/standalone-tool integration and later milestones remain
-   unimplemented. Follow-up 1D.2B-2A.1 adapts the known split and final-NVS
-   interfaces only in isolated geometry mode; scientific corrections remain deferred.
+   in 1D.2B-2A, with material routing added in 1D.2B-2B. Standalone tools and later
+   milestones remain unimplemented. Follow-up 1D.2B-2A.1 adapts the known split
+   and final-NVS interfaces only in isolated geometry mode; scientific corrections remain deferred.

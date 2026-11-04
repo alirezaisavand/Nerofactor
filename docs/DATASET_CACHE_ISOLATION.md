@@ -1,6 +1,8 @@
 # Dataset and cache isolation: 1D.2B-1
 
 Follow-up: 1D.2B-2A connects this opt-in API to the separate geometry entry point.
+1D.2B-2B adds the material renderer/validation integration; see
+[MATERIAL_TRAINING.md](MATERIAL_TRAINING.md) for the material writer inventory.
 See [GEOMETRY_TRAINING.md](GEOMETRY_TRAINING.md) for the current writer inventory,
 CPU evidence, and native-execution blockers. The scope and test counts below
 describe the historical 1D.2B-1 milestone.
@@ -78,7 +80,8 @@ existing constructor. It leaves `cfg.legacy` and `database.root` unchanged.
 Direct callers may construct `PreprocessingCache(resolver, run, settings)` and
 pass keyword-only `preprocessing`. Validation `DummyDataset` accepts the same
 argument. At the 1D.2B-1 boundary the trainer did not supply it; the separate
-geometry mode now supplies the same cache to validation and the shape renderer.
+geometry mode now supplies the same cache to validation and the shape renderer;
+the separate material mode supplies it to validation and the material renderer.
 
 Schema 1 supports the implemented infrastructure field below, also the default
 when omitted. It is a relative destination inside the selected experiment.
@@ -195,6 +198,6 @@ also remain unchanged.
    issues separately; no implicit scientific repair is approved here.
 
 At the 1D.2B-1 boundary no training integration was implemented. Geometry routing
-is now implemented separately in 1D.2B-2A; material and standalone tools remain
-deferred. No real run allocation, native training, Docker setup, or expensive
-evaluation was executed in either milestone.
+is now implemented separately in 1D.2B-2A and material routing in 1D.2B-2B;
+standalone tools remain deferred. No real run allocation, native training, Docker
+setup, or expensive evaluation was executed in these milestones.

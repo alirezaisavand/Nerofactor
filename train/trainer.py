@@ -66,10 +66,15 @@ class Trainer:
     def _init_network(self):
         if self.experiment is None:
             self.network = name2renderer[self.cfg['network']](self.cfg).cuda()
-        else:
+        elif self.cfg['network'] == 'shape':
             self.network = name2renderer[self.cfg['network']](
                 self.cfg, preprocessing=self.experiment.preprocessing, isolated_geometry=True).cuda()
             self.experiment.record_owner('renderer', self.network.cfg)
+        else:
+            self.network = name2renderer[self.cfg['network']](
+                self.cfg, preprocessing=self.experiment.preprocessing, output_paths=self.experiment.run).cuda()
+            self.experiment.record_owner('renderer', self.network.cfg)
+            self.experiment.record_owner('shader', self.network.shader_network.cfg)
 
         # loss
         self.val_losses = []
@@ -80,7 +85,7 @@ class Trainer:
         # metrics
         for metric_name in self.cfg['val_metric']:
             if metric_name in name2metrics:
-                if self.experiment is not None and metric_name == 'shape_render':
+                if self.experiment is not None and metric_name in ('shape_render', 'mat_render'):
                     self.val_metrics.append(name2metrics[metric_name](self.cfg, output_paths=self.experiment.run))
                 else:
                     self.val_metrics.append(name2metrics[metric_name](self.cfg))
@@ -109,8 +114,8 @@ class Trainer:
         self.optimizer = self.lr_manager.construct_optimizer(self.optimizer, self.network)
 
     def __init__(self, cfg, *, experiment=None):
-        if experiment is not None and cfg.get('network') != 'shape':
-            raise ValueError('Experiment integration is geometry-only')
+        if experiment is not None and cfg.get('network') not in ('shape', 'material'):
+            raise ValueError('Experiment integration requires shape or material')
         self.experiment = experiment
         self.cfg = {**self.default_cfg, **cfg}
         torch.manual_seed(self.cfg['random_seed'])
@@ -218,6 +223,12 @@ class Trainer:
             os.makedirs(nvs_imgs_dir, exist_ok=True)
             self.train_network.nvs(log_dir_str=logs_dir,
                                                   imgs_dir=nvs_imgs_dir)
+        elif self.cfg['network'] == 'material':
+            logs_dir = self.experiment.run.output('logs/nvs')
+            nvs_imgs_dir = self.experiment.run.output('renders/nvs')
+            logs_dir.mkdir(parents=True, exist_ok=True)
+            nvs_imgs_dir.mkdir(parents=True, exist_ok=True)
+            self.train_network.nvs(log_dir_str=str(logs_dir), imgs_dir=str(nvs_imgs_dir))
         else:
             print('Final geometry NVS deferred to a separately versioned evaluation protocol; see geometry.json.')
 

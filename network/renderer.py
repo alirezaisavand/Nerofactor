@@ -1109,9 +1109,11 @@ class NeROMaterialRenderer(nn.Module):
         'n_lobes': 1
     }
 
-    def __init__(self, cfg, is_train=True):
+    def __init__(self, cfg, is_train=True, *, preprocessing=None, output_paths=None):
         self.cfg = {**self.default_cfg, **cfg}
         super().__init__()
+        self.preprocessing = preprocessing
+        self.output_paths = output_paths
         self.warned_normal = False
         self.is_nerf = self.cfg['is_nerf']
         self._init_geometry()
@@ -1224,7 +1226,11 @@ class NeROMaterialRenderer(nn.Module):
 
     def _init_dataset(self, is_train):
         # train/test split
-        self.database = parse_database_name(self.cfg['database_name'], self.cfg['dataset_dir'])
+        if self.preprocessing is None:
+            self.database = parse_database_name(self.cfg['database_name'], self.cfg['dataset_dir'])
+        else:
+            self.database = parse_database_name(self.cfg['database_name'], self.cfg['dataset_dir'],
+                                                preprocessing=self.preprocessing)
         self.train_ids, self.test_ids, self.nvs_ids = get_database_split(self.database, 'validation')
         self.train_ids = np.asarray(self.train_ids)
         # This part is for genetaring sementation masks
@@ -1493,7 +1499,11 @@ class NeROMaterialRenderer(nn.Module):
         pcd.points = o3d.utility.Vector3dVector(points_np)
 
         # Save point cloud to a file (e.g., 'cloud.ply')
-        o3d.io.write_point_cloud("cloud.ply", pcd)
+        destination = "cloud.ply"
+        if self.output_paths is not None:
+            destination = self.output_paths.output('debug/cloud.ply')
+            destination.parent.mkdir(parents=True, exist_ok=True)
+        o3d.io.write_point_cloud(str(destination), pcd)
 
     # def propagate_masks(self, imgs, ray_origins, ray_dirs, camera_poses, Ks, seg_model, trace_fn):
     #     """
@@ -1749,6 +1759,8 @@ class NeROMaterialRenderer(nn.Module):
         from skimage.io import imsave
         from utils.draw_utils import concat_images_list
         log_path = Path(os.path.join(log_dir_str, 'log.txt'))
+        if self.output_paths is not None:
+            log_path = self.output_paths.output('logs/nvs/log.txt')
         with log_path.open("a", encoding="utf-8") as f:
             for index in range(len(self.nvs_ids)):
                 torch.set_default_tensor_type('torch.cuda.FloatTensor')
@@ -1761,7 +1773,10 @@ class NeROMaterialRenderer(nn.Module):
                 rgb_gt = outputs['rgb_gt'].detach().cpu().numpy()
                 rgb_gt = color_map_backward(rgb_gt)
                 imgs = [rgb_gt, rgb_pr]
-                imsave(os.path.join(imgs_dir, "test_{}.png".format(self.nvs_ids[index])), concat_images_list(*imgs, vert=True))
+                filename = os.path.join(imgs_dir, "test_{}.png".format(self.nvs_ids[index]))
+                if self.output_paths is not None:
+                    filename = str(self.output_paths.output('renders/nvs/test_{}.png'.format(self.nvs_ids[index])))
+                imsave(filename, concat_images_list(*imgs, vert=True))
 
                 psnr = compute_psnr(rgb_gt, rgb_pr)
                 ssim = structural_similarity(rgb_gt, rgb_pr, win_size=11, channel_axis=2, data_range=255)

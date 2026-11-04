@@ -1,4 +1,5 @@
-# Infrastructure envelope only; existing training entry points do not load it.
+# Material envelope for run_material_experiment.py; run_training.py remains legacy.
+# See docs/MATERIAL_TRAINING.md for paths, checkpoints and validation limits.
 schema_version: 1
 stage: material
 legacy_config: ../material/real/bear.yaml
