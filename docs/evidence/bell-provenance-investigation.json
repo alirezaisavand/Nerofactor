@@ -1,0 +1,1712 @@
+{
+  "schema_version": 1,
+  "review_baseline": "5c791a77c160c32d038bdbe1a6f82f20d5800233",
+  "classification": "verified source/text/metadata inspection; producing-checkpoint linkage unresolved",
+  "refs": {
+    "anisotropic": "e1e859779301faced46d6476691e20b546c27ae0",
+    "origin/aniso_geometry_safe": "79252178e65914ad1acbc14790b1514f276bfea0",
+    "origin/ablation_anisotropic": "2519ab9b480f414ba2ae96dd860d8b868c584054",
+    "HEAD": "5c791a77c160c32d038bdbe1a6f82f20d5800233"
+  },
+  "git_merge_base_A_G": "92b9e4ba8b66830dcda1025abb181cd75edc043c",
+  "code": {
+    "anisotropic": {
+      "commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "bell_yaml_sha256": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f",
+      "trainer_save_payload_keysets": [
+        [
+          "step",
+          "best_para",
+          "network_state_dict",
+          "optimizer_state_dict"
+        ]
+      ],
+      "scientific_file_sha256": {
+        "network/renderer.py": "dd82c61cb91a3d54e801f1fb32238e3b03a87e1ceb4c50f24f1b359e50cfd5e9",
+        "network/field.py": "b8386007dc009442cdefdeccc3c6ecc0114f6d0e7feaf804008b0bd9020091fe",
+        "network/loss.py": "55a2b6779bb8f890340a70b45a7357cb8fc8fc3ff381fbe7caf1968d6bfbf1cf",
+        "network/metrics.py": "e0eed09b34b12254c55cfabf92356376a9580b3b80d30535448ce86659f0dcbc",
+        "train/trainer.py": "6d86bd66917bb8cde7ecfc9da10a4dddd9494c93443b21fee753dc88a6d1e09d"
+      }
+    },
+    "origin/aniso_geometry_safe": {
+      "commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+      "bell_yaml_sha256": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f",
+      "trainer_save_payload_keysets": [
+        [
+          "step",
+          "best_para",
+          "network_state_dict",
+          "optimizer_state_dict"
+        ]
+      ],
+      "scientific_file_sha256": {
+        "network/renderer.py": "38c280ed812c4fb22b980caf842f0cd302acbee3bde9c449972dabd23485584b",
+        "network/field.py": "06fb6606c580dede3e7e12ddfad2a2fed9368fa4adfcadf7cf7cef73e940617f",
+        "network/loss.py": "2d19419c3b7e006117e40c11526549f9f7901c9bda1c0018b0b452c415c7a17c",
+        "network/metrics.py": "282969f587f2ef71fcb3aa9b23b98f3b6741f12b88bd041a35473eb64421120e",
+        "train/trainer.py": "412dfe92c16747c66609f6e80c2e55fcff6f7df287ecbb670c5a43b1a695e7a8"
+      }
+    },
+    "origin/ablation_anisotropic": {
+      "commit": "2519ab9b480f414ba2ae96dd860d8b868c584054",
+      "bell_yaml_sha256": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f",
+      "trainer_save_payload_keysets": [
+        [
+          "step",
+          "best_para",
+          "network_state_dict",
+          "optimizer_state_dict"
+        ]
+      ],
+      "scientific_file_sha256": {
+        "network/renderer.py": "dd82c61cb91a3d54e801f1fb32238e3b03a87e1ceb4c50f24f1b359e50cfd5e9",
+        "network/field.py": "e6a8c387958ec83b944e525647e5ee095196b746e68ca0844a39674714da2f90",
+        "network/loss.py": "55a2b6779bb8f890340a70b45a7357cb8fc8fc3ff381fbe7caf1968d6bfbf1cf",
+        "network/metrics.py": "e0eed09b34b12254c55cfabf92356376a9580b3b80d30535448ce86659f0dcbc",
+        "train/trainer.py": "fd94e898f5622939a521ccbf65ef868e627cd4c7a2b962bb4ae5156b73ea1ac3"
+      }
+    },
+    "HEAD": {
+      "commit": "5c791a77c160c32d038bdbe1a6f82f20d5800233",
+      "bell_yaml_sha256": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f",
+      "trainer_save_payload_keysets": [
+        [
+          "step",
+          "best_para",
+          "network_state_dict",
+          "optimizer_state_dict"
+        ],
+        [
+          "step",
+          "best_para",
+          "network_state_dict",
+          "optimizer_state_dict"
+        ]
+      ],
+      "scientific_file_sha256": {
+        "network/renderer.py": "447957a07e69839aa6500308f82ae30171378e1da93f5c9630e9f9cd97b92c55",
+        "network/field.py": "b8386007dc009442cdefdeccc3c6ecc0114f6d0e7feaf804008b0bd9020091fe",
+        "network/loss.py": "55a2b6779bb8f890340a70b45a7357cb8fc8fc3ff381fbe7caf1968d6bfbf1cf",
+        "network/metrics.py": "11f745cfafa7ae41ec0269f220c0a1691c63d3c7682d5f8222ca5c4daa888556",
+        "train/trainer.py": "fc3e0af25fd0921867a7d0cad752337b2a591f7c7a7a7c603bd980de95d25c7b"
+      }
+    }
+  },
+  "historical_log_event_files": [
+    {
+      "path": "/home/isavand/paper/final_results/model/bell_shape/events.out.tfevents.1760598355.1ccc15bb9069",
+      "bytes": 5811089,
+      "mtime_ns": 1793693855815690737,
+      "binary_payload_read": false,
+      "filename_timestamp_label": 1760598355,
+      "filename_timestamp_label_utc": "2025-10-16T07:05:55+00:00",
+      "payload_deserialized": false,
+      "classification": "verified filename label only, not a verified run start time"
+    },
+    {
+      "path": "/home/isavand/paper/final_results/model/bell_shape/train.txt",
+      "bytes": 1967300,
+      "mtime_ns": 1793693855895692297,
+      "binary_payload_read": false,
+      "sha256": "7250b274e0d4d3b6626f3596d92327be26419ed228ff33c270b678eb133243f7",
+      "line_count": 15000,
+      "first_line": "train loss_rgb 0.27881 loss_eikonal 0.00135 std 0.04979 loss_sdf_large 0.00000 loss_sdf_small 0.00000 loss_occ 0.00000 loss_mask 0.03871 loss_curv 0.00000 loss_opacity 0.00011 ",
+      "last_line": "train loss_rgb 0.04021 loss_eikonal 0.00002 std 0.00069 loss_occ 0.00174 loss_mask 0.00000 loss_curv 0.00000 loss_opacity 0.00010 ",
+      "provenance_keyword_lines": 0
+    },
+    {
+      "path": "/home/isavand/paper/final_results/model/bell_shape/val.txt",
+      "bytes": 25800,
+      "mtime_ns": 1793693855895692297,
+      "binary_payload_read": false,
+      "sha256": "898de60200fe0cb8743ecf79e0c6c4d1fc4a310359acbe07d82fe308b63d7702",
+      "line_count": 300,
+      "first_line": "val val-loss_rgb 0.32205 val-loss_eikonal 0.00095 val-psnr 15.26240 val-ssim 0.30167 ",
+      "last_line": "val val-loss_rgb 0.06341 val-loss_eikonal 0.00002 val-psnr 23.43791 val-ssim 0.89940 ",
+      "provenance_keyword_lines": 0
+    }
+  ],
+  "validation_artifacts": {
+    "path": "/home/isavand/paper/final_results/train_vis/bell_shape-val",
+    "count": 300,
+    "payloads_decoded_or_evaluated": false,
+    "records": [
+      {
+        "filename": "100999-index-0.jpg",
+        "bytes": 57693,
+        "mtime_ns": 1793693853731650093
+      },
+      {
+        "filename": "101999-index-0.jpg",
+        "bytes": 58243,
+        "mtime_ns": 1793693853735650171
+      },
+      {
+        "filename": "102999-index-0.jpg",
+        "bytes": 57329,
+        "mtime_ns": 1793693853735650171
+      },
+      {
+        "filename": "103999-index-0.jpg",
+        "bytes": 58312,
+        "mtime_ns": 1793693853735650171
+      },
+      {
+        "filename": "104999-index-0.jpg",
+        "bytes": 58375,
+        "mtime_ns": 1793693853735650171
+      },
+      {
+        "filename": "105999-index-0.jpg",
+        "bytes": 58419,
+        "mtime_ns": 1793693853735650171
+      },
+      {
+        "filename": "106999-index-0.jpg",
+        "bytes": 58838,
+        "mtime_ns": 1793693853735650171
+      },
+      {
+        "filename": "107999-index-0.jpg",
+        "bytes": 57621,
+        "mtime_ns": 1793693853735650171
+      },
+      {
+        "filename": "108999-index-0.jpg",
+        "bytes": 58457,
+        "mtime_ns": 1793693853735650171
+      },
+      {
+        "filename": "10999-index-0.jpg",
+        "bytes": 51105,
+        "mtime_ns": 1793693853719649859
+      },
+      {
+        "filename": "109999-index-0.jpg",
+        "bytes": 58751,
+        "mtime_ns": 1793693853735650171
+      },
+      {
+        "filename": "110999-index-0.jpg",
+        "bytes": 58070,
+        "mtime_ns": 1793693853735650171
+      },
+      {
+        "filename": "111999-index-0.jpg",
+        "bytes": 57609,
+        "mtime_ns": 1793693853735650171
+      },
+      {
+        "filename": "112999-index-0.jpg",
+        "bytes": 57319,
+        "mtime_ns": 1793693853735650171
+      },
+      {
+        "filename": "113999-index-0.jpg",
+        "bytes": 57566,
+        "mtime_ns": 1793693853739650248
+      },
+      {
+        "filename": "114999-index-0.jpg",
+        "bytes": 57757,
+        "mtime_ns": 1793693853739650248
+      },
+      {
+        "filename": "115999-index-0.jpg",
+        "bytes": 58339,
+        "mtime_ns": 1793693853739650248
+      },
+      {
+        "filename": "116999-index-0.jpg",
+        "bytes": 58275,
+        "mtime_ns": 1793693853739650248
+      },
+      {
+        "filename": "117999-index-0.jpg",
+        "bytes": 58289,
+        "mtime_ns": 1793693853739650248
+      },
+      {
+        "filename": "118999-index-0.jpg",
+        "bytes": 58098,
+        "mtime_ns": 1793693853739650248
+      },
+      {
+        "filename": "11999-index-0.jpg",
+        "bytes": 51188,
+        "mtime_ns": 1793693853719649859
+      },
+      {
+        "filename": "119999-index-0.jpg",
+        "bytes": 57758,
+        "mtime_ns": 1793693853739650248
+      },
+      {
+        "filename": "120999-index-0.jpg",
+        "bytes": 57798,
+        "mtime_ns": 1793693853739650248
+      },
+      {
+        "filename": "121999-index-0.jpg",
+        "bytes": 57874,
+        "mtime_ns": 1793693853739650248
+      },
+      {
+        "filename": "122999-index-0.jpg",
+        "bytes": 57714,
+        "mtime_ns": 1793693853739650248
+      },
+      {
+        "filename": "123999-index-0.jpg",
+        "bytes": 58627,
+        "mtime_ns": 1793693853739650248
+      },
+      {
+        "filename": "124999-index-0.jpg",
+        "bytes": 57977,
+        "mtime_ns": 1793693853739650248
+      },
+      {
+        "filename": "125999-index-0.jpg",
+        "bytes": 57920,
+        "mtime_ns": 1793693853739650248
+      },
+      {
+        "filename": "126999-index-0.jpg",
+        "bytes": 58421,
+        "mtime_ns": 1793693853743650327
+      },
+      {
+        "filename": "127999-index-0.jpg",
+        "bytes": 58494,
+        "mtime_ns": 1793693853743650327
+      },
+      {
+        "filename": "128999-index-0.jpg",
+        "bytes": 57819,
+        "mtime_ns": 1793693853743650327
+      },
+      {
+        "filename": "12999-index-0.jpg",
+        "bytes": 50988,
+        "mtime_ns": 1793693853719649859
+      },
+      {
+        "filename": "129999-index-0.jpg",
+        "bytes": 58452,
+        "mtime_ns": 1793693853743650327
+      },
+      {
+        "filename": "130999-index-0.jpg",
+        "bytes": 57962,
+        "mtime_ns": 1793693853743650327
+      },
+      {
+        "filename": "131999-index-0.jpg",
+        "bytes": 58926,
+        "mtime_ns": 1793693853743650327
+      },
+      {
+        "filename": "132999-index-0.jpg",
+        "bytes": 58101,
+        "mtime_ns": 1793693853743650327
+      },
+      {
+        "filename": "133999-index-0.jpg",
+        "bytes": 58207,
+        "mtime_ns": 1793693853743650327
+      },
+      {
+        "filename": "134999-index-0.jpg",
+        "bytes": 58725,
+        "mtime_ns": 1793693853743650327
+      },
+      {
+        "filename": "135999-index-0.jpg",
+        "bytes": 58434,
+        "mtime_ns": 1793693853743650327
+      },
+      {
+        "filename": "136999-index-0.jpg",
+        "bytes": 58191,
+        "mtime_ns": 1793693853743650327
+      },
+      {
+        "filename": "137999-index-0.jpg",
+        "bytes": 58088,
+        "mtime_ns": 1793693853743650327
+      },
+      {
+        "filename": "138999-index-0.jpg",
+        "bytes": 58386,
+        "mtime_ns": 1793693853743650327
+      },
+      {
+        "filename": "13999-index-0.jpg",
+        "bytes": 51948,
+        "mtime_ns": 1793693853719649859
+      },
+      {
+        "filename": "139999-index-0.jpg",
+        "bytes": 57980,
+        "mtime_ns": 1793693853743650327
+      },
+      {
+        "filename": "140999-index-0.jpg",
+        "bytes": 58118,
+        "mtime_ns": 1793693853743650327
+      },
+      {
+        "filename": "141999-index-0.jpg",
+        "bytes": 58200,
+        "mtime_ns": 1793693853747650405
+      },
+      {
+        "filename": "142999-index-0.jpg",
+        "bytes": 58427,
+        "mtime_ns": 1793693853747650405
+      },
+      {
+        "filename": "143999-index-0.jpg",
+        "bytes": 58721,
+        "mtime_ns": 1793693853747650405
+      },
+      {
+        "filename": "144999-index-0.jpg",
+        "bytes": 58067,
+        "mtime_ns": 1793693853747650405
+      },
+      {
+        "filename": "145999-index-0.jpg",
+        "bytes": 58804,
+        "mtime_ns": 1793693853747650405
+      },
+      {
+        "filename": "146999-index-0.jpg",
+        "bytes": 58515,
+        "mtime_ns": 1793693853747650405
+      },
+      {
+        "filename": "147999-index-0.jpg",
+        "bytes": 58286,
+        "mtime_ns": 1793693853747650405
+      },
+      {
+        "filename": "148999-index-0.jpg",
+        "bytes": 58112,
+        "mtime_ns": 1793693853747650405
+      },
+      {
+        "filename": "14999-index-0.jpg",
+        "bytes": 52983,
+        "mtime_ns": 1793693853719649859
+      },
+      {
+        "filename": "149999-index-0.jpg",
+        "bytes": 58376,
+        "mtime_ns": 1793693853747650405
+      },
+      {
+        "filename": "150999-index-0.jpg",
+        "bytes": 58442,
+        "mtime_ns": 1793693853747650405
+      },
+      {
+        "filename": "151999-index-0.jpg",
+        "bytes": 58872,
+        "mtime_ns": 1793693853747650405
+      },
+      {
+        "filename": "152999-index-0.jpg",
+        "bytes": 58544,
+        "mtime_ns": 1793693853747650405
+      },
+      {
+        "filename": "153999-index-0.jpg",
+        "bytes": 58607,
+        "mtime_ns": 1793693853747650405
+      },
+      {
+        "filename": "154999-index-0.jpg",
+        "bytes": 58243,
+        "mtime_ns": 1793693853747650405
+      },
+      {
+        "filename": "155999-index-0.jpg",
+        "bytes": 58706,
+        "mtime_ns": 1793693853751650483
+      },
+      {
+        "filename": "156999-index-0.jpg",
+        "bytes": 58238,
+        "mtime_ns": 1793693853751650483
+      },
+      {
+        "filename": "157999-index-0.jpg",
+        "bytes": 58889,
+        "mtime_ns": 1793693853751650483
+      },
+      {
+        "filename": "158999-index-0.jpg",
+        "bytes": 58104,
+        "mtime_ns": 1793693853751650483
+      },
+      {
+        "filename": "15999-index-0.jpg",
+        "bytes": 56969,
+        "mtime_ns": 1793693853719649859
+      },
+      {
+        "filename": "159999-index-0.jpg",
+        "bytes": 58387,
+        "mtime_ns": 1793693853751650483
+      },
+      {
+        "filename": "160999-index-0.jpg",
+        "bytes": 58603,
+        "mtime_ns": 1793693853751650483
+      },
+      {
+        "filename": "161999-index-0.jpg",
+        "bytes": 58865,
+        "mtime_ns": 1793693853751650483
+      },
+      {
+        "filename": "162999-index-0.jpg",
+        "bytes": 58487,
+        "mtime_ns": 1793693853751650483
+      },
+      {
+        "filename": "163999-index-0.jpg",
+        "bytes": 58550,
+        "mtime_ns": 1793693853751650483
+      },
+      {
+        "filename": "164999-index-0.jpg",
+        "bytes": 59110,
+        "mtime_ns": 1793693853751650483
+      },
+      {
+        "filename": "165999-index-0.jpg",
+        "bytes": 58906,
+        "mtime_ns": 1793693853751650483
+      },
+      {
+        "filename": "166999-index-0.jpg",
+        "bytes": 59010,
+        "mtime_ns": 1793693853751650483
+      },
+      {
+        "filename": "167999-index-0.jpg",
+        "bytes": 58898,
+        "mtime_ns": 1793693853751650483
+      },
+      {
+        "filename": "168999-index-0.jpg",
+        "bytes": 58694,
+        "mtime_ns": 1793693853751650483
+      },
+      {
+        "filename": "16999-index-0.jpg",
+        "bytes": 60741,
+        "mtime_ns": 1793693853719649859
+      },
+      {
+        "filename": "169999-index-0.jpg",
+        "bytes": 58936,
+        "mtime_ns": 1793693853751650483
+      },
+      {
+        "filename": "170999-index-0.jpg",
+        "bytes": 58773,
+        "mtime_ns": 1793693853755650561
+      },
+      {
+        "filename": "171999-index-0.jpg",
+        "bytes": 59091,
+        "mtime_ns": 1793693853755650561
+      },
+      {
+        "filename": "172999-index-0.jpg",
+        "bytes": 58836,
+        "mtime_ns": 1793693853755650561
+      },
+      {
+        "filename": "173999-index-0.jpg",
+        "bytes": 58454,
+        "mtime_ns": 1793693853755650561
+      },
+      {
+        "filename": "174999-index-0.jpg",
+        "bytes": 59025,
+        "mtime_ns": 1793693853755650561
+      },
+      {
+        "filename": "175999-index-0.jpg",
+        "bytes": 58769,
+        "mtime_ns": 1793693853755650561
+      },
+      {
+        "filename": "176999-index-0.jpg",
+        "bytes": 59032,
+        "mtime_ns": 1793693853755650561
+      },
+      {
+        "filename": "177999-index-0.jpg",
+        "bytes": 58717,
+        "mtime_ns": 1793693853755650561
+      },
+      {
+        "filename": "178999-index-0.jpg",
+        "bytes": 58935,
+        "mtime_ns": 1793693853755650561
+      },
+      {
+        "filename": "17999-index-0.jpg",
+        "bytes": 60709,
+        "mtime_ns": 1793693853719649859
+      },
+      {
+        "filename": "179999-index-0.jpg",
+        "bytes": 58644,
+        "mtime_ns": 1793693853755650561
+      },
+      {
+        "filename": "180999-index-0.jpg",
+        "bytes": 59552,
+        "mtime_ns": 1793693853755650561
+      },
+      {
+        "filename": "181999-index-0.jpg",
+        "bytes": 58510,
+        "mtime_ns": 1793693853755650561
+      },
+      {
+        "filename": "182999-index-0.jpg",
+        "bytes": 58511,
+        "mtime_ns": 1793693853755650561
+      },
+      {
+        "filename": "183999-index-0.jpg",
+        "bytes": 58973,
+        "mtime_ns": 1793693853759650639
+      },
+      {
+        "filename": "184999-index-0.jpg",
+        "bytes": 58640,
+        "mtime_ns": 1793693853759650639
+      },
+      {
+        "filename": "185999-index-0.jpg",
+        "bytes": 59340,
+        "mtime_ns": 1793693853759650639
+      },
+      {
+        "filename": "186999-index-0.jpg",
+        "bytes": 59056,
+        "mtime_ns": 1793693853759650639
+      },
+      {
+        "filename": "187999-index-0.jpg",
+        "bytes": 58980,
+        "mtime_ns": 1793693853759650639
+      },
+      {
+        "filename": "188999-index-0.jpg",
+        "bytes": 58712,
+        "mtime_ns": 1793693853759650639
+      },
+      {
+        "filename": "18999-index-0.jpg",
+        "bytes": 59408,
+        "mtime_ns": 1793693853719649859
+      },
+      {
+        "filename": "189999-index-0.jpg",
+        "bytes": 59549,
+        "mtime_ns": 1793693853759650639
+      },
+      {
+        "filename": "190999-index-0.jpg",
+        "bytes": 58618,
+        "mtime_ns": 1793693853759650639
+      },
+      {
+        "filename": "191999-index-0.jpg",
+        "bytes": 59279,
+        "mtime_ns": 1793693853759650639
+      },
+      {
+        "filename": "192999-index-0.jpg",
+        "bytes": 58864,
+        "mtime_ns": 1793693853759650639
+      },
+      {
+        "filename": "193999-index-0.jpg",
+        "bytes": 59476,
+        "mtime_ns": 1793693853759650639
+      },
+      {
+        "filename": "194999-index-0.jpg",
+        "bytes": 59265,
+        "mtime_ns": 1793693853759650639
+      },
+      {
+        "filename": "195999-index-0.jpg",
+        "bytes": 59399,
+        "mtime_ns": 1793693853763650717
+      },
+      {
+        "filename": "196999-index-0.jpg",
+        "bytes": 59022,
+        "mtime_ns": 1793693853763650717
+      },
+      {
+        "filename": "197999-index-0.jpg",
+        "bytes": 58859,
+        "mtime_ns": 1793693853763650717
+      },
+      {
+        "filename": "198999-index-0.jpg",
+        "bytes": 59227,
+        "mtime_ns": 1793693853763650717
+      },
+      {
+        "filename": "1999-index-0.jpg",
+        "bytes": 46400,
+        "mtime_ns": 1793693853723649937
+      },
+      {
+        "filename": "19999-index-0.jpg",
+        "bytes": 59038,
+        "mtime_ns": 1793693853723649937
+      },
+      {
+        "filename": "199999-index-0.jpg",
+        "bytes": 59236,
+        "mtime_ns": 1793693853763650717
+      },
+      {
+        "filename": "200999-index-0.jpg",
+        "bytes": 58647,
+        "mtime_ns": 1793693853763650717
+      },
+      {
+        "filename": "201999-index-0.jpg",
+        "bytes": 58968,
+        "mtime_ns": 1793693853763650717
+      },
+      {
+        "filename": "202999-index-0.jpg",
+        "bytes": 58789,
+        "mtime_ns": 1793693853763650717
+      },
+      {
+        "filename": "203999-index-0.jpg",
+        "bytes": 58644,
+        "mtime_ns": 1793693853763650717
+      },
+      {
+        "filename": "204999-index-0.jpg",
+        "bytes": 59083,
+        "mtime_ns": 1793693853763650717
+      },
+      {
+        "filename": "205999-index-0.jpg",
+        "bytes": 59243,
+        "mtime_ns": 1793693853763650717
+      },
+      {
+        "filename": "206999-index-0.jpg",
+        "bytes": 59479,
+        "mtime_ns": 1793693853767650795
+      },
+      {
+        "filename": "207999-index-0.jpg",
+        "bytes": 58736,
+        "mtime_ns": 1793693853767650795
+      },
+      {
+        "filename": "208999-index-0.jpg",
+        "bytes": 59046,
+        "mtime_ns": 1793693853767650795
+      },
+      {
+        "filename": "20999-index-0.jpg",
+        "bytes": 58014,
+        "mtime_ns": 1793693853723649937
+      },
+      {
+        "filename": "209999-index-0.jpg",
+        "bytes": 59407,
+        "mtime_ns": 1793693853767650795
+      },
+      {
+        "filename": "210999-index-0.jpg",
+        "bytes": 59297,
+        "mtime_ns": 1793693853767650795
+      },
+      {
+        "filename": "211999-index-0.jpg",
+        "bytes": 59738,
+        "mtime_ns": 1793693853767650795
+      },
+      {
+        "filename": "212999-index-0.jpg",
+        "bytes": 59636,
+        "mtime_ns": 1793693853767650795
+      },
+      {
+        "filename": "213999-index-0.jpg",
+        "bytes": 59286,
+        "mtime_ns": 1793693853767650795
+      },
+      {
+        "filename": "214999-index-0.jpg",
+        "bytes": 59378,
+        "mtime_ns": 1793693853767650795
+      },
+      {
+        "filename": "215999-index-0.jpg",
+        "bytes": 58980,
+        "mtime_ns": 1793693853767650795
+      },
+      {
+        "filename": "216999-index-0.jpg",
+        "bytes": 59090,
+        "mtime_ns": 1793693853771650873
+      },
+      {
+        "filename": "217999-index-0.jpg",
+        "bytes": 59355,
+        "mtime_ns": 1793693853771650873
+      },
+      {
+        "filename": "218999-index-0.jpg",
+        "bytes": 59718,
+        "mtime_ns": 1793693853771650873
+      },
+      {
+        "filename": "21999-index-0.jpg",
+        "bytes": 57401,
+        "mtime_ns": 1793693853723649937
+      },
+      {
+        "filename": "219999-index-0.jpg",
+        "bytes": 59796,
+        "mtime_ns": 1793693853771650873
+      },
+      {
+        "filename": "220999-index-0.jpg",
+        "bytes": 59418,
+        "mtime_ns": 1793693853771650873
+      },
+      {
+        "filename": "221999-index-0.jpg",
+        "bytes": 59717,
+        "mtime_ns": 1793693853771650873
+      },
+      {
+        "filename": "222999-index-0.jpg",
+        "bytes": 59577,
+        "mtime_ns": 1793693853771650873
+      },
+      {
+        "filename": "223999-index-0.jpg",
+        "bytes": 59520,
+        "mtime_ns": 1793693853771650873
+      },
+      {
+        "filename": "224999-index-0.jpg",
+        "bytes": 58868,
+        "mtime_ns": 1793693853771650873
+      },
+      {
+        "filename": "225999-index-0.jpg",
+        "bytes": 59630,
+        "mtime_ns": 1793693853771650873
+      },
+      {
+        "filename": "226999-index-0.jpg",
+        "bytes": 59550,
+        "mtime_ns": 1793693853771650873
+      },
+      {
+        "filename": "227999-index-0.jpg",
+        "bytes": 59449,
+        "mtime_ns": 1793693853771650873
+      },
+      {
+        "filename": "228999-index-0.jpg",
+        "bytes": 59190,
+        "mtime_ns": 1793693853775650951
+      },
+      {
+        "filename": "22999-index-0.jpg",
+        "bytes": 56931,
+        "mtime_ns": 1793693853723649937
+      },
+      {
+        "filename": "229999-index-0.jpg",
+        "bytes": 59965,
+        "mtime_ns": 1793693853775650951
+      },
+      {
+        "filename": "230999-index-0.jpg",
+        "bytes": 59367,
+        "mtime_ns": 1793693853775650951
+      },
+      {
+        "filename": "231999-index-0.jpg",
+        "bytes": 59219,
+        "mtime_ns": 1793693853775650951
+      },
+      {
+        "filename": "232999-index-0.jpg",
+        "bytes": 59137,
+        "mtime_ns": 1793693853775650951
+      },
+      {
+        "filename": "233999-index-0.jpg",
+        "bytes": 59652,
+        "mtime_ns": 1793693853775650951
+      },
+      {
+        "filename": "234999-index-0.jpg",
+        "bytes": 59372,
+        "mtime_ns": 1793693853775650951
+      },
+      {
+        "filename": "235999-index-0.jpg",
+        "bytes": 59258,
+        "mtime_ns": 1793693853775650951
+      },
+      {
+        "filename": "236999-index-0.jpg",
+        "bytes": 59230,
+        "mtime_ns": 1793693853775650951
+      },
+      {
+        "filename": "237999-index-0.jpg",
+        "bytes": 59168,
+        "mtime_ns": 1793693853775650951
+      },
+      {
+        "filename": "238999-index-0.jpg",
+        "bytes": 59283,
+        "mtime_ns": 1793693853775650951
+      },
+      {
+        "filename": "23999-index-0.jpg",
+        "bytes": 57256,
+        "mtime_ns": 1793693853723649937
+      },
+      {
+        "filename": "239999-index-0.jpg",
+        "bytes": 59548,
+        "mtime_ns": 1793693853779651029
+      },
+      {
+        "filename": "240999-index-0.jpg",
+        "bytes": 59098,
+        "mtime_ns": 1793693853779651029
+      },
+      {
+        "filename": "241999-index-0.jpg",
+        "bytes": 59146,
+        "mtime_ns": 1793693853779651029
+      },
+      {
+        "filename": "242999-index-0.jpg",
+        "bytes": 59051,
+        "mtime_ns": 1793693853779651029
+      },
+      {
+        "filename": "243999-index-0.jpg",
+        "bytes": 59158,
+        "mtime_ns": 1793693853779651029
+      },
+      {
+        "filename": "244999-index-0.jpg",
+        "bytes": 59693,
+        "mtime_ns": 1793693853779651029
+      },
+      {
+        "filename": "245999-index-0.jpg",
+        "bytes": 59400,
+        "mtime_ns": 1793693853779651029
+      },
+      {
+        "filename": "246999-index-0.jpg",
+        "bytes": 59127,
+        "mtime_ns": 1793693853779651029
+      },
+      {
+        "filename": "247999-index-0.jpg",
+        "bytes": 59311,
+        "mtime_ns": 1793693853779651029
+      },
+      {
+        "filename": "248999-index-0.jpg",
+        "bytes": 59197,
+        "mtime_ns": 1793693853779651029
+      },
+      {
+        "filename": "24999-index-0.jpg",
+        "bytes": 56737,
+        "mtime_ns": 1793693853723649937
+      },
+      {
+        "filename": "249999-index-0.jpg",
+        "bytes": 59251,
+        "mtime_ns": 1793693853779651029
+      },
+      {
+        "filename": "250999-index-0.jpg",
+        "bytes": 59139,
+        "mtime_ns": 1793693853783651107
+      },
+      {
+        "filename": "251999-index-0.jpg",
+        "bytes": 59301,
+        "mtime_ns": 1793693853783651107
+      },
+      {
+        "filename": "252999-index-0.jpg",
+        "bytes": 59358,
+        "mtime_ns": 1793693853783651107
+      },
+      {
+        "filename": "253999-index-0.jpg",
+        "bytes": 59432,
+        "mtime_ns": 1793693853783651107
+      },
+      {
+        "filename": "254999-index-0.jpg",
+        "bytes": 59723,
+        "mtime_ns": 1793693853783651107
+      },
+      {
+        "filename": "255999-index-0.jpg",
+        "bytes": 59381,
+        "mtime_ns": 1793693853783651107
+      },
+      {
+        "filename": "256999-index-0.jpg",
+        "bytes": 59424,
+        "mtime_ns": 1793693853783651107
+      },
+      {
+        "filename": "257999-index-0.jpg",
+        "bytes": 59453,
+        "mtime_ns": 1793693853783651107
+      },
+      {
+        "filename": "258999-index-0.jpg",
+        "bytes": 59289,
+        "mtime_ns": 1793693853783651107
+      },
+      {
+        "filename": "25999-index-0.jpg",
+        "bytes": 56656,
+        "mtime_ns": 1793693853723649937
+      },
+      {
+        "filename": "259999-index-0.jpg",
+        "bytes": 59437,
+        "mtime_ns": 1793693853783651107
+      },
+      {
+        "filename": "260999-index-0.jpg",
+        "bytes": 59755,
+        "mtime_ns": 1793693853783651107
+      },
+      {
+        "filename": "261999-index-0.jpg",
+        "bytes": 59241,
+        "mtime_ns": 1793693853787651185
+      },
+      {
+        "filename": "262999-index-0.jpg",
+        "bytes": 59468,
+        "mtime_ns": 1793693853787651185
+      },
+      {
+        "filename": "263999-index-0.jpg",
+        "bytes": 59315,
+        "mtime_ns": 1793693853799651419
+      },
+      {
+        "filename": "264999-index-0.jpg",
+        "bytes": 59220,
+        "mtime_ns": 1793693853799651419
+      },
+      {
+        "filename": "265999-index-0.jpg",
+        "bytes": 59304,
+        "mtime_ns": 1793693853799651419
+      },
+      {
+        "filename": "266999-index-0.jpg",
+        "bytes": 59924,
+        "mtime_ns": 1793693853803651497
+      },
+      {
+        "filename": "267999-index-0.jpg",
+        "bytes": 60118,
+        "mtime_ns": 1793693853803651497
+      },
+      {
+        "filename": "268999-index-0.jpg",
+        "bytes": 59867,
+        "mtime_ns": 1793693853803651497
+      },
+      {
+        "filename": "26999-index-0.jpg",
+        "bytes": 57131,
+        "mtime_ns": 1793693853723649937
+      },
+      {
+        "filename": "269999-index-0.jpg",
+        "bytes": 59292,
+        "mtime_ns": 1793693853803651497
+      },
+      {
+        "filename": "270999-index-0.jpg",
+        "bytes": 59110,
+        "mtime_ns": 1793693853803651497
+      },
+      {
+        "filename": "271999-index-0.jpg",
+        "bytes": 59404,
+        "mtime_ns": 1793693853803651497
+      },
+      {
+        "filename": "272999-index-0.jpg",
+        "bytes": 59752,
+        "mtime_ns": 1793693853803651497
+      },
+      {
+        "filename": "273999-index-0.jpg",
+        "bytes": 59865,
+        "mtime_ns": 1793693853803651497
+      },
+      {
+        "filename": "274999-index-0.jpg",
+        "bytes": 59244,
+        "mtime_ns": 1793693853803651497
+      },
+      {
+        "filename": "275999-index-0.jpg",
+        "bytes": 59952,
+        "mtime_ns": 1793693853803651497
+      },
+      {
+        "filename": "276999-index-0.jpg",
+        "bytes": 59650,
+        "mtime_ns": 1793693853803651497
+      },
+      {
+        "filename": "277999-index-0.jpg",
+        "bytes": 59299,
+        "mtime_ns": 1793693853807651576
+      },
+      {
+        "filename": "278999-index-0.jpg",
+        "bytes": 59158,
+        "mtime_ns": 1793693853807651576
+      },
+      {
+        "filename": "27999-index-0.jpg",
+        "bytes": 55960,
+        "mtime_ns": 1793693853723649937
+      },
+      {
+        "filename": "279999-index-0.jpg",
+        "bytes": 59386,
+        "mtime_ns": 1793693853807651576
+      },
+      {
+        "filename": "280999-index-0.jpg",
+        "bytes": 59414,
+        "mtime_ns": 1793693853807651576
+      },
+      {
+        "filename": "281999-index-0.jpg",
+        "bytes": 59536,
+        "mtime_ns": 1793693853807651576
+      },
+      {
+        "filename": "282999-index-0.jpg",
+        "bytes": 59232,
+        "mtime_ns": 1793693853807651576
+      },
+      {
+        "filename": "283999-index-0.jpg",
+        "bytes": 59168,
+        "mtime_ns": 1793693853807651576
+      },
+      {
+        "filename": "284999-index-0.jpg",
+        "bytes": 59248,
+        "mtime_ns": 1793693853807651576
+      },
+      {
+        "filename": "285999-index-0.jpg",
+        "bytes": 59731,
+        "mtime_ns": 1793693853807651576
+      },
+      {
+        "filename": "286999-index-0.jpg",
+        "bytes": 59331,
+        "mtime_ns": 1793693853807651576
+      },
+      {
+        "filename": "287999-index-0.jpg",
+        "bytes": 59333,
+        "mtime_ns": 1793693853807651576
+      },
+      {
+        "filename": "288999-index-0.jpg",
+        "bytes": 59674,
+        "mtime_ns": 1793693853811651653
+      },
+      {
+        "filename": "28999-index-0.jpg",
+        "bytes": 56280,
+        "mtime_ns": 1793693853723649937
+      },
+      {
+        "filename": "289999-index-0.jpg",
+        "bytes": 59542,
+        "mtime_ns": 1793693853811651653
+      },
+      {
+        "filename": "290999-index-0.jpg",
+        "bytes": 59762,
+        "mtime_ns": 1793693853811651653
+      },
+      {
+        "filename": "291999-index-0.jpg",
+        "bytes": 59331,
+        "mtime_ns": 1793693853811651653
+      },
+      {
+        "filename": "292999-index-0.jpg",
+        "bytes": 59146,
+        "mtime_ns": 1793693853811651653
+      },
+      {
+        "filename": "293999-index-0.jpg",
+        "bytes": 59540,
+        "mtime_ns": 1793693853811651653
+      },
+      {
+        "filename": "294999-index-0.jpg",
+        "bytes": 59721,
+        "mtime_ns": 1793693853811651653
+      },
+      {
+        "filename": "295999-index-0.jpg",
+        "bytes": 59460,
+        "mtime_ns": 1793693853811651653
+      },
+      {
+        "filename": "296999-index-0.jpg",
+        "bytes": 59641,
+        "mtime_ns": 1793693853811651653
+      },
+      {
+        "filename": "297999-index-0.jpg",
+        "bytes": 59761,
+        "mtime_ns": 1793693853811651653
+      },
+      {
+        "filename": "298999-index-0.jpg",
+        "bytes": 59443,
+        "mtime_ns": 1793693853811651653
+      },
+      {
+        "filename": "2999-index-0.jpg",
+        "bytes": 45330,
+        "mtime_ns": 1793693853723649937
+      },
+      {
+        "filename": "29999-index-0.jpg",
+        "bytes": 56940,
+        "mtime_ns": 1793693853727650015
+      },
+      {
+        "filename": "299999-index-0.jpg",
+        "bytes": 59592,
+        "mtime_ns": 1793693853815651731
+      },
+      {
+        "filename": "30999-index-0.jpg",
+        "bytes": 56442,
+        "mtime_ns": 1793693853727650015
+      },
+      {
+        "filename": "31999-index-0.jpg",
+        "bytes": 56415,
+        "mtime_ns": 1793693853727650015
+      },
+      {
+        "filename": "32999-index-0.jpg",
+        "bytes": 55839,
+        "mtime_ns": 1793693853727650015
+      },
+      {
+        "filename": "33999-index-0.jpg",
+        "bytes": 56352,
+        "mtime_ns": 1793693853727650015
+      },
+      {
+        "filename": "34999-index-0.jpg",
+        "bytes": 55722,
+        "mtime_ns": 1793693853727650015
+      },
+      {
+        "filename": "35999-index-0.jpg",
+        "bytes": 57304,
+        "mtime_ns": 1793693853727650015
+      },
+      {
+        "filename": "36999-index-0.jpg",
+        "bytes": 56846,
+        "mtime_ns": 1793693853727650015
+      },
+      {
+        "filename": "37999-index-0.jpg",
+        "bytes": 57467,
+        "mtime_ns": 1793693853727650015
+      },
+      {
+        "filename": "38999-index-0.jpg",
+        "bytes": 56217,
+        "mtime_ns": 1793693853727650015
+      },
+      {
+        "filename": "3999-index-0.jpg",
+        "bytes": 46165,
+        "mtime_ns": 1793693853727650015
+      },
+      {
+        "filename": "39999-index-0.jpg",
+        "bytes": 56907,
+        "mtime_ns": 1793693853727650015
+      },
+      {
+        "filename": "40999-index-0.jpg",
+        "bytes": 56252,
+        "mtime_ns": 1793693853727650015
+      },
+      {
+        "filename": "41999-index-0.jpg",
+        "bytes": 56458,
+        "mtime_ns": 1793693853727650015
+      },
+      {
+        "filename": "42999-index-0.jpg",
+        "bytes": 55839,
+        "mtime_ns": 1793693853727650015
+      },
+      {
+        "filename": "43999-index-0.jpg",
+        "bytes": 56708,
+        "mtime_ns": 1793693853731650093
+      },
+      {
+        "filename": "44999-index-0.jpg",
+        "bytes": 57393,
+        "mtime_ns": 1793693853731650093
+      },
+      {
+        "filename": "45999-index-0.jpg",
+        "bytes": 57243,
+        "mtime_ns": 1793693853731650093
+      },
+      {
+        "filename": "46999-index-0.jpg",
+        "bytes": 57389,
+        "mtime_ns": 1793693853731650093
+      },
+      {
+        "filename": "47999-index-0.jpg",
+        "bytes": 56681,
+        "mtime_ns": 1793693853731650093
+      },
+      {
+        "filename": "48999-index-0.jpg",
+        "bytes": 57189,
+        "mtime_ns": 1793693853731650093
+      },
+      {
+        "filename": "4999-index-0.jpg",
+        "bytes": 46190,
+        "mtime_ns": 1793693853731650093
+      },
+      {
+        "filename": "49999-index-0.jpg",
+        "bytes": 57172,
+        "mtime_ns": 1793693853787651185
+      },
+      {
+        "filename": "50999-index-0.jpg",
+        "bytes": 57008,
+        "mtime_ns": 1793693853787651185
+      },
+      {
+        "filename": "51999-index-0.jpg",
+        "bytes": 57424,
+        "mtime_ns": 1793693853787651185
+      },
+      {
+        "filename": "52999-index-0.jpg",
+        "bytes": 57369,
+        "mtime_ns": 1793693853787651185
+      },
+      {
+        "filename": "53999-index-0.jpg",
+        "bytes": 57383,
+        "mtime_ns": 1793693853787651185
+      },
+      {
+        "filename": "54999-index-0.jpg",
+        "bytes": 56400,
+        "mtime_ns": 1793693853787651185
+      },
+      {
+        "filename": "55999-index-0.jpg",
+        "bytes": 57756,
+        "mtime_ns": 1793693853787651185
+      },
+      {
+        "filename": "56999-index-0.jpg",
+        "bytes": 57531,
+        "mtime_ns": 1793693853787651185
+      },
+      {
+        "filename": "57999-index-0.jpg",
+        "bytes": 57757,
+        "mtime_ns": 1793693853787651185
+      },
+      {
+        "filename": "58999-index-0.jpg",
+        "bytes": 56894,
+        "mtime_ns": 1793693853787651185
+      },
+      {
+        "filename": "5999-index-0.jpg",
+        "bytes": 47453,
+        "mtime_ns": 1793693853731650093
+      },
+      {
+        "filename": "59999-index-0.jpg",
+        "bytes": 58084,
+        "mtime_ns": 1793693853787651185
+      },
+      {
+        "filename": "60999-index-0.jpg",
+        "bytes": 57883,
+        "mtime_ns": 1793693853787651185
+      },
+      {
+        "filename": "61999-index-0.jpg",
+        "bytes": 57609,
+        "mtime_ns": 1793693853791651263
+      },
+      {
+        "filename": "62999-index-0.jpg",
+        "bytes": 56922,
+        "mtime_ns": 1793693853791651263
+      },
+      {
+        "filename": "63999-index-0.jpg",
+        "bytes": 57566,
+        "mtime_ns": 1793693853791651263
+      },
+      {
+        "filename": "64999-index-0.jpg",
+        "bytes": 57158,
+        "mtime_ns": 1793693853791651263
+      },
+      {
+        "filename": "65999-index-0.jpg",
+        "bytes": 56919,
+        "mtime_ns": 1793693853791651263
+      },
+      {
+        "filename": "66999-index-0.jpg",
+        "bytes": 57268,
+        "mtime_ns": 1793693853791651263
+      },
+      {
+        "filename": "67999-index-0.jpg",
+        "bytes": 57996,
+        "mtime_ns": 1793693853791651263
+      },
+      {
+        "filename": "68999-index-0.jpg",
+        "bytes": 57945,
+        "mtime_ns": 1793693853791651263
+      },
+      {
+        "filename": "6999-index-0.jpg",
+        "bytes": 47503,
+        "mtime_ns": 1793693853731650093
+      },
+      {
+        "filename": "69999-index-0.jpg",
+        "bytes": 57449,
+        "mtime_ns": 1793693853791651263
+      },
+      {
+        "filename": "70999-index-0.jpg",
+        "bytes": 57884,
+        "mtime_ns": 1793693853791651263
+      },
+      {
+        "filename": "71999-index-0.jpg",
+        "bytes": 57508,
+        "mtime_ns": 1793693853791651263
+      },
+      {
+        "filename": "72999-index-0.jpg",
+        "bytes": 57996,
+        "mtime_ns": 1793693853791651263
+      },
+      {
+        "filename": "73999-index-0.jpg",
+        "bytes": 57759,
+        "mtime_ns": 1793693853791651263
+      },
+      {
+        "filename": "74999-index-0.jpg",
+        "bytes": 57400,
+        "mtime_ns": 1793693853791651263
+      },
+      {
+        "filename": "75999-index-0.jpg",
+        "bytes": 57766,
+        "mtime_ns": 1793693853791651263
+      },
+      {
+        "filename": "76999-index-0.jpg",
+        "bytes": 56577,
+        "mtime_ns": 1793693853795651341
+      },
+      {
+        "filename": "77999-index-0.jpg",
+        "bytes": 57372,
+        "mtime_ns": 1793693853795651341
+      },
+      {
+        "filename": "78999-index-0.jpg",
+        "bytes": 57496,
+        "mtime_ns": 1793693853795651341
+      },
+      {
+        "filename": "7999-index-0.jpg",
+        "bytes": 48463,
+        "mtime_ns": 1793693853731650093
+      },
+      {
+        "filename": "79999-index-0.jpg",
+        "bytes": 57308,
+        "mtime_ns": 1793693853795651341
+      },
+      {
+        "filename": "80999-index-0.jpg",
+        "bytes": 57348,
+        "mtime_ns": 1793693853795651341
+      },
+      {
+        "filename": "81999-index-0.jpg",
+        "bytes": 57456,
+        "mtime_ns": 1793693853795651341
+      },
+      {
+        "filename": "82999-index-0.jpg",
+        "bytes": 58208,
+        "mtime_ns": 1793693853795651341
+      },
+      {
+        "filename": "83999-index-0.jpg",
+        "bytes": 57402,
+        "mtime_ns": 1793693853795651341
+      },
+      {
+        "filename": "84999-index-0.jpg",
+        "bytes": 57370,
+        "mtime_ns": 1793693853795651341
+      },
+      {
+        "filename": "85999-index-0.jpg",
+        "bytes": 57706,
+        "mtime_ns": 1793693853795651341
+      },
+      {
+        "filename": "86999-index-0.jpg",
+        "bytes": 57652,
+        "mtime_ns": 1793693853795651341
+      },
+      {
+        "filename": "87999-index-0.jpg",
+        "bytes": 58241,
+        "mtime_ns": 1793693853795651341
+      },
+      {
+        "filename": "88999-index-0.jpg",
+        "bytes": 58042,
+        "mtime_ns": 1793693853795651341
+      },
+      {
+        "filename": "8999-index-0.jpg",
+        "bytes": 49318,
+        "mtime_ns": 1793693853731650093
+      },
+      {
+        "filename": "89999-index-0.jpg",
+        "bytes": 57319,
+        "mtime_ns": 1793693853795651341
+      },
+      {
+        "filename": "90999-index-0.jpg",
+        "bytes": 58185,
+        "mtime_ns": 1793693853795651341
+      },
+      {
+        "filename": "91999-index-0.jpg",
+        "bytes": 57946,
+        "mtime_ns": 1793693853799651419
+      },
+      {
+        "filename": "92999-index-0.jpg",
+        "bytes": 57355,
+        "mtime_ns": 1793693853799651419
+      },
+      {
+        "filename": "93999-index-0.jpg",
+        "bytes": 57495,
+        "mtime_ns": 1793693853799651419
+      },
+      {
+        "filename": "94999-index-0.jpg",
+        "bytes": 57592,
+        "mtime_ns": 1793693853799651419
+      },
+      {
+        "filename": "95999-index-0.jpg",
+        "bytes": 58004,
+        "mtime_ns": 1793693853799651419
+      },
+      {
+        "filename": "96999-index-0.jpg",
+        "bytes": 57431,
+        "mtime_ns": 1793693853799651419
+      },
+      {
+        "filename": "97999-index-0.jpg",
+        "bytes": 58469,
+        "mtime_ns": 1793693853799651419
+      },
+      {
+        "filename": "98999-index-0.jpg",
+        "bytes": 58039,
+        "mtime_ns": 1793693853799651419
+      },
+      {
+        "filename": "999-index-0.jpg",
+        "bytes": 47474,
+        "mtime_ns": 1793693853731650093
+      },
+      {
+        "filename": "9999-index-0.jpg",
+        "bytes": 51138,
+        "mtime_ns": 1793693853731650093
+      },
+      {
+        "filename": "99999-index-0.jpg",
+        "bytes": 58625,
+        "mtime_ns": 1793693853799651419
+      }
+    ]
+  },
+  "historical_configuration_or_json_candidates": [
+    "pbrnerf/bear/metrics.json",
+    "pbrnerf/bunny/metrics.json",
+    "pbrnerf/coral/metrics.json",
+    "pbrnerf/maneki/metrics.json",
+    "pbrnerf/vase/metrics.json"
+  ],
+  "history_examples": [
+    {
+      "commit": "b0815ea2acf1a4fbc0d5c8e7a2a1884a539f51c7",
+      "author_time": "2025-09-08T12:42:39-06:00",
+      "committer_time": "2025-09-08T12:42:39-06:00",
+      "subject": "change test image",
+      "helper_sha256": "3456f6ff7db5ab13fc17cfb6d3abd7e5aee18036d17dd610dd0079c22dc0aa28",
+      "helper_source": "def get_database_split(database: BaseDatabase, split_type='validation'):\n    if split_type == 'validation':\n        random.seed(6033)\n        img_ids = database.get_img_ids().copy()\n        img_num = 1\n        # random.shuffle(img_ids)\n        test_ids = img_ids[img_num-1:img_num]\n        if img_num > 1:\n            train_ids = img_ids[:img_num-1] + img_ids[img_num:]\n        else:\n            train_ids = img_ids[img_num:]\n    elif split_type=='test':\n        test_ids, train_ids = read_pickle('configs/synthetic_split_128.pkl')\n    else:\n        raise NotImplementedError\n    return train_ids, test_ids"
+    },
+    {
+      "commit": "de0d3412689fabca52cf248241974a3990386139",
+      "author_time": "2025-10-01T15:11:24-06:00",
+      "committer_time": "2025-10-01T15:11:24-06:00",
+      "subject": "update angel.yaml and bell.yaml",
+      "helper_sha256": "3456f6ff7db5ab13fc17cfb6d3abd7e5aee18036d17dd610dd0079c22dc0aa28",
+      "helper_source": "def get_database_split(database: BaseDatabase, split_type='validation'):\n    if split_type == 'validation':\n        random.seed(6033)\n        img_ids = database.get_img_ids().copy()\n        img_num = 1\n        # random.shuffle(img_ids)\n        test_ids = img_ids[img_num-1:img_num]\n        if img_num > 1:\n            train_ids = img_ids[:img_num-1] + img_ids[img_num:]\n        else:\n            train_ids = img_ids[img_num:]\n    elif split_type=='test':\n        test_ids, train_ids = read_pickle('configs/synthetic_split_128.pkl')\n    else:\n        raise NotImplementedError\n    return train_ids, test_ids"
+    },
+    {
+      "commit": "36dd0bb56936fab12bdc0055e802675c26dd692a",
+      "author_time": "2025-10-21T16:36:32-06:00",
+      "committer_time": "2025-10-21T16:36:32-06:00",
+      "subject": "change test image",
+      "helper_sha256": "07afba3a3d513222ac377447a930d12bf605b12e1bf28180ede8ed0c0db41aaa",
+      "helper_source": "def get_database_split(database: BaseDatabase, split_type='validation'):\n    if split_type == 'validation':\n        random.seed(6033)\n        img_ids = database.get_img_ids().copy()\n        img_num = 8\n        # random.shuffle(img_ids)\n        test_ids = img_ids[img_num-1:img_num]\n        if img_num > 1:\n            train_ids = img_ids[:img_num-1] + img_ids[img_num:]\n        else:\n            train_ids = img_ids[img_num:]\n    elif split_type=='test':\n        test_ids, train_ids = read_pickle('configs/synthetic_split_128.pkl')\n    else:\n        raise NotImplementedError\n    return train_ids, test_ids"
+    },
+    {
+      "commit": "11f0eac05f73447443cadd63e4d71ed96bac42d2",
+      "author_time": "2025-10-30T15:12:00-06:00",
+      "committer_time": "2025-10-30T15:12:00-06:00",
+      "subject": "add nvs at the end of the training",
+      "helper_sha256": "226951c21e4ad033e86c85074bccfa3c929f059c0869e4283c4f42066ffae98c",
+      "helper_source": "def get_database_split(database: BaseDatabase, split_type='validation'):\n    if split_type == 'validation':\n        random.seed(6033)\n        img_ids = database.get_img_ids().copy()\n        num_nvs_imgs = 5\n        random.shuffle(img_ids)\n        nvs_ids = img_ids[:num_nvs_imgs]\n        test_ids = img_ids[num_nvs_imgs:num_nvs_imgs+1]\n        train_ids = img_ids[num_nvs_imgs+1:]\n    elif split_type=='test':\n        test_ids, train_ids = read_pickle('configs/synthetic_split_128.pkl')\n        nvs_ids = None\n    else:\n        raise NotImplementedError\n    return train_ids, test_ids, nvs_ids"
+    },
+    {
+      "commit": "75644a6dc3b01978ba28683386df11e53892f538",
+      "author_time": "2025-11-01T16:22:17-06:00",
+      "committer_time": "2025-11-01T16:22:17-06:00",
+      "subject": "back to correct geoemtry model",
+      "helper_sha256": "07afba3a3d513222ac377447a930d12bf605b12e1bf28180ede8ed0c0db41aaa",
+      "helper_source": "def get_database_split(database: BaseDatabase, split_type='validation'):\n    if split_type == 'validation':\n        random.seed(6033)\n        img_ids = database.get_img_ids().copy()\n        img_num = 8\n        # random.shuffle(img_ids)\n        test_ids = img_ids[img_num-1:img_num]\n        if img_num > 1:\n            train_ids = img_ids[:img_num-1] + img_ids[img_num:]\n        else:\n            train_ids = img_ids[img_num:]\n    elif split_type=='test':\n        test_ids, train_ids = read_pickle('configs/synthetic_split_128.pkl')\n    else:\n        raise NotImplementedError\n    return train_ids, test_ids"
+    },
+    {
+      "commit": "3321944553b67e219d051b99c4e317d41604f4ba",
+      "author_time": "2025-11-06T21:31:44-06:00",
+      "committer_time": "2025-11-06T21:31:44-06:00",
+      "subject": "increase num eval images",
+      "helper_sha256": "382e52936373c1ad55737d8be881b8effc1002ab04341cca7972cee36c41ad98",
+      "helper_source": "def get_database_split(database: BaseDatabase, split_type='validation'):\n    random.seed(6033)\n    img_ids = database.get_img_ids().copy()\n    num_nvs_imgs = 15\n    random.shuffle(img_ids)\n    nvs_ids = img_ids[:num_nvs_imgs]\n    if split_type == 'validation':\n        test_ids = img_ids[num_nvs_imgs:num_nvs_imgs+1]\n        train_ids = img_ids[num_nvs_imgs+1:]\n    elif split_type=='test':\n        test_ids, train_ids = read_pickle('configs/synthetic_split_128.pkl')\n    else:\n        raise NotImplementedError\n    return train_ids, test_ids, nvs_ids"
+    },
+    {
+      "commit": "32e0d42e523be609f8629e3c4317510b98639eef",
+      "author_time": "2025-11-06T22:05:08-06:00",
+      "committer_time": "2025-11-06T22:05:08-06:00",
+      "subject": "reduce num_nvs_imgs",
+      "helper_sha256": "2276bbb6412e4199c1719e831956d979f175f07739dfe0020b0c02a263d78483",
+      "helper_source": "def get_database_split(database: BaseDatabase, split_type='validation'):\n    random.seed(6033)\n    img_ids = database.get_img_ids().copy()\n    num_nvs_imgs = 5\n    random.shuffle(img_ids)\n    nvs_ids = img_ids[:num_nvs_imgs]\n    if split_type == 'validation':\n        test_ids = img_ids[num_nvs_imgs:num_nvs_imgs+1]\n        train_ids = img_ids[num_nvs_imgs+1:]\n    elif split_type=='test':\n        test_ids, train_ids = read_pickle('configs/synthetic_split_128.pkl')\n    else:\n        raise NotImplementedError\n    return train_ids, test_ids, nvs_ids"
+    }
+  ],
+  "producing_commit": null,
+  "producing_branch": null,
+  "producing_configuration": null,
+  "producing_split": null,
+  "limits": [
+    "Event/pickle/checkpoint payloads not deserialized",
+    "Validation JPG payloads not decoded or scored; index 0 is not a database image ID",
+    "Author/committer times, event filename dates and migration mtimes are not authenticated producing history",
+    "Other historical states and local edits remain possible"
+  ]
+}

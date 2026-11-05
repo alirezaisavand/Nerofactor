@@ -1,0 +1,1109 @@
+{
+  "schema_version": 1,
+  "classification": "verified exact historical helper execution on metadata-only ordered-ID facade; not a full loader or historical producing-run observation",
+  "observed_at_utc": "2026-11-05T22:35:37.433611+00:00",
+  "repository_review_baseline": "5c791a77c160c32d038bdbe1a6f82f20d5800233",
+  "input": {
+    "root": "/home/isavand/paper/data/GlossySynthetic/bell",
+    "camera_pickle_count": 128,
+    "input_ids": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27",
+      "28",
+      "29",
+      "30",
+      "31",
+      "32",
+      "33",
+      "34",
+      "35",
+      "36",
+      "37",
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45",
+      "46",
+      "47",
+      "48",
+      "49",
+      "50",
+      "51",
+      "52",
+      "53",
+      "54",
+      "55",
+      "56",
+      "57",
+      "58",
+      "59",
+      "60",
+      "61",
+      "62",
+      "63",
+      "64",
+      "65",
+      "66",
+      "67",
+      "68",
+      "69",
+      "70",
+      "71",
+      "72",
+      "73",
+      "74",
+      "75",
+      "76",
+      "77",
+      "78",
+      "79",
+      "80",
+      "81",
+      "82",
+      "83",
+      "84",
+      "85",
+      "86",
+      "87",
+      "88",
+      "89",
+      "90",
+      "91",
+      "92",
+      "93",
+      "94",
+      "95",
+      "96",
+      "97",
+      "98",
+      "99",
+      "100",
+      "101",
+      "102",
+      "103",
+      "104",
+      "105",
+      "106",
+      "107",
+      "108",
+      "109",
+      "110",
+      "111",
+      "112",
+      "113",
+      "114",
+      "115",
+      "116",
+      "117",
+      "118",
+      "119",
+      "120",
+      "121",
+      "122",
+      "123",
+      "124",
+      "125",
+      "126",
+      "127"
+    ],
+    "ordering_rule": "Both source loaders create [str(k) for k in range(number of scene-root *.pkl)]; glob ordering is not used as ID ordering",
+    "camera_filename_metadata": [
+      {
+        "filename": "0-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326469374893
+      },
+      {
+        "filename": "1-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326357372713
+      },
+      {
+        "filename": "10-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326465374815
+      },
+      {
+        "filename": "100-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326437374270
+      },
+      {
+        "filename": "101-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326369372946
+      },
+      {
+        "filename": "102-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326413373803
+      },
+      {
+        "filename": "103-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326397373492
+      },
+      {
+        "filename": "104-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326385373258
+      },
+      {
+        "filename": "105-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326433374192
+      },
+      {
+        "filename": "106-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326361372791
+      },
+      {
+        "filename": "107-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326465374815
+      },
+      {
+        "filename": "108-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326405373647
+      },
+      {
+        "filename": "109-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326417373881
+      },
+      {
+        "filename": "11-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326357372713
+      },
+      {
+        "filename": "110-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326361372791
+      },
+      {
+        "filename": "111-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326465374815
+      },
+      {
+        "filename": "112-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326385373258
+      },
+      {
+        "filename": "113-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326433374192
+      },
+      {
+        "filename": "114-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326413373803
+      },
+      {
+        "filename": "115-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326397373492
+      },
+      {
+        "filename": "116-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326437374270
+      },
+      {
+        "filename": "117-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326369372946
+      },
+      {
+        "filename": "118-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326425374037
+      },
+      {
+        "filename": "119-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326381373180
+      },
+      {
+        "filename": "12-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326425374037
+      },
+      {
+        "filename": "120-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326461374737
+      },
+      {
+        "filename": "121-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326349372557
+      },
+      {
+        "filename": "122-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326421373959
+      },
+      {
+        "filename": "123-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326381373180
+      },
+      {
+        "filename": "124-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326409373725
+      },
+      {
+        "filename": "125-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326417373881
+      },
+      {
+        "filename": "126-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326373373024
+      },
+      {
+        "filename": "127-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326453374582
+      },
+      {
+        "filename": "13-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326389373336
+      },
+      {
+        "filename": "14-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326401373569
+      },
+      {
+        "filename": "15-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326409373725
+      },
+      {
+        "filename": "16-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326365372869
+      },
+      {
+        "filename": "17-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326445374426
+      },
+      {
+        "filename": "18-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326377373102
+      },
+      {
+        "filename": "19-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326425374037
+      },
+      {
+        "filename": "2-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326433374192
+      },
+      {
+        "filename": "20-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326357372713
+      },
+      {
+        "filename": "21-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326457374661
+      },
+      {
+        "filename": "22-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326377373102
+      },
+      {
+        "filename": "23-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326425374037
+      },
+      {
+        "filename": "24-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326421373959
+      },
+      {
+        "filename": "25-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326405373647
+      },
+      {
+        "filename": "26-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326445374426
+      },
+      {
+        "filename": "27-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326373373024
+      },
+      {
+        "filename": "28-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326433374192
+      },
+      {
+        "filename": "29-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326389373336
+      },
+      {
+        "filename": "3-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326389373336
+      },
+      {
+        "filename": "30-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326449374504
+      },
+      {
+        "filename": "31-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326377373102
+      },
+      {
+        "filename": "32-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326417373881
+      },
+      {
+        "filename": "33-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326401373569
+      },
+      {
+        "filename": "34-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326381373180
+      },
+      {
+        "filename": "35-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326425374037
+      },
+      {
+        "filename": "36-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326353372635
+      },
+      {
+        "filename": "37-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326453374582
+      },
+      {
+        "filename": "38-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326401373569
+      },
+      {
+        "filename": "39-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326413373803
+      },
+      {
+        "filename": "4-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326397373492
+      },
+      {
+        "filename": "40-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326401373569
+      },
+      {
+        "filename": "41-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326417373881
+      },
+      {
+        "filename": "42-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326377373102
+      },
+      {
+        "filename": "43-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326449374504
+      },
+      {
+        "filename": "44-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326457374661
+      },
+      {
+        "filename": "45-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326353372635
+      },
+      {
+        "filename": "46-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326425374037
+      },
+      {
+        "filename": "47-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326381373180
+      },
+      {
+        "filename": "48-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326445374426
+      },
+      {
+        "filename": "49-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326361372791
+      },
+      {
+        "filename": "5-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326409373725
+      },
+      {
+        "filename": "50-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326425374037
+      },
+      {
+        "filename": "51-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326381373180
+      },
+      {
+        "filename": "52-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326457374661
+      },
+      {
+        "filename": "53-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326357372713
+      },
+      {
+        "filename": "54-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326373373024
+      },
+      {
+        "filename": "55-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326445374426
+      },
+      {
+        "filename": "56-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326401373569
+      },
+      {
+        "filename": "57-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326421373959
+      },
+      {
+        "filename": "58-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326357372713
+      },
+      {
+        "filename": "59-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326469374893
+      },
+      {
+        "filename": "6-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326365372869
+      },
+      {
+        "filename": "60-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326393373414
+      },
+      {
+        "filename": "61-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326425374037
+      },
+      {
+        "filename": "62-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326357372713
+      },
+      {
+        "filename": "63-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326469374893
+      },
+      {
+        "filename": "64-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326441374348
+      },
+      {
+        "filename": "65-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326365372869
+      },
+      {
+        "filename": "66-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326409373725
+      },
+      {
+        "filename": "67-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326401373569
+      },
+      {
+        "filename": "68-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326457374661
+      },
+      {
+        "filename": "69-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326353372635
+      },
+      {
+        "filename": "7-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326445374426
+      },
+      {
+        "filename": "70-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326409373725
+      },
+      {
+        "filename": "71-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326401373569
+      },
+      {
+        "filename": "72-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326445374426
+      },
+      {
+        "filename": "73-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326365372869
+      },
+      {
+        "filename": "74-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326357372713
+      },
+      {
+        "filename": "75-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326465374815
+      },
+      {
+        "filename": "76-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326393373414
+      },
+      {
+        "filename": "77-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326429374115
+      },
+      {
+        "filename": "78-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326373373024
+      },
+      {
+        "filename": "79-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326449374504
+      },
+      {
+        "filename": "8-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326377373102
+      },
+      {
+        "filename": "80-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326409373725
+      },
+      {
+        "filename": "81-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326401373569
+      },
+      {
+        "filename": "82-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326445374426
+      },
+      {
+        "filename": "83-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326365372869
+      },
+      {
+        "filename": "84-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326357372713
+      },
+      {
+        "filename": "85-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326465374815
+      },
+      {
+        "filename": "86-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326393373414
+      },
+      {
+        "filename": "87-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326429374115
+      },
+      {
+        "filename": "88-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326373373024
+      },
+      {
+        "filename": "89-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326449374504
+      },
+      {
+        "filename": "9-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326425374037
+      },
+      {
+        "filename": "90-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326389373336
+      },
+      {
+        "filename": "91-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326425374037
+      },
+      {
+        "filename": "92-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326357372713
+      },
+      {
+        "filename": "93-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326465374815
+      },
+      {
+        "filename": "94-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326445374426
+      },
+      {
+        "filename": "95-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326365372869
+      },
+      {
+        "filename": "96-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326409373725
+      },
+      {
+        "filename": "97-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326401373569
+      },
+      {
+        "filename": "98-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326457374661
+      },
+      {
+        "filename": "99-camera.pkl",
+        "bytes": 351,
+        "mtime_ns": 1793693326353372635
+      }
+    ],
+    "rgb_depth_mask_paths_exist": true,
+    "camera_contents_loaded": false,
+    "dataset_loader_initialized": false
+  },
+  "sources": {
+    "A": {
+      "commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "path": "dataset/database.py",
+      "module_sha256": "95d2cb909dc804c89ec8f2511e986db30f39ef5629bc148cb21f3ac425fe3ce7",
+      "helper_source": "def get_database_split(database: BaseDatabase, split_type='validation'):\n    random.seed(6033)\n    img_ids = database.get_img_ids().copy()\n    num_nvs_imgs = 5\n    random.shuffle(img_ids)\n    nvs_ids = img_ids[:num_nvs_imgs]\n    if split_type == 'validation':\n        test_ids = img_ids[num_nvs_imgs:num_nvs_imgs+1]\n        train_ids = img_ids[num_nvs_imgs+1:]\n    elif split_type=='test':\n        test_ids, train_ids = read_pickle('configs/synthetic_split_128.pkl')\n    else:\n        raise NotImplementedError\n    return train_ids, test_ids, nvs_ids",
+      "helper_sha256": "2276bbb6412e4199c1719e831956d979f175f07739dfe0020b0c02a263d78483",
+      "first_line": 577
+    },
+    "G": {
+      "commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+      "path": "dataset/database.py",
+      "module_sha256": "e2490556c8b3d7aa0f5a9ea1db59fed3f060a00401787625874af46c57301fa3",
+      "helper_source": "def get_database_split(database: BaseDatabase, split_type='validation'):\n    if split_type == 'validation':\n        random.seed(6033)\n        img_ids = database.get_img_ids().copy()\n        img_num = 1\n        # random.shuffle(img_ids)\n        test_ids = img_ids[img_num-1:img_num]\n        if img_num > 1:\n            train_ids = img_ids[:img_num-1] + img_ids[img_num:]\n        else:\n            train_ids = img_ids[img_num:]\n    elif split_type=='test':\n        test_ids, train_ids = read_pickle('configs/synthetic_split_128.pkl')\n    else:\n        raise NotImplementedError\n    return train_ids, test_ids",
+      "helper_sha256": "3456f6ff7db5ab13fc17cfb6d3abd7e5aee18036d17dd610dd0079c22dc0aa28",
+      "first_line": 574
+    }
+  },
+  "verification_runner_source": "\nimport ast,hashlib,json,random,sys\npayload=json.loads(sys.stdin.read()); result={}\nclass MetadataOnlyDatabase:\n    def __init__(self,ids): self.ids=ids\n    def get_img_ids(self): return self.ids\n\ndef forbidden(*args,**kwargs): raise AssertionError('pickle or non-validation path forbidden')\ndef digest(state): return hashlib.sha256(repr(state).encode('ascii')).hexdigest()\nfor name,source in payload['sources'].items():\n    node=ast.parse(source['helper_source']); namespace={'BaseDatabase':object,'random':random,'read_pickle':forbidden}\n    exec(compile(node,source['commit']+':'+source['path'],'exec'),namespace)\n    helper=namespace['get_database_split']; original=payload['ids'][:]\n    random.seed(101); before=digest(random.getstate())\n    db=MetadataOnlyDatabase(original); output=helper(db,'validation'); after=digest(random.getstate())\n    assert original==payload['ids']\n    random.seed(202); repeated=helper(MetadataOnlyDatabase(original[:]),'validation'); repeated_state=digest(random.getstate())\n    assert output==repeated and after==repeated_state\n    random.seed(6033); seed_only=digest(random.getstate())\n    random.shuffle(original); shuffled=digest(random.getstate())\n    expected=shuffled if name=='A' else seed_only\n    assert after==expected and before!=after\n    result[name]={'train_ids':output[0],'validation_ids':output[1],'nvs_ids':output[2] if len(output)==3 else None,\n      'return_arity':len(output),'database_ids_unchanged':db.ids==payload['ids'],'rng_before_state_sha256':before,\n      'rng_after_state_sha256':after,'rng_seed6033_only_state_sha256':seed_only,'rng_seed6033_shuffle_state_sha256':shuffled,\n      'rng_effect':'reset seed 6033 then shuffle' if name=='A' else 'reset seed 6033 without shuffle',\n      'independent_initial_state_repeat_agrees':True}\nassert result['A']['validation_ids']==['58'] and result['G']['validation_ids']==['0']\nassert result['A']['validation_ids'][0] in result['G']['train_ids']\nprint(json.dumps({'runtime':{'executable':sys.executable,'python':sys.version,'flags':'-I -S -B (isolated, no site, no bytecode)'},'results':result}))\n",
+  "verification_runner_sha256": "10854b94c3282c1199d18bac318a03069d4b89bc3423d173bed1061572766714",
+  "cpu_verification": {
+    "runtime": {
+      "executable": "/home/isavand/anaconda3/envs/point_nerf/bin/python3.8",
+      "python": "3.8.19 (default, Mar 20 2024, 19:58:24) \n[GCC 11.2.0]",
+      "flags": "-I -S -B (isolated, no site, no bytecode)"
+    },
+    "results": {
+      "A": {
+        "train_ids": [
+          "14",
+          "98",
+          "103",
+          "117",
+          "91",
+          "63",
+          "67",
+          "104",
+          "20",
+          "39",
+          "74",
+          "35",
+          "51",
+          "18",
+          "87",
+          "2",
+          "47",
+          "100",
+          "22",
+          "32",
+          "62",
+          "72",
+          "106",
+          "19",
+          "88",
+          "59",
+          "86",
+          "54",
+          "123",
+          "99",
+          "16",
+          "3",
+          "75",
+          "122",
+          "8",
+          "84",
+          "64",
+          "23",
+          "119",
+          "36",
+          "0",
+          "60",
+          "6",
+          "10",
+          "120",
+          "121",
+          "116",
+          "70",
+          "29",
+          "102",
+          "27",
+          "55",
+          "97",
+          "25",
+          "109",
+          "82",
+          "127",
+          "124",
+          "125",
+          "57",
+          "28",
+          "52",
+          "24",
+          "41",
+          "77",
+          "26",
+          "15",
+          "126",
+          "68",
+          "95",
+          "81",
+          "107",
+          "30",
+          "12",
+          "33",
+          "94",
+          "111",
+          "80",
+          "43",
+          "31",
+          "110",
+          "21",
+          "78",
+          "37",
+          "101",
+          "44",
+          "5",
+          "40",
+          "48",
+          "89",
+          "1",
+          "49",
+          "108",
+          "79",
+          "66",
+          "71",
+          "65",
+          "34",
+          "42",
+          "61",
+          "46",
+          "83",
+          "90",
+          "113",
+          "13",
+          "9",
+          "7",
+          "56",
+          "96",
+          "85",
+          "4",
+          "112",
+          "92",
+          "50",
+          "115",
+          "118",
+          "69",
+          "45",
+          "73",
+          "53",
+          "38",
+          "93"
+        ],
+        "validation_ids": [
+          "58"
+        ],
+        "nvs_ids": [
+          "11",
+          "105",
+          "114",
+          "17",
+          "76"
+        ],
+        "return_arity": 3,
+        "database_ids_unchanged": false,
+        "rng_before_state_sha256": "e1314f4e985ce01d052796b87b337a4fd08ece61e5299bca74888c7e8d87b937",
+        "rng_after_state_sha256": "9e197c2679d0fcae3176695f8b7e002c96d10967162211f03732c6395de341f8",
+        "rng_seed6033_only_state_sha256": "db707800b23ff8605b4c58fc079197ec6d4df88738e8aa20a7c04a8202ff5bb7",
+        "rng_seed6033_shuffle_state_sha256": "9e197c2679d0fcae3176695f8b7e002c96d10967162211f03732c6395de341f8",
+        "rng_effect": "reset seed 6033 then shuffle",
+        "independent_initial_state_repeat_agrees": true
+      },
+      "G": {
+        "train_ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30",
+          "31",
+          "32",
+          "33",
+          "34",
+          "35",
+          "36",
+          "37",
+          "38",
+          "39",
+          "40",
+          "41",
+          "42",
+          "43",
+          "44",
+          "45",
+          "46",
+          "47",
+          "48",
+          "49",
+          "50",
+          "51",
+          "52",
+          "53",
+          "54",
+          "55",
+          "56",
+          "57",
+          "58",
+          "59",
+          "60",
+          "61",
+          "62",
+          "63",
+          "64",
+          "65",
+          "66",
+          "67",
+          "68",
+          "69",
+          "70",
+          "71",
+          "72",
+          "73",
+          "74",
+          "75",
+          "76",
+          "77",
+          "78",
+          "79",
+          "80",
+          "81",
+          "82",
+          "83",
+          "84",
+          "85",
+          "86",
+          "87",
+          "88",
+          "89",
+          "90",
+          "91",
+          "92",
+          "93",
+          "94",
+          "95",
+          "96",
+          "97",
+          "98",
+          "99",
+          "100",
+          "101",
+          "102",
+          "103",
+          "104",
+          "105",
+          "106",
+          "107",
+          "108",
+          "109",
+          "110",
+          "111",
+          "112",
+          "113",
+          "114",
+          "115",
+          "116",
+          "117",
+          "118",
+          "119",
+          "120",
+          "121",
+          "122",
+          "123",
+          "124",
+          "125",
+          "126",
+          "127"
+        ],
+        "validation_ids": [
+          "0"
+        ],
+        "nvs_ids": null,
+        "return_arity": 2,
+        "database_ids_unchanged": false,
+        "rng_before_state_sha256": "e1314f4e985ce01d052796b87b337a4fd08ece61e5299bca74888c7e8d87b937",
+        "rng_after_state_sha256": "db707800b23ff8605b4c58fc079197ec6d4df88738e8aa20a7c04a8202ff5bb7",
+        "rng_seed6033_only_state_sha256": "db707800b23ff8605b4c58fc079197ec6d4df88738e8aa20a7c04a8202ff5bb7",
+        "rng_seed6033_shuffle_state_sha256": "9e197c2679d0fcae3176695f8b7e002c96d10967162211f03732c6395de341f8",
+        "rng_effect": "reset seed 6033 without shuffle",
+        "independent_initial_state_repeat_agrees": true
+      }
+    }
+  },
+  "existing_python3810_geometry_smoke_ordered_ids_match_A": true,
+  "limits": [
+    "Local verifier uses Python 3.8.19, not the smoke image's 3.8.10",
+    "No checkpoints or dataset/event pickles deserialized",
+    "No historical producing split established",
+    "G has no NVS partition; null denotes absence, not an empty third return list"
+  ]
+}

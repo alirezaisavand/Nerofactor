@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-11-05T22:34:25.198163+00:00",
+  "selected": {
+    "path": "/home/isavand/paper/final_results/model/bell_shape/model_best.pth",
+    "resolved_path": "/home/isavand/paper/final_results/model/bell_shape/model_best.pth",
+    "size": 29966819,
+    "mtime_ns": 1793693855891692219,
+    "mtime_utc": "2026-11-03T08:17:35.891692+00:00",
+    "ctime_ns": 1793693855891692219,
+    "device": 66310,
+    "inode": 109587444,
+    "uid": 1109,
+    "gid": 1109,
+    "mode": "0o100644",
+    "nlink": 1,
+    "symlink": false,
+    "sha256": "d928a03d9eb9f993ab8f4a0384b31cf1c7bdc875316a1c247dcf9722b8b79ccc",
+    "classification": "verified byte hash; contents not deserialized"
+  },
+  "alternate": {
+    "path": "/home/isavand/paper/final_results/model/bell_shape/model.pth",
+    "resolved_path": "/home/isavand/paper/final_results/model/bell_shape/model.pth",
+    "size": 29966819,
+    "mtime_ns": 1793693855855691516,
+    "mtime_utc": "2026-11-03T08:17:35.855691+00:00",
+    "ctime_ns": 1793693855855691516,
+    "device": 66310,
+    "inode": 109587443,
+    "uid": 1109,
+    "gid": 1109,
+    "mode": "0o100644",
+    "nlink": 1,
+    "symlink": false,
+    "sha256": null,
+    "classification": "verified metadata only; not selected, hashed or loaded"
+  }
+}

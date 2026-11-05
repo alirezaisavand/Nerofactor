@@ -5,6 +5,13 @@ inference, GPU evaluation, training, mesh extraction or metric recomputation.
 All historical inputs remain in place. The repository started clean on
 `paper/infrastructure` at `b4379971b07cdbcb3edc9e589efd20ce38b63bd5`.
 
+Follow-up: [1D.4B-0 checkpoint admission](evidence/BELL_CHECKPOINT_ADMISSION.md)
+now records a selected checkpoint byte hash, exact CPU-verified A/G source splits
+and copies of the original smoke reports at the researcher's approved alternate
+archive destination. The initial 1D.4A inventory/evidence status below is retained
+as an earlier observation. Producing checkpoint provenance and admission remain
+unresolved; no inference or historical reproduction has been performed.
+
 ## Evidence status
 
 | Evidence | Status and supported claim | Missing evidence / limits |

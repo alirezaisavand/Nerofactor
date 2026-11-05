@@ -135,32 +135,44 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized milestone: **1D.4A, baseline evidence and reproducibility
-preparation only**. The researcher reports both geometry and material native
-model smoke tests passed in `nerofactor-paper:quick-candidate-1`, and all 109
-infrastructure tests passed on Python 3.8. Attribute these as researcher-reported
-results until original reports/logs and immutable launch identities are archived;
-do not fabricate checked-in GPU measurements. See
-[BASELINE_PREPARATION.md](docs/BASELINE_PREPARATION.md).
+Current authorized milestone: **1D.4B-0, checkpoint admission and provenance
+verification only**, reviewed against `5c791a77c160c32d038bdbe1a6f82f20d5800233`.
+Read-only scientific investigation is authorized: hash the explicitly selected
+bell `model_best.pth` as opaque bytes, stat the alternate without substitution,
+inspect Git/text/metadata, and verify exact A/G split helpers in a bounded
+stdlib-only CPU process against metadata-derived ordered IDs. Do not construct
+the dataset loader or deserialize checkpoint, event or camera/cache pickle data.
+Do not run model inference, rendering, evaluation, training or GPU computation.
 
-Authorized changes are documentation/evidence only: read-only metadata inventory
-of historical checkpoints, meshes, configurations, logs and evaluation outputs;
-baseline candidacy assessment; and a proposed versioned checkpoint-inference
-comparison protocol. Do not deserialize checkpoints or input pickles, run GPU
-inference/evaluation/training, change scientific code/configurations, modify
-artifacts, build/change images, install packages or start/stop containers. Do not
-hash large datasets. Metadata is not content-integrity or architecture evidence.
-Missing material checkpoints, unknown producing commits/splits and missing runtime
-reports remain explicit blockers. Preserve historical reported scores separately
-from routing regression, independently recomputed inference and trained results.
+The researcher approved archiving the original small smoke reports/configuration
+and manifest files at `/home/isavand/paper/evidence/1d3c` after the originally
+requested `paper_runs/evidence/1d3c` destination was inaccessible. Verify the
+approved destination is writable, preserve original bytes and source paths/
+hashes, refuse overwrites, and exclude caches/generated datasets. Do not change
+ownership/permissions or Docker settings. Documentation and small evidence
+manifests are the only repository changes authorized. No scientific code/YAML,
+image/build, package/environment or original artifact changes are allowed.
 
-The proposed [inference protocol](docs/protocols/CHECKPOINT_INFERENCE_V1.md) is
-not implemented or executable authorization. Its reference, trust/admission gates,
-input/split identities, metrics, provisional tolerances and resource budget need
-review before a later inference adapter or native launch. Do not silently repair
-scientific/evaluator defects or relax tolerances after seeing results. Keep the
-1D.3C harness and Python 3.8 AST compatibility assertions unchanged. Stop after
-preparation for review; do not commit or push automatically.
+Use **verified**, **inferred** and **unresolved** classifications in
+[BELL_CHECKPOINT_ADMISSION.md](docs/evidence/BELL_CHECKPOINT_ADMISSION.md).
+Distinguish file-backed smoke evidence, independently corroborated runtime
+identity and researcher-reported 109/109 Python 3.8 test results. An image ID in
+a report is caller-declared until independently checked; source-file hash matches
+do not establish the launch's full Git commit or clean status. Report Docker
+socket limitations separately without bypassing them.
+
+Current A-based inference regression and historical G-based thesis reproduction
+have separate admission decisions. Preserve the exact A three-way seeded split
+and G two-way unshuffled split/RNG effects; verified present source-defined IDs
+are not verified producing-run IDs. Checkpoint hashing, matching YAML, same-shaped
+weights or smoke success cannot establish origin/compatibility/reproducibility.
+No checkpoint loading or inference adapter is authorized. Keep missing trust,
+architecture/step, producing commit/configuration/split and selection linkage as
+explicit blockers. Stop after the admission report for review; do not commit or
+push automatically. The earlier
+[baseline preparation](docs/BASELINE_PREPARATION.md) and
+[inference protocol](docs/protocols/CHECKPOINT_INFERENCE_V1.md) remain proposals,
+not execution approval.
 
 Keep installed evidence, publisher checksums and byte-verified artifacts distinct.
 Registry presence/tag agreement does not establish historical base identity;

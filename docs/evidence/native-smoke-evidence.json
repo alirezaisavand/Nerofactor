@@ -1,0 +1,458 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-11-05T22:37:23.711290+00:00",
+  "review_baseline": "5c791a77c160c32d038bdbe1a6f82f20d5800233",
+  "evidence_classification": "Independently inspected original JSON/text bytes; native execution was not witnessed/re-run by Codex",
+  "archive_root": "/home/isavand/paper/evidence/1d3c",
+  "archive_status": "complete",
+  "archive_error": null,
+  "archive_bytes": 296784,
+  "archive_file_count": 14,
+  "files": [
+    {
+      "stage": "geometry",
+      "source": "/tmp/nerofactor-geometry-smoke.WjqeMs49/smoke.json",
+      "source_metadata": {
+        "bytes": 6580,
+        "mtime_ns": 1793857394552554571,
+        "ctime_ns": 1793857394552554571,
+        "device": 66310,
+        "inode": 30540125
+      },
+      "sha256": "b78259996848735c39dd94cef79b0c3133c2ec599ee79f206e64bd2b13bd911f",
+      "archive_path": "/home/isavand/paper/evidence/1d3c/geometry-smoke-20261105054231/smoke.json",
+      "copied": true,
+      "archive_metadata": {
+        "bytes": 6580,
+        "mtime_ns": 1793918509529706207,
+        "ctime_ns": 1793918509529706207,
+        "device": 66310,
+        "inode": 109185954
+      },
+      "archive_sha256": "b78259996848735c39dd94cef79b0c3133c2ec599ee79f206e64bd2b13bd911f"
+    },
+    {
+      "stage": "geometry",
+      "source": "/tmp/nerofactor-geometry-smoke.WjqeMs49/logs/console.log",
+      "source_metadata": {
+        "bytes": 304,
+        "mtime_ns": 1793857394552554571,
+        "ctime_ns": 1793857394552554571,
+        "device": 66310,
+        "inode": 30540124
+      },
+      "sha256": "694c77d15f7d7112f0cb888fa25b0620dec4399a96282bc95e26fa26659f75d5",
+      "archive_path": "/home/isavand/paper/evidence/1d3c/geometry-smoke-20261105054231/logs/console.log",
+      "copied": true,
+      "archive_metadata": {
+        "bytes": 304,
+        "mtime_ns": 1793918509529706207,
+        "ctime_ns": 1793918509529706207,
+        "device": 66310,
+        "inode": 109185955
+      },
+      "archive_sha256": "694c77d15f7d7112f0cb888fa25b0620dec4399a96282bc95e26fa26659f75d5"
+    },
+    {
+      "stage": "geometry",
+      "source": "/tmp/nerofactor-geometry-smoke.WjqeMs49/config.original.yaml",
+      "source_metadata": {
+        "bytes": 315,
+        "mtime_ns": 1793857351471699887,
+        "ctime_ns": 1793857351471699887,
+        "device": 66310,
+        "inode": 30540025
+      },
+      "sha256": "a9b5c12723fa40c976553a878dfde5b575e43e14af5ccaa0e5b84c4d712bd6c0",
+      "archive_path": "/home/isavand/paper/evidence/1d3c/geometry-smoke-20261105054231/config.original.yaml",
+      "copied": true,
+      "archive_metadata": {
+        "bytes": 315,
+        "mtime_ns": 1793918509529706207,
+        "ctime_ns": 1793918509529706207,
+        "device": 66310,
+        "inode": 109185956
+      },
+      "archive_sha256": "a9b5c12723fa40c976553a878dfde5b575e43e14af5ccaa0e5b84c4d712bd6c0"
+    },
+    {
+      "stage": "geometry",
+      "source": "/tmp/nerofactor-geometry-smoke.WjqeMs49/config.legacy.yaml",
+      "source_metadata": {
+        "bytes": 675,
+        "mtime_ns": 1793857351471699887,
+        "ctime_ns": 1793857351471699887,
+        "device": 66310,
+        "inode": 30540028
+      },
+      "sha256": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f",
+      "archive_path": "/home/isavand/paper/evidence/1d3c/geometry-smoke-20261105054231/config.legacy.yaml",
+      "copied": true,
+      "archive_metadata": {
+        "bytes": 675,
+        "mtime_ns": 1793918509529706207,
+        "ctime_ns": 1793918509529706207,
+        "device": 66310,
+        "inode": 109185957
+      },
+      "archive_sha256": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f"
+    },
+    {
+      "stage": "geometry",
+      "source": "/tmp/nerofactor-geometry-smoke.WjqeMs49/config.effective.yaml",
+      "source_metadata": {
+        "bytes": 4750,
+        "mtime_ns": 1793857369976067006,
+        "ctime_ns": 1793857369976067006,
+        "device": 66310,
+        "inode": 30540132
+      },
+      "sha256": "2a40feb44affa4c648060cbafb4715dfacd495eaf0787ba9ba02ac532f10fd1c",
+      "archive_path": "/home/isavand/paper/evidence/1d3c/geometry-smoke-20261105054231/config.effective.yaml",
+      "copied": true,
+      "archive_metadata": {
+        "bytes": 4750,
+        "mtime_ns": 1793918509529706207,
+        "ctime_ns": 1793918509529706207,
+        "device": 66310,
+        "inode": 109185958
+      },
+      "archive_sha256": "2a40feb44affa4c648060cbafb4715dfacd495eaf0787ba9ba02ac532f10fd1c"
+    },
+    {
+      "stage": "geometry",
+      "source": "/tmp/nerofactor-geometry-smoke.WjqeMs49/geometry.json",
+      "source_metadata": {
+        "bytes": 150944,
+        "mtime_ns": 1793857351479700046,
+        "ctime_ns": 1793857351479700046,
+        "device": 66310,
+        "inode": 30540034
+      },
+      "sha256": "0d383dff9edf40032021d690a747b42f0e560a8425fc9027dcd0c414038f686b",
+      "archive_path": "/home/isavand/paper/evidence/1d3c/geometry-smoke-20261105054231/geometry.json",
+      "copied": true,
+      "archive_metadata": {
+        "bytes": 150944,
+        "mtime_ns": 1793918509529706207,
+        "ctime_ns": 1793918509529706207,
+        "device": 66310,
+        "inode": 109185959
+      },
+      "archive_sha256": "0d383dff9edf40032021d690a747b42f0e560a8425fc9027dcd0c414038f686b"
+    },
+    {
+      "stage": "geometry",
+      "source": "/tmp/nerofactor-geometry-smoke.WjqeMs49/.experiment.json",
+      "source_metadata": {
+        "bytes": 65,
+        "mtime_ns": 1793857351323696951,
+        "ctime_ns": 1793857351323696951,
+        "device": 66310,
+        "inode": 30539935
+      },
+      "sha256": "f1469273322949d28e598ed71680f69a8f481e6c7537f31ffd45d80c4fc25528",
+      "archive_path": "/home/isavand/paper/evidence/1d3c/geometry-smoke-20261105054231/.experiment.json",
+      "copied": true,
+      "archive_metadata": {
+        "bytes": 65,
+        "mtime_ns": 1793918509533706284,
+        "ctime_ns": 1793918509533706284,
+        "device": 66310,
+        "inode": 109185960
+      },
+      "archive_sha256": "f1469273322949d28e598ed71680f69a8f481e6c7537f31ffd45d80c4fc25528"
+    },
+    {
+      "stage": "material",
+      "source": "/tmp/nerofactor-material-smoke.dLqrhRPG/smoke.json",
+      "source_metadata": {
+        "bytes": 7429,
+        "mtime_ns": 1793857565623947612,
+        "ctime_ns": 1793857565623947612,
+        "device": 66310,
+        "inode": 30540181
+      },
+      "sha256": "476e8be5df1227e7eb325d6552ab4f4581283e848488e57ef323ac6c1991a01d",
+      "archive_path": "/home/isavand/paper/evidence/1d3c/material-smoke-20261105054527/smoke.json",
+      "copied": true,
+      "archive_metadata": {
+        "bytes": 7429,
+        "mtime_ns": 1793918509533706284,
+        "ctime_ns": 1793918509533706284,
+        "device": 66310,
+        "inode": 109185961
+      },
+      "archive_sha256": "476e8be5df1227e7eb325d6552ab4f4581283e848488e57ef323ac6c1991a01d"
+    },
+    {
+      "stage": "material",
+      "source": "/tmp/nerofactor-material-smoke.dLqrhRPG/logs/console.log",
+      "source_metadata": {
+        "bytes": 14366,
+        "mtime_ns": 1793857565623947612,
+        "ctime_ns": 1793857565623947612,
+        "device": 66310,
+        "inode": 30540180
+      },
+      "sha256": "87d82de5d93b125f91bc95902f6ce94ba032335e15458862a3c3b68a972d83ac",
+      "archive_path": "/home/isavand/paper/evidence/1d3c/material-smoke-20261105054527/logs/console.log",
+      "copied": true,
+      "archive_metadata": {
+        "bytes": 14366,
+        "mtime_ns": 1793918509533706284,
+        "ctime_ns": 1793918509533706284,
+        "device": 66310,
+        "inode": 109185962
+      },
+      "archive_sha256": "87d82de5d93b125f91bc95902f6ce94ba032335e15458862a3c3b68a972d83ac"
+    },
+    {
+      "stage": "material",
+      "source": "/tmp/nerofactor-material-smoke.dLqrhRPG/config.original.yaml",
+      "source_metadata": {
+        "bytes": 388,
+        "mtime_ns": 1793857527775197001,
+        "ctime_ns": 1793857527775197001,
+        "device": 66310,
+        "inode": 30540159
+      },
+      "sha256": "e05a4d965680d7d96886ffd88298f408e4e2522791d9ee02ec3def826f33d3c8",
+      "archive_path": "/home/isavand/paper/evidence/1d3c/material-smoke-20261105054527/config.original.yaml",
+      "copied": true,
+      "archive_metadata": {
+        "bytes": 388,
+        "mtime_ns": 1793918509533706284,
+        "ctime_ns": 1793918509533706284,
+        "device": 66310,
+        "inode": 109185963
+      },
+      "archive_sha256": "e05a4d965680d7d96886ffd88298f408e4e2522791d9ee02ec3def826f33d3c8"
+    },
+    {
+      "stage": "material",
+      "source": "/tmp/nerofactor-material-smoke.dLqrhRPG/config.legacy.yaml",
+      "source_metadata": {
+        "bytes": 1075,
+        "mtime_ns": 1793857527775197001,
+        "ctime_ns": 1793857527775197001,
+        "device": 66310,
+        "inode": 30540161
+      },
+      "sha256": "1ac002579b4c6ca9cd32d83e1950af813a522364eff9329cfc0fdd87d6ebf40a",
+      "archive_path": "/home/isavand/paper/evidence/1d3c/material-smoke-20261105054527/config.legacy.yaml",
+      "copied": true,
+      "archive_metadata": {
+        "bytes": 1075,
+        "mtime_ns": 1793918509533706284,
+        "ctime_ns": 1793918509533706284,
+        "device": 66310,
+        "inode": 109185964
+      },
+      "archive_sha256": "1ac002579b4c6ca9cd32d83e1950af813a522364eff9329cfc0fdd87d6ebf40a"
+    },
+    {
+      "stage": "material",
+      "source": "/tmp/nerofactor-material-smoke.dLqrhRPG/config.effective.yaml",
+      "source_metadata": {
+        "bytes": 6821,
+        "mtime_ns": 1793857565363942456,
+        "ctime_ns": 1793857565363942456,
+        "device": 66310,
+        "inode": 30540182
+      },
+      "sha256": "cbb6442c8cb34f3694729ad5269c58ac077f93995ad3777e454204b872c9e16e",
+      "archive_path": "/home/isavand/paper/evidence/1d3c/material-smoke-20261105054527/config.effective.yaml",
+      "copied": true,
+      "archive_metadata": {
+        "bytes": 6821,
+        "mtime_ns": 1793918509533706284,
+        "ctime_ns": 1793918509533706284,
+        "device": 66310,
+        "inode": 109185965
+      },
+      "archive_sha256": "cbb6442c8cb34f3694729ad5269c58ac077f93995ad3777e454204b872c9e16e"
+    },
+    {
+      "stage": "material",
+      "source": "/tmp/nerofactor-material-smoke.dLqrhRPG/material.json",
+      "source_metadata": {
+        "bytes": 103007,
+        "mtime_ns": 1793857527783197159,
+        "ctime_ns": 1793857527783197159,
+        "device": 66310,
+        "inode": 30540163
+      },
+      "sha256": "64184c74f00df36646eaa57a5211761e7ab50c26e5f749f984dedd044f12a0eb",
+      "archive_path": "/home/isavand/paper/evidence/1d3c/material-smoke-20261105054527/material.json",
+      "copied": true,
+      "archive_metadata": {
+        "bytes": 103007,
+        "mtime_ns": 1793918509533706284,
+        "ctime_ns": 1793918509533706284,
+        "device": 66310,
+        "inode": 109185966
+      },
+      "archive_sha256": "64184c74f00df36646eaa57a5211761e7ab50c26e5f749f984dedd044f12a0eb"
+    },
+    {
+      "stage": "material",
+      "source": "/tmp/nerofactor-material-smoke.dLqrhRPG/.experiment.json",
+      "source_metadata": {
+        "bytes": 65,
+        "mtime_ns": 1793857527675195018,
+        "ctime_ns": 1793857527675195018,
+        "device": 66310,
+        "inode": 30540139
+      },
+      "sha256": "662415c23a26a07d02d1a7cfe96eed5c327ed78bfcf45d58f10ed4f4bfecab05",
+      "archive_path": "/home/isavand/paper/evidence/1d3c/material-smoke-20261105054527/.experiment.json",
+      "copied": true,
+      "archive_metadata": {
+        "bytes": 65,
+        "mtime_ns": 1793918509533706284,
+        "ctime_ns": 1793918509533706284,
+        "device": 66310,
+        "inode": 109185967
+      },
+      "archive_sha256": "662415c23a26a07d02d1a7cfe96eed5c327ed78bfcf45d58f10ed4f4bfecab05"
+    }
+  ],
+  "stages": [
+    {
+      "stage": "geometry",
+      "source_root": "/tmp/nerofactor-geometry-smoke.WjqeMs49",
+      "run_id": "geometry-smoke-20261105054231",
+      "status_field": "passed",
+      "phase_field": "complete",
+      "backend_field": "native",
+      "protocol": "native-training-forward-v1",
+      "declared_image_id": "sha256:2572950d9f662b7603b604878613e85c1a0fec90842447e9a256751a130ee137",
+      "gpu_field": "NVIDIA A100 80GB PCIe",
+      "torch_field": "1.8.1+cu111",
+      "cuda_compiled_field": "11.1",
+      "python_field": [
+        3,
+        8,
+        10
+      ],
+      "primary_output": {
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "finite": true,
+        "shape": [
+          512,
+          3
+        ]
+      },
+      "recorded_source_hash_matches": {
+        "b4379971b07cdbcb3edc9e589efd20ce38b63bd5": {
+          "recorded_files": 29,
+          "all_recorded_hashes_match": true
+        },
+        "5c791a77c160c32d038bdbe1a6f82f20d5800233": {
+          "recorded_files": 29,
+          "all_recorded_hashes_match": true
+        }
+      },
+      "git_commit_field_present": false,
+      "checks": {
+        "all_tensor_finite_flags_true": true,
+        "forward_calls": 1,
+        "checkpoints_directory_empty": true,
+        "phase_sequence_present": true
+      },
+      "unresolved": [
+        "Actual launch Git commit and dirty diff",
+        "Actual invocation and external exit status",
+        "Driver version and GPU UUID",
+        "Docker-engine corroboration of declared image ID",
+        "Complete image build identity/artifact provenance"
+      ]
+    },
+    {
+      "stage": "material",
+      "source_root": "/tmp/nerofactor-material-smoke.dLqrhRPG",
+      "run_id": "material-smoke-20261105054527",
+      "status_field": "passed",
+      "phase_field": "complete",
+      "backend_field": "native",
+      "protocol": "native-training-forward-v1",
+      "declared_image_id": "sha256:2572950d9f662b7603b604878613e85c1a0fec90842447e9a256751a130ee137",
+      "gpu_field": "NVIDIA A100 80GB PCIe",
+      "torch_field": "1.8.1+cu111",
+      "cuda_compiled_field": "11.1",
+      "python_field": [
+        3,
+        8,
+        10
+      ],
+      "primary_output": {
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "finite": true,
+        "shape": [
+          512,
+          3
+        ]
+      },
+      "recorded_source_hash_matches": {
+        "b4379971b07cdbcb3edc9e589efd20ce38b63bd5": {
+          "recorded_files": 34,
+          "all_recorded_hashes_match": true
+        },
+        "5c791a77c160c32d038bdbe1a6f82f20d5800233": {
+          "recorded_files": 34,
+          "all_recorded_hashes_match": true
+        }
+      },
+      "git_commit_field_present": false,
+      "checks": {
+        "all_tensor_finite_flags_true": true,
+        "forward_calls": 1,
+        "checkpoints_directory_empty": true,
+        "phase_sequence_present": true
+      },
+      "unresolved": [
+        "Actual launch Git commit and dirty diff",
+        "Actual invocation and external exit status",
+        "Driver version and GPU UUID",
+        "Docker-engine corroboration of declared image ID",
+        "Complete image build identity/artifact provenance"
+      ]
+    }
+  ],
+  "docker_inspection": {
+    "command": "docker image inspect --format '{{json .Id}} {{json .RepoDigests}}' nerofactor-paper:quick-candidate-1",
+    "exit_code": 1,
+    "status": "permission denied at unix:///var/run/docker.sock; no bypass/retry/escalation"
+  },
+  "infrastructure_tests": {
+    "classification": "researcher-reported only",
+    "passed": 109,
+    "total": 109,
+    "python": "3.8",
+    "original_log_supplied_or_found": false,
+    "suite_rerun_in_this_milestone": false
+  },
+  "excluded": [
+    "cache/**",
+    "tmp/**",
+    "generated datasets/images",
+    "JIT/build products",
+    "model tensors"
+  ],
+  "policy": "Original outputs read only; copies, once possible, are byte-identical and never overwrite different existing evidence. No input permission changes.",
+  "originally_requested_archive_root": "/home/isavand/paper/paper_runs/evidence/1d3c",
+  "archive_destination_authorization": "Researcher explicitly approved /home/isavand/paper/evidence/1d3c after paper_runs/evidence/1d3c was unavailable in the session filesystem.",
+  "archive_completed_at_utc": "2026-11-05T22:41:49.538823+00:00",
+  "archive_directory_verification": {
+    "writable_before_copy": true,
+    "uid": 1109,
+    "gid": 1109,
+    "mode": "0o40775",
+    "resolved_path": "/home/isavand/paper/evidence/1d3c",
+    "permissions_or_ownership_changed_by_codex": false
+  },
+  "archive_initial_blocker": "Initial mkdir denied at paper_runs, whose evidence child remained absent. No security or permission workaround; researcher approved the alternate archive destination."
+}

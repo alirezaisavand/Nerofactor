@@ -6,6 +6,12 @@ Protocol ID: **`checkpoint-inference-validation-v1`**. Specification revision 2
 not authorize GPU launches. Baseline readiness and evidence classifications are
 in [BASELINE_PREPARATION.md](../BASELINE_PREPARATION.md).
 
+The later [1D.4B-0 admission report](../evidence/BELL_CHECKPOINT_ADMISSION.md)
+records the selected bell hash, verified source-defined A/G splits and archived
+smoke evidence. Both proposed inference intents remain on hold: source-defined
+split verification is not producing-run attribution or checkpoint compatibility
+verification. This protocol does not authorize checkpoint loading or execution.
+
 ## Question, boundaries and reference
 
 The first question is whether isolated configuration/path/cache routing preserves
@@ -74,8 +80,9 @@ Before deserialization or GPU execution, freeze one manifest per candidate with:
 
 A content hash binds bytes, not trust or producing history. Torch 1.8 checkpoint
 loading uses pickle; never deserialize an untrusted checkpoint merely to inspect
-its keys. In this milestone no checkpoint is hashed or deserialized. Later
-trusted loading must be separately authorized, read only from the explicit input,
+its keys. During 1D.4A no checkpoint was hashed or deserialized; the later
+1D.4B-0 report records opaque-byte hashing only. Trusted loading must still be
+separately authorized, read only from the explicit input,
 check stage/algorithm and exact key/shape/dtype compatibility before state load,
 and reject incompatible/foreign/ambiguous architecture without key stripping,
 partial loads, dtype conversions or silently ignored fields. A reviewed
