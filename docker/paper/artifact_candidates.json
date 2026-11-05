@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "status": "publisher metadata candidates only; no artifacts downloaded or verified locally; not a lockfile",
+  "target": "CPython 3.8, Linux x86_64; confirm the reference machine before selection",
+  "candidates": [
+    {
+      "package": "numpy",
+      "version": "1.24.4",
+      "filename": "numpy-1.24.4-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+      "publisher_sha256": "dd80e219fd4c71fc3699fc1dadac5dcf4fd882bfc6f7ec53d30fa197b8ee22dc",
+      "source": "https://pypi.org/project/numpy/1.24.4/"
+    },
+    {
+      "package": "open3d",
+      "version": "0.16.0",
+      "filename": "open3d-0.16.0-cp38-cp38-manylinux_2_27_x86_64.whl",
+      "publisher_sha256": "ae94498e869a48a0798a7f47a5caf42409601dc9f18dc6569954961e1a2a86ad",
+      "source": "https://pypi.org/project/open3d/0.16.0/"
+    },
+    {
+      "package": "PyMCubes",
+      "version": "0.1.4",
+      "filename": "PyMCubes-0.1.4-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+      "publisher_sha256": "33a2121528d5dbf42cb24d8fe8395de6b7c3f6dc72f881320e715e2aa974589d",
+      "source": "https://pypi.org/project/PyMCubes/0.1.4/"
+    },
+    {
+      "package": "torch",
+      "version": "1.8.1+cu111",
+      "filename": "torch-1.8.1+cu111-cp38-cp38-linux_x86_64.whl",
+      "publisher_sha256": null,
+      "source": "https://download.pytorch.org/whl/cu111/torch_stable.html"
+    }
+  ],
+  "limitations": [
+    "listing availability is not a successful download or native compatibility test",
+    "publisher checksums must match the actual acquired wheel bytes before preflight",
+    "none of these wheels is established as the artifact originally installed in the reference container",
+    "complete transitive packages, compiler and Debian artifact resolution remain missing"
+  ]
+}

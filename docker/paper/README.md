@@ -1,8 +1,13 @@
-# Paper environment reconstruction: 1D.3B-1 / 1D.3B-1A, definition only
+# Paper environment reconstruction: definitions and build prerequisites
 
 This is a reviewable reconstruction of the recovered CUDA 11.1 / system Python
-3.8 / Torch 1.8 environment. **Do not build, install, stage original sources, or
-run containers as part of this milestone.** Nothing here modifies `nerofactor`,
+3.8 / Torch 1.8 environment. Current **1D.3B-2A** permits prerequisite recovery,
+verified offline source staging into new external storage and CPU tests only.
+**Do not build, install packages or run containers.** See
+[PREREQUISITES.md](PREREQUISITES.md) for filtered diagnostics, exact source staging,
+dependency closure limits, test results and the separately approved first-build
+sequence. The original definition/review history below remains useful context.
+Nothing here modifies `nerofactor`,
 `intelligent_keldysh`, original data/results, native source checkouts, or scientific
 code. No image or GPU compatibility is claimed from static checks.
 
@@ -27,6 +32,10 @@ with upstream HEAD when the exact public-source URL was unavailable.
 | [preflight.py](preflight.py) | Mandatory future host validation of the complete context; writes only two preflight gate files in the new external context |
 | [static_checks.py](static_checks.py) | Read-only manifest/YAML/shell/AST checks; imports only stdlib and existing PyYAML |
 | [test_definition.py](test_definition.py) | Static regression checks with synthetic temporary context files and shell checksum verification; no installers |
+| [collect_runtime.py](collect_runtime.py) | Filtered read-only installed metadata, dependency closure and toolchain recovery; stream into the reference system Python |
+| [stage_sources.py](stage_sources.py) | Offline exact-commit source exports with file hashes, licence preservation and separate provenance |
+| [test_prerequisites.py](test_prerequisites.py) | Synthetic source/bundle and metadata tests; no Docker, original artifacts or installation |
+| [artifact_candidates.json](artifact_candidates.json) | Publisher wheel listings/checksums; not downloaded artifacts or a completed resolution |
 | [record.py](record.py) | Future approved image-build provenance/core checks; **not executed in 1D.3B-1** |
 | [.dockerignore](.dockerignore) | Generated-context root allowlist and data/secret/history exclusions |
 | [compose.yaml](compose.yaml) | Proposed isolated runtime; no automatic build or execution |
@@ -105,7 +114,10 @@ if needed for `pip check`; they are not silently stripped from recovered setup c
 
 ## Safe future local staging, only after separate review
 
-No staging or downloads were performed here. Use a **new empty directory outside
+1D.3B-1/1A performed no original source staging. In 1D.3B-2A the automated
+[verified procedure](PREREQUISITES.md#verified-offline-source-staging) supersedes
+the manual archive outline below and has exported the pinned nvdiffrast source
+only into new temporary storage. No packages were downloaded. Use a **new empty directory outside
 this Git repository, both original extension checkouts, data, and results**.
 Never build with the repository root, `/home/isavand/nerofactor`, or an original
 source checkout as Docker context. A proposed generated layout is:
@@ -280,7 +292,7 @@ Run the static checker and synthetic regression fixtures:
 
 ```sh
 python3 -B docker/paper/static_checks.py
-python3 -B -m unittest discover -s docker/paper -p test_definition.py -v
+python3 -B -m unittest discover -s docker/paper -p 'test_*.py' -v
 ```
 
 The checker parses declarations, the complete staged definition allowlist,
@@ -291,16 +303,19 @@ manifests and execute only the first checksum-verification shell command. They
 check missing definition files, unreviewed/changed inputs, receipt anchoring,
 base selection, collisions, file-set changes and symlink rejection. Neither
 command stages original sources, downloads, invokes Docker/pip or runs models.
-See the compatibility report for observed pass counts and limits. The existing
-training/infrastructure unit suite was not executed: this task permits static
-checks only, and Python 3.8 test compatibility is a separate unresolved issue.
+The additional prerequisite tests exercise offline synthetic Git exports/bundles
+and sanitized dependency metadata. See the compatibility report and
+[current prerequisite results](PREREQUISITES.md#cpu-evidence-and-the-separately-approved-first-build).
+1D.3B-2A now authorizes the CPU infrastructure suite and its narrowly scoped test
+harness fix; actual Python 3.8 execution remains unavailable.
 
 Before building: recover the base digest; missing Python/system/build pins and
 all artifact hashes; inspect/stage the exact raytracing tree; review Eigen/compiler
 selection, full dependency closure, context/hash coverage and Docker/Compose
-support for offline RUN, strict bind sources and GPU device reservations. Resolve
-the Python 3.8 test harness issue separately. The Dockerfile is proposed and its
-static checks are not a successful build or complete reproducibility lock.
+support for offline RUN, strict bind sources and GPU device reservations. Complete
+actual Python 3.8 test execution after the test-only compatibility fix. The
+Dockerfile is proposed and its static checks are not a successful build or complete
+reproducibility lock.
 
 Proposed 1D.3B-2, requiring new approval: review/finalize external inputs; build a
 distinct candidate without touching the old image/container; record build output

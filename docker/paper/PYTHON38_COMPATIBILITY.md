@@ -15,8 +15,9 @@ package was installed and the reference container was not executed here.
 - Proposed Compose read-only mounts, explicit user/GPU/image/input selections and
   runtime isolation fields; **not** actual Docker Compose engine semantics.
 - Bash syntax parsing of all **5** offline Docker RUN instructions (after 1D.3B-1A).
-- Python 3.8 grammar parsing of **44** pipeline/infrastructure/helper/definition
-  files, including the two experiment CLIs and used COLMAP reader helpers.
+- Python 3.8 grammar parsing of **58** pipeline/infrastructure/helper/definition
+  and infrastructure test files, including the two experiment CLIs and used
+  COLMAP reader helpers (expanded in 1D.3B-2A).
 
 1D.3B-1A adds a stdlib-only host preflight, complete staged-definition inventory
 checks and 14 static artifact/shell regression tests. They do not assume Python
@@ -30,19 +31,27 @@ assessment, not execution under 3.8, import success or proof of scientific parit
 Grammar parsing on Python 3.9 cannot prove every Python 3.8 runtime behavior,
 annotation evaluation, dependency import or native ABI interaction.
 
-## Definite existing test-harness incompatibility
+## Test-harness incompatibility corrected in 1D.3B-2A
 
-Python 3.8 has no `ast.unparse`. Three existing call sites occur in:
+Python 3.8 has no `ast.unparse`. Three existing branch selectors used it in:
 
 - `tests/infrastructure/test_geometry_training.py` (two source-comparison sites).
 - `tests/infrastructure/test_material_training.py` (one source-comparison site).
 
-Those tests would fail when reaching these calls under Python 3.8. No backport,
-test rewrite, monkey patch or Python upgrade is applied here. Keep the earlier
-Python 3.9 CPU evidence labelled as such. A narrowly reviewed test-only
-compatibility change or explicitly separate characterization interpreter must be
-agreed before claiming a complete reference-container test-suite pass. It must
-preserve the tests' source/numerical comparisons rather than skip them silently.
+The newly authorized test-only fix compares each condition's `ast.dump` with the
+parsed expected expression's `ast.dump`. It preserves all original source/math
+assertions, branch selection, baselines and test counts; no unparser backport,
+scientific code change or interpreter upgrade is introduced. Static checks reject
+any remaining `ast.unparse` calls in infrastructure tests. On available Python
+3.9.12, all 100 infrastructure tests run: 97 pass and the same 3 native-backend
+checks skip. A second run removes the unavailable-on-3.8 API before discovery to
+exercise this specific compatibility boundary; this is **not** a Python 3.8 run.
+
+The Docker/prerequisite suite has 27 passing tests, including source export,
+local bundle verification and sanitized dependency-closure fixtures. No actual
+Python 3.8 interpreter is available in Codex, so the full reference-runtime suite,
+annotation/import behavior and dependency/native compatibility remain unverified.
+See [PREREQUISITES.md](PREREQUISITES.md) for exact scope and recovery commands.
 
 ## Dependency/native limitations
 

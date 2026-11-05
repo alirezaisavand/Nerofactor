@@ -1,7 +1,7 @@
 # Incremental infrastructure implementation plan
 
-Status: **milestones through 1D.3A are approved; 1D.3B-1 prepares the historical
-paper Docker definition and static validation for review**.
+Status: **milestones through 1D.3B-1A are approved; 1D.3B-2A resolves build
+prerequisites and CPU test-harness compatibility without building/installing**.
 1D.3B-2 construction, native GPU smoke tests, standalone extraction/evaluation
 refactoring and 1D.4 require separate authorization. No branch merge, image build,
 installation, container lifecycle change, training, artifact relocation or
@@ -258,8 +258,9 @@ retains the exact native sources and nvdiffrast lazy compilation, and isolates
 read-only inputs from non-root persistent outputs. No source staging, package
 installation, build, container execution or native computation is performed.
 Python 3.8 source grammar/static policy checks pass; actual 3.8 runtime remains
-unverified and existing tests use unavailable `ast.unparse`. No interpreter
-upgrade or test/scientific patch is applied. Stop for review at this boundary.
+unverified. In 1D.3B-1, existing tests' `ast.unparse` calls were recorded as a
+blocker. 1D.3B-2A authorizes replacing only those test branch selectors with
+equivalent AST comparisons; no interpreter upgrade or scientific patch is applied.
 
 Review correction 1D.3B-1A includes every validator dependency in the generated
 definition inventory. Before any Debian installation, a mandatory host-side
@@ -268,6 +269,18 @@ bytes. Its externally supplied receipt SHA-256 gates an offline shell-only
 verification inside the historical base; no base Python is assumed. The Python
 recheck after installation remains defence in depth. Static synthetic regression
 fixtures exercise this boundary; builds/installations remain separately approved.
+
+### 1D.3B-2A prerequisite boundary
+
+[Build prerequisites](../docker/paper/PREREQUISITES.md) records filtered runtime
+recovery, exact-commit offline source staging with licence/file-hash provenance,
+the source-established training dependency roots and missing closure evidence.
+Only local nvdiffrast source identity/export can be independently verified here;
+Docker socket denial leaves reference-container pins/base/raytracing recovery
+pending. Publisher-listed wheel candidates are not acquired/installed artifacts.
+Run static and CPU infrastructure fixtures, retaining native skips separately.
+First builds, package acquisition/installation, GPU/native validation and actual
+experiments remain separate approvals; no environment redesign is included.
 
 ### Proposed 1D.3B-2 implementation
 

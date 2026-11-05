@@ -1,5 +1,12 @@
 # Read-only environment recovery commands: 1D.3A
 
+1D.3B-2A follow-up: use the filtered collector and base/source recovery sequence in
+[docker/paper/PREREQUISITES.md](../docker/paper/PREREQUISITES.md#safe-read-only-recovery-in-the-regular-terminal).
+It adds marker-aware installed dependency closure, missing build-package versions,
+Eigen/compiler and Debian role dependency metadata. The container-only information
+remains unrecovered in Codex because a read-only inspect still receives socket
+permission denied. No access workaround or package installation is authorized.
+
 Follow-up: the recovered reference uses the container's **system `python3`**
 (3.8.10), not a Micromamba environment or another `python` executable. Additional
 recovery must use that same interpreter. See

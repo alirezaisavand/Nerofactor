@@ -373,7 +373,8 @@ class GeometrySourceCompatibilityTests(unittest.TestCase):
             isinstance(t, ast.Attribute) and t.attr == "isolated_geometry" for t in n.targets))]
         self.assertEqual(ast.dump(method(old_shape, "__init__")), ast.dump(constructor))
         initialize = method(new_shape, "_init_dataset")
-        initialize.body = [n.orelse[0] if isinstance(n, ast.If) and ast.unparse(n.test) == 'self.isolated_geometry'
+        initialize.body = [n.orelse[0] if isinstance(n, ast.If) and
+                           ast.dump(n.test) == ast.dump(ast.parse('self.isolated_geometry', mode='eval').body)
                            else n for n in initialize.body]
         self.assertEqual(ast.dump(method(old_shape, "_init_dataset")), ast.dump(initialize))
 
@@ -394,7 +395,8 @@ class GeometrySourceCompatibilityTests(unittest.TestCase):
             for statement in node.body:
                 if ((isinstance(statement, ast.Assign) and any(
                         isinstance(t, ast.Name) and t.id == "logs_dir" for t in statement.targets))
-                        or (isinstance(statement, ast.If) and ast.unparse(statement.test) == 'self.experiment is None')):
+                        or (isinstance(statement, ast.If) and ast.dump(statement.test) ==
+                            ast.dump(ast.parse('self.experiment is None', mode='eval').body))):
                     break
                 result.append(ast.dump(statement, include_attributes=False))
             return result

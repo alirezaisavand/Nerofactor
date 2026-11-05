@@ -52,8 +52,12 @@ def main():
              for p in (repo / folder).glob('*.py')]
     paths += [repo / 'run_experiment.py', repo / 'run_material_experiment.py', *HERE.glob('*.py')]
     paths += [repo / 'colmap/read_write_model.py', repo / 'colmap/plyfile.py']
+    tests = list((repo / 'tests/infrastructure').glob('*.py'))
+    paths += tests
     for path in paths:
         ast.parse(path.read_text(), filename=str(path), feature_version=8)
+    for path in tests:
+        require('ast.unparse(' not in path.read_text(), 'Python 3.9-only AST API in test harness')
     print('PASS: Compose mount/non-root/GPU policy and {} Docker RUN shell parses'.format(shell_count))
     print('PASS: complete staged definition allowlist and pre-install validation boundary')
     print('PASS: Python 3.8 grammar for {} source/definition files'.format(len(paths)))

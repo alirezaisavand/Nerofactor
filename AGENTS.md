@@ -135,24 +135,26 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Milestones through 1D.3A have been reviewed and approved.
-Current authorized milestone: **1D.3B-1A, focused Docker definition review fixes**.
-The Docker architecture from 1D.3B-1 is accepted. Correct the staged definition
-inventory and require complete reviewed context validation before any package
-installation. A host Python preflight and externally supplied checksum gate may
-avoid assuming Python in the historical base. Static regression checks may write
-synthetic disposable fixtures; they must not stage original sources or execute
-installers. Keep dependency pins and the historical runtime selection unchanged.
-Its scope is `docker/paper/` definitions/manifests/static validators and supporting
+Milestones through 1D.3B-1A have been reviewed and approved.
+Current authorized milestone: **1D.3B-2A, resolve build prerequisites only**.
+Preserve the accepted Docker architecture, full pre-install validation gate,
+dependency pins and historical runtime. Allow filtered read-only diagnostics,
+offline verified exports of exact source commits into new external owned storage,
+dependency/source provenance assessment and CPU/static fixtures. Correct only
+infrastructure test-harness Python 3.8 compatibility, retaining every assertion.
+Never run setup to inspect it, copy a working tree wholesale, invent missing pins,
+or promote publisher artifact metadata to verified downloaded/historical identity.
+Its scope is `docker/paper/` prerequisite tools, test-harness fixes and supporting
 documentation. Use the recovered system Python 3.8.10 / CUDA 11.1 / Torch
 1.8.1+cu111 / ABI 0 reference; no Micromamba or scientific upgrades. Pin nvdiffrast
 and raytracing to the exact recovered revisions/setup hashes. Record unknown
 package/system versions, hashes and base digest as unresolved; never invent them
 or label an incomplete manifest a complete lock. Do not copy original checkouts
-into Git or change their contents. Only static checks are authorized; do not run
-training-loop fixtures, native imports, package installation, Docker builds/runs,
-container lifecycle operations, source staging/downloads, or GPU code. Preserve
-the existing image/container and all scientific/infrastructure behavior.
+into Git or change their contents. CPU infrastructure fixtures must use temporary
+datasets and explicit model/device fakes; never run native training or rendering.
+Do not install packages, build images, start/stop containers, run GPU code or
+download package artifacts. Read-only access may fail; do not bypass restrictions.
+Preserve the existing image/container and all scientific/infrastructure behavior.
 Do not change host configuration/permissions or bypass access controls. Separate
 reference declarations, local observations, Codex metadata and proposals.
 Inspect only task-relevant fields;
@@ -222,14 +224,16 @@ The environment evidence and proposed recovery commands are in
 [GPU_ENVIRONMENT_INVENTORY.md](docs/GPU_ENVIRONMENT_INVENTORY.md) and
 [GPU_ENVIRONMENT_DIAGNOSTICS.md](docs/GPU_ENVIRONMENT_DIAGNOSTICS.md).
 See [docker/paper/README.md](docker/paper/README.md) for the proposed definition,
-unresolved build inputs and Python 3.8 assessment. No interpreter/test backport or
-scientific compatibility fix is authorized here. Before any future build, review
+unresolved build inputs and Python 3.8 assessment. Test-harness compatibility only
+is authorized; no interpreter upgrade or scientific compatibility fix is allowed.
+See [docker/paper/PREREQUISITES.md](docker/paper/PREREQUISITES.md) for recovery,
+verified source staging and remaining gates. Before any future build, review
 the full exact dependency/source/artifact resolution and use a distinct candidate
 image tag. Preserve source licences, compiler flags and scientific settings.
-Do not begin 1D.3B-2 builds/environment installation, native GPU smoke tests,
+Do not begin first builds/environment installation, native GPU smoke tests,
 extraction/evaluation refactoring, 1D.4, or scientific repairs without separate
 user approval. Do not run
-Docker, GPU tests, real training, or expensive experiments in this milestone.
+Docker builds/runs, GPU tests, real training, or expensive experiments in this milestone.
 Do not commit or push automatically. A later explicit user instruction
 updates this boundary. See [CONFIGURATION_AND_PATHS.md](docs/CONFIGURATION_AND_PATHS.md)
 for implemented APIs and limitations, and [INFRASTRUCTURE_PLAN.md](docs/INFRASTRUCTURE_PLAN.md)

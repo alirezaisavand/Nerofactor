@@ -383,7 +383,7 @@ class MaterialSourceCompatibilityTests(unittest.TestCase):
 
         class StripDestinations(ast.NodeTransformer):
             def visit_If(self, node):
-                if ast.unparse(node.test) == 'self.output_paths is not None':
+                if ast.dump(node.test) == ast.dump(ast.parse('self.output_paths is not None', mode='eval').body):
                     return None
                 return self.generic_visit(node)
 
