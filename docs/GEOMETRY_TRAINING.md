@@ -1,5 +1,14 @@
 # Isolated geometry integration: 1D.2B-2A and 1D.2B-2A.1
 
+Current 1D.4A evidence: the researcher reports geometry and material native model
+smoke passes in `nerofactor-paper:quick-candidate-1`, plus **109 Python 3.8
+infrastructure tests passed**. Original launch/test reports and immutable image
+identities have not been supplied/checked in here. See
+[BASELINE_PREPARATION.md](BASELINE_PREPARATION.md) for attribution, refreshed
+artifact inventory and remaining checkpoint-inference gates. Earlier local
+CPU/native validation limits below describe those earlier milestones; no new
+Codex GPU evaluation, training or checkpoint loading occurred in 1D.4A.
+
 1D.3C follow-up: [NATIVE_GPU_SMOKE.md](NATIVE_GPU_SMOKE.md) documents the separate
 review-only initialization/one-forward harness. It leaves this entry point and
 all geometry mathematics unchanged. No new native GPU model test was run by Codex.

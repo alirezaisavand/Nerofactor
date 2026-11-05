@@ -1,0 +1,1210 @@
+{
+  "schema_version": 1,
+  "milestone": "1D.4A",
+  "observed_at_utc": "2026-11-05T21:26:46.326103+00:00",
+  "observer": "Codex read-only filesystem metadata inspection; no Docker/GPU or checkpoint loading",
+  "repository_commit": "b4379971b07cdbcb3edc9e589efd20ce38b63bd5",
+  "branch": "paper/infrastructure",
+  "initial_worktree": "clean",
+  "refs": {
+    "HEAD": "b4379971b07cdbcb3edc9e589efd20ce38b63bd5",
+    "anisotropic": "e1e859779301faced46d6476691e20b546c27ae0",
+    "origin/anisotropic": "e1e859779301faced46d6476691e20b546c27ae0",
+    "origin/aniso_geometry_safe": "79252178e65914ad1acbc14790b1514f276bfea0",
+    "origin/ablation_anisotropic": "2519ab9b480f414ba2ae96dd860d8b868c584054"
+  },
+  "roots": {
+    "datasets": "/home/isavand/paper/data",
+    "thesis": "/home/isavand/paper/final_results",
+    "outputs": "/home/isavand/paper/paper_runs",
+    "configs": "/home/isavand/paper/Nerofactor-paper/configs"
+  },
+  "method": {
+    "file_identity_columns": [
+      "root",
+      "relative_path",
+      "bytes",
+      "mtime_ns"
+    ],
+    "follow_symlinks": false,
+    "binary_contents_read": false,
+    "artifact_content_hashes": "not collected",
+    "datasets_hashed": false,
+    "small_text_read": "Selected repository YAML/source and historical bell val.txt / bear metrics.json only",
+    "limitations": "Metadata is not content integrity, tensor/mesh validity, producing history or OS read-only enforcement; mtime is not a training date."
+  },
+  "root_summaries": {
+    "datasets": {
+      "files": 10297,
+      "bytes": 9344508790,
+      "symlinks_skipped": [],
+      "errors": []
+    },
+    "thesis": {
+      "files": 5869,
+      "bytes": 2283625659,
+      "symlinks_skipped": [],
+      "errors": []
+    },
+    "outputs": {
+      "files": 0,
+      "bytes": 0,
+      "symlinks_skipped": [],
+      "errors": []
+    },
+    "configs": {
+      "files": 73,
+      "bytes": 77979,
+      "symlinks_skipped": [],
+      "errors": []
+    }
+  },
+  "dataset_scenes": {
+    "GlossyReal/bear": {
+      "files": 397,
+      "bytes": 987339461,
+      "kinds": {
+        ".pkl": 1,
+        ".db": 1,
+        ".ply": 2,
+        ".vis": 1,
+        ".bin": 3,
+        ".ini": 1,
+        ".jpg": 194,
+        ".png": 194
+      }
+    },
+    "GlossyReal/bunny": {
+      "files": 396,
+      "bytes": 821352138,
+      "kinds": {
+        ".pkl": 1,
+        ".db": 1,
+        ".ply": 2,
+        ".vis": 1,
+        ".bin": 3,
+        ".ini": 1,
+        ".jpg": 258,
+        ".png": 129
+      }
+    },
+    "GlossyReal/coral": {
+      "files": 387,
+      "bytes": 1032841753,
+      "kinds": {
+        ".pkl": 1,
+        ".db": 1,
+        ".ply": 2,
+        ".vis": 1,
+        ".bin": 3,
+        ".ini": 1,
+        ".jpg": 252,
+        ".png": 126
+      }
+    },
+    "GlossyReal/maneki": {
+      "files": 393,
+      "bytes": 780527207,
+      "kinds": {
+        ".pkl": 1,
+        ".db": 1,
+        ".ply": 2,
+        ".vis": 1,
+        ".bin": 3,
+        ".ini": 1,
+        ".jpg": 256,
+        ".png": 128
+      }
+    },
+    "GlossyReal/vase": {
+      "files": 393,
+      "bytes": 1073624989,
+      "kinds": {
+        ".pkl": 1,
+        ".db": 1,
+        ".ply": 2,
+        ".vis": 1,
+        ".bin": 3,
+        ".ini": 1,
+        ".jpg": 256,
+        ".png": 128
+      }
+    },
+    "GlossySynthetic/angel": {
+      "files": 641,
+      "bytes": 139998011,
+      "kinds": {
+        ".pkl": 128,
+        ".png": 384,
+        ".ply": 1,
+        ".jpg": 128
+      }
+    },
+    "GlossySynthetic/bell": {
+      "files": 641,
+      "bytes": 133006227,
+      "kinds": {
+        ".pkl": 128,
+        ".png": 384,
+        ".ply": 1,
+        ".jpg": 128
+      }
+    },
+    "GlossySynthetic/cat": {
+      "files": 769,
+      "bytes": 144008472,
+      "kinds": {
+        ".pkl": 128,
+        ".png": 512,
+        ".ply": 1,
+        ".jpg": 128
+      }
+    },
+    "GlossySynthetic/horse": {
+      "files": 641,
+      "bytes": 159087863,
+      "kinds": {
+        ".pkl": 128,
+        ".png": 384,
+        ".ply": 1,
+        ".jpg": 128
+      }
+    },
+    "GlossySynthetic/luyu": {
+      "files": 641,
+      "bytes": 162772260,
+      "kinds": {
+        ".pkl": 128,
+        ".png": 384,
+        ".ply": 1,
+        ".jpg": 128
+      }
+    },
+    "GlossySynthetic/potion": {
+      "files": 769,
+      "bytes": 223042998,
+      "kinds": {
+        ".png": 512,
+        ".pkl": 128,
+        ".ply": 1,
+        ".jpg": 128
+      }
+    },
+    "GlossySynthetic/tbell": {
+      "files": 641,
+      "bytes": 148552598,
+      "kinds": {
+        ".pkl": 128,
+        ".png": 384,
+        ".ply": 1,
+        ".jpg": 128
+      }
+    },
+    "GlossySynthetic/teapot": {
+      "files": 769,
+      "bytes": 248120050,
+      "kinds": {
+        ".pkl": 128,
+        ".png": 512,
+        ".ply": 1,
+        ".jpg": 128
+      }
+    },
+    "nerf_synthetic/.DS_Store": {
+      "files": 1,
+      "bytes": 22532,
+      "kinds": {
+        "<none>": 1
+      }
+    },
+    "nerf_synthetic/README.txt": {
+      "files": 1,
+      "bytes": 1256,
+      "kinds": {
+        ".txt": 1
+      }
+    },
+    "nerf_synthetic/cone": {
+      "files": 402,
+      "bytes": 372758152,
+      "kinds": {
+        ".png": 300,
+        ".jpg": 100,
+        ".json": 2
+      }
+    },
+    "nerf_synthetic/cube": {
+      "files": 403,
+      "bytes": 392789690,
+      "kinds": {
+        ".png": 300,
+        ".txt": 1,
+        ".jpg": 100,
+        ".json": 2
+      }
+    },
+    "nerf_synthetic/donut": {
+      "files": 403,
+      "bytes": 1175107062,
+      "kinds": {
+        ".png": 300,
+        ".txt": 1,
+        ".jpg": 100,
+        ".json": 2
+      }
+    },
+    "nerf_synthetic/icosphere": {
+      "files": 303,
+      "bytes": 217644266,
+      "kinds": {
+        ".txt": 1,
+        ".png": 200,
+        ".jpg": 100,
+        ".json": 2
+      }
+    },
+    "nerf_synthetic/smoothcylinder": {
+      "files": 502,
+      "bytes": 368362997,
+      "kinds": {
+        ".png": 400,
+        ".jpg": 100,
+        ".json": 2
+      }
+    },
+    "nerf_synthetic/sphere": {
+      "files": 402,
+      "bytes": 374521142,
+      "kinds": {
+        ".png": 300,
+        ".jpg": 100,
+        ".json": 2
+      }
+    },
+    "nerf_synthetic/tetra": {
+      "files": 402,
+      "bytes": 389027666,
+      "kinds": {
+        ".png": 300,
+        ".jpg": 100,
+        ".json": 2
+      }
+    }
+  },
+  "historical_directories": {
+    "ablation": {
+      "files": 61,
+      "bytes": 29539763,
+      "kinds": {
+        ".png": 40,
+        ".ply": 1,
+        ".jpg": 20
+      }
+    },
+    "cropped-meshes": {
+      "files": 1,
+      "bytes": 14916374,
+      "kinds": {
+        ".ply": 1
+      }
+    },
+    "eval_pts": {
+      "files": 3,
+      "bytes": 6158150,
+      "kinds": {
+        ".ply": 3
+      }
+    },
+    "glossy-real-meshes-gt": {
+      "files": 5,
+      "bytes": 216583226,
+      "kinds": {
+        ".ply": 5
+      }
+    },
+    "logs": {
+      "files": 8,
+      "bytes": 1568,
+      "kinds": {
+        ".txt": 8
+      }
+    },
+    "logs_NeRO": {
+      "files": 2,
+      "bytes": 392,
+      "kinds": {
+        ".txt": 2
+      }
+    },
+    "logs_ablation": {
+      "files": 1,
+      "bytes": 196,
+      "kinds": {
+        ".txt": 1
+      }
+    },
+    "meshes": {
+      "files": 22,
+      "bytes": 330155351,
+      "kinds": {
+        ".ply": 22
+      }
+    },
+    "meshes-pretrained": {
+      "files": 18,
+      "bytes": 221676390,
+      "kinds": {
+        ".ply": 18
+      }
+    },
+    "model": {
+      "files": 67,
+      "bytes": 864651349,
+      "kinds": {
+        "tensorboard_event": 15,
+        ".pth": 26,
+        ".txt": 26
+      }
+    },
+    "nvs_imgs": {
+      "files": 40,
+      "bytes": 23101832,
+      "kinds": {
+        ".png": 40
+      }
+    },
+    "nvs_imgs_NeRO": {
+      "files": 10,
+      "bytes": 4356726,
+      "kinds": {
+        ".png": 10
+      }
+    },
+    "nvs_imgs_ablation": {
+      "files": 5,
+      "bytes": 2813025,
+      "kinds": {
+        ".png": 5
+      }
+    },
+    "pbrnerf": {
+      "files": 55,
+      "bytes": 2963217,
+      "kinds": {
+        ".jpg": 50,
+        ".json": 5
+      }
+    },
+    "train_vis": {
+      "files": 5571,
+      "bytes": 566708100,
+      "kinds": {
+        ".jpg": 5571
+      }
+    }
+  },
+  "historical_validation_groups": {
+    "train_vis/NeRO": {
+      "files": 407,
+      "bytes": 23985074,
+      "kinds": {
+        ".jpg": 407
+      }
+    },
+    "train_vis/angel_shape-val": {
+      "files": 300,
+      "bytes": 20433183,
+      "kinds": {
+        ".jpg": 300
+      }
+    },
+    "train_vis/bear_shape-val": {
+      "files": 60,
+      "bytes": 7361229,
+      "kinds": {
+        ".jpg": 60
+      }
+    },
+    "train_vis/bell_shape-val": {
+      "files": 300,
+      "bytes": 17402932,
+      "kinds": {
+        ".jpg": 300
+      }
+    },
+    "train_vis/bunny_shape-val": {
+      "files": 300,
+      "bytes": 22326548,
+      "kinds": {
+        ".jpg": 300
+      }
+    },
+    "train_vis/cat_shape-val": {
+      "files": 300,
+      "bytes": 16419607,
+      "kinds": {
+        ".jpg": 300
+      }
+    },
+    "train_vis/cone_shape-val": {
+      "files": 96,
+      "bytes": 4399690,
+      "kinds": {
+        ".jpg": 96
+      }
+    },
+    "train_vis/coral_shape-val": {
+      "files": 300,
+      "bytes": 35364238,
+      "kinds": {
+        ".jpg": 300
+      }
+    },
+    "train_vis/cube_material-val": {
+      "files": 50,
+      "bytes": 25630765,
+      "kinds": {
+        ".jpg": 50
+      }
+    },
+    "train_vis/cube_shape-val": {
+      "files": 60,
+      "bytes": 3831752,
+      "kinds": {
+        ".jpg": 60
+      }
+    },
+    "train_vis/donut_material-val": {
+      "files": 50,
+      "bytes": 28604719,
+      "kinds": {
+        ".jpg": 50
+      }
+    },
+    "train_vis/donut_shape-val": {
+      "files": 300,
+      "bytes": 22051242,
+      "kinds": {
+        ".jpg": 300
+      }
+    },
+    "train_vis/horse_material-val": {
+      "files": 50,
+      "bytes": 31973338,
+      "kinds": {
+        ".jpg": 50
+      }
+    },
+    "train_vis/horse_shape-val": {
+      "files": 300,
+      "bytes": 24432741,
+      "kinds": {
+        ".jpg": 300
+      }
+    },
+    "train_vis/icosphere_shape-val": {
+      "files": 105,
+      "bytes": 10984164,
+      "kinds": {
+        ".jpg": 105
+      }
+    },
+    "train_vis/luyu_material-val": {
+      "files": 50,
+      "bytes": 22893642,
+      "kinds": {
+        ".jpg": 50
+      }
+    },
+    "train_vis/luyu_shape-val": {
+      "files": 300,
+      "bytes": 21107371,
+      "kinds": {
+        ".jpg": 300
+      }
+    },
+    "train_vis/maneki_shape-val": {
+      "files": 60,
+      "bytes": 5008740,
+      "kinds": {
+        ".jpg": 60
+      }
+    },
+    "train_vis/potion_material-val": {
+      "files": 50,
+      "bytes": 22001595,
+      "kinds": {
+        ".jpg": 50
+      }
+    },
+    "train_vis/potion_shape-val": {
+      "files": 300,
+      "bytes": 19931241,
+      "kinds": {
+        ".jpg": 300
+      }
+    },
+    "train_vis/smoothcylinder_material-val": {
+      "files": 50,
+      "bytes": 26061078,
+      "kinds": {
+        ".jpg": 50
+      }
+    },
+    "train_vis/smoothcylinder_shape-val": {
+      "files": 300,
+      "bytes": 17639988,
+      "kinds": {
+        ".jpg": 300
+      }
+    },
+    "train_vis/sphere_material-val": {
+      "files": 50,
+      "bytes": 27001844,
+      "kinds": {
+        ".jpg": 50
+      }
+    },
+    "train_vis/sphere_shape-val": {
+      "files": 300,
+      "bytes": 17870770,
+      "kinds": {
+        ".jpg": 300
+      }
+    },
+    "train_vis/tbell_shape-val": {
+      "files": 300,
+      "bytes": 18384182,
+      "kinds": {
+        ".jpg": 300
+      }
+    },
+    "train_vis/teapot_shape-val": {
+      "files": 300,
+      "bytes": 16387929,
+      "kinds": {
+        ".jpg": 300
+      }
+    },
+    "train_vis/temp": {
+      "files": 28,
+      "bytes": 1643516,
+      "kinds": {
+        ".jpg": 28
+      }
+    },
+    "train_vis/tetra_material-val": {
+      "files": 50,
+      "bytes": 22873844,
+      "kinds": {
+        ".jpg": 50
+      }
+    },
+    "train_vis/tetra_shape-val": {
+      "files": 155,
+      "bytes": 7509372,
+      "kinds": {
+        ".jpg": 155
+      }
+    },
+    "train_vis/vase_shape-val": {
+      "files": 300,
+      "bytes": 25191766,
+      "kinds": {
+        ".jpg": 300
+      }
+    }
+  },
+  "selected_scene_products": {
+    "GlossySynthetic/bell": {
+      "<scene-root>": {
+        "files": 385,
+        "bytes": 126182165,
+        "kinds": {
+          ".pkl": 128,
+          ".png": 256,
+          ".ply": 1
+        }
+      },
+      "jpg_converted": {
+        "files": 128,
+        "bytes": 6316550,
+        "kinds": {
+          ".jpg": 128
+        }
+      },
+      "masks_train": {
+        "files": 128,
+        "bytes": 507512,
+        "kinds": {
+          ".png": 128
+        }
+      }
+    },
+    "GlossyReal/bear": {
+      "<scene-root>": {
+        "files": 2,
+        "bytes": 5692600,
+        "kinds": {
+          ".pkl": 1,
+          ".ply": 1
+        }
+      },
+      "colmap": {
+        "files": 7,
+        "bytes": 641626251,
+        "kinds": {
+          ".db": 1,
+          ".ply": 1,
+          ".vis": 1,
+          ".bin": 3,
+          ".ini": 1
+        }
+      },
+      "images": {
+        "files": 97,
+        "bytes": 233605206,
+        "kinds": {
+          ".jpg": 97
+        }
+      },
+      "images_raw_1024": {
+        "files": 194,
+        "bytes": 11122569,
+        "kinds": {
+          ".jpg": 97,
+          ".png": 97
+        }
+      },
+      "train_masked": {
+        "files": 97,
+        "bytes": 95292835,
+        "kinds": {
+          ".png": 97
+        }
+      }
+    }
+  },
+  "selected_config_identities": {
+    "shape/syn/bell.yaml": {
+      "sha256": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f",
+      "origin_of_historical_weights": "unknown"
+    },
+    "material/real/bear.yaml": {
+      "sha256": "1ac002579b4c6ca9cd32d83e1950af813a522364eff9329cfc0fdd87d6ebf40a",
+      "origin_of_historical_weights": "unknown"
+    },
+    "experiments/geometry.example.yaml": {
+      "sha256": "a9b5c12723fa40c976553a878dfde5b575e43e14af5ccaa0e5b84c4d712bd6c0",
+      "origin_of_historical_weights": "unknown"
+    },
+    "experiments/material.example.yaml": {
+      "sha256": "e05a4d965680d7d96886ffd88298f408e4e2522791d9ee02ec3def826f33d3c8",
+      "origin_of_historical_weights": "unknown"
+    }
+  },
+  "bell_candidate_split": {
+    "status": "source-derived proposal; not an observed native or historical split",
+    "source_commit": "b4379971b07cdbcb3edc9e589efd20ce38b63bd5",
+    "source": "dataset/database.py:get_database_split(validation)",
+    "derivation_python": "3.9.12",
+    "initial_ids": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27",
+      "28",
+      "29",
+      "30",
+      "31",
+      "32",
+      "33",
+      "34",
+      "35",
+      "36",
+      "37",
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45",
+      "46",
+      "47",
+      "48",
+      "49",
+      "50",
+      "51",
+      "52",
+      "53",
+      "54",
+      "55",
+      "56",
+      "57",
+      "58",
+      "59",
+      "60",
+      "61",
+      "62",
+      "63",
+      "64",
+      "65",
+      "66",
+      "67",
+      "68",
+      "69",
+      "70",
+      "71",
+      "72",
+      "73",
+      "74",
+      "75",
+      "76",
+      "77",
+      "78",
+      "79",
+      "80",
+      "81",
+      "82",
+      "83",
+      "84",
+      "85",
+      "86",
+      "87",
+      "88",
+      "89",
+      "90",
+      "91",
+      "92",
+      "93",
+      "94",
+      "95",
+      "96",
+      "97",
+      "98",
+      "99",
+      "100",
+      "101",
+      "102",
+      "103",
+      "104",
+      "105",
+      "106",
+      "107",
+      "108",
+      "109",
+      "110",
+      "111",
+      "112",
+      "113",
+      "114",
+      "115",
+      "116",
+      "117",
+      "118",
+      "119",
+      "120",
+      "121",
+      "122",
+      "123",
+      "124",
+      "125",
+      "126",
+      "127"
+    ],
+    "seed": 6033,
+    "training_ids": [
+      "14",
+      "98",
+      "103",
+      "117",
+      "91",
+      "63",
+      "67",
+      "104",
+      "20",
+      "39",
+      "74",
+      "35",
+      "51",
+      "18",
+      "87",
+      "2",
+      "47",
+      "100",
+      "22",
+      "32",
+      "62",
+      "72",
+      "106",
+      "19",
+      "88",
+      "59",
+      "86",
+      "54",
+      "123",
+      "99",
+      "16",
+      "3",
+      "75",
+      "122",
+      "8",
+      "84",
+      "64",
+      "23",
+      "119",
+      "36",
+      "0",
+      "60",
+      "6",
+      "10",
+      "120",
+      "121",
+      "116",
+      "70",
+      "29",
+      "102",
+      "27",
+      "55",
+      "97",
+      "25",
+      "109",
+      "82",
+      "127",
+      "124",
+      "125",
+      "57",
+      "28",
+      "52",
+      "24",
+      "41",
+      "77",
+      "26",
+      "15",
+      "126",
+      "68",
+      "95",
+      "81",
+      "107",
+      "30",
+      "12",
+      "33",
+      "94",
+      "111",
+      "80",
+      "43",
+      "31",
+      "110",
+      "21",
+      "78",
+      "37",
+      "101",
+      "44",
+      "5",
+      "40",
+      "48",
+      "89",
+      "1",
+      "49",
+      "108",
+      "79",
+      "66",
+      "71",
+      "65",
+      "34",
+      "42",
+      "61",
+      "46",
+      "83",
+      "90",
+      "113",
+      "13",
+      "9",
+      "7",
+      "56",
+      "96",
+      "85",
+      "4",
+      "112",
+      "92",
+      "50",
+      "115",
+      "118",
+      "69",
+      "45",
+      "73",
+      "53",
+      "38",
+      "93"
+    ],
+    "validation_ids": [
+      "58"
+    ],
+    "nvs_ids": [
+      "11",
+      "105",
+      "114",
+      "17",
+      "76"
+    ],
+    "gate": "Verify identical ordered IDs in Python 3.8 before any comparison; do not read configs/synthetic_split_128.pkl for this validation protocol."
+  },
+  "bear_historical_report": {
+    "source": "thesis:pbrnerf/bear/metrics.json",
+    "classification": "historical report, not NeRO material inference evidence",
+    "reported_nvs_ids": [
+      40,
+      3,
+      69,
+      61,
+      24
+    ],
+    "reported_seed": 6033,
+    "actual_loader_split_ids": "unverified; cache.pkl not loaded"
+  },
+  "new_runtime_evidence": {
+    "classification": "researcher-reported only",
+    "image_tag": "nerofactor-paper:quick-candidate-1",
+    "geometry_native_smoke": "reported passed",
+    "material_native_smoke": "reported passed",
+    "python38_infrastructure": "reported 109 passed",
+    "logs_or_smoke_json_checked_in": false,
+    "immutable_image_id": "not supplied for these launches",
+    "run_commit_command_inputs_and_timestamps": "not supplied",
+    "searched_for_reports": "Tracked repository evidence file inventory and metadata of paper_runs only; no global or /tmp search"
+  },
+  "file_records": [
+    ["thesis", "ablation/smoothcylinder_shape-100000.ply", 5292049, 1793693856887711643],
+    ["thesis", "cropped-meshes/bear_shape-300000.ply", 14916374, 1793693855723688942],
+    ["thesis", "eval_pts/eval.ply", 303700, 1793693855695688396],
+    ["thesis", "eval_pts/eval_gt.ply", 2859725, 1793693855703688552],
+    ["thesis", "eval_pts/eval_pts.ply", 2994725, 1793693855699688474],
+    ["thesis", "glossy-real-meshes-gt/bear-align.ply", 70429804, 1793693857303719756],
+    ["thesis", "glossy-real-meshes-gt/bunny-align.ply", 32441812, 1793693857343720536],
+    ["thesis", "glossy-real-meshes-gt/coral-align.ply", 5330951, 1793693857351720692],
+    ["thesis", "glossy-real-meshes-gt/maneki-align.ply", 54497477, 1793693857423722097],
+    ["thesis", "glossy-real-meshes-gt/vase-align.ply", 53883182, 1793693857491723423],
+    ["thesis", "logs/cube_material/log.txt", 196, 1793693857491723423],
+    ["thesis", "logs/donut_material/log.txt", 196, 1793693857491723423],
+    ["thesis", "logs/horse_material/log.txt", 196, 1793693857491723423],
+    ["thesis", "logs/luyu_material/log.txt", 196, 1793693857491723423],
+    ["thesis", "logs/potion_material/log.txt", 196, 1793693857491723423],
+    ["thesis", "logs/smoothcylinder_material/log.txt", 196, 1793693857491723423],
+    ["thesis", "logs/sphere_material/log.txt", 196, 1793693857491723423],
+    ["thesis", "logs/tetra_material/log.txt", 196, 1793693857491723423],
+    ["thesis", "logs_NeRO/maneki_material/log.txt", 196, 1793693853075637299],
+    ["thesis", "logs_NeRO/tbell_material/log.txt", 196, 1793693853075637299],
+    ["thesis", "logs_ablation/smoothcylinder_material/log.txt", 196, 1793693853067637143],
+    ["thesis", "meshes/NeRO/cube_shape-300000.ply", 3804857, 1793693853507645725],
+    ["thesis", "meshes/NeRO/donut_shape-300000.ply", 7048173, 1793693853499645569],
+    ["thesis", "meshes/NeRO/smoothcylinder_shape-300000.ply", 6351489, 1793693853479645178],
+    ["thesis", "meshes/NeRO/sphere_shape-300000.ply", 8509713, 1793693853491645413],
+    ["thesis", "meshes/angel_shape-300000.ply", 8811209, 1793693853099637768],
+    ["thesis", "meshes/bear_shape-300000.ply", 22557326, 1793693853267641044],
+    ["thesis", "meshes/bell_shape-300000.ply", 19116958, 1793693853199639718],
+    ["thesis", "meshes/bunny_shape-300000.ply", 25506554, 1793693853371643072],
+    ["thesis", "meshes/cat_shape-300000.ply", 21278530, 1793693853395643540],
+    ["thesis", "meshes/coral_shape-300000.ply", 20359290, 1793693853139638547],
+    ["thesis", "meshes/cube_shape-300000.ply", 3764068, 1793693853471645022],
+    ["thesis", "meshes/donut_shape-300000.ply", 7062117, 1793693853115638080],
+    ["thesis", "meshes/horse_shape-300000.ply", 9643733, 1793693853311641902],
+    ["thesis", "meshes/luyu_shape-300000.ply", 21967650, 1793693853339642448],
+    ["thesis", "meshes/maneki_shape-300000.ply", 25967602, 1793693853431644242],
+    ["thesis", "meshes/potion_shape-300000.ply", 28190122, 1793693853175639250],
+    ["thesis", "meshes/smoothcylinder_shape-300000.ply", 5133261, 1793693853235640420],
+    ["thesis", "meshes/sphere_shape-300000.ply", 8583965, 1793693853275641200],
+    ["thesis", "meshes/tbell_shape-300000.ply", 28765678, 1793693853467644944],
+    ["thesis", "meshes/teapot_shape-300000.ply", 17162417, 1793693853299641668],
+    ["thesis", "meshes/tetra_shape-300000.ply", 5846393, 1793693853107637924],
+    ["thesis", "meshes/vase_shape-300000.ply", 24724246, 1793693853231640342],
+    ["thesis", "meshes-pretrained/nerf/cube.ply", 3804857, 1793693856975713359],
+    ["thesis", "meshes-pretrained/nerf/donut.ply", 7048173, 1793693856963713125],
+    ["thesis", "meshes-pretrained/nerf/smoothcylinder.ply", 6351489, 1793693856971713281],
+    ["thesis", "meshes-pretrained/nerf/sphere.ply", 8509713, 1793693856943712735],
+    ["thesis", "meshes-pretrained/nerf/tetra.ply", 5763125, 1793693856951712891],
+    ["thesis", "meshes-pretrained/real/bear.ply", 11047097, 1793693856991713671],
+    ["thesis", "meshes-pretrained/real/bunny.ply", 8536453, 1793693856999713827],
+    ["thesis", "meshes-pretrained/real/coral.ply", 10775219, 1793693857011714061],
+    ["thesis", "meshes-pretrained/real/maneki.ply", 11621217, 1793693857027714373],
+    ["thesis", "meshes-pretrained/real/vase.ply", 11095811, 1793693857039714608],
+    ["thesis", "meshes-pretrained/syn/angel.ply", 9041257, 1793693857051714842],
+    ["thesis", "meshes-pretrained/syn/bell.ply", 4729497, 1793693857059714997],
+    ["thesis", "meshes-pretrained/syn/cat.ply", 20145066, 1793693857083715465],
+    ["thesis", "meshes-pretrained/syn/horse.ply", 9333021, 1793693857095715699],
+    ["thesis", "meshes-pretrained/syn/luyu.ply", 21379858, 1793693857123716246],
+    ["thesis", "meshes-pretrained/syn/potion.ply", 28250086, 1793693857155716869],
+    ["thesis", "meshes-pretrained/syn/tbell.ply", 27251154, 1793693857191717572],
+    ["thesis", "meshes-pretrained/syn/teapot.ply", 16993297, 1793693857211717962],
+    ["thesis", "model/NeRO/cube_shape/events.out.tfevents.1761799987.8f9beaadf0fd", 200024, 1793693856787709693],
+    ["thesis", "model/NeRO/cube_shape/events.out.tfevents.1761801676.8f9beaadf0fd", 3037920, 1793693856791709771],
+    ["thesis", "model/NeRO/cube_shape/model.pth", 27122925, 1793693856823710395],
+    ["thesis", "model/NeRO/cube_shape/model_best.pth", 27122925, 1793693856859711097],
+    ["thesis", "model/NeRO/cube_shape/train.txt", 1112300, 1793693856859711097],
+    ["thesis", "model/NeRO/cube_shape/val.txt", 4042, 1793693856859711097],
+    ["thesis", "model/NeRO/sphere_shape/events.out.tfevents.1761735066.630fbdcb5ac9", 3234224, 1793693856715708289],
+    ["thesis", "model/NeRO/sphere_shape/model.pth", 27122641, 1793693856751708991],
+    ["thesis", "model/NeRO/sphere_shape/model_best.pth", 27122385, 1793693856783709615],
+    ["thesis", "model/NeRO/sphere_shape/train.txt", 1112300, 1793693856787709693],
+    ["thesis", "model/NeRO/sphere_shape/val.txt", 2580, 1793693856787709693],
+    ["thesis", "model/angel_shape/events.out.tfevents.1760511220.1ccc15bb9069", 5811089, 1793693855731689098],
+    ["thesis", "model/angel_shape/model.pth", 29966820, 1793693855767689800],
+    ["thesis", "model/angel_shape/model_best.pth", 29966820, 1793693855803690502],
+    ["thesis", "model/angel_shape/train.txt", 1967300, 1793693855807690580],
+    ["thesis", "model/angel_shape/val.txt", 25800, 1793693855807690580],
+    ["thesis", "model/bell_shape/events.out.tfevents.1760598355.1ccc15bb9069", 5811089, 1793693855815690737],
+    ["thesis", "model/bell_shape/model.pth", 29966819, 1793693855855691516],
+    ["thesis", "model/bell_shape/model_best.pth", 29966819, 1793693855891692219],
+    ["thesis", "model/bell_shape/train.txt", 1967300, 1793693855895692297],
+    ["thesis", "model/bell_shape/val.txt", 25800, 1793693855895692297],
+    ["thesis", "model/cat_shape/events.out.tfevents.1760947604.c97109dfa7b7", 5811089, 1793693856287699941],
+    ["thesis", "model/cat_shape/model.pth", 29966830, 1793693856323700643],
+    ["thesis", "model/cat_shape/model_best.pth", 29966830, 1793693856359701346],
+    ["thesis", "model/cat_shape/train.txt", 1967300, 1793693856363701424],
+    ["thesis", "model/cat_shape/val.txt", 25800, 1793693856363701424],
+    ["thesis", "model/coral_shape/events.out.tfevents.1761092932.6882cd9916ac", 2462377, 1793693856627706572],
+    ["thesis", "model/coral_shape/events.out.tfevents.1761110529.6882cd9916ac", 3351050, 1793693856631706650],
+    ["thesis", "model/coral_shape/model.pth", 31656621, 1793693856671707430],
+    ["thesis", "model/coral_shape/model_best.pth", 31656065, 1793693856707708132],
+    ["thesis", "model/coral_shape/train.txt", 1968086, 1793693856711708211],
+    ["thesis", "model/coral_shape/val.txt", 25800, 1793693856711708211],
+    ["thesis", "model/horse_shape/events.out.tfevents.1760857362.c97109dfa7b7", 5811089, 1793693856459703296],
+    ["thesis", "model/horse_shape/model.pth", 29966823, 1793693856495703998],
+    ["thesis", "model/horse_shape/model_best.pth", 29966823, 1793693856531704700],
+    ["thesis", "model/horse_shape/train.txt", 1967300, 1793693856535704778],
+    ["thesis", "model/horse_shape/val.txt", 25800, 1793693856535704778],
+    ["thesis", "model/luyu_shape/events.out.tfevents.1760901813.c97109dfa7b7", 5811089, 1793693856371701579],
+    ["thesis", "model/luyu_shape/model.pth", 29966743, 1793693856407702282],
+    ["thesis", "model/luyu_shape/model_best.pth", 29966807, 1793693856447703062],
+    ["thesis", "model/luyu_shape/train.txt", 1967300, 1793693856451703139],
+    ["thesis", "model/luyu_shape/val.txt", 25800, 1793693856451703139],
+    ["thesis", "model/potion_shape/events.out.tfevents.1760556725.1ccc15bb9069", 5811089, 1793693855903692452],
+    ["thesis", "model/potion_shape/model.pth", 29966822, 1793693855939693154],
+    ["thesis", "model/potion_shape/model_best.pth", 29966822, 1793693855995694246],
+    ["thesis", "model/potion_shape/train.txt", 1967300, 1793693855995694246],
+    ["thesis", "model/potion_shape/val.txt", 25800, 1793693855995694246],
+    ["thesis", "model/smoothcylinder_shape/events.out.tfevents.1760638249.1ccc15bb9069", 5811089, 1793693856007694481],
+    ["thesis", "model/smoothcylinder_shape/model.pth", 29967111, 1793693856063695573],
+    ["thesis", "model/smoothcylinder_shape/model_best.pth", 29966855, 1793693856103696353],
+    ["thesis", "model/smoothcylinder_shape/train.txt", 1967300, 1793693856107696431],
+    ["thesis", "model/smoothcylinder_shape/val.txt", 25800, 1793693856107696431],
+    ["thesis", "model/sphere_shape/events.out.tfevents.1760747816.c97109dfa7b7", 5811089, 1793693856543704934],
+    ["thesis", "model/sphere_shape/model.pth", 29967118, 1793693856579705636],
+    ["thesis", "model/sphere_shape/model_best.pth", 29967118, 1793693856619706416],
+    ["thesis", "model/sphere_shape/train.txt", 1967300, 1793693856623706494],
+    ["thesis", "model/sphere_shape/val.txt", 25800, 1793693856623706494],
+    ["thesis", "model/teapot_shape/events.out.tfevents.1760730384.1ccc15bb9069", 2518189, 1793693856111696509],
+    ["thesis", "model/teapot_shape/model.pth", 29966843, 1793693856147697211],
+    ["thesis", "model/teapot_shape/model_best.pth", 29966843, 1793693856183697913],
+    ["thesis", "model/teapot_shape/train.txt", 853800, 1793693856187697991],
+    ["thesis", "model/teapot_shape/val.txt", 11180, 1793693856187697991],
+    ["thesis", "model/vase_shape/events.out.tfevents.1760688983.1ccc15bb9069", 5811089, 1793693856195698147],
+    ["thesis", "model/vase_shape/model.pth", 31656274, 1793693856235698927],
+    ["thesis", "model/vase_shape/model_best.pth", 31656274, 1793693856275699708],
+    ["thesis", "model/vase_shape/train.txt", 1967300, 1793693856275699708],
+    ["thesis", "model/vase_shape/val.txt", 25800, 1793693856279699786],
+    ["thesis", "pbrnerf/bear/metrics.json", 1337, 1793693856863711175],
+    ["thesis", "pbrnerf/bunny/metrics.json", 1338, 1793693856867711253],
+    ["thesis", "pbrnerf/coral/metrics.json", 1336, 1793693856867711253],
+    ["thesis", "pbrnerf/maneki/metrics.json", 1345, 1793693856871711331],
+    ["thesis", "pbrnerf/vase/metrics.json", 1329, 1793693856875711409],
+    ["configs", "custom/kettle_material.yaml", 1445, 1793693579386301438],
+    ["configs", "custom/kettle_shape.yaml", 1116, 1793693579386301438],
+    ["configs", "experiments/geometry.example.yaml", 315, 1793761925580626427],
+    ["configs", "experiments/material.example.yaml", 388, 1793770601493262845],
+    ["configs", "material/nerf/ball.yaml", 879, 1793693579386301438],
+    ["configs", "material/nerf/car.yaml", 869, 1793693579386301438],
+    ["configs", "material/nerf/chair.yaml", 879, 1793693579386301438],
+    ["configs", "material/nerf/coffee.yaml", 884, 1793693579386301438],
+    ["configs", "material/nerf/cube.yaml", 1383, 1793693597662657628],
+    ["configs", "material/nerf/cylinder.yaml", 1414, 1793693597662657628],
+    ["configs", "material/nerf/donut.yaml", 1388, 1793693597662657628],
+    ["configs", "material/nerf/drums.yaml", 10367, 1793693597662657628],
+    ["configs", "material/nerf/ficus.yaml", 879, 1793693579386301438],
+    ["configs", "material/nerf/helmet.yaml", 884, 1793693579386301438],
+    ["configs", "material/nerf/hotdog.yaml", 884, 1793693579386301438],
+    ["configs", "material/nerf/lego.yaml", 874, 1793693579386301438],
+    ["configs", "material/nerf/materials.yaml", 1080, 1793693597662657628],
+    ["configs", "material/nerf/mic.yaml", 869, 1793693579386301438],
+    ["configs", "material/nerf/ship.yaml", 874, 1793693579386301438],
+    ["configs", "material/nerf/smoothcylinder.yaml", 1426, 1793693597662657628],
+    ["configs", "material/nerf/sphere.yaml", 1393, 1793693597662657628],
+    ["configs", "material/nerf/teapot.yaml", 884, 1793693579386301438],
+    ["configs", "material/nerf/tetra.yaml", 1388, 1793693597662657628],
+    ["configs", "material/nerf/toaster.yaml", 889, 1793693579386301438],
+    ["configs", "material/real/bear.yaml", 1075, 1793693597662657628],
+    ["configs", "material/real/bunny.yaml", 1080, 1793693597662657628],
+    ["configs", "material/real/coral.yaml", 1080, 1793693597662657628],
+    ["configs", "material/real/maneki.yaml", 1085, 1793693597662657628],
+    ["configs", "material/real/vase.yaml", 1075, 1793693597662657628],
+    ["configs", "material/syn/angel.yaml", 1052, 1793693597662657628],
+    ["configs", "material/syn/bell.yaml", 1051, 1793693597662657628],
+    ["configs", "material/syn/cat.yaml", 1046, 1793693597662657628],
+    ["configs", "material/syn/horse.yaml", 1056, 1793693597662657628],
+    ["configs", "material/syn/luyu.yaml", 1051, 1793693597662657628],
+    ["configs", "material/syn/potion.yaml", 1061, 1793693597662657628],
+    ["configs", "material/syn/tbell.yaml", 1056, 1793693597662657628],
+    ["configs", "material/syn/teapot.yaml", 1061, 1793693597662657628],
+    ["configs", "shape/nerf/ball.yaml", 669, 1793693579390301516],
+    ["configs", "shape/nerf/car.yaml", 664, 1793693579390301516],
+    ["configs", "shape/nerf/chair.yaml", 672, 1793693579390301516],
+    ["configs", "shape/nerf/coffee.yaml", 676, 1793693579390301516],
+    ["configs", "shape/nerf/cube.yaml", 799, 1793693597662657628],
+    ["configs", "shape/nerf/cylinder.yaml", 828, 1793693597662657628],
+    ["configs", "shape/nerf/cylinder_rect.yaml", 837, 1793693597662657628],
+    ["configs", "shape/nerf/donut.yaml", 803, 1793693597662657628],
+    ["configs", "shape/nerf/drums.yaml", 710, 1793693597662657628],
+    ["configs", "shape/nerf/ficus.yaml", 672, 1793693579390301516],
+    ["configs", "shape/nerf/helmet.yaml", 676, 1793693579390301516],
+    ["configs", "shape/nerf/hotdog.yaml", 676, 1793693579390301516],
+    ["configs", "shape/nerf/lego.yaml", 668, 1793693579390301516],
+    ["configs", "shape/nerf/materials.yaml", 740, 1793693597662657628],
+    ["configs", "shape/nerf/mic.yaml", 664, 1793693579390301516],
+    ["configs", "shape/nerf/ship.yaml", 668, 1793693579390301516],
+    ["configs", "shape/nerf/simplecylinder.yaml", 719, 1793693597662657628],
+    ["configs", "shape/nerf/smoothcylinder.yaml", 839, 1793693597662657628],
+    ["configs", "shape/nerf/sphere.yaml", 807, 1793693597662657628],
+    ["configs", "shape/nerf/teapot.yaml", 676, 1793693579390301516],
+    ["configs", "shape/nerf/tetra.yaml", 803, 1793693597662657628],
+    ["configs", "shape/nerf/toaster.yaml", 680, 1793693579390301516],
+    ["configs", "shape/real/bear.yaml", 761, 1793693597662657628],
+    ["configs", "shape/real/bunny.yaml", 760, 1793693597662657628],
+    ["configs", "shape/real/coral.yaml", 764, 1793693597662657628],
+    ["configs", "shape/real/maneki.yaml", 790, 1793693597662657628],
+    ["configs", "shape/real/vase.yaml", 761, 1793693597662657628],
+    ["configs", "shape/syn/angel.yaml", 733, 1793693597662657628],
+    ["configs", "shape/syn/bell.yaml", 675, 1793693597662657628],
+    ["configs", "shape/syn/cat.yaml", 671, 1793693597662657628],
+    ["configs", "shape/syn/horse.yaml", 733, 1793693597662657628],
+    ["configs", "shape/syn/luyu.yaml", 675, 1793693597662657628],
+    ["configs", "shape/syn/potion.yaml", 683, 1793693597662657628],
+    ["configs", "shape/syn/tbell.yaml", 706, 1793693597662657628],
+    ["configs", "shape/syn/teapot.yaml", 710, 1793693597662657628],
+    ["configs", "synthetic_split_128.pkl", 5131, 1793693579390301516]
+  ]
+}

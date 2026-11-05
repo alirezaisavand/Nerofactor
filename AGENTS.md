@@ -135,21 +135,33 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Milestones through 1D.3B-2B have been reviewed and approved.
-Current authorized milestone: **1D.3C, native GPU smoke implementation for review**.
-Prepare separate geometry/material initialization and one ordinary forward using
-existing schema-1 configurations, real read-only inputs and disposable isolated
-outputs. Do not execute the native backend/GPU/Docker commands in this milestone;
-only static checks, structural preflights and explicit CPU fixtures are authorized.
-No training loop, optimizer construction/update, backward, checkpoint I/O,
-validation/NVS or image/package changes. Keep original model equations, sampling,
-counts, defaults, seeds, splits and shader scopes unchanged. Record that the smoke
-omits DataLoader iteration and is not training-loop RNG or scientific parity.
-The researcher reports quick-candidate-1 passed basic native checks and 100 tests
-on Python 3.8; attribute that evidence and do not claim these new model tests ran.
-Preserve the existing Python 3.8 parser-created AST literal compatibility fix and
-all original source-comparison assertions. Stop with the implementation ready for
-review; native launches need a later explicit approval.
+Current authorized milestone: **1D.4A, baseline evidence and reproducibility
+preparation only**. The researcher reports both geometry and material native
+model smoke tests passed in `nerofactor-paper:quick-candidate-1`, and all 109
+infrastructure tests passed on Python 3.8. Attribute these as researcher-reported
+results until original reports/logs and immutable launch identities are archived;
+do not fabricate checked-in GPU measurements. See
+[BASELINE_PREPARATION.md](docs/BASELINE_PREPARATION.md).
+
+Authorized changes are documentation/evidence only: read-only metadata inventory
+of historical checkpoints, meshes, configurations, logs and evaluation outputs;
+baseline candidacy assessment; and a proposed versioned checkpoint-inference
+comparison protocol. Do not deserialize checkpoints or input pickles, run GPU
+inference/evaluation/training, change scientific code/configurations, modify
+artifacts, build/change images, install packages or start/stop containers. Do not
+hash large datasets. Metadata is not content-integrity or architecture evidence.
+Missing material checkpoints, unknown producing commits/splits and missing runtime
+reports remain explicit blockers. Preserve historical reported scores separately
+from routing regression, independently recomputed inference and trained results.
+
+The proposed [inference protocol](docs/protocols/CHECKPOINT_INFERENCE_V1.md) is
+not implemented or executable authorization. Its reference, trust/admission gates,
+input/split identities, metrics, provisional tolerances and resource budget need
+review before a later inference adapter or native launch. Do not silently repair
+scientific/evaluator defects or relax tolerances after seeing results. Keep the
+1D.3C harness and Python 3.8 AST compatibility assertions unchanged. Stop after
+preparation for review; do not commit or push automatically.
+
 Keep installed evidence, publisher checksums and byte-verified artifacts distinct.
 Registry presence/tag agreement does not establish historical base identity;
 do not mark an incomplete resolution reviewed or change the accepted Docker image.
@@ -160,8 +172,9 @@ Preserve infrastructure test-harness behavior and every existing assertion; do
 not introduce unrelated fixes or stage originals in this documentation milestone.
 Never run setup to inspect it, copy a working tree wholesale, invent missing pins,
 or promote publisher artifact metadata to verified downloaded/historical identity.
-Its scope is the separate smoke CLI/helper, CPU tests, the AST compatibility fix
-and supporting documentation. Use the recovered system Python 3.8.10 / CUDA 11.1 / Torch
+The earlier 1D.3C scope was the separate smoke CLI/helper, CPU tests,
+the AST compatibility fix and supporting documentation; it is not extended here.
+Use the recovered system Python 3.8.10 / CUDA 11.1 / Torch
 1.8.1+cu111 / ABI 0 reference; no Micromamba or scientific upgrades. Pin nvdiffrast
 and raytracing to the exact recovered revisions/setup hashes. Record unknown
 package/system versions, hashes and base digest as unresolved; never invent them
@@ -251,9 +264,9 @@ the recovered pins and unverified CUDA base candidate. Before any future build, 
 the full exact dependency/source/artifact resolution and use a distinct candidate
 image tag. Preserve source licences, compiler flags and scientific settings.
 Do not begin first builds/environment installation, native GPU smoke tests,
-extraction/evaluation refactoring, 1D.4, or scientific repairs without separate
-user approval. Do not run
-Docker builds/runs, GPU tests, real training, or expensive experiments in this milestone.
+extraction/evaluation implementation, 1D.4 beyond the current preparation scope,
+or scientific repairs without separate user approval. Do not run Docker builds/
+runs, GPU tests, real training or expensive experiments in this milestone.
 Do not commit or push automatically. A later explicit user instruction
 updates this boundary. See [CONFIGURATION_AND_PATHS.md](docs/CONFIGURATION_AND_PATHS.md)
 for implemented APIs and limitations, and [INFRASTRUCTURE_PLAN.md](docs/INFRASTRUCTURE_PLAN.md)

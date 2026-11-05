@@ -1,11 +1,13 @@
 # Incremental infrastructure implementation plan
 
-Status: **milestones through 1D.3B-2B are approved; 1D.3C prepares native model
-smoke implementation for review, with CPU/static validation only**.
-1D.3B-2 construction, native GPU smoke tests, standalone extraction/evaluation
-refactoring and 1D.4 require separate authorization. No branch merge, image build,
-installation, container lifecycle change, training, artifact relocation or
-numerical correction is included.
+Status: **1D.4A authorizes baseline evidence/preparation documentation only**.
+The researcher reports successful geometry/material native model smoke tests in
+`nerofactor-paper:quick-candidate-1` and all 109 Python 3.8 infrastructure tests
+passing. Original launch/test reports and immutable identities have not been
+supplied/checked in here; these are reported successes, not Codex GPU measurements.
+See [BASELINE_PREPARATION.md](BASELINE_PREPARATION.md) for evidence and blockers.
+No inference runner, GPU evaluation/training, checkpoint deserialization,
+scientific/configuration change, image modification or branch merge is authorized.
 
 The starting implementation is `anisotropic` at
 `e1e859779301faced46d6476691e20b546c27ae0`, on `paper/infrastructure`.
@@ -344,13 +346,28 @@ The [1D.3C smoke protocol](NATIVE_GPU_SMOKE.md) is now implemented separately
 from training: approved configuration/path/cache/run infrastructure, OS read-only
 input checks, actual renderer initialization and one configured training-mode
 forward at step 0, without optimizer/backward/checkpoint/evaluation dispatch.
-Its native backend is not executed in the implementation milestone. The supplied
-quick-candidate image's basic native checks/Python 3.8 suite are researcher evidence;
-new model smoke success and numerical parity remain unmeasured. Disposable cache/
+Its native backend was not executed by Codex in the implementation milestone.
+The researcher now reports both model smoke tests and all 109 Python 3.8 tests
+passed. Raw launch reports/immutable identities remain unarchived here; numerical
+checkpoint parity and thesis reproduction remain unmeasured. Disposable cache/
 logs and phase/failure reports must precede any later approved launch. No image
 rebuild or scientific behavior change is included, and full provenance remains 1D.4.
 
-### Proposed implementation
+### 1D.4A preparation boundary
+
+[BASELINE_PREPARATION.md](BASELINE_PREPARATION.md) and its
+[metadata snapshot](evidence/1d4a-metadata.json) record read-only inventory and
+rank bell geometry first, with bear material blocked by absent weights.
+[Checkpoint-inference protocol v1](protocols/CHECKPOINT_INFERENCE_V1.md) proposes
+one validation view, two routing/reference arms, immutable identities, split and
+preprocessing preservation, existing full-image PSNR/SSIM, provisional tolerances
+and repeatability gates. It is not an evaluator implementation or launch approval.
+Trust/origin, selected artifact hashes, exact target-interpreter splits, reference
+outputs and archived native reports remain prerequisites. Historical scores are
+preserved, not recomputed or used as invented expected outputs. No checkpoint or
+input pickle is deserialized in 1D.4A, and no GPU/Docker operation is performed.
+
+### Proposed implementation beyond 1D.4A (requires separate approval)
 
 1. Extend run allocation into a manifest/state lifecycle: created, running,
    completed, failed, interrupted, and explicitly resumed. Persist commands,
@@ -408,6 +425,7 @@ these findings or reinterpret historical claims.
 
 Docker previously failed inside Codex; no Docker access was probed in 1D.1 and
 no permissions were changed. A preceding NVIDIA-SMI query could not communicate
-with the driver. GPU identity, usable runtime, and version compatibility remain
-unverified. This plan preserves those as separate environment blockers rather
-than treating source inspection as execution evidence.
+with the driver. Those Codex access failures are historical, separate from the
+researcher's newer reported native successes. No new access attempt or permission change is made in
+1D.4A. Archive actual launch/image/GPU identities before claiming independently
+verified runtime evidence; source inspection alone is not execution evidence.

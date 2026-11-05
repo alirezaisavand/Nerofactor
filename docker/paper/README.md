@@ -1,13 +1,15 @@
 # Paper environment reconstruction: definitions and build prerequisites
 
 This is a reviewable reconstruction of the recovered CUDA 11.1 / system Python
-3.8 / Torch 1.8 environment. Current **1D.3C** prepares the separate native model
-smoke implementation for review; [NATIVE_GPU_SMOKE.md](../../docs/NATIVE_GPU_SMOKE.md)
-provides exact future Docker commands, immutable image-ID selection, read-only
-code/input overlays, disposable caches and expected/failure results. The supplied
-`nerofactor-paper:quick-candidate-1` environment passed basic native checks and the
-100-test Python 3.8 suite according to the researcher; Codex has not executed the
-new native model smoke tests. The Dockerfile/image is not changed by this step.
+3.8 / Torch 1.8 environment. In **1D.4A**, the researcher reports successful
+geometry/material native model smoke tests in `nerofactor-paper:quick-candidate-1`
+and all 109 Python 3.8 infrastructure tests passing. Raw reports and immutable
+launch identities have not been supplied/checked in here; see
+[BASELINE_PREPARATION.md](../../docs/BASELINE_PREPARATION.md). Codex did not run
+these GPU tests. The [smoke protocol](../../docs/NATIVE_GPU_SMOKE.md) retains the
+exact commands, read-only overlays and failure diagnostics. The current milestone
+only documents baseline evidence and a proposed inference comparison; the
+Dockerfile/image is unchanged, with no new launch/build authorization.
 1D.3B-2B's supplied runtime metadata and artifact-readiness history remain below.
 **Do not build, install packages or run containers.** See
 [PREREQUISITES.md](PREREQUISITES.md) for filtered diagnostics, exact source staging,

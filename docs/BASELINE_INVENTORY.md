@@ -1,5 +1,11 @@
 # Baseline inventory
 
+This document preserves the **1D.1 historical snapshot** and its reported scores.
+See [1D.4A baseline preparation](BASELINE_PREPARATION.md) and the
+[current metadata inventory](evidence/1d4a-metadata.json) for refreshed artifact
+counts, output-root existence, runtime evidence attribution and proposed baselines.
+Later runtime successes do not retrospectively reproduce the scores below.
+
 Recorded on 2026-11-03 on `marineris` for milestone 1D.1. This is a lightweight
 inventory, not a full content-integrity manifest or reproduction report. Names,
 counts, file sizes, small text/JSON files, and Git objects were inspected without

@@ -1,11 +1,20 @@
 # Native model smoke protocol: Step 1D.3C
 
-**Implementation for review only: no native GPU smoke or Docker run was executed
-by Codex.** The researcher reports that `nerofactor-paper:quick-candidate-1`
-passed CUDA rasterization, raytracing, geometry/material preflights and all 100
-existing infrastructure tests on Python 3.8. This is supplied environment evidence,
-not a Codex measurement of these new native model tests or a complete historical
-image reconstruction. Preserve the image; do not rebuild/install to use this code.
+**Current evidence update (1D.4A):** the researcher reports that both actual
+geometry and material model smoke tests passed using
+`nerofactor-paper:quick-candidate-1`, and all **109 infrastructure tests passed
+on Python 3.8**. Original smoke/test logs, immutable image ID and launch-specific
+source/input identities have not been supplied/checked in here. These are
+reported successes, not GPU launches independently observed by Codex. See
+[BASELINE_PREPARATION.md](BASELINE_PREPARATION.md) for the evidence ledger and
+[proposed inference protocol](protocols/CHECKPOINT_INFERENCE_V1.md) for the next
+review gate. Smoke success does not establish checkpoint inference parity or
+historical result reproduction.
+
+The remainder records the 1D.3C implementation and its original CPU/static checks.
+No native GPU smoke or Docker run was executed by Codex during that milestone,
+and none is authorized by the current documentation-only 1D.4A task. Preserve
+the image; do not rebuild/install to use this code.
 
 Review baseline: `ae1856529ab83865cea6f95b9820e4cd50e13fff` on
 `paper/infrastructure`. A pre-existing one-line change in
