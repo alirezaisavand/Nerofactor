@@ -50,7 +50,8 @@ def main():
     repo = HERE.parents[1]
     paths = [p for folder in ['infrastructure', 'dataset', 'network', 'train', 'utils', 'raytracing']
              for p in (repo / folder).glob('*.py')]
-    paths += [repo / 'run_experiment.py', repo / 'run_material_experiment.py', *HERE.glob('*.py')]
+    paths += [repo / 'run_experiment.py', repo / 'run_material_experiment.py',
+              repo / 'run_native_smoke.py', *HERE.glob('*.py')]
     paths += [repo / 'colmap/read_write_model.py', repo / 'colmap/plyfile.py']
     tests = list((repo / 'tests/infrastructure').glob('*.py'))
     paths += tests

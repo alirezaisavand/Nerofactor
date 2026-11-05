@@ -1,7 +1,7 @@
 # Incremental infrastructure implementation plan
 
-Status: **milestones through 1D.3B-2A are approved; 1D.3B-2B integrates supplied
-reference dependency metadata without downloading/building/installing**.
+Status: **milestones through 1D.3B-2B are approved; 1D.3C prepares native model
+smoke implementation for review, with CPU/static validation only**.
 1D.3B-2 construction, native GPU smoke tests, standalone extraction/evaluation
 refactoring and 1D.4 require separate authorization. No branch merge, image build,
 installation, container lifecycle change, training, artifact relocation or
@@ -339,6 +339,16 @@ Deliver environment definitions and recorded validation limits. Stop for review
 before 1D.4. No exact CUDA/PyTorch combination is promised by the 1D.1 inventory.
 
 ## 1D.4: Experiment management and validation
+
+The [1D.3C smoke protocol](NATIVE_GPU_SMOKE.md) is now implemented separately
+from training: approved configuration/path/cache/run infrastructure, OS read-only
+input checks, actual renderer initialization and one configured training-mode
+forward at step 0, without optimizer/backward/checkpoint/evaluation dispatch.
+Its native backend is not executed in the implementation milestone. The supplied
+quick-candidate image's basic native checks/Python 3.8 suite are researcher evidence;
+new model smoke success and numerical parity remain unmeasured. Disposable cache/
+logs and phase/failure reports must precede any later approved launch. No image
+rebuild or scientific behavior change is included, and full provenance remains 1D.4.
 
 ### Proposed implementation
 

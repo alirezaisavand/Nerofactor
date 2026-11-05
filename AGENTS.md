@@ -135,14 +135,24 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Milestones through 1D.3B-2A have been reviewed and approved.
-Current authorized milestone: **1D.3B-2B, document recovered runtime dependencies**.
-Validate the supplied runtime inventory, record exact installed Python/Debian/tool
-versions and dependency metadata, and investigate the supplied CUDA base candidate
-through permitted registry metadata only. Keep installed evidence, publisher
-checksums and byte-verified artifacts distinct. Registry presence or tag agreement
-does not establish historical base identity; do not fill an unverified base digest
-or mark a resolution reviewed. Stop after documenting pins and remaining blockers.
+Milestones through 1D.3B-2B have been reviewed and approved.
+Current authorized milestone: **1D.3C, native GPU smoke implementation for review**.
+Prepare separate geometry/material initialization and one ordinary forward using
+existing schema-1 configurations, real read-only inputs and disposable isolated
+outputs. Do not execute the native backend/GPU/Docker commands in this milestone;
+only static checks, structural preflights and explicit CPU fixtures are authorized.
+No training loop, optimizer construction/update, backward, checkpoint I/O,
+validation/NVS or image/package changes. Keep original model equations, sampling,
+counts, defaults, seeds, splits and shader scopes unchanged. Record that the smoke
+omits DataLoader iteration and is not training-loop RNG or scientific parity.
+The researcher reports quick-candidate-1 passed basic native checks and 100 tests
+on Python 3.8; attribute that evidence and do not claim these new model tests ran.
+Preserve the existing Python 3.8 parser-created AST literal compatibility fix and
+all original source-comparison assertions. Stop with the implementation ready for
+review; native launches need a later explicit approval.
+Keep installed evidence, publisher checksums and byte-verified artifacts distinct.
+Registry presence/tag agreement does not establish historical base identity;
+do not mark an incomplete resolution reviewed or change the accepted Docker image.
 Preserve the accepted Docker architecture, full pre-install validation gate,
 dependency pins and historical runtime. Use filtered read-only diagnostics,
 registry metadata queries, dependency/source assessment and CPU/static fixtures.
@@ -150,8 +160,8 @@ Preserve infrastructure test-harness behavior and every existing assertion; do
 not introduce unrelated fixes or stage originals in this documentation milestone.
 Never run setup to inspect it, copy a working tree wholesale, invent missing pins,
 or promote publisher artifact metadata to verified downloaded/historical identity.
-Its scope is `docker/paper/` reference manifests, metadata consistency checks and supporting
-documentation. Use the recovered system Python 3.8.10 / CUDA 11.1 / Torch
+Its scope is the separate smoke CLI/helper, CPU tests, the AST compatibility fix
+and supporting documentation. Use the recovered system Python 3.8.10 / CUDA 11.1 / Torch
 1.8.1+cu111 / ABI 0 reference; no Micromamba or scientific upgrades. Pin nvdiffrast
 and raytracing to the exact recovered revisions/setup hashes. Record unknown
 package/system versions, hashes and base digest as unresolved; never invent them
@@ -181,7 +191,9 @@ configurations or repair scientific defects.
 
 The new envelopes are accepted by separate `run_experiment.py` geometry and
 `run_material_experiment.py` material entry points; existing entry points remain
-legacy. Preserve shallow legacy merges and the scope of shader fields; top-level
+legacy. `run_native_smoke.py` is a separate explicit preflight/one-forward harness;
+see [NATIVE_GPU_SMOKE.md](docs/NATIVE_GPU_SMOKE.md) for mount gates and limits.
+Preserve shallow legacy merges and the scope of shader fields; top-level
 shader-like fields must not be silently forwarded into `shader_cfg`. Diagnostics
 are evidence, not authorization to correct behavior. Run allocation and the
 shared trainer loop are tested only in disposable CPU fixtures with explicit

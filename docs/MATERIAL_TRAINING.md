@@ -1,5 +1,10 @@
 # Isolated material training: 1D.2B-2B
 
+1D.3C follow-up: [NATIVE_GPU_SMOKE.md](NATIVE_GPU_SMOKE.md) documents the separate
+review-only initialization/one-forward harness with the explicit read-only mesh.
+It leaves this pipeline, BRDF/shader behavior, defaults and NVS unchanged. No new
+native GPU model test was run by Codex.
+
 Review baseline: `66037fb00a4662693e7bc35694e760429d3d0076` on
 `paper/infrastructure`. The separate `run_material_experiment.py` entry point
 connects schema-1 material envelopes to the existing Stage II pipeline.

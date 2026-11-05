@@ -397,7 +397,7 @@ class MaterialSourceCompatibilityTests(unittest.TestCase):
                 if isinstance(node.func, ast.Name) and node.func.id == 'imsave':
                     node.args[0] = deepcopy(original_image_path)
                 if isinstance(node.func, ast.Attribute) and node.func.attr == 'write_point_cloud':
-                    node.args[0] = ast.Constant('cloud.ply')
+                    node.args[0] = ast.parse("'cloud.ply'", mode="eval").body
                 return node
 
         old_nvs, new_nvs = method(old, 'nvs'), method(new, 'nvs')

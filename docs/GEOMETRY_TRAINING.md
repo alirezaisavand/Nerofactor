@@ -1,5 +1,9 @@
 # Isolated geometry integration: 1D.2B-2A and 1D.2B-2A.1
 
+1D.3C follow-up: [NATIVE_GPU_SMOKE.md](NATIVE_GPU_SMOKE.md) documents the separate
+review-only initialization/one-forward harness. It leaves this entry point and
+all geometry mathematics unchanged. No new native GPU model test was run by Codex.
+
 This milestone adds a separate geometry entry point and optional I/O hooks. The
 review baseline is `52783b0f23dccdf3e46a707faf090c95b311873a` on
 `paper/infrastructure`. Existing `python run_training.py --cfg ...` keeps legacy
