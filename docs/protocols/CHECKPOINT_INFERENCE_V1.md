@@ -1,6 +1,7 @@
 # Proposed checkpoint-inference comparison protocol v1
 
-Protocol ID: **`checkpoint-inference-validation-v1`**. Specification revision 1,
+Protocol ID: **`checkpoint-inference-validation-v1`**. Specification revision 2
+(documentation-only A/G scope clarification),
 **proposed, not implemented or executed** in 1D.4A. Approval of this document does
 not authorize GPU launches. Baseline readiness and evidence classifications are
 in [BASELINE_PREPARATION.md](../BASELINE_PREPARATION.md).
@@ -10,8 +11,21 @@ in [BASELINE_PREPARATION.md](../BASELINE_PREPARATION.md).
 The first question is whether isolated configuration/path/cache routing preserves
 one existing **validation-view** inference result from the same admitted weights,
 scientific implementation, effective settings and inputs. This is a routing/
-inference regression comparison, not independent reproduction of training,
-checkpoint selection, mesh extraction or a thesis score.
+inference regression comparison using the **current maintained A-based code**
+(`anisotropic` ancestry), not historical G-based (`aniso_geometry_safe`) thesis
+geometry reproduction, nor independent reproduction of training, checkpoint
+selection, mesh extraction or a thesis score. The protocol's arms, split freeze,
+defaults, metric definitions and provisional tolerances below apply only to this
+A-based regression. They are not a specification of G behavior.
+
+Historical G-based geometry reproduction is a separate objective: establish the
+checkpoint's producing commit/configuration/split, then preserve that historical
+implementation and its two-way split under a separately reviewed protocol.
+Neither native smoke success nor a pass under this A-based protocol attributes
+the weights to A or G. If origin is unresolved, historical reproduction remains
+blocked; if G origin is established, A-based inference on those weights must
+remain a limited current-code regression or separately labeled cross-split
+experiment, never evidence of G thesis reproduction.
 
 Proposed arms, each in a fresh single-use process/output directory:
 
@@ -32,11 +46,13 @@ reference. Historical directory names or same-shaped weights do not supply that.
 Do **not** launch either training entry point: existing initialize/resume paths
 also construct optimizers and enter training. `run_native_smoke.py` explicitly
 rejects checkpoints and is not this evaluator. R cannot run the historical
-`run_training.py` unchanged: geometry has known split-unpacking/final-NVS
+**A** `run_training.py` unchanged: A geometry has known split-unpacking/final-NVS
 interfaces. Only the approved isolated three-list split adaptation is permitted
-in the future direct-renderer reference. Record that compatibility shim and its
-source hash; never describe it as unmodified legacy execution. Geometry final
-NVS stays deferred. Do not repair unrelated renderer/evaluator defects if exposed.
+in this future A-based direct-renderer reference. G already consumes two split
+lists; the A adaptation is not a historical G compatibility rule. Record the A
+shim and its source hash; never describe it as unmodified legacy execution.
+Geometry final NVS stays deferred. Do not repair unrelated renderer/evaluator
+defects if exposed.
 
 ## Admission manifest and immutable inputs
 
@@ -44,7 +60,7 @@ Before deserialization or GPU execution, freeze one manifest per candidate with:
 
 | Field | Required identity / current candidate |
 | --- | --- |
-| Protocol / status | ID above, spec revision, review decision; missing fields block execution |
+| Protocol / status | ID above, spec revision, objective `current-code-A-routing-regression`, review decision; historical G reproduction is outside v1 |
 | Source | Full Git commit, clean status or full patch/hash, adapter/source hashes, exact command and exit status |
 | Environment | Immutable image ID, image tag as annotation only, available image manifest digest, runtime package versions, Python, Torch/CUDA, driver/GPU, ABI, extension revisions and binary/JIT hashes; unknown build provenance stays explicit |
 | Configuration | Raw schema-1 envelope and legacy YAML bytes and SHA-256; separate effective trainer/renderer/shader settings; only dataset/mesh/output paths may differ between arms |
@@ -52,7 +68,7 @@ Before deserialization or GPU execution, freeze one manifest per candidate with:
 | Stored state | After separate trust approval: record available `step`, `best_para`, key/shape/dtype architecture signature and provenance tags. Strict network-only load; no optimizer/scheduler/RNG restore or training continuation |
 | Mesh (material) | Explicit root/path, SHA-256, size, producing run/frame/normalization history when known; no transform, crop, simplification or save |
 | Dataset | Root alias, family, database string, source filename/order manifest and content hashes for every input actually read, including camera metadata, masks, normalization cloud and reused legacy products |
-| Splits | Exact typed and ordered database IDs, train/validation/NVS lists and ID-to-source-filename mapping; hash canonical split JSON, record helper source hash, seed and calls/order |
+| Splits | Exact typed and ordered database IDs, A train/validation/NVS lists and ID-to-source-filename mapping; hash canonical split JSON, record producing-split evidence separately from the A inference split, helper source hash, seed and calls/order |
 | Preprocessing | Versioned cache identity, implementation/package hashes/versions, effective parameters, source-product vs generated-product use, cached camera/image hashes and decoding backend |
 | Execution | Fresh comparison/run ID, arm, timestamps, resource budget, RNG policy/state hashes, native report phase/exit/failure and paths to raw outputs |
 
@@ -70,6 +86,16 @@ compatibility; bell geometry needs an equivalent origin review too.
 Unknown producing history may permit a reviewer-authorized **current-code routing
 regression** with explicitly limited provenance, but must block claims of thesis
 checkpoint reproduction. Missing or ambiguous architecture blocks any inference.
+Bell admission must distinguish evidence for the file's producing branch/split
+from the split selected for current A inference. Required attribution evidence is
+listed in [the bell origin checklist](../BASELINE_PREPARATION.md#bell-checkpoint-attribution-evidence):
+a hash-bound trusted checkpoint/run identity; producing commit/dirty patch,
+command and original/effective configuration; ordered database and split IDs (or
+attributable source plus authenticated input order and corroborating run records);
+and checkpoint-selection logs/outputs linking validation IDs and stored step to
+this file. Equal YAML, filenames, same-shaped weights and matching rounded scores
+are insufficient. Declarations and independently checked evidence stay distinct.
+
 Do not infer the stored step from a mesh filename, log row, tensor shapes or
 configured `total_step`. For this protocol feed the exact admitted stored step
 into inference in both arms and record its zero/one-based uncertainty. Missing
@@ -79,18 +105,55 @@ step-dependent behavior rather than correcting presumed off-by-one semantics.
 
 ## Candidate inputs and split freeze
 
-**Bell geometry first:** select `model/bell_shape/model_best.pth` under thesis;
+### Source-verified A/G split distinction
+
+Inspected snapshots are A `anisotropic` at
+`e1e859779301faced46d6476691e20b546c27ae0` and G
+`origin/aniso_geometry_safe` at `79252178e65914ad1acbc14790b1514f276bfea0`.
+Their `dataset/database.py:get_database_split` validation algorithms differ:
+
+| Rule | A: three-way, seeded shuffle | G: two-way, unshuffled |
+| --- | --- | --- |
+| Initial sequence | Copy `database.get_img_ids()` | Copy `database.get_img_ids()` |
+| RNG effect | `random.seed(6033)`, then `random.shuffle(img_ids)` | `random.seed(6033)`; shuffle commented out, so no shuffle draws, but global RNG is reset |
+| Validation (`test_ids`) | `img_ids[5:6]` after shuffle | `img_ids[0:1]` (`img_num=1`) in original order |
+| Training | `img_ids[6:]` after shuffle | `img_ids[1:]` in original order |
+| NVS | `img_ids[:5]` after shuffle | No reserved NVS IDs or third list |
+| Return / geometry consumer | Three lists: training, validation, NVS; approved isolated A renderer unpacks three | Two lists: training, validation; G renderer and validation dataset unpack two |
+
+For the current 128-camera bell inventory and synthetic loader's numeric string
+order `"0"` through `"127"`, G's source rule would validate on `"0"` and train
+on the other 127 IDs. This is conditional source derivation, **not verified
+history of `bell_shape/model_best.pth`**. A's proposed validation `"58"` is a
+training ID under that G rule. Substitution would change membership, training
+population and RNG effects, potentially evaluating a trained-on view as held out.
+
+**Historical geometry reproduction must not substitute A's three-way split for
+G's two-way split without checkpoint-linked evidence establishing the producing
+split.** Preserve G's rule if G origin is established. Do not fabricate an empty
+historical NVS list as though G had a three-way split, apply the A unpacking shim
+to G, or claim A validation metrics reproduce G thesis validation. A historical
+protocol must explicitly represent G's absent NVS partition and actual two lists;
+it requires separate review and does not authorize any source change here.
+
+### Current A-based candidates
+
+**Bell geometry first, for A regression only:** select
+`model/bell_shape/model_best.pth` under thesis;
 alternate `model.pth` requires a separately named manifest. Raw YAML
 `configs/shape/syn/bell.yaml`, envelope `configs/experiments/geometry.example.yaml`,
-`GlossySynthetic/bell`, database `syn/bell`. Source-derived proposed validation ID
+`GlossySynthetic/bell`, database `syn/bell`. A-source-derived proposed validation ID
 is string `"58"` at index 0; proposed NVS strings are `"11", "105", "114", "17",
 "76"`. Full initial/train/validation/NVS lists are in the
 [metadata snapshot](../evidence/1d4a-metadata.json). Validate ordered equality using
 the unchanged helper under Python 3.8 and the actual admitted database before
 rendering. The proposal was derived with an isolated Python 3.9 Random instance
 from camera filename metadata; it neither executes the loader nor proves an old
-training split. The helper itself seeds global Python RNG with 6033 and shuffles
-once per call; preserve and record its actual call order/effects in each arm.
+training split. Even successful Python 3.8 verification would establish only A's
+current split, not the producing branch or historical validation ID. Never label
+`"58"` as historically verified. The A helper seeds global Python RNG with 6033
+and shuffles once per call; preserve and record its actual call order/effects in
+each A arm. Do not apply those shuffle effects to a future G reproduction.
 
 **Bear material next, currently blocked:** YAML `configs/material/real/bear.yaml`,
 envelope `configs/experiments/material.example.yaml`, database
@@ -104,11 +167,13 @@ scores. The helper's existing single validation ID becomes the first view.
 The PBRNeRF report's `[40,3,69,61,24]` is historical NVS evidence only, not an
 admitted current split. Preserve original ID types in the later manifest.
 
-Use `split_type='validation'` only: five NVS views, one validation view, all
-remaining views training, in helper order. `split_type='test'` reads a separate
-pickle-based split and is **outside v1**. Do not reinterpret its lists or substitute
-its IDs. NVS cameras and material NVS metric outputs are not exercised by this
-minimal protocol; a later NVS extension needs its own reviewed version/identity.
+For this A-based protocol, use `split_type='validation'` only: five NVS views,
+one validation view, all remaining views training, in helper order. This rule is
+not universal across historical branches. Both inspected branches' `test` mode
+reads a separate pickle-based split and is **outside v1**. Do not reinterpret its
+lists or substitute its IDs. NVS cameras and material NVS metric outputs are not
+exercised by this minimal protocol; a later NVS extension needs its own reviewed
+version/identity.
 
 ## Preprocessing, model and RNG preservation
 

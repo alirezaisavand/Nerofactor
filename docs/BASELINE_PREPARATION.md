@@ -76,7 +76,49 @@ was changed, fetched or merged.
 
 ## Ranked baseline candidates
 
-### 1. Bell geometry: first checkpoint-inference candidate, gated
+### Two distinct geometry questions
+
+**A** denotes `anisotropic` at `e1e859779301faced46d6476691e20b546c27ae0`,
+the basis of the maintained implementation. **G** denotes the inspected
+`origin/aniso_geometry_safe` snapshot at
+`79252178e65914ad1acbc14790b1514f276bfea0`. These refs identify inspected code,
+not the producing branch of a historical checkpoint.
+
+| Objective | Implementation and split | Claim boundary |
+| --- | --- | --- |
+| Current-code A-based inference regression | Compare direct-renderer and isolated routing using the same pinned maintained A-based scientific implementation and A's seeded three-way split | Can test routing preservation with admitted weights; cannot establish a thesis split or reproduce G-based thesis geometry |
+| Historical G-based thesis geometry reproduction | Recover the attributable producing G commit/configuration and preserve its two-way geometry split, preprocessing and evaluation behavior | Requires checkpoint-linked historical evidence and a separately reviewed protocol; not implemented by the proposed A-based v1 regression |
+
+For `split_type='validation'`, source inspection of
+`dataset/database.py:get_database_split` establishes:
+
+- **A:** call `random.seed(6033)`, copy `database.get_img_ids()`, then
+  `random.shuffle(img_ids)`. Return `train_ids=img_ids[6:]`, validation
+  `test_ids=img_ids[5:6]`, and `nvs_ids=img_ids[:5]`, in that three-list order.
+- **G:** call `random.seed(6033)`, copy `database.get_img_ids()`, set `img_num=1`;
+  the shuffle is commented out. Return `train_ids=img_ids[1:]` and validation
+  `test_ids=img_ids[0:1]`, in that two-list order. There is no NVS reservation or
+  third returned list. G's geometry renderer and validation dataset consume two
+  lists. The helper still resets global RNG state despite not shuffling, so it
+  must not be characterized as RNG-neutral.
+
+For the currently inventoried 128 bell cameras and loader-generated IDs
+`"0"` through `"127"` in numeric order, G's source rule would give validation
+`["0"]` and 127 training IDs `"1"` through `"127"`. A's source-derived proposal
+gives validation `["58"]`, five NVS IDs and 122 training IDs. These are
+conditional code-derived results, **not verified producing splits**. In
+particular, `"58"` belongs to training under that G rule; substituting A's split
+could label a trained-on view as held out. Both branches' `test` mode reads a
+separate split pickle and is outside this validation-only proposal.
+
+**Historical geometry reproduction must not substitute A's three-way split for
+G's two-way split without checkpoint-linked evidence establishing the actual
+producing split.** A regression pass, matching YAML, or a source-derived ID does
+not supply that evidence. If G origin is established, preserve its two-way split;
+an A-split evaluation of those weights would be a separately labeled cross-split
+experiment, not G thesis reproduction. No split policy or source is changed here.
+
+### 1. Bell geometry: first A-based inference-regression candidate, gated
 
 Use `configs/experiments/geometry.example.yaml` referencing
 `configs/shape/syn/bell.yaml`, scene `GlossySynthetic/bell` (`syn/bell`). Select
@@ -87,12 +129,14 @@ Use `configs/experiments/geometry.example.yaml` referencing
 
 Available scene metadata: 641 files including 128 camera pickles, 128 source
 RGB PNGs, 128 depth PNGs, 128 training masks, 128 converted JPGs and an evaluation
-cloud. No camera pickle was opened. Source-derived validation split proposal:
+cloud. No camera pickle was opened. **A-based** source-derived split proposal:
 validation ID `"58"`, NVS IDs `"11", "105", "114", "17", "76"`, 122 ordered
 training IDs (full lists in the JSON). This is derived on Python 3.9 from the
 128 contiguous camera filenames and the inspected split helper's shuffle rule;
 it is not a native Python 3.8 or recovered historical split observation. Verify
-all ordered IDs in the target interpreter before admission.
+all ordered IDs in the target interpreter for A-regression admission; that check
+would still not establish which split produced the checkpoint. Do not present
+`"58"` as the historically verified bell validation ID or a G validation ID.
 
 Other evidence: `meshes/bell_shape-300000.ply` (19,116,958 bytes),
 `meshes-pretrained/syn/bell.ply` (4,729,497 bytes), model train/validation text and
@@ -107,6 +151,37 @@ That **does not** identify producing code or establish architectural/mathematica
 equivalence. Checkpoint trust, content hash, producing architecture/config and
 stored step are unresolved. This candidate has the most complete local evidence,
 but is not yet an admitted, fully reproducible thesis baseline.
+
+#### Bell checkpoint attribution evidence
+
+Establish a chain tied to the exact `bell_shape/model_best.pth` file, rather than
+to the directory name or a current branch tip:
+
+1. A later, separately authorized content hash and trust/ownership declaration
+   binding this checkpoint to an archived run ID or original checkpoint copy.
+2. That run's producing Git commit and any dirty patch/local split edits, launch
+   command/entry point, original YAML and effective overrides/defaults. A branch
+   name alone is mutable; bell YAML is identical at the inspected A/G tips and
+   cannot distinguish them. Current code or tensor shapes alone cannot prove
+   the producing implementation.
+3. The run's ordered database IDs and camera/filename mapping, exact ordered
+   training/validation lists, presence or absence of NVS IDs, split-helper source,
+   split mode, seed and call order. An archived split manifest is strongest;
+   alternatively, attributable producing source/configuration plus authenticated
+   dataset identity/order must allow the lists to be reconstructed and checked
+   against run records. A or G tip behavior alone is insufficient.
+4. Checkpoint-selection records linking the chosen file and stored step to the
+   validation IDs, metric definition and best-checkpoint decision: attributable
+   logs/events and saved GT/render outputs where available. Unlinked scalar logs,
+   image index 0, filenames or a visually similar view do not establish this link.
+
+Preserve researcher declarations as supplied evidence and record any independent
+corroboration separately. Recovering trusted checkpoint fields later may help
+corroborate a run, but missing provenance is not filled by deserialization or by
+inventing split IDs. The producing branch/configuration/split remain unresolved;
+G-based thesis reproduction is blocked until that chain is reviewed. No
+checkpoint loading, hashing or new artifact inspection is performed by this
+documentation follow-up.
 
 ### 2. Bear material: preferred Stage II target, blocked by missing weights
 
@@ -154,7 +229,9 @@ Before implementing an inference runner, review this protocol and obtain:
 
 1. Archived smoke/test reports with immutable image/source identities.
 2. Trusted ownership/origin declaration for the selected bell checkpoint, its
-   producing configuration/architecture and known training/selection history.
+   producing configuration/architecture and known training/selection history;
+   establish A/G origin and the checkpoint-linked split evidence above before
+   making any historical geometry reproduction claim.
 3. The bear material checkpoint and hash-bound origin declaration; preserve the
    original if recovered elsewhere, expose it only as an explicit read-only root.
 4. Target-interpreter ordered split evidence, especially bear cache/COLMAP ID
