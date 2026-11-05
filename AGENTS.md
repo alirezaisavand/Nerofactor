@@ -135,14 +135,29 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized milestone: **1D.4B-0, checkpoint admission and provenance
-verification only**, reviewed against `5c791a77c160c32d038bdbe1a6f82f20d5800233`.
-Read-only scientific investigation is authorized: hash the explicitly selected
-bell `model_best.pth` as opaque bytes, stat the alternate without substitution,
-inspect Git/text/metadata, and verify exact A/G split helpers in a bounded
-stdlib-only CPU process against metadata-derived ordered IDs. Do not construct
-the dataset loader or deserialize checkpoint, event or camera/cache pickle data.
-Do not run model inference, rendering, evaluation, training or GPU computation.
+Current authorized milestone: **1D.4B-1, bell geometry checkpoint compatibility
+preparation/investigation only**, reviewed against
+`940c2d83463ff9f506ac84bb6fab8b67ee163316`. Reverify the selected bell checkpoint
+against its 1D.4B-0 SHA-256 and inspect scientific source statically without
+changing it. The researcher explicitly confirmed trust and authorized limited
+CPU-only deserialization of this exact checkpoint hash
+`d928a03d9eb9f993ab8f4a0384b31cf1c7bdc875316a1c247dcf9722b8b79ccc`
+for keys, tensor names/shapes/dtypes, stored step and provenance metadata only.
+Do not request this same trust confirmation again for unchanged bytes/scope.
+
+Deserialization also requires verified OS-enforced network/device isolation and
+a reviewed CPU-only inspection procedure. The isolation probe failed in this
+session; no checkpoint has been deserialized. Stop with the blocker report; do
+not bypass restrictions or execute an ordinary-process load as a substitute.
+The unchanged full geometry constructor calls CUDA in `generate_ide_fn`; do not
+patch or fake that constructor to claim CPU architecture verification. Source
+constructor/default matches are not a checkpoint tensor comparison or producing-
+branch evidence. No model execution, inference/rendering/training, GPU work,
+optimizer/scheduler restoration, partial/non-strict weight loading, scientific
+source/YAML change, package/image/environment/permission change, commit or push
+is authorized. See
+[BELL_CHECKPOINT_COMPATIBILITY.md](docs/evidence/BELL_CHECKPOINT_COMPATIBILITY.md)
+and its machine-readable report for exact checks, gates and unresolved fields.
 
 The researcher approved archiving the original small smoke reports/configuration
 and manifest files at `/home/isavand/paper/evidence/1d3c` after the originally
@@ -166,10 +181,11 @@ have separate admission decisions. Preserve the exact A three-way seeded split
 and G two-way unshuffled split/RNG effects; verified present source-defined IDs
 are not verified producing-run IDs. Checkpoint hashing, matching YAML, same-shaped
 weights or smoke success cannot establish origin/compatibility/reproducibility.
-No checkpoint loading or inference adapter is authorized. Keep missing trust,
-architecture/step, producing commit/configuration/split and selection linkage as
-explicit blockers. Stop after the admission report for review; do not commit or
-push automatically. The earlier
+No checkpoint loading may proceed while the isolation gate is blocked; no
+inference adapter is authorized. Trust is confirmed for the exact hash/scope,
+while architecture/step, producing commit/configuration/split and selection linkage
+remain unresolved. Stop after the compatibility report for review; do not commit
+or push automatically. The earlier
 [baseline preparation](docs/BASELINE_PREPARATION.md) and
 [inference protocol](docs/protocols/CHECKPOINT_INFERENCE_V1.md) remain proposals,
 not execution approval.

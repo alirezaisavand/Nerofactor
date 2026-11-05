@@ -1,0 +1,470 @@
+{
+  "schema_version": 1,
+  "milestone": "1D.4B-1",
+  "protocol": "bell-checkpoint-cpu-compatibility-v1",
+  "status": "blocked_execution_environment",
+  "observed_at_utc": "2026-11-05T23:27:13.524567+00:00",
+  "review_baseline": "940c2d83463ff9f506ac84bb6fab8b67ee163316",
+  "branch": "paper/infrastructure",
+  "initial_worktree": "clean",
+  "checkpoint": {
+    "path": "/home/isavand/paper/final_results/model/bell_shape/model_best.pth",
+    "sha256": "d928a03d9eb9f993ab8f4a0384b31cf1c7bdc875316a1c247dcf9722b8b79ccc",
+    "approved_sha256": "d928a03d9eb9f993ab8f4a0384b31cf1c7bdc875316a1c247dcf9722b8b79ccc",
+    "matches_1d4b0": true,
+    "size": 29966819,
+    "mtime_ns": 1793693855891692219,
+    "ctime_ns": 1793693855891692219,
+    "device": 66310,
+    "inode": 109587444,
+    "metadata_stable_across_hashing": true,
+    "alternate_selected": false
+  },
+  "trust_gate": {
+    "status": "explicitly_confirmed",
+    "researcher_confirmation": "I confirm trust and authorize that limited inspection",
+    "scope": "Exact selected hash; CPU-only keys, tensor names/shapes/dtypes, stored step and available provenance metadata; no model execution or optimizer restoration",
+    "confirmation_record": "Researcher reply to hash-bound inspection question during this task; not independent producing-history verification"
+  },
+  "isolation_gate": {
+    "status": "failed",
+    "probe_command": [
+      "bwrap",
+      "--die-with-parent",
+      "--unshare-user",
+      "--unshare-net",
+      "--ro-bind",
+      "/usr",
+      "/usr",
+      "--ro-bind",
+      "/lib",
+      "/lib",
+      "--ro-bind",
+      "/lib64",
+      "/lib64",
+      "--proc",
+      "/proc",
+      "--dev",
+      "/dev",
+      "--tmpfs",
+      "/tmp",
+      "--",
+      "/usr/bin/true"
+    ],
+    "exit_code": 1,
+    "stderr": "bwrap: loopback: Failed to create NETLINK_ROUTE socket: Operation not permitted",
+    "gpu_or_torch_executed": false,
+    "bypass_or_escalation_attempted": false,
+    "limits": "Cannot attest the required network/device-isolated inspection environment. No assumption that restricted networking or CUDA_VISIBLE_DEVICES alone meets the isolation requirement.",
+    "payload_launched": false
+  },
+  "checkpoint_inspection": {
+    "performed": false,
+    "torch_imported": false,
+    "checkpoint_deserialized": false,
+    "top_level_keys": null,
+    "network_tensors": null,
+    "stored_step": null,
+    "stored_best_para": null,
+    "available_provenance_metadata": null,
+    "key_shape_dtype_comparison": null,
+    "strict_load_attempted": false,
+    "optimizer_or_scheduler_restored": false
+  },
+  "static_architecture": {
+    "classification": "verified inspected-source facts; not actual tensor-signature or scientific-equivalence verification",
+    "ast_tool_python": "3.9.12; ast.dump without locations",
+    "implementations": {
+      "maintained": {
+        "source_commit": "940c2d83463ff9f506ac84bb6fab8b67ee163316",
+        "file_sha256": {
+          "network/field.py": "b8386007dc009442cdefdeccc3c6ecc0114f6d0e7feaf804008b0bd9020091fe",
+          "network/renderer.py": "447957a07e69839aa6500308f82ae30171378e1da93f5c9630e9f9cd97b92c55",
+          "utils/ref_utils.py": "11bebfe6348a9ecfe20f457de0c6b7dbc93cc9dc975952a8b2b938f9d6d60422",
+          "configs/shape/syn/bell.yaml": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f"
+        },
+        "geometry_component_ast_sha256": {
+          "Embedder": "a2acabc7bca7fec2c74405945d4504054ac074a58d5e799c75f52c55ddea9769",
+          "get_embedder": "b51dbbc97c8d14f9f55c63770313542ecfd1fd30c130dfb25672a67d32046875",
+          "SDFNetwork": "c5ae185ee40c591f5c40179a4b7e637f564389f3151b3ad07a66a4dfdaeba9a3",
+          "SingleVarianceNetwork": "693e13bfe05d84f7f34ae2190af275e2dbcb141479f6f18914fce4d0356f4ad6",
+          "NeRFNetwork": "ca59c659b3d30cfa1c9d1d566cc50081ff8c74d50b25b38c230d481ab9fdd976",
+          "IdentityActivation": "bf3c9d5267448601ba3cef9e17f2e7e3c8810d38a9fc177241eeb2252cec5205",
+          "ExpActivation": "01c568494dd4c38f07906d11059e8c4775ef636b14c1617a64b99947d3e4dc00",
+          "make_predictor": "0ec4f6adedc12efd412b9f3d2990ebbec2a9073c937e38b43c084613c6c316a7"
+        },
+        "renderer_defaults": {
+          "std_net": "default",
+          "std_act": "exp",
+          "inv_s_init": 0.3,
+          "freeze_inv_s_step": null,
+          "sdf_net": "default",
+          "sdf_activation": "none",
+          "sdf_bias": 0.5,
+          "sdf_n_layers": 8,
+          "sdf_freq": 6,
+          "sdf_d_out": 257,
+          "geometry_init": true,
+          "shader_config": {},
+          "n_samples": 64,
+          "n_bg_samples": 32,
+          "inf_far": 1000.0,
+          "n_importance": 64,
+          "up_sample_steps": 4,
+          "perturb": 1.0,
+          "anneal_end": 50000,
+          "train_ray_num": 512,
+          "test_ray_num": 512,
+          "clip_sample_variance": true,
+          "database_name": "nerf_synthetic/lego/black_800",
+          "is_nerf": false,
+          "test_downsample_ratio": true,
+          "downsample_ratio": 0.25,
+          "val_geometry": false,
+          "rgb_loss": "charbonier",
+          "apply_occ_loss": true,
+          "occ_loss_step": 20000,
+          "occ_loss_max_pn": 2048,
+          "occ_sdf_thresh": 0.01,
+          "fixed_camera": false,
+          "score_weight_max": 1.5,
+          "curvature_reduce_start": 50000,
+          "curvature_reduce_step": 2000,
+          "use_refscores": false,
+          "apply_opacity_loss": true,
+          "opacity_loss_weight": 0.01,
+          "curv_loss_weight": 0.001
+        },
+        "module_declarations": {
+          "sdf_network": {
+            "source": "self.sdf_network = SDFNetwork(d_out=self.cfg['sdf_d_out'], d_in=3, d_hidden=256,\n                                      n_layers=self.cfg['sdf_n_layers'],\n                                      skip_in=[self.cfg['sdf_n_layers'] // 2], multires=self.cfg['sdf_freq'],\n                                      bias=self.cfg['sdf_bias'], scale=1.0,\n                                      geometric_init=self.cfg['geometry_init'],\n                                      weight_norm=True, sdf_activation=self.cfg['sdf_activation'])",
+            "ast_sha256": "69977f94c01bf4c5828238008cb7a305db192aaaee1b0b63e758e9aa33f87dec"
+          },
+          "deviation_network": {
+            "source": "self.deviation_network = SingleVarianceNetwork(init_val=self.cfg['inv_s_init'], activation=self.cfg['std_act'])",
+            "ast_sha256": "698f4795525f901790a05f35692c1c4ceac985f90967bb522acda53a9f69ae75"
+          },
+          "outer_nerf": {
+            "source": "self.outer_nerf = NeRFNetwork(D=8, d_in=4, d_in_view=3, W=256, multires=10, multires_view=4, output_ch=4,\n                                      skips=[4], use_viewdirs=True)",
+            "ast_sha256": "b0e223f6e35fce194d264be5ad9bad660b619d8ee9ac0d4cf843a84edad2a189"
+          },
+          "color_network": {
+            "source": "self.color_network = AppShadingNetwork(self.cfg['shader_config'])",
+            "ast_sha256": "ef72f3f0ad3aea9e5c66e4789459b1fd01313721eb4dcfc8502c421c598dc06d"
+          }
+        },
+        "shader_constructor_ast_sha256": "c1a10a7a81f45239931acda32f645caaeebc5a300b365c2d516097de88108a37",
+        "shader_defaults": {
+          "human_light": false,
+          "sphere_direction": false,
+          "light_pos_freq": 8,
+          "inner_init": -0.95,
+          "roughness_init": 0.0,
+          "metallic_init": 0.0,
+          "light_exp_max": 0.0
+        },
+        "shader_light_method_ast_sha256": {
+          "predict_diffuse_lights": "5232fe70fc798f84bf9a1df87d6de204c2d38b1ac13dc0fa07da91c709ae11d3",
+          "predict_specular_lights": "9b40d0c5ed55d8e9728c15618e83ef261f944acffd6308404db49d96e9a416f9"
+        },
+        "cpu_constructor_blocker": {
+          "call_chain": [
+            "NeROShapeRenderer.__init__",
+            "AppShadingNetwork.__init__",
+            "utils/ref_utils.py:generate_ide_fn"
+          ],
+          "cuda_call_source_lines": [
+            81,
+            82
+          ],
+          "reference_tensor_catalog_generated": false
+        }
+      },
+      "A": {
+        "source_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+        "file_sha256": {
+          "network/field.py": "b8386007dc009442cdefdeccc3c6ecc0114f6d0e7feaf804008b0bd9020091fe",
+          "network/renderer.py": "dd82c61cb91a3d54e801f1fb32238e3b03a87e1ceb4c50f24f1b359e50cfd5e9",
+          "utils/ref_utils.py": "11bebfe6348a9ecfe20f457de0c6b7dbc93cc9dc975952a8b2b938f9d6d60422",
+          "configs/shape/syn/bell.yaml": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f"
+        },
+        "geometry_component_ast_sha256": {
+          "Embedder": "a2acabc7bca7fec2c74405945d4504054ac074a58d5e799c75f52c55ddea9769",
+          "get_embedder": "b51dbbc97c8d14f9f55c63770313542ecfd1fd30c130dfb25672a67d32046875",
+          "SDFNetwork": "c5ae185ee40c591f5c40179a4b7e637f564389f3151b3ad07a66a4dfdaeba9a3",
+          "SingleVarianceNetwork": "693e13bfe05d84f7f34ae2190af275e2dbcb141479f6f18914fce4d0356f4ad6",
+          "NeRFNetwork": "ca59c659b3d30cfa1c9d1d566cc50081ff8c74d50b25b38c230d481ab9fdd976",
+          "IdentityActivation": "bf3c9d5267448601ba3cef9e17f2e7e3c8810d38a9fc177241eeb2252cec5205",
+          "ExpActivation": "01c568494dd4c38f07906d11059e8c4775ef636b14c1617a64b99947d3e4dc00",
+          "make_predictor": "0ec4f6adedc12efd412b9f3d2990ebbec2a9073c937e38b43c084613c6c316a7"
+        },
+        "renderer_defaults": {
+          "std_net": "default",
+          "std_act": "exp",
+          "inv_s_init": 0.3,
+          "freeze_inv_s_step": null,
+          "sdf_net": "default",
+          "sdf_activation": "none",
+          "sdf_bias": 0.5,
+          "sdf_n_layers": 8,
+          "sdf_freq": 6,
+          "sdf_d_out": 257,
+          "geometry_init": true,
+          "shader_config": {},
+          "n_samples": 64,
+          "n_bg_samples": 32,
+          "inf_far": 1000.0,
+          "n_importance": 64,
+          "up_sample_steps": 4,
+          "perturb": 1.0,
+          "anneal_end": 50000,
+          "train_ray_num": 512,
+          "test_ray_num": 512,
+          "clip_sample_variance": true,
+          "database_name": "nerf_synthetic/lego/black_800",
+          "is_nerf": false,
+          "test_downsample_ratio": true,
+          "downsample_ratio": 0.25,
+          "val_geometry": false,
+          "rgb_loss": "charbonier",
+          "apply_occ_loss": true,
+          "occ_loss_step": 20000,
+          "occ_loss_max_pn": 2048,
+          "occ_sdf_thresh": 0.01,
+          "fixed_camera": false,
+          "score_weight_max": 1.5,
+          "curvature_reduce_start": 50000,
+          "curvature_reduce_step": 2000,
+          "use_refscores": false,
+          "apply_opacity_loss": true,
+          "opacity_loss_weight": 0.01,
+          "curv_loss_weight": 0.001
+        },
+        "module_declarations": {
+          "sdf_network": {
+            "source": "self.sdf_network = SDFNetwork(d_out=self.cfg['sdf_d_out'], d_in=3, d_hidden=256,\n                                      n_layers=self.cfg['sdf_n_layers'],\n                                      skip_in=[self.cfg['sdf_n_layers'] // 2], multires=self.cfg['sdf_freq'],\n                                      bias=self.cfg['sdf_bias'], scale=1.0,\n                                      geometric_init=self.cfg['geometry_init'],\n                                      weight_norm=True, sdf_activation=self.cfg['sdf_activation'])",
+            "ast_sha256": "69977f94c01bf4c5828238008cb7a305db192aaaee1b0b63e758e9aa33f87dec"
+          },
+          "deviation_network": {
+            "source": "self.deviation_network = SingleVarianceNetwork(init_val=self.cfg['inv_s_init'], activation=self.cfg['std_act'])",
+            "ast_sha256": "698f4795525f901790a05f35692c1c4ceac985f90967bb522acda53a9f69ae75"
+          },
+          "outer_nerf": {
+            "source": "self.outer_nerf = NeRFNetwork(D=8, d_in=4, d_in_view=3, W=256, multires=10, multires_view=4, output_ch=4,\n                                      skips=[4], use_viewdirs=True)",
+            "ast_sha256": "b0e223f6e35fce194d264be5ad9bad660b619d8ee9ac0d4cf843a84edad2a189"
+          },
+          "color_network": {
+            "source": "self.color_network = AppShadingNetwork(self.cfg['shader_config'])",
+            "ast_sha256": "ef72f3f0ad3aea9e5c66e4789459b1fd01313721eb4dcfc8502c421c598dc06d"
+          }
+        },
+        "shader_constructor_ast_sha256": "c1a10a7a81f45239931acda32f645caaeebc5a300b365c2d516097de88108a37",
+        "shader_defaults": {
+          "human_light": false,
+          "sphere_direction": false,
+          "light_pos_freq": 8,
+          "inner_init": -0.95,
+          "roughness_init": 0.0,
+          "metallic_init": 0.0,
+          "light_exp_max": 0.0
+        },
+        "shader_light_method_ast_sha256": {
+          "predict_diffuse_lights": "5232fe70fc798f84bf9a1df87d6de204c2d38b1ac13dc0fa07da91c709ae11d3",
+          "predict_specular_lights": "9b40d0c5ed55d8e9728c15618e83ef261f944acffd6308404db49d96e9a416f9"
+        },
+        "cpu_constructor_blocker": {
+          "call_chain": [
+            "NeROShapeRenderer.__init__",
+            "AppShadingNetwork.__init__",
+            "utils/ref_utils.py:generate_ide_fn"
+          ],
+          "cuda_call_source_lines": [
+            81,
+            82
+          ],
+          "reference_tensor_catalog_generated": false
+        }
+      },
+      "G": {
+        "source_commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+        "file_sha256": {
+          "network/field.py": "06fb6606c580dede3e7e12ddfad2a2fed9368fa4adfcadf7cf7cef73e940617f",
+          "network/renderer.py": "38c280ed812c4fb22b980caf842f0cd302acbee3bde9c449972dabd23485584b",
+          "utils/ref_utils.py": "11bebfe6348a9ecfe20f457de0c6b7dbc93cc9dc975952a8b2b938f9d6d60422",
+          "configs/shape/syn/bell.yaml": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f"
+        },
+        "geometry_component_ast_sha256": {
+          "Embedder": "a2acabc7bca7fec2c74405945d4504054ac074a58d5e799c75f52c55ddea9769",
+          "get_embedder": "b51dbbc97c8d14f9f55c63770313542ecfd1fd30c130dfb25672a67d32046875",
+          "SDFNetwork": "c5ae185ee40c591f5c40179a4b7e637f564389f3151b3ad07a66a4dfdaeba9a3",
+          "SingleVarianceNetwork": "693e13bfe05d84f7f34ae2190af275e2dbcb141479f6f18914fce4d0356f4ad6",
+          "NeRFNetwork": "ca59c659b3d30cfa1c9d1d566cc50081ff8c74d50b25b38c230d481ab9fdd976",
+          "IdentityActivation": "bf3c9d5267448601ba3cef9e17f2e7e3c8810d38a9fc177241eeb2252cec5205",
+          "ExpActivation": "01c568494dd4c38f07906d11059e8c4775ef636b14c1617a64b99947d3e4dc00",
+          "make_predictor": "0ec4f6adedc12efd412b9f3d2990ebbec2a9073c937e38b43c084613c6c316a7"
+        },
+        "renderer_defaults": {
+          "std_net": "default",
+          "std_act": "exp",
+          "inv_s_init": 0.3,
+          "freeze_inv_s_step": null,
+          "sdf_net": "default",
+          "sdf_activation": "none",
+          "sdf_bias": 0.5,
+          "sdf_n_layers": 8,
+          "sdf_freq": 6,
+          "sdf_d_out": 257,
+          "geometry_init": true,
+          "shader_config": {},
+          "n_samples": 64,
+          "n_bg_samples": 32,
+          "inf_far": 1000.0,
+          "n_importance": 64,
+          "up_sample_steps": 4,
+          "perturb": 1.0,
+          "anneal_end": 50000,
+          "train_ray_num": 512,
+          "test_ray_num": 512,
+          "clip_sample_variance": true,
+          "database_name": "nerf_synthetic/lego/black_800",
+          "is_nerf": false,
+          "test_downsample_ratio": true,
+          "downsample_ratio": 0.25,
+          "val_geometry": false,
+          "rgb_loss": "charbonier",
+          "apply_occ_loss": true,
+          "occ_loss_step": 20000,
+          "occ_loss_max_pn": 2048,
+          "occ_sdf_thresh": 0.01,
+          "fixed_camera": false,
+          "score_weight_max": 1.5,
+          "curvature_reduce_start": 50000,
+          "curvature_reduce_step": 2000,
+          "use_refscores": false,
+          "apply_opacity_loss": true,
+          "opacity_loss_weight": 0.01,
+          "curv_loss_weight": 0.001
+        },
+        "module_declarations": {
+          "sdf_network": {
+            "source": "self.sdf_network = SDFNetwork(d_out=self.cfg['sdf_d_out'], d_in=3, d_hidden=256,\n                                      n_layers=self.cfg['sdf_n_layers'],\n                                      skip_in=[self.cfg['sdf_n_layers'] // 2], multires=self.cfg['sdf_freq'],\n                                      bias=self.cfg['sdf_bias'], scale=1.0,\n                                      geometric_init=self.cfg['geometry_init'],\n                                      weight_norm=True, sdf_activation=self.cfg['sdf_activation'])",
+            "ast_sha256": "69977f94c01bf4c5828238008cb7a305db192aaaee1b0b63e758e9aa33f87dec"
+          },
+          "deviation_network": {
+            "source": "self.deviation_network = SingleVarianceNetwork(init_val=self.cfg['inv_s_init'], activation=self.cfg['std_act'])",
+            "ast_sha256": "698f4795525f901790a05f35692c1c4ceac985f90967bb522acda53a9f69ae75"
+          },
+          "outer_nerf": {
+            "source": "self.outer_nerf = NeRFNetwork(D=8, d_in=4, d_in_view=3, W=256, multires=10, multires_view=4, output_ch=4,\n                                      skips=[4], use_viewdirs=True)",
+            "ast_sha256": "b0e223f6e35fce194d264be5ad9bad660b619d8ee9ac0d4cf843a84edad2a189"
+          },
+          "color_network": {
+            "source": "self.color_network = AppShadingNetwork(self.cfg['shader_config'])",
+            "ast_sha256": "ef72f3f0ad3aea9e5c66e4789459b1fd01313721eb4dcfc8502c421c598dc06d"
+          }
+        },
+        "shader_constructor_ast_sha256": "c1a10a7a81f45239931acda32f645caaeebc5a300b365c2d516097de88108a37",
+        "shader_defaults": {
+          "human_light": false,
+          "sphere_direction": false,
+          "light_pos_freq": 8,
+          "inner_init": -0.95,
+          "roughness_init": 0.0,
+          "metallic_init": 0.0,
+          "light_exp_max": 0.0
+        },
+        "shader_light_method_ast_sha256": {
+          "predict_diffuse_lights": "94486ced8886f29f567e7d4c492f443d5541661e891c8dd89baeaf7ba247d78a",
+          "predict_specular_lights": "4a3556b509d675d30efee9d39d0273db4f2f509a852c270e799b46503dedcb4d"
+        },
+        "cpu_constructor_blocker": {
+          "call_chain": [
+            "NeROShapeRenderer.__init__",
+            "AppShadingNetwork.__init__",
+            "utils/ref_utils.py:generate_ide_fn"
+          ],
+          "cuda_call_source_lines": [
+            81,
+            82
+          ],
+          "reference_tensor_catalog_generated": false
+        }
+      }
+    },
+    "comparisons_to_maintained": {
+      "A": {
+        "classification": "verified source AST/declaration comparison only; no checkpoint comparison",
+        "all_eight_geometry_component_asts_match": true,
+        "renderer_defaults_match": true,
+        "all_four_module_declaration_asts_match": true,
+        "shader_constructor_ast_matches": true,
+        "shader_defaults_match": true,
+        "shader_light_method_matches": {
+          "predict_diffuse_lights": true,
+          "predict_specular_lights": true
+        }
+      },
+      "G": {
+        "classification": "verified source AST/declaration comparison only; no checkpoint comparison",
+        "all_eight_geometry_component_asts_match": true,
+        "renderer_defaults_match": true,
+        "all_four_module_declaration_asts_match": true,
+        "shader_constructor_ast_matches": true,
+        "shader_defaults_match": true,
+        "shader_light_method_matches": {
+          "predict_diffuse_lights": false,
+          "predict_specular_lights": false
+        }
+      }
+    },
+    "G_difference": "In AppShadingNetwork.predict_diffuse_lights and predict_specular_lights, A specifies F.normalize eps=1e-6 in sphere_direction branches; G omits eps. Constructor/default declarations match; renderer shader_config default leaves sphere_direction False unless overridden.",
+    "producing_revision_implication": "Matching A/G constructor declarations provide no unique branch discriminator. No observed checkpoint architecture exists in this milestone; earlier/local variants remain possible."
+  },
+  "inspection_plan": {
+    "implemented_runner": false,
+    "execution_requires": [
+      "Exact hash and trust confirmation still applicable",
+      "OS-enforced network isolation, hidden GPU devices and read-only inputs",
+      "Reviewed isolated CPU runtime identity, script and resource budget"
+    ],
+    "cpu_deserialization_policy": "One explicit trusted-file torch.load with map_location='cpu' in a dedicated process, only after all gates; no weights_only fallback or other deserialization before authorization. Use the reviewed runtime's supported API and record its version.",
+    "extract": [
+      "Top-level key names and safe type names",
+      "Each network_state_dict tensor key/shape/dtype/device; CPU-only",
+      "Exact stored step and scalar best_para when available",
+      "Bounded allowlisted primitive provenance fields with path/source; unknown field names/types only"
+    ],
+    "prohibit": [
+      "Training entry points and renderer/model construction",
+      "Forward/backward/inference/rendering",
+      "Optimizer/scheduler state restoration",
+      "Partial or non-strict state loads",
+      "Key stripping/renaming, dtype casts, reshaping or architecture repairs",
+      "CUDA monkeypatches or silent CPU conversions of scientific constructors",
+      "Network/package installation"
+    ],
+    "reference_catalog": "Requires a reviewed CPU-only declaration-derived key/shape/dtype reference. Full renderer construction triggers .cuda() through generate_ide_fn; no constructor patch/fake was introduced.",
+    "comparison": "Exact full key set including buffers and weight_norm weight_g/weight_v, shapes and dtypes against separately reviewed A/G references. Record missing/unexpected/mismatched tensors; do not load weights merely to test a match."
+  },
+  "admission_decisions": {
+    "current_A_architecture_compatible": "undetermined; no observed checkpoint tensors",
+    "current_A_inference": "hold",
+    "historical_G_reproduction": "hold; producing commit/configuration/split/selection unresolved"
+  },
+  "remaining_blockers": [
+    "No verified network/device-isolated execution environment in this session",
+    "No actual checkpoint tensor catalogue or stored progress/provenance inspection",
+    "No reviewed full CPU reference tensor signature; unchanged renderer constructor requires CUDA",
+    "Producing implementation/configuration/split/selection not established"
+  ],
+  "smallest_next_action": "Provide an approved existing OS-isolated CPU-only/no-network environment and review a metadata-only inspection runner/reference catalogue. The hash-bound trust gate is already confirmed; do not ask for it again unless file/scope changes.",
+  "validation": {
+    "definition_static_checks": "passed; definition/version structure, staged/pre-install gates, Compose policy, five Docker shell parses and Python 3.8 grammar for 61 files",
+    "documentation_checks": "passed; JSON parsing, local links/anchors, whitespace, exact documentation/JSON-only scope and review baseline/branch",
+    "source_evidence_checks": "passed; pinned Git file hashes, reported AST comparison consistency and two CUDA calls in generate_ide_fn",
+    "checkpoint_metadata_check": "passed; size/times/device/inode stable and hash matches approved evidence",
+    "actual_checkpoint_tensor_compatibility": "not executed; environment blocked",
+    "infrastructure_unit_suite": "not rerun for documentation/metadata-only changes",
+    "static_build_warning": "Full build/base/artifact provenance gaps remain; static checks do not verify engine, GPU, runtime or checkpoint compatibility"
+  }
+}
