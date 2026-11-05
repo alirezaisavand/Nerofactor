@@ -135,16 +135,22 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Milestones through 1D.3B-1A have been reviewed and approved.
-Current authorized milestone: **1D.3B-2A, resolve build prerequisites only**.
+Milestones through 1D.3B-2A have been reviewed and approved.
+Current authorized milestone: **1D.3B-2B, document recovered runtime dependencies**.
+Validate the supplied runtime inventory, record exact installed Python/Debian/tool
+versions and dependency metadata, and investigate the supplied CUDA base candidate
+through permitted registry metadata only. Keep installed evidence, publisher
+checksums and byte-verified artifacts distinct. Registry presence or tag agreement
+does not establish historical base identity; do not fill an unverified base digest
+or mark a resolution reviewed. Stop after documenting pins and remaining blockers.
 Preserve the accepted Docker architecture, full pre-install validation gate,
-dependency pins and historical runtime. Allow filtered read-only diagnostics,
-offline verified exports of exact source commits into new external owned storage,
-dependency/source provenance assessment and CPU/static fixtures. Correct only
-infrastructure test-harness Python 3.8 compatibility, retaining every assertion.
+dependency pins and historical runtime. Use filtered read-only diagnostics,
+registry metadata queries, dependency/source assessment and CPU/static fixtures.
+Preserve infrastructure test-harness behavior and every existing assertion; do
+not introduce unrelated fixes or stage originals in this documentation milestone.
 Never run setup to inspect it, copy a working tree wholesale, invent missing pins,
 or promote publisher artifact metadata to verified downloaded/historical identity.
-Its scope is `docker/paper/` prerequisite tools, test-harness fixes and supporting
+Its scope is `docker/paper/` reference manifests, metadata consistency checks and supporting
 documentation. Use the recovered system Python 3.8.10 / CUDA 11.1 / Torch
 1.8.1+cu111 / ABI 0 reference; no Micromamba or scientific upgrades. Pin nvdiffrast
 and raytracing to the exact recovered revisions/setup hashes. Record unknown
@@ -227,7 +233,9 @@ See [docker/paper/README.md](docker/paper/README.md) for the proposed definition
 unresolved build inputs and Python 3.8 assessment. Test-harness compatibility only
 is authorized; no interpreter upgrade or scientific compatibility fix is allowed.
 See [docker/paper/PREREQUISITES.md](docker/paper/PREREQUISITES.md) for recovery,
-verified source staging and remaining gates. Before any future build, review
+verified source staging and remaining gates, and
+[docker/paper/RUNTIME_DEPENDENCIES.md](docker/paper/RUNTIME_DEPENDENCIES.md) for
+the recovered pins and unverified CUDA base candidate. Before any future build, review
 the full exact dependency/source/artifact resolution and use a distinct candidate
 image tag. Preserve source licences, compiler flags and scientific settings.
 Do not begin first builds/environment installation, native GPU smoke tests,

@@ -3,9 +3,12 @@
 1D.3B-2A follow-up: use the filtered collector and base/source recovery sequence in
 [docker/paper/PREREQUISITES.md](../docker/paper/PREREQUISITES.md#safe-read-only-recovery-in-the-regular-terminal).
 It adds marker-aware installed dependency closure, missing build-package versions,
-Eigen/compiler and Debian role dependency metadata. The container-only information
-remains unrecovered in Codex because a read-only inspect still receives socket
-permission denied. No access workaround or package installation is authorized.
+Eigen/compiler and Debian role dependency metadata. 1D.3B-2B now integrates the
+researcher-supplied inventory in
+[RUNTIME_DEPENDENCIES.md](../docker/paper/RUNTIME_DEPENDENCIES.md): installed pins
+are recovered, while image-bound provenance, six ambiguous Debian roles, complete
+Debian artifacts and Ninja ownership still require follow-up. Docker access in
+Codex remains restricted; no workaround or package installation is authorized.
 
 Follow-up: the recovered reference uses the container's **system `python3`**
 (3.8.10), not a Micromamba environment or another `python` executable. Additional

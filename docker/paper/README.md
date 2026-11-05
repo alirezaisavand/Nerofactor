@@ -1,12 +1,14 @@
 # Paper environment reconstruction: definitions and build prerequisites
 
 This is a reviewable reconstruction of the recovered CUDA 11.1 / system Python
-3.8 / Torch 1.8 environment. Current **1D.3B-2A** permits prerequisite recovery,
-verified offline source staging into new external storage and CPU tests only.
+3.8 / Torch 1.8 environment. Current **1D.3B-2B** documents the supplied runtime
+inventory, installed dependency closure and remaining artifact prerequisites.
 **Do not build, install packages or run containers.** See
 [PREREQUISITES.md](PREREQUISITES.md) for filtered diagnostics, exact source staging,
 dependency closure limits, test results and the separately approved first-build
-sequence. The original definition/review history below remains useful context.
+sequence. [RUNTIME_DEPENDENCIES.md](RUNTIME_DEPENDENCIES.md) records the current
+recovered pins, independent inventory validation and unverified CUDA base candidate.
+The original definition/review history below remains useful context.
 Nothing here modifies `nerofactor`,
 `intelligent_keldysh`, original data/results, native source checkouts, or scientific
 code. No image or GPU compatibility is claimed from static checks.
@@ -26,6 +28,7 @@ with upstream HEAD when the exact public-source URL was unavailable.
 | --- | --- |
 | [Dockerfile](Dockerfile) | Digest-required historical CUDA development base, offline installs, exact source builds, `/workspace`, non-root default |
 | [reference.json](reference.json) | Incomplete dependency/source-provenance manifest with evidence classifications and explicit missing hashes |
+| [runtime.reference.json](runtime.reference.json) | 102 installed Python pins/metadata, 21 Debian role versions and toolchain evidence; not an artifact lock or reviewed resolution |
 | [requirements.reference.txt](requirements.reference.txt) | Verified live version declarations; **not an install file or complete lock** |
 | [resolved.example.json](resolved.example.json) | Deliberately incomplete external input-resolution template; `reviewed: false` |
 | [validate.py](validate.py) | Read-only definition and optional staged-artifact/hash checks; never builds or copies sources |
@@ -48,8 +51,11 @@ still unknown. The original image ID is not a registry/base digest. Do not inven
 a digest or use the old `nerofactor` tag as an output tag. A distinct, reviewed
 candidate image must be built in the next milestone, leaving the reference intact.
 
-Missing Python/build/system versions, complete dependency closure, wheel hashes,
-Eigen/compiler identities and source export hashes remain blockers. The proposal
+Installed Python/build pins, GCC/G++ 9.4.0, Eigen 3.3.7, CMake 3.16.3 and 21 Debian
+role versions are now recorded. Actual wheels/hashes, complete base-relative
+Debian dependency artifacts, source/build provenance and base identity remain
+blockers. The supplied candidate digest is not independently registry-verified
+or established as historical. The proposal
 requires offline, hash-checked wheels and a complete exact Debian artifact bundle
 instead of floating `apt-get`/pip resolution. This is an explicit design choice
 for review, not a statement that those artifacts have been recovered.
@@ -91,8 +97,9 @@ Review the exact raytracing `setup.py` before collecting artifacts. Its Eigen
 search/download behavior and declared transitive dependencies must be satisfied
 offline, not patched away. The proposal uses reviewed `libeigen3-dev` headers at
 `/usr/include/eigen3`; `record.py` checks their version against the resolution.
-Recover that version and the actual GCC/G++ versions; do not guess them from the
-Ubuntu release. Lock required graphics/runtime libraries and the complete Debian
+The supplied inventory now identifies Eigen 3.3.7 and GCC/G++ 9.4.0; verify their
+actual artifacts/build selection rather than guessing from the Ubuntu release.
+Lock required graphics/runtime libraries and the complete Debian
 closure. Preserve recovered C++/NVCC flags, optimizations and ABI 0; do not disable
 compiler compatibility checks or add fast-math to make an extension compile.
 
@@ -309,8 +316,9 @@ and sanitized dependency metadata. See the compatibility report and
 1D.3B-2A now authorizes the CPU infrastructure suite and its narrowly scoped test
 harness fix; actual Python 3.8 execution remains unavailable.
 
-Before building: recover the base digest; missing Python/system/build pins and
-all artifact hashes; inspect/stage the exact raytracing tree; review Eigen/compiler
+Before building: verify/review the base digest; recover remaining system closure
+pins and all actual artifact hashes; inspect/stage the exact raytracing tree;
+review recovered Eigen/compiler
 selection, full dependency closure, context/hash coverage and Docker/Compose
 support for offline RUN, strict bind sources and GPU device reservations. Complete
 actual Python 3.8 test execution after the test-only compatibility fix. The

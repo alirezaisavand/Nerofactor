@@ -11,6 +11,8 @@ from unittest.mock import patch
 
 from packaging.markers import default_environment
 from packaging.requirements import Requirement
+from packaging.specifiers import SpecifierSet
+from packaging.version import Version
 
 import collect_runtime
 import stage_sources
@@ -160,6 +162,68 @@ class SourceStagingTests(unittest.TestCase):
 
 
 class DependencyMetadataTests(unittest.TestCase):
+    def test_recovered_runtime_manifest_consistency_and_artifact_boundary(self):
+        record = read_json(HERE / 'runtime.reference.json')
+        reference = read_json(HERE / 'reference.json')
+        packages = record['python_packages']
+        self.assertFalse(record['reviewed'])
+        self.assertFalse(record['build_ready'])
+        self.assertEqual(len(packages), 102)
+        self.assertEqual(record['provenance']['sha256'], reference['recovered_inventory_manifest']['input_sha256'])
+        self.assertTrue(HEX.fullmatch(record['provenance']['sha256']))
+        self.assertEqual(record['runtime']['python'], reference['runtime']['python'])
+        for name, version in reference['verified_live_packages'].items():
+            self.assertEqual(packages[collect_runtime.normalize(name)]['version'], version)
+        for name, source in reference['extensions'].items():
+            self.assertEqual(packages[name]['version'], source['version'])
+        edges, declared = 0, 0
+        for name, package in packages.items():
+            self.assertEqual(name, collect_runtime.normalize(name))
+            self.assertTrue(Version(package['version']))
+            if package['requires_python'] is not None:
+                declared += 1
+                self.assertIn(record['runtime']['python'], SpecifierSet(package['requires_python']))
+            for text in package['requires']:
+                dependency = Requirement(text)
+                self.assertIsNone(dependency.url)
+                self.assertFalse(dependency.extras)
+                self.assertIsNone(dependency.marker)  # collector-selected active edges
+                self.assertIn(dependency.name, packages)
+                self.assertIn(packages[dependency.name]['version'], dependency.specifier)
+                edges += 1
+        def reachable(roots):
+            result, pending = set(), list(roots)
+            while pending:
+                name = collect_runtime.normalize(pending.pop())
+                if name not in result:
+                    result.add(name)
+                    pending.extend(Requirement(text).name for text in packages[name]['requires'])
+            return result
+        closure = record['closure']
+        self.assertEqual(set(packages), reachable(collect_runtime.RUNTIME_ROOTS + collect_runtime.BUILD_ROOTS))
+        self.assertEqual(edges, closure['active_requirement_edges'])
+        self.assertEqual(edges, 142)
+        self.assertEqual(declared, closure['declared_python_constraints_satisfied'])
+        self.assertEqual(declared, 82)
+        self.assertEqual(sorted(n for n, p in packages.items() if p['requires_python'] is None),
+                         closure['missing_requires_python'])
+        self.assertEqual(len(reachable(collect_runtime.RUNTIME_ROOTS)), closure['runtime_closure_count'])
+        self.assertEqual(len(reachable(['open3d'])), closure['open3d_closure_count_including_root'])
+        self.assertEqual(len(reachable(['raytracing'])), closure['raytracing_closure_count_including_root'])
+        self.assertEqual(len(record['debian_role_versions']), 21)
+        self.assertTrue(all(record['debian_role_versions'].values()))
+        self.assertEqual(len(record['unresolved_debian_roles']), 6)
+        self.assertNotIn('ninja-build', record['debian_role_versions'])
+        self.assertEqual(set(record['source_built_distributions']), {'raytracing', 'nvdiffrast'})
+        self.assertEqual(closure['prebuilt_wheel_distribution_count_excluding_native_sources'], 100)
+        self.assertEqual(closure['verified_downloaded_wheel_artifacts'], 0)
+        for candidate in record['publisher_candidates']['packages']:
+            self.assertEqual(candidate['version'], packages[candidate['name']]['version'])
+            self.assertTrue(HEX.fullmatch(candidate['publisher_sha256']))
+        self.assertIsNone(reference['image']['base_digest'])
+        self.assertFalse(record['cuda_base_candidate']['registry_verified_by_codex'])
+        self.assertFalse(record['cuda_base_candidate']['historical_identity_established'])
+
     def test_roots_cover_manifest_runtime_and_build_requirements(self):
         reference = read_json(HERE / 'reference.json')
         selected = {collect_runtime.normalize(n) for n in collect_runtime.RUNTIME_ROOTS + collect_runtime.BUILD_ROOTS}

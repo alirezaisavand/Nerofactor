@@ -1,7 +1,7 @@
 # Incremental infrastructure implementation plan
 
-Status: **milestones through 1D.3B-1A are approved; 1D.3B-2A resolves build
-prerequisites and CPU test-harness compatibility without building/installing**.
+Status: **milestones through 1D.3B-2A are approved; 1D.3B-2B integrates supplied
+reference dependency metadata without downloading/building/installing**.
 1D.3B-2 construction, native GPU smoke tests, standalone extraction/evaluation
 refactoring and 1D.4 require separate authorization. No branch merge, image build,
 installation, container lifecycle change, training, artifact relocation or
@@ -281,6 +281,19 @@ pending. Publisher-listed wheel candidates are not acquired/installed artifacts.
 Run static and CPU infrastructure fixtures, retaining native skips separately.
 First builds, package acquisition/installation, GPU/native validation and actual
 experiments remain separate approvals; no environment redesign is included.
+
+### 1D.3B-2B recovered-dependency boundary
+
+[Recovered dependency pins](../docker/paper/RUNTIME_DEPENDENCIES.md) records the
+supplied inventory's hash and independent 102-distribution/142-edge consistency
+checks, all installed pins, 21 Debian role versions and GCC/G++/Eigen/toolchain
+evidence. Installed metadata is separate from publisher checksum candidates and
+locally byte-verified artifacts. Five failed Debian role queries and versionless
+`ninja-build` are unresolved, not guessed. The supplied CUDA manifest digest
+remains registry-unverified and is not established as the historical base.
+Preserve the accepted Docker/preflight architecture and unreviewed resolution;
+only document exact pins, remaining artifact/source gates and a small separately
+approved acquisition plan. Static/CPU checks do not establish native/GPU parity.
 
 ### Proposed 1D.3B-2 implementation
 

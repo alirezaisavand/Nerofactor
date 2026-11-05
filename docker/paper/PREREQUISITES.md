@@ -1,29 +1,34 @@
-# Build prerequisite recovery: Step 1D.3B-2A
+# Build prerequisite recovery: Steps 1D.3B-2A / 1D.3B-2B
 
 The architecture, dependency pins and install/preflight boundary are unchanged.
-This milestone prepares recovery/staging tools and fixes the CPU test harness;
-it does not build/install or execute scientific GPU code. The tree started clean
+1D.3B-2A prepared recovery/staging tools and fixed the CPU test harness;
+1D.3B-2B integrates the supplied installed-metadata inventory without building,
+installing or executing scientific GPU code. The 2A tree started clean
 on `paper/infrastructure` at `097b70201030129381e562aab6b20c80cdcf03ae`.
 
 ## Evidence and unresolved resolution fields
 
 The live versions supplied by the researcher remain in
 [reference.json](reference.json): system Python 3.8.10, Torch 1.8.1+cu111, CUDA
-11.1/NVCC 11.1.105, ABI 0, and the ten verified Python package pins. No new
-container-only runtime version was recovered by Codex: a filtered read-only
-`docker container inspect` failed with Docker socket permission denied. No retry
-with elevated access, socket changes or alternative Docker endpoint was made.
-Host Python 3.9.12 is test evidence only, never a proposed reference upgrade.
+11.1/NVCC 11.1.105, ABI 0, and the ten verified Python package pins.
+1D.3B-2A could not recover container-only metadata because Docker socket inspection
+was denied. In 1D.3B-2B the researcher supplied `runtime_inventory.json`:
+[runtime.reference.json](runtime.reference.json) now preserves 102 installed pins,
+142 active requirement edges, 21 Debian role pins and compiler/Eigen versions.
+[RUNTIME_DEPENDENCIES.md](RUNTIME_DEPENDENCIES.md) documents the independent
+consistency checks, capture limitations, candidate base and remaining artifacts.
+Host Python 3.9.12 is test evidence only; no access workaround or runtime upgrade
+was performed, and installed versions are not verified wheel identities.
 
 | Resolution field | Current evidence / remaining work |
 | --- | --- |
-| `base_image` | Historical tag known, registry/platform digest unknown; final `nerofactor` image ID is not its base digest |
+| `base_image` | Historical tag known; supplied candidate digest remains registry-unverified and not established historically; final `nerofactor` image ID is not its base digest |
 | `workspace_commit` | Exact approved 1A commit above is available; choose/review the intended build source commit explicitly; never select a branch implicitly |
 | `workspace_files` | Must be generated from that commit's selected export, not the dirty working tree |
-| `python_packages` | Ten direct pins verified historically; PyYAML, h5py, plyfile, tqdm, Matplotlib, Pillow, pip/setuptools/wheel/Ninja/packaging/pybind11 and active transitives remain unknown |
+| `python_packages` | 102 installed versions and recorded active closure recovered; 100 prebuilt distribution artifacts and two source-built distributions still need artifact verification |
 | `historical_extras_decision` | torchvision 0.9.1+cu111 / torchaudio 0.8.1 remain declarations; explicitly omit unused extras or retain those pins after collecting metadata |
-| `system_packages` | Compiler, Python dev/runtime, Eigen, graphics/runtime libraries and their exact Debian dependency closure not recovered |
-| `toolchain` | NVCC/ABI known; exact GCC/G++, Eigen, CMake and actual source build flags unresolved; do not infer flags from installed binary identity |
+| `system_packages` | 21 exact Debian role pins recovered; five failed queries and versionless `ninja-build` unresolved; complete base-relative dependency/artifact closure missing |
+| `toolchain` | GCC/G++ 9.4.0, Eigen 3.3.7, CMake 3.16.3, glibc 2.31, NVCC 11.1.105 recovered; Ninja binary banner differs in format from distribution version; actual source build flags unresolved |
 | `sources` | Both exact revisions/setup hashes remain required; nvdiffrast readable/export verified; raytracing unavailable to Codex |
 | `files` | Full hashes of acquired wheels, Debian packages, exports and complete Python lock are still required; no artifact bundle or valid `resolved.json` produced |
 | `reviewed` | Example stays `false`; only a researcher may mark a completed resolution reviewed |
@@ -189,10 +194,11 @@ exports were exercised using synthetic Git repositories/bundles only.
 | Native builds and existing manifest gates | System Python/dev headers, CUDA devel/NVCC, GCC/G++/libstdc++/libc, Eigen, pip/setuptools/wheel, Ninja, packaging, pybind11; CMake/pkg-config where exact source metadata requires them |
 | Image/array/logging transitives | Pillow and all marker-active dependencies of the selected pinned distributions, including metadata dependencies of Open3D; do not strip GUI/notebook/transitive metadata to force `pip check` |
 | System graphics/runtime | Reviewed GL/EGL development libraries for retained nvdiffrast GL capability, and actual ELF dependencies of OpenCV/Open3D/Torch/HDF5; candidate roles in the collector are not a complete Debian install list |
-| Excluded unless required by exact metadata | torchvision/audio decision explicit; Point-NeRF/intermediate NeRO, xatlas/Blender/COLMAP executable tooling and unrelated relighting packages are not active training roots; trimesh must be included if the recovered raytracing metadata requires it |
+| Excluded unless required by exact metadata | torchvision/audio decision explicit; Point-NeRF/intermediate NeRO, xatlas/Blender/COLMAP executable tooling and unrelated relighting packages are not active training roots; recovered raytracing metadata requires both trimesh and dearpygui |
 
-This is the **source-established root set**, not a solved transitive lock. Compute
-Python closure from the reference collector and then verify recovered wheel
+This is the **source-established root set**, not a solved artifact lock. The
+supplied collector inventory now contains a consistent 102-node Python metadata
+closure; independently verify acquired wheel
 `METADATA`/markers/Requires-Python/tags offline before selecting artifacts. Source
 metadata from both exact extension revisions must agree with installed metadata;
 a clean `pip check` is a later build acceptance gate, not evidence obtained here.
@@ -217,7 +223,8 @@ Compatibility/availability blockers:
   this historical pin and document any resulting source incompatibility.
 - [scikit-image 0.21 runtime requirements](https://scikit-image.org/docs/0.21.x/user_guide/install.html)
   include networkx, Pillow, ImageIO, tifffile, PyWavelets, packaging and lazy_loader.
-  Recover exact live versions and marker-active closure; current releases of
+  Exact live versions and recorded active closure are now preserved in the runtime
+  manifest; verify actual wheel metadata/markers. Current releases of
   transitives/build tools cannot be assumed to support Python 3.8.
 - [CUDA 11.1.1's Linux support table](https://docs.nvidia.com/cuda/archive/11.1.1/cuda-installation-guide-linux/index.html)
   lists Ubuntu 20.04.1 with GCC 9.3.0 and glibc 2.31. This is compatibility context,
@@ -227,8 +234,8 @@ Compatibility/availability blockers:
   and extension linkage remain unverified. `TORCH_CUDA_ARCH_LIST=8.0` remains the
   proposal; nvdiffrast's exact source clears it during lazy compilation. GPU/JIT
   validation and plugin hashes remain deferred.
-- Missing base/Python patch-level Debian artifacts, Eigen and raytracing setup
-  behavior are build blockers. No fallback to newer packages, source patches or
+- Missing base/Python patch-level Debian artifacts, Eigen artifact hashes and
+  raytracing setup behavior are build blockers. No fallback to newer packages, source patches or
   a guessed base is authorized.
 
 ## CPU evidence and the separately approved first build
@@ -247,7 +254,7 @@ python3 -B -m unittest discover -s docker/paper -p 'test_*.py' -v
 python3 -B -m unittest discover -s tests/infrastructure -v
 ```
 
-Current results on Python 3.9.12: 27 Docker/prerequisite tests passed (0 skipped),
+Current results on Python 3.9.12 after 1D.3B-2B: 28 Docker/prerequisite tests passed (0 skipped),
 and 97 infrastructure tests passed (3 skipped: native OpenCV, OpenCV/transforms3d
 crop, Open3D). Expected simulated failure traces test logging/cleanup and are not
 suite failures. A second infrastructure run with `ast.unparse` removed checks the
@@ -256,7 +263,7 @@ the definition inventory, five offline RUN shell commands, Compose isolation,
 and Python 3.8 grammar including infrastructure tests. These checks do not build,
 install, import native rendering extensions or run scientific GPU work.
 
-**Do not execute a build in 1D.3B-2A.** After runtime recovery, source review,
+**Do not execute a build in 1D.3B-2A or 1D.3B-2B.** After runtime recovery, source review,
 artifact acquisition/hash verification, complete `resolved.json` and separate
 build approval, the minimum sequence is:
 

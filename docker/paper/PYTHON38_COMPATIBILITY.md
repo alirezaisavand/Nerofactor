@@ -47,16 +47,21 @@ any remaining `ast.unparse` calls in infrastructure tests. On available Python
 checks skip. A second run removes the unavailable-on-3.8 API before discovery to
 exercise this specific compatibility boundary; this is **not** a Python 3.8 run.
 
-The Docker/prerequisite suite has 27 passing tests, including source export,
-local bundle verification and sanitized dependency-closure fixtures. No actual
+The Docker/prerequisite suite has 28 passing tests after 1D.3B-2B, including source
+export, local bundle verification, sanitized dependency-closure fixtures and the
+recovered manifest's consistency/artifact boundary. No actual
 Python 3.8 interpreter is available in Codex, so the full reference-runtime suite,
 annotation/import behavior and dependency/native compatibility remain unverified.
 See [PREREQUISITES.md](PREREQUISITES.md) for exact scope and recovery commands.
 
 ## Dependency/native limitations
 
-The verified live versions are retained in the reference declarations; unverified
-Pillow/PyYAML/h5py/plyfile/Matplotlib/build-tool/transitive versions remain missing.
+The verified live versions are retained in the reference declarations.
+1D.3B-2B's supplied inventory adds exact Pillow/PyYAML/h5py/plyfile/Matplotlib,
+build-tool and transitive installed versions in
+[runtime.reference.json](runtime.reference.json). All 82 declared Python-version
+constraints accept 3.8.10; twenty distributions omit `Requires-Python`. This is
+metadata consistency, not execution or verification of acquired wheel tags/bytes.
 Python 3.8 wheel availability and dependency metadata must be checked for every
 recovered artifact, rather than inferred from package names. The staged full
 hashed wheel set, `pip check`, explicit Python patch/ABI and future native checks

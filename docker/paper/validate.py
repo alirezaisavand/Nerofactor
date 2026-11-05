@@ -92,7 +92,7 @@ def definition():
         # Running this checker on Python 3.8 or newer uses the 3.8 grammar.
         ast.parse(path.read_text(), filename=str(path), feature_version=8)
     print('PASS: definition structure, version declarations and Python 3.8 syntax')
-    print('NOT BUILD-READY: base digest, complete package pins/hashes, compiler/Eigen and staged artifacts remain unresolved')
+    print('NOT BUILD-READY: base identity, complete artifact pins/hashes, reviewed toolchain/source flags and staged inputs remain unresolved')
     return reference
 
 

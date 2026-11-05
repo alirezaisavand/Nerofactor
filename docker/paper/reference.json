@@ -2,6 +2,12 @@
   "schema_version": 1,
   "status": "definition-only; incomplete dependency manifest, not a lockfile",
   "evidence": "Reference runtime values supplied by the researcher in Step 1D.3B-1; no Docker access or native execution performed by Codex",
+  "recovered_inventory_manifest": {
+    "path": "runtime.reference.json",
+    "evidence": "Step 1D.3B-2B researcher-supplied reference-container metadata; independently checked offline",
+    "input_sha256": "a5515797526ebe0f41b3b309b4e2181b60e2f8b29953dc17e9ae03d7bfdba61e",
+    "status": "102 installed distribution pins and 21 Debian role pins; not verified package artifacts or a reviewed build resolution"
+  },
   "image": {
     "name": "nerofactor",
     "id": "sha256:36014827ee247e6e4b31576ab1b1da18c54e4b15983e97dff9a5724886e65777",
@@ -42,6 +48,7 @@
     "pip", "setuptools", "wheel", "ninja", "packaging", "pybind11",
     "all required transitive dependencies"
   ],
+  "unresolved_python_packages_note": "Retained as the existing validator's required-root contract. These installed versions are now known in runtime.reference.json; actual wheel identities/hashes remain unverified. This list must not be interpreted as an updated missing-version report.",
   "system_package_roles_requiring_exact_versions": [
     "system Python 3.8.10 and development headers/pip",
     "GCC/G++ and libc/libstdc++ compatible with CUDA 11.1",
@@ -79,8 +86,8 @@
   ],
   "missing_reproducibility_evidence": [
     "base image registry digest and exact build platform",
-    "all wheel hashes, complete dependency closure and missing Python versions",
-    "exact Debian packages/versions/hashes and compatible compiler/Eigen versions",
+    "all actual wheel byte hashes/identities and complete acquired-wheel metadata closure; installed Python pins are recovered",
+    "complete base-relative Debian packages/versions/hashes; 21 role pins and compiler/Eigen versions are recovered",
     "source tree/export hashes, build flags and built wheel hashes",
     "runtime-generated nvdiffrast plugin identity and selected GPU architecture",
     "actual Python 3.8 and Torch 1.8 native/application acceptance tests"
