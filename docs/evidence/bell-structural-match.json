@@ -1,0 +1,326 @@
+{
+  "schema_version": 1,
+  "milestone": "1D.4B-3A",
+  "review_baseline": "d775cf1fb51afbfa9645cbf4a975fa7b9acd96f0",
+  "result": "exact_structural_match",
+  "comparison": {
+    "path": "/home/isavand/paper/evidence/bell-comparison.UXWN3DqC/architecture-comparison.json",
+    "sha256": "4a2413bb174a94507dbb771477652b356e5e9269c891f8c1d4ec5fde9fc4886c",
+    "bytes": 6468
+  },
+  "reference": {
+    "path": "/home/isavand/paper/evidence/bell-reference.eWPhSaW8/reference-signature.json",
+    "sha256": "768ce796e7d3356b17cdf76042666c71d73462442be2a99a02480214a047b0f8",
+    "bytes": 43840
+  },
+  "checkpoint_metadata": {
+    "path": "/home/isavand/paper/evidence/bell-metadata.xIvZ9k0z/checkpoint-metadata.json",
+    "sha256": "6108d45e49f502e48b78f71a8dd329b8f37b95fd249a04fb2a386688d2eb6720",
+    "bytes": 27711
+  },
+  "checkpoint_sha256": "d928a03d9eb9f993ab8f4a0384b31cf1c7bdc875316a1c247dcf9722b8b79ccc",
+  "stored_step": 150000,
+  "best_para": 23.787122565451323,
+  "verified_comparison": {
+    "result": "exact_structural_match",
+    "key_sets_equal": true,
+    "checkpoint_tensor_count": 137,
+    "reference_tensor_count": 137,
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "shape_mismatches": [],
+    "dtype_mismatches": [],
+    "coverage": {
+      "reference_parameter_count": 136,
+      "reference_persistent_buffers": [
+        "color_network.FG_LUT"
+      ],
+      "checkpoint_contains_reference_buffers": true,
+      "checkpoint_roles": "Inferred by exact reference names, not recorded independently by metadata inspector",
+      "weight_normalization": [
+        {
+          "prefix": "color_network.albedo_predictor.0",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.albedo_predictor.2",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.albedo_predictor.4",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.albedo_predictor.6",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.inner_light.0",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.inner_light.2",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.inner_light.4",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.inner_light.6",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.inner_weight.0",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.inner_weight.2",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.inner_weight.4",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.inner_weight.6",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.metallic_predictor.0",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.metallic_predictor.2",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.metallic_predictor.4",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.metallic_predictor.6",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.outer_light.0",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.outer_light.2",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.outer_light.4",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.outer_light.6",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.roughness_predictor_x.0",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.roughness_predictor_x.2",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.roughness_predictor_x.4",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.roughness_predictor_x.6",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.roughness_predictor_y.0",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.roughness_predictor_y.2",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.roughness_predictor_y.4",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "color_network.roughness_predictor_y.6",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "sdf_network.lin0",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "sdf_network.lin1",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "sdf_network.lin2",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "sdf_network.lin3",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "sdf_network.lin4",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "sdf_network.lin5",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "sdf_network.lin6",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "sdf_network.lin7",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        },
+        {
+          "prefix": "sdf_network.lin8",
+          "reference_pair": true,
+          "checkpoint_pair": true
+        }
+      ]
+    },
+    "limits": [
+      "Only full key/shape/dtype equality is tested; device placement is recorded but not compared.",
+      "A structural match proves neither producing branch, A/G split, tensor values nor scientific reproducibility."
+    ]
+  },
+  "reference_source_hashes_match_current": true,
+  "reference_source": {
+    "declared_commit": "d775cf1fb51afbfa9645cbf4a975fa7b9acd96f0",
+    "declared_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "declared_tree_state": "clean",
+    "files_sha256": {
+      "generate_bell_reference.py": "24d0cab93c3d49140d4fe7c7aebc2982b047437fa5dec2ac33342a645757dd1e",
+      "configs/shape/syn/bell.yaml": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f",
+      "assets/bsdf_256_256.bin": "aee514f7c7e561a357e529567222da99e84886c31c46a32fe767a5b066bbe196",
+      "network/base_brdf.py": "127387608a0dff98806144790b9a3735b315c25c1fae7eae957c8f8176617af1",
+      "network/embedder.py": "34e14eae3e20db320ef39129f627fbe79e8d88e317a24766596a1f7e033f54cb",
+      "network/field.py": "b8386007dc009442cdefdeccc3c6ecc0114f6d0e7feaf804008b0bd9020091fe",
+      "network/loss.py": "55a2b6779bb8f890340a70b45a7357cb8fc8fc3ff381fbe7caf1968d6bfbf1cf",
+      "network/metrics.py": "11f745cfafa7ae41ec0269f220c0a1691c63d3c7682d5f8222ca5c4daa888556",
+      "network/mlp_brdf.py": "639e9f50a5ad7d335d50dc19ae2de0fe86d83235daf0796184b59cd55912ba82",
+      "network/renderer.py": "447957a07e69839aa6500308f82ae30171378e1da93f5c9630e9f9cd97b92c55",
+      "network/seq_brdf.py": "30cbe109a512849c298467c7a997ffa62a5f62e67bb31b74eb7bc5162cc59212",
+      "dataset/database.py": "2a0610bc303c13d25f467480d01cd0a3727f401fe40d891403107ccd0f28deb0",
+      "dataset/name2dataset.py": "894ef8484c19b788e46722ddeb58910df2974da6add927d6857b7435259f7acd",
+      "dataset/train_dataset.py": "28535db5b960d704a78c9fc2025db2c2e17e56affccc5f42de809b629d50367e",
+      "utils/base_utils.py": "c07a99a9713a8c9c1b67fcf57383083336e0b1673de78f99903236d888f55a5b",
+      "utils/dataset_utils.py": "2bd5a82ffb4cda916fa0db4a05f8acafb01276c7d7b5f326821e295947dd024e",
+      "utils/draw_utils.py": "5d9667149258cd7024892b9166ce1c851c7e7cb1d3ce5fe36673dc0eae913c70",
+      "utils/geom.py": "af2a425914de85f3c6a9cab4865aa1f55f241553b6fe32db9967dcf2fb92e07c",
+      "utils/math.py": "3e113fe270882714a8b93ffc589126bb9932473f1531815eb4416fe56701ccf7",
+      "utils/pose_utils.py": "c524dec437208901b45048d7c458b64d39b3e18455c25b5fab9211db39376139",
+      "utils/raw_utils.py": "7731b3740b3253f78eb9bf5fa2dcf43d6d288cffcd5e2811042b657b8a9e9366",
+      "utils/ref_utils.py": "11bebfe6348a9ecfe20f457de0c6b7dbc93cc9dc975952a8b2b938f9d6d60422",
+      "raytracing/__init__.py": "f086eca4f387087c4058650c10110106d2e33c2a99787a4401ff2a2945cd497c",
+      "raytracing/raytracer.py": "f670b215c5379d3bdcd9993c836935ea658f5ee9570bbe46bb38096b3f0ac25f",
+      "colmap/build.py": "ea570b322ac57685cbb5348e2b95c3cebb8868f21e52642b207c8bb1e123fdcb",
+      "colmap/build_windows_app.py": "efb16feb140be8ffef92a9794db4b4b2fe8823b8c0be43e5ae1a4203523d434d",
+      "colmap/bundler_to_ply.py": "dbc5b72e39a43d7f4a1c4bc1c4cbdabd23f1c583a3a0e4c1834b0b166fe71a30",
+      "colmap/clang_format_code.py": "98dcc2874aea8189c8d6868016a06d67e8b1b1e4428341b3ffe8ef87159bf7fe",
+      "colmap/crawl_camera_specs.py": "f3f9b39ee0a61fea4884ae3a69bcd62d8600ba53e52e9c073e167d28ab08564f",
+      "colmap/database.py": "60933f40bdde5e7c17a9f251bfb32f9b85d9883158b739a6b6ca3693dc8184b5",
+      "colmap/export_inlier_matches.py": "9feaebf2fa29b93eaeba1cd06e28af808fcfd490b6d1812648da0ff705d6d0fa",
+      "colmap/export_inlier_pairs.py": "921dd0fa3dd91e517cf8cad44357368c92db38f853886fc597edef918fb681ba",
+      "colmap/export_to_bundler.py": "b53b3d4d31a4873b52212200c881f74755f049a7ea0bb1549999a698fcc02271",
+      "colmap/export_to_visualsfm.py": "faa4919abc9c26ac6eeeb1ef6cb7457c67ac357f7d566e1b8deda76eda47ab51",
+      "colmap/flickr_downloader.py": "3643d5e0339bc106c569a4dd9632845dfe8bad91fb4f05a74bf3b325e82cd158",
+      "colmap/merge_ply_files.py": "eb3d117f098570071d048799848c47365aaa97dd94c2df6fcafc72b2d07aad43",
+      "colmap/nvm_to_ply.py": "059c3707fa4bf99ad15447c1f777daa87fa2fc5872a0e7b54814808966bae748",
+      "colmap/plyfile.py": "4f7e432ddae428c150b788e4e1f9b3238b1d9577c5317bd5dc3de58607ee9062",
+      "colmap/read_write_dense.py": "72563b8c0ca2864f39c90d9e55182cfb0c7f1bb03cfdb9b27c7bf327f951d7c9",
+      "colmap/read_write_fused_vis.py": "720a965bce17a71db6aa541629a03167f253863f18f2ee84aee290c71164ef2a",
+      "colmap/read_write_model.py": "164afcd9fa9f8c214037b6cc25ac3a80d1866b5c74f90ba1e42203c97d2f66bb",
+      "colmap/test_read_write_dense.py": "9633d6177812918302d63829ca3de812ba2c4052f4ea20da69812e1f3fc6c9a3",
+      "colmap/test_read_write_fused_vis.py": "d93a4b05d9e65535ac541d10ae3bebb3424538fd565d1c7f5bac7102151ce95e",
+      "colmap/test_read_write_model.py": "0df6c614489c69936039421a4c39fab211ac20dc0cd775318cf2635cd3680857",
+      "colmap/visualize_model.py": "8df681c6239f1b6b134a1e8df8548761dd8c959ad793aceed463a84c0be55ad0",
+      "infrastructure/__init__.py": "44bf3f8e7c78ad996c713c6ac676a22546d6900a14b07b786d24144529d41dd2",
+      "infrastructure/cache.py": "4cb75187af74ff92820cf3ed5c08b5dd1d2d36dd4534d2ee0a5fe4100a4506e2",
+      "infrastructure/config.py": "8046c96d7e9a0e6476746e753d09f0c75162eedf67cecd226b82295b3acd064e",
+      "infrastructure/datasets.py": "11f7fa34b3535fc496edd10f853a0b43b8b76c9b126ec4feecdc9383bd68e18b",
+      "infrastructure/geometry.py": "a6166af5f85fa5386fac349e10c5ffe071061a6b553e4ea54f8c5eb1efb06bc3",
+      "infrastructure/geometry_execution.py": "5df1401683dc1d281cd395850dd65dcc34ec40a648e7bef5cef2e1685c74a975",
+      "infrastructure/material.py": "04c690fd3910f8cdce087404ac58bb4c1f05dc6e8d82e5a698c51b2a381b028a",
+      "infrastructure/material_execution.py": "2c091cfbff3a1116c600735db7b46f39342c9e183a02872bdeb7274749b07d29",
+      "infrastructure/native_smoke.py": "6f5e9d89a7728f1a36b76e7829a76c14ed3780eefbe823244c218c6848caf60d",
+      "infrastructure/paths.py": "e771fa11a5243a03724b8291dba790502e822531f1fc9179ba27c9b8a06cece4",
+      "infrastructure/runs.py": "2da7ae8d6d42428b40f6b8445783a6f119fafc3310a7b05af74bf56b3cda1fc7",
+      "infrastructure/signatures.py": "f3eb6c82de610913c1049745271d8be5391d34f02d78866a14fad0032b7f4759"
+    },
+    "limits": "Commit/diff/state are caller declarations; file hashes are observed. No full build identity claim."
+  },
+  "runtime": {
+    "python": "3.8.10 (default, Mar 18 2025, 20:04:55) \n[GCC 9.4.0]",
+    "torch": "1.8.1+cu111",
+    "cuda_compiled": "11.1",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "packages": {
+      "numpy": "1.24.4",
+      "open3d": "0.16.0",
+      "PyYAML": "6.0.2",
+      "nvdiffrast": "0.3.3"
+    }
+  },
+  "discovered_comparison_reports": [
+    {
+      "path": "/home/isavand/paper/evidence/bell-comparison.UXWN3DqC/architecture-comparison.json",
+      "sha256": "4a2413bb174a94507dbb771477652b356e5e9269c891f8c1d4ec5fde9fc4886c"
+    }
+  ],
+  "limits": [
+    "Structural compatibility only; producing revision/training split/final-version status unresolved.",
+    "No checkpoint deserialization or GPU command was executed by Codex."
+  ],
+  "comparison_source_sha256": {
+    "compare_bell_signatures.py": "332276a2e8235033bee574c5f469a2690eee07502cebc8f3e8bba5c0a9610201",
+    "infrastructure/signatures.py": "f3eb6c82de610913c1049745271d8be5391d34f02d78866a14fad0032b7f4759"
+  },
+  "comparison_source_hashes_match_current": true
+}

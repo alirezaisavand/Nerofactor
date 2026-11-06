@@ -1,12 +1,13 @@
 # Bell geometry checkpoint compatibility: 1D.4B-1
 
-Current follow-up 1D.4B-2: a researcher-generated metadata JSON report is now
-[explicitly admitted](bell-metadata-admission.json): step 150000, best metric
-23.787122565451323, 137 unique float32 tensors. The
-[strict architecture tooling](../CHECKPOINT_ARCHITECTURE_COMPARISON.md) is
-implemented for review; comparison is still blocked until an actual maintained-A
-constructor reference is generated. The earlier investigation below and its JSON
-are preserved as a historical blocked snapshot, not a new inspection result.
+Current follow-up **1D.4B-3A**: the researcher-generated metadata, real maintained-A
+reference and comparison have been independently inspected. The result is
+`exact_structural_match` for 137 keys/shapes/dtypes, with original paths/hashes in
+[bell-structural-match.json](bell-structural-match.json). This establishes
+structural compatibility only. Producing revision/configuration/split remain
+unresolved. The [inference adapters](../BELL_INFERENCE_REGRESSION.md) are prepared
+for review without native execution. The earlier investigation below and its
+JSON remain a historical blocked snapshot, not a replacement inspection result.
 
 **Status: blocked by the execution environment; checkpoint compatibility remains
 undetermined.** The exact checkpoint hash matches the approved admission evidence

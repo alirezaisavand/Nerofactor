@@ -1,7 +1,16 @@
 # Strict bell architecture comparison: 1D.4B-2
 
-Implementation and commands for review. **Current result: `blocked`** because the
-real maintained-A reference has not been generated. Codex has not executed Docker,
+**1D.4B-3A evidence update:** the researcher generated the real reference and
+comparison; independently checked JSON evidence establishes
+`exact_structural_match` for all 137 keys/shapes/dtypes. Original paths, hashes,
+source identities and limitations are preserved in
+[bell-structural-match.json](evidence/bell-structural-match.json). This proves
+structural compatibility only; producing revision and training split remain
+unresolved. The [inference preparation](BELL_INFERENCE_REGRESSION.md) is ready for
+review, without execution approval.
+
+The following records the earlier 1D.4B-2 implementation state, when comparison
+was **`blocked`** pending the real reference. Codex has not executed Docker,
 GPU construction, checkpoint deserialization, inference, rendering or training.
 No tensor signatures are inferred from ASTs or manually invented.
 

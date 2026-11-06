@@ -2,15 +2,21 @@
 
 Protocol ID: **`checkpoint-inference-validation-v1`**. Specification revision 2
 (documentation-only A/G scope clarification),
-**proposed, not implemented or executed** in 1D.4A. Approval of this document does
+**proposed, not implemented or executed** in 1D.4A. A later
+[1D.4B-3A implementation](../BELL_INFERENCE_REGRESSION.md) prepares separate R/C
+adapters, a repeatability gate and researcher commands for review, retaining the
+thresholds below. The admitted structural match is recorded in
+[bell-structural-match.json](../evidence/bell-structural-match.json); native
+checkpoint inference remains unexecuted by Codex. Approval of this document does
 not authorize GPU launches. Baseline readiness and evidence classifications are
 in [BASELINE_PREPARATION.md](../BASELINE_PREPARATION.md).
 
 The later [1D.4B-0 admission report](../evidence/BELL_CHECKPOINT_ADMISSION.md)
 records the selected bell hash, verified source-defined A/G splits and archived
-smoke evidence. Both proposed inference intents remain on hold: source-defined
-split verification is not producing-run attribution or checkpoint compatibility
-verification. This protocol does not authorize checkpoint loading or execution.
+smoke evidence. At that milestone both proposed inference intents remained on
+hold: source-defined split verification is not producing-run attribution or
+checkpoint compatibility verification. This protocol does not authorize
+checkpoint loading or execution.
 
 ## Question, boundaries and reference
 
