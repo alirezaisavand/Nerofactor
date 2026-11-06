@@ -51,7 +51,8 @@ def main():
     paths = [p for folder in ['infrastructure', 'dataset', 'network', 'train', 'utils', 'raytracing']
              for p in (repo / folder).glob('*.py')]
     paths += [repo / 'run_experiment.py', repo / 'run_material_experiment.py',
-              repo / 'run_native_smoke.py', repo / 'inspect_bell_checkpoint.py', *HERE.glob('*.py')]
+              repo / 'run_native_smoke.py', repo / 'inspect_bell_checkpoint.py',
+              repo / 'generate_bell_reference.py', repo / 'compare_bell_signatures.py', *HERE.glob('*.py')]
     paths += [repo / 'colmap/read_write_model.py', repo / 'colmap/plyfile.py']
     tests = list((repo / 'tests/infrastructure').glob('*.py'))
     paths += tests

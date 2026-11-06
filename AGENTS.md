@@ -135,36 +135,40 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized milestone: **1D.4B-1A, isolated bell checkpoint metadata
-inspector implementation and execution command for review**, based on
-`7c23d014fddc6ecaf7c7655f0d22c889cde051aa`. The researcher confirms they trained
-the selected checkpoint and authorizes CPU-only metadata inspection of SHA-256
-`d928a03d9eb9f993ab8f4a0384b31cf1c7bdc875316a1c247dcf9722b8b79ccc`.
-Producing revision and final-version status are unknown. This trust remains in
-force for unchanged bytes/scope; do not request it again.
+Current authorized milestone: **1D.4B-2, strict bell checkpoint architecture
+compatibility implementation for review**, based on
+`56046e584da4f6ff01705273f2ac268f054d5a20`. Read/validate existing JSON checkpoint
+metadata only; do not deserialize or reopen the historical checkpoint. The
+researcher supplied a successful metadata report, now explicitly admitted by
+path/SHA in [bell-metadata-admission.json](docs/evidence/bell-metadata-admission.json).
+Inventory multiple candidates rather than choosing latest/glob-first. Preserve
+original reports, datasets, historical weights/results and scientific source/YAML.
 
-Implement only a standalone, fixed-artifact inspector, focused disposable CPU
-fixture tests and supporting documentation/static checks. Torch import/load must
-follow explicit execution/trust/runtime acknowledgements, OS runtime guards and
-hash verification. Use the PyTorch 1.8 CPU map_location API; document full pickle
-container deserialization, including optimizer payload allocation, while never
-restoring/traversing/reporting optimizer contents or exporting tensor values.
-Reject hash/path/runtime mismatches, non-CPU tensors and output collisions.
-Do not construct/import the renderer or CUDA-dependent scientific modules, load
-weights into a model, execute inference, restore optimizer/scheduler state,
-change scientific code/configuration or repair constructors.
+Implement a separate actual-constructor reference signature generator and strict
+JSON-only comparator, synthetic CPU fixture tests and documentation. The reference
+must use the unchanged maintained `NeROShapeRenderer` and actual bell YAML with
+its built-in `training=False` mode, retaining model/shader defaults and every
+state_dict parameter/persistent buffer. No AST-inferred tensor signatures,
+constructor patches, partial loads, key renaming, reshaping, dtype conversion or
+compatibility repairs. Capture raw/effective configuration, source hashes/caller
+declarations, runtime identity, exact keys/shapes/dtypes and buffer/weight_norm
+coverage. No checkpoint-loading or forward/backward/optimizer/evaluation calls.
 
-Codex may run CPU/static tests on disposable synthetic checkpoints only. **Do not
-execute Docker or deserialize the historical checkpoint from Codex**, even though
-trust is confirmed. Do not retry/change/bypass bubblewrap network-namespace
-restrictions. Prepare an exact researcher-side command using the existing image:
-no network/GPU exposure, non-root, read-only rootfs and source/checkpoint file
-mounts, one fresh separate output mount and explicit resource limits. Runtime
-guards are defense in depth, not a sandbox or independent image attestation.
-Do not install packages, modify Docker images/settings, ownership/permissions,
-original artifacts or scientific behavior. Stop with implementation/command for
-review; no automatic commit or push. See
-[CHECKPOINT_METADATA_INSPECTOR.md](docs/CHECKPOINT_METADATA_INSPECTOR.md).
+Codex may validate real JSON reports, run CPU/static checks and disposable
+synthetic signature/toy CPU-module fixtures only. **Do not execute Docker/GPU,
+construct the real renderer or load historical weights from Codex.** Prepare
+separate researcher-side GPU constructor-only and CPU JSON-comparison commands:
+existing image, explicit GPU, no network, non-root, read-only code/inputs/rootfs,
+fresh separate outputs and resource limits. No builds/installations, image or
+permission/settings changes, security bypasses or namespace retries.
+
+Compatibility results must be exact_structural_match, structural_mismatch or
+blocked; absent/unexecuted reference remains blocked. Hashes bind file bytes,
+not authenticity/provenance. An exact structural match proves neither A origin,
+A/G split, final-version status nor scientific/numerical reproducibility. Preserve
+the distinct A/G split/admission rules. Stop after implementation/CPU validation
+for review; no automatic commit/push or researcher-side execution. See
+[CHECKPOINT_ARCHITECTURE_COMPARISON.md](docs/CHECKPOINT_ARCHITECTURE_COMPARISON.md).
 
 The researcher approved archiving the original small smoke reports/configuration
 and manifest files at `/home/isavand/paper/evidence/1d3c` after the originally
@@ -172,7 +176,7 @@ requested `paper_runs/evidence/1d3c` destination was inaccessible. Verify the
 approved destination is writable, preserve original bytes and source paths/
 hashes, refuse overwrites, and exclude caches/generated datasets. Do not change
 ownership/permissions or Docker settings. The current milestone additionally
-authorizes the standalone inspector, CPU fixture tests and static checks above.
+authorizes the signature utilities, CPU fixture tests and static checks above.
 No scientific code/YAML,
 image/build, package/environment or original artifact changes are allowed.
 
@@ -190,10 +194,10 @@ and G two-way unshuffled split/RNG effects; verified present source-defined IDs
 are not verified producing-run IDs. Checkpoint hashing, matching YAML, same-shaped
 weights or smoke success cannot establish origin/compatibility/reproducibility.
 No historical checkpoint loading is allowed from Codex in this implementation
-milestone; the prepared metadata command is for researcher-side isolated execution
-after review. No inference adapter is authorized. Architecture/step and producing
-commit/configuration/split/selection remain unresolved until real evidence is
-returned and reviewed. Stop after implementation for review; do not commit or
+milestone. Saved step/metric are now observed in the admitted JSON report, while
+architecture compatibility awaits a real reference and producing
+commit/configuration/split/selection remain unresolved. No inference adapter is
+authorized. Stop after implementation for review; do not commit or
 push automatically. The earlier
 [baseline preparation](docs/BASELINE_PREPARATION.md) and
 [inference protocol](docs/protocols/CHECKPOINT_INFERENCE_V1.md) remain proposals,
