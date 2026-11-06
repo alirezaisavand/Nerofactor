@@ -135,37 +135,45 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized milestone: **1D.4B-1, bell geometry checkpoint compatibility
-preparation/investigation only**, reviewed against
-`940c2d83463ff9f506ac84bb6fab8b67ee163316`. Reverify the selected bell checkpoint
-against its 1D.4B-0 SHA-256 and inspect scientific source statically without
-changing it. The researcher explicitly confirmed trust and authorized limited
-CPU-only deserialization of this exact checkpoint hash
-`d928a03d9eb9f993ab8f4a0384b31cf1c7bdc875316a1c247dcf9722b8b79ccc`
-for keys, tensor names/shapes/dtypes, stored step and provenance metadata only.
-Do not request this same trust confirmation again for unchanged bytes/scope.
+Current authorized milestone: **1D.4B-1A, isolated bell checkpoint metadata
+inspector implementation and execution command for review**, based on
+`7c23d014fddc6ecaf7c7655f0d22c889cde051aa`. The researcher confirms they trained
+the selected checkpoint and authorizes CPU-only metadata inspection of SHA-256
+`d928a03d9eb9f993ab8f4a0384b31cf1c7bdc875316a1c247dcf9722b8b79ccc`.
+Producing revision and final-version status are unknown. This trust remains in
+force for unchanged bytes/scope; do not request it again.
 
-Deserialization also requires verified OS-enforced network/device isolation and
-a reviewed CPU-only inspection procedure. The isolation probe failed in this
-session; no checkpoint has been deserialized. Stop with the blocker report; do
-not bypass restrictions or execute an ordinary-process load as a substitute.
-The unchanged full geometry constructor calls CUDA in `generate_ide_fn`; do not
-patch or fake that constructor to claim CPU architecture verification. Source
-constructor/default matches are not a checkpoint tensor comparison or producing-
-branch evidence. No model execution, inference/rendering/training, GPU work,
-optimizer/scheduler restoration, partial/non-strict weight loading, scientific
-source/YAML change, package/image/environment/permission change, commit or push
-is authorized. See
-[BELL_CHECKPOINT_COMPATIBILITY.md](docs/evidence/BELL_CHECKPOINT_COMPATIBILITY.md)
-and its machine-readable report for exact checks, gates and unresolved fields.
+Implement only a standalone, fixed-artifact inspector, focused disposable CPU
+fixture tests and supporting documentation/static checks. Torch import/load must
+follow explicit execution/trust/runtime acknowledgements, OS runtime guards and
+hash verification. Use the PyTorch 1.8 CPU map_location API; document full pickle
+container deserialization, including optimizer payload allocation, while never
+restoring/traversing/reporting optimizer contents or exporting tensor values.
+Reject hash/path/runtime mismatches, non-CPU tensors and output collisions.
+Do not construct/import the renderer or CUDA-dependent scientific modules, load
+weights into a model, execute inference, restore optimizer/scheduler state,
+change scientific code/configuration or repair constructors.
+
+Codex may run CPU/static tests on disposable synthetic checkpoints only. **Do not
+execute Docker or deserialize the historical checkpoint from Codex**, even though
+trust is confirmed. Do not retry/change/bypass bubblewrap network-namespace
+restrictions. Prepare an exact researcher-side command using the existing image:
+no network/GPU exposure, non-root, read-only rootfs and source/checkpoint file
+mounts, one fresh separate output mount and explicit resource limits. Runtime
+guards are defense in depth, not a sandbox or independent image attestation.
+Do not install packages, modify Docker images/settings, ownership/permissions,
+original artifacts or scientific behavior. Stop with implementation/command for
+review; no automatic commit or push. See
+[CHECKPOINT_METADATA_INSPECTOR.md](docs/CHECKPOINT_METADATA_INSPECTOR.md).
 
 The researcher approved archiving the original small smoke reports/configuration
 and manifest files at `/home/isavand/paper/evidence/1d3c` after the originally
 requested `paper_runs/evidence/1d3c` destination was inaccessible. Verify the
 approved destination is writable, preserve original bytes and source paths/
 hashes, refuse overwrites, and exclude caches/generated datasets. Do not change
-ownership/permissions or Docker settings. Documentation and small evidence
-manifests are the only repository changes authorized. No scientific code/YAML,
+ownership/permissions or Docker settings. The current milestone additionally
+authorizes the standalone inspector, CPU fixture tests and static checks above.
+No scientific code/YAML,
 image/build, package/environment or original artifact changes are allowed.
 
 Use **verified**, **inferred** and **unresolved** classifications in
@@ -181,11 +189,12 @@ have separate admission decisions. Preserve the exact A three-way seeded split
 and G two-way unshuffled split/RNG effects; verified present source-defined IDs
 are not verified producing-run IDs. Checkpoint hashing, matching YAML, same-shaped
 weights or smoke success cannot establish origin/compatibility/reproducibility.
-No checkpoint loading may proceed while the isolation gate is blocked; no
-inference adapter is authorized. Trust is confirmed for the exact hash/scope,
-while architecture/step, producing commit/configuration/split and selection linkage
-remain unresolved. Stop after the compatibility report for review; do not commit
-or push automatically. The earlier
+No historical checkpoint loading is allowed from Codex in this implementation
+milestone; the prepared metadata command is for researcher-side isolated execution
+after review. No inference adapter is authorized. Architecture/step and producing
+commit/configuration/split/selection remain unresolved until real evidence is
+returned and reviewed. Stop after implementation for review; do not commit or
+push automatically. The earlier
 [baseline preparation](docs/BASELINE_PREPARATION.md) and
 [inference protocol](docs/protocols/CHECKPOINT_INFERENCE_V1.md) remain proposals,
 not execution approval.

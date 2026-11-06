@@ -6,6 +6,13 @@ and the researcher explicitly confirmed trust. No checkpoint was deserialized,
 Torch imported, model constructed or weights loaded. The planned CPU-only
 inspection stopped before deserialization because isolation could not be verified.
 
+Follow-up 1D.4B-1A: the
+[standalone metadata inspector](../CHECKPOINT_METADATA_INSPECTOR.md) is now
+implemented with CPU fixture tests and an exact researcher-side Docker command.
+It has not deserialized this historical checkpoint or been executed by Codex in
+Docker. This document and its JSON preserve the earlier blocked investigation;
+actual tensor compatibility remains undetermined pending returned evidence.
+
 Review baseline: `940c2d83463ff9f506ac84bb6fab8b67ee163316`, clean
 `paper/infrastructure` before edits. The
 [machine-readable compatibility report](bell-checkpoint-compatibility.json)
