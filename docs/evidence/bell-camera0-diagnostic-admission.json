@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "milestone": "1D.4B-3C",
+  "protocol": "bell-camera0-validation-diagnostic-v1",
+  "review_head": "ef7e6b270137c1315c1ef01f303af910ee1dcbaf",
+  "implementation_status": "prepared_not_executed",
+  "checkpoint": {
+    "root": "thesis",
+    "path": "model/bell_shape/model_best.pth",
+    "sha256": "d928a03d9eb9f993ab8f4a0384b31cf1c7bdc875316a1c247dcf9722b8b79ccc",
+    "stored_step": 150000,
+    "stored_best_para": 23.787122565451323
+  },
+  "original_image58_reference": {
+    "root": "evidence",
+    "path": "bell-regression.tjRWmKTp/r/inference.json",
+    "sha256": "d5a7f4a08fbdca90cf2cf6d464236c2e0b571838538c35d7856d2b84dff8e832"
+  },
+  "historical_montage": {
+    "root": "thesis",
+    "path": "train_vis/bell_shape-val/149999-index-0.jpg",
+    "sha256": "2800003a665d47f757b1ec30b98d225bcfe19751b2608f1caa75587f8bcb3a44",
+    "bytes": 58376,
+    "dimensions_wh": [
+      800,
+      1000
+    ],
+    "GT_panel_box_xyxy": [
+      0,
+      0,
+      200,
+      200
+    ]
+  },
+  "selected_source": {
+    "database": "syn/bell",
+    "source_id": "0",
+    "inputs_root": "datasets",
+    "scene": "GlossySynthetic/bell",
+    "files": [
+      {
+        "path": "0-camera.pkl",
+        "bytes": 351,
+        "sha256": "fec0f8237b100b92fa6c6313e0b0b42cca73066a4bd1309d6a9e412be17fc7f9"
+      },
+      {
+        "path": "0.png",
+        "bytes": 981245,
+        "sha256": "d532f475e02f06dd53e35b112400b1b91f5fb30d8987cce7fbe922fe92b312c5"
+      },
+      {
+        "path": "masks_train/0.png",
+        "bytes": 4406,
+        "sha256": "858278ac092005e797b6eb4c69d1389a0a2792d85feeb739d340db66d4e1d93c"
+      },
+      {
+        "path": "0-depth.png",
+        "bytes": 70468,
+        "sha256": "c32f1116ffcc082dab061e821db13976e93ff8b47968996b970121440470828e"
+      }
+    ]
+  },
+  "evaluation_steps": {
+    "primary": 149999,
+    "step_control": 150000,
+    "checkpoint_stored_step_is_not_changed": true
+  },
+  "researcher_evidence": {
+    "classification": "supported_but_not_proven",
+    "type": "researcher_visual_confirmation",
+    "historical_montage_source_id": "0",
+    "current_reference_GT_and_prediction_source_id": "58",
+    "independent_historical_producing_run_attribution": false
+  },
+  "hypothesis": {
+    "classification": "supported_but_not_proven",
+    "description": "Historical unshuffled two-way split validated on 0 and trained on 1-127; 58 would then have been a training image.",
+    "producing_commit_configuration_split": "unknown",
+    "metric_gap_cause": "not proven"
+  },
+  "historical_metrics": {
+    "stored_full_precision_best_psnr": 23.787122565451323,
+    "logged_psnr": 23.78712,
+    "logged_ssim": 0.87727,
+    "logged_precision_decimals": 5,
+    "log_path": "model/bell_shape/val.txt",
+    "log_row_1_based": 150
+  },
+  "limits": [
+    "Source 0 is explicitly selected under maintained A science without replacing A training/validation/NVS splits.",
+    "JPEG GT comparison is diagnostic only; no resizing, alignment, denoising or pass/fail JPEG tolerance.",
+    "Historical metric differences and five-decimal displays are descriptive, not origin proof or tuning targets.",
+    "No old image-58 report/configuration/runner is modified; no native execution from Codex."
+  ]
+}

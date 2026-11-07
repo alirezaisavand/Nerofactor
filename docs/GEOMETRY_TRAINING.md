@@ -1,5 +1,14 @@
 # Isolated geometry integration: 1D.2B-2A and 1D.2B-2A.1
 
+**1D.5A follow-up:** the admitted researcher checkpoint inference regression has
+[verified saved evidence](evidence/BELL_INFERENCE_REGRESSION_SUCCESS.md).
+A separate [two-update training harness](GEOMETRY_TRAINING_SMOKE.md) is prepared
+for review; no native training or Docker/GPU execution was performed by Codex.
+It preserves the entry points/scientific loop below, with an external fixed
+stop and independent configuration routes. The earlier milestone statements
+below retain their historical scope and are not current inference-status claims.
+
+
 Current 1D.4A evidence: the researcher reports geometry and material native model
 smoke passes in `nerofactor-paper:quick-candidate-1`, plus **109 Python 3.8
 infrastructure tests passed**. Original launch/test reports and immutable image
