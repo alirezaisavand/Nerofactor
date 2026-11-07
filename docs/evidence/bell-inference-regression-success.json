@@ -1,0 +1,528 @@
+{
+  "schema_version": 1,
+  "milestone": "1D.4B-3B",
+  "review_baseline": "a72db40145b814943f4ce04ad46b7ea0b632bf2b",
+  "objective": "current-code-A-routing-regression",
+  "classification": "verified",
+  "result": "regression_passed",
+  "path_convention": {
+    "evidence": "relative to the approved researcher-managed evidence root",
+    "thesis": "relative to the read-only historical-results root",
+    "dataset": "relative to the read-only dataset root"
+  },
+  "selection": "Exact researcher-supplied report SHA-256 identities; no latest/glob-first or metric-based selection.",
+  "reports": {
+    "R": {
+      "path": "bell-regression.tjRWmKTp/r/inference.json",
+      "sha256": "d5a7f4a08fbdca90cf2cf6d464236c2e0b571838538c35d7856d2b84dff8e832",
+      "bytes": 217961,
+      "run_id": "r-39772aa4847f4e58ac8511db70a77bab",
+      "route": "direct-legacy-FullLoader",
+      "started_at_utc": "2026-11-06T02:55:12.452970+00:00",
+      "finished_at_utc": "2026-11-06T02:56:01.859951+00:00",
+      "console": {
+        "path": "bell-regression.tjRWmKTp/r/logs/console.log",
+        "sha256": "30c72da2a3635e03b2ed0976b7353517efd9930f3c6e84ddfbce6c5eb041f6a0",
+        "bytes": 250
+      }
+    },
+    "R-repeat": {
+      "path": "bell-regression.tjRWmKTp/r-repeat/inference.json",
+      "sha256": "16d49548d52bddee244737fbaab155b2dd9d9784471744bb24ef01a6fe9299c5",
+      "bytes": 217989,
+      "run_id": "r-repeat-39772aa4847f4e58ac8511db70a77bab",
+      "route": "direct-legacy-FullLoader",
+      "started_at_utc": "2026-11-06T02:56:03.176032+00:00",
+      "finished_at_utc": "2026-11-06T02:56:51.262649+00:00",
+      "console": {
+        "path": "bell-regression.tjRWmKTp/r-repeat/logs/console.log",
+        "sha256": "a4fc9efcabbd68cbcd00553d2252d9367c94ec2d9315c266a81aa63a113af369",
+        "bytes": 285
+      }
+    },
+    "C": {
+      "path": "bell-c-resume.41v84l15/c/inference.json",
+      "sha256": "ca7b8f09243b9c0df73161df520b92d88b0b5eacd504e44b7f6748afae5ea261",
+      "bytes": 217958,
+      "run_id": "c-5b18d09f4a7a4b9d9b2fd0e50ee493f9",
+      "route": "schema-1-PathResolver",
+      "started_at_utc": "2026-11-06T03:52:00.726964+00:00",
+      "finished_at_utc": "2026-11-06T03:52:47.968810+00:00",
+      "console": {
+        "path": "bell-c-resume.41v84l15/c/logs/console.log",
+        "sha256": "e35366c7f173f77efe0011eb094e75be0859a3330945d0664039b43657174706",
+        "bytes": 250
+      }
+    }
+  },
+  "final_comparison": {
+    "path": "bell-c-resume.41v84l15/final/regression-comparison.json",
+    "sha256": "5b716048066a790e5380696a16a354f80074d2da388aa49e98675388a2754c99",
+    "bytes": 3221
+  },
+  "original_repeatability": {
+    "path": "bell-regression.tjRWmKTp/repeatability/regression-comparison.json",
+    "sha256": "480ceb62ecc728ec286d08b55c21abd68d1b8482627381b84ea50a1d3418b222",
+    "bytes": 1875
+  },
+  "checkpoint": {
+    "path": "model/bell_shape/model_best.pth",
+    "root": "thesis",
+    "sha256": "d928a03d9eb9f993ab8f4a0384b31cf1c7bdc875316a1c247dcf9722b8b79ccc",
+    "bytes": 29966819,
+    "stored_step": 150000,
+    "stored_best_para": 23.787122565451323,
+    "hash_rechecked_without_deserialization": true
+  },
+  "source": {
+    "declared_commit": "a72db40145b814943f4ce04ad46b7ea0b632bf2b",
+    "recorded_adapter_training_module_hashes_verified_against_git": true,
+    "implementation": {
+      "infrastructure/bell_inference.py": "2c333de03932908b96ccfbcfc33bf8326c6f573b854b2e29576cc1e6d5d3c14c",
+      "infrastructure/bell_comparison.py": "6ae82bf7f51f53b06a532f1a55dcf3d1b0bd0bb93b3f8b224e6016fbd8a13856",
+      "run_bell_inference.py": "622c20188d49b0015d3b3cbfcd9e933e3d0b4df4790ac4d01f6b3d3b23bab296",
+      "compare_bell_inference.py": "552531f6d0d93973f6647f5e4b4fe7a70b5f3d73c1f76b5655ae1c2a2e9aa43d",
+      "configs/experiments/geometry.example.yaml": "a9b5c12723fa40c976553a878dfde5b575e43e14af5ccaa0e5b84c4d712bd6c0",
+      "train/trainer.py": "fc3e0af25fd0921867a7d0cad752337b2a591f7c7a7a7c603bd980de95d25c7b",
+      "train/train_tools.py": "0c100e6549894778c7f37bd7ba36e541d8229447fe06d622a87670bdbba62d48",
+      "train/train_valid.py": "f973df4908ace7b174b43fd59a21ee017343260567497f025880b4914626f4f1",
+      "train/lr_common_manager.py": "32ab856f964ba080a3050088e4e2004a14a0f7ddd05ad7ba12d8a65b479b8f9a"
+    },
+    "pinned_scientific_reference_manifest": "docs/evidence/bell-structural-match.json",
+    "pinned_reference_source_hashes_verified": true,
+    "full_launch_clean_tree_independently_attested": false
+  },
+  "runtime": {
+    "declared_image_id": "sha256:2572950d9f662b7603b604878613e85c1a0fec90842447e9a256751a130ee137",
+    "image_tag_annotation": "nerofactor-paper:quick-candidate-1",
+    "image_identity_independently_attested_in_this_audit": false,
+    "python": "3.8.10 (default, Mar 18 2025, 20:04:55) \n[GCC 9.4.0]",
+    "torch": "1.8.1+cu111",
+    "cuda": "11.1",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "packages": {
+      "numpy": "1.24.4",
+      "scikit-image": "0.21.0",
+      "imageio": "2.35.1",
+      "Pillow": "10.4.0",
+      "opencv-python": "4.10.0.84",
+      "open3d": "0.16.0",
+      "nvdiffrast": "0.3.3",
+      "PyYAML": "6.0.2",
+      "scipy": "1.10.1"
+    },
+    "driver": "NVRM version: NVIDIA UNIX x86_64 Kernel Module  550.163.01  Tue Apr  8 12:41:17 UTC 2025\nGCC version:  gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.3) \n",
+    "default_dtype": "torch.float32",
+    "torch_cxx11_abi": false,
+    "torch_num_threads": 4,
+    "torch_num_interop_threads": 16,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": false,
+    "cudnn_allow_tf32": true,
+    "matmul_allow_tf32": true
+  },
+  "configuration": {
+    "legacy_path": "configs/shape/syn/bell.yaml",
+    "legacy_sha256": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f",
+    "envelope_path": "configs/experiments/geometry.example.yaml",
+    "envelope_sha256": "a9b5c12723fa40c976553a878dfde5b575e43e14af5ccaa0e5b84c4d712bd6c0",
+    "effective_trainer_canonical_sha256": "6808d51808bc1fe32afdf9711c43d00fa8f6901c051299eb75851c4dad4d2d11",
+    "effective_renderer_canonical_sha256": "decfdc66a0394e01735413a52df1acb28070b5e55c17824b21526139300a4111",
+    "effective_shader_canonical_sha256": "102d8a2cb0f24ec812e49730260948b217c91ccd6c3130619f60f8671404a879",
+    "all_three_arms_identical": true
+  },
+  "inputs": {
+    "root": "dataset",
+    "scene": "GlossySynthetic/bell",
+    "database_name": "syn/bell",
+    "used_file_count": 375,
+    "used_total_bytes": 111513661,
+    "used_manifest_canonical_sha256": "564fb6a11df4ee89559366f439278bdd942b8d447d7798c1ed59269751a270e1",
+    "all_selected_content_hashes_rechecked": true,
+    "scene_metadata_record_count": 641,
+    "scene_metadata_changed_paths": [],
+    "preprocessing_identity_canonical_sha256": "b02fb1dbedd671ab997d486e7ee7cda0a7d4056b7c6340ed305989d5b09c85a4",
+    "hash_scope": "375 selected source files; other scene files have metadata identities only, not content hashes"
+  },
+  "split": {
+    "policy": "A seeded three-way validation split",
+    "seed": 6033,
+    "training_count": 122,
+    "validation_ids": [
+      "58"
+    ],
+    "nvs_ids": [
+      "11",
+      "105",
+      "114",
+      "17",
+      "76"
+    ],
+    "ordered_lists_canonical_sha256": "1825d36dade190f9cd13e567798f983436b66b19f20e0a3eacf63d94939b8548",
+    "complete_ordered_lists_location": "reports.R: splits",
+    "historical_producing_split": "unknown",
+    "view_58_is_training_under_inspected_G_split": true
+  },
+  "rng": {
+    "before_canonical_sha256": "d3b730fe16f45d87e128d46724f9112461ba1f7d5ef9667cea51b06234672d5b",
+    "after_canonical_sha256": "bab823af061c89629880035b566c4e1b9bde6e245e2d381685bfbe20073c60e9",
+    "before_and_after_each_equal_across_arms": true,
+    "training_or_cross_environment_determinism_claim": false
+  },
+  "resolution": [
+    200,
+    200
+  ],
+  "rgb_array_shape": [
+    200,
+    200,
+    3
+  ],
+  "rgb_dtype": "float32",
+  "metrics": {
+    "psnr": {
+      "status": "finite",
+      "value": 32.84983236325549
+    },
+    "ssim": 0.946790605392639
+  },
+  "thresholds": {
+    "float_atol": 0.0001,
+    "float_rtol": 0.0001,
+    "uint8_max": 1,
+    "psnr_db": 0.01,
+    "ssim": 0.0001
+  },
+  "repeatability": {
+    "passed": true,
+    "identity_mismatches": [],
+    "shape": [
+      200,
+      200,
+      3
+    ],
+    "max_absolute_error": 0.0,
+    "mean_absolute_error": 0.0,
+    "max_relative_error_nonzero_reference": 0.0,
+    "mean_relative_error_nonzero_reference": 0.0,
+    "nonzero_error_at_zero_reference_count": 0,
+    "relative_error_limit": "Relative errors at zero reference are not silently epsilon-clamped; their nonzero count is separate.",
+    "float_violation_count": 0,
+    "uint8_max_error": 0,
+    "uint8_mismatch_count": 0,
+    "uint8_mean_absolute_error": 0.0,
+    "metrics": {
+      "reference": {
+        "psnr": {
+          "status": "finite",
+          "value": 32.84983236325549
+        },
+        "ssim": 0.946790605392639
+      },
+      "other": {
+        "psnr": {
+          "status": "finite",
+          "value": 32.84983236325549
+        },
+        "ssim": 0.946790605392639
+      },
+      "psnr_delta_db": 0.0,
+      "ssim_delta": 0.0
+    }
+  },
+  "candidate_comparison": {
+    "passed": true,
+    "identity_mismatches": [],
+    "shape": [
+      200,
+      200,
+      3
+    ],
+    "max_absolute_error": 0.0,
+    "mean_absolute_error": 0.0,
+    "max_relative_error_nonzero_reference": 0.0,
+    "mean_relative_error_nonzero_reference": 0.0,
+    "nonzero_error_at_zero_reference_count": 0,
+    "relative_error_limit": "Relative errors at zero reference are not silently epsilon-clamped; their nonzero count is separate.",
+    "float_violation_count": 0,
+    "uint8_max_error": 0,
+    "uint8_mismatch_count": 0,
+    "uint8_mean_absolute_error": 0.0,
+    "metrics": {
+      "reference": {
+        "psnr": {
+          "status": "finite",
+          "value": 32.84983236325549
+        },
+        "ssim": 0.946790605392639
+      },
+      "other": {
+        "psnr": {
+          "status": "finite",
+          "value": 32.84983236325549
+        },
+        "ssim": 0.946790605392639
+      },
+      "psnr_delta_db": 0.0,
+      "ssim_delta": 0.0
+    }
+  },
+  "shared_arm_output_hashes": {
+    "arrays/mask.npy": "c844add9c0c3ea25fb0988ac626fece57845c97f755f3d3b60ae03504afc586c",
+    "arrays/prediction.npy": "d6fe54b4148d517afc6790f12c4df62f5a46b7818db50480f2642f124e74af45",
+    "arrays/ground_truth.npy": "4296d493a0efe5ff8982838a4343272c9279999994144b1730aeb30f37c5dc13",
+    "renders/ground_truth.png": "1c085562a68e3a45b2b7f9454116bbaeef235a3db2b01fc0d12a41164c148eee",
+    "renders/prediction.png": "b739d34346867294a870992b344b81e3b12a52d2caa48e110c93049b3f6d051e",
+    "renders/validation/bell_shape-val/150000-index-0.jpg": "6d0247eee873dca2560c60e6f3bee4b0c3f68827388545c02f44c4b2aaf6dd1c",
+    "metrics.json": "5aa4a81b312dca72007dfd2c2184a2b8c0634a513602f8be644dd82abbb826bc"
+  },
+  "comparison_output_hashes": {
+    "R-repeat-minus-R-signed-difference.npy": "4f6b990c73bb71fe5d59a4ae617b8a32cc8035dcfa49ee410b916e49ebe548ba",
+    "R-repeat-minus-R-violation-mask.npy": "87e5b26532f7249becc31043d16be4be3d112b648a9104f6e0e1978d1514339a",
+    "C-minus-R-signed-difference.npy": "4f6b990c73bb71fe5d59a4ae617b8a32cc8035dcfa49ee410b916e49ebe548ba",
+    "C-minus-R-violation-mask.npy": "87e5b26532f7249becc31043d16be4be3d112b648a9104f6e0e1978d1514339a"
+  },
+  "interrupted_original_C": {
+    "path": "bell-regression.tjRWmKTp/c/inference.json",
+    "sha256": "9049b2785cc5609ebef8daeb2f555a7916d3da2b3b6224b20a3781de4aec7594",
+    "bytes": 3995,
+    "run_id": "c-39772aa4847f4e58ac8511db70a77bab",
+    "recorded_status": "running",
+    "recorded_phase": "dataset_model_initialization",
+    "admission": "incomplete; never used as successful C",
+    "console": {
+      "path": "bell-regression.tjRWmKTp/c/logs/console.log",
+      "sha256": "b749075d5465eaafd1cfa9d18154019c240cca07e676808db34c152a4b6041d3",
+      "bytes": 62
+    },
+    "external_signal": "SIGHUP",
+    "signal_evidence": "researcher_reported; no saved signal/exit record inspected"
+  },
+  "recovery": {
+    "kind": "fresh C-only process and output directory, not same-run or optimizer continuation",
+    "selected_report": "reports.C",
+    "prior_R_and_R_repeat_reused_unchanged": true,
+    "additional_attempts_inventory": "report_inventory",
+    "reason_for_other_completed_C_attempts": "unknown"
+  },
+  "report_inventory": [
+    {
+      "path": "bell-c-resume.41v84l15/c/inference.json",
+      "sha256": "ca7b8f09243b9c0df73161df520b92d88b0b5eacd504e44b7f6748afae5ea261",
+      "bytes": 217958,
+      "reported_state": "complete",
+      "arm": "C",
+      "phase": "complete",
+      "declared_outputs_hash_verified": true
+    },
+    {
+      "path": "bell-c-resume.41v84l15/final/regression-comparison.json",
+      "sha256": "5b716048066a790e5380696a16a354f80074d2da388aa49e98675388a2754c99",
+      "bytes": 3221,
+      "reported_state": "regression_passed",
+      "arm": null,
+      "phase": null,
+      "declared_outputs_hash_verified": true
+    },
+    {
+      "path": "bell-c-resume.NNdOP4mV/c/inference.json",
+      "sha256": "c60887f3c55ccfb825db46c3e5391e23b4d128d506b084c33c6121bb5125bb13",
+      "bytes": 217958,
+      "reported_state": "complete",
+      "arm": "C",
+      "phase": "complete",
+      "declared_outputs_hash_verified": true
+    },
+    {
+      "path": "bell-c-resume.NNdOP4mV/final/regression-comparison.json",
+      "sha256": "d0f8fdd7d27d66c38c07cfdee575d51053f97be44e850ee73c86adb07f0fb03d",
+      "bytes": 3221,
+      "reported_state": "regression_passed",
+      "arm": null,
+      "phase": null,
+      "declared_outputs_hash_verified": true
+    },
+    {
+      "path": "bell-c-resume.S1HuF8xl/c/inference.json",
+      "sha256": "4066fc9a4f6939f56e9e077505edefd54ddab41718e7d41b042d642455f6a21f",
+      "bytes": 217958,
+      "reported_state": "complete",
+      "arm": "C",
+      "phase": "complete",
+      "declared_outputs_hash_verified": true
+    },
+    {
+      "path": "bell-c-resume.S1HuF8xl/final/regression-comparison.json",
+      "sha256": "ed1e71372bbf4c85903aed46fe887e8492d760234c6a236c08c9dd9632fea71a",
+      "bytes": 3221,
+      "reported_state": "regression_passed",
+      "arm": null,
+      "phase": null,
+      "declared_outputs_hash_verified": true
+    },
+    {
+      "path": "bell-c-resume.Z9sg8h0d/c/inference.json",
+      "sha256": "2654b9955c99511f7fff6b513b684f4b8a4385b875c2be8f8c6822f4c789e9ab",
+      "bytes": 217958,
+      "reported_state": "complete",
+      "arm": "C",
+      "phase": "complete",
+      "declared_outputs_hash_verified": true
+    },
+    {
+      "path": "bell-c-resume.Z9sg8h0d/final/regression-comparison.json",
+      "sha256": "bdf9c46ea23349ee78b6abac1092d8d75c3b1fe75e83177289175dce4c05f8d4",
+      "bytes": 3221,
+      "reported_state": "regression_passed",
+      "arm": null,
+      "phase": null,
+      "declared_outputs_hash_verified": true
+    },
+    {
+      "path": "bell-c-resume.jWudcgIP/c/inference.json",
+      "sha256": "ecf5e926d9e8f9de35a0fccba06e405aa3b383787c4c6c716056123ffca8ed6e",
+      "bytes": 217958,
+      "reported_state": "complete",
+      "arm": "C",
+      "phase": "complete",
+      "declared_outputs_hash_verified": true
+    },
+    {
+      "path": "bell-c-resume.jWudcgIP/final/regression-comparison.json",
+      "sha256": "70b8799523250941b339a2b0a7cd1b4b703b6e9d68ebd41722c9fc5796fddf00",
+      "bytes": 3221,
+      "reported_state": "regression_passed",
+      "arm": null,
+      "phase": null,
+      "declared_outputs_hash_verified": true
+    },
+    {
+      "path": "bell-regression.8KzmPUwI/r-repeat/inference.json",
+      "sha256": "592c776dc5f4c0022d6ca5398f47c5a9a745913777d6497f1a9c8dc10b0cbcae",
+      "bytes": 4017,
+      "reported_state": "running",
+      "arm": "R-repeat",
+      "phase": "one_validation_view",
+      "declared_outputs_hash_verified": false
+    },
+    {
+      "path": "bell-regression.8KzmPUwI/r/inference.json",
+      "sha256": "5e5351753933a3c1dce599911f436a395509d5573386d1f9684fa1399d1b0b6b",
+      "bytes": 217961,
+      "reported_state": "complete",
+      "arm": "R",
+      "phase": "complete",
+      "declared_outputs_hash_verified": true
+    },
+    {
+      "path": "bell-regression.tjRWmKTp/c/inference.json",
+      "sha256": "9049b2785cc5609ebef8daeb2f555a7916d3da2b3b6224b20a3781de4aec7594",
+      "bytes": 3995,
+      "reported_state": "running",
+      "arm": "C",
+      "phase": "dataset_model_initialization",
+      "declared_outputs_hash_verified": false
+    },
+    {
+      "path": "bell-regression.tjRWmKTp/r-repeat/inference.json",
+      "sha256": "16d49548d52bddee244737fbaab155b2dd9d9784471744bb24ef01a6fe9299c5",
+      "bytes": 217989,
+      "reported_state": "complete",
+      "arm": "R-repeat",
+      "phase": "complete",
+      "declared_outputs_hash_verified": true
+    },
+    {
+      "path": "bell-regression.tjRWmKTp/r/inference.json",
+      "sha256": "d5a7f4a08fbdca90cf2cf6d464236c2e0b571838538c35d7856d2b84dff8e832",
+      "bytes": 217961,
+      "reported_state": "complete",
+      "arm": "R",
+      "phase": "complete",
+      "declared_outputs_hash_verified": true
+    },
+    {
+      "path": "bell-regression.tjRWmKTp/repeatability/regression-comparison.json",
+      "sha256": "480ceb62ecc728ec286d08b55c21abd68d1b8482627381b84ea50a1d3418b222",
+      "bytes": 1875,
+      "reported_state": "repeatability_passed",
+      "arm": null,
+      "phase": null,
+      "declared_outputs_hash_verified": true
+    },
+    {
+      "path": "bell-regression.xgvNp0tt/c/inference.json",
+      "sha256": "9cb384f02674e41d88c5664aaabfe4ef24d216fb91accfff79b6054454a3d351",
+      "bytes": 217958,
+      "reported_state": "complete",
+      "arm": "C",
+      "phase": "complete",
+      "declared_outputs_hash_verified": true
+    },
+    {
+      "path": "bell-regression.xgvNp0tt/final/regression-comparison.json",
+      "sha256": "1998e512e3ffc523e52bd36f902fde14d1b0e2f858c583b22ad6d8f6fcd19b0e",
+      "bytes": 3221,
+      "reported_state": "regression_passed",
+      "arm": null,
+      "phase": null,
+      "declared_outputs_hash_verified": true
+    },
+    {
+      "path": "bell-regression.xgvNp0tt/r-repeat/inference.json",
+      "sha256": "6b65913ff3ecb95967905cecb8dd09eab2212b3e673bc9808e64125f52be2731",
+      "bytes": 217989,
+      "reported_state": "complete",
+      "arm": "R-repeat",
+      "phase": "complete",
+      "declared_outputs_hash_verified": true
+    },
+    {
+      "path": "bell-regression.xgvNp0tt/r/inference.json",
+      "sha256": "e1d6120501e0dd4730e1b29c02993e7cae25ce5768eddc5eba2531b20a33a200",
+      "bytes": 217961,
+      "reported_state": "complete",
+      "arm": "R",
+      "phase": "complete",
+      "declared_outputs_hash_verified": true
+    },
+    {
+      "path": "bell-regression.xgvNp0tt/repeatability/regression-comparison.json",
+      "sha256": "1cd06d969961daab59a458020901aa7d7f61fd08f6f4877f0c08a56b52b3cd33",
+      "bytes": 1875,
+      "reported_state": "repeatability_passed",
+      "arm": null,
+      "phase": null,
+      "declared_outputs_hash_verified": true
+    }
+  ],
+  "cpu_verification": {
+    "python": "3.9.12",
+    "numpy": "1.21.5",
+    "scikit_image": "0.19.2",
+    "Pillow": "9.0.1",
+    "native_version_guard_not_bypassed": true,
+    "standard_native_load_arm_not_invoked": true,
+    "saved_arrays_and_differences_hash_dtype_shape_content_checked": true,
+    "lossless_PNG_decoding_matches_saved_float_RGB_conversion": true,
+    "cross_version_saved_array_metric_consistency": {
+      "psnr": {
+        "status": "finite",
+        "value": 32.84983236325549
+      },
+      "ssim": 0.946790605392639
+    },
+    "note": "CPU checks of existing saved arrays only; no model/checkpoint execution. Same values on this host do not establish general cross-version metric equivalence."
+  },
+  "canonical_hash_format": "sha256(json.dumps(value,sort_keys=True,separators=(comma,colon),allow_nan=False).encode(UTF-8))",
+  "discrepancies": [],
+  "limitations": [
+    "Not historical thesis or held-out/NVS reproduction; checkpoint producing revision/configuration/split/final status unknown.",
+    "Immutable image ID/source commit are recorded declarations; listed source bytes independently match Git, not an attestation of full launch state.",
+    "SIGHUP cause is researcher-reported; interrupted report remains incomplete.",
+    "Additional attempts are inventoried, not silently promoted to the admitted comparison.",
+    "No new Docker/GPU execution, inference, training or checkpoint deserialization by Codex.",
+    "Image build chain and complete native-library/extension/JIT binary identities remain unresolved."
+  ],
+  "classification_scope": "Verified saved report/artifact consistency; caller launch declarations and unresolved historical origin are not attested."
+}

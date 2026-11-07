@@ -1,0 +1,438 @@
+{
+  "schema_version": 1,
+  "milestone": "1D.4B-3B",
+  "review_baseline": "a72db40145b814943f4ce04ad46b7ea0b632bf2b",
+  "path_convention": {
+    "historical_artifacts": "relative to thesis root",
+    "git_sources": "commit:path plus SHA-256"
+  },
+  "historical_artifacts": {
+    "model/bell_shape/train.txt": {
+      "path": "model/bell_shape/train.txt",
+      "sha256": "7250b274e0d4d3b6626f3596d92327be26419ed228ff33c270b678eb133243f7",
+      "bytes": 1967300
+    },
+    "model/bell_shape/val.txt": {
+      "path": "model/bell_shape/val.txt",
+      "sha256": "898de60200fe0cb8743ecf79e0c6c4d1fc4a310359acbe07d82fe308b63d7702",
+      "bytes": 25800
+    },
+    "model/bell_shape/events.out.tfevents.1760598355.1ccc15bb9069": {
+      "path": "model/bell_shape/events.out.tfevents.1760598355.1ccc15bb9069",
+      "sha256": "b2179a3e075cf6086f7e10e2d452af5c8a3b357c8064b0df7a85e1a488b548f5",
+      "bytes": 5811089
+    },
+    "train_vis/bell_shape-val/999-index-0.jpg": {
+      "path": "train_vis/bell_shape-val/999-index-0.jpg",
+      "sha256": "e7156228b5dfe8f24ac5e65f5d197cfe574f90460606797c09c474c73b90c222",
+      "bytes": 47474,
+      "dimensions": [
+        800,
+        1000
+      ]
+    },
+    "train_vis/bell_shape-val/149999-index-0.jpg": {
+      "path": "train_vis/bell_shape-val/149999-index-0.jpg",
+      "sha256": "2800003a665d47f757b1ec30b98d225bcfe19751b2608f1caa75587f8bcb3a44",
+      "bytes": 58376,
+      "dimensions": [
+        800,
+        1000
+      ]
+    },
+    "train_vis/bell_shape-val/299999-index-0.jpg": {
+      "path": "train_vis/bell_shape-val/299999-index-0.jpg",
+      "sha256": "2d2aab36d3427e1757a4869f35669c0beaf0431d0de42d6ce3b6e74b2705b010",
+      "bytes": 59592,
+      "dimensions": [
+        800,
+        1000
+      ]
+    }
+  },
+  "sources": {
+    "A": {
+      "commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "files_sha256": {
+        "dataset/database.py": "95d2cb909dc804c89ec8f2511e986db30f39ef5629bc148cb21f3ac425fe3ce7",
+        "dataset/train_dataset.py": "29dca0e546f5ea827a5ff4509f377c142426fcf4e607eef832d6fac1519db063",
+        "network/renderer.py": "dd82c61cb91a3d54e801f1fb32238e3b03a87e1ceb4c50f24f1b359e50cfd5e9",
+        "network/metrics.py": "e0eed09b34b12254c55cfabf92356376a9580b3b80d30535448ce86659f0dcbc",
+        "network/field.py": "b8386007dc009442cdefdeccc3c6ecc0114f6d0e7feaf804008b0bd9020091fe",
+        "network/loss.py": "55a2b6779bb8f890340a70b45a7357cb8fc8fc3ff381fbe7caf1968d6bfbf1cf",
+        "train/trainer.py": "6d86bd66917bb8cde7ecfc9da10a4dddd9494c93443b21fee753dc88a6d1e09d",
+        "train/train_valid.py": "f973df4908ace7b174b43fd59a21ee017343260567497f025880b4914626f4f1",
+        "train/train_tools.py": "0c100e6549894778c7f37bd7ba36e541d8229447fe06d622a87670bdbba62d48",
+        "utils/base_utils.py": "c07a99a9713a8c9c1b67fcf57383083336e0b1673de78f99903236d888f55a5b",
+        "configs/shape/syn/bell.yaml": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f",
+        "run_training.py": "28149b7b173b8ee00a7256ea575590b148a49892550181a019ab484860869558"
+      }
+    },
+    "G": {
+      "commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+      "files_sha256": {
+        "dataset/database.py": "e2490556c8b3d7aa0f5a9ea1db59fed3f060a00401787625874af46c57301fa3",
+        "dataset/train_dataset.py": "98006db8444adde8b132854e7544c1d692aa52995a62997bb6861134ebac2382",
+        "network/renderer.py": "38c280ed812c4fb22b980caf842f0cd302acbee3bde9c449972dabd23485584b",
+        "network/metrics.py": "282969f587f2ef71fcb3aa9b23b98f3b6741f12b88bd041a35473eb64421120e",
+        "network/field.py": "06fb6606c580dede3e7e12ddfad2a2fed9368fa4adfcadf7cf7cef73e940617f",
+        "network/loss.py": "2d19419c3b7e006117e40c11526549f9f7901c9bda1c0018b0b452c415c7a17c",
+        "train/trainer.py": "412dfe92c16747c66609f6e80c2e55fcff6f7df287ecbb670c5a43b1a695e7a8",
+        "train/train_valid.py": "f973df4908ace7b174b43fd59a21ee017343260567497f025880b4914626f4f1",
+        "train/train_tools.py": "0c100e6549894778c7f37bd7ba36e541d8229447fe06d622a87670bdbba62d48",
+        "utils/base_utils.py": "c07a99a9713a8c9c1b67fcf57383083336e0b1673de78f99903236d888f55a5b",
+        "configs/shape/syn/bell.yaml": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f",
+        "run_training.py": "28149b7b173b8ee00a7256ea575590b148a49892550181a019ab484860869558"
+      }
+    }
+  },
+  "inspected_function_comparisons": [
+    {
+      "path": "network/renderer.py",
+      "method": "NeROShapeRenderer.test_step",
+      "A_lines": [
+        511,
+        570
+      ],
+      "G_lines": [
+        496,
+        555
+      ],
+      "A_G_AST_equal": true
+    },
+    {
+      "path": "network/renderer.py",
+      "method": "NeROShapeRenderer._init_dataset",
+      "A_lines": [
+        278,
+        302
+      ],
+      "G_lines": [
+        263,
+        287
+      ],
+      "A_G_AST_equal": true
+    },
+    {
+      "path": "network/renderer.py",
+      "method": "NeROShapeRenderer.forward",
+      "A_lines": [
+        1037,
+        1059
+      ],
+      "G_lines": [
+        1022,
+        1044
+      ],
+      "A_G_AST_equal": true
+    },
+    {
+      "path": "network/metrics.py",
+      "method": "ShapeRenderMetrics.__call__",
+      "A_lines": [
+        55,
+        84
+      ],
+      "G_lines": [
+        55,
+        84
+      ],
+      "A_G_AST_equal": true
+    },
+    {
+      "path": "train/train_tools.py",
+      "method": "Logger.log",
+      "A_lines": [
+        103,
+        112
+      ],
+      "G_lines": [
+        103,
+        112
+      ],
+      "A_G_AST_equal": true
+    },
+    {
+      "path": "network/metrics.py",
+      "method": "compute_psnr",
+      "A_lines": [
+        12,
+        18
+      ],
+      "G_lines": [
+        12,
+        18
+      ],
+      "A_G_AST_equal": true
+    },
+    {
+      "path": "network/metrics.py",
+      "method": "psnr",
+      "A_lines": [
+        134,
+        135
+      ],
+      "G_lines": [
+        132,
+        133
+      ],
+      "A_G_AST_equal": true
+    },
+    {
+      "path": "network/renderer.py",
+      "method": "imgs_info_downsample",
+      "A_lines": [
+        173,
+        188
+      ],
+      "G_lines": [
+        161,
+        176
+      ],
+      "A_G_AST_equal": true
+    }
+  ],
+  "historical_validation": {
+    "line_count": 300,
+    "training_line_count": 15000,
+    "max_logged_psnr": 23.78712,
+    "max_rows_1_based": [
+      150
+    ],
+    "selected_rows": {
+      "1": "val val-loss_rgb 0.32205 val-loss_eikonal 0.00095 val-psnr 15.26240 val-ssim 0.30167 ",
+      "149": "val val-loss_rgb 0.06654 val-loss_eikonal 0.00006 val-psnr 23.35360 val-ssim 0.87363 ",
+      "150": "val val-loss_rgb 0.06437 val-loss_eikonal 0.00006 val-psnr 23.78712 val-ssim 0.87727 ",
+      "151": "val val-loss_rgb 0.06548 val-loss_eikonal 0.00007 val-psnr 23.62050 val-ssim 0.87507 ",
+      "300": "val val-loss_rgb 0.06341 val-loss_eikonal 0.00002 val-psnr 23.43791 val-ssim 0.89940 "
+    },
+    "checkpoint_best_para_matches_rounded_max": true,
+    "conditional_selection_link": {
+      "classification": "supported_but_not_proven",
+      "explanation": "Under the inspected YAML intervals and trainer step+1 save policy, row 150 and label 149999 are consistent with stored step 150000. Text logs omit steps, append across resumptions and do not bind the checkpoint SHA or producing source."
+    }
+  },
+  "saved_validation_images": {
+    "count": 300,
+    "filename_labels_exact": {
+      "first": 999,
+      "last": 299999,
+      "interval": 1000,
+      "index": 0
+    },
+    "step_labels_are_not_database_IDs": true,
+    "montage_dimensions": [
+      800,
+      1000
+    ],
+    "conditional_top_left_200x200_tile_comparison": {
+      "Pillow": "9.0.1",
+      "mean_absolute_uint8_difference": 66.386,
+      "maximum_absolute_uint8_difference": 206,
+      "pixel_arrays_equal": false,
+      "interpretation": "Verified saved pixel difference. Interpreting the tile as GT depends on attribution of the inspected montage layout; no input image ID is proven and no JPEG score substitutes for lossless inference metrics."
+    }
+  },
+  "metric_difference": {
+    "stored_best_para": 23.787122565451323,
+    "current_A_validation_psnr": 32.84983236325549,
+    "difference_db": 9.062709797804164,
+    "cause": "unknown",
+    "A_G_inspected_shape_metric_and_test_step_AST_equal": true,
+    "old_selection_step_semantics": "Training evaluates zero-based step s and saves step s+1; current protocol deliberately feeds stored step 150000, not hypothetical historical validation step 149999."
+  },
+  "historical_split_source_inventory": {
+    "b0815ea2acf1a4fbc0d5c8e7a2a1884a539f51c7": {
+      "path": "dataset/database.py",
+      "sha256": "fa05217cd6dfb3fbc2ef3d5ed8616d369fee91b29f8df63dc74598c252736569",
+      "split_source_lines": [
+        561,
+        578
+      ]
+    },
+    "de0d3412689fabca52cf248241974a3990386139": {
+      "path": "dataset/database.py",
+      "sha256": "e2490556c8b3d7aa0f5a9ea1db59fed3f060a00401787625874af46c57301fa3",
+      "split_source_lines": [
+        574,
+        591
+      ]
+    },
+    "36dd0bb56936fab12bdc0055e802675c26dd692a": {
+      "path": "dataset/database.py",
+      "sha256": "3ab2ae70db6090331d4f05825cea9f28ea8427af8db0c42c1477159da60789be",
+      "split_source_lines": [
+        574,
+        591
+      ]
+    },
+    "11f0eac05f73447443cadd63e4d71ed96bac42d2": {
+      "path": "dataset/database.py",
+      "sha256": "54c1038d6f5dc5f6b7fc3cae7bf4e7e87a067c4a52f56dd027ad3047584b65b7",
+      "split_source_lines": [
+        575,
+        591
+      ]
+    },
+    "75644a6dc3b01978ba28683386df11e53892f538": {
+      "path": "dataset/database.py",
+      "sha256": "6ff23bdbd9388e99a923f330a5f645c6284cfc7e3befe3323e33b58462ad1518",
+      "split_source_lines": [
+        574,
+        591
+      ]
+    },
+    "3321944553b67e219d051b99c4e317d41604f4ba": {
+      "path": "dataset/database.py",
+      "sha256": "dd2272a96cb8a650d5ccb7714ea08bbfb5672acc11e85d8c5c1c4714d93c6eaf",
+      "split_source_lines": [
+        577,
+        591
+      ]
+    },
+    "32e0d42e523be609f8629e3c4317510b98639eef": {
+      "path": "dataset/database.py",
+      "sha256": "95d2cb909dc804c89ec8f2511e986db30f39ef5629bc148cb21f3ac425fe3ce7",
+      "split_source_lines": [
+        577,
+        591
+      ]
+    }
+  },
+  "inventory_limits": [
+    "No historical checkpoint, camera pickle or binary TensorBoard event deserialization.",
+    "TensorBoard event opaque-byte hash and metadata only; no exported scalar CSV/JSON or launch/config/split/dirty-patch record found in the inspected project/historical roots.",
+    "No original source checkout outside the approved project/historical/evidence roots was searched. Build source directories and private home configuration were excluded.",
+    "File proximity, timestamps, metric similarity, constructor compatibility and current inference success do not attribute producing source."
+  ],
+  "classification_vocabulary": [
+    "verified",
+    "supported_but_not_proven",
+    "unknown",
+    "contradictory"
+  ],
+  "search_scope": {
+    "roots": [
+      "approved evidence root",
+      "repository working tree and Git refs/history",
+      "historical results root"
+    ],
+    "excluded": [
+      "private home configuration",
+      "unrelated repositories",
+      "build-source staging",
+      "network services"
+    ],
+    "historical_json_paths": [
+      "pbrnerf/bear/metrics.json",
+      "pbrnerf/bunny/metrics.json",
+      "pbrnerf/coral/metrics.json",
+      "pbrnerf/maneki/metrics.json",
+      "pbrnerf/vase/metrics.json"
+    ],
+    "historical_saved_yaml_count": 0,
+    "historical_scalar_csv_paths": [],
+    "tensorboard_decoder_available": false,
+    "tensorboardX_available": false
+  },
+  "findings": [
+    {
+      "id": "stored-state",
+      "classification": "verified",
+      "evidence": [
+        "prior checkpoint metadata SHA 6108d45e49f502e48b78f71a8dd329b8f37b95fd249a04fb2a386688d2eb6720",
+        "bell-inference-regression-success.json:checkpoint"
+      ],
+      "finding": "Stored step 150000 and best_para 23.787122565451323, without new payload deserialization."
+    },
+    {
+      "id": "text-best",
+      "classification": "verified",
+      "evidence": [
+        "model/bell_shape/val.txt:150",
+        "historical_artifacts:model/bell_shape/val.txt"
+      ],
+      "finding": "Unique maximum rounded PSNR 23.78712 at row 150; SSIM 0.87727."
+    },
+    {
+      "id": "selection-link",
+      "classification": "supported_but_not_proven",
+      "evidence": [
+        "model/bell_shape/val.txt:150",
+        "train_vis/bell_shape-val/149999-index-0.jpg",
+        "sources.A:train/trainer.py:162-185",
+        "sources.G:train/trainer.py:157-180"
+      ],
+      "finding": "Historical log/cadence/image label consistent with stored metric/progress, but no hash-bound run linkage."
+    },
+    {
+      "id": "origin",
+      "classification": "unknown",
+      "evidence": [
+        "search_scope",
+        "historical_artifacts",
+        "sources",
+        "historical_split_source_inventory"
+      ],
+      "finding": "Producing commit/branch/dirty patch/effective config/historical data and split not established."
+    },
+    {
+      "id": "metric-cause",
+      "classification": "unknown",
+      "evidence": [
+        "metric_difference",
+        "saved_validation_images",
+        "model/bell_shape/val.txt:150"
+      ],
+      "finding": "Cause of 9.062709797804164 dB difference not identified."
+    },
+    {
+      "id": "target-evidence",
+      "classification": "supported_but_not_proven",
+      "evidence": [
+        "saved_validation_images:conditional_top_left_200x200_tile_comparison",
+        "sources.A:network/metrics.py:55-84",
+        "sources.G:network/metrics.py:55-84"
+      ],
+      "finding": "Existing montage tile pixels differ; interpretation as different GT depends on historical layout attribution. No source view ID proven."
+    },
+    {
+      "id": "same-score-claim",
+      "classification": "contradictory",
+      "evidence": [
+        "metric_difference",
+        "model/bell_shape/val.txt:150",
+        "bell-inference-regression-success.json:metrics"
+      ],
+      "finding": "Stored best_para is not the current A one-view score."
+    },
+    {
+      "id": "equivalent-splits-claim",
+      "classification": "contradictory",
+      "evidence": [
+        "sources.A:dataset/database.py:577-590",
+        "sources.G:dataset/database.py:574-589",
+        "bell-split-verification.json"
+      ],
+      "finding": "A and G split rules differ; current A validation 58 is G training under inspected input order."
+    },
+    {
+      "id": "unmodified-A-entry",
+      "classification": "contradictory",
+      "evidence": [
+        "sources.A:network/renderer.py:278-302",
+        "sources.A:dataset/database.py:577-590"
+      ],
+      "finding": "Inspected unmodified A tip geometry consumer cannot unpack its three-list helper into two values; not proof against earlier/local implementations."
+    },
+    {
+      "id": "event-link",
+      "classification": "unknown",
+      "evidence": [
+        "model/bell_shape/events.out.tfevents.1760598355.1ccc15bb9069",
+        "search_scope"
+      ],
+      "finding": "Binary event payload not decoded, no scalar export found, no checkpoint/source/view chain recovered."
+    }
+  ]
+}

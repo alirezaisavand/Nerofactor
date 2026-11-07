@@ -10,7 +10,13 @@ now records a selected checkpoint byte hash, exact CPU-verified A/G source split
 and copies of the original smoke reports at the researcher's approved alternate
 archive destination. The initial 1D.4A inventory/evidence status below is retained
 as an earlier observation. Producing checkpoint provenance and admission remain
-unresolved; no inference or historical reproduction has been performed.
+unresolved at that milestone. **Later 1D.4B-3B update:** the researcher current-A
+inference regression passed, with preserved-file verification in the
+[success evidence](evidence/BELL_INFERENCE_REGRESSION_SUCCESS.md). Historical
+producing attribution remains incomplete; see
+[the evaluation audit](evidence/BELL_EVALUATION_PROVENANCE.md). This earlier
+inventory is not a current blocked-inference status or a historical reproduction
+claim.
 
 ## Evidence status
 

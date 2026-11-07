@@ -1,6 +1,11 @@
 # Bell checkpoint inference regression preparation: 1D.4B-3A
 
-**Implementation for review; no real inference run was executed by Codex.** This
+**1D.4B-3B status: researcher execution passed; saved evidence independently
+verified.** R/R-repeat/C agree exactly at 200 x 200, PSNR 32.84983236325549 dB,
+SSIM 0.946790605392639. See the
+[admitted evidence and interrupted-attempt inventory](evidence/BELL_INFERENCE_REGRESSION_SUCCESS.md)
+and [historical evaluation audit](evidence/BELL_EVALUATION_PROVENANCE.md).
+No real inference run was executed by Codex. This
 is A-based current-code routing regression, not thesis reproduction, NVS or a
 historically verified held-out score. View `"58"` is a training view under the
 inspected G split; producing revision/configuration/split and final-version
@@ -267,13 +272,17 @@ full command, logs, partial reports and failed directories. A running/incomplete
 report or missing exit-0 completion never counts as success. Do not switch
 checkpoint, crop/resolution, sample count, seed, device or threshold to finish.
 
-## Review boundary
+## Review boundary at 1D.4B-3A (historical)
 
-This implementation has CPU/static evidence only. Native one-view validation,
+At 1D.4B-3A this implementation had CPU/static evidence only. The following
+recorded preparation limitations before the researcher run; current file-backed
+acceptance is linked above. Native one-view validation,
 its original optional diagnostic layout, numerical repeatability and R/C parity
-remain unexecuted here. Structural compatibility removed an architecture blocker;
-it did not verify any image or historical metric. Review this implementation and
-command before researcher-side execution. Any newly exposed scientific/evaluator
+were unexecuted at that milestone. Structural compatibility removed an
+architecture blocker;
+it did not verify any image or historical metric. The original gate required
+review of the implementation and command before researcher-side execution. Any
+newly exposed scientific/evaluator
 defect is a separately reported blocker, not an infrastructure cleanup fix.
 
 ## CPU and static validation

@@ -1,6 +1,14 @@
 # Bell checkpoint admission and provenance: 1D.4B-0
 
-**Decision: neither current-code A inference nor historical G reproduction is
+**Current follow-up 1D.4B-3B:** hash-bound metadata and structural compatibility
+were subsequently admitted, and the researcher A inference regression passed.
+See [successful evidence](BELL_INFERENCE_REGRESSION_SUCCESS.md) and
+[historical attribution audit](BELL_EVALUATION_PROVENANCE.md). Producing source,
+configuration and split remain unknown; no historical thesis/G reproduction is
+established. The 1D.4B-0 status and observations below are preserved as a
+**historical investigation snapshot**, not the current inference-admission state.
+
+**Historical 1D.4B-0 decision: neither current-code A inference nor historical G reproduction is
 admitted for execution yet.** Checkpoint identity, source-defined A/G splits and
 existing smoke-report contents are verified below. Producing-code provenance,
 checkpoint trust/architecture and stored progress remain unresolved. No checkpoint

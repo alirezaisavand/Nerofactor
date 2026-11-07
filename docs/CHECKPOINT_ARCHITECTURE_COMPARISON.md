@@ -6,8 +6,10 @@ comparison; independently checked JSON evidence establishes
 source identities and limitations are preserved in
 [bell-structural-match.json](evidence/bell-structural-match.json). This proves
 structural compatibility only; producing revision and training split remain
-unresolved. The [inference preparation](BELL_INFERENCE_REGRESSION.md) is ready for
-review, without execution approval.
+unresolved. **1D.4B-3B:** the later researcher A inference regression passed;
+[admitted evidence](evidence/BELL_INFERENCE_REGRESSION_SUCCESS.md) records exact
+saved-array equality and the separate interrupted C attempt. Neither result
+establishes historical producing code/split or authorizes further execution.
 
 The following records the earlier 1D.4B-2 implementation state, when comparison
 was **`blocked`** pending the real reference. Codex has not executed Docker,

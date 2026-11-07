@@ -1,15 +1,17 @@
 # Bell geometry checkpoint compatibility: 1D.4B-1
 
-Current follow-up **1D.4B-3A**: the researcher-generated metadata, real maintained-A
+Current follow-up **1D.4B-3B**: the researcher-generated metadata, real maintained-A
 reference and comparison have been independently inspected. The result is
 `exact_structural_match` for 137 keys/shapes/dtypes, with original paths/hashes in
 [bell-structural-match.json](bell-structural-match.json). This establishes
 structural compatibility only. Producing revision/configuration/split remain
-unresolved. The [inference adapters](../BELL_INFERENCE_REGRESSION.md) are prepared
-for review without native execution. The earlier investigation below and its
-JSON remain a historical blocked snapshot, not a replacement inspection result.
+unresolved. The subsequent researcher A inference regression passed; its
+[successful evidence](BELL_INFERENCE_REGRESSION_SUCCESS.md) is independently
+verified, with [historical evaluation attribution](BELL_EVALUATION_PROVENANCE.md)
+still incomplete. No new native execution was performed by Codex. The earlier
+investigation below and its JSON remain a historical blocked snapshot, not a replacement inspection result.
 
-**Status: blocked by the execution environment; checkpoint compatibility remains
+**Historical 1D.4B-1 status: blocked by the execution environment; checkpoint compatibility remains
 undetermined.** The exact checkpoint hash matches the approved admission evidence
 and the researcher explicitly confirmed trust. No checkpoint was deserialized,
 Torch imported, model constructed or weights loaded. The planned CPU-only

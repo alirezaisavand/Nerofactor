@@ -8,7 +8,11 @@ adapters, a repeatability gate and researcher commands for review, retaining the
 thresholds below. The admitted structural match is recorded in
 [bell-structural-match.json](../evidence/bell-structural-match.json); native
 checkpoint inference remains unexecuted by Codex. Approval of this document does
-not authorize GPU launches. Baseline readiness and evidence classifications are
+not authorize GPU launches. **1D.4B-3B update:** the separately authorized
+researcher R/R-repeat/C execution passed; preserved files and zero numerical
+differences are independently checked in the
+[success evidence](../evidence/BELL_INFERENCE_REGRESSION_SUCCESS.md). This status
+update changes no numerical rule and authorizes no further execution. Baseline readiness and evidence classifications are
 in [BASELINE_PREPARATION.md](../BASELINE_PREPARATION.md).
 
 The later [1D.4B-0 admission report](../evidence/BELL_CHECKPOINT_ADMISSION.md)
@@ -41,11 +45,11 @@ experiment, never evidence of G thesis reproduction.
 
 Proposed arms, each in a fresh single-use process/output directory:
 
-- **Reference R:** a later reviewed thin adapter to the direct renderer using the
+- **Reference R:** the separately implemented thin adapter to the direct renderer using the
   admitted original legacy YAML and explicit input paths. Use the unchanged
   scientific definitions at the pinned source snapshot. It must independently
   record effective settings and pass the same explicit read-only cache and mesh.
-- **Candidate C:** the later isolated inference adapter resolving the schema-1
+- **Candidate C:** the separately implemented isolated inference adapter resolving the schema-1
   envelope with PathResolver/PreprocessingCache and the same admitted checkpoint.
 
 Both use the same exact pinned source snapshot and native image for this first
@@ -269,10 +273,12 @@ cloud provenance is unknown. PBRNeRF masked JSON, NeRO material NVS logs,
 README tables and geometry validation scores retain separate protocol labels.
 No cross-method score comparison or expected historical score is implied.
 
-## Proposed numerical acceptance (must be reviewed before runs)
+## Numerical acceptance (frozen for the admitted regression)
 
-These are **tentative regression thresholds**, not observed error bounds or
-historical quality targets. No pass/fail inference result exists yet.
+These were precommitted **provisional regression thresholds**, not observed error
+bounds or historical quality targets. The admitted 1D.4B-3B evidence passes them
+with zero observed differences for both pairs. Further protocol changes require
+separate review; this is not a general determinism or thesis-quality claim.
 
 | Quantity | Proposed requirement |
 | --- | --- |

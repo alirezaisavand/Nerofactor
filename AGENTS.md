@@ -135,43 +135,44 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized milestone: **1D.4B-3A, bell checkpoint inference regression
-preparation for review**, based on `d775cf1fb51afbfa9645cbf4a975fa7b9acd96f0`.
-The researcher supplied successful reference/comparison reports; inspect the
-original JSON and preserve paths/hashes without overwriting/regenerating reports.
-The [structural evidence manifest](docs/evidence/bell-structural-match.json)
-records verified exact equality of 137 keys/shapes/dtypes. This is structural
-compatibility, not producing-branch/split attribution or numerical reproduction.
+Current authorized milestone: **1D.4B-3B, successful inference evidence finalization
+and read-only historical evaluation attribution**, review baseline
+`a72db40145b814943f4ce04ad46b7ea0b632bf2b`. The researcher executed the prepared
+A-based regression. Locate real evidence only under the known approved evidence
+root; select by the supplied report SHA-256 identities, not recency or scores.
+Verify original report/output/input/config/source identities and saved-array
+comparisons with read-only CPU inspection. Preserve all original reports and
+record interrupted/other attempts separately; an incomplete report is not a pass.
 
-Implement separate direct-reference R/R-repeat and schema-1 candidate C adapters,
-strict network-only loading gates, one A validation view after actual split
-verification, CPU report/array comparison, fixture tests and exact researcher-side
-commands. Resolve R's legacy YAML independently of C's configuration adapter.
-Preserve the selected checkpoint hash, stored step 150000, effective numerical
-settings, actual model construction/split RNG effects, original rendering/SDF
-derivatives and validation metrics. Require R/R-repeat repeatability before
-interpreting C; preserve the protocol's precommitted tolerances. Use distinct
-run IDs, read-only original inputs/code, isolated caches/outputs and no resume.
+Write only documentation and compact versioned evidence/provenance manifests;
+use logical roots/relative artifact paths to avoid unnecessary personal host paths.
+Do not commit images, arrays, logs, caches, checkpoints or duplicate full reports.
+Audit available Git/text/configuration/validation-image records; classify claims
+as verified, supported_but_not_proven, unknown or contradictory with source paths,
+hashes and relevant lines. Preserve earlier blocked JSON/reports as historical
+snapshots. A rounded historical metric/step agreement is corroboration, not a
+hash-bound producing-run attribution. Do not invent causes for metric differences.
 
-Codex may inspect real JSON evidence and run CPU/static checks with disposable
-fixtures/fakes only. **Do not execute Docker/GPU, construct the real renderer,
-deserialize historical checkpoints or perform inference from Codex.** The
-researcher confirms checkpoint ownership/trust; full pickle loading still occurs
-in the prepared isolated execution path. Researcher-side native commands remain
-for review, not execution here: existing admitted image, explicit GPU, no network,
-non-root, read-only rootfs/code/inputs, fresh writable outputs and resource limits.
-No optimizer construction/restoration, training, full NVS, mesh extraction,
-scientific source/YAML changes, package installation, image/environment changes,
-permission changes, security bypass or namespace retries. Report newly exposed
-native/evaluator defects separately without repairing scientific behavior.
+The [admitted evidence](docs/evidence/BELL_INFERENCE_REGRESSION_SUCCESS.md)
+records R/R-repeat/C equality for A view "58" at 200 x 200, PSNR
+32.84983236325549 and SSIM 0.946790605392639. This is **current-code A routing
+regression only**, not a thesis held-out/NVS score, G reproduction, training
+parity or checkpoint-origin proof. View "58" is training under the inspected G
+split. Producing revision/configuration/split and final-version status remain
+unknown. The historical stored best_para 23.787122565451323 is a distinct
+observation, not this current A score. See the
+[historical attribution audit](docs/evidence/BELL_EVALUATION_PROVENANCE.md).
 
-This is current-code **A-based regression only**, not G thesis reproduction or a
-historically verified held-out score. A validation view "58" is a training view
-under the inspected G split. Producing revision/configuration/split and
-final-version status remain unresolved. No G execution is authorized. Stop after
-implementation, CPU/static validation and documentation for review; no automatic
-commit/push or researcher-side execution. See
-[BELL_INFERENCE_REGRESSION.md](docs/BELL_INFERENCE_REGRESSION.md).
+**Do not execute Docker/GPU, construct native models, deserialize historical
+checkpoints/camera pickles/binary event payloads, run inference/training/optimization,
+render, extract meshes, install packages or change permissions/environment.**
+Opaque checkpoint/input/artifact hashing, safe saved non-pickled array/image
+inspection and CPU/static fixture checks are allowed. Do not bypass native
+runtime/version/isolation guards. Preserve scientific source, legacy YAML,
+original data/results and existing image/container. Propose separately reviewed
+record-recovery and bounded current-A training gates; no new execution is
+authorized. Stop after documentation/evidence verification for review; do not
+commit or push automatically.
 
 The researcher approved archiving the original small smoke reports/configuration
 and manifest files at `/home/isavand/paper/evidence/1d3c` after the originally
@@ -179,7 +180,7 @@ requested `paper_runs/evidence/1d3c` destination was inaccessible. Verify the
 approved destination is writable, preserve original bytes and source paths/
 hashes, refuse overwrites, and exclude caches/generated datasets. Do not change
 ownership/permissions or Docker settings. The current milestone additionally
-authorizes the inference preparation utilities, CPU fixture tests and static checks above.
+authorizes only the read-only evidence audit, documentation and CPU/static checks above.
 No scientific code/YAML,
 image/build, package/environment or original artifact changes are allowed.
 
@@ -200,7 +201,8 @@ No historical checkpoint loading is allowed from Codex in this implementation
 milestone. Saved step/metric are now observed in the admitted JSON report, while
 architecture compatibility is structurally verified against the real reference.
 Producing commit/configuration/split/selection remain unresolved. Inference
-adapter implementation is authorized; native execution is deferred for review.
+adapters are implemented and the admitted researcher execution passed; no new
+adapter or scientific changes/execution are authorized in this follow-up.
 Do not commit or push automatically. The earlier
 [baseline preparation](docs/BASELINE_PREPARATION.md) and
 [inference protocol](docs/protocols/CHECKPOINT_INFERENCE_V1.md) remain proposals,
