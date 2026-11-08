@@ -440,3 +440,13 @@ with the driver. Those Codex access failures are historical, separate from the
 researcher's newer reported native successes. No new access attempt or permission change is made in
 1D.4A. Archive actual launch/image/GPU identities before claiming independently
 verified runtime evidence; source inspection alone is not execution evidence.
+
+## 1D.6A scope update
+
+The verified G two-update R/R-repeat/C evidence is accepted only for the fresh
+two-update prefix under [policy v2](evidence/dual-baseline-supersession-v2.json).
+See [G lifecycle audit](G_GEOMETRY_LIFECYCLE.md) for independent checkpoint,
+validation, optimizer-load and manual roundtrip protocols. These native scopes
+remain unexecuted here; natural 1,000-step selection, extraction, historical
+producing provenance and full training reproducibility remain unaccepted.
+Earlier A evidence and frozen protocols are preserved without relabeling.

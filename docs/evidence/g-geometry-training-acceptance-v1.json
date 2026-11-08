@@ -1,0 +1,394 @@
+{
+  "schema_version": 1,
+  "milestone": "1D.6A",
+  "review_baseline": "596c070664ffd9cfff50805939026cff9ce21883",
+  "protocol": "bell-G-two-update-training-v1",
+  "result": "G_regression_passed",
+  "classification": "accepted_for_selected_stage_baseline",
+  "accepted_scopes": [
+    "fresh-two-update-prefix"
+  ],
+  "excluded_scopes": [
+    "historical-checkpoint-G-compatibility",
+    "validation",
+    "serialization-roundtrip",
+    "natural-validation/checkpoint-selection",
+    "mesh-extraction",
+    "full-training-reproducibility",
+    "historical-G-producing-provenance"
+  ],
+  "reports": {
+    "R": {
+      "root": "evidence",
+      "path": "bell-G-two-update.rHme8GuO/r/stage-run.json",
+      "bytes": 834565,
+      "sha256": "f869b197b1439d5804a8d606f175e7b5a7f0c44c826ace2ed6b9a3cf613b5b92"
+    },
+    "R-repeat": {
+      "root": "evidence",
+      "path": "bell-G-two-update.rHme8GuO/r-repeat/stage-run.json",
+      "bytes": 834577,
+      "sha256": "52c9a429b9340d08240690dffaec936e4cecc26df289b1b519f35fe5607c90c1"
+    },
+    "C": {
+      "root": "evidence",
+      "path": "bell-G-two-update.rHme8GuO/c/stage-run.json",
+      "bytes": 834647,
+      "sha256": "e4fbbcac1c87ccba4a6e0c5a0554c0a2ec59143642ee2b2f682e35e6b68df30f"
+    }
+  },
+  "final_comparison": {
+    "root": "evidence",
+    "path": "bell-G-two-update.rHme8GuO/final-comparison/G-training-comparison.json",
+    "bytes": 1269,
+    "sha256": "b732549a157a972d68d1fbbc6623501aed8e512fc7bdc85db5b59720f7a94444"
+  },
+  "repeatability_report": {
+    "root": "evidence",
+    "path": "bell-G-two-update.rHme8GuO/repeatability/G-training-comparison.json",
+    "sha256": "ae1e26d746446cdae8ec52ea913478901048fe8efb9c6244d82f9c4c78c3ee2b",
+    "bytes": 827
+  },
+  "comparison": {
+    "schema_version": 1,
+    "protocol": "bell-G-two-update-training-v1",
+    "repeatability": {
+      "passed": true,
+      "identity_mismatches": [],
+      "update_mismatches": {
+        "0": [],
+        "1": []
+      },
+      "policy": "exact metadata/scalar equality and exact tensor/state hashes; no borrowed A or RGB tolerance"
+    },
+    "candidate": {
+      "passed": true,
+      "identity_mismatches": [],
+      "update_mismatches": {
+        "0": [],
+        "1": []
+      },
+      "policy": "exact metadata/scalar equality and exact tensor/state hashes; no borrowed A or RGB tolerance"
+    },
+    "result": "G_regression_passed"
+  },
+  "scientific_commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+  "scientific_source_manifest_sha256": "39b9baecce2aab6fc62ec57bd6f45e453d8e9d68215f6af3f25b8ed118c5a3f6",
+  "infrastructure_files_verified_at_review_commit": {
+    "compare_g_geometry_training.py": "ab2c4c21110d009edacd7160c2cf2a66b3263feecc4d07545b2924da1cf67549",
+    "configs/experiments/geometry_g_bell_v1.yaml": "9e264d8e62261c908dbfe00c520211336c4b475c143a6c532a6f5c4e2b6aef36",
+    "configs/experiments/material_a_bear_v1.yaml": "b65db0177ff476be5aee74e331f16bcdd18233e47f517857f132297943fc6c33",
+    "docs/protocols/GEOMETRY_G_TWO_UPDATE_V1.md": "11cf35e42acf4c1735995c5d58560e64285777123baf0dcf46f1d41357a09d44",
+    "infrastructure/__init__.py": "44bf3f8e7c78ad996c713c6ac676a22546d6900a14b07b786d24144529d41dd2",
+    "infrastructure/bell_camera_comparison.py": "7a3e2925a3a6083cfa1f87a942e4c4072332a33646eb5b72357c2a606db16c4c",
+    "infrastructure/bell_camera_diagnostic.py": "1f912d7ffa427f7aba6e2603528dd9240345969ebcc6dfa76591c33a4454b102",
+    "infrastructure/bell_comparison.py": "6ae82bf7f51f53b06a532f1a55dcf3d1b0bd0bb93b3f8b224e6016fbd8a13856",
+    "infrastructure/bell_inference.py": "2c333de03932908b96ccfbcfc33bf8326c6f573b854b2e29576cc1e6d5d3c14c",
+    "infrastructure/bounded_training.py": "6dd898a744546c1e2bf2779f41d836d443d7cf016997df2b364880f46d438fa9",
+    "infrastructure/cache.py": "4cb75187af74ff92820cf3ed5c08b5dd1d2d36dd4534d2ee0a5fe4100a4506e2",
+    "infrastructure/config.py": "8046c96d7e9a0e6476746e753d09f0c75162eedf67cecd226b82295b3acd064e",
+    "infrastructure/datasets.py": "11f7fa34b3535fc496edd10f853a0b43b8b76c9b126ec4feecdc9383bd68e18b",
+    "infrastructure/evidence_policy.py": "dfdd467ecdd9235cfe6c5a570727f3348ebcdeb7e50a051d5c253a0a5c8820d1",
+    "infrastructure/g_comparison.py": "cc6661dd069cb61b7e97c4259704b3b16c4c87014868965010ad65e363281401",
+    "infrastructure/g_training.py": "476228029b615c57edc1990987bf2d21127d130a955ee4f57bc1b4b734234e67",
+    "infrastructure/geometry.py": "a6166af5f85fa5386fac349e10c5ffe071061a6b553e4ea54f8c5eb1efb06bc3",
+    "infrastructure/geometry_execution.py": "5df1401683dc1d281cd395850dd65dcc34ec40a648e7bef5cef2e1685c74a975",
+    "infrastructure/geometry_training_smoke.py": "3a57eef25ed66d8041fc1baa7f7334288b5420b6d6fc8cc9c1dd104270efaba6",
+    "infrastructure/material.py": "04c690fd3910f8cdce087404ac58bb4c1f05dc6e8d82e5a698c51b2a381b028a",
+    "infrastructure/material_execution.py": "2c091cfbff3a1116c600735db7b46f39342c9e183a02872bdeb7274749b07d29",
+    "infrastructure/native_smoke.py": "6f5e9d89a7728f1a36b76e7829a76c14ed3780eefbe823244c218c6848caf60d",
+    "infrastructure/paths.py": "e771fa11a5243a03724b8291dba790502e822531f1fc9179ba27c9b8a06cece4",
+    "infrastructure/runs.py": "2da7ae8d6d42428b40f6b8445783a6f119fafc3310a7b05af74bf56b3cda1fc7",
+    "infrastructure/signatures.py": "f3eb6c82de610913c1049745271d8be5391d34f02d78866a14fad0032b7f4759",
+    "infrastructure/stage_execution.py": "d11833d2712f83d15b7257dc785ca137e7329e246a4a5b58d98c5168aaf1c666",
+    "infrastructure/stage_sources.py": "3c904a09662663fd9f37e3a6afee33576963675508e416dbc6141a5c68d44dc8",
+    "infrastructure/stage_workspace.py": "5d1eb334f39ed86a9d53dc999b56a19a7c1cb3283f16b23d09fd2c969ce6b591",
+    "infrastructure/training_comparison.py": "d0a9cbf097a0816c2154fafae8ea76e14b4a158a31013a6491dccc3d46c1ddf3",
+    "infrastructure/training_probe.py": "236bf1b0cf7f1d5b6c906c02cbe45ee374faa9f95e2e94d69b44f495867ab45c",
+    "run_stage_experiment.py": "3f02dc4897c49feb94c97888c69cd6b67185b638bfdeba5c434c033ac2c11ebf"
+  },
+  "runtime": {
+    "python": "3.8.10 (default, Mar 18 2025, 20:04:55) \n[GCC 9.4.0]",
+    "torch": "1.8.1+cu111",
+    "cuda": "11.1",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "torch_cxx11_abi": false,
+    "driver": "NVRM version: NVIDIA UNIX x86_64 Kernel Module  550.163.01  Tue Apr  8 12:41:17 UTC 2025\nGCC version:  gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.3) \n",
+    "packages": {
+      "numpy": "1.24.4",
+      "scipy": "1.10.1",
+      "scikit-image": "0.21.0",
+      "opencv-python": "4.10.0.84",
+      "open3d": "0.16.0",
+      "nvdiffrast": "0.3.3",
+      "tensorboardX": "2.6.2.2",
+      "PyYAML": "6.0.2"
+    },
+    "default_dtype": "torch.float32",
+    "num_threads": 4,
+    "num_interop_threads": 16,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": false,
+    "cudnn_allow_tf32": true,
+    "matmul_allow_tf32": true,
+    "loader_start_method": "fork"
+  },
+  "declared_image_id": "sha256:2572950d9f662b7603b604878613e85c1a0fec90842447e9a256751a130ee137",
+  "optimizer": {
+    "lr": 0.001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0,
+    "amsgrad": false
+  },
+  "scheduler": {
+    "class": "WarmUpCosLR",
+    "attributes": {
+      "warm_up_end": 5000,
+      "learning_rate_alpha": 0.05,
+      "end_iter": 300000,
+      "learning_rate": 0.0005
+    }
+  },
+  "clipping": {
+    "enabled": false,
+    "source": "pristine G Trainer.run; no clipping call"
+  },
+  "splits": {
+    "train_ids": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27",
+      "28",
+      "29",
+      "30",
+      "31",
+      "32",
+      "33",
+      "34",
+      "35",
+      "36",
+      "37",
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45",
+      "46",
+      "47",
+      "48",
+      "49",
+      "50",
+      "51",
+      "52",
+      "53",
+      "54",
+      "55",
+      "56",
+      "57",
+      "58",
+      "59",
+      "60",
+      "61",
+      "62",
+      "63",
+      "64",
+      "65",
+      "66",
+      "67",
+      "68",
+      "69",
+      "70",
+      "71",
+      "72",
+      "73",
+      "74",
+      "75",
+      "76",
+      "77",
+      "78",
+      "79",
+      "80",
+      "81",
+      "82",
+      "83",
+      "84",
+      "85",
+      "86",
+      "87",
+      "88",
+      "89",
+      "90",
+      "91",
+      "92",
+      "93",
+      "94",
+      "95",
+      "96",
+      "97",
+      "98",
+      "99",
+      "100",
+      "101",
+      "102",
+      "103",
+      "104",
+      "105",
+      "106",
+      "107",
+      "108",
+      "109",
+      "110",
+      "111",
+      "112",
+      "113",
+      "114",
+      "115",
+      "116",
+      "117",
+      "118",
+      "119",
+      "120",
+      "121",
+      "122",
+      "123",
+      "124",
+      "125",
+      "126",
+      "127"
+    ],
+    "test_ids": [
+      "0"
+    ],
+    "nvs_ids": null
+  },
+  "updates": [
+    {
+      "step": 0,
+      "lr": 0.0,
+      "aggregate_loss": 0.28325504064559937,
+      "gradient_norm": 0.6827517784581294,
+      "changed_elements": 0,
+      "optimizer_calls_completed": 1
+    },
+    {
+      "step": 1,
+      "lr": 1.0000000000000001e-07,
+      "aggregate_loss": 0.30597245693206787,
+      "gradient_norm": 0.899638203623995,
+      "changed_elements": 2148469,
+      "optimizer_calls_completed": 2
+    }
+  ],
+  "original_output_hashes": {
+    "R": {
+      "config.original.yaml": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f",
+      "cache/stage-cache-identity.json": "7e14c6cff6d907360532073a3de3db59cacb27fcee6c6da7faeb656db01cb3f4",
+      "cache/runtime/matplotlib/fontlist-v330.json": "f60bab94e0b82ba108fd11e4f182e4f5987aba404033e420034d80a8cc35d5f1",
+      "logs/console.log": "4989ed06197b1684c1697d61d10becea440a92c66a113999f80f72b415189a6f",
+      "logs/events.out.tfevents.1794167214.d8e5bf00e684": "fc428d938ed2c753361a9ed6ebf11fc64b5745c5a85b7ae42cf80f286b8a57b6"
+    },
+    "R-repeat": {
+      "config.original.yaml": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f",
+      "cache/stage-cache-identity.json": "7e14c6cff6d907360532073a3de3db59cacb27fcee6c6da7faeb656db01cb3f4",
+      "cache/runtime/matplotlib/fontlist-v330.json": "51082b000c9c6c6c0c0b6fdca0da974595c3e63b824c16a9550c08a27bd21427",
+      "logs/events.out.tfevents.1794167838.1815e035a3b0": "e07980e3436e2937e22a333fd07719540c36018aa4c4b97e24e7f976a8d11f99",
+      "logs/console.log": "0df35f6b56dedd21be3f7e6a0848c7ae4188110d477f0abeb42a635adb695dbd"
+    },
+    "C": {
+      "config.envelope.yaml": "9e264d8e62261c908dbfe00c520211336c4b475c143a6c532a6f5c4e2b6aef36",
+      "config.original.yaml": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f",
+      "cache/stage-cache-identity.json": "7e14c6cff6d907360532073a3de3db59cacb27fcee6c6da7faeb656db01cb3f4",
+      "cache/runtime/matplotlib/fontlist-v330.json": "c9f1c7f2cff257c85632daa0d839476341755f0a5a31cc60c802f2604ac0b245",
+      "logs/events.out.tfevents.1794168994.ba2c28596b50": "ff70fd8015ecad72775aafeea5dabe47c9cf82bd9ae617cd695b157dd18d5987",
+      "logs/console.log": "398e4b6395164e32e96b1142b172ec740f381ec0e320221239346f487383665b"
+    }
+  },
+  "declared_outputs_verified": 16,
+  "input_files_manifest": {
+    "count": 641,
+    "canonical_sha256": "e4befaa79187df737853eb0d812fb6f410b4adc2d64c954067f4d7d5ae83eb7f",
+    "scope": "Recorded selected-scene identities agree across arms; this admission did not rehash the large scene."
+  },
+  "sidecars": {
+    "launch.txt": {
+      "root": "evidence",
+      "path": "bell-G-two-update.rHme8GuO/launch.txt",
+      "sha256": "cabee1442d4ca9574250cdb19347cffcc59229e6b119a50474940bd5b0a4cbab",
+      "bytes": 192
+    },
+    "r-exit-code.txt": {
+      "root": "evidence",
+      "path": "bell-G-two-update.rHme8GuO/r-exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "r-repeat-exit-code.txt": {
+      "root": "evidence",
+      "path": "bell-G-two-update.rHme8GuO/r-repeat-exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "c-exit-code.txt": {
+      "root": "evidence",
+      "path": "bell-G-two-update.rHme8GuO/c-exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "r-terminal.log": {
+      "root": "evidence",
+      "path": "bell-G-two-update.rHme8GuO/r-terminal.log",
+      "sha256": "b96d6e5887635f4d903f2dcdecc190be1f16d7a17842c28e45ae5b8bac82f8d3",
+      "bytes": 1013
+    },
+    "r-repeat-terminal.log": {
+      "root": "evidence",
+      "path": "bell-G-two-update.rHme8GuO/r-repeat-terminal.log",
+      "sha256": "5aa03134f7d5c6ba5cfa45b028460bf6b7d8d3d5dcba0e4adfbab544d5ee5e4e",
+      "bytes": 1013
+    },
+    "c-terminal.log": {
+      "root": "evidence",
+      "path": "bell-G-two-update.rHme8GuO/c-terminal.log",
+      "sha256": "a79b25eb78b27cd9fc3757218aba858fd83cfd8f145ed59256dc2e4aef9211cb",
+      "bytes": 1013
+    }
+  },
+  "source_identity_note": "Recorded files match both reviewed infrastructure Git objects and pinned G scientific objects. Image/whole clean-launch identity are caller declarations, not a new Docker inspection.",
+  "limits": [
+    "Two successful Adam calls at steps 0 and 1 only; one nonzero-LR parameter update.",
+    "No natural validation or checkpoint interval was reached and no checkpoint was written.",
+    "Exact state/gradient/loss/sampling/RNG metadata agreement does not prove full training reproducibility.",
+    "Previous A evidence remains immutable and separately scoped."
+  ]
+}

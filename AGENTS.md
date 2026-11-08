@@ -142,7 +142,33 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized milestone: **1D.5-RESET, authoritative dual scientific
+Current authorized milestone: **1D.6A, G geometry validation and checkpoint
+compatibility**, reviewed from `596c070664ffd9cfff50805939026cff9ce21883`.
+Read [G lifecycle audit and commands](docs/G_GEOMETRY_LIFECYCLE.md) and
+[G training acceptance](docs/evidence/G_GEOMETRY_TRAINING_ACCEPTANCE.md).
+The verified native G R/R-repeat/C evidence admits only the fresh two-update
+prefix. Use evidence policy v2; preserve v1 and all original reports/protocols.
+
+Prepare independent hash/source-gated G compatibility, optional historical
+optimizer-load diagnostic (no update), original G camera-0 validation, and
+manual G-produced save/load roundtrip protocols. Use only the exact G snapshot;
+no scientific method replacement or A scientific import. Historical pickle
+loading remains explicitly trusted and researcher-side only in an isolated
+runtime. Strict network keys/shapes/dtypes and loading must precede validation.
+An optimizer library load can override G settings and is not G resume admission.
+Manual serialization after two G updates is not the natural 1,000-step schedule.
+Extraction is source audit/design only; original `model.pth` selection cannot
+be silently replaced by `model_best.pth`. Random/two-update diagnostic geometry
+must never be accepted as research geometry or a material handoff.
+
+Codex may inspect read-only bytes/metadata, implement isolated adapters and CPU
+toy/explicit stand-in tests, and run CPU/static checks. No native model,
+historical checkpoint/camera deserialization, GPU/Docker execution, extraction,
+1,000-step/full training, scientific edits, installs, environment/permission
+changes, commit or push. Stop for review before researcher native execution.
+Earlier source-preservation and scientific-integrity rules continue to apply.
+
+Earlier authorized milestone: **1D.5-RESET, authoritative dual scientific
 baselines**, reviewed from `bed325fe511ec52a61f5793d0ee0acd91dad26b9`.
 Read [DUAL_SCIENTIFIC_BASELINES.md](docs/DUAL_SCIENTIFIC_BASELINES.md), the pinned
 [source manifest](scientific_sources/manifest-v1.json),
@@ -287,8 +313,8 @@ and manifest files at `/home/isavand/paper/evidence/1d3c` after the originally
 requested `paper_runs/evidence/1d3c` destination was inaccessible. Verify the
 approved destination is writable, preserve original bytes and source paths/
 hashes, refuse overwrites, and exclude caches/generated datasets. Do not change
-ownership/permissions or Docker settings. The current milestone additionally
-authorizes only the dual-baseline reset implementation and CPU/static work above;
+ownership/permissions or Docker settings. That earlier milestone additionally
+authorized only the dual-baseline reset implementation and CPU/static work above;
 earlier A evidence and preparations remain preserved under supersession policy.
 No scientific code/YAML,
 image/build, package/environment or original artifact changes are allowed.

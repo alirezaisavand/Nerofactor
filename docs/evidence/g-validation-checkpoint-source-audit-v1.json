@@ -1,0 +1,1790 @@
+{
+  "schema_version": 1,
+  "milestone": "1D.6A",
+  "scientific_commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+  "scopes": [
+    "direct-validation",
+    "serialization",
+    "natural-training-lifecycle",
+    "extraction"
+  ],
+  "files": {
+    "train/trainer.py": {
+      "sha256": "412dfe92c16747c66609f6e80c2e55fcff6f7df287ecbb670c5a43b1a695e7a8",
+      "bytes": 8852,
+      "members": {
+        "Trainer": {
+          "first_line": 21,
+          "last_line": 223,
+          "ast_sha256": "bea6cf5eb88bc9ffed6d5be8d9532d846d062e4ad0dfab07e9c101dc868d6bc8"
+        },
+        "Trainer._init_dataset": {
+          "first_line": 40,
+          "last_line": 53,
+          "ast_sha256": "a0bdf93c2e831ce1072fef60365305c7fcc12623f49882cfdf80829b2d247276"
+        },
+        "Trainer._init_network": {
+          "first_line": 55,
+          "last_line": 90,
+          "ast_sha256": "9d6f4ec19395b2d8b3d79457b2819c19e0614968d3bcf09594f94f438476a3c4"
+        },
+        "Trainer.__init__": {
+          "first_line": 92,
+          "last_line": 101,
+          "ast_sha256": "8e9b964882581cfb6e8c1b006ddac217a82a0d3075957d1d7805ebf0da42793b"
+        },
+        "Trainer.run": {
+          "first_line": 103,
+          "last_line": 188,
+          "ast_sha256": "571ea5d3f721929c212ea29dffba9df6252eb9cf48d265b90efc9ce89397997a"
+        },
+        "Trainer._load_model": {
+          "first_line": 190,
+          "last_line": 200,
+          "ast_sha256": "c872801e4e845d257f168bec82a5f0ee7b66921f2b695af2a90885e58471610a"
+        },
+        "Trainer._save_model": {
+          "first_line": 202,
+          "last_line": 209,
+          "ast_sha256": "529d691b6ae55673c3458c8252ed1e88041b47339141f92e91662ce451071fd8"
+        },
+        "Trainer._init_logger": {
+          "first_line": 211,
+          "last_line": 212,
+          "ast_sha256": "56240c7607ed651b9eda0813475f014327d8db49f46eb739781a76c0745ffa01"
+        },
+        "Trainer._log_data": {
+          "first_line": 214,
+          "last_line": 223,
+          "ast_sha256": "95e62918f2fd1f53571e4c13c6bf59a40f3c15ae38ad1f2e9e49325b1ab2637e"
+        }
+      }
+    },
+    "train/train_valid.py": {
+      "sha256": "f973df4908ace7b174b43fd59a21ee017343260567497f025880b4914626f4f1",
+      "bytes": 1784,
+      "members": {
+        "ValidationEvaluator": {
+          "first_line": 11,
+          "last_line": 53,
+          "ast_sha256": "d7d4f5952da8f277d1a9f68732fec3998ff2497ec8523adbdba90e61ad2e530f"
+        },
+        "ValidationEvaluator.__init__": {
+          "first_line": 14,
+          "last_line": 17,
+          "ast_sha256": "d13de647df39adc9f4d6047326ad8c5be2d3213500360509961755df63d858a9"
+        },
+        "ValidationEvaluator.__call__": {
+          "first_line": 19,
+          "last_line": 53,
+          "ast_sha256": "0e1b02f4789c6a11204d453b045c23e097571de0f3e224230d11cf1d86cead36"
+        }
+      }
+    },
+    "train/train_tools.py": {
+      "sha256": "0c100e6549894778c7f37bd7ba36e541d8229447fe06d622a87670bdbba62d48",
+      "bytes": 5399,
+      "members": {
+        "load_model": {
+          "first_line": 10,
+          "last_line": 26,
+          "ast_sha256": "d2d047957b0592858f3c2e6dc94c7d053730e80aa7371459f0bbfbde53f24545"
+        },
+        "adjust_learning_rate": {
+          "first_line": 29,
+          "last_line": 39,
+          "ast_sha256": "2d5e1561e8d822feb1950288fd9270ba439b6071a3c50cb816e9f3823e509fce"
+        },
+        "reset_learning_rate": {
+          "first_line": 42,
+          "last_line": 48,
+          "ast_sha256": "1c15cde68a1fccfbe7969abeffaa292d36309f52b66d1578369d9a722ea4f909"
+        },
+        "save_model": {
+          "first_line": 51,
+          "last_line": 57,
+          "ast_sha256": "d51b17037da29496e029603c37d3a3a57fa2c3ca7026304a5b08dd6dbc84a716"
+        },
+        "Recorder": {
+          "first_line": 60,
+          "last_line": 94,
+          "ast_sha256": "13b798a0d4649a3712ea182669f4c10be0318c64f593374a3d9bbd9b6c7399e8"
+        },
+        "Recorder.__init__": {
+          "first_line": 61,
+          "last_line": 65,
+          "ast_sha256": "eb255c0ae2dda8d7e21ac8108ee0cbe33c689c853842f1477bbceca504fec614"
+        },
+        "Recorder.rec_loss": {
+          "first_line": 67,
+          "last_line": 89,
+          "ast_sha256": "f18ea2ea748a0aa1a90dd608adb468f450d13cccbed60a03a63a9516b71139d8"
+        },
+        "Recorder.rec_msg": {
+          "first_line": 91,
+          "last_line": 94,
+          "ast_sha256": "e12aebc1e62d6ba96ed2b5041996499aa6531555d2e79f6a276cb745d7555e1e"
+        },
+        "Logger": {
+          "first_line": 97,
+          "last_line": 112,
+          "ast_sha256": "b98b7ea81359efe7eacb48ed8840bceea80c984356cd9c172e4efc4dc024f755"
+        },
+        "Logger.__init__": {
+          "first_line": 98,
+          "last_line": 101,
+          "ast_sha256": "4a17b3596ee4c76a849ab55cab93f30b5985c1c678c07dcb3cd8f098aab1c128"
+        },
+        "Logger.log": {
+          "first_line": 103,
+          "last_line": 112,
+          "ast_sha256": "3c3640a43e923b871319f43803075cff0699a86db62fa6f23b9edd74f375029c"
+        },
+        "print_shape": {
+          "first_line": 115,
+          "last_line": 120,
+          "ast_sha256": "d1874d6e2ee117c5158e2e67d8acd38f585a0d0723d7e5f53d7e9af517868049"
+        },
+        "overwrite_configs": {
+          "first_line": 123,
+          "last_line": 134,
+          "ast_sha256": "5ee31c6a8f8a081fa6cdf7026fde9ac27ad833c42dbef90fa52a1fec545cad47"
+        },
+        "to_cuda": {
+          "first_line": 137,
+          "last_line": 151,
+          "ast_sha256": "2e36b7535f3f2c713f7793b083faa01040708ce9e8ceb5a08469941244db8397"
+        },
+        "dim_extend": {
+          "first_line": 154,
+          "last_line": 158,
+          "ast_sha256": "ed545b865ebd2a7a528d7eebefd868c4f2090ef46a95b783fe997406dfdd0944"
+        },
+        "MultiGPUWrapper": {
+          "first_line": 161,
+          "last_line": 173,
+          "ast_sha256": "db5fca3f5efe052fedabb18430b0f64100561d058ad7ae4ec0285ebfa726c908"
+        },
+        "MultiGPUWrapper.__init__": {
+          "first_line": 162,
+          "last_line": 165,
+          "ast_sha256": "131e40c853fa4bba597c3699c7baa1cf4cc14119db66b48836b09b826d0a82f8"
+        },
+        "MultiGPUWrapper.forward": {
+          "first_line": 167,
+          "last_line": 173,
+          "ast_sha256": "3e07beb015ef9bda485973e0bc41501f61b48e5fe3b50f07ebf9ece44c2dd338"
+        },
+        "DummyLoss": {
+          "first_line": 176,
+          "last_line": 183,
+          "ast_sha256": "024114236051e401043bd036dfb42ff888578fb34a3b824f5ce3477f2c0c49fa"
+        },
+        "DummyLoss.__init__": {
+          "first_line": 177,
+          "last_line": 180,
+          "ast_sha256": "3c1e16deb52ea099de0dc0226360f68a80c46a07857595313514ec4ed26bc70e"
+        },
+        "DummyLoss.__call__": {
+          "first_line": 182,
+          "last_line": 183,
+          "ast_sha256": "10d46198140935f2fc66987068612f7bc1da7b34c8c62a9ef0676803253d9027"
+        }
+      }
+    },
+    "network/metrics.py": {
+      "sha256": "282969f587f2ef71fcb3aa9b23b98f3b6741f12b88bd041a35473eb64421120e",
+      "bytes": 5137,
+      "members": {
+        "compute_psnr": {
+          "first_line": 12,
+          "last_line": 18,
+          "ast_sha256": "7ab5508917c318625c65df46acadf90c6b9bf19a801e82af4dd41c85e73c9864"
+        },
+        "process_key_img": {
+          "first_line": 21,
+          "last_line": 25,
+          "ast_sha256": "5ea9f62eb58f4b461daf7a5c82707b051d712d39830e742bb37616b3681b7d6a"
+        },
+        "get_key_images": {
+          "first_line": 28,
+          "last_line": 32,
+          "ast_sha256": "91bfc805c76c4c6fc3d9c6741277c69a9546bd457ad96c6560b9cd5aa645a871"
+        },
+        "draw_materials": {
+          "first_line": 35,
+          "last_line": 48,
+          "ast_sha256": "df6b85c770024e131b08d08e9b71b51df7369606ab69ebef10d73d07db5d4806"
+        },
+        "ShapeRenderMetrics": {
+          "first_line": 51,
+          "last_line": 84,
+          "ast_sha256": "c94fb43fdd68baccd934b86576b8fd935890301bc5c3b1398d9a8e868dd8f870"
+        },
+        "ShapeRenderMetrics.__init__": {
+          "first_line": 52,
+          "last_line": 53,
+          "ast_sha256": "dfeadddcdb28611e795b5dc34a12600a67c13479d4d4a1128e922b001fb38778"
+        },
+        "ShapeRenderMetrics.__call__": {
+          "first_line": 55,
+          "last_line": 84,
+          "ast_sha256": "f9337d28c1bc60fd26a0f5e2bc88bfbce0f786b3a6f8de2821f667938fe4a3af"
+        },
+        "MaterialRenderMetrics": {
+          "first_line": 87,
+          "last_line": 123,
+          "ast_sha256": "69a24cc0386f4382e5895a2db73aa402704fb97d1900249f637084dbd25098d7"
+        },
+        "MaterialRenderMetrics.__init__": {
+          "first_line": 88,
+          "last_line": 89,
+          "ast_sha256": "dfeadddcdb28611e795b5dc34a12600a67c13479d4d4a1128e922b001fb38778"
+        },
+        "MaterialRenderMetrics.__call__": {
+          "first_line": 91,
+          "last_line": 123,
+          "ast_sha256": "34b9a1fad5a02d57960161458ecd5630a55e2c4c524f1b984dc06d8383a1036d"
+        },
+        "psnr": {
+          "first_line": 132,
+          "last_line": 133,
+          "ast_sha256": "2b09099593e1f6eef1ab0dda1d0867f738ab4fda2381da81178c64eecf84390b"
+        }
+      }
+    },
+    "network/renderer.py": {
+      "sha256": "38c280ed812c4fb22b980caf842f0cd302acbee3bde9c449972dabd23485584b",
+      "bytes": 78674,
+      "members": {
+        "load_masks": {
+          "first_line": 20,
+          "last_line": 58,
+          "ast_sha256": "07a2442f02a44a616845b318995bcce62460ce2266f19f589fdd3cf55b8e25df"
+        },
+        "build_imgs_info": {
+          "first_line": 94,
+          "last_line": 137,
+          "ast_sha256": "7dfb098b8afae656d6631e7698bdc07f342097a682707019502652a2b4577f7e"
+        },
+        "imgs_info_to_torch": {
+          "first_line": 140,
+          "last_line": 145,
+          "ast_sha256": "e53c3e25396ad5155b8e68f5c38477bafece09d8ba75f824b7a8ecfca40f649c"
+        },
+        "imgs_info_slice": {
+          "first_line": 148,
+          "last_line": 152,
+          "ast_sha256": "8bf1957cbff7db5f0557d5f381b3f07529fc538d9c73383d8ca7800a99392ec5"
+        },
+        "imgs_info_to_cuda": {
+          "first_line": 155,
+          "last_line": 158,
+          "ast_sha256": "ff44635d67904f7c4a9160390a262bab05d1e71bc04997530dcb479b3818dd78"
+        },
+        "imgs_info_downsample": {
+          "first_line": 161,
+          "last_line": 176,
+          "ast_sha256": "e801a086a169cf72073ba9938bab36b180645a75fd81f67df463c9fbbeb3a622"
+        },
+        "NeROShapeRenderer": {
+          "first_line": 179,
+          "last_line": 1065,
+          "ast_sha256": "b3fe3a2ee0b3ea5ce0a6fc1ef46ec0b0eada8fe60703e3fa68ee0e2c046bb10a"
+        },
+        "NeROShapeRenderer.__init__": {
+          "first_line": 238,
+          "last_line": 261,
+          "ast_sha256": "f061347cd2bdfbcf1af805f5519d2b0eaac24945537c535adadd2704575fcadc"
+        },
+        "NeROShapeRenderer._init_dataset": {
+          "first_line": 263,
+          "last_line": 287,
+          "ast_sha256": "35152c988d33f3b06bdc687736b6a6480cef892c2d8e5f0025b5d58bee61b7b0"
+        },
+        "NeROShapeRenderer._shuffle_train_batch": {
+          "first_line": 291,
+          "last_line": 295,
+          "ast_sha256": "0c23fbebe1134dac301536d5ec3d96383ddd49fd372b7b4da072d8ce7b8f7c76"
+        },
+        "NeROShapeRenderer._construct_ray_batch": {
+          "first_line": 297,
+          "last_line": 321,
+          "ast_sha256": "bb025d41cd162d380228327d546e90db8b21dba3f59ea81d4359475690d2f42f"
+        },
+        "NeROShapeRenderer._construct_nerf_ray_batch": {
+          "first_line": 323,
+          "last_line": 354,
+          "ast_sha256": "e162e87d2340c1e478472e50f8cfcb6406158ac3a8e2467cc1445b0e5de252b6"
+        },
+        "NeROShapeRenderer.nvs": {
+          "first_line": 378,
+          "last_line": 408,
+          "ast_sha256": "4cdae1cfe6cfe6cc65b7a8be822ddccd283ecc9664520182e9eeb465b75a07d2"
+        },
+        "NeROShapeRenderer.get_anneal_val": {
+          "first_line": 410,
+          "last_line": 414,
+          "ast_sha256": "3430e5b64831c81d6f5010544d7646822013d55211a4cbca4be48cd25f5572b2"
+        },
+        "NeROShapeRenderer.near_far_from_sphere": {
+          "first_line": 417,
+          "last_line": 424,
+          "ast_sha256": "7c6cc50730474ef51b0b5a87d4a19ef8a3de703aca5a5e34cd73e2141f3fa789"
+        },
+        "NeROShapeRenderer.get_human_coordinate_poses": {
+          "first_line": 427,
+          "last_line": 443,
+          "ast_sha256": "5521904b4046d3e311bb503f4fe642ef5e759f921622e2a92cb98dac0bfe2fb4"
+        },
+        "NeROShapeRenderer._process_ray_batch": {
+          "first_line": 445,
+          "last_line": 459,
+          "ast_sha256": "cde31d0fdac972113129e3906b41b2ffaa21a73102b5ee69d0ab7d1c08c81f13"
+        },
+        "NeROShapeRenderer._process_nerf_ray_batch": {
+          "first_line": 461,
+          "last_line": 473,
+          "ast_sha256": "9b831327aecad6cd9a9b725e400ae28bc5b0f7091641176f36d0b9ef1a113a15"
+        },
+        "NeROShapeRenderer.test_step": {
+          "first_line": 496,
+          "last_line": 555,
+          "ast_sha256": "488159e98fe4333ffcf0a7470b114b33c44e0db310bbc2f808dbd1ad90d2dd94"
+        },
+        "NeROShapeRenderer.train_step": {
+          "first_line": 557,
+          "last_line": 580,
+          "ast_sha256": "5ac043ed7715bd85c03659533bc4dd6bc337cadfa53b60155c988d72fbfb8722"
+        },
+        "NeROShapeRenderer.ref_score_wrapper": {
+          "first_line": 614,
+          "last_line": 622,
+          "ast_sha256": "21d50d4b45a00bf1cf0e51ff8bd837480e20a86eb5b2f51d38092bfa880e32c0"
+        },
+        "NeROShapeRenderer.compute_rgb_loss": {
+          "first_line": 624,
+          "last_line": 641,
+          "ast_sha256": "1a938be462d1b430cf232e4d4d8db4e9c7db292a9eb2286cf029b7e2a9475611"
+        },
+        "NeROShapeRenderer.density_activation": {
+          "first_line": 645,
+          "last_line": 646,
+          "ast_sha256": "a0db93070364d1cbb6fc6874ff20dec24fc01eed45887c880c8f9dae5cbeaa58"
+        },
+        "NeROShapeRenderer.compute_density": {
+          "first_line": 648,
+          "last_line": 652,
+          "ast_sha256": "7f8f4812e731833abd11650d5f185e2304b18e401a49318d6c6ce2985508e31c"
+        },
+        "NeROShapeRenderer.upsample": {
+          "first_line": 655,
+          "last_line": 684,
+          "ast_sha256": "6088a2c151b2261be3e08effb8642bc564564800c0853887319872783e0189cd"
+        },
+        "NeROShapeRenderer.cat_z_vals": {
+          "first_line": 686,
+          "last_line": 700,
+          "ast_sha256": "7e0b6798fdd8caee800d0f454399337253007560966330f70115102e3e86b00e"
+        },
+        "NeROShapeRenderer.sample_ray": {
+          "first_line": 702,
+          "last_line": 742,
+          "ast_sha256": "6f02baadb5f1e2974868de28c0accd926b13518c883f6e5bf218e5f435f70e8e"
+        },
+        "NeROShapeRenderer.render": {
+          "first_line": 744,
+          "last_line": 764,
+          "ast_sha256": "357350e10538992cb557a32b5068ef3dfb4a5e2b83aff0cc2e9c6b78c1515741"
+        },
+        "NeROShapeRenderer.compute_validation_info": {
+          "first_line": 766,
+          "last_line": 785,
+          "ast_sha256": "692ba9781a0e63b5884a2b8fe700b4e84ef1325dea7498f8b2848d3e526969d6"
+        },
+        "NeROShapeRenderer.compute_sdf_alpha": {
+          "first_line": 787,
+          "last_line": 818,
+          "ast_sha256": "4a8a0b28764f7918852e9535a3ad6a54d0a4bc88660599967c53417ca468a1d8"
+        },
+        "NeROShapeRenderer.compute_density_alpha": {
+          "first_line": 820,
+          "last_line": 826,
+          "ast_sha256": "7f1e88180fc484d65e9028ef8fc0b075b12312f62e0d27082b2d4f3455bc4083"
+        },
+        "NeROShapeRenderer.compute_occ_loss": {
+          "first_line": 828,
+          "last_line": 856,
+          "ast_sha256": "55291190784bd49bec9de389d74258b9808094d94b4e819d2cf3557aa19a3b92"
+        },
+        "NeROShapeRenderer.get_curvature_loss": {
+          "first_line": 858,
+          "last_line": 887,
+          "ast_sha256": "810ce3880b2c5ddd93e9766e93a96fce5e72929a8687c2c811a6932b80ae3d80"
+        },
+        "NeROShapeRenderer.binary_cross_entropy": {
+          "first_line": 889,
+          "last_line": 893,
+          "ast_sha256": "c5b72479be49eb13ef0c559c8a5914c4154a46a9dbaa80fd45cba770c4767917"
+        },
+        "NeROShapeRenderer.render_core": {
+          "first_line": 895,
+          "last_line": 1020,
+          "ast_sha256": "23e0ad5f213fb239cd30f536cf96997b93d7bc58d59599eb793ef14752961b29"
+        },
+        "NeROShapeRenderer.forward": {
+          "first_line": 1022,
+          "last_line": 1044,
+          "ast_sha256": "5a87a9e30c4836471a8df23132064f0989a840a9569c426425566f786084bc3a"
+        },
+        "NeROShapeRenderer.predict_materials": {
+          "first_line": 1046,
+          "last_line": 1065,
+          "ast_sha256": "f8352b7580320879c21928bec73cf64cc4fcba4b403b070cde85231eba63071a"
+        },
+        "NeROMaterialRenderer": {
+          "first_line": 1068,
+          "last_line": 1738,
+          "ast_sha256": "4cc6db0336773416243d3db6f8ffe88b2efebfee339754bca9e8fad22a0b83c8"
+        },
+        "NeROMaterialRenderer.__init__": {
+          "first_line": 1088,
+          "last_line": 1095,
+          "ast_sha256": "4d4bfb7983885620a966154830abaa3fc588853baeb450898da5a2917a51d37e"
+        },
+        "NeROMaterialRenderer.compute_pca_tangent_frame": {
+          "first_line": 1097,
+          "last_line": 1143,
+          "ast_sha256": "936700f986403919df14554b5c885bc47e4ac7a0594ffd47cf89b9fda9f87f8c"
+        },
+        "NeROMaterialRenderer.build_vertex_adjacency": {
+          "first_line": 1145,
+          "last_line": 1163,
+          "ast_sha256": "76abcece1e35dfc48239be1a60aaafc759d39f4a9142711abc40a2c1e966c933"
+        },
+        "NeROMaterialRenderer.build_triangle_kdtree": {
+          "first_line": 1165,
+          "last_line": 1181,
+          "ast_sha256": "1469aa629503657bfbfe92b4e6b19777833bf56a3037f2195d5dd65f5b98b2d9"
+        },
+        "NeROMaterialRenderer._init_geometry": {
+          "first_line": 1183,
+          "last_line": 1199,
+          "ast_sha256": "885098c57b44451ae327b89c2403d822f73279c85f8e315e909c263ec90e6064"
+        },
+        "NeROMaterialRenderer._init_dataset": {
+          "first_line": 1201,
+          "last_line": 1232,
+          "ast_sha256": "98f37d78d8503f4bf622d0985ec6858692b01734369209b9de1e2b13e75a10d9"
+        },
+        "NeROMaterialRenderer._init_shader": {
+          "first_line": 1234,
+          "last_line": 1236,
+          "ast_sha256": "e291a2ee6b3bd2a48130472dec7cd6d59ba7dc81468c8ecacc9cdd17d36788d2"
+        },
+        "NeROMaterialRenderer.trace_in_batch": {
+          "first_line": 1238,
+          "last_line": 1254,
+          "ast_sha256": "2e2f933ec823c520701de04f4d6ff9a461239950d7dada559849a22460952d8e"
+        },
+        "NeROMaterialRenderer.trace": {
+          "first_line": 1256,
+          "last_line": 1266,
+          "ast_sha256": "c1e9b98f031605984abc86903e638fd47aa49596756a7a096713d7481b957c13"
+        },
+        "NeROMaterialRenderer._warn_ray_tracing": {
+          "first_line": 1268,
+          "last_line": 1274,
+          "ast_sha256": "eda75876531ee7ee72761a03a28594ab2085a48c8bacb44380b906963da7b4ac"
+        },
+        "NeROMaterialRenderer.get_human_coordinate_poses": {
+          "first_line": 1276,
+          "last_line": 1292,
+          "ast_sha256": "11edcb64fbde015840e0b06d920af0f947f727c0d0221ededefd4d961a98dafc"
+        },
+        "NeROMaterialRenderer._construct_ray_batch": {
+          "first_line": 1294,
+          "last_line": 1342,
+          "ast_sha256": "9f2ff0c55d317d9f60e27cb35de353f48406a21d5ea4c03a89dbd162e61583c3"
+        },
+        "NeROMaterialRenderer._construct_nerf_segmentation_masks": {
+          "first_line": 1345,
+          "last_line": 1377,
+          "ast_sha256": "9c0570ecf62aa2b5b5447168f534d76b8686054e3094e12693d97479183bec6a"
+        },
+        "NeROMaterialRenderer.project": {
+          "first_line": 1379,
+          "last_line": 1405,
+          "ast_sha256": "b987ed125fadaa64f4df1d7b45c3e0c4e6c8e9447c85dbe4d97ce6ca67019269"
+        },
+        "NeROMaterialRenderer.choose_matching_mask": {
+          "first_line": 1407,
+          "last_line": 1443,
+          "ast_sha256": "bb5c4b9063959b96e73d65e4eb3d36710bf5e506f8133baaeef5044813dd880f"
+        },
+        "NeROMaterialRenderer.build_pointcloud": {
+          "first_line": 1445,
+          "last_line": 1460,
+          "ast_sha256": "908639eec29b458dfab47dffb852de84880127ef57700ca5e4ac92f0467d7685"
+        },
+        "NeROMaterialRenderer.save_pointcloud": {
+          "first_line": 1462,
+          "last_line": 1470,
+          "ast_sha256": "c5516cb7364757527157c642b39d78bc0b06b810247752055f29f5faea061a43"
+        },
+        "NeROMaterialRenderer.propagate_masks": {
+          "first_line": 1472,
+          "last_line": 1516,
+          "ast_sha256": "0f1a60f1f02f067a1cb4beeeff6f59f94742872a43e442281e54c89a1675f6b0"
+        },
+        "NeROMaterialRenderer.save_masks": {
+          "first_line": 1518,
+          "last_line": 1535,
+          "ast_sha256": "c034820aca9beefa888475d15d4f4cc6ac98d728c16655cc8789e5e684595218"
+        },
+        "NeROMaterialRenderer._construct_nerf_ray_batch": {
+          "first_line": 1537,
+          "last_line": 1591,
+          "ast_sha256": "224602457b7ce020d34c26df793934032d0cb15c2211ddc1e240df529c7d573b"
+        },
+        "NeROMaterialRenderer._shuffle_train_batch": {
+          "first_line": 1595,
+          "last_line": 1599,
+          "ast_sha256": "0c23fbebe1134dac301536d5ec3d96383ddd49fd372b7b4da072d8ce7b8f7c76"
+        },
+        "NeROMaterialRenderer.shade": {
+          "first_line": 1601,
+          "last_line": 1605,
+          "ast_sha256": "2cda490dab79b9deb22ef1add14ca198b1b392b1818b13a8f5e77d0cd148e679"
+        },
+        "NeROMaterialRenderer.compute_rgb_loss": {
+          "first_line": 1607,
+          "last_line": 1615,
+          "ast_sha256": "e00d2de0f9c0a25bcb892a3a32939c80567fa4e0f4042c8b2438bf0a808a55fb"
+        },
+        "NeROMaterialRenderer.compute_diffuse_light_regularization": {
+          "first_line": 1617,
+          "last_line": 1620,
+          "ast_sha256": "53020c6840de742a60332dc8d785955fb6fce3ebaa0daea4a577a07e09182937"
+        },
+        "NeROMaterialRenderer.train_step": {
+          "first_line": 1622,
+          "last_line": 1650,
+          "ast_sha256": "536b41b79c2735c294ea9fa656bb3c6c10b29c1015d22c01c3b628c9fbdfe636"
+        },
+        "NeROMaterialRenderer.test_step": {
+          "first_line": 1652,
+          "last_line": 1709,
+          "ast_sha256": "001948ca07d8b42f14758f1434bb26df97beea3e3c4f35c745529ba6e80b8fdc"
+        },
+        "NeROMaterialRenderer.forward": {
+          "first_line": 1711,
+          "last_line": 1723,
+          "ast_sha256": "17b2d4c0acdf703e5595fdc91a06869f0f5ac0444368cc0d47777867334c4d1d"
+        },
+        "NeROMaterialRenderer.predict_materials": {
+          "first_line": 1725,
+          "last_line": 1738,
+          "ast_sha256": "50ab6ae17daa55b14137b1b46615f7791c59b4d715b7a99c92f5aa75cf45082a"
+        }
+      }
+    },
+    "network/field.py": {
+      "sha256": "06fb6606c580dede3e7e12ddfad2a2fed9368fa4adfcadf7cf7cef73e940617f",
+      "bytes": 86115,
+      "members": {
+        "Embedder": {
+          "first_line": 16,
+          "last_line": 46,
+          "ast_sha256": "a2acabc7bca7fec2c74405945d4504054ac074a58d5e799c75f52c55ddea9769"
+        },
+        "Embedder.__init__": {
+          "first_line": 17,
+          "last_line": 19,
+          "ast_sha256": "3b9b9b87b923d0553cb263d3077f236f846dd7e2a8370d9bb5b5d5a9360db9eb"
+        },
+        "Embedder.create_embedding_fn": {
+          "first_line": 21,
+          "last_line": 43,
+          "ast_sha256": "193b11e33323c559693caddfc21c0673d511a75799ee68d9f5f7cf4caff20f77"
+        },
+        "Embedder.embed": {
+          "first_line": 45,
+          "last_line": 46,
+          "ast_sha256": "d24c60f7908508307ec621d4ec678b15f83b2936de23cb113f58cf573f20a10f"
+        },
+        "get_embedder": {
+          "first_line": 49,
+          "last_line": 63,
+          "ast_sha256": "b51dbbc97c8d14f9f55c63770313542ecfd1fd30c130dfb25672a67d32046875"
+        },
+        "SDFNetwork": {
+          "first_line": 66,
+          "last_line": 187,
+          "ast_sha256": "c5ae185ee40c591f5c40179a4b7e637f564389f3151b3ad07a66a4dfdaeba9a3"
+        },
+        "SDFNetwork.__init__": {
+          "first_line": 67,
+          "last_line": 134,
+          "ast_sha256": "d25f7d1bef1c95303cd2d2dd9549ad31ec4bbf24d206f667fbf57d201a407a55"
+        },
+        "SDFNetwork.forward": {
+          "first_line": 136,
+          "last_line": 153,
+          "ast_sha256": "1fd842050016e6d402a38717eb910e78d90f65f493ef5e0c949c0a8fe5944079"
+        },
+        "SDFNetwork.sdf": {
+          "first_line": 155,
+          "last_line": 156,
+          "ast_sha256": "fed80c0e93efbf61299b704088f89de25f114523791cd6dcb8934621053ddb1f"
+        },
+        "SDFNetwork.sdf_hidden_appearance": {
+          "first_line": 158,
+          "last_line": 159,
+          "ast_sha256": "0e7dba61b1d553fe6a516918b7b9e53ab20be3e3500450f2bdb357e9876f1fe4"
+        },
+        "SDFNetwork.gradient": {
+          "first_line": 161,
+          "last_line": 173,
+          "ast_sha256": "80548dda208e049063005f571a00c16f7bf0b9d820930936b2eef26def0c3326"
+        },
+        "SDFNetwork.sdf_normal": {
+          "first_line": 175,
+          "last_line": 187,
+          "ast_sha256": "7d9df98e0d9e0bf68a900d49c5cc21f8712f11b514d102a892d8e574475a426a"
+        },
+        "SingleVarianceNetwork": {
+          "first_line": 190,
+          "last_line": 207,
+          "ast_sha256": "693e13bfe05d84f7f34ae2190af275e2dbcb141479f6f18914fce4d0356f4ad6"
+        },
+        "SingleVarianceNetwork.__init__": {
+          "first_line": 191,
+          "last_line": 194,
+          "ast_sha256": "0cd448e26fd81b13b788215288b1b0a5f7ffb851c1cc60e467becd4e4423db99"
+        },
+        "SingleVarianceNetwork.forward": {
+          "first_line": 196,
+          "last_line": 204,
+          "ast_sha256": "d6b7f62bca61ef4ec49e4ef923acdf1a336cec4931de7436785cf1b17ea01096"
+        },
+        "SingleVarianceNetwork.warp": {
+          "first_line": 206,
+          "last_line": 207,
+          "ast_sha256": "87dfbcde8c45e2e587e8c035b830e72c5cb00a724e9ed5fb163f654463c6582e"
+        },
+        "NeRFNetwork": {
+          "first_line": 211,
+          "last_line": 303,
+          "ast_sha256": "ca59c659b3d30cfa1c9d1d566cc50081ff8c74d50b25b38c230d481ab9fdd976"
+        },
+        "NeRFNetwork.__init__": {
+          "first_line": 212,
+          "last_line": 262,
+          "ast_sha256": "09473b91cc2eba56e915ca67722a4a7c1d14447f0432b6f16e1031906b9f6c03"
+        },
+        "NeRFNetwork.forward": {
+          "first_line": 264,
+          "last_line": 289,
+          "ast_sha256": "29e92d606a0dfa24b850220bb2da13ef5e71bbfff102cc996154f11d749766f1"
+        },
+        "NeRFNetwork.density": {
+          "first_line": 291,
+          "last_line": 303,
+          "ast_sha256": "ab54d746bcfe3952b2a0b1d448201892b9d8fa09e1537b16c904eb182f1e9e0b"
+        },
+        "IdentityActivation": {
+          "first_line": 306,
+          "last_line": 307,
+          "ast_sha256": "bf3c9d5267448601ba3cef9e17f2e7e3c8810d38a9fc177241eeb2252cec5205"
+        },
+        "IdentityActivation.forward": {
+          "first_line": 307,
+          "last_line": 307,
+          "ast_sha256": "489aa68c30eac13a611956b536ceead324553709b48b71381e77ea62d7c91145"
+        },
+        "ExpActivation": {
+          "first_line": 310,
+          "last_line": 316,
+          "ast_sha256": "01c568494dd4c38f07906d11059e8c4775ef636b14c1617a64b99947d3e4dc00"
+        },
+        "ExpActivation.__init__": {
+          "first_line": 311,
+          "last_line": 313,
+          "ast_sha256": "a2e7755ae274453c08daa2b4edbca64abc24640c05cd87aa4b1003431cc557d1"
+        },
+        "ExpActivation.forward": {
+          "first_line": 315,
+          "last_line": 316,
+          "ast_sha256": "b99b20e824a122aad4e12525f126f8053c63b49a56f666a4738bb992e9e8e64c"
+        },
+        "make_predictor": {
+          "first_line": 319,
+          "last_line": 356,
+          "ast_sha256": "0ec4f6adedc12efd412b9f3d2990ebbec2a9073c937e38b43c084613c6c316a7"
+        },
+        "get_camera_plane_intersection": {
+          "first_line": 359,
+          "last_line": 378,
+          "ast_sha256": "23a83fa0ea351ea7be21426533355959da791659ac81f3ff36648c33f7d1adc4"
+        },
+        "expected_sin": {
+          "first_line": 381,
+          "last_line": 383,
+          "ast_sha256": "797622f7ca95c9578db00f16ec52a0d1b3f134a76d0011bc4689962ba72dc4ea"
+        },
+        "IPE": {
+          "first_line": 386,
+          "last_line": 392,
+          "ast_sha256": "8dc5b2c1f2e0ac06c845b1fc920df6339ee8c388975c222b3c73dbd340ca6569"
+        },
+        "offset_points_to_sphere": {
+          "first_line": 395,
+          "last_line": 403,
+          "ast_sha256": "c81259ca0b6a1e6f9e7066f83619fa4f3bc3482d0089e2526601e5e4b8454388"
+        },
+        "get_sphere_intersection": {
+          "first_line": 406,
+          "last_line": 412,
+          "ast_sha256": "a7587b7e38d12d3bc1a8ef04c5b810dfffee566948091095a4b120586035478b"
+        },
+        "sample_pdf": {
+          "first_line": 416,
+          "last_line": 446,
+          "ast_sha256": "7c66218bd32d6a35fb9ec215df3d65a9dde897eeb69fa23349be26a6b748d032"
+        },
+        "get_weights": {
+          "first_line": 449,
+          "last_line": 469,
+          "ast_sha256": "a1f4bb44aaafc5160a3691fb3885203b3970f85309a0f78fc3413ea07d47182c"
+        },
+        "get_intersection": {
+          "first_line": 472,
+          "last_line": 502,
+          "ast_sha256": "4a39b6ddeab4ab3e4513465770d58811904c4b67ed5bef772396079a2843d23c"
+        },
+        "AppShadingNetwork": {
+          "first_line": 505,
+          "last_line": 707,
+          "ast_sha256": "c09edc18cd3745e64836005f8e5c5af5e10128642a640c7ceeaf1fb3c805f55e"
+        },
+        "AppShadingNetwork.__init__": {
+          "first_line": 516,
+          "last_line": 560,
+          "ast_sha256": "c1a10a7a81f45239931acda32f645caaeebc5a300b365c2d516097de88108a37"
+        },
+        "AppShadingNetwork.predict_human_light": {
+          "first_line": 562,
+          "last_line": 578,
+          "ast_sha256": "a9dad5d19d980cf906082d5c98cf89c94d71e6ca266a918ed3128d760d8acf2c"
+        },
+        "AppShadingNetwork.predict_specular_lights": {
+          "first_line": 580,
+          "last_line": 608,
+          "ast_sha256": "4a3556b509d675d30efee9d39d0273db4f2f509a852c270e799b46503dedcb4d"
+        },
+        "AppShadingNetwork.predict_diffuse_lights": {
+          "first_line": 610,
+          "last_line": 624,
+          "ast_sha256": "94486ced8886f29f567e7d4c492f443d5541661e891c8dd89baeaf7ba247d78a"
+        },
+        "AppShadingNetwork.forward": {
+          "first_line": 626,
+          "last_line": 697,
+          "ast_sha256": "7b5efb62eff1f60de36683e5615844699f17982373258c9262ff1102228e9a9f"
+        },
+        "AppShadingNetwork.predict_materials": {
+          "first_line": 699,
+          "last_line": 707,
+          "ast_sha256": "5177a727b1ab6f9b2d0eafbe3d830a8b3c4bda331a7ebaaea964419888a9cf44"
+        },
+        "MaterialFeatsNetwork": {
+          "first_line": 710,
+          "last_line": 739,
+          "ast_sha256": "958513fe4dbbe7b2ff0548f3646b22c00511654eb8e32e45e7a0eaf1edf8fee5"
+        },
+        "MaterialFeatsNetwork.__init__": {
+          "first_line": 711,
+          "last_line": 733,
+          "ast_sha256": "1df8e8d4fd6fcdfc1723a7cdf2b4d263d2d01f89e8d3f3a550d29aa55a04e501"
+        },
+        "MaterialFeatsNetwork.forward": {
+          "first_line": 735,
+          "last_line": 739,
+          "ast_sha256": "828dcc1d1ee20a5a215400791d1d3f78983ed3466421fc90b3ddf2b7058d4aad"
+        },
+        "saturate_dot": {
+          "first_line": 742,
+          "last_line": 743,
+          "ast_sha256": "1dbf9049084f344867c613d63ea6991924e2c7e65fa6c7a591f1449acffbc66b"
+        },
+        "MCShadingNetwork": {
+          "first_line": 746,
+          "last_line": 2010,
+          "ast_sha256": "e11043794d50ed54eca5629b3e6aa4b88b6c61f3fa8897d7d4a61f395be58c1d"
+        },
+        "MCShadingNetwork.__init__": {
+          "first_line": 774,
+          "last_line": 842,
+          "ast_sha256": "fd9335ca21e002e1d511168e93e885ab41f1e877528e1c3fbc8859eb582cb0df"
+        },
+        "MCShadingNetwork.get_orthogonal_directions": {
+          "first_line": 844,
+          "last_line": 854,
+          "ast_sha256": "b9b33eb347d519e0c9f385277e4ea7546cc0b11ec961887d7dc572cb7e09ce66"
+        },
+        "MCShadingNetwork.compute_tangent_bitangent_flat": {
+          "first_line": 856,
+          "last_line": 889,
+          "ast_sha256": "1145056caab900b76fd04cd7318bb7c9c4a926f2c9163e080cf020367efd428e"
+        },
+        "MCShadingNetwork.sample_diffuse_directions": {
+          "first_line": 891,
+          "last_line": 910,
+          "ast_sha256": "058e95985c3d07907087c543075512271ae687353e4c21cd6186e64815306583"
+        },
+        "MCShadingNetwork.sample_specular_directions": {
+          "first_line": 912,
+          "last_line": 933,
+          "ast_sha256": "93b2b9c0f78294d8341008aa241a24bdcf1896d64fad4ba747d6b2b6049e1561"
+        },
+        "MCShadingNetwork.get_inner_lights": {
+          "first_line": 935,
+          "last_line": 943,
+          "ast_sha256": "2c58d7e8dbc1184c779e8c661651891407b51b1549b9a1f1b501cad15a590119"
+        },
+        "MCShadingNetwork.get_human_light": {
+          "first_line": 945,
+          "last_line": 959,
+          "ast_sha256": "2947a481b0e8fb0d98252c5de9df05f50466d31add80b4efc669cd842d61d992"
+        },
+        "MCShadingNetwork.predict_outer_lights": {
+          "first_line": 961,
+          "last_line": 983,
+          "ast_sha256": "b4960876807c0c7c51db4ab0b8cc65c733bbc54de301f67be6c6868eb6f0be90"
+        },
+        "MCShadingNetwork.get_lights": {
+          "first_line": 985,
+          "last_line": 1013,
+          "ast_sha256": "65f3ccfa4eb50430572147be897e03781cf13daec3f7ba70d57b2bfc603a02b6"
+        },
+        "MCShadingNetwork.fresnel_schlick": {
+          "first_line": 1015,
+          "last_line": 1016,
+          "ast_sha256": "0220a7af0071b77dd2f29cacb5d58879a36adb90b9e3b7a3d464ea4b0052d9ce"
+        },
+        "MCShadingNetwork.fresnel_schlick_directions": {
+          "first_line": 1018,
+          "last_line": 1023,
+          "ast_sha256": "0da46e667fde550b1b3573e6e22b57ad49a2e51170668cedf741be8b785313ae"
+        },
+        "MCShadingNetwork.geometry_schlick_ggx": {
+          "first_line": 1025,
+          "last_line": 1031,
+          "ast_sha256": "4bc10eb017e2a7e1f1191336fa82e7e1bf705096072c157cee1c85743cbde3a3"
+        },
+        "MCShadingNetwork.geometry_schlick": {
+          "first_line": 1035,
+          "last_line": 1038,
+          "ast_sha256": "d2ab653bc0cbfa4df8b128ab661f793968bbf4ed68d25a9ec90761cad900a7bc"
+        },
+        "MCShadingNetwork.geometry_ggx_smith_correlated": {
+          "first_line": 1040,
+          "last_line": 1048,
+          "ast_sha256": "b9cf0757d7c5d7b7661c59acf765ff8c3cd89480240b6741c56d049c52534538"
+        },
+        "MCShadingNetwork.predict_materials": {
+          "first_line": 1050,
+          "last_line": 1057,
+          "ast_sha256": "bde01f549d872020ff93220142acd09a2e5e5e42a4fd30f6c385618ec0aec9ec"
+        },
+        "MCShadingNetwork.distribution_ggx": {
+          "first_line": 1060,
+          "last_line": 1065,
+          "ast_sha256": "59cc0a3872601b39f7bf25a1c3890b1b099b3c9dc0ec79bb2b25a00d82b831a0"
+        },
+        "MCShadingNetwork.geometry": {
+          "first_line": 1067,
+          "last_line": 1074,
+          "ast_sha256": "4b9dfdea86ad0e356355c8e87ee8a3e4666b88447cbb571a9f68e43035b57dd1"
+        },
+        "MCShadingNetwork.shade_mixed": {
+          "first_line": 1079,
+          "last_line": 1143,
+          "ast_sha256": "3d03253cfc8dbeee66f619dfba0cbaacdc816da297384f2262ae33f2bacb5c0e"
+        },
+        "MCShadingNetwork.predict_anisotropic_components": {
+          "first_line": 1146,
+          "last_line": 1169,
+          "ast_sha256": "3d167b018362855da744b06f910cd21e9d702c4c753b75af5fcbb4f24d796b65"
+        },
+        "MCShadingNetwork.compute_Dh": {
+          "first_line": 1172,
+          "last_line": 1201,
+          "ast_sha256": "d9486405d75e43db212edd6f39aee57c6215e37cf78a1b6d6841c0301a66eb24"
+        },
+        "MCShadingNetwork.compute_spec_loss": {
+          "first_line": 1203,
+          "last_line": 1206,
+          "ast_sha256": "848fd1c01c1f4697acb5864e8547376f0a6c9744bfb47a41ba6eb9d59e288fe4"
+        },
+        "MCShadingNetwork.compute_pdf_aniso_ggx": {
+          "first_line": 1209,
+          "last_line": 1248,
+          "ast_sha256": "65be8fecf963f4b49da8d339427c3b8f2d68d09c36cf53db993ebdea800f24f7"
+        },
+        "MCShadingNetwork.compute_pdf_aniso_ggx2": {
+          "first_line": 1250,
+          "last_line": 1275,
+          "ast_sha256": "cd08dc04e8b80a846187660d762c2585a85d9584f4590eefcd92e470e6536235"
+        },
+        "MCShadingNetwork.rotate_tangent_bitangent": {
+          "first_line": 1277,
+          "last_line": 1280,
+          "ast_sha256": "d5c79d243488794eb550609d6caa955e384b3466550c192ac56476e318bba8e8"
+        },
+        "MCShadingNetwork.sample_aniso_ggx_directions": {
+          "first_line": 1282,
+          "last_line": 1355,
+          "ast_sha256": "c5b2f9496552353932a4d4d328b799a627d04ff3304cf1bbbedb724d5225e197"
+        },
+        "MCShadingNetwork.sample_aniso_ggx_directions2": {
+          "first_line": 1357,
+          "last_line": 1420,
+          "ast_sha256": "92e1001a2d093a9334e96b2ebd9ef37b6255f76962cd1a36579578739c5d178d"
+        },
+        "MCShadingNetwork.compute_radiance": {
+          "first_line": 1423,
+          "last_line": 1524,
+          "ast_sha256": "97464fc1bf4a48141e752f91e6c4e7627df892da18a1389ba94c8e312d471a3e"
+        },
+        "MCShadingNetwork.nan_inf_check": {
+          "first_line": 1526,
+          "last_line": 1530,
+          "ast_sha256": "5d68c97234369ff071349ce4d9bf17f37cbec3fd82335aec69b0e6cf40c6270e"
+        },
+        "MCShadingNetwork.fresnel_schlick_batch": {
+          "first_line": 1532,
+          "last_line": 1567,
+          "ast_sha256": "ced33aebe5dc05aa654b868129d7cd8aa960bc692d8a9ef199f1e4901c924202"
+        },
+        "MCShadingNetwork.diffuse_term": {
+          "first_line": 1569,
+          "last_line": 1602,
+          "ast_sha256": "1bbe32ac9726f460036fb8344aa29b5044a8378b7987a226b04f766dd0c58519"
+        },
+        "MCShadingNetwork.find_triangles_and_barycentrics_kdtree": {
+          "first_line": 1604,
+          "last_line": 1656,
+          "ast_sha256": "47c179870d43a0fda41a83655bc105d415ab293cb8e51b4a6ad97f743fb661e8"
+        },
+        "MCShadingNetwork.get_tangent_bitangent_via_kdtree": {
+          "first_line": 1658,
+          "last_line": 1684,
+          "ast_sha256": "3dbdb2a0e7e5eb355407531589e45e8910c907b83031116c61291d9d4c591c7b"
+        },
+        "MCShadingNetwork.interpolate_tangent_bitangent": {
+          "first_line": 1686,
+          "last_line": 1733,
+          "ast_sha256": "df1de7bc4ad2c10f59d62d489097f03bc206be129d6d1a8f492be285bb537ca0"
+        },
+        "MCShadingNetwork.shade_anisotropic_mixed": {
+          "first_line": 1735,
+          "last_line": 1857,
+          "ast_sha256": "83a0cebf74b206a328e27afb6b100ca4e2952db01941358fb2f2e3b882d0eba0"
+        },
+        "MCShadingNetwork.anisotropic_forward": {
+          "first_line": 1861,
+          "last_line": 1864,
+          "ast_sha256": "d18a39c5b535c43a147877bfffd22fab2c258f46c4e7927ca371408526b041a0"
+        },
+        "MCShadingNetwork.forward": {
+          "first_line": 1867,
+          "last_line": 1874,
+          "ast_sha256": "09b8fdeb317da380a71e16b82975a82120f6197b321973f3790fee7e3b2f8605"
+        },
+        "MCShadingNetwork.env_light": {
+          "first_line": 1876,
+          "last_line": 1903,
+          "ast_sha256": "fec0ec2c1ae8be3eecc509a1ca5d8c1c6b00bebfaba47bd945f1ffa9056f37dc"
+        },
+        "MCShadingNetwork.predict_outer_lights_pts": {
+          "first_line": 1905,
+          "last_line": 1913,
+          "ast_sha256": "3713549fc6eb9dbdb5e1560f6dfdae394bde3c9c526f36b2bd52fe96e96ab055"
+        },
+        "MCShadingNetwork.get_env_light": {
+          "first_line": 1915,
+          "last_line": 1916,
+          "ast_sha256": "623a0484716bf3c821a023b004ad50f84178dd2acdb6ca1f74ca74bd9ce4ce62"
+        },
+        "MCShadingNetwork.anisotropic_regularization": {
+          "first_line": 1918,
+          "last_line": 1980,
+          "ast_sha256": "2bb40d063ff057656ea083ed583fdcd484fc078bd058d6fe7a33b7366cbf08b6"
+        },
+        "MCShadingNetwork.material_regularization": {
+          "first_line": 1982,
+          "last_line": 2010,
+          "ast_sha256": "86c85a72e7c231c0c124db9d2a35e4fbe6f40e3343f75cde180afa076e441f1f"
+        },
+        "extract_fields": {
+          "first_line": 2013,
+          "last_line": 2031,
+          "ast_sha256": "8db078ed568d3863171e629365f68bb15ba67f6d7e5dd7929ec227611e815e11"
+        },
+        "extract_geometry": {
+          "first_line": 2034,
+          "last_line": 2041,
+          "ast_sha256": "ca7d0d115281014f7ba7c3edc91a619f04fce8415159819459e6604212bde375"
+        }
+      }
+    },
+    "extract_mesh.py": {
+      "sha256": "63b1cf824e564b67910a160ff080338dc9d9546f441408fd937ca4473d3d39a9",
+      "bytes": 1290,
+      "members": {
+        "main": {
+          "first_line": 13,
+          "last_line": 34,
+          "ast_sha256": "84f987048ebe90fd13a3ad64c95a18a84a69f7611ebd32f9d2bba5073b0abbb5"
+        }
+      }
+    },
+    "dataset/database.py": {
+      "sha256": "e2490556c8b3d7aa0f5a9ea1db59fed3f060a00401787625874af46c57301fa3",
+      "bytes": 23881,
+      "members": {
+        "BaseDatabase": {
+          "first_line": 24,
+          "last_line": 49,
+          "ast_sha256": "5dbadea2a98caf043d73218aafe2aa3d3a81685424ae00bf49703811ab67843b"
+        },
+        "BaseDatabase.__init__": {
+          "first_line": 25,
+          "last_line": 26,
+          "ast_sha256": "cec189e4fad50d1dd3eae1df624f2faa429330d8a4db3f0e07a077c3bdb11598"
+        },
+        "BaseDatabase.get_image": {
+          "first_line": 29,
+          "last_line": 30,
+          "ast_sha256": "1892fccc38a28df7204501130d00221d12d82799f4194e44ac2c88fc557a3b83"
+        },
+        "BaseDatabase.get_image_cv2": {
+          "first_line": 32,
+          "last_line": 33,
+          "ast_sha256": "26cd6592b21f64f128eba4134918e1de59cce1b3ca89a1d6854148c66a16afdd"
+        },
+        "BaseDatabase.get_K": {
+          "first_line": 36,
+          "last_line": 37,
+          "ast_sha256": "a31c1fb61d398c3103f4175eccdc30f9ec692cdbc8c43dffce2736fa75a92528"
+        },
+        "BaseDatabase.get_pose": {
+          "first_line": 40,
+          "last_line": 41,
+          "ast_sha256": "b6cf34236610c889d75402c75cb26765b8d0c43b321e33f5649cadd9522e225b"
+        },
+        "BaseDatabase.get_img_ids": {
+          "first_line": 44,
+          "last_line": 45,
+          "ast_sha256": "69343ad2f4a2897d977cc7fe11e10a03ab6084673e4c066a0fd53ae0917b0590"
+        },
+        "BaseDatabase.get_depth": {
+          "first_line": 48,
+          "last_line": 49,
+          "ast_sha256": "9c86eac12dc464c1ec31a7c1701c17f2a7a856254186eff9a35e136e176f5fee"
+        },
+        "crop_by_points": {
+          "first_line": 52,
+          "last_line": 81,
+          "ast_sha256": "d2c7f2d5e82e51f80297c0f9e10a5fe39ed2d0f3ac076c8652d45460b6b47b3c"
+        },
+        "GlossyRealDatabase": {
+          "first_line": 84,
+          "last_line": 244,
+          "ast_sha256": "9e318a6a63de9a6e706eaad9dc922b8a53573d5e32fdac960f05e05c13d38eee"
+        },
+        "GlossyRealDatabase.__init__": {
+          "first_line": 98,
+          "last_line": 124,
+          "ast_sha256": "046058f25a81fc1d046b62d36b2692789bcf25f9f4a0a59d1e870c8c71e69d9d"
+        },
+        "GlossyRealDatabase._parse_colmap": {
+          "first_line": 126,
+          "last_line": 152,
+          "ast_sha256": "17e3a1e7893c236fa97f66fa08d39bc3ad64603321eb945d356a86675172439a"
+        },
+        "GlossyRealDatabase._load_point_cloud": {
+          "first_line": 154,
+          "last_line": 158,
+          "ast_sha256": "2dfa7e389d93417aa91eb0c2a03ed7973b8d6adc821ac9f5776f98e5842b1a5d"
+        },
+        "GlossyRealDatabase._compute_rotation": {
+          "first_line": 160,
+          "last_line": 168,
+          "ast_sha256": "49867f7b51359b0a86ab8d961621841aee4252690f29cd80031df1e93e7c0201"
+        },
+        "GlossyRealDatabase._normalize": {
+          "first_line": 170,
+          "last_line": 195,
+          "ast_sha256": "a85deac09d4969f7d8e84bc44b9ec103bfb322f77e26e1b676dbf0e3f9da864c"
+        },
+        "GlossyRealDatabase._crop": {
+          "first_line": 197,
+          "last_line": 213,
+          "ast_sha256": "6a67761264373ac520a7f5e4bc49f4927027be79eb36e0ee5b1a95228f259d3a"
+        },
+        "GlossyRealDatabase.get_image": {
+          "first_line": 215,
+          "last_line": 218,
+          "ast_sha256": "66082c61020112619e90d7ea9d6032a6a704392974ebec0f9f3194dda9794ad1"
+        },
+        "GlossyRealDatabase.get_K": {
+          "first_line": 220,
+          "last_line": 222,
+          "ast_sha256": "53c06637e82527caa78ad895307c58430067449d9825192519db90a9096f65f0"
+        },
+        "GlossyRealDatabase.get_pose": {
+          "first_line": 224,
+          "last_line": 225,
+          "ast_sha256": "4f00b881a1945ed55ee9d94811d9b858ee19ac747f2cd1f3c3e14487f4855f73"
+        },
+        "GlossyRealDatabase.get_img_ids": {
+          "first_line": 227,
+          "last_line": 228,
+          "ast_sha256": "02691c8ab21ef35cb6a392c282588ad0c29bdc1b4f97caa3e85479507e53e993"
+        },
+        "GlossyRealDatabase.get_mask": {
+          "first_line": 230,
+          "last_line": 239,
+          "ast_sha256": "49bbdabd34f0346044b5a1c42d192c58d35e3ad0fc95fca80da2ee6ba2a8e721"
+        },
+        "GlossyRealDatabase.get_depth": {
+          "first_line": 241,
+          "last_line": 244,
+          "ast_sha256": "a859363065ac2a52d863f061e9ae8c03cf86fe90664e7e1a9e8aa460d58cb7a9"
+        },
+        "GlossySyntheticDatabase": {
+          "first_line": 247,
+          "last_line": 287,
+          "ast_sha256": "48bd50dc3922f8780daa97dacb8cea60c59be6cfd816e2012ce88244a321a71e"
+        },
+        "GlossySyntheticDatabase.__init__": {
+          "first_line": 248,
+          "last_line": 256,
+          "ast_sha256": "f9a906e28e59c7fad6e80ec0c3ad20911675b311a87192a156cf7a7e9531ccd9"
+        },
+        "GlossySyntheticDatabase.get_image": {
+          "first_line": 258,
+          "last_line": 259,
+          "ast_sha256": "17996560da3b226d16d71046f50a00271f2d9781280cf52788153d2bfb233227"
+        },
+        "GlossySyntheticDatabase.get_K": {
+          "first_line": 261,
+          "last_line": 263,
+          "ast_sha256": "59a1741d4ca48ef5f81036dc8867ef19938535027ad7eb69cc60140e56aedd74"
+        },
+        "GlossySyntheticDatabase.get_pose": {
+          "first_line": 265,
+          "last_line": 269,
+          "ast_sha256": "1f4635d9a26a24b7388a37cd4a9045d2917cc394c8ee25530dada8e516cac6ca"
+        },
+        "GlossySyntheticDatabase.get_img_ids": {
+          "first_line": 271,
+          "last_line": 272,
+          "ast_sha256": "02691c8ab21ef35cb6a392c282588ad0c29bdc1b4f97caa3e85479507e53e993"
+        },
+        "GlossySyntheticDatabase.get_depth": {
+          "first_line": 274,
+          "last_line": 279,
+          "ast_sha256": "99078d9e7d551a9a675467db60c37f3417162f8806b875c64474aceeb636274f"
+        },
+        "GlossySyntheticDatabase.get_mask": {
+          "first_line": 281,
+          "last_line": 287,
+          "ast_sha256": "7679a6ce9b7b84397efc91f0583bd525bd82b0eca64169d90b44dd2894d704ca"
+        },
+        "CustomDatabase": {
+          "first_line": 289,
+          "last_line": 426,
+          "ast_sha256": "ebbb0e020c89bb6245e567b9554ddaabfe8623c71186530a76299a12befe49c5"
+        },
+        "CustomDatabase.__init__": {
+          "first_line": 290,
+          "last_line": 316,
+          "ast_sha256": "046058f25a81fc1d046b62d36b2692789bcf25f9f4a0a59d1e870c8c71e69d9d"
+        },
+        "CustomDatabase._parse_colmap": {
+          "first_line": 318,
+          "last_line": 344,
+          "ast_sha256": "17e3a1e7893c236fa97f66fa08d39bc3ad64603321eb945d356a86675172439a"
+        },
+        "CustomDatabase._load_point_cloud": {
+          "first_line": 346,
+          "last_line": 350,
+          "ast_sha256": "2dfa7e389d93417aa91eb0c2a03ed7973b8d6adc821ac9f5776f98e5842b1a5d"
+        },
+        "CustomDatabase._compute_rotation": {
+          "first_line": 352,
+          "last_line": 360,
+          "ast_sha256": "49867f7b51359b0a86ab8d961621841aee4252690f29cd80031df1e93e7c0201"
+        },
+        "CustomDatabase._normalize": {
+          "first_line": 362,
+          "last_line": 389,
+          "ast_sha256": "b477a1dd06b132a9cf83519f0e535ad44f0c6579b41aa1540a3b2c54be8f9c10"
+        },
+        "CustomDatabase._crop": {
+          "first_line": 391,
+          "last_line": 407,
+          "ast_sha256": "6a67761264373ac520a7f5e4bc49f4927027be79eb36e0ee5b1a95228f259d3a"
+        },
+        "CustomDatabase.get_image": {
+          "first_line": 409,
+          "last_line": 411,
+          "ast_sha256": "240e25455767666d880b71378ccf406aec890efe547f39588eb5fcfb832caef9"
+        },
+        "CustomDatabase.get_K": {
+          "first_line": 413,
+          "last_line": 415,
+          "ast_sha256": "53c06637e82527caa78ad895307c58430067449d9825192519db90a9096f65f0"
+        },
+        "CustomDatabase.get_pose": {
+          "first_line": 417,
+          "last_line": 418,
+          "ast_sha256": "4f00b881a1945ed55ee9d94811d9b858ee19ac747f2cd1f3c3e14487f4855f73"
+        },
+        "CustomDatabase.get_mask": {
+          "first_line": 420,
+          "last_line": 421,
+          "ast_sha256": "b206a308ba23d8fe15b0fbe25d99070817b1e9ae74c2807ba105f029faf92ff4"
+        },
+        "CustomDatabase.get_depth": {
+          "first_line": 423,
+          "last_line": 426,
+          "ast_sha256": "a859363065ac2a52d863f061e9ae8c03cf86fe90664e7e1a9e8aa460d58cb7a9"
+        },
+        "NeRFSyntheticDatabase": {
+          "first_line": 429,
+          "last_line": 557,
+          "ast_sha256": "3babc37e4bdf662808aed7595c5835c890fcd7dba01ac186877f71f0138e0391"
+        },
+        "NeRFSyntheticDatabase.__init__": {
+          "first_line": 430,
+          "last_line": 522,
+          "ast_sha256": "b66ad15c7ebf25c2ce102cbb1a0130b031f5b2bdaffd9965ede0581281969517"
+        },
+        "NeRFSyntheticDatabase.get_image": {
+          "first_line": 524,
+          "last_line": 526,
+          "ast_sha256": "17e375982d0147e6dfc45fb9d3b923bb189702e514ae72c74a83c21b256ad221"
+        },
+        "NeRFSyntheticDatabase.get_mask": {
+          "first_line": 528,
+          "last_line": 530,
+          "ast_sha256": "1baa9267a83c6276c3a223dc32d486cd9169912cb0f841ed02c1088a86734cf9"
+        },
+        "NeRFSyntheticDatabase.get_image_cv2": {
+          "first_line": 532,
+          "last_line": 534,
+          "ast_sha256": "193681ec777856b1cdfa4b5ed9d66468e6045ce4ea7ea1e83e5cc397d6066974"
+        },
+        "NeRFSyntheticDatabase.get_K": {
+          "first_line": 537,
+          "last_line": 539,
+          "ast_sha256": "1e8cc4157392db4903426f26b0b6312b26aeca192ac816ac4a8542115386fab9"
+        },
+        "NeRFSyntheticDatabase.get_pose": {
+          "first_line": 541,
+          "last_line": 546,
+          "ast_sha256": "41030c3a0ffef66b7970639744176ac5de7c1804a4c03b60fb07950c37f68782"
+        },
+        "NeRFSyntheticDatabase.get_img_ids": {
+          "first_line": 548,
+          "last_line": 549,
+          "ast_sha256": "02691c8ab21ef35cb6a392c282588ad0c29bdc1b4f97caa3e85479507e53e993"
+        },
+        "NeRFSyntheticDatabase.get_depth": {
+          "first_line": 551,
+          "last_line": 557,
+          "ast_sha256": "356d33177a540104dc73ece4371258c696f8439f20cb8a13bf49a2afbed94e06"
+        },
+        "parse_database_name": {
+          "first_line": 561,
+          "last_line": 572,
+          "ast_sha256": "c1a4f86d03f0aed5590838f09dca02f4d005ae40da097f648e8d4f216319cf70"
+        },
+        "get_database_split": {
+          "first_line": 574,
+          "last_line": 589,
+          "ast_sha256": "6575f23e6bb302b63674a1c929ffbd7a9794c7a5f9eddde7c18dddd17e544aaf"
+        },
+        "get_database_eval_points": {
+          "first_line": 592,
+          "last_line": 615,
+          "ast_sha256": "50451f0618d61ad3e60b836ddfa52c064b96a249686f1a9364baee19db2a104b"
+        }
+      }
+    },
+    "dataset/train_dataset.py": {
+      "sha256": "98006db8444adde8b132854e7544c1d692aa52995a62997bb6861134ebac2382",
+      "bytes": 860,
+      "members": {
+        "DummyDataset": {
+          "first_line": 6,
+          "last_line": 30,
+          "ast_sha256": "09957ee7bff4198bb804cedff015be6a8ca8f9c436a2bc324f2c4597a4907a0c"
+        },
+        "DummyDataset.__init__": {
+          "first_line": 11,
+          "last_line": 18,
+          "ast_sha256": "f3aa2c495955333f59a324d787adbcb7dbfe2db5eae4e8f83c0a295f90974746"
+        },
+        "DummyDataset.__getitem__": {
+          "first_line": 20,
+          "last_line": 24,
+          "ast_sha256": "dca55a3c2cff8f98e2fdb6b9e40135d5bd0effce97b53f986138813b05c9ef9f"
+        },
+        "DummyDataset.__len__": {
+          "first_line": 26,
+          "last_line": 30,
+          "ast_sha256": "be5f5d1633966d0e30e29eaa233f71b196ab979a9f8f4f2194a84197e055230d"
+        }
+      }
+    },
+    "utils/base_utils.py": {
+      "sha256": "c07a99a9713a8c9c1b67fcf57383083336e0b1673de78f99903236d888f55a5b",
+      "bytes": 28256,
+      "members": {
+        "read_pickle": {
+          "first_line": 23,
+          "last_line": 25,
+          "ast_sha256": "4dcc40c3505d2c807c62cd50f1a0c9bc27ee24220bd8111192036bfb14520d1a"
+        },
+        "save_pickle": {
+          "first_line": 28,
+          "last_line": 31,
+          "ast_sha256": "5bfb8e3a2487a405092f9f63d8f1d97de7d588c747c68611a9a1f23c5126e29c"
+        },
+        "mask_zbuffer_to_pts": {
+          "first_line": 36,
+          "last_line": 44,
+          "ast_sha256": "10c10a4fb702cac7ca53a35cfb88792faf9f9b567590a5c30ced1ce782b0c211"
+        },
+        "mask_depth_to_pts": {
+          "first_line": 47,
+          "last_line": 55,
+          "ast_sha256": "93dc49ab6b75e84c289661360570bc1c1f87feb360dfcf3d337e12b420b23dbe"
+        },
+        "read_render_zbuffer": {
+          "first_line": 58,
+          "last_line": 62,
+          "ast_sha256": "c8986c8e2b199c77c6204a83dc64b6e68d374c6a9ffdb34453f40fc1eb5dbd95"
+        },
+        "zbuffer_to_depth": {
+          "first_line": 65,
+          "last_line": 75,
+          "ast_sha256": "810c077368630aaf6f99322c0622f0dfc0fa2116bcdafd8cd26d64c398a61ba4"
+        },
+        "project_points": {
+          "first_line": 78,
+          "last_line": 87,
+          "ast_sha256": "e08191b26920e71d7f6f227564672f8d207c1c2ee68a7fc7d1248555d138dd3a"
+        },
+        "grey_repeats": {
+          "first_line": 92,
+          "last_line": 95,
+          "ast_sha256": "26ef05e6bb0f1ef01fee481679873ce3543f43c0d64937459780a17a09f04ef9"
+        },
+        "normalize_image": {
+          "first_line": 98,
+          "last_line": 101,
+          "ast_sha256": "8552abea5dffa1859e18f20dd889adaf0ddc6ecc69402dfc7c9bbae86aaddcfb"
+        },
+        "tensor_to_image": {
+          "first_line": 104,
+          "last_line": 105,
+          "ast_sha256": "609f5ad0faa0212569db118dd79f76bd8bb966f0651aeefbf2857e07145befed"
+        },
+        "equal_hist": {
+          "first_line": 108,
+          "last_line": 116,
+          "ast_sha256": "b73d73af1afaeee0cec8ff26fe6ec6c9d82238da5e98f2423e45c7987474c8c2"
+        },
+        "resize_large_image": {
+          "first_line": 119,
+          "last_line": 128,
+          "ast_sha256": "c082cffb628e82febb5d29a41b58ba5bb5fdd05cfc4bb40f88db06f007ead32b"
+        },
+        "downsample_gaussian_blur": {
+          "first_line": 131,
+          "last_line": 137,
+          "ast_sha256": "59d80ecf100c8fc2a60e457a9b086dd3de1c16871579942c915c820edaedc3a4"
+        },
+        "resize_small_image": {
+          "first_line": 140,
+          "last_line": 148,
+          "ast_sha256": "7cd688ad5ef79e786c03fbf204991df0bd15c1ebcb84838360c9046dfecdde9f"
+        },
+        "round_coordinates": {
+          "first_line": 152,
+          "last_line": 158,
+          "ast_sha256": "57fda13f284349325720c1914ab1d6e783435af78e808afb744f45d504733458"
+        },
+        "get_img_patch": {
+          "first_line": 161,
+          "last_line": 174,
+          "ast_sha256": "3319d0fb35fbadb3ccae282eff9b7f40cfe7b21537ab61d51c0eb9ad557f0008"
+        },
+        "perspective_transform": {
+          "first_line": 177,
+          "last_line": 180,
+          "ast_sha256": "506b5577aa6b5fac0376146d5e4c3e9ef2ec3d9c2310be36b4b9001c5c8b31e4"
+        },
+        "get_rot_m": {
+          "first_line": 183,
+          "last_line": 184,
+          "ast_sha256": "b9cac4968599a40fe3826c5c7dd7297cf0bd9eb72216ea467f4cb2c978a4eab7"
+        },
+        "get_rot_m_batch": {
+          "first_line": 187,
+          "last_line": 189,
+          "ast_sha256": "3fd652242e63852b643ab9a3e62507ed165fb8f142e561a3452d3ebce9d1bbd7"
+        },
+        "compute_F": {
+          "first_line": 192,
+          "last_line": 206,
+          "ast_sha256": "7b42d155862eb5c9d8f03268155be6c8ac37fc3228f44f7ffdcc3fedf70bb325"
+        },
+        "compute_relative_transformation": {
+          "first_line": 209,
+          "last_line": 219,
+          "ast_sha256": "0deba877d431d9a9affd7d8fcbdf0248462f7c57ac713d63b1e82e480d1633a0"
+        },
+        "compute_angle": {
+          "first_line": 222,
+          "last_line": 226,
+          "ast_sha256": "210a4e575c7ec3ce74c2703f37d2238ef8c06f727ff34a151f5f23ed97f15a97"
+        },
+        "load_h5": {
+          "first_line": 229,
+          "last_line": 235,
+          "ast_sha256": "5e3762d7254f1aff45033e5babb6e29ee394ac91e63fb73000f1e761de400ba5"
+        },
+        "save_h5": {
+          "first_line": 238,
+          "last_line": 241,
+          "ast_sha256": "c44f9b05b3390458c7132933eab5e989d52fc636c288c749743868b9d26dddd8"
+        },
+        "pts_to_hpts": {
+          "first_line": 244,
+          "last_line": 245,
+          "ast_sha256": "956ec795820d922af068442904645aaff9da4b8e298f72995e707010cf37eaed"
+        },
+        "hpts_to_pts": {
+          "first_line": 248,
+          "last_line": 249,
+          "ast_sha256": "7f3b749a7a8a223b090ab399d60365714fc421f3fa2e44e574f3f8417f042db3"
+        },
+        "np_skew_symmetric": {
+          "first_line": 252,
+          "last_line": 259,
+          "ast_sha256": "8ccd85a1948b580b4552954639d5c63618f58a3d2589f6cc6bb8bb46315d63e0"
+        },
+        "point_line_dist": {
+          "first_line": 262,
+          "last_line": 270,
+          "ast_sha256": "c41db580757928312bfa8dfcba161a51c86f43aabcaddbe847fbb64b90b6c66a"
+        },
+        "epipolar_distance": {
+          "first_line": 273,
+          "last_line": 291,
+          "ast_sha256": "f8eeba8d03c7527f5724aa72fbdf381640287bfa351fd24d2f052dc7263f2d91"
+        },
+        "epipolar_distance_mean": {
+          "first_line": 294,
+          "last_line": 295,
+          "ast_sha256": "4459105f431b2b4a6132aba1946f65c8b212d53a9a1a22d6380fee81beabf8d7"
+        },
+        "compute_dR_dt": {
+          "first_line": 298,
+          "last_line": 302,
+          "ast_sha256": "872090cbb50011482317231f0728a927b9f5565d00b1221ed39808d268232376"
+        },
+        "compute_precision_recall_np": {
+          "first_line": 305,
+          "last_line": 316,
+          "ast_sha256": "d5e31b3b49a85a0d0cd2d8f540cd5b368b9be97910232468ca62f953c02a54f4"
+        },
+        "load_cfg": {
+          "first_line": 319,
+          "last_line": 321,
+          "ast_sha256": "b708166820c52d8928dab96cfc6828eafb4ec58a0e9d1b81713bc16cc2a105a3"
+        },
+        "get_stem": {
+          "first_line": 324,
+          "last_line": 325,
+          "ast_sha256": "3d968ae810ffd5c1b79086ced795afd9dc72e4bf54a0602686317e87c71579c8"
+        },
+        "load_component": {
+          "first_line": 328,
+          "last_line": 330,
+          "ast_sha256": "b90a4152cdc570377fc4702ab35da3f9bbd57fe39d2b9da1e47574ae22fcca7a"
+        },
+        "interpolate_image_points": {
+          "first_line": 333,
+          "last_line": 350,
+          "ast_sha256": "97f79f512ed219b0d6577bbd1048d914d56d4d69a031c11d57c535560fce4627"
+        },
+        "transform_points_Rt": {
+          "first_line": 353,
+          "last_line": 355,
+          "ast_sha256": "6f06ca9666f02fe7b3a84d52c736bff54033b6771d3b82b7372f31016764f501"
+        },
+        "transform_points_pose": {
+          "first_line": 358,
+          "last_line": 362,
+          "ast_sha256": "69476320d783c54e692726085d4c06bf7ddd0c631b37a692a8fb5ec2c652d16f"
+        },
+        "quaternion_from_matrix": {
+          "first_line": 365,
+          "last_line": 448,
+          "ast_sha256": "5a7acd38cf09e1b748c7a099d23074ef1dd4267fb072237bb0a78450e30a410b"
+        },
+        "compute_rotation_angle_diff": {
+          "first_line": 451,
+          "last_line": 459,
+          "ast_sha256": "e8a6a90efd08e6b4d5af9a43e2fe6a2db343d6c09cab5b035cfbdbf42ddc75ca"
+        },
+        "compute_translation_angle_diff": {
+          "first_line": 462,
+          "last_line": 468,
+          "ast_sha256": "9d1fcfc402dd197da308db71323ebc8de095ba4813b0a504765bb8340a7524c5"
+        },
+        "bbox2corners": {
+          "first_line": 471,
+          "last_line": 477,
+          "ast_sha256": "272603d895eed37cdfb4ab82ad6d851c8894d986addd9c636434cdde3688785a"
+        },
+        "get_identity_pose": {
+          "first_line": 480,
+          "last_line": 481,
+          "ast_sha256": "60cc28494aa0b4b8fb46af97d4214b89099a054d14458db208947f92d1530fd6"
+        },
+        "angular_difference": {
+          "first_line": 484,
+          "last_line": 485,
+          "ast_sha256": "d52db63a9efc63e2a86e580804eb3f1154753067a45027ee217675b040a03fd4"
+        },
+        "load_ply_model": {
+          "first_line": 488,
+          "last_line": 494,
+          "ast_sha256": "0417c0788ead9052495f9eff87aced582883b6c652cd34290529d58e4426fdc0"
+        },
+        "map_range_val": {
+          "first_line": 496,
+          "last_line": 500,
+          "ast_sha256": "54c5aa443234707db59438eee7b3b9948c5a72bfd50994a142352afce15265a8"
+        },
+        "color_map_forward": {
+          "first_line": 502,
+          "last_line": 503,
+          "ast_sha256": "103944f9547cf4ae7181c4aa7823ccc034d54a333a652d9eb99411a0ef5b4de5"
+        },
+        "color_map_backward": {
+          "first_line": 506,
+          "last_line": 509,
+          "ast_sha256": "dcde0c0277367ef1874986edc32fdaac802489a29c36197b54ca98effa117caf"
+        },
+        "rotate_image": {
+          "first_line": 512,
+          "last_line": 542,
+          "ast_sha256": "51a3b4fc40186c4089010c1c6ee4151fcc4ebb660bba71cd9bf42d87dc7d8c43"
+        },
+        "resize_img": {
+          "first_line": 545,
+          "last_line": 550,
+          "ast_sha256": "5a846e612de4479e72d4be8f0df377e294ef5025383719b9c05d9f681751e7bf"
+        },
+        "pad_img": {
+          "first_line": 553,
+          "last_line": 559,
+          "ast_sha256": "0e3ed757a18f8afe075c1b94ff2d72d8022d56cbd917bb4a8441686b74a0cb5f"
+        },
+        "pad_img_end": {
+          "first_line": 562,
+          "last_line": 571,
+          "ast_sha256": "5ebb6edf97c4d7ade1c35a7886b7b38155835e1e75fc7806d55eb0556204c853"
+        },
+        "pad_img_target": {
+          "first_line": 574,
+          "last_line": 592,
+          "ast_sha256": "f182e5617073dafaa847769e36ef5e4434c9d53f28c26af402b7895cb3be9f69"
+        },
+        "get_coords_mask": {
+          "first_line": 595,
+          "last_line": 614,
+          "ast_sha256": "49fb7bae54bca5ea83717474c0e2246fedac3546dd52e36d46182eff1f1814f0"
+        },
+        "get_inverse_depth": {
+          "first_line": 617,
+          "last_line": 622,
+          "ast_sha256": "63b7d151bb560dbde9a3ea478ed3125a6be592d58cb88263c50ed8ae1e07ee20"
+        },
+        "pose_inverse": {
+          "first_line": 625,
+          "last_line": 628,
+          "ast_sha256": "e80ad41122c04fee36d7f101e873b6315d07e2db186259e297179044234eaa8f"
+        },
+        "similarity_pose_inverse": {
+          "first_line": 631,
+          "last_line": 634,
+          "ast_sha256": "41a9760eb513ea9067cd53b47f7d97945f43e63975ac750f9704292a218965ac"
+        },
+        "pose_compose": {
+          "first_line": 637,
+          "last_line": 646,
+          "ast_sha256": "c445792553a2751a2a400d42f18e8f44fd5d62006cf1e7efed34b8fc00394279"
+        },
+        "pose_apply": {
+          "first_line": 649,
+          "last_line": 650,
+          "ast_sha256": "9d66ab93079ce9517479d113a34915c16dbdd59d63fd13e6408804c027b2a51b"
+        },
+        "make_dir": {
+          "first_line": 653,
+          "last_line": 655,
+          "ast_sha256": "b9731fd358fed8f5186e799c64bde05b793f953d6ebc0deced2f9748b20fd3d2"
+        },
+        "to_cuda": {
+          "first_line": 658,
+          "last_line": 672,
+          "ast_sha256": "2e36b7535f3f2c713f7793b083faa01040708ce9e8ceb5a08469941244db8397"
+        },
+        "to_cpu_numpy": {
+          "first_line": 675,
+          "last_line": 689,
+          "ast_sha256": "6c339b93f7d3322395e70e3e3d28b3b920d91be2b376357d9150719ad5b4954f"
+        },
+        "sample_fps_points": {
+          "first_line": 692,
+          "last_line": 721,
+          "ast_sha256": "d4341be378b1b569d60cb03363935bd893039e012e4cfac6120adc7418bc8c8e"
+        },
+        "pnp": {
+          "first_line": 724,
+          "last_line": 742,
+          "ast_sha256": "a0059a269de146013d78fe95405ce3bf4a867150bb34980a07c11a3154adaef0"
+        },
+        "ransac_pnp": {
+          "first_line": 745,
+          "last_line": 765,
+          "ast_sha256": "42dfd6bfb55d8bad889888aef8ebab3b568fc8c252d470a33fb65865b5dfaf56"
+        },
+        "triangulate": {
+          "first_line": 768,
+          "last_line": 774,
+          "ast_sha256": "accf5314870e59920d043e0357754cbb5029eb1d0c759c85039e4bb4056756d0"
+        },
+        "transformation_inverse_2d": {
+          "first_line": 777,
+          "last_line": 789,
+          "ast_sha256": "cc4122444704bc50b9290144e3193ac8fbd61c433463666765737248974dc93a"
+        },
+        "transformation_compose_2d": {
+          "first_line": 792,
+          "last_line": 804,
+          "ast_sha256": "d7863acf56aaa33ccfbbb7048c503e1512dac9354cd6d16f82eb0cdedea6b8d7"
+        },
+        "transformation_apply_2d": {
+          "first_line": 807,
+          "last_line": 808,
+          "ast_sha256": "beb192d6ba8fd8a73ce9d772dd9bab2013d21dc1bbb3a90f1c9d47cc2b430f9a"
+        },
+        "angle_to_rotation_2d": {
+          "first_line": 811,
+          "last_line": 813,
+          "ast_sha256": "ecedac7dd42e9bbd903bbe2bfebf1c6564327f6fea7c8c99a8c030f3e0966d89"
+        },
+        "transformation_offset_2d": {
+          "first_line": 816,
+          "last_line": 817,
+          "ast_sha256": "a5128e7d8426907642de61a21a524e39502eb79359bab99b9b8e5fa47280c664"
+        },
+        "transformation_scale_2d": {
+          "first_line": 820,
+          "last_line": 821,
+          "ast_sha256": "b6e72eeb5d8f9108e0f54177f901edec5f9e734f092cd6ed63c10b687dd4d361"
+        },
+        "transformation_rotation_2d": {
+          "first_line": 824,
+          "last_line": 825,
+          "ast_sha256": "94506747024532568528e166c18d20ac458788ba42854484cb9fa0d55787537e"
+        },
+        "transformation_decompose_2d": {
+          "first_line": 828,
+          "last_line": 832,
+          "ast_sha256": "6692b0895b9fa892c8d9fc1d7303078d8a440a7345990a245464557a6906ff4e"
+        },
+        "transformation_crop": {
+          "first_line": 835,
+          "last_line": 844,
+          "ast_sha256": "a835242684871f0e8b474bd739fd1fd8b14dc6871a0ae8df909b6d52640862ec"
+        },
+        "look_at_rotation": {
+          "first_line": 847,
+          "last_line": 856,
+          "ast_sha256": "3a61a564cc1d3a34edf8abcb11224b2c08ee26652de87165bbd414456495c8af"
+        },
+        "save_depth": {
+          "first_line": 859,
+          "last_line": 866,
+          "ast_sha256": "b809ed070957321b2a3deb0f8c9caba29a707fc717133a17c529bc8a14e7b5f3"
+        },
+        "get_exact_bbox": {
+          "first_line": 869,
+          "last_line": 879,
+          "ast_sha256": "8e5bda0498b4735062b42b4c395bd07e8a6ab2f5e0c2459b1ec80c16d1089473"
+        },
+        "generate_coords": {
+          "first_line": 882,
+          "last_line": 884,
+          "ast_sha256": "e3619c45934ba4923f4713fd4358cc2c855c4add0417c5b096010097853c90fc"
+        },
+        "sample_sphere": {
+          "first_line": 887,
+          "last_line": 900,
+          "ast_sha256": "f820c52df8d8ab6d13d9d7c897e5d747de0b54360c1965f8d715b9b5a7a17928"
+        },
+        "az_el_to_points": {
+          "first_line": 903,
+          "last_line": 907,
+          "ast_sha256": "42023a0a209491e7d83b3165dc0ff23a4f4e8e40c8dbe937df20aecb395fbe12"
+        }
+      }
+    }
+  },
+  "checkpoint_artifact_identities": {
+    "model_best.pth": {
+      "path": "model/bell_shape/model_best.pth",
+      "sha256": "d928a03d9eb9f993ab8f4a0384b31cf1c7bdc875316a1c247dcf9722b8b79ccc",
+      "bytes": 29966819,
+      "mtime_ns": 1793693855891692219,
+      "inode": 109587444,
+      "device": 66310,
+      "payload_loaded": false,
+      "scope": "selected validation/compatibility input"
+    },
+    "model.pth": {
+      "path": "model/bell_shape/model.pth",
+      "sha256": "838c6fec3e18999554bc04951b6643acc1c5cc24c95cfbeda7f81ba6830e732a",
+      "bytes": 29966819,
+      "mtime_ns": 1793693855855691516,
+      "inode": 109587443,
+      "device": 66310,
+      "payload_loaded": false,
+      "scope": "original extractor selects this alternate; no metadata/load admission inferred"
+    }
+  }
+}

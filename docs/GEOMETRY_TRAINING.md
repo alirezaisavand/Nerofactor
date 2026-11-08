@@ -327,3 +327,13 @@ initialization separately from continuation. Add temporary CPU differential test
 and writer guards before any native experiment. Keep extraction/evaluation
 refactoring, any further native geometry repairs, full provenance, Docker and training
 execution in separately authorized work.
+
+## Selected G validation and checkpoint diagnostics
+
+The verified G two-update R/R-repeat/C evidence is accepted only for the fresh
+two-update prefix under [policy v2](evidence/dual-baseline-supersession-v2.json).
+See [G lifecycle audit](G_GEOMETRY_LIFECYCLE.md) for independent checkpoint,
+validation, optimizer-load and manual roundtrip protocols. These native scopes
+remain unexecuted here; natural 1,000-step selection, extraction, historical
+producing provenance and full training reproducibility remain unaccepted.
+Earlier A evidence and frozen protocols are preserved without relabeling.

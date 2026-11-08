@@ -274,3 +274,13 @@ policy changes only its target admissibility. No historical checkpoint/camera
 pickle was deserialized, no training/evaluation of real inputs was performed,
 and no commit or push was made. Stop here for source/protocol/CPU review before
 any proposed researcher-side native G run or next research milestone.
+
+## 1D.6A acceptance and lifecycle preparation
+
+The verified G two-update R/R-repeat/C evidence is accepted only for the fresh
+two-update prefix under [policy v2](evidence/dual-baseline-supersession-v2.json).
+See [G lifecycle audit](G_GEOMETRY_LIFECYCLE.md) for independent checkpoint,
+validation, optimizer-load and manual roundtrip protocols. These native scopes
+remain unexecuted here; natural 1,000-step selection, extraction, historical
+producing provenance and full training reproducibility remain unaccepted.
+Earlier A evidence and frozen protocols are preserved without relabeling.

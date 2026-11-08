@@ -4,14 +4,17 @@ from infrastructure.stage_sources import ROOT,PINS,digest
 from infrastructure.paths import relative_path
 from infrastructure.signatures import require
 
-POLICY='dual-scientific-baseline-v1'
+POLICY='dual-scientific-baseline-v2'
 STATUSES={'accepted_for_selected_stage_baseline','valid_historical_or_diagnostic_only',
           'invalidated_for_selected_stage_baseline','awaiting_compatibility_review','unexecuted'}
 
 
 def matrix():
-    value=json.loads((ROOT/'docs/evidence/dual-baseline-supersession-v1.json').read_text())
+    value=json.loads((ROOT/'docs/evidence/dual-baseline-supersession-v2.json').read_text())
     require(value['policy']==POLICY and value['selected_scientific_commits']==PINS,'Evidence policy/source conflict')
+    previous=value['supersedes']
+    require(previous['path']=='docs/evidence/dual-baseline-supersession-v1.json' and
+            digest(ROOT/previous['path'])==previous['sha256'],'Original evidence policy changed')
     require(all(row['status'] in STATUSES for row in value['entries']),'Unknown admission status')
     return value
 
