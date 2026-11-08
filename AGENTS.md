@@ -135,7 +135,25 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized milestone: **1D.4B-3C, historical bell camera-0 diagnostic
+Current authorized milestone: **1D.4B-3D, finalize historical bell camera-0
+evaluation evidence**. Inspect the existing primary/control/comparison reports
+and their recorded hashes without regeneration. Write documentation and a small
+versioned success manifest, preserve original evidence and all image-58 code/
+reports, and run CPU/static validation only. No scientific source/configuration,
+checkpoint/dataset, Docker/image/environment/permission changes or native GPU/
+training execution; no automatic commit or push.
+
+The exact camera-0 PSNR, five-decimal SSIM match and step-pair equality may be
+recorded as verified within the inspected files and tested implementation. Camera
+selection accounts for the observed metric discrepancy in that scope; it does
+not establish producing-run training membership. The unshuffled two-way training
+split remains a strongly supported hypothesis. Current A validation 58 must not
+be labeled the historical geometry evaluation split. Preserve native versus host
+JPEG-decoder measurements separately and never fit a tolerance or rewrite an
+original report. See [camera-0 success](docs/evidence/BELL_CAMERA0_DIAGNOSTIC_SUCCESS.md)
+and the updated [attribution report](docs/evidence/BELL_EVALUATION_PROVENANCE.md).
+
+Earlier authorized milestone: **1D.4B-3C, historical bell camera-0 diagnostic
 preparation**, on the existing `paper/infrastructure` worktree. Preserve the
 uncommitted 1D.5A implementation/protocol and all original image-58 code/evidence;
 shared AGENTS/static-check changes may add this scope only. No commit/push.
@@ -219,8 +237,8 @@ requested `paper_runs/evidence/1d3c` destination was inaccessible. Verify the
 approved destination is writable, preserve original bytes and source paths/
 hashes, refuse overwrites, and exclude caches/generated datasets. Do not change
 ownership/permissions or Docker settings. The current milestone additionally
-authorizes only the camera-0 preparation and CPU/static work above; prior 1D.5A
-work remains retained for review.
+authorizes only evidence finalization and CPU/static work above; earlier 1D.5A
+and camera-0 preparations remain preserved.
 No scientific code/YAML,
 image/build, package/environment or original artifact changes are allowed.
 

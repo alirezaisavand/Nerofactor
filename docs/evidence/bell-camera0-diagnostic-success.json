@@ -1,0 +1,633 @@
+{
+  "schema_version": 1,
+  "milestone": "1D.4B-3D",
+  "review_baseline": "75b8d5dc9dc3441b163f0c3a73a961bdc12236ab",
+  "protocol": "bell-camera0-validation-diagnostic-v1",
+  "result": "camera0_historical_evaluation_evidence_verified",
+  "classification_scope": "Existing researcher-run reports/artifacts independently checked on CPU; no new native execution and no producing-run attribution.",
+  "path_convention": {
+    "reports_and_sidecars": "relative to approved evidence root /home/isavand/paper/evidence",
+    "checkpoint_montage_log": "relative to read-only historical thesis root",
+    "source_files": "relative to repository root; hashes also checked at declared execution commit"
+  },
+  "selection": {
+    "discovered_camera0_comparisons": 1,
+    "method": "Located the sole bell-camera0.*/comparison/step-comparison.json under the approved evidence root. Primary/control selected by its recorded SHA-256 and size, mapped from container paths to original host paths; all supplied results checked after selection.",
+    "comparison_digest_origin": "Computed from the existing comparison file during this audit; not an externally supplied pre-admission digest or signed attestation."
+  },
+  "reports": {
+    "primary": {
+      "path": "bell-camera0.Ri4zwVXG/primary/camera-diagnostic.json",
+      "sha256": "8fec3209db18b997bae261ee81a8d0be8fa1ed6fcfbdd534d8351acdcfc17793",
+      "bytes": 250469
+    },
+    "step-control": {
+      "path": "bell-camera0.Ri4zwVXG/step-control/camera-diagnostic.json",
+      "sha256": "3f3215e7df64a489de1c3864ae91fb3ab427af2f1cbce6bf86525bb4dfee2c33",
+      "bytes": 250479
+    }
+  },
+  "comparison": {
+    "path": "bell-camera0.Ri4zwVXG/comparison/step-comparison.json",
+    "sha256": "007b56ff2a518074e4049cdb2f01fa61b82780e9b64d5d342908cff7cd89b673",
+    "bytes": 5308
+  },
+  "checkpoint": {
+    "path": "model/bell_shape/model_best.pth",
+    "sha256": "d928a03d9eb9f993ab8f4a0384b31cf1c7bdc875316a1c247dcf9722b8b79ccc",
+    "bytes": 29966819
+  },
+  "historical_montage": {
+    "path": "train_vis/bell_shape-val/149999-index-0.jpg",
+    "sha256": "2800003a665d47f757b1ec30b98d225bcfe19751b2608f1caa75587f8bcb3a44",
+    "bytes": 58376
+  },
+  "historical_validation_log": {
+    "path": "model/bell_shape/val.txt",
+    "sha256": "898de60200fe0cb8743ecf79e0c6c4d1fc4a310359acbe07d82fe308b63d7702",
+    "bytes": 25800
+  },
+  "metrics": {
+    "psnr": {
+      "status": "finite",
+      "value": 23.787122565451323
+    },
+    "ssim": 0.8772724776097482
+  },
+  "historical_comparison": {
+    "historical_montage_sha256": "2800003a665d47f757b1ec30b98d225bcfe19751b2608f1caa75587f8bcb3a44",
+    "panel_box_xyxy": [
+      0,
+      0,
+      200,
+      200
+    ],
+    "panel_interpretation": "Inspected legacy layout plus researcher visual identity; producing layout/source remains unattributed.",
+    "stored_best_psnr": 23.787122565451323,
+    "logged_psnr": 23.78712,
+    "logged_ssim": 0.87727,
+    "measured": {
+      "psnr": {
+        "status": "finite",
+        "value": 23.787122565451323
+      },
+      "ssim": 0.8772724776097482
+    },
+    "psnr_minus_stored_best": 0.0,
+    "psnr_minus_logged": 2.565451321601131e-06,
+    "ssim_minus_logged": 2.4776097482526183e-06,
+    "absolute_psnr_difference_from_stored_best": 0.0,
+    "absolute_psnr_difference_from_logged": 2.565451321601131e-06,
+    "absolute_ssim_difference_from_logged": 2.4776097482526183e-06,
+    "same_five_decimal_psnr_display": true,
+    "same_five_decimal_ssim_display": true,
+    "historical_metric_acceptance_tolerance": null,
+    "jpeg": {
+      "pixel_exact": false,
+      "max_absolute_uint8_difference": 66,
+      "mean_absolute_uint8_difference": 3.7261083333333334,
+      "root_mean_square_uint8_difference": 5.6172806291538135,
+      "absolute_difference_percentiles_50_95_99": [
+        2.0,
+        12.0,
+        20.0
+      ],
+      "Pillow": "10.4.0",
+      "libjpeg": "6.2",
+      "acceptance_tolerance": null,
+      "resize_align_recompress_denoise": false,
+      "limit": "JPEG compression and unknown producing preprocessing prevent pixel-exact GT identity claims; report differences without tuning."
+    },
+    "origin_attribution": "No metric/JPEG closeness establishes producing commit, training membership or split."
+  },
+  "step_comparison": {
+    "result": "within_frozen_step_comparison_bounds",
+    "thresholds": {
+      "float_atol": 0.0001,
+      "float_rtol": 0.0001,
+      "uint8_max": 1,
+      "psnr_db": 0.01,
+      "ssim": 0.0001
+    },
+    "identity_mismatches": [],
+    "rgb_bitwise_equal": true,
+    "max_absolute_error": 0.0,
+    "mean_absolute_error": 0.0,
+    "float_violation_count": 0,
+    "uint8_max_error": 0,
+    "uint8_mismatch_count": 0,
+    "psnr_delta_db": 0.0,
+    "ssim_delta": 0.0,
+    "auxiliary_outputs_identical": true
+  },
+  "historical_full_montage_comparison": {
+    "classification": "verified",
+    "bytes": 58376,
+    "sha256": "2800003a665d47f757b1ec30b98d225bcfe19751b2608f1caa75587f8bcb3a44",
+    "both_fresh_montages_byte_identical_to_historical": true,
+    "limit": "Artifact byte equality strengthens evaluation correspondence; it does not identify producing code, effective training settings or train/split membership."
+  },
+  "output_hashes": {
+    "primary": {
+      "arrays/mask.npy": "b45829c30ca29a1028e09ec88e134b04b6f445d4840151127e3a93733e5b1a76",
+      "arrays/current-GT-minus-JPEG-panel.npy": "563f3a5c36a0f8ff3696bb4504792be6d1bf54dd79e47c8ecf6ada6e86dd362f",
+      "arrays/prediction.npy": "e4750fe3bb5aa0b9ada014cb415f158914a016240b2d7b260e5ca74798bf0c3e",
+      "arrays/ground_truth.npy": "a1da2cc773c01d7dddf2425431032efa1d5b4aa6cdc1610e777bde05d5b9d899",
+      "renders/ground_truth.png": "9049006e1d74db961cb279e8014d1c14f4d20a87e319aed3d1f0bd3e5fea235b",
+      "renders/historical-GT-panel-decoded.png": "5eb6bc8150388bbf10c9abcd38b5ca7a8f54f9786adc684e27bc68f82567bbc5",
+      "renders/prediction.png": "e08ebe66775c7f841f208aa2ed8ed702fa5c22377c359979bdab32ecc98af321",
+      "renders/validation/bell_shape-camera0/149999-index-0.jpg": "2800003a665d47f757b1ec30b98d225bcfe19751b2608f1caa75587f8bcb3a44",
+      "metrics.json": "b383dd6c69b77eccfe84d23e1bac4117105d448a41ec8f6c20587f19e3b30e2d",
+      "config.original.yaml": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f",
+      "logs/console.log": "c3bb846c90daf1c2632e6f6081e8dad8386b5397f6be710d3adc4a3aa25df324"
+    },
+    "step-control": {
+      "arrays/mask.npy": "b45829c30ca29a1028e09ec88e134b04b6f445d4840151127e3a93733e5b1a76",
+      "arrays/current-GT-minus-JPEG-panel.npy": "563f3a5c36a0f8ff3696bb4504792be6d1bf54dd79e47c8ecf6ada6e86dd362f",
+      "arrays/prediction.npy": "e4750fe3bb5aa0b9ada014cb415f158914a016240b2d7b260e5ca74798bf0c3e",
+      "arrays/ground_truth.npy": "a1da2cc773c01d7dddf2425431032efa1d5b4aa6cdc1610e777bde05d5b9d899",
+      "renders/ground_truth.png": "9049006e1d74db961cb279e8014d1c14f4d20a87e319aed3d1f0bd3e5fea235b",
+      "renders/historical-GT-panel-decoded.png": "5eb6bc8150388bbf10c9abcd38b5ca7a8f54f9786adc684e27bc68f82567bbc5",
+      "renders/prediction.png": "e08ebe66775c7f841f208aa2ed8ed702fa5c22377c359979bdab32ecc98af321",
+      "renders/validation/bell_shape-camera0/150000-index-0.jpg": "2800003a665d47f757b1ec30b98d225bcfe19751b2608f1caa75587f8bcb3a44",
+      "metrics.json": "b383dd6c69b77eccfe84d23e1bac4117105d448a41ec8f6c20587f19e3b30e2d",
+      "config.original.yaml": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f",
+      "logs/console.log": "c3bb846c90daf1c2632e6f6081e8dad8386b5397f6be710d3adc4a3aa25df324"
+    }
+  },
+  "comparison_output_hashes": {
+    "step-control-minus-primary.npy": "4f6b990c73bb71fe5d59a4ae617b8a32cc8035dcfa49ee410b916e49ebe548ba",
+    "float-violation-mask.npy": "87e5b26532f7249becc31043d16be4be3d112b648a9104f6e0e1978d1514339a"
+  },
+  "launch_and_exit_records": {
+    "launch.txt": {
+      "path": "bell-camera0.Ri4zwVXG/launch.txt",
+      "sha256": "27d8899effecb28bb33fab24b4cef61149f63c4ccb1c7ac8f872fb14b2c4c9f8",
+      "bytes": 150
+    },
+    "primary-terminal.log": {
+      "path": "bell-camera0.Ri4zwVXG/primary-terminal.log",
+      "sha256": "c37bad963ac3440265a3658e998cd46417aff5bcef8c18a756545454a98d40d6",
+      "bytes": 366
+    },
+    "primary-exit-code.txt": {
+      "path": "bell-camera0.Ri4zwVXG/primary-exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "step-control-terminal.log": {
+      "path": "bell-camera0.Ri4zwVXG/step-control-terminal.log",
+      "sha256": "c37bad963ac3440265a3658e998cd46417aff5bcef8c18a756545454a98d40d6",
+      "bytes": 366
+    },
+    "step-control-exit-code.txt": {
+      "path": "bell-camera0.Ri4zwVXG/step-control-exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "comparison-terminal.log": {
+      "path": "bell-camera0.Ri4zwVXG/comparison-terminal.log",
+      "sha256": "b651db6369a135ca1f4fb3518b787eb3fc5c4904899e1d118228e802aad5c573",
+      "bytes": 37
+    },
+    "comparison-exit-code.txt": {
+      "path": "bell-camera0.Ri4zwVXG/comparison-exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "researcher_launch_script": {
+      "path": "camera0-launch.F5vQY1gd.sh",
+      "sha256": "6a45d0b7aca62732e514f13eb6647177d49fed44e16e4b34b5fee50d5b65ddad",
+      "bytes": 4394
+    },
+    "researcher_launch_log": {
+      "path": "camera0-launch.F5vQY1gd.log",
+      "sha256": "f6404cef137247c70a188a1ea6658b015810e5f87903cc98a37dec7059488c0d",
+      "bytes": 930
+    }
+  },
+  "cache_identity_files": {
+    "primary": [
+      {
+        "path": "bell-camera0.Ri4zwVXG/primary/cache/datasets/syn/bell/0ea2ec7cead163934f879a00cda2d507c01864a19c6071a4b58b68ec47934d97/identity.json",
+        "sha256": "cf98f91ac778944f054b7ecf0527157d27fcd1cc741dbb60c9d2661aec6eb148",
+        "bytes": 139018
+      }
+    ],
+    "step-control": [
+      {
+        "path": "bell-camera0.Ri4zwVXG/step-control/cache/datasets/syn/bell/0ea2ec7cead163934f879a00cda2d507c01864a19c6071a4b58b68ec47934d97/identity.json",
+        "sha256": "cf98f91ac778944f054b7ecf0527157d27fcd1cc741dbb60c9d2661aec6eb148",
+        "bytes": 139018
+      }
+    ]
+  },
+  "source": {
+    "declared_commit": "75b8d5dc9dc3441b163f0c3a73a961bdc12236ab",
+    "implementation": {
+      "infrastructure/bell_camera_diagnostic.py": "1f912d7ffa427f7aba6e2603528dd9240345969ebcc6dfa76591c33a4454b102",
+      "infrastructure/bell_camera_comparison.py": "7a3e2925a3a6083cfa1f87a942e4c4072332a33646eb5b72357c2a606db16c4c",
+      "run_bell_camera_diagnostic.py": "9d2640ba9896afd24bc1404992d198a086329346920707e2519cd4bdb678c80a",
+      "docs/protocols/BELL_CAMERA0_DIAGNOSTIC_V1.md": "46a7c17040e0ea0537ed70db7cb4163bf148d6a92fc9ddac6598a8fa3d538dc3"
+    },
+    "reference_files_verified_against_worktree_and_commit": 57,
+    "image58_implementation_files_verified": 9
+  },
+  "runtime": {
+    "python": "3.8.10 (default, Mar 18 2025, 20:04:55) \n[GCC 9.4.0]",
+    "torch": "1.8.1+cu111",
+    "cuda": "11.1",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "driver": "NVRM version: NVIDIA UNIX x86_64 Kernel Module  550.163.01  Tue Apr  8 12:41:17 UTC 2025\nGCC version:  gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.3) \n",
+    "torch_cxx11_abi": false,
+    "default_dtype": "torch.float32",
+    "torch_num_threads": 4,
+    "torch_num_interop_threads": 16,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": false,
+    "cudnn_allow_tf32": true,
+    "matmul_allow_tf32": true,
+    "packages": {
+      "numpy": "1.24.4",
+      "scipy": "1.10.1",
+      "scikit-image": "0.21.0",
+      "Pillow": "10.4.0",
+      "imageio": "2.35.1",
+      "open3d": "0.16.0",
+      "nvdiffrast": "0.3.3",
+      "PyYAML": "6.0.2"
+    }
+  },
+  "declared_image_id": "sha256:2572950d9f662b7603b604878613e85c1a0fec90842447e9a256751a130ee137",
+  "observed_camera_selection": {
+    "database_source_id": "0",
+    "diagnostic_iterator_index": 0,
+    "diagnostic_index_to_source_id": {
+      "0": "0"
+    },
+    "getter_reads": [
+      {
+        "method": "get_image",
+        "source_id": "0"
+      },
+      {
+        "method": "get_pose",
+        "source_id": "0"
+      },
+      {
+        "method": "get_K",
+        "source_id": "0"
+      },
+      {
+        "method": "get_mask",
+        "source_id": "0"
+      },
+      {
+        "method": "get_depth",
+        "source_id": "0"
+      }
+    ],
+    "original_A_validation_ids": [
+      "58"
+    ],
+    "original_A_tables_unchanged": true
+  },
+  "original_A_split": {
+    "train_ids": [
+      "14",
+      "98",
+      "103",
+      "117",
+      "91",
+      "63",
+      "67",
+      "104",
+      "20",
+      "39",
+      "74",
+      "35",
+      "51",
+      "18",
+      "87",
+      "2",
+      "47",
+      "100",
+      "22",
+      "32",
+      "62",
+      "72",
+      "106",
+      "19",
+      "88",
+      "59",
+      "86",
+      "54",
+      "123",
+      "99",
+      "16",
+      "3",
+      "75",
+      "122",
+      "8",
+      "84",
+      "64",
+      "23",
+      "119",
+      "36",
+      "0",
+      "60",
+      "6",
+      "10",
+      "120",
+      "121",
+      "116",
+      "70",
+      "29",
+      "102",
+      "27",
+      "55",
+      "97",
+      "25",
+      "109",
+      "82",
+      "127",
+      "124",
+      "125",
+      "57",
+      "28",
+      "52",
+      "24",
+      "41",
+      "77",
+      "26",
+      "15",
+      "126",
+      "68",
+      "95",
+      "81",
+      "107",
+      "30",
+      "12",
+      "33",
+      "94",
+      "111",
+      "80",
+      "43",
+      "31",
+      "110",
+      "21",
+      "78",
+      "37",
+      "101",
+      "44",
+      "5",
+      "40",
+      "48",
+      "89",
+      "1",
+      "49",
+      "108",
+      "79",
+      "66",
+      "71",
+      "65",
+      "34",
+      "42",
+      "61",
+      "46",
+      "83",
+      "90",
+      "113",
+      "13",
+      "9",
+      "7",
+      "56",
+      "96",
+      "85",
+      "4",
+      "112",
+      "92",
+      "50",
+      "115",
+      "118",
+      "69",
+      "45",
+      "73",
+      "53",
+      "38",
+      "93"
+    ],
+    "test_ids": [
+      "58"
+    ],
+    "nvs_ids": [
+      "11",
+      "105",
+      "114",
+      "17",
+      "76"
+    ]
+  },
+  "canonical_json_sha256": {
+    "used_inputs": "5463ac5a0f98f835eb10aed11feec72f371eaa6d1c23475654531acf8c468cd5",
+    "effective_trainer": "6808d51808bc1fe32afdf9711c43d00fa8f6901c051299eb75851c4dad4d2d11",
+    "effective_renderer": "decfdc66a0394e01735413a52df1acb28070b5e55c17824b21526139300a4111",
+    "effective_shader": "102d8a2cb0f24ec812e49730260948b217c91ccd6c3130619f60f8671404a879",
+    "network_state_fingerprints": "beed75f87fbfe4cec89f59fe918a880d4b30a07d2393bb4d0540f175c5d7986d",
+    "rng_before": "d3b730fe16f45d87e128d46724f9112461ba1f7d5ef9667cea51b06234672d5b",
+    "rng_after": "563c01858bc782d95f84fa25bbbfb734261a546e68f5959968cd832d268dd5ee",
+    "preprocessing": "b02fb1dbedd671ab997d486e7ee7cda0a7d4056b7c6340ed305989d5b09c85a4",
+    "original_A_splits": "1825d36dade190f9cd13e567798f983436b66b19f20e0a3eacf63d94939b8548"
+  },
+  "canonical_hash_format": "UTF-8 json.dumps(value,sort_keys=True,separators=(comma,colon),allow_nan=False)",
+  "image58_comparison": {
+    "image58_psnr": 32.84983236325549,
+    "image58_ssim": 0.946790605392639,
+    "image58_minus_camera0_psnr_db": 9.062709797804164,
+    "controls": {
+      "raw_and_effective_configs_equal": true,
+      "shared_runtime_fields_equal": [
+        "cuda",
+        "cudnn_allow_tf32",
+        "cudnn_benchmark",
+        "cudnn_deterministic",
+        "default_dtype",
+        "driver",
+        "gpu",
+        "matmul_allow_tf32",
+        "python",
+        "torch",
+        "torch_cxx11_abi",
+        "torch_num_interop_threads",
+        "torch_num_threads"
+      ],
+      "shared_package_versions_equal": [
+        "Pillow",
+        "PyYAML",
+        "imageio",
+        "numpy",
+        "nvdiffrast",
+        "open3d",
+        "scikit-image",
+        "scipy"
+      ],
+      "initial_rng_equal": true,
+      "post_evaluation_rng_equal": false,
+      "package_field_coverage_differs": [
+        "opencv-python is recorded only in the original image-58 report"
+      ]
+    },
+    "finding": "Camera selection accounts for the observed metric discrepancy under this checkpoint and tested evaluation implementation. This is not proof that camera 58 was historically trained on.",
+    "evidence_preserved": [
+      {
+        "path": "bell-regression.tjRWmKTp/r/inference.json",
+        "sha256": "d5a7f4a08fbdca90cf2cf6d464236c2e0b571838538c35d7856d2b84dff8e832",
+        "bytes": 217961
+      },
+      {
+        "path": "bell-regression.tjRWmKTp/r-repeat/inference.json",
+        "sha256": "16d49548d52bddee244737fbaab155b2dd9d9784471744bb24ef01a6fe9299c5",
+        "bytes": 217989
+      },
+      {
+        "path": "bell-c-resume.41v84l15/c/inference.json",
+        "sha256": "ca7b8f09243b9c0df73161df520b92d88b0b5eacd504e44b7f6748afae5ea261",
+        "bytes": 217958
+      },
+      {
+        "path": "bell-c-resume.41v84l15/final/regression-comparison.json",
+        "sha256": "5b716048066a790e5380696a16a354f80074d2da388aa49e98675388a2754c99",
+        "bytes": 3221
+      },
+      {
+        "path": "bell-regression.tjRWmKTp/repeatability/regression-comparison.json",
+        "sha256": "480ceb62ecc728ec286d08b55c21abd68d1b8482627381b84ea50a1d3418b222",
+        "bytes": 1875
+      }
+    ]
+  },
+  "historical_attribution": {
+    "camera0_metric_and_montage_correspondence": "verified for this checkpoint and maintained renderer",
+    "historical_unshuffled_two_way_training_split": {
+      "classification": "strongly_supported_hypothesis_not_proven",
+      "conditional_training_ids": "ordered decimal strings 1 through 127",
+      "conditional_validation_ids": [
+        "0"
+      ],
+      "conditional_nvs_ids": [],
+      "condition": "128 original ordered source IDs and inspected G two-way algorithm; historical producing-run training membership is not recovered"
+    },
+    "producing_commit_branch_dirty_patch_effective_training_configuration": "unresolved",
+    "A_three_way_validation_58_is_historical_geometry_split": false,
+    "step_pair_scope": "Observed bitwise equality for two fresh runs, not general determinism or exact training/RNG resume."
+  },
+  "verification": {
+    "declared_output_files": 24,
+    "input_files_opaque_byte_hashed": 376,
+    "input_bytes": 111584129,
+    "scene_metadata_entries": 641,
+    "checkpoint_opaque_byte_hashed_only": true,
+    "checkpoint_deserialized_by_this_audit": false,
+    "network_state_fingerprints_compared": 137,
+    "state_preservation_evidence": "Before/after weights and buffers, unchanged A tables and RNG-neutral camera selection are recorded by the pinned native runner; paired 137-tensor fingerprints and report flags inspected, not a new checkpoint load.",
+    "cpu_runtime": {
+      "python": "3.9.12",
+      "numpy": "1.21.5",
+      "scikit-image": "0.19.2",
+      "Pillow": "9.0.1"
+    },
+    "cpu_metric_consistency": "Exact saved-array PSNR/SSIM match on this host; no general cross-version equivalence asserted; native version-guarded comparator was not bypassed or relaunched.",
+    "host_jpeg_decoder": {
+      "Pillow": "9.0.1",
+      "libjpeg": "9.0",
+      "libjpeg_turbo": false
+    },
+    "host_jpeg_decode_checks": {
+      "primary": {
+        "host_decode_minus_native_saved_panel": {
+          "pixel_exact": false,
+          "max_absolute_uint8_difference": 33,
+          "mean_absolute_uint8_difference": 0.5248083333333333,
+          "root_mean_square_uint8_difference": 1.3545448189951732,
+          "absolute_difference_percentiles_50_95_99": [
+            0.0,
+            2.0,
+            6.0
+          ]
+        },
+        "GT_minus_host_decoded_panel": {
+          "pixel_exact": false,
+          "max_absolute_uint8_difference": 64,
+          "mean_absolute_uint8_difference": 3.828666666666667,
+          "root_mean_square_uint8_difference": 5.786952277897811,
+          "absolute_difference_percentiles_50_95_99": [
+            2.0,
+            12.0,
+            20.0
+          ]
+        }
+      },
+      "step-control": {
+        "host_decode_minus_native_saved_panel": {
+          "pixel_exact": false,
+          "max_absolute_uint8_difference": 33,
+          "mean_absolute_uint8_difference": 0.5248083333333333,
+          "root_mean_square_uint8_difference": 1.3545448189951732,
+          "absolute_difference_percentiles_50_95_99": [
+            0.0,
+            2.0,
+            6.0
+          ]
+        },
+        "GT_minus_host_decoded_panel": {
+          "pixel_exact": false,
+          "max_absolute_uint8_difference": 64,
+          "mean_absolute_uint8_difference": 3.828666666666667,
+          "root_mean_square_uint8_difference": 5.786952277897811,
+          "absolute_difference_percentiles_50_95_99": [
+            2.0,
+            12.0,
+            20.0
+          ]
+        }
+      }
+    },
+    "jpeg_cross_runtime_limit": "Native saved panel uses Pillow 10.4.0/libjpeg 6.2. CPU Pillow 9.0.1/libjpeg 9.0 decoding differs; native panel PNG and signed-difference array reproduce the reported 3.7261083333333334 MAE exactly. The independent host re-decode gives 3.828666666666667. No decoder substitution, output regeneration or JPEG tolerance adjustment.",
+    "all_original_reports_preserved": true,
+    "infrastructure_tests": {
+      "total": 197,
+      "passed": 194,
+      "failed": 0,
+      "skipped": 3,
+      "python": "3.9.12",
+      "skips": [
+        "native OpenCV/transforms3d crop parity",
+        "native Open3D downsample/export parity",
+        "native OpenCV RAW resize parity"
+      ]
+    },
+    "static_checks": {
+      "python38_grammar_files": 85,
+      "docker_run_shell_parses": 5,
+      "docker_engine_used": false
+    }
+  },
+  "native_execution_times_utc": {
+    "primary": {
+      "started_at_utc": "2026-11-07T22:58:02.748417+00:00",
+      "finished_at_utc": "2026-11-07T22:58:51.436085+00:00"
+    },
+    "step-control": {
+      "started_at_utc": "2026-11-07T22:58:52.800607+00:00",
+      "finished_at_utc": "2026-11-07T22:59:43.788806+00:00"
+    }
+  },
+  "limitations": [
+    "Source commit and immutable image ID are report/launch declarations. Recorded implementation hashes and 57 pinned reference files match the stated commit and checkout, without independently attesting full launch cleanliness or querying Docker.",
+    "Historical unrounded SSIM and original training split/RNG/settings are not recovered. Five-decimal SSIM agreement is not a recovered historical full-precision scalar.",
+    "Current A split is retained for infrastructure compatibility, not relabeled as historical. Neither camera-0 nor camera-58 inference establishes held-out status for these historical weights.",
+    "No new inference, GPU execution, training, checkpoint or camera-pickle deserialization, package/image changes or original-evidence writes.",
+    "JIT/native extension binaries, full image build closure, all dataset families and caches were not rehashed; selected report/config/input/output identities are the audited scope.",
+    "The original 1D.4B-3B audit JSON is retained as an as-of snapshot; this success manifest and updated attribution Markdown supersede its unknown metric-cause finding only in the stated tested scope."
+  ]
+}
