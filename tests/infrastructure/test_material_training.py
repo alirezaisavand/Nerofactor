@@ -363,7 +363,14 @@ class MaterialSourceCompatibilityTests(unittest.TestCase):
                      'infrastructure/geometry_execution.py', 'network/field.py', 'network/loss.py',
                      'train/lr_common_manager.py', 'train/train_tools.py', 'train/train_valid.py',
                      'dataset/database.py', 'dataset/train_dataset.py']:
-            self.assertEqual(previous(path), (REPO / path).read_bytes(), path)
+            current = (REPO / path).read_bytes()
+            if path == 'run_experiment.py':
+                # RESET authorizes only a pre-execution rejection in this old CLI.
+                guard = (b'    if args.execute:\n'
+                         b'        parser.error("1D.5-RESET: use run_stage_experiment.py with an explicit pinned scientific stage; this earlier entry point is validation-only")\n')
+                self.assertEqual(current.count(guard), 1)
+                current = current.replace(guard, b'', 1)
+            self.assertEqual(previous(path), current, path)
         for origin in APPROVED_ORIGINS:
             self.assertEqual(previous('network/field.py', origin), (REPO / 'network/field.py').read_bytes())
             self.assertEqual(ast.dump(cls(previous('network/renderer.py', origin), 'NeROMaterialRenderer')),

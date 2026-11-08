@@ -1,5 +1,16 @@
 # Incremental infrastructure implementation plan
 
+**Current override — 1D.5-RESET:** the researcher selected geometry G
+`79252178e65914ad1acbc14790b1514f276bfea0` and material A
+`e1e859779301faced46d6476691e20b546c27ae0` as separate scientific authorities.
+Use [DUAL_SCIENTIFIC_BASELINES.md](DUAL_SCIENTIFIC_BASELINES.md), its versioned
+supersession matrix and new G two-update protocol. Earlier A geometry results
+remain true historical/diagnostic observations but cannot establish G acceptance.
+Fresh source-compatible G R/R-repeat/C and stage handoff/native compatibility
+must be reviewed before the next research milestone. This reset implements and
+CPU/static-tests the framework only; it authorizes no native execution or build.
+Earlier status statements below describe their original milestone scopes.
+
 Status: **1D.4A authorizes baseline evidence/preparation documentation only**.
 The researcher reports successful geometry/material native model smoke tests in
 `nerofactor-paper:quick-candidate-1` and all 109 Python 3.8 infrastructure tests

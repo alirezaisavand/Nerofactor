@@ -1,0 +1,861 @@
+{
+  "schema_version": 1,
+  "policy": "dual-scientific-baseline-v1",
+  "infrastructure_review_commit": "bed325fe511ec52a61f5793d0ee0acd91dad26b9",
+  "stages": {
+    "geometry": {
+      "algorithm": "geometry-G",
+      "commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+      "branch": "aniso_geometry_safe",
+      "root": "scientific_sources/geometry_g",
+      "files": {
+        "README.md": {
+          "sha256": "4cdb1b2d45978d2d4a9bf8a79e62b7cb835bc982c9e5c7ed4acf06e6dd26fa2f",
+          "bytes": 7688
+        },
+        "assets/bsdf_256_256.bin": {
+          "sha256": "aee514f7c7e561a357e529567222da99e84886c31c46a32fe767a5b066bbe196",
+          "bytes": 524288
+        },
+        "colmap/plyfile.py": {
+          "sha256": "4f7e432ddae428c150b788e4e1f9b3238b1d9577c5317bd5dc3de58607ee9062",
+          "bytes": 26202
+        },
+        "colmap/read_write_model.py": {
+          "sha256": "164afcd9fa9f8c214037b6cc25ac3a80d1866b5c74f90ba1e42203c97d2f66bb",
+          "bytes": 21417
+        },
+        "configs/custom/kettle_material.yaml": {
+          "sha256": "3aa521bbcc7eda417978a90fd69e026dab2386124a3914f391b52b2a579ef9a8",
+          "bytes": 1445
+        },
+        "configs/custom/kettle_shape.yaml": {
+          "sha256": "8bcd1543b15aeaf2b2f9ae4d26b11061dbb72235b46fc315d278e1379a1bd9cf",
+          "bytes": 1116
+        },
+        "configs/material/nerf/ball.yaml": {
+          "sha256": "d763a3d0babf643acdb1fc653d31262665b9974a4fa924b4f1cb4b5fee90b399",
+          "bytes": 879
+        },
+        "configs/material/nerf/car.yaml": {
+          "sha256": "1e475b6d6fb83cbc5749de3d0b416e547f7e4d0b566a279922a92beacf7f31a8",
+          "bytes": 869
+        },
+        "configs/material/nerf/chair.yaml": {
+          "sha256": "43b7d949b6a48bacd443b3e48410655000cc836690e33252d10840d226b74f9c",
+          "bytes": 879
+        },
+        "configs/material/nerf/coffee.yaml": {
+          "sha256": "7617093a24ee1ef0a6c7063dcf034503174b4e71ea24bd934ea7129fc583e1ff",
+          "bytes": 884
+        },
+        "configs/material/nerf/cylinder.yaml": {
+          "sha256": "425a1067cd0766e319c79c4f2ca35440151e306a0da25190ebcda018317acabe",
+          "bytes": 1414
+        },
+        "configs/material/nerf/drums.yaml": {
+          "sha256": "8e1dfa3c1be7e3cebb7e66d3c8c4a9842771cfd40b8f220d4850b2c13eeefe49",
+          "bytes": 10367
+        },
+        "configs/material/nerf/ficus.yaml": {
+          "sha256": "73f55f6d7b8fb6db8f8d20fcfefa2c48281a4e95c270f5a5fb7e9e461f880a3a",
+          "bytes": 879
+        },
+        "configs/material/nerf/helmet.yaml": {
+          "sha256": "1620795844ae57daf081c11803fa2e6c18d21bab6bddff239443f1609ebf5543",
+          "bytes": 884
+        },
+        "configs/material/nerf/hotdog.yaml": {
+          "sha256": "27d9ddb877834cf6b42aeff1cd965869f23b863adedc70198fa417a9368e362f",
+          "bytes": 884
+        },
+        "configs/material/nerf/lego.yaml": {
+          "sha256": "2f1c17fc2e105ec42012c40d983a67b1feda58180cc130004fc6fa163a8e9a37",
+          "bytes": 874
+        },
+        "configs/material/nerf/materials.yaml": {
+          "sha256": "c937f5af214f683ca95fc80508debe1571b045ad841877179d61ede1ab6af442",
+          "bytes": 1080
+        },
+        "configs/material/nerf/mic.yaml": {
+          "sha256": "f9aaefb82165644838839e0f77a87d1bc409f274cbf2845f3fab6e6a029d7884",
+          "bytes": 869
+        },
+        "configs/material/nerf/ship.yaml": {
+          "sha256": "a8fb96ed320cce6412edb2f044b5871080b371fc87c1f461a021ca95628dcd91",
+          "bytes": 874
+        },
+        "configs/material/nerf/teapot.yaml": {
+          "sha256": "33836ac368cb5a7e7324e68b0cf4393b054ebf6ad97d635fa0cea80c000e7f53",
+          "bytes": 884
+        },
+        "configs/material/nerf/toaster.yaml": {
+          "sha256": "d80c55dd1d620df1e1f3cfde1595345b4ace3f0c96264d2b6ad0387b47aef6d7",
+          "bytes": 889
+        },
+        "configs/material/real/bear.yaml": {
+          "sha256": "e3ca46c55542f0ba3ba8204d40baffd433a6fb0990b82b49bce7c595a947171b",
+          "bytes": 1070
+        },
+        "configs/material/real/bunny.yaml": {
+          "sha256": "752ea80ea613722ca16c351aeb68a7b3ecfd9b9a870ca7a6272ee88b5f2162fb",
+          "bytes": 902
+        },
+        "configs/material/real/coral.yaml": {
+          "sha256": "9b27387a343c5454b73ce8405732d4c7f2382c8b557a53b41609b4c91d0d5e55",
+          "bytes": 883
+        },
+        "configs/material/real/maneki.yaml": {
+          "sha256": "953450c9946ee42df932e47a2db0e73f855ed9dcaac5818e75c6f515bb110871",
+          "bytes": 907
+        },
+        "configs/material/real/vase.yaml": {
+          "sha256": "242a4334aa7a4579ae5ce09ff96c9d5b046b186bb4890edb5b70d47c4277888c",
+          "bytes": 878
+        },
+        "configs/material/syn/angel.yaml": {
+          "sha256": "93347d1f9f6ce1cec8f6895cb2a3c4c016e8bbf8394579b365e633c4286101f6",
+          "bytes": 847
+        },
+        "configs/material/syn/bell.yaml": {
+          "sha256": "c5ba351484a9b5a3e1dd7c00bc81c4437fffd3adc1063b1fae4fa8d5d0e000b1",
+          "bytes": 842
+        },
+        "configs/material/syn/cat.yaml": {
+          "sha256": "e413c4b9d36569b46febf05f321279cb2fc65caf0d5ed88f3cf8bf49c574600a",
+          "bytes": 837
+        },
+        "configs/material/syn/horse.yaml": {
+          "sha256": "b870775044b10bb7f3fff9f4de3d2921d88a00ccca5a97151f2c3bdaf6406f37",
+          "bytes": 847
+        },
+        "configs/material/syn/luyu.yaml": {
+          "sha256": "c9b2e75143c60c9e36095d0bfdcc81a4eadce27d445d4527c53582fcb0d8b2f3",
+          "bytes": 842
+        },
+        "configs/material/syn/potion.yaml": {
+          "sha256": "cfe8ee0383109426d720b9d37228870ed50cfd4248db8cc4b2a27453b74d2be6",
+          "bytes": 852
+        },
+        "configs/material/syn/tbell.yaml": {
+          "sha256": "7459dd8efd4546460d40658960a50c8cd2a44512803d5bb60f096d26950444e2",
+          "bytes": 847
+        },
+        "configs/material/syn/teapot.yaml": {
+          "sha256": "9e5afa45d5468dadec4cc051832d5f0542e1f0beaf7ab06d30c97644680ee40c",
+          "bytes": 852
+        },
+        "configs/shape/nerf/ball.yaml": {
+          "sha256": "e8dcb0ca56fd6f0dce4d0707b5e9e364403472f092eeab5307cfbe93401ae370",
+          "bytes": 669
+        },
+        "configs/shape/nerf/car.yaml": {
+          "sha256": "b179841a48f1d62af01afa874acb33867a8e8ffd281f8bf5586f6928dda888e0",
+          "bytes": 664
+        },
+        "configs/shape/nerf/chair.yaml": {
+          "sha256": "33b728ed7b0ac01c6abc5a45ed89359dd34a1edccd8bb4b896af8ae47f6dc8f8",
+          "bytes": 672
+        },
+        "configs/shape/nerf/coffee.yaml": {
+          "sha256": "903b44bfbadf8aa505b9cb6b69d4ffbff857eb76e15620fafee644ed86e9bcc8",
+          "bytes": 676
+        },
+        "configs/shape/nerf/cylinder.yaml": {
+          "sha256": "949fe3c69419aafd6b25dc8e1fb857ad365082170b85b780c953eb3013f7a91d",
+          "bytes": 828
+        },
+        "configs/shape/nerf/cylinder_rect.yaml": {
+          "sha256": "b900b94afb7be6f34e43471813ee7b1a65d22f32207a5078591bcaecea53f5c1",
+          "bytes": 837
+        },
+        "configs/shape/nerf/drums.yaml": {
+          "sha256": "caa07769dd4117e6ba03c4d734bffbb8401b32218d36f99ee7cc7ed01af245e8",
+          "bytes": 710
+        },
+        "configs/shape/nerf/ficus.yaml": {
+          "sha256": "a3a1bbf22a2ced7005c0c68976a62b05cba739a07e25e684b6cae3712906d560",
+          "bytes": 672
+        },
+        "configs/shape/nerf/helmet.yaml": {
+          "sha256": "2c10bffd3d5b8f1484e125b7e9f42547780b3435ff910e37d92fb17f2daf3b23",
+          "bytes": 676
+        },
+        "configs/shape/nerf/hotdog.yaml": {
+          "sha256": "9b833dd090b050b070cb62141a4341a3b9f6d3da373060b2d353038464815248",
+          "bytes": 676
+        },
+        "configs/shape/nerf/lego.yaml": {
+          "sha256": "1862e3cf780061ca8b1fb57616dd62f2cccaa8966d79261ff18b86c33511ad72",
+          "bytes": 668
+        },
+        "configs/shape/nerf/materials.yaml": {
+          "sha256": "24e26a9f46c3c6e68d90b207fa3e243d4131d57184f42ad52083d6700619267b",
+          "bytes": 740
+        },
+        "configs/shape/nerf/mic.yaml": {
+          "sha256": "19f11e26479e6c32a2ee82b5dfc180cb17bec9c7c93bd2fbbabcef776f03933d",
+          "bytes": 664
+        },
+        "configs/shape/nerf/ship.yaml": {
+          "sha256": "e82372e8eeb9444a93a3084bf1e88464ccec0881450830943a79a1e99dc4d832",
+          "bytes": 668
+        },
+        "configs/shape/nerf/simplecylinder.yaml": {
+          "sha256": "9a8530e6b7400baf6f11da601fe94cc86c225c1c7599281c3a7959e838067d87",
+          "bytes": 719
+        },
+        "configs/shape/nerf/smoothcylinder.yaml": {
+          "sha256": "5a3b2d3b2e2629e9b6b6c5c7a0354d0cb61820a7f0a4c99b66d389b7961241fe",
+          "bytes": 828
+        },
+        "configs/shape/nerf/sphere.yaml": {
+          "sha256": "d2228d754b82f723a61280e4977a3ad4d73fbadee3a0114d9c44fd4db3885269",
+          "bytes": 807
+        },
+        "configs/shape/nerf/teapot.yaml": {
+          "sha256": "7f8b9ca4bbd5b65bd1b94ff2319a6e753d4d17b9fb81e5cfe5208c79264a8556",
+          "bytes": 676
+        },
+        "configs/shape/nerf/tetra.yaml": {
+          "sha256": "0d17a28d8ad740db7327a7ad6a1cf464e7bcea2e8de84a1def93a059529b0798",
+          "bytes": 748
+        },
+        "configs/shape/nerf/toaster.yaml": {
+          "sha256": "be85b1472fdae1509c964116562e963c88a0dc3cf21da1aad19a89390912a4b6",
+          "bytes": 680
+        },
+        "configs/shape/real/bear.yaml": {
+          "sha256": "472f2527f67e594e77d943e6cc2e2d2bb33721dda9a8b357a0a10b8b41e97e70",
+          "bytes": 761
+        },
+        "configs/shape/real/bunny.yaml": {
+          "sha256": "5a1b3d95b02d6b36cce3fe4e47f9a4049a69c013b2bd22533256776d623f3f4b",
+          "bytes": 734
+        },
+        "configs/shape/real/coral.yaml": {
+          "sha256": "049782592561686b8f7d635c9acecd99449f85ccd9fa37345b2e4e31884f28be",
+          "bytes": 764
+        },
+        "configs/shape/real/maneki.yaml": {
+          "sha256": "b35a58b2bd7b2ca15533178f5e64f83f9edbc186030ca0f0521c89e1082068cf",
+          "bytes": 790
+        },
+        "configs/shape/real/vase.yaml": {
+          "sha256": "b281e7f4d10fd38b9261bcf1eb2ba96209416321ea08a2322e1ebd4eac6cc15c",
+          "bytes": 761
+        },
+        "configs/shape/syn/angel.yaml": {
+          "sha256": "e0b1e51b1dbdfbd25eab01ef7c9e4394592288db6cdcdc51ea9a54b525298931",
+          "bytes": 733
+        },
+        "configs/shape/syn/bell.yaml": {
+          "sha256": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f",
+          "bytes": 675
+        },
+        "configs/shape/syn/cat.yaml": {
+          "sha256": "e2ee78d0a2e196f506813f61b91e3ab1652b53193093cbea3ab5a5832106e9e9",
+          "bytes": 671
+        },
+        "configs/shape/syn/horse.yaml": {
+          "sha256": "d4bcbba58669cf4723b1913a593dfaabee2e975192773af58457fcc2b33bbedb",
+          "bytes": 733
+        },
+        "configs/shape/syn/luyu.yaml": {
+          "sha256": "db0ad856928b2e403b62f42ba6600b7bcbdc1653e26b657b433c0a5d6ba35137",
+          "bytes": 675
+        },
+        "configs/shape/syn/potion.yaml": {
+          "sha256": "3d6a65e3a657fa05adad13256a046aafa1743c2dcd137b3ae3a6c8f7a3bf64c4",
+          "bytes": 683
+        },
+        "configs/shape/syn/tbell.yaml": {
+          "sha256": "a73283bbe9518eea17b93280f848965c3e57b703fb6b32dc39bb15fb50f84923",
+          "bytes": 648
+        },
+        "configs/shape/syn/teapot.yaml": {
+          "sha256": "0ec248c107b81aa2cae17c732fe71bf91665d9f3812d1450e55a87dee89a352c",
+          "bytes": 710
+        },
+        "configs/synthetic_split_128.pkl": {
+          "sha256": "4067befaec0ebbba546f0454c3464f105bccbf914ca9731f53f5aadc698b2c5a",
+          "bytes": 5131
+        },
+        "dataset/database.py": {
+          "sha256": "e2490556c8b3d7aa0f5a9ea1db59fed3f060a00401787625874af46c57301fa3",
+          "bytes": 23881
+        },
+        "dataset/name2dataset.py": {
+          "sha256": "894ef8484c19b788e46722ddeb58910df2974da6add927d6857b7435259f7acd",
+          "bytes": 94
+        },
+        "dataset/train_dataset.py": {
+          "sha256": "98006db8444adde8b132854e7544c1d692aa52995a62997bb6861134ebac2382",
+          "bytes": 860
+        },
+        "eval_real_shape.py": {
+          "sha256": "7a75dc380969d13179d75f9ddfe649dc602b18331ac124369a4d63f4f55df0c4",
+          "bytes": 828
+        },
+        "eval_synthetic_shape.py": {
+          "sha256": "1af15f3f6a4ea97073fc414d7f50fe8e43ddb764bbd2dddae3be842f59aa6769",
+          "bytes": 4247
+        },
+        "extract_materials.py": {
+          "sha256": "b2f5f9845f5a116c3f44bf64a496e2d99bf144c2918fb6f29fcc0ef432785744",
+          "bytes": 1657
+        },
+        "extract_mesh.py": {
+          "sha256": "63b1cf824e564b67910a160ff080338dc9d9546f441408fd937ca4473d3d39a9",
+          "bytes": 1290
+        },
+        "network/base_brdf.py": {
+          "sha256": "127387608a0dff98806144790b9a3735b315c25c1fae7eae957c8f8176617af1",
+          "bytes": 271
+        },
+        "network/embedder.py": {
+          "sha256": "34e14eae3e20db320ef39129f627fbe79e8d88e317a24766596a1f7e033f54cb",
+          "bytes": 1915
+        },
+        "network/field.py": {
+          "sha256": "06fb6606c580dede3e7e12ddfad2a2fed9368fa4adfcadf7cf7cef73e940617f",
+          "bytes": 86115
+        },
+        "network/loss.py": {
+          "sha256": "2d19419c3b7e006117e40c11526549f9f7901c9bda1c0018b0b452c415c7a17c",
+          "bytes": 13346
+        },
+        "network/metrics.py": {
+          "sha256": "282969f587f2ef71fcb3aa9b23b98f3b6741f12b88bd041a35473eb64421120e",
+          "bytes": 5137
+        },
+        "network/mlp_brdf.py": {
+          "sha256": "639e9f50a5ad7d335d50dc19ae2de0fe86d83235daf0796184b59cd55912ba82",
+          "bytes": 1893
+        },
+        "network/renderer.py": {
+          "sha256": "38c280ed812c4fb22b980caf842f0cd302acbee3bde9c449972dabd23485584b",
+          "bytes": 78674
+        },
+        "network/seq_brdf.py": {
+          "sha256": "30cbe109a512849c298467c7a997ffa62a5f62e67bb31b74eb7bc5162cc59212",
+          "bytes": 549
+        },
+        "raytracing/__init__.py": {
+          "sha256": "f086eca4f387087c4058650c10110106d2e33c2a99787a4401ff2a2945cd497c",
+          "bytes": 32
+        },
+        "raytracing/raytracer.py": {
+          "sha256": "f670b215c5379d3bdcd9993c836935ea658f5ee9570bbe46bb38096b3f0ac25f",
+          "bytes": 1718
+        },
+        "relight.py": {
+          "sha256": "34eaeb3537ee778541dfbce0192878559818c0e9c0a389afd308449aba31a26c",
+          "bytes": 803
+        },
+        "run_training.py": {
+          "sha256": "28149b7b173b8ee00a7256ea575590b148a49892550181a019ab484860869558",
+          "bytes": 228
+        },
+        "train/lr_common_manager.py": {
+          "sha256": "d60236d7a4f367c1d2d1aea76714d0c7988f591bf74f5d5f71f032dc3117b766",
+          "bytes": 1466
+        },
+        "train/train_tools.py": {
+          "sha256": "0c100e6549894778c7f37bd7ba36e541d8229447fe06d622a87670bdbba62d48",
+          "bytes": 5399
+        },
+        "train/train_valid.py": {
+          "sha256": "f973df4908ace7b174b43fd59a21ee017343260567497f025880b4914626f4f1",
+          "bytes": 1784
+        },
+        "train/trainer.py": {
+          "sha256": "412dfe92c16747c66609f6e80c2e55fcff6f7df287ecbb670c5a43b1a695e7a8",
+          "bytes": 8852
+        },
+        "utils/base_utils.py": {
+          "sha256": "c07a99a9713a8c9c1b67fcf57383083336e0b1673de78f99903236d888f55a5b",
+          "bytes": 28256
+        },
+        "utils/dataset_utils.py": {
+          "sha256": "2bd5a82ffb4cda916fa0db4a05f8acafb01276c7d7b5f326821e295947dd024e",
+          "bytes": 775
+        },
+        "utils/draw_utils.py": {
+          "sha256": "5d9667149258cd7024892b9166ce1c851c7e7cb1d3ce5fe36673dc0eae913c70",
+          "bytes": 13832
+        },
+        "utils/geom.py": {
+          "sha256": "af2a425914de85f3c6a9cab4865aa1f55f241553b6fe32db9967dcf2fb92e07c",
+          "bytes": 8652
+        },
+        "utils/math.py": {
+          "sha256": "3e113fe270882714a8b93ffc589126bb9932473f1531815eb4416fe56701ccf7",
+          "bytes": 6614
+        },
+        "utils/pose_utils.py": {
+          "sha256": "c524dec437208901b45048d7c458b64d39b3e18455c25b5fab9211db39376139",
+          "bytes": 13710
+        },
+        "utils/raw_utils.py": {
+          "sha256": "7731b3740b3253f78eb9bf5fa2dcf43d6d288cffcd5e2811042b657b8a9e9366",
+          "bytes": 4107
+        },
+        "utils/ref_utils.py": {
+          "sha256": "11bebfe6348a9ecfe20f457de0c6b7dbc93cc9dc975952a8b2b938f9d6d60422",
+          "bytes": 4452
+        }
+      },
+      "namespace_roots": [
+        "network",
+        "dataset",
+        "train",
+        "utils",
+        "raytracing",
+        "colmap"
+      ],
+      "license_status": "No top-level LICENSE/COPYING at selected commits; original README and embedded source headers preserved. Do not infer a new redistribution license."
+    },
+    "material": {
+      "algorithm": "anisotropic-material-A",
+      "commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "branch": "anisotropic",
+      "root": "scientific_sources/material_a",
+      "files": {
+        "README.md": {
+          "sha256": "4cdb1b2d45978d2d4a9bf8a79e62b7cb835bc982c9e5c7ed4acf06e6dd26fa2f",
+          "bytes": 7688
+        },
+        "assets/bsdf_256_256.bin": {
+          "sha256": "aee514f7c7e561a357e529567222da99e84886c31c46a32fe767a5b066bbe196",
+          "bytes": 524288
+        },
+        "colmap/plyfile.py": {
+          "sha256": "4f7e432ddae428c150b788e4e1f9b3238b1d9577c5317bd5dc3de58607ee9062",
+          "bytes": 26202
+        },
+        "colmap/read_write_model.py": {
+          "sha256": "164afcd9fa9f8c214037b6cc25ac3a80d1866b5c74f90ba1e42203c97d2f66bb",
+          "bytes": 21417
+        },
+        "configs/custom/kettle_material.yaml": {
+          "sha256": "3aa521bbcc7eda417978a90fd69e026dab2386124a3914f391b52b2a579ef9a8",
+          "bytes": 1445
+        },
+        "configs/custom/kettle_shape.yaml": {
+          "sha256": "8bcd1543b15aeaf2b2f9ae4d26b11061dbb72235b46fc315d278e1379a1bd9cf",
+          "bytes": 1116
+        },
+        "configs/material/nerf/ball.yaml": {
+          "sha256": "d763a3d0babf643acdb1fc653d31262665b9974a4fa924b4f1cb4b5fee90b399",
+          "bytes": 879
+        },
+        "configs/material/nerf/car.yaml": {
+          "sha256": "1e475b6d6fb83cbc5749de3d0b416e547f7e4d0b566a279922a92beacf7f31a8",
+          "bytes": 869
+        },
+        "configs/material/nerf/chair.yaml": {
+          "sha256": "43b7d949b6a48bacd443b3e48410655000cc836690e33252d10840d226b74f9c",
+          "bytes": 879
+        },
+        "configs/material/nerf/coffee.yaml": {
+          "sha256": "7617093a24ee1ef0a6c7063dcf034503174b4e71ea24bd934ea7129fc583e1ff",
+          "bytes": 884
+        },
+        "configs/material/nerf/cube.yaml": {
+          "sha256": "b7957bee09093a7fd87898fbea9a3548b9ce16f58185531f0b1442ee2eab67ba",
+          "bytes": 1383
+        },
+        "configs/material/nerf/cylinder.yaml": {
+          "sha256": "425a1067cd0766e319c79c4f2ca35440151e306a0da25190ebcda018317acabe",
+          "bytes": 1414
+        },
+        "configs/material/nerf/donut.yaml": {
+          "sha256": "adba83fd2b288905abdf6035045b5b8ad3b13a6e2fec0f2230f7f9baa803e9ae",
+          "bytes": 1388
+        },
+        "configs/material/nerf/drums.yaml": {
+          "sha256": "8e1dfa3c1be7e3cebb7e66d3c8c4a9842771cfd40b8f220d4850b2c13eeefe49",
+          "bytes": 10367
+        },
+        "configs/material/nerf/ficus.yaml": {
+          "sha256": "73f55f6d7b8fb6db8f8d20fcfefa2c48281a4e95c270f5a5fb7e9e461f880a3a",
+          "bytes": 879
+        },
+        "configs/material/nerf/helmet.yaml": {
+          "sha256": "1620795844ae57daf081c11803fa2e6c18d21bab6bddff239443f1609ebf5543",
+          "bytes": 884
+        },
+        "configs/material/nerf/hotdog.yaml": {
+          "sha256": "27d9ddb877834cf6b42aeff1cd965869f23b863adedc70198fa417a9368e362f",
+          "bytes": 884
+        },
+        "configs/material/nerf/lego.yaml": {
+          "sha256": "2f1c17fc2e105ec42012c40d983a67b1feda58180cc130004fc6fa163a8e9a37",
+          "bytes": 874
+        },
+        "configs/material/nerf/materials.yaml": {
+          "sha256": "c937f5af214f683ca95fc80508debe1571b045ad841877179d61ede1ab6af442",
+          "bytes": 1080
+        },
+        "configs/material/nerf/mic.yaml": {
+          "sha256": "f9aaefb82165644838839e0f77a87d1bc409f274cbf2845f3fab6e6a029d7884",
+          "bytes": 869
+        },
+        "configs/material/nerf/ship.yaml": {
+          "sha256": "a8fb96ed320cce6412edb2f044b5871080b371fc87c1f461a021ca95628dcd91",
+          "bytes": 874
+        },
+        "configs/material/nerf/smoothcylinder.yaml": {
+          "sha256": "680c8195d4a35be5dca870284938965770d9fa21633a2a1afcab5bb8a80329b8",
+          "bytes": 1426
+        },
+        "configs/material/nerf/sphere.yaml": {
+          "sha256": "06d7de5307054ddf775f55b40874d28cf63a75ee47a4b63f4b4b1dc6c943b4c7",
+          "bytes": 1393
+        },
+        "configs/material/nerf/teapot.yaml": {
+          "sha256": "33836ac368cb5a7e7324e68b0cf4393b054ebf6ad97d635fa0cea80c000e7f53",
+          "bytes": 884
+        },
+        "configs/material/nerf/tetra.yaml": {
+          "sha256": "3b027860f31229bee961e1d9ba371d3d08c44b620ac30a311f39c288ede89492",
+          "bytes": 1388
+        },
+        "configs/material/nerf/toaster.yaml": {
+          "sha256": "d80c55dd1d620df1e1f3cfde1595345b4ace3f0c96264d2b6ad0387b47aef6d7",
+          "bytes": 889
+        },
+        "configs/material/real/bear.yaml": {
+          "sha256": "1ac002579b4c6ca9cd32d83e1950af813a522364eff9329cfc0fdd87d6ebf40a",
+          "bytes": 1075
+        },
+        "configs/material/real/bunny.yaml": {
+          "sha256": "1ea9d7dd24dca6e46a6748ed4e2026bdf93a8fd08386f46bcee0a378eae35fa1",
+          "bytes": 1080
+        },
+        "configs/material/real/coral.yaml": {
+          "sha256": "ba34a93ce8ed612f310c622e229d07534da4329b589a591b4876ba1bf46ffa73",
+          "bytes": 1080
+        },
+        "configs/material/real/maneki.yaml": {
+          "sha256": "282e1822f3573edf50338b6b7bd9f9881499fb84a583c69773fa511a51b315e8",
+          "bytes": 1085
+        },
+        "configs/material/real/vase.yaml": {
+          "sha256": "4b6f3f2032a170cdabf25948cea24a2d613f5ba8078aacc2b8ac7cea91223d99",
+          "bytes": 1075
+        },
+        "configs/material/syn/angel.yaml": {
+          "sha256": "b15312b889c2fb01e5954b3dc8103f30f5fb8755232c96d688f8024ac8081bcd",
+          "bytes": 1052
+        },
+        "configs/material/syn/bell.yaml": {
+          "sha256": "f53d1512e216f63400a2675f9720676534452c9eeec5c3eba324b14c45c2b933",
+          "bytes": 1051
+        },
+        "configs/material/syn/cat.yaml": {
+          "sha256": "9e2eed4ec23fc338a4c3a05e899b2b9a9517cf21f73470c6a8355eb617c650dd",
+          "bytes": 1046
+        },
+        "configs/material/syn/horse.yaml": {
+          "sha256": "7bc650d6e9408ac7e03a080bcb724f7669f4b7a2cbfd9327c448fa5e4c4e3a58",
+          "bytes": 1056
+        },
+        "configs/material/syn/luyu.yaml": {
+          "sha256": "bd18aaa9c192b61dcf0a7014e9d5c5c12939aa4443b374965adcc29a76662a8a",
+          "bytes": 1051
+        },
+        "configs/material/syn/potion.yaml": {
+          "sha256": "582295d623c7d112cf4e6770c28bb7d7874f795b5842e49cfa0847761840293f",
+          "bytes": 1061
+        },
+        "configs/material/syn/tbell.yaml": {
+          "sha256": "e93fb5a7a0636bebca6c165161c0d288416cb177b135085a4257c4bf6a8b5998",
+          "bytes": 1056
+        },
+        "configs/material/syn/teapot.yaml": {
+          "sha256": "ccdf1519c22893e4552917f6a1ee482b07f1971c37ce6138a79f8e190a761c3d",
+          "bytes": 1061
+        },
+        "configs/shape/nerf/ball.yaml": {
+          "sha256": "e8dcb0ca56fd6f0dce4d0707b5e9e364403472f092eeab5307cfbe93401ae370",
+          "bytes": 669
+        },
+        "configs/shape/nerf/car.yaml": {
+          "sha256": "b179841a48f1d62af01afa874acb33867a8e8ffd281f8bf5586f6928dda888e0",
+          "bytes": 664
+        },
+        "configs/shape/nerf/chair.yaml": {
+          "sha256": "33b728ed7b0ac01c6abc5a45ed89359dd34a1edccd8bb4b896af8ae47f6dc8f8",
+          "bytes": 672
+        },
+        "configs/shape/nerf/coffee.yaml": {
+          "sha256": "903b44bfbadf8aa505b9cb6b69d4ffbff857eb76e15620fafee644ed86e9bcc8",
+          "bytes": 676
+        },
+        "configs/shape/nerf/cube.yaml": {
+          "sha256": "33cc2b1b9bcdfed9a006951f6d9c26731e2efc0dd58808a7e6c9168735bc5950",
+          "bytes": 799
+        },
+        "configs/shape/nerf/cylinder.yaml": {
+          "sha256": "949fe3c69419aafd6b25dc8e1fb857ad365082170b85b780c953eb3013f7a91d",
+          "bytes": 828
+        },
+        "configs/shape/nerf/cylinder_rect.yaml": {
+          "sha256": "b900b94afb7be6f34e43471813ee7b1a65d22f32207a5078591bcaecea53f5c1",
+          "bytes": 837
+        },
+        "configs/shape/nerf/donut.yaml": {
+          "sha256": "42abe57a341d4e2cb294caf5d29d07d49956e83b7c97b81cddf66310f7e5df93",
+          "bytes": 803
+        },
+        "configs/shape/nerf/drums.yaml": {
+          "sha256": "caa07769dd4117e6ba03c4d734bffbb8401b32218d36f99ee7cc7ed01af245e8",
+          "bytes": 710
+        },
+        "configs/shape/nerf/ficus.yaml": {
+          "sha256": "a3a1bbf22a2ced7005c0c68976a62b05cba739a07e25e684b6cae3712906d560",
+          "bytes": 672
+        },
+        "configs/shape/nerf/helmet.yaml": {
+          "sha256": "2c10bffd3d5b8f1484e125b7e9f42547780b3435ff910e37d92fb17f2daf3b23",
+          "bytes": 676
+        },
+        "configs/shape/nerf/hotdog.yaml": {
+          "sha256": "9b833dd090b050b070cb62141a4341a3b9f6d3da373060b2d353038464815248",
+          "bytes": 676
+        },
+        "configs/shape/nerf/lego.yaml": {
+          "sha256": "1862e3cf780061ca8b1fb57616dd62f2cccaa8966d79261ff18b86c33511ad72",
+          "bytes": 668
+        },
+        "configs/shape/nerf/materials.yaml": {
+          "sha256": "24e26a9f46c3c6e68d90b207fa3e243d4131d57184f42ad52083d6700619267b",
+          "bytes": 740
+        },
+        "configs/shape/nerf/mic.yaml": {
+          "sha256": "19f11e26479e6c32a2ee82b5dfc180cb17bec9c7c93bd2fbbabcef776f03933d",
+          "bytes": 664
+        },
+        "configs/shape/nerf/ship.yaml": {
+          "sha256": "e82372e8eeb9444a93a3084bf1e88464ccec0881450830943a79a1e99dc4d832",
+          "bytes": 668
+        },
+        "configs/shape/nerf/simplecylinder.yaml": {
+          "sha256": "9a8530e6b7400baf6f11da601fe94cc86c225c1c7599281c3a7959e838067d87",
+          "bytes": 719
+        },
+        "configs/shape/nerf/smoothcylinder.yaml": {
+          "sha256": "d2bb1fc8a48b6963c0002f33ec63ae03c2fbe35fb98faa9a74ac48affcc6dfff",
+          "bytes": 839
+        },
+        "configs/shape/nerf/sphere.yaml": {
+          "sha256": "d2228d754b82f723a61280e4977a3ad4d73fbadee3a0114d9c44fd4db3885269",
+          "bytes": 807
+        },
+        "configs/shape/nerf/teapot.yaml": {
+          "sha256": "7f8b9ca4bbd5b65bd1b94ff2319a6e753d4d17b9fb81e5cfe5208c79264a8556",
+          "bytes": 676
+        },
+        "configs/shape/nerf/tetra.yaml": {
+          "sha256": "ba358a255d6570e5d2bb772976caec1c5b92f46522e5c7f8df80de7541bc793e",
+          "bytes": 803
+        },
+        "configs/shape/nerf/toaster.yaml": {
+          "sha256": "be85b1472fdae1509c964116562e963c88a0dc3cf21da1aad19a89390912a4b6",
+          "bytes": 680
+        },
+        "configs/shape/real/bear.yaml": {
+          "sha256": "472f2527f67e594e77d943e6cc2e2d2bb33721dda9a8b357a0a10b8b41e97e70",
+          "bytes": 761
+        },
+        "configs/shape/real/bunny.yaml": {
+          "sha256": "51ee6d0a353ea8297f06ae60c59be3ec0c36300172edf8202a5429e9c01d4fe6",
+          "bytes": 760
+        },
+        "configs/shape/real/coral.yaml": {
+          "sha256": "049782592561686b8f7d635c9acecd99449f85ccd9fa37345b2e4e31884f28be",
+          "bytes": 764
+        },
+        "configs/shape/real/maneki.yaml": {
+          "sha256": "402eb07c2903fe3cb49116998bbce27abba6b6eacedc7223bed2a6be6521e104",
+          "bytes": 790
+        },
+        "configs/shape/real/vase.yaml": {
+          "sha256": "d2c5db03eb7cc20bc398cf1c66055d5c6a584bdf063221edd1beffa3a65d352b",
+          "bytes": 761
+        },
+        "configs/shape/syn/angel.yaml": {
+          "sha256": "e0b1e51b1dbdfbd25eab01ef7c9e4394592288db6cdcdc51ea9a54b525298931",
+          "bytes": 733
+        },
+        "configs/shape/syn/bell.yaml": {
+          "sha256": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f",
+          "bytes": 675
+        },
+        "configs/shape/syn/cat.yaml": {
+          "sha256": "e2ee78d0a2e196f506813f61b91e3ab1652b53193093cbea3ab5a5832106e9e9",
+          "bytes": 671
+        },
+        "configs/shape/syn/horse.yaml": {
+          "sha256": "d4bcbba58669cf4723b1913a593dfaabee2e975192773af58457fcc2b33bbedb",
+          "bytes": 733
+        },
+        "configs/shape/syn/luyu.yaml": {
+          "sha256": "db0ad856928b2e403b62f42ba6600b7bcbdc1653e26b657b433c0a5d6ba35137",
+          "bytes": 675
+        },
+        "configs/shape/syn/potion.yaml": {
+          "sha256": "3d6a65e3a657fa05adad13256a046aafa1743c2dcd137b3ae3a6c8f7a3bf64c4",
+          "bytes": 683
+        },
+        "configs/shape/syn/tbell.yaml": {
+          "sha256": "7c20373270c0603da2ddfb4442ac98c524ee40a6ae2cf2c20a11098cde195d76",
+          "bytes": 706
+        },
+        "configs/shape/syn/teapot.yaml": {
+          "sha256": "0ec248c107b81aa2cae17c732fe71bf91665d9f3812d1450e55a87dee89a352c",
+          "bytes": 710
+        },
+        "configs/synthetic_split_128.pkl": {
+          "sha256": "4067befaec0ebbba546f0454c3464f105bccbf914ca9731f53f5aadc698b2c5a",
+          "bytes": 5131
+        },
+        "dataset/database.py": {
+          "sha256": "95d2cb909dc804c89ec8f2511e986db30f39ef5629bc148cb21f3ac425fe3ce7",
+          "bytes": 26983
+        },
+        "dataset/name2dataset.py": {
+          "sha256": "894ef8484c19b788e46722ddeb58910df2974da6add927d6857b7435259f7acd",
+          "bytes": 94
+        },
+        "dataset/train_dataset.py": {
+          "sha256": "29dca0e546f5ea827a5ff4509f377c142426fcf4e607eef832d6fac1519db063",
+          "bytes": 869
+        },
+        "eval_real_shape.py": {
+          "sha256": "184004114a194ded39ee2a3b11349306e7170284bd705b410e4fca332d9e16aa",
+          "bytes": 1025
+        },
+        "eval_synthetic_shape.py": {
+          "sha256": "44b18244a316e5275979193835d55d6d89185a02cbc64294b04898b55ea244ad",
+          "bytes": 4126
+        },
+        "extract_materials.py": {
+          "sha256": "b2f5f9845f5a116c3f44bf64a496e2d99bf144c2918fb6f29fcc0ef432785744",
+          "bytes": 1657
+        },
+        "extract_mesh.py": {
+          "sha256": "63b1cf824e564b67910a160ff080338dc9d9546f441408fd937ca4473d3d39a9",
+          "bytes": 1290
+        },
+        "network/base_brdf.py": {
+          "sha256": "127387608a0dff98806144790b9a3735b315c25c1fae7eae957c8f8176617af1",
+          "bytes": 271
+        },
+        "network/embedder.py": {
+          "sha256": "34e14eae3e20db320ef39129f627fbe79e8d88e317a24766596a1f7e033f54cb",
+          "bytes": 1915
+        },
+        "network/field.py": {
+          "sha256": "b8386007dc009442cdefdeccc3c6ecc0114f6d0e7feaf804008b0bd9020091fe",
+          "bytes": 77600
+        },
+        "network/loss.py": {
+          "sha256": "55a2b6779bb8f890340a70b45a7357cb8fc8fc3ff381fbe7caf1968d6bfbf1cf",
+          "bytes": 13342
+        },
+        "network/metrics.py": {
+          "sha256": "e0eed09b34b12254c55cfabf92356376a9580b3b80d30535448ce86659f0dcbc",
+          "bytes": 5187
+        },
+        "network/mlp_brdf.py": {
+          "sha256": "639e9f50a5ad7d335d50dc19ae2de0fe86d83235daf0796184b59cd55912ba82",
+          "bytes": 1893
+        },
+        "network/renderer.py": {
+          "sha256": "dd82c61cb91a3d54e801f1fb32238e3b03a87e1ceb4c50f24f1b359e50cfd5e9",
+          "bytes": 81854
+        },
+        "network/seq_brdf.py": {
+          "sha256": "30cbe109a512849c298467c7a997ffa62a5f62e67bb31b74eb7bc5162cc59212",
+          "bytes": 549
+        },
+        "raytracing/__init__.py": {
+          "sha256": "f086eca4f387087c4058650c10110106d2e33c2a99787a4401ff2a2945cd497c",
+          "bytes": 32
+        },
+        "raytracing/raytracer.py": {
+          "sha256": "f670b215c5379d3bdcd9993c836935ea658f5ee9570bbe46bb38096b3f0ac25f",
+          "bytes": 1718
+        },
+        "relight.py": {
+          "sha256": "34eaeb3537ee778541dfbce0192878559818c0e9c0a389afd308449aba31a26c",
+          "bytes": 803
+        },
+        "run_training.py": {
+          "sha256": "28149b7b173b8ee00a7256ea575590b148a49892550181a019ab484860869558",
+          "bytes": 228
+        },
+        "train/lr_common_manager.py": {
+          "sha256": "32ab856f964ba080a3050088e4e2004a14a0f7ddd05ad7ba12d8a65b479b8f9a",
+          "bytes": 1554
+        },
+        "train/train_tools.py": {
+          "sha256": "0c100e6549894778c7f37bd7ba36e541d8229447fe06d622a87670bdbba62d48",
+          "bytes": 5399
+        },
+        "train/train_valid.py": {
+          "sha256": "f973df4908ace7b174b43fd59a21ee017343260567497f025880b4914626f4f1",
+          "bytes": 1784
+        },
+        "train/trainer.py": {
+          "sha256": "6d86bd66917bb8cde7ecfc9da10a4dddd9494c93443b21fee753dc88a6d1e09d",
+          "bytes": 9350
+        },
+        "utils/base_utils.py": {
+          "sha256": "c07a99a9713a8c9c1b67fcf57383083336e0b1673de78f99903236d888f55a5b",
+          "bytes": 28256
+        },
+        "utils/dataset_utils.py": {
+          "sha256": "2bd5a82ffb4cda916fa0db4a05f8acafb01276c7d7b5f326821e295947dd024e",
+          "bytes": 775
+        },
+        "utils/draw_utils.py": {
+          "sha256": "5d9667149258cd7024892b9166ce1c851c7e7cb1d3ce5fe36673dc0eae913c70",
+          "bytes": 13832
+        },
+        "utils/geom.py": {
+          "sha256": "af2a425914de85f3c6a9cab4865aa1f55f241553b6fe32db9967dcf2fb92e07c",
+          "bytes": 8652
+        },
+        "utils/math.py": {
+          "sha256": "3e113fe270882714a8b93ffc589126bb9932473f1531815eb4416fe56701ccf7",
+          "bytes": 6614
+        },
+        "utils/pose_utils.py": {
+          "sha256": "c524dec437208901b45048d7c458b64d39b3e18455c25b5fab9211db39376139",
+          "bytes": 13710
+        },
+        "utils/raw_utils.py": {
+          "sha256": "7731b3740b3253f78eb9bf5fa2dcf43d6d288cffcd5e2811042b657b8a9e9366",
+          "bytes": 4107
+        },
+        "utils/ref_utils.py": {
+          "sha256": "11bebfe6348a9ecfe20f457de0c6b7dbc93cc9dc975952a8b2b938f9d6d60422",
+          "bytes": 4452
+        }
+      },
+      "namespace_roots": [
+        "network",
+        "dataset",
+        "train",
+        "utils",
+        "raytracing",
+        "colmap"
+      ],
+      "license_status": "No top-level LICENSE/COPYING at selected commits; original README and embedded source headers preserved. Do not infer a new redistribution license."
+    }
+  }
+}

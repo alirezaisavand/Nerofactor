@@ -1,5 +1,12 @@
 # Isolated geometry integration: 1D.2B-2A and 1D.2B-2A.1
 
+**1D.5-RESET supersession:** the selected geometry authority is now pinned G,
+not this earlier A path. Use [dual scientific baselines](DUAL_SCIENTIFIC_BASELINES.md)
+and the [new G protocol](protocols/GEOMETRY_G_TWO_UPDATE_V1.md).
+`run_experiment.py --execute` fails closed; the earlier implementation and
+three-list shim below remain historical infrastructure, not G acceptance.
+Original evidence and scientific root sources remain unchanged.
+
 **1D.5A follow-up:** the admitted researcher checkpoint inference regression has
 [verified saved evidence](evidence/BELL_INFERENCE_REGRESSION_SUCCESS.md).
 A separate [two-update training harness](GEOMETRY_TRAINING_SMOKE.md) is prepared

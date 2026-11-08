@@ -1,6 +1,7 @@
 """Parse definitions and source grammar only; no builds, staging or model execution."""
 
 import ast
+import json
 from pathlib import Path
 import re
 import subprocess
@@ -56,7 +57,11 @@ def main():
               repo / 'run_bell_inference.py', repo / 'compare_bell_inference.py',
               repo / 'run_geometry_training_smoke.py', repo / 'compare_geometry_training_smoke.py',
               repo / 'run_bell_camera_diagnostic.py', *HERE.glob('*.py')]
-    paths += [repo / 'colmap/read_write_model.py', repo / 'colmap/plyfile.py']
+    paths += [repo / 'colmap/read_write_model.py', repo / 'colmap/plyfile.py',
+              repo / 'run_stage_experiment.py', repo / 'compare_g_geometry_training.py']
+    sources = json.loads((repo / 'scientific_sources/manifest-v1.json').read_text())
+    for stage in sources['stages'].values():
+        paths += [repo / stage['root'] / name for name in stage['files'] if name.endswith('.py')]
     tests = list((repo / 'tests/infrastructure').glob('*.py'))
     paths += tests
     for path in paths:

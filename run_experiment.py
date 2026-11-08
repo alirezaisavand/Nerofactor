@@ -29,6 +29,8 @@ def main(argv=None):
     selection.add_argument("--resume-checkpoint", help="Explicit filename relative to this run's checkpoints/")
     selection.add_argument("--initialize-from-input", action="store_true", help="Load only weights from inputs.checkpoint into a new run")
     args = parser.parse_args(argv)
+    if args.execute:
+        parser.error("1D.5-RESET: use run_stage_experiment.py with an explicit pinned scientific stage; this earlier entry point is validation-only")
     try:
         validate_run_id(args.run_id)
         cfg = load_config(args.cfg, config_root=args.config_root)

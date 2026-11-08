@@ -1,0 +1,11 @@
+schema_version: 1
+stage: material
+legacy_config: ../../scientific_sources/material_a/configs/material/real/bear.yaml
+inputs:
+  dataset: GlossyReal
+  mesh:
+    root: geometry
+    path: mesh.ply
+preprocessing:
+  cache: cache/stage-workspace
+overrides: {}

@@ -1,5 +1,12 @@
 # Isolated material training: 1D.2B-2B
 
+**1D.5-RESET supersession:** material authority remains pinned A, now selected
+through the separate immutable source tree and explicit G-mesh handoff in
+[dual scientific baselines](DUAL_SCIENTIFIC_BASELINES.md).
+`run_material_experiment.py --execute` now fails closed; its preflight and the
+historical implementation below remain available for their documented scope.
+Prior CPU contracts do not automatically admit the new native source/handoff path.
+
 Current 1D.4A evidence: the researcher reports geometry and material native model
 smoke passes in `nerofactor-paper:quick-candidate-1`, plus **109 Python 3.8
 infrastructure tests passed**. Original launch/test reports and immutable image

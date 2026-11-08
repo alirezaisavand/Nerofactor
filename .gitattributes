@@ -1,0 +1,5 @@
+# Immutable Git-blob snapshots: preserve original bytes, including line endings.
+scientific_sources/geometry_g/** -text -whitespace
+scientific_sources/material_a/** -text -whitespace
+# Source audit patches retain literal historical whitespace.
+docs/audits/*.patch -whitespace

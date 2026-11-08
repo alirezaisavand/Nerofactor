@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "policy": "dual-scientific-baseline-v1",
+  "milestone": "1D.5-RESET",
+  "review_baseline": "bed325fe511ec52a61f5793d0ee0acd91dad26b9",
+  "decision_origin": "Explicit researcher scientific-baseline selection; not inferred producing history",
+  "selected_scientific_commits": {
+    "geometry": "79252178e65914ad1acbc14790b1514f276bfea0",
+    "material": "e1e859779301faced46d6476691e20b546c27ae0"
+  },
+  "supersession": "Acceptance for selected baselines only. Original reports, protocols, checkpoints, logs and true observations remain unchanged. Prior A geometry experiments cannot satisfy G gates.",
+  "evidence_path_roots": {
+    "evidence": "approved /home/isavand/paper/evidence",
+    "repository": "repository root; docs/tests records are within repository"
+  },
+  "entries": [
+    {
+      "id": "native-geometry-model-smoke-A",
+      "stage": "geometry",
+      "status": "invalidated_for_selected_stage_baseline",
+      "observation_status": "valid_historical_or_diagnostic_only",
+      "reason": "Model initialization/forward used the prior A infrastructure, not selected G geometry scientific closure. Fresh G smoke required.",
+      "evidence": [
+        {
+          "path": "1d3c/geometry-smoke-20261105054231/smoke.json",
+          "bytes": 6580,
+          "sha256": "b78259996848735c39dd94cef79b0c3133c2ec599ee79f206e64bd2b13bd911f",
+          "root": "evidence"
+        }
+      ]
+    },
+    {
+      "id": "native-material-model-smoke-A",
+      "stage": "material",
+      "status": "awaiting_compatibility_review",
+      "reason": "Valid previous A model/forward observation; native execution through the new isolated exact-A tree and reviewed G mesh handoff is not established.",
+      "evidence": [
+        {
+          "path": "1d3c/material-smoke-20261105054527/smoke.json",
+          "bytes": 7429,
+          "sha256": "476e8be5df1227e7eb325d6552ab4f4581283e848488e57ef323ac6c1991a01d",
+          "root": "evidence"
+        }
+      ]
+    },
+    {
+      "id": "image58-inference-A",
+      "stage": "geometry",
+      "status": "valid_historical_or_diagnostic_only",
+      "reason": "Current A image-58 routing regression remains true; cannot establish G geometry inference/training acceptance.",
+      "evidence": [
+        {
+          "path": "docs/evidence/bell-inference-regression-success.json",
+          "bytes": 20708,
+          "sha256": "75bd66dc79aad793ae0313d93a8764276c949b62a8998bcf9d3695c918918acc",
+          "root": "repository"
+        }
+      ],
+      "coverage": "Applies to all 21 earlier inference/comparison reports retained in the referenced success manifest inventory, including incomplete and additional attempts; incomplete reports remain incomplete, never success."
+    },
+    {
+      "id": "checkpoint-architecture-A",
+      "stage": "geometry",
+      "status": "awaiting_compatibility_review",
+      "reason": "Exact A architecture match does not admit G shader semantics, loss, optimizer or resume state. Producing origin unresolved.",
+      "evidence": [
+        {
+          "path": "docs/evidence/bell-structural-match.json",
+          "bytes": 14303,
+          "sha256": "ea1df7ab996c6b80e0b586e9e002e81e3597cd6561e700543ebb72c81b45fa8d",
+          "root": "repository"
+        }
+      ]
+    },
+    {
+      "id": "camera0-historical-diagnostic-A",
+      "stage": "geometry",
+      "status": "valid_historical_or_diagnostic_only",
+      "reason": "Exact stored PSNR, rounded SSIM, bitwise step pair and byte-identical historical montage remain verified A-renderer evaluation observations; not acceptance of a newly selected G path.",
+      "evidence": [
+        {
+          "path": "docs/evidence/bell-camera0-diagnostic-success.json",
+          "bytes": 23266,
+          "sha256": "ea5c5e2b393799ec5630c2e90d65496cd9a05a86c6cb3df54912e4dd078c5fb0",
+          "root": "repository"
+        }
+      ]
+    },
+    {
+      "id": "two-update-R-A",
+      "stage": "geometry",
+      "status": "invalidated_for_selected_stage_baseline",
+      "observation_status": "valid_historical_or_diagnostic_only",
+      "reason": "Original R used A Adam eps=1e-4/AMSGrad, A cosine horizon and clipping 0.7. It must not be reused as G R.",
+      "evidence": [
+        {
+          "path": "bell-training-two-updates.ukS2dZOL/r/training-smoke.json",
+          "bytes": 1115444,
+          "sha256": "009001b40f92c6337ef4db3260b5d88ba675ea1ff677cf52756858d18b04e071",
+          "root": "evidence"
+        }
+      ]
+    },
+    {
+      "id": "two-update-R-repeat-A",
+      "stage": "geometry",
+      "status": "unexecuted",
+      "reason": "Prepared A repetition; no native report found in inspected evidence root and researcher identifies it as unexecuted. Superseded for target acceptance; use fresh G repetition.",
+      "evidence": []
+    },
+    {
+      "id": "two-update-C-A",
+      "stage": "geometry",
+      "status": "unexecuted",
+      "reason": "Prepared A candidate; no native report found in inspected evidence root and researcher identifies it as unexecuted. New G candidate required.",
+      "evidence": []
+    },
+    {
+      "id": "material-infrastructure-CPU-A",
+      "stage": "material",
+      "status": "accepted_for_selected_stage_baseline",
+      "accepted_scopes": [
+        "legacy-A-infrastructure-contracts"
+      ],
+      "reason": "Existing CPU assertions remain accepted only for the tested A path/config/cache/mesh/state contracts. New source-isolated native execution, new G handoff and full numerical training are outside this scope. The source-preservation assertion now normalizes only the authorized old-CLI pre-execution rejection; all scientific assertions remain intact.",
+      "evidence": [
+        {
+          "path": "tests/infrastructure/test_material_training.py",
+          "bytes": 26519,
+          "sha256": "d878fa5a7817b9b86e5ba4189be54faf81e2e1927e6653f7d2143556d965bda4",
+          "root": "repository"
+        }
+      ]
+    },
+    {
+      "id": "historical-bell-checkpoint",
+      "stage": "geometry",
+      "status": "awaiting_compatibility_review",
+      "reason": "Preserve admitted hash and diagnostic observations; G producing revision, strict G architecture and resume eligibility are not established. No G training resume authorized.",
+      "evidence": [
+        {
+          "path": "docs/evidence/bell-checkpoint-identity.json",
+          "bytes": 1289,
+          "sha256": "09324bc713e29830850411a07236f3618a12a6a8015c11ed48a78a329dde5a51",
+          "root": "repository"
+        }
+      ]
+    },
+    {
+      "id": "historical-geometry-meshes",
+      "stage": "geometry",
+      "status": "awaiting_compatibility_review",
+      "reason": "Historical meshes remain immutable input artifacts; no automatic G production or coordinate/normal/handoff admission.",
+      "evidence": [
+        {
+          "path": "docs/BASELINE_INVENTORY.md",
+          "bytes": 15331,
+          "sha256": "80922bc34fd131d0f7fd130223581ba5157bb6a2b35505b769a1a5390ff7e955",
+          "root": "repository"
+        }
+      ]
+    },
+    {
+      "id": "G-two-update-R-R-repeat-C",
+      "stage": "geometry",
+      "status": "unexecuted",
+      "reason": "New versioned G protocol and isolated source framework require fresh researcher executions and review; no native acceptance inferred from CPU tests.",
+      "evidence": []
+    }
+  ],
+  "next_milestone_gate": "Review source integration and fresh G compatibility/replacement experiments before research progression.",
+  "execution": "No native GPU/Docker experiments executed by Codex."
+}

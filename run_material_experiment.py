@@ -28,6 +28,8 @@ def main(argv=None):
     selection.add_argument("--resume-checkpoint")
     selection.add_argument("--initialize-from-input", action="store_true")
     args = parser.parse_args(argv)
+    if args.execute:
+        parser.error("1D.5-RESET: use run_stage_experiment.py with an explicit pinned scientific stage; this earlier entry point is validation-only")
     try:
         cfg = load_config(args.cfg, config_root=args.config_root)
         for d in cfg.diagnostics:

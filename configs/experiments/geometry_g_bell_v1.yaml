@@ -1,0 +1,8 @@
+schema_version: 1
+stage: geometry
+legacy_config: ../../scientific_sources/geometry_g/configs/shape/syn/bell.yaml
+inputs:
+  dataset: GlossySynthetic
+preprocessing:
+  cache: cache/stage-workspace
+overrides: {}

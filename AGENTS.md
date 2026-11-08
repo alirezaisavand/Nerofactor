@@ -18,6 +18,13 @@ An infrastructure refactor must preserve the computation being studied.
 The host is `marineris`. The maintained development branch is
 `paper/infrastructure`, initialized at the `anisotropic` baseline.
 
+**Authoritative scientific selection (1D.5-RESET):** Stage I geometry uses
+`aniso_geometry_safe` at `79252178e65914ad1acbc14790b1514f276bfea0`; Stage II
+material uses `anisotropic` at `e1e859779301faced46d6476691e20b546c27ae0`.
+Infrastructure ancestry is not scientific-stage authority. Use the exact separate
+snapshots and fresh-process namespace selection, never an A geometry/G material
+substitution. This researcher decision does not identify old producing revisions.
+
 | Location | Role |
 | --- | --- |
 | `/home/isavand/paper/Nerofactor-paper` | Versioned code, configurations, documentation, and small reviewed fixtures |
@@ -135,7 +142,51 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized milestone: **1D.4B-3D, finalize historical bell camera-0
+Current authorized milestone: **1D.5-RESET, authoritative dual scientific
+baselines**, reviewed from `bed325fe511ec52a61f5793d0ee0acd91dad26b9`.
+Read [DUAL_SCIENTIFIC_BASELINES.md](docs/DUAL_SCIENTIFIC_BASELINES.md), the pinned
+[source manifest](scientific_sources/manifest-v1.json),
+[evidence supersession v1](docs/evidence/dual-baseline-supersession-v1.json) and
+[G two-update protocol](docs/protocols/GEOMETRY_G_TWO_UPDATE_V1.md).
+
+Authorize source audit, exact immutable G/A Git-blob copies, stage-specific
+source/import selection, filesystem-only I/O adaptation, metadata/provenance,
+CPU fixtures and static checks. Root legacy scientific code/configuration,
+original branch histories, artifacts/reports/checkpoints/meshes/logs and existing
+A protocols remain unchanged. Source snapshots must match every pinned byte;
+never fix suspicious science inside them. Any required scientific change is a
+blocker for separate review and a newly versioned scientific source/protocol.
+
+Selected execution uses `run_stage_experiment.py`: G's actual geometry trainer,
+renderer/dependencies, two-way unshuffled splits, original losses, Adam defaults,
+configured cosine schedule and **no clipping**; A's actual anisotropic material
+implementation, defaults/regularizer scopes, clipping, optimizer/scheduler and
+validation/NVS behavior. One scientific namespace per cold process; reject
+ambiguous sources, module fallbacks, custom overrides or unadmitted checkpoint
+initialization/resume before native execution. Record infrastructure and
+scientific commits/hashes separately. The old experiment CLIs reject --execute;
+legacy A diagnostic code is historical-only, not selected G acceptance.
+
+Preserve and supersede prior evidence by versioned records, not rewriting it.
+A two-update R is invalid for G acceptance; prepared A R-repeat/C remain
+unexecuted/superseded. Exact camera-0 PSNR and montage identity remain valid A
+evaluation observations. The original unshuffled training split is strongly
+supported but unproven producing-run attribution, and the historical checkpoint
+is not automatically G-produced or eligible for G resume. Future G-to-A meshes
+require explicit read-only file/hash, producing G run/source evidence and
+coordinate/scale/normal/orientation/preprocessing conventions; no substitution.
+
+Stop after implementation/CPU/static checks for review. New G R, independent
+R-repeat and C must be executed afresh by the researcher under the frozen G
+protocol, reviewed for compatibility/repeatability before research progression.
+No Codex Docker/GPU/native model/inference/training, original camera/checkpoint
+deserialization, installs, builds, permission/environment changes or automatic
+commit/push. CPU toy autograd/Adam and original source bodies with explicit
+stand-ins are allowed; they are not native scientific acceptance. Earlier A
+preservation rules below describe historical paths and do not override the
+new selected G geometry authority.
+
+Earlier authorized milestone: **1D.4B-3D, finalize historical bell camera-0
 evaluation evidence**. Inspect the existing primary/control/comparison reports
 and their recorded hashes without regeneration. Write documentation and a small
 versioned success manifest, preserve original evidence and all image-58 code/
@@ -237,8 +288,8 @@ requested `paper_runs/evidence/1d3c` destination was inaccessible. Verify the
 approved destination is writable, preserve original bytes and source paths/
 hashes, refuse overwrites, and exclude caches/generated datasets. Do not change
 ownership/permissions or Docker settings. The current milestone additionally
-authorizes only evidence finalization and CPU/static work above; earlier 1D.5A
-and camera-0 preparations remain preserved.
+authorizes only the dual-baseline reset implementation and CPU/static work above;
+earlier A evidence and preparations remain preserved under supersession policy.
 No scientific code/YAML,
 image/build, package/environment or original artifact changes are allowed.
 

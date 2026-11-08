@@ -1,0 +1,705 @@
+diff --git a/dataset/database.py b/dataset/database.py
+index 012aecd..1e5b0cb 100644
+--- a/dataset/database.py
++++ b/dataset/database.py
+@@ -24,6 +24,34 @@ from utils.pose_utils import look_at_crop
+ class BaseDatabase(abc.ABC):
+     def __init__(self, database_name):
+         self.database_name = database_name
++        self.preprocessing = None
++
++    def _init_preprocessing(self, preprocessing, parameters=None):
++        if preprocessing is not None:
++            from infrastructure.cache import PreprocessingCache
++            if not isinstance(preprocessing, PreprocessingCache):
++                raise TypeError('preprocessing must be a PreprocessingCache or None for legacy mode')
++            self.preprocessing = preprocessing.bind(self.database_name, self.root, parameters)
++
++    def _source_path(self, relative):
++        if self.preprocessing is not None:
++            return self.preprocessing.source(relative)
++        return f'{self.root}/{relative}'
++
++    def _derived_path(self, relative):
++        if self.preprocessing is not None:
++            return self.preprocessing.path(relative)
++        return Path(f'{self.root}/{relative}')
++
++    def _read_derived(self, relative):
++        if self.preprocessing is not None:
++            return self.preprocessing.read(relative)
++        return f'{self.root}/{relative}'
++
++    def _write_derived(self, relative, writer):
++        if self.preprocessing is not None:
++            return self.preprocessing.write(relative, writer)
++        return writer(f'{self.root}/{relative}')
+ 
+     @abc.abstractmethod
+     def get_image(self, img_id):
+@@ -95,11 +123,12 @@ class GlossyRealDatabase(BaseDatabase):
+                  'up': np.asarray((-0.01911, -0.738918, -0.673524), np.float32), },
+     }
+ 
+-    def __init__(self, database_name, dataset_dir):
++    def __init__(self, database_name, dataset_dir, *, preprocessing=None):
+         super().__init__(database_name)
+         _, self.object_name, self.max_len = database_name.split('/')
+ 
+         self.root = f'{dataset_dir}/{self.object_name}'
++        self._init_preprocessing(preprocessing, {'max_len': self.max_len})
+         self._parse_colmap()
+         self._normalize()
+         if not self.max_len.startswith('raw'):
+@@ -107,28 +136,28 @@ class GlossyRealDatabase(BaseDatabase):
+             self.image_dir = ''
+             self._crop()
+         else:
+-            h, w, _ = imread(f'{self.root}/images/{self.image_names[self.img_ids[0]]}').shape
++            h, w, _ = imread(self._source_path(f'images/{self.image_names[self.img_ids[0]]}')).shape
+             max_len = int(self.max_len.split('_')[1])
+             ratio = float(max_len) / max(h, w)
+             th, tw = int(ratio * h), int(ratio * w)
+             rh, rw = th / h, tw / w
+ 
+-            Path(f'{self.root}/images_{self.max_len}').mkdir(exist_ok=True, parents=True)
++            self._derived_path(f'images_{self.max_len}').mkdir(exist_ok=True, parents=True)
+             for img_id in tqdm(self.img_ids):
+-                if not Path(f'{self.root}/images_{self.max_len}/{self.image_names[img_id]}').exists():
+-                    img = imread(f'{self.root}/images/{self.image_names[img_id]}')
++                if not Path(self._read_derived(f'images_{self.max_len}/{self.image_names[img_id]}')).exists():
++                    img = imread(self._source_path(f'images/{self.image_names[img_id]}'))
+                     img = resize_img(img, ratio)
+-                    imsave(f'{self.root}/images_{self.max_len}/{self.image_names[img_id]}', img)
++                    self._write_derived(f'images_{self.max_len}/{self.image_names[img_id]}', lambda path: imsave(path, img))
+ 
+                 K = self.Ks[img_id]
+                 self.Ks[img_id] = np.diag([rw, rh, 1.0]) @ K
+ 
+     def _parse_colmap(self):
+-        print(f'{self.root}/cache.pkl')
+-        if Path(f'{self.root}/cache.pkl').exists():
+-            self.poses, self.Ks, self.image_names, self.img_ids = read_pickle(f'{self.root}/cache.pkl')
++        print(self._read_derived('cache.pkl'))
++        if Path(self._read_derived('cache.pkl')).exists():
++            self.poses, self.Ks, self.image_names, self.img_ids = read_pickle(self._read_derived('cache.pkl'))
+         else:
+-            cameras, images, points3d = read_model(f'{self.root}/colmap/sparse/0')
++            cameras, images, points3d = read_model(self._source_path('colmap/sparse/0'))
+ 
+             self.poses, self.Ks, self.image_names, self.img_ids = {}, {}, {}, []
+             for img_id, image in images.items():
+@@ -150,7 +179,7 @@ class GlossyRealDatabase(BaseDatabase):
+                     raise NotImplementedError
+                 self.Ks[img_id] = np.asarray([[f, 0, cx], [0, f, cy], [0, 0, 1], ], np.float32)
+ 
+-            save_pickle([self.poses, self.Ks, self.image_names, self.img_ids], f'{self.root}/cache.pkl')
++            self._write_derived('cache.pkl', lambda path: save_pickle([self.poses, self.Ks, self.image_names, self.img_ids], path))
+ 
+     def _load_point_cloud(self, pcl_path):
+         with open(pcl_path, "rb") as f:
+@@ -169,7 +198,7 @@ class GlossyRealDatabase(BaseDatabase):
+         return R
+ 
+     def _normalize(self):
+-        ref_points = self._load_point_cloud(f'{self.root}/object_point_cloud.ply')
++        ref_points = self._load_point_cloud(self._source_path('object_point_cloud.ply'))
+         max_pt, min_pt = np.max(ref_points, 0), np.min(ref_points, 0)
+         center = (max_pt + min_pt) * 0.5
+         offset = -center  # x1 = x0 + offset
+@@ -196,25 +225,25 @@ class GlossyRealDatabase(BaseDatabase):
+             self.poses[img_id] = np.concatenate([R_new, t_new[:, None]], -1)
+ 
+     def _crop(self):
+-        if Path(f'{self.root}/images_{self.max_len}/meta_info.pkl').exists():
+-            self.poses, self.Ks = read_pickle(f'{self.root}/images_{self.max_len}/meta_info.pkl')
++        if Path(self._read_derived(f'images_{self.max_len}/meta_info.pkl')).exists():
++            self.poses, self.Ks = read_pickle(self._read_derived(f'images_{self.max_len}/meta_info.pkl'))
+         else:
+             poses_new, Ks_new = {}, {}
+             print('cropping images ...')
+-            Path(f'{self.root}/images_{self.max_len}').mkdir(exist_ok=True, parents=True)
++            self._derived_path(f'images_{self.max_len}').mkdir(exist_ok=True, parents=True)
+             for img_id in tqdm(self.img_ids):
+                 pose, K = self.poses[img_id], self.Ks[img_id]
+-                img = imread(f'{self.root}/images/{self.image_names[img_id]}')
++                img = imread(self._source_path(f'images/{self.image_names[img_id]}'))
+                 img1, K1, pose1 = crop_by_points(img, self.ref_points, pose, K, self.max_len)
+-                imsave(f'{self.root}/images_{self.max_len}/{self.image_names[img_id]}', img1)
++                self._write_derived(f'images_{self.max_len}/{self.image_names[img_id]}', lambda path: imsave(path, img1))
+                 poses_new[img_id] = pose1
+                 Ks_new[img_id] = K1
+ 
+-            save_pickle([poses_new, Ks_new], f'{self.root}/images_{self.max_len}/meta_info.pkl')
++            self._write_derived(f'images_{self.max_len}/meta_info.pkl', lambda path: save_pickle([poses_new, Ks_new], path))
+             self.poses, self.Ks = poses_new, Ks_new
+ 
+     def get_image(self, img_id):
+-        path = f'{self.root}/images_{self.max_len}/{self.image_names[img_id]}'
++        path = self._read_derived(f'images_{self.max_len}/{self.image_names[img_id]}')
+         img = imread(path)
+         return img
+ 
+@@ -231,7 +260,7 @@ class GlossyRealDatabase(BaseDatabase):
+     def get_mask(self, img_id):
+         mask_name = self.image_names[img_id]
+         mask_name = mask_name.split('.')[0]+'.png'
+-        mask_fname = f'{self.root}/images_{self.max_len}/masks_train/{mask_name}'
++        mask_fname = self._source_path(f'images_{self.max_len}/masks_train/{mask_name}')
+         print(mask_fname)
+         mask_img = cv2.imread(mask_fname, cv2.IMREAD_GRAYSCALE)
+         # Convert from 0-255 to 0-1 by dividing by 255.
+@@ -246,18 +275,19 @@ class GlossyRealDatabase(BaseDatabase):
+ 
+ 
+ class GlossySyntheticDatabase(BaseDatabase):
+-    def __init__(self, database_name, dataset_dir):
++    def __init__(self, database_name, dataset_dir, *, preprocessing=None):
+         super().__init__(database_name)
+         _, model_name = database_name.split('/')
+         RENDER_ROOT = dataset_dir
+         self.root = f'{RENDER_ROOT}/{model_name}'
++        self._init_preprocessing(preprocessing)
+         self.img_num = len(glob.glob(f'{self.root}/*.pkl'))
+         self.img_ids = [str(k) for k in range(self.img_num)]
+-        self.cams = [read_pickle(f'{self.root}/{k}-camera.pkl') for k in range(self.img_num)]
++        self.cams = [read_pickle(self._source_path(f'{k}-camera.pkl')) for k in range(self.img_num)]
+         self.scale_factor = 1.0
+ 
+     def get_image(self, img_id):
+-        return imread(f'{self.root}/{img_id}.png')[..., :3]
++        return imread(self._source_path(f'{img_id}.png'))[..., :3]
+ 
+     def get_K(self, img_id):
+         K = self.cams[int(img_id)][1]
+@@ -274,13 +304,13 @@ class GlossySyntheticDatabase(BaseDatabase):
+ 
+     def get_depth(self, img_id):
+         assert (self.scale_factor == 1.0)
+-        depth = imread(f'{self.root}/{img_id}-depth.png')
++        depth = imread(self._source_path(f'{img_id}-depth.png'))
+         depth = depth.astype(np.float32) / 65535 * 15
+         mask = depth < 14.5
+         return depth, mask
+ 
+     def get_mask(self, img_id):
+-        mask_fname = f'{self.root}/masks_train/{img_id}.png'
++        mask_fname = self._source_path(f'masks_train/{img_id}.png')
+         mask_img = cv2.imread(mask_fname, cv2.IMREAD_GRAYSCALE)
+         # Convert from 0-255 to 0-1 by dividing by 255.
+         mask = mask_img.astype(np.float32) / 255.0
+@@ -288,11 +318,12 @@ class GlossySyntheticDatabase(BaseDatabase):
+         return mask
+ 
+ class CustomDatabase(BaseDatabase):
+-    def __init__(self, database_name, dataset_dir):
++    def __init__(self, database_name, dataset_dir, *, preprocessing=None):
+         super().__init__(database_name)
+         _, self.object_name, self.max_len = database_name.split('/')
+ 
+         self.root = f'{dataset_dir}/{self.object_name}'
++        self._init_preprocessing(preprocessing, {'max_len': self.max_len})
+         self._parse_colmap()
+         self._normalize()
+         if not self.max_len.startswith('raw'):
+@@ -300,27 +331,27 @@ class CustomDatabase(BaseDatabase):
+             self.image_dir = ''
+             self._crop()
+         else:
+-            h, w, _ = imread(f'{self.root}/images/{self.image_names[self.img_ids[0]]}').shape
++            h, w, _ = imread(self._source_path(f'images/{self.image_names[self.img_ids[0]]}')).shape
+             max_len = int(self.max_len.split('_')[1])
+             ratio = float(max_len) / max(h, w)
+             th, tw = int(ratio*h), int(ratio*w)
+             rh, rw = th / h, tw / w
+ 
+-            Path(f'{self.root}/images_{self.max_len}').mkdir(exist_ok=True, parents=True)
++            self._derived_path(f'images_{self.max_len}').mkdir(exist_ok=True, parents=True)
+             for img_id in tqdm(self.img_ids):
+-                if not Path(f'{self.root}/images_{self.max_len}/{self.image_names[img_id]}').exists():
+-                    img = imread(f'{self.root}/images/{self.image_names[img_id]}')
++                if not Path(self._read_derived(f'images_{self.max_len}/{self.image_names[img_id]}')).exists():
++                    img = imread(self._source_path(f'images/{self.image_names[img_id]}'))
+                     img = resize_img(img, ratio)
+-                    imsave(f'{self.root}/images_{self.max_len}/{self.image_names[img_id]}', img)
++                    self._write_derived(f'images_{self.max_len}/{self.image_names[img_id]}', lambda path: imsave(path, img))
+ 
+                 K = self.Ks[img_id]
+                 self.Ks[img_id] = np.diag([rw,rh,1.0]) @ K
+ 
+     def _parse_colmap(self):
+-        if Path(f'{self.root}/cache.pkl').exists():
+-            self.poses, self.Ks, self.image_names, self.img_ids = read_pickle(f'{self.root}/cache.pkl')
++        if Path(self._read_derived('cache.pkl')).exists():
++            self.poses, self.Ks, self.image_names, self.img_ids = read_pickle(self._read_derived('cache.pkl'))
+         else:
+-            cameras, images, points3d = read_model(f'{self.root}/colmap/sparse/0')
++            cameras, images, points3d = read_model(self._source_path('colmap/sparse/0'))
+ 
+             self.poses, self.Ks, self.image_names, self.img_ids = {}, {}, {}, []
+             for img_id, image in images.items():
+@@ -342,7 +373,7 @@ class CustomDatabase(BaseDatabase):
+                     raise NotImplementedError
+                 self.Ks[img_id] = np.asarray([[f, 0, cx], [0, f, cy], [0, 0, 1], ], np.float32)
+ 
+-            save_pickle([self.poses, self.Ks, self.image_names, self.img_ids],f'{self.root}/cache.pkl')
++            self._write_derived('cache.pkl', lambda path: save_pickle([self.poses, self.Ks, self.image_names, self.img_ids], path))
+ 
+     def _load_point_cloud(self, pcl_path):
+         with open(pcl_path, "rb") as f:
+@@ -361,12 +392,12 @@ class CustomDatabase(BaseDatabase):
+         return R
+ 
+     def _normalize(self):
+-        ref_points = self._load_point_cloud(f'{self.root}/object_point_cloud.ply')
++        ref_points = self._load_point_cloud(self._source_path('object_point_cloud.ply'))
+         max_pt, min_pt = np.max(ref_points, 0), np.min(ref_points, 0)
+         center = (max_pt + min_pt) * 0.5
+         offset = -center # x1 = x0 + offset
+         scale = 1 / np.max(np.linalg.norm(ref_points - center[None,:], 2, 1)) # x2 = scale * x1
+-        directions = np.loadtxt(f'{self.root}/meta_info.txt')
++        directions = np.loadtxt(self._source_path('meta_info.txt'))
+         up = directions[0]
+         forward = directions[1]
+         up, forward = up/np.linalg.norm(up), forward/np.linalg.norm(forward)
+@@ -390,25 +421,25 @@ class CustomDatabase(BaseDatabase):
+             self.poses[img_id] = np.concatenate([R_new, t_new[:,None]], -1)
+ 
+     def _crop(self):
+-        if Path(f'{self.root}/images_{self.max_len}/meta_info.pkl').exists():
+-            self.poses, self.Ks = read_pickle(f'{self.root}/images_{self.max_len}/meta_info.pkl')
++        if Path(self._read_derived(f'images_{self.max_len}/meta_info.pkl')).exists():
++            self.poses, self.Ks = read_pickle(self._read_derived(f'images_{self.max_len}/meta_info.pkl'))
+         else:
+             poses_new, Ks_new = {}, {}
+             print('cropping images ...')
+-            Path(f'{self.root}/images_{self.max_len}').mkdir(exist_ok=True,parents=True)
++            self._derived_path(f'images_{self.max_len}').mkdir(exist_ok=True,parents=True)
+             for img_id in tqdm(self.img_ids):
+                 pose, K = self.poses[img_id], self.Ks[img_id]
+-                img = imread(f'{self.root}/images/{self.image_names[img_id]}')
++                img = imread(self._source_path(f'images/{self.image_names[img_id]}'))
+                 img1, K1, pose1 = crop_by_points(img, self.ref_points, pose, K, self.max_len)
+-                imsave(f'{self.root}/images_{self.max_len}/{self.image_names[img_id]}', img1)
++                self._write_derived(f'images_{self.max_len}/{self.image_names[img_id]}', lambda path: imsave(path, img1))
+                 poses_new[img_id] = pose1
+                 Ks_new[img_id] = K1
+ 
+-            save_pickle([poses_new, Ks_new],f'{self.root}/images_{self.max_len}/meta_info.pkl')
++            self._write_derived(f'images_{self.max_len}/meta_info.pkl', lambda path: save_pickle([poses_new, Ks_new], path))
+             self.poses, self.Ks = poses_new, Ks_new
+ 
+     def get_image(self, img_id):
+-        img = imread(f'{self.root}/images_{self.max_len}/{self.image_names[img_id]}')
++        img = imread(self._read_derived(f'images_{self.max_len}/{self.image_names[img_id]}'))
+         return img
+ 
+     def get_K(self, img_id):
+@@ -428,12 +459,13 @@ class CustomDatabase(BaseDatabase):
+ 
+ 
+ class NeRFSyntheticDatabase(BaseDatabase):
+-    def __init__(self, database_name, dataset_dir, testskip=8):
++    def __init__(self, database_name, dataset_dir, testskip=8, *, preprocessing=None):
+         super().__init__(database_name)
+         _, model_name = database_name.split('/')
+         RENDER_ROOT = dataset_dir
+         # RENDER_ROOT = '/media/data_nix/yzy/Git_Project/data/nerf_synthetic'
+         self.root = f'{RENDER_ROOT}/{model_name}'
++        self._init_preprocessing(preprocessing, {'testskip': testskip})
+         self.scale_factor = 1.0
+ 
+         # splits = ['train', 'test']
+@@ -441,7 +473,7 @@ class NeRFSyntheticDatabase(BaseDatabase):
+ 
+         metas = {}
+         for s in splits:
+-            with open(os.path.join(self.root, 'transforms_{}.json'.format(s)), 'r') as fp:
++            with open(self._source_path('transforms_{}.json'.format(s)), 'r') as fp:
+                 metas[s] = json.load(fp)
+ 
+         all_imgs = []
+@@ -469,10 +501,14 @@ class NeRFSyntheticDatabase(BaseDatabase):
+                 mask_folder = os.path.join(self.root, 'masks_'+s)
+                 folder, name = frame['file_path'].split('\\')
+                 fname = os.path.join(self.root, folder, name)
++                if self.preprocessing is not None:
++                    fname = self._source_path(f'{folder}/{name}')
+                 itr = 0
+                 while name[itr] == '0':
+                     itr += 1
+                 mask_fname = os.path.join(mask_folder, name)
++                if self.preprocessing is not None:
++                    mask_fname = self._source_path(f'masks_{s}/{name}')
+ 
+                 # fname = os.path.join(self.root, frame['file_path'] + '.png')
+                 # fname_number = int(frame['file_path'].split('_')[-1])
+@@ -554,14 +590,14 @@ class NeRFSyntheticDatabase(BaseDatabase):
+         str_id = str(int(img_id) + 1)
+         prefix = '0' * (4 - len(str_id))
+         depth_name = "Image"+prefix + str_id + ".png"
+-        depth = imread(os.path.join(self.root, 'depth', depth_name))
++        depth = imread(self._source_path(f'depth/{depth_name}'))
+         depth = depth.astype(np.float32) / 65535 * 15
+         mask = depth < 14.5
+         return depth, mask
+ 
+ 
+ 
+-def parse_database_name(database_name: str, dataset_dir: str) -> BaseDatabase:
++def parse_database_name(database_name: str, dataset_dir: str, *, preprocessing=None) -> BaseDatabase:
+     name2database = {
+         'syn': GlossySyntheticDatabase,
+         'real': GlossyRealDatabase,
+@@ -570,6 +606,8 @@ def parse_database_name(database_name: str, dataset_dir: str) -> BaseDatabase:
+     }
+     database_type = database_name.split('/')[0]
+     if database_type in name2database:
++        if preprocessing is not None:
++            return name2database[database_type](database_name, dataset_dir, preprocessing=preprocessing)
+         return name2database[database_type](database_name, dataset_dir)
+     else:
+         raise NotImplementedError
+@@ -683,6 +721,11 @@ def get_database_eval_points_nerf(database, voxel_size=0.01, scene_scale=0.5, sa
+     if save_path:
+         pcd = o3d.geometry.PointCloud()
+         pcd.points = o3d.utility.Vector3dVector(pts.astype(np.float64))
+-        o3d.io.write_point_cloud(save_path, pcd)
++        if database.preprocessing is not None:
++            database.preprocessing.write_evaluation(
++                save_path, {'voxel_size': voxel_size, 'scene_scale': scene_scale},
++                lambda path: o3d.io.write_point_cloud(path, pcd))
++        else:
++            o3d.io.write_point_cloud(save_path, pcd)
+ 
+-    return pts
+\ No newline at end of file
++    return pts
+diff --git a/dataset/train_dataset.py b/dataset/train_dataset.py
+index b10ca4d..e1af348 100644
+--- a/dataset/train_dataset.py
++++ b/dataset/train_dataset.py
+@@ -8,10 +8,13 @@ class DummyDataset(Dataset):
+         'database_name': '',
+     }
+ 
+-    def __init__(self, cfg, is_train, dataset_dir=None):
++    def __init__(self, cfg, is_train, dataset_dir=None, *, preprocessing=None):
+         self.cfg = {**self.default_cfg, **cfg}
+         if not is_train:
+-            database = parse_database_name(self.cfg['database_name'], dataset_dir)
++            if preprocessing is None:
++                database = parse_database_name(self.cfg['database_name'], dataset_dir)
++            else:
++                database = parse_database_name(self.cfg['database_name'], dataset_dir, preprocessing=preprocessing)
+             train_ids, test_ids, nvs_ids = get_database_split(database, 'validation')
+             self.train_num = len(train_ids)
+             self.test_num = len(test_ids)
+diff --git a/network/metrics.py b/network/metrics.py
+index 8583ef0..66bd787 100644
+--- a/network/metrics.py
++++ b/network/metrics.py
+@@ -49,8 +49,8 @@ def draw_materials(data_pr, h, w):
+ 
+ 
+ class ShapeRenderMetrics(Loss):
+-    def __init__(self, cfg):
+-        pass
++    def __init__(self, cfg, *, output_paths=None):
++        self.output_paths = output_paths
+ 
+     def __call__(self, data_pr, data_gt, step, **kwargs):
+         rgb_gt = color_map_backward(data_pr['gt_rgb'].detach().cpu().numpy())  # h,w,3
+@@ -79,14 +79,16 @@ class ShapeRenderMetrics(Loss):
+         data_index = kwargs['data_index']
+         model_name = kwargs['model_name']
+         output_path = Path(f'data/train_vis/{model_name}')
++        if self.output_paths is not None:
++            output_path = self.output_paths.output(f'renders/validation/{model_name}')
+         output_path.mkdir(exist_ok=True, parents=True)
+         imsave(f'{str(output_path)}/{step}-index-{data_index}.jpg', concat_images_list(*imgs, vert=True))
+         return outputs
+ 
+ 
+ class MaterialRenderMetrics(Loss):
+-    def __init__(self, cfg):
+-        pass
++    def __init__(self, cfg, *, output_paths=None):
++        self.output_paths = output_paths
+ 
+     def __call__(self, data_pr, data_gt, step, *args, **kwargs):
+         rgb_gt = color_map_backward(data_pr['rgb_gt'].detach().cpu().numpy())  # h,w,3
+@@ -120,8 +122,13 @@ class MaterialRenderMetrics(Loss):
+         data_index = kwargs['data_index']
+         model_name = kwargs['model_name']
+         output_path = Path(f'data/train_vis/{model_name}')
++        if self.output_paths is not None:
++            output_path = self.output_paths.output(f'renders/validation/{model_name}')
+         output_path.mkdir(exist_ok=True, parents=True)
+-        imsave(f'{str(output_path)}/{step}-index-{data_index}.jpg', concat_images_list(*output_imgs, vert=True))
++        filename = f'{str(output_path)}/{step}-index-{data_index}.jpg'
++        if self.output_paths is not None:
++            filename = str(self.output_paths.output(f'renders/validation/{model_name}/{step}-index-{data_index}.jpg'))
++        imsave(filename, concat_images_list(*output_imgs, vert=True))
+         return outputs
+ 
+ 
+@@ -137,4 +144,4 @@ def psnr(results):
+ 
+ name2key_metrics = {
+     'psnr': psnr,
+-}
+\ No newline at end of file
++}
+diff --git a/network/renderer.py b/network/renderer.py
+index 5fcc085..50f08bd 100644
+--- a/network/renderer.py
++++ b/network/renderer.py
+@@ -250,8 +250,10 @@ class NeROShapeRenderer(nn.Module):
+         'curv_loss_weight': 0.001,
+     }
+ 
+-    def __init__(self, cfg, training=True):
++    def __init__(self, cfg, training=True, *, preprocessing=None, isolated_geometry=False):
+         super().__init__()
++        self.preprocessing = preprocessing
++        self.isolated_geometry = isolated_geometry
+         self.cfg = {**self.default_cfg, **cfg}
+         self.is_nerf = self.cfg['is_nerf']
+ 
+@@ -277,8 +279,15 @@ class NeROShapeRenderer(nn.Module):
+ 
+     def _init_dataset(self):
+         # train/test split
+-        self.database = parse_database_name(self.cfg['database_name'], self.cfg['dataset_dir'])
+-        self.train_ids, self.test_ids = get_database_split(self.database)
++        if self.preprocessing is None:
++            self.database = parse_database_name(self.cfg['database_name'], self.cfg['dataset_dir'])
++        else:
++            self.database = parse_database_name(self.cfg['database_name'], self.cfg['dataset_dir'],
++                                                preprocessing=self.preprocessing)
++        if self.isolated_geometry:
++            self.train_ids, self.test_ids, self.nvs_ids = get_database_split(self.database)
++        else:
++            self.train_ids, self.test_ids = get_database_split(self.database)
+         self.train_ids = np.asarray(self.train_ids)
+ 
+         self.train_imgs_info = build_imgs_info(self.database, self.train_ids, self.is_nerf)
+@@ -1100,9 +1109,11 @@ class NeROMaterialRenderer(nn.Module):
+         'n_lobes': 1
+     }
+ 
+-    def __init__(self, cfg, is_train=True):
++    def __init__(self, cfg, is_train=True, *, preprocessing=None, output_paths=None):
+         self.cfg = {**self.default_cfg, **cfg}
+         super().__init__()
++        self.preprocessing = preprocessing
++        self.output_paths = output_paths
+         self.warned_normal = False
+         self.is_nerf = self.cfg['is_nerf']
+         self._init_geometry()
+@@ -1215,7 +1226,11 @@ class NeROMaterialRenderer(nn.Module):
+ 
+     def _init_dataset(self, is_train):
+         # train/test split
+-        self.database = parse_database_name(self.cfg['database_name'], self.cfg['dataset_dir'])
++        if self.preprocessing is None:
++            self.database = parse_database_name(self.cfg['database_name'], self.cfg['dataset_dir'])
++        else:
++            self.database = parse_database_name(self.cfg['database_name'], self.cfg['dataset_dir'],
++                                                preprocessing=self.preprocessing)
+         self.train_ids, self.test_ids, self.nvs_ids = get_database_split(self.database, 'validation')
+         self.train_ids = np.asarray(self.train_ids)
+         # This part is for genetaring sementation masks
+@@ -1484,7 +1499,11 @@ class NeROMaterialRenderer(nn.Module):
+         pcd.points = o3d.utility.Vector3dVector(points_np)
+ 
+         # Save point cloud to a file (e.g., 'cloud.ply')
+-        o3d.io.write_point_cloud("cloud.ply", pcd)
++        destination = "cloud.ply"
++        if self.output_paths is not None:
++            destination = self.output_paths.output('debug/cloud.ply')
++            destination.parent.mkdir(parents=True, exist_ok=True)
++        o3d.io.write_point_cloud(str(destination), pcd)
+ 
+     # def propagate_masks(self, imgs, ray_origins, ray_dirs, camera_poses, Ks, seg_model, trace_fn):
+     #     """
+@@ -1740,6 +1759,8 @@ class NeROMaterialRenderer(nn.Module):
+         from skimage.io import imsave
+         from utils.draw_utils import concat_images_list
+         log_path = Path(os.path.join(log_dir_str, 'log.txt'))
++        if self.output_paths is not None:
++            log_path = self.output_paths.output('logs/nvs/log.txt')
+         with log_path.open("a", encoding="utf-8") as f:
+             for index in range(len(self.nvs_ids)):
+                 torch.set_default_tensor_type('torch.cuda.FloatTensor')
+@@ -1752,7 +1773,10 @@ class NeROMaterialRenderer(nn.Module):
+                 rgb_gt = outputs['rgb_gt'].detach().cpu().numpy()
+                 rgb_gt = color_map_backward(rgb_gt)
+                 imgs = [rgb_gt, rgb_pr]
+-                imsave(os.path.join(imgs_dir, "test_{}.png".format(self.nvs_ids[index])), concat_images_list(*imgs, vert=True))
++                filename = os.path.join(imgs_dir, "test_{}.png".format(self.nvs_ids[index]))
++                if self.output_paths is not None:
++                    filename = str(self.output_paths.output('renders/nvs/test_{}.png'.format(self.nvs_ids[index])))
++                imsave(filename, concat_images_list(*imgs, vert=True))
+ 
+                 psnr = compute_psnr(rgb_gt, rgb_pr)
+                 ssim = structural_similarity(rgb_gt, rgb_pr, win_size=11, channel_axis=2, data_range=255)
+@@ -1799,4 +1823,4 @@ class NeROMaterialRenderer(nn.Module):
+ name2renderer = {
+     'shape': NeROShapeRenderer,
+     'material': NeROMaterialRenderer,
+-}
+\ No newline at end of file
++}
+diff --git a/train/trainer.py b/train/trainer.py
+index 072a648..d131680 100644
+--- a/train/trainer.py
++++ b/train/trainer.py
+@@ -40,7 +40,12 @@ class Trainer:
+     }
+ 
+     def _init_dataset(self):
+-        self.train_set = name2dataset[self.cfg['train_dataset_type']](self.cfg['train_dataset_cfg'], True)
++        if self.experiment is None:
++            self.train_set = name2dataset[self.cfg['train_dataset_type']](self.cfg['train_dataset_cfg'], True)
++        else:
++            self.train_set = name2dataset[self.cfg['train_dataset_type']](
++                self.cfg['train_dataset_cfg'], True, dataset_dir=self.cfg['dataset_dir'],
++                preprocessing=self.experiment.preprocessing)
+         self.train_set = DataLoader(self.train_set, 1, True, num_workers=self.cfg['worker_num'],
+                                     collate_fn=dummy_collate_fn)
+         print(f'train set len {len(self.train_set)}')
+@@ -48,14 +53,28 @@ class Trainer:
+         dataset_dir = self.cfg['dataset_dir']
+         for val_set_cfg in self.cfg['val_set_list']:
+             name, val_type, val_cfg = val_set_cfg['name'], val_set_cfg['type'], val_set_cfg['cfg']
+-            val_set = name2dataset[val_type](val_cfg, False, dataset_dir=dataset_dir)
++            if self.experiment is None:
++                val_set = name2dataset[val_type](val_cfg, False, dataset_dir=dataset_dir)
++            else:
++                val_set = name2dataset[val_type](val_cfg, False, dataset_dir=dataset_dir,
++                                               preprocessing=self.experiment.preprocessing)
+             val_set = DataLoader(val_set, 1, False, num_workers=self.cfg['worker_num'], collate_fn=dummy_collate_fn)
+             self.val_set_list.append(val_set)
+             self.val_set_names.append(name)
+             print(f'{name} val set len {len(val_set)}')
+ 
+     def _init_network(self):
+-        self.network = name2renderer[self.cfg['network']](self.cfg).cuda()
++        if self.experiment is None:
++            self.network = name2renderer[self.cfg['network']](self.cfg).cuda()
++        elif self.cfg['network'] == 'shape':
++            self.network = name2renderer[self.cfg['network']](
++                self.cfg, preprocessing=self.experiment.preprocessing, isolated_geometry=True).cuda()
++            self.experiment.record_owner('renderer', self.network.cfg)
++        else:
++            self.network = name2renderer[self.cfg['network']](
++                self.cfg, preprocessing=self.experiment.preprocessing, output_paths=self.experiment.run).cuda()
++            self.experiment.record_owner('renderer', self.network.cfg)
++            self.experiment.record_owner('shader', self.network.shader_network.cfg)
+ 
+         # loss
+         self.val_losses = []
+@@ -66,7 +85,10 @@ class Trainer:
+         # metrics
+         for metric_name in self.cfg['val_metric']:
+             if metric_name in name2metrics:
+-                self.val_metrics.append(name2metrics[metric_name](self.cfg))
++                if self.experiment is not None and metric_name in ('shape_render', 'mat_render'):
++                    self.val_metrics.append(name2metrics[metric_name](self.cfg, output_paths=self.experiment.run))
++                else:
++                    self.val_metrics.append(name2metrics[metric_name](self.cfg))
+             else:
+                 self.val_metrics.append(name2loss[metric_name](self.cfg))
+ 
+@@ -91,16 +113,21 @@ class Trainer:
+         self.lr_manager = name2lr_manager[self.cfg['lr_type']](self.cfg['lr_cfg'])
+         self.optimizer = self.lr_manager.construct_optimizer(self.optimizer, self.network)
+ 
+-    def __init__(self, cfg):
++    def __init__(self, cfg, *, experiment=None):
++        if experiment is not None and cfg.get('network') not in ('shape', 'material'):
++            raise ValueError('Experiment integration requires shape or material')
++        self.experiment = experiment
+         self.cfg = {**self.default_cfg, **cfg}
+         torch.manual_seed(self.cfg['random_seed'])
+         np.random.seed(self.cfg['random_seed'])
+         random.seed(self.cfg['random_seed'])
+         self.model_name = cfg['name']
+-        self.model_dir = os.path.join('data/model', cfg['name'])
++        self.model_dir = os.path.join('data/model', cfg['name']) if experiment is None else str(experiment.run.checkpoints)
+         if not os.path.exists(self.model_dir): Path(self.model_dir).mkdir(exist_ok=True, parents=True)
+         self.pth_fn = os.path.join(self.model_dir, 'model.pth')
+         self.best_pth_fn = os.path.join(self.model_dir, 'model_best.pth')
++        if experiment is not None:
++            experiment.record_owner('trainer', self.cfg)
+ 
+     def run(self):
+         self._init_dataset()
+@@ -188,17 +215,28 @@ class Trainer:
+             pbar.set_postfix(loss=float(loss.detach().cpu().numpy()), lr=lr, others=loss_str)
+             pbar.update(1)
+             del loss, log_info
+-        logs_dir = os.path.join('logs', self.cfg['name'])
+-        logs_path = os.path.join(logs_dir, 'logs.txt')
+-        nvs_imgs_dir = os.path.join('nvs_imgs', self.cfg['name'])
+-        os.makedirs(logs_dir, exist_ok=True)
+-        os.makedirs(nvs_imgs_dir, exist_ok=True)
+-        self.train_network.nvs(log_dir_str=logs_dir,
+-                                              imgs_dir=nvs_imgs_dir)
++        if self.experiment is None:
++            logs_dir = os.path.join('logs', self.cfg['name'])
++            logs_path = os.path.join(logs_dir, 'logs.txt')
++            nvs_imgs_dir = os.path.join('nvs_imgs', self.cfg['name'])
++            os.makedirs(logs_dir, exist_ok=True)
++            os.makedirs(nvs_imgs_dir, exist_ok=True)
++            self.train_network.nvs(log_dir_str=logs_dir,
++                                                  imgs_dir=nvs_imgs_dir)
++        elif self.cfg['network'] == 'material':
++            logs_dir = self.experiment.run.output('logs/nvs')
++            nvs_imgs_dir = self.experiment.run.output('renders/nvs')
++            logs_dir.mkdir(parents=True, exist_ok=True)
++            nvs_imgs_dir.mkdir(parents=True, exist_ok=True)
++            self.train_network.nvs(log_dir_str=str(logs_dir), imgs_dir=str(nvs_imgs_dir))
++        else:
++            print('Final geometry NVS deferred to a separately versioned evaluation protocol; see geometry.json.')
+ 
+         pbar.close()
+ 
+     def _load_model(self):
++        if self.experiment is not None:
++            return self.experiment.restore(self.network, self.optimizer, torch.load, self.cfg['total_step'])
+         best_para, start_step = 0, 0
+         if os.path.exists(self.pth_fn):
+             checkpoint = torch.load(self.pth_fn)
+@@ -212,6 +250,13 @@ class Trainer:
+ 
+     def _save_model(self, step, best_para, save_fn=None):
+         save_fn = self.pth_fn if save_fn is None else save_fn
++        if self.experiment is not None:
++            return self.experiment.save_checkpoint({
++                'step': step,
++                'best_para': best_para,
++                'network_state_dict': self.network.state_dict(),
++                'optimizer_state_dict': self.optimizer.state_dict(),
++            }, save_fn, torch.save)
+         torch.save({
+             'step': step,
+             'best_para': best_para,
+@@ -220,7 +265,7 @@ class Trainer:
+         }, save_fn)
+ 
+     def _init_logger(self):
+-        self.logger = Logger(self.model_dir)
++        self.logger = Logger(self.model_dir if self.experiment is None else str(self.experiment.run.logs))
+ 
+     def _log_data(self, results, step, prefix='train', verbose=False):
+         log_results = {}
+@@ -231,4 +276,4 @@ class Trainer:
+                 log_results[k] = np.mean(v)
+             else:
+                 log_results[k] = np.mean(v.detach().cpu().numpy())
+-        self.logger.log(log_results, prefix, step, verbose)
+\ No newline at end of file
++        self.logger.log(log_results, prefix, step, verbose)
