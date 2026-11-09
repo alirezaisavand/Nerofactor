@@ -142,7 +142,24 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized milestone: **1D.6A, G geometry validation and checkpoint
+Current authorized task: **bounded native A anisotropic material smoke
+preparation**, reviewed from `71257544d9038929197d45b3dafb2434ed2d731f`.
+Read [MATERIAL_TRAINING_SMOKE.md](docs/MATERIAL_TRAINING_SMOKE.md).
+Prepare exactly two original A optimizer returns using `TwoUpdateTrace`; preserve
+the pinned A scientific snapshot and original bear YAML, including effective
+shader regularization scopes, warm-up, clipping, sampling and all mathematics.
+The explicitly selected/hash-pinned historical bear mesh is approved only for
+this isolated diagnostic. Ordinary research runs still require an attributable
+G-to-A mesh handoff. No checkpoint initialization, resume, validation, saving,
+final NVS, material extraction or full training is authorized by this task.
+Record actual anisotropic/RGB/regularizer calls and per-group gradients, effective
+settings, Adam state, sampling and source identities with the existing helpers.
+CPU toy autograd/explicit stand-ins and static checks only from Codex. Native
+Docker/GPU execution is researcher-side after patch review; no scientific edits,
+original input modifications, installations, image/permission changes, commit
+or push. Short diagnostic success is not publication/full-training acceptance.
+
+Earlier authorized milestone: **1D.6A, G geometry validation and checkpoint
 compatibility**, reviewed from `596c070664ffd9cfff50805939026cff9ce21883`.
 Read [G lifecycle audit and commands](docs/G_GEOMETRY_LIFECYCLE.md) and
 [G training acceptance](docs/evidence/G_GEOMETRY_TRAINING_ACCEPTANCE.md).

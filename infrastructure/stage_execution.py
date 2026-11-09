@@ -98,6 +98,11 @@ def native_run(p,run,report,persist):
         probe=GTrainingProbe(trainer,torch,np,report,persist)
         GTwoUpdateTrace(trainer,probe,p['science']/'train/trainer.py').run()
         require(report['optimizer_calls_completed']==2 and not list(run.checkpoints.glob('*.pth')),'Unexpected G checkpoint/update budget')
+    elif report.get('bounded_material') is True:
+        from infrastructure.material_smoke import PROTOCOL,run_bounded
+        require(report['protocol']==PROTOCOL,'Unknown bounded material protocol')
+        run_bounded(trainer,p['science'],torch,np,report,persist)
+        require(not list(run.checkpoints.iterdir()),'Bounded material diagnostic wrote a checkpoint')
     else:
         # Actual A loop, clipping, NVS and selection; never invoked in CPU checks.
         report['phase']='original_material_loop';persist()
@@ -147,11 +152,17 @@ def run_material_owned(trainer,report,persist,capture=None):
     require(not errors,'Material owned resource cleanup failed')
 
 
-def execute(p,run_id,image_id,infrastructure_commit,mesh_handoff=None):
+def execute(p,run_id,image_id,infrastructure_commit,mesh_handoff=None,bounded_material=False):
     validate_run_id(run_id)
+    require(type(bounded_material) is bool,'Explicit bounded-material boolean required')
+    diagnostic_mesh=None
+    if bounded_material:
+        from infrastructure.material_smoke import PROTOCOL,admit_mesh,diagnostic_files
+        require(mesh_handoff is None,'Historical diagnostic cannot claim a G mesh handoff')
+        diagnostic_mesh=admit_mesh(p)
     require(p['stage']!='geometry' or mesh_handoff is None,'Geometry cannot accept a material mesh-handoff argument')
     native_guards(p,image_id)
-    transfer=handoff(mesh_handoff,p['selected'].mesh,p['resolver'],p['configuration']['database_name']) if p['stage']=='material' else None
+    transfer=handoff(mesh_handoff,p['selected'].mesh,p['resolver'],p['configuration']['database_name']) if p['stage']=='material' and not bounded_material else None
     # Cold import isolation is activated before Torch/scientific imports or allocation.
     activate(p['stage'],p['scientific_commit'])
     run=RunStore(p['resolver'],layout='mounted').create(run_id)
@@ -160,19 +171,24 @@ def execute(p,run_id,image_id,infrastructure_commit,mesh_handoff=None):
                     'declared_infrastructure_commit':infrastructure_commit,
                     'declared_image_id':image_id,
                     'infrastructure_files':infrastructure_identity()}
-    report={'schema_version':1,'protocol':'bell-G-two-update-training-v1' if p['stage']=='geometry' else 'material-A-stage-execution-v1',
+    if bounded_material:source_context['diagnostic_files']=diagnostic_files()
+    report={'schema_version':1,'protocol':PROTOCOL if bounded_material else ('bell-G-two-update-training-v1' if p['stage']=='geometry' else 'material-A-stage-execution-v1'),
+            'bounded_material':bounded_material,
             'status':'running','phase':'allocated','stage':p['stage'],'scientific_commit':p['scientific_commit'],
             'run_id':run_id,'arm':p['arm'],'route':p['route'],'source':source_context,'declared_image_id':image_id,
             'original_configuration':p['configuration'],'legacy_sha256':__import__('hashlib').sha256(p['raw']).hexdigest(),
             'mesh_handoff':transfer,'checkpoint_input':None,'optimizer_calls_completed':0 if p['stage']=='geometry' else None,
             'mesh_handoff_identity':{'path':str(mesh_handoff),'sha256':digest(mesh_handoff)} if transfer else None,
-            'mesh_identity':{'path':str(p['selected'].mesh),'sha256':digest(p['selected'].mesh),
-                             'bytes':p['selected'].mesh.stat().st_size} if transfer else None,
+            'mesh_identity':diagnostic_mesh if bounded_material else ({'path':str(p['selected'].mesh),'sha256':digest(p['selected'].mesh),
+                             'bytes':p['selected'].mesh.stat().st_size} if transfer else None),
             'started_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
             'limitations':['Fresh weights only; historical checkpoint G production/resume eligibility not established.',
                            'Native execution and this source selection require separate review; CPU fixtures are not native acceptance.',
                            'Original relative-path writers use an experiment-owned filesystem view; input files are mounted read-only.',
                            'Infrastructure/image commit declarations and handoff metadata are not independent historical attestation.']}
+    if bounded_material:
+        report.update(optimizer_calls_completed=0,diagnostic_only=True,research_geometry_admitted=False,
+                      acceptance_scope='A anisotropic two-update diagnostic only; no G handoff, full training or publication result')
     with run.output('stage-run.json').open('x') as stream:
         def persist():write_report(stream,report)
         persist()
@@ -198,10 +214,16 @@ def execute(p,run_id,image_id,infrastructure_commit,mesh_handoff=None):
                         digest(mesh_handoff)==report['mesh_handoff_identity']['sha256'],'Input mesh/handoff changed during execution')
                 require(handoff(mesh_handoff,p['selected'].mesh,p['resolver'],p['configuration']['database_name'])==transfer,
                         'Producing geometry evidence changed during execution')
+            if bounded_material:
+                require(digest(p['selected'].mesh)==diagnostic_mesh['sha256'] and diagnostic_files()==source_context['diagnostic_files'],
+                        'Diagnostic mesh/definition changed during execution')
+                require(report['optimizer_calls_completed']==2 and len(report.get('updates',[]))==2 and
+                        not list(run.checkpoints.iterdir()),'Invalid bounded material completion')
+                require(not any(q.is_file() for q in run.output('renders').rglob('*')),'Unexpected material validation/NVS render')
             baseline(p['stage'],p['scientific_commit'])
             require(digest(ROOT/'scientific_sources/manifest-v1.json')==source_context['source_manifest_sha256'] and
                     infrastructure_identity()==source_context['infrastructure_files'],'Source manifest/infrastructure changed')
-            report.update(status='complete',phase='bounded_stop_after_second_optimizer_return' if p['stage']=='geometry' else 'training_complete',
+            report.update(status='complete',phase='bounded_stop_after_second_optimizer_return' if p['stage']=='geometry' or bounded_material else 'training_complete',
                           finished_at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat())
             report['output_hashes']={q.relative_to(run.root).as_posix():digest(q) for q in run.root.rglob('*')
                 if q.is_file() and q.resolve()==q and q!=run.output('stage-run.json') and '.experiment.json'!=q.name
