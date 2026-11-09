@@ -142,7 +142,34 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **historical G bell mesh → pinned A bell material
+Current authorized task: **Milestone2, bounded original G/A training/checkpoint/
+evaluation lifecycle preparation**, reviewed from
+`d72b2b84c2e7d704ee2f6642eca9b2ab0366350b`.
+Read [TRAINING_CHECKPOINT_EVALUATION_LIFECYCLE.md](docs/TRAINING_CHECKPOINT_EVALUATION_LIFECYCLE.md).
+Milestone1 native A bell ray/two-update evidence is accepted only in its narrow
+diagnostic scope; preserve its original reports and every pinned snapshot. Prepare
+separate save (two original optimizer returns + explicitly early original save),
+cold-process restore (original strict model/Adam load + one original index2
+update), and original held-out evaluation actions for pinned G/A. Trust/hash/
+source/configuration/mesh/split/optimizer compatibility gates precede restoration.
+No partial loading, implicit old-checkpoint selection or hyperparameter repair.
+Preserve original serialized fields, scheduler floating-point operation order,
+G no-clipping/A clipping and all losses/rendering/sampling/defaults. Original
+checkpoints omit RNG/loader/ray cursor; record actual resumed sampling/reset and
+never claim bitwise uninterrupted continuation without proof. No continuation
+sidecar is implemented in this milestone. Evaluate G source0/current G split;
+A source58 then11/current A split, full original metric/background/channel
+semantics. Record black misses, encoded normals, absent rotation/unfilled alpha
+without correcting them. Require weights/optimizer unchanged by evaluation.
+Keep r128 mesh historical/diagnostic and ordinary research handoff unchanged.
+Codex may inspect small JSON/file identities, implement wrappers/manifests and
+CPU toy/static tests only. No native models/camera/checkpoint loading, Docker/GPU
+execution, installations, scientific/config/input/original-evidence modifications, image/
+permission changes, commit or push. Provide bounded isolated researcher commands
+and stop for review. Milestone2 is not complete until separately reviewed native
+save/restore/evaluation evidence passes for both stages; no convergence claims.
+
+Earlier authorized task: **historical G bell mesh → pinned A bell material
 integration diagnostic preparation**, reviewed from
 `e6d2262b908e7125e440c64d298d12b8ef5fd105`.
 Read [BELL_MATERIAL_INTEGRATION_DIAGNOSTIC.md](docs/BELL_MATERIAL_INTEGRATION_DIAGNOSTIC.md).

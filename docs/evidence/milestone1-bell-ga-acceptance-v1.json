@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "kind": "milestone1-bell-G-to-A-diagnostic-acceptance",
+  "basis": "researcher acceptance plus independently inspected existing JSON bytes; no native regeneration",
+  "accepted_scope": "historical r128 G-extracted bell mesh into pinned A, current ray gates and fresh two-update prefix only",
+  "scientific_geometry": "79252178e65914ad1acbc14790b1514f276bfea0",
+  "scientific_material": "e1e859779301faced46d6476691e20b546c27ae0",
+  "material_report": {
+    "path": "/home/isavand/paper/evidence/bell-G-to-A.VgChrrec/run/bell-material-diagnostic.json",
+    "sha256": "6396208c186f9583585d80095b918a537784bed3bd58c559a2f12329f8caff38",
+    "run_id": "bell-ga-train-a3b03c5c9d8245e6b067137cba9d2d06",
+    "protocol": "historical-G-bell-to-A-two-update-v1"
+  },
+  "ray_report": {
+    "path": "/home/isavand/paper/evidence/bell-G-to-A.TlwUeOsY/run/bell-material-diagnostic.json",
+    "sha256": "88262c38e0fb40930e4c026fe92aa971a6a4ef841d47e51b4f1f6efa4b267510",
+    "run_id": "bell-ga-rays-f7cf2b4eec6849d99e347c688f16ad73",
+    "protocol": "historical-G-bell-to-A-rays-v1"
+  },
+  "mesh_sha256": "eaa17f8a6b4ff12c769443195a00f78f2fd08b7adfd3e51ba463fea5a55cefd5",
+  "infrastructure_commit_declared": "d72b2b84c2e7d704ee2f6642eca9b2ab0366350b",
+  "image_id_declared": "sha256:2572950d9f662b7603b604878613e85c1a0fec90842447e9a256751a130ee137",
+  "raytracing_binary": {
+    "path": "/usr/local/lib/python3.8/dist-packages/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "sha256": "9cff02fdd0752c17a613874c0f71e47803a666234e5e5046cf194c5646102180"
+  },
+  "observed": {
+    "optimizer_returns": 2,
+    "learning_rates": [
+      0.0,
+      5e-07
+    ],
+    "second_update_changed_elements": 753356,
+    "active_parameter_groups": [
+      "mx_predictor",
+      "my_predictor",
+      "rotation_predictor",
+      "metallic_predictor",
+      "kd_predictor",
+      "feats_network",
+      "outer_light",
+      "inner_light"
+    ],
+    "cleanup_errors": [],
+    "runtime_cleanup": {
+      "CPU_float_default_restored": true,
+      "profile_restored": true,
+      "trace_restored": true
+    }
+  },
+  "checkpoint_producing_revision": "unresolved",
+  "research_handoff_admitted": false,
+  "milestone2_lifecycle_native_accepted": false
+}

@@ -1,0 +1,345 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Bounded dual-stage bell lifecycle diagnostic manifest v1",
+  "type": "object",
+  "required": [
+    "manifest_version",
+    "protocol",
+    "stage",
+    "action",
+    "run_id",
+    "status",
+    "phase",
+    "scientific_commit",
+    "scientific_source",
+    "infrastructure_commit_declared",
+    "infrastructure_files",
+    "image_id_declared",
+    "original_configuration",
+    "runtime_configuration",
+    "input_files",
+    "splits",
+    "mesh_identity",
+    "prerequisites",
+    "checkpoint_input",
+    "producer_reference",
+    "optimizer_calls_completed",
+    "research_handoff_admitted",
+    "natural_schedule_tested",
+    "uninterrupted_equivalence_proven",
+    "RNG_loader_cursor_state_in_original_checkpoint",
+    "started_at_utc"
+  ],
+  "properties": {
+    "manifest_version": {
+      "const": 1
+    },
+    "protocol": {
+      "const": "dual-stage-bell-lifecycle-v1"
+    },
+    "stage": {
+      "enum": [
+        "geometry",
+        "material"
+      ]
+    },
+    "action": {
+      "enum": [
+        "save",
+        "restore",
+        "evaluate"
+      ]
+    },
+    "status": {
+      "enum": [
+        "running",
+        "failed",
+        "complete"
+      ]
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+    },
+    "scientific_commit": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "infrastructure_commit_declared": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "image_id_declared": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "infrastructure_files": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      }
+    },
+    "optimizer_calls_completed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2
+    },
+    "mesh_identity": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "checkpoint_input": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "producer_reference": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "research_handoff_admitted": {
+      "const": false
+    },
+    "natural_schedule_tested": {
+      "const": false
+    },
+    "uninterrupted_equivalence_proven": {
+      "const": false
+    },
+    "RNG_loader_cursor_state_in_original_checkpoint": {
+      "const": false
+    },
+    "checkpoint": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "bytes",
+        "step",
+        "best_para",
+        "state",
+        "scheduler",
+        "invocation"
+      ],
+      "properties": {
+        "sha256": {
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "step": {
+          "const": 2
+        },
+        "best_para": {
+          "const": 0,
+          "type": "integer"
+        },
+        "state": {
+          "type": "object",
+          "required": [
+            "network",
+            "network_sha256",
+            "optimizer",
+            "optimizer_sha256",
+            "optimizer_counter_types",
+            "optimizer_group_types"
+          ]
+        }
+      }
+    },
+    "scientific_source": {
+      "type": "object"
+    },
+    "original_configuration": {
+      "type": "object"
+    },
+    "runtime_configuration": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "input_files": {
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "splits": {
+      "type": "object"
+    },
+    "prerequisites": {
+      "type": "object"
+    },
+    "effective_configuration": {
+      "type": "object"
+    },
+    "runtime": {
+      "type": "object"
+    },
+    "output_hashes": {
+      "type": "object"
+    },
+    "runtime_cleanup": {
+      "type": "object"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "complete"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "runtime",
+          "effective_configuration",
+          "runtime_cleanup",
+          "output_hashes",
+          "finished_at_utc",
+          "imported_scientific_modules"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "failed"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "error_type",
+          "error",
+          "finished_at_utc"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "complete"
+          },
+          "action": {
+            "const": "save"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "checkpoint",
+          "updates",
+          "save_sampling_cursor"
+        ],
+        "properties": {
+          "optimizer_calls_completed": {
+            "const": 2
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "complete"
+          },
+          "action": {
+            "const": "restore"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "restoration",
+          "state_after_update",
+          "scheduler_continuity",
+          "continuation",
+          "updates"
+        ],
+        "properties": {
+          "optimizer_calls_completed": {
+            "const": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "complete"
+          },
+          "action": {
+            "const": "evaluate"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "evaluation",
+          "evaluation_before",
+          "evaluation_after",
+          "evaluation_implementation",
+          "model_optimizer_unchanged"
+        ],
+        "properties": {
+          "optimizer_calls_completed": {
+            "const": 0
+          },
+          "model_optimizer_unchanged": {
+            "const": true
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "stage": {
+            "const": "geometry"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "scientific_commit": {
+            "const": "79252178e65914ad1acbc14790b1514f276bfea0"
+          },
+          "mesh_identity": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "stage": {
+            "const": "material"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "scientific_commit": {
+            "const": "e1e859779301faced46d6476691e20b546c27ae0"
+          },
+          "mesh_identity": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  ]
+}
