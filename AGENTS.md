@@ -142,7 +142,25 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **bounded native A anisotropic material smoke
+Current authorized task: **G bell historical-best checkpoint mesh extraction
+diagnostic preparation**, reviewed from `d4e80bde47fbcb0d2a30fe4bf462d7a28e8fb9d1`.
+Read [G_MESH_EXTRACTION_DIAGNOSTIC.md](docs/G_MESH_EXTRACTION_DIAGNOSTIC.md).
+Prepare a separate explicit best-checkpoint/resolution128 protocol using exact
+pinned G extraction/SDF functions and original Trimesh processing/export defaults.
+Original G CLI still selects model.pth/default512; no silent substitution.
+Preserve bbox±1, zero level, outside-sphere+1, SDF scale/coordinates, winding,
+normal handling, scientific snapshots, YAML and all existing evidence. Inspect
+and report finite/nonempty/index-valid/nondegenerate raw, processed and serialized
+geometry without repair. Keep selected historical producing provenance unresolved;
+no new G training attribution or ordinary research handoff admission. The
+researcher's completed G/A smoke and strict G compatibility are prerequisites,
+not permission to alter old evidence or claim full training reproduction.
+Codex may implement wrappers, metadata and CPU/static fixtures only. No native
+checkpoint/camera loading, native models, GPU/Docker/extraction execution, full
+material/G-to-A runs, installs, source/artifact/permission changes, commit or push.
+Prepare bounded researcher tmux/Docker instructions and stop for review.
+
+Earlier authorized task: **bounded native A anisotropic material smoke
 preparation**, reviewed from `71257544d9038929197d45b3dafb2434ed2d731f`.
 Read [MATERIAL_TRAINING_SMOKE.md](docs/MATERIAL_TRAINING_SMOKE.md).
 Prepare exactly two original A optimizer returns using `TwoUpdateTrace`; preserve

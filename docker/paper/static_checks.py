@@ -59,7 +59,8 @@ def main():
               repo / 'run_bell_camera_diagnostic.py', *HERE.glob('*.py')]
     paths += [repo / 'colmap/read_write_model.py', repo / 'colmap/plyfile.py',
               repo / 'run_stage_experiment.py', repo / 'compare_g_geometry_training.py',
-              repo / 'run_g_geometry_diagnostic.py', repo / 'run_material_training_smoke.py']
+              repo / 'run_g_geometry_diagnostic.py', repo / 'run_material_training_smoke.py',
+              repo / 'run_g_mesh_diagnostic.py']
     sources = json.loads((repo / 'scientific_sources/manifest-v1.json').read_text())
     for stage in sources['stages'].values():
         paths += [repo / stage['root'] / name for name in stage['files'] if name.endswith('.py')]
