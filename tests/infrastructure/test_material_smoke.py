@@ -3,6 +3,7 @@ import ast
 from contextlib import redirect_stdout,redirect_stderr
 from copy import deepcopy
 import io
+import inspect
 import json
 import os
 from pathlib import Path
@@ -208,6 +209,52 @@ class MaterialLoopTests(unittest.TestCase):
     def setUp(self):
         PlanningTests.setUp(self);states=(random.getstate(),np.random.get_state(),torch.get_rng_state())
         self.addCleanup(lambda:(random.setstate(states[0]),np.random.set_state(states[1]),torch.set_rng_state(states[2])))
+    def test_shared_no_grad_wrapper_allows_Adam_but_forbids_original_bodies(self):
+        f=material_fixture();entered=[]
+        class Renderer(f.Renderer):
+            @torch.no_grad()
+            def test_step(self):entered.append('validation')
+            @torch.no_grad()
+            def predict_materials(self):entered.append('extraction')
+        # Compile the actual pinned NVS body/decorator without importing a native
+        # renderer or executing its body. The guard must stop before its first line.
+        Renderer.nvs=compile_members(A/'network/renderer.py','NeROMaterialRenderer',{'nvs'},{'torch':torch})['nvs']
+        class Trainer:
+            @torch.no_grad()
+            def _save_model(self):entered.append('checkpoint')
+        class Evaluator:
+            @torch.no_grad()
+            def __call__(self):entered.append('evaluator')
+        probe=MaterialProbe(SimpleNamespace(),torch,np,{},lambda:None)
+        probe.bind_calls(Renderer,f.Shader,f.losses['NeRFRenderLoss'],f.losses['MaterialRegLoss'],Trainer,Evaluator)
+        parameter=torch.nn.Parameter(torch.tensor([1.0],device='cpu'))
+        optimizer=torch.optim.Adam([parameter],lr=.001,eps=1e-4,amsgrad=True)
+        parameter.grad=torch.ones_like(parameter)
+        # Torch1.8 Adam.step uses the same no_grad decorator as NVS. Newer host
+        # Torch uses another optimizer wrapper, so wrap the real bound Adam.step
+        # in no_grad to reproduce exactly the shared decorate_context code frame.
+        step=torch.no_grad()(optimizer.step)
+        wrapper=Renderer.nvs.__code__
+        self.assertIs(wrapper,step.__code__)
+        forbidden=[Renderer.nvs,Renderer.test_step,Renderer.predict_materials,Trainer._save_model,Evaluator.__call__]
+        self.assertTrue(all(method.__code__ is wrapper for method in forbidden))
+        self.assertNotIn(wrapper,probe.forbidden)
+        self.assertTrue(all(inspect.unwrap(method).__code__ in probe.forbidden for method in forbidden))
+        grad_enabled=torch.is_grad_enabled()
+        with probe.observe_calls():step()
+        self.assertLess(parameter.item(),1.0)
+        self.assertEqual(int(optimizer.state[parameter]['step']),1)
+        after_step=parameter.detach().clone()
+        for method,args in [(Renderer.nvs,(None,'unused-logs','unused-images')),
+                            *[(method,(None,)) for method in forbidden[1:]]]:
+            with self.subTest(method=method.__qualname__):
+                with self.assertRaisesRegex(SignatureError,'Validation/checkpoint/NVS'):
+                    with probe.observe_calls():method(*args)
+                self.assertIsNone(sys.getprofile())
+                self.assertEqual(torch.is_grad_enabled(),grad_enabled)
+        self.assertEqual(entered,[])
+        self.assertTrue(torch.equal(parameter.detach(),after_step))
+        self.assertEqual(int(optimizer.state[parameter]['step']),1)
     def run_material(self,fail=None):
         from training_smoke_fixtures import cpu_rng
         p=self.planning();run=RunStore(p['resolver']).create('cpu-material')

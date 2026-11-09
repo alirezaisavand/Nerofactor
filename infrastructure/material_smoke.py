@@ -1,5 +1,6 @@
 """Bounded A-material diagnostics; native dependencies are supplied after isolation."""
 from contextlib import contextmanager
+import inspect
 import math
 from pathlib import Path
 import struct
@@ -91,8 +92,9 @@ class MaterialProbe(TrainingProbe):
              'anisotropic_regularization','get_lights','predict_outer_lights','get_inner_lights','get_human_light']}
         self.calls.update({renderer.compute_rgb_loss.__code__:'renderer.compute_rgb_loss',
                            rgb_loss.__call__.__code__:'loss.nerf_render',regularizer.__call__.__code__:'loss.mat_reg'})
-        self.forbidden={getattr(renderer,n).__code__ for n in ['test_step','nvs','predict_materials']}
-        self.forbidden.update([trainer_class._save_model.__code__,evaluator.__call__.__code__])
+        # Torch decorators share wrapper code with Adam.step; forbid original bodies.
+        self.forbidden={inspect.unwrap(getattr(renderer,n)).__code__ for n in ['test_step','nvs','predict_materials']}
+        self.forbidden.update(inspect.unwrap(f).__code__ for f in [trainer_class._save_model,evaluator.__call__])
 
     @contextmanager
     def observe_calls(self):
