@@ -142,7 +142,28 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **G bell historical-best checkpoint mesh extraction
+Current authorized task: **historical G bell mesh → pinned A bell material
+integration diagnostic preparation**, reviewed from
+`e6d2262b908e7125e440c64d298d12b8ef5fd105`.
+Read [BELL_MATERIAL_INTEGRATION_DIAGNOSTIC.md](docs/BELL_MATERIAL_INTEGRATION_DIAGNOSTIC.md).
+Only the exact SHA-pinned completed G r128 extraction report and original PLY
+may receive a separate diagnostic-only exception. Ordinary research handoff and
+all existing evidence/source snapshots stay unchanged. Preserve mesh winding,
+original A trace normal negation, camera conventions, original bell YAML, full
+material resolution/masks, optimizer/scheduler/RNG and shader-setting scopes.
+Prepare independent bounded ray-only and separately gated two-update actions.
+Observe raw BVH/final A normals without repair; frozen camera/normal/silhouette
+gates must pass before explicit two-update execution can be admitted. Reuse the
+existing MaterialProbe/TwoUpdateTrace and owned cleanup; no shader/model/optimizer
+construction in ray-only mode. Historical checkpoint provenance remains unresolved;
+r128 is diagnostic, not canonical512 or attributable new G training/research mesh.
+Codex may implement metadata/I/O wrappers and CPU toy/static tests only; no native
+camera/checkpoint loading, native GPU/Docker/ray tracing/training, original input
+or source/YAML modifications, installs, image/permission changes, commit or push.
+Provide fresh-output, read-only-input, no-network tmux/Docker commands with timeout
+and stop for review before native execution or full G→A research experiments.
+
+Earlier authorized task: **G bell historical-best checkpoint mesh extraction
 diagnostic preparation**, reviewed from `d4e80bde47fbcb0d2a30fe4bf462d7a28e8fb9d1`.
 Read [G_MESH_EXTRACTION_DIAGNOSTIC.md](docs/G_MESH_EXTRACTION_DIAGNOSTIC.md).
 Prepare a separate explicit best-checkpoint/resolution128 protocol using exact

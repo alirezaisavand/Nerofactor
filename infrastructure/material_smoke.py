@@ -85,6 +85,10 @@ def admit_mesh(p):
 
 class MaterialProbe(TrainingProbe):
     """Reuse finite reductions, clipping, Adam accounting, two-update stop/cleanup."""
+    database_name='real/bear/raw_1024'
+    is_real=True
+    human_lights=True
+    groups=GROUPS
     def bind_calls(self,renderer,shader,rgb_loss,regularizer,trainer_class,evaluator):
         self.calls={getattr(shader,name).__code__:'shader.'+name for name in
             ['forward','anisotropic_forward','shade_anisotropic_mixed','sample_aniso_ggx_directions',
@@ -149,14 +153,14 @@ class MaterialProbe(TrainingProbe):
             'normal_warning_observed':bool(t.network.warned_normal),
             'limit':'Original construction/ray-pool succeeded; no scientific mesh provenance/orientation claim.'}
         require(cfg['train_ray_num']==512 and cfg['rgb_loss']=='charbonier' and cfg['reg_mat'] and cfg['reg_diffuse_light'] and
-                cfg['reg_diffuse_light_lambda']==.1 and cfg['database_name']=='real/bear/raw_1024','Material scientific settings changed')
-        require(shader['anisotropy'] is True and shader['is_real'] is True and shader['human_lights'] is True and
+                cfg['reg_diffuse_light_lambda']==.1 and cfg['database_name']==self.database_name,'Material scientific settings changed')
+        require(shader['anisotropy'] is True and shader['is_real'] is self.is_real and shader['human_lights'] is self.human_lights and
                 shader['diffuse_sample_num']==512 and shader['specular_sample_num']==1024 and shader['reg_change'] is True and
                 shader['reg_energy_loss'] is True and shader['reg_spec_loss'] is True and
                 shader['reg_energy_loss_lambda']==shader['reg_spec_loss_lambda']==.05,'Effective A shader/regularizer settings changed')
         initial=parameter_copies(t.network,np);require(initial,'No material parameters')
-        for group in GROUPS:require(any(n.startswith('shader_network.'+group+'.') for n in initial),'Missing predictor/light group: '+group)
-        require(all(any(n.startswith('shader_network.'+g+'.') for g in GROUPS) for n in initial),'Unknown material parameter group')
+        for group in self.groups:require(any(n.startswith('shader_network.'+group+'.') for n in initial),'Missing predictor/light group: '+group)
+        require(all(any(n.startswith('shader_network.'+g+'.') for g in self.groups) for n in initial),'Unknown material parameter group')
         self.previous_state=optimizer_record(t.optimizer,t.network,np)
         g=self.previous_state['groups'][0]
         require(len(self.previous_state['groups'])==1 and not self.previous_state['state'] and g['lr']==.001 and g['eps']==1e-4 and
@@ -203,7 +207,7 @@ class MaterialProbe(TrainingProbe):
 
     def group_gradients(self,records):
         groups={}
-        for group in GROUPS:
+        for group in self.groups:
             selected={n:v for n,v in records.items() if n.startswith('shader_network.'+group+'.')}
             norm=sum(v['l2']**2 for v in selected.values() if v is not None)**.5
             active=True;reason='material prediction/shared features'
@@ -234,18 +238,18 @@ class MaterialProbe(TrainingProbe):
         require(any(v['exp_avg']['l2']>0 and v['exp_avg_sq']['l2']>0 for v in update['optimizer']['state'].values()),
                 'No meaningful Adam moments after material update')
         update['group_changed_elements']={g:sum(v['changed_elements'] for n,v in update['parameter_changes'].items()
-            if n.startswith('shader_network.'+g+'.')) for g in GROUPS}
+            if n.startswith('shader_network.'+g+'.')) for g in self.groups}
         self.persist()
 
 
-def run_bounded(trainer,science,torch,np,report,persist):
+def run_bounded(trainer,science,torch,np,report,persist,probe_class=MaterialProbe):
     from network.renderer import NeROMaterialRenderer
     from network.field import MCShadingNetwork
     from network.loss import NeRFRenderLoss,MaterialRegLoss
     from train.trainer import Trainer
     from train.train_valid import ValidationEvaluator
     from infrastructure.bounded_training import TwoUpdateTrace
-    probe=MaterialProbe(trainer,torch,np,report,persist)
+    probe=probe_class(trainer,torch,np,report,persist)
     probe.bind_calls(NeROMaterialRenderer,MCShadingNetwork,NeRFRenderLoss,MaterialRegLoss,Trainer,ValidationEvaluator)
     with probe.observe_calls():TwoUpdateTrace(trainer,probe,science/'train/trainer.py').run()
     require(report['optimizer_calls_completed']==2 and len(report['updates'])==2,'Material smoke did not complete exactly two updates')
