@@ -142,7 +142,29 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **Milestone3C-2, diagnose failed material recovery**,
+Current authorized task: **Milestone3C-3, controlled optimizer continuation**,
+from `15d0a07e65e5d3f18f72d68819b62e386886c492` on
+`feat/material-recovery-continuation-v1`. Implement and test exact JSON restoration
+of all five admitted update250 seven-scalar parameter/Adam states. Freeze
+[the continuation protocol](docs/protocols/MATERIAL_RECOVERY_CONTINUATION_V1.md)
+before ONE CPU execution (one thread,1,800-second wall cap, no retry/extension).
+Change only update budget:750 additional Adam returns per seed101..105 to1000.
+Preserve original A2/atan2, optimizer options/state, transforms, fit/evaluation
+tapes, samples, targets and success criteria. Reuse accepted reference/Jacobian
+gates; no prefix replay, new starts, hyperparameter/decoder/sampling/regularizer
+changes, prior evidence/source edits, GPU/neural training, old suites, Docker,
+installs or historical artifacts. Stop and preserve partial evidence on a failed
+mandatory check. Only NEW focused tests; python3 for every Python command.
+Use the new continuation worktree; preserve the original user document edit.
+Commit/push only the requested feature branch; no merge or further experiment.
+The one authorized continuation is complete:3,750 additional Adam returns,
+275.22s, all five endpoints at1000,0/5 recovery successes. Preserve its
+[evidence](docs/evidence/MATERIAL_RECOVERY_CONTINUATION_V1.json) and
+[results](docs/MATERIAL_RECOVERY_CONTINUATION_V1_RESULTS.md). Do not repeat it,
+extend optimization, change settings or implement the recommended comparison
+without separate researcher approval.
+
+Earlier authorized task: **Milestone3C-2, diagnose failed material recovery**,
 from `72629688bee84c0b06f4fa3c19b207917d2dd450` on
 `feat/material-recovery-diagnostics-v1`. Preserve the accepted 3C-1 evidence,
 protocols, A2 shader and frozen G/A. First analyze saved trajectories without
