@@ -142,7 +142,30 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **Milestone3C-1, first known-material recovery**,
+Current authorized task: **Milestone3C-2, diagnose failed material recovery**,
+from `72629688bee84c0b06f4fa3c19b207917d2dd450` on
+`feat/material-recovery-diagnostics-v1`. Preserve the accepted 3C-1 evidence,
+protocols, A2 shader and frozen G/A. First analyze saved trajectories without
+shader execution. Freeze [the new diagnostic protocol](docs/protocols/MATERIAL_RECOVERY_DIAGNOSTICS_V1.md)
+before ONE bounded CPU diagnostic (1,800-second wall cap, one thread, no retry).
+Use admitted original fit/evaluation tapes; reuse true-parameter targets/Jacobians,
+and generate new two-grid references only at five terminals/required perturbations.
+Retain original FD steps/scales and convergence bounds; stop on failed reference
+convergence or exhausted budget. Explicitly separate finite objective gradients,
+continuous gradients, mask/branch artifacts, compensation and causal uncertainty.
+Only NEW focused CPU fixtures/static checks; python3 in every Python command.
+No optimizer construction/steps, new initializations, loss/LR/regularizer changes,
+prior suite/experiment reruns, accepted shader/source/evidence edits, GPU/neural
+training, datasets/checkpoints, Docker, installs or permissions changes.
+Commit/push only this feature branch; no merge or proposed next experiment.
+Use the separate diagnostics worktree; preserve the existing uncommitted edit in
+the original workspace's ANISOTROPIC_BRDF_SCIENTIFIC_AUDIT_V1.md unchanged.
+The one authorized diagnostic is complete (81.49s, zero optimizer calls).
+Preserve its two new evidence files and
+[results](docs/MATERIAL_RECOVERY_DIAGNOSTICS_V1_RESULTS.md). A longer controlled
+continuation is recommended only; no extra execution or correction is authorized.
+
+Earlier authorized task: **Milestone3C-1, first known-material recovery**,
 from `179e36eb01e976d216a45fd323cc764308b49bd0` on
 `feat/known-material-recovery-v1`. The researcher approves implementation and
 ONE bounded CPU experiment under the unchanged
