@@ -142,7 +142,29 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **Milestone3A-1, independent CPU geometry evidence and
+Current authorized task: **Milestone3A-2, bounded scientific SDF/mesh/A-normal
+audit**, on `feat/geometry-sdf-mesh-audit-v1` from accepted base
+`3fe197bbdc37957c187c8589fffdb123aaac692d`.
+Read [GEOMETRY_SDF_MESH_AUDIT_V1.md](docs/GEOMETRY_SDF_MESH_AUDIT_V1.md).
+Preserve accepted 3A-1 evidence and frozen G/A snapshots. Consume only explicitly
+selected/hash-admitted extraction/mesh/ray/NPZ/checkpoint/3A-1 artifacts. Prepare
+original G eval-mode strict full-state loading and bounded float32 SDF queries
+with first input derivatives (create_graph=False), only in the reviewed isolated
+researcher runtime with explicit pickle trust. No optimizer, dataset loading,
+rendering, reinitialization after load or checkpoint writes. Deterministic samples
+and all three anomalous rays, at most 20,000 SDF point evaluations; no tolerance
+tuning, mesh repair/transform, normal flip, rescaling or scientific substitutions.
+Separate raw network SDF from outside-sphere masked extraction field; signed
+normal comparisons and local measured exterior polarity never prove producing
+provenance or research handoff. Both remain unresolved. Codex may implement and
+run only NEW analytical CPU tests and essential syntax/static checks; do not
+repeat 3A-1, full/historical suites, lifecycle or smokes. No native checkpoint
+loading/inference, GPU/Docker, extraction, training, installs, original evidence/
+scientific source/config/data edits, permission changes, automatic commit/push/
+merge or later milestones. Prepare bounded read-only-input researcher commands
+and stop for review. Do not merge into paper/infrastructure.
+
+Earlier authorized task: **Milestone3A-1, independent CPU geometry evidence and
 coordinate audit**, on a new feature branch from accepted base
 `aec29d2063b9c1a88113380018239722dd2682b6`; `d3f3bec4` is not the accepted base.
 Read [GEOMETRY_SCIENTIFIC_AUDIT_V1.md](docs/GEOMETRY_SCIENTIFIC_AUDIT_V1.md).
