@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "base_commit": "959db370cd18a09a20b2a0c9bb24a20a2cdba22a",
+  "material_revision": "e1e859779301faced46d6476691e20b546c27ae0",
+  "documents": [
+    {
+      "role": "researcher-provided masters thesis",
+      "path": "/home/isavand/paper/evidence/thesis-docs/Isavand_Alireza_202601_masters.pdf",
+      "bytes": 4987586,
+      "sha256": "1b0404df159381e7beb643979c2c159a23c83c6c2f191d9faff5fc41997b62ea",
+      "pdf_pages": 73
+    },
+    {
+      "role": "Kurt et al. 2010",
+      "path": "/home/isavand/paper/evidence/thesis-docs/2010-anisobrdf.pdf",
+      "bytes": 7577655,
+      "sha256": "9335210d2fcd34eb96c72f47d4f6caeb89f2d1cedc1703dec1a9d7dfe8280398",
+      "pdf_pages": 9
+    },
+    {
+      "role": "NeRO paper",
+      "path": "/home/isavand/paper/evidence/thesis-docs/NeRO.pdf",
+      "bytes": 27635351,
+      "sha256": "129be771b22030f02f8f023bf7716c48e0bd8c5e0f49f249d9f4c806b072b54a",
+      "pdf_pages": 26
+    }
+  ],
+  "source_files": [
+    {
+      "path": "scientific_sources/material_a/network/field.py",
+      "sha256": "b8386007dc009442cdefdeccc3c6ecc0114f6d0e7feaf804008b0bd9020091fe"
+    },
+    {
+      "path": "scientific_sources/material_a/network/renderer.py",
+      "sha256": "dd82c61cb91a3d54e801f1fb32238e3b03a87e1ceb4c50f24f1b359e50cfd5e9"
+    },
+    {
+      "path": "scientific_sources/material_a/utils/base_utils.py",
+      "sha256": "c07a99a9713a8c9c1b67fcf57383083336e0b1673de78f99903236d888f55a5b"
+    },
+    {
+      "path": "scientific_sources/material_a/utils/raw_utils.py",
+      "sha256": "7731b3740b3253f78eb9bf5fa2dcf43d6d288cffcd5e2811042b657b8a9e9366"
+    },
+    {
+      "path": "scientific_sources/material_a/configs/material/syn/bell.yaml",
+      "sha256": "f53d1512e216f63400a2675f9720676534452c9eeec5c3eba324b14c45c2b933"
+    }
+  ],
+  "policy": "Read-only PDFs inspected locally. No source/checkpoint loading, native runs or producing-run attribution. Original PDFs not copied into Git."
+}

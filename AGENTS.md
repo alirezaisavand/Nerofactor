@@ -142,7 +142,27 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **Milestone3A-2, bounded scientific SDF/mesh/A-normal
+Current authorized task: **Milestone3B-1, scientific anisotropic BRDF audit**,
+from `959db370cd18a09a20b2a0c9bb24a20a2cdba22a` on
+`feat/anisotropic-brdf-scientific-audit`.
+Read [ANISOTROPIC_BRDF_SCIENTIFIC_AUDIT_V1.md](docs/ANISOTROPIC_BRDF_SCIENTIFIC_AUDIT_V1.md)
+and its equation map/3A-2 close-out. Independently analyze existing hash-selected
+3A-2 JSON/NPZ offline; do not repeat native experiments or promote failed geometry.
+Inspect frozen A and researcher-provided thesis/Kurt/NeRO PDFs read-only. Derive
+actual equations, sampling/PDF/estimator weights, roughness/theta/frame settings
+and effective regularization scopes. Only new analytical CPU tests and essential
+static checks are authorized; use python3 in every Python command. Pure, explicitly
+selected/hash-verified source method bodies may be exercised on CPU fixtures;
+no scientific imports/constructors, checkpoints, GPU, training or optimization.
+Keep defects, numerical fragility, approximations and proposed improvements
+distinct. All proposed changes require separate approval; reference mathematics
+is not a production implementation. Preserve frozen sources/YAML and accepted
+evidence. No installs, original artifact changes, old-suite/diagnostic repetitions
+or infrastructure expansion. The researcher explicitly authorizes committing
+and pushing this reviewed feature branch; do not merge it or start the next
+controlled experiment. Earlier no-commit rules do not override this authorization.
+
+Earlier authorized task: **Milestone3A-2, bounded scientific SDF/mesh/A-normal
 audit**, on `feat/geometry-sdf-mesh-audit-v1` from accepted base
 `3fe197bbdc37957c187c8589fffdb123aaac692d`.
 Read [GEOMETRY_SDF_MESH_AUDIT_V1.md](docs/GEOMETRY_SDF_MESH_AUDIT_V1.md).

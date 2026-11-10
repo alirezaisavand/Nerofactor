@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "protocol": "anisotropic-brdf-analytical-v1",
+  "quadrature": {
+    "mu": 192,
+    "phi": 384,
+    "acceptance_phi": 16384
+  },
+  "scope": "Independent ideal-domain CPU mathematics; source float32 checks live in focused tests, no native results",
+  "specular_reciprocity": {
+    "kernel_forward": 0.2282160093096553,
+    "kernel_reverse": 0.22821600930965538,
+    "P_normal": 0.8215171828981781,
+    "P_oblique": 0.5630578707201875,
+    "conditional_forward": 0.27779821781030384,
+    "conditional_reverse": 0.40531537019054953
+  },
+  "diffuse_cosine_squared_illumination": {
+    "Lambertian": 0.5,
+    "frozen_continuum": 0.3633802276324186
+  },
+  "directional_energy": [
+    {
+      "view": "normal",
+      "mx": 0.6,
+      "my": 0.9,
+      "metallic": 0.001,
+      "kd": 0.999,
+      "F0": 0.040959,
+      "valid_probability": 0.8215171828981781,
+      "unconditioned_specular_reflectance": 0.019778017664713793,
+      "conditional_specular_reflectance": 0.024074989636784207,
+      "unconditioned_constant_light_total": 1.017779017664714,
+      "actual_constant_light_total_limit": 1.0220759896367841
+    },
+    {
+      "view": "normal",
+      "mx": 0.6,
+      "my": 0.9,
+      "metallic": 0.5,
+      "kd": 0.7,
+      "F0": 0.37,
+      "valid_probability": 0.8215171828981781,
+      "unconditioned_specular_reflectance": 0.17835774767789503,
+      "conditional_specular_reflectance": 0.21710775062388604,
+      "unconditioned_constant_light_total": 0.528357747677895,
+      "actual_constant_light_total_limit": 0.567107750623886
+    },
+    {
+      "view": "normal",
+      "mx": 0.6,
+      "my": 0.9,
+      "metallic": 0.999,
+      "kd": 0.999,
+      "F0": 0.9980410000000001,
+      "valid_probability": 0.8215171828981781,
+      "unconditioned_specular_reflectance": 0.4810390920003606,
+      "conditional_specular_reflectance": 0.5855496415830689,
+      "unconditioned_constant_light_total": 0.48203809200036063,
+      "actual_constant_light_total_limit": 0.5865486415830689
+    },
+    {
+      "view": "oblique",
+      "mx": 0.6,
+      "my": 0.9,
+      "metallic": 0.001,
+      "kd": 0.999,
+      "F0": 0.040959,
+      "valid_probability": 0.5630578707201875,
+      "unconditioned_specular_reflectance": 0.029524857945774953,
+      "conditional_specular_reflectance": 0.052436631261384814,
+      "unconditioned_constant_light_total": 1.027525857945775,
+      "actual_constant_light_total_limit": 1.0504376312613848
+    },
+    {
+      "view": "oblique",
+      "mx": 0.6,
+      "my": 0.9,
+      "metallic": 0.5,
+      "kd": 0.7,
+      "F0": 0.37,
+      "valid_probability": 0.5630578707201875,
+      "unconditioned_specular_reflectance": 0.16536287146464104,
+      "conditional_specular_reflectance": 0.2936871679870689,
+      "unconditioned_constant_light_total": 0.515362871464641,
+      "actual_constant_light_total_limit": 0.6436871679870688
+    },
+    {
+      "view": "oblique",
+      "mx": 0.6,
+      "my": 0.9,
+      "metallic": 0.999,
+      "kd": 0.999,
+      "F0": 0.9980410000000001,
+      "valid_probability": 0.5630578707201875,
+      "unconditioned_specular_reflectance": 0.4246370708756634,
+      "conditional_specular_reflectance": 0.7541623924598106,
+      "unconditioned_constant_light_total": 0.4256360708756634,
+      "actual_constant_light_total_limit": 0.7551613924598106
+    }
+  ]
+}
