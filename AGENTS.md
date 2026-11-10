@@ -142,7 +142,25 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **Milestone3B-1, scientific anisotropic BRDF audit**,
+Current authorized task: **Milestone3B-2, controlled anisotropic estimator
+correction and ablation**, from `759a1253bf1db207221d6989ec4ca6f9c3ae3225`
+on `feat/anisotropic-estimator-ablation-v1`.
+Freeze [the experiment protocol](docs/ANISOTROPIC_ESTIMATOR_ABLATION_V1_PROTOCOL.md)
+before execution. Implement B0/original, B1/total-count specular normalization,
+B2/cosine diffuse radial mapping and B3/both in separate experimental modules.
+Hash-admit the original A pure methods; preserve frozen G/A, old evidence,
+sample counts, paired draw ordering, a=0 BRDF, decoder and regularization.
+Only NEW focused CPU fixtures, essential static checks and exactly ONE bounded
+fixed-grid 3B-2 CPU experiment are authorized. Use python3. Do not repeat old
+tests/diagnostics, query CUDA, construct networks, load checkpoints, run training,
+datasets, ray tracing, Docker, installs or additional model changes. Keep the
+two fixed quadrature grids and predeclared tolerances; unresolved references
+remain unresolved without retries. Separate mathematical expectation, finite
+sampling error and physical validity; no reconstruction improvement claims.
+Record errors, budget and runtime, preserve the one-run evidence, and publish
+the completed feature branch by commit/push only. Do not merge or start GPU work.
+
+Earlier authorized task: **Milestone3B-1, scientific anisotropic BRDF audit**,
 from `959db370cd18a09a20b2a0c9bb24a20a2cdba22a` on
 `feat/anisotropic-brdf-scientific-audit`.
 Read [ANISOTROPIC_BRDF_SCIENTIFIC_AUDIT_V1.md](docs/ANISOTROPIC_BRDF_SCIENTIFIC_AUDIT_V1.md)
