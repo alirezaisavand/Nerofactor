@@ -142,7 +142,23 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **Milestone3B-2, controlled anisotropic estimator
+Current authorized task: **Milestone3C-0, experimental shader and known-material
+recovery preparation**, from `1067d3d5370eaaeabac7eedd650d4d913f87f820`
+on `feat/material-recovery-preparation-v1`. Implement a separate differentiable
+CPU shader: A0/original, A1/B3 and A2/midpoint cosine diffuse heights, with
+original versus atan2 decoding as an independent explicit factor. Preserve the
+frozen G/A snapshots, earlier operators, protocols and accepted evidence. Reject
+invalid corrected encodings; do not silently choose a zero-vector fallback.
+Analyze energy/regularizer semantics without modifying actual training losses.
+Design the known-material benchmark, independent references and gauge-invariant
+metrics, but do not execute recovery or generate observations. Run only NEW tiny
+CPU fixtures and essential static checks; use python3. No old experiments/suites,
+GPU queries, native models, checkpoint loading, datasets, Docker, installs,
+optimization/training or additional scientific changes. CPU autograd/finite
+differences on analytical inputs are authorized. Commit/push only this feature
+branch when complete; no merge or production/training integration.
+
+Earlier authorized task: **Milestone3B-2, controlled anisotropic estimator
 correction and ablation**, from `759a1253bf1db207221d6989ec4ca6f9c3ae3225`
 on `feat/anisotropic-estimator-ablation-v1`.
 Freeze [the experiment protocol](docs/ANISOTROPIC_ESTIMATOR_ABLATION_V1_PROTOCOL.md)
