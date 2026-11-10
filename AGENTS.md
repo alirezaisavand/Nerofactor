@@ -142,7 +142,30 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **Milestone2, bounded original G/A training/checkpoint/
+Current authorized task: **Milestone3A-1, independent CPU geometry evidence and
+coordinate audit**, on a new feature branch from accepted base
+`aec29d2063b9c1a88113380018239722dd2682b6`; `d3f3bec4` is not the accepted base.
+Read [GEOMETRY_SCIENTIFIC_AUDIT_V1.md](docs/GEOMETRY_SCIENTIFIC_AUDIT_V1.md).
+Consume only explicitly selected/hash-admitted existing extraction JSON/PLY and
+saved A ray NPZ evidence. Verify pinned G/A source identity without importing
+models, loading original camera/checkpoint pickle, tracing rays or changing any
+input. Use independent NumPy/CPU camera/coordinate/intersection/normal/silhouette
+calculations, not the existing summarize() helper. Numerical loading must use
+allow_pickle=False, with finite/shape/dtype/resource checks. Freeze bounds before
+original-evidence execution; no tolerance override, repair, transform, normal flip,
+implicit file discovery or retries with changed criteria. Write only a fresh
+explicit output directory and versioned report with per-check pass/fail/unresolved
+and blocker reasons. Separate original producing provenance, prior architecture
+compatibility, artifact identity, coordinate consistency, scientific3D accuracy,
+3A-2 SDF orientation and research handoff; never promote one from another.
+Historical r128 remains diagnostic and ordinary handoff unchanged. Codex may
+implement/test synthetic CPU fixtures and static checks, inspect read-only metadata
+and hashes, and prepare exact researcher CPU commands. Do not repeat infrastructure
+smokes or run training/model inference/native validation, GPU/Docker, SDF queries,
+installs, original evidence/source/config/data/checkpoint changes, permissions,
+automatic commit/push/merge or further milestones. Stop after bounded audit review.
+
+Earlier authorized task: **Milestone2, bounded original G/A training/checkpoint/
 evaluation lifecycle preparation**, reviewed from
 `d72b2b84c2e7d704ee2f6642eca9b2ab0366350b`.
 Read [TRAINING_CHECKPOINT_EVALUATION_LIFECYCLE.md](docs/TRAINING_CHECKPOINT_EVALUATION_LIFECYCLE.md).
