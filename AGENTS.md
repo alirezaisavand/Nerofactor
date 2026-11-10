@@ -142,7 +142,27 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **Milestone3C-0, experimental shader and known-material
+Current authorized task: **Milestone3C-1, first known-material recovery**,
+from `179e36eb01e976d216a45fd323cc764308b49bd0` on
+`feat/known-material-recovery-v1`. The researcher approves implementation and
+ONE bounded CPU experiment under the unchanged
+[v1 protocol](docs/protocols/KNOWN_MATERIAL_RECOVERY_V1.md).
+Use A2/atan2, known flat geometry/lighting and independent float64 targets.
+Mandatory reference convergence and independent seven-parameter Jacobian gates
+must pass before any optimizer construction. Preserve all five declared starts,
+failed gates/starts, fixed fit/evaluation tapes and criteria. At most250 Adam
+returns per start,1,250 total;1,800-second process cap, one CPU thread. No
+threshold/hyperparameter tuning or rerun. Only NEW focused tests and essential
+static checks are allowed. Use python3; no old experiments/suites, frozen-source/
+prior-evidence changes, GPU/neural-network training, native data/checkpoints,
+Docker, installs or extra scientific variants. Commit/push only this feature
+branch after analysis, without merging or starting another experiment.
+The single authorized run is now finished: both gates passed, all1,250 updates
+completed, but0/5 starts met the recovery criteria. Preserve its JSON and
+[results](docs/KNOWN_MATERIAL_RECOVERY_V1_RESULTS.md). No additional execution
+or setting change is authorized by this completed milestone.
+
+Earlier authorized task: **Milestone3C-0, experimental shader and known-material
 recovery preparation**, from `1067d3d5370eaaeabac7eedd650d4d913f87f820`
 on `feat/material-recovery-preparation-v1`. Implement a separate differentiable
 CPU shader: A0/original, A1/B3 and A2/midpoint cosine diffuse heights, with
