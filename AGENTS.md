@@ -142,7 +142,38 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **Milestone 3C-7, gradient/Jacobian gauge-equivariance**,
+Current authorized task: **Milestone 3C-8, offline LM proposal gauge audit**,
+from `31dd7979256795abd8e0043099c649518aabad35` on
+`feat/material-lm-proposal-gauge-audit-v1` in a separate worktree. Historical
+damping/state provenance was inspected before implementation: all five endpoints
+terminated damping_saturated at lambda=1e8, with exact 3C-7 state matches. Replay
+logged controller decisions only; never invent/reset/sweep damping. Freeze the
+[proposal protocol](docs/protocols/MATERIAL_LM_PROPOSAL_GAUGE_V1.md), code and tests
+before one offline CPU execution, at most 15 solves/300 seconds/2 GiB peak RSS
+with owned data-allocation cap. Exactly LM101–105 x P0/P1-U/P1-C, no truth case.
+Use hash-admitted chain-derived archived latent Jacobians; no bitwise historical
+latent-AD replay claim. Keep mathematical versus represented float32 steps and
+normal-equation g versus full MSE gradient separate. All proposals are
+counterfactual because original runs already saturated. No renderer/target/AD,
+optimizer loop, applied update, acceptance test, new state/seed beyond proposal
+arrays, shader/source change, GPU/neural training, Docker or installation.
+Only new synthetic/read-only tests and static checks; preserve every old source,
+protocol/evidence file and original user changes. Stop on integrity/construction/
+resource failures; retain finite scientific failures without tuning/retry.
+Commit/push this feature branch, then stop without merging or implementing the
+next experiment.
+The one offline execution is complete: 15 solves in 1.52 s, all inputs admitted
+at original terminal lambda=1e8. All five coupled and uncoupled mathematical
+step comparisons fail the frozen bounds; every represented float32 step is
+zero. LM102's coupled mathematical discrepancy is 77.17% relatively but only
+6.11e-15 in L2. Zero represented steps/Q agreement must not be labeled useful
+proposal consistency or convergence. Preserve frozen code/tests/protocol and
+the [evidence](docs/evidence/MATERIAL_LM_PROPOSAL_GAUGE_V1.json) and
+[results](docs/MATERIAL_LM_PROPOSAL_GAUGE_V1_RESULTS.md); the 19 new tests passed.
+No extra solves, damping changes, renderer/AD/optimizer work or proposed paired
+trajectory experiment without separate approval.
+
+Earlier authorized task: **Milestone 3C-7, gradient/Jacobian gauge-equivariance**,
 from `f5a3d714fd57bfef02baf6ca47b15ab69927e7ea` on
 `feat/anisotropy-gradient-equivariance-v1` in a separate worktree. Implement,
 test and freeze the [derivative protocol](docs/protocols/MATERIAL_GRADIENT_EQUIVARIANCE_V1.md)
