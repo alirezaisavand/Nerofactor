@@ -1,0 +1,419 @@
+{
+  "schema_version": 1,
+  "protocol": "material-symmetry-audit-v1",
+  "milestone": "3C-5",
+  "base_commit": "f4f5f4d57fc9f57c4d6387663ac9ef19b40144c0",
+  "status": "failed",
+  "physical_gate": "not_started",
+  "protocol_sha256": "8e510d566d443ed44f3e0428c429837ccd70b6bcfba0951efd5ce6bcf1d4572a",
+  "implementation_sha256": {
+    "experiments/material_symmetry_audit_v1.py": "65a5b9e134df648ac6633336c3d59ef8a65fa9015d4deefd8c30b490f1fc68fc"
+  },
+  "optimizer_creation": false,
+  "parameter_updates": false,
+  "new_targets": false,
+  "GPU_execution": false,
+  "settings": {
+    "max_shader_calls": 36,
+    "max_points": 7776,
+    "wall_seconds": 1800,
+    "peak_RSS_budget_bytes": 4294967296,
+    "address_space_budget_bytes": 8589934592,
+    "Q_atol": 5e-14,
+    "Q_rtol": 5e-12,
+    "orientation_atol_radians": 1e-11,
+    "kernel_atol": 1e-13,
+    "kernel_rtol": 1e-10,
+    "Q32_atol": 2e-07,
+    "Q32_rtol": 2e-06,
+    "RGB_atol": 2e-06,
+    "RGB_rtol": 2e-05,
+    "objective_atol": 1e-12,
+    "objective_rtol": 5e-07
+  },
+  "started_at_utc": "2026-11-11T01:52:33.923254+00:00",
+  "argv": [
+    "/home/isavand/anaconda3/bin/python3",
+    "/home/isavand/paper/Nerofactor-3c5-symmetry-audit/experiments/material_symmetry_audit_v1.py",
+    "--output",
+    "/home/isavand/paper/Nerofactor-3c5-symmetry-audit/docs/evidence/MATERIAL_SYMMETRY_AUDIT_V1.json"
+  ],
+  "effective_address_space_soft_limit": 8589934592,
+  "accepted_identities": {
+    "experiments/known_material_reference_v1.py": "bad7b5be7da2d6e569bc373a6f888c0f257846148e7fe0f1aece323f9ed247da",
+    "experiments/run_known_material_recovery_v1.py": "b168dc1a0432a246dd6f2346d7b6150fa6d88b2f816ec062fb5c9674aaab2231",
+    "experiments/material_shader_v1.py": "de79ef3b0199b5f6e372feed6a9f16492ad966802b814e2cc9aab6700d35014f",
+    "experiments/material_recovery_metrics_v1.py": "316e79b5e06615c9fa46e714f35f515b204c1f175c6c56636a6c4d9235ccabc4",
+    "experiments/anisotropic_estimator_v1.py": "e6560f646011095a3b029db5aa03ea4bbd72bb78917be6eeaad3abdd4c911986",
+    "audits/anisotropic_brdf.py": "7706a54ee2e3c4a5568f297b75d4b9de1e979ab0d35483724e596bcfc7245268",
+    "docs/protocols/KNOWN_MATERIAL_RECOVERY_V1.md": "7b13c54c62d1e04f7041af0784e0bf8f7118d8b616abfb1cc6e3258bdeb2539b",
+    "docs/KNOWN_MATERIAL_RECOVERY_V1_EXECUTION.md": "5104c4a7145c892ac54487867ad0574876463194533c99b2cfa37a086f443295",
+    "docs/KNOWN_MATERIAL_RECOVERY_V1_RESULTS.md": "1b32ffa78b81c7cd27a1c87f82361a402250902a6ab5e034687d3c7b8af160e9",
+    "experiments/material_recovery_continuation_v1.py": "de737d49fd04078c89c6b429e82bbbea7c7c66f6fc8c72f1a936dca012a7b6f0",
+    "docs/protocols/MATERIAL_RECOVERY_CONTINUATION_V1.md": "e6bbde21188d7178669369ea551cfeb663633b60e0c09ce775154d3e473b0693",
+    "docs/evidence/KNOWN_MATERIAL_RECOVERY_V1.json": "f3c7a93e8f24ef7e3aac2de66b91da52962cb2f75f0d64cc66a199ba159da451",
+    "docs/evidence/MATERIAL_RECOVERY_DIAGNOSTICS_V1.json": "6106278d6f3bb41eed0933b668627626c462faaf20433c13c34d1c5d7685539f",
+    "docs/evidence/MATERIAL_RECOVERY_CONTINUATION_V1.json": "224cb9a0cb27bbaacc61b8d575efbcd2c37854b716fc51bc78b439020239f24f",
+    "experiments/material_recovery_optimizer_comparison_v1.py": "4abdf70b1a8c3b309f32561e31bcdb605392d0858bbe2015bf98c1a8f065cb6e",
+    "docs/protocols/MATERIAL_RECOVERY_OPTIMIZER_COMPARISON_V1.md": "344a44c93403b4563125cf41ee5cced4516d2a87588ecc35a24351f900e90c10",
+    "docs/MATERIAL_RECOVERY_OPTIMIZER_COMPARISON_V1_RESULTS.md": "699fe50ebdfe2cd087147814787e8ee23b1267e3753c9ad92d5961382579d5f2",
+    "docs/evidence/MATERIAL_RECOVERY_OPTIMIZER_COMPARISON_V1.json": "66e626379dbdfc9c7c7c5116e94cada4a748e3db29ccb2c14cf96f6fe724537f"
+  },
+  "work": {
+    "shader_calls": 0,
+    "completed_shader_calls": 0,
+    "points": 0,
+    "diffuse_directions": 0,
+    "specular_directions": 0,
+    "independent_kernel_scalar_values": 90,
+    "independent_pdf_scalar_values": 30
+  },
+  "runtime": {
+    "python": "3.9.12",
+    "numpy": "1.21.5",
+    "torch": "2.4.0+cu121",
+    "device": "cpu",
+    "torch_threads": 1
+  },
+  "states": [
+    {
+      "id": "truth",
+      "nominal_physical": [
+        0.2,
+        0.55,
+        0.31,
+        0.3,
+        0.45,
+        0.6,
+        0.25
+      ],
+      "source": "3C-1 truth; direct physical float32 shader input",
+      "representations": [
+        {
+          "id": "P0",
+          "nominal_float64": [
+            0.2,
+            0.55,
+            0.31,
+            0.3,
+            0.45,
+            0.6,
+            0.25
+          ],
+          "rounded_float32": [
+            0.20000000298023224,
+            0.550000011920929,
+            0.3100000023841858,
+            0.30000001192092896,
+            0.44999998807907104,
+            0.6000000238418579,
+            0.25
+          ],
+          "physics_float64": {
+            "physical": [
+              0.2,
+              0.55,
+              0.31,
+              0.3,
+              0.45,
+              0.6,
+              0.25
+            ],
+            "Q": [
+              [
+                0.06442845256304243,
+                -0.0762608648205213
+              ],
+              [
+                -0.07626086482052132,
+                0.27807154743695767
+              ]
+            ],
+            "eigenvalues": [
+              0.04000000000000001,
+              0.3025000000000001
+            ],
+            "major_axis": [
+              -0.3050586364434435,
+              0.9523335698857135
+            ],
+            "anisotropy_gap": 0.7664233576642334,
+            "independent_specular_kernel": [
+              [
+                [
+                  0.06419134858638403,
+                  0.08711682615069363,
+                  0.1100423037150032
+                ],
+                [
+                  0.08034915673058217,
+                  0.10904507013039445,
+                  0.1377409835302067
+                ],
+                [
+                  0.006046098883237865,
+                  0.008205419910298635,
+                  0.010364740937359403
+                ],
+                [
+                  0.0028971098878991606,
+                  0.003931786066997733,
+                  0.004966462246096304
+                ],
+                [
+                  0.01506129078394136,
+                  0.020440115522763116,
+                  0.025818940261584863
+                ]
+              ],
+              [
+                [
+                  0.001963157623956843,
+                  0.002664283538886432,
+                  0.003365409453816021
+                ],
+                [
+                  0.0038879588711761654,
+                  0.005276515610742683,
+                  0.006665072350309198
+                ],
+                [
+                  0.08940673971680452,
+                  0.121308862682189,
+                  0.1532109856475734
+                ],
+                [
+                  0.06554497340414772,
+                  0.08895056101793249,
+                  0.11235614863171722
+                ],
+                [
+                  0.014774337642483348,
+                  0.019996841256911434,
+                  0.025219344871339512
+                ]
+              ],
+              [
+                [
+                  0.00010238874321531546,
+                  0.00013895615132926832,
+                  0.00017552355944322115
+                ],
+                [
+                  0.0005220466581339401,
+                  0.0007084881519480102,
+                  0.0008949296457620799
+                ],
+                [
+                  0.04612951314042693,
+                  0.06259886609419221,
+                  0.07906821904795747
+                ],
+                [
+                  0.08963902497765745,
+                  0.12150737267781528,
+                  0.15337572037797306
+                ],
+                [
+                  0.00019570603588809138,
+                  0.0002655912470060437,
+                  0.0003354764581239959
+                ]
+              ]
+            ],
+            "independent_fixed_direction_pdf": [
+              [
+                0.5871970346106051,
+                0.7644640290964572,
+                0.05190744775309952,
+                0.02577578219613501,
+                0.11209226323725281
+              ],
+              [
+                0.017356688434011273,
+                0.03313073661228873,
+                0.8496705812597596,
+                0.5817255515338002,
+                0.12474740201044508
+              ],
+              [
+                0.0008245295624921406,
+                0.00450453165444823,
+                0.39940888856829604,
+                0.8485868903249452,
+                0.0012889974153768803
+              ]
+            ],
+            "F0": [
+              0.105,
+              0.14250000000000002,
+              0.18
+            ]
+          },
+          "physics_at_rounded_inputs": {
+            "physical": [
+              0.20000000298023224,
+              0.550000011920929,
+              0.3100000023841858,
+              0.30000001192092896,
+              0.44999998807907104,
+              0.6000000238418579,
+              0.25
+            ],
+            "Q": [
+              [
+                0.06442845522814634,
+                -0.07626086879312562
+              ],
+              [
+                -0.07626086879312562,
+                0.27807155907696857
+              ]
+            ],
+            "eigenvalues": [
+              0.040000001192092904,
+              0.302500013113022
+            ],
+            "major_axis": [
+              -0.30505863871398364,
+              0.952333569158397
+            ],
+            "anisotropy_gap": 0.7664233604588463,
+            "independent_specular_kernel": [
+              [
+                [
+                  0.06419134909162613,
+                  0.08711682254177538,
+                  0.11004230510169076
+                ],
+                [
+                  0.08034915609803532,
+                  0.10904506389637253,
+                  0.13774098309744082
+                ],
+                [
+                  0.006046099329892675,
+                  0.008205420111969803,
+                  0.010364741752084055
+                ],
+                [
+                  0.002897110180430141,
+                  0.003931786270178885,
+                  0.004966462771071034
+                ],
+                [
+                  0.015061292080647139,
+                  0.020440116274956822,
+                  0.025818942606619544
+                ]
+              ],
+              [
+                [
+                  0.001963157840715801,
+                  0.0026642837017180096,
+                  0.0033654098413226485
+                ],
+                [
+                  0.003887959208462517,
+                  0.005276515808371646,
+                  0.006665072960043682
+                ],
+                [
+                  0.08940673903544831,
+                  0.12130885578234057,
+                  0.1532109852059971
+                ],
+                [
+                  0.06554497448530194,
+                  0.08895055810071024,
+                  0.11235615101666335
+                ],
+                [
+                  0.014774338857459901,
+                  0.019996841924556155,
+                  0.02521934706688901
+                ]
+              ],
+              [
+                [
+                  0.00010238876715006963,
+                  0.0001389561769620158,
+                  0.00017552360130454743
+                ],
+                [
+                  0.0005220467383113708,
+                  0.0007084882258338878,
+                  0.0008949297874416076
+                ],
+                [
+                  0.04612951481778289,
+                  0.06259886528537463,
+                  0.07906822229729929
+                ],
+                [
+                  0.08963902446565108,
+                  0.1215073660180328,
+                  0.15337572023375767
+                ],
+                [
+                  0.00019570609451336098,
+                  0.0002655913134747294,
+                  0.0003354765602059932
+                ]
+              ]
+            ],
+            "independent_fixed_direction_pdf": [
+              [
+                0.5871970225658533,
+                0.7644640013804864,
+                0.05190745011445815,
+                0.025775784067208766,
+                0.11209226970645515
+              ],
+              [
+                0.017356689857786187,
+                0.03313073854607538,
+                0.8496705506899944,
+                0.5817255446204115,
+                0.12474740876466284
+              ],
+              [
+                0.0008245297318343201,
+                0.004504532218416876,
+                0.3994088917588333,
+                0.8485868615018819,
+                0.001288997764925406
+              ]
+            ],
+            "F0": [
+              0.10500000298023224,
+              0.14249999701976776,
+              0.18000000596046448
+            ]
+          },
+          "physical_equivalence": {
+            "Q": {
+              "absolute_frobenius": 0.0,
+              "relative_frobenius": 0.0,
+              "max_absolute": 0.0
+            },
+            "kernel": {
+              "absolute_frobenius": 0.0,
+              "relative_frobenius": 0.0,
+              "max_absolute": 0.0
+            },
+            "fixed_direction_pdf": {
+              "absolute_frobenius": 0.0,
+              "relative_frobenius": 0.0,
+              "max_absolute": 0.0
+            },
+            "orientation_identifiable": true,
+            "major_axis_error_radians": 0.0,
+            "orientation_reason": null,
+            "eigenvalue_max_absolute": 0.0,
+            "checks": {
+              "Q": true,
+              "eigenvalues": true,
+              "kernel": true,
+              "fixed_direction_pdf": true,
+              "orientation":  

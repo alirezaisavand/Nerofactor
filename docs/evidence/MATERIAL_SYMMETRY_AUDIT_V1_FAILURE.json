@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "protocol": "material-symmetry-audit-v1-failure-record",
+  "milestone": "3C-5",
+  "status": "failed",
+  "scientific_results_available": false,
+  "base_commit": "f4f5f4d57fc9f57c4d6387663ac9ef19b40144c0",
+  "execution": {
+    "authorized_attempts": 1,
+    "attempts_started": 1,
+    "process_exit_code": 1,
+    "retry_performed": false,
+    "traceback_source": "Observed Codex exec output for session17938; no original console file was configured",
+    "exception_type": "TypeError",
+    "exception_message": "Object of type bool_ is not JSON serializable",
+    "failure_phase_inferred_from_traceback": "First truth/P0 physical-check record serialization, before physical gate completion or any shader call"
+  },
+  "preserved_partial_report": {
+    "path": "docs/evidence/MATERIAL_SYMMETRY_AUDIT_V1.json",
+    "sha256": "055aa0a2c13457dc198bb888c45ff15062fec90856de31220e09ada196568a55",
+    "bytes": 13840,
+    "valid_JSON": false,
+    "parse_error": "Expecting value: line 419 column 31 (char 13840)",
+    "raw_status_prefix": "failed",
+    "physical_gate_prefix": "not_started"
+  },
+  "verified_partial_work": {
+    "shader_calls": 0,
+    "completed_shader_calls": 0,
+    "points": 0,
+    "diffuse_directions": 0,
+    "specular_directions": 0,
+    "independent_kernel_scalar_values": 90,
+    "independent_pdf_scalar_values": 30
+  },
+  "frozen_protocol_sha256": "8e510d566d443ed44f3e0428c429837ccd70b6bcfba0951efd5ce6bcf1d4572a",
+  "frozen_implementation_sha256": {
+    "experiments/material_symmetry_audit_v1.py": "65a5b9e134df648ac6633336c3d59ef8a65fa9015d4deefd8c30b490f1fc68fc"
+  },
+  "tests": {
+    "new_focused_passed": 21,
+    "failed": 0,
+    "skipped": 0,
+    "test_body_seconds": 1.348,
+    "coverage_gap": "Physical-equivalence tests did not serialize a successful analytical record containing numpy.bool_"
+  },
+  "preservation": {
+    "protected_original_files": 268,
+    "prior_evidence_files": 34,
+    "frozen_protocol_runner_tests_unchanged": true,
+    "original_workspace_user_edit_unchanged": true
+  },
+  "limitations": [
+    "No P1/P2 comparison completed; H1-H4 cannot be assessed from this attempt",
+    "No forward-radiance, objective, per-tape or sampling results exist for this milestone",
+    "The report is intentionally preserved truncated; use this separate valid failure record for status",
+    "Elapsed/CPU/peak-RSS/RNG/cleanup fields were not durably serialized and are not claimed as file-backed measurements"
+  ],
+  "next_action": "Separate approval for a reporting-only NumPy-Boolean conversion and JSON serialization regression tests, followed by at most one fresh versioned diagnostic attempt; no fix or retry implemented here"
+}

@@ -142,7 +142,37 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **Milestone3C-4, controlled optimizer comparison**,
+Current authorized task: **Milestone3C-5, symmetry and sampling audit**,
+from `f4f5f4d57fc9f57c4d6387663ac9ef19b40144c0` on
+`feat/anisotropy-symmetry-audit-v1`. Preserve all accepted source/protocol/evidence
+and original user edits in a separate worktree. Admit exactly truth plus the five
+final LM states. Freeze [the symmetry protocol](docs/protocols/MATERIAL_SYMMETRY_AUDIT_V1.md)
+before ONE bounded CPU forward-only diagnostic: P0, width swap+pi/2 and theta+pi,
+unchanged A2/atan2, samples/tapes/geometry/lights/targets/precision. Nominal and
+rounded Q/kernel/eigen/orientation checks precede shader calls; failed physical
+equivalence must not become a sampling claim. Count all36 original-batch forwards,
+record per-tape/mean RGB, objectives, frames/directions/PDF/mask comparisons and
+strict saved-mean reuse gates. Whole1800s, one thread, GPUs hidden, explicit memory
+limits, no retries/extensions. No optimizer creation, parameter updates, autograd,
+new targets/integrals/seeds/sample counts, old-suite/experiment reruns, decoder/
+shader/scientific changes, GPU/neural training, installs, Docker, original artifact
+edits or merges. Only NEW tiny CPU fixtures/static checks; python3 in commands.
+Separate physical symmetry, finite estimator/objective preferences and unresolved
+causal relationship to LM groups. Commit/push only this feature branch, then stop;
+do not implement or execute the recommended next experiment without approval.
+The one authorized3C-5 attempt failed before any shader call: a NumPy Boolean
+in the first physical-check record is not JSON serializable. Preserve the
+frozen implementation/protocol/tests, raw truncated
+[output](docs/evidence/MATERIAL_SYMMETRY_AUDIT_V1.json), separate valid
+[failure manifest](docs/evidence/MATERIAL_SYMMETRY_AUDIT_V1_FAILURE.json) and
+[failure report](docs/MATERIAL_SYMMETRY_AUDIT_V1_RESULTS.md). The21 new fixtures
+passed but missed successful analytical-record JSON serialization. No H1–H4
+result is established; no automatic fix/retry or further numerical execution.
+Publish this failed attempt as authorized, then stop. A reporting-only repair
+and any new versioned attempt require separate researcher approval; never reuse
+or overwrite the failed evidence path.
+
+Earlier authorized task: **Milestone3C-4, controlled optimizer comparison**,
 from `a64e7e77503fb3ed1a9fb26969d2bf2ad330fcea` on
 `feat/material-recovery-optimizer-comparison-v1`. Admit the five complete
 update1000 states and preserve all previous science/source/protocol/evidence.
