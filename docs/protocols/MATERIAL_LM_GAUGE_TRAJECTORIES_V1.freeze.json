@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "protocol": "material-lm-gauge-trajectories-v1",
+  "base_commit": "ebdfa2cdbf4bbd5d7b6ad32c1e558349c2c16153",
+  "frozen_before_execution_at_utc": "2026-11-11T06:06:35.110693+00:00",
+  "sha256": {
+    "experiments/material_lm_gauge_trajectories_v1.py": "27383436180896391f78e2bab3c3404ee029c6bd614506884b59a4ad0610c0d3",
+    "tests/scientific/test_material_lm_gauge_trajectories_v1.py": "b4e4d6e20d24fbcffad04b9f15c377fc109a9e2a1ca0d2ce825636fb27863662",
+    "docs/protocols/MATERIAL_LM_GAUGE_TRAJECTORIES_V1.md": "47e083d21f66f8ffe75e01072e512219264d3161974ea9397819231ab8455ba7"
+  },
+  "focused_tests": {
+    "passed": 24,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 1.769,
+    "command": "CUDA_VISIBLE_DEVICES='' OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -B -m unittest tests.scientific.test_material_lm_gauge_trajectories_v1 -v"
+  },
+  "single_execution": true,
+  "no_retry": true
+}

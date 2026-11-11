@@ -142,7 +142,40 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **Milestone 3C-8, offline LM proposal gauge audit**,
+Current authorized task: **Milestone 3C-9, controlled LM gauge trajectories**,
+from `ebdfa2cdbf4bbd5d7b6ad32c1e558349c2c16153` on
+`feat/material-lm-gauge-trajectories-v1` in a separate worktree. Freeze the
+[trajectory protocol](docs/protocols/MATERIAL_LM_GAUGE_TRAJECTORIES_V1.md), runner
+and new focused tests before ONE CPU optimization experiment. Exactly five
+admitted update1000 states x P0/P1-U/P1-C, fresh lambda=.01 for every arm; reuse
+original 3C-4 LM bytecode/AD/solve/controller, A2/atan2, transforms, targets,
+observations, samples and tapes. Construct signed coupled tapes once; no dynamic
+sign/tape reselection. Admit all 15 initial identities/objectives before updates.
+Freeze both actual decoder cells defining each local gauge chart; first proposed
+departure stops before rendering/rejection/retry, recorded as censored. Check
+accepted coupled frames/sign. Preserve complete histories and compare historical
+P0 shared prefixes exactly; retain failed controls without tuning. Common-gauge
+terminal evaluation only, original recovery gates and separate cross-arm criteria.
+At most15 arms/80 outers/four trials,120 active seconds per arm with10 reserved,
+2400 whole seconds,4 GiB RSS/8 GiB address cap, one thread, GPUs hidden. No retry,
+budget extension, new optimizer/shader/reference/initialization, prior evidence
+or source changes, old suite/experiment reruns, GPU/neural training, Docker,
+installs or original artifact edits. Only new synthetic/read-only tests. Use
+python3. Commit/push this feature branch after analysis; no merge or next
+experiment without separate authorization.
+
+The ONE 3C-9 attempt stopped at the mandatory initial objective gate for seed102:
+coupled absolute MSE difference5.4569682106375694e-12 exceeds frozen bound
+5.447887931746663e-12. Seed101 passed; six initial forwards total, ZERO JVPs,
+solves or updates. All15 states were restored; seeds103–105 were not rendered.
+Preserve frozen code/tests/protocol, the failed raw
+[report](docs/evidence/MATERIAL_LM_GAUGE_TRAJECTORIES_V1.json), offline-only
+[analysis](docs/evidence/MATERIAL_LM_GAUGE_TRAJECTORIES_V1_FAILURE_ANALYSIS.json)
+and [results](docs/MATERIAL_LM_GAUGE_TRAJECTORIES_V1_RESULTS.md). The24 new tests
+passed. No trajectory/recovery verdict, retry, threshold change or further
+rendering/optimization is authorized. Publish this failed attempt, then stop.
+
+Earlier authorized task: **Milestone 3C-8, offline LM proposal gauge audit**,
 from `31dd7979256795abd8e0043099c649518aabad35` on
 `feat/material-lm-proposal-gauge-audit-v1` in a separate worktree. Historical
 damping/state provenance was inspected before implementation: all five endpoints
