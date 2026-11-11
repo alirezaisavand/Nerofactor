@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "protocol": "material-independent-tape-lm-v1",
+  "base_commit": "1e7e3ad8c15b85c569e241beb037cfadb29502e4",
+  "frozen_before_execution_at_utc": "2026-11-11T10:09:02.228814+00:00",
+  "scope": "Conditional LM sensitivity to one new training realization; fixed Adam-pretrained update1000 vectors; not independent end-to-end replication; two tape realizations are not a population estimate",
+  "sha256": {
+    "experiments/material_independent_tape_lm_v1.py": "e1516087768cd59386f5fc165c42cecb72c7ca74cc5bc28ed14577c3c443f71d",
+    "tests/scientific/test_material_independent_tape_lm_v1.py": "79f639525831e549533f14ebee515edf2bac6fb0e6a389579555ce4dea233f33",
+    "docs/protocols/MATERIAL_INDEPENDENT_TAPE_LM_V1.md": "ad98b91a0033fd05abc5d96e068092aa0ec3afcf82d075146bcbbb83fe44db7c"
+  },
+  "numerical_policy_sha256": "853c2ae265d853f19c6c198041e93914e1180000f2c04edb6bfca1a6fa54c7e1",
+  "arm_work_caps_sha256": "55e238580716b611d4226ade5e5c4bf2004e33fad6cf6df5b79aba83dcfbfbbc",
+  "reviewed_pytorch_sources": [
+    {
+      "path": "aten/src/ATen/native/ReduceOps.cpp",
+      "url": "https://raw.githubusercontent.com/pytorch/pytorch/e4ee3be4063b7c430974252fdf7db42273388d86/aten/src/ATen/native/ReduceOps.cpp",
+      "sha256": "9ac64ff7e7dead6f4ccac17fad6162d1d82233e8a7e7d119fa56d53e42fb7eb7"
+    },
+    {
+      "path": "aten/src/ATen/native/cpu/SumKernel.cpp",
+      "url": "https://raw.githubusercontent.com/pytorch/pytorch/e4ee3be4063b7c430974252fdf7db42273388d86/aten/src/ATen/native/cpu/SumKernel.cpp",
+      "sha256": "6639e5b687c24fbda26f8e4e5d22fec6c54065a5ecbbc43273b12a00b509981e"
+    },
+    {
+      "path": "aten/src/ATen/native/cpu/PowKernel.cpp",
+      "url": "https://raw.githubusercontent.com/pytorch/pytorch/e4ee3be4063b7c430974252fdf7db42273388d86/aten/src/ATen/native/cpu/PowKernel.cpp",
+      "sha256": "4b7f34db7eead1db381470e9fa603462a8ba65259d809cc7416dba8d457df82e"
+    }
+  ],
+  "training_tapes": {
+    "training_seeds": [
+      2000,
+      2001,
+      2002,
+      2003
+    ],
+    "original_training_seeds": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "evaluation_seeds": [
+      1000,
+      1001,
+      1002,
+      1003
+    ],
+    "points_per_seed": 24,
+    "specular_samples": 1024,
+    "ordering": "seed-major, original make_tapes private NumPy RandomState",
+    "per_tape": [
+      {
+        "seed": 2000,
+        "points": 24,
+        "specular_samples": 1024,
+        "sha256": "713ea6c411b4208f53331ecc8be6fbaa1b6d352c6f0ec8d4dc8e4dd14b5339f5",
+        "array_sha256": [
+          "f51fee1a3d34f752de0ef76654fca399c937d47d2d35dc06eb9d3c3049c9620d",
+          "9635bedb2c7b98e41410afe47cb3c90d59042e8de36ef44e4b730552b2784805",
+          "d5d23478a9be759f9e307e1f9c5a81e0f770f764c919b50fd730eac1ec960b73"
+        ]
+      },
+      {
+        "seed": 2001,
+        "points": 24,
+        "specular_samples": 1024,
+        "sha256": "880003f75dd7fbffbc004fc16c788ccec15c3f8f7e437ccafc0b97fc3c032f93",
+        "array_sha256": [
+          "61ddf0625c665e6d73a93813e98099b752bc9f778f5ee4f33b377e40b00044f7",
+          "94f6c4a668dc62650c616e7186efe17664ddc4e23f0cc87f12bd307342fa39ca",
+          "5f0ed4596dc1a6d52e5f55d91012455dcaddc572954eae6371897a478f29fca6"
+        ]
+      },
+      {
+        "seed": 2002,
+        "points": 24,
+        "specular_samples": 1024,
+        "sha256": "35598b4a57d229eaf41e5e508d789f569337cbd191dd8985744ca179273efc0a",
+        "array_sha256": [
+          "4e0c61f385a967193d863dbacfb0cf8c38aa5e952fddc97fc7d82c28db1c2b51",
+          "4a2308152f2cfc94e187ae3937aad00cfb01ed47aa401426ea8d5750b90c290f",
+          "612b6665d5c43432c64e1e364f59d304669798b87c209aca7f9f7b80ddd18711"
+        ]
+      },
+      {
+        "seed": 2003,
+        "points": 24,
+        "specular_samples": 1024,
+        "sha256": "94b812b45a2c2da1f737a97e7d9be8925602271888063c7d165f2deb11c81e10",
+        "array_sha256": [
+          "b895a54b8c611a0c10d9a353d75987399afd8be038eb141542e5d16ad3449052",
+          "d7f6ce5cdd7dd171872d0fdafae750e8f0bed42f76bd771975f0ae37101f1ae5",
+          "7643f699e5187dc26e93d708306d667819390b0834ab8b8cbded87157a398d0f"
+        ]
+      }
+    ],
+    "arrays": {
+      "u": {
+        "dtype": "float32",
+        "shape": [
+          96,
+          1024
+        ],
+        "sha256": "fed2eb0e60f74000205a3317e7c653d3bcaf3ebf7fb0b9d3227ea727329e5f8a"
+      },
+      "v": {
+        "dtype": "float32",
+        "shape": [
+          96,
+          1024
+        ],
+        "sha256": "76ff4c15be7331ec4a5fa0b79e7b0d8672392e660d393d8f9c4558029eb55816"
+      },
+      "azimuth": {
+        "dtype": "float32",
+        "shape": [
+          96,
+          1,
+          1
+        ],
+        "sha256": "3163666050eceb0ecc8ede31167306b9d42da8758ca5c22054d6c93c2959ae47"
+      }
+    },
+    "global_Torch_NumPy_RNG_unchanged": true
+  },
+  "training_tapes_sha256": "44d823f377219f29a774e5ee0a62e450b748ac5a9c28511d995268dacd8da948",
+  "historical_group_references": {
+    "construction": "Ordered float64 arithmetic mean of physical Q matrices, grouped by original historical simultaneous recovery success",
+    "source_report_sha256": "b40f548f07a66a545936cf295fa7b6bb3c84cb104bc6a2698dbed81705460ec3",
+    "representatives": {
+      "historical_more_accurate": {
+        "seeds": [
+          101,
+          102,
+          103
+        ],
+        "Q": {
+          "dtype": "float64",
+          "shape": [
+            2,
+            2
+          ],
+          "sha256": "a111a5483abc6c56ebebd2193089941a165b34103327b2174ec0aa1c844609e2",
+          "values": [
+            [
+              0.06612902506365982,
+              -0.07658786678956897
+            ],
+            [
+              -0.07658786678956898,
+              0.2747679820599243
+            ]
+          ]
+        },
+        "radius_relative": 0.049734331681357005
+      },
+      "historical_less_accurate": {
+        "seeds": [
+          104,
+          105
+        ],
+        "Q": {
+          "dtype": "float64",
+          "shape": [
+            2,
+            2
+          ],
+          "sha256": "6b712d9f5b98886f0620208b5df737984fcd215ce00a852caceb2200dcea8f0c",
+          "values": [
+            [
+              0.06590687198897188,
+              -0.08319323738624955
+            ],
+            [
+              -0.08319323738624955,
+              0.3033861463085795
+            ]
+          ]
+        },
+        "radius_relative": 0.04533779408269914
+      }
+    },
+    "metric": "Frobenius absolute distance; also report distance/norm(representative)",
+    "admission_radius": "half the absolute separation between historical group means, same radius for both balls",
+    "tie_rule": "64*eps64*max(norm(query),norm(representatives),separation,1e-30) for distance ties and boundary roundoff; outside-both takes precedence",
+    "separation_absolute": 0.030104991585957717,
+    "radius_absolute": 0.015052495792978859
+  },
+  "historical_group_references_sha256": "83c8fcdf54c79cb6919a6d343ad3fdba203ec347ab77e155e50dcab786977cf5",
+  "focused_tests": {
+    "passed": 25,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 3.846,
+    "command": "CUDA_VISIBLE_DEVICES='' OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -B -m unittest tests.scientific.test_material_independent_tape_lm_v1 -v"
+  },
+  "full_scientific_shader_calls_in_tests": 0,
+  "single_execution": true,
+  "no_retry": true
+}

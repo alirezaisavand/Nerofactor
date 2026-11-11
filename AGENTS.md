@@ -142,7 +142,44 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **Milestone 3C-9c, controlled LM trajectories v2**,
+Current authorized task: **Milestone 3C-10, independent-tape conditional LM**,
+from `1e7e3ad8c15b85c569e241beb037cfadb29502e4` on
+`feat/material-independent-tape-lm-v1` in a separate worktree. Freeze the
+[replication protocol](docs/protocols/MATERIAL_INDEPENDENT_TAPE_LM_V1.md), source,
+tests, new tape hashes, gate/budget identities and historical group references
+before ONE15-arm CPU execution. Exactly original update1000 states101–105 x
+P0/U/C; training tapes2000–2003 ONLY, external eval1000–1003 unchanged. The fixed
+Adam starts were pretrained on0–3: this is conditional LM sensitivity, not an
+independent end-to-end replication or population-level success estimate. No
+shader/BRDF/decoder/float32 objective/LM change. Gate A requires exact restoration
+and internal replay under new tapes, NOT old-tape RGB/MSE parity; preserve old/new
+differences as outcomes. Reuse accepted B–E, branch/coupling/evaluation policy and
+all caps. All15 initial forwards and all five mandatory gates before any update.
+One fixed new quartet, no pilot/replacement/retry/tuning. Descriptive group means
+come only from prior P0 Q matrices; half-separation balls, explicit tie/distant
+labels, separate original recovery criteria, no optimizer use. Cross-tape
+training losses are different finite objectives; compare physical/common-eval
+endpoints instead. Fifteen arms/80outers/fourtrials,120active seconds each with10
+reserved,2400whole seconds,4GiB RSS/8GiB address cap, CPUone thread/GPUs hidden.
+Only new focused synthetic/read-only tests, python3 commands; no old scientific
+experiment/suite reruns, additional tape sets, reference generation, frozen
+source/prior evidence edits, GPU/neural training, Docker or installs. Offline
+figures/analysis only after execution. Commit/push this feature branch, then
+stop without merge or next experiment.
+
+The ONE 3C-10 execution is complete: all five A–E sets passed before optimization;
+15 completed, zero censored/failed/budget stops. P0/U/C recover 5/5 each versus
+old 3/5, 2/5, 3/5. All new Q endpoints fall in the frozen historical more-accurate
+proximity ball, so historical accurate/inaccurate group stability is contradicted
+for this conditional comparison. C/P0 final similarity passes 5/5, U/P0 0/5;
+held-out error improves 15/15 and relight 13/15, retaining the two unfavorable
+U exceptions. All arms reach original damping saturation; scalar warnings
+101/105 remain. This does not establish independent end-to-end or population
+robustness. See the [saved results](docs/MATERIAL_INDEPENDENT_TAPE_LM_V1_RESULTS.md).
+Only offline review, preservation checks and the authorized feature-branch
+commit/push remain; no further scientific execution or next experiment.
+
+Earlier authorized task: **Milestone 3C-9c, controlled LM trajectories v2**,
 from `c37337e195db57b9a331021d9a55147abf866bb1` on
 `feat/material-lm-gauge-trajectories-v2` in a separate worktree. Freeze the
 [v2 protocol](docs/protocols/MATERIAL_LM_GAUGE_TRAJECTORIES_V2.md), source/tests,
