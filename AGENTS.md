@@ -142,7 +142,31 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **Milestone3C-5, symmetry and sampling audit**,
+Current authorized task: **approved 3C-5 reporting repair and one fresh attempt2**,
+from `13fe645af355f66400d435f9e25f5fcc63870912` on the existing
+`feat/anisotropy-symmetry-audit-v1` branch. The researcher approved the proposed
+native-Boolean reporting correction, strict-JSON regression coverage and ONE
+new versioned attempt. Preserve the raw failed output, valid failure manifest,
+original frozen protocol and failed-attempt report. Keep the original scientific
+specification, shader, states/transforms, samples/tapes/targets, bounds and
+CPU/memory budgets unchanged. Freeze
+[attempt2](docs/protocols/MATERIAL_SYMMETRY_AUDIT_V1_ATTEMPT2.md) before execution;
+require its new output path and refuse collisions. Validate serialization before
+touching the prior snapshot. Only the current focused audit/reporting tests and
+static checks; no old experiment/suite reruns or further science. No optimization,
+autograd, new reference, GPU/neural training, installs, Docker or original artifact
+edits. Commit/push this feature branch, then stop. No automatic third attempt,
+policy/tolerance adjustment or next experiment without separate approval.
+The approved attempt2 is complete: 36 forwards in 11.79 s, physical gates passed,
+no optimization. P1 changes all six fixed-tape objectives despite invariant Q/
+ideal kernel; P2 is within frozen roundoff bounds. Preserve the successful
+[evidence](docs/evidence/MATERIAL_SYMMETRY_AUDIT_V1_ATTEMPT2.json) and
+[results](docs/MATERIAL_SYMMETRY_AUDIT_V1_ATTEMPT2_RESULTS.md) separately from the
+first failed attempt. Causation of the LM solution groups remains unresolved.
+Do not run a third attempt, alter science or implement the proposed coupling
+diagnostic without separate approval.
+
+Earlier authorized task: **Milestone3C-5, symmetry and sampling audit**,
 from `f4f5f4d57fc9f57c4d6387663ac9ef19b40144c0` on
 `feat/anisotropy-symmetry-audit-v1`. Preserve all accepted source/protocol/evidence
 and original user edits in a separate worktree. Admit exactly truth plus the five

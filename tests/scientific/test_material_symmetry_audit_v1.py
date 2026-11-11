@@ -194,7 +194,7 @@ class MaterialSymmetryAuditTests(unittest.TestCase):
 
     def test_collision_and_failed_admission_preserve_output_and_cleanup(self):
         with tempfile.TemporaryDirectory() as directory:
-            root=Path(directory);target=root/'docs/evidence/MATERIAL_SYMMETRY_AUDIT_V1.json';target.parent.mkdir(parents=True)
+            root=Path(directory);target=root/'docs/evidence/MATERIAL_SYMMETRY_AUDIT_V1_ATTEMPT2.json';target.parent.mkdir(parents=True)
             protocol=root/'p.md';protocol.write_text('fixture');target.write_text('preserve')
             handlers={s:signal.getsignal(s) for s in (signal.SIGALRM,signal.SIGTERM)}
             with patch.object(audit,'ROOT',root),patch.object(audit,'PROTOCOL',protocol),patch.dict(audit.os.environ,audit.original.REQUIRED_ENV), \

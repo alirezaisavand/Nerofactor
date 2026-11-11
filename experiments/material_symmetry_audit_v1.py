@@ -20,12 +20,12 @@ from experiments import material_recovery_optimizer_comparison_v1 as previous
 from experiments import run_known_material_recovery_v1 as original
 from experiments import known_material_reference_v1 as reference
 from experiments.material_shader_v1 import MaterialShaderV1, decode_atan2
-from infrastructure.signatures import require, write_report
+from infrastructure.signatures import require
 from infrastructure.stage_sources import baseline, PINS
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = 'f4f5f4d57fc9f57c4d6387663ac9ef19b40144c0'
-PROTOCOL = ROOT/'docs/protocols/MATERIAL_SYMMETRY_AUDIT_V1.md'
+BASE = '13fe645af355f66400d435f9e25f5fcc63870912'
+PROTOCOL = ROOT/'docs/protocols/MATERIAL_SYMMETRY_AUDIT_V1_ATTEMPT2.md'
 COMPARISON_SHA = '66e626379dbdfc9c7c7c5116e94cada4a748e3db29ccb2c14cf96f6fe724537f'
 RESULTS_SHA = '699fe50ebdfe2cd087147814787e8ee23b1267e3753c9ad92d5961382579d5f2'
 MAX_CALLS, MAX_POINTS, WALL_SECONDS = 36, 7776, 1800
@@ -132,7 +132,7 @@ def physical_equivalence(current,base,rounded=False):
         checks.update(kernel=bool(np.allclose(current['independent_specular_kernel'],base['independent_specular_kernel'],
             atol=KERNEL_ATOL,rtol=KERNEL_RTOL)),fixed_direction_pdf=bool(np.allclose(
             current['independent_fixed_direction_pdf'],base['independent_fixed_direction_pdf'],atol=KERNEL_ATOL,rtol=KERNEL_RTOL)),
-            orientation=angle is None or angle<=ANGLE_ATOL)
+            orientation=bool(angle is None or angle<=ANGLE_ATOL))
     result.update(checks=checks,passed=all(checks.values()),scope='Rounded-input Q/eigenvalue check; kernel/orientation differences descriptive' if rounded else 'Nominal float64 physical equivalence')
     return result
 
@@ -382,12 +382,20 @@ def execute(old,diagnostic,comparison,states,report,persist):
                       peak_RSS_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024);persist()
 
 
+def persist_report(stream,report):
+    # Validate the entire payload before changing the last durable snapshot.
+    payload=json.dumps(report,indent=2,allow_nan=False)+'\n'
+    stream.seek(0);stream.write(payload);stream.truncate();stream.flush()
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--output',type=Path,required=True);args=parser.parse_args()
     require(all(os.environ.get(k)==v for k,v in original.REQUIRED_ENV.items()),'Explicit hidden-GPU/one-thread environment required')
     require(args.output.is_absolute() and args.output.resolve()==args.output and
-            args.output==ROOT/'docs/evidence/MATERIAL_SYMMETRY_AUDIT_V1.json','Explicit fresh versioned output required')
-    report=dict(schema_version=1,protocol='material-symmetry-audit-v1',milestone='3C-5',base_commit=BASE,status='running',
+            args.output==ROOT/'docs/evidence/MATERIAL_SYMMETRY_AUDIT_V1_ATTEMPT2.json','Explicit fresh versioned output required')
+    report=dict(schema_version=1,protocol='material-symmetry-audit-v1-attempt2',milestone='3C-5 approved reporting repair',base_commit=BASE,status='running',
+        prior_failed_attempt=dict(commit=BASE,path='docs/evidence/MATERIAL_SYMMETRY_AUDIT_V1.json',
+            sha256='055aa0a2c13457dc198bb888c45ff15062fec90856de31220e09ada196568a55'),
         physical_gate='not_started',protocol_sha256=digest(PROTOCOL),implementation_sha256={'experiments/material_symmetry_audit_v1.py':digest(__file__)},
         optimizer_creation=False,parameter_updates=False,new_targets=False,GPU_execution=False,
         settings=dict(max_shader_calls=MAX_CALLS,max_points=MAX_POINTS,wall_seconds=WALL_SECONDS,peak_RSS_budget_bytes=RSS_BYTES,
@@ -399,7 +407,7 @@ def main():
     old_limit=resource.getrlimit(resource.RLIMIT_AS)
     def stop(signum,frame):raise original.RuntimeLimit('Single1800-second forward-only audit terminated; no retry')
     with args.output.open('x') as stream:
-        def persist():write_report(stream,report)
+        def persist():persist_report(stream,report)
         persist()
         try:
             for s in handlers:signal.signal(s,stop)
