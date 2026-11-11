@@ -142,7 +142,33 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **approved 3C-5 reporting repair and one fresh attempt2**,
+Current authorized task: **Milestone 3C-6, common-world-sample coupling**,
+from `1d16e9e147f6cdf270fbc0ed19e7add36ad17281` on
+`feat/anisotropy-sample-coupling-v1` in a separate worktree. The researcher
+explicitly authorizes one bounded CPU forward-only diagnostic under the frozen
+[coupling protocol](docs/protocols/MATERIAL_SAMPLE_COUPLING_V1.md). Derive the
+signed quarter-turn from actual A2/atan2 frames; copy only diagnostic tapes,
+preserving radial/diffuse draws and original storage. Admit all accepted source,
+protocol/evidence/tape identities; reuse archived P1-U and recapture P0 exactly
+before each P1-C. At most 24 calls/5,184 points, one thread, hidden GPUs,
+1,800 seconds, 4 GiB RSS/8 GiB address cap, no retry or threshold adjustment.
+Only new focused fixtures/static checks and one scientific execution; preserve
+the failed 3C-5 files and every old artifact. No optimizer, parameter update,
+backward, new target/integral/seed/count, accepted shader/sampler/source changes,
+old experiment/suite rerun, GPU/neural training, Docker or installation. Record
+all states, actual PDFs/clamps, masks, per-tape RGB and objectives; separate
+sample correspondence from causal claims about LM groups. Commit/push this
+feature branch, then stop. No further experiment or merge without approval.
+The one approved execution is complete: 24 forwards in 8.12 s; all recaptured
+P0 identities match, coupled h/wi/masks and six objectives pass their frozen
+bounds. The source-PDF bound fails for 43 grazing pairs; retain that failed
+subcheck, with no tolerance adjustment. Preserve the new
+[evidence](docs/evidence/MATERIAL_SAMPLE_COUPLING_V1.json) and
+[results](docs/MATERIAL_SAMPLE_COUPLING_V1_RESULTS.md), the frozen protocol/code
+and all earlier files. The 19 new focused tests passed. No further scientific
+execution or proposed derivative diagnostic without separate approval.
+
+Earlier authorized task: **approved 3C-5 reporting repair and one fresh attempt2**,
 from `13fe645af355f66400d435f9e25f5fcc63870912` on the existing
 `feat/anisotropy-symmetry-audit-v1` branch. The researcher approved the proposed
 native-Boolean reporting correction, strict-JSON regression coverage and ONE
