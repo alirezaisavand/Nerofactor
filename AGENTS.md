@@ -142,7 +142,32 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **Milestone3C-3, controlled optimizer continuation**,
+Current authorized task: **Milestone3C-4, controlled optimizer comparison**,
+from `a64e7e77503fb3ed1a9fb26969d2bf2ad330fcea` on
+`feat/material-recovery-optimizer-comparison-v1`. Admit the five complete
+update1000 states and preserve all previous science/source/protocol/evidence.
+Freeze [the optimizer protocol](docs/protocols/MATERIAL_RECOVERY_OPTIMIZER_COMPARISON_V1.md)
+before ONE CPU comparison: original-state Adam at most750 more returns versus
+new damped GN/LM at most80 outers/four trials, seven verified directional AD
+JVPs per Jacobian. Each arm/seed120 active wall seconds, whole run1800 seconds,
+one thread/hidden GPUs; no retries/extensions. Demand identical initial vectors,
+physical values/predictions/objectives before any update. Preserve A2/atan2,
+original samples/tapes/targets/transforms/objective and success criteria; no
+held-out selection, old-run/reference/test-suite replay, tuning, other numerical
+changes, GPU/neural training, dependencies, Docker, historical artifact edits or
+merges. Run only NEW focused fixtures/static checks; python3 for every command.
+Retain all ten outcomes, partial failures, attempts, time/work counts and honest
+H1–H4 interpretation. Use a separate worktree to preserve the original user edit.
+Commit/push this feature branch only; no further experiment without approval.
+The single comparison is complete:344.79s, all ten endpoints evaluated, no
+time stops; LM3/5 successes versus Adam0/5. Preserve the frozen protocol,
+[evidence](docs/evidence/MATERIAL_RECOVERY_OPTIMIZER_COMPARISON_V1.json),
+[results](docs/MATERIAL_RECOVERY_OPTIMIZER_COMPARISON_V1_RESULTS.md) and all
+failures/attempts. The remaining LM starts fail Q only. Do not rerun, tune the
+policy, relax thresholds, implement the proposed gauge diagnostic or start any
+additional experiment without separate approval.
+
+Earlier authorized task: **Milestone3C-3, controlled optimizer continuation**,
 from `15d0a07e65e5d3f18f72d68819b62e386886c492` on
 `feat/material-recovery-continuation-v1`. Implement and test exact JSON restoration
 of all five admitted update250 seven-scalar parameter/Adam states. Freeze
