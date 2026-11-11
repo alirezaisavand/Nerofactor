@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "protocol": "material-gauge-roundoff-v1",
+  "base_commit": "f9043aaecb709cebde597eab970458c72ad0f2c5",
+  "frozen_before_execution_at_utc": "2026-11-11T07:38:21.910571+00:00",
+  "sha256": {
+    "experiments/material_gauge_roundoff_v1.py": "e0c68f771c52b8483150e7ccc9914d860c43ef890b95f293ad0783f95d0395f4",
+    "tests/scientific/test_material_gauge_roundoff_v1.py": "e3df23867354861e1c3e04e9d8e35c172f633ef201d041e312d4605453c924c2",
+    "docs/protocols/MATERIAL_GAUGE_ROUNDOFF_V1.md": "2a55539fc481c6c27c1b708fc2ee5fc3f38b05ebde7132db2ec86f7174ab93d4"
+  },
+  "focused_tests": {
+    "passed": 25,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 1.505,
+    "command": "CUDA_VISIBLE_DEVICES='' OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -B -m unittest tests.scientific.test_material_gauge_roundoff_v1 -v"
+  },
+  "full_shader_calls_in_tests": 0,
+  "maximum_calls": 6,
+  "single_execution": true,
+  "no_retry": true
+}

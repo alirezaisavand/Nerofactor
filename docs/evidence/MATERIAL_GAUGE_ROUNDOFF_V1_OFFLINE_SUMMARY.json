@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "protocol": "material-gauge-roundoff-v1-offline-summary",
+  "source_report": "docs/evidence/MATERIAL_GAUGE_ROUNDOFF_V1.json",
+  "source_report_sha256": "4753e1e6d971b033d24d686e146ab0d22dfd4941eee3d03df9780dc0fce37c5b",
+  "additional_shader_calls": 0,
+  "additional_derivative_calls": 0,
+  "new_criterion_implemented": false,
+  "original_3C9_failure_preserved": true,
+  "seeds": [
+    {
+      "seed": 101,
+      "per_arm_MSE_ladder": {
+        "P0": {
+          "sample64_add64_mean64": 8.299174577402173e-06,
+          "sample32_add64_mean64": 8.299174409593094e-06,
+          "sample32_add32_mean64": 8.299175304176375e-06,
+          "sample32_add32_mean32_residual64": 8.299172728146022e-06,
+          "residual32_square64_mean64": 8.299172728146022e-06,
+          "residual32_square32_mean64": 8.299172719958127e-06,
+          "original_float32": 8.299173714476638e-06
+        },
+        "P1-C": {
+          "sample64_add64_mean64": 8.299173553423497e-06,
+          "sample32_add64_mean64": 8.299172975012245e-06,
+          "sample32_add32_mean64": 8.29917388618647e-06,
+          "sample32_add32_mean32_residual64": 8.299175722178512e-06,
+          "residual32_square64_mean64": 8.299175722178512e-06,
+          "residual32_square32_mean64": 8.299175695105262e-06,
+          "original_float32": 8.299176442960743e-06
+        },
+        "P1-C-E": {
+          "sample64_add64_mean64": 8.299173553423497e-06,
+          "sample32_add64_mean64": 8.299172975012245e-06,
+          "sample32_add32_mean64": 8.29917388618647e-06,
+          "sample32_add32_mean32_residual64": 8.299175722178512e-06,
+          "residual32_square64_mean64": 8.299175722178512e-06,
+          "residual32_square32_mean64": 8.299175695105262e-06,
+          "original_float32": 8.299176442960743e-06
+        }
+      },
+      "residual_subtraction": {
+        "P0": {
+          "max_residual_subtraction_error": 0.0,
+          "differing_residual_elements": 0
+        },
+        "P1-C": {
+          "max_residual_subtraction_error": 0.0,
+          "differing_residual_elements": 0
+        },
+        "P1-C-E": {
+          "max_residual_subtraction_error": 0.0,
+          "differing_residual_elements": 0
+        }
+      },
+      "pairs": [
+        {
+          "pair": [
+            "P0",
+            "P1-C"
+          ],
+          "signed_objective_differences_by_offline_ladder": {
+            "sample64_add64_mean64": -1.0239786754249417e-12,
+            "sample32_add64_mean64": -1.434580849363318e-12,
+            "sample32_add32_mean64": -1.4179899049111648e-12,
+            "sample32_add32_mean32_residual64": 2.9940324901273204e-12,
+            "residual32_square64_mean64": 2.9940324901273204e-12,
+            "residual32_square32_mean64": 2.975147135014897e-12,
+            "original_float32": 2.7284841053187847e-12
+          },
+          "telescoping_signed_contributions": {
+            "pre_accumulation_captured_sample_arithmetic": -1.0239786754249417e-12,
+            "sample_sum_and_division_rounding": -4.106021739383762e-13,
+            "per_tape_component_addition_rounding": 1.6590944452153124e-14,
+            "four_tape_mean_rounding": 4.412022395038485e-12,
+            "residual_subtraction_rounding": 0.0,
+            "square_rounding": -1.8885355112423577e-14,
+            "final_mean_rounding": -2.4666302969611215e-13
+          },
+          "sum_of_contributions": 2.7284841053187847e-12,
+          "limit": "Order-dependent offline replacement ladder, not independent causal shares or new renderer variants"
+        },
+        {
+          "pair": [
+            "P0",
+            "P1-C-E"
+          ],
+          "signed_objective_differences_by_offline_ladder": {
+            "sample64_add64_mean64": -1.0239786754249417e-12,
+            "sample32_add64_mean64": -1.434580849363318e-12,
+            "sample32_add32_mean64": -1.4179899049111648e-12,
+            "sample32_add32_mean32_residual64": 2.9940324901273204e-12,
+            "residual32_square64_mean64": 2.9940324901273204e-12,
+            "residual32_square32_mean64": 2.975147135014897e-12,
+            "original_float32": 2.7284841053187847e-12
+          },
+          "telescoping_signed_contributions": {
+            "pre_accumulation_captured_sample_arithmetic": -1.0239786754249417e-12,
+            "sample_sum_and_division_rounding": -4.106021739383762e-13,
+            "per_tape_component_addition_rounding": 1.6590944452153124e-14,
+            "four_tape_mean_rounding": 4.412022395038485e-12,
+            "residual_subtraction_rounding": 0.0,
+            "square_rounding": -1.8885355112423577e-14,
+            "final_mean_rounding": -2.4666302969611215e-13
+          },
+          "sum_of_contributions": 2.7284841053187847e-12,
+          "limit": "Order-dependent offline replacement ladder, not independent causal shares or new renderer variants"
+        }
+      ]
+    },
+    {
+      "seed": 102,
+      "per_arm_MSE_ladder": {
+        "P0": {
+          "sample64_add64_mean64": 8.895784704761512e-06,
+          "sample32_add64_mean64": 8.895783881618464e-06,
+          "sample32_add32_mean64": 8.895782729372864e-06,
+          "sample32_add32_mean32_residual64": 8.895776067115362e-06,
+          "residual32_square64_mean64": 8.895776067115362e-06,
+          "residual32_square32_mean64": 8.895776096603155e-06,
+          "original_float32": 8.895775863493327e-06
+        },
+        "P1-C": {
+          "sample64_add64_mean64": 8.895781245905604e-06,
+          "sample32_add64_mean64": 8.895779101034249e-06,
+          "sample32_add32_mean64": 8.895775227738822e-06,
+          "sample32_add32_mean32_residual64": 8.895770763370265e-06,
+          "residual32_square64_mean64": 8.895770763370265e-06,
+          "residual32_square32_mean64": 8.895770830395931e-06,
+          "original_float32": 8.895770406525116e-06
+        },
+        "P1-C-E": {
+          "sample64_add64_mean64": 8.895780828897298e-06,
+          "sample32_add64_mean64": 8.895777929328142e-06,
+          "sample32_add32_mean64": 8.895774944616157e-06,
+          "sample32_add32_mean32_residual64": 8.895771050259604e-06,
+          "residual32_square64_mean64": 8.895771050259604e-06,
+          "residual32_square32_mean64": 8.895771110665566e-06,
+          "original_float32": 8.895771316019818e-06
+        }
+      },
+      "residual_subtraction": {
+        "P0": {
+          "max_residual_subtraction_error": 0.0,
+          "differing_residual_elements": 0
+        },
+        "P1-C": {
+          "max_residual_subtraction_error": 0.0,
+          "differing_residual_elements": 0
+        },
+        "P1-C-E": {
+          "max_residual_subtraction_error": 0.0,
+          "differing_residual_elements": 0
+        }
+      },
+      "pairs": [
+        {
+          "pair": [
+            "P0",
+            "P1-C"
+          ],
+          "signed_objective_differences_by_offline_ladder": {
+            "sample64_add64_mean64": -3.4588559077850965e-12,
+            "sample32_add64_mean64": -4.780584214692592e-12,
+            "sample32_add32_mean64": -7.5016340422764e-12,
+            "sample32_add32_mean32_residual64": -5.303745097051454e-12,
+            "residual32_square64_mean64": -5.303745097051454e-12,
+            "residual32_square32_mean64": -5.266207224325346e-12,
+            "original_float32": -5.4569682106375694e-12
+          },
+          "telescoping_signed_contributions": {
+            "pre_accumulation_captured_sample_arithmetic": -3.4588559077850965e-12,
+            "sample_sum_and_division_rounding": -1.3217283069074954e-12,
+            "per_tape_component_addition_rounding": -2.7210498275838076e-12,
+            "four_tape_mean_rounding": 2.1978889452249455e-12,
+            "residual_subtraction_rounding": 0.0,
+            "square_rounding": 3.753787272610821e-14,
+            "final_mean_rounding": -1.9076098631222362e-13
+          },
+          "sum_of_contributions": -5.4569682106375694e-12,
+          "limit": "Order-dependent offline replacement ladder, not independent causal shares or new renderer variants"
+        },
+        {
+          "pair": [
+            "P0",
+            "P1-C-E"
+          ],
+          "signed_objective_differences_by_offline_ladder": {
+            "sample64_add64_mean64": -3.875864213926414e-12,
+            "sample32_add64_mean64": -5.952290321804723e-12,
+            "sample32_add32_mean64": -7.784756707332149e-12,
+            "sample32_add32_mean32_residual64": -5.016855757794428e-12,
+            "residual32_square64_mean64": -5.016855757794428e-12,
+            "residual32_square32_mean64": -4.985937589852647e-12,
+            "original_float32": -4.547473508864641e-12
+          },
+          "telescoping_signed_contributions": {
+            "pre_accumulation_captured_sample_arithmetic": -3.875864213926414e-12,
+            "sample_sum_and_division_rounding": -2.0764261078783097e-12,
+            "per_tape_component_addition_rounding": -1.8324663855274256e-12,
+            "four_tape_mean_rounding": 2.7679009495377212e-12,
+            "residual_subtraction_rounding": 0.0,
+            "square_rounding": 3.091816794178071e-14,
+            "final_mean_rounding": 4.3846408098800575e-13
+          },
+          "sum_of_contributions": -4.547473508864641e-12,
+          "limit": "Order-dependent offline replacement ladder, not independent causal shares or new renderer variants"
+        }
+      ]
+    }
+  ],
+  "hypotheses": {
+    "H1": {
+      "verdict": "Confirmed",
+      "scope": "Both native P1-C RGB arrays differ from P0 before objective reduction"
+    },
+    "H2": {
+      "verdict": "Confirmed",
+      "scope": "Exact saved forward/MSE replay, dyadic residual identity and offline arithmetic ladder explain the observed objective discrepancy"
+    },
+    "H3": {
+      "verdict": "Confirmed",
+      "scope": "Seed102 encoding-only intervention changes frames, samples, RGB and MSE; seed101 has no downstream change. No uniform RGB improvement claim"
+    },
+    "H4": {
+      "verdict": "Supported but not isolated",
+      "scope": "Remaining local coefficient/sample errors and accumulation effects persist after the controlled encoding change; individual transcendental/draw-rounding causes not separately intervened upon"
+    },
+    "H5": {
+      "verdict": "Confirmed",
+      "scope": "Frozen objective bound rejects the observed physically equivalent float32 seed102 baseline; not permission to revise that gate or a proof of a universally suitable new bound"
+    }
+  }
+}

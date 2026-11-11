@@ -142,7 +142,40 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **Milestone 3C-9, controlled LM gauge trajectories**,
+Current authorized task: **Milestone 3C-9b, gauge-roundoff diagnostic**,
+from `f9043aaecb709cebde597eab970458c72ad0f2c5` on
+`feat/material-gauge-roundoff-v1` in a separate worktree. Freeze the
+[roundoff protocol](docs/protocols/MATERIAL_GAUGE_ROUNDOFF_V1.md), runner and new
+tests before ONE CPU execution: offline saved-array analysis first, four exact
+baseline forwards (101/102 x P0/P1-C), then two P1-C-E forwards replacing only
+the orientation encoding with -E0. No other variants, new states/targets/seeds,
+optimizer, updates, derivatives/backward, reference quadrature, shader/sampling
+changes, GPU/neural training, Docker or installation. Preserve the failed 3C-9
+gate and ALL older evidence/source/protocols. Reuse original ObservationBatch,
+A2/atan2 and coupled tapes; read-only profiling may copy actual return locals,
+never alter numerical operations. Require exact baseline RGB/MSE/mask/tapes;
+stop on mandatory identity/equivalence/resource failure with no retry. At most
+six calls/576 points,294912 diffuse/589824 specular directions,600 seconds,
+4 GiB RSS/8 GiB address cap, one CPU thread, GPUs hidden. Only new focused
+synthetic/read-only tests; python3 commands. Separate measured stage differences,
+roundoff amplification and one-factor causal evidence. A future criterion or
+new trajectory run is a recommendation only; neither is implemented/authorized.
+Commit/push this branch after analysis; no merge or further experiment.
+
+The ONE 3C-9b execution is complete: exactly6 forwards/576 points in3.94s,
+zero derivatives/updates. All four baseline RGB/MSE/mask identities match3C-9;
+seed102's original failed gate is reproduced and remains failed. Offline final
+mean64 accumulation alone would pass that stored-prediction comparison. Encoding
+-E0 has no downstream effect for101; for102 it changes the objective gap from
+6 to5 float32 loss ULPs, passing that DIAGNOSTIC gate, without removing remaining
+sample/RGB differences or uniformly improving RGB error. Preserve frozen
+code/tests/protocol, [evidence](docs/evidence/MATERIAL_GAUGE_ROUNDOFF_V1.json),
+offline [summary](docs/evidence/MATERIAL_GAUGE_ROUNDOFF_V1_OFFLINE_SUMMARY.json)
+and [results](docs/MATERIAL_GAUGE_ROUNDOFF_V1_RESULTS.md). The25 new focused tests
+passed. No criterion, shader or failed evidence was changed. No extra rendering,
+retry, optimizer work or new trajectory attempt without separate approval.
+
+Earlier authorized task: **Milestone 3C-9, controlled LM gauge trajectories**,
 from `ebdfa2cdbf4bbd5d7b6ad32c1e558349c2c16153` on
 `feat/material-lm-gauge-trajectories-v1` in a separate worktree. Freeze the
 [trajectory protocol](docs/protocols/MATERIAL_LM_GAUGE_TRAJECTORIES_V1.md), runner
