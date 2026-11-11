@@ -1,0 +1,40 @@
+{
+  "schema_version": 2,
+  "protocol": "material-lm-gauge-trajectories-v2",
+  "base_commit": "c37337e195db57b9a331021d9a55147abf866bb1",
+  "frozen_before_execution_at_utc": "2026-11-11T08:30:43.025700+00:00",
+  "sha256": {
+    "experiments/material_lm_gauge_trajectories_v2.py": "1eefc076c67d90505224e11af09cf3f058dce20c25ff9d08d2f7266d589d51ae",
+    "tests/scientific/test_material_lm_gauge_trajectories_v2.py": "a4a4bf43ae158ac94368944a51f239ec48ad029c2330c7bf9a87a6b9cdcc86dd",
+    "docs/protocols/MATERIAL_LM_GAUGE_TRAJECTORIES_V2.md": "757eab9f28b72f13ce6c865cc5522da117b44b98aad21b603479b0ef16fcfbae"
+  },
+  "numerical_policy_sha256": "853c2ae265d853f19c6c198041e93914e1180000f2c04edb6bfca1a6fa54c7e1",
+  "arm_work_caps_sha256": "55e238580716b611d4226ade5e5c4bf2004e33fad6cf6df5b79aba83dcfbfbbc",
+  "reviewed_pytorch_sources": [
+    {
+      "path": "aten/src/ATen/native/ReduceOps.cpp",
+      "url": "https://raw.githubusercontent.com/pytorch/pytorch/e4ee3be4063b7c430974252fdf7db42273388d86/aten/src/ATen/native/ReduceOps.cpp",
+      "sha256": "9ac64ff7e7dead6f4ccac17fad6162d1d82233e8a7e7d119fa56d53e42fb7eb7"
+    },
+    {
+      "path": "aten/src/ATen/native/cpu/SumKernel.cpp",
+      "url": "https://raw.githubusercontent.com/pytorch/pytorch/e4ee3be4063b7c430974252fdf7db42273388d86/aten/src/ATen/native/cpu/SumKernel.cpp",
+      "sha256": "6639e5b687c24fbda26f8e4e5d22fec6c54065a5ecbbc43273b12a00b509981e"
+    },
+    {
+      "path": "aten/src/ATen/native/cpu/PowKernel.cpp",
+      "url": "https://raw.githubusercontent.com/pytorch/pytorch/e4ee3be4063b7c430974252fdf7db42273388d86/aten/src/ATen/native/cpu/PowKernel.cpp",
+      "sha256": "4b7f34db7eead1db381470e9fa603462a8ba65259d809cc7416dba8d457df82e"
+    }
+  ],
+  "focused_tests": {
+    "passed": 25,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 3.781,
+    "command": "CUDA_VISIBLE_DEVICES='' OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -B -m unittest tests.scientific.test_material_lm_gauge_trajectories_v2 -v"
+  },
+  "full_scientific_shader_calls_in_tests": 0,
+  "single_execution": true,
+  "no_retry": true
+}

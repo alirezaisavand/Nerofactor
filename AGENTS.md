@@ -142,7 +142,46 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **Milestone 3C-9b, gauge-roundoff diagnostic**,
+Current authorized task: **Milestone 3C-9c, controlled LM trajectories v2**,
+from `c37337e195db57b9a331021d9a55147abf866bb1` on
+`feat/material-lm-gauge-trajectories-v2` in a separate worktree. Freeze the
+[v2 protocol](docs/protocols/MATERIAL_LM_GAUGE_TRAJECTORIES_V2.md), source/tests,
+gate and budget identities before ONE CPU 15-arm experiment. Exactly seeds101–105
+at admitted update1000 x P0/P1-U/P1-C. Initial15 forwards include all sample/RGB
+capture; no extra initial rendering. All five A–E gates must pass before any LM:
+exact identities, physical Q/uniform actual frames/sign, h/wi/mask/diffuse samples,
+independent per-tape/mean RGB components, and source-justified finite/normal
+float32 gamma75 arithmetic envelope. Old scalar gate is a reported warning only;
+the earlier failed3C-9 remains failed and immutable. No alternate encoding,
+objective/shader/sampler/LM change or new target/seed. Reuse frozen v1 original
+LM bytecode, branch chart stop-before-render/no-retry and common-gauge evaluation.
+Record chain-derived physical sensitivity separately from native latent AD;
+no extra AD calls beyond inherited caps. Fifteen planned arms,80 outers/four
+trials,120 active seconds each with10 reserved,2400 whole seconds,4 GiB RSS/
+8 GiB address cap, CPU one thread/GPUs hidden. Exact P0 history checks; retain
+finite negative/censored outcomes and safe declared numerical failures. No pilot,
+rerun, budget extension, old suite/experiment repetition, source/prior evidence
+edits, GPU/neural training, Docker or installs. New focused fixtures only;
+python3 commands. Offline figures only after execution. Commit/push this branch,
+then stop without merging or starting another experiment.
+
+The ONE3C-9c execution is complete: all15 initial forwards/all five A–E gate
+sets passed; old scalar warnings102/105 remain warnings, failed3C-9 unchanged.
+All15 LM arms completed damping_saturated, zero branch/time/failure stops,
+188.34s wall/626761728-byte peak RSS. All five P0 histories/endpoints exactly
+match3C-4. Recovery P0=3/5,U=2/5,C=3/5; C tracks P0's successful AND unsuccessful
+groups. Final cross-arm similarity C5/5,U0/5. Initial mathematical coupled
+proposals pass5/5; represented theta105 fails its frozen component bound (4/5
+pass). Preserve that negative diagnostic and the96 zero represented proposals;
+do not claim bitwise trajectory equivalence or universal recovery improvement.
+The25 new focused tests passed. Preserve frozen source/test/protocol and
+[evidence](docs/evidence/MATERIAL_LM_GAUGE_TRAJECTORIES_V2.json), offline
+[analysis](docs/evidence/MATERIAL_LM_GAUGE_TRAJECTORIES_V2_ANALYSIS.json), figures
+and [results](docs/MATERIAL_LM_GAUGE_TRAJECTORIES_V2_RESULTS.md). No more scientific
+execution, criterion/sampler change, retry or proposed independent-tape study
+without separate approval. Commit/push this feature branch, then stop.
+
+Earlier authorized task: **Milestone 3C-9b, gauge-roundoff diagnostic**,
 from `f9043aaecb709cebde597eab970458c72ad0f2c5` on
 `feat/material-gauge-roundoff-v1` in a separate worktree. Freeze the
 [roundoff protocol](docs/protocols/MATERIAL_GAUGE_ROUNDOFF_V1.md), runner and new
