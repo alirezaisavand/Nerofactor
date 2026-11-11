@@ -142,7 +142,38 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **Milestone 3C-6, common-world-sample coupling**,
+Current authorized task: **Milestone 3C-7, gradient/Jacobian gauge-equivariance**,
+from `f5a3d714fd57bfef02baf6ca47b15ab69927e7ea` on
+`feat/anisotropy-gradient-equivariance-v1` in a separate worktree. Implement,
+test and freeze the [derivative protocol](docs/protocols/MATERIAL_GRADIENT_EQUIVARIANCE_V1.md)
+before one approved CPU-only execution. Exactly the six accepted states,
+fixed original/coupled tapes and unchanged A2/atan2; AD through the original
+physical shader, with exact forward identity gates. Record physical versus
+original optimizer coordinates separately; never substitute truth's inexact
+inverse roundtrip. At most 330 forwards/54,720 points, 210 directional ADs,
+420 double-reverse plus 18 direct-gradient sweeps, and at most 12 tiny coordinate
+transform VJPs without rendering. Fixed FD states truth/LM101/LM104, mx/my/theta,
+steps 1e-4 and 5e-5, no adaptive signs or changes to masks/decoder/sampling.
+One process/thread, hidden GPUs, 1,800 seconds, 4 GiB RSS/8 GiB address cap;
+no retry/extension. Fail on integrity/construction errors but retain finite
+scientific comparison failures and continue the frozen plan. Only new focused
+tests/static checks; no old suite/experiment reruns. Preserve all old sources,
+protocols and evidence, including failed 3C-5 and 43 grazing PDF exceptions.
+No optimizer, parameter update, estimator correction, new target/reference/seed,
+GPU/neural training, Docker or installation. Commit/push this feature branch,
+then stop; do not merge or implement the next experiment without approval.
+The single run is complete: 330 forwards/210 JVPs in 196.67 s, all mandatory
+gates passed. Coupled J/g meet frozen absolute-plus-relative bounds; uncoupled
+specular/total derivatives fail. Preserve the qualification that near-zero
+LM102 gradients differ by 46.6% relatively despite absolute-bound acceptance.
+Truth inverse-roundtrip coordinates are inexact and excluded from latent
+derivative comparisons. Twenty-four of 36 FD secants change masks; none crosses
+a decoder branch. The 25 new tests passed. Preserve the frozen source/tests/
+protocol, [evidence](docs/evidence/MATERIAL_GRADIENT_EQUIVARIANCE_V1.json) and
+[results](docs/MATERIAL_GRADIENT_EQUIVARIANCE_V1_RESULTS.md). No retry, proposal
+calculation, optimizer execution or further scientific experiment is authorized.
+
+Earlier authorized task: **Milestone 3C-6, common-world-sample coupling**,
 from `1d16e9e147f6cdf270fbc0ed19e7add36ad17281` on
 `feat/anisotropy-sample-coupling-v1` in a separate worktree. The researcher
 explicitly authorizes one bounded CPU forward-only diagnostic under the frozen
