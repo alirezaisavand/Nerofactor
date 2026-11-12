@@ -142,7 +142,43 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **Milestone 3C-10, independent-tape conditional LM**,
+Current authorized task: **Milestone 3D-1, multi-material recovery benchmark**,
+from `34548db58e7e0d3adb4cc2be1d2a4f1ed45443c7` on
+`feat/multi-material-recovery-v1` in a separate worktree. Freeze the
+[protocol](docs/protocols/MULTI_MATERIAL_RECOVERY_V1.md), implementation/tests,
+three explicit material truths, original fresh seed 101/103/105 states, training
+tapes 3000–3003, evaluation tapes 1000–1003, inherited numerical gates and full
+work/resource budgets before ONE scientific execution. Generate independent
+NumPy two-grid targets and explicit-truth finite-difference local rank gates
+for all three materials before any optimization. Stop on mandatory failures;
+no replacement material/grid/tape/start, retry or post-result tuning. Only if
+all reference gates pass: nine fresh continuous 1000-update Adam histories,
+snapshots at 250/1000, then 27 P0/U/C LM arms. All 27 initial forwards and nine
+A–E gate sets before any LM update. Preserve original A2/atan2, sampler, objective,
+optimizer/LM/chart/controller/evaluation mathematics; explicit-truth adapters
+must not mutate historical TRUTH or globals. No old scientific reruns or source/
+evidence edits. CPU one thread/hidden GPUs, 7200 whole seconds, 180 active per
+Adam, 120 active per LM with 10 reserved, 4 GiB RSS/8 GiB address cap; exactly
+353894400 maximum reference directions. Only new focused synthetic tests,
+python3 commands. Preserve all negative/incomplete/censored results, distinguish
+archival single-material context and small-panel recovery from population/neural
+generalization. Offline figures/analysis add no scientific calls. Commit/push
+the feature branch, then stop without merge, next experiment or renderer changes.
+
+The ONE 3D-1 execution is complete: all three independent reference/local-rank
+gates and all nine A–E sets passed; nine fresh Adam histories returned exactly
+1000 updates each; 27 LM arms completed, zero censored/failed/budget stops.
+P0/U/C recovery: M1 1/3,2/3,1/3; M2 and M3 each 2/3,1/3,2/3. C/P0 final
+similarity passes 9/9, U/P0 0/9, while coupled initial math/represented proposal
+bounds pass only 7/9 and 5/9. Retain these failed diagnostics and four scalar
+warnings. All arms saturate damping; 14/27 physical versus 25/27 held-out RGB
+passes demonstrate why rendering and material recovery must remain separate.
+M1 is hardest by physical recovery, M2 by radiance errors; no causal profile or
+population claim. See [results](docs/MULTI_MATERIAL_RECOVERY_V1_RESULTS.md).
+Only offline verification and the authorized feature-branch commit/push remain.
+No further scientific run, neural training, renderer change or merge is approved.
+
+Earlier authorized task: **Milestone 3C-10, independent-tape conditional LM**,
 from `1e7e3ad8c15b85c569e241beb037cfadb29502e4` on
 `feat/material-independent-tape-lm-v1` in a separate worktree. Freeze the
 [replication protocol](docs/protocols/MATERIAL_INDEPENDENT_TAPE_LM_V1.md), source,
