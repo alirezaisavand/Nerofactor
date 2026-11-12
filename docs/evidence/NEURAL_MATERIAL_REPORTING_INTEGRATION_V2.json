@@ -1,0 +1,947 @@
+{
+  "baseline": "40b7b301d02835d1b324ed54db6a6c2649f0e049",
+  "branch": "feat/neural-material-reporting-integration-v2",
+  "engineering_work": {
+    "field_Adam_returns": 10,
+    "field_attempts": 1,
+    "field_backwards": 10,
+    "field_calibration_forwards": 1,
+    "field_queries": 10,
+    "historical_optimizer_replays": 0,
+    "new_field_constructors": 1,
+    "no_actual_optimizer_or_autograd_in_lifecycle_tests": true,
+    "real_material_shader_forwards": 0,
+    "recovery_updates": 0,
+    "synthetic_lifecycle_scenarios": 11,
+    "synthetic_reporting_logical_updates": 214860
+  },
+  "feasibility": {
+    "N1_formula": "5000*(C1 max forward + C1 max backward + D2 max Adam + D2 max gradient observer) + max reporting/bookkeeping history + three own checkpoint writes + one endpoint forward/backward",
+    "c1_max_backward_seconds": 0.042688172310590744,
+    "c1_max_forward_seconds": 0.05717642419040203,
+    "c1_original_N1_estimate_seconds": 608.6131639629602,
+    "conservative_N1_compute_seconds": 602.6688124984503,
+    "control_observational_residual_seconds": 382.18,
+    "double_counted_observer": "C1 backward already includes gradient observer; added D2 observer is deliberate conservative sensitivity, not a proven upper bound",
+    "full_run_storage_floor_sufficiently_sized": false,
+    "limits_changed": false,
+    "measurements_and_extrapolations_separate": true,
+    "original_limits": {
+      "active_seconds": 900,
+      "address_bytes": 8589934592,
+      "rss_bytes": 4294967296,
+      "watchdog_grace_seconds": 10,
+      "whole_seconds": 28800
+    },
+    "projected_27_history_active_seconds": 12417.174888912365,
+    "projected_N1_20percent_compute_sensitivity_seconds": 727.665748314932,
+    "projected_N1_active_seconds": 607.1319858152419,
+    "projected_control_seconds": 386.2770564763993,
+    "simultaneous_scientific_memory_validated": false,
+    "thin_largest_finalization_margin_seconds": 0.9981736149638891,
+    "unresolved": [
+      "Ten-step field objective saturates from step3; no sustained real N1 shader-training throughput measured",
+      "Simultaneous 27-model/shader/report RSS not measured",
+      "Full finalization9.00sec leaves only about1sec before watchdog grace, excluding scientific failure checkpoint/cleanup",
+      "1GiB free-space rejection floor is not conservative full-run capacity sizing",
+      "Own checkpoint restoration timing was not executed; no retry used to fill it"
+    ],
+    "whole_budget_note": "Projection excludes startup/admissions/source checks/finalization/independent scan; not an actual recovery run"
+  },
+  "field_only": {
+    "Adam_returns": 10,
+    "all_step_timings": [
+      {
+        "Adam_seconds": 0.012199578806757927,
+        "backward_seconds": 0.008832572028040886,
+        "forward_seconds": 0.010179396718740463,
+        "gradient_summary_seconds": 0.008469587191939354,
+        "objective": 7.058644771575928,
+        "update": 1
+      },
+      {
+        "Adam_seconds": 0.006133660674095154,
+        "backward_seconds": 0.00334043987095356,
+        "forward_seconds": 0.00841313786804676,
+        "gradient_summary_seconds": 0.008253604173660278,
+        "objective": 0.728452742099762,
+        "update": 2
+      },
+      {
+        "Adam_seconds": 0.006099103018641472,
+        "backward_seconds": 0.003088429570198059,
+        "forward_seconds": 0.008134199306368828,
+        "gradient_summary_seconds": 0.008093943819403648,
+        "objective": 0.3408375382423401,
+        "update": 3
+      },
+      {
+        "Adam_seconds": 0.006093241274356842,
+        "backward_seconds": 0.0030711013823747635,
+        "forward_seconds": 0.00774652324616909,
+        "gradient_summary_seconds": 0.008091578260064125,
+        "objective": 0.3408375382423401,
+        "update": 4
+      },
+      {
+        "Adam_seconds": 0.006105516105890274,
+        "backward_seconds": 0.0028594359755516052,
+        "forward_seconds": 0.007688645273447037,
+        "gradient_summary_seconds": 0.008074074983596802,
+        "objective": 0.3408375382423401,
+        "update": 5
+      },
+      {
+        "Adam_seconds": 0.006060412153601646,
+        "backward_seconds": 0.0028654783964157104,
+        "forward_seconds": 0.0077380165457725525,
+        "gradient_summary_seconds": 0.008102677762508392,
+        "objective": 0.3408375382423401,
+        "update": 6
+      },
+      {
+        "Adam_seconds": 0.006129559129476547,
+        "backward_seconds": 0.003118067979812622,
+        "forward_seconds": 0.007702590897679329,
+        "gradient_summary_seconds": 0.008115284144878387,
+        "objective": 0.3408375382423401,
+        "update": 7
+      },
+      {
+        "Adam_seconds": 0.0060684047639369965,
+        "backward_seconds": 0.0027647074311971664,
+        "forward_seconds": 0.007704013958573341,
+        "gradient_summary_seconds": 0.008115895092487335,
+        "objective": 0.3408375382423401,
+        "update": 8
+      },
+      {
+        "Adam_seconds": 0.0060679055750370026,
+        "backward_seconds": 0.0030253808945417404,
+        "forward_seconds": 0.007718119770288467,
+        "gradient_summary_seconds": 0.008115611970424652,
+        "objective": 0.3408375382423401,
+        "update": 9
+      },
+      {
+        "Adam_seconds": 0.006110686808824539,
+        "backward_seconds": 0.0026487577706575394,
+        "forward_seconds": 0.007715826854109764,
+        "gradient_summary_seconds": 0.008116563782095909,
+        "objective": 0.3408375382423401,
+        "update": 10
+      }
+    ],
+    "all_steps_connected_finite": true,
+    "attempted_updates": 10,
+    "calibration_forwards": 1,
+    "checkpoint": {
+      "read_verify_seconds": 0.11828239262104034,
+      "selection": {
+        "completed_updates": 10,
+        "manifest": "checkpoints/engineering-only-n1-step10.json",
+        "manifest_sha256": "af7491a39bc51c8c70e843198105fad4e397cd7987310c4b10ee031c66793028"
+      },
+      "serialization_seconds": 0.08875074796378613
+    },
+    "completed_updates": 10,
+    "constructor_count": 1,
+    "field_backwards": 10,
+    "field_forwards": 10,
+    "field_function_AST_identical_to_executed_epoch": true,
+    "final_Adam_counters": [
+      10
+    ],
+    "first_all_zero_gradient_step": 3,
+    "global_numpy_RNG_unchanged": true,
+    "global_torch_RNG_unchanged": true,
+    "implementation_sha256": "54cb6487098c51da313cbc196bc1b66dbf655cf85a7eab3a280ea744fbbd8ae1",
+    "initial_model": {
+      "canonical_sha256": "a625962ed2ee490aa0e8c197d04adaa1ebef4e987ad339d130d45146ecfde458",
+      "parameter_count": 1485584,
+      "tensor_count": 84
+    },
+    "measurement": {
+      "bytes": 83025,
+      "path": "/home/isavand/paper/evidence/3d2-reporting-integration-v2-aed448730b1c/n1-field-only/measurement.json",
+      "sha256": "5fc7184f292911f3c6e533c9daadc9a64fdfbf151ff71a94c45012e086a4fb3e"
+    },
+    "original_seed": 101,
+    "parameter_tensors_changed": 84,
+    "peak_RSS_bytes": 537333760,
+    "planned_updates": 10,
+    "recovery_updates": 0,
+    "restoration_measured": false,
+    "shader_forwards": 0,
+    "source_epoch": {
+      "bytes": 821,
+      "path": "/home/isavand/paper/evidence/3d2-reporting-integration-v2-aed448730b1c/field-source-epoch.json",
+      "sha256": "ccce04562459425d6db2de52a35cc707bffc75f8e51262919ab59490132e2ac1"
+    },
+    "status": "complete",
+    "timing": {
+      "Adam_seconds": {
+        "maximum": 0.012199578806757927,
+        "mean": 0.00670680683106184
+      },
+      "backward_seconds": {
+        "maximum": 0.008832572028040886,
+        "mean": 0.0035614371299743652
+      },
+      "forward_seconds": {
+        "maximum": 0.010179396718740463,
+        "mean": 0.008074047043919563
+      },
+      "gradient_summary_seconds": {
+        "maximum": 0.008469587191939354,
+        "mean": 0.008154882118105888
+      }
+    },
+    "wall_seconds": 1.8737920764833689,
+    "weight_seed": 10101
+  },
+  "final_freeze_created": false,
+  "next_milestone": "Separate freeze review resolving capacity, simultaneous memory and failure-time watchdog margin before any new freeze or run-specific authorization",
+  "original_D1_prototype_sha256": "ef1237696db6735667a6d963df940cdbbc7d5a4160dded581f68b44f3eeb5625",
+  "original_v1_sha256": "afab3e27d7fcddd54830a3b76fa20d8b97ef49a2da6998e7375ba0d3ce41e18c",
+  "output_root": "/home/isavand/paper/evidence/3d2-reporting-integration-v2-aed448730b1c",
+  "preservation": {
+    "A": "e1e859779301faced46d6476691e20b546c27ae0",
+    "G": "79252178e65914ad1acbc14790b1514f276bfea0",
+    "baseline_tracked_files": 699,
+    "baseline_tracked_sha256": "a748adf812965186785ab2c5f48bab7e9b1706bb661ed1d1863aed4295e88b1e",
+    "frozen_source_files": 322,
+    "old_benchmark_files": 110,
+    "old_benchmark_roots": {
+      "previous": "/home/isavand/paper/evidence/3d2-reporting-audit-v1-7b5812abf650",
+      "primary": "/home/isavand/paper/evidence/3d2-reporting-audit-v1-87f191295282"
+    },
+    "original_D1_report": {
+      "path": "/home/isavand/paper/Nerofactor-3d2-integration/docs/evidence/NEURAL_MATERIAL_REPORTING_AUDIT_V1.json",
+      "sha256": "44253370392a110b571ccd67fa6c9ff128af3a916e20a5c33eaba0ac933e37dc"
+    },
+    "original_freeze_sha256": "730a88458148d92c34fe4429c7f3cd712b2962b1fb64f56a09b42993b97871ad",
+    "original_report": {
+      "path": "/home/isavand/paper/evidence/3d2-recovery-v1-3e3001d85600/report.json",
+      "sha256": "4104e5e178eb41331dd29983648b28a8ef8d5c70a88d487dc12063ff4ab7de49"
+    },
+    "verified": true
+  },
+  "protocol": "neural-material-reporting-integration-d2-v2",
+  "readiness": "READY FOR FREEZE REVIEW",
+  "reporting_benchmarks": {
+    "censored": {
+      "R0_sampled_boundaries": [
+        {
+          "encoding_CPU_seconds": 0.07399123499999938,
+          "encoding_wall_seconds": 0.07400492765009403,
+          "fsync": false,
+          "history_index": 0,
+          "logical_bytes_written": 1891826,
+          "total_wall_seconds": 0.07689809799194336,
+          "writing_flush_CPU_seconds": 0.0028921020000005626,
+          "writing_flush_wall_seconds": 0.002893170341849327
+        },
+        {
+          "encoding_CPU_seconds": 0.8988354560000005,
+          "encoding_wall_seconds": 0.8988537527620792,
+          "fsync": false,
+          "history_index": 13,
+          "logical_bytes_written": 20884111,
+          "total_wall_seconds": 0.9287932887673378,
+          "writing_flush_CPU_seconds": 0.02993293400000141,
+          "writing_flush_wall_seconds": 0.02993953600525856
+        },
+        {
+          "encoding_CPU_seconds": 1.0171351970000018,
+          "encoding_wall_seconds": 1.0171924140304327,
+          "fsync": false,
+          "history_index": 15,
+          "logical_bytes_written": 23762363,
+          "total_wall_seconds": 1.0519159752875566,
+          "writing_flush_CPU_seconds": 0.034721091999998066,
+          "writing_flush_wall_seconds": 0.03472356125712395
+        }
+      ],
+      "R0_total_scope": "sampled full-report save costs times 501; projection, not measured full R0 trajectory",
+      "case": "censored",
+      "checkpoint_payload_scope": "inert synthetic metadata, no numeric checkpoint artifacts; artifact verification excluded only in this benchmark",
+      "failure_time_finalization_seconds": 4.572367776185274,
+      "histories": [
+        {
+          "append_seconds": 3.1581397391855717,
+          "arm": "D0",
+          "index": 0,
+          "persistence_seconds": 3.277982233092189,
+          "summary_seconds": 0.10286621935665607,
+          "updates": 5000,
+          "wall_seconds": 3.8057185728102922
+        },
+        {
+          "append_seconds": 3.137168476358056,
+          "arm": "D0",
+          "index": 1,
+          "persistence_seconds": 3.2568656858056784,
+          "summary_seconds": 0.10273967497050762,
+          "updates": 5000,
+          "wall_seconds": 3.7838707268238068
+        },
+        {
+          "append_seconds": 3.2528786305338144,
+          "arm": "D0",
+          "index": 2,
+          "persistence_seconds": 3.3713424410670996,
+          "summary_seconds": 0.10166945122182369,
+          "updates": 5000,
+          "wall_seconds": 3.89953569509089
+        },
+        {
+          "append_seconds": 3.1408250108361244,
+          "arm": "D0",
+          "index": 3,
+          "persistence_seconds": 3.2591746393591166,
+          "summary_seconds": 0.10149401985108852,
+          "updates": 5000,
+          "wall_seconds": 3.787696985527873
+        },
+        {
+          "append_seconds": 3.277342399582267,
+          "arm": "D0",
+          "index": 4,
+          "persistence_seconds": 3.3970776088535786,
+          "summary_seconds": 0.10277282446622849,
+          "updates": 5000,
+          "wall_seconds": 3.92710243165493
+        },
+        {
+          "append_seconds": 3.1387278102338314,
+          "arm": "D0",
+          "index": 5,
+          "persistence_seconds": 3.2582069262862206,
+          "summary_seconds": 0.10247873701155186,
+          "updates": 5000,
+          "wall_seconds": 3.787254258990288
+        },
+        {
+          "append_seconds": 3.1415173336863518,
+          "arm": "D0",
+          "index": 6,
+          "persistence_seconds": 3.2607350423932076,
+          "summary_seconds": 0.10237210616469383,
+          "updates": 5000,
+          "wall_seconds": 3.7893682569265366
+        },
+        {
+          "append_seconds": 3.3053486719727516,
+          "arm": "D0",
+          "index": 7,
+          "persistence_seconds": 3.4252310935407877,
+          "summary_seconds": 0.10286531783640385,
+          "updates": 5000,
+          "wall_seconds": 3.9547127801924944
+        },
+        {
+          "append_seconds": 3.140548959374428,
+          "arm": "D0",
+          "index": 8,
+          "persistence_seconds": 3.260199496522546,
+          "summary_seconds": 0.10270982421934605,
+          "updates": 5000,
+          "wall_seconds": 3.7877359185367823
+        },
+        {
+          "append_seconds": 3.1406048107892275,
+          "arm": "N0",
+          "index": 9,
+          "persistence_seconds": 3.2600338011980057,
+          "summary_seconds": 0.10244261287152767,
+          "updates": 5000,
+          "wall_seconds": 3.788879483938217
+        },
+        {
+          "append_seconds": 3.3548868969082832,
+          "arm": "N0",
+          "index": 10,
+          "persistence_seconds": 3.481542693451047,
+          "summary_seconds": 0.10891406051814556,
+          "updates": 5000,
+          "wall_seconds": 4.013636540621519
+        },
+        {
+          "append_seconds": 3.1575115472078323,
+          "arm": "N0",
+          "index": 11,
+          "persistence_seconds": 3.2833324670791626,
+          "summary_seconds": 0.1080759596079588,
+          "updates": 5000,
+          "wall_seconds": 3.813808323815465
+        },
+        {
+          "append_seconds": 3.154079332947731,
+          "arm": "N0",
+          "index": 12,
+          "persistence_seconds": 3.2787532061338425,
+          "summary_seconds": 0.10703140869736671,
+          "updates": 5000,
+          "wall_seconds": 3.809002259746194
+        },
+        {
+          "append_seconds": 3.1415699645876884,
+          "arm": "N0",
+          "index": 13,
+          "persistence_seconds": 3.2606604993343353,
+          "summary_seconds": 0.10185291059315205,
+          "updates": 5000,
+          "wall_seconds": 3.791186572983861
+        },
+        {
+          "append_seconds": 3.1473454125225544,
+          "arm": "N0",
+          "index": 14,
+          "persistence_seconds": 3.2681941129267216,
+          "summary_seconds": 0.10426830686628819,
+          "updates": 5000,
+          "wall_seconds": 3.797162251546979
+        },
+        {
+          "append_seconds": 3.2975746262818575,
+          "arm": "N0",
+          "index": 15,
+          "persistence_seconds": 3.414283214136958,
+          "summary_seconds": 0.10062388889491558,
+          "updates": 4860,
+          "wall_seconds": 3.929440451785922
+        }
+      ],
+      "independent_journal_hash_seconds": 0.07610308192670345,
+      "logical_storage_bytes": 188734305,
+      "measurement": {
+        "bytes": 7484,
+        "path": "/home/isavand/paper/evidence/3d2-reporting-integration-v2-aed448730b1c/censored/measurement.json",
+        "sha256": "20168eca7f26f746f8287db32cd30c482f470772d6a5ea9d7f09b490ea7cfd1b"
+      },
+      "peak_RSS_bytes": 732811264,
+      "plan": {
+        "R0_sample_history_indices": [
+          0,
+          13,
+          15
+        ],
+        "censor_update": 4860,
+        "histories": 16,
+        "updates": 5000,
+        "wall_cap_seconds": 600
+      },
+      "projected_R0_seconds_per_5000_history": [
+        38.52594709396362,
+        465.32543767243624,
+        527.0099036190659
+      ],
+      "protocol": "reporting-integrated-benchmark-d2-v1",
+      "reporting": {
+        "append_seconds": 51.087165143340826,
+        "final_manifest": {
+          "path": "/home/isavand/paper/evidence/3d2-reporting-integration-v2-aed448730b1c/censored/journal/final.json",
+          "sha256": "b340f35d6191e3a92712007dc1cc4772237da2a3816432167f96f4ae1c48cfd6"
+        },
+        "identity": {
+          "configuration_sha256": "7dabfced8728d356565812552fef4c128edff4150d1ba655c6a079c139f23c20",
+          "protocol": "neural-material-recovery-reporting-v2",
+          "run_id": "synthetic-censored",
+          "source_sha256": "297dd9a8dae5b06af29b86f621fd2e2cc67ba2a3324f2d9c718e0bac0448c50d"
+        },
+        "materialization_seconds": 4.572367776185274,
+        "materialized_report_sha256": "47509ec7adf0416f5d5b4303dc4361629e02c875407f69d626697b784e9783ce",
+        "max_pending_changes": 152,
+        "persist_calls": 8020,
+        "persistence_seconds": 53.12074129842222,
+        "protocol": "neural-material-recovery-reporting-v2",
+        "report_file_sha256": "373db0d9a7276a680470636936961e385a95bfb93da2c7c4d65a9b9c80eea531",
+        "reported_changes": 1206001,
+        "scientific_admission": false,
+        "summary_seconds": 1.6556955203413963,
+        "verification_status": "pending_independent_scan"
+      },
+      "scientific_operations": 0,
+      "semantic_equality": true,
+      "source_report_sha256": "4104e5e178eb41331dd29983648b28a8ef8d5c70a88d487dc12063ff4ab7de49",
+      "status": "complete",
+      "synthetic_fixture": true,
+      "verification_reconstruction_seconds": 42.2581084780395,
+      "wall_seconds": 114.9201109521091
+    },
+    "complete": {
+      "R0_sampled_boundaries": [
+        {
+          "encoding_CPU_seconds": 0.07413847900000015,
+          "encoding_wall_seconds": 0.07415216416120529,
+          "fsync": false,
+          "history_index": 0,
+          "logical_bytes_written": 1891826,
+          "total_wall_seconds": 0.07700845412909985,
+          "writing_flush_CPU_seconds": 0.0028553640000001934,
+          "writing_flush_wall_seconds": 0.002856289967894554
+        },
+        {
+          "encoding_CPU_seconds": 0.9063482820000033,
+          "encoding_wall_seconds": 0.906372306868434,
+          "fsync": false,
+          "history_index": 13,
+          "logical_bytes_written": 20884111,
+          "total_wall_seconds": 0.9376016184687614,
+          "writing_flush_CPU_seconds": 0.03122694999999709,
+          "writing_flush_wall_seconds": 0.031229311600327492
+        },
+        {
+          "encoding_CPU_seconds": 2.0807083889999944,
+          "encoding_wall_seconds": 2.080769306048751,
+          "fsync": false,
+          "history_index": 26,
+          "logical_bytes_written": 47504410,
+          "total_wall_seconds": 2.156107686460018,
+          "writing_flush_CPU_seconds": 0.0753350829999988,
+          "writing_flush_wall_seconds": 0.07533838041126728
+        }
+      ],
+      "R0_total_scope": "sampled full-report save costs times 501; projection, not measured full R0 trajectory",
+      "case": "complete",
+      "checkpoint_payload_scope": "inert synthetic metadata, no numeric checkpoint artifacts; artifact verification excluded only in this benchmark",
+      "failure_time_finalization_seconds": null,
+      "histories": [
+        {
+          "append_seconds": 3.164210131391883,
+          "arm": "D0",
+          "index": 0,
+          "persistence_seconds": 3.286243526265025,
+          "summary_seconds": 0.10530995950102806,
+          "updates": 5000,
+          "wall_seconds": 3.820274531841278
+        },
+        {
+          "append_seconds": 3.12949500605464,
+          "arm": "D0",
+          "index": 1,
+          "persistence_seconds": 3.249175412580371,
+          "summary_seconds": 0.1026972271502018,
+          "updates": 5000,
+          "wall_seconds": 3.7794623393565416
+        },
+        {
+          "append_seconds": 3.252956448122859,
+          "arm": "D0",
+          "index": 2,
+          "persistence_seconds": 3.3720984794199467,
+          "summary_seconds": 0.10230004973709583,
+          "updates": 5000,
+          "wall_seconds": 3.904947569593787
+        },
+        {
+          "append_seconds": 3.1379658710211515,
+          "arm": "D0",
+          "index": 3,
+          "persistence_seconds": 3.257726088166237,
+          "summary_seconds": 0.1028545219451189,
+          "updates": 5000,
+          "wall_seconds": 3.7878147959709167
+        },
+        {
+          "append_seconds": 3.262800507247448,
+          "arm": "D0",
+          "index": 4,
+          "persistence_seconds": 3.381461950019002,
+          "summary_seconds": 0.1017166581004858,
+          "updates": 5000,
+          "wall_seconds": 3.9105781204998493
+        },
+        {
+          "append_seconds": 3.1357613056898117,
+          "arm": "D0",
+          "index": 5,
+          "persistence_seconds": 3.2553853690624237,
+          "summary_seconds": 0.10267757624387741,
+          "updates": 5000,
+          "wall_seconds": 3.7856439631432295
+        },
+        {
+          "append_seconds": 3.1374361906200647,
+          "arm": "D0",
+          "index": 6,
+          "persistence_seconds": 3.2557232677936554,
+          "summary_seconds": 0.10133812204003334,
+          "updates": 5000,
+          "wall_seconds": 3.7883496042340994
+        },
+        {
+          "append_seconds": 3.293461050838232,
+          "arm": "D0",
+          "index": 7,
+          "persistence_seconds": 3.41219568811357,
+          "summary_seconds": 0.10158759355545044,
+          "updates": 5000,
+          "wall_seconds": 3.9456531684845686
+        },
+        {
+          "append_seconds": 3.1357665602117777,
+          "arm": "D0",
+          "index": 8,
+          "persistence_seconds": 3.2547235395759344,
+          "summary_seconds": 0.10194562934339046,
+          "updates": 5000,
+          "wall_seconds": 3.785248240455985
+        },
+        {
+          "append_seconds": 3.1369219832122326,
+          "arm": "N0",
+          "index": 9,
+          "persistence_seconds": 3.256412858143449,
+          "summary_seconds": 0.10251494497060776,
+          "updates": 5000,
+          "wall_seconds": 3.78680282831192
+        },
+        {
+          "append_seconds": 3.331700623035431,
+          "arm": "N0",
+          "index": 10,
+          "persistence_seconds": 3.4502114579081535,
+          "summary_seconds": 0.10148216597735882,
+          "updates": 5000,
+          "wall_seconds": 3.9814776219427586
+        },
+        {
+          "append_seconds": 3.138262763619423,
+          "arm": "N0",
+          "index": 11,
+          "persistence_seconds": 3.256716826930642,
+          "summary_seconds": 0.10144429467618465,
+          "updates": 5000,
+          "wall_seconds": 3.7899358458817005
+        },
+        {
+          "append_seconds": 3.1386640947312117,
+          "arm": "N0",
+          "index": 12,
+          "persistence_seconds": 3.2570088542997837,
+          "summary_seconds": 0.10129489004611969,
+          "updates": 5000,
+          "wall_seconds": 3.7883555833250284
+        },
+        {
+          "append_seconds": 3.1396991163492203,
+          "arm": "N0",
+          "index": 13,
+          "persistence_seconds": 3.2586249820888042,
+          "summary_seconds": 0.10193221271038055,
+          "updates": 5000,
+          "wall_seconds": 3.7895743530243635
+        },
+        {
+          "append_seconds": 3.138796504586935,
+          "arm": "N0",
+          "index": 14,
+          "persistence_seconds": 3.257348008453846,
+          "summary_seconds": 0.1017879880964756,
+          "updates": 5000,
+          "wall_seconds": 3.789436586201191
+        },
+        {
+          "append_seconds": 3.387032210826874,
+          "arm": "N0",
+          "index": 15,
+          "persistence_seconds": 3.5059284828603268,
+          "summary_seconds": 0.10199788026511669,
+          "updates": 5000,
+          "wall_seconds": 4.038012459874153
+        },
+        {
+          "append_seconds": 3.144628059118986,
+          "arm": "N0",
+          "index": 16,
+          "persistence_seconds": 3.263954099267721,
+          "summary_seconds": 0.1025010235607624,
+          "updates": 5000,
+          "wall_seconds": 3.7977484557777643
+        },
+        {
+          "append_seconds": 3.1443525962531567,
+          "arm": "N0",
+          "index": 17,
+          "persistence_seconds": 3.2647707890719175,
+          "summary_seconds": 0.10370371863245964,
+          "updates": 5000,
+          "wall_seconds": 3.7965354677289724
+        },
+        {
+          "append_seconds": 3.095031989738345,
+          "arm": "N1",
+          "index": 18,
+          "persistence_seconds": 3.214223936200142,
+          "summary_seconds": 0.10388290882110596,
+          "updates": 5000,
+          "wall_seconds": 3.7596606351435184
+        },
+        {
+          "append_seconds": 3.384605647996068,
+          "arm": "N1",
+          "index": 19,
+          "persistence_seconds": 3.502954337745905,
+          "summary_seconds": 0.10294078290462494,
+          "updates": 5000,
+          "wall_seconds": 4.050381679087877
+        },
+        {
+          "append_seconds": 3.085358401760459,
+          "arm": "N1",
+          "index": 20,
+          "persistence_seconds": 3.202757777646184,
+          "summary_seconds": 0.1021678950637579,
+          "updates": 5000,
+          "wall_seconds": 3.747831789776683
+        },
+        {
+          "append_seconds": 3.0891448333859444,
+          "arm": "N1",
+          "index": 21,
+          "persistence_seconds": 3.207748558372259,
+          "summary_seconds": 0.10337847471237183,
+          "updates": 5000,
+          "wall_seconds": 3.752586755901575
+        },
+        {
+          "append_seconds": 3.0842767786234617,
+          "arm": "N1",
+          "index": 22,
+          "persistence_seconds": 3.2018611896783113,
+          "summary_seconds": 0.10224354639649391,
+          "updates": 5000,
+          "wall_seconds": 3.7454757560044527
+        },
+        {
+          "append_seconds": 3.4328820165246725,
+          "arm": "N1",
+          "index": 23,
+          "persistence_seconds": 3.5511893425136805,
+          "summary_seconds": 0.10262859240174294,
+          "updates": 5000,
+          "wall_seconds": 4.0970564763993025
+        },
+        {
+          "append_seconds": 3.085878189653158,
+          "arm": "N1",
+          "index": 24,
+          "persistence_seconds": 3.203381134197116,
+          "summary_seconds": 0.10225647129118443,
+          "updates": 5000,
+          "wall_seconds": 3.7461044508963823
+        },
+        {
+          "append_seconds": 3.093013908714056,
+          "arm": "N1",
+          "index": 25,
+          "persistence_seconds": 3.210546189919114,
+          "summary_seconds": 0.10211852379143238,
+          "updates": 5000,
+          "wall_seconds": 3.759514156728983
+        },
+        {
+          "append_seconds": 3.089093217626214,
+          "arm": "N1",
+          "index": 26,
+          "persistence_seconds": 3.2076585311442614,
+          "summary_seconds": 0.10304354131221771,
+          "updates": 5000,
+          "wall_seconds": 3.7526851817965508
+        }
+      ],
+      "independent_journal_hash_seconds": 0.12737182341516018,
+      "logical_storage_bytes": 316202144,
+      "measurement": {
+        "bytes": 10233,
+        "path": "/home/isavand/paper/evidence/3d2-reporting-integration-v2-aed448730b1c/complete/measurement.json",
+        "sha256": "06271860c3bbc0fbee681366f49eed9ab29e2135213938c906303cbde24b6c25"
+      },
+      "peak_RSS_bytes": 1059221504,
+      "plan": {
+        "R0_sample_history_indices": [
+          0,
+          13,
+          26
+        ],
+        "censor_update": 4860,
+        "histories": 27,
+        "updates": 5000,
+        "wall_cap_seconds": 600
+      },
+      "projected_R0_seconds_per_5000_history": [
+        38.58123551867902,
+        469.7384108528495,
+        1080.209950916469
+      ],
+      "protocol": "reporting-integrated-benchmark-d2-v1",
+      "reporting": {
+        "append_seconds": 85.7903041858226,
+        "final_manifest": {
+          "path": "/home/isavand/paper/evidence/3d2-reporting-integration-v2-aed448730b1c/complete/journal/final.json",
+          "sha256": "4b61a92d50bc665fb51de9ab8c2b08ea7d7643b5ddbea96a646b68e5bee3df8e"
+        },
+        "identity": {
+          "configuration_sha256": "7dabfced8728d356565812552fef4c128edff4150d1ba655c6a079c139f23c20",
+          "protocol": "neural-material-recovery-reporting-v2",
+          "run_id": "synthetic-complete",
+          "source_sha256": "297dd9a8dae5b06af29b86f621fd2e2cc67ba2a3324f2d9c718e0bac0448c50d"
+        },
+        "materialization_seconds": 9.00182638503611,
+        "materialized_report_sha256": "1627ad27ac012bca8df33766089b3e5df953fd30465ce5305342fb73cbd3b75a",
+        "max_pending_changes": 152,
+        "persist_calls": 13556,
+        "persistence_seconds": 89.10507600195706,
+        "protocol": "neural-material-recovery-reporting-v2",
+        "report_file_sha256": "bb070478c263e965448de21295c468073d4c2a01d0be5863515fe941fd7f3d37",
+        "reported_changes": 1993691,
+        "scientific_admission": false,
+        "summary_seconds": 2.7662840206176043,
+        "verification_status": "pending_independent_scan"
+      },
+      "scientific_operations": 0,
+      "semantic_equality": true,
+      "source_report_sha256": "4104e5e178eb41331dd29983648b28a8ef8d5c70a88d487dc12063ff4ab7de49",
+      "status": "complete",
+      "synthetic_fixture": true,
+      "verification_reconstruction_seconds": 72.49309762381017,
+      "wall_seconds": 193.43546960875392
+    }
+  },
+  "runtime_post_execution_observation": {
+    "captured_after_execution": true,
+    "device": "cpu",
+    "numpy": "1.21.5",
+    "python": "3.9.12",
+    "torch": "2.4.0+cu121"
+  },
+  "schema_version": 2,
+  "scientific_execution_authorized": false,
+  "source_epochs": {
+    "field": {
+      "bytes": 821,
+      "path": "/home/isavand/paper/evidence/3d2-reporting-integration-v2-aed448730b1c/field-source-epoch.json",
+      "sha256": "ccce04562459425d6db2de52a35cc707bffc75f8e51262919ab59490132e2ac1"
+    },
+    "notes": "Field source epoch captured after execution matches recorded implementation hash. Reporting epoch captured after complete/before censored. Delivery adds stronger source/admission assertions without changing timed append/finalization algorithms. Intervening restoration sentence was never executed; original archived plan excluded it.",
+    "pre_execution": {
+      "bytes": 697,
+      "path": "/home/isavand/paper/evidence/3d2-reporting-integration-v2-aed448730b1c/pre-execution.json",
+      "sha256": "c58818f693a0c657c18cb5c340a8b4f9fb8ec3c9677c1323232688d2990923a5"
+    },
+    "reporting": {
+      "bytes": 512,
+      "path": "/home/isavand/paper/evidence/3d2-reporting-integration-v2-aed448730b1c/reporting-source-epoch.json",
+      "sha256": "25f68391f0cb23d25f9c222d6648a67618eb0107e451bc568855c905f1fa81bb"
+    },
+    "timing_JournalOutput_AST_unchanged": true
+  },
+  "source_equivalence": {
+    "changed_original_global_bindings": [
+      "OwnedOutput",
+      "train_history",
+      "validate_execution_review",
+      "execute_reviewed"
+    ],
+    "execute_AST_normalized_exact": true,
+    "intentional_changes": [
+      "wrap report allocation",
+      "wrap row allocation",
+      "private output persistence binding",
+      "closed v2 authorization binding"
+    ],
+    "optimizer_update_ceiling": 5000,
+    "scientific_execution_enabled": false,
+    "settings": {
+      "active_seconds": 900,
+      "address_bytes": 8589934592,
+      "decoder": "atan2",
+      "diffuse_samples": 512,
+      "endpoint_reserve": 10,
+      "rss_bytes": 4294967296,
+      "specular_samples": 1024,
+      "updates": 5000,
+      "variant": "A2",
+      "whole_seconds": 28800
+    },
+    "snapshots": [
+      250,
+      1000,
+      5000
+    ],
+    "training_code_object_identical": true,
+    "unchanged_object_bindings": [
+      "MaterialBatch",
+      "initial_admission",
+      "query",
+      "loss_value",
+      "backward",
+      "optimizer_for",
+      "step",
+      "prefix_check",
+      "vector_transition_digest",
+      "compact_state",
+      "evaluate",
+      "save_checkpoint",
+      "persist_failure_capture",
+      "controlled_runtime",
+      "HistoryClock",
+      "field",
+      "previous",
+      "Settings",
+      "work_limits",
+      "fresh_latent",
+      "inputs",
+      "verify_tapes"
+    ],
+    "unchanged_original_global_bindings": 79,
+    "v1_sha256": "afab3e27d7fcddd54830a3b76fa20d8b97ef49a2da6998e7375ba0d3ce41e18c"
+  },
+  "source_sha256": {
+    "docs/NEURAL_MATERIAL_REPORTING_INTEGRATION_V2.md": "48e8c68db934389e15e7b6d30de3f82bd998ed9bc47f365bbb608ad9d26d4ff0",
+    "docs/protocols/NEURAL_MATERIAL_RECOVERY_LOGGED_V2_DRAFT.md": "fca15f479698f23db491a03873dad10b8792dfea5e1fd79b8c003886629731e6",
+    "experiments/benchmark_neural_material_integration_v2.py": "6082d33f82aa052417229f4b766fb470ec1b8657a64a736daa1a720aa431c923",
+    "experiments/neural_material_recovery_logged_v2.py": "a6b563ea9959786c8a756b6bbb24081cdd2dc97bc849fbe3c9178ab04f09a621",
+    "infrastructure/scientific_reporting_adapter_v2.py": "0d4793eb54696e9c7a401145d2cf415d5d564536bc0b0ffb5a31c6c779320207",
+    "tests/scientific/test_neural_material_reporting_integration_v2.py": "502c9137bfea2b8f85b2aeec21e9cca768ba229d8cac9f2884520b406caf3175"
+  },
+  "status": "complete",
+  "tests": {
+    "final": {
+      "errors": 0,
+      "failures": 0,
+      "historical_test_suites_repeated": false,
+      "skips": 0,
+      "successful": true,
+      "tests": 23
+    },
+    "lifecycle_equality": {
+      "bytes": 175435,
+      "path": "/home/isavand/paper/evidence/3d2-reporting-integration-v2-aed448730b1c/tests-final/lifecycle-equality.json",
+      "sha256": "959369deb6b01f75b51db6c68da4c31ba612840e7dbb51fa295004d38599bf54"
+    },
+    "log": {
+      "bytes": 3227,
+      "path": "/home/isavand/paper/evidence/3d2-reporting-integration-v2-aed448730b1c/tests-final.console.log",
+      "sha256": "1c3b97841a7ee1894121c5dd10fb18a7062bf88d3f8136834e272e3e3a8acdca"
+    },
+    "note": "Earlier22-test run retained:21 passed/one test-schema error; corrected and final23-test suite passed. Earlier19 tests had passed. No historical suites rerun.",
+    "previous_failed_expansion": {
+      "bytes": 131,
+      "path": "/home/isavand/paper/evidence/3d2-reporting-integration-v2-aed448730b1c/tests.json",
+      "sha256": "e2f684bc4e54e46d5de49cdb7c5288616dc633db5d0f418706e931346256e208"
+    },
+    "previous_failed_expansion_log": {
+      "bytes": 4743,
+      "path": "/home/isavand/paper/evidence/3d2-reporting-integration-v2-aed448730b1c/tests.console.log",
+      "sha256": "35287b6bbc1dd0d1ca34d1c58dcfc4cb4c9de693b1cb58e336fb26baa679d190"
+    },
+    "results": {
+      "bytes": 130,
+      "path": "/home/isavand/paper/evidence/3d2-reporting-integration-v2-aed448730b1c/tests-final/tests.json",
+      "sha256": "e3e483d00b96a5d91d7b700d5a1cf12e4a814de6f56558ee4d72b02ee1c40303"
+    }
+  }
+}
