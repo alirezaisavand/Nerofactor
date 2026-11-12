@@ -142,7 +142,22 @@ optimizer/scheduler parity, and explicit resume. Report CPU checks separately
 from GPU tests; blocked GPU checks are not passes. Do not import training entry
 points merely to inspect metadata, because existing loaders can write inputs.
 
-Current authorized task: **Milestone 3D-1, multi-material recovery benchmark**,
+Current authorized task: **Milestone 3D-2 Phase B, implementation only**, based
+on `a1f15d1030cb954deddd18fb408de39a452fd441`, on the separate
+`feat/neural-material-field-implementation-v1` branch/worktree. The researcher
+approved original-A-derived D0/N0/N1 components, fixed pre-sigmoid centering,
+rho=.5 and the guarded future harness. Only new versioned implementation,
+focused lightweight CPU fixtures and documentation are authorized, plus this
+milestone-status update. Preserve all frozen sources, existing experiments,
+shader, evidence, targets and the Phase A draft. No full scientific shader
+validation, recovery experiment, reference regeneration, LM extension, GPU,
+final freeze or Phase C/D execution is authorized. The proposed5000 continuous
+Adam/28800-second whole/900-second active-history budgets remain provisional.
+Use `python3`; distinguish synthetic tests from scientific admission. Commit
+and push this dedicated branch when Phase B is complete, then stop. See
+[implementation and pending gates](docs/NEURAL_MATERIAL_FIELD_RECOVERY_V1.md).
+
+Previous authorized task: **Milestone 3D-1, multi-material recovery benchmark**,
 from `34548db58e7e0d3adb4cc2be1d2a4f1ed45443c7` on
 `feat/multi-material-recovery-v1` in a separate worktree. Freeze the
 [protocol](docs/protocols/MULTI_MATERIAL_RECOVERY_V1.md), implementation/tests,
