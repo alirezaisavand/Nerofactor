@@ -1,4 +1,4 @@
-"""3D-2 Phase B harness. CLI inspection only; full execution requires later review.
+"""3D-2 controlled recovery harness. CLI inspection only; execution needs Phase D review.
 
 Reusable training/evaluation APIs are implemented, but no scientific execution
 command or final freeze is provided in Phase B. Tests use synthetic shaders/losses.
@@ -15,6 +15,7 @@ from pathlib import Path
 import platform
 import resource
 import signal
+import subprocess
 import time
 
 import numpy as np
@@ -107,6 +108,7 @@ def fresh_latent(seed):
 
 
 def counts(arm):
+    require(arm in ARMS,'Unknown representation for work accounting')
     return dict(field_attempts=0,field_completed=0,calibration_forwards=int(arm=='N1'),
         shader_attempts=0,shader_completed=0,fit_forwards=0,evaluation_forwards=0,
         attempted_points=0,completed_points=0,diffuse_directions=0,specular_directions=0,
@@ -114,12 +116,17 @@ def counts(arm):
         initial_forwards=0,prefix_forwards=0,terminal_forwards=0)
 
 
-def check_counts(c,arm):
-    limits=dict(field_attempts=5006,field_completed=5006,calibration_forwards=int(arm=='N1'),
+def work_limits(arm):
+    require(arm in ARMS,'Unknown representation for work accounting')
+    return dict(field_attempts=5006,field_completed=5006,calibration_forwards=int(arm=='N1'),
         shader_attempts=FORWARD_CAP,shader_completed=FORWARD_CAP,fit_forwards=FIT_CAP,evaluation_forwards=1,
         attempted_points=480624,completed_points=480624,diffuse_directions=246079488,specular_directions=492158976,
         reverse_attempts=REVERSE_CAP,reverse_completed=REVERSE_CAP,optimizer_attempts=UPDATES,optimizer_returns=UPDATES,
         initial_forwards=1,prefix_forwards=1,terminal_forwards=1)
+
+
+def check_counts(c,arm):
+    limits=work_limits(arm)
     require(set(c)==set(limits),'Incomplete work accounting')
     for key,limit in limits.items():require(type(c[key]) is int and 0<=c[key]<=limit,'Work cap exceeded: '+key)
     for attempt,done in (('field_attempts','field_completed'),('shader_attempts','shader_completed'),
@@ -151,8 +158,11 @@ def constant_probes(model,c):
 
 
 class _Capture:
-    def __init__(self,shader):self.shader=shader;self.result=None
+    def __init__(self,shader,observe=False):self.shader=shader;self.result=None;self.inputs=None;self.observe=observe
     def shade(self,*args,**kwargs):
+        if self.observe:
+            self.inputs=args
+            if args[7].requires_grad:args[7].retain_grad()  # Observation only; returned values/parameter gradients unchanged.
         result=self.shader.shade(*args,**kwargs);self.result=result
         return result
 
@@ -162,13 +172,15 @@ class MaterialBatch:
     def __init__(self,scene,observations,tape):
         self.base=previous.original.ObservationBatch(scene,observations,tape,4)
 
-    def render(self,model,shader,c,evaluation=False,phase='update',capture=False):
+    def render(self,model,shader,c,evaluation=False,phase='update',capture=False,audit=None):
         check_counts(c,model.arm)
         require(c['shader_attempts']<FORWARD_CAP,'Renderer forward cap exhausted')
         material=query(model,torch.zeros((1,3),dtype=torch.float32),c)
+        if audit is not None:audit['material']=material
         base=self.base;n=base.n*base.seeds
         c['shader_attempts']+=1;c['attempted_points']+=n
-        wrapped=_Capture(shader)
+        wrapped=_Capture(shader,observe=audit is not None)
+        if audit is not None:audit['observer']=wrapped
         if model.arm in ('D0','N0'):
             values=base(wrapped,material.physical[0])  # Exact original operation order.
         else:
@@ -178,6 +190,7 @@ class MaterialBatch:
             require(bool(result['frame_orthonormal'].all()),'Invalid original tangent frame')
             values=torch.stack([result[k].reshape(4,base.n,3).mean(0) for k in ('diffuse_rgb','specular_rgb','linear_rgb')],1)
         c['shader_completed']+=1;c['completed_points']+=n
+        if audit is not None:audit['values']=values
         c['evaluation_forwards' if evaluation else 'fit_forwards']+=1
         c['diffuse_directions']+=n*512;c['specular_directions']+=n*1024
         if phase in ('initial','prefix','terminal'):c[phase+'_forwards']+=1
@@ -247,10 +260,10 @@ def prefix_check(row,model,optimizer,archived,update,loss,gradnorm=None):
     require(model.arm=='D0','Archived prefix gate belongs to D0 only')
     if update in (0,) or update%10==9:
         old=next((h for h in archived['history'] if h['update']==update+1),None)
-        if old is not None:
-            require(float(loss)==old['loss'] and gradnorm==old['gradient_norm'],'D0 archived objective/gradient prefix mismatch')
-            require(model.latent.detach().tolist()==old['unconstrained'] and
-                previous.original.physical(model.latent).detach().tolist()==old['physical'],'D0 archived recorded state mismatch')
+        require(old is not None,'Required D0 archived prefix record is missing')
+        require(float(loss)==old['loss'] and gradnorm==old['gradient_norm'],'D0 archived objective/gradient prefix mismatch')
+        require(model.latent.detach().tolist()==old['unconstrained'] and
+            previous.original.physical(model.latent).detach().tolist()==old['physical'],'D0 archived recorded state mismatch')
     if update+1 in (250,1000):
         actual=previous.lm.accepted.snapshot(model.latent,optimizer)
         expected=archived['snapshots'][str(update+1)]
@@ -295,8 +308,12 @@ class OwnedOutput:
     def __exit__(self,*args):self.close()
 
 
-def save_checkpoint(output,stem,model,optimizer,completed_updates,diagnostic=False):
+def save_checkpoint(output,stem,model,optimizer,completed_updates,diagnostic=False,provenance=None):
     """Own numeric state only; no pickle, full tensor values in JSON, or overwrite."""
+    require(type(completed_updates) is int and 0<=completed_updates<=UPDATES,'Invalid checkpoint update count')
+    if not diagnostic:
+        require(completed_updates>=1 and all(set(optimizer.state.get(p,{}))=={'step','exp_avg','exp_avg_sq'} and
+            float(optimizer.state[p]['step'])==completed_updates for p in model.parameters()),'State checkpoint requires exact initialized Adam counters')
     validate_run_id(stem)
     entries=[];arrays={}
     def add(role,name,tensor):
@@ -306,7 +323,7 @@ def save_checkpoint(output,stem,model,optimizer,completed_updates,diagnostic=Fal
         entries.append(dict(key=key,role=role,name=name,finite=finite,**field.record(tensor)))
     for name,p in model.named_parameters():
         add('parameter',name,p)
-        for key,value in optimizer.state[p].items():add('adam',name+'/'+key,value)
+        for key,value in optimizer.state.get(p,{}).items():add('adam',name+'/'+key,value)
     for name,b in model.named_buffers():add('buffer',name,b)
     add('torch_rng','CPU',torch.get_rng_state())
     numpy_rng=np.random.get_state();arrays['numpy_rng']=numpy_rng[1].copy()
@@ -317,17 +334,52 @@ def save_checkpoint(output,stem,model,optimizer,completed_updates,diagnostic=Fal
         arm=model.arm,model_configuration=field.identity(model)['configuration'],source=getattr(model,'source_identity',None),
         completed_updates=completed_updates,optimizer_effective=previous.lm.accepted.optimizer_options(optimizer),
         archive=archive.name,archive_sha256=digest(archive),archive_bytes=archive.stat().st_size,entries=entries,
+        execution_provenance=provenance,
         numpy_rng=dict(kind=numpy_rng[0],position=numpy_rng[2],has_gauss=numpy_rng[3],cached_gaussian=numpy_rng[4],
             array_sha256=hashlib.sha256(arrays['numpy_rng'].tobytes()).hexdigest()))
     output.write_json('checkpoints/'+stem+'.json',value)
     return dict(manifest=str(manifest.relative_to(output.root)),manifest_sha256=digest(manifest),completed_updates=completed_updates)
 
 
-def restore_checkpoint(output,selection,model,optimizer):
+def persist_failure_capture(output,stem,audits,exc):
+    """Save already-produced tensors/gradients; never rerender for diagnostics."""
+    validate_run_id(stem);folder=output.path('diagnostics');folder.mkdir(exist_ok=True)
+    arrays={}
+    def add(name,value):
+        if isinstance(value,torch.Tensor):arrays[name]=value.detach().cpu().numpy().copy()
+    for i,audit in enumerate(audits):
+        prefix=str(i)+'::';model=audit.get('model')
+        if model is not None:
+            for name,p in model.named_parameters():add(prefix+'parameter::'+name,p);add(prefix+'gradient::'+name,p.grad)
+            for name,b in model.named_buffers():add(prefix+'buffer::'+name,b)
+        observer=audit.get('observer')
+        if observer is not None:
+            for name,t in (observer.result or {}).items():add(prefix+'return::'+name,t)
+            if observer.inputs is not None:
+                for j,t in enumerate(observer.inputs):add(prefix+'input::'+str(j),t)
+                add(prefix+'encoding_gradient',observer.inputs[7].grad)
+                if len(observer.inputs)>9:
+                    for name in ('u','v','azimuth'):add(prefix+'tape::'+name,getattr(observer.inputs[9],name,None))
+        add(prefix+'values',audit.get('values'))
+    archive=output.path('diagnostics/'+stem+'.npz')
+    require(all(a.dtype.kind!='O' for a in arrays.values()),'No pickle/object diagnostics')
+    with archive.open('xb') as stream:np.savez(stream,**arrays)
+    value=dict(schema_version=1,purpose='failure_only_no_resume',failure_type=type(exc).__name__,failure=str(exc),
+        archive=archive.name,sha256=digest(archive),arrays={name:dict(shape=list(a.shape),dtype=str(a.dtype),
+            sha256=hashlib.sha256(a.tobytes()).hexdigest(),finite=bool(np.isfinite(a).all())) for name,a in arrays.items()},additional_shader_calls=0)
+    output.write_json('diagnostics/'+stem+'.json',value)
+    return dict(manifest='diagnostics/'+stem+'.json',manifest_sha256=digest(output.path('diagnostics/'+stem+'.json')),
+        archive='diagnostics/'+stem+'.npz',archive_sha256=value['sha256'])
+
+
+def restore_checkpoint(output,selection,model,optimizer,expected_provenance=None):
     """Explicit own checkpoint selection; not an experiment resume feature."""
     path=output.path(selection['manifest'])
     require(digest(path)==selection['manifest_sha256'],'Checkpoint manifest hash mismatch before numeric loading')
     value,_=read_report(path,selection['manifest_sha256'])
+    require(type(value.get('schema_version')) is int and value['schema_version']==1,'Unsupported own checkpoint schema')
+    if 'completed_updates' in selection:require(selection['completed_updates']==value['completed_updates'],'Explicit checkpoint counter selection mismatch')
+    if expected_provenance is not None:require(value.get('execution_provenance')==expected_provenance,'Checkpoint execution-provenance mismatch')
     require(value['protocol']==PROTOCOL and value['purpose']=='state' and value['arm']==model.arm and
         value['source']==getattr(model,'source_identity',None) and value['model_configuration']==field.identity(model)['configuration'],
         'Foreign/incompatible or failure-only checkpoint')
@@ -350,7 +402,10 @@ def restore_checkpoint(output,selection,model,optimizer):
                 name,key=entry['name'].rsplit('/',1);require(name in states and key in ('step','exp_avg','exp_avg_sq'),'Unknown optimizer state')
                 states[name][key]=t
             else:require(pair==('torch_rng','CPU'),'Unknown tensor role')
-        require(hashlib.sha256(arrays['numpy_rng'].tobytes()).hexdigest()==value['numpy_rng']['array_sha256'],'NumPy RNG identity mismatch')
+        require(arrays['numpy_rng'].shape==(624,) and arrays['numpy_rng'].dtype==np.uint32 and value['numpy_rng']['kind']=='MT19937' and
+            hashlib.sha256(arrays['numpy_rng'].tobytes()).hexdigest()==value['numpy_rng']['array_sha256'],'NumPy RNG identity mismatch')
+    require(('torch_rng','CPU') in loaded and loaded[('torch_rng','CPU')].shape==torch.get_rng_state().shape and
+        loaded[('torch_rng','CPU')].dtype==torch.uint8,'Missing/invalid CPU RNG provenance')
     require({p for p in loaded if p[0] in ('parameter','buffer')}==set(expected),'Incomplete strict model state')
     require(value['optimizer_effective']==previous.lm.accepted.optimizer_options(optimizer),'Optimizer configuration mismatch')
     for name,p in model.named_parameters():
@@ -371,7 +426,7 @@ def restore_checkpoint(output,selection,model,optimizer):
 class WholeClock(previous.WholeClock):
     def remaining(self):return Settings().whole_seconds-(time.perf_counter()-self.start)
     def check(self):
-        require(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024<=Settings().rss_bytes,'RSS cap exceeded')
+        if resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024>Settings().rss_bytes:raise previous.lm.WholeLimit('RSS cap exceeded')
         if self.remaining()<=0:raise previous.lm.WholeLimit('Whole-process provisional wall cap reached')
     def alarm(self,signum,frame):
         if signum==signal.SIGTERM:raise previous.lm.WholeLimit('External termination; no retry')
@@ -392,11 +447,12 @@ class HistoryClock(previous.lm.ArmClock):
         try:yield
         finally:
             self.wall+=time.perf_counter()-self.started[0];self.cpu+=time.process_time()-self.started[1]
-            self.started=None;self.whole.active=None;signal.setitimer(signal.ITIMER_REAL,max(1e-6,self.whole.remaining()))
+            self.started=None;self.whole.active=None
+            remaining=self.whole.remaining();signal.setitimer(signal.ITIMER_REAL,remaining if remaining>0 else 0.)
 
 
-def evaluate(model,batch,shader,c,truth,targets,observations):
-    with torch.no_grad():values,material,_=batch.render(model,shader,c,evaluation=True)
+def evaluate(model,batch,shader,c,truth,targets,observations,audit=None):
+    with torch.no_grad():values,material,_=batch.render(model,shader,c,evaluation=True,audit=audit)
     predictions=values.numpy().astype(np.float64)
     metrics={}
     for split in ('fit','held_out','relight','relight_seen_views','relight_unseen_views'):
@@ -415,21 +471,41 @@ def evaluate(model,batch,shader,c,truth,targets,observations):
         success=previous.original.assess_success(errors,metrics),component_compensation=compensation)
 
 
-def initial_admission(models,batch,shader,target,counters):
+def initial_admission(models,batch,shader,target,counters,evidence_sink=None):
+    """Complete exact/bounded contract; preserve same-call negative evidence."""
+    audits=[]
+    try:return _initial_admission(models,batch,shader,target,counters,audits)
+    except BaseException as exc:
+        if evidence_sink is not None:evidence_sink(audits,exc)
+        raise
+
+
+def _initial_admission(models,batch,shader,target,counters,audits):
     """Future Phase C/D numerical admission, never called by Phase B unit tests with a real shader."""
     rows=[]
+    require([m.arm for m in models]==list(ARMS),'Original representation order required')
+    require(torch.equal(models[0].latent,models[1].latent),'D0/N0 initial latent identity failed')
     for model,c in zip(models,counters):
+        audit=dict(arm=model.arm,model=model);audits.append(audit)
         probes=constant_probes(model,c)
         for p in model.parameters():p.grad=None
-        values,material,data=batch.render(model,shader,c,phase='initial',capture=True)
+        values,material,data=batch.render(model,shader,c,phase='initial',capture=True,audit=audit)
         loss=loss_value(values,target);grad=backward(model,loss,c)
         require(all(g['nonzero'] for g in grad.values()),'Unexpected inactive whole material group at initialization')
+        actual_encoding=audit['observer'].inputs[7]
+        require(actual_encoding.grad is not None and bool(torch.isfinite(actual_encoding.grad).all()) and
+            bool(torch.count_nonzero(actual_encoding.grad)),'Disconnected/nonfinite actual shader orientation gradient')
+        data['encoding']=actual_encoding.detach().numpy().copy()
+        data['encoding_gradient']=actual_encoding.grad.detach().numpy().copy()
         rows.append(dict(arm=model.arm,material=material,data=data,loss=float(loss.detach()),gradients=grad,probes=probes))
     require([m.arm for m in models]==list(ARMS),'Original representation order required')
     a,b,n=rows
     require(torch.equal(a['material'].physical,b['material'].physical) and torch.equal(a['material'].encoding,b['material'].encoding) and
         np.array_equal(a['data']['mean'],b['data']['mean']) and a['loss']==b['loss'] and
         torch.equal(models[0].latent.grad,models[1].latent.grad),'D0/N0 exact initial parity failed')
+    exact={key:bool(np.array_equal(a['data'][key],b['data'][key])) for key in
+        ('tangent','bitangent','normal','half_vectors','specular_directions','diffuse_directions','pdf','mask','per_tape','mean','encoding','encoding_gradient')}
+    require(all(exact.values()),'D0/N0 exact sample/component/encoding-gradient parity failed: '+str(exact))
     p0,p1=(r['material'].physical[0].detach().numpy() for r in (a,n))
     q0,q1=(previous.coupling.accepted.tensor_q(p) for p in (p0,p1))
     require(np.array_equal(p0[[0,1,3,4,5,6]],p1[[0,1,3,4,5,6]]) and
@@ -451,16 +527,19 @@ def initial_admission(models,batch,shader,target,counters):
         checks[row['arm']+'_exact_replay']=bool(np.array_equal(replay,data['mean']) and previous.roundoff.mse32(data['mean'][:,2],target.numpy())[0]==row['loss'])
     require(all(checks.values()),'Mandatory neural renderer/frame/sample/component admission failed: '+str(checks))
     return dict(passed=True,checks=checks,arithmetic=envelope,gradients=[r['gradients'] for r in rows],
+        D0_N0_exact=exact,
         initial_materials={r['arm']:material_diagnostics(r['material']) for r in rows},
         old_scalar_warning_passed=abs(n['loss']-a['loss'])<=1e-12+5e-7*abs(a['loss']))
 
 
-def train_history(model,batch,shader,target,row,clock,persist,checkpoint,archived=None,paired_history=None,paired_trajectory=None):
+def train_history(model,batch,shader,target,row,clock,persist,checkpoint,archived=None,paired_history=None,paired_trajectory=None,failure_state=None,expected_optimizer=None):
     """Candidate future 5000-update loop; never invoked to completion in Phase B."""
     require(row['status']=='admitted' and row['completed_updates']==0,'Fresh admitted history required')
     optimizer=optimizer_for(model);c=row['work'];row.update(status='optimizing',history=[],snapshots={})
     if model.arm in ('D0','N0'):row['trajectory_sha256']='0'*64
     try:
+        require(not optimizer.state,'Fresh Adam state required; no implicit continuation')
+        if expected_optimizer is not None:require(previous.lm.accepted.optimizer_options(optimizer)==expected_optimizer,'Effective Adam options differ from final freeze')
         with clock.active():
             for update in range(1,UPDATES+1):
                 clock.check(Settings().endpoint_reserve);optimizer.zero_grad()
@@ -503,36 +582,30 @@ def train_history(model,batch,shader,target,row,clock,persist,checkpoint,archive
         row.update(status='censored',termination='active_time_cap',failure=str(exc))
     except NumericalFailure as exc:
         row.update(status='failed_numerical',termination='numerical_failure',failure=str(exc))
+    except previous.lm.WholeLimit as exc:
+        row.update(status='censored',termination='whole_process_resource_cap',failure=str(exc));raise
     except BaseException as exc:
         row.update(status='failed_integrity',failure_type=type(exc).__name__,failure=str(exc));raise
     finally:
-        row.update(completed_updates=c['optimizer_returns'],active_wall_seconds=clock.wall,CPU_seconds=clock.cpu);persist()
+        row.update(completed_updates=c['optimizer_returns'],active_wall_seconds=clock.wall,CPU_seconds=clock.cpu)
+        if row['status']!='optimized' and failure_state is not None:failure_state(model,optimizer,row)
+        persist()
     return optimizer
 
 
-def validate_execution_review(review):
+def validate_execution_review(review,root=None,run_id=None):
     """Phase B cannot manufacture the final Phase C/D authorization evidence."""
     require(type(review) is dict and review.get('phase')=='D' and review.get('scientific_execution_authorized') is True,
         'Phase D execution is not authorized by Phase B')
-    path=Path(review['freeze_path'])
-    require(path.is_file() and path.resolve()==path and digest(path)==review['freeze_sha256'],'Explicit final reviewed freeze required')
-    freeze,_=read_report(path,review['freeze_sha256'])
-    require(freeze['protocol']=='neural-material-recovery-v1' and freeze['settings']==asdict(Settings()) and
-        freeze['phase_c']['status']=='passed' and freeze['phase_c']['full_shader_admission_passed'] is True and
-        freeze['phase_c']['runtime_feasibility_passed'] is True,'Complete Phase C/final protocol review required')
-    required={'experiments/neural_material_field_v1.py','experiments/neural_material_recovery_v1.py',
-        'tests/scientific/test_neural_material_field_v1.py','tests/scientific/test_neural_material_recovery_v1.py',
-        'docs/protocols/NEURAL_MATERIAL_FIELD_RECOVERY_V1.md'}
-    require(required.issubset(freeze['sha256']),'Incomplete final freeze source/test/protocol inventory')
-    phase_c=Path(freeze['phase_c']['report_path'])
-    require(phase_c.is_absolute() and phase_c.resolve()==phase_c and digest(phase_c)==freeze['phase_c']['report_sha256'],
-        'Explicit Phase C report identity required')
-    evidence,_=read_report(phase_c,freeze['phase_c']['report_sha256'])
-    require(evidence['protocol']=='neural-material-recovery-v1-phase-c' and evidence['status']=='passed' and
-        evidence['full_shader_admission_passed'] is True and evidence['runtime_feasibility_passed'] is True and
-        evidence['implementation_sha256']=={n:freeze['sha256'][n] for n in required if n.startswith('experiments/')},
-        'Phase C evidence is incomplete or describes a different implementation')
-    for name,sha in freeze['sha256'].items():require(digest(ROOT/name)==sha,'Final source/test/protocol hash changed')
+    require(review.get('external_watchdog')==dict(wall_seconds=28800,kill_grace_seconds=10),
+        'Separate review must require the external whole-process watchdog')
+    from experiments.freeze_neural_material_recovery_v1 import validate_freeze,check_output_selection
+    path=Path(review.get('freeze_path',''))
+    require(path.is_absolute() and path.resolve()==path,'Explicit unaliased final freeze path required')
+    freeze=validate_freeze(path,review.get('freeze_sha256'))
+    require(root is not None and run_id is not None and review.get('approved_output_root')==str(root) and
+        review.get('approved_run_id')==run_id,'Separate Phase D approval must bind the exact output root/run ID')
+    check_output_selection(freeze,Path(root),run_id)
     return freeze
 
 
@@ -573,16 +646,26 @@ def execute_reviewed(review,root,run_id):
     Phase C must supply its actual report and final reviewed source freeze;
     neither exists as a product of this implementation milestone.
     """
-    freeze=validate_execution_review(review)  # Before allocation, model, shader or optimization.
+    freeze=validate_execution_review(review,root,run_id)  # Before allocation, model, shader or optimization.
     reference,ids=admit_reference();fit_tape,eval_tape,manifest=inputs(reference)
     require(manifest==freeze['tapes'],'Final tape identities changed')
     require(Settings().validate() and reference['runtime']==dict(python=platform.python_version(),numpy=np.__version__,
         torch=torch.__version__,device='cpu',torch_threads=1),'Exact accepted CPU numerical runtime required')
     report=dict(schema_version=1,protocol=PROTOCOL,run_id=run_id,status='running',phase='admission',base_commit=BASE,
+        preparation_baseline=freeze['baseline'],repository=dict(
+            HEAD=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
+            branch=subprocess.check_output(['git','branch','--show-current'],cwd=ROOT,text=True).strip(),
+            tracked_status=subprocess.check_output(['git','status','--porcelain','--untracked-files=no'],cwd=ROOT,text=True).splitlines()),
         settings=asdict(Settings()),reviewed_freeze_sha256=review['freeze_sha256'],accepted_identities=ids,
         tapes=manifest,material_panel=previous.reference.PANEL,outcomes=[],initial_admission=[],optimization_began=False,
-        GPU_execution=False,learned_geometry=False,learned_lighting=False)
+        GPU_execution=False,learned_geometry=False,learned_lighting=False,failure_artifacts=[])
+    provenance=dict(freeze_sha256=review['freeze_sha256'],configuration_sha256=freeze['configuration_sha256'],
+        source_sha256=freeze['sha256'],run_id=run_id)
+    root=Path(root)
+    if not root.exists():root.mkdir(exist_ok=False)
     with OwnedOutput(root,run_id) as output:
+        output.write_json('frozen-execution.json',dict(freeze_path=review['freeze_path'],freeze_sha256=review['freeze_sha256'],
+            scientific_execution_authorized=True,approved_output_root=str(root),approved_run_id=run_id))
         output.persist(report)
         try:
             with controlled_runtime(report) as whole:
@@ -590,7 +673,7 @@ def execute_reviewed(review,root,run_id):
                 fit=MaterialBatch(scene,obs[:24],fit_tape);evaluation=MaterialBatch(scene,obs,eval_tape)
                 shader=previous.original.MaterialShaderV1('A2','atan2')
                 require(shader.identity==reference['shader'],'Accepted shader identity changed')
-                models={};rows={};clocks={};targets={}
+                models={};rows={};clocks={};targets={};report['phase']='initial_admission'
                 def persist():output.persist(report)
                 for material in previous.reference.PANEL:
                     stored=next(r for r in reference['materials'] if r['material']==material)
@@ -606,7 +689,12 @@ def execute_reviewed(review,root,run_id):
                             models[key]=model;rows[key]=row;clocks[key]=HistoryClock(whole)
                             triple.append(model);work.append(row['work']);report['outcomes'].append(row)
                         # Whole-run admission work, followed by each history's original active cap.
-                        gate=initial_admission(triple,fit,shader,target,work)
+                        def negative(audits,exc):
+                            artifact=persist_failure_capture(output,'admission-'+material.lower()+'-'+str(seed),audits,exc)
+                            report['failure_artifacts'].append(artifact)
+                            report['failure_category']='renderer_sample_parity' if any(a.get('observer') is not None for a in audits) else 'initialization_admission'
+                            persist()
+                        gate=initial_admission(triple,fit,shader,target,work,evidence_sink=negative)
                         report['initial_admission'].append(dict(material=material,seed=seed,**gate))
                         for arm in ARMS:rows[(material,seed,arm)]['status']='admitted'
                         whole.check();persist()
@@ -618,9 +706,12 @@ def execute_reviewed(review,root,run_id):
                     if arm!='D0':
                         require(all(rows[(m,s,'D0')]['status']=='complete' and rows[(m,s,'D0')]['prefix_reproduction_passed']
                             for m in previous.reference.PANEL for s in previous.SEEDS),'All D0 controls must reproduce and complete before neural runs')
+                    if arm=='N1':require(all(rows[(m,s,'N0')]['status']=='complete' for m in previous.reference.PANEL for s in previous.SEEDS),
+                        'Every exact N0 paired control must complete before N1')
                     for material in previous.reference.PANEL:
                         for seed in previous.SEEDS:
                             key=(material,seed,arm);model=models[key];row=rows[key];clock=clocks[key]
+                            report['active_history']=dict(material=material,seed=seed,arm=arm,stage='optimization')
                             fine,target=targets[material]
                             require(previous.oldref.sha_array(target.numpy())==row['fit_target_float32_sha256'],'Material fit target changed')
                             archived=next(r for r in reference['Adam_runs'] if r['material']==material and r['seed']==seed) if arm=='D0' else None
@@ -628,26 +719,56 @@ def execute_reviewed(review,root,run_id):
                                 state=compact_state(model,optimizer)
                                 if arm=='N0':require(state==rows[(material,seed,'D0')]['snapshots'][str(update)]['compact_state'],
                                     'N0/D0 exact checkpoint parameter/moment mismatch')
-                                saved=save_checkpoint(output,material.lower()+'-'+str(seed)+'-'+arm.lower()+'-u'+str(update),model,optimizer,update)
+                                saved=save_checkpoint(output,material.lower()+'-'+str(seed)+'-'+arm.lower()+'-u'+str(update),model,optimizer,update,provenance=provenance)
                                 return dict(**saved,compact_state=state)
+                            def failed_state(model,optimizer,current):
+                                started=time.perf_counter()
+                                current['failure_checkpoint']=save_checkpoint(output,material.lower()+'-'+str(seed)+'-'+arm.lower()+'-failure',
+                                    model,optimizer,current['work']['optimizer_returns'],diagnostic=True,provenance=provenance)
+                                current['failure_persistence_wall_seconds']=time.perf_counter()-started
                             opt=train_history(model,fit,shader,target,row,clock,persist,checkpoint,archived,
                                 rows[(material,seed,'D0')]['history'] if arm=='N0' else None,
-                                rows[(material,seed,'D0')].get('trajectory_sha256') if arm=='N0' else None)
+                                rows[(material,seed,'D0')].get('trajectory_sha256') if arm=='N0' else None,failed_state,freeze['configuration']['optimizer_effective'])
                             if row['status']=='optimized':
-                                with clock.active():
-                                    row['evaluation']=evaluate(model,evaluation,shader,row['work'],previous.reference.truth(material),fine,obs)
-                                    clock.check()
-                                row['status']='complete'
-                            elif row['status']=='failed_numerical':
-                                row['failure_checkpoint']=save_checkpoint(output,material.lower()+'-'+str(seed)+'-'+arm.lower()+'-failure',
-                                    model,opt,row['completed_updates'],diagnostic=True)
+                                if arm=='N0':require(row['final_state']==rows[(material,seed,'D0')]['final_state'],'N0/D0 final parameter/Adam state mismatch')
+                                audit=dict(model=model)
+                                report['active_history']['stage']='evaluation'
+                                try:
+                                    with clock.active():
+                                        row['evaluation']=evaluate(model,evaluation,shader,row['work'],previous.reference.truth(material),fine,obs,audit=audit)
+                                        clock.check()
+                                    row['status']='complete';row['scientific_outcome']='complete_pass' if row['evaluation']['success']['all_passed'] else 'complete_fail'
+                                    require(row['completed_updates']==UPDATES and row['work']==work_limits(arm),'Complete endpoint has incomplete work counters')
+                                except (HistoryLimit,previous.lm.ArmLimit) as exc:
+                                    row.update(status='censored',termination='evaluation_active_time_cap',failure=str(exc));failed_state(model,opt,row)
+                                    report['failure_artifacts'].append(persist_failure_capture(output,material.lower()+'-'+str(seed)+'-'+arm.lower()+'-evaluation',[audit],exc))
+                                except NumericalFailure as exc:
+                                    row.update(status='failed_evaluation',failure=str(exc));failed_state(model,opt,row)
+                                    report['failure_artifacts'].append(persist_failure_capture(output,material.lower()+'-'+str(seed)+'-'+arm.lower()+'-evaluation',[audit],exc))
+                                except previous.lm.WholeLimit as exc:
+                                    row.update(status='censored',termination='whole_process_resource_cap',failure=str(exc));failed_state(model,opt,row)
+                                    report['failure_artifacts'].append(persist_failure_capture(output,material.lower()+'-'+str(seed)+'-'+arm.lower()+'-evaluation',[audit],exc));raise
+                                except BaseException as exc:
+                                    row.update(status='failed_evaluation',failure_type=type(exc).__name__,failure=str(exc));failed_state(model,opt,row)
+                                    report['failure_artifacts'].append(persist_failure_capture(output,material.lower()+'-'+str(seed)+'-'+arm.lower()+'-evaluation',[audit],exc));raise
                             row.update(active_wall_seconds=clock.wall,CPU_seconds=clock.cpu);persist();whole.check()
                             verify_tapes(fit_tape,eval_tape,manifest)
+                            if arm in ('D0','N0'):require(row['status']=='complete','Required control is incomplete; stop before scientific comparisons')
                 for name,sha in ids.items():require(digest(ROOT/name)==sha,'Inherited artifact changed during execution')
                 verify_tapes(fit_tape,eval_tape,manifest)
-                report.update(status='complete',phase='finished');persist()
+                if all(r['status']=='complete' for r in rows.values()):
+                    require({k:sum(r['work'][k] for r in rows.values()) for k in work_limits('D0')}==freeze['expected_total_work'],
+                        'Complete experiment has incomplete aggregate work counters')
+                report.update(status='complete' if all(r['status']=='complete' for r in rows.values()) else 'incomplete',phase='finished');persist()
+        except previous.lm.WholeLimit as exc:
+            report.update(status='censored',failure_category='whole_process_resource_censoring',failure_type=type(exc).__name__,failure=str(exc));raise
         except BaseException as exc:
-            report.update(status='failed',failure_type=type(exc).__name__,failure=str(exc));raise
+            active=report.get('active_history',{})
+            category=report.get('failure_category') or ('evaluation' if active.get('stage')=='evaluation' else
+                'baseline_reproduction' if active.get('arm') in ('D0','N0') else
+                'initialization_admission' if report['phase']=='initial_admission' else 'source_evidence_integrity')
+            if isinstance(exc,OSError):category='source_evidence_integrity'
+            report.update(status='failed',failure_category=category,failure_type=type(exc).__name__,failure=str(exc));raise
         finally:
             output.persist(report)
     return report
@@ -658,9 +779,11 @@ def main():
     parser.add_argument('--describe',action='store_true',required=True,help='Read-only provenance/settings; no model, shader or output allocation')
     parser.parse_args()
     reference,ids=admit_reference()
-    print(json.dumps(dict(phase='B',execution_enabled=False,base_commit=BASE,admitted_identities=len(ids),
+    print(json.dumps(dict(phase='C.2',execution_enabled=False,base_commit=BASE,admitted_identities=len(ids),
         reference_status=reference['status'],representations=list(ARMS),settings=asdict(Settings()),
-        unresolved_gates=['Phase C full shader admission','Phase C runtime feasibility','final freeze','separate Phase D authorization']),indent=2))
+        freeze_present=(ROOT/'docs/protocols/NEURAL_MATERIAL_FIELD_RECOVERY_V1.freeze.json').is_file(),
+        remaining_execution_gates=['separate Phase D authorization','approved fresh output selection',
+            'execution-time exact D0 prefix and N0 full trajectory']),indent=2))
 
 
 if __name__=='__main__':main()
