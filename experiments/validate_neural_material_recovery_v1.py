@@ -397,6 +397,14 @@ def feasibility(timings,storage):
         minimum_27_history_checkpoint_bytes=9*3*sum(r['archive_bytes'] for r in storage),budget_changed=False)
 
 
+def replay_row(material_name,seed,arm,raw,checks,info):
+    """Keep material identity separate from captured material diagnostics."""
+    metadata=dict(material_name=material_name,seed=seed,arm=arm,raw=raw,
+        passed=all(c['passed'] for c in checks.values()),checks=checks)
+    require(not metadata.keys() & info.keys(),'Replay metadata/diagnostic key collision')
+    return dict(metadata,**info)
+
+
 def execute(output,budget,report,persist):
     reference,ids=admit();fit_tape,eval_tape,tapes=h.inputs(reference)
     require(reference['runtime']==dict(python=platform.python_version(),numpy=np.__version__,torch=torch.__version__,device='cpu',torch_threads=1),
@@ -445,7 +453,7 @@ def execute(output,budget,report,persist):
             require(field.identity(model)==original['arms'][arm]['initial_model'],'Deterministic network replay changed')
             arrays,info=capture(model,batch,shader,targets[m],budget,label,timings,failure_sink=failure_sink)
             base=read_arrays(output,original['arms'][arm]['raw']);checks={k:comparison(arrays[k],base[k]) for k in base}
-            row=dict(material=m,seed=101,arm=arm,raw=save_arrays(output,label,arrays),passed=all(c['passed'] for c in checks.values()),checks=checks,**info)
+            row=replay_row(m,101,arm,save_arrays(output,label,arrays),checks,info)
             report['replay'].append(row);persist();require(row['passed'],'Exact initial rendering/gradient replay failed')
     for seed in field.SEEDS:
         base=read_arrays(output,admitted[('M1',seed)]['arms']['D0']['raw']);p0=torch.from_numpy(base['physical'][0].copy())
