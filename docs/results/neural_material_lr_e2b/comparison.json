@@ -1,0 +1,699 @@
+{
+  "accepted_commit": "a1314e192ed87b70bcf5f78c223e319d8e3ce56f",
+  "audit_note": "Exact per-tensor displacement statistics and group counts/maxima verified; grouped norm re-reductions can depend on summation order. No tolerances or scientific criteria changed.",
+  "cleanup_and_terminal_integrity": {
+    "frozen_sources_and_evidence": {
+      "status": "passed"
+    },
+    "immutable_tapes": {
+      "status": "passed"
+    },
+    "work_counters": {
+      "status": "passed"
+    }
+  },
+  "counts": {
+    "exact_saturation_arms_by_LR": {
+      "0.001": 0,
+      "0.01": 2
+    },
+    "full_gradient_zero_arms_by_LR": {
+      "0.001": 0,
+      "0.01": 2
+    },
+    "lower_LR_Q_better": 4,
+    "lower_LR_heldout_better": 4,
+    "lower_LR_training_MSE_better": 5,
+    "physical_recovery_passes": 0,
+    "zero_current_gradient_but_nonzero_actual_motion_updates": 14
+  },
+  "critical_input_sha256": {
+    "/home/isavand/paper/Nerofactor-3d2-e2a/docs/protocols/NEURAL_MATERIAL_EARLY_STEP_LR_E2A_V2.freeze.json": "f9d8f28a46641c8f3aa777118b7f106f120918e7c60e6605387fcb7c46d984ad",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825.process.json": "20f52bbcec66b1a06e1dfb9320f848304c536aababe63e8ac39630ec9938cbcd",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/finalization/seal.json": "cabee3c788264f60b127882274b8f03d81b28248defacc509bb4ee20843786f5",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/result.json": "bb12d3627e778634da17da7a2b484ebe608a88d94aab0bc6c033cd58a1f15373"
+  },
+  "endpoints": [
+    {
+      "Q0": 0.526890750674684,
+      "Q10": 4.729212912469061,
+      "albedo_absolute_errors": [
+        0.36,
+        0.42000000000000004,
+        0.24
+      ],
+      "albedo_max_absolute_error": 0.42000000000000004,
+      "case": "M1/101",
+      "external_fit_relative_RGB": 0.8243446716399438,
+      "final_global_gradient_norm": 0.0,
+      "final_minimum_sigmoid_boundary": 0.0,
+      "first_all_zero_gradient_state": 3,
+      "first_boundary_by_head": {
+        "kd_predictor": 2,
+        "metallic_predictor": 2,
+        "mx_predictor": 3,
+        "my_predictor": 3,
+        "rotation_predictor": 3
+      },
+      "first_boundary_state": 2,
+      "heldout_diffuse_relative": 0.946707492820583,
+      "heldout_relative_RGB": 0.8330646931816856,
+      "heldout_specular_relative": 0.6806409599439307,
+      "loss0": 0.02078045904636383,
+      "loss10": 0.03623095154762268,
+      "loss10_over_initial": 1.7435106446294977,
+      "lr": 0.01,
+      "metallic_absolute_error": 0.1,
+      "net_parameter_L2": 33.49361092569635,
+      "orientation_error_degrees": null,
+      "orientation_identifiable": false,
+      "parameter_path_length": 37.45383635604709,
+      "physical": [
+        1.0,
+        1.0,
+        1.1780972480773926,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "physical_success": false,
+      "relight_relative_RGB": 0.8351462885733154,
+      "roughness_axis_relative_errors": [
+        2.571428571428571,
+        1.0408163265306123
+      ],
+      "success_checks": {
+        "Q": false,
+        "albedo": false,
+        "held_out_radiance": false,
+        "metallic": false,
+        "orientation": false
+      },
+      "zero_current_gradient_moving_updates": 7
+    },
+    {
+      "Q0": 0.526890750674684,
+      "Q10": 0.4877431466713555,
+      "albedo_absolute_errors": [
+        0.04758320689201356,
+        0.08447174549102787,
+        0.0632619059085846
+      ],
+      "albedo_max_absolute_error": 0.08447174549102787,
+      "case": "M1/101",
+      "external_fit_relative_RGB": 0.08053138518743515,
+      "final_global_gradient_norm": 0.00624398094066366,
+      "final_minimum_sigmoid_boundary": 0.22039471566677094,
+      "first_all_zero_gradient_state": null,
+      "first_boundary_by_head": {},
+      "first_boundary_state": null,
+      "heldout_diffuse_relative": 0.36637529531162233,
+      "heldout_relative_RGB": 0.13839561448071852,
+      "heldout_specular_relative": 2.440342931703444,
+      "loss0": 0.02078045904636383,
+      "loss10": 0.00034363087615929544,
+      "loss10_over_initial": 0.016536250493437682,
+      "lr": 0.001,
+      "metallic_absolute_error": 0.40591230392456057,
+      "net_parameter_L2": 3.79741624789855,
+      "orientation_error_degrees": 6.553177461052111,
+      "orientation_identifiable": true,
+      "parameter_path_length": 5.2439778182168935,
+      "physical": [
+        0.2515789270401001,
+        0.3446703851222992,
+        -0.7343745231628418,
+        0.40758320689201355,
+        0.6644717454910278,
+        0.3032619059085846,
+        0.5059123039245605
+      ],
+      "physical_success": false,
+      "relight_relative_RGB": 0.1838931611478101,
+      "roughness_axis_relative_errors": [
+        0.1015038319996426,
+        0.29659105077081793
+      ],
+      "success_checks": {
+        "Q": false,
+        "albedo": false,
+        "held_out_radiance": false,
+        "metallic": false,
+        "orientation": false
+      },
+      "zero_current_gradient_moving_updates": 0
+    },
+    {
+      "Q0": 0.29595391802930315,
+      "Q10": 0.058288597770544896,
+      "albedo_absolute_errors": [
+        0.06296665906906129,
+        0.12637381076812748,
+        0.07594848632812501
+      ],
+      "albedo_max_absolute_error": 0.12637381076812748,
+      "case": "M1/103",
+      "external_fit_relative_RGB": 0.06822646474340131,
+      "final_global_gradient_norm": 0.002530389733994297,
+      "final_minimum_sigmoid_boundary": 0.23205220699310303,
+      "first_all_zero_gradient_state": null,
+      "first_boundary_by_head": {},
+      "first_boundary_state": null,
+      "heldout_diffuse_relative": 0.2913637156956039,
+      "heldout_relative_RGB": 0.09148047340465916,
+      "heldout_specular_relative": 2.1373125525072245,
+      "loss0": 0.0064084408804774284,
+      "loss10": 0.00026005334802903235,
+      "loss10_over_initial": 0.0405798154152057,
+      "lr": 0.01,
+      "metallic_absolute_error": 0.3757588803768158,
+      "net_parameter_L2": 29.63953255321433,
+      "orientation_error_degrees": 0.1835123387959178,
+      "orientation_identifiable": true,
+      "parameter_path_length": 38.1873233296279,
+      "physical": [
+        0.4812863767147064,
+        0.3007107675075531,
+        0.9539992213249207,
+        0.4229666590690613,
+        0.7063738107681274,
+        0.315948486328125,
+        0.4757588803768158
+      ],
+      "physical_success": false,
+      "relight_relative_RGB": 0.11654450098868753,
+      "roughness_axis_relative_errors": [
+        0.07396702681268955,
+        0.01778290466386443
+      ],
+      "success_checks": {
+        "Q": false,
+        "albedo": false,
+        "held_out_radiance": false,
+        "metallic": false,
+        "orientation": true
+      },
+      "zero_current_gradient_moving_updates": 0
+    },
+    {
+      "Q0": 0.29595391802930315,
+      "Q10": 0.10816263821890298,
+      "albedo_absolute_errors": [
+        0.08592532515525819,
+        0.12818841457366947,
+        0.045894811153411874
+      ],
+      "albedo_max_absolute_error": 0.12818841457366947,
+      "case": "M1/103",
+      "external_fit_relative_RGB": 0.06355243369091738,
+      "final_global_gradient_norm": 0.0024578333561706403,
+      "final_minimum_sigmoid_boundary": 0.2469133734703064,
+      "first_all_zero_gradient_state": null,
+      "first_boundary_by_head": {},
+      "first_boundary_state": null,
+      "heldout_diffuse_relative": 0.34110058261257387,
+      "heldout_relative_RGB": 0.10205882239213133,
+      "heldout_specular_relative": 2.3423292599009558,
+      "loss0": 0.0064084408804774284,
+      "loss10": 0.0002305028319824487,
+      "loss10_over_initial": 0.035968628919500346,
+      "lr": 0.001,
+      "metallic_absolute_error": 0.4147116780281067,
+      "net_parameter_L2": 3.5658154143535667,
+      "orientation_error_degrees": 4.912150291492095,
+      "orientation_identifiable": true,
+      "parameter_path_length": 4.920647588770354,
+      "physical": [
+        0.481182724237442,
+        0.3118160367012024,
+        0.8650631308555603,
+        0.4459253251552582,
+        0.7081884145736694,
+        0.28589481115341187,
+        0.5147116780281067
+      ],
+      "physical_success": false,
+      "relight_relative_RGB": 0.12643908261334935,
+      "roughness_axis_relative_errors": [
+        0.11362870250429416,
+        0.017994440331750967
+      ],
+      "success_checks": {
+        "Q": false,
+        "albedo": false,
+        "held_out_radiance": false,
+        "metallic": false,
+        "orientation": true
+      },
+      "zero_current_gradient_moving_updates": 0
+    },
+    {
+      "Q0": 0.9008049362456239,
+      "Q10": 2.982690408354046,
+      "albedo_absolute_errors": [
+        0.43999999999999995,
+        0.31,
+        0.18
+      ],
+      "albedo_max_absolute_error": 0.43999999999999995,
+      "case": "M2/103",
+      "external_fit_relative_RGB": 0.5811042829396595,
+      "final_global_gradient_norm": 0.0,
+      "final_minimum_sigmoid_boundary": 0.0,
+      "first_all_zero_gradient_state": 3,
+      "first_boundary_by_head": {
+        "kd_predictor": 2,
+        "metallic_predictor": 2,
+        "mx_predictor": 2,
+        "my_predictor": 2,
+        "rotation_predictor": 3
+      },
+      "first_boundary_state": 2,
+      "heldout_diffuse_relative": 1.0,
+      "heldout_relative_RGB": 0.5740023050048109,
+      "heldout_specular_relative": 0.9157610982092392,
+      "loss0": 0.026913540437817574,
+      "loss10": 0.009047536179423332,
+      "loss10_over_initial": 0.3361704195078765,
+      "lr": 0.01,
+      "metallic_absolute_error": 0.35,
+      "net_parameter_L2": 33.37557597747872,
+      "orientation_error_degrees": null,
+      "orientation_identifiable": false,
+      "parameter_path_length": 36.06597716025085,
+      "physical": [
+        1.0,
+        1.0,
+        -1.1780972480773926,
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "physical_success": false,
+      "relight_relative_RGB": 0.5951798158474401,
+      "roughness_axis_relative_errors": [
+        4.88235294117647,
+        0.6129032258064516
+      ],
+      "success_checks": {
+        "Q": false,
+        "albedo": false,
+        "held_out_radiance": false,
+        "metallic": false,
+        "orientation": false
+      },
+      "zero_current_gradient_moving_updates": 7
+    },
+    {
+      "Q0": 0.9008049362456239,
+      "Q10": 1.4323887055391602,
+      "albedo_absolute_errors": [
+        0.1941064023971557,
+        0.19595867156982422,
+        0.12338322803378104
+      ],
+      "albedo_max_absolute_error": 0.19595867156982422,
+      "case": "M2/103",
+      "external_fit_relative_RGB": 0.4153765139457064,
+      "final_global_gradient_norm": 0.03449196957197615,
+      "final_minimum_sigmoid_boundary": 0.05661677196621895,
+      "first_all_zero_gradient_state": null,
+      "first_boundary_by_head": {},
+      "first_boundary_state": null,
+      "heldout_diffuse_relative": 0.7220726131275985,
+      "heldout_relative_RGB": 0.4144376359435941,
+      "heldout_specular_relative": 0.5784977187113141,
+      "loss0": 0.026913540437817574,
+      "loss10": 0.004623798653483391,
+      "loss10_over_initial": 0.17180194720818887,
+      "lr": 0.001,
+      "metallic_absolute_error": 0.2545961499214172,
+      "net_parameter_L2": 4.455395512334473,
+      "orientation_error_degrees": 71.41651201114149,
+      "orientation_identifiable": true,
+      "parameter_path_length": 5.4191552392632385,
+      "physical": [
+        0.7676892876625061,
+        0.5150779485702515,
+        1.2343430519104004,
+        0.7541064023971558,
+        0.11404132843017578,
+        0.05661677196621895,
+        0.9045961499214172
+      ],
+      "physical_success": false,
+      "relight_relative_RGB": 0.4426513409331222,
+      "roughness_axis_relative_errors": [
+        2.029870285707361,
+        0.23820852848791307
+      ],
+      "success_checks": {
+        "Q": false,
+        "albedo": false,
+        "held_out_radiance": false,
+        "metallic": false,
+        "orientation": false
+      },
+      "zero_current_gradient_moving_updates": 0
+    },
+    {
+      "Q0": 0.35859457173958453,
+      "Q10": 0.9914559527306884,
+      "albedo_absolute_errors": [
+        0.04539195656776429,
+        0.052627242803573615,
+        0.021047997474670455
+      ],
+      "albedo_max_absolute_error": 0.052627242803573615,
+      "case": "M3/101",
+      "external_fit_relative_RGB": 0.1296546298171701,
+      "final_global_gradient_norm": 0.004814236687818911,
+      "final_minimum_sigmoid_boundary": 0.00015785489813424647,
+      "first_all_zero_gradient_state": null,
+      "first_boundary_by_head": {},
+      "first_boundary_state": null,
+      "heldout_diffuse_relative": 0.46686157169475884,
+      "heldout_relative_RGB": 0.3357378705471583,
+      "heldout_specular_relative": 1.747625017294244,
+      "loss0": 0.007212584838271141,
+      "loss10": 0.000986137893050909,
+      "loss10_over_initial": 0.13672461609301315,
+      "lr": 0.01,
+      "metallic_absolute_error": 0.32441034317016604,
+      "net_parameter_L2": 31.061739387502502,
+      "orientation_error_degrees": null,
+      "orientation_identifiable": false,
+      "parameter_path_length": 40.29676177088203,
+      "physical": [
+        0.04015154018998146,
+        0.04018387943506241,
+        -1.1891809701919556,
+        0.2853919565677643,
+        0.4826272428035736,
+        0.7210479974746704,
+        0.674410343170166
+      ],
+      "physical_success": false,
+      "relight_relative_RGB": 0.7039883293875715,
+      "roughness_axis_relative_errors": [
+        0.8914823238108609,
+        0.9145023841807183
+      ],
+      "success_checks": {
+        "Q": false,
+        "albedo": false,
+        "held_out_radiance": false,
+        "metallic": false,
+        "orientation": false
+      },
+      "zero_current_gradient_moving_updates": 0
+    },
+    {
+      "Q0": 0.35859457173958453,
+      "Q10": 0.4439763689949626,
+      "albedo_absolute_errors": [
+        0.010376313924789438,
+        0.017949335575103753,
+        0.033380973339080855
+      ],
+      "albedo_max_absolute_error": 0.033380973339080855,
+      "case": "M3/101",
+      "external_fit_relative_RGB": 0.09620826411327946,
+      "final_global_gradient_norm": 0.007100103636671882,
+      "final_minimum_sigmoid_boundary": 0.25037631392478943,
+      "first_all_zero_gradient_state": null,
+      "first_boundary_by_head": {},
+      "first_boundary_state": null,
+      "heldout_diffuse_relative": 0.406185762931357,
+      "heldout_relative_RGB": 0.15123819629126609,
+      "heldout_specular_relative": 0.781931635505815,
+      "loss0": 0.007212584838271141,
+      "loss10": 0.0005515372613444924,
+      "loss10_over_initial": 0.07646873814474203,
+      "lr": 0.001,
+      "metallic_absolute_error": 0.27295478582382204,
+      "net_parameter_L2": 3.665192805545427,
+      "orientation_error_degrees": 49.22934331537397,
+      "orientation_identifiable": true,
+      "parameter_path_length": 5.112939310321462,
+      "physical": [
+        0.30521345138549805,
+        0.36763256788253784,
+        -0.669214129447937,
+        0.25037631392478943,
+        0.41205066442489624,
+        0.7333809733390808,
+        0.622954785823822
+      ],
+      "physical_success": false,
+      "relight_relative_RGB": 0.17460807274293125,
+      "roughness_axis_relative_errors": [
+        0.17509878003919446,
+        0.21780304705843007
+      ],
+      "success_checks": {
+        "Q": false,
+        "albedo": false,
+        "held_out_radiance": false,
+        "metallic": false,
+        "orientation": false
+      },
+      "zero_current_gradient_moving_updates": 0
+    },
+    {
+      "Q0": 0.4870170144401407,
+      "Q10": 0.45294549360305064,
+      "albedo_absolute_errors": [
+        0.030611237287521353,
+        0.1682792377471924,
+        0.14961658716201787
+      ],
+      "albedo_max_absolute_error": 0.1682792377471924,
+      "case": "M3/103",
+      "external_fit_relative_RGB": 0.11213998081765353,
+      "final_global_gradient_norm": 0.0051480231639440665,
+      "final_minimum_sigmoid_boundary": 5.355842631615815e-07,
+      "first_all_zero_gradient_state": null,
+      "first_boundary_by_head": {},
+      "first_boundary_state": null,
+      "heldout_diffuse_relative": 0.3840152053302416,
+      "heldout_relative_RGB": 0.11888980247130287,
+      "heldout_specular_relative": 0.977405920710233,
+      "loss0": 0.006835490930825472,
+      "loss10": 0.000736084533855319,
+      "loss10_over_initial": 0.10768568655922824,
+      "lr": 0.01,
+      "metallic_absolute_error": 0.3219768047332764,
+      "net_parameter_L2": 30.544410361838484,
+      "orientation_error_degrees": 11.614703306673478,
+      "orientation_identifiable": true,
+      "parameter_path_length": 40.47781348681763,
+      "physical": [
+        0.5541549324989319,
+        0.46148887276649475,
+        -1.1780815124511719,
+        0.20938876271247864,
+        0.5982792377471924,
+        0.8496165871620178,
+        0.6719768047332764
+      ],
+      "physical_success": false,
+      "relight_relative_RGB": 0.1269879591891447,
+      "roughness_axis_relative_errors": [
+        0.24726722369322907,
+        0.1790530478700679
+      ],
+      "success_checks": {
+        "Q": false,
+        "albedo": false,
+        "held_out_radiance": false,
+        "metallic": false,
+        "orientation": false
+      },
+      "zero_current_gradient_moving_updates": 0
+    },
+    {
+      "Q0": 0.4870170144401407,
+      "Q10": 0.293163206611202,
+      "albedo_absolute_errors": [
+        0.02670604944229127,
+        0.05553794622421265,
+        0.06510858535766606
+      ],
+      "albedo_max_absolute_error": 0.06510858535766606,
+      "case": "M3/103",
+      "external_fit_relative_RGB": 0.047888852535418705,
+      "final_global_gradient_norm": 0.004197674499812599,
+      "final_minimum_sigmoid_boundary": 0.23489141464233398,
+      "first_all_zero_gradient_state": null,
+      "first_boundary_by_head": {},
+      "first_boundary_state": null,
+      "heldout_diffuse_relative": 0.17705345863071514,
+      "heldout_relative_RGB": 0.05790533430615502,
+      "heldout_specular_relative": 0.5441838956382665,
+      "loss0": 0.006835490930825472,
+      "loss10": 0.00014319496403913945,
+      "loss10_over_initial": 0.020948746108839744,
+      "lr": 0.001,
+      "metallic_absolute_error": 0.1650609612464905,
+      "net_parameter_L2": 3.6175358424358737,
+      "orientation_error_degrees": 26.69792643723608,
+      "orientation_identifiable": true,
+      "parameter_path_length": 4.955098730227276,
+      "physical": [
+        0.46198293566703796,
+        0.3085385262966156,
+        1.2948296070098877,
+        0.26670604944229126,
+        0.48553794622421265,
+        0.765108585357666,
+        0.5150609612464905
+      ],
+      "physical_success": false,
+      "relight_relative_RGB": 0.07900325486464063,
+      "roughness_axis_relative_errors": [
+        0.1661120910902281,
+        0.017057583687153214
+      ],
+      "success_checks": {
+        "Q": false,
+        "albedo": false,
+        "held_out_radiance": false,
+        "metallic": false,
+        "orientation": false
+      },
+      "zero_current_gradient_moving_updates": 0
+    }
+  ],
+  "exact_work": {
+    "backward_attempts": 110,
+    "backwards": 110,
+    "external_forwards": 10,
+    "forward_attempts": 120,
+    "forwards": 120,
+    "optimizer_attempts": 100,
+    "successful_updates": 100,
+    "terminal_forwards": 10,
+    "training_forwards": 100
+  },
+  "historical_parity_cases": 5,
+  "historical_parity_comparisons": 10,
+  "integrity_audit": [
+    {
+      "buffers_and_global_RNG_unchanged": true,
+      "case": "M1/101",
+      "exact_displacement_transitions": 10,
+      "final_Adam_moments_and_counters": true,
+      "final_parameter_bits": true,
+      "lr": 0.01,
+      "records": 11,
+      "signal_archives_reverified": 11
+    },
+    {
+      "buffers_and_global_RNG_unchanged": true,
+      "case": "M1/101",
+      "exact_displacement_transitions": 10,
+      "final_Adam_moments_and_counters": true,
+      "final_parameter_bits": true,
+      "lr": 0.001,
+      "records": 11,
+      "signal_archives_reverified": 11
+    },
+    {
+      "buffers_and_global_RNG_unchanged": true,
+      "case": "M1/103",
+      "exact_displacement_transitions": 10,
+      "final_Adam_moments_and_counters": true,
+      "final_parameter_bits": true,
+      "lr": 0.01,
+      "records": 11,
+      "signal_archives_reverified": 11
+    },
+    {
+      "buffers_and_global_RNG_unchanged": true,
+      "case": "M1/103",
+      "exact_displacement_transitions": 10,
+      "final_Adam_moments_and_counters": true,
+      "final_parameter_bits": true,
+      "lr": 0.001,
+      "records": 11,
+      "signal_archives_reverified": 11
+    },
+    {
+      "buffers_and_global_RNG_unchanged": true,
+      "case": "M2/103",
+      "exact_displacement_transitions": 10,
+      "final_Adam_moments_and_counters": true,
+      "final_parameter_bits": true,
+      "lr": 0.01,
+      "records": 11,
+      "signal_archives_reverified": 11
+    },
+    {
+      "buffers_and_global_RNG_unchanged": true,
+      "case": "M2/103",
+      "exact_displacement_transitions": 10,
+      "final_Adam_moments_and_counters": true,
+      "final_parameter_bits": true,
+      "lr": 0.001,
+      "records": 11,
+      "signal_archives_reverified": 11
+    },
+    {
+      "buffers_and_global_RNG_unchanged": true,
+      "case": "M3/101",
+      "exact_displacement_transitions": 10,
+      "final_Adam_moments_and_counters": true,
+      "final_parameter_bits": true,
+      "lr": 0.01,
+      "records": 11,
+      "signal_archives_reverified": 11
+    },
+    {
+      "buffers_and_global_RNG_unchanged": true,
+      "case": "M3/101",
+      "exact_displacement_transitions": 10,
+      "final_Adam_moments_and_counters": true,
+      "final_parameter_bits": true,
+      "lr": 0.001,
+      "records": 11,
+      "signal_archives_reverified": 11
+    },
+    {
+      "buffers_and_global_RNG_unchanged": true,
+      "case": "M3/103",
+      "exact_displacement_transitions": 10,
+      "final_Adam_moments_and_counters": true,
+      "final_parameter_bits": true,
+      "lr": 0.01,
+      "records": 11,
+      "signal_archives_reverified": 11
+    },
+    {
+      "buffers_and_global_RNG_unchanged": true,
+      "case": "M3/103",
+      "exact_displacement_transitions": 10,
+      "final_Adam_moments_and_counters": true,
+      "final_parameter_bits": true,
+      "lr": 0.001,
+      "records": 11,
+      "signal_archives_reverified": 11
+    }
+  ],
+  "interpretation_scope": "Five selected fixed starts, ten updates per arm. No population estimate or 5000-update inference.",
+  "new_model_queries": 0,
+  "new_optimizer_updates": 0,
+  "new_reference_generation": 0,
+  "new_renderer_queries": 0,
+  "paired_initial_full_states_equal": true,
+  "peak_RSS_bytes": 830590976,
+  "protocol": "e2b-offline-recorded-comparison-v1",
+  "raw_artifact_bytes": 892602412,
+  "raw_artifact_files": 583,
+  "run_id": "neural-e2b-d1f760d630964a2786ff45bde7438825",
+  "schema_version": 1,
+  "status": "complete",
+  "wall_seconds": 49.95099292509258
+}
