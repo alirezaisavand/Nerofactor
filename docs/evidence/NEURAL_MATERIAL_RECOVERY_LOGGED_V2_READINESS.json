@@ -1,0 +1,322 @@
+{
+  "aggregate_admission": {
+    "all_other_fields_exact": true,
+    "checks_implementation": "unchanged hash-pinned original verify_aggregate",
+    "original_aggregate_sha256": "f9ef3477a4189958a6e0e16067b35dade62069a11797e90958515996b6cb9a2e",
+    "permitted_metadata_relocation": {
+      "current": "/home/isavand/paper/Nerofactor-3d2-logged-freeze/docs/evidence/NEURAL_MATERIAL_FIELD_VALIDATION_COMPLETION_V1.json",
+      "field": "completion_versioned/path",
+      "historical": "/home/isavand/paper/Nerofactor-3d2-freeze/docs/evidence/NEURAL_MATERIAL_FIELD_VALIDATION_COMPLETION_V1.json",
+      "sha256": "69f69d08b9b3893996dfc9794fa8d89f3c62ac402d6eb1959ac7f222bd4adb3a"
+    },
+    "scientific_calls": 0,
+    "status": "passed"
+  },
+  "artifacts": {
+    "admission-final.console.log": {
+      "bytes": 919,
+      "path": "/home/isavand/paper/evidence/3d2-logged-v2-readiness-cb936925df90/admission-final.console.log",
+      "sha256": "7bb3f2ae252cffeb6a7168fa2287be09904baf58809a4f6215b70093da920ae6"
+    },
+    "aggregate-admission-revision2.json": {
+      "bytes": 688,
+      "path": "/home/isavand/paper/evidence/3d2-logged-v2-readiness-cb936925df90/aggregate-admission-revision2.json",
+      "sha256": "ef6be401e43f0a275735d3a9b351ede49d8b0047b19f98c2408d7b174dde1d01"
+    },
+    "aggregate-check.console.log": {
+      "bytes": 597,
+      "path": "/home/isavand/paper/evidence/3d2-logged-v2-readiness-cb936925df90/aggregate-check.console.log",
+      "sha256": "77f73834fe2db3caf7f7bd3e11d762d2567acf990ed6919f1a3be6f8a7d9f7fd"
+    },
+    "aggregate-differences.json": {
+      "bytes": 312,
+      "path": "/home/isavand/paper/evidence/3d2-logged-v2-readiness-cb936925df90/aggregate-differences.json",
+      "sha256": "c52a749456ca7a65066e740d20ec71c8f1c91407d048e8da232c87daf7ae0771"
+    },
+    "aggregate-recomputed.json": {
+      "bytes": 327723,
+      "path": "/home/isavand/paper/evidence/3d2-logged-v2-readiness-cb936925df90/aggregate-recomputed.json",
+      "sha256": "c2f03d39132178b05c49f75a173bdce440b7356cf379bfa9ca241d1a2c1b6ed0"
+    },
+    "builder": {
+      "bytes": 8532,
+      "path": "/home/isavand/paper/evidence/3d2-logged-v2-readiness-cb936925df90/readiness-builder-revision2.py",
+      "sha256": "192ea197f9fba5f01dcbf1c26300911186949191d32a348efcac797635d8e024"
+    },
+    "pre-execution.json": {
+      "bytes": 1309,
+      "path": "/home/isavand/paper/evidence/3d2-logged-v2-readiness-cb936925df90/pre-execution.json",
+      "sha256": "671002ccb0b98e76ccd946e2da7724b0b757706cc1844d5bc26aba77c84b0f9d"
+    },
+    "resource-audit-revision2.console.log": {
+      "bytes": 212,
+      "path": "/home/isavand/paper/evidence/3d2-logged-v2-readiness-cb936925df90/resource-audit-revision2.console.log",
+      "sha256": "a31082006cb996bfc7a73d6de710c2a7896370d8f075f721c1fe7c24e996c5a2"
+    },
+    "resource-audit-revision2/audit.json": {
+      "bytes": 7920,
+      "path": "/home/isavand/paper/evidence/3d2-logged-v2-readiness-cb936925df90/resource-audit-revision2/audit.json",
+      "sha256": "c8d201a81601c3a532ce58f99bebe9ecbed363421681377f72b7eaa767972bb5"
+    },
+    "resource-audit/audit.json": {
+      "bytes": 7915,
+      "path": "/home/isavand/paper/evidence/3d2-logged-v2-readiness-cb936925df90/resource-audit/audit.json",
+      "sha256": "e31d757de9c7cea3bfd3a7368fd625c09c515c78bc3a9314718c2cb36e39b59a"
+    },
+    "revision2-source-epoch.json": {
+      "bytes": 1023,
+      "path": "/home/isavand/paper/evidence/3d2-logged-v2-readiness-cb936925df90/revision2-source-epoch.json",
+      "sha256": "ad2ced204677ab8c0165ec6e9e0d74c7fc0d942708cd81c6d7d229b583a38aa7"
+    },
+    "source-equivalence-revision2.json": {
+      "bytes": 1916,
+      "path": "/home/isavand/paper/evidence/3d2-logged-v2-readiness-cb936925df90/source-equivalence-revision2.json",
+      "sha256": "ed1c51411d8cdcf75fb38c9b428a7021fe03e96d04155d405116840e617f0208"
+    },
+    "superseded-candidate/NEURAL_MATERIAL_RECOVERY_LOGGED_V2.freeze.json": {
+      "bytes": 374214,
+      "path": "/home/isavand/paper/evidence/3d2-logged-v2-readiness-cb936925df90/superseded-candidate/NEURAL_MATERIAL_RECOVERY_LOGGED_V2.freeze.json",
+      "sha256": "48ba946ba8422326949a4d5c57176dcb9ecbecfd260834662f6465f88cb9314d"
+    },
+    "superseded-candidate/NEURAL_MATERIAL_RECOVERY_LOGGED_V2_READINESS.json": {
+      "bytes": 12906,
+      "path": "/home/isavand/paper/evidence/3d2-logged-v2-readiness-cb936925df90/superseded-candidate/NEURAL_MATERIAL_RECOVERY_LOGGED_V2_READINESS.json",
+      "sha256": "94ea30f311514603816fa9aabe634db9f735bbee38721cde81612e655bd6d5c0"
+    },
+    "superseded-candidate/invalidation.json": {
+      "bytes": 421,
+      "path": "/home/isavand/paper/evidence/3d2-logged-v2-readiness-cb936925df90/superseded-candidate/invalidation.json",
+      "sha256": "1798cbac895e828a3c0cb696f76fda912f4bdc6de112c7b3415664e8b17f4b7c"
+    },
+    "tests-first.console.log": {
+      "bytes": 3599,
+      "path": "/home/isavand/paper/evidence/3d2-logged-v2-readiness-cb936925df90/tests-first.console.log",
+      "sha256": "5ca9c0a63182d9c457fe8f0559c2b1043467847853a0743bf8f9adc192526f77"
+    },
+    "tests-revision2.console.log": {
+      "bytes": 2976,
+      "path": "/home/isavand/paper/evidence/3d2-logged-v2-readiness-cb936925df90/tests-revision2.console.log",
+      "sha256": "34c34c30bd84101996c067f9c76e13255b50d3b7474d85c0411241a271f73cd2"
+    },
+    "tests-revision2.json": {
+      "bytes": 2319,
+      "path": "/home/isavand/paper/evidence/3d2-logged-v2-readiness-cb936925df90/tests-revision2.json",
+      "sha256": "bef6ffd8b253818f591644ece6e1ae5e815ab72aea1645a54145c40dfbba8fcd"
+    },
+    "tests-second.console.log": {
+      "bytes": 2408,
+      "path": "/home/isavand/paper/evidence/3d2-logged-v2-readiness-cb936925df90/tests-second.console.log",
+      "sha256": "9850ad5a05c2e87ca046cffd0e99ce35a30a14e51b54ab0ebad3955ca1d80223"
+    }
+  },
+  "baseline": "7580126b8d30fd7ad6621dc673e473d49aebfe2d",
+  "capacity_observation": {
+    "allocated": false,
+    "available_bytes": 2663959625728,
+    "minimum_free_bytes": 22367853720,
+    "parent": "/home/isavand/paper/evidence"
+  },
+  "mandatory_gates": {
+    "bounded_shutdown": true,
+    "closed_authorization": true,
+    "combined_memory_review": true,
+    "conservative_capacity": true,
+    "deterministic_freeze_contract": true,
+    "mutation_lifecycle_equality": true,
+    "negative_evidence_integrity": true,
+    "original_evidence_preservation": true,
+    "saved_array_aggregate_admission": true,
+    "scientific_computation_equivalence": true,
+    "signal_and_disk_faults": true,
+    "source_identity": true,
+    "unchanged_runtime_budgets": true
+  },
+  "no_Phase_D_output_allocated": true,
+  "no_positive_execution_authorization_created": true,
+  "observed_failures_preserved": [
+    "Initial17-test run: shutdown recomputed a source-inventory hash; cached identity fix then18/20 passed",
+    "First48ba946b candidate was invalidated before delivery/execution after first-commit directory durability review; old candidate/readiness/code and audits retained",
+    "Original aggregate equality fails ONLY at completion_versioned/path in the new worktree; old aggregate/helper untouched, explicit byte-identical metadata relocation admitted"
+  ],
+  "preservation_manifest": {
+    "bytes": 458897,
+    "path": "/home/isavand/paper/evidence/3d2-logged-v2-readiness-cb936925df90/preservation-revision2.json",
+    "sha256": "7b2e0dd4003fcdebc96e8c5220214abf40e00de9b397ca14b487f20ae4aba69d"
+  },
+  "preserved_external_files": 1508,
+  "preserved_original_files": 706,
+  "protocol": "neural-material-logged-v2-D3-readiness",
+  "resource_budget": {
+    "additional_source_entries_cap": 32,
+    "capacity_scope": "One run plus a separate same-filesystem offline report; enforced journal/diagnostic/report caps; safety reserve equal to subtotal",
+    "control_metadata_bytes": 524288,
+    "diagnostic_archive_cap_bytes": 302485560,
+    "diagnostics_bytes": 8469595680,
+    "failure_only_states_bytes": 326307672,
+    "journal_cap_bytes": 1028540948,
+    "journal_measured_bytes": 198414981,
+    "materialized_plus_atomic_temporary_bytes": 380035256,
+    "materialized_report_cap_bytes": 190017628,
+    "materialized_report_measured_bytes": 47504407,
+    "measured_checkpoint_pairs_bytes": {
+      "D0": 11501,
+      "N0": 11501,
+      "N1": 18031522
+    },
+    "memory": {
+      "D2_full_reporting_peak_RSS_bytes": 1059221504,
+      "N1_field_only_peak_RSS_bytes": 537333760,
+      "address_limit_bytes": 8589934592,
+      "all27_parameter_gradient_two_moment_plus_buffers_bytes": 213927048,
+      "checkpoint_temporary_allowance_bytes": 72224328,
+      "conservative_accounted_RSS_bytes": 2911871696,
+      "fits_accounting": true,
+      "guarantee": false,
+      "limit_bytes": 4294967296,
+      "original_whole_execution_peak_RSS_bytes": 1029165056,
+      "unmeasured": "Simultaneous shader autograd/allocator/OS behavior. Sum double-counts measured base/runtime/models deliberately; original live RSS guard and8GiB AS backstop remain mandatory."
+    },
+    "minimum_free_bytes": 22367853720,
+    "provenance_manifest_allowance_bytes": 49120,
+    "safety_reserve_bytes": 11183926860,
+    "scheduled_states_bytes": 978923016,
+    "schema_version": 1,
+    "state_file_caps_bytes": {
+      "D0": 72122,
+      "N0": 72122,
+      "N1": 36112164
+    },
+    "subtotal_bytes": 11183926860
+  },
+  "risks": [
+    "Power loss/media faults beyond honored fsync semantics are not repairable",
+    "SIGKILL or storage blocking can prevent latest state/seal; only selected committed prefix is admissible, never automatic completion",
+    "Memory planning bound is conservative accounting, not a universal allocator guarantee",
+    "Physical recovery success is not implied by execution readiness"
+  ],
+  "runtime_feasibility": {
+    "cap_changed": false,
+    "conditional_27_history_active_seconds": 12425.867135740811,
+    "conditional_N1_20percent_compute_sensitivity_seconds": 727.9876833826522,
+    "conditional_N1_50percent_compute_sensitivity_seconds": 908.7883271321873,
+    "conditional_N1_active_seconds": 607.4539208829622,
+    "conditional_control_seconds": 386.5989915441196,
+    "conservative_added_commit_seconds_per_history": 0.32193506772027297,
+    "interpretation": "20percent compute sensitivity fits900;50percent can exceed it and must censor, never extend. Complete/censored failures remain outcomes.",
+    "observed_source": "D/D.1/D.2 immutable measurements plus targeted D.3 synthetic fsync/anchor audit",
+    "unmeasured": [
+      "Sustained N1 real-shader throughput after optimization; D2 engineering gradients saturated at step3",
+      "Joint real autograd/allocator behavior remains guarded, not guaranteed",
+      "Startup/admission, endpoint and failure serialization, OS/storage noise; offline42\u201372second verification is separate saved-data analysis"
+    ]
+  },
+  "schema_version": 2,
+  "scientific_calls": 0,
+  "scientific_execution_authorized": false,
+  "source_equivalence": {
+    "D2": {
+      "changed_original_global_bindings": [
+        "OwnedOutput",
+        "train_history",
+        "validate_execution_review",
+        "execute_reviewed"
+      ],
+      "execute_AST_normalized_exact": true,
+      "intentional_changes": [
+        "wrap report allocation",
+        "wrap row allocation",
+        "private output persistence binding",
+        "closed v2 authorization binding"
+      ],
+      "optimizer_update_ceiling": 5000,
+      "scientific_execution_enabled": false,
+      "settings": {
+        "active_seconds": 900,
+        "address_bytes": 8589934592,
+        "decoder": "atan2",
+        "diffuse_samples": 512,
+        "endpoint_reserve": 10,
+        "rss_bytes": 4294967296,
+        "specular_samples": 1024,
+        "updates": 5000,
+        "variant": "A2",
+        "whole_seconds": 28800
+      },
+      "snapshots": [
+        250,
+        1000,
+        5000
+      ],
+      "training_code_object_identical": true,
+      "unchanged_object_bindings": [
+        "MaterialBatch",
+        "initial_admission",
+        "query",
+        "loss_value",
+        "backward",
+        "optimizer_for",
+        "step",
+        "prefix_check",
+        "vector_transition_digest",
+        "compact_state",
+        "evaluate",
+        "save_checkpoint",
+        "persist_failure_capture",
+        "controlled_runtime",
+        "HistoryClock",
+        "field",
+        "previous",
+        "Settings",
+        "work_limits",
+        "fresh_latent",
+        "inputs",
+        "verify_tapes"
+      ],
+      "unchanged_original_global_bindings": 79,
+      "v1_sha256": "afab3e27d7fcddd54830a3b76fa20d8b97ef49a2da6998e7375ba0d3ce41e18c"
+    },
+    "default_execution_authorized": false,
+    "intentional_D3_changes": [
+      "durable commit anchors",
+      "bounded seal instead of in-process finalization",
+      "new strict freeze/researcher authorization gate",
+      "storage admission and derived-artifact caps"
+    ],
+    "new_scientific_calls": 0,
+    "scientific_bytecode_identical": true,
+    "unchanged_scientific_globals": true
+  },
+  "source_inventory_entries": 348,
+  "source_inventory_sha256": "485c0bca449ebbe5629cc7de04f57b66ecda76d057f5dff7e6a86a3d2b1135fb",
+  "status": "READY FOR SEPARATE EXECUTION AUTHORIZATION",
+  "targeted_audit": {
+    "memory": {
+      "actual_model_constructors": 0,
+      "backwards": 0,
+      "before_peak_RSS_bytes": 565346304,
+      "checkpoint_proxy_bytes": 72224328,
+      "limitation": "Inert array/report fixture does not execute or guarantee real autograd allocation; original4GiB/8GiB guards remain",
+      "optimizer_steps": 0,
+      "peak_RSS_bytes": 1041563648,
+      "report_copies": 2,
+      "shader_forwards": 0,
+      "touched_model_gradient_moment_buffer_bytes": 213927048,
+      "workspace_proxy_bytes": 100828520
+    },
+    "scientific_calls": 0,
+    "shutdown_seconds": {
+      "censored": 0.0006206873804330826,
+      "complete": 0.0006050355732440948
+    },
+    "status": "passed",
+    "wall_seconds": 8.467291429638863
+  },
+  "tests": {
+    "additional_admission_tests_passed": 6,
+    "errors": 0,
+    "failed": 0,
+    "historical_suites_rerun": false,
+    "passed": 22,
+    "skipped": 0
+  }
+}
