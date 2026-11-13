@@ -1,0 +1,10 @@
+material,seed,group,first_zero_log_label,first_zero_state,last_recorded_nonzero_state,zero_records,observed_loss_increased,later_nonzero_records,min_radius,max_encoding_norm_error
+M1,101,A_complete_boundary_saturation,10,9,0,500,True,0,0.4999999701976776,1.711427100037355e-08
+M1,103,B_physical_recovery,,,,0,,,0.5,8.199401757558178e-08
+M1,105,A_complete_boundary_saturation,10,9,0,500,False,0,0.5,6.79044922513583e-08
+M2,101,C_photometric_near_miss,,,,0,,,0.4999999701976776,7.669409218813428e-08
+M2,103,A_complete_boundary_saturation,10,9,0,500,False,0,0.5,5.494570687325506e-08
+M2,105,A_complete_boundary_saturation,10,9,0,500,True,0,0.5,6.79044922513583e-08
+M3,101,D_nonzero_gradient_failure_floor_approach,,,,0,,,0.4999999701976776,7.403375068548712e-08
+M3,103,C_photometric_near_miss,,,,0,,,0.5,6.734365021188182e-08
+M3,105,A_complete_boundary_saturation,10,9,0,500,False,0,0.5,6.79044922513583e-08
