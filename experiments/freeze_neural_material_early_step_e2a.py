@@ -3,20 +3,26 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import xml.etree.ElementTree as ET
 
 from experiments import analyze_neural_material_failures_e1 as e1
 from experiments.neural_material_early_step_e2a import BASE, CASES, RATES, LIMITS, caps
 from infrastructure.signatures import require, read_report
 
 ROOT=Path(__file__).resolve().parents[1]
-PROTOCOL='neural-material-early-step-lr-e2a-v1'
-FREEZE='docs/protocols/NEURAL_MATERIAL_EARLY_STEP_LR_E2A.freeze.json'
-VALIDATION='docs/evidence/NEURAL_MATERIAL_E2A_VALIDATION.json'
+PROTOCOL='neural-material-early-step-lr-e2a-v2'
+FREEZE='docs/protocols/NEURAL_MATERIAL_EARLY_STEP_LR_E2A_V2.freeze.json'
+VALIDATION='docs/evidence/NEURAL_MATERIAL_E2A_VALIDATION_V2.json'
+PREVIOUS_FREEZE='docs/protocols/NEURAL_MATERIAL_EARLY_STEP_LR_E2A.freeze.json'
+PREVIOUS_SHA='69af5785e37a0843e9a4d854ffd441ff390f5a51b98fc78044621f0f83183ed6'
+PREVIOUS_VALIDATION='docs/evidence/NEURAL_MATERIAL_E2A_VALIDATION.json'
+PREVIOUS_VALIDATION_SHA='9303e05691b6febc679f819ffc2f0ee8033830c76cf8561ec775944ce4e59eaf'
 E1='docs/evidence/NEURAL_MATERIAL_FAILURE_ANALYSIS_E1.json'
 E1_SHA='5cb4011e170ab4312bb3f4f41c09b9440e3d5983e0e90c2deaa10c572b5e0c55'
 CODE=('experiments/neural_material_early_step_e2a.py','experiments/freeze_neural_material_early_step_e2a.py',
       'infrastructure/neural_material_observer_e2a.py','tests/scientific/test_neural_material_early_step_e2a.py',
-      'docs/protocols/NEURAL_MATERIAL_EARLY_STEP_LR_E2A.md')
+      'docs/protocols/NEURAL_MATERIAL_EARLY_STEP_LR_E2A.md',
+      'docs/protocols/NEURAL_MATERIAL_EARLY_STEP_LR_E2A_V2.md')
 
 
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
@@ -47,6 +53,12 @@ def inherited():
 
 def expected():
     evidence,initial,parity,ids=inherited();f=evidence['freeze']
+    previous,_=read_report(ROOT/PREVIOUS_FREEZE,PREVIOUS_SHA)
+    read_report(ROOT/PREVIOUS_VALIDATION,PREVIOUS_VALIDATION_SHA)
+    require(all(previous[k]==v for k,v in dict(cases=[dict(material=m,seed=s,rates=list(RATES)) for m,s in CASES],
+        work_per_arm=LIMITS,total_work={k:10*v for k,v in LIMITS.items()},initial_models=initial,
+        historical_parity=parity,optimizer=f['configuration']['optimizer_effective'],inputs=f['inputs'],tapes=f['tapes']).items()),
+        'Correction changed an admitted scientific invariant')
     storage=caps(next(iter(initial.values())))
     require(all(caps(m)==storage for m in initial.values()),'Model capture sizes differ')
     new={n:sha(ROOT/n) for n in CODE}
@@ -60,7 +72,11 @@ def expected():
         estimated_planning_peak_bytes=2*previous_peak+16*storage['parameters']+storage['retained_signal_and_gradient_bytes']+128*1024**2,
         caveat='Planning bound, not measured native hook/serialization peak; runtime caps remain mandatory')
     require(memory['estimated_planning_peak_bytes']<4*1024**3,'Memory planning exceeds RSS cap')
-    return dict(schema_version=1,protocol=PROTOCOL,baseline_commit=BASE,
+    require(storage==previous['storage'],'Correction changed storage/resource ceilings')
+    value=dict(schema_version=2,protocol=PROTOCOL,baseline_commit=BASE,
+        review_baseline_commit='e0b29b89b97e4c4b226a379ad66e3d634d6040a8',
+        previous_package=dict(freeze_path=PREVIOUS_FREEZE,freeze_sha256=PREVIOUS_SHA,
+            validation_path=PREVIOUS_VALIDATION,validation_sha256=PREVIOUS_VALIDATION_SHA),
         execution_authorized=False,required_next_phase='separately reviewed E.2b',
         branch='feat/neural-material-early-step-e2a',output_parent='/home/isavand/paper/evidence',
         cases=[dict(material=m,seed=s,rates=list(RATES)) for m,s in CASES],updates_per_arm=10,
@@ -89,17 +105,39 @@ def expected():
         failures=dict(global_stop=['identity','parity','missing/nonfinite observation','work/resource/storage cap','interruption'],
             arm_states=['not_started','running','complete','failed','censored'],retry=False,resume=False,
             incomplete='preserve attempted/returned counters, record chain and one failure-state capture if possible'),
+        completion_contract=dict(work='Exact ten ordered arms and original native/small counters; rejected calls do not increment attempts',
+            cleanup='Only after normal limits-context exit; exceptions never leave a complete run status',
+            terminal='Re-admit corrected freeze, all selected frozen sources/accepted evidence and immutable tapes; no field/shader queries',
+            finalization='Immutable pending result.json, hash-selected finalization/seal.json after report fsync, plus successful external process exit',
+            root_metadata_bytes=storage['root_metadata_bytes'],review_max_bytes=16384,report_max_bytes=2097152,seal_max_bytes=4096),
         authorization_contract='Hash-selected separate positive E2b review binds freeze, exact clean branch/commit, fresh output root and watchdog; no CLI execution route',
         validation_path=VALIDATION,freeze_hash='external SHA-256 selection; no circular self/commit identity')
+    unchanged=('cases','updates_per_arm','work_per_arm','native_work_per_arm','total_work','initial_models',
+        'historical_parity','optimizer','inputs','tapes','runtime','arithmetic_runtime','inherited_configuration_context',
+        'storage','memory_planning','time_planning','resources','observability')
+    require(all(value[k]==previous[k] for k in unchanged),'Correction changed scientific settings, work or resource contracts')
+    return value
+
+
+def validate_validation(validation):
+    require(validation['scientific_model_calls']==validation['scientific_renderer_calls']==validation['scientific_optimizer_updates']==0,
+            'Preparation evidence includes scientific execution')
+    t=validation['tests']
+    require(t['process_exit_code']==0 and t['failed']==t['errors']==t['skipped']==0 and t['passed']>0,
+            'Focused engineering validation incomplete')
+    require(hashlib.sha256(t['junit_xml'].encode()).hexdigest()==t['junit_sha256'],'JUnit evidence hash differs')
+    suite=ET.fromstring(t['junit_xml']).find('testsuite');cases=suite.findall('testcase')
+    require(int(suite.attrib['tests'])==len(cases)==t['passed'] and
+        all(int(suite.attrib[k])==0 for k in ('failures','errors','skipped')) and
+        all(not any(c.find(tag) is not None for tag in ('failure','error','skipped')) for c in cases) and
+        [c.attrib['name'] for c in cases]==t['names'] and len(set(t['names']))==len(cases),'JUnit test inventory/counts differ')
+    for name in ('stdout','stderr'):
+        require(hashlib.sha256(t[name].encode()).hexdigest()==t[name+'_sha256'],'Test process evidence hash differs')
 
 
 def validate_freeze(selected_sha):
     value,_=read_report(ROOT/FREEZE,selected_sha)
-    validation,_=read_report(ROOT/VALIDATION,value['validation_sha256'])
-    require(validation['scientific_model_calls']==validation['scientific_renderer_calls']==validation['scientific_optimizer_updates']==0,
-            'Preparation evidence includes scientific execution')
-    require(validation['tests']['failed']==validation['tests']['errors']==validation['tests']['skipped']==0 and validation['tests']['passed']>0,
-            'Focused engineering validation incomplete')
+    validation,_=read_report(ROOT/VALIDATION,value['validation_sha256']);validate_validation(validation)
     target=expected();target['validation_sha256']=value['validation_sha256']
     require(value==target and validation['source_sha256']==value['source_sha256'],'Freeze/source/validation contract changed')
     return value
@@ -107,10 +145,8 @@ def validate_freeze(selected_sha):
 
 def prepare():
     value=expected();validation,_=read_report(ROOT/VALIDATION,sha(ROOT/VALIDATION))
-    require(validation['source_sha256']==value['source_sha256'] and
-        validation['scientific_model_calls']==validation['scientific_renderer_calls']==validation['scientific_optimizer_updates']==0 and
-        validation['tests']['failed']==validation['tests']['errors']==validation['tests']['skipped']==0 and validation['tests']['passed']>0,
-        'Validation source inventory or preparation gates differ')
+    validate_validation(validation)
+    require(validation['source_sha256']==value['source_sha256'],'Validation source inventory differs')
     value['validation_sha256']=sha(ROOT/VALIDATION)
     with (ROOT/FREEZE).open('x') as f:json.dump(value,f,sort_keys=True,indent=2,allow_nan=False);f.write('\n')
     return dict(path=FREEZE,sha256=sha(ROOT/FREEZE),execution_authorized=False)

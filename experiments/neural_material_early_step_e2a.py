@@ -38,10 +38,13 @@ class Work:
     def __init__(self):self.value={k:0 for k in LIMITS}
     def attempt(self,kind,phase=None):
         k={'forward':'forward_attempts','backward':'backward_attempts','optimizer':'optimizer_attempts'}[kind]
-        require(self.value[k]<LIMITS[k],'Frozen '+kind+' attempt cap reached');self.value[k]+=1
+        require(self.value[k]<LIMITS[k],'Frozen '+kind+' attempt cap reached')
         if kind=='forward':
-            key=phase+'_forwards';require(key in LIMITS and self.value[key]<LIMITS[key],'Frozen forward phase cap reached')
-            self.value[key]+=1
+            require(phase in ('training','terminal','external'),'Frozen forward phase required')
+            key=phase+'_forwards';require(self.value[key]<LIMITS[key],'Frozen forward phase cap reached')
+        # Rejected calls must leave every counter unchanged.
+        self.value[k]+=1
+        if kind=='forward':self.value[key]+=1
     def done(self,kind):
         key={'forward':'forwards','backward':'backwards','optimizer':'successful_updates'}[kind]
         require(self.value[key]<LIMITS[key],'Frozen completion cap reached');self.value[key]+=1
@@ -217,6 +220,7 @@ def validate_review(review,freeze_sha):
         review['phase']=='E.2b' and review['scientific_execution_authorized'] is True,
         'Separate E.2b scientific authorization required; E.2a is preparation only')
     require(review['freeze_sha256']==freeze_sha and review['external_watchdog']==dict(wall_seconds=1800,kill_grace_seconds=10),'Reviewed freeze/watchdog mismatch')
+    require(len(json.dumps(review,sort_keys=True,indent=2).encode())+1<=16384,'Execution review metadata cap exceeded')
     freeze=validate_freeze(freeze_sha)
     from infrastructure.runs import validate_run_id
     validate_run_id(review['run_id'])
@@ -228,6 +232,81 @@ def validate_review(review,freeze_sha):
     import shutil
     require(shutil.disk_usage(root.parent).free>=freeze['storage']['minimum_free_bytes'],'Insufficient frozen output capacity')
     return freeze
+
+
+def verify_completed_work(outcomes,plan):
+    expected=[(m,s,lr) for m,s in CASES for lr in RATES]
+    require([(r['material'],r['seed'],r['lr']) for r in outcomes]==expected,'Exact ten-arm ordered matrix required')
+    for row in outcomes:
+        require(row['status']=='complete' and row['completed_updates']==10 and row['hooks_removed'] is True and
+            row['work']==LIMITS and row['native_work']==plan['native_work_per_arm'],'Incomplete arm/counter/hook verification')
+    totals={k:sum(row['work'][k] for row in outcomes) for k in LIMITS}
+    require(totals==plan['total_work'],'Frozen total work differs')
+    return totals
+
+
+def terminal_integrity(plan,outcomes,freeze_sha256,verify_tapes,checks,verify_freeze=None):
+    """Metadata/hash and tape-array checks only; no renderer or field query."""
+    if verify_freeze is None:
+        from experiments.freeze_neural_material_early_step_e2a import validate_freeze
+        verify_freeze=validate_freeze
+    for name,check in (
+        ('frozen_sources_and_evidence',lambda:require_identity(verify_freeze(freeze_sha256),plan,'terminal freeze/source/evidence')),
+        ('immutable_tapes',verify_tapes),
+        ('work_counters',lambda:verify_completed_work(outcomes,plan))):
+        try:check()
+        except BaseException as exc:
+            checks[name]=dict(status='failed',reason=type(exc).__name__+': '+str(exc));raise
+        checks[name]=dict(status='passed')
+
+
+def finish_execution(result,store,work,integrity,plan,runtime=None):
+    """Separate work, normal cleanup, terminal admission and durable reporting.
+
+    Persisted result.json never claims finalization. A separate bounded seal
+    selects its hash after fsync. A successful process exit is additionally
+    required for a consumer to accept the seal as a complete run.
+    """
+    result.update(status='running',work_counters_verified=False,scientific_work_completed=False,
+        cleanup_verified=False,evidence_finalized=False,report_written=False,
+        runtime_cleanup_status='not_verified',
+        terminal_integrity={k:dict(status='not_verified',reason='Terminal gate not reached') for k in
+            ('frozen_sources_and_evidence','immutable_tapes','work_counters')})
+    stage='runtime_setup'
+    try:
+        with (runtime or limits)() as handles:
+            stage='scientific_work';work(*handles)
+            result['verified_totals']=verify_completed_work(result['outcomes'],plan)
+            result['work_counters_verified']=True;stage='runtime_cleanup'
+        # This is reachable only following a normal, non-suppressed body/exit.
+        require(result['work_counters_verified'],'Runtime suppressed an incomplete work failure')
+        result.update(cleanup_verified=True,runtime_cleanup_status='passed')
+        stage='terminal_integrity';integrity(result['terminal_integrity'])
+        require(all(v['status']=='passed' for v in result['terminal_integrity'].values()),'Terminal integrity incomplete')
+        result.update(scientific_work_completed=True,status='work_and_cleanup_verified',interpretation='short-horizon diagnostic only')
+    except BaseException as exc:
+        result.update(status='censored' if isinstance(exc,Censored) else 'failed',failure_stage=stage,
+            failure_type=type(exc).__name__,failure=str(exc))
+        if stage=='runtime_cleanup':result['runtime_cleanup_status']='failed'
+        raise
+    finally:
+        result['peak_RSS_bytes']=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024
+        try:
+            # Keep the immutable report explicitly pending until a seal exists.
+            report=store.json('result.json',result)
+            result.update(report_written=True,report_identity=report)
+            seal=dict(schema_version=2,report=report,
+                outcome='complete' if result['scientific_work_completed'] else result['status'],
+                cleanup_verified=result['cleanup_verified'],successful_process_exit_also_required=True)
+            require(len(json.dumps(seal,sort_keys=True,indent=2).encode())+1<=4096,'Finalization seal cap exceeded')
+            selected=store.json('finalization/seal.json',seal)
+            require_identity(read_report(store.root/selected['path'],selected['sha256'])[0],seal,'finalization seal')
+            result.update(evidence_finalized=True,finalization_seal=selected)
+            if result['scientific_work_completed']:result['status']='complete'
+        except BaseException as exc:
+            result.update(status='failed',evidence_finalized=False,finalization_failure_type=type(exc).__name__,
+                finalization_failure=str(exc));raise
+    return result
 
 
 def execute_reviewed(review_path,review_sha256,freeze_sha256):
@@ -244,55 +323,52 @@ def execute_reviewed(review_path,review_sha256,freeze_sha256):
     result=dict(protocol=plan['protocol'],status='running',scientific_execution_authorized=True,
         reviewed_freeze_sha256=freeze_sha256,review_sha256=review_sha256,run_id=review['run_id'],
         runtime=plan['runtime'],source_sha256=plan['source_sha256'],outcomes=[dict(material=m,seed=s,lr=lr,status='not_started',completed_updates=0) for m,s in CASES for lr in RATES],planned_arms=10)
-    try:
-        with limits() as (check,begin_arm,end_arm):
-            shader=h.previous.original.MaterialShaderV1('A2','atan2')
-            require_identity(shader.identity,plan['inputs']['shader'],'shader source')
-            scene=reference['scene'];obs=scene['observations']
-            fit=h.MaterialBatch(scene,obs[:24],ft);evaluation=h.MaterialBatch(scene,obs,et)
-            for material,seed in CASES:
-                pair=[h.field.make_material('N1',h.fresh_latent(seed),seed) for _ in RATES]
-                for m in pair:require_identity(h.field.identity(m),plan['initial_models'][material+'/'+str(seed)],'initial model/source/calibration')
-                stored=next(x for x in reference['materials'] if x['material']==material);fine,target=h.previous.material_target(stored,material)
-                require_identity(h.previous.oldref.sha_array(target.numpy()),plan['inputs']['targets'][material]['fit_float32_sha256'],'target')
-                require_identity(h.previous.oldref.sha_array(fine),plan['inputs']['targets'][material]['fine_sha256'],'fine target')
-                initial=None
-                for model,lr in zip(pair,RATES):
-                    class Core:
-                        scientific=True
-                        def __init__(self):
-                            self.model=model;self.shader=shader;self.opt=h.optimizer_for(model);self.c=h.counts('N1')
-                            for group in self.opt.param_groups:group['lr']=lr
-                            self.opt.defaults['lr']=lr
-                            expected=dict(plan['optimizer'],lr=lr);require(self.options()==expected and not self.opt.state,'Only LR may differ; fresh Adam required')
-                        def options(self):return h.previous.lm.accepted.optimizer_options(self.opt)
-                        def forward(self,view,terminal):
-                            v,m,_=fit.render(self.model,view,self.c,phase='terminal' if terminal else 'update');return v,m
-                        def loss(self,v):return h.loss_value(v,target)
-                        def backward(self,loss):return h.backward(self.model,loss,self.c)
-                        def step(self):h.step(self.model,self.opt,self.c)
-                        def physical(self,m):
-                            from experiments.analyze_neural_material_failures_e1 import boundary_distances
-                            p=m.physical[0].detach().numpy().tolist()
-                            return dict(physical=p,boundary_distances=boundary_distances(p).tolist(),
-                                centered_radius=m.centered_radius.detach().tolist(),encoding=m.encoding.detach().tolist(),
-                                errors=h.previous.recovery_errors(np.array(p),h.previous.reference.truth(material)))
-                        def evaluate(self):return h.evaluate(self.model,evaluation,shader,self.c,h.previous.reference.truth(material),fine,obs)
-                        def native_work(self):return dict(self.c)
-                    core=Core();begin_arm();prefix=material.lower()+'-'+str(seed)+'-'+('baseline' if lr==.01 else 'lr001')
-                    row=next(r for r in result['outcomes'] if (r['material'],r['seed'],r['lr'])==(material,seed,lr))
-                    arm=run_arm(core,store,prefix,lr,plan['historical_parity'][material+'/'+str(seed)],plan,check,initial,row,_ADMITTED_FACTORY)
-                    end_arm()
-                    if lr==.01:initial=arm['initial_signature']
-                    h.verify_tapes(ft,et,tm);check()
-            require(sum(r['completed_updates'] for r in result['outcomes'])==100,'Frozen update total differs')
-        result.update(status='complete',cleanup_verified=True,interpretation='short-horizon diagnostic only')
-    except BaseException as exc:
-        result.update(status='censored' if isinstance(exc,Censored) else 'failed',failure_type=type(exc).__name__,failure=str(exc));raise
-    finally:
-        result['peak_RSS_bytes']=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024
-        store.json('result.json',result)
-    return result
+    def scientific_work(check,begin_arm,end_arm):
+        shader=h.previous.original.MaterialShaderV1('A2','atan2')
+        require_identity(shader.identity,plan['inputs']['shader'],'shader source')
+        scene=reference['scene'];obs=scene['observations']
+        fit=h.MaterialBatch(scene,obs[:24],ft);evaluation=h.MaterialBatch(scene,obs,et)
+        for material,seed in CASES:
+            pair=[h.field.make_material('N1',h.fresh_latent(seed),seed) for _ in RATES]
+            for m in pair:require_identity(h.field.identity(m),plan['initial_models'][material+'/'+str(seed)],'initial model/source/calibration')
+            stored=next(x for x in reference['materials'] if x['material']==material);fine,target=h.previous.material_target(stored,material)
+            require_identity(h.previous.oldref.sha_array(target.numpy()),plan['inputs']['targets'][material]['fit_float32_sha256'],'target')
+            require_identity(h.previous.oldref.sha_array(fine),plan['inputs']['targets'][material]['fine_sha256'],'fine target')
+            initial=None
+            for model,lr in zip(pair,RATES):
+                class Core:
+                    scientific=True
+                    def __init__(self):
+                        self.model=model;self.shader=shader;self.opt=h.optimizer_for(model);self.c=h.counts('N1')
+                        for group in self.opt.param_groups:group['lr']=lr
+                        self.opt.defaults['lr']=lr
+                        expected=dict(plan['optimizer'],lr=lr);require(self.options()==expected and not self.opt.state,'Only LR may differ; fresh Adam required')
+                    def options(self):return h.previous.lm.accepted.optimizer_options(self.opt)
+                    def forward(self,view,terminal):
+                        v,m,_=fit.render(self.model,view,self.c,phase='terminal' if terminal else 'update');return v,m
+                    def loss(self,v):return h.loss_value(v,target)
+                    def backward(self,loss):return h.backward(self.model,loss,self.c)
+                    def step(self):h.step(self.model,self.opt,self.c)
+                    def physical(self,m):
+                        from experiments.analyze_neural_material_failures_e1 import boundary_distances
+                        p=m.physical[0].detach().numpy().tolist()
+                        return dict(physical=p,boundary_distances=boundary_distances(p).tolist(),
+                            centered_radius=m.centered_radius.detach().tolist(),encoding=m.encoding.detach().tolist(),
+                            errors=h.previous.recovery_errors(np.array(p),h.previous.reference.truth(material)))
+                    def evaluate(self):return h.evaluate(self.model,evaluation,shader,self.c,h.previous.reference.truth(material),fine,obs)
+                    def native_work(self):return dict(self.c)
+                core=Core();begin_arm();prefix=material.lower()+'-'+str(seed)+'-'+('baseline' if lr==.01 else 'lr001')
+                row=next(r for r in result['outcomes'] if (r['material'],r['seed'],r['lr'])==(material,seed,lr))
+                arm=run_arm(core,store,prefix,lr,plan['historical_parity'][material+'/'+str(seed)],plan,check,initial,row,_ADMITTED_FACTORY)
+                end_arm()
+                if lr==.01:initial=arm['initial_signature']
+                h.verify_tapes(ft,et,tm);check()
+    def integrity(checks):
+        def tapes():
+            require_identity(tm,plan['tapes'],'terminal tape manifest')
+            h.verify_tapes(ft,et,plan['tapes'])
+        terminal_integrity(plan,result['outcomes'],freeze_sha256,tapes,checks)
+    return finish_execution(result,store,scientific_work,integrity,plan)
 
 
 def main():
