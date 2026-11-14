@@ -1,0 +1,37 @@
+{
+  "byte_identical_analysis_copies": 8,
+  "execution_commit": "c1c5bff12fb3b0abb070748458133ba60b383a0a",
+  "final_report": {
+    "path": "docs/HYBRID_MATERIAL_E7_RESULTS.md",
+    "sha256": "76d34b7a46cb7eb074c616fbbcf58b8c85643f8ad91bdccf8467377903070898"
+  },
+  "focused_tests": {
+    "errors": 0,
+    "exit_code": 0,
+    "failed": 0,
+    "passed": 22,
+    "skipped": 0
+  },
+  "git_whitespace_check": "passed with command-local core.whitespace=cr-at-eol; standard CSV CRLF preserved byte-identically",
+  "historical_evidence_changes": false,
+  "inputs_verified": 480,
+  "offline_scientific_queries": 0,
+  "package_files_verified": 9,
+  "package_manifest": {
+    "path": "docs/results/hybrid_material_e7_v1/package_manifest.json",
+    "sha256": "f8ec0337627cdd0ab3197b43c9541d670af837f59287014f691ba06eb0d01435"
+  },
+  "schema_version": 1,
+  "scientific_source_changes": false,
+  "scientific_work_completed": {
+    "Adam_returns": 277,
+    "backwards": 283,
+    "constructors": 6,
+    "field_probes": 8,
+    "projections": 4,
+    "shader_forwards": 301,
+    "spatial_probes": 8
+  },
+  "sources_verified": 385,
+  "status": "passed"
+}

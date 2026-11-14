@@ -1,0 +1,519 @@
+{
+  "accepted_offline_helper": {
+    "bytes": 23144,
+    "path": "/home/isavand/paper/Nerofactor-3d2-e2a/docs/results/material_optimizer_e6_v1/analyze_e6.py",
+    "sha256": "03870ef59205fdee951f394f1fd742cf86d4ea886ba3131f879d4f8c4cf40794"
+  },
+  "analysis_source": {
+    "bytes": 17392,
+    "path": "/home/isavand/paper/Nerofactor-3d2-e2a/docs/results/hybrid_material_e7_v1/analyze_e7.py",
+    "sha256": "61788e347523dad562073685428f902372293e553476e2e4b3b02ca7a72055f7"
+  },
+  "execution_commit": "c1c5bff12fb3b0abb070748458133ba60b383a0a",
+  "freeze_sha256": "d250f4ef5ef55f2ccdce06e85a7461823b2a30fd5155e7f7a017e25425e251fe",
+  "raw_evidence_copied_to_Git": false,
+  "raw_files": [
+    {
+      "bytes": 1398,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/diagnostic/accepted-Adam.npz",
+      "sha256": "58b1ca33b129b7b1a84d9fa6e28394608eb670979fb4223e37f64f384749f297"
+    },
+    {
+      "bytes": 764,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/diagnostic/accepted-Adam.npz.json",
+      "sha256": "f4437e6e7b2dc8f9cc787a7e118c2ad11f256cbb91c23528e842a444154ddee3"
+    },
+    {
+      "bytes": 1398,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/diagnostic/accepted-LM.npz",
+      "sha256": "e9657dbda73f75011f461bf467b388d782b438eed4e260ed3d663794081860f7"
+    },
+    {
+      "bytes": 762,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/diagnostic/accepted-LM.npz.json",
+      "sha256": "0eddd2906768ca81cab942dab13810e1c5d0b5279bcdbaa92b1a718ace03e60c"
+    },
+    {
+      "bytes": 1398,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/diagnostic/accepted-truth.npz",
+      "sha256": "fb7b3fd475f2a6ffae5ae2c7d723d9eb98427b651f85051b683e313a8f350fd2"
+    },
+    {
+      "bytes": 765,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/diagnostic/accepted-truth.npz.json",
+      "sha256": "554363c984d493682492ae5c4a5ab4ee9eb7d59b70b22d0b70d6ff92caedd45c"
+    },
+    {
+      "bytes": 1398,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/diagnostic/independent_1-Adam.npz",
+      "sha256": "48707f64026293d6ceee44ee4eaa64c5404455616473f908106cb59210c911af"
+    },
+    {
+      "bytes": 769,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/diagnostic/independent_1-Adam.npz.json",
+      "sha256": "615014ed40302618ea0f9749b20a490eb3c5fa1909365dc1ff91d3432edf836f"
+    },
+    {
+      "bytes": 1398,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/diagnostic/independent_1-LM.npz",
+      "sha256": "ae3c3730b3593f5ece5413bce6a22f95a62fbcb4fffff47d140b60a939146cfb"
+    },
+    {
+      "bytes": 767,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/diagnostic/independent_1-LM.npz.json",
+      "sha256": "23f6ccc619af9825a99cc98b2528d64165eb51090f4a2c4e4a0680aa056e6bab"
+    },
+    {
+      "bytes": 1398,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/diagnostic/independent_1-truth.npz",
+      "sha256": "5da7fac64f8970e0b9388a33014dd43025e47d632b4e84a41438a42a9edd712d"
+    },
+    {
+      "bytes": 770,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/diagnostic/independent_1-truth.npz.json",
+      "sha256": "26f45c641943f004e95751d713288ee33e98ab88d95a61aff92eba2cb6d39f42"
+    },
+    {
+      "bytes": 1398,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/diagnostic/independent_2-Adam.npz",
+      "sha256": "e759c32d07f66ec4b3e1e8f4182799e17eb254119b6ad17c4e9f5afa30ac2cb0"
+    },
+    {
+      "bytes": 769,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/diagnostic/independent_2-Adam.npz.json",
+      "sha256": "c6828efa3346dcf1808ad27bdf0c381f1de4a8bf041ba820c0252180915e3759"
+    },
+    {
+      "bytes": 1398,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/diagnostic/independent_2-LM.npz",
+      "sha256": "cb61948a3044724135b8f1ce86328816c6210dcdf7f7ae118896df81d782eba1"
+    },
+    {
+      "bytes": 767,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/diagnostic/independent_2-LM.npz.json",
+      "sha256": "8c639ede269772b702e3a2f2b980f8001fae1b1127d5b8cf51015060cdd8c08a"
+    },
+    {
+      "bytes": 1398,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/diagnostic/independent_2-truth.npz",
+      "sha256": "85181e31ae678a38344d394114e273a8d78a24655efcdc257b30a3489c124bcf"
+    },
+    {
+      "bytes": 770,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/diagnostic/independent_2-truth.npz.json",
+      "sha256": "76860e6d24530db5a29fbd9645baa2f78b7fd8ff4499d1d802506e7ded2a54b0"
+    },
+    {
+      "bytes": 515,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/execution-review.json",
+      "sha256": "38d3579160858f0118f51276f2586353cf28fe4503cf2e7ee6f2f6b6112513ff"
+    },
+    {
+      "bytes": 213,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/finalization/seal.json",
+      "sha256": "aa1048bfa74716606a119aa1c4ae8e59508d29ac86bf6dfe991ee1ffd7f2d42e"
+    },
+    {
+      "bytes": 1104,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-control/baseline-probe.npz",
+      "sha256": "806a25e023a2c23e0665cef0e020e670664b01688abd43c1ec3eb5810058492e"
+    },
+    {
+      "bytes": 991,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-control/baseline-probe.npz.json",
+      "sha256": "673af0cd42ae90e37c73336e307ccf7adf66b1298df7e98f08fee94feacf095c"
+    },
+    {
+      "bytes": 1630,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-control/baseline-spatial.npz",
+      "sha256": "9e4f4a953e063c86e8f32687d6666f383868b5237ca3f8a6460b9d09034f8319"
+    },
+    {
+      "bytes": 1721,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-control/baseline-spatial.npz.json",
+      "sha256": "370bea04214e6269e5db461564632e04baea8de7121ad7fc23a4f3f21be89ac8"
+    },
+    {
+      "bytes": 6832,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-control/external.npz",
+      "sha256": "6e52756a97796ccc5cce62f6ae44ff3d38259bfd6bcfa3d286a27e2f59509e25"
+    },
+    {
+      "bytes": 991,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-control/external.npz.json",
+      "sha256": "d5d08a92d6f53415fdefc16bc14e3f599162d577056dacf3ee10c3fcf5742db5"
+    },
+    {
+      "bytes": 1104,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-control/final-probe.npz",
+      "sha256": "e3923e27e1bfa6cc20e755a91fe2fd4ebd866012b236f72e90f52a57aca12c3a"
+    },
+    {
+      "bytes": 988,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-control/final-probe.npz.json",
+      "sha256": "d70a46803fff9a09ae4b2c20c4488affe864ef05bf1080562a628644f400ce5f"
+    },
+    {
+      "bytes": 1630,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-control/final-spatial.npz",
+      "sha256": "b1d87b1cb09f982e592c70fbadf8ff5cfafd2e73a8a75ead9246d990be4edd6c"
+    },
+    {
+      "bytes": 1718,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-control/final-spatial.npz.json",
+      "sha256": "b8ba3a75cb3e576bc3b905dc27adaf4f03ec0fa8cfa86e859b4ba1a75ec3f142"
+    },
+    {
+      "bytes": 17919722,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-control/final-state.npz",
+      "sha256": "0a6b5d5ba60b25d25c2666e89cab9adb2a24b81c83e570739467218380da5cc4"
+    },
+    {
+      "bytes": 93990,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-control/final-state.npz.json",
+      "sha256": "917a4db82efb0a0ec6a1dacb35915aeca4266380e732e3303a481cca836f5b18"
+    },
+    {
+      "bytes": 130010,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-control/signals-100.npz",
+      "sha256": "403cdf1b4677375348998c020cd71582adfe364093f8bf4dc54d9a5638215d61"
+    },
+    {
+      "bytes": 35414,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-control/signals-100.npz.json",
+      "sha256": "04f9bc2474a4f37fee3d1aeffb54cdb82f5f09d198967e66154978473d284b41"
+    },
+    {
+      "bytes": 130010,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-control/signals-215.npz",
+      "sha256": "1d0615cf218df5655b643cedd5aad5cf4f94c5a1b7e3ad352c7829d90c9ebeaf"
+    },
+    {
+      "bytes": 35414,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-control/signals-215.npz.json",
+      "sha256": "803a596069686930ef7b6a025802bebf0a77644e28691ec0595ec3e5e56a426f"
+    },
+    {
+      "bytes": 380815,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-control/trajectory.jsonl",
+      "sha256": "509bfad0aba89bf426834d18af9f5fe2f28bd1d4631152597c3135a5ecc59184"
+    },
+    {
+      "bytes": 6832,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-hybrid_Adam/external.npz",
+      "sha256": "1a0e5d1dd615f7f1637e98b19b674a29e447c6cddfaf496a67605f9b70a425c0"
+    },
+    {
+      "bytes": 995,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-hybrid_Adam/external.npz.json",
+      "sha256": "f35404f66e09a14041ed82cb7c78258d152da5b4bf1cadac0fbb295176784091"
+    },
+    {
+      "bytes": 1630,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-hybrid_Adam/final-spatial.npz",
+      "sha256": "9147bd541d53da5f5cba14a2a4b0f3059f097b7e2fdbe73482e8b2eace6ea88f"
+    },
+    {
+      "bytes": 1722,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-hybrid_Adam/final-spatial.npz.json",
+      "sha256": "28784ea9dc12af3a4a4dedce5486592771041cbc61c050382e6fe153ff0fc8b1"
+    },
+    {
+      "bytes": 5973730,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-hybrid_Adam/final-weights.npz",
+      "sha256": "46bbbcbe97e93c2fcb16a1449b688e36f06b9b1fc09bbb34ca72288e6dbf5856"
+    },
+    {
+      "bytes": 26749,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-hybrid_Adam/final-weights.npz.json",
+      "sha256": "bb9a4c47a73b22ab7bc6d3b13496e8aa127191edca66202edf44ea5388a351c8"
+    },
+    {
+      "bytes": 1104,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-hybrid_Adam/proposed-probe.npz",
+      "sha256": "b4a0614ed48987b22725e60391132dbc1698885889565ab88530e4df6c13a863"
+    },
+    {
+      "bytes": 995,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-hybrid_Adam/proposed-probe.npz.json",
+      "sha256": "16b4d230e41f37b79c24aef5377ec830410b551fe741dfd6e92afb544e2f7a42"
+    },
+    {
+      "bytes": 130010,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-hybrid_Adam/signals-100.npz",
+      "sha256": "264846da68e2b1e457dad4a1aa3d709afd1c5e1723481e2e3ec92e448591d509"
+    },
+    {
+      "bytes": 35418,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-hybrid_Adam/signals-100.npz.json",
+      "sha256": "48e20802ca5497ec232293d3d59147b53e01a94baa348718a42d3023a70066e7"
+    },
+    {
+      "bytes": 6832,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-hybrid_LM/external.npz",
+      "sha256": "1e5ce9599d766ee4fbcf3fda4bba46ffd5b7318d0ccaed48a7e5956698b75d3b"
+    },
+    {
+      "bytes": 993,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-hybrid_LM/external.npz.json",
+      "sha256": "a5e8f38aebb5325db8388bdca1a190f07317efd4d9d6e9b19f23aef06ca10c3d"
+    },
+    {
+      "bytes": 1630,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-hybrid_LM/final-spatial.npz",
+      "sha256": "280a210f80659c6d86b26d4b9221b05e5ca98d610b2584d66b0e2b2d369ca776"
+    },
+    {
+      "bytes": 1720,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-hybrid_LM/final-spatial.npz.json",
+      "sha256": "4c16aa5f9780d21e6129966ea0487cb32c9f838f8dd8cb5ce89a85fbe4369d5d"
+    },
+    {
+      "bytes": 5973730,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-hybrid_LM/final-weights.npz",
+      "sha256": "e45a94e2991316c92bfd040e6d56acf4bd6a01b6dfb8c5e62e38a74a5cb62fba"
+    },
+    {
+      "bytes": 26747,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-hybrid_LM/final-weights.npz.json",
+      "sha256": "b133c03f95e70ce3d84888f8fa268824b0a9b8abfbb97fbb1319e9d592348ea2"
+    },
+    {
+      "bytes": 1104,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-hybrid_LM/proposed-probe.npz",
+      "sha256": "325c4d520114c0cbf090d33a4e8ffe8f607e3c12c0563f60e6dedde612865b9a"
+    },
+    {
+      "bytes": 993,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-hybrid_LM/proposed-probe.npz.json",
+      "sha256": "3f58a726f01bd89b6c3eaba81cc5dcbf3af9a60af116c8ed0d0b35507bfd19a9"
+    },
+    {
+      "bytes": 130010,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-hybrid_LM/signals-100.npz",
+      "sha256": "1bfcff827faf3377f4900bb4ed00ade0e8854bc1772069a6565321ed9caf3013"
+    },
+    {
+      "bytes": 35416,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m2-103-hybrid_LM/signals-100.npz.json",
+      "sha256": "44075e486025b8d2f25444e19fe6185d532824bb1406ed6c5eaa6f1ca3aead03"
+    },
+    {
+      "bytes": 1104,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-control/baseline-probe.npz",
+      "sha256": "01e8ec76e8b50f4a1e763fd35dcd88304ae54643f6226c1cbc00a72a3b0b9f64"
+    },
+    {
+      "bytes": 991,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-control/baseline-probe.npz.json",
+      "sha256": "672c09cce8d9260fc51759e7bc32210017708a82cc90e7d6cbf1ee61513633d3"
+    },
+    {
+      "bytes": 1630,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-control/baseline-spatial.npz",
+      "sha256": "3e8ca05bb5335fb60ecb0ea48a2f2a508cdf7b7ac33871fa0776f76109d366a3"
+    },
+    {
+      "bytes": 1721,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-control/baseline-spatial.npz.json",
+      "sha256": "0d7ef83458b8cc59cf0ab25f26446d111ffa8d1fb65eed9f382c8bc3161abc69"
+    },
+    {
+      "bytes": 6832,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-control/external.npz",
+      "sha256": "eb6561178b42b56d3253951f22aca9fb7a7a77f4eef84fdd8dbf9ee9b1d8ab43"
+    },
+    {
+      "bytes": 991,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-control/external.npz.json",
+      "sha256": "8eccf0f1814229c6c0f523e26974ff7575e354bfb19637e088dbc48acd18013f"
+    },
+    {
+      "bytes": 1104,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-control/final-probe.npz",
+      "sha256": "0ebc3a0c05b00613adfb08b41c1a7a27e0d45251aa2f7b9b0a19888f57adbd16"
+    },
+    {
+      "bytes": 988,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-control/final-probe.npz.json",
+      "sha256": "fc5032979c33d802cfb1d6e96fc796d90a2631278195da2a097cd6ec20799651"
+    },
+    {
+      "bytes": 1630,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-control/final-spatial.npz",
+      "sha256": "f3d7ce091a4396c14d531eca364294f8dc130bcd09d6fec286c17fd931389c9a"
+    },
+    {
+      "bytes": 1718,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-control/final-spatial.npz.json",
+      "sha256": "e779680f52a2571d04c20aa668575f10c9dfb5d1537dc652094971ef3b4c5ae3"
+    },
+    {
+      "bytes": 17919722,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-control/final-state.npz",
+      "sha256": "391f5d4b02fbbfc3dd3e63c94148710137ecc53ae32b997d7ee91041504e23c8"
+    },
+    {
+      "bytes": 93990,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-control/final-state.npz.json",
+      "sha256": "85f703cf689aac5ea1caab5fc24ed978530d6e785c5162f8e26f51cc4b96bca6"
+    },
+    {
+      "bytes": 130010,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-control/signals-100.npz",
+      "sha256": "5b2794de49b6329a3a79a8fb8b7c2a4142d70a7d9e52fb59399633fc96bc6730"
+    },
+    {
+      "bytes": 35414,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-control/signals-100.npz.json",
+      "sha256": "2dd4733e4ff3745981bd21df896d65184cd769f83bc5cc0012d6b762e2e24e06"
+    },
+    {
+      "bytes": 130010,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-control/signals-262.npz",
+      "sha256": "171c6a294a12115bdc1b1f4d2da2ddcbd8eff77a1d0cd30f834a6cef04e5125f"
+    },
+    {
+      "bytes": 35414,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-control/signals-262.npz.json",
+      "sha256": "a2fc52a2e34998e4a38620bfa952358427f3dd3ba61acad071197d14b60a64ea"
+    },
+    {
+      "bytes": 536069,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-control/trajectory.jsonl",
+      "sha256": "3bd17928391fb4180d3cecbd5044b79c8dfa56d374727acc910aafd034ad4686"
+    },
+    {
+      "bytes": 6832,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-hybrid_Adam/external.npz",
+      "sha256": "a9c552d86a4f072e98efbab823db66a7b7c0754c9abe0d944f855053ba9f50da"
+    },
+    {
+      "bytes": 995,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-hybrid_Adam/external.npz.json",
+      "sha256": "cc803142b05a7e870898e04b8d1c27b4860ac4785923dc4cd96422658620664c"
+    },
+    {
+      "bytes": 1630,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-hybrid_Adam/final-spatial.npz",
+      "sha256": "d13acc6fb9ddd308e7dae0e36223e5f43ee4c57899dceab2dae6d076da16170f"
+    },
+    {
+      "bytes": 1722,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-hybrid_Adam/final-spatial.npz.json",
+      "sha256": "a429566a153d0b5a61a71c10361ce83c5434fc9d6d0192d7eaa713ab5ae21370"
+    },
+    {
+      "bytes": 5973730,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-hybrid_Adam/final-weights.npz",
+      "sha256": "55faba360dc50b792c8eb341eec6a16cdd1b7b7a53e68c7149514aabed24d6b0"
+    },
+    {
+      "bytes": 26749,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-hybrid_Adam/final-weights.npz.json",
+      "sha256": "9f965a0d843d5bc8fcd226aa6dd62bd30c6cbee622c548ae3639837806b36114"
+    },
+    {
+      "bytes": 1104,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-hybrid_Adam/proposed-probe.npz",
+      "sha256": "e0d18c521083394504ca29d26c3b956932a141e162b0e03a84d1465a11ec5fd6"
+    },
+    {
+      "bytes": 995,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-hybrid_Adam/proposed-probe.npz.json",
+      "sha256": "f3389cddced9eb1186d76f3be5291b533982569270f82ec69a9fd5f7c06a5033"
+    },
+    {
+      "bytes": 130010,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-hybrid_Adam/signals-100.npz",
+      "sha256": "fd8f924efb30ea176ecfe7cf6f1614030acaf468e127f18ecacee6ac1a76ce8f"
+    },
+    {
+      "bytes": 35418,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-hybrid_Adam/signals-100.npz.json",
+      "sha256": "430934d2c51728b9fa51f0db679f04d5b1448ab98178c47bfaaabd6c97ca0580"
+    },
+    {
+      "bytes": 6832,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-hybrid_LM/external.npz",
+      "sha256": "f4c5d14430d5a19da3fe9085dfff7e34568fcc651b58a1ce235ea40a39a1d42e"
+    },
+    {
+      "bytes": 993,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-hybrid_LM/external.npz.json",
+      "sha256": "9e80b499238e17c78db4321dc0702d917efa3bf7e011d5190137459fbf115437"
+    },
+    {
+      "bytes": 1630,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-hybrid_LM/final-spatial.npz",
+      "sha256": "3f3d59b6efae84533db6e21eac5b96b6102013552c3ace5afdd9632c29071e52"
+    },
+    {
+      "bytes": 1720,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-hybrid_LM/final-spatial.npz.json",
+      "sha256": "1bfc98630f49eae6a3e38cad7dea49fe8b397939dfbc938eb827a85618b50f06"
+    },
+    {
+      "bytes": 5973730,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-hybrid_LM/final-weights.npz",
+      "sha256": "1ab906c673ae2aee12b95c27830c61d5f446524768cef5e940692c36f0c51c43"
+    },
+    {
+      "bytes": 26747,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-hybrid_LM/final-weights.npz.json",
+      "sha256": "f7253955167c2a9b72c8ca10f9c479a46a6e196dd828bc19e0de1c20061d91bd"
+    },
+    {
+      "bytes": 1104,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-hybrid_LM/proposed-probe.npz",
+      "sha256": "03b93cb59bfb67ef8fc751441ef69ab1b11318484c5de8c2c86068d0cd99244c"
+    },
+    {
+      "bytes": 993,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-hybrid_LM/proposed-probe.npz.json",
+      "sha256": "648511cc9d44b355802c0f976f7633b707c9782b47332ed3cbd4c3496e3c9403"
+    },
+    {
+      "bytes": 130010,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-hybrid_LM/signals-100.npz",
+      "sha256": "b6a59b41a0413d6349f2902f24fb84d909c01d0d692f370a643900cc14cfee67"
+    },
+    {
+      "bytes": 35416,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/m3-101-hybrid_LM/signals-100.npz.json",
+      "sha256": "430b81ff516603dd3830f619293bb73ef1518048e01400d345fb35569c682d74"
+    },
+    {
+      "bytes": 125576,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18/result.json",
+      "sha256": "917058aeefa2e15b497e56869cc96fd461415c75e37d6f34f82784034a0431e8"
+    }
+  ],
+  "receipt_sha256": "82ddbfb2b6a54cf57a959710fcc41317154cae9acbe1148af18357fd6c65c2d5",
+  "report_sha256": "917058aeefa2e15b497e56869cc96fd461415c75e37d6f34f82784034a0431e8",
+  "run": "material-e7-b44cedc3bbcd443f8fc47976ebdd1c18",
+  "schema_version": 1,
+  "seal_sha256": "aa1048bfa74716606a119aa1c4ae8e59508d29ac86bf6dfe991ee1ffd7f2d42e",
+  "sidecars": [
+    {
+      "bytes": 515,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18.authorization.json",
+      "sha256": "38d3579160858f0118f51276f2586353cf28fe4503cf2e7ee6f2f6b6112513ff"
+    },
+    {
+      "bytes": 1687,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18.launch.json",
+      "sha256": "68ef31b7f2a61e3ba65a547bf86a6df39dce886e40df511b2d748f0b1b21485d"
+    },
+    {
+      "bytes": 824,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18.console.log",
+      "sha256": "546a84613e209da720ea83bd1592a9b6dec43cfe0f6cf6b7e0398e8c3b5539f4"
+    },
+    {
+      "bytes": 1064,
+      "path": "/home/isavand/paper/evidence/material-e7-b44cedc3bbcd443f8fc47976ebdd1c18.process.json",
+      "sha256": "82ddbfb2b6a54cf57a959710fcc41317154cae9acbe1148af18357fd6c65c2d5"
+    }
+  ]
+}
