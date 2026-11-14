@@ -1,0 +1,56 @@
+{
+  "JUnit": {
+    "bytes": 3208,
+    "path": "docs/evidence/neural_material_continuation_e3_v1/pytest.xml",
+    "sha256": "a36fa7595aecf2357d59716fda19b3ebd5275b0d097cab5227a45c9245032698"
+  },
+  "N1_constructions": 0,
+  "accepted_E2b_numeric_artifacts_inspected_read_only": true,
+  "command": "python3 subprocess with scientific-import blocker; python3 -m pytest -q -p no:cacheprovider tests/scientific/test_neural_material_continuation_e3.py",
+  "console": {
+    "bytes": 306,
+    "path": "docs/evidence/neural_material_continuation_e3_v1/pytest.log",
+    "sha256": "5ca3db1bffc7240d4026fe31822b426080625997feed1c2c9aa333e928a608b9"
+  },
+  "environment_overrides": {
+    "CUDA_VISIBLE_DEVICES": "",
+    "MKL_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "errors": 0,
+  "exit_code": 0,
+  "failed": 0,
+  "new_source_sha256": {
+    "docs/protocols/NEURAL_MATERIAL_CONTINUATION_E3_V1.md": "7ebab771bd382e9b4dad859ecd4258b3e9a12595e9cbe84642ff986b77c9ce99",
+    "experiments/neural_material_continuation_e3.py": "2d66733afb479029e0b1fc92da7494f8f2a7001325d8f79eeeeed591fbef9f5d",
+    "tests/scientific/test_neural_material_continuation_e3.py": "ce418c4c9ba0047ac5ea71bb9f61c18c1c67566f92dce9c40b422df87c2b1692"
+  },
+  "passed": 16,
+  "phase": "E.3 preparation",
+  "schema_version": 1,
+  "scientific_import_blocker_verified": true,
+  "scientific_optimizer_updates": 0,
+  "scientific_queries": 0,
+  "skipped": 0,
+  "synthetic_only": true,
+  "test_inventory": [
+    "test_accepted_numeric_inputs_have_complete_state_and_known_provenance",
+    "test_bad_restoration_is_rejected_before_parameter_mutation[RNG]",
+    "test_bad_restoration_is_rejected_before_parameter_mutation[counter]",
+    "test_bad_restoration_is_rejected_before_parameter_mutation[dtype]",
+    "test_bad_restoration_is_rejected_before_parameter_mutation[identity]",
+    "test_bad_restoration_is_rejected_before_parameter_mutation[missing]",
+    "test_bad_restoration_is_rejected_before_parameter_mutation[negative_second]",
+    "test_bad_restoration_is_rejected_before_parameter_mutation[options]",
+    "test_bad_restoration_is_rejected_before_parameter_mutation[shape]",
+    "test_bounded90_updates_use_cached_gate_and_correct_states",
+    "test_exact_state_and_next_original_adam_update",
+    "test_execution_requires_separate_e3_approval_before_scientific_imports",
+    "test_failed_gate_allows_no_updates_and_keeps_actual_measurement",
+    "test_interruption_keeps_state13_and_removes_observation_hooks",
+    "test_rejected_work_attempts_do_not_increment",
+    "test_saved_rng_context_restores_caller_after_interruption"
+  ]
+}
