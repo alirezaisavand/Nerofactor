@@ -1,0 +1,29 @@
+{
+  "bound_final_snapshots": 4,
+  "external_metric_sets_recomputed": 6,
+  "input_hashes_verified": 403,
+  "new_M3_FD_checks": [
+    {
+      "case": "M3/101",
+      "errors": [
+        4.2693394590350885e-05,
+        3.222723030610116e-05
+      ],
+      "limit": 0.0003093609504015928
+    }
+  ],
+  "numeric_Jacobian_archives": 24,
+  "precision_sensitive_accepted_trials": 5,
+  "scientific_counters_reconstructed": {
+    "Adam_returns": 267,
+    "Jacobians": 24,
+    "LM_accepted_steps": 22,
+    "external_forwards": 6,
+    "reverse_sweeps": 607,
+    "shader_forwards": 486,
+    "shared_replays": 2,
+    "trial_attempts": 35
+  },
+  "source_hashes_verified": 381,
+  "trial_RGB_limit": "Rejected-trial RGB arrays and all Adam fit RGB arrays were not archived; checks use sealed loss scalars, all LM pre-Jacobian RGB arrays, explicit step/system reconstruction, and fixed independent endpoint arrays; no renderer rerun or exhaustive Adam moment replay claimed"
+}
