@@ -1,0 +1,50 @@
+{
+  "CSV_row_counts": {
+    "adam_displacements": 900,
+    "endpoints": 10,
+    "gradient_routes": 4550,
+    "trajectories": 910
+  },
+  "Markdown_links": "passed",
+  "Python_AST_checks": 4,
+  "accepted_input_identities_verified": 166,
+  "combined_E3_work": {
+    "backwards": 914,
+    "calibrations": 14,
+    "forwards": 924,
+    "updates": 900
+  },
+  "focused_synthetic_tests": {
+    "JUnit": {
+      "bytes": 4154,
+      "path": "docs/evidence/neural_material_recovery_e3r_v1/pytest.xml",
+      "sha256": "af63ef11552ae295a971086e9af0738af7780484d4501891f7712649dfe080f6"
+    },
+    "errors": 0,
+    "exit_code": 0,
+    "failed": 0,
+    "passed": 21,
+    "skipped": 0
+  },
+  "frozen_source_hashes_verified": 370,
+  "model_queries_in_offline_analysis": 0,
+  "new_full_numeric_snapshots_verified": 8,
+  "new_raw_files_hash_verified": 55,
+  "new_sidecars_hash_verified": 4,
+  "new_signal_archives_verified": 12,
+  "optimizer_updates_in_offline_analysis": 0,
+  "original_failed_run_status_unchanged": true,
+  "originally_tracked_files_modified": false,
+  "physical_rows_recomputed_from_saved_values": 910,
+  "schema_version": 1,
+  "scientific_recovery_exit_code": 0,
+  "scientific_recovery_work": {
+    "backwards": 353,
+    "calibrations": 4,
+    "forwards": 357,
+    "updates": 349
+  },
+  "shader_queries_in_offline_analysis": 0,
+  "small_copies_hash_verified": 15,
+  "terminal_radiance_and_success_sets_recomputed": 10
+}

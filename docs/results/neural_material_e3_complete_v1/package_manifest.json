@@ -1,0 +1,107 @@
+{
+  "analysis_directory": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205-combined-analysis-v2",
+  "analysis_source": {
+    "path": "docs/results/neural_material_e3_complete_v1/analyze_complete_e3.py",
+    "sha256": "112c5dccfb7e84cc6f69065314f02b94f15d8e7e707e2313159ef9ff42ba8aa4"
+  },
+  "copied_files": [
+    {
+      "bytes": 58335,
+      "original": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205-combined-analysis-v2/comparison.json",
+      "sha256": "46dd2d89c8e39b6f652ad7136eef49c859592b296a186fec307da26e7fbe7609",
+      "tracked": "docs/results/neural_material_e3_complete_v1/comparison.json"
+    },
+    {
+      "bytes": 2602,
+      "original": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205-combined-analysis-v2/integrity.json",
+      "sha256": "c67b7d7ed614398f329b0a98ccd2215e46f8b1a64ee63226d4fed084155a2c70",
+      "tracked": "docs/results/neural_material_e3_complete_v1/integrity.json"
+    },
+    {
+      "bytes": 15320,
+      "original": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205-combined-analysis-v2/evidence_manifest.json",
+      "sha256": "6687ab6d7611aa902a7f83dad5b9e1b20990070aa4904fe695dadcbff24203e7",
+      "tracked": "docs/results/neural_material_e3_complete_v1/evidence_manifest.json"
+    },
+    {
+      "bytes": 38242,
+      "original": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205-combined-analysis-v2/endpoints.csv",
+      "sha256": "1010817117e94677bc04ab470f1abcb27118b100de61b2ed7ba811b0717f93e2",
+      "tracked": "docs/results/neural_material_e3_complete_v1/endpoints.csv"
+    },
+    {
+      "bytes": 320328,
+      "original": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205-combined-analysis-v2/trajectories.csv",
+      "sha256": "ae1a801822a51c90b02b65b3bc5f06659ff2b83009e3d0fff04c6cee6ed60529",
+      "tracked": "docs/results/neural_material_e3_complete_v1/trajectories.csv"
+    },
+    {
+      "bytes": 841989,
+      "original": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205-combined-analysis-v2/gradient_routes.csv",
+      "sha256": "94160cff4c426883a38a9e5b0bd06430a2311bb8e8dcb0746186c457694cba4d",
+      "tracked": "docs/results/neural_material_e3_complete_v1/gradient_routes.csv"
+    },
+    {
+      "bytes": 981585,
+      "original": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205-combined-analysis-v2/adam_displacements.csv",
+      "sha256": "8679f604739811214d1476256ab41e15dfe74f0d33f5e675b79c62d6101dcea8",
+      "tracked": "docs/results/neural_material_e3_complete_v1/adam_displacements.csv"
+    },
+    {
+      "bytes": 65040,
+      "original": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205-combined-analysis-v2/figures/adam_motion_and_gradients.pdf",
+      "sha256": "f96cd7eabf4c022a2cbeb14c08a57cf38350f0129de67c9a16f0b1201021ac26",
+      "tracked": "docs/results/neural_material_e3_complete_v1/figures/adam_motion_and_gradients.pdf"
+    },
+    {
+      "bytes": 304759,
+      "original": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205-combined-analysis-v2/figures/adam_motion_and_gradients.png",
+      "sha256": "7d0fb49bb66700eea9f4a819ed2cd03d430d310af7f846de356d3e8262e51b00",
+      "tracked": "docs/results/neural_material_e3_complete_v1/figures/adam_motion_and_gradients.png"
+    },
+    {
+      "bytes": 46405,
+      "original": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205-combined-analysis-v2/figures/complete_trajectories.pdf",
+      "sha256": "5b08c11ab194116f6ef41236f3535048db8714b2db566c8f863b03385e980e7d",
+      "tracked": "docs/results/neural_material_e3_complete_v1/figures/complete_trajectories.pdf"
+    },
+    {
+      "bytes": 531037,
+      "original": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205-combined-analysis-v2/figures/complete_trajectories.png",
+      "sha256": "50f34b6f31bcfb5336da40e66347e9ede0a5a7a0b0fbff2efcd996314feb695a",
+      "tracked": "docs/results/neural_material_e3_complete_v1/figures/complete_trajectories.png"
+    },
+    {
+      "bytes": 122866,
+      "original": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205-combined-analysis-v2/figures/gradient_transport_and_saturation.pdf",
+      "sha256": "a3a74debf4c93ec29946a6c3e0261b2287a4e6c835aef464e5c5f6595cea6646",
+      "tracked": "docs/results/neural_material_e3_complete_v1/figures/gradient_transport_and_saturation.pdf"
+    },
+    {
+      "bytes": 155727,
+      "original": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205-combined-analysis-v2/figures/gradient_transport_and_saturation.png",
+      "sha256": "2d67a16684fe5c817a575b5d4d38a0b3cefc89a87341d0a980fa1cb6fb482394",
+      "tracked": "docs/results/neural_material_e3_complete_v1/figures/gradient_transport_and_saturation.png"
+    },
+    {
+      "bytes": 22342,
+      "original": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205-combined-analysis-v2/figures/photometric_vs_physical.pdf",
+      "sha256": "4bb597950ab118c68fcef79ba57f951538f31645dea269647c39f8b686d32c49",
+      "tracked": "docs/results/neural_material_e3_complete_v1/figures/photometric_vs_physical.pdf"
+    },
+    {
+      "bytes": 98558,
+      "original": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205-combined-analysis-v2/figures/photometric_vs_physical.png",
+      "sha256": "d9584159ace4ebe22c8f3f3c237c9c727c72c11c456fbf346b1350737eabb713",
+      "tracked": "docs/results/neural_material_e3_complete_v1/figures/photometric_vs_physical.png"
+    }
+  ],
+  "large_raw_arrays_not_copied": true,
+  "panel_status": "complete endpoints; zero full physical-recovery successes",
+  "previous_offline_admission_failure": {
+    "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205-combined-analysis-v1/failure.json",
+    "scientific_calls": 0,
+    "sha256": "44fe75723c2394b434c847675289bdb7c3d06b7c73a08c28f75a12da5a2e563a"
+  },
+  "schema_version": 1
+}

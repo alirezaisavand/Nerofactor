@@ -1,0 +1,115 @@
+{
+  "actual_update_records": 900,
+  "bridges": [
+    {
+      "case": "M3/101",
+      "kind": "exact_state21_checkpoint_bridge_new_measurement",
+      "lr": 0.01,
+      "start": 21,
+      "verified": true
+    },
+    {
+      "case": "M3/101",
+      "kind": "exact_state10_measurement_parity",
+      "lr": 0.001,
+      "start": 10,
+      "verified": true
+    },
+    {
+      "case": "M3/103",
+      "kind": "exact_state10_measurement_parity",
+      "lr": 0.01,
+      "start": 10,
+      "verified": true
+    },
+    {
+      "case": "M3/103",
+      "kind": "exact_state10_measurement_parity",
+      "lr": 0.001,
+      "start": 10,
+      "verified": true
+    }
+  ],
+  "input_hashes_verified": 166,
+  "new_cleanup_and_terminal_integrity_verified": true,
+  "new_signal_archives_verified": 12,
+  "numeric_snapshots": [
+    {
+      "Adam_counter": 100,
+      "buffers_and_RNG_unchanged": true,
+      "case": "M3/101",
+      "lr": 0.01,
+      "parameter_identity": true,
+      "probes": true,
+      "state": 100
+    },
+    {
+      "Adam_counter": 50,
+      "buffers_and_RNG_unchanged": true,
+      "case": "M3/101",
+      "lr": 0.01,
+      "parameter_identity": true,
+      "probes": true,
+      "state": 50
+    },
+    {
+      "Adam_counter": 100,
+      "buffers_and_RNG_unchanged": true,
+      "case": "M3/101",
+      "lr": 0.001,
+      "parameter_identity": true,
+      "probes": true,
+      "state": 100
+    },
+    {
+      "Adam_counter": 50,
+      "buffers_and_RNG_unchanged": true,
+      "case": "M3/101",
+      "lr": 0.001,
+      "parameter_identity": true,
+      "probes": true,
+      "state": 50
+    },
+    {
+      "Adam_counter": 100,
+      "buffers_and_RNG_unchanged": true,
+      "case": "M3/103",
+      "lr": 0.01,
+      "parameter_identity": true,
+      "probes": true,
+      "state": 100
+    },
+    {
+      "Adam_counter": 50,
+      "buffers_and_RNG_unchanged": true,
+      "case": "M3/103",
+      "lr": 0.01,
+      "parameter_identity": true,
+      "probes": true,
+      "state": 50
+    },
+    {
+      "Adam_counter": 100,
+      "buffers_and_RNG_unchanged": true,
+      "case": "M3/103",
+      "lr": 0.001,
+      "parameter_identity": true,
+      "probes": true,
+      "state": 100
+    },
+    {
+      "Adam_counter": 50,
+      "buffers_and_RNG_unchanged": true,
+      "case": "M3/103",
+      "lr": 0.001,
+      "parameter_identity": true,
+      "probes": true,
+      "state": 50
+    }
+  ],
+  "original_failed_status_preserved": true,
+  "physical_metric_rows_recomputed": 910,
+  "source_hashes_verified": 370,
+  "terminal_radiance_and_success_checks_recomputed": 10,
+  "unique_recorded_states": 910
+}

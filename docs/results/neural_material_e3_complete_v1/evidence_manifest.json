@@ -1,0 +1,322 @@
+{
+  "analysis_source": {
+    "bytes": 24455,
+    "path": "/home/isavand/paper/Nerofactor-3d2-e2a/docs/results/neural_material_e3_complete_v1/analyze_complete_e3.py",
+    "sha256": "112c5dccfb7e84cc6f69065314f02b94f15d8e7e707e2313159ef9ff42ba8aa4"
+  },
+  "execution_commit": "633d1e354bbac7ae480afe742a625339ec3ab78b",
+  "freeze_sha256": "ff4dc8f7b6b3712731a584681770980ca9ee9f46c9352e5ea1de3f37a299f743",
+  "large_archives_copied_to_Git": false,
+  "new_raw_files": [
+    {
+      "bytes": 514,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/execution-review.json",
+      "sha256": "e3a5eec0c4272d69d25a7fe6d6126df57709351a27752e9be648ed82621b9f8e"
+    },
+    {
+      "bytes": 225,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/finalization/seal.json",
+      "sha256": "92d65ae225990e01babcc88e6202109a36461e9fbf632ef2e79c31e9114f66a8"
+    },
+    {
+      "bytes": 38593,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/arm-result.json",
+      "sha256": "ce27b89ace4c25878d6dc0082fba61a9c43ea1563b65d99072632f8e465a46d8"
+    },
+    {
+      "bytes": 12133,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/restoration-measurement.json",
+      "sha256": "32bf621d7c5c9800563c4a00ca197916bb6d50e2a2ff029188094b21db19be16"
+    },
+    {
+      "bytes": 130010,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/signals-10.npz",
+      "sha256": "4d2fa04feb16dd562250171c2bb8d702133dbc5379cc25ada1f45af850b3afaa"
+    },
+    {
+      "bytes": 35411,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/signals-10.npz.json",
+      "sha256": "a0374a1a4b56e0c05004860bbdd24144bd7d537ba47d1810db659c06b640cd0c"
+    },
+    {
+      "bytes": 130010,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/signals-100.npz",
+      "sha256": "5b2794de49b6329a3a79a8fb8b7c2a4142d70a7d9e52fb59399633fc96bc6730"
+    },
+    {
+      "bytes": 35412,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/signals-100.npz.json",
+      "sha256": "362b52f5d889a549afa62f57e76a6f74346dccc6ea32d0dfc534bea4c0ae02d4"
+    },
+    {
+      "bytes": 130010,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/signals-50.npz",
+      "sha256": "a4655eae64eb3bd07568867ca54e4c957989fab11f16ffd44b39abc5093bc2bf"
+    },
+    {
+      "bytes": 35411,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/signals-50.npz.json",
+      "sha256": "2a814d9c250527fc9fcd271e8a5ec914e22308adf106faf105063215f0c8a94f"
+    },
+    {
+      "bytes": 17919722,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/state-100.npz",
+      "sha256": "51d28f6b3f8fe2ead6f5e26515b0888a54fcc5b55e8927522ae07d868952370d"
+    },
+    {
+      "bytes": 93986,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/state-100.npz.json",
+      "sha256": "c3829c6e4a328e50d4f13a6f9fe04a41e17de2baf847f562089c6cec5b878ee4"
+    },
+    {
+      "bytes": 17919722,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/state-50.npz",
+      "sha256": "62580cf0b706b455397af1092caef1853aafb49d65759866c701713529d56d55"
+    },
+    {
+      "bytes": 93985,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/state-50.npz.json",
+      "sha256": "d1d7e56400fc70a3d231af1db334456ae0d663776cd15b1c6f2b61dbb69e8c7c"
+    },
+    {
+      "bytes": 3759013,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/trajectory.jsonl",
+      "sha256": "e10324e1ed5981bfc96a211dc135acd9e7e0e970655a313560b7fbff200248de"
+    },
+    {
+      "bytes": 38571,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/arm-result.json",
+      "sha256": "d999d7ffc84841c697929b409e18d61b6959e9a472317c6cc187049787f68331"
+    },
+    {
+      "bytes": 11890,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/restoration-measurement.json",
+      "sha256": "509c95d89ebf0a16ac2894d9f80931963a7d959c704fd2fc3e578af0a957b7ee"
+    },
+    {
+      "bytes": 130010,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/signals-100.npz",
+      "sha256": "7d8ad6a627820941c07bf07776ce244ce9f72a217f6aff46928881b66d1d9dc7"
+    },
+    {
+      "bytes": 35411,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/signals-100.npz.json",
+      "sha256": "76c075bb66ef5461070c2f8a2adb4ec2588f27fd8dd5b436c0d25fa0e83d2b60"
+    },
+    {
+      "bytes": 130010,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/signals-21.npz",
+      "sha256": "6c4bd3309e77eea29dbb0256fe1fb59fd30543fa1de92c459534a4709708251e"
+    },
+    {
+      "bytes": 35410,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/signals-21.npz.json",
+      "sha256": "61ff27ac5db6c57991e8633638aada73e1120f0a0ff8a1f3fb0a57aaa2c777e3"
+    },
+    {
+      "bytes": 130010,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/signals-50.npz",
+      "sha256": "83a438b69a4696852a7509bde2d40aea806b49c22599b9774a7736100ac2d3fc"
+    },
+    {
+      "bytes": 35410,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/signals-50.npz.json",
+      "sha256": "dad812b27751d41370d6eadad0db9bc0bb5125c474b557353c7a8ee43b5b2049"
+    },
+    {
+      "bytes": 17919722,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/state-100.npz",
+      "sha256": "f4b390c2b3d6f23218adf65d72ac433ab415caf92fc7aba7489db8edf10e63b0"
+    },
+    {
+      "bytes": 93985,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/state-100.npz.json",
+      "sha256": "26374240ee7bd182ff5c5b3d98edd7912846f335f50b47a9705c82153f3deff5"
+    },
+    {
+      "bytes": 17919722,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/state-50.npz",
+      "sha256": "fbb3d869068a59b988290306841edd230882411b7e3a61fa9c85b43279241946"
+    },
+    {
+      "bytes": 93984,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/state-50.npz.json",
+      "sha256": "89a4c8d81adc367bbd543e5dfaba2344f39a0b677800cc602f1bca8ea22d4e8f"
+    },
+    {
+      "bytes": 3295695,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/trajectory.jsonl",
+      "sha256": "aacc791f03c90734f8341c58227de765ab49ec2b8bc42d8eadf441b563fc5112"
+    },
+    {
+      "bytes": 38466,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/arm-result.json",
+      "sha256": "60e535af3600342eb432679524d1e650b1ba7fa087de4c97cb08e5731243c298"
+    },
+    {
+      "bytes": 12142,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/restoration-measurement.json",
+      "sha256": "8f007a947f4e838cdaf1beba155c23056020666f54357f1c8c372fdd30705ae8"
+    },
+    {
+      "bytes": 130010,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/signals-10.npz",
+      "sha256": "94cb15c6c7bbfa2aee8c48adf97784298208d46520b5b361f92550b4e70cb55f"
+    },
+    {
+      "bytes": 35411,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/signals-10.npz.json",
+      "sha256": "048ff53042890d6ea552833f695e3657fb188422198b0e0153d56d5a5750a7f3"
+    },
+    {
+      "bytes": 130010,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/signals-100.npz",
+      "sha256": "a2021367fe011fad5cc47be4b3223f637ecc9d8fb3317d3781719defef86c7b0"
+    },
+    {
+      "bytes": 35412,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/signals-100.npz.json",
+      "sha256": "03899558db0481f7c4b0e354a69f7a1ddbf05823ec7a3935f7cd7212cc8b341b"
+    },
+    {
+      "bytes": 130010,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/signals-50.npz",
+      "sha256": "55ab7d2a62ffa910a353e76456604f13e674caf798fb291fee8653c69c067b18"
+    },
+    {
+      "bytes": 35411,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/signals-50.npz.json",
+      "sha256": "b514453fa9478b418ff79710c9faf34c37c6c300e3e9bf069fa0338cfd533314"
+    },
+    {
+      "bytes": 17919722,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/state-100.npz",
+      "sha256": "3bcb89b65c40baa01524a65be840383d21b725609c3a3113ba4c409471468f18"
+    },
+    {
+      "bytes": 93986,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/state-100.npz.json",
+      "sha256": "b457708f9dd1568b3fda694657381aee0bd6b3f418e2d73c9a4cac3a278617ad"
+    },
+    {
+      "bytes": 17919722,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/state-50.npz",
+      "sha256": "b262cb1ee1843a820319f83c09148c29496eb644e66f9dd31c3b3378aa29cc0c"
+    },
+    {
+      "bytes": 93985,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/state-50.npz.json",
+      "sha256": "95e9e9dc7bed8729139958d20838124a0b836280db3bfae55f7cb882a99f728e"
+    },
+    {
+      "bytes": 3754141,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/trajectory.jsonl",
+      "sha256": "dddf70445b016e73de079958445bd27256998ac72563f2620dcd5c9e21c892de"
+    },
+    {
+      "bytes": 38491,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/arm-result.json",
+      "sha256": "ed61c39a0b038e6f387764fd459db3e5f83ff08a21afee2d3227f0446b034982"
+    },
+    {
+      "bytes": 12142,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/restoration-measurement.json",
+      "sha256": "5b24ee2cfae595a3b03e058d86d188fc80f7863d5a0640f08943a4344349f880"
+    },
+    {
+      "bytes": 130010,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/signals-10.npz",
+      "sha256": "ea4d62f91a994dffa6e00123cdead0b17b4af18046697edde7b3117c8df027db"
+    },
+    {
+      "bytes": 35410,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/signals-10.npz.json",
+      "sha256": "c0a07445d6f20cae2563313bef437d4a48d77acfa7b5b9cbf890d571b0ee5682"
+    },
+    {
+      "bytes": 130010,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/signals-100.npz",
+      "sha256": "7c4394f470bef0281fbaf75d09d74712d91d3c822d0d8b4a41a2531453124272"
+    },
+    {
+      "bytes": 35411,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/signals-100.npz.json",
+      "sha256": "c8938055b0d0b46bc5e464151ebf01afc8feb2a0e2c7b89412b53f0d1f29f260"
+    },
+    {
+      "bytes": 130010,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/signals-50.npz",
+      "sha256": "f0f6ab0f3ce83a47b00a2e1471e18f3089e521201d1dffd4fa43b1c9df16e616"
+    },
+    {
+      "bytes": 35410,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/signals-50.npz.json",
+      "sha256": "36cc56a356d668ec14c8de8170593194799dbb28fd539f33e43348f1541c4d0a"
+    },
+    {
+      "bytes": 17919722,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/state-100.npz",
+      "sha256": "3b1f587e1bea6bd9f4313a1a448a086abfd91c2d2078b4792e4378e524f6f916"
+    },
+    {
+      "bytes": 93985,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/state-100.npz.json",
+      "sha256": "2dd49f1452b16b686cb45e02c102b031182ade9b40535e9abdd19d511a24d1ce"
+    },
+    {
+      "bytes": 17919722,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/state-50.npz",
+      "sha256": "090d3d898bff14b88601abf61a2102c6b79e0115c4f1eb46cc1f447c471902a9"
+    },
+    {
+      "bytes": 93984,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/state-50.npz.json",
+      "sha256": "47aa9cef381720abb719523a97462287e9395fb174dd8bc0d42f806615482262"
+    },
+    {
+      "bytes": 3746815,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/trajectory.jsonl",
+      "sha256": "d3b8a148fa9fe4bc16ff58d67d98736517cfbba5490b0a1cb15eb5f3e2f4542c"
+    },
+    {
+      "bytes": 182453,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/result.json",
+      "sha256": "328abbadd40cebff641daa2c0e4cc72cd3f0b1fbd40930d83b76dcfb42ef786f"
+    }
+  ],
+  "new_sidecars": [
+    {
+      "bytes": 514,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205.authorization.json",
+      "sha256": "e3a5eec0c4272d69d25a7fe6d6126df57709351a27752e9be648ed82621b9f8e"
+    },
+    {
+      "bytes": 1729,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205.launch.json",
+      "sha256": "4ed743e4ee35f2bce20977d403b1d8c4e5895eaee3a02f51cc5da49b2f32475f"
+    },
+    {
+      "bytes": 915,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205.console.log",
+      "sha256": "720deb245f4048be8dcd00717960ed1766f1432ca12865225503fbec4f9b22fb"
+    },
+    {
+      "bytes": 1058,
+      "path": "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205.process.json",
+      "sha256": "e3ed7ddb7789d4372aa5d9a389ca498e27c66a6303a493dc70a127ee300a44df"
+    }
+  ],
+  "original_files_reverified_by_selected_input_hashes": true,
+  "original_inventory": {
+    "bytes": 31620,
+    "path": "/home/isavand/paper/Nerofactor-3d2-e2a/docs/results/neural_material_continuation_e3/evidence_manifest.json",
+    "sha256": "a8fc588210bd6842d5798d000783e14a6adbb6c205ee332446655af53c7616c4"
+  },
+  "original_report_sha256": "79a876fffd11f3e5d44c637a2ca4b9f1aa05ebd6a0f2484744a7403ecbe2a490",
+  "parent_run": "neural-e3-b4d1389b174e4b20b2f892725050a0ae",
+  "receipt_sha256": "e3ed7ddb7789d4372aa5d9a389ca498e27c66a6303a493dc70a127ee300a44df",
+  "recovery_run": "neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205",
+  "report_sha256": "328abbadd40cebff641daa2c0e4cc72cd3f0b1fbd40930d83b76dcfb42ef786f",
+  "schema_version": 1,
+  "seal_sha256": "92d65ae225990e01babcc88e6202109a36461e9fbf632ef2e79c31e9114f66a8"
+}
