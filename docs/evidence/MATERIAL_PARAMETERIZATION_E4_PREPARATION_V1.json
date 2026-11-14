@@ -1,0 +1,145 @@
+{
+  "JUnit": {
+    "bytes": 3040,
+    "path": "docs/evidence/material_parameterization_e4_v1/pytest.xml",
+    "sha256": "4fd1b8eb5311170d77c0bb2ce576dc932433ccf0f7a0125acbc9f01de82b6a90"
+  },
+  "console": {
+    "bytes": 306,
+    "path": "docs/evidence/material_parameterization_e4_v1/stdout.txt",
+    "sha256": "edd566fc0f263e190bf2da22768a73b351316466168b3d2edd049089f84a08e2"
+  },
+  "coordinate_checks_are_not_neural_or_shader_queries": true,
+  "coordinate_only_saved_buffer_checks": [
+    {
+      "initial_shader_input_bits": {
+        "albedo": true,
+        "encoding": true,
+        "metallic": true,
+        "mx": true,
+        "my": true
+      },
+      "material": "M1",
+      "model_queries": 0,
+      "orientation_tangent": [
+        [
+          0.45394259691238403,
+          0.13675066828727722
+        ]
+      ],
+      "seed": 101,
+      "shader_queries": 0
+    },
+    {
+      "initial_shader_input_bits": {
+        "albedo": true,
+        "encoding": true,
+        "metallic": true,
+        "mx": true,
+        "my": true
+      },
+      "material": "M1",
+      "model_queries": 0,
+      "orientation_tangent": [
+        [
+          -0.4269411265850067,
+          -0.17608745396137238
+        ]
+      ],
+      "seed": 103,
+      "shader_queries": 0
+    },
+    {
+      "initial_shader_input_bits": {
+        "albedo": true,
+        "encoding": true,
+        "metallic": true,
+        "mx": true,
+        "my": true
+      },
+      "material": "M2",
+      "model_queries": 0,
+      "orientation_tangent": [
+        [
+          -0.4269411265850067,
+          -0.17608745396137238
+        ]
+      ],
+      "seed": 103,
+      "shader_queries": 0
+    },
+    {
+      "initial_shader_input_bits": {
+        "albedo": true,
+        "encoding": true,
+        "metallic": true,
+        "mx": true,
+        "my": true
+      },
+      "material": "M3",
+      "model_queries": 0,
+      "orientation_tangent": [
+        [
+          0.45394259691238403,
+          0.13675066828727722
+        ]
+      ],
+      "seed": 101,
+      "shader_queries": 0
+    },
+    {
+      "initial_shader_input_bits": {
+        "albedo": true,
+        "encoding": true,
+        "metallic": true,
+        "mx": true,
+        "my": true
+      },
+      "material": "M3",
+      "model_queries": 0,
+      "orientation_tangent": [
+        [
+          -0.4269411265850067,
+          -0.17608745396137238
+        ]
+      ],
+      "seed": 103,
+      "shader_queries": 0
+    }
+  ],
+  "errors": 0,
+  "exit_code": 0,
+  "failed": 0,
+  "new_source_sha256": {
+    "docs/protocols/MATERIAL_PARAMETERIZATION_E4_V1.md": "a7829f6fb6b19a4520b993e9a9ec19b74185d2488a1f21115da25cd3316a1d18",
+    "experiments/material_chart_e4_v1.py": "ad3252d800a99b6017910b43571a62b3a858b81933c34cd58b2f456d493d1726",
+    "experiments/material_parameterization_e4_v1.py": "92e0c39e7fde0be8b573b7096c2e6f1577d3821dbd6ebaceb563b633fd32287b",
+    "tests/scientific/test_material_parameterization_e4_v1.py": "35fd94684ab739c873912cb1f718663b7ee4a3178f8f6814391bc58c1c487100"
+  },
+  "passed": 15,
+  "phase": "E4 AS1 preparation",
+  "real_N1_constructions": 0,
+  "schema_version": 1,
+  "scientific_import_blocker_verified": true,
+  "scientific_optimizer_updates": 0,
+  "scientific_queries": 0,
+  "skipped": 0,
+  "test_inventory": [
+    "test_atomic_caps_exact_total_budget_and_execution_gate",
+    "test_axis_swap_orientation_periodicity_and_beckmann_tensor_equivalence",
+    "test_far_from_anchor_attenuation_is_reduced_without_initial_gain_change",
+    "test_isotropic_orientation_is_unconstrained_with_finite_zero_Q_derivative",
+    "test_matched_history_bookkeeping_without_real_optimization[M1]",
+    "test_matched_history_bookkeeping_without_real_optimization[M2]",
+    "test_matched_history_bookkeeping_without_real_optimization[M3]",
+    "test_origin_physical_outputs_and_local_jacobian_match[dtype0]",
+    "test_origin_physical_outputs_and_local_jacobian_match[dtype1]",
+    "test_tiny_capacity_initialization_gradient_flow_and_cleanup",
+    "test_width_domain_correct_derivatives_and_finite_gradients[-1000.0]",
+    "test_width_domain_correct_derivatives_and_finite_gradients[-20.0]",
+    "test_width_domain_correct_derivatives_and_finite_gradients[0.0]",
+    "test_width_domain_correct_derivatives_and_finite_gradients[1000.0]",
+    "test_width_domain_correct_derivatives_and_finite_gradients[20.0]"
+  ],
+  "test_launcher": "import importlib.abc,sys\nclass Block(importlib.abc.MetaPathFinder):\n    def find_spec(self,name,*args):\n        if name.startswith(('experiments.neural_material_field_v1','experiments.material_shader_v1','experiments.neural_material_recovery_v1')):\n            raise AssertionError('Scientific import forbidden: '+name)\nsys.meta_path.insert(0,Block())\nimport pytest\nstatus=pytest.main(['-q','-p','no:cacheprovider','tests/scientific/test_material_parameterization_e4_v1.py','--junitxml=docs/evidence/material_parameterization_e4_v1/pytest.xml'])\nassert not any(m.startswith(('experiments.neural_material_field_v1','experiments.material_shader_v1','experiments.neural_material_recovery_v1')) for m in sys.modules)\nprint('SCIENTIFIC_IMPORT_BLOCKER_VERIFIED; zero real N1, shader or scientific optimizer calls')\nraise SystemExit(status)\n"
+}
