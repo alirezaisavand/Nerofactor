@@ -1,0 +1,50 @@
+{
+  "byte_identical_analysis_copies": 8,
+  "completed": {
+    "Adam_returns": 74,
+    "Jacobians": 48,
+    "constructors": 6,
+    "field_extra": 14,
+    "linear_solves": 384,
+    "neural_eval": 48,
+    "neural_fit": 528,
+    "neural_reverse": 336,
+    "physical": 384,
+    "physical_reverse": 672,
+    "projections": 48,
+    "proposals": 48,
+    "reference_calls": 0,
+    "reference_directions": 0
+  },
+  "endpoint_rows_recomputed": 48,
+  "execution_commit": "3ef5d53d5d184f5e9dacf81631b06f83a9110e6a",
+  "final_report": {
+    "path": "docs/SPATIAL_MATERIAL_E8R_RESULTS.md",
+    "sha256": "c0a264374927f5dc6015e170678af64c4d6d2aa797f0cbe0a5dd7cab43193dd9"
+  },
+  "focused_tests": {
+    "errors": 0,
+    "failed": 0,
+    "passed": 16,
+    "process_exit_code": 0,
+    "skipped": 0
+  },
+  "input_identities_verified": 606,
+  "new_rank_measurements": 0,
+  "new_reference_integrations": 0,
+  "numeric_archives_verified": 126,
+  "offline_scientific_queries": 0,
+  "original_failure_evidence_unchanged": true,
+  "package_files_verified": 9,
+  "package_manifest": {
+    "path": "docs/results/spatial_material_e8r_v1/package_manifest.json",
+    "sha256": "f059400ea05e67ef63625f197b755c6cca902f1d93cc840656e801d812e75545"
+  },
+  "proposal_rows_verified": 48,
+  "retries": 0,
+  "schema_version": 1,
+  "scientific_process_exit_code": 0,
+  "scientific_sources_unchanged": true,
+  "source_identities_verified": 393,
+  "status": "execution_and_offline_evidence_verified"
+}
