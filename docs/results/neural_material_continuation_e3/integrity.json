@@ -1,0 +1,386 @@
+{
+  "arms": [
+    {
+      "case": "M1/101",
+      "complete": true,
+      "hash_chain": true,
+      "lr": 0.01,
+      "numeric_snapshots": [
+        {
+          "Adam_first_moment_L2": 1.31482003019082e-07,
+          "Adam_step": 100,
+          "buffers_and_RNG_unchanged": true,
+          "parameter_identity": true,
+          "parameters": 84,
+          "probes_equal": true,
+          "selection": {
+            "bytes": 93985,
+            "path": "m1-101-0.01/state-100.npz.json",
+            "sha256": "13ff803dcf0b2dcb6f625c397e3c16710a89f2bcf03ecf46e59bb85853d7e49c"
+          },
+          "state": 100
+        },
+        {
+          "Adam_first_moment_L2": 0.0006018187451796408,
+          "Adam_step": 20,
+          "buffers_and_RNG_unchanged": true,
+          "parameter_identity": true,
+          "parameters": 84,
+          "probes_equal": true,
+          "selection": {
+            "bytes": 93984,
+            "path": "m1-101-0.01/state-20.npz.json",
+            "sha256": "5b3ba77e516a4a91f5d0574be41ed9d9ce04f2dbd9e77783d863d4f60644e31e"
+          },
+          "state": 20
+        },
+        {
+          "Adam_first_moment_L2": 2.551179101482795e-05,
+          "Adam_step": 50,
+          "buffers_and_RNG_unchanged": true,
+          "parameter_identity": true,
+          "parameters": 84,
+          "probes_equal": true,
+          "selection": {
+            "bytes": 93984,
+            "path": "m1-101-0.01/state-50.npz.json",
+            "sha256": "730281829dcd852ed59fbe9727150e99cde337ad01cf830b144b28a62399df87"
+          },
+          "state": 50
+        }
+      ],
+      "parity": true,
+      "trajectory_records": 91
+    },
+    {
+      "case": "M1/101",
+      "complete": true,
+      "hash_chain": true,
+      "lr": 0.001,
+      "numeric_snapshots": [
+        {
+          "Adam_first_moment_L2": 6.259707336115402e-05,
+          "Adam_step": 100,
+          "buffers_and_RNG_unchanged": true,
+          "parameter_identity": true,
+          "parameters": 84,
+          "probes_equal": true,
+          "selection": {
+            "bytes": 93986,
+            "path": "m1-101-0.001/state-100.npz.json",
+            "sha256": "5d1e6c5a4eeac430bf3929b2fa0e070b36eb8b4fe14b0356b7d70539579ce604"
+          },
+          "state": 100
+        },
+        {
+          "Adam_first_moment_L2": 0.011027148107669154,
+          "Adam_step": 20,
+          "buffers_and_RNG_unchanged": true,
+          "parameter_identity": true,
+          "parameters": 84,
+          "probes_equal": true,
+          "selection": {
+            "bytes": 93985,
+            "path": "m1-101-0.001/state-20.npz.json",
+            "sha256": "c66e879971fd9bea1284d48ed016f00e7bfed2e96348999621ce85bb3eb80e79"
+          },
+          "state": 20
+        },
+        {
+          "Adam_first_moment_L2": 0.0009843899787678539,
+          "Adam_step": 50,
+          "buffers_and_RNG_unchanged": true,
+          "parameter_identity": true,
+          "parameters": 84,
+          "probes_equal": true,
+          "selection": {
+            "bytes": 93985,
+            "path": "m1-101-0.001/state-50.npz.json",
+            "sha256": "694bd065d4ac846a68074fff7f9230b7a197a8328b831aeda8beeaf31755d9ee"
+          },
+          "state": 50
+        }
+      ],
+      "parity": true,
+      "trajectory_records": 91
+    },
+    {
+      "case": "M1/103",
+      "complete": true,
+      "hash_chain": true,
+      "lr": 0.01,
+      "numeric_snapshots": [
+        {
+          "Adam_first_moment_L2": 3.975286847509243e-06,
+          "Adam_step": 100,
+          "buffers_and_RNG_unchanged": true,
+          "parameter_identity": true,
+          "parameters": 84,
+          "probes_equal": true,
+          "selection": {
+            "bytes": 93985,
+            "path": "m1-103-0.01/state-100.npz.json",
+            "sha256": "db0a898868eb05c6b9a8c542dd09e86fb119f267bff9534661fb67513dc8cf6a"
+          },
+          "state": 100
+        },
+        {
+          "Adam_first_moment_L2": 0.0008193649245320506,
+          "Adam_step": 20,
+          "buffers_and_RNG_unchanged": true,
+          "parameter_identity": true,
+          "parameters": 84,
+          "probes_equal": true,
+          "selection": {
+            "bytes": 93984,
+            "path": "m1-103-0.01/state-20.npz.json",
+            "sha256": "f491f5c82a372554c4e7770b069b058222fe12abae3e0154e055994f73ab9c0e"
+          },
+          "state": 20
+        },
+        {
+          "Adam_first_moment_L2": 4.128901826508648e-05,
+          "Adam_step": 50,
+          "buffers_and_RNG_unchanged": true,
+          "parameter_identity": true,
+          "parameters": 84,
+          "probes_equal": true,
+          "selection": {
+            "bytes": 93984,
+            "path": "m1-103-0.01/state-50.npz.json",
+            "sha256": "5ccae0be417767d319aa9be6f22d1eac7b8cfba9c44e472fb284cffd388cdb8a"
+          },
+          "state": 50
+        }
+      ],
+      "parity": true,
+      "trajectory_records": 91
+    },
+    {
+      "case": "M1/103",
+      "complete": true,
+      "hash_chain": true,
+      "lr": 0.001,
+      "numeric_snapshots": [
+        {
+          "Adam_first_moment_L2": 5.784139141280578e-06,
+          "Adam_step": 100,
+          "buffers_and_RNG_unchanged": true,
+          "parameter_identity": true,
+          "parameters": 84,
+          "probes_equal": true,
+          "selection": {
+            "bytes": 93986,
+            "path": "m1-103-0.001/state-100.npz.json",
+            "sha256": "3796329fc73245382e868cc9b34c09f9ec8765dd40b55e9fa0410c5c377ec63a"
+          },
+          "state": 100
+        },
+        {
+          "Adam_first_moment_L2": 0.0022647077179284657,
+          "Adam_step": 20,
+          "buffers_and_RNG_unchanged": true,
+          "parameter_identity": true,
+          "parameters": 84,
+          "probes_equal": true,
+          "selection": {
+            "bytes": 93985,
+            "path": "m1-103-0.001/state-20.npz.json",
+            "sha256": "441637d93f284174d64b1f947a076f348f6869ad35c4e00c2bbbe6b694882a20"
+          },
+          "state": 20
+        },
+        {
+          "Adam_first_moment_L2": 0.0005339599097115474,
+          "Adam_step": 50,
+          "buffers_and_RNG_unchanged": true,
+          "parameter_identity": true,
+          "parameters": 84,
+          "probes_equal": true,
+          "selection": {
+            "bytes": 93985,
+            "path": "m1-103-0.001/state-50.npz.json",
+            "sha256": "93c9083c0f65a648e276ec8cbc3958c7b0b287bf901660c55bfe2389c0029e76"
+          },
+          "state": 50
+        }
+      ],
+      "parity": true,
+      "trajectory_records": 91
+    },
+    {
+      "case": "M2/103",
+      "complete": true,
+      "hash_chain": true,
+      "lr": 0.01,
+      "numeric_snapshots": [
+        {
+          "Adam_first_moment_L2": 1.7284263316610957e-07,
+          "Adam_step": 100,
+          "buffers_and_RNG_unchanged": true,
+          "parameter_identity": true,
+          "parameters": 84,
+          "probes_equal": true,
+          "selection": {
+            "bytes": 93985,
+            "path": "m2-103-0.01/state-100.npz.json",
+            "sha256": "6687a70ca2f8abeeb363820100bf5e293992c4221151bb8ef39e64e4e48ceb0c"
+          },
+          "state": 100
+        },
+        {
+          "Adam_first_moment_L2": 0.000791134372485226,
+          "Adam_step": 20,
+          "buffers_and_RNG_unchanged": true,
+          "parameter_identity": true,
+          "parameters": 84,
+          "probes_equal": true,
+          "selection": {
+            "bytes": 93984,
+            "path": "m2-103-0.01/state-20.npz.json",
+            "sha256": "cd47b5acbf3c662927634b6b54e2a39b76ec2ff82e344ce7470e78205809f946"
+          },
+          "state": 20
+        },
+        {
+          "Adam_first_moment_L2": 3.353709767875887e-05,
+          "Adam_step": 50,
+          "buffers_and_RNG_unchanged": true,
+          "parameter_identity": true,
+          "parameters": 84,
+          "probes_equal": true,
+          "selection": {
+            "bytes": 93984,
+            "path": "m2-103-0.01/state-50.npz.json",
+            "sha256": "b964b5a40f5f7036d71586a7237226407a05543b4abd90e908a249d52dfd17c6"
+          },
+          "state": 50
+        }
+      ],
+      "parity": true,
+      "trajectory_records": 91
+    },
+    {
+      "case": "M2/103",
+      "complete": true,
+      "hash_chain": true,
+      "lr": 0.001,
+      "numeric_snapshots": [
+        {
+          "Adam_first_moment_L2": 0.00014838209131775413,
+          "Adam_step": 100,
+          "buffers_and_RNG_unchanged": true,
+          "parameter_identity": true,
+          "parameters": 84,
+          "probes_equal": true,
+          "selection": {
+            "bytes": 93986,
+            "path": "m2-103-0.001/state-100.npz.json",
+            "sha256": "fdca673e7dfba0ab22608b5d78d82e035062bd26b7c3bde3e48856606f14e35c"
+          },
+          "state": 100
+        },
+        {
+          "Adam_first_moment_L2": 0.00891414640881709,
+          "Adam_step": 20,
+          "buffers_and_RNG_unchanged": true,
+          "parameter_identity": true,
+          "parameters": 84,
+          "probes_equal": true,
+          "selection": {
+            "bytes": 93985,
+            "path": "m2-103-0.001/state-20.npz.json",
+            "sha256": "90812dc30901e6869047b65ade3863cdcdb94355e3aa04b71c3d7cff589052ea"
+          },
+          "state": 20
+        },
+        {
+          "Adam_first_moment_L2": 0.0009530192988715843,
+          "Adam_step": 50,
+          "buffers_and_RNG_unchanged": true,
+          "parameter_identity": true,
+          "parameters": 84,
+          "probes_equal": true,
+          "selection": {
+            "bytes": 93985,
+            "path": "m2-103-0.001/state-50.npz.json",
+            "sha256": "e9f2824e72c5465ec933ec8733162d6bb90c714943ccbff4e9502c079fcdbe3b"
+          },
+          "state": 50
+        }
+      ],
+      "parity": true,
+      "trajectory_records": 91
+    },
+    {
+      "case": "M3/101",
+      "complete": false,
+      "hash_chain": true,
+      "lr": 0.01,
+      "numeric_snapshots": [
+        {
+          "Adam_first_moment_L2": 0.0014663195219569278,
+          "Adam_step": 20,
+          "buffers_and_RNG_unchanged": true,
+          "parameter_identity": true,
+          "parameters": 84,
+          "probes_equal": true,
+          "selection": {
+            "bytes": 93984,
+            "path": "m3-101-0.01/state-20.npz.json",
+            "sha256": "0570284352031836215c3c83b5c3de9ca4acaa92816430803b87ebdc0e1fb195"
+          },
+          "state": 20
+        },
+        {
+          "Adam_first_moment_L2": 0.0013351714265857654,
+          "Adam_step": 21,
+          "buffers_and_RNG_unchanged": true,
+          "parameter_identity": true,
+          "parameters": 84,
+          "probes_equal": true,
+          "selection": {
+            "bytes": 93983,
+            "path": "m3-101-0.01/failure.npz.json",
+            "sha256": "59995eb659d72fa44ed694d65ba94e821277843dc2fb82de82eb721cc04b7a51"
+          },
+          "state": 21
+        }
+      ],
+      "parity": true,
+      "trajectory_records": 11
+    },
+    {
+      "case": "M3/101",
+      "complete": false,
+      "hash_chain": false,
+      "lr": 0.001,
+      "numeric_snapshots": [],
+      "parity": true,
+      "trajectory_records": 0
+    },
+    {
+      "case": "M3/103",
+      "complete": false,
+      "hash_chain": false,
+      "lr": 0.01,
+      "numeric_snapshots": [],
+      "parity": true,
+      "trajectory_records": 0
+    },
+    {
+      "case": "M3/103",
+      "complete": false,
+      "hash_chain": false,
+      "lr": 0.001,
+      "numeric_snapshots": [],
+      "parity": true,
+      "trajectory_records": 0
+    }
+  ],
+  "offline_file_hashes_do_not_promote_runtime_status": true,
+  "offline_input_hashes": 35,
+  "offline_source_hashes": 366,
+  "runtime_cleanup_verified": false,
+  "runtime_terminal_integrity_verified": false
+}

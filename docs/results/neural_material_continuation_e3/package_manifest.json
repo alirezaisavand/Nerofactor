@@ -1,0 +1,96 @@
+{
+  "analysis_directory": "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae-analysis-v2",
+  "analysis_source": {
+    "path": "docs/results/neural_material_continuation_e3/analyze_saved_e3.py",
+    "sha256": "7d432c3771e6fb2df29ffd4551c97ec6040e867dfcfd31ff1515879f12c9301a"
+  },
+  "copied_files": [
+    {
+      "bytes": 36842,
+      "sha256": "2bfcc4035672e7dfafcd752e58a3ffd3b10f1edeb222819e3932083c608b7e26",
+      "source": "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae-analysis-v2/comparison.json",
+      "tracked": "docs/results/neural_material_continuation_e3/comparison.json"
+    },
+    {
+      "bytes": 11751,
+      "sha256": "92916f7ffd1052d52fb7f2579442e12d4f391e0bddc2d91d74e647b9976598d0",
+      "source": "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae-analysis-v2/integrity.json",
+      "tracked": "docs/results/neural_material_continuation_e3/integrity.json"
+    },
+    {
+      "bytes": 31620,
+      "sha256": "a8fc588210bd6842d5798d000783e14a6adbb6c205ee332446655af53c7616c4",
+      "source": "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae-analysis-v2/evidence_manifest.json",
+      "tracked": "docs/results/neural_material_continuation_e3/evidence_manifest.json"
+    },
+    {
+      "bytes": 22776,
+      "sha256": "7cf77cd34cb35e614d608673fa620adb3a627341e7a7c64c5625232b9dacf574",
+      "source": "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae-analysis-v2/endpoints.csv",
+      "tracked": "docs/results/neural_material_continuation_e3/endpoints.csv"
+    },
+    {
+      "bytes": 629543,
+      "sha256": "472102463ef514b88028cd5872fbe8432ea50afafa2e52bad3b90f76890f8603",
+      "source": "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae-analysis-v2/trajectories.csv",
+      "tracked": "docs/results/neural_material_continuation_e3/trajectories.csv"
+    },
+    {
+      "bytes": 378350,
+      "sha256": "508180dfa1459a384496a87c40749d255a57d17f4c4593eb6e00536dc6b5918b",
+      "source": "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae-analysis-v2/gradient_routes.csv",
+      "tracked": "docs/results/neural_material_continuation_e3/gradient_routes.csv"
+    },
+    {
+      "bytes": 575934,
+      "sha256": "3438110074f93b3468e458b7d86f736d376c8b93a0b1e6fb40bd0cdd77cd41ef",
+      "source": "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae-analysis-v2/adam_displacements.csv",
+      "tracked": "docs/results/neural_material_continuation_e3/adam_displacements.csv"
+    },
+    {
+      "bytes": 61204,
+      "sha256": "59f8ad0a37f5369a9b70640261db6f0524e3bc80be4c5b87e32955a99d2ba59e",
+      "source": "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae-analysis-v2/figures/adam_movement_and_gradient.pdf",
+      "tracked": "docs/results/neural_material_continuation_e3/figures/adam_movement_and_gradient.pdf"
+    },
+    {
+      "bytes": 229474,
+      "sha256": "f92e41f250440c56edaa0874109cc9c8e9b09b271b1741444cb3975aeadcc3c0",
+      "source": "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae-analysis-v2/figures/adam_movement_and_gradient.png",
+      "tracked": "docs/results/neural_material_continuation_e3/figures/adam_movement_and_gradient.png"
+    },
+    {
+      "bytes": 37191,
+      "sha256": "13561687576acde35bb6fe5951cb5846b6f26ea84db0a271c43ca50b64b189ba",
+      "source": "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae-analysis-v2/figures/continuation_trajectories.pdf",
+      "tracked": "docs/results/neural_material_continuation_e3/figures/continuation_trajectories.pdf"
+    },
+    {
+      "bytes": 330712,
+      "sha256": "0344ec3f9feeec8aca80a354846cf769e930b687e177f02fc8110000cf6b99b7",
+      "source": "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae-analysis-v2/figures/continuation_trajectories.png",
+      "tracked": "docs/results/neural_material_continuation_e3/figures/continuation_trajectories.png"
+    },
+    {
+      "bytes": 118782,
+      "sha256": "704d6fc28774138f11da8c9fabd080726ba9e132324288459e5ce96df8cb526c",
+      "source": "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae-analysis-v2/figures/logit_gradients_and_saturation.pdf",
+      "tracked": "docs/results/neural_material_continuation_e3/figures/logit_gradients_and_saturation.pdf"
+    },
+    {
+      "bytes": 140534,
+      "sha256": "f7303655d1e139f00ca5be8e61d1823c06b7cd411e7f5ebd683ecf09ddc077c3",
+      "source": "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae-analysis-v2/figures/logit_gradients_and_saturation.png",
+      "tracked": "docs/results/neural_material_continuation_e3/figures/logit_gradients_and_saturation.png"
+    }
+  ],
+  "earlier_offline_analysis_failure": {
+    "bytes": 479,
+    "path": "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae-analysis-v1/failure.json",
+    "scientific_calls": 0,
+    "sha256": "27fc51e71b581649c140268bb7d5bf6ad9d88d27d0972efcf5efbc4c52b42960"
+  },
+  "no_raw_checkpoints_or_numeric_archives_copied": true,
+  "schema_version": 1,
+  "status": "partial results from failed scientific execution; not complete E3"
+}

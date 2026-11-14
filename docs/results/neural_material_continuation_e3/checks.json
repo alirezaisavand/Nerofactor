@@ -1,0 +1,36 @@
+{
+  "Markdown_relative_links": "passed",
+  "Python_AST_checks": 3,
+  "accepted_inputs_rehashed": 35,
+  "copied_files_verified": 13,
+  "experiment_aggregate_status_unchanged": true,
+  "focused_synthetic_tests": {
+    "JUnit": {
+      "bytes": 3208,
+      "path": "docs/evidence/neural_material_continuation_e3_v1/pytest.xml",
+      "sha256": "a36fa7595aecf2357d59716fda19b3ebd5275b0d097cab5227a45c9245032698"
+    },
+    "errors": 0,
+    "exit_code": 0,
+    "failed": 0,
+    "passed": 16,
+    "scientific_import_blocker": true,
+    "skipped": 0
+  },
+  "frozen_sources_rehashed": 366,
+  "full_numeric_snapshots_verified": 20,
+  "hash_chained_transition_records": 551,
+  "limitations": [
+    "Runtime cleanup and runtime terminal integrity remain unverified in the original failed report",
+    "Three parity-only arms have no persisted native counters; their one forward/backward each is reconstructed from their verified parity reports",
+    "State-21 physical outputs were not captured; no reconstruction through a new model query was attempted"
+  ],
+  "offline_analysis_exit_code": 0,
+  "optimizer_updates_during_analysis": 0,
+  "raw_files_rehashed": 125,
+  "renderer_or_model_queries_during_analysis": 0,
+  "schema_version": 1,
+  "scientific_execution_status": "failed; no retry",
+  "sidecars_rehashed": 4,
+  "trajectory_records": 560
+}
