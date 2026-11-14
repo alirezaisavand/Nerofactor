@@ -1,0 +1,74 @@
+{
+  "JUnit": {
+    "bytes": 3918,
+    "original": "/home/isavand/paper/evidence/material-e8-preparation-v2/pytest.xml",
+    "path": "docs/evidence/spatial_material_e8_v1/pytest.xml",
+    "sha256": "9f267bcd20ebbe1b40f532b5c92f8f41a4e33dc557dc9abd5f77d3ad5cf6471c"
+  },
+  "accepted_input_identities_verified": 581,
+  "console": {
+    "bytes": 1602,
+    "original": "/home/isavand/paper/evidence/material-e8-preparation-v2/stdout.txt",
+    "path": "docs/evidence/spatial_material_e8_v1/stdout.txt",
+    "sha256": "7875e3d2302a6cef361208788b234064d2654a5e4e670416bb2d8436b5963478"
+  },
+  "errors": 0,
+  "exit_code": 0,
+  "failed": 0,
+  "historical_tests_or_experiments_repeated": false,
+  "launcher": {
+    "bytes": 880,
+    "original": "/home/isavand/paper/evidence/material-e8-preparation-v2/launcher.py",
+    "path": "docs/evidence/spatial_material_e8_v1/launcher.py",
+    "sha256": "8265f8864b93628350d7b76fd4bd69870464b851f9423835032ce9d22faa278a"
+  },
+  "new_source_sha256": {
+    "docs/protocols/SPATIAL_MATERIAL_E8_V1.md": "0e496528a3f62492243738faf3bdfab8f448b4697add96cf03eeaa7366c64c2e",
+    "experiments/spatial_material_e8_v1.py": "c8c9f817b4e07c509438206a2190c688fe758afed5930e67c9d8dd0593081174",
+    "experiments/spatial_pilot_e8_v1.py": "889ff81dd9108bed1c144f3c32059631495372b0ca071a4a5df97fa51cca3053",
+    "tests/scientific/test_spatial_material_e8_v1.py": "258877aceda23bc0e3444f318c83b8740859368d43a600f36ba712f50cbfb90b"
+  },
+  "original_test_evidence": "/home/isavand/paper/evidence/material-e8-preparation-v2",
+  "passed": 20,
+  "phase": "E.8 preparation only",
+  "predecessor_sources_verified": 385,
+  "preliminary_tests_preserved": "/home/isavand/paper/evidence/material-e8-preparation-v1",
+  "process_exit": {
+    "bytes": 2,
+    "original": "/home/isavand/paper/evidence/material-e8-preparation-v2/exit-code.txt",
+    "path": "docs/evidence/spatial_material_e8_v1/exit-code.txt",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  "real_neural_constructions": 0,
+  "reference_generations": 0,
+  "schema_version": 1,
+  "scientific_import_blocker_verified": true,
+  "scientific_optimizer_updates": 0,
+  "scientific_queries": 0,
+  "scope": "Generic tiny modules, analytic smooth-field/linear-solve fixtures, fake shader and new engineering checks only; no real scientific admission results",
+  "skipped": 0,
+  "test_inventory": [
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8_v1::test_truth_is_smooth_nonconstant_physical_and_spatial_splits_are_disjoint",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8_v1::test_genuine_coordinate_dependence_matched_initialization_and_gradients",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8_v1::test_kernel_retention_reduces_other_location_drift_and_counts_eight_solves",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8_v1::test_serial_location_gradients_equal_one_shared_joint_mean",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8_v1::test_rejected_solve_cap_precedes_any_linear_solve",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8_v1::test_native_axis_gauge_covariance_and_isotropic_no_angle_prior",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8_v1::test_weight_norm_projection_realizes_predicted_logits_and_preserves_hidden_state",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8_v1::test_atomic_retention_rejection_and_interruption_restore_exact_weights[reject]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8_v1::test_atomic_retention_rejection_and_interruption_restore_exact_weights[exception]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8_v1::test_atomic_retention_rejection_and_interruption_restore_exact_weights[exception_after_commit]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8_v1::test_acceptance_is_joint_training_only_with_spatial_guard[good]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8_v1::test_acceptance_is_joint_training_only_with_spatial_guard[other_loss]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8_v1::test_acceptance_is_joint_training_only_with_spatial_guard[other_physical]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8_v1::test_acceptance_is_joint_training_only_with_spatial_guard[wrong_direction]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8_v1::test_acceptance_is_joint_training_only_with_spatial_guard[boundary]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8_v1::test_acceptance_is_joint_training_only_with_spatial_guard[joint_loss]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8_v1::test_head_trust_radius_and_invalid_teacher_domain",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8_v1::test_spatial_shader_adapter_passes_positions_material_and_seed_means",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8_v1::test_work_caps_atomic_rejection_and_cost_matching_includes_extra_evaluation",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8_v1::test_execution_gate_no_scientific_imports_or_hidden_anchor_substitution"
+  ],
+  "toy_optimizer_updates": 0,
+  "warnings": 6
+}

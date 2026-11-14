@@ -1,0 +1,15 @@
+....................                                                     [100%]
+=============================== warnings summary ===============================
+paper/Nerofactor-3d2-e2a/tests/scientific/test_spatial_material_e8_v1.py::test_genuine_coordinate_dependence_matched_initialization_and_gradients
+paper/Nerofactor-3d2-e2a/tests/scientific/test_spatial_material_e8_v1.py::test_serial_location_gradients_equal_one_shared_joint_mean
+paper/Nerofactor-3d2-e2a/tests/scientific/test_spatial_material_e8_v1.py::test_weight_norm_projection_realizes_predicted_logits_and_preserves_hidden_state
+paper/Nerofactor-3d2-e2a/tests/scientific/test_spatial_material_e8_v1.py::test_atomic_retention_rejection_and_interruption_restore_exact_weights[reject]
+paper/Nerofactor-3d2-e2a/tests/scientific/test_spatial_material_e8_v1.py::test_atomic_retention_rejection_and_interruption_restore_exact_weights[exception]
+paper/Nerofactor-3d2-e2a/tests/scientific/test_spatial_material_e8_v1.py::test_atomic_retention_rejection_and_interruption_restore_exact_weights[exception_after_commit]
+  /home/isavand/anaconda3/lib/python3.9/site-packages/torch/nn/utils/weight_norm.py:134: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+    WeightNorm.apply(module, name, dim)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /home/isavand/paper/evidence/material-e8-preparation-v2/pytest.xml -
+20 passed, 6 warnings in 1.37s
+E8 scientific import blocker intact; no real shader/neural calls authorized or executed
