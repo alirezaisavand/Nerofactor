@@ -1,0 +1,433 @@
+{
+  "JUnit": {
+    "bytes": 3082,
+    "original": "/home/isavand/paper/evidence/material-e8r-preparation-v1/pytest.xml",
+    "path": "docs/evidence/spatial_material_e8r_v1/pytest.xml",
+    "sha256": "0da7d4dc2dd0960265d63acf87c92820d8814940550df2b79aac74cefb814638"
+  },
+  "Torch_imported": false,
+  "accepted_input_identities_verified": 606,
+  "console": {
+    "bytes": 280,
+    "original": "/home/isavand/paper/evidence/material-e8r-preparation-v1/stdout.txt",
+    "path": "docs/evidence/spatial_material_e8r_v1/stdout.txt",
+    "sha256": "cc782e8fff6ad4373ac983913dfcd257d55c5a13f41c88b1b953ed69d462203e"
+  },
+  "errors": 0,
+  "exit_code": 0,
+  "failed": 0,
+  "historical_tests_or_experiments_repeated": false,
+  "launcher": {
+    "bytes": 891,
+    "original": "/home/isavand/paper/evidence/material-e8r-preparation-v1/launcher.py",
+    "path": "docs/evidence/spatial_material_e8r_v1/launcher.py",
+    "sha256": "464488505618f5a7c0da3b39a28d8b6e77c59e2991ee9083f53ba50c70a2ab06"
+  },
+  "new_source_sha256": {
+    "docs/protocols/SPATIAL_MATERIAL_E8R_V1.md": "8532a4f3948ebb41e338df1bc589fbe03948e9b28982cc7fcd98c5a542a11852",
+    "experiments/spatial_pilot_e8r_v1.py": "186ce175466439053a7e81e2480f07bd96beeb6d1a6af9ce6efa24440ee21f31",
+    "experiments/uniform_tapes_e8r_v1.py": "95ce5deff8775650dc92e708ea8d585d844026de15a7ef6603045c655d903636",
+    "tests/scientific/test_spatial_material_e8r_v1.py": "4b968cdbe57bce3ed268282a576b57bf78beb39db64b369af2eec4bcec567e56"
+  },
+  "numerical_preflight": {
+    "arrays_checked": 36,
+    "changed_arrays": 1,
+    "checked_values": 5311008,
+    "corrected_identities": {
+      "0": {
+        "evaluation": {
+          "azimuth": {
+            "dtype": "float32",
+            "sha256": "7af5a74a5c9ee49dab11b23dd4fd4c4b24917adc472c95f8b65d11b2a3f7da0f",
+            "shape": [
+              336,
+              1,
+              1
+            ]
+          },
+          "u": {
+            "dtype": "float32",
+            "sha256": "432b920ba036a396419b5cfc9f08c33998a685e33ebfcde90a9c61c0f14a3795",
+            "shape": [
+              336,
+              1024
+            ]
+          },
+          "v": {
+            "dtype": "float32",
+            "sha256": "94d614cef442d1afdcde122bbb82914b86608b07e36f77a451a0abac92ad0643",
+            "shape": [
+              336,
+              1024
+            ]
+          }
+        },
+        "fit": {
+          "azimuth": {
+            "dtype": "float32",
+            "sha256": "186973538dd09eacc7059f5f21a87847dfb87a52963463065eacfd492bb9f5fe",
+            "shape": [
+              96,
+              1,
+              1
+            ]
+          },
+          "u": {
+            "dtype": "float32",
+            "sha256": "dc88223d1441f63f12d74132f917949124906170741c5af35ba71377765ede73",
+            "shape": [
+              96,
+              1024
+            ]
+          },
+          "v": {
+            "dtype": "float32",
+            "sha256": "60f0a3e185eaad7b1083c6c62999ab46b23740aa0d6e4dae71e997adfd1074aa",
+            "shape": [
+              96,
+              1024
+            ]
+          }
+        }
+      },
+      "1": {
+        "evaluation": {
+          "azimuth": {
+            "dtype": "float32",
+            "sha256": "27318f51ac7e7412d718b18a41f715b5b1bb623f34f38d449ddfaa3b0cd214df",
+            "shape": [
+              336,
+              1,
+              1
+            ]
+          },
+          "u": {
+            "dtype": "float32",
+            "sha256": "f568cb71f555eecc187988cd1d34e539bd588e3c4535020a0f8810487a6fe310",
+            "shape": [
+              336,
+              1024
+            ]
+          },
+          "v": {
+            "dtype": "float32",
+            "sha256": "eed1bec6f23ab4afa346baba3b2fb128e686a339922f8f6769a6cbb414159d61",
+            "shape": [
+              336,
+              1024
+            ]
+          }
+        },
+        "fit": {
+          "azimuth": {
+            "dtype": "float32",
+            "sha256": "9e68601b682226c849dcba330014e807a6eed1af2c469d93bf9fcadd7120ebab",
+            "shape": [
+              96,
+              1,
+              1
+            ]
+          },
+          "u": {
+            "dtype": "float32",
+            "sha256": "60a55cb23b1c7f8dc2b5bdcb8aecad546073771477a4a57d16f8d96bb19bd989",
+            "shape": [
+              96,
+              1024
+            ]
+          },
+          "v": {
+            "dtype": "float32",
+            "sha256": "f9904b7be668e834115a3b3975b7f0aba4ee9c182a1e59839a0f6a3883e4df3d",
+            "shape": [
+              96,
+              1024
+            ]
+          }
+        }
+      },
+      "2": {
+        "evaluation": {
+          "azimuth": {
+            "dtype": "float32",
+            "sha256": "4548ae1a2ae85f99a0036393c4afe8ea0b65240def96b4edf2e72fdbc563ed64",
+            "shape": [
+              336,
+              1,
+              1
+            ]
+          },
+          "u": {
+            "dtype": "float32",
+            "sha256": "a175f12405c7c284870b0008ea45788c74701515159e60abff167419906940f9",
+            "shape": [
+              336,
+              1024
+            ]
+          },
+          "v": {
+            "dtype": "float32",
+            "sha256": "d30c9842caea3001900026d08fc80e73f485fbb674298f0becd247ca470aceed",
+            "shape": [
+              336,
+              1024
+            ]
+          }
+        },
+        "fit": {
+          "azimuth": {
+            "dtype": "float32",
+            "sha256": "7ee71e9b6680fa5117df018c12a1a39932855aab29792a4e3ba12f9793ec98f3",
+            "shape": [
+              96,
+              1,
+              1
+            ]
+          },
+          "u": {
+            "dtype": "float32",
+            "sha256": "f19731cdf6198178146b601001fd66c9d5a88b12ba1280769062e46ea97387dd",
+            "shape": [
+              96,
+              1024
+            ]
+          },
+          "v": {
+            "dtype": "float32",
+            "sha256": "71887dcbe4737993bdfceec1c6fb078d2acc02b16d8dabc73d7e9611c0c1b4dd",
+            "shape": [
+              96,
+              1024
+            ]
+          }
+        }
+      },
+      "3": {
+        "evaluation": {
+          "azimuth": {
+            "dtype": "float32",
+            "sha256": "f9feeaa95b6ef77d64750a0d4578276e1d2de43ca8440f3ef18baaa7af3ece8f",
+            "shape": [
+              336,
+              1,
+              1
+            ]
+          },
+          "u": {
+            "dtype": "float32",
+            "sha256": "09e9e7217b07450a777dae65cb68da2685face0bc758d2487e42053d98381af1",
+            "shape": [
+              336,
+              1024
+            ]
+          },
+          "v": {
+            "dtype": "float32",
+            "sha256": "a278fe2c06df8574682138020b28238af41bc87c0f2772b184b88c448e487e04",
+            "shape": [
+              336,
+              1024
+            ]
+          }
+        },
+        "fit": {
+          "azimuth": {
+            "dtype": "float32",
+            "sha256": "0fbb02097b468407b3b768fe7a3b5b491364dfa8d354b48e9cbf591e1f75f2ed",
+            "shape": [
+              96,
+              1,
+              1
+            ]
+          },
+          "u": {
+            "dtype": "float32",
+            "sha256": "6bf19ec391b21f0a7a4eb4e1e9823fbac6d60e5ecd1498115a0ecdbe723a361c",
+            "shape": [
+              96,
+              1024
+            ]
+          },
+          "v": {
+            "dtype": "float32",
+            "sha256": "35cba639b18b680148c8373a4e98fe06340cdaa1c2ac1edb570443ccdec9e94f",
+            "shape": [
+              96,
+              1024
+            ]
+          }
+        }
+      },
+      "4": {
+        "evaluation": {
+          "azimuth": {
+            "dtype": "float32",
+            "sha256": "d0fa87b661544f3aae9e73b40bf15ed655705b5e4f5e583713428cde1c6637ec",
+            "shape": [
+              336,
+              1,
+              1
+            ]
+          },
+          "u": {
+            "dtype": "float32",
+            "sha256": "33167b48f8af48df70895eb058b2c64aa1664149238961cb4f3414348b479147",
+            "shape": [
+              336,
+              1024
+            ]
+          },
+          "v": {
+            "dtype": "float32",
+            "sha256": "b2bf47a830961cc1d11fd86abbdc080e68d221ceb075f0f832acf49fa01ecd5e",
+            "shape": [
+              336,
+              1024
+            ]
+          }
+        },
+        "fit": {
+          "azimuth": {
+            "dtype": "float32",
+            "sha256": "91401a1391c4f3962116d42d6c597ec98292068840ac3c3e5bf9981f20a036b8",
+            "shape": [
+              96,
+              1,
+              1
+            ]
+          },
+          "u": {
+            "dtype": "float32",
+            "sha256": "20fac6adf73c63c69a030e8047e91ac2dedf724f907cd63ffeb28b238c0270af",
+            "shape": [
+              96,
+              1024
+            ]
+          },
+          "v": {
+            "dtype": "float32",
+            "sha256": "4971b88d16b2c4233c3f1f00f387c864cbf85d8cc115dc44f58925d388d074cc",
+            "shape": [
+              96,
+              1024
+            ]
+          }
+        }
+      },
+      "5": {
+        "evaluation": {
+          "azimuth": {
+            "dtype": "float32",
+            "sha256": "c2c771b38249c01dd0073b9bac5b32d884f8b46fd4a2e23e7a193d8de8f0c7a8",
+            "shape": [
+              336,
+              1,
+              1
+            ]
+          },
+          "u": {
+            "dtype": "float32",
+            "sha256": "52684c42eb46a7ddfed106e4268dcea47164d830de773e8f441b54d8e2c7759d",
+            "shape": [
+              336,
+              1024
+            ]
+          },
+          "v": {
+            "dtype": "float32",
+            "sha256": "dd17f8216aa4de0ce6c6d4d53a2a1a1ffd1ddb16ca73eebcb4f09be50779d2b8",
+            "shape": [
+              336,
+              1024
+            ]
+          }
+        },
+        "fit": {
+          "azimuth": {
+            "dtype": "float32",
+            "sha256": "7fe3717dfa75aaed7e3986cf4a1915bd001a9fac91a160912497b30b666e205e",
+            "shape": [
+              96,
+              1,
+              1
+            ]
+          },
+          "u": {
+            "dtype": "float32",
+            "sha256": "5a77ed76a0ce04b83e052307efb4d948f82dd4d5635ccdd0fddc5da3e869fcab",
+            "shape": [
+              96,
+              1024
+            ]
+          },
+          "v": {
+            "dtype": "float32",
+            "sha256": "3fcf638b8f8fbc6f61e37e27f02378d09ca8d0a2a46d79584169881b61259541",
+            "shape": [
+              96,
+              1024
+            ]
+          }
+        }
+      }
+    },
+    "corrections": [
+      {
+        "array": "v",
+        "float64_value": 0.9999999982641566,
+        "index": [
+          42,
+          982
+        ],
+        "location": 5,
+        "new_float32_value": 0.9999999403953552,
+        "old_float32_value": 1.0,
+        "seed": 7050,
+        "split": "evaluation"
+      }
+    ],
+    "policy": "float64-uniform-to-float32-open-upper-endpoint-v1",
+    "strict_domain_verified": true,
+    "unchanged_values_bitwise_verified": true,
+    "upper_float32": 0.9999999403953552
+  },
+  "original_test_evidence": "/home/isavand/paper/evidence/material-e8r-preparation-v1",
+  "passed": 16,
+  "phase": "E.8R preparation only",
+  "predecessor_sources_verified": 389,
+  "process_exit": {
+    "bytes": 2,
+    "original": "/home/isavand/paper/evidence/material-e8r-preparation-v1/exit-code.txt",
+    "path": "docs/evidence/spatial_material_e8r_v1/exit-code.txt",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  "rank_measurements": 0,
+  "real_neural_constructions": 0,
+  "reference_generations": 0,
+  "reused_rank_reports_verified": 4,
+  "reused_reference_archives_verified": 6,
+  "schema_version": 1,
+  "scientific_Core_and_loops_AST_equal": true,
+  "scientific_import_blocker_verified": true,
+  "scientific_optimizer_updates": 0,
+  "scientific_queries": 0,
+  "skipped": 0,
+  "test_inventory": [
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8r_v1::test_immediately_below_one_roundup_only_and_all_other_bits_unchanged",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8r_v1::test_invalid_float64_source_rejected_before_conversion[1.0]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8r_v1::test_invalid_float64_source_rejected_before_conversion[1.0000000000000002]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8r_v1::test_invalid_float64_source_rejected_before_conversion[-0.1]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8r_v1::test_invalid_float64_source_rejected_before_conversion[nan]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8r_v1::test_invalid_float64_source_rejected_before_conversion[inf]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8r_v1::test_invalid_float64_source_rejected_before_conversion[-inf]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8r_v1::test_no_float32_source_or_hidden_dtype_reinterpretation",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8r_v1::test_complete_panel_deterministic_identities_and_single_known_correction",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8r_v1::test_original_or_corrected_identity_mismatch_fails_preflight",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8r_v1::test_cached_reference_admission_has_no_generation",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8r_v1::test_unsafe_or_incompatible_reference_evidence_rejected[hash]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8r_v1::test_unsafe_or_incompatible_reference_evidence_rejected[truth]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8r_v1::test_unsafe_or_incompatible_reference_evidence_rejected[missing]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8r_v1::test_scientific_core_and_both_optimization_loops_are_exact_frozen_E8_AST",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_material_e8r_v1::test_preflight_precedes_scientific_import_and_reference_calls_are_absent"
+  ]
+}
