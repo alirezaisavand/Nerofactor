@@ -1,0 +1,33 @@
+{
+  "automatic_retries": 0,
+  "byte_identical_analysis_copies": 5,
+  "execution_commit": "9a52ef5286e6c540371aafef3f634be7bc9912a6",
+  "final_report": {
+    "path": "docs/SPATIAL_MATERIAL_E8_ATTEMPT1_REPORT.md",
+    "sha256": "eb514bae7e0a2ed8fa34f57c5cbf91a99b19035bb49da1b7a6de334bc595d529"
+  },
+  "focused_tests": {
+    "errors": 0,
+    "exit_code": 0,
+    "failed": 0,
+    "passed": 20,
+    "skipped": 0
+  },
+  "independent_rank_gates_passed": 4,
+  "inputs_verified": 581,
+  "optimizer_updates": 0,
+  "original_false_completion_and_cleanup_flags_preserved": true,
+  "package_identities_verified": 6,
+  "package_manifest": {
+    "path": "docs/results/spatial_material_e8_attempt1/package_manifest.json",
+    "sha256": "ed21833bcec2cab1193363adf90829cec0638a9cb1afe0172371d98f69cf8dd8"
+  },
+  "previous_sources_and_evidence_unchanged": true,
+  "process_exit_code": 1,
+  "real_N1_constructions": 0,
+  "reference_convergence_gates_passed": 6,
+  "schema_version": 1,
+  "shader_forwards": 0,
+  "sources_verified": 389,
+  "status": "failure_evidence_verified_not_pilot_success"
+}

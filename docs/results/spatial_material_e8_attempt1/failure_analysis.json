@@ -1,0 +1,175 @@
+{
+  "actual_failure_stage": "fixed_tape_batch_construction",
+  "additional_optimizer_updates": 0,
+  "additional_reference_queries": 0,
+  "additional_scientific_queries": 0,
+  "checked_float32_uniform_values": 5311008,
+  "cleanup_verified": false,
+  "completed": {
+    "Adam_returns": 0,
+    "Jacobians": 0,
+    "constructors": 0,
+    "field_extra": 0,
+    "linear_solves": 0,
+    "neural_eval": 0,
+    "neural_fit": 0,
+    "neural_reverse": 0,
+    "physical": 0,
+    "physical_reverse": 0,
+    "projections": 0,
+    "proposals": 0,
+    "reference_calls": 118,
+    "reference_directions": 487587840
+  },
+  "decision": "BLOCKED",
+  "execution_commit": "9a52ef5286e6c540371aafef3f634be7bc9912a6",
+  "external_wall_seconds": 43.17858902364969,
+  "failure": "SignatureError: v: fixed uniforms in [0,1) required",
+  "inputs_verified": 581,
+  "invalid_tape_entries": [
+    {
+      "array": "v",
+      "cast_rounds_to_one": true,
+      "float32_value": 1.0,
+      "float64_value": 0.9999999982641566,
+      "index": [
+        42,
+        982
+      ],
+      "location": 5,
+      "seed": 7050,
+      "split": "evaluation"
+    }
+  ],
+  "peak_RSS_bytes": 530141184,
+  "process_exit_code": 1,
+  "reconstructed_frozen_tape_array_identities": 36,
+  "reference_gates": [
+    {
+      "convergence_passed": true,
+      "location": 0,
+      "maximum_bound_ratio": 1.54461596351867e-08,
+      "rank_passed": true,
+      "rank_ratios": [
+        0.024737408174712275,
+        0.024737408521668138
+      ],
+      "smallest_singular_value": 0.06292232305496044,
+      "spatial_split": "train",
+      "stability_margin": 0.06292230811026361,
+      "truth": [
+        0.23000000000000004,
+        0.495,
+        -0.68,
+        0.32,
+        0.5499999999999999,
+        0.19999999999999998,
+        0.24000000000000002
+      ]
+    },
+    {
+      "convergence_passed": true,
+      "location": 1,
+      "maximum_bound_ratio": 1.569667237930389e-08,
+      "rank_passed": true,
+      "rank_ratios": [
+        0.019090697672072235,
+        0.019090698069932455
+      ],
+      "smallest_singular_value": 0.05019299366852114,
+      "spatial_split": "train",
+      "stability_margin": 0.05019298372016933,
+      "truth": [
+        0.26,
+        0.535,
+        -0.92,
+        0.32,
+        0.61,
+        0.24,
+        0.16
+      ]
+    },
+    {
+      "convergence_passed": true,
+      "location": 2,
+      "maximum_bound_ratio": 1.5245593593744552e-08,
+      "rank_passed": true,
+      "rank_ratios": [
+        0.029515934482763663,
+        0.02951593464347864
+      ],
+      "smallest_singular_value": 0.07325360885882015,
+      "spatial_split": "train",
+      "stability_margin": 0.0732536008475642,
+      "truth": [
+        0.30000000000000004,
+        0.44499999999999995,
+        -0.32,
+        0.39999999999999997,
+        0.5499999999999999,
+        0.24,
+        0.33999999999999997
+      ]
+    },
+    {
+      "convergence_passed": true,
+      "location": 3,
+      "maximum_bound_ratio": 1.554628537332125e-08,
+      "rank_passed": true,
+      "rank_ratios": [
+        0.022748040811928733,
+        0.022748040723718013
+      ],
+      "smallest_singular_value": 0.058301391487297016,
+      "spatial_split": "train",
+      "stability_margin": 0.058301384432107084,
+      "truth": [
+        0.33000000000000007,
+        0.485,
+        -0.56,
+        0.39999999999999997,
+        0.61,
+        0.27999999999999997,
+        0.26
+      ]
+    },
+    {
+      "convergence_passed": true,
+      "location": 4,
+      "maximum_bound_ratio": 1.5559438486875075e-08,
+      "rank_passed": null,
+      "spatial_split": "held_out",
+      "truth": [
+        0.269,
+        0.504,
+        -0.716,
+        0.344,
+        0.586,
+        0.236,
+        0.222
+      ]
+    },
+    {
+      "convergence_passed": true,
+      "location": 5,
+      "maximum_bound_ratio": 1.542055956004501e-08,
+      "rank_passed": null,
+      "spatial_split": "held_out",
+      "truth": [
+        0.29200000000000004,
+        0.47375,
+        -0.509,
+        0.378,
+        0.5725,
+        0.244,
+        0.28250000000000003
+      ]
+    }
+  ],
+  "run": "material-e8-565980ba2b1245a39b221288ea2b7fac",
+  "saved_failure_stage": "reference-5",
+  "schema_version": 1,
+  "scientific_work_completed": false,
+  "sources_verified": 389,
+  "terminal_integrity_verified": false
+}

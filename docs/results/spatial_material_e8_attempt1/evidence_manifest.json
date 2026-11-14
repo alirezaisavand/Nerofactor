@@ -1,0 +1,138 @@
+{
+  "accepted_offline_helper": {
+    "bytes": 23144,
+    "path": "/home/isavand/paper/Nerofactor-3d2-e2a/docs/results/material_optimizer_e6_v1/analyze_e6.py",
+    "sha256": "03870ef59205fdee951f394f1fd742cf86d4ea886ba3131f879d4f8c4cf40794"
+  },
+  "analysis_source": {
+    "bytes": 9656,
+    "path": "/home/isavand/paper/Nerofactor-3d2-e2a/docs/results/spatial_material_e8_attempt1/analyze_attempt1.py",
+    "sha256": "562196bee398b4a1fe62a18954407bb9363f6b595508b1cc5318bfd590ee8336"
+  },
+  "freeze_sha256": "425956188c550f3139996f70e06f70b19a36c9a574af88a2fddc8df862d68aca",
+  "raw_evidence_copied_to_Git": false,
+  "raw_files": [
+    {
+      "bytes": 515,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac/execution-review.json",
+      "sha256": "05fea74d5fc1c8cd9c80512fbb0a8cea3475c3c877e95eae8b4666aa6e1c40b6"
+    },
+    {
+      "bytes": 209,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac/finalization/seal.json",
+      "sha256": "db979494bebaffdfcac779182f171c9e471a9faa5c0ca7d8eb345fdb24b61b5a"
+    },
+    {
+      "bytes": 1339666,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac/rank/0.json",
+      "sha256": "e80866cc36ab5d148eba2d132c11eac607cbfe3d984a3f04bd2357c492769420"
+    },
+    {
+      "bytes": 1338278,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac/rank/1.json",
+      "sha256": "1a470e6b87fc82fd1ab830dc22ebb44a196e9ac76981bbfbe637c4bea0c08a7e"
+    },
+    {
+      "bytes": 1339894,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac/rank/2.json",
+      "sha256": "a79c43530117b99b1780b4ce0fd0ee73b2e8778a57c7fd017eace2933286718b"
+    },
+    {
+      "bytes": 1339091,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac/rank/3.json",
+      "sha256": "cd0ab416628e25b28b2bd5d9569513452b293e0da718ed901af0072ea099acec"
+    },
+    {
+      "bytes": 25182,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac/reference/0.npz",
+      "sha256": "ffc114e15d5917116ff8b23d990d21ab7ba460c335aa9ed078abc77bb047e33e"
+    },
+    {
+      "bytes": 1271,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac/reference/0.npz.json",
+      "sha256": "95f10734f4754c792066b75a2da9884a7b7f30f4397e750024b2747f29f66922"
+    },
+    {
+      "bytes": 25182,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac/reference/1.npz",
+      "sha256": "b1a59546c2df62d67af138dc9281f85a0013fc721235ac1032ce311fe6c2cc5f"
+    },
+    {
+      "bytes": 1271,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac/reference/1.npz.json",
+      "sha256": "7d4350099b759d324dddd27435a944fcf1165c6c5c99aa21f74e6c901af3c7bc"
+    },
+    {
+      "bytes": 25182,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac/reference/2.npz",
+      "sha256": "ef5275abf392266fa4ac65ec6f78fef230574d022ca294f30aa002d0fbbd3aff"
+    },
+    {
+      "bytes": 1271,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac/reference/2.npz.json",
+      "sha256": "c870d62151a84f1025efd6e1b40f95630cdae12e408f2cdd7e9f063f1311fe18"
+    },
+    {
+      "bytes": 25182,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac/reference/3.npz",
+      "sha256": "25622dbfa039ffbfe4e2a7dffc0a52576be2985371697b1362f4dbae5f01f6d3"
+    },
+    {
+      "bytes": 1271,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac/reference/3.npz.json",
+      "sha256": "2f3199fbe457c35011675e29f5b9cbf6f231a01bd3cb69384515d4134c2a722d"
+    },
+    {
+      "bytes": 25182,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac/reference/4.npz",
+      "sha256": "a6487a86d5d7cc93847ac661abaf4fcf61bd6171772655153f37938c829436d9"
+    },
+    {
+      "bytes": 1271,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac/reference/4.npz.json",
+      "sha256": "832626472e75e9a9ae063f1ef041159ec361faa5d9048e93d9eabf7bf34a4b6f"
+    },
+    {
+      "bytes": 25182,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac/reference/5.npz",
+      "sha256": "77deeee80aee7cc8bb151fb479aa3e425da931b8b1cc25903bbd85d95b2fae27"
+    },
+    {
+      "bytes": 1271,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac/reference/5.npz.json",
+      "sha256": "b1465f4e8b554b0460bc986f61f906ed060ac5012294d9d62b293268bc940395"
+    },
+    {
+      "bytes": 4255,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac/result.json",
+      "sha256": "42abc3d3d4a672cc8faa4f1733701ca488b52642690a9eda632321a475fc9ecb"
+    }
+  ],
+  "receipt_sha256": "f13055a1b53bd198b30417e726d70fffae66dd46199c7e39b604c524d19a276f",
+  "report_sha256": "42abc3d3d4a672cc8faa4f1733701ca488b52642690a9eda632321a475fc9ecb",
+  "run": "material-e8-565980ba2b1245a39b221288ea2b7fac",
+  "schema_version": 1,
+  "seal_sha256": "db979494bebaffdfcac779182f171c9e471a9faa5c0ca7d8eb345fdb24b61b5a",
+  "sidecars": [
+    {
+      "bytes": 515,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac.authorization.json",
+      "sha256": "05fea74d5fc1c8cd9c80512fbb0a8cea3475c3c877e95eae8b4666aa6e1c40b6"
+    },
+    {
+      "bytes": 1686,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac.launch.json",
+      "sha256": "4887ce62641c1423c3550e85d47dac80621e781a1e9d96e2a7848c72470c5259"
+    },
+    {
+      "bytes": 833,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac.console.log",
+      "sha256": "3e92a78478512e8240b6b86b1fe0ce7c0a52b8ba5689e657fe8f1448d7a60b78"
+    },
+    {
+      "bytes": 1063,
+      "path": "/home/isavand/paper/evidence/material-e8-565980ba2b1245a39b221288ea2b7fac.process.json",
+      "sha256": "f13055a1b53bd198b30417e726d70fffae66dd46199c7e39b604c524d19a276f"
+    }
+  ]
+}
