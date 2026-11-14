@@ -1,0 +1,60 @@
+{
+  "JUnit": {
+    "bytes": 4154,
+    "path": "docs/evidence/neural_material_recovery_e3r_v1/pytest.xml",
+    "sha256": "af63ef11552ae295a971086e9af0738af7780484d4501891f7712649dfe080f6"
+  },
+  "N1_constructions": 0,
+  "console": {
+    "bytes": 312,
+    "path": "docs/evidence/neural_material_recovery_e3r_v1/stdout.txt",
+    "sha256": "acd8e8b75e53493ffdd6473d6ec1e359b8895c47d52aa6442c0773344d32f530"
+  },
+  "environment_overrides": {
+    "CUDA_VISIBLE_DEVICES": "",
+    "MKL_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "errors": 0,
+  "exit_code": 0,
+  "failed": 0,
+  "new_source_sha256": {
+    "docs/protocols/NEURAL_MATERIAL_RECOVERY_E3R_V1.md": "ed82a6e2ba977f6da8b089fb9a6ec0a0530845158873ff45117644a25bee1828",
+    "experiments/neural_material_recovery_e3r_v1.py": "fb0c2fa97298ca27c18c2fd5eb9ffa9acfff900d6d1cb6a80dc8f826e8677c83",
+    "infrastructure/material_diagnostics_e3r_v1.py": "7de8259a464df658eacc02b662a9cce34199aeaac4c104657a3ddad9c5256c6b",
+    "tests/scientific/test_neural_material_recovery_e3r_v1.py": "4a6899d6ce864c7fd3a93bb5cd442c1e23fae4db579137509df546b50ff70b63"
+  },
+  "passed": 21,
+  "phase": "E.3 recovery preparation",
+  "schema_version": 1,
+  "scientific_import_blocker_verified": true,
+  "scientific_optimizer_updates": 0,
+  "scientific_queries": 0,
+  "skipped": 0,
+  "test_inventory": [
+    "test_evaluation_adapter_keeps_code_and_original_namespace",
+    "test_exact_float32_floor_reproduces_both_old_failures_without_sigmoid_endpoint",
+    "test_exact_restore_and_next_adam_counter_without_restart[10]",
+    "test_exact_restore_and_next_adam_counter_without_restart[21]",
+    "test_float64_origin_is_not_silently_reinterpreted_as_float32",
+    "test_interior_metric_formulas_and_success_inputs_match_exactly",
+    "test_interruption_keeps_partial_state_and_cleans_hooks_and_rng",
+    "test_invalid_domain_still_fails_without_changing_values[above_one32]",
+    "test_invalid_domain_still_fails_without_changing_values[albedo_negative]",
+    "test_invalid_domain_still_fails_without_changing_values[below_floor32]",
+    "test_invalid_domain_still_fails_without_changing_values[below_floor64]",
+    "test_invalid_domain_still_fails_without_changing_values[inf]",
+    "test_invalid_domain_still_fails_without_changing_values[integer]",
+    "test_invalid_domain_still_fails_without_changing_values[metal_above_one]",
+    "test_invalid_domain_still_fails_without_changing_values[nan]",
+    "test_invalid_domain_still_fails_without_changing_values[shape]",
+    "test_only_remaining_updates_and_cached_measurement_are_used[10]",
+    "test_only_remaining_updates_and_cached_measurement_are_used[21]",
+    "test_recovery_execution_is_not_authorized_by_preparation",
+    "test_rejected_phase_attempt_is_atomic_and_work_budget_exact",
+    "test_wrong_counter_is_rejected_before_mutating_model"
+  ],
+  "test_launcher": "import importlib.abc,sys\nclass Block(importlib.abc.MetaPathFinder):\n    def find_spec(self,fullname,*args):\n        if fullname.startswith(('experiments.neural_material_field_v1','experiments.material_shader_v1','experiments.neural_material_recovery_v1')):\n            raise AssertionError('Scientific import forbidden: '+fullname)\nsys.meta_path.insert(0,Block())\nimport pytest\nresult=pytest.main(['-q','-p','no:cacheprovider','tests/scientific/test_neural_material_recovery_e3r_v1.py','--junitxml=docs/evidence/neural_material_recovery_e3r_v1/pytest.xml'])\nassert not any(m.startswith(('experiments.neural_material_field_v1','experiments.material_shader_v1','experiments.neural_material_recovery_v1')) for m in sys.modules)\nprint('SCIENTIFIC_IMPORT_BLOCKER_VERIFIED; no N1, original shader or scientific optimizer execution')\nraise SystemExit(result)\n"
+}
