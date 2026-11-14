@@ -1,0 +1,1789 @@
+{
+  "AS1_physical_successes": 0,
+  "AS1_wins": {
+    "Q100": 2,
+    "heldout100": 4,
+    "loss100": 2,
+    "relight100": 1
+  },
+  "analysis_model_queries": 0,
+  "analysis_optimizer_updates": 0,
+  "analysis_shader_queries": 0,
+  "baseline_physical_successes": 0,
+  "endpoints": [
+    {
+      "AS1": {
+        "Q100": 0.47340539690790084,
+        "component_compensation": {
+          "fit": {
+            "component_squared_error": 0.004616271279506682,
+            "diffuse_specular_inner_product": -0.0022503897728023093,
+            "residual_correlation": -0.9772630633462475,
+            "total_squared_error": 0.00011549136126206967
+          },
+          "held_out": {
+            "component_squared_error": 0.004081106312804479,
+            "diffuse_specular_inner_product": -0.0018900926035075097,
+            "residual_correlation": -0.9471119360317154,
+            "total_squared_error": 0.0003009213550155815
+          },
+          "relight": {
+            "component_squared_error": 0.0006180455294468041,
+            "diffuse_specular_inner_product": -0.0002616623708747412,
+            "residual_correlation": -0.846823328595306,
+            "total_squared_error": 9.472091023200746e-05
+          }
+        },
+        "exact_sigmoid_boundary_states": 0,
+        "global_gradient_norm100": 0.0005109891439842195,
+        "heldout100": 0.00893225351523492,
+        "loss100": 1.7501681668363744e-06,
+        "physical100": [
+          0.441885769367218,
+          0.5140905976295471,
+          -0.6696971654891968,
+          0.37309977412223816,
+          0.5971492528915405,
+          0.24969469010829926,
+          0.15315856039524078
+        ],
+        "physical_errors100": {
+          "Q_absolute_frobenius": 0.11957077988712918,
+          "Q_relative_frobenius": 0.47340539690790084,
+          "albedo_RMSE": 0.01365879415233557,
+          "albedo_absolute_errors": [
+            0.013099774122238173,
+            0.017149252891540567,
+            0.009694690108299264
+          ],
+          "albedo_relative_L2": 0.0326943846931747,
+          "major_axis_error_radians": 0.04969716548919678,
+          "metallic_absolute_error": 0.05315856039524078,
+          "metallic_near_boundary": false,
+          "orientation_degrees": 2.847437836294183,
+          "orientation_identifiable": true,
+          "orientation_reason": null,
+          "prediction_anisotropy_gap": 0.15020298683308805,
+          "protocol": "known-material-recovery-metrics-v1",
+          "sorted_axis_absolute_errors": [
+            0.161885769367218,
+            0.024090597629547128
+          ],
+          "sorted_axis_relative_errors": [
+            0.5781634620257785,
+            0.049164484958259445
+          ],
+          "truth_anisotropy_gap": 0.5076923076923076
+        },
+        "radiance_errors100": {
+          "fit": {
+            "diffuse": {
+              "MAE": 0.004126041121470929,
+              "RMSE": 0.005852065435407674,
+              "max_absolute": 0.016309365749034854,
+              "relative_L2": 0.028780302670419384
+            },
+            "specular": {
+              "MAE": 0.003949605249536605,
+              "RMSE": 0.005465181517730589,
+              "max_absolute": 0.015329125974648763,
+              "relative_L2": 0.19323373731112825
+            },
+            "total": {
+              "MAE": 0.0009667755471957254,
+              "RMSE": 0.0012665096463096567,
+              "max_absolute": 0.003105830873315063,
+              "relative_L2": 0.005485023145429588
+            }
+          },
+          "held_out": {
+            "diffuse": {
+              "MAE": 0.004127504022275078,
+              "RMSE": 0.005852741654470997,
+              "max_absolute": 0.016309365749034854,
+              "relative_L2": 0.02878362829784593
+            },
+            "specular": {
+              "MAE": 0.003287102317401187,
+              "RMSE": 0.004735762583608316,
+              "max_absolute": 0.015233487251705327,
+              "relative_L2": 0.17692887198210108
+            },
+            "total": {
+              "MAE": 0.0016498885385901345,
+              "RMSE": 0.002044373562758357,
+              "max_absolute": 0.00616915294787157,
+              "relative_L2": 0.00893225351523492
+            }
+          },
+          "relight": {
+            "diffuse": {
+              "MAE": 0.0015161625177759297,
+              "RMSE": 0.0017032676966318757,
+              "max_absolute": 0.002582867242264489,
+              "relative_L2": 0.02878155623784493
+            },
+            "specular": {
+              "MAE": 0.0014206329644332368,
+              "RMSE": 0.0016797389513803797,
+              "max_absolute": 0.004171101114503466,
+              "relative_L2": 0.21041370030859857
+            },
+            "total": {
+              "MAE": 0.0007193686550035729,
+              "RMSE": 0.0009365070555586755,
+              "max_absolute": 0.0032499286189648924,
+              "relative_L2": 0.014091865208616789
+            }
+          },
+          "relight_seen_views": {
+            "diffuse": {
+              "MAE": 0.0015145059018762614,
+              "RMSE": 0.0017015232599005806,
+              "max_absolute": 0.0025703502668627254,
+              "relative_L2": 0.028752079013575127
+            },
+            "specular": {
+              "MAE": 0.0013193810792687872,
+              "RMSE": 0.001562922326644635,
+              "max_absolute": 0.003644200597983039,
+              "relative_L2": 0.1678862469173206
+            },
+            "total": {
+              "MAE": 0.0008363909927021064,
+              "RMSE": 0.001086170126126244,
+              "max_absolute": 0.0032499286189648924,
+              "relative_L2": 0.016062592019386472
+            }
+          },
+          "relight_unseen_views": {
+            "diffuse": {
+              "MAE": 0.001517819133675599,
+              "RMSE": 0.0017050103485893014,
+              "max_absolute": 0.002582867242264489,
+              "relative_L2": 0.0288110033032797
+            },
+            "specular": {
+              "MAE": 0.0015218848495976863,
+              "RMSE": 0.0017889437359639444,
+              "max_absolute": 0.004171101114503466,
+              "relative_L2": 0.2800961448198602
+            },
+            "total": {
+              "MAE": 0.0006023463173050396,
+              "RMSE": 0.0007578425874370346,
+              "max_absolute": 0.0016154601563842241,
+              "relative_L2": 0.011610403647850208
+            }
+          }
+        },
+        "relight100": 0.014091865208616789,
+        "success": {
+          "all_passed": false,
+          "checks": {
+            "Q": false,
+            "albedo": true,
+            "held_out_radiance": true,
+            "metallic": false,
+            "orientation": true
+          }
+        },
+        "zero_global_gradient_states": 0
+      },
+      "Q_ratio_to_baseline": 0.8845474604011426,
+      "baseline": {
+        "Q10": 0.4877431466713555,
+        "Q100": 0.5351950212973438,
+        "albedo_max_error": 0.0240740013122559,
+        "case": "M1/101",
+        "endpoint_source_run": "neural-e3-b4d1389b174e4b20b2f892725050a0ae",
+        "first_all_zero_gradient_state": null,
+        "first_boundary_state": null,
+        "first_physical_floor_state": null,
+        "gradient_norm100": 0.0005160344040240827,
+        "heldout10": 0.13839561448071852,
+        "heldout100": 0.010328546675775315,
+        "loss10": 0.00034363087615929544,
+        "loss100": 1.8968445374412113e-06,
+        "lr": 0.001,
+        "metallic_error": 0.07323890328407287,
+        "minimum_sigmoid100": 0.17323890328407288,
+        "orientation_error_degrees": 2.4496681096001502,
+        "physical100": [
+          0.45425698161125183,
+          0.5321529507637024,
+          -0.6627547740936279,
+          0.37776386737823486,
+          0.6040740013122559,
+          0.25273072719573975,
+          0.17323890328407288
+        ],
+        "physical_errors100": {
+          "Q_absolute_frobenius": 0.1351773480112687,
+          "Q_relative_frobenius": 0.5351950212973438,
+          "albedo_RMSE": 0.018772177447367543,
+          "albedo_absolute_errors": [
+            0.017763867378234877,
+            0.0240740013122559,
+            0.012730727195739755
+          ],
+          "albedo_relative_L2": 0.0449340391360848,
+          "major_axis_error_radians": 0.042754774093627934,
+          "metallic_absolute_error": 0.07323890328407287,
+          "metallic_near_boundary": false,
+          "orientation_degrees": 2.4496681096001502,
+          "orientation_identifiable": true,
+          "orientation_reason": null,
+          "prediction_anisotropy_gap": 0.15695951112882583,
+          "protocol": "known-material-recovery-metrics-v1",
+          "sorted_axis_absolute_errors": [
+            0.1742569816112518,
+            0.0421529507637024
+          ],
+          "sorted_axis_relative_errors": [
+            0.6223463628973278,
+            0.0860264301300049
+          ],
+          "truth_anisotropy_gap": 0.5076923076923076
+        },
+        "physical_success": false,
+        "radiance_errors100": {
+          "fit": {
+            "diffuse": {
+              "MAE": 0.005897765542174049,
+              "RMSE": 0.008235123696468203,
+              "max_absolute": 0.02257509541479108,
+              "relative_L2": 0.04050012002235701
+            },
+            "specular": {
+              "MAE": 0.005642388419599668,
+              "RMSE": 0.007795258148363411,
+              "max_absolute": 0.02205366239356356,
+              "relative_L2": 0.275618817129203
+            },
+            "total": {
+              "MAE": 0.0010062460528801435,
+              "RMSE": 0.0013023209267383287,
+              "max_absolute": 0.0035951254022762447,
+              "relative_L2": 0.005640115293832151
+            }
+          },
+          "held_out": {
+            "diffuse": {
+              "MAE": 0.00589921007522742,
+              "RMSE": 0.008235794086550126,
+              "max_absolute": 0.02257509541479108,
+              "relative_L2": 0.04050341698300757
+            },
+            "specular": {
+              "MAE": 0.004700702008819406,
+              "RMSE": 0.006782168772180704,
+              "max_absolute": 0.021512441698021093,
+              "relative_L2": 0.25338294504195297
+            },
+            "total": {
+              "MAE": 0.0018756808153666338,
+              "RMSE": 0.0023639507913267533,
+              "max_absolute": 0.007637990209071521,
+              "relative_L2": 0.010328546675775315
+            }
+          },
+          "relight": {
+            "diffuse": {
+              "MAE": 0.0021670173680328145,
+              "RMSE": 0.002396843188148958,
+              "max_absolute": 0.0035688696278807913,
+              "relative_L2": 0.04050148849145606
+            },
+            "specular": {
+              "MAE": 0.0019527975079876524,
+              "RMSE": 0.0022665152088628317,
+              "max_absolute": 0.0052644663665214406,
+              "relative_L2": 0.2839166475901698
+            },
+            "total": {
+              "MAE": 0.0007837115287663294,
+              "RMSE": 0.001006653511329781,
+              "max_absolute": 0.0032655450358960447,
+              "relative_L2": 0.015147377170562368
+            }
+          },
+          "relight_seen_views": {
+            "diffuse": {
+              "MAE": 0.0021653804823743563,
+              "RMSE": 0.002395114399523575,
+              "max_absolute": 0.0035565091146715633,
+              "relative_L2": 0.04047227568647937
+            },
+            "specular": {
+              "MAE": 0.0018124297170890688,
+              "RMSE": 0.002127592257686141,
+              "max_absolute": 0.004663871225994266,
+              "relative_L2": 0.22854205421719007
+            },
+            "total": {
+              "MAE": 0.0008936781271189507,
+              "RMSE": 0.0011359487189883295,
+              "max_absolute": 0.0032655450358960447,
+              "relative_L2": 0.01679873197500691
+            }
+          },
+          "relight_unseen_views": {
+            "diffuse": {
+              "MAE": 0.002168654253691273,
+              "RMSE": 0.002398570730736733,
+              "max_absolute": 0.0035688696278807913,
+              "relative_L2": 0.040530680241080405
+            },
+            "specular": {
+              "MAE": 0.0020931652988862358,
+              "RMSE": 0.0023974014200894775,
+              "max_absolute": 0.0052644663665214406,
+              "relative_L2": 0.3753627807589444
+            },
+            "total": {
+              "MAE": 0.0006737449304137082,
+              "RMSE": 0.0008580927056990566,
+              "max_absolute": 0.0019858628384071264,
+              "relative_L2": 0.013146269219489781
+            }
+          }
+        },
+        "relight100": 0.015147377170562368,
+        "restoration_state": null,
+        "state": 100,
+        "success_checks": {
+          "Q": false,
+          "albedo": false,
+          "held_out_radiance": false,
+          "metallic": false,
+          "orientation": true
+        },
+        "zero_gradient_moving_updates": 0
+      },
+      "case": "M1/101",
+      "heldout_ratio_to_baseline": 0.8648122330883903
+    },
+    {
+      "AS1": {
+        "Q100": 1.884142131269584,
+        "component_compensation": {
+          "fit": {
+            "component_squared_error": 0.21632619123417085,
+            "diffuse_specular_inner_product": -0.10794177579806963,
+            "residual_correlation": -0.9980708567150511,
+            "total_squared_error": 0.000442638790905163
+          },
+          "held_out": {
+            "component_squared_error": 0.20696896378715401,
+            "diffuse_specular_inner_product": -0.10307545621543113,
+            "residual_correlation": -0.9964734226873505,
+            "total_squared_error": 0.0008180512890943606
+          },
+          "relight": {
+            "component_squared_error": 0.02739557968671428,
+            "diffuse_specular_inner_product": -0.01349129863651309,
+            "residual_correlation": -0.9849968026993844,
+            "total_squared_error": 0.00041298223161106626
+          }
+        },
+        "exact_sigmoid_boundary_states": 0,
+        "global_gradient_norm100": 5.3829972111700235e-05,
+        "heldout100": 0.014727356610719784,
+        "loss100": 4.196411737211747e-06,
+        "physical100": [
+          0.7200252413749695,
+          0.678738534450531,
+          0.5489890575408936,
+          0.46362200379371643,
+          0.7367398738861084,
+          0.3149276077747345,
+          0.42938077449798584
+        ],
+        "physical_errors100": {
+          "Q_absolute_frobenius": 0.47588883761274664,
+          "Q_relative_frobenius": 1.884142131269584,
+          "albedo_RMSE": 0.11678906076470036,
+          "albedo_absolute_errors": [
+            0.10362200379371644,
+            0.15673987388610844,
+            0.0749276077747345
+          ],
+          "albedo_relative_L2": 0.2795522385072884,
+          "major_axis_error_radians": null,
+          "metallic_absolute_error": 0.32938077449798586,
+          "metallic_near_boundary": false,
+          "orientation_degrees": null,
+          "orientation_identifiable": false,
+          "orientation_reason": "Truth or prediction is near-isotropic; retain Q/axis errors, do not score orientation as zero",
+          "prediction_anisotropy_gap": 0.058981750629447834,
+          "protocol": "known-material-recovery-metrics-v1",
+          "sorted_axis_absolute_errors": [
+            0.398738534450531,
+            0.2300252413749695
+          ],
+          "sorted_axis_relative_errors": [
+            1.4240661944661819,
+            0.4694392681121826
+          ],
+          "truth_anisotropy_gap": 0.5076923076923076
+        },
+        "radiance_errors100": {
+          "fit": {
+            "diffuse": {
+              "MAE": 0.028183039927338234,
+              "RMSE": 0.03846116309343235,
+              "max_absolute": 0.10160218191114423,
+              "relative_L2": 0.18915098047057888
+            },
+            "specular": {
+              "MAE": 0.028585688665111117,
+              "RMSE": 0.039054697122219824,
+              "max_absolute": 0.1069791316789716,
+              "relative_L2": 1.3808663188948305
+            },
+            "total": {
+              "MAE": 0.0017965271018136578,
+              "RMSE": 0.002479467883396341,
+              "max_absolute": 0.006357989132222908,
+              "relative_L2": 0.01073812486814104
+            }
+          },
+          "held_out": {
+            "diffuse": {
+              "MAE": 0.028184264150862566,
+              "RMSE": 0.03846173221919762,
+              "max_absolute": 0.10160218191114423,
+              "relative_L2": 0.18915377941600467
+            },
+            "specular": {
+              "MAE": 0.027213083086479316,
+              "RMSE": 0.03735323407935364,
+              "max_absolute": 0.10542670673460404,
+              "relative_L2": 1.3955229920981227
+            },
+            "total": {
+              "MAE": 0.002609777545214928,
+              "RMSE": 0.003370730404473769,
+              "max_absolute": 0.008896840306727771,
+              "relative_L2": 0.014727356610719784
+            }
+          },
+          "relight": {
+            "diffuse": {
+              "MAE": 0.010353599085078035,
+              "RMSE": 0.011193851513616319,
+              "max_absolute": 0.016004723109173516,
+              "relative_L2": 0.18915198561818622
+            },
+            "specular": {
+              "MAE": 0.010359555760055804,
+              "RMSE": 0.011329627671203222,
+              "max_absolute": 0.019421681499830805,
+              "relative_L2": 1.4192139078858095
+            },
+            "total": {
+              "MAE": 0.001532001862377316,
+              "RMSE": 0.001955481923198043,
+              "max_absolute": 0.005712173830112965,
+              "relative_L2": 0.029424645031803545
+            }
+          },
+          "relight_seen_views": {
+            "diffuse": {
+              "MAE": 0.010352212414751287,
+              "RMSE": 0.011192386343465371,
+              "max_absolute": 0.015994314648080682,
+              "relative_L2": 0.18912722739774857
+            },
+            "specular": {
+              "MAE": 0.009884140692969294,
+              "RMSE": 0.010870454206324666,
+              "max_absolute": 0.018382251319056533,
+              "relative_L2": 1.167684233486162
+            },
+            "total": {
+              "MAE": 0.0014283174218739107,
+              "RMSE": 0.0018585047860243066,
+              "max_absolute": 0.004654146994647723,
+              "relative_L2": 0.027484096115267198
+            }
+          },
+          "relight_unseen_views": {
+            "diffuse": {
+              "MAE": 0.010354985755404778,
+              "RMSE": 0.011195316492015333,
+              "max_absolute": 0.016004723109173516,
+              "relative_L2": 0.18917674059842912
+            },
+            "specular": {
+              "MAE": 0.010834970827142309,
+              "RMSE": 0.011770902755710194,
+              "max_absolute": 0.019421681499830805,
+              "relative_L2": 1.8429782986703975
+            },
+            "total": {
+              "MAE": 0.0016356863028807217,
+              "RMSE": 0.0020478718378437117,
+              "max_absolute": 0.005712173830112965,
+              "relative_L2": 0.031374086189641354
+            }
+          }
+        },
+        "relight100": 0.029424645031803545,
+        "success": {
+          "all_passed": false,
+          "checks": {
+            "Q": false,
+            "albedo": false,
+            "held_out_radiance": false,
+            "metallic": false,
+            "orientation": false
+          }
+        },
+        "zero_global_gradient_states": 0
+      },
+      "Q_ratio_to_baseline": 1.0144622988178897,
+      "baseline": {
+        "Q10": 0.10816263821890298,
+        "Q100": 1.8572815702122156,
+        "albedo_max_error": 0.15399055004119877,
+        "case": "M1/103",
+        "endpoint_source_run": "neural-e3-b4d1389b174e4b20b2f892725050a0ae",
+        "first_all_zero_gradient_state": null,
+        "first_boundary_state": null,
+        "first_physical_floor_state": null,
+        "gradient_norm100": 5.64222535848444e-05,
+        "heldout10": 0.10205882239213133,
+        "heldout100": 0.015042111328424356,
+        "loss10": 0.0002305028319824487,
+        "loss100": 4.134082246309845e-06,
+        "lr": 0.001,
+        "metallic_error": 0.32585411667823794,
+        "minimum_sigmoid100": 0.3136276304721832,
+        "orientation_error_degrees": null,
+        "physical100": [
+          0.7065284848213196,
+          0.6832956671714783,
+          0.4967924952507019,
+          0.46172672510147095,
+          0.7339905500411987,
+          0.3136276304721832,
+          0.4258541166782379
+        ],
+        "physical_errors100": {
+          "Q_absolute_frobenius": 0.4691045080406437,
+          "Q_relative_frobenius": 1.8572815702122156,
+          "albedo_RMSE": 0.11472059401114452,
+          "albedo_absolute_errors": [
+            0.10172672510147096,
+            0.15399055004119877,
+            0.07362763047218324
+          ],
+          "albedo_relative_L2": 0.2746010512347112,
+          "major_axis_error_radians": null,
+          "metallic_absolute_error": 0.32585411667823794,
+          "metallic_near_boundary": false,
+          "orientation_degrees": null,
+          "orientation_identifiable": false,
+          "orientation_reason": "Truth or prediction is near-isotropic; retain Q/axis errors, do not score orientation as zero",
+          "prediction_anisotropy_gap": 0.033423404420025,
+          "protocol": "known-material-recovery-metrics-v1",
+          "sorted_axis_absolute_errors": [
+            0.40329566717147824,
+            0.2165284848213196
+          ],
+          "sorted_axis_relative_errors": [
+            1.4403416684695651,
+            0.44189486698228486
+          ],
+          "truth_anisotropy_gap": 0.5076923076923076
+        },
+        "physical_success": false,
+        "radiance_errors100": {
+          "fit": {
+            "diffuse": {
+              "MAE": 0.02790726030835311,
+              "RMSE": 0.03808260934805673,
+              "max_absolute": 0.10058231663671491,
+              "relative_L2": 0.18728926318645348
+            },
+            "specular": {
+              "MAE": 0.02831641013042306,
+              "RMSE": 0.038690971374698305,
+              "max_absolute": 0.1063487082523435,
+              "relative_L2": 1.3680059801628333
+            },
+            "total": {
+              "MAE": 0.0017783483757980827,
+              "RMSE": 0.002473817096981366,
+              "max_absolute": 0.00633274656516053,
+              "relative_L2": 0.01071365233896108
+            }
+          },
+          "held_out": {
+            "diffuse": {
+              "MAE": 0.027908486498002878,
+              "RMSE": 0.03808317921762002,
+              "max_absolute": 0.10058231663671491,
+              "relative_L2": 0.18729206578985824
+            },
+            "specular": {
+              "MAE": 0.026894399454347236,
+              "RMSE": 0.03691018617840099,
+              "max_absolute": 0.10484827345938126,
+              "relative_L2": 1.3789706493728118
+            },
+            "total": {
+              "MAE": 0.0026636381243953524,
+              "RMSE": 0.0034427700328308435,
+              "max_absolute": 0.009878481239449788,
+              "relative_L2": 0.015042111328424356
+            }
+          },
+          "relight": {
+            "diffuse": {
+              "MAE": 0.01025229369592209,
+              "RMSE": 0.01108368302165629,
+              "max_absolute": 0.015844245053696374,
+              "relative_L2": 0.1872903753420938
+            },
+            "specular": {
+              "MAE": 0.010227991657333816,
+              "RMSE": 0.011189917712781172,
+              "max_absolute": 0.01915197420751246,
+              "relative_L2": 1.4017130400888307
+            },
+            "total": {
+              "MAE": 0.001513991563559551,
+              "RMSE": 0.001945977078868962,
+              "max_absolute": 0.005658917080006154,
+              "relative_L2": 0.029281623167398702
+            }
+          },
+          "relight_seen_views": {
+            "diffuse": {
+              "MAE": 0.010250903662486046,
+              "RMSE": 0.011082214168596593,
+              "max_absolute": 0.01583381424086175,
+              "relative_L2": 0.1872655548884291
+            },
+            "specular": {
+              "MAE": 0.009762592335032226,
+              "RMSE": 0.010739968249027928,
+              "max_absolute": 0.018059143421333468,
+              "relative_L2": 1.1536676715160004
+            },
+            "total": {
+              "MAE": 0.0014236813670843323,
+              "RMSE": 0.001848750078494408,
+              "max_absolute": 0.004576929177341205,
+              "relative_L2": 0.02733984073247555
+            }
+          },
+          "relight_unseen_views": {
+            "diffuse": {
+              "MAE": 0.01025368372935813,
+              "RMSE": 0.011085151680083623,
+              "max_absolute": 0.015844245053696374,
+              "relative_L2": 0.18731519250689063
+            },
+            "specular": {
+              "MAE": 0.010693390979635406,
+              "RMSE": 0.011622460963474975,
+              "max_absolute": 0.01915197420751246,
+              "relative_L2": 1.8197366656892278
+            },
+            "total": {
+              "MAE": 0.0016043017600347697,
+              "RMSE": 0.0020385722283582874,
+              "max_absolute": 0.005658917080006154,
+              "relative_L2": 0.031231613040621973
+            }
+          }
+        },
+        "relight100": 0.029281623167398702,
+        "restoration_state": null,
+        "state": 100,
+        "success_checks": {
+          "Q": false,
+          "albedo": false,
+          "held_out_radiance": false,
+          "metallic": false,
+          "orientation": false
+        },
+        "zero_gradient_moving_updates": 0
+      },
+      "case": "M1/103",
+      "heldout_ratio_to_baseline": 0.9790750971833458
+    },
+    {
+      "AS1": {
+        "Q100": 0.6280131957955594,
+        "component_compensation": {
+          "fit": {
+            "component_squared_error": 0.38143673423467855,
+            "diffuse_specular_inner_product": -0.18961321784249463,
+            "residual_correlation": -0.9943030014727468,
+            "total_squared_error": 0.0022102999659180346
+          },
+          "held_out": {
+            "component_squared_error": 0.3628352725599032,
+            "diffuse_specular_inner_product": -0.1783004358404378,
+            "residual_correlation": -0.9834741572915646,
+            "total_squared_error": 0.00623440035677579
+          },
+          "relight": {
+            "component_squared_error": 0.047780565168934544,
+            "diffuse_specular_inner_product": -0.02283773178612944,
+            "residual_correlation": -0.9559423089700496,
+            "total_squared_error": 0.0021051015865086523
+          }
+        },
+        "exact_sigmoid_boundary_states": 0,
+        "global_gradient_norm100": 0.0002584678721424917,
+        "heldout100": 0.06091492350019701,
+        "loss100": 2.9738970624748617e-05,
+        "physical100": [
+          0.7719231247901917,
+          0.3827124238014221,
+          -0.6753164529800415,
+          0.7474095821380615,
+          0.4215545356273651,
+          0.25010859966278076,
+          0.9227514863014221
+        ],
+        "physical_errors100": {
+          "Q_absolute_frobenius": 0.24208957292178265,
+          "Q_relative_frobenius": 0.6280131957955594,
+          "albedo_RMSE": 0.1322648626089282,
+          "albedo_absolute_errors": [
+            0.18740958213806147,
+            0.11155453562736511,
+            0.07010859966278077
+          ],
+          "albedo_relative_L2": 0.34454412985034505,
+          "major_axis_error_radians": 0.014520126185144967,
+          "metallic_absolute_error": 0.2727514863014221,
+          "metallic_near_boundary": false,
+          "orientation_degrees": 0.8319419484061992,
+          "orientation_identifiable": true,
+          "orientation_reason": null,
+          "prediction_anisotropy_gap": 0.6053830818897019,
+          "protocol": "known-material-recovery-metrics-v1",
+          "sorted_axis_absolute_errors": [
+            0.2127124238014221,
+            0.15192312479019165
+          ],
+          "sorted_axis_relative_errors": [
+            1.251249551773071,
+            0.24503729804869623
+          ],
+          "truth_anisotropy_gap": 0.8601500120977499
+        },
+        "radiance_errors100": {
+          "fit": {
+            "diffuse": {
+              "MAE": 0.036829092667094936,
+              "RMSE": 0.05110518583538406,
+              "max_absolute": 0.138263722419617,
+              "relative_L2": 0.7033397808504529
+            },
+            "specular": {
+              "MAE": 0.037473779103829,
+              "RMSE": 0.05182656076431227,
+              "max_absolute": 0.154705831075912,
+              "relative_L2": 0.5644563091750646
+            },
+            "total": {
+              "MAE": 0.004342858852647607,
+              "RMSE": 0.005540632692910664,
+              "max_absolute": 0.01644216826093975,
+              "relative_L2": 0.03387153152977598
+            }
+          },
+          "held_out": {
+            "diffuse": {
+              "MAE": 0.036829247835783896,
+              "RMSE": 0.05110526030069972,
+              "max_absolute": 0.138263722419617,
+              "relative_L2": 0.703340805686151
+            },
+            "specular": {
+              "MAE": 0.034623018238073046,
+              "RMSE": 0.04927099709922599,
+              "max_absolute": 0.15397980462246924,
+              "relative_L2": 0.6004593750522116
+            },
+            "total": {
+              "MAE": 0.006864679689746637,
+              "RMSE": 0.009305315354361087,
+              "max_absolute": 0.03136950114900117,
+              "relative_L2": 0.06091492350019701
+            }
+          },
+          "relight": {
+            "diffuse": {
+              "MAE": 0.013529471000521678,
+              "RMSE": 0.014873735009935584,
+              "max_absolute": 0.021763632752751248,
+              "relative_L2": 0.703340181831565
+            },
+            "specular": {
+              "MAE": 0.012955887501798404,
+              "RMSE": 0.014872277811664027,
+              "max_absolute": 0.029975726900680226,
+              "relative_L2": 0.5704316794525752
+            },
+            "total": {
+              "MAE": 0.003425108430628033,
+              "RMSE": 0.00441493843179739,
+              "max_absolute": 0.017235682077889114,
+              "relative_L2": 0.09605030751597793
+            }
+          },
+          "relight_seen_views": {
+            "diffuse": {
+              "MAE": 0.013529295215541559,
+              "RMSE": 0.014873543261434639,
+              "max_absolute": 0.021762203172599616,
+              "relative_L2": 0.7033311145444693
+            },
+            "specular": {
+              "MAE": 0.012514608506415933,
+              "RMSE": 0.014506897780015102,
+              "max_absolute": 0.029975726900680226,
+              "relative_L2": 0.47968330069265697
+            },
+            "total": {
+              "MAE": 0.0035516326423995774,
+              "RMSE": 0.0047724622497131285,
+              "max_absolute": 0.017235682077889114,
+              "relative_L2": 0.09527879467040602
+            }
+          },
+          "relight_unseen_views": {
+            "diffuse": {
+              "MAE": 0.013529646785501797,
+              "RMSE": 0.014873926755964587,
+              "max_absolute": 0.021763632752751248,
+              "relative_L2": 0.7033492490017691
+            },
+            "specular": {
+              "MAE": 0.013397166497180875,
+              "RMSE": 0.015228893965578109,
+              "max_absolute": 0.029654149960036822,
+              "relative_L2": 0.7220186509963681
+            },
+            "total": {
+              "MAE": 0.003298584218856488,
+              "RMSE": 0.004025787722693073,
+              "max_absolute": 0.010810366549095424,
+              "relative_L2": 0.09716692914515686
+            }
+          }
+        },
+        "relight100": 0.09605030751597793,
+        "success": {
+          "all_passed": false,
+          "checks": {
+            "Q": false,
+            "albedo": false,
+            "held_out_radiance": false,
+            "metallic": false,
+            "orientation": true
+          }
+        },
+        "zero_global_gradient_states": 0
+      },
+      "Q_ratio_to_baseline": 1.478729856974495,
+      "baseline": {
+        "Q10": 1.4323887055391602,
+        "Q100": 0.4246977180000168,
+        "albedo_max_error": 0.11157101631164545,
+        "case": "M2/103",
+        "endpoint_source_run": "neural-e3-b4d1389b174e4b20b2f892725050a0ae",
+        "first_all_zero_gradient_state": null,
+        "first_boundary_state": null,
+        "first_physical_floor_state": null,
+        "gradient_norm100": 0.00029659898597880866,
+        "heldout10": 0.4144376359435941,
+        "heldout100": 0.04332102677107935,
+        "loss10": 0.004623798653483391,
+        "loss100": 1.4279264178185258e-05,
+        "lr": 0.001,
+        "metallic_error": 0.18260488510131834,
+        "minimum_sigmoid100": 0.002206160221248865,
+        "orientation_error_degrees": 0.3608686278664877,
+        "physical100": [
+          0.7299216389656067,
+          0.313015878200531,
+          -0.6544979810714722,
+          0.6715710163116455,
+          0.37384501099586487,
+          0.21982820332050323,
+          0.8326048851013184
+        ],
+        "physical_errors100": {
+          "Q_absolute_frobenius": 0.1637145363502038,
+          "Q_relative_frobenius": 0.4246977180000168,
+          "albedo_RMSE": 0.07769719619483256,
+          "albedo_absolute_errors": [
+            0.11157101631164545,
+            0.06384501099586487,
+            0.03982820332050324
+          ],
+          "albedo_relative_L2": 0.20239776707674953,
+          "major_axis_error_radians": 0.00629834572342437,
+          "metallic_absolute_error": 0.18260488510131834,
+          "metallic_near_boundary": false,
+          "orientation_degrees": 0.3608686278664877,
+          "orientation_identifiable": true,
+          "orientation_reason": null,
+          "prediction_anisotropy_gap": 0.6893327574964541,
+          "protocol": "known-material-recovery-metrics-v1",
+          "sorted_axis_absolute_errors": [
+            0.143015878200531,
+            0.1099216389656067
+          ],
+          "sorted_axis_relative_errors": [
+            0.8412698717678293,
+            0.17729296607355918
+          ],
+          "truth_anisotropy_gap": 0.8601500120977499
+        },
+        "physical_success": false,
+        "radiance_errors100": {
+          "fit": {
+            "diffuse": {
+              "MAE": 0.02223678091460051,
+              "RMSE": 0.030879156382733385,
+              "max_absolute": 0.0835822946428035,
+              "relative_L2": 0.4249772058952409
+            },
+            "specular": {
+              "MAE": 0.022569311546685993,
+              "RMSE": 0.03144863129728692,
+              "max_absolute": 0.09574491646409558,
+              "relative_L2": 0.342515075067408
+            },
+            "total": {
+              "MAE": 0.0029267741856007423,
+              "RMSE": 0.0037836409577836692,
+              "max_absolute": 0.012162614370711478,
+              "relative_L2": 0.023130519762282992
+            }
+          },
+          "held_out": {
+            "diffuse": {
+              "MAE": 0.022237080865144716,
+              "RMSE": 0.030879300770266842,
+              "max_absolute": 0.0835822946428035,
+              "relative_L2": 0.42497919304183834
+            },
+            "specular": {
+              "MAE": 0.020384409226477596,
+              "RMSE": 0.029578050784640954,
+              "max_absolute": 0.09605210672551184,
+              "relative_L2": 0.3604639429894364
+            },
+            "total": {
+              "MAE": 0.004990624049216023,
+              "RMSE": 0.006617685657576317,
+              "max_absolute": 0.02090256789857392,
+              "relative_L2": 0.04332102677107935
+            }
+          },
+          "relight": {
+            "diffuse": {
+              "MAE": 0.00816892722306262,
+              "RMSE": 0.008987131511652239,
+              "max_absolute": 0.01315884825662269,
+              "relative_L2": 0.42497803728029765
+            },
+            "specular": {
+              "MAE": 0.007651426205347806,
+              "RMSE": 0.009000503745653539,
+              "max_absolute": 0.01935848575918353,
+              "relative_L2": 0.3452176278959578
+            },
+            "total": {
+              "MAE": 0.00247973099513862,
+              "RMSE": 0.0032164812780188464,
+              "max_absolute": 0.013247177668099075,
+              "relative_L2": 0.06997697038038195
+            }
+          },
+          "relight_seen_views": {
+            "diffuse": {
+              "MAE": 0.008168587699932351,
+              "RMSE": 0.008986759972238596,
+              "max_absolute": 0.01315606546477014,
+              "relative_L2": 0.4249604681493044
+            },
+            "specular": {
+              "MAE": 0.007370439566954946,
+              "RMSE": 0.00879806235359001,
+              "max_absolute": 0.01935848575918353,
+              "relative_L2": 0.2909156494701287
+            },
+            "total": {
+              "MAE": 0.0026266432854987706,
+              "RMSE": 0.003575756957697314,
+              "max_absolute": 0.013247177668099075,
+              "relative_L2": 0.07138742961962602
+            }
+          },
+          "relight_unseen_views": {
+            "diffuse": {
+              "MAE": 0.00816926674619289,
+              "RMSE": 0.008987503035706607,
+              "max_absolute": 0.01315884825662269,
+              "relative_L2": 0.4249956056849909
+            },
+            "specular": {
+              "MAE": 0.007932412843740664,
+              "RMSE": 0.009198490863907458,
+              "max_absolute": 0.01812550015982306,
+              "relative_L2": 0.43611059212656084
+            },
+            "total": {
+              "MAE": 0.0023328187047784673,
+              "RMSE": 0.002811666019137186,
+              "max_absolute": 0.006681847103437694,
+              "relative_L2": 0.06786273188755937
+            }
+          }
+        },
+        "relight100": 0.06997697038038195,
+        "restoration_state": null,
+        "state": 100,
+        "success_checks": {
+          "Q": false,
+          "albedo": false,
+          "held_out_radiance": false,
+          "metallic": false,
+          "orientation": true
+        },
+        "zero_gradient_moving_updates": 0
+      },
+      "case": "M2/103",
+      "heldout_ratio_to_baseline": 1.4061283409114198
+    },
+    {
+      "AS1": {
+        "Q100": 0.2192371918037097,
+        "component_compensation": {
+          "fit": {
+            "component_squared_error": 0.0018881839377338622,
+            "diffuse_specular_inner_product": -0.0008522062522039805,
+            "residual_correlation": -0.9074131287545562,
+            "total_squared_error": 0.000183770857274795
+          },
+          "held_out": {
+            "component_squared_error": 0.0017468543963367047,
+            "diffuse_specular_inner_product": -0.000815440918598323,
+            "residual_correlation": -0.9340248965232344,
+            "total_squared_error": 0.00011597267129479627
+          },
+          "relight": {
+            "component_squared_error": 0.00029240447806150614,
+            "diffuse_specular_inner_product": -0.00011884048700426909,
+            "residual_correlation": -0.8426013611590645,
+            "total_squared_error": 5.472357213749721e-05
+          }
+        },
+        "exact_sigmoid_boundary_states": 0,
+        "global_gradient_norm100": 0.0001081927807443608,
+        "heldout100": 0.005431841764883034,
+        "loss100": 1.750981823533948e-06,
+        "physical100": [
+          0.3731512725353241,
+          0.40514808893203735,
+          0.12147759646177292,
+          0.23398689925670624,
+          0.4203087091445923,
+          0.6856689453125,
+          0.3227340579032898
+        ],
+        "physical_errors100": {
+          "Q_absolute_frobenius": 0.05697570121077153,
+          "Q_relative_frobenius": 0.2192371918037097,
+          "albedo_RMSE": 0.010574460229711072,
+          "albedo_absolute_errors": [
+            0.006013100743293753,
+            0.009691290855407708,
+            0.014331054687499956
+          ],
+          "albedo_relative_L2": 0.021400061479584537,
+          "major_axis_error_radians": null,
+          "metallic_absolute_error": 0.027265942096710183,
+          "metallic_near_boundary": false,
+          "orientation_degrees": null,
+          "orientation_identifiable": false,
+          "orientation_reason": "Truth or prediction is near-isotropic; retain Q/axis errors, do not score orientation as zero",
+          "prediction_anisotropy_gap": 0.08208365684191797,
+          "protocol": "known-material-recovery-metrics-v1",
+          "sorted_axis_absolute_errors": [
+            0.003151272535324101,
+            0.06485191106796262
+          ],
+          "sorted_axis_relative_errors": [
+            0.008516952798173246,
+            0.13798278950630347
+          ],
+          "truth_anisotropy_gap": 0.2347680268306316
+        },
+        "radiance_errors100": {
+          "fit": {
+            "diffuse": {
+              "MAE": 0.0024309743162328414,
+              "RMSE": 0.0034313069584281704,
+              "max_absolute": 0.009380234480186878,
+              "relative_L2": 0.019754721505299062
+            },
+            "specular": {
+              "MAE": 0.0026372359188190763,
+              "RMSE": 0.0038014351855598857,
+              "max_absolute": 0.011853880761283991,
+              "relative_L2": 0.054655399361921694
+            },
+            "total": {
+              "MAE": 0.0011841451227845208,
+              "RMSE": 0.0015976147901498304,
+              "max_absolute": 0.004982769090536909,
+              "relative_L2": 0.006591440573433628
+            }
+          },
+          "held_out": {
+            "diffuse": {
+              "MAE": 0.0024296886771587277,
+              "RMSE": 0.003430695655543353,
+              "max_absolute": 0.009380234480186878,
+              "relative_L2": 0.01975120211213743
+            },
+            "specular": {
+              "MAE": 0.002376167195567833,
+              "RMSE": 0.003534429789205541,
+              "max_absolute": 0.01177884471888005,
+              "relative_L2": 0.05711763214816886
+            },
+            "total": {
+              "MAE": 0.0009843591373003562,
+              "RMSE": 0.0012691459907201612,
+              "max_absolute": 0.0035162239880617008,
+              "relative_L2": 0.005431841764883034
+            }
+          },
+          "relight": {
+            "diffuse": {
+              "MAE": 0.0008926514904111225,
+              "RMSE": 0.0009985864442733567,
+              "max_absolute": 0.0014867988025114298,
+              "relative_L2": 0.019753414931305845
+            },
+            "specular": {
+              "MAE": 0.00101338550766254,
+              "RMSE": 0.0013077744393638247,
+              "max_absolute": 0.003907730338465566,
+              "relative_L2": 0.06920108477218762
+            },
+            "total": {
+              "MAE": 0.0005330651396778935,
+              "RMSE": 0.0007118284498486016,
+              "max_absolute": 0.002429369318479424,
+              "relative_L2": 0.010407984422541112
+            }
+          },
+          "relight_seen_views": {
+            "diffuse": {
+              "MAE": 0.0008941066819339589,
+              "RMSE": 0.001000153437626817,
+              "max_absolute": 0.0014822017942831278,
+              "relative_L2": 0.019784412217602902
+            },
+            "specular": {
+              "MAE": 0.0009326018375754637,
+              "RMSE": 0.0011964621635224097,
+              "max_absolute": 0.003907730338465566,
+              "relative_L2": 0.05507825515810651
+            },
+            "total": {
+              "MAE": 0.00046696552737665505,
+              "RMSE": 0.0006364525530493664,
+              "max_absolute": 0.002429369318479424,
+              "relative_L2": 0.008948669471264688
+            }
+          },
+          "relight_unseen_views": {
+            "diffuse": {
+              "MAE": 0.0008911962988882856,
+              "RMSE": 0.0009970169881081624,
+              "max_absolute": 0.0014867988025114298,
+              "relative_L2": 0.01972236892720138
+            },
+            "specular": {
+              "MAE": 0.0010941691777496161,
+              "RMSE": 0.0014103284226611925,
+              "max_absolute": 0.0038456359835518233,
+              "relative_L2": 0.09058530729745948
+            },
+            "total": {
+              "MAE": 0.0005991647519791319,
+              "RMSE": 0.0007799536087131526,
+              "max_absolute": 0.0023838376042324416,
+              "relative_L2": 0.01189880984872632
+            }
+          }
+        },
+        "relight100": 0.010407984422541112,
+        "success": {
+          "all_passed": false,
+          "checks": {
+            "Q": false,
+            "albedo": true,
+            "held_out_radiance": true,
+            "metallic": true,
+            "orientation": false
+          }
+        },
+        "zero_global_gradient_states": 0
+      },
+      "Q_ratio_to_baseline": 0.98456977688171,
+      "baseline": {
+        "Q10": 0.4439763689949626,
+        "Q100": 0.22267308722198337,
+        "albedo_max_error": 0.012265813350677446,
+        "case": "M3/101",
+        "endpoint_source_run": "neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205",
+        "first_all_zero_gradient_state": null,
+        "first_boundary_state": null,
+        "first_physical_floor_state": null,
+        "gradient_norm100": 4.802233394713924e-05,
+        "heldout10": 0.15123819629126609,
+        "heldout100": 0.005541694978139788,
+        "loss10": 0.0005515372613444924,
+        "loss100": 2.0147776922385674e-06,
+        "lr": 0.001,
+        "metallic_error": 0.02458263039588926,
+        "minimum_sigmoid100": 0.23481446504592896,
+        "orientation_error_degrees": null,
+        "physical100": [
+          0.3827457129955292,
+          0.4053306579589844,
+          0.32272839546203613,
+          0.23481446504592896,
+          0.42172348499298096,
+          0.6877341866493225,
+          0.3254173696041107
+        ],
+        "physical_errors100": {
+          "Q_absolute_frobenius": 0.05786862703750941,
+          "Q_relative_frobenius": 0.22267308722198337,
+          "albedo_RMSE": 0.009052451796336005,
+          "albedo_absolute_errors": [
+            0.005185534954071036,
+            0.008276515007019036,
+            0.012265813350677446
+          ],
+          "albedo_relative_L2": 0.018319897259461263,
+          "major_axis_error_radians": null,
+          "metallic_absolute_error": 0.02458263039588926,
+          "metallic_near_boundary": false,
+          "orientation_degrees": null,
+          "orientation_identifiable": false,
+          "orientation_reason": "Truth or prediction is near-isotropic; retain Q/axis errors, do not score orientation as zero",
+          "prediction_anisotropy_gap": 0.05726960486853541,
+          "protocol": "known-material-recovery-metrics-v1",
+          "sorted_axis_absolute_errors": [
+            0.01274571299552918,
+            0.0646693420410156
+          ],
+          "sorted_axis_relative_errors": [
+            0.03444787296088967,
+            0.1375943447681183
+          ],
+          "truth_anisotropy_gap": 0.2347680268306316
+        },
+        "physical_success": false,
+        "radiance_errors100": {
+          "fit": {
+            "diffuse": {
+              "MAE": 0.0023324555477004325,
+              "RMSE": 0.0032819801470423617,
+              "max_absolute": 0.008933497667595325,
+              "relative_L2": 0.01889501713960387
+            },
+            "specular": {
+              "MAE": 0.002467544095926942,
+              "RMSE": 0.0036064658020514523,
+              "max_absolute": 0.01151051330389416,
+              "relative_L2": 0.05185221346006036
+            },
+            "total": {
+              "MAE": 0.0013489887698960358,
+              "RMSE": 0.001747876833282439,
+              "max_absolute": 0.005070149499777632,
+              "relative_L2": 0.007211391849459575
+            }
+          },
+          "held_out": {
+            "diffuse": {
+              "MAE": 0.002331171667791182,
+              "RMSE": 0.003281369661809414,
+              "max_absolute": 0.008933497667595325,
+              "relative_L2": 0.018891502453827844
+            },
+            "specular": {
+              "MAE": 0.002196540299473434,
+              "RMSE": 0.0032674634778378803,
+              "max_absolute": 0.011012245820015878,
+              "relative_L2": 0.05280336238527195
+            },
+            "total": {
+              "MAE": 0.0010086608805149287,
+              "RMSE": 0.0012948131163853245,
+              "max_absolute": 0.0034565629587650637,
+              "relative_L2": 0.005541694978139788
+            }
+          },
+          "relight": {
+            "diffuse": {
+              "MAE": 0.0008564646068401511,
+              "RMSE": 0.0009551331030655083,
+              "max_absolute": 0.0014164802228376627,
+              "relative_L2": 0.01889384800652665
+            },
+            "specular": {
+              "MAE": 0.0009299508132504582,
+              "RMSE": 0.0012284942445239715,
+              "max_absolute": 0.00387751823414504,
+              "relative_L2": 0.06500596111880205
+            },
+            "total": {
+              "MAE": 0.0005258180365143298,
+              "RMSE": 0.0006998960420094373,
+              "max_absolute": 0.002469460892671471,
+              "relative_L2": 0.010233514977073116
+            }
+          },
+          "relight_seen_views": {
+            "diffuse": {
+              "MAE": 0.0008579191774812713,
+              "RMSE": 0.0009566999705498901,
+              "max_absolute": 0.0014118981157705546,
+              "relative_L2": 0.01892484280296001
+            },
+            "specular": {
+              "MAE": 0.0008943462723238272,
+              "RMSE": 0.0011498274232291977,
+              "max_absolute": 0.00387751823414504,
+              "relative_L2": 0.05293145920967496
+            },
+            "total": {
+              "MAE": 0.00041705436530033385,
+              "RMSE": 0.000595234505340026,
+              "max_absolute": 0.002469460892671471,
+              "relative_L2": 0.008369134227931169
+            }
+          },
+          "relight_unseen_views": {
+            "diffuse": {
+              "MAE": 0.0008550100361990307,
+              "RMSE": 0.0009535636609544919,
+              "max_absolute": 0.0014164802228376627,
+              "relative_L2": 0.018862802280433175
+            },
+            "specular": {
+              "MAE": 0.0009655553541770891,
+              "RMSE": 0.0013024181795595264,
+              "max_absolute": 0.003697788524831616,
+              "relative_L2": 0.08365423906197496
+            },
+            "total": {
+              "MAE": 0.0006345817077283258,
+              "RMSE": 0.0007908254060749226,
+              "max_absolute": 0.0023062919613796584,
+              "relative_L2": 0.012064667725498017
+            }
+          }
+        },
+        "relight100": 0.010233514977073116,
+        "restoration_state": 10,
+        "state": 100,
+        "success_checks": {
+          "Q": false,
+          "albedo": true,
+          "held_out_radiance": true,
+          "metallic": true,
+          "orientation": false
+        },
+        "zero_gradient_moving_updates": 0
+      },
+      "case": "M3/101",
+      "heldout_ratio_to_baseline": 0.9801769650458769
+    },
+    {
+      "AS1": {
+        "Q100": 0.5202748857196798,
+        "component_compensation": {
+          "fit": {
+            "component_squared_error": 0.06279274853497402,
+            "diffuse_specular_inner_product": -0.03129131967267598,
+            "residual_correlation": -0.9967168132053107,
+            "total_squared_error": 0.00021010897060356933
+          },
+          "held_out": {
+            "component_squared_error": 0.059318788528069634,
+            "diffuse_specular_inner_product": -0.029371469491169686,
+            "residual_correlation": -0.9913751461421023,
+            "total_squared_error": 0.0005758489371834299
+          },
+          "relight": {
+            "component_squared_error": 0.007823667634257207,
+            "diffuse_specular_inner_product": -0.003806616444379477,
+            "residual_correlation": -0.9731365647760015,
+            "total_squared_error": 0.000210434841652351
+          }
+        },
+        "exact_sigmoid_boundary_states": 0,
+        "global_gradient_norm100": 6.213708132079922e-05,
+        "heldout100": 0.012103850878069734,
+        "loss100": 2.6231891752104275e-06,
+        "physical100": [
+          0.5685527920722961,
+          0.4743098318576813,
+          -1.3260596990585327,
+          0.2686532139778137,
+          0.47637951374053955,
+          0.7725591659545898,
+          0.4825049936771393
+        ],
+        "physical_errors100": {
+          "Q_absolute_frobenius": 0.13520984369647082,
+          "Q_relative_frobenius": 0.5202748857196798,
+          "albedo_RMSE": 0.0523987866592761,
+          "albedo_absolute_errors": [
+            0.02865321397781373,
+            0.04637951374053956,
+            0.07255916595458989
+          ],
+          "albedo_relative_L2": 0.10604203255817449,
+          "major_axis_error_radians": 0.05473662773636402,
+          "metallic_absolute_error": 0.1325049936771393,
+          "metallic_near_boundary": false,
+          "orientation_degrees": 3.136177754072379,
+          "orientation_identifiable": true,
+          "orientation_reason": null,
+          "prediction_anisotropy_gap": 0.17927489945654806,
+          "protocol": "known-material-recovery-metrics-v1",
+          "sorted_axis_absolute_errors": [
+            0.10430983185768128,
+            0.09855279207229617
+          ],
+          "sorted_axis_relative_errors": [
+            0.2819184644802197,
+            0.20968679164318335
+          ],
+          "truth_anisotropy_gap": 0.2347680268306316
+        },
+        "radiance_errors100": {
+          "fit": {
+            "diffuse": {
+              "MAE": 0.015016500975969658,
+              "RMSE": 0.02076445022410405,
+              "max_absolute": 0.0552044677731548,
+              "relative_L2": 0.1195450993914356
+            },
+            "specular": {
+              "MAE": 0.015262884239331722,
+              "RMSE": 0.020999026508886073,
+              "max_absolute": 0.05958849710892089,
+              "relative_L2": 0.3019149673824337
+            },
+            "total": {
+              "MAE": 0.0013927809584965863,
+              "RMSE": 0.0017082681719425075,
+              "max_absolute": 0.004540329648790253,
+              "relative_L2": 0.007047974398003125
+            }
+          },
+          "held_out": {
+            "diffuse": {
+              "MAE": 0.015017612768163177,
+              "RMSE": 0.020764978453884878,
+              "max_absolute": 0.0552044677731548,
+              "relative_L2": 0.11954814051609668
+            },
+            "specular": {
+              "MAE": 0.014164850820838015,
+              "RMSE": 0.01981635013567213,
+              "max_absolute": 0.05757497490234728,
+              "relative_L2": 0.32023920832306413
+            },
+            "total": {
+              "MAE": 0.0022497261715606304,
+              "RMSE": 0.002828056206182157,
+              "max_absolute": 0.008348196543645825,
+              "relative_L2": 0.012103850878069734
+            }
+          },
+          "relight": {
+            "diffuse": {
+              "MAE": 0.005516748566084588,
+              "RMSE": 0.006043376976364601,
+              "max_absolute": 0.008701393326622772,
+              "relative_L2": 0.11954631838338042
+            },
+            "specular": {
+              "MAE": 0.005323764248967001,
+              "RMSE": 0.0059932430040345675,
+              "max_absolute": 0.011924997766858465,
+              "relative_L2": 0.31713337155011906
+            },
+            "total": {
+              "MAE": 0.0010572311456676984,
+              "RMSE": 0.0013958763398096146,
+              "max_absolute": 0.004166508273055647,
+              "relative_L2": 0.02040977598411834
+            }
+          },
+          "relight_seen_views": {
+            "diffuse": {
+              "MAE": 0.005515489107522849,
+              "RMSE": 0.00604201659595742,
+              "max_absolute": 0.008691498955590987,
+              "relative_L2": 0.11951940818566888
+            },
+            "specular": {
+              "MAE": 0.005086942489187107,
+              "RMSE": 0.0057615345391367825,
+              "max_absolute": 0.010588919024002798,
+              "relative_L2": 0.2652280022918381
+            },
+            "total": {
+              "MAE": 0.001108291702472081,
+              "RMSE": 0.0014181157237860684,
+              "max_absolute": 0.004166508273055647,
+              "relative_L2": 0.01993903366930245
+            }
+          },
+          "relight_unseen_views": {
+            "diffuse": {
+              "MAE": 0.005518008024646326,
+              "RMSE": 0.006044737050615404,
+              "max_absolute": 0.008701393326622772,
+              "relative_L2": 0.11957322252489724
+            },
+            "specular": {
+              "MAE": 0.005560586008746893,
+              "RMSE": 0.006216320709644288,
+              "max_absolute": 0.011924997766858465,
+              "relative_L2": 0.39927389443101813
+            },
+            "total": {
+              "MAE": 0.0010061705888633162,
+              "RMSE": 0.0013732768497398073,
+              "max_absolute": 0.004064143325915925,
+              "relative_L2": 0.02095042566912649
+            }
+          }
+        },
+        "relight100": 0.02040977598411834,
+        "success": {
+          "all_passed": false,
+          "checks": {
+            "Q": false,
+            "albedo": false,
+            "held_out_radiance": false,
+            "metallic": false,
+            "orientation": true
+          }
+        },
+        "zero_global_gradient_states": 0
+      },
+      "Q_ratio_to_baseline": 1.0193225440446558,
+      "baseline": {
+        "Q10": 0.293163206611202,
+        "Q100": 0.5104124192674453,
+        "albedo_max_error": 0.06963490247726445,
+        "case": "M3/103",
+        "endpoint_source_run": "neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205",
+        "first_all_zero_gradient_state": null,
+        "first_boundary_state": null,
+        "first_physical_floor_state": null,
+        "gradient_norm100": 4.98498083405358e-05,
+        "heldout10": 0.05790533430615502,
+        "heldout100": 0.01214268469914321,
+        "loss10": 0.00014319496403913945,
+        "loss100": 2.5104220640059793e-06,
+        "lr": 0.001,
+        "metallic_error": 0.12869816422462466,
+        "minimum_sigmoid100": 0.04396712779998779,
+        "orientation_error_degrees": 3.2496750075104814,
+        "physical100": [
+          0.5664623379707336,
+          0.4730459451675415,
+          -1.3240787982940674,
+          0.267555832862854,
+          0.4748060703277588,
+          0.7696349024772644,
+          0.47869816422462463
+        ],
+        "physical_errors100": {
+          "Q_absolute_frobenius": 0.132646770628618,
+          "Q_relative_frobenius": 0.5104124192674453,
+          "albedo_RMSE": 0.0503849432072709,
+          "albedo_absolute_errors": [
+            0.027555832862854013,
+            0.044806070327758796,
+            0.06963490247726445
+          ],
+          "albedo_relative_L2": 0.10196651733120506,
+          "major_axis_error_radians": 0.05671752850082935,
+          "metallic_absolute_error": 0.12869816422462466,
+          "metallic_near_boundary": false,
+          "orientation_degrees": 3.2496750075104814,
+          "orientation_identifiable": true,
+          "orientation_reason": null,
+          "prediction_anisotropy_gap": 0.17829202095136426,
+          "protocol": "known-material-recovery-metrics-v1",
+          "sorted_axis_absolute_errors": [
+            0.10304594516754151,
+            0.09646233797073367
+          ],
+          "sorted_axis_relative_errors": [
+            0.27850255450686895,
+            0.20523901695900781
+          ],
+          "truth_anisotropy_gap": 0.2347680268306316
+        },
+        "physical_success": false,
+        "radiance_errors100": {
+          "fit": {
+            "diffuse": {
+              "MAE": 0.014607964635342252,
+              "RMSE": 0.020207653654319258,
+              "max_absolute": 0.0537878143784557,
+              "relative_L2": 0.11633951000393203
+            },
+            "specular": {
+              "MAE": 0.014703227901807269,
+              "RMSE": 0.02023203006381394,
+              "max_absolute": 0.05737484020660766,
+              "relative_L2": 0.29088742252941846
+            },
+            "total": {
+              "MAE": 0.0013743326464140046,
+              "RMSE": 0.0016503163794553378,
+              "max_absolute": 0.00436755068474759,
+              "relative_L2": 0.006808876839155844
+            }
+          },
+          "held_out": {
+            "diffuse": {
+              "MAE": 0.014609080618487357,
+              "RMSE": 0.020208183858816873,
+              "max_absolute": 0.0537878143784557,
+              "relative_L2": 0.11634256249743327
+            },
+            "specular": {
+              "MAE": 0.013651189168034596,
+              "RMSE": 0.019110829204195715,
+              "max_absolute": 0.05549395323582049,
+              "relative_L2": 0.3088377412009909
+            },
+            "total": {
+              "MAE": 0.0022549299212975197,
+              "RMSE": 0.0028371297010395323,
+              "max_absolute": 0.008520275153112378,
+              "relative_L2": 0.01214268469914321
+            }
+          },
+          "relight": {
+            "diffuse": {
+              "MAE": 0.005366677522977343,
+              "RMSE": 0.00588133642168373,
+              "max_absolute": 0.008478486856324005,
+              "relative_L2": 0.11634093308031898
+            },
+            "specular": {
+              "MAE": 0.005131344222162164,
+              "RMSE": 0.005782481034474769,
+              "max_absolute": 0.011568673749810583,
+              "relative_L2": 0.3059808696482194
+            },
+            "total": {
+              "MAE": 0.0010325752001010882,
+              "RMSE": 0.0013777054955619742,
+              "max_absolute": 0.004284398809840773,
+              "relative_L2": 0.020144091374414853
+            }
+          },
+          "relight_seen_views": {
+            "diffuse": {
+              "MAE": 0.005365413856217305,
+              "RMSE": 0.00587997150784858,
+              "max_absolute": 0.008468547781808639,
+              "relative_L2": 0.11631393320515965
+            },
+            "specular": {
+              "MAE": 0.0048892344171152825,
+              "RMSE": 0.00554827331490776,
+              "max_absolute": 0.010217634241116293,
+              "relative_L2": 0.2554106787846445
+            },
+            "total": {
+              "MAE": 0.0011014687133182538,
+              "RMSE": 0.0014239067744372216,
+              "max_absolute": 0.004284398809840773,
+              "relative_L2": 0.02002045717513997
+            }
+          },
+          "relight_unseen_views": {
+            "diffuse": {
+              "MAE": 0.005367941189737381,
+              "RMSE": 0.005882701018829366,
+              "max_absolute": 0.008478486856324005,
+              "relative_L2": 0.11636792669092368
+            },
+            "specular": {
+              "MAE": 0.005373454027209044,
+              "RMSE": 0.006007564985183537,
+              "max_absolute": 0.011568673749810583,
+              "relative_L2": 0.3858655271695126
+            },
+            "total": {
+              "MAE": 0.0009636816868839228,
+              "RMSE": 0.001329900132609632,
+              "max_absolute": 0.003999420132270448,
+              "relative_L2": 0.020288679504703318
+            }
+          }
+        },
+        "relight100": 0.020144091374414853,
+        "restoration_state": 10,
+        "state": 100,
+        "success_checks": {
+          "Q": false,
+          "albedo": false,
+          "held_out_radiance": false,
+          "metallic": false,
+          "orientation": true
+        },
+        "zero_gradient_moving_updates": 0
+      },
+      "case": "M3/103",
+      "heldout_ratio_to_baseline": 0.9968018752001182
+    }
+  ],
+  "execution_status": "complete",
+  "matched_initialization": true,
+  "protocol": "material-e4-as1-offline-v1",
+  "scientific_work": {
+    "backwards": 512,
+    "evaluations": 10,
+    "forwards": 522,
+    "updates": 500
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "analytic_chain_max_relative_error": 2.2087558215042028e-07,
+  "conditioning_scope": "3x4 output-coordinate Q Jacobian only; own fitted states differ; no full neural or observation Jacobian measured",
+  "full_numeric_snapshots": [
+    {
+      "Adam_step": 10,
+      "buffers_and_RNG_unchanged": true,
+      "case": "M1/101",
+      "exact_parameter_identity": true,
+      "state": 10
+    },
+    {
+      "Adam_step": 100,
+      "buffers_and_RNG_unchanged": true,
+      "case": "M1/101",
+      "exact_parameter_identity": true,
+      "state": 100
+    },
+    {
+      "Adam_step": 10,
+      "buffers_and_RNG_unchanged": true,
+      "case": "M1/103",
+      "exact_parameter_identity": true,
+      "state": 10
+    },
+    {
+      "Adam_step": 100,
+      "buffers_and_RNG_unchanged": true,
+      "case": "M1/103",
+      "exact_parameter_identity": true,
+      "state": 100
+    },
+    {
+      "Adam_step": 10,
+      "buffers_and_RNG_unchanged": true,
+      "case": "M2/103",
+      "exact_parameter_identity": true,
+      "state": 10
+    },
+    {
+      "Adam_step": 100,
+      "buffers_and_RNG_unchanged": true,
+      "case": "M2/103",
+      "exact_parameter_identity": true,
+      "state": 100
+    },
+    {
+      "Adam_step": 10,
+      "buffers_and_RNG_unchanged": true,
+      "case": "M3/101",
+      "exact_parameter_identity": true,
+      "state": 10
+    },
+    {
+      "Adam_step": 100,
+      "buffers_and_RNG_unchanged": true,
+      "case": "M3/101",
+      "exact_parameter_identity": true,
+      "state": 100
+    },
+    {
+      "Adam_step": 10,
+      "buffers_and_RNG_unchanged": true,
+      "case": "M3/103",
+      "exact_parameter_identity": true,
+      "state": 10
+    },
+    {
+      "Adam_step": 100,
+      "buffers_and_RNG_unchanged": true,
+      "case": "M3/103",
+      "exact_parameter_identity": true,
+      "state": 100
+    }
+  ],
+  "initial_gates": [
+    {
+      "case": "M1/101",
+      "matching_parameter_identity": "add88a6a4334b0e7ef22b483f3dfdcbba306ab83252a5ac095f2db6387424b15",
+      "physical_and_loss": true
+    },
+    {
+      "case": "M1/103",
+      "matching_parameter_identity": "5d184f8af5b3ee196959571496e5a794e076f2aaee370be41533d464899f4086",
+      "physical_and_loss": true
+    },
+    {
+      "case": "M2/103",
+      "matching_parameter_identity": "5d184f8af5b3ee196959571496e5a794e076f2aaee370be41533d464899f4086",
+      "physical_and_loss": true
+    },
+    {
+      "case": "M3/101",
+      "matching_parameter_identity": "add88a6a4334b0e7ef22b483f3dfdcbba306ab83252a5ac095f2db6387424b15",
+      "physical_and_loss": true
+    },
+    {
+      "case": "M3/103",
+      "matching_parameter_identity": "5d184f8af5b3ee196959571496e5a794e076f2aaee370be41533d464899f4086",
+      "physical_and_loss": true
+    }
+  ],
+  "input_hashes": 253,
+  "numeric_signal_archives": 22,
+  "physical_rows_recomputed": 512,
+  "source_hashes": 374,
+  "terminal_metric_sets_recomputed": 10
+}

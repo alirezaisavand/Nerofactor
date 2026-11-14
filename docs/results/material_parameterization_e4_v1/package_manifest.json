@@ -1,0 +1,99 @@
+{
+  "analysis_exit_code": 0,
+  "analysis_model_queries": 0,
+  "analysis_optimizer_updates": 0,
+  "analysis_shader_queries": 0,
+  "files": [
+    {
+      "bytes": 133780,
+      "sha256": "8c47e07b7a42c4041c35f68d9ccb6a49932628c462fa1f630920928974212b3b",
+      "source": "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d-analysis-v1/candidate_measurements.csv",
+      "tracked_path": "docs/results/material_parameterization_e4_v1/candidate_measurements.csv"
+    },
+    {
+      "bytes": 64591,
+      "sha256": "35f5b739280a94cf1c32317e831fb20d533927fefa5c6c12e5f30ba0bac56404",
+      "source": "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d-analysis-v1/comparison.json",
+      "tracked_path": "docs/results/material_parameterization_e4_v1/comparison.json"
+    },
+    {
+      "bytes": 6083,
+      "sha256": "335a686e4ddf9da8bfe4257c874f26f1e5c358ba717c33a25c738d23e277e21d",
+      "source": "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d-analysis-v1/conditioning.csv",
+      "tracked_path": "docs/results/material_parameterization_e4_v1/conditioning.csv"
+    },
+    {
+      "bytes": 19128,
+      "sha256": "2645dc5c3d0d4704308372b526d33e4bd94c009b935a4b4a27e4b2651478db7a",
+      "source": "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d-analysis-v1/endpoints.csv",
+      "tracked_path": "docs/results/material_parameterization_e4_v1/endpoints.csv"
+    },
+    {
+      "bytes": 22467,
+      "sha256": "804104ab38160162677bdd9647d9f3454a85913561ee15323eacd95efbeac230",
+      "source": "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d-analysis-v1/evidence_manifest.json",
+      "tracked_path": "docs/results/material_parameterization_e4_v1/evidence_manifest.json"
+    },
+    {
+      "bytes": 40840,
+      "sha256": "724b7e8066aed60511d0f805d9ade6447d21adbb4f34a8c64fc9c5d503ab1d0a",
+      "source": "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d-analysis-v1/figures/coordinate_sensitivity_and_weight_motion.pdf",
+      "tracked_path": "docs/results/material_parameterization_e4_v1/figures/coordinate_sensitivity_and_weight_motion.pdf"
+    },
+    {
+      "bytes": 467241,
+      "sha256": "8adac8899accdfef5afe877e287539c99544ee68553fc0eb4bd4565c24d32e72",
+      "source": "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d-analysis-v1/figures/coordinate_sensitivity_and_weight_motion.png",
+      "tracked_path": "docs/results/material_parameterization_e4_v1/figures/coordinate_sensitivity_and_weight_motion.png"
+    },
+    {
+      "bytes": 48465,
+      "sha256": "e0ff7450b8423cbd60cb9b7751ac797f4255f8c860d64388b38fffc84ea201e5",
+      "source": "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d-analysis-v1/figures/matched_trajectories.pdf",
+      "tracked_path": "docs/results/material_parameterization_e4_v1/figures/matched_trajectories.pdf"
+    },
+    {
+      "bytes": 580362,
+      "sha256": "b1fc6bfc065b2c4b24d412622cb56aa215f0dacee02b508c37cc14f3cd5d5edb",
+      "source": "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d-analysis-v1/figures/matched_trajectories.png",
+      "tracked_path": "docs/results/material_parameterization_e4_v1/figures/matched_trajectories.png"
+    },
+    {
+      "bytes": 18566,
+      "sha256": "a176832094f461a13b8d0bb1a24578b6895e2b2f6ae434ddec02f17c5326245e",
+      "source": "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d-analysis-v1/figures/paired_endpoint_ratios.pdf",
+      "tracked_path": "docs/results/material_parameterization_e4_v1/figures/paired_endpoint_ratios.pdf"
+    },
+    {
+      "bytes": 84891,
+      "sha256": "c0dcbf5acd4c48b7972741cdba877f79fb134bf17e9ba4121529552c42e02040",
+      "source": "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d-analysis-v1/figures/paired_endpoint_ratios.png",
+      "tracked_path": "docs/results/material_parameterization_e4_v1/figures/paired_endpoint_ratios.png"
+    },
+    {
+      "bytes": 177667,
+      "sha256": "750a51f0ce4779c5539ab88906ba22246c9c708e6ceca58f4ad89d1345396648",
+      "source": "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d-analysis-v1/gradient_routes.csv",
+      "tracked_path": "docs/results/material_parameterization_e4_v1/gradient_routes.csv"
+    },
+    {
+      "bytes": 2891,
+      "sha256": "b7a0a71cbe91ca42aac6621aac963273a417c3c9c84f3565739047b2b5cc5f0f",
+      "source": "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d-analysis-v1/integrity.json",
+      "tracked_path": "docs/results/material_parameterization_e4_v1/integrity.json"
+    },
+    {
+      "bytes": 55165,
+      "sha256": "e2cdad4853e4ac49cd2e214fe897d5db1c7574c82489255b85439e11f7c70cc3",
+      "source": "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d-analysis-v1/parameter_movement.csv",
+      "tracked_path": "docs/results/material_parameterization_e4_v1/parameter_movement.csv"
+    },
+    {
+      "bytes": 255320,
+      "sha256": "4e68209021cbb79a3a4d1d100b654918a7f8ff51117cdd024447edceafc6e71e",
+      "source": "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d-analysis-v1/trajectories.csv",
+      "tracked_path": "docs/results/material_parameterization_e4_v1/trajectories.csv"
+    }
+  ],
+  "schema_version": 1
+}
