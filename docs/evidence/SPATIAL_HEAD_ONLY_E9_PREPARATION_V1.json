@@ -1,0 +1,76 @@
+{
+  "JUnit": {
+    "bytes": 3216,
+    "original": "/home/isavand/paper/evidence/material-e9-preparation-v3/pytest.xml",
+    "path": "docs/evidence/spatial_head_only_e9_v1/pytest.xml",
+    "sha256": "bafc01cbab4844adf66083d909dfb2b763527b1efdfd9ac22b3f65369e0f689c"
+  },
+  "accepted_input_identities_verified": 915,
+  "console": {
+    "bytes": 778,
+    "original": "/home/isavand/paper/evidence/material-e9-preparation-v3/stdout.txt",
+    "path": "docs/evidence/spatial_head_only_e9_v1/stdout.txt",
+    "sha256": "954ccd32ce05259d22196bcb72e86ac4f88ea7ef6212a4244d26a378ebd62207"
+  },
+  "errors": 0,
+  "exit_code": 0,
+  "failed": 0,
+  "historical_tests_or_experiments_repeated": false,
+  "launcher": {
+    "bytes": 881,
+    "original": "/home/isavand/paper/evidence/material-e9-preparation-v3/launcher.py",
+    "path": "docs/evidence/spatial_head_only_e9_v1/launcher.py",
+    "sha256": "8728054a1b3858c36c0b7a381c710e14d767b5f0e8faec637265d8a663e1ab19"
+  },
+  "new_source_sha256": {
+    "docs/protocols/SPATIAL_HEAD_ONLY_E9_V1.md": "a06af6a55d87cee4e1be837debe0b3ef7538dc9bb7e7273d7de3eb93ca836c9d",
+    "experiments/head_only_adam_e9_v1.py": "478d7291ae98b5d866b58696ccae414aa0c365f7db30a2988af4ccff73834db3",
+    "experiments/spatial_head_only_e9_v1.py": "99b44ac74f79e52da320b2ebcbf26eade51cf13a5f01998e4a425e3d41cf1a64",
+    "tests/scientific/test_spatial_head_only_e9_v1.py": "d703d17be8a60e72db586eef55aeed8f4a03ef460fb7bf55d9dfbdab44555b1c"
+  },
+  "original_test_evidence": "/home/isavand/paper/evidence/material-e9-preparation-v3",
+  "passed": 17,
+  "phase": "E.9 preparation only",
+  "predecessor_sources_verified": 393,
+  "preliminary_test_runs_preserved": [
+    "/home/isavand/paper/evidence/material-e9-preparation-v1",
+    "/home/isavand/paper/evidence/material-e9-preparation-v2"
+  ],
+  "process_exit": {
+    "bytes": 2,
+    "original": "/home/isavand/paper/evidence/material-e9-preparation-v3/exit-code.txt",
+    "path": "docs/evidence/spatial_head_only_e9_v1/exit-code.txt",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  "rank_measurements": 0,
+  "real_neural_constructions": 0,
+  "reference_generations": 0,
+  "saved_initial_states_verified": 2,
+  "schema_version": 1,
+  "scientific_import_blocker_verified": true,
+  "scientific_optimizer_updates": 0,
+  "scientific_queries": 0,
+  "skipped": 0,
+  "synthetic_toy_Adam_returns": 1,
+  "test_inventory": [
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_head_only_e9_v1::test_exact_trainable_set_registration_order_and_unchanged_forward",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_head_only_e9_v1::test_head_only_gradients_equal_unrestricted_model_partial_derivatives",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_head_only_e9_v1::test_joint_four_location_gradient_equals_shared_mean_without_frozen_gradients",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_head_only_e9_v1::test_frozen_values_and_state_stay_exact_after_toy_Adam",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_head_only_e9_v1::test_frozen_state_violations_fail_closed[value]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_head_only_e9_v1::test_frozen_state_violations_fail_closed[gradient]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_head_only_e9_v1::test_frozen_state_violations_fail_closed[buffer]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_head_only_e9_v1::test_frozen_state_violations_fail_closed[optimizer]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_head_only_e9_v1::test_frozen_buffer_signed_zero_is_also_bitwise_protected",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_head_only_e9_v1::test_strict_saved_initial_restoration_and_fresh_Adam[None]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_head_only_e9_v1::test_strict_saved_initial_restoration_and_fresh_Adam[shape]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_head_only_e9_v1::test_strict_saved_initial_restoration_and_fresh_Adam[identity]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_head_only_e9_v1::test_strict_saved_initial_restoration_and_fresh_Adam[optimizer_state]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_head_only_e9_v1::test_observer_handles_expected_absent_trunk_gradients_and_connected_heads",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_head_only_e9_v1::test_initial_observation_and_probe_do_not_change_cached_gradients",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_head_only_e9_v1::test_sampling_and_evaluation_adapters_are_exact_E8R_and_work_is_fixed",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_spatial_head_only_e9_v1::test_execution_is_gated_before_any_real_model_import"
+  ],
+  "trainable_parameter_tensors": 15,
+  "trainable_scalar_parameters": 2064
+}

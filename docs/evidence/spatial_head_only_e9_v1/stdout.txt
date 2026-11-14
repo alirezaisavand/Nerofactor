@@ -1,0 +1,10 @@
+.................                                                        [100%]
+=============================== warnings summary ===============================
+paper/Nerofactor-3d2-e2a/tests/scientific/test_spatial_head_only_e9_v1.py: 15 warnings
+  /home/isavand/anaconda3/lib/python3.9/site-packages/torch/nn/utils/weight_norm.py:134: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+    WeightNorm.apply(module, name, dim)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /home/isavand/paper/evidence/material-e9-preparation-v3/pytest.xml -
+17 passed, 15 warnings in 2.23s
+E9 scientific import blocker intact; no real shader/neural calls authorized or executed
