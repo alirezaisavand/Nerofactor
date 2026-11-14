@@ -1,0 +1,94 @@
+{
+  "JUnit": {
+    "bytes": 4048,
+    "original": "/home/isavand/paper/evidence/material-e7-preparation-v3/pytest.xml",
+    "path": "docs/evidence/hybrid_material_e7_v1/pytest.xml",
+    "sha256": "d58d4fe2c29e8e19c2e2fd562958def67efb529072959d478ccd3873c1c2674b"
+  },
+  "accepted_input_identities_verified": 480,
+  "console": {
+    "bytes": 278,
+    "original": "/home/isavand/paper/evidence/material-e7-preparation-v3/stdout.txt",
+    "path": "docs/evidence/hybrid_material_e7_v1/stdout.txt",
+    "sha256": "403a244e09144227094dc34b06be83231839318b017546b5880d04f901d0b31a"
+  },
+  "errors": 0,
+  "exit_code": 0,
+  "failed": 0,
+  "historical_tests_or_experiments_repeated": false,
+  "launcher": {
+    "bytes": 795,
+    "original": "/home/isavand/paper/evidence/material-e7-preparation-v3/launcher.py",
+    "path": "docs/evidence/hybrid_material_e7_v1/launcher.py",
+    "sha256": "9f6135ef3c0e2e0a129288fff8fe1a38cb815ceeb50051c889532279f5bc101d"
+  },
+  "new_source_sha256": {
+    "docs/protocols/HYBRID_MATERIAL_E7_V1.md": "6154a1a9f86aa3e88d6e4f1385626d62ee5d86aa3f4d3f558ad33ba8ffba10a7",
+    "experiments/hybrid_material_e7_v1.py": "ff636e8b052eba9a60a09e001a2e6474f05aed9de933975928d3a30d91086742",
+    "experiments/neural_projection_e7_v1.py": "6c4a39891b3710e9c725cc3495e25ed2204ef85e810819b6cedb39fad272905c",
+    "tests/scientific/test_hybrid_material_e7_v1.py": "24a969c6acc059c9776053f008423a3ac037d37e0ed59b414eea3364583cf2ed"
+  },
+  "original_preparation_evidence": "/home/isavand/paper/evidence/material-e7-preparation-v3",
+  "passed": 22,
+  "phase": "E.7 preparation only",
+  "predecessor_sources_verified": 381,
+  "preliminary_test_runs_preserved": [
+    "/home/isavand/paper/evidence/material-e7-preparation-v1",
+    "/home/isavand/paper/evidence/material-e7-preparation-v2"
+  ],
+  "process_exit": {
+    "bytes": 2,
+    "original": "/home/isavand/paper/evidence/material-e7-preparation-v3/exit-code.txt",
+    "path": "docs/evidence/hybrid_material_e7_v1/exit-code.txt",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  "real_neural_constructions": 0,
+  "reference_generations": 0,
+  "saved_data_checks": {
+    "common_saved_RNG_verified": true,
+    "reused_M3_LM_array_names": [
+      "J_partial",
+      "J_scaled",
+      "physical",
+      "predictions"
+    ],
+    "reused_M3_LM_physical_matches_final": true,
+    "reused_M3_LM_prediction_shape": [
+      24,
+      3,
+      3
+    ],
+    "state100_arrays_per_case": 350,
+    "state100_complete_restore_identity_bound": true
+  },
+  "schema_version": 1,
+  "scientific_import_blocker_verified": true,
+  "scientific_optimizer_updates": 0,
+  "scientific_queries": 0,
+  "skipped": 0,
+  "synthetic_toy_Adam_returns": 2,
+  "test_inventory": [
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_hybrid_material_e7_v1::test_projection_logit_derivatives_and_identity_bias_jacobian",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_hybrid_material_e7_v1::test_realized_projection_preserves_all_other_state_and_has_no_saturation",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_hybrid_material_e7_v1::test_rejected_or_interrupted_projection_restores_exact_biases[reject]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_hybrid_material_e7_v1::test_rejected_or_interrupted_projection_restores_exact_biases[exception]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_hybrid_material_e7_v1::test_rejected_or_interrupted_projection_restores_exact_biases[exception_after_commit]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_hybrid_material_e7_v1::test_invalid_teacher_fails_without_clipping[0-0.04]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_hybrid_material_e7_v1::test_invalid_teacher_fails_without_clipping[1-1.0]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_hybrid_material_e7_v1::test_invalid_teacher_fails_without_clipping[3-0.0]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_hybrid_material_e7_v1::test_invalid_teacher_fails_without_clipping[6-1.0]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_hybrid_material_e7_v1::test_invalid_teacher_fails_without_clipping[2-nan]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_hybrid_material_e7_v1::test_gauge_behavior_retains_teacher_and_near_isotropic_orientation",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_hybrid_material_e7_v1::test_acceptance_uses_fitting_objective_and_realization_only",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_hybrid_material_e7_v1::test_complete_numeric_state100_restore_or_fail_closed[None]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_hybrid_material_e7_v1::test_complete_numeric_state100_restore_or_fail_closed[step]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_hybrid_material_e7_v1::test_complete_numeric_state100_restore_or_fail_closed[shape]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_hybrid_material_e7_v1::test_complete_numeric_state100_restore_or_fail_closed[identity]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_hybrid_material_e7_v1::test_complete_numeric_state100_restore_or_fail_closed[options]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_hybrid_material_e7_v1::test_cached_control_gradient_survives_read_only_projection_probes",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_hybrid_material_e7_v1::test_caps_check_before_counting_and_native_counter_mismatch",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_hybrid_material_e7_v1::test_native_completed_panel_and_rejected_projection_short_panel",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_hybrid_material_e7_v1::test_capture_exception_removes_instrumentation",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_hybrid_material_e7_v1::test_execution_gate_and_accepted_sources_unchanged"
+  ]
+}
