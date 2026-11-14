@@ -1,0 +1,13 @@
+{
+  "accepted_inputs_verified": 346,
+  "direct_final_state_consistent": true,
+  "direct_snapshot_limit": "Final Adam snapshot has its own numeric manifest but is not selected by the sealed execution report; inventoried/hash-pinned offline, with step/physical/gradient consistency checks, not an exhaustive optimizer-transition reconstruction",
+  "direct_updates": 50,
+  "external_metric_sets_recomputed": 5,
+  "frozen_sources_verified": 377,
+  "maximum_FD_gate_bound_ratio": 0.03767001864230241,
+  "maximum_scaled_gradient_J_chain_discrepancy": 1.0068693237283017e-10,
+  "numeric_sensitivity_archives": 9,
+  "numerical_derivative_gate_passes": 9,
+  "original_N1_AS1_external_metrics_reproduced_exactly": true
+}

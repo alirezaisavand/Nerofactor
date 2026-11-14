@@ -1,0 +1,2131 @@
+{
+  "additional_derivative_queries": 0,
+  "additional_model_queries": 0,
+  "additional_optimizer_updates": 0,
+  "additional_shader_queries": 0,
+  "direct_relative_improvements": {
+    "Q": 0.42199261266682564,
+    "fitting_MSE": 0.6888514024997234,
+    "heldout": 0.39091374325252126,
+    "relighting": 0.40925870417720156
+  },
+  "direct_success": {
+    "all_passed": false,
+    "checks": {
+      "Q": false,
+      "albedo": false,
+      "held_out_radiance": false,
+      "metallic": false,
+      "orientation": true
+    }
+  },
+  "endpoint_truth_MSE_ratios": {
+    "AS1": {
+      "accepted": 45.468127201441916,
+      "independent_1": 52.07207019634064,
+      "independent_2": 73.0154277681589
+    },
+    "N1": {
+      "accepted": 21.831670241350473,
+      "independent_1": 25.62788251648164,
+      "independent_2": 36.34205559771841
+    }
+  },
+  "final_direct_parameters": [
+    0.6882617473602295,
+    0.24531802535057068,
+    -0.662399411201477,
+    0.6147928833961487,
+    0.3423584997653961,
+    0.20067057013511658,
+    0.7520141005516052
+  ],
+  "full_external_measurements": [
+    {
+      "Q_error": 3.751918704725648e-08,
+      "diffuse_relative_L2": 1.828250820542362e-05,
+      "physical": [
+        0.17000000178813934,
+        0.6200000047683716,
+        0.9100000262260437,
+        0.5600000023841858,
+        0.3100000023841858,
+        0.18000000715255737,
+        0.6499999761581421
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 1.446307821149612e-08,
+        "Q_relative_frobenius": 3.751918704725648e-08,
+        "albedo_RMSE": 4.565368207080273e-09,
+        "albedo_absolute_errors": [
+          2.38418573772492e-09,
+          2.384185793236071e-09,
+          7.152557379708213e-09
+        ],
+        "albedo_relative_L2": 1.1892582696023784e-08,
+        "major_axis_error_radians": 2.6226043559063325e-08,
+        "metallic_absolute_error": 2.384185793236071e-08,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 1.5026416092605851e-06,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.8601500113621868,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          1.7881393310492655e-09,
+          4.768371586472142e-09
+        ],
+        "sorted_axis_relative_errors": [
+          1.0518466653230973e-08,
+          7.690921913664745e-09
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "truth",
+      "residual_inner_product": -0.1749735305375955,
+      "specular_relative_L2": 0.012135157249878396,
+      "split": "fit",
+      "total_MSE": 1.2409530018721781e-06,
+      "total_relative_L2": 0.006810094536815585
+    },
+    {
+      "Q_error": 3.751918704725648e-08,
+      "diffuse_relative_L2": 1.595048543184428e-05,
+      "physical": [
+        0.17000000178813934,
+        0.6200000047683716,
+        0.9100000262260437,
+        0.5600000023841858,
+        0.3100000023841858,
+        0.18000000715255737,
+        0.6499999761581421
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 1.446307821149612e-08,
+        "Q_relative_frobenius": 3.751918704725648e-08,
+        "albedo_RMSE": 4.565368207080273e-09,
+        "albedo_absolute_errors": [
+          2.38418573772492e-09,
+          2.384185793236071e-09,
+          7.152557379708213e-09
+        ],
+        "albedo_relative_L2": 1.1892582696023784e-08,
+        "major_axis_error_radians": 2.6226043559063325e-08,
+        "metallic_absolute_error": 2.384185793236071e-08,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 1.5026416092605851e-06,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.8601500113621868,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          1.7881393310492655e-09,
+          4.768371586472142e-09
+        ],
+        "sorted_axis_relative_errors": [
+          1.0518466653230973e-08,
+          7.690921913664745e-09
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "truth",
+      "residual_inner_product": 0.1854258379499822,
+      "specular_relative_L2": 0.006627552970333354,
+      "split": "held_out",
+      "total_MSE": 2.9598544213254184e-07,
+      "total_relative_L2": 0.003561457637021468
+    },
+    {
+      "Q_error": 3.751918704725648e-08,
+      "diffuse_relative_L2": 6.574692052585623e-05,
+      "physical": [
+        0.17000000178813934,
+        0.6200000047683716,
+        0.9100000262260437,
+        0.5600000023841858,
+        0.3100000023841858,
+        0.18000000715255737,
+        0.6499999761581421
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 1.446307821149612e-08,
+        "Q_relative_frobenius": 3.751918704725648e-08,
+        "albedo_RMSE": 4.565368207080273e-09,
+        "albedo_absolute_errors": [
+          2.38418573772492e-09,
+          2.384185793236071e-09,
+          7.152557379708213e-09
+        ],
+        "albedo_relative_L2": 1.1892582696023784e-08,
+        "major_axis_error_radians": 2.6226043559063325e-08,
+        "metallic_absolute_error": 2.384185793236071e-08,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 1.5026416092605851e-06,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.8601500113621868,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          1.7881393310492655e-09,
+          4.768371586472142e-09
+        ],
+        "sorted_axis_relative_errors": [
+          1.0518466653230973e-08,
+          7.690921913664745e-09
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "truth",
+      "residual_inner_product": -0.26002428643844056,
+      "specular_relative_L2": 0.01669543452701356,
+      "split": "relight",
+      "total_MSE": 1.8915834099451048e-07,
+      "total_relative_L2": 0.009462085244345629
+    },
+    {
+      "Q_error": 0.4246977180000168,
+      "diffuse_relative_L2": 0.4249772058952409,
+      "physical": [
+        0.7299216389656067,
+        0.313015878200531,
+        -0.6544979810714722,
+        0.6715710163116455,
+        0.37384501099586487,
+        0.21982820332050323,
+        0.8326048851013184
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 0.1637145363502038,
+        "Q_relative_frobenius": 0.4246977180000168,
+        "albedo_RMSE": 0.07769719619483256,
+        "albedo_absolute_errors": [
+          0.11157101631164545,
+          0.06384501099586487,
+          0.03982820332050324
+        ],
+        "albedo_relative_L2": 0.20239776707674953,
+        "major_axis_error_radians": 0.00629834572342437,
+        "metallic_absolute_error": 0.18260488510131834,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 0.3608686278664877,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.6893327574964541,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          0.143015878200531,
+          0.1099216389656067
+        ],
+        "sorted_axis_relative_errors": [
+          0.8412698717678293,
+          0.17729296607355918
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "N1",
+      "residual_inner_product": -0.9927960409146512,
+      "specular_relative_L2": 0.342515075067408,
+      "split": "fit",
+      "total_MSE": 1.4315938897418121e-05,
+      "total_relative_L2": 0.023130519762282992
+    },
+    {
+      "Q_error": 0.4246977180000168,
+      "diffuse_relative_L2": 0.42497919304183834,
+      "physical": [
+        0.7299216389656067,
+        0.313015878200531,
+        -0.6544979810714722,
+        0.6715710163116455,
+        0.37384501099586487,
+        0.21982820332050323,
+        0.8326048851013184
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 0.1637145363502038,
+        "Q_relative_frobenius": 0.4246977180000168,
+        "albedo_RMSE": 0.07769719619483256,
+        "albedo_absolute_errors": [
+          0.11157101631164545,
+          0.06384501099586487,
+          0.03982820332050324
+        ],
+        "albedo_relative_L2": 0.20239776707674953,
+        "major_axis_error_radians": 0.00629834572342437,
+        "metallic_absolute_error": 0.18260488510131834,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 0.3608686278664877,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.6893327574964541,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          0.143015878200531,
+          0.1099216389656067
+        ],
+        "sorted_axis_relative_errors": [
+          0.8412698717678293,
+          0.17729296607355918
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "N1",
+      "residual_inner_product": -0.9769526703306999,
+      "specular_relative_L2": 0.3604639429894364,
+      "split": "held_out",
+      "total_MSE": 4.379376346249129e-05,
+      "total_relative_L2": 0.04332102677107935
+    },
+    {
+      "Q_error": 0.4246977180000168,
+      "diffuse_relative_L2": 0.42497803728029765,
+      "physical": [
+        0.7299216389656067,
+        0.313015878200531,
+        -0.6544979810714722,
+        0.6715710163116455,
+        0.37384501099586487,
+        0.21982820332050323,
+        0.8326048851013184
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 0.1637145363502038,
+        "Q_relative_frobenius": 0.4246977180000168,
+        "albedo_RMSE": 0.07769719619483256,
+        "albedo_absolute_errors": [
+          0.11157101631164545,
+          0.06384501099586487,
+          0.03982820332050324
+        ],
+        "albedo_relative_L2": 0.20239776707674953,
+        "major_axis_error_radians": 0.00629834572342437,
+        "metallic_absolute_error": 0.18260488510131834,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 0.3608686278664877,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.6893327574964541,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          0.143015878200531,
+          0.1099216389656067
+        ],
+        "sorted_axis_relative_errors": [
+          0.8412698717678293,
+          0.17729296607355918
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "N1",
+      "residual_inner_product": -0.9360505879896857,
+      "specular_relative_L2": 0.3452176278959578,
+      "split": "relight",
+      "total_MSE": 1.0345751811845751e-05,
+      "total_relative_L2": 0.06997697038038195
+    },
+    {
+      "Q_error": 0.6280131957955594,
+      "diffuse_relative_L2": 0.7033397808504529,
+      "physical": [
+        0.7719231247901917,
+        0.3827124238014221,
+        -0.6753164529800415,
+        0.7474095821380615,
+        0.4215545356273651,
+        0.25010859966278076,
+        0.9227514863014221
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 0.24208957292178265,
+        "Q_relative_frobenius": 0.6280131957955594,
+        "albedo_RMSE": 0.1322648626089282,
+        "albedo_absolute_errors": [
+          0.18740958213806147,
+          0.11155453562736511,
+          0.07010859966278077
+        ],
+        "albedo_relative_L2": 0.34454412985034505,
+        "major_axis_error_radians": 0.014520126185144967,
+        "metallic_absolute_error": 0.2727514863014221,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 0.8319419484061992,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.6053830818897019,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          0.2127124238014221,
+          0.15192312479019165
+        ],
+        "sorted_axis_relative_errors": [
+          1.251249551773071,
+          0.24503729804869623
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "AS1",
+      "residual_inner_product": -0.9943030014727468,
+      "specular_relative_L2": 0.5644563091750646,
+      "split": "fit",
+      "total_MSE": 3.069861063775048e-05,
+      "total_relative_L2": 0.03387153152977598
+    },
+    {
+      "Q_error": 0.6280131957955594,
+      "diffuse_relative_L2": 0.703340805686151,
+      "physical": [
+        0.7719231247901917,
+        0.3827124238014221,
+        -0.6753164529800415,
+        0.7474095821380615,
+        0.4215545356273651,
+        0.25010859966278076,
+        0.9227514863014221
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 0.24208957292178265,
+        "Q_relative_frobenius": 0.6280131957955594,
+        "albedo_RMSE": 0.1322648626089282,
+        "albedo_absolute_errors": [
+          0.18740958213806147,
+          0.11155453562736511,
+          0.07010859966278077
+        ],
+        "albedo_relative_L2": 0.34454412985034505,
+        "major_axis_error_radians": 0.014520126185144967,
+        "metallic_absolute_error": 0.2727514863014221,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 0.8319419484061992,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.6053830818897019,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          0.2127124238014221,
+          0.15192312479019165
+        ],
+        "sorted_axis_relative_errors": [
+          1.251249551773071,
+          0.24503729804869623
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "AS1",
+      "residual_inner_product": -0.9834741572915646,
+      "specular_relative_L2": 0.6004593750522116,
+      "split": "held_out",
+      "total_MSE": 8.658889384410819e-05,
+      "total_relative_L2": 0.06091492350019701
+    },
+    {
+      "Q_error": 0.6280131957955594,
+      "diffuse_relative_L2": 0.703340181831565,
+      "physical": [
+        0.7719231247901917,
+        0.3827124238014221,
+        -0.6753164529800415,
+        0.7474095821380615,
+        0.4215545356273651,
+        0.25010859966278076,
+        0.9227514863014221
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 0.24208957292178265,
+        "Q_relative_frobenius": 0.6280131957955594,
+        "albedo_RMSE": 0.1322648626089282,
+        "albedo_absolute_errors": [
+          0.18740958213806147,
+          0.11155453562736511,
+          0.07010859966278077
+        ],
+        "albedo_relative_L2": 0.34454412985034505,
+        "major_axis_error_radians": 0.014520126185144967,
+        "metallic_absolute_error": 0.2727514863014221,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 0.8319419484061992,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.6053830818897019,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          0.2127124238014221,
+          0.15192312479019165
+        ],
+        "sorted_axis_relative_errors": [
+          1.251249551773071,
+          0.24503729804869623
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "AS1",
+      "residual_inner_product": -0.9559423089700496,
+      "specular_relative_L2": 0.5704316794525752,
+      "split": "relight",
+      "total_MSE": 1.9491681356561595e-05,
+      "total_relative_L2": 0.09605030751597793
+    },
+    {
+      "Q_error": 2.7528280734838348e-08,
+      "diffuse_relative_L2": 1.828250820542362e-05,
+      "physical": [
+        0.6200000047683716,
+        0.17000000178813934,
+        -0.6607963442802429,
+        0.5600000023841858,
+        0.3100000023841858,
+        0.18000000715255737,
+        0.6499999761581421
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 1.0611735184840642e-08,
+        "Q_relative_frobenius": 2.7528280734838348e-08,
+        "albedo_RMSE": 4.565368207080273e-09,
+        "albedo_absolute_errors": [
+          2.38418573772492e-09,
+          2.384185793236071e-09,
+          7.152557379708213e-09
+        ],
+        "albedo_relative_L2": 1.1892582696023784e-08,
+        "major_axis_error_radians": 1.7485346381566762e-08,
+        "metallic_absolute_error": 2.384185793236071e-08,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 1.001836550988121e-06,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.8601500113621868,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          1.7881393310492655e-09,
+          4.768371586472142e-09
+        ],
+        "sorted_axis_relative_errors": [
+          1.0518466653230973e-08,
+          7.690921913664745e-09
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "truth_swapped",
+      "residual_inner_product": 0.11390258863684272,
+      "specular_relative_L2": 0.00857841951916632,
+      "split": "fit",
+      "total_MSE": 6.206201286789064e-07,
+      "total_relative_L2": 0.004816021336449102
+    },
+    {
+      "Q_error": 2.7528280734838348e-08,
+      "diffuse_relative_L2": 1.595048543184428e-05,
+      "physical": [
+        0.6200000047683716,
+        0.17000000178813934,
+        -0.6607963442802429,
+        0.5600000023841858,
+        0.3100000023841858,
+        0.18000000715255737,
+        0.6499999761581421
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 1.0611735184840642e-08,
+        "Q_relative_frobenius": 2.7528280734838348e-08,
+        "albedo_RMSE": 4.565368207080273e-09,
+        "albedo_absolute_errors": [
+          2.38418573772492e-09,
+          2.384185793236071e-09,
+          7.152557379708213e-09
+        ],
+        "albedo_relative_L2": 1.1892582696023784e-08,
+        "major_axis_error_radians": 1.7485346381566762e-08,
+        "metallic_absolute_error": 2.384185793236071e-08,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 1.001836550988121e-06,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.8601500113621868,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          1.7881393310492655e-09,
+          4.768371586472142e-09
+        ],
+        "sorted_axis_relative_errors": [
+          1.0518466653230973e-08,
+          7.690921913664745e-09
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "truth_swapped",
+      "residual_inner_product": 0.25533675990854066,
+      "specular_relative_L2": 0.011936946678817836,
+      "split": "held_out",
+      "total_MSE": 9.599864398606278e-07,
+      "total_relative_L2": 0.006413943893375117
+    },
+    {
+      "Q_error": 2.7528280734838348e-08,
+      "diffuse_relative_L2": 6.574692052585623e-05,
+      "physical": [
+        0.6200000047683716,
+        0.17000000178813934,
+        -0.6607963442802429,
+        0.5600000023841858,
+        0.3100000023841858,
+        0.18000000715255737,
+        0.6499999761581421
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 1.0611735184840642e-08,
+        "Q_relative_frobenius": 2.7528280734838348e-08,
+        "albedo_RMSE": 4.565368207080273e-09,
+        "albedo_absolute_errors": [
+          2.38418573772492e-09,
+          2.384185793236071e-09,
+          7.152557379708213e-09
+        ],
+        "albedo_relative_L2": 1.1892582696023784e-08,
+        "major_axis_error_radians": 1.7485346381566762e-08,
+        "metallic_absolute_error": 2.384185793236071e-08,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 1.001836550988121e-06,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.8601500113621868,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          1.7881393310492655e-09,
+          4.768371586472142e-09
+        ],
+        "sorted_axis_relative_errors": [
+          1.0518466653230973e-08,
+          7.690921913664745e-09
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "truth_swapped",
+      "residual_inner_product": 0.3549825424995608,
+      "specular_relative_L2": 0.012301340622408799,
+      "split": "relight",
+      "total_MSE": 1.0317979266825375e-07,
+      "total_relative_L2": 0.006988298278962909
+    },
+    {
+      "Q_error": 0.245478418387551,
+      "diffuse_relative_L2": 0.22027758802138958,
+      "physical": [
+        0.6882617473602295,
+        0.24531802535057068,
+        -0.662399411201477,
+        0.6147928833961487,
+        0.3423584997653961,
+        0.20067057013511658,
+        0.7520141005516052
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 0.09462821142424331,
+        "Q_relative_frobenius": 0.245478418387551,
+        "albedo_RMSE": 0.03862902642505096,
+        "albedo_absolute_errors": [
+          0.05479288339614863,
+          0.03235849976539612,
+          0.020670570135116584
+        ],
+        "albedo_relative_L2": 0.10062690902222093,
+        "major_axis_error_radians": 0.0016030844065805126,
+        "metallic_absolute_error": 0.1020141005516052,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 0.09184997070029746,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.7745547644147757,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          0.07531802535057067,
+          0.0682617473602295
+        ],
+        "sorted_axis_relative_errors": [
+          0.4430472079445333,
+          0.11009959251649919
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "direct_final",
+      "residual_inner_product": -0.9917712720223119,
+      "specular_relative_L2": 0.1768848973895284,
+      "split": "fit",
+      "total_MSE": 4.3334908335870245e-06,
+      "total_relative_L2": 0.012726073140603198
+    },
+    {
+      "Q_error": 0.245478418387551,
+      "diffuse_relative_L2": 0.22028028242120987,
+      "physical": [
+        0.6882617473602295,
+        0.24531802535057068,
+        -0.662399411201477,
+        0.6147928833961487,
+        0.3423584997653961,
+        0.20067057013511658,
+        0.7520141005516052
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 0.09462821142424331,
+        "Q_relative_frobenius": 0.245478418387551,
+        "albedo_RMSE": 0.03862902642505096,
+        "albedo_absolute_errors": [
+          0.05479288339614863,
+          0.03235849976539612,
+          0.020670570135116584
+        ],
+        "albedo_relative_L2": 0.10062690902222093,
+        "major_axis_error_radians": 0.0016030844065805126,
+        "metallic_absolute_error": 0.1020141005516052,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 0.09184997070029746,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.7745547644147757,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          0.07531802535057067,
+          0.0682617473602295
+        ],
+        "sorted_axis_relative_errors": [
+          0.4430472079445333,
+          0.11009959251649919
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "direct_final",
+      "residual_inner_product": -0.9679043685508669,
+      "specular_relative_L2": 0.18566726309924483,
+      "split": "held_out",
+      "total_MSE": 1.624687611681984e-05,
+      "total_relative_L2": 0.026386242034454038
+    },
+    {
+      "Q_error": 0.245478418387551,
+      "diffuse_relative_L2": 0.22027866014325015,
+      "physical": [
+        0.6882617473602295,
+        0.24531802535057068,
+        -0.662399411201477,
+        0.6147928833961487,
+        0.3423584997653961,
+        0.20067057013511658,
+        0.7520141005516052
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 0.09462821142424331,
+        "Q_relative_frobenius": 0.245478418387551,
+        "albedo_RMSE": 0.03862902642505096,
+        "albedo_absolute_errors": [
+          0.05479288339614863,
+          0.03235849976539612,
+          0.020670570135116584
+        ],
+        "albedo_relative_L2": 0.10062690902222093,
+        "major_axis_error_radians": 0.0016030844065805126,
+        "metallic_absolute_error": 0.1020141005516052,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 0.09184997070029746,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.7745547644147757,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          0.07531802535057067,
+          0.0682617473602295
+        ],
+        "sorted_axis_relative_errors": [
+          0.4430472079445333,
+          0.11009959251649919
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "direct_final",
+      "residual_inner_product": -0.916519179276674,
+      "specular_relative_L2": 0.17803524100248388,
+      "split": "relight",
+      "total_MSE": 3.6104116207659973e-06,
+      "total_relative_L2": 0.04133828616026042
+    }
+  ],
+  "full_objective_measurements": [
+    {
+      "fitting_MSE": 6.540619210682053e-07,
+      "individual_tape_MSE": [
+        2.128325016910955e-06,
+        2.8706116792645544e-06,
+        2.342919691558314e-06,
+        1.6122100974134957e-06
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 1.446307821149612e-08,
+        "Q_relative_frobenius": 3.751918704725648e-08,
+        "albedo_RMSE": 4.565368207080273e-09,
+        "albedo_absolute_errors": [
+          2.38418573772492e-09,
+          2.384185793236071e-09,
+          7.152557379708213e-09
+        ],
+        "albedo_relative_L2": 1.1892582696023784e-08,
+        "major_axis_error_radians": 2.6226043559063325e-08,
+        "metallic_absolute_error": 2.384185793236071e-08,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 1.5026416092605851e-06,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.8601500113621868,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          1.7881393310492655e-09,
+          4.768371586472142e-09
+        ],
+        "sorted_axis_relative_errors": [
+          1.0518466653230973e-08,
+          7.690921913664745e-09
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "truth",
+      "scaled_gradient": [
+        -1.1273286945652217e-05,
+        -2.439535455778241e-05,
+        -1.5315723675652675e-05,
+        -4.002546120318584e-06,
+        -1.8066211850964464e-06,
+        -6.638865670538507e-07,
+        2.8213702535140328e-05
+      ],
+      "scaled_gradient_norm": 4.210142189920538e-05,
+      "tapes": "accepted"
+    },
+    {
+      "fitting_MSE": 8.769242754169682e-07,
+      "individual_tape_MSE": [
+        1.5063472774726554e-06,
+        2.774894336478726e-06,
+        6.600908885157858e-06,
+        2.0635862848141086e-06
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 1.446307821149612e-08,
+        "Q_relative_frobenius": 3.751918704725648e-08,
+        "albedo_RMSE": 4.565368207080273e-09,
+        "albedo_absolute_errors": [
+          2.38418573772492e-09,
+          2.384185793236071e-09,
+          7.152557379708213e-09
+        ],
+        "albedo_relative_L2": 1.1892582696023784e-08,
+        "major_axis_error_radians": 2.6226043559063325e-08,
+        "metallic_absolute_error": 2.384185793236071e-08,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 1.5026416092605851e-06,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.8601500113621868,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          1.7881393310492655e-09,
+          4.768371586472142e-09
+        ],
+        "sorted_axis_relative_errors": [
+          1.0518466653230973e-08,
+          7.690921913664745e-09
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "truth",
+      "scaled_gradient": [
+        1.4853589818812906e-05,
+        -1.6814193804748354e-05,
+        -9.696273888727395e-06,
+        4.3264153646305203e-05,
+        2.5577643100405112e-05,
+        1.6380639863200486e-05,
+        -2.3723892809357494e-05
+      ],
+      "scaled_gradient_norm": 6.288493651738037e-05,
+      "tapes": "independent_1"
+    },
+    {
+      "fitting_MSE": 5.23620940384717e-07,
+      "individual_tape_MSE": [
+        3.594353384417205e-06,
+        5.319280990923044e-06,
+        6.275760038251812e-06,
+        2.749559774004674e-06
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 1.446307821149612e-08,
+        "Q_relative_frobenius": 3.751918704725648e-08,
+        "albedo_RMSE": 4.565368207080273e-09,
+        "albedo_absolute_errors": [
+          2.38418573772492e-09,
+          2.384185793236071e-09,
+          7.152557379708213e-09
+        ],
+        "albedo_relative_L2": 1.1892582696023784e-08,
+        "major_axis_error_radians": 2.6226043559063325e-08,
+        "metallic_absolute_error": 2.384185793236071e-08,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 1.5026416092605851e-06,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.8601500113621868,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          1.7881393310492655e-09,
+          4.768371586472142e-09
+        ],
+        "sorted_axis_relative_errors": [
+          1.0518466653230973e-08,
+          7.690921913664745e-09
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "truth",
+      "scaled_gradient": [
+        -1.2041009031236171e-05,
+        -1.4067821321077644e-05,
+        -3.93574251090185e-05,
+        3.201318031642586e-05,
+        1.771953611751087e-05,
+        1.0288503290212248e-05,
+        -1.144589259638451e-05
+      ],
+      "scaled_gradient_norm": 5.8886193949826e-05,
+      "tapes": "independent_2"
+    },
+    {
+      "fitting_MSE": 1.4279264178185258e-05,
+      "individual_tape_MSE": [
+        2.2368791253425926e-05,
+        2.7000146899066732e-05,
+        1.609208654861868e-05,
+        2.406453066516282e-05
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 0.1637145363502038,
+        "Q_relative_frobenius": 0.4246977180000168,
+        "albedo_RMSE": 0.07769719619483256,
+        "albedo_absolute_errors": [
+          0.11157101631164545,
+          0.06384501099586487,
+          0.03982820332050324
+        ],
+        "albedo_relative_L2": 0.20239776707674953,
+        "major_axis_error_radians": 0.00629834572342437,
+        "metallic_absolute_error": 0.18260488510131834,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 0.3608686278664877,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.6893327574964541,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          0.143015878200531,
+          0.1099216389656067
+        ],
+        "sorted_axis_relative_errors": [
+          0.8412698717678293,
+          0.17729296607355918
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "N1",
+      "scaled_gradient": [
+        -6.029600626789033e-06,
+        4.1562449187040326e-05,
+        2.590696770062143e-05,
+        0.00016331119695678353,
+        -3.866973565891385e-05,
+        -7.857580203562975e-05,
+        3.0805604183115065e-05
+      ],
+      "scaled_gradient_norm": 0.00019422667598350586,
+      "tapes": "accepted"
+    },
+    {
+      "fitting_MSE": 2.2473712306236848e-05,
+      "individual_tape_MSE": [
+        3.745190254890454e-05,
+        2.4695621704642428e-05,
+        2.9281558194738607e-05,
+        2.708472595656831e-05
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 0.1637145363502038,
+        "Q_relative_frobenius": 0.4246977180000168,
+        "albedo_RMSE": 0.07769719619483256,
+        "albedo_absolute_errors": [
+          0.11157101631164545,
+          0.06384501099586487,
+          0.03982820332050324
+        ],
+        "albedo_relative_L2": 0.20239776707674953,
+        "major_axis_error_radians": 0.00629834572342437,
+        "metallic_absolute_error": 0.18260488510131834,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 0.3608686278664877,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.6893327574964541,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          0.143015878200531,
+          0.1099216389656067
+        ],
+        "sorted_axis_relative_errors": [
+          0.8412698717678293,
+          0.17729296607355918
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "N1",
+      "scaled_gradient": [
+        -1.7658574506640433e-07,
+        3.218610305339098e-05,
+        5.540941873898438e-06,
+        0.00015285785775631666,
+        -4.293449455872178e-05,
+        -7.967319834278896e-05,
+        0.00011808065755758435
+      ],
+      "scaled_gradient_norm": 0.00021579257209969699,
+      "tapes": "independent_1"
+    },
+    {
+      "fitting_MSE": 1.902946132759098e-05,
+      "individual_tape_MSE": [
+        2.03883002950516e-05,
+        3.0906953881027e-05,
+        2.4539114207885746e-05,
+        2.3386245522989092e-05
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 0.1637145363502038,
+        "Q_relative_frobenius": 0.4246977180000168,
+        "albedo_RMSE": 0.07769719619483256,
+        "albedo_absolute_errors": [
+          0.11157101631164545,
+          0.06384501099586487,
+          0.03982820332050324
+        ],
+        "albedo_relative_L2": 0.20239776707674953,
+        "major_axis_error_radians": 0.00629834572342437,
+        "metallic_absolute_error": 0.18260488510131834,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 0.3608686278664877,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.6893327574964541,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          0.143015878200531,
+          0.1099216389656067
+        ],
+        "sorted_axis_relative_errors": [
+          0.8412698717678293,
+          0.17729296607355918
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "N1",
+      "scaled_gradient": [
+        -1.755549106746912e-05,
+        3.5949402954429383e-05,
+        5.8927791721912964e-05,
+        0.00028382701566442847,
+        2.8594651666935533e-05,
+        -3.872640081681311e-05,
+        -5.4325653763953596e-05
+      ],
+      "scaled_gradient_norm": 0.000301495404904711,
+      "tapes": "independent_2"
+    },
+    {
+      "fitting_MSE": 2.9738970624748617e-05,
+      "individual_tape_MSE": [
+        4.5104519383702375e-05,
+        5.0187409411254626e-05,
+        3.139198304600692e-05,
+        4.229532797849535e-05
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 0.24208957292178265,
+        "Q_relative_frobenius": 0.6280131957955594,
+        "albedo_RMSE": 0.1322648626089282,
+        "albedo_absolute_errors": [
+          0.18740958213806147,
+          0.11155453562736511,
+          0.07010859966278077
+        ],
+        "albedo_relative_L2": 0.34454412985034505,
+        "major_axis_error_radians": 0.014520126185144967,
+        "metallic_absolute_error": 0.2727514863014221,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 0.8319419484061992,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.6053830818897019,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          0.2127124238014221,
+          0.15192312479019165
+        ],
+        "sorted_axis_relative_errors": [
+          1.251249551773071,
+          0.24503729804869623
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "AS1",
+      "scaled_gradient": [
+        1.5691699809394775e-05,
+        2.979063894599676e-05,
+        -3.451623773984679e-05,
+        2.065620537905488e-05,
+        0.0001434813893865794,
+        7.53193671698682e-05,
+        3.342194395372644e-05
+      ],
+      "scaled_gradient_norm": 0.00017357621844282957,
+      "tapes": "accepted"
+    },
+    {
+      "fitting_MSE": 4.566326242638752e-05,
+      "individual_tape_MSE": [
+        6.980290418165719e-05,
+        4.5174390324841254e-05,
+        5.6856541601650666e-05,
+        5.3689849682668e-05
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 0.24208957292178265,
+        "Q_relative_frobenius": 0.6280131957955594,
+        "albedo_RMSE": 0.1322648626089282,
+        "albedo_absolute_errors": [
+          0.18740958213806147,
+          0.11155453562736511,
+          0.07010859966278077
+        ],
+        "albedo_relative_L2": 0.34454412985034505,
+        "major_axis_error_radians": 0.014520126185144967,
+        "metallic_absolute_error": 0.2727514863014221,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 0.8319419484061992,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.6053830818897019,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          0.2127124238014221,
+          0.15192312479019165
+        ],
+        "sorted_axis_relative_errors": [
+          1.251249551773071,
+          0.24503729804869623
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "AS1",
+      "scaled_gradient": [
+        3.067209734581411e-05,
+        -1.741598651278764e-05,
+        -5.651450262730688e-05,
+        1.0767435014713556e-05,
+        0.00013864181528333575,
+        7.325153273995966e-05,
+        0.00017211967497132719
+      ],
+      "scaled_gradient_norm": 0.00024241791046013893,
+      "tapes": "independent_1"
+    },
+    {
+      "fitting_MSE": 3.823240695055574e-05,
+      "individual_tape_MSE": [
+        3.708771295602827e-05,
+        5.870453829820007e-05,
+        4.8103943588430505e-05,
+        4.477577114094615e-05
+      ],
+      "physical_errors": {
+        "Q_absolute_frobenius": 0.24208957292178265,
+        "Q_relative_frobenius": 0.6280131957955594,
+        "albedo_RMSE": 0.1322648626089282,
+        "albedo_absolute_errors": [
+          0.18740958213806147,
+          0.11155453562736511,
+          0.07010859966278077
+        ],
+        "albedo_relative_L2": 0.34454412985034505,
+        "major_axis_error_radians": 0.014520126185144967,
+        "metallic_absolute_error": 0.2727514863014221,
+        "metallic_near_boundary": false,
+        "orientation_degrees": 0.8319419484061992,
+        "orientation_identifiable": true,
+        "orientation_reason": null,
+        "prediction_anisotropy_gap": 0.6053830818897019,
+        "protocol": "known-material-recovery-metrics-v1",
+        "sorted_axis_absolute_errors": [
+          0.2127124238014221,
+          0.15192312479019165
+        ],
+        "sorted_axis_relative_errors": [
+          1.251249551773071,
+          0.24503729804869623
+        ],
+        "truth_anisotropy_gap": 0.8601500120977499
+      },
+      "point": "AS1",
+      "scaled_gradient": [
+        2.6080780662596223e-06,
+        -1.5977496514096855e-06,
+        1.2499169078062588e-07,
+        0.0001532435999251902,
+        0.0002184080658480525,
+        0.00011959340190514922,
+        -7.40877294447273e-05
+      ],
+      "scaled_gradient_norm": 0.0003016398980193298,
+      "tapes": "independent_2"
+    },
+    {
+      "fitting_MSE": 6.71403540764004e-07,
+      "point": "truth_swapped",
+      "scaled_gradient_norm": null,
+      "tapes": "accepted"
+    },
+    {
+      "fitting_MSE": 6.524559807985497e-07,
+      "point": "truth_swapped",
+      "scaled_gradient_norm": null,
+      "tapes": "independent_1"
+    },
+    {
+      "fitting_MSE": 1.02580838756694e-06,
+      "point": "truth_swapped",
+      "scaled_gradient_norm": null,
+      "tapes": "independent_2"
+    },
+    {
+      "fitting_MSE": 4.442973022378283e-06,
+      "point": "direct_final",
+      "scaled_gradient_norm": 5.6700032764842674e-05,
+      "tapes": "accepted"
+    }
+  ],
+  "full_sensitivity_measurements": [
+    {
+      "component_minimum_SV_gain": 1.6794946049714299,
+      "component_singular_values": [
+        0.2443412288296233,
+        0.17252660252068747,
+        0.1701035417913271,
+        0.17004358114507773,
+        0.06706299273504013,
+        0.034461779944035716,
+        0.022340198790424717
+      ],
+      "condition_ratio": 19.435496260141413,
+      "correlations": [
+        [
+          0.9999999999999999,
+          0.41562389381154835,
+          -0.04797763113310229,
+          -0.44076230241036,
+          -0.2516274187749526,
+          -0.15327728380187927,
+          0.27829326226773243
+        ],
+        [
+          0.41562389381154835,
+          1.0000000000000002,
+          0.06497219592184235,
+          -0.7141955013218709,
+          -0.41047705549392616,
+          -0.2525434736241307,
+          0.7022275037499031
+        ],
+        [
+          -0.04797763113310229,
+          0.06497219592184235,
+          1.0,
+          0.02234632838356847,
+          0.012351217332592363,
+          0.0071537621424316526,
+          -0.016769424334355847
+        ],
+        [
+          -0.44076230241036,
+          -0.7141955013218709,
+          0.02234632838356847,
+          1.0000000000000002,
+          0.0,
+          0.0,
+          -0.7441339514574995
+        ],
+        [
+          -0.2516274187749526,
+          -0.41047705549392616,
+          0.012351217332592363,
+          0.0,
+          1.0000000000000002,
+          0.0,
+          -0.4499025138758671
+        ],
+        [
+          -0.15327728380187927,
+          -0.2525434736241307,
+          0.0071537621424316526,
+          0.0,
+          0.0,
+          1.0000000000000002,
+          -0.29690244868967386
+        ],
+        [
+          0.27829326226773243,
+          0.7022275037499031,
+          -0.016769424334355847,
+          -0.7441339514574995,
+          -0.4499025138758671,
+          -0.29690244868967386,
+          1.0
+        ]
+      ],
+      "effective_rank": 7,
+      "point": "truth",
+      "singular_values": [
+        0.25852589746753096,
+        0.23819514801112143,
+        0.23818885352706695,
+        0.06706335464201164,
+        0.04579091069311336,
+        0.030521453249163052,
+        0.013301738942355668
+      ],
+      "tapes": "accepted",
+      "weak_aligned_scaled_direction": [
+        0.4837141689167255,
+        0.5697640954680285,
+        -0.03726974533824252,
+        0.2927540782183486,
+        0.17301558835958614,
+        0.11075163764942868,
+        0.5586547905605076
+      ]
+    },
+    {
+      "component_minimum_SV_gain": 1.6513979431448895,
+      "component_singular_values": [
+        0.244360911071481,
+        0.17256248645297903,
+        0.17018311480112014,
+        0.1701220078457545,
+        0.06718337683107853,
+        0.034477182091060654,
+        0.022872965678641537
+      ],
+      "condition_ratio": 18.671546537654002,
+      "correlations": [
+        [
+          1.0,
+          0.4082575695378396,
+          -0.07629997374442986,
+          -0.43347429285242683,
+          -0.2473043386510287,
+          -0.15049595579868602,
+          0.2756761742945352
+        ],
+        [
+          0.4082575695378396,
+          1.0000000000000002,
+          0.03416105355355693,
+          -0.7119961303398049,
+          -0.4091918313614744,
+          -0.2517335875609593,
+          0.7051169680171794
+        ],
+        [
+          -0.07629997374442986,
+          0.03416105355355693,
+          1.0000000000000002,
+          0.0463122020646893,
+          0.025652929096841567,
+          0.014910102265861813,
+          -0.051561856539019284
+        ],
+        [
+          -0.43347429285242683,
+          -0.7119961303398049,
+          0.0463122020646893,
+          1.0,
+          0.0,
+          0.0,
+          -0.7464727057929675
+        ],
+        [
+          -0.2473043386510287,
+          -0.4091918313614744,
+          0.025652929096841567,
+          0.0,
+          1.0,
+          0.0,
+          -0.4513839138648295
+        ],
+        [
+          -0.15049595579868602,
+          -0.2517335875609593,
+          0.014910102265861813,
+          0.0,
+          0.0,
+          1.0,
+          -0.297938033124799
+        ],
+        [
+          0.2756761742945352,
+          0.7051169680171794,
+          -0.051561856539019284,
+          -0.7464727057929675,
+          -0.4513839138648295,
+          -0.297938033124799,
+          1.0
+        ]
+      ],
+      "effective_rank": 7,
+      "point": "truth",
+      "singular_values": [
+        0.25861340381083897,
+        0.2383611440867047,
+        0.2383547796676166,
+        0.0671835306221916,
+        0.04522782022485105,
+        0.03049514088979113,
+        0.013850668625081799
+      ],
+      "tapes": "independent_1",
+      "weak_aligned_scaled_direction": [
+        0.4847050347970448,
+        0.5552050410560893,
+        -0.022277332519534267,
+        0.2933467839039594,
+        0.17347320572298255,
+        0.11113900901781047,
+        0.5725512588651344
+      ]
+    },
+    {
+      "component_minimum_SV_gain": 1.7757389450608698,
+      "component_singular_values": [
+        0.24433540485219227,
+        0.17237804255297912,
+        0.17017278637497243,
+        0.17010827055242597,
+        0.06649016634669914,
+        0.03370986960728436,
+        0.02279833272518857
+      ],
+      "condition_ratio": 20.131044506388225,
+      "correlations": [
+        [
+          1.0000000000000002,
+          0.40043214937240873,
+          -0.06258302795729842,
+          -0.425053753275264,
+          -0.2424522105300661,
+          -0.14749940529665412,
+          0.2521390225899957
+        ],
+        [
+          0.40043214937240873,
+          0.9999999999999999,
+          0.042411129279646236,
+          -0.712121090374047,
+          -0.40904593487721136,
+          -0.25144685186502436,
+          0.7034848207734307
+        ],
+        [
+          -0.06258302795729842,
+          0.042411129279646236,
+          0.9999999999999998,
+          0.022604079140262995,
+          0.012169054299761133,
+          0.006742840512803068,
+          -0.01615497842542713
+        ],
+        [
+          -0.425053753275264,
+          -0.712121090374047,
+          0.022604079140262995,
+          1.0000000000000002,
+          0.0,
+          0.0,
+          -0.7459438811803516
+        ],
+        [
+          -0.2424522105300661,
+          -0.40904593487721136,
+          0.012169054299761133,
+          0.0,
+          1.0000000000000002,
+          0.0,
+          -0.4510560772596628
+        ],
+        [
+          -0.14749940529665412,
+          -0.25144685186502436,
+          0.006742840512803068,
+          0.0,
+          0.0,
+          1.0000000000000002,
+          -0.2977146979797745
+        ],
+        [
+          0.2521390225899957,
+          0.7034848207734307,
+          -0.01615497842542713,
+          -0.7459438811803516,
+          -0.4510560772596628,
+          -0.2977146979797745,
+          0.9999999999999998
+        ]
+      ],
+      "effective_rank": 7,
+      "point": "truth",
+      "singular_values": [
+        0.25845817710918423,
+        0.23833410395254045,
+        0.2383278191567035,
+        0.06649632928442083,
+        0.04525931741930665,
+        0.030128399493919628,
+        0.012838786235218305
+      ],
+      "tapes": "independent_2",
+      "weak_aligned_scaled_direction": [
+        0.5123153954112831,
+        0.5313462073544584,
+        -0.02023322403821414,
+        0.28958181610220196,
+        0.1712904519279835,
+        0.10977900503333163,
+        0.5740603479729125
+      ]
+    },
+    {
+      "component_minimum_SV_gain": 2.4771116409013576,
+      "component_singular_values": [
+        0.28751965008445907,
+        0.17014027935405593,
+        0.15878224358925608,
+        0.1587233262382785,
+        0.0665342604076642,
+        0.041574630770740494,
+        0.02957038066497842
+      ],
+      "condition_ratio": 20.541826409834545,
+      "correlations": [
+        [
+          1.0,
+          0.6436136362578938,
+          -0.07940567925878003,
+          -0.5996884936004503,
+          -0.3385668199247856,
+          -0.20348583226213515,
+          0.5194213492795237
+        ],
+        [
+          0.6436136362578938,
+          1.0,
+          0.05270645430712311,
+          -0.7377285086658585,
+          -0.4165804518831305,
+          -0.2504472150926479,
+          0.7852710428332297
+        ],
+        [
+          -0.07940567925878003,
+          0.05270645430712311,
+          1.0,
+          0.015066490802059398,
+          0.008018666771672334,
+          0.004372759330876374,
+          -0.006286362641028635
+        ],
+        [
+          -0.5996884936004503,
+          -0.7377285086658585,
+          0.015066490802059398,
+          1.0,
+          0.0,
+          0.0,
+          -0.7801001853079778
+        ],
+        [
+          -0.3385668199247856,
+          -0.4165804518831305,
+          0.008018666771672334,
+          0.0,
+          1.0,
+          0.0,
+          -0.46061511596919186
+        ],
+        [
+          -0.20348583226213515,
+          -0.2504472150926479,
+          0.004372759330876374,
+          0.0,
+          0.0,
+          1.0,
+          -0.2953416733737459
+        ],
+        [
+          0.5194213492795237,
+          0.7852710428332297,
+          -0.006286362641028635,
+          -0.7801001853079778,
+          -0.46061511596919186,
+          -0.2953416733737459,
+          1.0000000000000002
+        ]
+      ],
+      "effective_rank": 7,
+      "point": "N1",
+      "singular_values": [
+        0.2452168955419734,
+        0.20166643715462415,
+        0.20165419094661138,
+        0.06661791033386859,
+        0.05448162156492371,
+        0.03388091156927966,
+        0.011937443664920373
+      ],
+      "tapes": "accepted",
+      "weak_aligned_scaled_direction": [
+        0.43573627611766835,
+        0.3219258511116648,
+        -0.007897298963362009,
+        0.4618002447347619,
+        0.26835148810646453,
+        0.16827824308964104,
+        0.6267740601100569
+      ]
+    },
+    {
+      "component_minimum_SV_gain": 2.1287625847668292,
+      "component_singular_values": [
+        0.2875360799548617,
+        0.1702529682088851,
+        0.15875003296940227,
+        0.15869123991812153,
+        0.06604549972650572,
+        0.041418581806578904,
+        0.0306162997783528
+      ],
+      "condition_ratio": 17.055195500763606,
+      "correlations": [
+        [
+          0.9999999999999998,
+          0.6388652789730102,
+          -0.07271828566365962,
+          -0.6080263593614363,
+          -0.3434354343519803,
+          -0.2065597704679256,
+          0.5345351205720836
+        ],
+        [
+          0.6388652789730102,
+          1.0,
+          0.04813455594276529,
+          -0.7313367871721953,
+          -0.4129676306256237,
+          -0.2482719423584012,
+          0.7742615156028466
+        ],
+        [
+          -0.07271828566365962,
+          0.04813455594276529,
+          1.0,
+          0.01031460079663565,
+          0.006084564773770352,
+          0.0038963320917421483,
+          -0.012061377651173951
+        ],
+        [
+          -0.6080263593614363,
+          -0.7313367871721953,
+          0.01031460079663565,
+          1.0,
+          0.0,
+          0.0,
+          -0.7767827316281608
+        ],
+        [
+          -0.3434354343519803,
+          -0.4129676306256237,
+          0.006084564773770352,
+          0.0,
+          1.0,
+          0.0,
+          -0.4586789994944885
+        ],
+        [
+          -0.2065597704679256,
+          -0.2482719423584012,
+          0.0038963320917421483,
+          0.0,
+          0.0,
+          1.0,
+          -0.29412012430415496
+        ],
+        [
+          0.5345351205720836,
+          0.7742615156028466,
+          -0.012061377651173951,
+          -0.7767827316281608,
+          -0.4586789994944885,
+          -0.29412012430415496,
+          0.9999999999999999
+        ]
+      ],
+      "effective_rank": 7,
+      "point": "N1",
+      "singular_values": [
+        0.2452913171089895,
+        0.20158313602007016,
+        0.20157087194185974,
+        0.06606870161301193,
+        0.05422283606317896,
+        0.035446078893692445,
+        0.014382204947343298
+      ],
+      "tapes": "independent_1",
+      "weak_aligned_scaled_direction": [
+        0.4464210007811411,
+        0.335010485151687,
+        0.0064124396899890995,
+        0.4622146683712049,
+        0.2684429932685521,
+        0.168202697605718,
+        0.6119141751445982
+      ]
+    },
+    {
+      "component_minimum_SV_gain": 2.351894484793944,
+      "component_singular_values": [
+        0.2876973927062317,
+        0.1701686880406445,
+        0.15917305144119567,
+        0.1591126256193468,
+        0.06573132138633232,
+        0.042006396249514605,
+        0.03043388978916645
+      ],
+      "condition_ratio": 18.950474813916333,
+      "correlations": [
+        [
+          0.9999999999999998,
+          0.632332445660994,
+          -0.08247148260789539,
+          -0.6036085395740579,
+          -0.34085369101237806,
+          -0.2049278558199557,
+          0.5296543006287016
+        ],
+        [
+          0.632332445660994,
+          1.0000000000000002,
+          0.02554082088861669,
+          -0.7301244181002532,
+          -0.41221503616744476,
+          -0.24775718627843754,
+          0.7813436524135177
+        ],
+        [
+          -0.08247148260789539,
+          0.02554082088861669,
+          0.9999999999999998,
+          0.030823135290379017,
+          0.01725242557719617,
+          0.010232158697919465,
+          -0.0296663286162911
+        ],
+        [
+          -0.6036085395740579,
+          -0.7301244181002532,
+          0.030823135290379017,
+          1.0000000000000002,
+          0.0,
+          0.0,
+          -0.7803319890871574
+        ],
+        [
+          -0.34085369101237806,
+          -0.41221503616744476,
+          0.01725242557719617,
+          0.0,
+          1.0000000000000002,
+          0.0,
+          -0.46090679170472393
+        ],
+        [
+          -0.2049278558199557,
+          -0.24775718627843754,
+          0.010232158697919465,
+          0.0,
+          0.0,
+          1.0000000000000002,
+          -0.29566428808408596
+        ],
+        [
+          0.5296543006287016,
+          0.7813436524135177,
+          -0.0296663286162911,
+          -0.7803319890871574,
+          -0.46090679170472393,
+          -0.29566428808408596,
+          1.0
+        ]
+      ],
+      "effective_rank": 7,
+      "point": "N1",
+      "singular_values": [
+        0.245222166924565,
+        0.20208916783714898,
+        0.20207693521722037,
+        0.0657889870817166,
+        0.05406036175555574,
+        0.03491967816793209,
+        0.0129401595122295
+      ],
+      "tapes": "independent_2",
+      "weak_aligned_scaled_direction": [
+        0.4422833153321446,
+        0.3057077256666093,
+        -0.0011782705411056116,
+        0.4595177201702636,
+        0.26716165302524325,
+        0.16765365418574577,
+        0.6326825707774771
+      ]
+    },
+    {
+      "component_minimum_SV_gain": 3.283574190273339,
+      "component_singular_values": [
+        0.3227663047258405,
+        0.16993875838910213,
+        0.15955094947670226,
+        0.15947600607036333,
+        0.06880651219419653,
+        0.0433814904128545,
+        0.03298154277452211
+      ],
+      "condition_ratio": 24.455189317857,
+      "correlations": [
+        [
+          1.0,
+          0.725292971628206,
+          -0.07237877459614424,
+          -0.6553242945681237,
+          -0.3722079110189612,
+          -0.22324860967156382,
+          0.6167896639125383
+        ],
+        [
+          0.725292971628206,
+          1.0000000000000002,
+          0.04884998165676712,
+          -0.7435079457160395,
+          -0.4224137933297765,
+          -0.25347278608774415,
+          0.8163498768364371
+        ],
+        [
+          -0.07237877459614424,
+          0.04884998165676712,
+          1.0000000000000002,
+          0.014036614732122572,
+          0.0078056943956348905,
+          0.004527351847580929,
+          -0.008109838146386737
+        ],
+        [
+          -0.6553242945681237,
+          -0.7435079457160395,
+          0.014036614732122572,
+          0.9999999999999998,
+          0.0,
+          0.0,
+          -0.7893693758700058
+        ],
+        [
+          -0.3722079110189612,
+          -0.4224137933297765,
+          0.0078056943956348905,
+          0.0,
+          0.9999999999999998,
+          0.0,
+          -0.46647943250903984
+        ],
+        [
+          -0.22324860967156382,
+          -0.25347278608774415,
+          0.004527351847580929,
+          0.0,
+          0.0,
+          0.9999999999999998,
+          -0.2965939253894334
+        ],
+        [
+          0.6167896639125383,
+          0.8163498768364371,
+          -0.008109838146386737,
+          -0.7893693758700058,
+          -0.46647943250903984,
+          -0.2965939253894334,
+          1.0
+        ]
+      ],
+      "effective_rank": 7,
+      "point": "AS1",
+      "singular_values": [
+        0.24563777938539416,
+        0.1816363550262017,
+        0.18162031771098985,
+        0.06890521924834492,
+        0.05832214293731562,
+        0.03581323827528273,
+        0.010044403099592088
+      ],
+      "tapes": "accepted",
+      "weak_aligned_scaled_direction": [
+        0.4150818141441604,
+        0.1994001231255391,
+        0.0025154970051735797,
+        0.5443288423468923,
+        0.31750240527932383,
+        0.19815972916470817,
+        0.5929345718607034
+      ]
+    },
+    {
+      "component_minimum_SV_gain": 2.7714978265424772,
+      "component_singular_values": [
+        0.3227417257791268,
+        0.1699726626342504,
+        0.15948131935459214,
+        0.159406457732239,
+        0.06742502900267539,
+        0.04277730523363953,
+        0.034211473040596845
+      ],
+      "condition_ratio": 19.899454011131244,
+      "correlations": [
+        [
+          1.0000000000000002,
+          0.7213511386394001,
+          -0.05027506138248976,
+          -0.6642015383836569,
+          -0.37750128307395847,
+          -0.22665632894099771,
+          0.6259182506915338
+        ],
+        [
+          0.7213511386394001,
+          0.9999999999999999,
+          0.04866758528555259,
+          -0.7369716612859898,
+          -0.4186796018707896,
+          -0.2512128918071414,
+          0.8049630938810948
+        ],
+        [
+          -0.05027506138248976,
+          0.04866758528555259,
+          1.0000000000000002,
+          -0.0001236103059902046,
+          0.0001734424803680138,
+          0.000329726171424217,
+          0.0010792208756553949
+        ],
+        [
+          -0.6642015383836569,
+          -0.7369716612859898,
+          -0.0001236103059902046,
+          1.0,
+          0.0,
+          0.0,
+          -0.7855170781052483
+        ],
+        [
+          -0.37750128307395847,
+          -0.4186796018707896,
+          0.0001734424803680138,
+          0.0,
+          1.0,
+          0.0,
+          -0.4642285636084695
+        ],
+        [
+          -0.22665632894099771,
+          -0.2512128918071414,
+          0.000329726171424217,
+          0.0,
+          0.0,
+          1.0,
+          -0.2951856487338674
+        ],
+        [
+          0.6259182506915338,
+          0.8049630938810948,
+          0.0010792208756553949,
+          -0.7855170781052483,
+          -0.4642285636084695,
+          -0.2951856487338674,
+          1.0000000000000002
+        ]
+      ],
+      "effective_rank": 7,
+      "point": "AS1",
+      "singular_values": [
+        0.2456396061019892,
+        0.18153686058860147,
+        0.18152092180035145,
+        0.06746569558873199,
+        0.058207940840722935,
+        0.03753066355618595,
+        0.012344037477841588
+      ],
+      "tapes": "independent_1",
+      "weak_aligned_scaled_direction": [
+        0.4384980688356132,
+        0.20549151667297952,
+        0.011779487818339752,
+        0.5436023304709663,
+        0.316893618817419,
+        0.19761288003942679,
+        0.5747851895895306
+      ]
+    },
+    {
+      "component_minimum_SV_gain": 3.1007439651019904,
+      "component_singular_values": [
+        0.3229875139532174,
+        0.1698962541963919,
+        0.16000545587935908,
+        0.1599273083512759,
+        0.06781459944278656,
+        0.044438899368672,
+        0.03405016985775748
+      ],
+      "condition_ratio": 22.359404965509093,
+      "correlations": [
+        [
+          1.0,
+          0.7087228141713532,
+          -0.06331814132696673,
+          -0.6560109004145833,
+          -0.3726838740941388,
+          -0.22361372963400086,
+          0.6204101527759848
+        ],
+        [
+          0.7087228141713532,
+          1.0,
+          0.017760226932962715,
+          -0.7360138091043275,
+          -0.418053731047115,
+          -0.2507616739033022,
+          0.8126695229471903
+        ],
+        [
+          -0.06331814132696673,
+          0.017760226932962715,
+          1.0000000000000002,
+          0.02690050192361143,
+          0.015351989282594208,
+          0.009275832449969252,
+          -0.02606911216933589
+        ],
+        [
+          -0.6560109004145833,
+          -0.7360138091043275,
+          0.02690050192361143,
+          1.0,
+          0.0,
+          0.0,
+          -0.7893150226004445
+        ],
+        [
+          -0.3726838740941388,
+          -0.418053731047115,
+          0.015351989282594208,
+          0.0,
+          1.0,
+          0.0,
+          -0.46657481793220135
+        ],
+        [
+          -0.22361372963400086,
+          -0.2507616739033022,
+          0.009275832449969252,
+          0.0,
+          0.0,
+          1.0,
+          -0.29676809349191563
+        ],
+        [
+          0.6204101527759848,
+          0.8126695229471903,
+          -0.02606911216933589,
+          -0.7893150226004445,
+          -0.46657481793220135,
+          -0.29676809349191563,
+          1.0
+        ]
+      ],
+      "effective_rank": 7,
+      "point": "AS1",
+      "singular_values": [
+        0.24553511852724944,
+        0.18209784106034527,
+        0.18208180854356806,
+        0.06787154959509391,
+        0.05827288958089908,
+        0.03746953471009019,
+        0.010981290374498074
+      ],
+      "tapes": "independent_2",
+      "weak_aligned_scaled_direction": [
+        0.4174196790481998,
+        0.18775227439759448,
+        0.0011852483894614118,
+        0.542101624553802,
+        0.31633014374424273,
+        0.19754252003872122,
+        0.5979519309942147
+      ]
+    }
+  ],
+  "protocol": "material-e5-offline-v1",
+  "reference_convergence_maximum_bound_ratio": 1.4054200364700705e-08,
+  "run_id": "material-e5-b4cfa064e4df41e49fd865635bf5056b",
+  "scaled_gradient_cosines_to_accepted": {
+    "AS1": [
+      0.7913378097443132,
+      0.78352614853697
+    ],
+    "N1": [
+      0.9067410913061781,
+      0.8494494545591253
+    ],
+    "truth": [
+      -0.19200606074990828,
+      0.2387110155521618
+    ]
+  },
+  "schema_version": 1,
+  "scientific_execution_complete": true,
+  "truth_gauge_Q_relative_difference": 5.700880170356133e-08,
+  "truth_preferred_all_three_quartets": true
+}
