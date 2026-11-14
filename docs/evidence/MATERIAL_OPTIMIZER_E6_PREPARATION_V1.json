@@ -1,0 +1,57 @@
+{
+  "JUnit": {
+    "bytes": 3211,
+    "path": "docs/evidence/material_optimizer_e6_v1/pytest.xml",
+    "sha256": "ca21886f17c115d7b48fa82ae83115b4f4270ea6fa0de52976c25e9e7e18f9d6"
+  },
+  "accepted_input_identities_verified": 403,
+  "console": {
+    "bytes": 278,
+    "path": "docs/evidence/material_optimizer_e6_v1/stdout.txt",
+    "sha256": "862868975d827fe996f30ec354a90b383cb8280150e2c5937c4316e36229b6c3"
+  },
+  "errors": 0,
+  "exit_code": 0,
+  "failed": 0,
+  "historical_tests_or_experiments_repeated": false,
+  "new_source_sha256": {
+    "docs/protocols/MATERIAL_OPTIMIZER_E6_V1.md": "ad243440bd2bb1d597d7263ded8a024e76b4be9c9a547b1f4ba0faef662d50cf",
+    "experiments/material_optimizer_e6_v1.py": "8a31553b53a91401edb8a607e757122d9590fe4975c069b4c799bf37fd2ca6a1",
+    "experiments/physical_lm_e6_v1.py": "88f7b50a2d4001fd53bb985c2adef8d5e0e54fdd69e18e6ed035c0671834ba2f",
+    "tests/scientific/test_material_optimizer_e6_v1.py": "63d9898a8e52c49a85dc977f2588689f74788f680677f5cc46b300ea0a00eac2"
+  },
+  "passed": 16,
+  "phase": "E.6 preparation only",
+  "predecessor_sources_verified": 377,
+  "preliminary_tests_preserved": "/home/isavand/paper/evidence/material-e6-preparation-v1",
+  "real_neural_constructions": 0,
+  "schema_version": 1,
+  "scientific_import_blocker_verified": true,
+  "scientific_optimizer_updates": 0,
+  "scientific_queries": 0,
+  "skipped": 0,
+  "test_inventory": [
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_optimizer_e6_v1::test_scaled_total_residual_JVP_and_independent_finite_difference",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_optimizer_e6_v1::test_cholesky_scaling_trust_radius_bounds_and_represented_prediction[0.04001]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_optimizer_e6_v1::test_cholesky_scaling_trust_radius_bounds_and_represented_prediction[0.99999]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_optimizer_e6_v1::test_ideal_axis_permutation_covariance_does_not_canonicalize_queries",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_optimizer_e6_v1::test_acceptance_damping_and_machine_precision_floor",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_optimizer_e6_v1::test_paired_admission_accepts_only_identical_states_and_objectives[physical]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_optimizer_e6_v1::test_paired_admission_accepts_only_identical_states_and_objectives[radiance]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_optimizer_e6_v1::test_paired_admission_accepts_only_identical_states_and_objectives[objective]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_optimizer_e6_v1::test_cost_matching_includes_reverse_and_all_evaluations_without_selecting_scores",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_optimizer_e6_v1::test_rejected_caps_do_not_increment_work_and_partial_work_is_not_complete",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_optimizer_e6_v1::test_exact_twenty_successful_LM_updates_and_initial_state_preservation",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_optimizer_e6_v1::test_four_rejections_are_counted_and_stop_without_extra_Jacobian_or_retry",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_optimizer_e6_v1::test_invalid_system_fails_without_alternate_solve_or_domain_repair",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_optimizer_e6_v1::test_observing_physical_gradient_does_not_change_original_Adam_update",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_optimizer_e6_v1::test_execution_gate_blocks_real_imports_and_optimizer_has_no_oracle",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_optimizer_e6_v1::test_cleanup_and_terminal_snapshot_binding_are_explicit"
+  ],
+  "test_launcher": {
+    "bytes": 798,
+    "path": "docs/evidence/material_optimizer_e6_v1/launcher.py",
+    "sha256": "b9eabe5c745c31f17e097ab731622d47cace8549026a24cea14ffebb156559b6"
+  },
+  "toy_Adam_returns": 2
+}
