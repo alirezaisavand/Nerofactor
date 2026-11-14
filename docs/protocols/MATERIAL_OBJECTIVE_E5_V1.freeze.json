@@ -1,0 +1,2058 @@
+{
+  "FD_steps": [
+    0.001,
+    0.0005
+  ],
+  "arithmetic_runtime": {
+    "CPU_capability": "AVX2",
+    "binary_identity_limit": "Source/runtime/probe evidence, not a binary build-identity proof",
+    "conservative_gamma_k": 75,
+    "fegetround": 0,
+    "final_store_roundings_at_most": 1,
+    "maximum_nontrivial_sum_depth": 71,
+    "mean_scaling_roundings_at_most": 2,
+    "n": 72,
+    "square_roundings": 1,
+    "ties_to_even_probe": true,
+    "torch_git_version": "e4ee3be4063b7c430974252fdf7db42273388d86"
+  },
+  "base_commit": "a832f020d4d9618295ccfe818131a0f8193eb248",
+  "direct_initial_logits": [
+    0.9378656148910522,
+    -0.922781229019165,
+    -0.6544979810714722,
+    0.7152990102767944,
+    -0.5157566070556641,
+    -1.2666678428649902,
+    1.6042020320892334
+  ],
+  "execution_authorized": false,
+  "input_sha256": {
+    "/home/isavand/paper/Nerofactor-3d2-e2a/docs/protocols/NEURAL_MATERIAL_CONTINUATION_E3_V1.freeze.json": "ae258c5f6b7d2b0015f071f01c4bbb53c164f19bc2df1e412bb5752c2b98c606",
+    "/home/isavand/paper/Nerofactor-3d2-e2a/docs/protocols/NEURAL_MATERIAL_EARLY_STEP_LR_E2A_V2.freeze.json": "f9d8f28a46641c8f3aa777118b7f106f120918e7c60e6605387fcb7c46d984ad",
+    "/home/isavand/paper/Nerofactor-3d2-e2a/docs/protocols/NEURAL_MATERIAL_RECOVERY_E3R_V1.freeze.json": "ff4dc8f7b6b3712731a584681770980ca9ee9f46c9352e5ea1de3f37a299f743",
+    "/home/isavand/paper/Nerofactor-3d2-e2a/docs/results/material_parameterization_e4_v1/comparison.json": "35f5b739280a94cf1c32317e831fb20d533927fefa5c6c12e5f30ba0bac56404",
+    "/home/isavand/paper/Nerofactor-3d2-e2a/docs/results/material_parameterization_e4_v1/evidence_manifest.json": "804104ab38160162677bdd9647d9f3454a85913561ee15323eacd95efbeac230",
+    "/home/isavand/paper/Nerofactor-3d2-e2a/docs/results/neural_material_continuation_e3/evidence_manifest.json": "a8fc588210bd6842d5798d000783e14a6adbb6c205ee332446655af53c7616c4",
+    "/home/isavand/paper/Nerofactor-3d2-e2a/docs/results/neural_material_e3_complete_v1/comparison.json": "46dd2d89c8e39b6f652ad7136eef49c859592b296a186fec307da26e7fbe7609",
+    "/home/isavand/paper/Nerofactor-3d2-e2a/docs/results/neural_material_e3_complete_v1/evidence_manifest.json": "6687ab6d7611aa902a7f83dad5b9e1b20990070aa4904fe695dadcbff24203e7",
+    "/home/isavand/paper/Nerofactor-3d2-e2a/docs/results/neural_material_lr_e2b/evidence_manifest.json": "6b5661f553b0df096ead3dad88716233d0211faf07c759d2e0a22032bf651386",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d.authorization.json": "5565138b3bad0293495a27ceb725d9986359a87b0b77ca95f21377e0be744332",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d.console.log": "919f58f3b6eadd02e18d82e12bd569b2917fdf76095f6c3280354562c046f0fb",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d.launch.json": "f9a2ca5b6b0972ecb2fad253660c69bac3c5822b5adad4fbe8f5c461e3e2177a",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d.process.json": "a29bac04fb1c77e371d25ab0fe21eb71746e2454a84399ea2722518a5bc131b1",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/execution-review.json": "5565138b3bad0293495a27ceb725d9986359a87b0b77ca95f21377e0be744332",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/finalization/seal.json": "fdb891aed767728c2fcf3a27276cc12490edd6e6810122ef0641141836b35522",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-101/arm-result.json": "a94789ac2c7b0419fd099a0a2529d6f8b8fa3fd6d90093dd553a01b61d6e64cd",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-101/initial-admission.json": "dd32cd6e568c3ac93a766994f2c09434c4e8f0ff4b240cbe775c6327bf485c69",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-101/initial-attempt.json": "5c2b9e3d4cb9eabd08e3c12ae23cb787477e11caefa7e54c417c262d32d2436d",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-101/signals-0-1.npz": "00e1e90681f87d08fd269d1c29bedb30f918a4ea1aa84fdee0387432456f6c65",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-101/signals-0-1.npz.json": "58d8559d27784b18b02fdf63f02bc7a63a850039da8493ec5c33e7a5ee10c92c",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-101/signals-10-11.npz": "460a517214d7f5b958134b8e7aa7faa34bef201a5d225e20445341ea6a593ae3",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-101/signals-10-11.npz.json": "0ae44daabfa516aca72c910ceda4874b2c84fd94f8bcf1cfac5f2e8fb27404b6",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-101/signals-10-13.npz": "460a517214d7f5b958134b8e7aa7faa34bef201a5d225e20445341ea6a593ae3",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-101/signals-10-13.npz.json": "9d4cae03785d912b6f2b365ac313fa53bb4d224dc0edc076f96870537df89cab",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-101/signals-100-103.npz": "ded7f389a90a155ef527d8251ee3b4d50223a12225a176969f9db57de0976873",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-101/signals-100-103.npz.json": "9c262d6925181e5d26112a03dcfc87cb2f190f9f0b4c83b7a68cf869d4a203d3",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-101/state-10.npz": "1e3e4f7a5579f20a64effec7f17460be7117def01fa2fd90d70729914396d303",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-101/state-10.npz.json": "2616cf98760c40c7c804eeb05a20185cccb8c56623069e5ef96c568e38ee4344",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-101/state-100.npz": "5c060590638e015bc03dba70daa4afbcbd0f45a3dcc69c39a0ce85a6b0f88410",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-101/state-100.npz.json": "4b0f589b72e4fc1b9c52b1d4e566ca602e4e69b9cbebf7c25814edb142dab363",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-101/trajectory.jsonl": "f5e3c6efd2c440894de392de19f88b4219655d328725c39628a652d2b545f308",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-103/arm-result.json": "0f18a1d46098aa3adc25f3f403fe1c3c039cdea5172ca77becf26406709cce1c",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-103/initial-admission.json": "4e08476fac3cfe615ea0eb771e3a48866e655082cc764e1a522d303c5f06ad3c",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-103/initial-attempt.json": "7e7673e92cc00c60f836b070e80f92902a799a780ea352a8c80bddd54c16c9f8",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-103/signals-0-1.npz": "449729ae8c31eb4d73168f9c413acc75a4c5dca822ce2108df3f7d0b1d0eb316",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-103/signals-0-1.npz.json": "972fc184ead71f6064b2df12d033765a7c7c893430fc5181e348ffff5bd0461a",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-103/signals-10-11.npz": "9e48560c89090738b533f31d5ae089fa2b85c9c103a3e28f484ed96f710b56b3",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-103/signals-10-11.npz.json": "40e47a6dad7d9b705256e1ff521ba18ed999ebea645c6383cc25d2c3a50ea175",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-103/signals-10-13.npz": "9e48560c89090738b533f31d5ae089fa2b85c9c103a3e28f484ed96f710b56b3",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-103/signals-10-13.npz.json": "8bc418399007dba4682671b1c2a06ba1d5947d3c131d9888c2a0c6d4d1cceedd",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-103/signals-100-103.npz": "4c089ef60a4121527ce9a5154b371e95c35ba1c28aa3b8ec05162c5027782904",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-103/signals-100-103.npz.json": "73b53da9708b0b0cb6eccdedabe4721f7c0ee7e7f2357fff5b73f05cd8f9c1e3",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-103/state-10.npz": "8a78f405528062f4c2ee3cf3559db3a8326bdbcba15db57459c35fb9ec212e91",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-103/state-10.npz.json": "246b79c1e989d8aff5023fd1924e8f8a39b7b6aa5317784ece037fe1da08524a",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-103/state-100.npz": "03118696f14f62d6f3ac2240eee598f401650be6545e98a68e518ac821805076",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-103/state-100.npz.json": "fcc8b203eab7fc42d7779e706551768f5e4ccb6bf8683969136f8bf560e199d9",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m1-103/trajectory.jsonl": "88cd443f3aed1612e3eb56b6a3101f70e135665d7d34790aea155af6f02e814c",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m2-103/arm-result.json": "9abde70ff9a3a253592546c97294803cfcc68ce5c246f4043b0bff027fb9f9fe",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m2-103/initial-admission.json": "1ec676f8d373318dbd404a17fdcbead13ba425ec8daa64ce46d677e6e8703ff7",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m2-103/initial-attempt.json": "7825a61697089f7be8f87382854314fbe8192d02c9856b0444c269f1e30bb3d8",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m2-103/signals-0-1.npz": "55204e12f9f2b51d2adb5b23f1219c5f89472fd19d38a8f7708bf30d5f825081",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m2-103/signals-0-1.npz.json": "cb2498a06477b5d71f95d2575845b0cb57ea9de7fa3579fedccc294816d1636b",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m2-103/signals-10-11.npz": "86ab03826d1c70df825cff4ec0f729a4875bbc8e3b99875a1a9fd59a6134d24d",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m2-103/signals-10-11.npz.json": "20009f31e87566dfb86c94e7950c7774d29728dfd9b0504e855340ec525b5c8b",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m2-103/signals-10-13.npz": "86ab03826d1c70df825cff4ec0f729a4875bbc8e3b99875a1a9fd59a6134d24d",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m2-103/signals-10-13.npz.json": "b39d2a0e9558f8d7c7b6aa3f820567be0ac6b1334f2fdc107cc30d92bb0b2559",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m2-103/signals-100-103.npz": "4fbafeb0e7f8d1fe4d795d93307c3f365f8787c40af6c33bcd6103aeec7be28a",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m2-103/signals-100-103.npz.json": "f30f55ddea34eff6565a1bd844ffcecec16cb8281bd5f529dcb2814206e3b450",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m2-103/state-10.npz": "7c986199d1c626f86a3cea41b9d8d418936079ccc59557cf754ac8e50769698a",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m2-103/state-10.npz.json": "a1a130e855bbaa3617abb2b75595f5777dc98ae9eb8eb56b23a8b48458008770",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m2-103/state-100.npz": "208d8d1e09bae1a637966fcfab97a8a678abd671d2f14bf0080f5537d569052b",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m2-103/state-100.npz.json": "949fedfa7e13685d7894f569bee34c8ae06dec1a145929a07464aebee929a933",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m2-103/trajectory.jsonl": "3454f41a042265aab2754329573b161b0b898f0b97bda7353b27c5990df2b7bd",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-101/arm-result.json": "2b5bc3249892caecf52d9a1a6e1369992ba779869180c1ef48a1a91e2a9d5f03",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-101/initial-admission.json": "84aa3c7aebcd8265640ed5d11803ea6c80f297e24c9a2a6b7ed8bc760b84045c",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-101/initial-attempt.json": "98ef8be196e9edf703e84e889375b6d2c0d351c92312893fb68188dbf336f430",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-101/signals-0-1.npz": "485112879c93338e57463b94a3952aa0ab77fc413e89a5db1c254cd5df5d0313",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-101/signals-0-1.npz.json": "0062e5dcfc11a19f2c12946ad15ea271c1947bd8c595022925cf468d1b73a966",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-101/signals-10-11.npz": "4726f38dc8c04e39d984751d91e5fb4c555a5846c6c4f6294fe165f54e592df2",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-101/signals-10-11.npz.json": "fc15c34f7d1a21fe9ce18266ae2e29571ee5c762c3fed2cc4e5e49f9cb2e2eb1",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-101/signals-10-13.npz": "4726f38dc8c04e39d984751d91e5fb4c555a5846c6c4f6294fe165f54e592df2",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-101/signals-10-13.npz.json": "046d7ff0c84b604d8de809c9720689398fadb98e3a904f2bda48296326bb978f",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-101/signals-10-14.npz": "4726f38dc8c04e39d984751d91e5fb4c555a5846c6c4f6294fe165f54e592df2",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-101/signals-10-14.npz.json": "e6186cbb9f00bae2ad9b6f7032dcce6c8ac0a386c24ca99693fd6ea99a5618a9",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-101/signals-100-104.npz": "50143a51ce0718f280058148256d8ee70aa79b96aa9cc1cd61ea1b9391353067",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-101/signals-100-104.npz.json": "c14f46634ae78a761763ae5f6d90a28d1057eec6e3a4695a6834681d09bbe45a",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-101/state-10.npz": "f605be4f8a6896000ec75d9b6cc860914d5c6a4ba7c5a669b7896f46dfb20c84",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-101/state-10.npz.json": "7d8795fc72367358c36c922bc048ddd8f38261b7220d9c4f1db732e4a3e8a0fb",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-101/state-100.npz": "500173bb63e8047dc59298e207bb9b98c35f754521f2bcba9384b669c1220fbf",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-101/state-100.npz.json": "8a364f1d996e8cb39d5da534903aa43eb74134ec97321a5836bfc8eef90b9faf",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-101/trajectory.jsonl": "5e48b14ff7240f159790f9fd6e16aca23db71bb6beebf1adeae125338c6029ac",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-103/arm-result.json": "5cf980633412e926fefec27927b1c1633e403fdfacf47d3a882110508f0a8c1d",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-103/initial-admission.json": "9ef0db9ca37b7ad0b7914e8ca4531a46e498984b50191a74383fe67fca7f0d93",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-103/initial-attempt.json": "83c3ca8e78a488436a7da8484d84ed9a9c02cabb2c4d9a406e9077d0c4e8c815",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-103/signals-0-1.npz": "bb03500e56126adb50caaf3c947b2bb5867cb5a7b3f7ffdd03482909297cd288",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-103/signals-0-1.npz.json": "dbabbfd3c28b414d8d288272f22cc5c7c333b3809b555e7c2c89bfce1459b9be",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-103/signals-10-11.npz": "85c704e382b81b04ea35c6fd2c886eb8cfd6d4226324ecbd86929a7a32dfde3d",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-103/signals-10-11.npz.json": "e8dcebdba3b29f5ad0adc56975027c7efc1dd946c307169839f6777f1cef871b",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-103/signals-10-13.npz": "85c704e382b81b04ea35c6fd2c886eb8cfd6d4226324ecbd86929a7a32dfde3d",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-103/signals-10-13.npz.json": "939d1a70d59bcf019e1c0080b0a68597a09fdad1710fba1136d7636037f09203",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-103/signals-10-14.npz": "85c704e382b81b04ea35c6fd2c886eb8cfd6d4226324ecbd86929a7a32dfde3d",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-103/signals-10-14.npz.json": "bb6c5384c16ade4e362ef0ca715b2dc03c939c4b440afbb8396a76f9cd483150",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-103/signals-100-104.npz": "218cbe26d1c005e1104ca08d97f1d804bc5a7c038f577075c980e685cf609074",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-103/signals-100-104.npz.json": "f3d6e6a777bbe0248e9e9ada5e2e30ebc07c9ba2d4845edba503806b39da31e1",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-103/state-10.npz": "fa5ec4d192279efa5a2bdd73c99a49dae0c5b5615aea740c618e21c04313d033",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-103/state-10.npz.json": "fdc43972178d8a51e565e6119c585ae66350a3c7679683dfaedafdfae84d5cee",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-103/state-100.npz": "6087be0e969d7fcf9646d24aa28a46c991f24541c93720e088e9860e77436e59",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-103/state-100.npz.json": "b72fa58b708e2b84d4369dee79731e285f263b283de9743815f693f6e4e85ffb",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/m3-103/trajectory.jsonl": "2ded67f21f713228fb67643742716ab71f5a7b4237430a1dc1b0bf92f431b2d2",
+    "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d/result.json": "d55a0303b33591f289fab7e3969525b8670281f5ccd06227d1d7b1086dd931df",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825.process.json": "20f52bbcec66b1a06e1dfb9320f848304c536aababe63e8ac39630ec9938cbcd",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/finalization/seal.json": "cabee3c788264f60b127882274b8f03d81b28248defacc509bb4ee20843786f5",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m1-101-baseline/final.npz": "1f61b725f03292c3838176ed2199781fa1d879bf98e5157d8a72e3c9607e2915",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m1-101-baseline/final.npz.json": "249afb0065b33cc2c218c94a83377c44794a589369c62f1ade5970fb69be6a8a",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m1-101-baseline/record-10.json": "d02de203b250bf804ff52ecc5e8d0a8d9645e0449ba458b2fac6dee21b4eb733",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m1-101-lr001/final.npz": "5c2cd102aa61704b6c6e5fae69d52c0a5c0a7fcef636407bc4f82ea22cb8f80f",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m1-101-lr001/final.npz.json": "4b74d2d86c1be859c1e54ad705f87536a41eb150c38ffbbec6807503a59b82d8",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m1-101-lr001/initial.npz": "7d8c04e6d7f38b15c1fa4218077ef1ad0f467848bb75ec120922466687cf8c57",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m1-101-lr001/initial.npz.json": "8d7af6cc5395b7323682a055409e11e0498dd08f565b7ec70a0b349161808cf9",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m1-101-lr001/record-0.json": "7a8864877229a804a4304c0d495c133f331118bf19bef1c08c67fa6f2d7942fa",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m1-101-lr001/record-10.json": "ed32b8adfeae3d8cc1f702e274ebf8ae6b29be00447283760fe6ca84746006da",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m1-101-lr001/signals-0.npz": "bed4aab6f3587accae3c4539b006040915bde201f438a8fce1674d6d82609d89",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m1-101-lr001/signals-0.npz.json": "5ea06a632cb5687a54aae3c6baddc2b9afb4358b0f2712acf272208c6ce58557",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m1-103-baseline/final.npz": "482505ddff286d7eab488c787ad953bbffa63f968a44ac7c7e5cbb48c63b1470",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m1-103-baseline/final.npz.json": "ae955b61d2429d44816dc0495b95931f3937c93c7618506d2318d261549d8800",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m1-103-baseline/record-10.json": "1442a9cf006da835441e61a4327cb8fdec294a4f7fc0820db22044a15033aa9a",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m1-103-lr001/final.npz": "cd92db6be3ed676e34941bf52329a60fe47a460d4003c72899ccad86221e847d",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m1-103-lr001/final.npz.json": "1e0ad6423b13228a5aaf0952975bc871c73563473a50c5cc49f9e7185bc92141",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m1-103-lr001/initial.npz": "e498c9f7a08ee2ac3cf8c0bd7e77ecac0aef4724b978f1899cd8ce435aa7ef23",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m1-103-lr001/initial.npz.json": "d3532c1c3d55a6137bf27c9479bed020c2b9214eb88b82490e527ba4a8f648aa",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m1-103-lr001/record-0.json": "be869257da8f93a0190088782cbf27d00542497f05d5fd909fe125d36d35c8c3",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m1-103-lr001/record-10.json": "6df09e473f170ce1ba3ec82fb96f24fee12f3fcb22de9478be9b7de952a99445",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m1-103-lr001/signals-0.npz": "d218c660a5be8398e50f54c04dcead2639dca6b4051409adb6ad0c569a8bff3b",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m1-103-lr001/signals-0.npz.json": "3990fc65c079037b76f88ae0dc4f0b2054817d749e271a111eeb6498529df245",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m2-103-baseline/final.npz": "78178c15d6176fd48b9c2a1c830fed620b3f70e08826bd56f58787f4ccde602c",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m2-103-baseline/final.npz.json": "9caabe2ebf87937c64889ac671476c9d6d8d1a82b32c9c30a438d5360a9a660b",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m2-103-baseline/record-10.json": "ba5cfd9bd30ae0b4d69fc6a9d73e8f65ed4ef7b12b01a73df28061284faee7d4",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m2-103-lr001/final.npz": "fd35c91d26732c62edc50e6dec3ef95df6f727194c5a47118819265c776a1663",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m2-103-lr001/final.npz.json": "4d5efcdf3aa4b351f88eb348c1939deabb2d24acb6ca34d7d2646eac02bfa127",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m2-103-lr001/initial.npz": "e498c9f7a08ee2ac3cf8c0bd7e77ecac0aef4724b978f1899cd8ce435aa7ef23",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m2-103-lr001/initial.npz.json": "4a6d6097968a9caa94f5bd37817ff5605d0fbcd70e38f1e43b9489f2ee9974f2",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m2-103-lr001/record-0.json": "8622e3da971dfb246317951f5fb6cfc1f091256542e3cb7f5bc1b17cd96b12b4",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m2-103-lr001/record-10.json": "35ddf6c3859e8774d4ef5d8b09b90b37d910440240890468eb2bf7ec3d743e6f",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m2-103-lr001/signals-0.npz": "399a7a67f3c66fea8b11cb28e89759024b1d76bac07dac2c62d9aa2e457841b7",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m2-103-lr001/signals-0.npz.json": "afea9008996d0bc4889ab0b947175788b7362b7ed1fc5e8cb49b874285bbf87e",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m3-101-baseline/final.npz": "043e00be7286a1aaf7aa7e4465e09cd4461f110235a7206e0b96259e01fce973",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m3-101-baseline/final.npz.json": "1142bb19238e558f4c5f6299c193954fb6c0b977aebe665fd01df7848857fc6c",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m3-101-baseline/record-10.json": "f0c253fff38aa9802c7d8db0081054c16d005533f9d033c4c5ad4889a0e062a2",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m3-101-lr001/final.npz": "8859cb91d1536f0861b5edf3a2127fd23ce45f09cb72413ad05a6a8bdfdeab84",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m3-101-lr001/final.npz.json": "1d1eb15808dd40528f1299bf215d8295ca7806c151d34f3bb6c798f5346297c2",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m3-101-lr001/initial.npz": "7d8c04e6d7f38b15c1fa4218077ef1ad0f467848bb75ec120922466687cf8c57",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m3-101-lr001/initial.npz.json": "60d22793bf6796b38e64da0160f9eec616d9b036032e80b2827c687aa11d9184",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m3-101-lr001/record-0.json": "2285b196e64be57e88fbb0b33193c2f0f75a4b46fa25aac3d60e8ce5f9bdc820",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m3-101-lr001/record-10.json": "03928d7a2a7854ab374f088bdc117bfacd60d6c9cac44ec7b91d938e9eb34b20",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m3-101-lr001/signals-0.npz": "04eacf527bb4251960d1b176e33c5acc45af502ce91a5683f5d5698c7ce019a4",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m3-101-lr001/signals-0.npz.json": "4f55ad2de99389a994fcda1dfc62b4f44bdcbefdbd426dc121bc703a9cc3b335",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m3-103-baseline/final.npz": "84c4a4825fbbf80f4e597fa2cacd29edf55aabcde2c14375dd9392f65e8e9776",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m3-103-baseline/final.npz.json": "7771fbf4e157a2a56691fecf6b1fe2c0ce3678ac57fdc9b566f07012c537dfec",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m3-103-baseline/record-10.json": "deae6d5e39541a8a432c6d67e2daabab084984bcbb86fb75cd41feb53dbdac83",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m3-103-lr001/final.npz": "4ba6c573a7cf5ddf9ade3dae370a6b6fd522bd940bd8ce007a8dafab4bdecc7f",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m3-103-lr001/final.npz.json": "e7409f513a6f35e41c37c1e720bd6be614bda48da48744b1eea37f0e76dd3fd8",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m3-103-lr001/initial.npz": "e498c9f7a08ee2ac3cf8c0bd7e77ecac0aef4724b978f1899cd8ce435aa7ef23",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m3-103-lr001/initial.npz.json": "1fdb00b7ee57b7345e64120afd7782ad1af3a27e284dcdb102e01de27eaa8125",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m3-103-lr001/record-0.json": "95474a5a902aaf9a7f3e0ceb2d63037b2e25a79c311d5026b17565c2d4e25034",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m3-103-lr001/record-10.json": "002aa725e745dce569126f3fa506f92da168e0aae088520224e1e72e16fad8c8",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m3-103-lr001/signals-0.npz": "b4db7f7165cfe505fd7dcefe8428a0cee4bb4280af35e8444349c99df41731b1",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/m3-103-lr001/signals-0.npz.json": "e6a602c03084878b3a6de6978ce9a5e4c9e4b9f076e59c62eeb78c45e355ce18",
+    "/home/isavand/paper/evidence/neural-e2b-d1f760d630964a2786ff45bde7438825/result.json": "bb12d3627e778634da17da7a2b484ebe608a88d94aab0bc6c033cd58a1f15373",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae.authorization.json": "87f885405651d18079d1242704433495963ba4b2a0f07301b3d55cdaf7bda234",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae.console.log": "2b84c6be73d45c666b71a48f07fdadab06206e991f89b7acd28b94c48d148b4f",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae.launch.json": "2f0ac86d7ee51021e9ef312552d17863e9ed450ae8c278c4ecf39a4fbec7ad2f",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae.process.json": "281aac5e08d05863aa64fb14e090019e3010929736c9c3017c5ed57c4675216c",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/execution-review.json": "87f885405651d18079d1242704433495963ba4b2a0f07301b3d55cdaf7bda234",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/finalization/seal.json": "e7cf6b4673652cd912e3ba8547c27106399a3b99b0e2b9eeb22fa8b622f26be3",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.001/arm-result.json": "e14d772860fa8b4c2d318aea7dd8ab2e3ab10d1d0ea7d2b3db6020a1ab31832b",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.001/signals-10.npz": "1253679c4b27d07b55e37b677c816d735d912dceb1f6e90570de5176a5c1ca0e",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.001/signals-10.npz.json": "046b301d33255db7ea7c15d56a5c312744080a72d6f46dd35ed3672486bf352b",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.001/signals-100.npz": "d566e7a181660ed1aef869d2fb236325f3560b1425d6f2b1d7dd9ead2c4e6222",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.001/signals-100.npz.json": "8c396889d8d899e5fa26cde2096ff16fdb2554d7b3bd10dace4495eef2ed42ef",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.001/signals-20.npz": "08b40f821374c087736d90707d45ee97d12c2ed7a16a36d28b5070ac5bd4e907",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.001/signals-20.npz.json": "319c14bd3b5529976b7053b6629cd3b0d1d90a4edd52b870a7adab42f62b2579",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.001/signals-50.npz": "1d3ac3658e4349f0f457475e9cb4fc34bfada0f3385f7dba1f45a0c9900da36b",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.001/signals-50.npz.json": "c0ecc7c8bf692ef04b4a9e41d3243d881cf2e7c49f411db6bb8efc231b1512fe",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.001/state-100.npz": "1396c472b7d51d3f01b9efb8bc3077a30319ea728163bb980479f0c3882cd13b",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.001/state-100.npz.json": "5d1e6c5a4eeac430bf3929b2fa0e070b36eb8b4fe14b0356b7d70539579ce604",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.001/state-20.npz": "5a50cb1d012a50700541b13f5fb27d54819fae6077c379df475b427fa64237ba",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.001/state-20.npz.json": "c66e879971fd9bea1284d48ed016f00e7bfed2e96348999621ce85bb3eb80e79",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.001/state-50.npz": "669878c2059d679c64898223eabf507f245702d7a6639285dcd2584735f2963e",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.001/state-50.npz.json": "694bd065d4ac846a68074fff7f9230b7a197a8328b831aeda8beeaf31755d9ee",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.001/state10-parity.json": "327e8fa713854000ac2f6e43ac46243d24bea9450081286bd1c18133ebbe74bf",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.001/trajectory.jsonl": "b00880f16dee0dacb54ea37cc98a54b5e3b5b3c7cef4e75336681570047c5aca",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.01/arm-result.json": "d3979338c667c280930f09572570818bcb6e4cea8f25c939c5a0648a6ff400a2",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.01/signals-10.npz": "4ce9e8c81239a11e6b777a99b0119593c120464d2c521f3edf16b2ac3bd74259",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.01/signals-10.npz.json": "aa7d9a7bebbd9bd3d81d51de98d8957a2c438ce6dbd655a5b5b182069c3b81f9",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.01/signals-100.npz": "b1dbcc6820897e5be529e6decff5917e7b04fde4463123e711b28c005de5e88e",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.01/signals-100.npz.json": "664604e56a0ac8bd32e2f12ff72ee691c53566866835daaeb5fd2a94fa1235c0",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.01/signals-20.npz": "d9ea9c7bae266f89ab69b783f5ad689d61a9d2e68cbc29c43ecd558c3c36b915",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.01/signals-20.npz.json": "810eb33b0abba8f6803e8ff55e0c1c251d792f6ee2cbb7ee2ad95909c2727769",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.01/signals-50.npz": "9f6c5e9a3e4f1fb60f99216eb22246b2597c8c8eefcfd3e0452c33be355bf29e",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.01/signals-50.npz.json": "b3e53913a5c6ff04822b073a972260f1e0a40b5e63337ac7dedbcc903f019f8c",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.01/state-100.npz": "7873503b19ff3a2ce71a79e6665e93d0c2010e50a2bed8a9bf67517dab197fea",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.01/state-100.npz.json": "13ff803dcf0b2dcb6f625c397e3c16710a89f2bcf03ecf46e59bb85853d7e49c",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.01/state-20.npz": "34686f3caa809efd97b06be37da0b7ec9e52f498bd2810da2065d3a225438265",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.01/state-20.npz.json": "5b3ba77e516a4a91f5d0574be41ed9d9ce04f2dbd9e77783d863d4f60644e31e",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.01/state-50.npz": "27d5c8d0a4a290668e7c7d24654a775060c95162e1cd8a384a5fcc5b4d79886e",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.01/state-50.npz.json": "730281829dcd852ed59fbe9727150e99cde337ad01cf830b144b28a62399df87",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.01/state10-parity.json": "d306398fcce6afa5603d5f717a1132184163ac5bd74b427808797322c0c05e3b",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-101-0.01/trajectory.jsonl": "e0e3c4e31cc797a440c63c88f9932b96f18892a04c06f01adf3bd119525aabcb",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.001/arm-result.json": "4d47edb946b4f96cb9f8e48a23c875e230c6b2a8a6864d66548ea8c6f48a26c8",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.001/signals-10.npz": "d2be1d1ec5a99931966b2e0dcb096598291ea545865a7943ba734a0423ee0637",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.001/signals-10.npz.json": "2a180b7d39ad74102d3d594447dd0492b106a34702815a27763aa69650c36db0",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.001/signals-100.npz": "c5c7ad04917b8ade4543f3eeeda4b68f21246d53e780c638303bf7e81da3d502",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.001/signals-100.npz.json": "f021125cc91f5648531e89857848fb68cbfb8786be8488a0e94ac5155235938f",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.001/signals-20.npz": "0e56e063624e8be7405681b9cd75039c11c9f289fd2a09cff6673efc061872ab",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.001/signals-20.npz.json": "431e9484ec452694f664135b773d0f3d58556bf5445c3989ca78fe53315ebbbe",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.001/signals-50.npz": "f01300563207ff54758db18e8e54616874e76c598f58dcebd6bc8492fd05172e",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.001/signals-50.npz.json": "3226abb3bf698821fd80289f0a5f2fc1bd620472e1a38e6a38c7d82603b08e60",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.001/state-100.npz": "506795774bdcbb402a7b91e33a4406bdfb2c0a22fc9d8d27ed2dd16db29dbc80",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.001/state-100.npz.json": "3796329fc73245382e868cc9b34c09f9ec8765dd40b55e9fa0410c5c377ec63a",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.001/state-20.npz": "9a0f7b7853461d6a1013b4c160bd8214d19bfa9e3e885606eac23537c83c33d7",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.001/state-20.npz.json": "441637d93f284174d64b1f947a076f348f6869ad35c4e00c2bbbe6b694882a20",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.001/state-50.npz": "fc7a3e9cb76b050e67a7825853f4004161a6b52a4f9135b5b3f8901ead159077",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.001/state-50.npz.json": "93c9083c0f65a648e276ec8cbc3958c7b0b287bf901660c55bfe2389c0029e76",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.001/state10-parity.json": "6d0447a331b4b9267dd93b2e383daca9b233bfa50207f7f5b0e1ee01e28e5e5f",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.001/trajectory.jsonl": "bc3a89cbda8a15f0023e1373613299703869992b6b00b02efb0b625a86dbc82a",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.01/arm-result.json": "11971a76d8cef1491da2fea1652f00c4a2fc2da5db07e4becbd7357b32f0920b",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.01/signals-10.npz": "59733fb90d21bb8b68560a255ba2223ce48ce27cf6fb241b9f11474aa307f567",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.01/signals-10.npz.json": "a7b15dda6572e4ac027f3403e3fe5c89218380ac1dab5f055759df0cc4185e03",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.01/signals-100.npz": "ec9f7683a6ef9515926894bddcd862f7ef612e2215cc1eb57614b571c10f1d1a",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.01/signals-100.npz.json": "63d13155b4a4622c977ebd289695b94642a90c9f0adb2fcf2bb535e8d526952f",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.01/signals-20.npz": "ad35cee0d3eea181fca2c898087a6b14f860ba4516f7f93051a1b5d9ea21e30e",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.01/signals-20.npz.json": "5fdfc081fdd5834608870ab09adadf6c61c4a3541b84b9b6d1c84ddb0509bf4d",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.01/signals-50.npz": "65728b5ed8625dbf456443b9fbfce2c99bb31d75c3b7e127dc8e1e2010e62fbd",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.01/signals-50.npz.json": "ff11b95234d8c325802512fdf8fb79f6bb964e01fd089ea0d5e6020320d699b7",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.01/state-100.npz": "2a366e0c1a2b1eca68704d9d31e031a67e114a822114085f755ede6c995179e5",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.01/state-100.npz.json": "db0a898868eb05c6b9a8c542dd09e86fb119f267bff9534661fb67513dc8cf6a",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.01/state-20.npz": "d04c3d25f8c12d4e90710eeb2a3d171877df992767e25c4fb2091c19a2ceaaf2",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.01/state-20.npz.json": "f491f5c82a372554c4e7770b069b058222fe12abae3e0154e055994f73ab9c0e",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.01/state-50.npz": "73ea0cac3cd08ed7734967c7942576ca04a77ea51080d35b2c852ea9b4fa57f2",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.01/state-50.npz.json": "5ccae0be417767d319aa9be6f22d1eac7b8cfba9c44e472fb284cffd388cdb8a",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.01/state10-parity.json": "d3d9cc81627b877c7d670661693e2035095e6ba76a1c7d9359bc2fb3093ae4a7",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m1-103-0.01/trajectory.jsonl": "a5b789b472af86426a151b6984ee347a2efac52892509428f0a23db5498c9725",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.001/arm-result.json": "ae268c36e73404eb6185e75f9127acd0deca6de908d6668460eb727e9e821f0d",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.001/signals-10.npz": "c577777e6e83ab4e4d6660f3d8e17042a692561a545b4efc12857d32af4a5b85",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.001/signals-10.npz.json": "d9fdc71c9a626d255f5060c8d67eee221fb1e24e1088cec6cbf26762b4b95c2f",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.001/signals-100.npz": "403cdf1b4677375348998c020cd71582adfe364093f8bf4dc54d9a5638215d61",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.001/signals-100.npz.json": "c08b5dcf1aee6b9e1d8e679f2f9f848bdc42b5083e248450be71c81111282f85",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.001/signals-20.npz": "9b59ddcb2cff376172f57495aaa0ce9a7fe0610ba014e0239d056e033926f69f",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.001/signals-20.npz.json": "bd84e52146138efaeaefd416cab74385304366ae6a77b5086176c1b942489d47",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.001/signals-50.npz": "45b831aae4692a3e2e39d8694806db99b35f90048b82fd6989caf686d100eed6",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.001/signals-50.npz.json": "d9d0bafb970cda20066e8902d89abf5d6ecb0f3b236c3c512a6232377e71dd55",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.001/state-100.npz": "0e0408716bbf5b6b56dd0a5bbd6a894df7ed5dab139cff9d3bb7e80549bacfc8",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.001/state-100.npz.json": "fdca673e7dfba0ab22608b5d78d82e035062bd26b7c3bde3e48856606f14e35c",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.001/state-20.npz": "1bc460648467e162427ccaac01e9974266dc195bd2651faf671d577d1294664c",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.001/state-20.npz.json": "90812dc30901e6869047b65ade3863cdcdb94355e3aa04b71c3d7cff589052ea",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.001/state-50.npz": "9c55334731163875b3e551333bbea027fc2929d72edc4bbb439afb2b6c3473c2",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.001/state-50.npz.json": "e9f2824e72c5465ec933ec8733162d6bb90c714943ccbff4e9502c079fcdbe3b",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.001/state10-parity.json": "0549f17887dfc887268ca3c7f09a91ec98824b5d1823cc3431ddcef9ad569d1e",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.001/trajectory.jsonl": "47135831183c55e66e1a25f9dba68a5fc2677072fe420cf9ab1c35a8960c4fd9",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.01/arm-result.json": "47a546348c85c368e758df1f8bb81882014f3fdffc480b19f0642b6ea119ae76",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.01/signals-10.npz": "9b5940edf80c3034976f2fca664858eda050c71d8317e40d4de19616d657944a",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.01/signals-10.npz.json": "7df7df0391c0bcc1a45c6f49155d7251d55778deba03f1654993f0f941a4128d",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.01/signals-100.npz": "c694a6df9f40f1aca30fabd185fe743e520fa87e515a074975f5ab0de2ed408b",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.01/signals-100.npz.json": "2c21d4e8806c38b5e995954a1fc51f5a49a12a58187c6f5b72b6a442d87af419",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.01/signals-20.npz": "6dc4d20127909688c9b2c909120640a8b4a5b43ae752a37c889ee5e0bae91d67",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.01/signals-20.npz.json": "c98248aff2ec197037c2fa5690945c7b3f93b76fa26e68ad1765a9bb4db95ffa",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.01/signals-50.npz": "3177e71eaa51218e1534f1a6e43f0898f6b3f5401eafbd51f15a118380c8d040",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.01/signals-50.npz.json": "43c13270965a991e7b1010610d23d8760858e202dd6db6d764f255bd034ed52f",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.01/state-100.npz": "39b20fa4bb97e2149b193142459d3f51f4372765f30684c03c17d303ef59e75c",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.01/state-100.npz.json": "6687a70ca2f8abeeb363820100bf5e293992c4221151bb8ef39e64e4e48ceb0c",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.01/state-20.npz": "76af0253960f7af1ce25f2657280282315957def00309fb10e5d3e73c5ed24e3",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.01/state-20.npz.json": "cd47b5acbf3c662927634b6b54e2a39b76ec2ff82e344ce7470e78205809f946",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.01/state-50.npz": "7aa1c9442c248d249bbd567db36b6c35479816c53802e6ad45624af9d83b5863",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.01/state-50.npz.json": "b964b5a40f5f7036d71586a7237226407a05543b4abd90e908a249d52dfd17c6",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.01/state10-parity.json": "c0f68388106126738be7165f0800aada903e38aa43b7a910c4de981bfa8984f3",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m2-103-0.01/trajectory.jsonl": "6882251e0290936b05b714c0b1ba5a34329ff33fe073feb5f73d3011b6714517",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m3-101-0.001/signals-10.npz": "4d2fa04feb16dd562250171c2bb8d702133dbc5379cc25ada1f45af850b3afaa",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m3-101-0.001/signals-10.npz.json": "a0374a1a4b56e0c05004860bbdd24144bd7d537ba47d1810db659c06b640cd0c",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m3-101-0.001/state10-parity.json": "de85a25b47624783e9cc7404a715c7c0fa14809f5ee4b02c933db6e7ec80bde4",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m3-101-0.01/arm-result.json": "aa7119d3d6a1d1311201767d9cb7c0f83d772eb267307d0c0c1a309c4d34e0a9",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m3-101-0.01/failure.npz": "cb5a44cafc7e5ee6a3b4e23a90a971c3b67c94bd3ff945436ddac06995a82e71",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m3-101-0.01/failure.npz.json": "59995eb659d72fa44ed694d65ba94e821277843dc2fb82de82eb721cc04b7a51",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m3-101-0.01/signals-10.npz": "f574a86f3a45f267d497c1fa03d3ff692dcfaabf3705c7d06e0a0e0877a21bff",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m3-101-0.01/signals-10.npz.json": "655221911db3906dccfd9c9b1f2cc15893a35db7bff5c5f67a7deecc5614ada5",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m3-101-0.01/signals-20.npz": "0a88ee00e9ea641c2a9e835a3c84a2edff1916ff09ebed6ed6d22d4a72b617d5",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m3-101-0.01/signals-20.npz.json": "432e5309b503aa039ce63707416be34dd8fc58cfbba1a8450da0fe769e0efca3",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m3-101-0.01/state-20.npz": "b336de73c97939aee2557c8705fc4b10c7f4824e8a5399369867a5b9ea0e7461",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m3-101-0.01/state-20.npz.json": "0570284352031836215c3c83b5c3de9ca4acaa92816430803b87ebdc0e1fb195",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m3-101-0.01/state10-parity.json": "961dcad3c564be62eb41df596bc87d9d4b9bfea2d1662119a2f142635d4b0d29",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m3-101-0.01/trajectory.jsonl": "c8fe8f0fd86d0787331ddff315a5598890975cab657ef1602785c5907de0a7c6",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m3-103-0.001/signals-10.npz": "94cb15c6c7bbfa2aee8c48adf97784298208d46520b5b361f92550b4e70cb55f",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m3-103-0.001/signals-10.npz.json": "048ff53042890d6ea552833f695e3657fb188422198b0e0153d56d5a5750a7f3",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m3-103-0.001/state10-parity.json": "06550f9b22b87ca85bf986c02ca38f807881808ff260c0b107b95efcc774a87b",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m3-103-0.01/signals-10.npz": "ea4d62f91a994dffa6e00123cdead0b17b4af18046697edde7b3117c8df027db",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m3-103-0.01/signals-10.npz.json": "c0a07445d6f20cae2563313bef437d4a48d77acfa7b5b9cbf890d571b0ee5682",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/m3-103-0.01/state10-parity.json": "2e20b24104dc500fa342f28a80399a046e33be39701e470cd778fd40c04845e5",
+    "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae/result.json": "79a876fffd11f3e5d44c637a2ca4b9f1aa05ebd6a0f2484744a7403ecbe2a490",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205.authorization.json": "e3a5eec0c4272d69d25a7fe6d6126df57709351a27752e9be648ed82621b9f8e",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205.console.log": "720deb245f4048be8dcd00717960ed1766f1432ca12865225503fbec4f9b22fb",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205.launch.json": "4ed743e4ee35f2bce20977d403b1d8c4e5895eaee3a02f51cc5da49b2f32475f",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205.process.json": "e3ed7ddb7789d4372aa5d9a389ca498e27c66a6303a493dc70a127ee300a44df",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/execution-review.json": "e3a5eec0c4272d69d25a7fe6d6126df57709351a27752e9be648ed82621b9f8e",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/finalization/seal.json": "92d65ae225990e01babcc88e6202109a36461e9fbf632ef2e79c31e9114f66a8",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/arm-result.json": "ce27b89ace4c25878d6dc0082fba61a9c43ea1563b65d99072632f8e465a46d8",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/restoration-measurement.json": "32bf621d7c5c9800563c4a00ca197916bb6d50e2a2ff029188094b21db19be16",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/signals-10.npz": "4d2fa04feb16dd562250171c2bb8d702133dbc5379cc25ada1f45af850b3afaa",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/signals-10.npz.json": "a0374a1a4b56e0c05004860bbdd24144bd7d537ba47d1810db659c06b640cd0c",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/signals-100.npz": "5b2794de49b6329a3a79a8fb8b7c2a4142d70a7d9e52fb59399633fc96bc6730",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/signals-100.npz.json": "362b52f5d889a549afa62f57e76a6f74346dccc6ea32d0dfc534bea4c0ae02d4",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/signals-50.npz": "a4655eae64eb3bd07568867ca54e4c957989fab11f16ffd44b39abc5093bc2bf",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/signals-50.npz.json": "2a814d9c250527fc9fcd271e8a5ec914e22308adf106faf105063215f0c8a94f",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/state-100.npz": "51d28f6b3f8fe2ead6f5e26515b0888a54fcc5b55e8927522ae07d868952370d",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/state-100.npz.json": "c3829c6e4a328e50d4f13a6f9fe04a41e17de2baf847f562089c6cec5b878ee4",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/state-50.npz": "62580cf0b706b455397af1092caef1853aafb49d65759866c701713529d56d55",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/state-50.npz.json": "d1d7e56400fc70a3d231af1db334456ae0d663776cd15b1c6f2b61dbb69e8c7c",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.001/trajectory.jsonl": "e10324e1ed5981bfc96a211dc135acd9e7e0e970655a313560b7fbff200248de",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/arm-result.json": "d999d7ffc84841c697929b409e18d61b6959e9a472317c6cc187049787f68331",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/restoration-measurement.json": "509c95d89ebf0a16ac2894d9f80931963a7d959c704fd2fc3e578af0a957b7ee",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/signals-100.npz": "7d8ad6a627820941c07bf07776ce244ce9f72a217f6aff46928881b66d1d9dc7",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/signals-100.npz.json": "76c075bb66ef5461070c2f8a2adb4ec2588f27fd8dd5b436c0d25fa0e83d2b60",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/signals-21.npz": "6c4bd3309e77eea29dbb0256fe1fb59fd30543fa1de92c459534a4709708251e",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/signals-21.npz.json": "61ff27ac5db6c57991e8633638aada73e1120f0a0ff8a1f3fb0a57aaa2c777e3",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/signals-50.npz": "83a438b69a4696852a7509bde2d40aea806b49c22599b9774a7736100ac2d3fc",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/signals-50.npz.json": "dad812b27751d41370d6eadad0db9bc0bb5125c474b557353c7a8ee43b5b2049",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/state-100.npz": "f4b390c2b3d6f23218adf65d72ac433ab415caf92fc7aba7489db8edf10e63b0",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/state-100.npz.json": "26374240ee7bd182ff5c5b3d98edd7912846f335f50b47a9705c82153f3deff5",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/state-50.npz": "fbb3d869068a59b988290306841edd230882411b7e3a61fa9c85b43279241946",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/state-50.npz.json": "89a4c8d81adc367bbd543e5dfaba2344f39a0b677800cc602f1bca8ea22d4e8f",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-101-0.01/trajectory.jsonl": "aacc791f03c90734f8341c58227de765ab49ec2b8bc42d8eadf441b563fc5112",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/arm-result.json": "60e535af3600342eb432679524d1e650b1ba7fa087de4c97cb08e5731243c298",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/restoration-measurement.json": "8f007a947f4e838cdaf1beba155c23056020666f54357f1c8c372fdd30705ae8",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/signals-10.npz": "94cb15c6c7bbfa2aee8c48adf97784298208d46520b5b361f92550b4e70cb55f",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/signals-10.npz.json": "048ff53042890d6ea552833f695e3657fb188422198b0e0153d56d5a5750a7f3",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/signals-100.npz": "a2021367fe011fad5cc47be4b3223f637ecc9d8fb3317d3781719defef86c7b0",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/signals-100.npz.json": "03899558db0481f7c4b0e354a69f7a1ddbf05823ec7a3935f7cd7212cc8b341b",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/signals-50.npz": "55ab7d2a62ffa910a353e76456604f13e674caf798fb291fee8653c69c067b18",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/signals-50.npz.json": "b514453fa9478b418ff79710c9faf34c37c6c300e3e9bf069fa0338cfd533314",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/state-100.npz": "3bcb89b65c40baa01524a65be840383d21b725609c3a3113ba4c409471468f18",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/state-100.npz.json": "b457708f9dd1568b3fda694657381aee0bd6b3f418e2d73c9a4cac3a278617ad",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/state-50.npz": "b262cb1ee1843a820319f83c09148c29496eb644e66f9dd31c3b3378aa29cc0c",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/state-50.npz.json": "95e9e9dc7bed8729139958d20838124a0b836280db3bfae55f7cb882a99f728e",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.001/trajectory.jsonl": "dddf70445b016e73de079958445bd27256998ac72563f2620dcd5c9e21c892de",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/arm-result.json": "ed61c39a0b038e6f387764fd459db3e5f83ff08a21afee2d3227f0446b034982",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/restoration-measurement.json": "5b24ee2cfae595a3b03e058d86d188fc80f7863d5a0640f08943a4344349f880",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/signals-10.npz": "ea4d62f91a994dffa6e00123cdead0b17b4af18046697edde7b3117c8df027db",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/signals-10.npz.json": "c0a07445d6f20cae2563313bef437d4a48d77acfa7b5b9cbf890d571b0ee5682",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/signals-100.npz": "7c4394f470bef0281fbaf75d09d74712d91d3c822d0d8b4a41a2531453124272",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/signals-100.npz.json": "c8938055b0d0b46bc5e464151ebf01afc8feb2a0e2c7b89412b53f0d1f29f260",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/signals-50.npz": "f0f6ab0f3ce83a47b00a2e1471e18f3089e521201d1dffd4fa43b1c9df16e616",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/signals-50.npz.json": "36cc56a356d668ec14c8de8170593194799dbb28fd539f33e43348f1541c4d0a",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/state-100.npz": "3b1f587e1bea6bd9f4313a1a448a086abfd91c2d2078b4792e4378e524f6f916",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/state-100.npz.json": "2dd49f1452b16b686cb45e02c102b031182ade9b40535e9abdd19d511a24d1ce",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/state-50.npz": "090d3d898bff14b88601abf61a2102c6b79e0115c4f1eb46cc1f447c471902a9",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/state-50.npz.json": "47aa9cef381720abb719523a97462287e9395fb174dd8bc0d42f806615482262",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/m3-103-0.01/trajectory.jsonl": "d3b8a148fa9fe4bc16ff58d67d98736517cfbba5490b0a1cb15eb5f3e2f4542c",
+    "/home/isavand/paper/evidence/neural-e3r-39baf93f9caa4d89b3fc2ddc549eb205/result.json": "328abbadd40cebff641daa2c0e4cc72cd3f0b1fbd40930d83b76dcfb42ef786f"
+  },
+  "inputs": {
+    "accepted_3D1_SHA256": "3abc274191d0e84c456355a7c351ac1aa94a2c976c1f789979ddb550a4383e89",
+    "arithmetic_runtime": {
+      "CPU_capability": "AVX2",
+      "binary_identity_limit": "Source/runtime/probe evidence, not a binary build-identity proof",
+      "conservative_gamma_k": 75,
+      "fegetround": 0,
+      "final_store_roundings_at_most": 1,
+      "maximum_nontrivial_sum_depth": 71,
+      "mean_scaling_roundings_at_most": 2,
+      "n": 72,
+      "square_roundings": 1,
+      "ties_to_even_probe": true,
+      "torch_git_version": "e4ee3be4063b7c430974252fdf7db42273388d86"
+    },
+    "historical_prefixes": {
+      "M1/101": "84269c98551254d2da4bc4c028e89602c8c8e2c0848226521ad4a45d07fcb17d",
+      "M1/103": "f8960355414f14d1c11055d78589db961ab924a3f55c92fd3a5eda0f21507c13",
+      "M1/105": "de6b8622333edc59f398bee4d5572eddea331c8498457cecbdb79d2fc8cbad82",
+      "M2/101": "cf519435b11f3867be0515ac1ad6efa0fe102f621633ac486e54f9cfbe8cdd24",
+      "M2/103": "d251d25717ead1c14fa75779d3ab053f1ee4f62f63a73766120bb7f81f34ca90",
+      "M2/105": "b1386e8c1f530329bae05bfd727c67e29a842c81c686528491f44be4a97a45a8",
+      "M3/101": "75838fe44a9b8d4809e61d5818dad7003bebe083c040a4f23d9ce6601331624f",
+      "M3/103": "e23b3fdcc2869f60b2934e2d861de59edf239ed5d64f3c71ef78937c4e7cb787",
+      "M3/105": "124b61d619bf6abfbad779cf1ff2ff4d89652d26410e670d8f28ee78cf03cf0b"
+    },
+    "runtime": {
+      "device": "cpu",
+      "numpy": "1.21.5",
+      "python": "3.9.12",
+      "torch": "2.4.0+cu121",
+      "torch_threads": 1
+    },
+    "scene": {
+      "base_bitangent": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "base_tangent": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "lights": [
+        {
+          "axis": null,
+          "id": "l0",
+          "power": null
+        },
+        {
+          "axis": [
+            0.6427876096865393,
+            0.0,
+            0.766044443118978
+          ],
+          "id": "l1",
+          "power": 8
+        },
+        {
+          "axis": [
+            -0.32139380484326946,
+            0.5566703992264194,
+            0.766044443118978
+          ],
+          "id": "l2",
+          "power": 8
+        },
+        {
+          "axis": [
+            -0.3213938048432699,
+            -0.5566703992264191,
+            0.766044443118978
+          ],
+          "id": "l3",
+          "power": 8
+        },
+        {
+          "axis": [
+            0.409576022144496,
+            0.7094064799162224,
+            0.5735764363510462
+          ],
+          "id": "l4",
+          "power": 16
+        },
+        {
+          "axis": [
+            -0.8191520442889918,
+            1.0031719290535247e-16,
+            0.5735764363510462
+          ],
+          "id": "l5",
+          "power": 16
+        },
+        {
+          "axis": [
+            0.409576022144496,
+            -0.7094064799162224,
+            0.5735764363510462
+          ],
+          "id": "l6",
+          "power": 16
+        }
+      ],
+      "normals": [
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "observations": [
+        {
+          "id": "v_train_0/l0",
+          "light": 0,
+          "split": "fit",
+          "view": 0
+        },
+        {
+          "id": "v_train_0/l1",
+          "light": 1,
+          "split": "fit",
+          "view": 0
+        },
+        {
+          "id": "v_train_0/l2",
+          "light": 2,
+          "split": "fit",
+          "view": 0
+        },
+        {
+          "id": "v_train_0/l3",
+          "light": 3,
+          "split": "fit",
+          "view": 0
+        },
+        {
+          "id": "v_train_1/l0",
+          "light": 0,
+          "split": "fit",
+          "view": 1
+        },
+        {
+          "id": "v_train_1/l1",
+          "light": 1,
+          "split": "fit",
+          "view": 1
+        },
+        {
+          "id": "v_train_1/l2",
+          "light": 2,
+          "split": "fit",
+          "view": 1
+        },
+        {
+          "id": "v_train_1/l3",
+          "light": 3,
+          "split": "fit",
+          "view": 1
+        },
+        {
+          "id": "v_train_2/l0",
+          "light": 0,
+          "split": "fit",
+          "view": 2
+        },
+        {
+          "id": "v_train_2/l1",
+          "light": 1,
+          "split": "fit",
+          "view": 2
+        },
+        {
+          "id": "v_train_2/l2",
+          "light": 2,
+          "split": "fit",
+          "view": 2
+        },
+        {
+          "id": "v_train_2/l3",
+          "light": 3,
+          "split": "fit",
+          "view": 2
+        },
+        {
+          "id": "v_train_3/l0",
+          "light": 0,
+          "split": "fit",
+          "view": 3
+        },
+        {
+          "id": "v_train_3/l1",
+          "light": 1,
+          "split": "fit",
+          "view": 3
+        },
+        {
+          "id": "v_train_3/l2",
+          "light": 2,
+          "split": "fit",
+          "view": 3
+        },
+        {
+          "id": "v_train_3/l3",
+          "light": 3,
+          "split": "fit",
+          "view": 3
+        },
+        {
+          "id": "v_train_4/l0",
+          "light": 0,
+          "split": "fit",
+          "view": 4
+        },
+        {
+          "id": "v_train_4/l1",
+          "light": 1,
+          "split": "fit",
+          "view": 4
+        },
+        {
+          "id": "v_train_4/l2",
+          "light": 2,
+          "split": "fit",
+          "view": 4
+        },
+        {
+          "id": "v_train_4/l3",
+          "light": 3,
+          "split": "fit",
+          "view": 4
+        },
+        {
+          "id": "v_train_5/l0",
+          "light": 0,
+          "split": "fit",
+          "view": 5
+        },
+        {
+          "id": "v_train_5/l1",
+          "light": 1,
+          "split": "fit",
+          "view": 5
+        },
+        {
+          "id": "v_train_5/l2",
+          "light": 2,
+          "split": "fit",
+          "view": 5
+        },
+        {
+          "id": "v_train_5/l3",
+          "light": 3,
+          "split": "fit",
+          "view": 5
+        },
+        {
+          "id": "v_hold_0/l0",
+          "light": 0,
+          "split": "held_out",
+          "view": 6
+        },
+        {
+          "id": "v_hold_0/l1",
+          "light": 1,
+          "split": "held_out",
+          "view": 6
+        },
+        {
+          "id": "v_hold_0/l2",
+          "light": 2,
+          "split": "held_out",
+          "view": 6
+        },
+        {
+          "id": "v_hold_0/l3",
+          "light": 3,
+          "split": "held_out",
+          "view": 6
+        },
+        {
+          "id": "v_hold_1/l0",
+          "light": 0,
+          "split": "held_out",
+          "view": 7
+        },
+        {
+          "id": "v_hold_1/l1",
+          "light": 1,
+          "split": "held_out",
+          "view": 7
+        },
+        {
+          "id": "v_hold_1/l2",
+          "light": 2,
+          "split": "held_out",
+          "view": 7
+        },
+        {
+          "id": "v_hold_1/l3",
+          "light": 3,
+          "split": "held_out",
+          "view": 7
+        },
+        {
+          "id": "v_hold_2/l0",
+          "light": 0,
+          "split": "held_out",
+          "view": 8
+        },
+        {
+          "id": "v_hold_2/l1",
+          "light": 1,
+          "split": "held_out",
+          "view": 8
+        },
+        {
+          "id": "v_hold_2/l2",
+          "light": 2,
+          "split": "held_out",
+          "view": 8
+        },
+        {
+          "id": "v_hold_2/l3",
+          "light": 3,
+          "split": "held_out",
+          "view": 8
+        },
+        {
+          "id": "v_hold_3/l0",
+          "light": 0,
+          "split": "held_out",
+          "view": 9
+        },
+        {
+          "id": "v_hold_3/l1",
+          "light": 1,
+          "split": "held_out",
+          "view": 9
+        },
+        {
+          "id": "v_hold_3/l2",
+          "light": 2,
+          "split": "held_out",
+          "view": 9
+        },
+        {
+          "id": "v_hold_3/l3",
+          "light": 3,
+          "split": "held_out",
+          "view": 9
+        },
+        {
+          "id": "v_hold_4/l0",
+          "light": 0,
+          "split": "held_out",
+          "view": 10
+        },
+        {
+          "id": "v_hold_4/l1",
+          "light": 1,
+          "split": "held_out",
+          "view": 10
+        },
+        {
+          "id": "v_hold_4/l2",
+          "light": 2,
+          "split": "held_out",
+          "view": 10
+        },
+        {
+          "id": "v_hold_4/l3",
+          "light": 3,
+          "split": "held_out",
+          "view": 10
+        },
+        {
+          "id": "v_hold_5/l0",
+          "light": 0,
+          "split": "held_out",
+          "view": 11
+        },
+        {
+          "id": "v_hold_5/l1",
+          "light": 1,
+          "split": "held_out",
+          "view": 11
+        },
+        {
+          "id": "v_hold_5/l2",
+          "light": 2,
+          "split": "held_out",
+          "view": 11
+        },
+        {
+          "id": "v_hold_5/l3",
+          "light": 3,
+          "split": "held_out",
+          "view": 11
+        },
+        {
+          "id": "v_train_0/l4",
+          "light": 4,
+          "split": "relight",
+          "view": 0
+        },
+        {
+          "id": "v_train_0/l5",
+          "light": 5,
+          "split": "relight",
+          "view": 0
+        },
+        {
+          "id": "v_train_0/l6",
+          "light": 6,
+          "split": "relight",
+          "view": 0
+        },
+        {
+          "id": "v_train_1/l4",
+          "light": 4,
+          "split": "relight",
+          "view": 1
+        },
+        {
+          "id": "v_train_1/l5",
+          "light": 5,
+          "split": "relight",
+          "view": 1
+        },
+        {
+          "id": "v_train_1/l6",
+          "light": 6,
+          "split": "relight",
+          "view": 1
+        },
+        {
+          "id": "v_train_2/l4",
+          "light": 4,
+          "split": "relight",
+          "view": 2
+        },
+        {
+          "id": "v_train_2/l5",
+          "light": 5,
+          "split": "relight",
+          "view": 2
+        },
+        {
+          "id": "v_train_2/l6",
+          "light": 6,
+          "split": "relight",
+          "view": 2
+        },
+        {
+          "id": "v_train_3/l4",
+          "light": 4,
+          "split": "relight",
+          "view": 3
+        },
+        {
+          "id": "v_train_3/l5",
+          "light": 5,
+          "split": "relight",
+          "view": 3
+        },
+        {
+          "id": "v_train_3/l6",
+          "light": 6,
+          "split": "relight",
+          "view": 3
+        },
+        {
+          "id": "v_train_4/l4",
+          "light": 4,
+          "split": "relight",
+          "view": 4
+        },
+        {
+          "id": "v_train_4/l5",
+          "light": 5,
+          "split": "relight",
+          "view": 4
+        },
+        {
+          "id": "v_train_4/l6",
+          "light": 6,
+          "split": "relight",
+          "view": 4
+        },
+        {
+          "id": "v_train_5/l4",
+          "light": 4,
+          "split": "relight",
+          "view": 5
+        },
+        {
+          "id": "v_train_5/l5",
+          "light": 5,
+          "split": "relight",
+          "view": 5
+        },
+        {
+          "id": "v_train_5/l6",
+          "light": 6,
+          "split": "relight",
+          "view": 5
+        },
+        {
+          "id": "v_hold_0/l4",
+          "light": 4,
+          "split": "relight",
+          "view": 6
+        },
+        {
+          "id": "v_hold_0/l5",
+          "light": 5,
+          "split": "relight",
+          "view": 6
+        },
+        {
+          "id": "v_hold_0/l6",
+          "light": 6,
+          "split": "relight",
+          "view": 6
+        },
+        {
+          "id": "v_hold_1/l4",
+          "light": 4,
+          "split": "relight",
+          "view": 7
+        },
+        {
+          "id": "v_hold_1/l5",
+          "light": 5,
+          "split": "relight",
+          "view": 7
+        },
+        {
+          "id": "v_hold_1/l6",
+          "light": 6,
+          "split": "relight",
+          "view": 7
+        },
+        {
+          "id": "v_hold_2/l4",
+          "light": 4,
+          "split": "relight",
+          "view": 8
+        },
+        {
+          "id": "v_hold_2/l5",
+          "light": 5,
+          "split": "relight",
+          "view": 8
+        },
+        {
+          "id": "v_hold_2/l6",
+          "light": 6,
+          "split": "relight",
+          "view": 8
+        },
+        {
+          "id": "v_hold_3/l4",
+          "light": 4,
+          "split": "relight",
+          "view": 9
+        },
+        {
+          "id": "v_hold_3/l5",
+          "light": 5,
+          "split": "relight",
+          "view": 9
+        },
+        {
+          "id": "v_hold_3/l6",
+          "light": 6,
+          "split": "relight",
+          "view": 9
+        },
+        {
+          "id": "v_hold_4/l4",
+          "light": 4,
+          "split": "relight",
+          "view": 10
+        },
+        {
+          "id": "v_hold_4/l5",
+          "light": 5,
+          "split": "relight",
+          "view": 10
+        },
+        {
+          "id": "v_hold_4/l6",
+          "light": 6,
+          "split": "relight",
+          "view": 10
+        },
+        {
+          "id": "v_hold_5/l4",
+          "light": 4,
+          "split": "relight",
+          "view": 11
+        },
+        {
+          "id": "v_hold_5/l5",
+          "light": 5,
+          "split": "relight",
+          "view": 11
+        },
+        {
+          "id": "v_hold_5/l6",
+          "light": 6,
+          "split": "relight",
+          "view": 11
+        }
+      ],
+      "positions": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "views": [
+        {
+          "azimuth": 0,
+          "direction": [
+            0.3420201433256687,
+            0.0,
+            0.9396926207859084
+          ],
+          "id": "v_train_0",
+          "polar": 20
+        },
+        {
+          "azimuth": 120,
+          "direction": [
+            -0.17101007166283427,
+            0.29619813272602386,
+            0.9396926207859084
+          ],
+          "id": "v_train_1",
+          "polar": 20
+        },
+        {
+          "azimuth": 240,
+          "direction": [
+            -0.1710100716628345,
+            -0.29619813272602374,
+            0.9396926207859084
+          ],
+          "id": "v_train_2",
+          "polar": 20
+        },
+        {
+          "azimuth": 0,
+          "direction": [
+            0.766044443118978,
+            0.0,
+            0.6427876096865394
+          ],
+          "id": "v_train_3",
+          "polar": 50
+        },
+        {
+          "azimuth": 120,
+          "direction": [
+            -0.38302222155948884,
+            0.6634139481689384,
+            0.6427876096865394
+          ],
+          "id": "v_train_4",
+          "polar": 50
+        },
+        {
+          "azimuth": 240,
+          "direction": [
+            -0.38302222155948934,
+            -0.6634139481689382,
+            0.6427876096865394
+          ],
+          "id": "v_train_5",
+          "polar": 50
+        },
+        {
+          "azimuth": 60,
+          "direction": [
+            0.2867882181755231,
+            0.496731764892154,
+            0.8191520442889918
+          ],
+          "id": "v_hold_0",
+          "polar": 35
+        },
+        {
+          "azimuth": 180,
+          "direction": [
+            -0.573576436351046,
+            7.024285468436541e-17,
+            0.8191520442889918
+          ],
+          "id": "v_hold_1",
+          "polar": 35
+        },
+        {
+          "azimuth": 300,
+          "direction": [
+            0.2867882181755231,
+            -0.496731764892154,
+            0.8191520442889918
+          ],
+          "id": "v_hold_2",
+          "polar": 35
+        },
+        {
+          "azimuth": 60,
+          "direction": [
+            0.4531538935183251,
+            0.7848855672213958,
+            0.42261826174069944
+          ],
+          "id": "v_hold_3",
+          "polar": 65
+        },
+        {
+          "azimuth": 180,
+          "direction": [
+            -0.9063077870366499,
+            1.1099069304367545e-16,
+            0.42261826174069944
+          ],
+          "id": "v_hold_4",
+          "polar": 65
+        },
+        {
+          "azimuth": 300,
+          "direction": [
+            0.4531538935183251,
+            -0.7848855672213958,
+            0.42261826174069944
+          ],
+          "id": "v_hold_5",
+          "polar": 65
+        }
+      ]
+    },
+    "shader": {
+      "decoder": "atan2",
+      "diffuse_samples": 512,
+      "height_sha256": "8bdadf82312184be1e28ab4d362ee5cfccd7da8eca89041394f577e2bb7bec97",
+      "original_source": {
+        "approved_AST_change": "compute_radiance: specular denominator valid_counts -> M_spec; all other statements unchanged",
+        "commit": "e1e859779301faced46d6476691e20b546c27ae0",
+        "height_recovery": {
+          "height_sha256": "520058d17b3b668c8355af7ca12cf672dfc4bf12fec46a6ff894334c288a0f64",
+          "maximum_inverse_rounded_storage_error": 4.6119335087024815e-08,
+          "maximum_unrounded_sine_error": 5.551115123125783e-17,
+          "original_pattern_sha256": "eccaf296b5a9fc9ed7c74f73cb6bf0b587df00459086610b86631dce024f30c6",
+          "strategy": "original sample_sphere integer indices, z=j/N"
+        },
+        "method_AST_sha256": {
+          "compute_Dh": "f7bbff1f03bb7b986f7aa29713d9e66087ad5171b3d946735e4887a5ca586e10",
+          "compute_pdf_aniso_ggx": "2db80034ff62c5143a6cbab7114befaf424404af88dff81d682fba05f9316fbe",
+          "compute_radiance": "c185f90ac58cf513a7f9a75f231ac22da7d0d0bb2ff279e457755593d12959c7",
+          "compute_spec_loss": "df4467fd8a21069c6a3bd132c5bab88526f62f9a56214523c2612729fcda6dd5",
+          "compute_tangent_bitangent_flat": "ccec297614e815cf03cfb279ad794e563b45f95c5dc0520d9c1b9e17ce125cdf",
+          "diffuse_term": "339d4394728d99618441c5ca0268f61eca489130fa7e1c7bbc58bf5a8a236a56",
+          "fresnel_schlick": "0220a7af0071b77dd2f29cacb5d58879a36adb90b9e3b7a3d464ea4b0052d9ce",
+          "fresnel_schlick_directions": "8b4c68b01d46b35e4b13062de98002caae058699334a10c7d6554ee6f3a273e2",
+          "get_orthogonal_directions": "b9b33eb347d519e0c9f385277e4ea7546cc0b11ec961887d7dc572cb7e09ce66",
+          "nan_inf_check": "5d68c97234369ff071349ce4d9bf17f37cbec3fd82335aec69b0e6cf40c6270e",
+          "rotate_tangent_bitangent": "d5c79d243488794eb550609d6caa955e384b3466550c192ac56476e318bba8e8",
+          "sample_aniso_ggx_directions": "725315ece0a469576096729f1a795237fb715e390508bcc62062526193844ede",
+          "sample_diffuse_directions": "058e95985c3d07907087c543075512271ae687353e4c21cd6186e64815306583"
+        },
+        "source_sha256": "b8386007dc009442cdefdeccc3c6ecc0114f6d0e7feaf804008b0bd9020091fe"
+      },
+      "protocol": "known-input-material-shader-v1",
+      "radial_rule": "midpoint",
+      "specular_samples": 1024,
+      "variant": "A2"
+    },
+    "tapes": {
+      "evaluation": {
+        "arrays": {
+          "azimuth": {
+            "dtype": "float32",
+            "sha256": "91ed5983f9f1eea43d29ca9bb57c52a4513757bb0ee623ab7a929c2fafe53f7c",
+            "shape": [
+              336,
+              1,
+              1
+            ]
+          },
+          "u": {
+            "dtype": "float32",
+            "sha256": "9045b521cec7d6c9d806d3b8de1d506c2b3293b70033f0053471be70cd92fa64",
+            "shape": [
+              336,
+              1024
+            ]
+          },
+          "v": {
+            "dtype": "float32",
+            "sha256": "a95ac52f06341061da9e9fbf7e664d44516e7e858f2a2702924a06eb104bcc79",
+            "shape": [
+              336,
+              1024
+            ]
+          }
+        },
+        "per_tape": [
+          {
+            "array_sha256": [
+              "99b3bfb482eae0645e8fa25ffbd02a8d9ab56d643e71db1c2c8e38fd6c91a118",
+              "7024c9daf4075b613b8c9ea5f21f8c0a5d7b88a59b9e6bba5b6bde4f4eb7c53c",
+              "d940ff367da6f46043ade309c8edde8e507dfe0558d7cdbaff868b8f6bec1980"
+            ],
+            "points": 84,
+            "seed": 1000,
+            "sha256": "e9fb759ec21b9f4351754cb2071117e73f115d9116dd0955139fc845b74adc3e",
+            "specular_samples": 1024
+          },
+          {
+            "array_sha256": [
+              "81060fb71c24b1d58b654ac4a24eec47a438b5ef30252f03f705eeaf7e08854a",
+              "b9089d1ea460c3b9dae8f9ffdf8e41a8798fa7e2c2aa14a7e30cb7e6345a3fbf",
+              "438713d4113545453d6df6f7add909fa362179734a722d7d3b0dab93996963be"
+            ],
+            "points": 84,
+            "seed": 1001,
+            "sha256": "5c9ce66939dde1b3404ff3bcd31f9163ab1dfa85d8561d76ed4c358a584a59e5",
+            "specular_samples": 1024
+          },
+          {
+            "array_sha256": [
+              "35240d76ba49105dfb5209e90125408cce30b50dbd87cec84ba779ded86fb449",
+              "21c046415f1277cec4f8b9da1f17f6544c950c095a8b4ab21b0cdfa13477a396",
+              "1ecce2945f207e865d44f7c34914e5a7be20169bb8cc9e0f73a123dee70d9baf"
+            ],
+            "points": 84,
+            "seed": 1002,
+            "sha256": "cb3ae520dafd76c9bfdf4d47a4ad7cef46f2ea576c70e0ffb8f0b8cee5cc1afa",
+            "specular_samples": 1024
+          },
+          {
+            "array_sha256": [
+              "1ca1b9797a71cb1305cfbdc83709a5332176a2c1c4e201fbc18e12681cec46bc",
+              "2ac75b385a5f9b0876d7fdfd7bdbe98714cb3a31c1d57e66e65e3f7bc4174fa9",
+              "eb5ac499c6c8cc7649ed9836761d240a2b54dc7ee8041ac5a5b446430550531f"
+            ],
+            "points": 84,
+            "seed": 1003,
+            "sha256": "cdff3cdf5d322e5fb3c0275c56f33e1f5ca7f7baf69815d9576a33c4932e716a",
+            "specular_samples": 1024
+          }
+        ]
+      },
+      "fit": {
+        "arrays": {
+          "azimuth": {
+            "dtype": "float32",
+            "sha256": "0be16b2bb0a2f3560dcec633634f1e6e21a879c85839635e27ad863ff1bcfd12",
+            "shape": [
+              96,
+              1,
+              1
+            ]
+          },
+          "u": {
+            "dtype": "float32",
+            "sha256": "6fbefc8a11b6513899d88e3f790315dc5de25b5a98fd31a5821dcd74208c28c8",
+            "shape": [
+              96,
+              1024
+            ]
+          },
+          "v": {
+            "dtype": "float32",
+            "sha256": "965ad79cb5cd66e1ef1d9d7f71c9bba9c0ff640169fc3ab6fbe49039bfcb0cd0",
+            "shape": [
+              96,
+              1024
+            ]
+          }
+        },
+        "per_tape": [
+          {
+            "array_sha256": [
+              "796f965a1018b9ed1a673a9fa54fe054d44b5dec01ba2f7cb0b7b7578cf176c6",
+              "1b9a1881e3ae905c44dd8d780bf3045b8f6471e3e52ebf0de7a2f4f352e73c82",
+              "3a84da981e0bb9d2f9d2b11f30b20b815d35ba210604bd121e50e757ef09204b"
+            ],
+            "points": 24,
+            "seed": 3000,
+            "sha256": "161fbbff92dc5db501ec3bd1e032fbe449d0f635d2cba85244481b7d1f869f34",
+            "specular_samples": 1024
+          },
+          {
+            "array_sha256": [
+              "db2173ccfdc3a38947bb187259ba5b62c72ac27bd6de3ca67653357721ff96c0",
+              "87198a698af662012ac133da59d4218862789636971a054d3cf3aeb29e0a99ec",
+              "9108952686f0c38082baa8383d1487b4d2c4c7a54401106618d8528a464fdc63"
+            ],
+            "points": 24,
+            "seed": 3001,
+            "sha256": "56fb2f218e48d452511ee72911e63e16daef938f868f4fbcdadcf2f0b7f1c037",
+            "specular_samples": 1024
+          },
+          {
+            "array_sha256": [
+              "979a2bb505ae794cf934c112be3f63e8b5ff2ed13364cb03fee62ed8497370fa",
+              "2c24876db7e9293295172ecd2db187d639844c63d7d983e907c5caaaed30a08d",
+              "e4a481c4ec482c623efb84180f0d9b45deab0afd7178baf6899f2b9a68b28049"
+            ],
+            "points": 24,
+            "seed": 3002,
+            "sha256": "b0c6f92624381ea6de65aae4436d7275897ec46f2c0662c1fac683953a67a8b5",
+            "specular_samples": 1024
+          },
+          {
+            "array_sha256": [
+              "09324bc2cb8ecd66d8b4231b82447a05fa10b36bcd902caa7780095f179efe30",
+              "4e98115daf28cbc3b5b7e53f7b0151e6eda4179137542c8157dfa75db4044a35",
+              "d4af2269b191f53388019204c6144afa2b010fe6943b4279ba5bb2f6b3d5c04e"
+            ],
+            "points": 24,
+            "seed": 3003,
+            "sha256": "0b31d2144bb7148b0ade28ebeffcc2c8080eb2b067487865224260af22668583",
+            "specular_samples": 1024
+          }
+        ]
+      }
+    },
+    "targets": {
+      "M1": {
+        "fine_sha256": "1423284cfa02c6ad637e01bb8607cf9dada2ab5676b45aef2c91bf97906abb03",
+        "fit_float32_sha256": "8d5b8691eda3c7d6d83e914fae3b3f08f2db15fd107f133a538d2f2df731ff3a",
+        "source_entry_sha256": "8389ce07c22bdf177d7d5df1fb8fc62b4d08e405f8ab1cd8996b7661f970dd50",
+        "truth": [
+          0.28,
+          0.49,
+          -0.62,
+          0.36,
+          0.58,
+          0.24,
+          0.1
+        ]
+      },
+      "M2": {
+        "fine_sha256": "871ac3dfd1a7f946cf2c2db267bf0256851c3405dd76711a6c3a201bd04ba90e",
+        "fit_float32_sha256": "4111a68e160fdc32c8aa554fbce762a7a476558b5ab1ab3f1bdb0ca221c83a30",
+        "source_entry_sha256": "4b5fbea59dc30a72cc46083aa637d100d95ad94c8529a7b8242e9e775daea118",
+        "truth": [
+          0.17,
+          0.62,
+          0.91,
+          0.56,
+          0.31,
+          0.18,
+          0.65
+        ]
+      },
+      "M3": {
+        "fine_sha256": "c2a86dd7d101b690321a4af7c4043427330dd92a167a8136ebdaea400ad79149",
+        "fit_float32_sha256": "1ddd6c83fd94ce2c49962706d2a61dd3eb3b154872a05452b6303b15f58aa14e",
+        "source_entry_sha256": "677ebf2d898ca82f8e5558761820bc953241de284d260e3eea6e81ce6d6fe0cd",
+        "truth": [
+          0.37,
+          0.47,
+          0.19,
+          0.24,
+          0.43,
+          0.7,
+          0.35
+        ]
+      }
+    }
+  },
+  "optimizer": {
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "lr": 0.01,
+    "weight_decay": 0.0
+  },
+  "optimizer_effective": {
+    "amsgrad": false,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "capturable": false,
+    "differentiable": false,
+    "eps": 1e-08,
+    "foreach": null,
+    "fused": null,
+    "lr": 0.01,
+    "maximize": false,
+    "weight_decay": 0.0
+  },
+  "output_parent": "/home/isavand/paper/evidence",
+  "points": {
+    "AS1": [
+      0.7719231247901917,
+      0.3827124238014221,
+      -0.6753164529800415,
+      0.7474095821380615,
+      0.4215545356273651,
+      0.25010859966278076,
+      0.9227514863014221
+    ],
+    "N1": [
+      0.7299216389656067,
+      0.313015878200531,
+      -0.6544979810714722,
+      0.6715710163116455,
+      0.37384501099586487,
+      0.21982820332050323,
+      0.8326048851013184
+    ],
+    "truth": [
+      0.17,
+      0.62,
+      0.91,
+      0.56,
+      0.31,
+      0.18,
+      0.65
+    ],
+    "truth_swapped": [
+      0.62,
+      0.17,
+      -0.6607963267948965,
+      0.56,
+      0.31,
+      0.18,
+      0.65
+    ]
+  },
+  "protocol": "material-objective-e5-v1",
+  "replays": {
+    "AS1": {
+      "loss": 2.9738970624748617e-05,
+      "root": "/home/isavand/paper/evidence/material-e4-5290efddb03c4842837176191a90558d",
+      "saved_physical_gradient": {
+        "physical_gradient": [
+          1.6345525040151188e-05,
+          3.1031927051117236e-05,
+          -1.0986858461822026e-05,
+          2.0656201172641886e-05,
+          0.00014348137813158246,
+          7.531936367399794e-05,
+          3.342193099342694e-05
+        ],
+        "provenance": "Offline chain from archived actual shader-input gradients; fixed encoding radius; no new derivative query",
+        "scaled_gradient": [
+          1.569170403854514e-05,
+          2.9790649969072546e-05,
+          -3.4516233829690934e-05,
+          2.0656201172641886e-05,
+          0.00014348137813158246,
+          7.531936367399794e-05,
+          3.342193099342694e-05
+        ],
+        "scaled_norm": 0.0001735762061228645
+      },
+      "signals": {
+        "bytes": 11077,
+        "path": "m2-103/signals-100-103.npz.json",
+        "sha256": "f30f55ddea34eff6565a1bd844ffcecec16cb8281bd5f529dcb2814206e3b450"
+      }
+    },
+    "N1": {
+      "loss": 1.4279264178185258e-05,
+      "root": "/home/isavand/paper/evidence/neural-e3-b4d1389b174e4b20b2f892725050a0ae",
+      "saved_physical_gradient": {
+        "physical_gradient": [
+          -6.280838029226743e-06,
+          4.329421593496363e-05,
+          8.246445348733448e-06,
+          0.00016331119418566686,
+          -3.8669730969331795e-05,
+          -7.857581090320309e-05,
+          3.080560577473079e-05
+        ],
+        "provenance": "Offline chain from archived actual shader-input gradients; fixed encoding radius; no new derivative query",
+        "scaled_gradient": [
+          -6.029604508057673e-06,
+          4.156244729756508e-05,
+          2.590697212581072e-05,
+          0.00016331119418566686,
+          -3.8669730969331795e-05,
+          -7.857581090320309e-05,
+          3.080560577473079e-05
+        ],
+        "scaled_norm": 0.0001942266768660967
+      },
+      "signals": {
+        "bytes": 35412,
+        "path": "m2-103-0.001/signals-100.npz.json",
+        "sha256": "c08b5dcf1aee6b9e1d8e679f2f9f848bdc42b5083e248450be71c81111282f85"
+      }
+    }
+  },
+  "resources": {
+    "RSS_bytes": 4294967296,
+    "address_bytes": 8589934592,
+    "continuation_seconds_per_arm": 120,
+    "kill_grace_seconds": 10,
+    "parity_stage_seconds": 120,
+    "whole_seconds": 1800
+  },
+  "runtime": {
+    "device": "cpu",
+    "numpy": "1.21.5",
+    "python": "3.9.12",
+    "torch": "2.4.0+cu121",
+    "torch_threads": 1
+  },
+  "scales": [
+    0.96,
+    0.96,
+    3.141592653589793,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "schema_version": 1,
+  "source_sha256": {
+    "audits/anisotropic_brdf.py": "7706a54ee2e3c4a5568f297b75d4b9de1e979ab0d35483724e596bcfc7245268",
+    "docs/A_NEURAL_MATERIAL_FIELD_AUDIT_V1.md": "ee9f75f91eae3748c2e166c7bbfab322d00ef4683e4fd3e06c0fcdf1b770a89d",
+    "docs/KNOWN_MATERIAL_RECOVERY_V1_EXECUTION.md": "5104c4a7145c892ac54487867ad0574876463194533c99b2cfa37a086f443295",
+    "docs/KNOWN_MATERIAL_RECOVERY_V1_RESULTS.md": "1b32ffa78b81c7cd27a1c87f82361a402250902a6ab5e034687d3c7b8af160e9",
+    "docs/MATERIAL_GAUGE_ROUNDOFF_V1_RESULTS.md": "ec0b709230dd4348ee8d0db832e5c03dd39c6af5649a68ac79ed8d8af216132f",
+    "docs/MATERIAL_GRADIENT_EQUIVARIANCE_V1_RESULTS.md": "f92e5bfadc1dd38e25dc05c26585cc5787550079b5554963026be0ec8f2d24c8",
+    "docs/MATERIAL_INDEPENDENT_TAPE_LM_V1_RESULTS.md": "a4896b847ee371afd72a8f7a9dd8b67670cb9f9f41d4e5766dbc49ee37ab73b7",
+    "docs/MATERIAL_LM_GAUGE_TRAJECTORIES_V1_RESULTS.md": "c07e24dbc6cc35e1c5960714003d48e6503bbbb814210dc53747c99345bf8f0b",
+    "docs/MATERIAL_LM_GAUGE_TRAJECTORIES_V2_RESULTS.md": "636bd6fafdafd65cfbce8bf304c56fe32c532abe8dea720a5d1689c0d72d2a05",
+    "docs/MATERIAL_RECOVERY_OPTIMIZER_COMPARISON_V1_RESULTS.md": "699fe50ebdfe2cd087147814787e8ee23b1267e3753c9ad92d5961382579d5f2",
+    "docs/MATERIAL_SAMPLE_COUPLING_V1_RESULTS.md": "9b9fd3a20be59e295606323d2c91f534a8bab631eebb55c0ebffcc805ce24dde",
+    "docs/MATERIAL_SYMMETRY_AUDIT_V1_ATTEMPT2_RESULTS.md": "ab785097f3a2f7e648bc51f7330dbda99853e54aa0c1dda375759b370864c6a8",
+    "docs/MULTI_MATERIAL_RECOVERY_V1_RESULTS.md": "465270c9bcae9eacbf91dec079134b7f75fe716765f31af65ee3c1a8a6981ead",
+    "docs/NEURAL_MATERIAL_FAILURE_ANALYSIS_E1.md": "30be6e5443f90ad0e23544129f96b370f70a7f27da8e914219ad0308c3438dcd",
+    "docs/NEURAL_MATERIAL_FIELD_IMPLEMENTATION_PLAN_V1.md": "be9eb0a430321e64548faec34f45f42a5b2275a3c22e2aba0bbb1e96614175bb",
+    "docs/NEURAL_MATERIAL_REPORTING_INTEGRATION_V2.md": "48e8c68db934389e15e7b6d30de3f82bd998ed9bc47f365bbb608ad9d26d4ff0",
+    "docs/evidence/KNOWN_MATERIAL_RECOVERY_V1.json": "f3c7a93e8f24ef7e3aac2de66b91da52962cb2f75f0d64cc66a199ba159da451",
+    "docs/evidence/MATERIAL_GAUGE_ROUNDOFF_V1.json": "4753e1e6d971b033d24d686e146ab0d22dfd4941eee3d03df9780dc0fce37c5b",
+    "docs/evidence/MATERIAL_GAUGE_ROUNDOFF_V1_OFFLINE_SUMMARY.json": "510775832a45f9ec1956f2cc6ab5fc27ce0a1f9d5a88a9ff53e8944a4dbf934c",
+    "docs/evidence/MATERIAL_GRADIENT_EQUIVARIANCE_V1.json": "58a47eca9978e32385d94c1b3c1f087b2be0dff15fb095fe95b3e5601bc34070",
+    "docs/evidence/MATERIAL_INDEPENDENT_TAPE_LM_V1.json": "bf1d8b4687244fb4625377031e59a5606ce354eace429aab3470894d11f9f77c",
+    "docs/evidence/MATERIAL_INDEPENDENT_TAPE_LM_V1_ANALYSIS.json": "5cc6947679d18bcae19abef10c264d482fc5889fb27ccfd9f67998ea2ca26577",
+    "docs/evidence/MATERIAL_LM_GAUGE_TRAJECTORIES_V1.json": "88b7e83ec7f79b3e9f476c9aa5ccd199e5394342ca83205394188f800cfb8f9a",
+    "docs/evidence/MATERIAL_LM_GAUGE_TRAJECTORIES_V1_FAILURE_ANALYSIS.json": "218ebd3e03f8e14accf8286789409dc93d1e704a434ea7856cd219c4dfc3c503",
+    "docs/evidence/MATERIAL_LM_GAUGE_TRAJECTORIES_V2.json": "b40f548f07a66a545936cf295fa7b6bb3c84cb104bc6a2698dbed81705460ec3",
+    "docs/evidence/MATERIAL_LM_GAUGE_TRAJECTORIES_V2_ANALYSIS.json": "a92476bb6e5856b49509d1e8e59e74c1a89e555bc079db34dcf087baf798063a",
+    "docs/evidence/MATERIAL_LM_PROPOSAL_GAUGE_V1.json": "54920234b87edf17eeba688e0ffab83cdbd71f9246a4ca7654fb68f12bd5663e",
+    "docs/evidence/MATERIAL_RECOVERY_CONTINUATION_V1.json": "224cb9a0cb27bbaacc61b8d575efbcd2c37854b716fc51bc78b439020239f24f",
+    "docs/evidence/MATERIAL_RECOVERY_DIAGNOSTICS_V1.json": "6106278d6f3bb41eed0933b668627626c462faaf20433c13c34d1c5d7685539f",
+    "docs/evidence/MATERIAL_RECOVERY_OPTIMIZER_COMPARISON_V1.json": "66e626379dbdfc9c7c7c5116e94cada4a748e3db29ccb2c14cf96f6fe724537f",
+    "docs/evidence/MATERIAL_SAMPLE_COUPLING_V1.json": "c8e9ddc1d0ab3c5d028bf9925062b6e2d27b9b6bc017800e7a2b00d92aebd87d",
+    "docs/evidence/MATERIAL_SYMMETRY_AUDIT_V1.json": "055aa0a2c13457dc198bb888c45ff15062fec90856de31220e09ada196568a55",
+    "docs/evidence/MATERIAL_SYMMETRY_AUDIT_V1_ATTEMPT2.json": "a7ab47837718eccb69e935c676796ada39aac367b021ce08d79533cb729299a1",
+    "docs/evidence/MATERIAL_SYMMETRY_AUDIT_V1_FAILURE.json": "47e879568455b593117304a89707a4216620fe6ca0e0a8985e4c98686f579b46",
+    "docs/evidence/MULTI_MATERIAL_RECOVERY_V1.json": "3abc274191d0e84c456355a7c351ac1aa94a2c976c1f789979ddb550a4383e89",
+    "docs/evidence/MULTI_MATERIAL_RECOVERY_V1_ANALYSIS.json": "eb0c7d5f5f0d803c1a01dbf31739efc1cd9dbb280dfab2dd772401b5bf8688ee",
+    "docs/evidence/NEURAL_MATERIAL_FAILURE_ANALYSIS_E1.json": "5cb4011e170ab4312bb3f4f41c09b9440e3d5983e0e90c2deaa10c572b5e0c55",
+    "docs/evidence/NEURAL_MATERIAL_FIELD_VALIDATION_AGGREGATE_V1.json": "f9ef3477a4189958a6e0e16067b35dade62069a11797e90958515996b6cb9a2e",
+    "docs/evidence/NEURAL_MATERIAL_FIELD_VALIDATION_COMPLETION_V1.json": "69f69d08b9b3893996dfc9794fa8d89f3c62ac402d6eb1959ac7f222bd4adb3a",
+    "docs/evidence/NEURAL_MATERIAL_FIELD_VALIDATION_V1.json": "03bb86b7c3300839cebad5313a22b50e7169e5e7b81720eef7de0446b52705bf",
+    "docs/evidence/NEURAL_MATERIAL_REPORTING_AUDIT_V1.json": "44253370392a110b571ccd67fa6c9ff128af3a916e20a5c33eaba0ac933e37dc",
+    "docs/evidence/NEURAL_MATERIAL_REPORTING_INTEGRATION_V2.json": "5d4f9058b93e119236abbc967d75b9c5821d95409458eeb96f0ab281c10a5700",
+    "docs/figures/material-independent-tape-lm-v1/Q-accepted.svg": "8aae88fdfb0942c6c0838f88ca7b77e10641a617e7e8a7b9bc9664e373f99f58",
+    "docs/figures/material-independent-tape-lm-v1/cross-tape-Q-error.svg": "9c71803530fe0b6888048021e95b25cb3b1964db413c2da6151df912f74aa629",
+    "docs/figures/material-independent-tape-lm-v1/damping-outer.svg": "c1a3806abded1d24896298bca863aa8348111c9e801d433e3a38f43e72206e01",
+    "docs/figures/material-independent-tape-lm-v1/loss-accepted.svg": "2d9896f4e1c052449ebbf25857290376f0f4d548b0571907efe3495f9ad010df",
+    "docs/figures/material-independent-tape-lm-v1/loss-forwards.svg": "2f4f034896f4cbfe74ff3a8f94b76c2cc4c693c61689dd5ba6f3ee77d0817fa4",
+    "docs/figures/material-independent-tape-lm-v1/loss-outer.svg": "4049a25e39dda0f026e093cc25cd56878b1a39b6b5e9b4ac732195c4b83f7cea",
+    "docs/figures/material-independent-tape-lm-v1/loss-solves.svg": "d82d8372ba85c1bfc0d3fd332bb966430961b8610bb0b2d6dd77b28c69d34076",
+    "docs/figures/material-independent-tape-lm-v1/loss-wall.svg": "4747271ade333f0ba7efd4f1ab6b028ff4c5ac4ddadbeb0df98854b671b7d779",
+    "docs/figures/material-lm-gauge-trajectories-v2/Q-accepted.svg": "dd6fb72be4c2f668c872f5bcecc408d6b40a12f999a4629da3b52fc86df098cf",
+    "docs/figures/material-lm-gauge-trajectories-v2/damping-outer.svg": "369c7a10ff88f015a1941467f7404957ba8d5543bf1af3205db7ff999a07f708",
+    "docs/figures/material-lm-gauge-trajectories-v2/loss-accepted.svg": "0b051f2e350041cbf631cf11ce3527726f6c0ce7ea1a4dd9207d087ee8ee7bba",
+    "docs/figures/material-lm-gauge-trajectories-v2/loss-forwards.svg": "75d2a90aef93d81c2485406989c705e7818dcecea7dcc712d1916bce75fc1a01",
+    "docs/figures/material-lm-gauge-trajectories-v2/loss-outer.svg": "c7708868a8ef388d8ad629a53ad7cd07d1f9cefe66282af17db1b6ca1a4510d9",
+    "docs/figures/material-lm-gauge-trajectories-v2/loss-wall.svg": "b56402694bed32726bb7d6109778d8b26dea1f506112461d91a6eb2466bf3e95",
+    "docs/figures/multi-material-recovery-v1/adam-loss.svg": "6c042bf7c8171538a4e3d6eec55f178f844d0fa2df02f124b78e35608aca3c32",
+    "docs/figures/multi-material-recovery-v1/endpoint-recovery.svg": "fdb13d10110df2be6dad007f091a6dc9b6fd977100aaa4c769e1ca842c6354e0",
+    "docs/figures/multi-material-recovery-v1/lm-damping.svg": "632050ca8de453ae3b3dd72491aa3bad6bc47ecba957f2b9d66084a161dc2219",
+    "docs/figures/multi-material-recovery-v1/lm-loss-forwards.svg": "7fe58b1f5511efa82b232b23ca6976bb2525f5229e89345e2c53d9b679f6a91c",
+    "docs/figures/multi-material-recovery-v1/lm-loss-outer.svg": "3f1cbf20e8c532d6419a99466d5f83f7e84cd565f7921707000b443ff49d5d4d",
+    "docs/figures/multi-material-recovery-v1/material-Q-accepted.svg": "6a247b4df18ce12decc8a986eeb96c2ca7ab801314fd1649c77e71e63d482f22",
+    "docs/figures/multi-material-recovery-v1/reference-gates.svg": "0f925e4b2e1552405021626cd5e1acae40b96631c93baebf53e9c22c879fa2ef",
+    "docs/protocols/KNOWN_MATERIAL_RECOVERY_V1.md": "7b13c54c62d1e04f7041af0784e0bf8f7118d8b616abfb1cc6e3258bdeb2539b",
+    "docs/protocols/MATERIAL_GAUGE_ROUNDOFF_V1.freeze.json": "87788c2dbae00cce036080f44f6b66151e0ad4cf192e03e54c55c98f99a78527",
+    "docs/protocols/MATERIAL_GAUGE_ROUNDOFF_V1.md": "2a55539fc481c6c27c1b708fc2ee5fc3f38b05ebde7132db2ec86f7174ab93d4",
+    "docs/protocols/MATERIAL_GRADIENT_EQUIVARIANCE_V1.md": "352452eb1699a8203efa6a77a5e9c42101614b1a8104447844eb9dd5960204c3",
+    "docs/protocols/MATERIAL_INDEPENDENT_TAPE_LM_V1.freeze.json": "b8cbfc515d6bbcd5e37941564b29f7fff68e46a9e81ad99b9d0dbf6628b1aa0d",
+    "docs/protocols/MATERIAL_INDEPENDENT_TAPE_LM_V1.md": "ad98b91a0033fd05abc5d96e068092aa0ec3afcf82d075146bcbbb83fe44db7c",
+    "docs/protocols/MATERIAL_LM_GAUGE_TRAJECTORIES_V1.freeze.json": "9d2e6845cd14d5991c6a5c4c655c14bf406f97c49b9a15572ffceb235d6f4db7",
+    "docs/protocols/MATERIAL_LM_GAUGE_TRAJECTORIES_V1.md": "47e083d21f66f8ffe75e01072e512219264d3161974ea9397819231ab8455ba7",
+    "docs/protocols/MATERIAL_LM_GAUGE_TRAJECTORIES_V2.freeze.json": "6f7333424789bbefbf0aceb5f7c8d4a564be188ccc803ed22386f4fbc327e20e",
+    "docs/protocols/MATERIAL_LM_GAUGE_TRAJECTORIES_V2.md": "757eab9f28b72f13ce6c865cc5522da117b44b98aad21b603479b0ef16fcfbae",
+    "docs/protocols/MATERIAL_LM_PROPOSAL_GAUGE_V1.md": "e881753a8b973a9c4a3735147e6a543201d84e0518015c54e930a0afecfe14b1",
+    "docs/protocols/MATERIAL_OBJECTIVE_E5_V1.md": "a3308959853b706a655088523e0b11dba9bbc646b64c3f653131c5da297b2bb8",
+    "docs/protocols/MATERIAL_PARAMETERIZATION_E4_V1.md": "a7829f6fb6b19a4520b993e9a9ec19b74185d2488a1f21115da25cd3316a1d18",
+    "docs/protocols/MATERIAL_RECOVERY_CONTINUATION_V1.md": "e6bbde21188d7178669369ea551cfeb663633b60e0c09ce775154d3e473b0693",
+    "docs/protocols/MATERIAL_RECOVERY_OPTIMIZER_COMPARISON_V1.md": "344a44c93403b4563125cf41ee5cced4516d2a87588ecc35a24351f900e90c10",
+    "docs/protocols/MATERIAL_SAMPLE_COUPLING_V1.md": "ca968222f7f67c2164b238b9da35145ad9ad8a4d785ea675282971680ad4611f",
+    "docs/protocols/MATERIAL_SYMMETRY_AUDIT_V1.md": "8e510d566d443ed44f3e0428c429837ccd70b6bcfba0951efd5ce6bcf1d4572a",
+    "docs/protocols/MATERIAL_SYMMETRY_AUDIT_V1_ATTEMPT2.md": "0fe9f41b299f848c661529a6c36d5b2d061ef1fb5f028873f42960021807dbac",
+    "docs/protocols/MULTI_MATERIAL_RECOVERY_V1.freeze.json": "f8c8de54cff14d614165dfe2fc46a1ec6e88ff3e685a6ebb9e34a2f02bc2e6db",
+    "docs/protocols/MULTI_MATERIAL_RECOVERY_V1.md": "cbdbaf9ee7a421b03738674afeae19214969c62b72d03c3072727e569404019a",
+    "docs/protocols/NEURAL_MATERIAL_ABLATION_E2_DRAFT.md": "96fc6acdc466cb6529161314c76d04320cbd2486efab99464f971439a523477c",
+    "docs/protocols/NEURAL_MATERIAL_CONTINUATION_E3_V1.md": "7ebab771bd382e9b4dad859ecd4258b3e9a12595e9cbe84642ff986b77c9ce99",
+    "docs/protocols/NEURAL_MATERIAL_CONTINUATION_V2.md": "0a33d44f4d00b70798d934b71839773bb53ec635a863f2aad371f6e2a04e81c0",
+    "docs/protocols/NEURAL_MATERIAL_EARLY_STEP_LR_E2A.md": "69a0bc233fdf309d3b3f9c655838b51b7ca5af9349739a0d3917196ae324a2e5",
+    "docs/protocols/NEURAL_MATERIAL_EARLY_STEP_LR_E2A_V2.md": "8e9b3562a9fd2062efa0bbaa06046d5be9c99d47177f8e0f231b2e8072aeda23",
+    "docs/protocols/NEURAL_MATERIAL_FIELD_RECOVERY_V1.freeze.json": "730a88458148d92c34fe4429c7f3cd712b2962b1fb64f56a09b42993b97871ad",
+    "docs/protocols/NEURAL_MATERIAL_FIELD_RECOVERY_V1.md": "ff59ddf1b0f97e80aa5decd68ab2dc3d3cade1724b39de9ee8151ea057797948",
+    "docs/protocols/NEURAL_MATERIAL_FIELD_RECOVERY_V1_DRAFT.md": "427c43d5c6b28263a2244243ae2cd35faaa353e1bfbe4f56a90c88cdecedc65b",
+    "docs/protocols/NEURAL_MATERIAL_FIELD_VALIDATION_COMPLETION_V1.md": "65019c5d13d10f679bf65389c8a1cc7db20a7f26ea181891f26b6cb4b04a089c",
+    "docs/protocols/NEURAL_MATERIAL_FIELD_VALIDATION_V1.md": "00c0b99e0d79218e0cdbbb5f32c59e744d9248e1390b9c82af36ed9a0b981e10",
+    "docs/protocols/NEURAL_MATERIAL_RECOVERY_E3R_V1.md": "ed82a6e2ba977f6da8b089fb9a6ec0a0530845158873ff45117644a25bee1828",
+    "docs/protocols/NEURAL_MATERIAL_RECOVERY_LOGGED_V2.md": "1a7ef529738f11aff4a4d755ec1eb0c0faea9937c00b6384cd820d26502032ed",
+    "docs/protocols/NEURAL_MATERIAL_RECOVERY_LOGGED_V2_DRAFT.md": "fca15f479698f23db491a03873dad10b8792dfea5e1fd79b8c003886629731e6",
+    "docs/protocols/NEURAL_MATERIAL_REPORTING_OPTIMIZATION_V1_DRAFT.md": "068fe5f4e100a2bd1c62662271a84cf5b86bf8783c75f100075f5353ce072ee8",
+    "experiments/analyze_multi_material_recovery_v1.py": "34ea026cd52eae1a107919cc3213d7cb619bb0b3e0af022542058b14080cf60a",
+    "experiments/analyze_neural_material_failures_e1.py": "25f2a029b699c87a49b644ef47495ab62627656edf381b5450ddccc9c5fc211c",
+    "experiments/analyze_neural_material_recovery_v1.py": "97811b81a893427a078891ddf636e97f1bb308e9f63e5ee2f3e8f179b59032bb",
+    "experiments/anisotropic_estimator_v1.py": "e6560f646011095a3b029db5aa03ea4bbd72bb78917be6eeaad3abdd4c911986",
+    "experiments/audit_neural_material_logged_readiness_v2.py": "cc1c38f32b527e70d04fbba9f544da8b0e7a5dcec282e47273e7546501d4b3a0",
+    "experiments/benchmark_neural_material_integration_v2.py": "6082d33f82aa052417229f4b766fb470ec1b8657a64a736daa1a720aa431c923",
+    "experiments/benchmark_neural_material_reporting_v1.py": "856c8cb4fd130ae6da602f460ca9e13d8b1eb491eafbecaf5050ee35749f7b00",
+    "experiments/complete_neural_material_validation_v1.py": "8b2e118eabefb730f19413f8850297a002bd7bcc5c99b108db18972cb584257a",
+    "experiments/continue_neural_material_logged_v2.py": "965ab3b8f8d1532643a651d29d74206560e9610141be2df9bc4878f566baa2ce",
+    "experiments/finalize_neural_material_continuation_v2.py": "de91499254b410666834c9af74a47b897b373cbbe499202e7920b3aa2929a083",
+    "experiments/finalize_neural_material_journal_v2.py": "e73eec6a94965562789b3df62b820ddda4807872e40c2158b026899aafb3993a",
+    "experiments/freeze_neural_material_early_step_e2a.py": "d7b463ef07bacbd27e29eed8dc638e6767deda029629ac33c609a783e278d981",
+    "experiments/freeze_neural_material_recovery_logged_v2.py": "fd5e96f55dc518ce25456cd9ca8f29a0bfdeeb2faef8fbd25696f5c6ac19fa5c",
+    "experiments/freeze_neural_material_recovery_v1.py": "920ee6f3c9b68bbc925ad4453e97665e3b08e892012c7a8133636e820cd82d6f",
+    "experiments/known_material_reference_v1.py": "bad7b5be7da2d6e569bc373a6f888c0f257846148e7fe0f1aece323f9ed247da",
+    "experiments/material_chart_e4_v1.py": "ad3252d800a99b6017910b43571a62b3a858b81933c34cd58b2f456d493d1726",
+    "experiments/material_gauge_roundoff_v1.py": "e0c68f771c52b8483150e7ccc9914d860c43ef890b95f293ad0783f95d0395f4",
+    "experiments/material_gradient_equivariance_v1.py": "b53bd46bf766d0e2203bb74cfc09bddac1680bc7b75a9c8c23972bccb556495c",
+    "experiments/material_independent_tape_lm_v1.py": "e1516087768cd59386f5fc165c42cecb72c7ca74cc5bc28ed14577c3c443f71d",
+    "experiments/material_lm_gauge_trajectories_v1.py": "27383436180896391f78e2bab3c3404ee029c6bd614506884b59a4ad0610c0d3",
+    "experiments/material_lm_gauge_trajectories_v2.py": "1eefc076c67d90505224e11af09cf3f058dce20c25ff9d08d2f7266d589d51ae",
+    "experiments/material_lm_proposal_gauge_v1.py": "0a4cfae0c5fc561773b691076bc8e78650e02540f148473ad575eaf73521e94d",
+    "experiments/material_objective_e5_v1.py": "0d601c12ed26e31b0cb20b3d52aa2ca717b4a36de19f22834a490a9f3623f767",
+    "experiments/material_parameterization_e4_v1.py": "92e0c39e7fde0be8b573b7096c2e6f1577d3821dbd6ebaceb563b633fd32287b",
+    "experiments/material_recovery_continuation_v1.py": "de737d49fd04078c89c6b429e82bbbea7c7c66f6fc8c72f1a936dca012a7b6f0",
+    "experiments/material_recovery_diagnostics_v1.py": "687a84cf141a4d005e30be9b0d8bd20599bca1fc93f812c54679fe92c79d5d2a",
+    "experiments/material_recovery_metrics_v1.py": "316e79b5e06615c9fa46e714f35f515b204c1f175c6c56636a6c4d9235ccabc4",
+    "experiments/material_recovery_optimizer_comparison_v1.py": "4abdf70b1a8c3b309f32561e31bcdb605392d0858bbe2015bf98c1a8f065cb6e",
+    "experiments/material_sample_coupling_v1.py": "598bc1f55b40d83c89f7768a1d0a2008d70e8f5fdce08b7a58757028a015a49c",
+    "experiments/material_shader_v1.py": "de79ef3b0199b5f6e372feed6a9f16492ad966802b814e2cc9aab6700d35014f",
+    "experiments/material_symmetry_audit_v1.py": "53dce44200eb3278cf99561da0eb1d099e8c9da5bd15b7cc341149c86628fde9",
+    "experiments/multi_material_recovery_v1.py": "bd1d406f374c436375d58c987940d8364c2dc433f72b5445a1a93e8172e30ef4",
+    "experiments/multi_material_reference_v1.py": "cabf7d60648f8daa6cc3b1f6bef8fec07f7ac5e4b4e4b5d1d8679a195ff7dd5f",
+    "experiments/neural_material_continuation_e3.py": "2d66733afb479029e0b1fc92da7494f8f2a7001325d8f79eeeeed591fbef9f5d",
+    "experiments/neural_material_early_step_e2a.py": "ee31c4d41135b6934cb38cdaafc760d9c9b388f7f7429e1d00dfa93e81f488c2",
+    "experiments/neural_material_field_v1.py": "9b1f57efb72c2ac1a5e6ea5dc79ba1f546205fea8bc7916b7a1307b60b38f38d",
+    "experiments/neural_material_recovery_e3r_v1.py": "fb0c2fa97298ca27c18c2fd5eb9ffa9acfff900d6d1cb6a80dc8f826e8677c83",
+    "experiments/neural_material_recovery_logged_v2.py": "a6b563ea9959786c8a756b6bbb24081cdd2dc97bc849fbe3c9178ab04f09a621",
+    "experiments/neural_material_recovery_logged_v2_execution.py": "00fdc1460d07154316c60bda1f0a91a20bc5a1ea46323f2022613650a2e5822d",
+    "experiments/neural_material_recovery_v1.py": "afab3e27d7fcddd54830a3b76fa20d8b97ef49a2da6998e7375ba0d3ce41e18c",
+    "experiments/neural_material_validation_admission_v1.py": "fc20274b2e028c580cb3ba6658dc814245533af9a7f231f20b919a4b04f72a83",
+    "experiments/run_known_material_recovery_v1.py": "b168dc1a0432a246dd6f2346d7b6150fa6d88b2f816ec062fb5c9674aaab2231",
+    "experiments/validate_neural_material_recovery_v1.py": "67779c593a2cfe129fbaa0345f8c376cd41450d3ed5ebf2d19b100f49c56ea30",
+    "infrastructure/append_only_scientific_log_v1.py": "ef1237696db6735667a6d963df940cdbbc7d5a4160dded581f68b44f3eeb5625",
+    "infrastructure/material_diagnostics_e3r_v1.py": "7de8259a464df658eacc02b662a9cce34199aeaac4c104657a3ddad9c5256c6b",
+    "infrastructure/neural_material_journal_runtime_v2.py": "4452707a9270843655ba8c46dbf3a492673bf7e3178335281359e21b90b15efb",
+    "infrastructure/neural_material_observer_e2a.py": "a4b0589832d07a26f27559fabeba9f48647d1b0f5c14982eddd6afa529c5ef7c",
+    "infrastructure/neural_material_resources_v2.py": "73cabc6f717727d158ef22004c200bcb87be02f6ea2faaeb9ab2a82fcf6c8030",
+    "infrastructure/paths.py": "e771fa11a5243a03724b8291dba790502e822531f1fc9179ba27c9b8a06cece4",
+    "infrastructure/runs.py": "2da7ae8d6d42428b40f6b8445783a6f119fafc3310a7b05af74bf56b3cda1fc7",
+    "infrastructure/scientific_reporting_adapter_v2.py": "0d4793eb54696e9c7a401145d2cf415d5d564536bc0b0ffb5a31c6c779320207",
+    "infrastructure/signatures.py": "f3eb6c82de610913c1049745271d8be5391d34f02d78866a14fad0032b7f4759",
+    "infrastructure/stage_sources.py": "3c904a09662663fd9f37e3a6afee33576963675508e416dbc6141a5c68d44dc8",
+    "scientific_sources/README.md": "a50ed525ecb896725159369c345cca9c1032089512b741199ab6675032f644c1",
+    "scientific_sources/geometry_g/README.md": "4cdb1b2d45978d2d4a9bf8a79e62b7cb835bc982c9e5c7ed4acf06e6dd26fa2f",
+    "scientific_sources/geometry_g/assets/bsdf_256_256.bin": "aee514f7c7e561a357e529567222da99e84886c31c46a32fe767a5b066bbe196",
+    "scientific_sources/geometry_g/colmap/plyfile.py": "4f7e432ddae428c150b788e4e1f9b3238b1d9577c5317bd5dc3de58607ee9062",
+    "scientific_sources/geometry_g/colmap/read_write_model.py": "164afcd9fa9f8c214037b6cc25ac3a80d1866b5c74f90ba1e42203c97d2f66bb",
+    "scientific_sources/geometry_g/configs/custom/kettle_material.yaml": "3aa521bbcc7eda417978a90fd69e026dab2386124a3914f391b52b2a579ef9a8",
+    "scientific_sources/geometry_g/configs/custom/kettle_shape.yaml": "8bcd1543b15aeaf2b2f9ae4d26b11061dbb72235b46fc315d278e1379a1bd9cf",
+    "scientific_sources/geometry_g/configs/material/nerf/ball.yaml": "d763a3d0babf643acdb1fc653d31262665b9974a4fa924b4f1cb4b5fee90b399",
+    "scientific_sources/geometry_g/configs/material/nerf/car.yaml": "1e475b6d6fb83cbc5749de3d0b416e547f7e4d0b566a279922a92beacf7f31a8",
+    "scientific_sources/geometry_g/configs/material/nerf/chair.yaml": "43b7d949b6a48bacd443b3e48410655000cc836690e33252d10840d226b74f9c",
+    "scientific_sources/geometry_g/configs/material/nerf/coffee.yaml": "7617093a24ee1ef0a6c7063dcf034503174b4e71ea24bd934ea7129fc583e1ff",
+    "scientific_sources/geometry_g/configs/material/nerf/cylinder.yaml": "425a1067cd0766e319c79c4f2ca35440151e306a0da25190ebcda018317acabe",
+    "scientific_sources/geometry_g/configs/material/nerf/drums.yaml": "8e1dfa3c1be7e3cebb7e66d3c8c4a9842771cfd40b8f220d4850b2c13eeefe49",
+    "scientific_sources/geometry_g/configs/material/nerf/ficus.yaml": "73f55f6d7b8fb6db8f8d20fcfefa2c48281a4e95c270f5a5fb7e9e461f880a3a",
+    "scientific_sources/geometry_g/configs/material/nerf/helmet.yaml": "1620795844ae57daf081c11803fa2e6c18d21bab6bddff239443f1609ebf5543",
+    "scientific_sources/geometry_g/configs/material/nerf/hotdog.yaml": "27d9ddb877834cf6b42aeff1cd965869f23b863adedc70198fa417a9368e362f",
+    "scientific_sources/geometry_g/configs/material/nerf/lego.yaml": "2f1c17fc2e105ec42012c40d983a67b1feda58180cc130004fc6fa163a8e9a37",
+    "scientific_sources/geometry_g/configs/material/nerf/materials.yaml": "c937f5af214f683ca95fc80508debe1571b045ad841877179d61ede1ab6af442",
+    "scientific_sources/geometry_g/configs/material/nerf/mic.yaml": "f9aaefb82165644838839e0f77a87d1bc409f274cbf2845f3fab6e6a029d7884",
+    "scientific_sources/geometry_g/configs/material/nerf/ship.yaml": "a8fb96ed320cce6412edb2f044b5871080b371fc87c1f461a021ca95628dcd91",
+    "scientific_sources/geometry_g/configs/material/nerf/teapot.yaml": "33836ac368cb5a7e7324e68b0cf4393b054ebf6ad97d635fa0cea80c000e7f53",
+    "scientific_sources/geometry_g/configs/material/nerf/toaster.yaml": "d80c55dd1d620df1e1f3cfde1595345b4ace3f0c96264d2b6ad0387b47aef6d7",
+    "scientific_sources/geometry_g/configs/material/real/bear.yaml": "e3ca46c55542f0ba3ba8204d40baffd433a6fb0990b82b49bce7c595a947171b",
+    "scientific_sources/geometry_g/configs/material/real/bunny.yaml": "752ea80ea613722ca16c351aeb68a7b3ecfd9b9a870ca7a6272ee88b5f2162fb",
+    "scientific_sources/geometry_g/configs/material/real/coral.yaml": "9b27387a343c5454b73ce8405732d4c7f2382c8b557a53b41609b4c91d0d5e55",
+    "scientific_sources/geometry_g/configs/material/real/maneki.yaml": "953450c9946ee42df932e47a2db0e73f855ed9dcaac5818e75c6f515bb110871",
+    "scientific_sources/geometry_g/configs/material/real/vase.yaml": "242a4334aa7a4579ae5ce09ff96c9d5b046b186bb4890edb5b70d47c4277888c",
+    "scientific_sources/geometry_g/configs/material/syn/angel.yaml": "93347d1f9f6ce1cec8f6895cb2a3c4c016e8bbf8394579b365e633c4286101f6",
+    "scientific_sources/geometry_g/configs/material/syn/bell.yaml": "c5ba351484a9b5a3e1dd7c00bc81c4437fffd3adc1063b1fae4fa8d5d0e000b1",
+    "scientific_sources/geometry_g/configs/material/syn/cat.yaml": "e413c4b9d36569b46febf05f321279cb2fc65caf0d5ed88f3cf8bf49c574600a",
+    "scientific_sources/geometry_g/configs/material/syn/horse.yaml": "b870775044b10bb7f3fff9f4de3d2921d88a00ccca5a97151f2c3bdaf6406f37",
+    "scientific_sources/geometry_g/configs/material/syn/luyu.yaml": "c9b2e75143c60c9e36095d0bfdcc81a4eadce27d445d4527c53582fcb0d8b2f3",
+    "scientific_sources/geometry_g/configs/material/syn/potion.yaml": "cfe8ee0383109426d720b9d37228870ed50cfd4248db8cc4b2a27453b74d2be6",
+    "scientific_sources/geometry_g/configs/material/syn/tbell.yaml": "7459dd8efd4546460d40658960a50c8cd2a44512803d5bb60f096d26950444e2",
+    "scientific_sources/geometry_g/configs/material/syn/teapot.yaml": "9e5afa45d5468dadec4cc051832d5f0542e1f0beaf7ab06d30c97644680ee40c",
+    "scientific_sources/geometry_g/configs/shape/nerf/ball.yaml": "e8dcb0ca56fd6f0dce4d0707b5e9e364403472f092eeab5307cfbe93401ae370",
+    "scientific_sources/geometry_g/configs/shape/nerf/car.yaml": "b179841a48f1d62af01afa874acb33867a8e8ffd281f8bf5586f6928dda888e0",
+    "scientific_sources/geometry_g/configs/shape/nerf/chair.yaml": "33b728ed7b0ac01c6abc5a45ed89359dd34a1edccd8bb4b896af8ae47f6dc8f8",
+    "scientific_sources/geometry_g/configs/shape/nerf/coffee.yaml": "903b44bfbadf8aa505b9cb6b69d4ffbff857eb76e15620fafee644ed86e9bcc8",
+    "scientific_sources/geometry_g/configs/shape/nerf/cylinder.yaml": "949fe3c69419aafd6b25dc8e1fb857ad365082170b85b780c953eb3013f7a91d",
+    "scientific_sources/geometry_g/configs/shape/nerf/cylinder_rect.yaml": "b900b94afb7be6f34e43471813ee7b1a65d22f32207a5078591bcaecea53f5c1",
+    "scientific_sources/geometry_g/configs/shape/nerf/drums.yaml": "caa07769dd4117e6ba03c4d734bffbb8401b32218d36f99ee7cc7ed01af245e8",
+    "scientific_sources/geometry_g/configs/shape/nerf/ficus.yaml": "a3a1bbf22a2ced7005c0c68976a62b05cba739a07e25e684b6cae3712906d560",
+    "scientific_sources/geometry_g/configs/shape/nerf/helmet.yaml": "2c10bffd3d5b8f1484e125b7e9f42547780b3435ff910e37d92fb17f2daf3b23",
+    "scientific_sources/geometry_g/configs/shape/nerf/hotdog.yaml": "9b833dd090b050b070cb62141a4341a3b9f6d3da373060b2d353038464815248",
+    "scientific_sources/geometry_g/configs/shape/nerf/lego.yaml": "1862e3cf780061ca8b1fb57616dd62f2cccaa8966d79261ff18b86c33511ad72",
+    "scientific_sources/geometry_g/configs/shape/nerf/materials.yaml": "24e26a9f46c3c6e68d90b207fa3e243d4131d57184f42ad52083d6700619267b",
+    "scientific_sources/geometry_g/configs/shape/nerf/mic.yaml": "19f11e26479e6c32a2ee82b5dfc180cb17bec9c7c93bd2fbbabcef776f03933d",
+    "scientific_sources/geometry_g/configs/shape/nerf/ship.yaml": "e82372e8eeb9444a93a3084bf1e88464ccec0881450830943a79a1e99dc4d832",
+    "scientific_sources/geometry_g/configs/shape/nerf/simplecylinder.yaml": "9a8530e6b7400baf6f11da601fe94cc86c225c1c7599281c3a7959e838067d87",
+    "scientific_sources/geometry_g/configs/shape/nerf/smoothcylinder.yaml": "5a3b2d3b2e2629e9b6b6c5c7a0354d0cb61820a7f0a4c99b66d389b7961241fe",
+    "scientific_sources/geometry_g/configs/shape/nerf/sphere.yaml": "d2228d754b82f723a61280e4977a3ad4d73fbadee3a0114d9c44fd4db3885269",
+    "scientific_sources/geometry_g/configs/shape/nerf/teapot.yaml": "7f8b9ca4bbd5b65bd1b94ff2319a6e753d4d17b9fb81e5cfe5208c79264a8556",
+    "scientific_sources/geometry_g/configs/shape/nerf/tetra.yaml": "0d17a28d8ad740db7327a7ad6a1cf464e7bcea2e8de84a1def93a059529b0798",
+    "scientific_sources/geometry_g/configs/shape/nerf/toaster.yaml": "be85b1472fdae1509c964116562e963c88a0dc3cf21da1aad19a89390912a4b6",
+    "scientific_sources/geometry_g/configs/shape/real/bear.yaml": "472f2527f67e594e77d943e6cc2e2d2bb33721dda9a8b357a0a10b8b41e97e70",
+    "scientific_sources/geometry_g/configs/shape/real/bunny.yaml": "5a1b3d95b02d6b36cce3fe4e47f9a4049a69c013b2bd22533256776d623f3f4b",
+    "scientific_sources/geometry_g/configs/shape/real/coral.yaml": "049782592561686b8f7d635c9acecd99449f85ccd9fa37345b2e4e31884f28be",
+    "scientific_sources/geometry_g/configs/shape/real/maneki.yaml": "b35a58b2bd7b2ca15533178f5e64f83f9edbc186030ca0f0521c89e1082068cf",
+    "scientific_sources/geometry_g/configs/shape/real/vase.yaml": "b281e7f4d10fd38b9261bcf1eb2ba96209416321ea08a2322e1ebd4eac6cc15c",
+    "scientific_sources/geometry_g/configs/shape/syn/angel.yaml": "e0b1e51b1dbdfbd25eab01ef7c9e4394592288db6cdcdc51ea9a54b525298931",
+    "scientific_sources/geometry_g/configs/shape/syn/bell.yaml": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f",
+    "scientific_sources/geometry_g/configs/shape/syn/cat.yaml": "e2ee78d0a2e196f506813f61b91e3ab1652b53193093cbea3ab5a5832106e9e9",
+    "scientific_sources/geometry_g/configs/shape/syn/horse.yaml": "d4bcbba58669cf4723b1913a593dfaabee2e975192773af58457fcc2b33bbedb",
+    "scientific_sources/geometry_g/configs/shape/syn/luyu.yaml": "db0ad856928b2e403b62f42ba6600b7bcbdc1653e26b657b433c0a5d6ba35137",
+    "scientific_sources/geometry_g/configs/shape/syn/potion.yaml": "3d6a65e3a657fa05adad13256a046aafa1743c2dcd137b3ae3a6c8f7a3bf64c4",
+    "scientific_sources/geometry_g/configs/shape/syn/tbell.yaml": "a73283bbe9518eea17b93280f848965c3e57b703fb6b32dc39bb15fb50f84923",
+    "scientific_sources/geometry_g/configs/shape/syn/teapot.yaml": "0ec248c107b81aa2cae17c732fe71bf91665d9f3812d1450e55a87dee89a352c",
+    "scientific_sources/geometry_g/configs/synthetic_split_128.pkl": "4067befaec0ebbba546f0454c3464f105bccbf914ca9731f53f5aadc698b2c5a",
+    "scientific_sources/geometry_g/dataset/database.py": "e2490556c8b3d7aa0f5a9ea1db59fed3f060a00401787625874af46c57301fa3",
+    "scientific_sources/geometry_g/dataset/name2dataset.py": "894ef8484c19b788e46722ddeb58910df2974da6add927d6857b7435259f7acd",
+    "scientific_sources/geometry_g/dataset/train_dataset.py": "98006db8444adde8b132854e7544c1d692aa52995a62997bb6861134ebac2382",
+    "scientific_sources/geometry_g/eval_real_shape.py": "7a75dc380969d13179d75f9ddfe649dc602b18331ac124369a4d63f4f55df0c4",
+    "scientific_sources/geometry_g/eval_synthetic_shape.py": "1af15f3f6a4ea97073fc414d7f50fe8e43ddb764bbd2dddae3be842f59aa6769",
+    "scientific_sources/geometry_g/extract_materials.py": "b2f5f9845f5a116c3f44bf64a496e2d99bf144c2918fb6f29fcc0ef432785744",
+    "scientific_sources/geometry_g/extract_mesh.py": "63b1cf824e564b67910a160ff080338dc9d9546f441408fd937ca4473d3d39a9",
+    "scientific_sources/geometry_g/network/base_brdf.py": "127387608a0dff98806144790b9a3735b315c25c1fae7eae957c8f8176617af1",
+    "scientific_sources/geometry_g/network/embedder.py": "34e14eae3e20db320ef39129f627fbe79e8d88e317a24766596a1f7e033f54cb",
+    "scientific_sources/geometry_g/network/field.py": "06fb6606c580dede3e7e12ddfad2a2fed9368fa4adfcadf7cf7cef73e940617f",
+    "scientific_sources/geometry_g/network/loss.py": "2d19419c3b7e006117e40c11526549f9f7901c9bda1c0018b0b452c415c7a17c",
+    "scientific_sources/geometry_g/network/metrics.py": "282969f587f2ef71fcb3aa9b23b98f3b6741f12b88bd041a35473eb64421120e",
+    "scientific_sources/geometry_g/network/mlp_brdf.py": "639e9f50a5ad7d335d50dc19ae2de0fe86d83235daf0796184b59cd55912ba82",
+    "scientific_sources/geometry_g/network/renderer.py": "38c280ed812c4fb22b980caf842f0cd302acbee3bde9c449972dabd23485584b",
+    "scientific_sources/geometry_g/network/seq_brdf.py": "30cbe109a512849c298467c7a997ffa62a5f62e67bb31b74eb7bc5162cc59212",
+    "scientific_sources/geometry_g/raytracing/__init__.py": "f086eca4f387087c4058650c10110106d2e33c2a99787a4401ff2a2945cd497c",
+    "scientific_sources/geometry_g/raytracing/raytracer.py": "f670b215c5379d3bdcd9993c836935ea658f5ee9570bbe46bb38096b3f0ac25f",
+    "scientific_sources/geometry_g/relight.py": "34eaeb3537ee778541dfbce0192878559818c0e9c0a389afd308449aba31a26c",
+    "scientific_sources/geometry_g/run_training.py": "28149b7b173b8ee00a7256ea575590b148a49892550181a019ab484860869558",
+    "scientific_sources/geometry_g/train/lr_common_manager.py": "d60236d7a4f367c1d2d1aea76714d0c7988f591bf74f5d5f71f032dc3117b766",
+    "scientific_sources/geometry_g/train/train_tools.py": "0c100e6549894778c7f37bd7ba36e541d8229447fe06d622a87670bdbba62d48",
+    "scientific_sources/geometry_g/train/train_valid.py": "f973df4908ace7b174b43fd59a21ee017343260567497f025880b4914626f4f1",
+    "scientific_sources/geometry_g/train/trainer.py": "412dfe92c16747c66609f6e80c2e55fcff6f7df287ecbb670c5a43b1a695e7a8",
+    "scientific_sources/geometry_g/utils/base_utils.py": "c07a99a9713a8c9c1b67fcf57383083336e0b1673de78f99903236d888f55a5b",
+    "scientific_sources/geometry_g/utils/dataset_utils.py": "2bd5a82ffb4cda916fa0db4a05f8acafb01276c7d7b5f326821e295947dd024e",
+    "scientific_sources/geometry_g/utils/draw_utils.py": "5d9667149258cd7024892b9166ce1c851c7e7cb1d3ce5fe36673dc0eae913c70",
+    "scientific_sources/geometry_g/utils/geom.py": "af2a425914de85f3c6a9cab4865aa1f55f241553b6fe32db9967dcf2fb92e07c",
+    "scientific_sources/geometry_g/utils/math.py": "3e113fe270882714a8b93ffc589126bb9932473f1531815eb4416fe56701ccf7",
+    "scientific_sources/geometry_g/utils/pose_utils.py": "c524dec437208901b45048d7c458b64d39b3e18455c25b5fab9211db39376139",
+    "scientific_sources/geometry_g/utils/raw_utils.py": "7731b3740b3253f78eb9bf5fa2dcf43d6d288cffcd5e2811042b657b8a9e9366",
+    "scientific_sources/geometry_g/utils/ref_utils.py": "11bebfe6348a9ecfe20f457de0c6b7dbc93cc9dc975952a8b2b938f9d6d60422",
+    "scientific_sources/manifest-v1.json": "39b9baecce2aab6fc62ec57bd6f45e453d8e9d68215f6af3f25b8ed118c5a3f6",
+    "scientific_sources/material_a/README.md": "4cdb1b2d45978d2d4a9bf8a79e62b7cb835bc982c9e5c7ed4acf06e6dd26fa2f",
+    "scientific_sources/material_a/assets/bsdf_256_256.bin": "aee514f7c7e561a357e529567222da99e84886c31c46a32fe767a5b066bbe196",
+    "scientific_sources/material_a/colmap/plyfile.py": "4f7e432ddae428c150b788e4e1f9b3238b1d9577c5317bd5dc3de58607ee9062",
+    "scientific_sources/material_a/colmap/read_write_model.py": "164afcd9fa9f8c214037b6cc25ac3a80d1866b5c74f90ba1e42203c97d2f66bb",
+    "scientific_sources/material_a/configs/custom/kettle_material.yaml": "3aa521bbcc7eda417978a90fd69e026dab2386124a3914f391b52b2a579ef9a8",
+    "scientific_sources/material_a/configs/custom/kettle_shape.yaml": "8bcd1543b15aeaf2b2f9ae4d26b11061dbb72235b46fc315d278e1379a1bd9cf",
+    "scientific_sources/material_a/configs/material/nerf/ball.yaml": "d763a3d0babf643acdb1fc653d31262665b9974a4fa924b4f1cb4b5fee90b399",
+    "scientific_sources/material_a/configs/material/nerf/car.yaml": "1e475b6d6fb83cbc5749de3d0b416e547f7e4d0b566a279922a92beacf7f31a8",
+    "scientific_sources/material_a/configs/material/nerf/chair.yaml": "43b7d949b6a48bacd443b3e48410655000cc836690e33252d10840d226b74f9c",
+    "scientific_sources/material_a/configs/material/nerf/coffee.yaml": "7617093a24ee1ef0a6c7063dcf034503174b4e71ea24bd934ea7129fc583e1ff",
+    "scientific_sources/material_a/configs/material/nerf/cube.yaml": "b7957bee09093a7fd87898fbea9a3548b9ce16f58185531f0b1442ee2eab67ba",
+    "scientific_sources/material_a/configs/material/nerf/cylinder.yaml": "425a1067cd0766e319c79c4f2ca35440151e306a0da25190ebcda018317acabe",
+    "scientific_sources/material_a/configs/material/nerf/donut.yaml": "adba83fd2b288905abdf6035045b5b8ad3b13a6e2fec0f2230f7f9baa803e9ae",
+    "scientific_sources/material_a/configs/material/nerf/drums.yaml": "8e1dfa3c1be7e3cebb7e66d3c8c4a9842771cfd40b8f220d4850b2c13eeefe49",
+    "scientific_sources/material_a/configs/material/nerf/ficus.yaml": "73f55f6d7b8fb6db8f8d20fcfefa2c48281a4e95c270f5a5fb7e9e461f880a3a",
+    "scientific_sources/material_a/configs/material/nerf/helmet.yaml": "1620795844ae57daf081c11803fa2e6c18d21bab6bddff239443f1609ebf5543",
+    "scientific_sources/material_a/configs/material/nerf/hotdog.yaml": "27d9ddb877834cf6b42aeff1cd965869f23b863adedc70198fa417a9368e362f",
+    "scientific_sources/material_a/configs/material/nerf/lego.yaml": "2f1c17fc2e105ec42012c40d983a67b1feda58180cc130004fc6fa163a8e9a37",
+    "scientific_sources/material_a/configs/material/nerf/materials.yaml": "c937f5af214f683ca95fc80508debe1571b045ad841877179d61ede1ab6af442",
+    "scientific_sources/material_a/configs/material/nerf/mic.yaml": "f9aaefb82165644838839e0f77a87d1bc409f274cbf2845f3fab6e6a029d7884",
+    "scientific_sources/material_a/configs/material/nerf/ship.yaml": "a8fb96ed320cce6412edb2f044b5871080b371fc87c1f461a021ca95628dcd91",
+    "scientific_sources/material_a/configs/material/nerf/smoothcylinder.yaml": "680c8195d4a35be5dca870284938965770d9fa21633a2a1afcab5bb8a80329b8",
+    "scientific_sources/material_a/configs/material/nerf/sphere.yaml": "06d7de5307054ddf775f55b40874d28cf63a75ee47a4b63f4b4b1dc6c943b4c7",
+    "scientific_sources/material_a/configs/material/nerf/teapot.yaml": "33836ac368cb5a7e7324e68b0cf4393b054ebf6ad97d635fa0cea80c000e7f53",
+    "scientific_sources/material_a/configs/material/nerf/tetra.yaml": "3b027860f31229bee961e1d9ba371d3d08c44b620ac30a311f39c288ede89492",
+    "scientific_sources/material_a/configs/material/nerf/toaster.yaml": "d80c55dd1d620df1e1f3cfde1595345b4ace3f0c96264d2b6ad0387b47aef6d7",
+    "scientific_sources/material_a/configs/material/real/bear.yaml": "1ac002579b4c6ca9cd32d83e1950af813a522364eff9329cfc0fdd87d6ebf40a",
+    "scientific_sources/material_a/configs/material/real/bunny.yaml": "1ea9d7dd24dca6e46a6748ed4e2026bdf93a8fd08386f46bcee0a378eae35fa1",
+    "scientific_sources/material_a/configs/material/real/coral.yaml": "ba34a93ce8ed612f310c622e229d07534da4329b589a591b4876ba1bf46ffa73",
+    "scientific_sources/material_a/configs/material/real/maneki.yaml": "282e1822f3573edf50338b6b7bd9f9881499fb84a583c69773fa511a51b315e8",
+    "scientific_sources/material_a/configs/material/real/vase.yaml": "4b6f3f2032a170cdabf25948cea24a2d613f5ba8078aacc2b8ac7cea91223d99",
+    "scientific_sources/material_a/configs/material/syn/angel.yaml": "b15312b889c2fb01e5954b3dc8103f30f5fb8755232c96d688f8024ac8081bcd",
+    "scientific_sources/material_a/configs/material/syn/bell.yaml": "f53d1512e216f63400a2675f9720676534452c9eeec5c3eba324b14c45c2b933",
+    "scientific_sources/material_a/configs/material/syn/cat.yaml": "9e2eed4ec23fc338a4c3a05e899b2b9a9517cf21f73470c6a8355eb617c650dd",
+    "scientific_sources/material_a/configs/material/syn/horse.yaml": "7bc650d6e9408ac7e03a080bcb724f7669f4b7a2cbfd9327c448fa5e4c4e3a58",
+    "scientific_sources/material_a/configs/material/syn/luyu.yaml": "bd18aaa9c192b61dcf0a7014e9d5c5c12939aa4443b374965adcc29a76662a8a",
+    "scientific_sources/material_a/configs/material/syn/potion.yaml": "582295d623c7d112cf4e6770c28bb7d7874f795b5842e49cfa0847761840293f",
+    "scientific_sources/material_a/configs/material/syn/tbell.yaml": "e93fb5a7a0636bebca6c165161c0d288416cb177b135085a4257c4bf6a8b5998",
+    "scientific_sources/material_a/configs/material/syn/teapot.yaml": "ccdf1519c22893e4552917f6a1ee482b07f1971c37ce6138a79f8e190a761c3d",
+    "scientific_sources/material_a/configs/shape/nerf/ball.yaml": "e8dcb0ca56fd6f0dce4d0707b5e9e364403472f092eeab5307cfbe93401ae370",
+    "scientific_sources/material_a/configs/shape/nerf/car.yaml": "b179841a48f1d62af01afa874acb33867a8e8ffd281f8bf5586f6928dda888e0",
+    "scientific_sources/material_a/configs/shape/nerf/chair.yaml": "33b728ed7b0ac01c6abc5a45ed89359dd34a1edccd8bb4b896af8ae47f6dc8f8",
+    "scientific_sources/material_a/configs/shape/nerf/coffee.yaml": "903b44bfbadf8aa505b9cb6b69d4ffbff857eb76e15620fafee644ed86e9bcc8",
+    "scientific_sources/material_a/configs/shape/nerf/cube.yaml": "33cc2b1b9bcdfed9a006951f6d9c26731e2efc0dd58808a7e6c9168735bc5950",
+    "scientific_sources/material_a/configs/shape/nerf/cylinder.yaml": "949fe3c69419aafd6b25dc8e1fb857ad365082170b85b780c953eb3013f7a91d",
+    "scientific_sources/material_a/configs/shape/nerf/cylinder_rect.yaml": "b900b94afb7be6f34e43471813ee7b1a65d22f32207a5078591bcaecea53f5c1",
+    "scientific_sources/material_a/configs/shape/nerf/donut.yaml": "42abe57a341d4e2cb294caf5d29d07d49956e83b7c97b81cddf66310f7e5df93",
+    "scientific_sources/material_a/configs/shape/nerf/drums.yaml": "caa07769dd4117e6ba03c4d734bffbb8401b32218d36f99ee7cc7ed01af245e8",
+    "scientific_sources/material_a/configs/shape/nerf/ficus.yaml": "a3a1bbf22a2ced7005c0c68976a62b05cba739a07e25e684b6cae3712906d560",
+    "scientific_sources/material_a/configs/shape/nerf/helmet.yaml": "2c10bffd3d5b8f1484e125b7e9f42547780b3435ff910e37d92fb17f2daf3b23",
+    "scientific_sources/material_a/configs/shape/nerf/hotdog.yaml": "9b833dd090b050b070cb62141a4341a3b9f6d3da373060b2d353038464815248",
+    "scientific_sources/material_a/configs/shape/nerf/lego.yaml": "1862e3cf780061ca8b1fb57616dd62f2cccaa8966d79261ff18b86c33511ad72",
+    "scientific_sources/material_a/configs/shape/nerf/materials.yaml": "24e26a9f46c3c6e68d90b207fa3e243d4131d57184f42ad52083d6700619267b",
+    "scientific_sources/material_a/configs/shape/nerf/mic.yaml": "19f11e26479e6c32a2ee82b5dfc180cb17bec9c7c93bd2fbbabcef776f03933d",
+    "scientific_sources/material_a/configs/shape/nerf/ship.yaml": "e82372e8eeb9444a93a3084bf1e88464ccec0881450830943a79a1e99dc4d832",
+    "scientific_sources/material_a/configs/shape/nerf/simplecylinder.yaml": "9a8530e6b7400baf6f11da601fe94cc86c225c1c7599281c3a7959e838067d87",
+    "scientific_sources/material_a/configs/shape/nerf/smoothcylinder.yaml": "d2bb1fc8a48b6963c0002f33ec63ae03c2fbe35fb98faa9a74ac48affcc6dfff",
+    "scientific_sources/material_a/configs/shape/nerf/sphere.yaml": "d2228d754b82f723a61280e4977a3ad4d73fbadee3a0114d9c44fd4db3885269",
+    "scientific_sources/material_a/configs/shape/nerf/teapot.yaml": "7f8b9ca4bbd5b65bd1b94ff2319a6e753d4d17b9fb81e5cfe5208c79264a8556",
+    "scientific_sources/material_a/configs/shape/nerf/tetra.yaml": "ba358a255d6570e5d2bb772976caec1c5b92f46522e5c7f8df80de7541bc793e",
+    "scientific_sources/material_a/configs/shape/nerf/toaster.yaml": "be85b1472fdae1509c964116562e963c88a0dc3cf21da1aad19a89390912a4b6",
+    "scientific_sources/material_a/configs/shape/real/bear.yaml": "472f2527f67e594e77d943e6cc2e2d2bb33721dda9a8b357a0a10b8b41e97e70",
+    "scientific_sources/material_a/configs/shape/real/bunny.yaml": "51ee6d0a353ea8297f06ae60c59be3ec0c36300172edf8202a5429e9c01d4fe6",
+    "scientific_sources/material_a/configs/shape/real/coral.yaml": "049782592561686b8f7d635c9acecd99449f85ccd9fa37345b2e4e31884f28be",
+    "scientific_sources/material_a/configs/shape/real/maneki.yaml": "402eb07c2903fe3cb49116998bbce27abba6b6eacedc7223bed2a6be6521e104",
+    "scientific_sources/material_a/configs/shape/real/vase.yaml": "d2c5db03eb7cc20bc398cf1c66055d5c6a584bdf063221edd1beffa3a65d352b",
+    "scientific_sources/material_a/configs/shape/syn/angel.yaml": "e0b1e51b1dbdfbd25eab01ef7c9e4394592288db6cdcdc51ea9a54b525298931",
+    "scientific_sources/material_a/configs/shape/syn/bell.yaml": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f",
+    "scientific_sources/material_a/configs/shape/syn/cat.yaml": "e2ee78d0a2e196f506813f61b91e3ab1652b53193093cbea3ab5a5832106e9e9",
+    "scientific_sources/material_a/configs/shape/syn/horse.yaml": "d4bcbba58669cf4723b1913a593dfaabee2e975192773af58457fcc2b33bbedb",
+    "scientific_sources/material_a/configs/shape/syn/luyu.yaml": "db0ad856928b2e403b62f42ba6600b7bcbdc1653e26b657b433c0a5d6ba35137",
+    "scientific_sources/material_a/configs/shape/syn/potion.yaml": "3d6a65e3a657fa05adad13256a046aafa1743c2dcd137b3ae3a6c8f7a3bf64c4",
+    "scientific_sources/material_a/configs/shape/syn/tbell.yaml": "7c20373270c0603da2ddfb4442ac98c524ee40a6ae2cf2c20a11098cde195d76",
+    "scientific_sources/material_a/configs/shape/syn/teapot.yaml": "0ec248c107b81aa2cae17c732fe71bf91665d9f3812d1450e55a87dee89a352c",
+    "scientific_sources/material_a/configs/synthetic_split_128.pkl": "4067befaec0ebbba546f0454c3464f105bccbf914ca9731f53f5aadc698b2c5a",
+    "scientific_sources/material_a/dataset/database.py": "95d2cb909dc804c89ec8f2511e986db30f39ef5629bc148cb21f3ac425fe3ce7",
+    "scientific_sources/material_a/dataset/name2dataset.py": "894ef8484c19b788e46722ddeb58910df2974da6add927d6857b7435259f7acd",
+    "scientific_sources/material_a/dataset/train_dataset.py": "29dca0e546f5ea827a5ff4509f377c142426fcf4e607eef832d6fac1519db063",
+    "scientific_sources/material_a/eval_real_shape.py": "184004114a194ded39ee2a3b11349306e7170284bd705b410e4fca332d9e16aa",
+    "scientific_sources/material_a/eval_synthetic_shape.py": "44b18244a316e5275979193835d55d6d89185a02cbc64294b04898b55ea244ad",
+    "scientific_sources/material_a/extract_materials.py": "b2f5f9845f5a116c3f44bf64a496e2d99bf144c2918fb6f29fcc0ef432785744",
+    "scientific_sources/material_a/extract_mesh.py": "63b1cf824e564b67910a160ff080338dc9d9546f441408fd937ca4473d3d39a9",
+    "scientific_sources/material_a/network/base_brdf.py": "127387608a0dff98806144790b9a3735b315c25c1fae7eae957c8f8176617af1",
+    "scientific_sources/material_a/network/embedder.py": "34e14eae3e20db320ef39129f627fbe79e8d88e317a24766596a1f7e033f54cb",
+    "scientific_sources/material_a/network/field.py": "b8386007dc009442cdefdeccc3c6ecc0114f6d0e7feaf804008b0bd9020091fe",
+    "scientific_sources/material_a/network/loss.py": "55a2b6779bb8f890340a70b45a7357cb8fc8fc3ff381fbe7caf1968d6bfbf1cf",
+    "scientific_sources/material_a/network/metrics.py": "e0eed09b34b12254c55cfabf92356376a9580b3b80d30535448ce86659f0dcbc",
+    "scientific_sources/material_a/network/mlp_brdf.py": "639e9f50a5ad7d335d50dc19ae2de0fe86d83235daf0796184b59cd55912ba82",
+    "scientific_sources/material_a/network/renderer.py": "dd82c61cb91a3d54e801f1fb32238e3b03a87e1ceb4c50f24f1b359e50cfd5e9",
+    "scientific_sources/material_a/network/seq_brdf.py": "30cbe109a512849c298467c7a997ffa62a5f62e67bb31b74eb7bc5162cc59212",
+    "scientific_sources/material_a/raytracing/__init__.py": "f086eca4f387087c4058650c10110106d2e33c2a99787a4401ff2a2945cd497c",
+    "scientific_sources/material_a/raytracing/raytracer.py": "f670b215c5379d3bdcd9993c836935ea658f5ee9570bbe46bb38096b3f0ac25f",
+    "scientific_sources/material_a/relight.py": "34eaeb3537ee778541dfbce0192878559818c0e9c0a389afd308449aba31a26c",
+    "scientific_sources/material_a/run_training.py": "28149b7b173b8ee00a7256ea575590b148a49892550181a019ab484860869558",
+    "scientific_sources/material_a/train/lr_common_manager.py": "32ab856f964ba080a3050088e4e2004a14a0f7ddd05ad7ba12d8a65b479b8f9a",
+    "scientific_sources/material_a/train/train_tools.py": "0c100e6549894778c7f37bd7ba36e541d8229447fe06d622a87670bdbba62d48",
+    "scientific_sources/material_a/train/train_valid.py": "f973df4908ace7b174b43fd59a21ee017343260567497f025880b4914626f4f1",
+    "scientific_sources/material_a/train/trainer.py": "6d86bd66917bb8cde7ecfc9da10a4dddd9494c93443b21fee753dc88a6d1e09d",
+    "scientific_sources/material_a/utils/base_utils.py": "c07a99a9713a8c9c1b67fcf57383083336e0b1673de78f99903236d888f55a5b",
+    "scientific_sources/material_a/utils/dataset_utils.py": "2bd5a82ffb4cda916fa0db4a05f8acafb01276c7d7b5f326821e295947dd024e",
+    "scientific_sources/material_a/utils/draw_utils.py": "5d9667149258cd7024892b9166ce1c851c7e7cb1d3ce5fe36673dc0eae913c70",
+    "scientific_sources/material_a/utils/geom.py": "af2a425914de85f3c6a9cab4865aa1f55f241553b6fe32db9967dcf2fb92e07c",
+    "scientific_sources/material_a/utils/math.py": "3e113fe270882714a8b93ffc589126bb9932473f1531815eb4416fe56701ccf7",
+    "scientific_sources/material_a/utils/pose_utils.py": "c524dec437208901b45048d7c458b64d39b3e18455c25b5fab9211db39376139",
+    "scientific_sources/material_a/utils/raw_utils.py": "7731b3740b3253f78eb9bf5fa2dcf43d6d288cffcd5e2811042b657b8a9e9366",
+    "scientific_sources/material_a/utils/ref_utils.py": "11bebfe6348a9ecfe20f457de0c6b7dbc93cc9dc975952a8b2b938f9d6d60422",
+    "tests/scientific/test_append_only_scientific_log_v1.py": "87dc920b0f7d3e46e5ce3824c7f9a79e836032ac4afc698a1a8805d2bda7c2c3",
+    "tests/scientific/test_material_gauge_roundoff_v1.py": "e3df23867354861e1c3e04e9d8e35c172f633ef201d041e312d4605453c924c2",
+    "tests/scientific/test_material_gradient_equivariance_v1.py": "b21c59fba283bd8fe2f4caa1fc7a3aa452ef2292781903f27eba7520cfb2b15f",
+    "tests/scientific/test_material_independent_tape_lm_v1.py": "79f639525831e549533f14ebee515edf2bac6fb0e6a389579555ce4dea233f33",
+    "tests/scientific/test_material_lm_gauge_trajectories_v1.py": "b4e4d6e20d24fbcffad04b9f15c377fc109a9e2a1ca0d2ce825636fb27863662",
+    "tests/scientific/test_material_lm_gauge_trajectories_v2.py": "a4a4bf43ae158ac94368944a51f239ec48ad029c2330c7bf9a87a6b9cdcc86dd",
+    "tests/scientific/test_material_lm_proposal_gauge_v1.py": "f6ab71b57aca8ce0eecabf44859151ed4c07c9857a601a226cef66e685f6ce31",
+    "tests/scientific/test_material_objective_e5_v1.py": "9f83bc60f7ccfd887fb8e0bb1434e7167ccf1684b58ae907401a5021a6ec7339",
+    "tests/scientific/test_material_parameterization_e4_v1.py": "35fd94684ab739c873912cb1f718663b7ee4a3178f8f6814391bc58c1c487100",
+    "tests/scientific/test_material_sample_coupling_v1.py": "6b46f801b28836d8d1f5a9e25ffbd8f94c02ac77027c0d75d5a98d9a4e59b2c3",
+    "tests/scientific/test_multi_material_recovery_v1.py": "e085534d1d572df0fc0dddf2e58212d2d33c82970b7eeb1b4766c92deba48e96",
+    "tests/scientific/test_neural_material_continuation_e3.py": "ce418c4c9ba0047ac5ea71bb9f61c18c1c67566f92dce9c40b422df87c2b1692",
+    "tests/scientific/test_neural_material_continuation_v2.py": "c0585e0eafcc58b335a9936f7001aa7deeebd0b99e65556baf3460744c74476c",
+    "tests/scientific/test_neural_material_early_step_e2a.py": "2bb2d362d2e11bf42ca6fbe48710ef0da884c5fb6c979e7a773e60cad577b4e6",
+    "tests/scientific/test_neural_material_execution_freeze_v1.py": "49518d083bfdd073e232af62d31ce1a0d67533b887ed98cd08c87067842c0006",
+    "tests/scientific/test_neural_material_logged_freeze_v2.py": "4e1631253e66a1c19303bd7d8f40aeca0d3367b2576f34c82ab0ee28ec6c193b",
+    "tests/scientific/test_neural_material_recovery_e3r_v1.py": "4a6899d6ce864c7fd3a93bb5cd442c1e23fae4db579137509df546b50ff70b63",
+    "tests/scientific/test_neural_material_reporting_integration_v2.py": "502c9137bfea2b8f85b2aeec21e9cca768ba229d8cac9f2884520b406caf3175",
+    "tests/scientific/test_neural_material_validation_completion_v1.py": "24c1720264efc36214987c5d8c96c46bc1aa009cc94c7e801bf23c0e5153a639",
+    "tests/scientific/test_neural_material_validation_v1.py": "ce599bf95b63e19edfe46277e6bd7615012c2385b1ecceb9c4a15e5a374aa99f"
+  },
+  "storage": {
+    "minimum_free_bytes": 2147483648,
+    "output_cap_bytes": 1073741824
+  },
+  "tape_seeds": {
+    "accepted": [
+      3000,
+      3001,
+      3002,
+      3003
+    ],
+    "evaluation": [
+      1000,
+      1001,
+      1002,
+      1003
+    ],
+    "independent_1": [
+      4000,
+      4001,
+      4002,
+      4003
+    ],
+    "independent_2": [
+      5000,
+      5001,
+      5002,
+      5003
+    ]
+  },
+  "tapes": {
+    "accepted": {
+      "azimuth": {
+        "dtype": "float32",
+        "sha256": "0be16b2bb0a2f3560dcec633634f1e6e21a879c85839635e27ad863ff1bcfd12",
+        "shape": [
+          96,
+          1,
+          1
+        ]
+      },
+      "u": {
+        "dtype": "float32",
+        "sha256": "6fbefc8a11b6513899d88e3f790315dc5de25b5a98fd31a5821dcd74208c28c8",
+        "shape": [
+          96,
+          1024
+        ]
+      },
+      "v": {
+        "dtype": "float32",
+        "sha256": "965ad79cb5cd66e1ef1d9d7f71c9bba9c0ff640169fc3ab6fbe49039bfcb0cd0",
+        "shape": [
+          96,
+          1024
+        ]
+      }
+    },
+    "evaluation": {
+      "azimuth": {
+        "dtype": "float32",
+        "sha256": "91ed5983f9f1eea43d29ca9bb57c52a4513757bb0ee623ab7a929c2fafe53f7c",
+        "shape": [
+          336,
+          1,
+          1
+        ]
+      },
+      "u": {
+        "dtype": "float32",
+        "sha256": "9045b521cec7d6c9d806d3b8de1d506c2b3293b70033f0053471be70cd92fa64",
+        "shape": [
+          336,
+          1024
+        ]
+      },
+      "v": {
+        "dtype": "float32",
+        "sha256": "a95ac52f06341061da9e9fbf7e664d44516e7e858f2a2702924a06eb104bcc79",
+        "shape": [
+          336,
+          1024
+        ]
+      }
+    },
+    "independent_1": {
+      "azimuth": {
+        "dtype": "float32",
+        "sha256": "f97ca9156628e2f6ee30506f439fd9f4bd7b29145916d9241844cd5a65be52dd",
+        "shape": [
+          96,
+          1,
+          1
+        ]
+      },
+      "u": {
+        "dtype": "float32",
+        "sha256": "c87e5bd78320197413896b234ca48e96a820ebb7992b795ec079385cfe1d8bb6",
+        "shape": [
+          96,
+          1024
+        ]
+      },
+      "v": {
+        "dtype": "float32",
+        "sha256": "f235f3c3c58c5b6c5de2c601e2f2d74d35652d6f859c3d01970e4f05fcbcb0b5",
+        "shape": [
+          96,
+          1024
+        ]
+      }
+    },
+    "independent_2": {
+      "azimuth": {
+        "dtype": "float32",
+        "sha256": "e807fcb426449e47878730975a0312f1f88b8c7b4eb6307bd5a7ce26f9f6c531",
+        "shape": [
+          96,
+          1,
+          1
+        ]
+      },
+      "u": {
+        "dtype": "float32",
+        "sha256": "c30f4e85a2ad690b2a28cdcd54dfd119e0eea9f0379be4a4d46c84c0c2774d70",
+        "shape": [
+          96,
+          1024
+        ]
+      },
+      "v": {
+        "dtype": "float32",
+        "sha256": "464e9545339577b668708fcbd9edf2b96239937c16f717d3f94b0e7bcd26598a",
+        "shape": [
+          96,
+          1024
+        ]
+      }
+    }
+  },
+  "totals": {
+    "Adam_returns": 50,
+    "neural_queries": 0,
+    "reference_queries": 0,
+    "reverse_sweeps": 186,
+    "shader_forwards": 385
+  },
+  "validation_sha256": "33e94476d7fb6b773320eb79b4cb8ea7fa190197019296b0b6c47acf50778ce4",
+  "work": {
+    "forward": {
+      "base": 9,
+      "direct": 51,
+      "external": 5,
+      "finite_difference": 252,
+      "gauge": 3,
+      "jacobian": 63,
+      "replay": 2
+    },
+    "reverse": {
+      "JVP": 126,
+      "direct": 50,
+      "gradient": 10
+    },
+    "update": {
+      "direct": 50
+    }
+  }
+}

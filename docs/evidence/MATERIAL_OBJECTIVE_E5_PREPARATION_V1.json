@@ -1,0 +1,179 @@
+{
+  "JUnit": {
+    "bytes": 2430,
+    "path": "docs/evidence/material_objective_e5_v1/pytest.xml",
+    "sha256": "773128876e9c1dba8bb7353c693936225fc5f648c5dd682988b4a9b6c56aae4e"
+  },
+  "accepted_input_identities_verified": 346,
+  "console": {
+    "bytes": 278,
+    "path": "docs/evidence/material_objective_e5_v1/stdout.txt",
+    "sha256": "f3a3ee0d98d56294789af7a24eea8cbaea184a4a55e2315bcabe9a57549e8863"
+  },
+  "context_only": [
+    {
+      "AS1_Q": 1.884142131269584,
+      "AS1_component_residuals": {
+        "fit": {
+          "component_squared_error": 0.21632619123417085,
+          "diffuse_specular_inner_product": -0.10794177579806963,
+          "residual_correlation": -0.9980708567150511,
+          "total_squared_error": 0.000442638790905163
+        },
+        "held_out": {
+          "component_squared_error": 0.20696896378715401,
+          "diffuse_specular_inner_product": -0.10307545621543113,
+          "residual_correlation": -0.9964734226873505,
+          "total_squared_error": 0.0008180512890943606
+        },
+        "relight": {
+          "component_squared_error": 0.02739557968671428,
+          "diffuse_specular_inner_product": -0.01349129863651309,
+          "residual_correlation": -0.9849968026993844,
+          "total_squared_error": 0.00041298223161106626
+        }
+      },
+      "AS1_heldout": 0.014727356610719784,
+      "case": "M1/103",
+      "new_queries": 0
+    },
+    {
+      "AS1_Q": 0.2192371918037097,
+      "AS1_component_residuals": {
+        "fit": {
+          "component_squared_error": 0.0018881839377338622,
+          "diffuse_specular_inner_product": -0.0008522062522039805,
+          "residual_correlation": -0.9074131287545562,
+          "total_squared_error": 0.000183770857274795
+        },
+        "held_out": {
+          "component_squared_error": 0.0017468543963367047,
+          "diffuse_specular_inner_product": -0.000815440918598323,
+          "residual_correlation": -0.9340248965232344,
+          "total_squared_error": 0.00011597267129479627
+        },
+        "relight": {
+          "component_squared_error": 0.00029240447806150614,
+          "diffuse_specular_inner_product": -0.00011884048700426909,
+          "residual_correlation": -0.8426013611590645,
+          "total_squared_error": 5.472357213749721e-05
+        }
+      },
+      "AS1_heldout": 0.005431841764883034,
+      "case": "M3/101",
+      "new_queries": 0
+    }
+  ],
+  "errors": 0,
+  "exit_code": 0,
+  "failed": 0,
+  "frozen_predecessor_sources_verified": 374,
+  "new_source_sha256": {
+    "docs/protocols/MATERIAL_OBJECTIVE_E5_V1.md": "a3308959853b706a655088523e0b11dba9bbc646b64c3f653131c5da297b2bb8",
+    "experiments/material_objective_e5_v1.py": "0d601c12ed26e31b0cb20b3d52aa2ca717b4a36de19f22834a490a9f3623f767",
+    "tests/scientific/test_material_objective_e5_v1.py": "9f83bc60f7ccfd887fb8e0bb1434e7167ccf1684b58ae907401a5021a6ec7339"
+  },
+  "passed": 12,
+  "phase": "E.5 preparation only",
+  "preliminary_test_evidence_preserved": "/home/isavand/paper/evidence/material-e5-preparation-v1",
+  "real_neural_constructions": 0,
+  "saved_endpoint_physical_gradients": {
+    "AS1": {
+      "physical_gradient": [
+        1.6345525040151188e-05,
+        3.1031927051117236e-05,
+        -1.0986858461822026e-05,
+        2.0656201172641886e-05,
+        0.00014348137813158246,
+        7.531936367399794e-05,
+        3.342193099342694e-05
+      ],
+      "provenance": "Offline chain from archived actual shader-input gradients; fixed encoding radius; no new derivative query",
+      "scaled_gradient": [
+        1.569170403854514e-05,
+        2.9790649969072546e-05,
+        -3.4516233829690934e-05,
+        2.0656201172641886e-05,
+        0.00014348137813158246,
+        7.531936367399794e-05,
+        3.342193099342694e-05
+      ],
+      "scaled_norm": 0.0001735762061228645
+    },
+    "N1": {
+      "physical_gradient": [
+        -6.280838029226743e-06,
+        4.329421593496363e-05,
+        8.246445348733448e-06,
+        0.00016331119418566686,
+        -3.8669730969331795e-05,
+        -7.857581090320309e-05,
+        3.080560577473079e-05
+      ],
+      "provenance": "Offline chain from archived actual shader-input gradients; fixed encoding radius; no new derivative query",
+      "scaled_gradient": [
+        -6.029604508057673e-06,
+        4.156244729756508e-05,
+        2.590697212581072e-05,
+        0.00016331119418566686,
+        -3.8669730969331795e-05,
+        -7.857581090320309e-05,
+        3.080560577473079e-05
+      ],
+      "scaled_norm": 0.0001942266768660967
+    }
+  },
+  "saved_reference_review": {
+    "Jacobian_dtype": "float64",
+    "Jacobian_sha256": "a164e83fcba64ef09e3929d2012e2ee2198ea4b04fa9f97375924aadbd661ec2",
+    "Jacobian_shape": [
+      2,
+      2,
+      72,
+      7
+    ],
+    "fine_rank_recomputed": 7,
+    "fine_singular_values": [
+      2.1933922655506906,
+      2.021333231438826,
+      2.0212800919320957,
+      0.5737150604772467,
+      0.38678622333860796,
+      0.2604779405466069,
+      0.11429045970884529
+    ],
+    "maximum_target_bound_ratio": 1.4054200364700705e-08,
+    "reference_local_gate_passed": true,
+    "scope": "Recomputed from accepted saved arrays, zero reference/shader queries; local truth sensitivity does not establish global identifiability",
+    "source": {
+      "bytes": 19679861,
+      "path": "docs/evidence/MULTI_MATERIAL_RECOVERY_V1.json",
+      "sha256": "3abc274191d0e84c456355a7c351ac1aa94a2c976c1f789979ddb550a4383e89"
+    },
+    "target_convergence_passed": true
+  },
+  "schema_version": 1,
+  "scientific_import_blocker_verified": true,
+  "scientific_optimizer_updates": 0,
+  "scientific_queries": 0,
+  "skipped": 0,
+  "test_inventory": [
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_objective_e5_v1::test_scaled_derivatives_match_autodiff_and_both_fixed_steps[dtype0]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_objective_e5_v1::test_scaled_derivatives_match_autodiff_and_both_fixed_steps[dtype1]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_objective_e5_v1::test_original_direct_transform_derivative_without_importing_runner",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_objective_e5_v1::test_gauge_equivalence_and_isotropic_null_angle_without_frame_substitution",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_objective_e5_v1::test_fixed_samples_are_reproducible_independent_and_match_accepted_identity",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_objective_e5_v1::test_all_phase_caps_and_rejected_call_accounting",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_objective_e5_v1::test_derivative_disagreement_and_zero_sensitivity_are_not_success",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_objective_e5_v1::test_component_cancellation_is_distinct_from_material_identifiability",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_objective_e5_v1::test_archived_angle_and_material_gradient_chain_against_synthetic_autodiff",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_objective_e5_v1::test_missing_review_fails_before_any_scientific_import",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_objective_e5_v1::test_observer_is_read_only_and_archived_encoding_override_is_explicit",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_material_objective_e5_v1::test_runtime_cleanup_acknowledgement_is_after_normal_exit_and_no_execution_cli"
+  ],
+  "test_launcher": {
+    "bytes": 798,
+    "path": "docs/evidence/material_objective_e5_v1/launcher.py",
+    "sha256": "461555b3309fdeffbba1b1d6d5ccdc87f95e1cb51f844ed536f1254e9e3f46e2"
+  }
+}
