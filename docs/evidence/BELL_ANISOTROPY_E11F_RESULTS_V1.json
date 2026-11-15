@@ -1,0 +1,787 @@
+{
+  "analysis_new_BRDF_queries": 0,
+  "analysis_new_GPU_queries": 0,
+  "analysis_source_files": [
+    {
+      "bytes": 16272,
+      "path": "/home/isavand/paper/Nerofactor-3d2-e2a/experiments/analyze_bell_anisotropy_e11f.py",
+      "sha256": "a2c0b4bee8ad9e68e8ecc587a4720d443a77dfe76258971aae5a69a8e3aabd2e"
+    },
+    {
+      "bytes": 3779,
+      "path": "/home/isavand/paper/Nerofactor-3d2-e2a/tests/benchmarks/test_bell_anisotropy_analysis_e11f.py",
+      "sha256": "d46a751bb71d722b57dfc3028a7e9f6ca9bc1aa7f915af242be5e0f385fe6631"
+    }
+  ],
+  "authorization": {
+    "bytes": 4706,
+    "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc-authorization.json",
+    "sha256": "3e931edec34b44727f9d8de4b45b24ac551f7d6da74ec575c031502e01802065"
+  },
+  "batch_bytes": 156295,
+  "cached_tracing_identity": {
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "variant": "predicate_fp64"
+  },
+  "convergence": {
+    "isotropic": {
+      "maximum_rgb_difference": 0.0004255566876559397,
+      "passed": true,
+      "relative_l2": 0.0008917187053717593
+    },
+    "major_minus": {
+      "maximum_rgb_difference": 0.0003637666228220385,
+      "passed": true,
+      "relative_l2": 0.000808913961778745
+    },
+    "major_plus": {
+      "maximum_rgb_difference": 0.0003633183721123631,
+      "passed": true,
+      "relative_l2": 0.0008270089117766464
+    },
+    "minor_minus": {
+      "maximum_rgb_difference": 0.000360880507321637,
+      "passed": true,
+      "relative_l2": 0.000813405680291097
+    },
+    "minor_plus": {
+      "maximum_rgb_difference": 0.00036845046888928784,
+      "passed": true,
+      "relative_l2": 0.0008270402599713523
+    },
+    "theta_minus": {
+      "maximum_rgb_difference": 0.00036093159577040707,
+      "passed": true,
+      "relative_l2": 0.0008068154479676462
+    },
+    "theta_plus": {
+      "maximum_rgb_difference": 0.00037911558251702004,
+      "passed": true,
+      "relative_l2": 0.0008438311927305593
+    },
+    "truth": {
+      "maximum_rgb_difference": 0.00036354115505521367,
+      "passed": true,
+      "relative_l2": 0.000818351154976105
+    }
+  },
+  "counters": {
+    "brdf_attempts": 192675840,
+    "brdf_returns": 192675840,
+    "environment_attempts": 27525120,
+    "environment_returns": 27525120,
+    "new_isotropic_BRDF_queries": 0,
+    "new_primary_rays": 0,
+    "new_shadow_queries": 0,
+    "original_BRDF_queries": 0
+  },
+  "coupling": {
+    "original": {
+      "column_alignment": {
+        "major_minor": {
+          "median_absolute_column_cosine": 0.9998576057955879,
+          "nonzero_pairs": 84
+        },
+        "orientation_major": {
+          "median_absolute_column_cosine": 0.9998915720127683,
+          "nonzero_pairs": 84
+        },
+        "orientation_minor": {
+          "median_absolute_column_cosine": 0.9999800833867349,
+          "nonzero_pairs": 84
+        }
+      },
+      "interpretation": "Conditional one-view RGB at fixed color/metal. Low irradiance/visibility is compatible with coverage limitations; aligned nonzero columns support coupling. Positive diffuse irradiance does not prove useful angular coverage or full identifiability.",
+      "irradiance_RGB_min_median_max": [
+        [
+          0.09514052670826374,
+          0.09908866555260813,
+          0.11159110522636534
+        ],
+        [
+          0.43172597050176625,
+          0.45205519195354027,
+          0.5164310598841579
+        ],
+        [
+          0.4951809548757726,
+          0.5187303075319463,
+          0.5933032576098295
+        ]
+      ],
+      "median_finite_condition_number": 8231.585578054355,
+      "median_scaled_column_norms": [
+        0.0012991286370596686,
+        0.000745896411948711,
+        0.0009552609285584153
+      ],
+      "median_singular_values": [
+        0.003086333686085874,
+        7.321243463820593e-06,
+        3.792807937975122e-07
+      ],
+      "nonfinite_condition_count": 0,
+      "p95_finite_condition_number": 217883.35841353814,
+      "visible_fraction_range": [
+        0.6128196716308594,
+        1.0
+      ]
+    },
+    "stronger": {
+      "column_alignment": {
+        "major_minor": {
+          "median_absolute_column_cosine": 0.999712447918767,
+          "nonzero_pairs": 84
+        },
+        "orientation_major": {
+          "median_absolute_column_cosine": 0.9998028146807487,
+          "nonzero_pairs": 84
+        },
+        "orientation_minor": {
+          "median_absolute_column_cosine": 0.9999599488136914,
+          "nonzero_pairs": 84
+        }
+      },
+      "interpretation": "Conditional one-view RGB at fixed color/metal. Low irradiance/visibility is compatible with coverage limitations; aligned nonzero columns support coupling. Positive diffuse irradiance does not prove useful angular coverage or full identifiability.",
+      "irradiance_RGB_min_median_max": [
+        [
+          0.09514052670826374,
+          0.09908866555260813,
+          0.11159110522636534
+        ],
+        [
+          0.43172597050176625,
+          0.45205519195354027,
+          0.5164310598841579
+        ],
+        [
+          0.4951809548757726,
+          0.5187303075319463,
+          0.5933032576098295
+        ]
+      ],
+      "median_finite_condition_number": 7922.87287679818,
+      "median_scaled_column_norms": [
+        0.00241527444391849,
+        0.0005925395869086467,
+        0.0006721813886592088
+      ],
+      "median_singular_values": [
+        0.0042117626037775965,
+        7.866914066147006e-06,
+        4.794881751709647e-07
+      ],
+      "nonfinite_condition_count": 0,
+      "p95_finite_condition_number": 442959.3084089564,
+      "visible_fraction_range": [
+        0.6128196716308594,
+        1.0
+      ]
+    }
+  },
+  "decision": "FIX_AND_PROCEED",
+  "development_notes": {
+    "bytes": 979,
+    "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc-analysis-development-notes.json",
+    "sha256": "88a53a993523d9e10ea485bbb3ec3487a91faf300ea4e57a9af16652ed790a55"
+  },
+  "elapsed_seconds": 7.387757228687406,
+  "execution_commit": "cbfe1e235ec2062363600ca0f277682a6e7487fc",
+  "execution_freeze": {
+    "bytes": 11317,
+    "path": "/home/isavand/paper/Nerofactor-3d2-e2a/docs/protocols/BELL_ANISOTROPY_E11F_V1.freeze.json",
+    "sha256": "f129d3b8015333d036afe7010792d210be80680d4417cee3a869c731b234dbda"
+  },
+  "execution_receipts": [
+    {
+      "bytes": 728,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc/launch.json",
+      "sha256": "23711d972deca3c319722657aaafb313c1312d0f1a77bbf1f853b983f632f877"
+    },
+    {
+      "bytes": 2,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc/exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 552,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc/console.log",
+      "sha256": "4dcb58e898445bb530e684aa77fea8a9c6b047063a1bddf906c631c4e2f18eab"
+    },
+    {
+      "bytes": 64,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc/container.cid",
+      "sha256": "9bb7ffd7459fe517a43bbc919e332b970f83b4f9b1ba0d9e6f5b27aa399bd218"
+    }
+  ],
+  "focused_test_receipt": {
+    "bytes": 1577,
+    "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-analysis-cpu-validation-v3/receipt.json",
+    "sha256": "df5154b4b490650e15aa48593f402e1420878ba934ee12c59e3bc57dde3f0392"
+  },
+  "focused_tests": {
+    "artifacts": [
+      {
+        "bytes": 1738,
+        "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-analysis-cpu-validation-v3/junit.xml",
+        "sha256": "ba2a1cad38f1c92e041d6d61201ad9dd2b93e599c36843dbfce35cf8abd80f42"
+      },
+      {
+        "bytes": 209,
+        "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-analysis-cpu-validation-v3/console.log",
+        "sha256": "e941121da23371f393e417f08e0ae9b8cc108dd291ecb80d8ca8063c9cc113bb"
+      },
+      {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-analysis-cpu-validation-v3/exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    ],
+    "command": [
+      "python3",
+      "-B",
+      "-m",
+      "pytest",
+      "-p",
+      "no:cacheprovider",
+      "-q",
+      "tests/benchmarks/test_bell_anisotropy_analysis_e11f.py",
+      "--junitxml=/home/isavand/paper/evidence/bell-anisotropy-e11f-analysis-cpu-validation-v3/junit.xml"
+    ],
+    "errors": 0,
+    "exit_code": 0,
+    "failures": 0,
+    "inventory": [
+      "test_exact_reused_control_diffuse_and_probe_inventory",
+      "test_invalid_saved_arrays_rejected[diffuse]",
+      "test_invalid_saved_arrays_rejected[probe]",
+      "test_invalid_saved_arrays_rejected[mask]",
+      "test_invalid_saved_arrays_rejected[nonfinite]",
+      "test_invalid_saved_arrays_rejected[extra]",
+      "test_requested_factor_and_canonical_isotropic_identity",
+      "test_counts_include_losses_and_quantization_not_only_gains",
+      "test_analysis_import_blocks_scientific_modules"
+    ],
+    "passed": 9,
+    "skipped": 0,
+    "tests": 9
+  },
+  "full_dataset_admitted": false,
+  "input_records": [
+    {
+      "bytes": 475481,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/geometry/generation.json",
+      "sha256": "5035b22b594848900426fd5dfaa8b96382b57a76cfde97864b7ef7591c46e6d7"
+    },
+    {
+      "bytes": 58216,
+      "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c/pilot/pilot.json",
+      "sha256": "4ad7c79fb63713c5710aa8407c3229fb8bd71341dc81d39e985cb24608a3f1f1"
+    },
+    {
+      "bytes": 4729497,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/geometry/mesh.ply",
+      "sha256": "4ea98341ca915cf55f2b37581556583308cc50a8e2d2d8d48140d49224866e01"
+    },
+    {
+      "bytes": 905043,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/geometry/labels/58.npz",
+      "sha256": "7b2b3f06e3df269fdc80c732f70b8e7c56074594bc57be19aee29d2ca0a61688"
+    },
+    {
+      "bytes": 321821,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/geometry/rays/58.npz",
+      "sha256": "213d441a31c309b2f32a37f40b9e0667f62e004c644da94e68c76b3e24667187"
+    },
+    {
+      "bytes": 762035,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/references/58.npz",
+      "sha256": "e47372b8c75008ffe51a296ccdc66fc837a7f10abb1258c3fa76a5ca788a03a7"
+    },
+    {
+      "bytes": 768052,
+      "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c/pilot/58-L2_six_cardinal.npz",
+      "sha256": "71d64abbaf312c2c2d24a337639e0458b9e3025678c7b3d92494a89dab889797"
+    },
+    {
+      "bytes": 42729,
+      "path": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature/quadrature.json",
+      "sha256": "589f894d653b715a55739aad2e7667ce0105b14eb0119bb5b54e69010f7cc383"
+    },
+    {
+      "bytes": 26720,
+      "path": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature/comparison.json",
+      "sha256": "3c6345215c3dce658dbe7935cde33beae168cee4cdce33b06ac5ac894feef658"
+    },
+    {
+      "bytes": 477890,
+      "path": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature/directions-256.npz",
+      "sha256": "697eecd5f8963f54e08eccdfa9671c985e90d9fa7223a2a0038a4548d3e6aeba"
+    },
+    {
+      "bytes": 1950474,
+      "path": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature/directions-512.npz",
+      "sha256": "e82bc2acbdc86ff70911cbcf197d898a41b73bc43fc2dd2bc53f517bf1d05111"
+    },
+    {
+      "bytes": 50203,
+      "path": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature/grid-256.npz",
+      "sha256": "57d6717795dd6c02721bfe02c410a40692b3615efbd9e4b320d69a05556fe22c"
+    },
+    {
+      "bytes": 73720,
+      "path": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature/grid-512.npz",
+      "sha256": "7ccffadf095c381798e7bc8e2417b15ea957bf7b7794d84a2f26f692f27e557b"
+    }
+  ],
+  "material_transformation": {
+    "CPU_CUDA_width_max_absolute_difference": 0.0,
+    "canonical_two_axis_width_sha256": "704ce921b0fff307c1ba9be79593a7e3a365fa14701f1f4bd13f9e3544ec9d59",
+    "original_ratio_min_median_max": [
+      1.0875511674832514,
+      1.7336987513585842,
+      1.9217778726271475
+    ],
+    "product_max_relative_error": 3.3306690738754696e-16,
+    "stronger_ratio_min_median_max": [
+      1.1827675418941834,
+      3.0057499562001553,
+      3.693230191719324
+    ]
+  },
+  "native_outputs": [
+    {
+      "bytes": 32151,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc/anisotropy/comparison.json",
+      "sha256": "2c5befa475c0f6022e27507499bc6617c019f117be4588abe0d9b16e34cda90e"
+    },
+    {
+      "bytes": 33945,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc/anisotropy/grid-256.npz",
+      "sha256": "c28f02752f08e0623d5926b86ae6e9962460324b9c93e0dfa584ba13274a7f52"
+    },
+    {
+      "bytes": 33938,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc/anisotropy/grid-512.npz",
+      "sha256": "755416af4fc90a95a1958c1e1e1ba17015fb42b13f56c612806145450ee74ecd"
+    },
+    {
+      "bytes": 4340,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc/anisotropy/material-factor.npz",
+      "sha256": "7cf2554fe67bab49272c2e6671915fba8c92d615a6f0c29264746b7d3882b38f"
+    }
+  ],
+  "native_report": {
+    "bytes": 50208,
+    "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc/anisotropy/anisotropy.json",
+    "sha256": "9f8c8a3e52d0aaea434c11f623a05c6da948d08d266ee38fef4f3e940bcbadae"
+  },
+  "offline_analysis": {
+    "bytes": 53447,
+    "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc-analysis-v1/analysis.json",
+    "sha256": "824a12230bde005a70834dbcf10662dc4e05db811e301a0f3a1b33a34e44a3f2"
+  },
+  "offline_analysis_artifacts": [
+    {
+      "bytes": 53447,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc-analysis-v1/analysis.json",
+      "sha256": "824a12230bde005a70834dbcf10662dc4e05db811e301a0f3a1b33a34e44a3f2"
+    },
+    {
+      "bytes": 84175,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc-analysis-v1/conditional_coupling.png",
+      "sha256": "94125bcbb854091b6db179b7b0288f82554760170fa14f059acad09ecbb3ef7d"
+    },
+    {
+      "bytes": 87285,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc-analysis-v1/conditional_coupling.svg",
+      "sha256": "c8ac00da6454380f37538cd1642e3b5a356fd26098a2cc589735b047ee5b58e7"
+    },
+    {
+      "bytes": 578,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc-analysis-v1/convergence_summary.csv",
+      "sha256": "7b1b52a4f99d2d750f3d116e7a8b39ee37de1e08f5de9f4cf6036c6d5461e60d"
+    },
+    {
+      "bytes": 62619,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc-analysis-v1/factor_comparison.png",
+      "sha256": "a529c56abd6cbec17b4339ddf0106f00f1527e6676ca02a4f39dadbdce4486d4"
+    },
+    {
+      "bytes": 50511,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc-analysis-v1/factor_comparison.svg",
+      "sha256": "f3110026885f5821dba059bb364a07acaa5706855fd0d6563a79acc578cb74e5"
+    },
+    {
+      "bytes": 50445,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc-analysis-v1/probe_responses.csv",
+      "sha256": "c59a8a75920a8a4ab317c3cf69d276a8ef7dcadc514faaf158cc0ce805b74eaf"
+    },
+    {
+      "bytes": 616,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc-analysis-v1/response_summary.csv",
+      "sha256": "4bf8445e75d0516bcbabce740e9172cdad057b5d4e77e91985f5c043d65e3c0a"
+    },
+    {
+      "bytes": 195835,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc-analysis-v1/spatial_sensitivity.png",
+      "sha256": "6c1ee3ffcf74f1337745ce11cbccde9cb16728652887bd408f6901bcfce077e8"
+    },
+    {
+      "bytes": 230865,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc-analysis-v1/spatial_sensitivity.svg",
+      "sha256": "39916af417f8349911f9ff8831cb637ec32d1aada682a50829d6176ff8ac44e9"
+    }
+  ],
+  "original_E11D_admission_changed": false,
+  "original_E11E_replaced": false,
+  "protocol": "bell-anisotropy-e11f-results-v1",
+  "recommended_next_experiment": "One separately approved paired outgoing-direction diagnostic at the same physical probes under fixed L2, stacking conditional response matrices; no full dataset or training.",
+  "resources": {
+    "cuda_peak_allocated_bytes": 20992512,
+    "cuda_peak_reserved_bytes": 27262976,
+    "host_peak_rss_bytes": 4765421568
+  },
+  "response_summary": [
+    {
+      "factor": "orientation",
+      "newly_resolved": 24,
+      "no_longer_resolved": 0,
+      "original_absolute_gate": 20,
+      "original_grid_gate": 82,
+      "original_median_response": 0.001484689460915338,
+      "original_resolved": 20,
+      "original_two_codes": 27,
+      "original_zero_codes": 8,
+      "stronger_absolute_gate": 44,
+      "stronger_grid_gate": 82,
+      "stronger_median_response": 0.00323820056109295,
+      "stronger_resolved": 44,
+      "stronger_two_codes": 48,
+      "stronger_zero_codes": 3
+    },
+    {
+      "factor": "major",
+      "newly_resolved": 0,
+      "no_longer_resolved": 0,
+      "original_absolute_gate": 5,
+      "original_grid_gate": 78,
+      "original_median_response": 0.0006600535121778148,
+      "original_resolved": 5,
+      "original_two_codes": 7,
+      "original_zero_codes": 22,
+      "stronger_absolute_gate": 5,
+      "stronger_grid_gate": 75,
+      "stronger_median_response": 0.0005020268416302993,
+      "stronger_resolved": 5,
+      "stronger_two_codes": 7,
+      "stronger_zero_codes": 19
+    },
+    {
+      "factor": "minor",
+      "newly_resolved": 0,
+      "no_longer_resolved": 1,
+      "original_absolute_gate": 2,
+      "original_grid_gate": 80,
+      "original_median_response": 0.0007547787460242573,
+      "original_resolved": 2,
+      "original_two_codes": 5,
+      "original_zero_codes": 16,
+      "stronger_absolute_gate": 1,
+      "stronger_grid_gate": 79,
+      "stronger_median_response": 0.000552650413533938,
+      "stronger_resolved": 1,
+      "stronger_two_codes": 3,
+      "stronger_zero_codes": 16
+    },
+    {
+      "factor": "isotropic",
+      "newly_resolved": 13,
+      "no_longer_resolved": 0,
+      "original_absolute_gate": 38,
+      "original_grid_gate": 81,
+      "original_median_response": 0.002466881004728534,
+      "original_resolved": 38,
+      "original_two_codes": 43,
+      "original_zero_codes": 16,
+      "stronger_absolute_gate": 51,
+      "stronger_grid_gate": 82,
+      "stronger_median_response": 0.004219958397750568,
+      "stronger_resolved": 51,
+      "stronger_two_codes": 57,
+      "stronger_zero_codes": 8
+    }
+  ],
+  "runtime": {
+    "cuda": "11.1",
+    "cxx11_abi": false,
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "python": "3.8.10 (default, Mar 18 2025, 20:04:55) \n[GCC 9.4.0]",
+    "torch": "1.8.1+cu111"
+  },
+  "schema_version": 1,
+  "single_panel_screen": {
+    "all_original_25percent_floors": false,
+    "full_dataset_authorized": false,
+    "meaning": "Descriptive inherited screen on one camera, not a full-scene or three-view admission.",
+    "orientation_gain": 0.28571428571428575,
+    "original_10percentagepoint_orientation_gain_marker": true,
+    "references_usable": true
+  },
+  "source_identity": {
+    "A": "e1e859779301faced46d6476691e20b546c27ae0",
+    "G": "79252178e65914ad1acbc14790b1514f276bfea0",
+    "existing_protocols_changed": false,
+    "frozen_files_verified": 72,
+    "previous_evidence_changed": false,
+    "snapshots_byte_verified": true
+  },
+  "spatial_coverage": {
+    "original": {
+      "isotropic": {
+        "cell_ids": [
+          12,
+          19,
+          26,
+          27,
+          28,
+          34,
+          35,
+          37,
+          43,
+          44,
+          45,
+          46,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          58,
+          59,
+          60,
+          61
+        ],
+        "resolved_cells": 22,
+        "resolved_probes": 38
+      },
+      "joint_orientation_major_minor": {
+        "resolved_cells": 1,
+        "resolved_probes": 1
+      },
+      "major": {
+        "cell_ids": [
+          26,
+          50,
+          54,
+          58,
+          60
+        ],
+        "resolved_cells": 5,
+        "resolved_probes": 5
+      },
+      "minor": {
+        "cell_ids": [
+          27,
+          60
+        ],
+        "resolved_cells": 2,
+        "resolved_probes": 2
+      },
+      "orientation": {
+        "cell_ids": [
+          12,
+          20,
+          28,
+          35,
+          37,
+          42,
+          43,
+          44,
+          46,
+          52,
+          53,
+          54,
+          60,
+          61
+        ],
+        "resolved_cells": 14,
+        "resolved_probes": 20
+      },
+      "sampled_cells": 28
+    },
+    "stronger": {
+      "isotropic": {
+        "cell_ids": [
+          12,
+          19,
+          20,
+          26,
+          27,
+          28,
+          29,
+          34,
+          35,
+          36,
+          37,
+          41,
+          43,
+          44,
+          45,
+          46,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          58,
+          59,
+          60,
+          61
+        ],
+        "resolved_cells": 26,
+        "resolved_probes": 51
+      },
+      "joint_orientation_major_minor": {
+        "resolved_cells": 0,
+        "resolved_probes": 0
+      },
+      "major": {
+        "cell_ids": [
+          26,
+          50,
+          54,
+          58,
+          60
+        ],
+        "resolved_cells": 5,
+        "resolved_probes": 5
+      },
+      "minor": {
+        "cell_ids": [
+          27
+        ],
+        "resolved_cells": 1,
+        "resolved_probes": 1
+      },
+      "orientation": {
+        "cell_ids": [
+          11,
+          12,
+          19,
+          20,
+          26,
+          27,
+          28,
+          34,
+          35,
+          36,
+          37,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          51,
+          52,
+          53,
+          54,
+          59,
+          60,
+          61
+        ],
+        "resolved_cells": 24,
+        "resolved_probes": 44
+      },
+      "sampled_cells": 28
+    }
+  },
+  "static_checks": {
+    "copies_byte_equal": true,
+    "documentation_links": "pass",
+    "frozen_source_hashes": "pass",
+    "python38_AST": "pass",
+    "safe_npz_reads": "allow_pickle=False"
+  },
+  "tracked_copies": [
+    {
+      "original": {
+        "bytes": 87285,
+        "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc-analysis-v1/conditional_coupling.svg",
+        "sha256": "c8ac00da6454380f37538cd1642e3b5a356fd26098a2cc589735b047ee5b58e7"
+      },
+      "tracked": {
+        "bytes": 87285,
+        "path": "/home/isavand/paper/Nerofactor-3d2-e2a/results/bell_e11f/conditional_coupling.svg",
+        "sha256": "c8ac00da6454380f37538cd1642e3b5a356fd26098a2cc589735b047ee5b58e7"
+      }
+    },
+    {
+      "original": {
+        "bytes": 578,
+        "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc-analysis-v1/convergence_summary.csv",
+        "sha256": "7b1b52a4f99d2d750f3d116e7a8b39ee37de1e08f5de9f4cf6036c6d5461e60d"
+      },
+      "tracked": {
+        "bytes": 578,
+        "path": "/home/isavand/paper/Nerofactor-3d2-e2a/results/bell_e11f/convergence_summary.csv",
+        "sha256": "7b1b52a4f99d2d750f3d116e7a8b39ee37de1e08f5de9f4cf6036c6d5461e60d"
+      }
+    },
+    {
+      "original": {
+        "bytes": 50511,
+        "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc-analysis-v1/factor_comparison.svg",
+        "sha256": "f3110026885f5821dba059bb364a07acaa5706855fd0d6563a79acc578cb74e5"
+      },
+      "tracked": {
+        "bytes": 50511,
+        "path": "/home/isavand/paper/Nerofactor-3d2-e2a/results/bell_e11f/factor_comparison.svg",
+        "sha256": "f3110026885f5821dba059bb364a07acaa5706855fd0d6563a79acc578cb74e5"
+      }
+    },
+    {
+      "original": {
+        "bytes": 50445,
+        "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc-analysis-v1/probe_responses.csv",
+        "sha256": "c59a8a75920a8a4ab317c3cf69d276a8ef7dcadc514faaf158cc0ce805b74eaf"
+      },
+      "tracked": {
+        "bytes": 50445,
+        "path": "/home/isavand/paper/Nerofactor-3d2-e2a/results/bell_e11f/probe_responses.csv",
+        "sha256": "c59a8a75920a8a4ab317c3cf69d276a8ef7dcadc514faaf158cc0ce805b74eaf"
+      }
+    },
+    {
+      "original": {
+        "bytes": 616,
+        "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc-analysis-v1/response_summary.csv",
+        "sha256": "4bf8445e75d0516bcbabce740e9172cdad057b5d4e77e91985f5c043d65e3c0a"
+      },
+      "tracked": {
+        "bytes": 616,
+        "path": "/home/isavand/paper/Nerofactor-3d2-e2a/results/bell_e11f/response_summary.csv",
+        "sha256": "4bf8445e75d0516bcbabce740e9172cdad057b5d4e77e91985f5c043d65e3c0a"
+      }
+    },
+    {
+      "original": {
+        "bytes": 230865,
+        "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc-analysis-v1/spatial_sensitivity.svg",
+        "sha256": "39916af417f8349911f9ff8831cb637ec32d1aada682a50829d6176ff8ac44e9"
+      },
+      "tracked": {
+        "bytes": 230865,
+        "path": "/home/isavand/paper/Nerofactor-3d2-e2a/results/bell_e11f/spatial_sensitivity.svg",
+        "sha256": "39916af417f8349911f9ff8831cb637ec32d1aada682a50829d6176ff8ac44e9"
+      }
+    }
+  ],
+  "verification_status": "pass"
+}
