@@ -1,0 +1,1711 @@
+{
+  "L0_v3_max_absolute_difference": 2.7755575615628914e-17,
+  "ambiguity_summary": {
+    "interpretation": "Operational finite-perturbation gate failure, not proof of exactly zero physical sensitivity; all new-light references are unconverged.",
+    "orientation_unresolved_in_all_lights": 160,
+    "probe_camera_observations": 246,
+    "unresolved_despite_label_orientation_eligibility": 103,
+    "unresolved_with_width_ratio_ge_1_5": 99
+  },
+  "analysis_source": [
+    {
+      "repository_path": "experiments/analyze_bell_highlight_e11d.py",
+      "sha256": "8700ea9165b423171d5797b6813cdeee993237221cdc146c0a3c97234459ea82"
+    },
+    {
+      "repository_path": "tests/benchmarks/test_bell_highlight_analysis_e11d.py",
+      "sha256": "7c98769dd5fec1aa67564e60c2763df2652929290d861cd5fea3a8433e8fd056"
+    }
+  ],
+  "artifact_copies": [
+    {
+      "repository_path": "results/bell_e11d_pilot/view_comparisons.csv",
+      "sha256": "4c42bee4fd141a2186dd3814fb95f20ce015efb73e253cd70854e9223cae87a7",
+      "source": {
+        "bytes": 2217,
+        "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c-analysis-v1/view_comparisons.csv",
+        "sha256": "4c42bee4fd141a2186dd3814fb95f20ce015efb73e253cd70854e9223cae87a7"
+      }
+    },
+    {
+      "repository_path": "results/bell_e11d_pilot/probe_comparisons.csv",
+      "sha256": "93d8ad6df284a2376c42563aa051b1812658547e07f79a4a1b28bbe58a130036",
+      "source": {
+        "bytes": 288629,
+        "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c-analysis-v1/probe_comparisons.csv",
+        "sha256": "93d8ad6df284a2376c42563aa051b1812658547e07f79a4a1b28bbe58a130036"
+      }
+    },
+    {
+      "repository_path": "results/bell_e11d_pilot/isotropic_sensitivity.svg",
+      "sha256": "1a941ae3e86e1d55a7bd0ee28594a6b9dc634593163c7971544375696be2c1e4",
+      "source": {
+        "bytes": 216006,
+        "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c-analysis-v1/paper-figures-v2/isotropic_sensitivity.svg",
+        "sha256": "1a941ae3e86e1d55a7bd0ee28594a6b9dc634593163c7971544375696be2c1e4"
+      }
+    },
+    {
+      "repository_path": "results/bell_e11d_pilot/major_sensitivity.svg",
+      "sha256": "1e56b35167afe0384256bb1b6644ad5e773b78bd96edd7ff517f4dd58f3afe49",
+      "source": {
+        "bytes": 197005,
+        "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c-analysis-v1/paper-figures-v2/major_sensitivity.svg",
+        "sha256": "1e56b35167afe0384256bb1b6644ad5e773b78bd96edd7ff517f4dd58f3afe49"
+      }
+    },
+    {
+      "repository_path": "results/bell_e11d_pilot/minor_sensitivity.svg",
+      "sha256": "a6520a172fd9cf13acd20fc391ffbf4a7ade5d1fb112e137e50ce8b42121f8e5",
+      "source": {
+        "bytes": 195003,
+        "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c-analysis-v1/paper-figures-v2/minor_sensitivity.svg",
+        "sha256": "a6520a172fd9cf13acd20fc391ffbf4a7ade5d1fb112e137e50ce8b42121f8e5"
+      }
+    },
+    {
+      "repository_path": "results/bell_e11d_pilot/orientation_quantization.svg",
+      "sha256": "4c03a374449595c77d494fdf150ea98d808024f340886a1365a304eda300ef7b",
+      "source": {
+        "bytes": 169776,
+        "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c-analysis-v1/paper-figures-v2/orientation_quantization.svg",
+        "sha256": "4c03a374449595c77d494fdf150ea98d808024f340886a1365a304eda300ef7b"
+      }
+    },
+    {
+      "repository_path": "results/bell_e11d_pilot/orientation_sensitivity.svg",
+      "sha256": "5a9a1357f55f0ae821dc02c863ad4db85b2452875c092ecaecd705a69848ca8a",
+      "source": {
+        "bytes": 205862,
+        "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c-analysis-v1/paper-figures-v2/orientation_sensitivity.svg",
+        "sha256": "5a9a1357f55f0ae821dc02c863ad4db85b2452875c092ecaecd705a69848ca8a"
+      }
+    },
+    {
+      "repository_path": "results/bell_e11d_pilot/rgb_comparison.svg",
+      "sha256": "9677a43bcb3c603a5c6032947c3a32f405b455262fc2fd1984a48b16920e75af",
+      "source": {
+        "bytes": 164909,
+        "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c-analysis-v1/paper-figures-v2/rgb_comparison.svg",
+        "sha256": "9677a43bcb3c603a5c6032947c3a32f405b455262fc2fd1984a48b16920e75af"
+      }
+    },
+    {
+      "repository_path": "results/bell_e11d_pilot/specular_comparison.svg",
+      "sha256": "c47c49832d558d80d8f2acee8f783295e81818b9448d76d0f83c5874d95eac8b",
+      "source": {
+        "bytes": 132246,
+        "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c-analysis-v1/paper-figures-v2/specular_comparison.svg",
+        "sha256": "c47c49832d558d80d8f2acee8f783295e81818b9448d76d0f83c5874d95eac8b"
+      }
+    }
+  ],
+  "authorization": {
+    "bytes": 4726,
+    "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c-authorization.json",
+    "sha256": "1627f79cbad6b015428d1a99d0c58aa61effe908018cceeb65a8f025e40b94e5"
+  },
+  "backend": {
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "variant": "predicate_fp64"
+  },
+  "counters": {
+    "brdf_point_direction_returns": 227393536,
+    "brdf_point_directions": 227393536,
+    "light_weighted_point_direction_returns": 682180608,
+    "light_weighted_point_directions": 682180608,
+    "shadow_directions": 199180288,
+    "valid_shadow_queries": 183537483,
+    "valid_shadow_returns": 183537483
+  },
+  "cuda_peak_allocated_bytes": 120156672,
+  "cuda_peak_reserved_bytes": 163577856,
+  "decision": "FIX_AND_PROCEED",
+  "elapsed_seconds": 16.193123990669847,
+  "empty_runtime_directories": [
+    "runtime",
+    "runtime/.nv",
+    "runtime/.nv/ComputeCache"
+  ],
+  "execution_receipts": [
+    {
+      "bytes": 513,
+      "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c/launch.json",
+      "sha256": "07215884a79d7011b60697de636080476452eec69c550865ee34c475d66274e5"
+    },
+    {
+      "bytes": 2,
+      "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c/exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 985,
+      "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c/console.log",
+      "sha256": "60960ac7c6ce48ca6da1fc05936c7341a46811ac93b2efa12c4697551c7f51f3"
+    },
+    {
+      "bytes": 64,
+      "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c/container.cid",
+      "sha256": "563ca572da7da06937bd1439e91d118b97443288c012f3c5b16a98374a147226"
+    }
+  ],
+  "focused_test_receipt": {
+    "bytes": 1573,
+    "path": "/home/isavand/paper/evidence/bell-highlight-e11d-analysis-tests-v2/receipt.json",
+    "sha256": "534bb999c90a666d0facc7820e22d589b1a9a21a40c063baef82ab61e095c15e"
+  },
+  "focused_tests": {
+    "artifacts": [
+      {
+        "bytes": 1655,
+        "path": "/home/isavand/paper/evidence/bell-highlight-e11d-analysis-tests-v2/junit.xml",
+        "sha256": "ab141757019eb2dcf0c77519ecbe6606e25bb2003c14f13a899ccfab96e4b50e"
+      },
+      {
+        "bytes": 199,
+        "path": "/home/isavand/paper/evidence/bell-highlight-e11d-analysis-tests-v2/console.log",
+        "sha256": "82b9fce51e0c734c672f10fa93895a5c96670cf82baf181a9cfb8f3abb3a94e5"
+      },
+      {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/bell-highlight-e11d-analysis-tests-v2/exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    ],
+    "command": [
+      "python3",
+      "-B",
+      "-m",
+      "pytest",
+      "-p",
+      "no:cacheprovider",
+      "-q",
+      "tests/benchmarks/test_bell_highlight_analysis_e11d.py",
+      "--junitxml=/home/isavand/paper/evidence/bell-highlight-e11d-analysis-tests-v2/junit.xml"
+    ],
+    "errors": 0,
+    "exit_code": 0,
+    "failed": 0,
+    "inventory": [
+      "test_all_frozen_gates_preserved_and_quantization_not_confused_with_visibility",
+      "test_replay_tolerance_does_not_permit_scientific_decision_or_schema_changes",
+      "test_invalid_paired_data_rejected[shape]",
+      "test_invalid_paired_data_rejected[nonfinite]",
+      "test_invalid_paired_data_rejected[outside_png]",
+      "test_capture_identity_sum_and_probe_pixel_checks",
+      "test_metadata_import_works_with_all_torch_and_native_imports_blocked",
+      "test_empty_cuda_home_directories_are_not_unmanifested_scientific_files"
+    ],
+    "passed": 8,
+    "skipped": 0,
+    "tests": 8
+  },
+  "freeze": {
+    "bytes": 10800,
+    "path": "/home/isavand/paper/Nerofactor-3d2-e2a/docs/protocols/BELL_HIGHLIGHT_PILOT_E11D_V1.freeze.json",
+    "sha256": "33e500cad37190b4bd0e4f9adc69b39533d631e92d2fad7ec11538b8f79e496c"
+  },
+  "full_analysis_archive": {
+    "bytes": 60938,
+    "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c-analysis-v1/analysis.json",
+    "sha256": "547c0fecc38b80a8581406a2f35c99a7f81146a953d0e8e1e3feeb3915d9e9c5"
+  },
+  "host_peak_rss_bytes": 4789481472,
+  "limitations": [
+    "All L1/L2 sensitivity values remain provisional because their references fail convergence.",
+    "Sparse maps show only246 actual probe pixels; no interpolation or new rendering.",
+    "Conditional one-view RGB rank is not seven-parameter material identifiability.",
+    "No independent-tape variance or full128-view coverage estimate."
+  ],
+  "native_artifacts": [
+    {
+      "bytes": 4103,
+      "path": "0-L0_v3.json",
+      "sha256": "1a56c232679831ced66937dbc80814b786ceb428bff15fb638ac52fb1c7f0104"
+    },
+    {
+      "bytes": 813027,
+      "path": "0-L0_v3.npz",
+      "sha256": "5d6b02244192bf0c1fbe53725791ffddc50807524a8e4e6f06a0890ba79b8dd3"
+    },
+    {
+      "bytes": 4558,
+      "path": "0-L0_v3.png",
+      "sha256": "ef307efdf559845d7e5556e6b49921efaab56466d42b1c19c45b328f1fa45b3d"
+    },
+    {
+      "bytes": 4220,
+      "path": "0-L1_three_oblique.json",
+      "sha256": "663bd47b038aa4ca96ffed7537d3e6992996fbe652da34091a681608ab2b63e5"
+    },
+    {
+      "bytes": 813636,
+      "path": "0-L1_three_oblique.npz",
+      "sha256": "bee634a36ea125394a6068695c3d7958dd36087c23d39a6e5d596cbc8a344a75"
+    },
+    {
+      "bytes": 5092,
+      "path": "0-L1_three_oblique.png",
+      "sha256": "100eb832d2035e2781d9dbbf7624cad02cc27882926b44104f0dba73090ed1e6"
+    },
+    {
+      "bytes": 4225,
+      "path": "0-L2_six_cardinal.json",
+      "sha256": "6c6c6b24091d39f474cf65031f5ac0d59ab26b14da8f82abd7d8c2c2e4e65647"
+    },
+    {
+      "bytes": 812484,
+      "path": "0-L2_six_cardinal.npz",
+      "sha256": "ee37892a5804d5128e3fc8285ff5ce6139490c703d6ff85c90cc022497c5136d"
+    },
+    {
+      "bytes": 5186,
+      "path": "0-L2_six_cardinal.png",
+      "sha256": "0446090e47c1f55085c2fe72a9b3cc335b44392d7408035b4edf1d5ce23b3dd1"
+    },
+    {
+      "bytes": 4084,
+      "path": "105-L0_v3.json",
+      "sha256": "80a98f8ed95302f7f9ed3ef01288a438ba96cad25a9da623ad8a77fef82a53ec"
+    },
+    {
+      "bytes": 666798,
+      "path": "105-L0_v3.npz",
+      "sha256": "2ca25430b263b8b359fcd634cf0bb905f2a764eb95013bbed62cfed5ce51d177"
+    },
+    {
+      "bytes": 3770,
+      "path": "105-L0_v3.png",
+      "sha256": "e3ec81e3ac941dcb4b4eb6ec1b51bdb90465bdf4044ec1458fffc3388fb8bfdc"
+    },
+    {
+      "bytes": 4215,
+      "path": "105-L1_three_oblique.json",
+      "sha256": "c742dbf2d4cde7e8c385c4781a737b2d9cddf81150f181754eaca15aa4f36ea7"
+    },
+    {
+      "bytes": 668187,
+      "path": "105-L1_three_oblique.npz",
+      "sha256": "16f7977d623ec3604458cbf1c75faa6b7bdfa623411d543292191407661cc1a4"
+    },
+    {
+      "bytes": 5285,
+      "path": "105-L1_three_oblique.png",
+      "sha256": "f6b2569663596126eaf5a02a8bff06dfe3cd0cb7f179e2c984075d9fe594caf0"
+    },
+    {
+      "bytes": 4180,
+      "path": "105-L2_six_cardinal.json",
+      "sha256": "5ffe392188f522301f463afc2bccc998a27ee43478184e430cb9d58e20db4cff"
+    },
+    {
+      "bytes": 666948,
+      "path": "105-L2_six_cardinal.npz",
+      "sha256": "412fbebf6c8cf736116d35b1b6a95c752a7cb2a75569de84c8dbd0e0556cfaee"
+    },
+    {
+      "bytes": 4324,
+      "path": "105-L2_six_cardinal.png",
+      "sha256": "63771fa2c9129bc9bd49b374ddbab4d27a534ca7e3b0ed1088f09c731b5ed918"
+    },
+    {
+      "bytes": 4101,
+      "path": "58-L0_v3.json",
+      "sha256": "d81fe393b16a28cfe5005b9b1e22ea4d1a646aa3a9741e247e6708d769126a88"
+    },
+    {
+      "bytes": 767388,
+      "path": "58-L0_v3.npz",
+      "sha256": "f9670ca3c29100c5373eb918c2813a6dce45fa602b3bc72e82b3435f7c155b50"
+    },
+    {
+      "bytes": 4118,
+      "path": "58-L0_v3.png",
+      "sha256": "9ba00ede59ed85a381c7ca3dfff767ed08ce182b9265978a1c61bb0a60aa0295"
+    },
+    {
+      "bytes": 4211,
+      "path": "58-L1_three_oblique.json",
+      "sha256": "34a13c49cad1de6c7f2f24eb5f96279669f61583204d7294b555b21d17a2ed61"
+    },
+    {
+      "bytes": 769642,
+      "path": "58-L1_three_oblique.npz",
+      "sha256": "c04338e1f14d31102da31ddca9e6434fd5b80290f9b4a695007f2b7a275c87fb"
+    },
+    {
+      "bytes": 6074,
+      "path": "58-L1_three_oblique.png",
+      "sha256": "2a93fdadec88033b8eb55ad63f5a73e96085abd83886e367ad5d7b4cc4001fc1"
+    },
+    {
+      "bytes": 4225,
+      "path": "58-L2_six_cardinal.json",
+      "sha256": "83b856bc6fc96dbe8892e3984ec45844b15af74f31cfed385ba387f0fae79986"
+    },
+    {
+      "bytes": 768052,
+      "path": "58-L2_six_cardinal.npz",
+      "sha256": "71d64abbaf312c2c2d24a337639e0458b9e3025678c7b3d92494a89dab889797"
+    },
+    {
+      "bytes": 5024,
+      "path": "58-L2_six_cardinal.png",
+      "sha256": "457ae1a6e0c3a18a9a993fc072ac4878fbb67fabd929e15632bedb2356357fa6"
+    }
+  ],
+  "native_cleanup_verified": true,
+  "native_report": {
+    "bytes": 58216,
+    "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c/pilot/pilot.json",
+    "sha256": "4ad7c79fb63713c5710aa8407c3229fb8bd71341dc81d39e985cb24608a3f1f1"
+  },
+  "new_gpu_calls": 0,
+  "new_scientific_queries": 0,
+  "next_proposed_experiment": {
+    "camera_id": "58",
+    "directions_per_probe": [
+      65536,
+      262144
+    ],
+    "lighting": "L2_six_cardinal",
+    "material_cases": 8,
+    "maximum_new_brdf_point_directions": 220200960,
+    "maximum_new_shadow_directions": 27525120,
+    "probe_count": 84,
+    "purpose": "Separate integration error from persistent weak roughness/orientation responses without changing material or lighting.",
+    "reference_proposal": "Independent fixed midpoint solid-angle hemisphere grids 256x256 and512x512; same physical additive kernel, shadow backend, positions/normals and image-formation conventions.",
+    "scope_exclusions": "No additional light/material factors, full images,128-view generation, model or optimizer execution.",
+    "status": "proposal_only_requires_separate_approval",
+    "success_thresholds": "Retain abs RGB .003 / relative L2 .002 and original local response criteria; no promotion of this failed pilot."
+  },
+  "pooled": {
+    "L0_v3": {
+      "highlight_coverage": 0.05873159496586329,
+      "integrated_specular_fraction": 0.2351442583661174,
+      "isotropic": {
+        "absolute_gate": 0.0040650406504065045,
+        "code_gate": 0.044715447154471545,
+        "grid_gate": 0.7276422764227642,
+        "median_response": 0.0003280347658417629,
+        "resolved": 0.0,
+        "zero_code_fraction": 0.4959349593495935
+      },
+      "major": {
+        "absolute_gate": 0.0,
+        "code_gate": 0.0040650406504065045,
+        "grid_gate": 0.7073170731707317,
+        "median_response": 0.00018951791802533993,
+        "resolved": 0.0,
+        "zero_code_fraction": 0.43902439024390244
+      },
+      "minor": {
+        "absolute_gate": 0.0,
+        "code_gate": 0.0,
+        "grid_gate": 0.6138211382113821,
+        "median_response": 0.00013244839445946711,
+        "resolved": 0.0,
+        "zero_code_fraction": 0.540650406504065
+      },
+      "orientation": {
+        "absolute_gate": 0.0,
+        "code_gate": 0.0040650406504065045,
+        "grid_gate": 0.6585365853658537,
+        "median_response": 0.00026885037306009774,
+        "resolved": 0.0,
+        "zero_code_fraction": 0.5203252032520326
+      },
+      "probes": 246
+    },
+    "L1_three_oblique": {
+      "highlight_coverage": 0.29291766060705765,
+      "integrated_specular_fraction": 0.2748229686001225,
+      "isotropic": {
+        "absolute_gate": 0.21138211382113822,
+        "code_gate": 0.2926829268292683,
+        "grid_gate": 0.524390243902439,
+        "median_response": 0.00046743596506899215,
+        "resolved": 0.21138211382113822,
+        "zero_code_fraction": 0.3861788617886179
+      },
+      "major": {
+        "absolute_gate": 0.08536585365853659,
+        "code_gate": 0.13414634146341464,
+        "grid_gate": 0.3821138211382114,
+        "median_response": 0.0001893419199373806,
+        "resolved": 0.08130081300813008,
+        "zero_code_fraction": 0.4715447154471545
+      },
+      "minor": {
+        "absolute_gate": 0.08536585365853659,
+        "code_gate": 0.12601626016260162,
+        "grid_gate": 0.4186991869918699,
+        "median_response": 0.00019837311209406489,
+        "resolved": 0.08536585365853659,
+        "zero_code_fraction": 0.44308943089430897
+      },
+      "orientation": {
+        "absolute_gate": 0.14634146341463414,
+        "code_gate": 0.22357723577235772,
+        "grid_gate": 0.508130081300813,
+        "median_response": 0.0005202896577386493,
+        "resolved": 0.14634146341463414,
+        "zero_code_fraction": 0.3699186991869919
+      },
+      "probes": 246
+    },
+    "L2_six_cardinal": {
+      "highlight_coverage": 0.05618162375586082,
+      "integrated_specular_fraction": 0.21484200183840094,
+      "isotropic": {
+        "absolute_gate": 0.3699186991869919,
+        "code_gate": 0.4268292682926829,
+        "grid_gate": 0.6951219512195121,
+        "median_response": 0.002040869674421665,
+        "resolved": 0.36585365853658536,
+        "zero_code_fraction": 0.2073170731707317
+      },
+      "major": {
+        "absolute_gate": 0.056910569105691054,
+        "code_gate": 0.08536585365853659,
+        "grid_gate": 0.5121951219512195,
+        "median_response": 0.0007156916937951369,
+        "resolved": 0.056910569105691054,
+        "zero_code_fraction": 0.2073170731707317
+      },
+      "minor": {
+        "absolute_gate": 0.028455284552845527,
+        "code_gate": 0.06504065040650407,
+        "grid_gate": 0.524390243902439,
+        "median_response": 0.0007377433058364732,
+        "resolved": 0.028455284552845527,
+        "zero_code_fraction": 0.21138211382113822
+      },
+      "orientation": {
+        "absolute_gate": 0.23170731707317074,
+        "code_gate": 0.32113821138211385,
+        "grid_gate": 0.6666666666666666,
+        "median_response": 0.0014694032383738356,
+        "resolved": 0.23170731707317074,
+        "zero_code_fraction": 0.16260162601626016
+      },
+      "probes": 246
+    }
+  },
+  "preserved_initial_analysis_failure": {
+    "bytes": 471,
+    "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c-analysis-inventory-check-v1.json",
+    "sha256": "afb58b821b213cf417b7237dbc3478f6ffbfd8da05e4cd8c45ffab1d53d5120f"
+  },
+  "prior_codex_readiness_record": {
+    "bytes": 1603,
+    "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c-launch-readiness.json",
+    "sha256": "05624667cd3a1c68997880a683a2572eddd6cdc0523a7451148fe1d96af0b9bc"
+  },
+  "protocol": "bell-highlight-pilot-file-analysis-e11d-v1",
+  "recommended_lighting": null,
+  "replay_diagnostic_tolerance": {
+    "atol": 1e-12,
+    "rtol": 1e-10,
+    "scientific_decisions_counts_identities": "exact"
+  },
+  "rows": [
+    {
+      "camera_id": "0",
+      "convergence": {
+        "maximum_rgb_difference": 0.00035481722188220044,
+        "passed": true,
+        "relative_l2": 0.0005836493797312885
+      },
+      "eligible": true,
+      "lighting": "L0_v3",
+      "metrics": {
+        "highlight_coverage": 0.08100113765642776,
+        "integrated_specular_fraction": 0.2551770219595861,
+        "integrated_specular_to_diffuse": 0.3426008991169177,
+        "linear_rgb_max": 0.13113596291452548,
+        "mean_diffuse_luminance": 0.04582600377567797,
+        "mean_specular_luminance": 0.015700030096482537,
+        "out_of_png_domain": false,
+        "pixels": 4395,
+        "quantization_linear_rgb_rmse": 0.0004582202943060704,
+        "quantization_rmse_over_specular_rms": 0.027136004023363344,
+        "specular_at_least_two_codes_fraction": 0.9849829351535836,
+        "specular_contrast_p99_minus_p50": 0.030281323232011492,
+        "specular_contrast_ratio": 3.7427680499735203,
+        "specular_dominant_fraction": 0.0,
+        "specular_fraction_median": 0.2135457907112249,
+        "specular_luminance_p50": 0.011040424374311871,
+        "specular_luminance_p99": 0.041321747606323365,
+        "specular_zero_code_fraction": 0.007508532423208191
+      },
+      "paired_convergence": {
+        "isotropic": {
+          "maximum_rgb_difference": 0.00015919533383653567,
+          "passed": true,
+          "relative_l2": 0.000550443919918354
+        },
+        "major_minus": {
+          "maximum_rgb_difference": 0.00015930913401566646,
+          "passed": true,
+          "relative_l2": 0.0005443068209502449
+        },
+        "major_plus": {
+          "maximum_rgb_difference": 0.00016139263902412854,
+          "passed": true,
+          "relative_l2": 0.0005486611841970107
+        },
+        "minor_minus": {
+          "maximum_rgb_difference": 0.00015942777623046897,
+          "passed": true,
+          "relative_l2": 0.0005424849099965853
+        },
+        "minor_plus": {
+          "maximum_rgb_difference": 0.0001610705630751344,
+          "passed": true,
+          "relative_l2": 0.0005486421462040308
+        },
+        "theta_minus": {
+          "maximum_rgb_difference": 0.00015817990162978607,
+          "passed": true,
+          "relative_l2": 0.0005438887795949099
+        },
+        "theta_plus": {
+          "maximum_rgb_difference": 0.00016330863459860026,
+          "passed": true,
+          "relative_l2": 0.0005523812033271683
+        },
+        "truth": {
+          "maximum_rgb_difference": 0.00016036041145361252,
+          "passed": true,
+          "relative_l2": 0.0005465071104214074
+        }
+      },
+      "sensitivity": {
+        "conditional_three_column_jacobian": {
+          "column_units": "half response of fixed +/-15deg orientation, +/-10percent principal widths",
+          "full_numerical_rank_fraction": 0.8333333333333334,
+          "meaning": "one-view RGB; color/metal fixed; not seven-parameter or multi-view identifiability",
+          "median_singular_values": [
+            0.000781254115906626,
+            4.18733348861974e-05,
+            3.232945373621962e-07
+          ]
+        },
+        "isotropic": {
+          "median_grid_difference": 1.912542967690868e-05,
+          "median_max_channel_response": 0.00017057623784495768,
+          "resolved_count": 0,
+          "resolved_fraction": 0.0,
+          "two_code_fraction": 0.03333333333333333
+        },
+        "major": {
+          "median_grid_difference": 1.801453429436245e-05,
+          "median_max_channel_response": 0.00021106519983901673,
+          "resolved_count": 0,
+          "resolved_fraction": 0.0,
+          "two_code_fraction": 0.011111111111111112
+        },
+        "minor": {
+          "median_grid_difference": 1.8108540049441985e-05,
+          "median_max_channel_response": 0.00012857902886403288,
+          "resolved_count": 0,
+          "resolved_fraction": 0.0,
+          "two_code_fraction": 0.0
+        },
+        "orientation": {
+          "median_grid_difference": 1.8786622873681255e-05,
+          "median_max_channel_response": 0.00016842475960383158,
+          "resolved_count": 0,
+          "resolved_fraction": 0.0,
+          "two_code_fraction": 0.0
+        },
+        "png_domain": true,
+        "probes": 90
+      },
+      "specular_weight_concentration": {
+        "maximum_sample_fraction": 0.18309404074084099,
+        "meaning": "Fixed QMC contribution concentration; not an independent variance estimate",
+        "median_effective_samples": 6177.805657552439,
+        "minimum_effective_samples": 12.37223436514385
+      }
+    },
+    {
+      "camera_id": "0",
+      "convergence": {
+        "maximum_rgb_difference": 0.0017302690812633949,
+        "passed": false,
+        "relative_l2": 0.004750896659944393
+      },
+      "eligible": false,
+      "lighting": "L1_three_oblique",
+      "metrics": {
+        "highlight_coverage": 0.18566552901023892,
+        "integrated_specular_fraction": 0.13065082206564355,
+        "integrated_specular_to_diffuse": 0.1502857831833239,
+        "linear_rgb_max": 0.2071263166152158,
+        "mean_diffuse_luminance": 0.0394022439888542,
+        "mean_specular_luminance": 0.00592159709704537,
+        "out_of_png_domain": false,
+        "pixels": 4395,
+        "quantization_linear_rgb_rmse": 0.00038263886216740987,
+        "quantization_rmse_over_specular_rms": 0.03930562401205463,
+        "specular_at_least_two_codes_fraction": 0.6127417519908988,
+        "specular_contrast_p99_minus_p50": 0.04192445170148249,
+        "specular_contrast_ratio": 25.20506299558361,
+        "specular_dominant_fraction": 0.008418657565415245,
+        "specular_fraction_median": 0.06512508666406928,
+        "specular_luminance_p50": 0.0017320529886301849,
+        "specular_luminance_p99": 0.043656504690112674,
+        "specular_zero_code_fraction": 0.02571103526734926
+      },
+      "paired_convergence": {
+        "isotropic": {
+          "maximum_rgb_difference": 0.0009481182154918444,
+          "passed": false,
+          "relative_l2": 0.0045757756708344815
+        },
+        "major_minus": {
+          "maximum_rgb_difference": 0.0009377905797490899,
+          "passed": false,
+          "relative_l2": 0.004650344603870289
+        },
+        "major_plus": {
+          "maximum_rgb_difference": 0.0009518638482153424,
+          "passed": false,
+          "relative_l2": 0.004693473543603609
+        },
+        "minor_minus": {
+          "maximum_rgb_difference": 0.0009390235421414539,
+          "passed": false,
+          "relative_l2": 0.004748421555999994
+        },
+        "minor_plus": {
+          "maximum_rgb_difference": 0.0009440283579458253,
+          "passed": false,
+          "relative_l2": 0.004599113249595753
+        },
+        "theta_minus": {
+          "maximum_rgb_difference": 0.0009313398188960931,
+          "passed": false,
+          "relative_l2": 0.004679321671434492
+        },
+        "theta_plus": {
+          "maximum_rgb_difference": 0.0009481641275524283,
+          "passed": false,
+          "relative_l2": 0.0046206848920445414
+        },
+        "truth": {
+          "maximum_rgb_difference": 0.0009414470555430959,
+          "passed": false,
+          "relative_l2": 0.004668135934861159
+        }
+      },
+      "sensitivity": {
+        "conditional_three_column_jacobian": {
+          "column_units": "half response of fixed +/-15deg orientation, +/-10percent principal widths",
+          "full_numerical_rank_fraction": 0.7555555555555555,
+          "meaning": "one-view RGB; color/metal fixed; not seven-parameter or multi-view identifiability",
+          "median_singular_values": [
+            0.0004794329439149035,
+            1.979494038714984e-06,
+            4.4344092510531195e-08
+          ]
+        },
+        "isotropic": {
+          "median_grid_difference": 0.00014064477365570774,
+          "median_max_channel_response": 0.000128649405516202,
+          "resolved_count": 12,
+          "resolved_fraction": 0.13333333333333333,
+          "two_code_fraction": 0.15555555555555556
+        },
+        "major": {
+          "median_grid_difference": 0.00014254126062928502,
+          "median_max_channel_response": 0.0001239161757689497,
+          "resolved_count": 3,
+          "resolved_fraction": 0.03333333333333333,
+          "two_code_fraction": 0.044444444444444446
+        },
+        "minor": {
+          "median_grid_difference": 0.00014114493122444755,
+          "median_max_channel_response": 8.161776932476619e-05,
+          "resolved_count": 6,
+          "resolved_fraction": 0.06666666666666667,
+          "two_code_fraction": 0.07777777777777778
+        },
+        "orientation": {
+          "median_grid_difference": 0.00014284015177214691,
+          "median_max_channel_response": 0.00023480439916078247,
+          "resolved_count": 1,
+          "resolved_fraction": 0.011111111111111112,
+          "two_code_fraction": 0.03333333333333333
+        },
+        "png_domain": true,
+        "probes": 90
+      },
+      "specular_weight_concentration": {
+        "maximum_sample_fraction": 0.18125268462254843,
+        "meaning": "Fixed QMC contribution concentration; not an independent variance estimate",
+        "median_effective_samples": 1930.601346837753,
+        "minimum_effective_samples": 12.617444419778693
+      }
+    },
+    {
+      "camera_id": "0",
+      "convergence": {
+        "maximum_rgb_difference": 0.0014729681302546177,
+        "passed": false,
+        "relative_l2": 0.0037269329159184674
+      },
+      "eligible": false,
+      "lighting": "L2_six_cardinal",
+      "metrics": {
+        "highlight_coverage": 0.012059158134243459,
+        "integrated_specular_fraction": 0.23742263494960417,
+        "integrated_specular_to_diffuse": 0.3113423579441199,
+        "linear_rgb_max": 0.14260573561690687,
+        "mean_diffuse_luminance": 0.04736506947056652,
+        "mean_specular_luminance": 0.014746752413153229,
+        "out_of_png_domain": false,
+        "pixels": 4395,
+        "quantization_linear_rgb_rmse": 0.0004553325806357123,
+        "quantization_rmse_over_specular_rms": 0.02877357661390666,
+        "specular_at_least_two_codes_fraction": 0.9385665529010239,
+        "specular_contrast_p99_minus_p50": 0.02781347314538727,
+        "specular_contrast_ratio": 3.0800627242683647,
+        "specular_dominant_fraction": 0.0009101251422070534,
+        "specular_fraction_median": 0.21369570223123435,
+        "specular_luminance_p50": 0.013371458860775606,
+        "specular_luminance_p99": 0.041184932006162876,
+        "specular_zero_code_fraction": 0.015927189988623434
+      },
+      "paired_convergence": {
+        "isotropic": {
+          "maximum_rgb_difference": 0.0006653252639926902,
+          "passed": false,
+          "relative_l2": 0.0035615040903467683
+        },
+        "major_minus": {
+          "maximum_rgb_difference": 0.0006807988951962399,
+          "passed": false,
+          "relative_l2": 0.0035712374193907883
+        },
+        "major_plus": {
+          "maximum_rgb_difference": 0.0006623047994525344,
+          "passed": false,
+          "relative_l2": 0.003615516614857156
+        },
+        "minor_minus": {
+          "maximum_rgb_difference": 0.0007099907413944812,
+          "passed": false,
+          "relative_l2": 0.0035726214103880523
+        },
+        "minor_plus": {
+          "maximum_rgb_difference": 0.0006688879079808988,
+          "passed": false,
+          "relative_l2": 0.003609724832379134
+        },
+        "theta_minus": {
+          "maximum_rgb_difference": 0.0007421891364065222,
+          "passed": false,
+          "relative_l2": 0.003568531855573113
+        },
+        "theta_plus": {
+          "maximum_rgb_difference": 0.000675673128054527,
+          "passed": false,
+          "relative_l2": 0.003619594553946868
+        },
+        "truth": {
+          "maximum_rgb_difference": 0.0006728644491892921,
+          "passed": false,
+          "relative_l2": 0.003592304300151898
+        }
+      },
+      "sensitivity": {
+        "conditional_three_column_jacobian": {
+          "column_units": "half response of fixed +/-15deg orientation, +/-10percent principal widths",
+          "full_numerical_rank_fraction": 0.8777777777777778,
+          "meaning": "one-view RGB; color/metal fixed; not seven-parameter or multi-view identifiability",
+          "median_singular_values": [
+            0.0029319877228628183,
+            3.386099841211574e-06,
+            2.3122707691862896e-07
+          ]
+        },
+        "isotropic": {
+          "median_grid_difference": 0.0001547026095136267,
+          "median_max_channel_response": 0.0019372371634424936,
+          "resolved_count": 29,
+          "resolved_fraction": 0.32222222222222224,
+          "two_code_fraction": 0.37777777777777777
+        },
+        "major": {
+          "median_grid_difference": 0.00015133820624561867,
+          "median_max_channel_response": 0.0007580057018725106,
+          "resolved_count": 3,
+          "resolved_fraction": 0.03333333333333333,
+          "two_code_fraction": 0.06666666666666667
+        },
+        "minor": {
+          "median_grid_difference": 0.00015779305914138952,
+          "median_max_channel_response": 0.0006648404994916667,
+          "resolved_count": 2,
+          "resolved_fraction": 0.022222222222222223,
+          "two_code_fraction": 0.05555555555555555
+        },
+        "orientation": {
+          "median_grid_difference": 0.0001580462273463798,
+          "median_max_channel_response": 0.001339731946565434,
+          "resolved_count": 20,
+          "resolved_fraction": 0.2222222222222222,
+          "two_code_fraction": 0.3111111111111111
+        },
+        "png_domain": true,
+        "probes": 90
+      },
+      "specular_weight_concentration": {
+        "maximum_sample_fraction": 0.15531416947575497,
+        "meaning": "Fixed QMC contribution concentration; not an independent variance estimate",
+        "median_effective_samples": 1223.0529498592077,
+        "minimum_effective_samples": 16.221196544150743
+      }
+    },
+    {
+      "camera_id": "58",
+      "convergence": {
+        "maximum_rgb_difference": 0.0003398998941083267,
+        "passed": true,
+        "relative_l2": 0.0010188641767624406
+      },
+      "eligible": true,
+      "lighting": "L0_v3",
+      "metrics": {
+        "highlight_coverage": 0.037785800240673885,
+        "integrated_specular_fraction": 0.23738295911432084,
+        "integrated_specular_to_diffuse": 0.31127413418225197,
+        "linear_rgb_max": 0.1064166135264244,
+        "mean_diffuse_luminance": 0.032367445540697516,
+        "mean_specular_luminance": 0.010075148586371813,
+        "out_of_png_domain": false,
+        "pixels": 4155,
+        "quantization_linear_rgb_rmse": 0.00036478244566027417,
+        "quantization_rmse_over_specular_rms": 0.03538638525506767,
+        "specular_at_least_two_codes_fraction": 0.9809867629362214,
+        "specular_contrast_p99_minus_p50": 0.02449269421678407,
+        "specular_contrast_ratio": 3.9371966958761346,
+        "specular_dominant_fraction": 0.0,
+        "specular_fraction_median": 0.21956242947289917,
+        "specular_luminance_p50": 0.008338799458399281,
+        "specular_luminance_p99": 0.03283149367518335,
+        "specular_zero_code_fraction": 0.005535499398315283
+      },
+      "paired_convergence": {
+        "isotropic": {
+          "maximum_rgb_difference": 0.000142417388577884,
+          "passed": true,
+          "relative_l2": 0.0006732567853586263
+        },
+        "major_minus": {
+          "maximum_rgb_difference": 0.0001498512929800147,
+          "passed": true,
+          "relative_l2": 0.0006752210669112287
+        },
+        "major_plus": {
+          "maximum_rgb_difference": 0.00015574488925728866,
+          "passed": true,
+          "relative_l2": 0.0007156449549182603
+        },
+        "minor_minus": {
+          "maximum_rgb_difference": 0.0001545597094770347,
+          "passed": true,
+          "relative_l2": 0.0006905376425287857
+        },
+        "minor_plus": {
+          "maximum_rgb_difference": 0.0001516872759150037,
+          "passed": true,
+          "relative_l2": 0.0006926006081493262
+        },
+        "theta_minus": {
+          "maximum_rgb_difference": 0.00015716824178593422,
+          "passed": true,
+          "relative_l2": 0.0006887206136451235
+        },
+        "theta_plus": {
+          "maximum_rgb_difference": 0.00014567077740153603,
+          "passed": true,
+          "relative_l2": 0.0006873734956085439
+        },
+        "truth": {
+          "maximum_rgb_difference": 0.00015302164515009278,
+          "passed": true,
+          "relative_l2": 0.000691062142547554
+        }
+      },
+      "sensitivity": {
+        "conditional_three_column_jacobian": {
+          "column_units": "half response of fixed +/-15deg orientation, +/-10percent principal widths",
+          "full_numerical_rank_fraction": 0.9880952380952381,
+          "meaning": "one-view RGB; color/metal fixed; not seven-parameter or multi-view identifiability",
+          "median_singular_values": [
+            0.0005198054879260166,
+            3.151829465421101e-05,
+            4.4583999161354385e-06
+          ]
+        },
+        "isotropic": {
+          "median_grid_difference": 2.4662760054201815e-05,
+          "median_max_channel_response": 0.00047094990863113216,
+          "resolved_count": 0,
+          "resolved_fraction": 0.0,
+          "two_code_fraction": 0.07142857142857142
+        },
+        "major": {
+          "median_grid_difference": 2.517009352596966e-05,
+          "median_max_channel_response": 0.00020682499598797047,
+          "resolved_count": 0,
+          "resolved_fraction": 0.0,
+          "two_code_fraction": 0.0
+        },
+        "minor": {
+          "median_grid_difference": 2.4040883721078432e-05,
+          "median_max_channel_response": 0.00014781801559614165,
+          "resolved_count": 0,
+          "resolved_fraction": 0.0,
+          "two_code_fraction": 0.0
+        },
+        "orientation": {
+          "median_grid_difference": 2.6368495559685873e-05,
+          "median_max_channel_response": 0.0003800685975687765,
+          "resolved_count": 0,
+          "resolved_fraction": 0.0,
+          "two_code_fraction": 0.011904761904761904
+        },
+        "png_domain": true,
+        "probes": 84
+      },
+      "specular_weight_concentration": {
+        "maximum_sample_fraction": 0.04884998023593038,
+        "meaning": "Fixed QMC contribution concentration; not an independent variance estimate",
+        "median_effective_samples": 7022.413346016579,
+        "minimum_effective_samples": 54.17010792669354
+      }
+    },
+    {
+      "camera_id": "58",
+      "convergence": {
+        "maximum_rgb_difference": 0.0019861970311203375,
+        "passed": false,
+        "relative_l2": 0.003497319024378725
+      },
+      "eligible": false,
+      "lighting": "L1_three_oblique",
+      "metrics": {
+        "highlight_coverage": 0.340072202166065,
+        "integrated_specular_fraction": 0.3858708946635006,
+        "integrated_specular_to_diffuse": 0.6283221090003065,
+        "linear_rgb_max": 0.13279332920978915,
+        "mean_diffuse_luminance": 0.020299623062811037,
+        "mean_specular_luminance": 0.012754701974736693,
+        "out_of_png_domain": false,
+        "pixels": 4155,
+        "quantization_linear_rgb_rmse": 0.00032857111249741654,
+        "quantization_rmse_over_specular_rms": 0.01698638017771633,
+        "specular_at_least_two_codes_fraction": 0.9085439229843562,
+        "specular_contrast_p99_minus_p50": 0.06780730284961368,
+        "specular_contrast_ratio": 19.89262878175121,
+        "specular_dominant_fraction": 0.194705174488568,
+        "specular_fraction_median": 0.2329059346950913,
+        "specular_luminance_p50": 0.003589087767135413,
+        "specular_luminance_p99": 0.0713963906167491,
+        "specular_zero_code_fraction": 0.01684717208182912
+      },
+      "paired_convergence": {
+        "isotropic": {
+          "maximum_rgb_difference": 0.0007292969031745811,
+          "passed": false,
+          "relative_l2": 0.003106346607013738
+        },
+        "major_minus": {
+          "maximum_rgb_difference": 0.0007291603764782856,
+          "passed": false,
+          "relative_l2": 0.0030419352952816866
+        },
+        "major_plus": {
+          "maximum_rgb_difference": 0.0007288172220210609,
+          "passed": false,
+          "relative_l2": 0.0031717269514997333
+        },
+        "minor_minus": {
+          "maximum_rgb_difference": 0.0007289403539182115,
+          "passed": false,
+          "relative_l2": 0.0030644062410367105
+        },
+        "minor_plus": {
+          "maximum_rgb_difference": 0.0007289915947763376,
+          "passed": false,
+          "relative_l2": 0.003154223244660748
+        },
+        "theta_minus": {
+          "maximum_rgb_difference": 0.0007291404021018688,
+          "passed": false,
+          "relative_l2": 0.003194407954354326
+        },
+        "theta_plus": {
+          "maximum_rgb_difference": 0.0007289073838969429,
+          "passed": false,
+          "relative_l2": 0.0030253438393073
+        },
+        "truth": {
+          "maximum_rgb_difference": 0.0007289699822949081,
+          "passed": false,
+          "relative_l2": 0.0031079443274046074
+        }
+      },
+      "sensitivity": {
+        "conditional_three_column_jacobian": {
+          "column_units": "half response of fixed +/-15deg orientation, +/-10percent principal widths",
+          "full_numerical_rank_fraction": 0.9642857142857143,
+          "meaning": "one-view RGB; color/metal fixed; not seven-parameter or multi-view identifiability",
+          "median_singular_values": [
+            0.001468757872748028,
+            8.102677316931794e-06,
+            3.946976722720379e-07
+          ]
+        },
+        "isotropic": {
+          "median_grid_difference": 9.148978297773228e-05,
+          "median_max_channel_response": 0.0008262872649733716,
+          "resolved_count": 26,
+          "resolved_fraction": 0.30952380952380953,
+          "two_code_fraction": 0.38095238095238093
+        },
+        "major": {
+          "median_grid_difference": 9.307063781305303e-05,
+          "median_max_channel_response": 0.0002674185252960976,
+          "resolved_count": 9,
+          "resolved_fraction": 0.10714285714285714,
+          "two_code_fraction": 0.16666666666666666
+        },
+        "minor": {
+          "median_grid_difference": 9.37059758845428e-05,
+          "median_max_channel_response": 0.00042848430634833193,
+          "resolved_count": 8,
+          "resolved_fraction": 0.09523809523809523,
+          "two_code_fraction": 0.19047619047619047
+        },
+        "orientation": {
+          "median_grid_difference": 9.107781980228005e-05,
+          "median_max_channel_response": 0.0009320537178415904,
+          "resolved_count": 20,
+          "resolved_fraction": 0.23809523809523808,
+          "two_code_fraction": 0.34523809523809523
+        },
+        "png_domain": true,
+        "probes": 84
+      },
+      "specular_weight_concentration": {
+        "maximum_sample_fraction": 0.07893698267743107,
+        "meaning": "Fixed QMC contribution concentration; not an independent variance estimate",
+        "median_effective_samples": 1608.6086807685322,
+        "minimum_effective_samples": 35.74632061390374
+      }
+    },
+    {
+      "camera_id": "58",
+      "convergence": {
+        "maximum_rgb_difference": 0.001737585107959537,
+        "passed": false,
+        "relative_l2": 0.004518972113078848
+      },
+      "eligible": false,
+      "lighting": "L2_six_cardinal",
+      "metrics": {
+        "highlight_coverage": 0.06064981949458484,
+        "integrated_specular_fraction": 0.21341992618987365,
+        "integrated_specular_to_diffuse": 0.2713263827751012,
+        "linear_rgb_max": 0.11336622132127067,
+        "mean_diffuse_luminance": 0.04681684147889805,
+        "mean_specular_luminance": 0.012702644251424726,
+        "out_of_png_domain": false,
+        "pixels": 4155,
+        "quantization_linear_rgb_rmse": 0.00044040654712748184,
+        "quantization_rmse_over_specular_rms": 0.03157705469154454,
+        "specular_at_least_two_codes_fraction": 0.9179302045728038,
+        "specular_contrast_p99_minus_p50": 0.023377120536085066,
+        "specular_contrast_ratio": 3.3155194385586957,
+        "specular_dominant_fraction": 0.0012033694344163659,
+        "specular_fraction_median": 0.17417069269688054,
+        "specular_luminance_p50": 0.010095842922673216,
+        "specular_luminance_p99": 0.03347296345875828,
+        "specular_zero_code_fraction": 0.010108303249097473
+      },
+      "paired_convergence": {
+        "isotropic": {
+          "maximum_rgb_difference": 0.0007771463058057135,
+          "passed": false,
+          "relative_l2": 0.0036191812584436753
+        },
+        "major_minus": {
+          "maximum_rgb_difference": 0.0007697543635750634,
+          "passed": false,
+          "relative_l2": 0.003573778971705975
+        },
+        "major_plus": {
+          "maximum_rgb_difference": 0.0007726323681368982,
+          "passed": false,
+          "relative_l2": 0.0036707465624327058
+        },
+        "minor_minus": {
+          "maximum_rgb_difference": 0.0007715254253868181,
+          "passed": false,
+          "relative_l2": 0.0035903257456504764
+        },
+        "minor_plus": {
+          "maximum_rgb_difference": 0.0007723067023590741,
+          "passed": false,
+          "relative_l2": 0.003655814502194821
+        },
+        "theta_minus": {
+          "maximum_rgb_difference": 0.0007703308300155004,
+          "passed": false,
+          "relative_l2": 0.0035889707038487904
+        },
+        "theta_plus": {
+          "maximum_rgb_difference": 0.0007736526804353258,
+          "passed": false,
+          "relative_l2": 0.003673019610873372
+        },
+        "truth": {
+          "maximum_rgb_difference": 0.0007713003868933116,
+          "passed": false,
+          "relative_l2": 0.0036222990838519326
+        }
+      },
+      "sensitivity": {
+        "conditional_three_column_jacobian": {
+          "column_units": "half response of fixed +/-15deg orientation, +/-10percent principal widths",
+          "full_numerical_rank_fraction": 0.9761904761904762,
+          "meaning": "one-view RGB; color/metal fixed; not seven-parameter or multi-view identifiability",
+          "median_singular_values": [
+            0.003094183217610261,
+            7.319606669726835e-06,
+            3.7959606064912617e-07
+          ]
+        },
+        "isotropic": {
+          "median_grid_difference": 0.00015865452192099713,
+          "median_max_channel_response": 0.0024695024121585973,
+          "resolved_count": 38,
+          "resolved_fraction": 0.4523809523809524,
+          "two_code_fraction": 0.5119047619047619
+        },
+        "major": {
+          "median_grid_difference": 0.00015974985832410693,
+          "median_max_channel_response": 0.0006600742019629499,
+          "resolved_count": 5,
+          "resolved_fraction": 0.05952380952380952,
+          "two_code_fraction": 0.08333333333333333
+        },
+        "minor": {
+          "median_grid_difference": 0.0001623389270190602,
+          "median_max_channel_response": 0.0007545402449270384,
+          "resolved_count": 2,
+          "resolved_fraction": 0.023809523809523808,
+          "two_code_fraction": 0.05952380952380952
+        },
+        "orientation": {
+          "median_grid_difference": 0.00015920864908051252,
+          "median_max_channel_response": 0.0014840653506942858,
+          "resolved_count": 20,
+          "resolved_fraction": 0.23809523809523808,
+          "two_code_fraction": 0.32142857142857145
+        },
+        "png_domain": true,
+        "probes": 84
+      },
+      "specular_weight_concentration": {
+        "maximum_sample_fraction": 0.04274601332642805,
+        "meaning": "Fixed QMC contribution concentration; not an independent variance estimate",
+        "median_effective_samples": 1139.685772687593,
+        "minimum_effective_samples": 34.46142390280168
+      }
+    },
+    {
+      "camera_id": "105",
+      "convergence": {
+        "maximum_rgb_difference": 0.0002936041283694013,
+        "passed": true,
+        "relative_l2": 0.001091965719763738
+      },
+      "eligible": true,
+      "lighting": "L0_v3",
+      "metrics": {
+        "highlight_coverage": 0.05572497920709731,
+        "integrated_specular_fraction": 0.1999951719028419,
+        "integrated_specular_to_diffuse": 0.24999245614371857,
+        "linear_rgb_max": 0.11121816067065318,
+        "mean_diffuse_luminance": 0.036672656628971664,
+        "mean_specular_luminance": 0.00916788750399185,
+        "out_of_png_domain": false,
+        "pixels": 3607,
+        "quantization_linear_rgb_rmse": 0.00037659667540159797,
+        "quantization_rmse_over_specular_rms": 0.039328032398803586,
+        "specular_at_least_two_codes_fraction": 0.9814250069309676,
+        "specular_contrast_p99_minus_p50": 0.023626936452703404,
+        "specular_contrast_ratio": 4.290358197790024,
+        "specular_dominant_fraction": 0.0,
+        "specular_fraction_median": 0.18866309468544779,
+        "specular_luminance_p50": 0.007180657859248421,
+        "specular_luminance_p99": 0.030807594311951823,
+        "specular_zero_code_fraction": 0.006653728860548933
+      },
+      "paired_convergence": {
+        "isotropic": {
+          "maximum_rgb_difference": 0.00019145288888313544,
+          "passed": true,
+          "relative_l2": 0.0008027303756977565
+        },
+        "major_minus": {
+          "maximum_rgb_difference": 0.00019266898727146597,
+          "passed": true,
+          "relative_l2": 0.0008128316493432198
+        },
+        "major_plus": {
+          "maximum_rgb_difference": 0.00019315316432040597,
+          "passed": true,
+          "relative_l2": 0.0008257613024893523
+        },
+        "minor_minus": {
+          "maximum_rgb_difference": 0.0001931311374428757,
+          "passed": true,
+          "relative_l2": 0.0008221482842200811
+        },
+        "minor_plus": {
+          "maximum_rgb_difference": 0.00019254535723964988,
+          "passed": true,
+          "relative_l2": 0.0008151224304449917
+        },
+        "theta_minus": {
+          "maximum_rgb_difference": 0.00019138397307989774,
+          "passed": true,
+          "relative_l2": 0.0008198563966729973
+        },
+        "theta_plus": {
+          "maximum_rgb_difference": 0.00019408664161736644,
+          "passed": true,
+          "relative_l2": 0.0008129117765881633
+        },
+        "truth": {
+          "maximum_rgb_difference": 0.0001928479161090943,
+          "passed": true,
+          "relative_l2": 0.0008186292485719907
+        }
+      },
+      "sensitivity": {
+        "conditional_three_column_jacobian": {
+          "column_units": "half response of fixed +/-15deg orientation, +/-10percent principal widths",
+          "full_numerical_rank_fraction": 0.9027777777777778,
+          "meaning": "one-view RGB; color/metal fixed; not seven-parameter or multi-view identifiability",
+          "median_singular_values": [
+            0.00049158012919656,
+            3.122588663076421e-05,
+            2.935952788352491e-06
+          ]
+        },
+        "isotropic": {
+          "median_grid_difference": 2.9441906690179376e-05,
+          "median_max_channel_response": 0.00016810889699147777,
+          "resolved_count": 0,
+          "resolved_fraction": 0.0,
+          "two_code_fraction": 0.027777777777777776
+        },
+        "major": {
+          "median_grid_difference": 2.926482548398432e-05,
+          "median_max_channel_response": 0.00013735332815332027,
+          "resolved_count": 0,
+          "resolved_fraction": 0.0,
+          "two_code_fraction": 0.0
+        },
+        "minor": {
+          "median_grid_difference": 2.9187900890337987e-05,
+          "median_max_channel_response": 0.00011780361770348698,
+          "resolved_count": 0,
+          "resolved_fraction": 0.0,
+          "two_code_fraction": 0.0
+        },
+        "orientation": {
+          "median_grid_difference": 2.9265219784840174e-05,
+          "median_max_channel_response": 0.0002155406603036314,
+          "resolved_count": 0,
+          "resolved_fraction": 0.0,
+          "two_code_fraction": 0.0
+        },
+        "png_domain": true,
+        "probes": 72
+      },
+      "specular_weight_concentration": {
+        "maximum_sample_fraction": 0.09845379852301175,
+        "meaning": "Fixed QMC contribution concentration; not an independent variance estimate",
+        "median_effective_samples": 6481.533902178784,
+        "minimum_effective_samples": 20.870517697203734
+      }
+    },
+    {
+      "camera_id": "105",
+      "convergence": {
+        "maximum_rgb_difference": 0.0026855471656547225,
+        "passed": false,
+        "relative_l2": 0.0042488378298201025
+      },
+      "eligible": false,
+      "lighting": "L1_three_oblique",
+      "metrics": {
+        "highlight_coverage": 0.36928195176046574,
+        "integrated_specular_fraction": 0.36284839575055156,
+        "integrated_specular_to_diffuse": 0.5694851795562527,
+        "linear_rgb_max": 0.1486362706399316,
+        "mean_diffuse_luminance": 0.02702549145882542,
+        "mean_specular_luminance": 0.015390616856025167,
+        "out_of_png_domain": false,
+        "pixels": 3607,
+        "quantization_linear_rgb_rmse": 0.00037607668419132017,
+        "quantization_rmse_over_specular_rms": 0.016039653225399023,
+        "specular_at_least_two_codes_fraction": 0.839478791239257,
+        "specular_contrast_p99_minus_p50": 0.0870430479804189,
+        "specular_contrast_ratio": 20.921277935603406,
+        "specular_dominant_fraction": 0.15830329914056002,
+        "specular_fraction_median": 0.2124861434890184,
+        "specular_luminance_p50": 0.0043693506140414385,
+        "specular_luminance_p99": 0.09141239859446033,
+        "specular_zero_code_fraction": 0.027446631549764348
+      },
+      "paired_convergence": {
+        "isotropic": {
+          "maximum_rgb_difference": 0.000903141002747054,
+          "passed": false,
+          "relative_l2": 0.0037644117003723084
+        },
+        "major_minus": {
+          "maximum_rgb_difference": 0.0010459563067541158,
+          "passed": false,
+          "relative_l2": 0.003903783256961242
+        },
+        "major_plus": {
+          "maximum_rgb_difference": 0.001176840765007691,
+          "passed": false,
+          "relative_l2": 0.004243758468683016
+        },
+        "minor_minus": {
+          "maximum_rgb_difference": 0.0011462985648393736,
+          "passed": false,
+          "relative_l2": 0.004077610164660021
+        },
+        "minor_plus": {
+          "maximum_rgb_difference": 0.001092406006699572,
+          "passed": false,
+          "relative_l2": 0.004089687097815036
+        },
+        "theta_minus": {
+          "maximum_rgb_difference": 0.0011101315019100416,
+          "passed": false,
+          "relative_l2": 0.004041617745240421
+        },
+        "theta_plus": {
+          "maximum_rgb_difference": 0.0010153952913144575,
+          "passed": false,
+          "relative_l2": 0.003959146290280809
+        },
+        "truth": {
+          "maximum_rgb_difference": 0.0011174746060224373,
+          "passed": false,
+          "relative_l2": 0.004080964883161217
+        }
+      },
+      "sensitivity": {
+        "conditional_three_column_jacobian": {
+          "column_units": "half response of fixed +/-15deg orientation, +/-10percent principal widths",
+          "full_numerical_rank_fraction": 0.9444444444444444,
+          "meaning": "one-view RGB; color/metal fixed; not seven-parameter or multi-view identifiability",
+          "median_singular_values": [
+            0.0011752063947334148,
+            3.9232589938716875e-06,
+            3.7055690930771597e-07
+          ]
+        },
+        "isotropic": {
+          "median_grid_difference": 0.00014134056295654184,
+          "median_max_channel_response": 0.000745922674347017,
+          "resolved_count": 14,
+          "resolved_fraction": 0.19444444444444445,
+          "two_code_fraction": 0.3611111111111111
+        },
+        "major": {
+          "median_grid_difference": 0.00012885813258526387,
+          "median_max_channel_response": 0.00023311016916614802,
+          "resolved_count": 8,
+          "resolved_fraction": 0.1111111111111111,
+          "two_code_fraction": 0.20833333333333334
+        },
+        "minor": {
+          "median_grid_difference": 0.00013392334817268446,
+          "median_max_channel_response": 0.00023768444996456056,
+          "resolved_count": 7,
+          "resolved_fraction": 0.09722222222222222,
+          "two_code_fraction": 0.1111111111111111
+        },
+        "orientation": {
+          "median_grid_difference": 0.00013398987936611047,
+          "median_max_channel_response": 0.0009500076421245212,
+          "resolved_count": 15,
+          "resolved_fraction": 0.20833333333333334,
+          "two_code_fraction": 0.3194444444444444
+        },
+        "png_domain": true,
+        "probes": 72
+      },
+      "specular_weight_concentration": {
+        "maximum_sample_fraction": 0.11821515386471493,
+        "meaning": "Fixed QMC contribution concentration; not an independent variance estimate",
+        "median_effective_samples": 1598.189092467524,
+        "minimum_effective_samples": 22.861523038308686
+      }
+    },
+    {
+      "camera_id": "105",
+      "convergence": {
+        "maximum_rgb_difference": 0.001474644261087836,
+        "passed": false,
+        "relative_l2": 0.004800020312392509
+      },
+      "eligible": false,
+      "lighting": "L2_six_cardinal",
+      "metrics": {
+        "highlight_coverage": 0.10479622955364569,
+        "integrated_specular_fraction": 0.18663750191134135,
+        "integrated_specular_to_diffuse": 0.22946411022136573,
+        "linear_rgb_max": 0.10770528142022293,
+        "mean_diffuse_luminance": 0.046470338048352045,
+        "mean_specular_luminance": 0.010663274771951179,
+        "out_of_png_domain": false,
+        "pixels": 3607,
+        "quantization_linear_rgb_rmse": 0.0004285904664092492,
+        "quantization_rmse_over_specular_rms": 0.03521374487418614,
+        "specular_at_least_two_codes_fraction": 0.7953978375381203,
+        "specular_contrast_p99_minus_p50": 0.025358246645731095,
+        "specular_contrast_ratio": 4.103757059358755,
+        "specular_dominant_fraction": 0.0,
+        "specular_fraction_median": 0.15012022776657305,
+        "specular_luminance_p50": 0.008170177678458566,
+        "specular_luminance_p99": 0.03352842432418966,
+        "specular_zero_code_fraction": 0.01635708344884946
+      },
+      "paired_convergence": {
+        "isotropic": {
+          "maximum_rgb_difference": 0.000947627690339195,
+          "passed": false,
+          "relative_l2": 0.004271246209459763
+        },
+        "major_minus": {
+          "maximum_rgb_difference": 0.0009534851624585922,
+          "passed": false,
+          "relative_l2": 0.00427418306071542
+        },
+        "major_plus": {
+          "maximum_rgb_difference": 0.0009504940148084007,
+          "passed": false,
+          "relative_l2": 0.004366081676553984
+        },
+        "minor_minus": {
+          "maximum_rgb_difference": 0.0009552014911504009,
+          "passed": false,
+          "relative_l2": 0.0043094809503638545
+        },
+        "minor_plus": {
+          "maximum_rgb_difference": 0.0009498594664791721,
+          "passed": false,
+          "relative_l2": 0.004331484246316726
+        },
+        "theta_minus": {
+          "maximum_rgb_difference": 0.0009521953519447957,
+          "passed": false,
+          "relative_l2": 0.004316003408398392
+        },
+        "theta_plus": {
+          "maximum_rgb_difference": 0.0009482355819573213,
+          "passed": false,
+          "relative_l2": 0.004318799814829302
+        },
+        "truth": {
+          "maximum_rgb_difference": 0.0009522523667768873,
+          "passed": false,
+          "relative_l2": 0.004321050384933745
+        }
+      },
+      "sensitivity": {
+        "conditional_three_column_jacobian": {
+          "column_units": "half response of fixed +/-15deg orientation, +/-10percent principal widths",
+          "full_numerical_rank_fraction": 1.0,
+          "meaning": "one-view RGB; color/metal fixed; not seven-parameter or multi-view identifiability",
+          "median_singular_values": [
+            0.0031023706010234135,
+            4.159383832460494e-06,
+            3.623162649273143e-07
+          ]
+        },
+        "isotropic": {
+          "median_grid_difference": 0.0001995031638636069,
+          "median_max_channel_response": 0.0017940613311279822,
+          "resolved_count": 23,
+          "resolved_fraction": 0.3194444444444444,
+          "two_code_fraction": 0.3888888888888889
+        },
+        "major": {
+          "median_grid_difference": 0.00019870257809742956,
+          "median_max_channel_response": 0.0005715970447408777,
+          "resolved_count": 6,
+          "resolved_fraction": 0.08333333333333333,
+          "two_code_fraction": 0.1111111111111111
+        },
+        "minor": {
+          "median_grid_difference": 0.0001975873793881415,
+          "median_max_channel_response": 0.0008951539919121732,
+          "resolved_count": 3,
+          "resolved_fraction": 0.041666666666666664,
+          "two_code_fraction": 0.08333333333333333
+        },
+        "orientation": {
+          "median_grid_difference": 0.00019886092169424732,
+          "median_max_channel_response": 0.001703531689829424,
+          "resolved_count": 17,
+          "resolved_fraction": 0.2361111111111111,
+          "two_code_fraction": 0.3333333333333333
+        },
+        "png_domain": true,
+        "probes": 72
+      },
+      "specular_weight_concentration": {
+        "maximum_sample_fraction": 0.07506471021011347,
+        "meaning": "Fixed QMC contribution concentration; not an independent variance estimate",
+        "median_effective_samples": 1083.0843602385162,
+        "minimum_effective_samples": 30.706244973773117
+      }
+    }
+  ],
+  "runtime": {
+    "cuda": "11.1",
+    "cxx11_abi": false,
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "python": "3.8.10 (default, Mar 18 2025, 20:04:55) \n[GCC 9.4.0]",
+    "torch": "1.8.1+cu111"
+  },
+  "schema_version": 1,
+  "selection": {
+    "candidates": [
+      {
+        "all_sensitivity_floors": false,
+        "highlight_coverage_gate": true,
+        "lighting": "L1_three_oblique",
+        "nondecreasing_orientation": false,
+        "passed": false,
+        "references_valid": false,
+        "weighted_orientation_gain": null
+      },
+      {
+        "all_sensitivity_floors": false,
+        "highlight_coverage_gate": true,
+        "lighting": "L2_six_cardinal",
+        "nondecreasing_orientation": false,
+        "passed": false,
+        "references_valid": false,
+        "weighted_orientation_gain": null
+      }
+    ],
+    "decision": "FIX_AND_PROCEED",
+    "full_dataset_or_training_authorized": false,
+    "recommended": null
+  },
+  "source_files": {
+    "AGENTS.md": "6f5d64e1b1cb0bebd0921436defffa61e8d20b2c1bca11b6f7d933e5673ab0c6",
+    "audits/bell_calibration_e11.py": "14ffee7690bd1507ecb6e3a69098c64faabbf7f89c31e407ed248440684b5f71",
+    "benchmarks/__init__.py": "8ba25520d88eaaa4a902a99b9cdda2d3c7ea829f4dc94b9825bcd1984234902c",
+    "benchmarks/bell_e11.py": "01b18245999d0d9ffcf0fdfe9b317fdfd427d9e1bee6ca7db395eaa0b3c94e8a",
+    "benchmarks/bell_geometry_e11.py": "491f86b7799d03911c4665e1884ceb81b62ae8dc085141b7f112b43891ab3737",
+    "benchmarks/bell_reference_e11.py": "be4b95e3a8f37d5142920637a6533da89ecb2ff96c916343423254016ca7f673",
+    "benchmarks/generate_bell_e11.py": "877b826ce3e2eabda860d296051de6791cf048f543e1bb41dbe60886654c7647",
+    "benchmarks/inputs/bell_mask_identities_e11_v1.json": "bb3561f25927ed692335fb63ac733f8fa921fe1fb8eb000bfb97f0a992484b21",
+    "benchmarks/inputs/bell_reference_tapes_e11_v1.npz": "ed6a73e067aa8f384ab3b7cbe73c642009417c473cf1ad2362ad992c059421a4",
+    "benchmarks/run_bell_e11.sh": "970862ec3f475d43042114a252a291e7277db3f5c4a44b1b0d4c76a7e4e849d7",
+    "benchmarks/verify_bell_e11.py": "b40b00d18ac97fb49287ab5764f5c3e042e98c12717553a30930a58b458e828e",
+    "configs/experiments/material_a_bell_core_known_v1.yaml": "deda9bbc4b0d2fcafb7ab41458f34e45cc830393475b08adbd3d2ce8fdfd56b9",
+    "configs/experiments/material_a_bell_estimator_known_v1.yaml": "e17ebbae2d4d738926da4dd690f741e348385f0d81d57626e316f18f2d762345",
+    "configs/experiments/material_a_bell_original_known_v1.yaml": "bca2d7db050c06171857e52f917d05bf22f218b8ea73f8d551deb0a293742907",
+    "configs/material_corrected/bell_core_known_v1.yaml": "872a57902b3ebf9d84821876006b447c89e74a135004ec751fd760e8f1a06406",
+    "configs/material_corrected/bell_estimator_known_v1.yaml": "6007326640757dedd381bc14ccd77b30d7f3bd838eea9cf281a5837e29c5ff7d",
+    "configs/material_corrected/bell_original_known_v1.yaml": "79c6204a3c2ae8890941d8fa119ce582aa055398cd810751c80bef4f8bc48713",
+    "docs/NATIVE_MATERIAL_A_CORRECTIONS_E10.md": "12ee97320930844ed7dc2a579c2ea84e51427b0b529d9b875c0ab5f6bbaf2d3d",
+    "docs/evidence/PAPER_BENCHMARK_E10_ASSET_INVENTORY_V1.json": "02420ed6751aaadcb38f555a4533d1bca75422952597233597194f56cce8fd35",
+    "docs/evidence/RAY_BACKEND_E11C_ACCEPTANCE_V2.json": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "docs/protocols/BELL_HIGHLIGHT_PILOT_E11D_V1.md": "a6908331d4b8e76d77c9b4159daaa2f03e4527bf72f18c9cde12d984ae186114",
+    "docs/protocols/BELL_ORACLE_GENERATION_E11_V1.md": "8cb7d6c8d9ea98a413f74c9bee01d626774f8221d50f63a534b9394902a188c6",
+    "docs/protocols/BELL_ORACLE_GENERATION_E11_V2.md": "3845c03c835e0845e60a557ba1ba77aff7178983e1582da6804021272ba66836",
+    "docs/protocols/BELL_ORACLE_GENERATION_E11_V3.freeze.json": "e32cda8967d386115dfe3c38409b742283706f469e6f86220ed531f256ed99bf",
+    "docs/protocols/BELL_ORACLE_GENERATION_E11_V3.md": "eb9b4750062789f0940fc775ee4e7f6634622e5f2e03aac4280e4e30137b1468",
+    "docs/protocols/PAPER_ANISOTROPIC_BENCHMARK_E10_V1.md": "d0d894d4e5acd1290181409deecf320339148d728ae3783ffd717c6d2e5dd850",
+    "experiments/bell_highlight_e11d.py": "93ef7b7a693622ad54b278a61c96d10575e647969326675411a265da94f3ee19",
+    "experiments/bell_highlight_pilot_e11d.py": "0c781ed2a380462c52c59b8442a61a77cdf919c75f52fb50c814faa33f7b18c6",
+    "experiments/run_bell_highlight_e11d.sh": "9ab64de7009e1c3c63b1d77212bacea33a9f529cacc26d828710478fc8229b1d",
+    "generate_bell_benchmark_e11.py": "7ee21a041e6b7d4f1749b1c2f41e248d002b539344d75f708b63417a308ad7d4",
+    "infrastructure/__init__.py": "44bf3f8e7c78ad996c713c6ac676a22546d6900a14b07b786d24144529d41dd2",
+    "infrastructure/bounded_training.py": "6dd898a744546c1e2bf2779f41d836d443d7cf016997df2b364880f46d438fa9",
+    "infrastructure/corrected_material_smoke.py": "9e54e8232f938e81ff41ce6bd16f4bd42cbb97487d8348074780b8c5abda9818",
+    "infrastructure/material_smoke.py": "22c70ed7aa7379d88837b2c58fa4777167222166f454e62374402756492be69c",
+    "infrastructure/material_variants.py": "7d3432e5d50bbb9830117153fddc921ecc4016bb23dbb8c750522cd287bedddb",
+    "infrastructure/paths.py": "e771fa11a5243a03724b8291dba790502e822531f1fc9179ba27c9b8a06cece4",
+    "infrastructure/ray_backend_e11c.py": "73e2a75bdd6dad7317f644a23c7cfcc9ffddfc7e25f814da85ebcb04002a8191",
+    "infrastructure/signatures.py": "f3eb6c82de610913c1049745271d8be5391d34f02d78866a14fad0032b7f4759",
+    "infrastructure/stage_execution.py": "36991f654fffd3ef83102fd2734be4234ee0d14b9053b24cc37e5b9731a64a1f",
+    "infrastructure/stage_sources.py": "3c904a09662663fd9f37e3a6afee33576963675508e416dbc6141a5c68d44dc8",
+    "infrastructure/stage_workspace.py": "5d1eb334f39ed86a9d53dc999b56a19a7c1cb3283f16b23d09fd2c969ce6b591",
+    "infrastructure/training_probe.py": "236bf1b0cf7f1d5b6c906c02cbe45ee374faa9f95e2e94d69b44f495867ab45c",
+    "infrastructure/verified_ray_backend.py": "e103775b70a72a24d0772dd6f09d622820d403d8d9ced63837521981df81dffd",
+    "run_bell_highlight_pilot_e11d.py": "eaab7aef62063e5060f8f00bd6b915b6a09ac3203c3e00d48156116e9489c03d",
+    "run_stage_experiment.py": "c2fc301c5c04bddeb2841f0d021be2e3c9c2bb1b4d24eac2281f69652b5d6725",
+    "scientific_sources/manifest-v1.json": "39b9baecce2aab6fc62ec57bd6f45e453d8e9d68215f6af3f25b8ed118c5a3f6",
+    "scientific_variants/__init__.py": "ccf218a2cc95b2b6501db4b1efde3afb0fef57274ffc812db560e2666eb6ed64",
+    "scientific_variants/material_a_v1.py": "52603dc041920f7220748c9114f8293ad2499f778ffd688ef639bbe4e8759875",
+    "tests/benchmarks/test_bell_e11.py": "92fc478f66ede32ec9cb5d336ca59bb8836b8a241c1b333fb158a947c9e0f23b",
+    "tests/benchmarks/test_bell_e11_mask_fix.py": "214fdc69045a47515250d5cf996552393c82a831ea464f56c0b11586636ca397",
+    "tests/benchmarks/test_bell_highlight_e11d.py": "f7271fa4316279326770e01f1bb999734d7b281a9b043cd681708c90743d878b",
+    "tests/infrastructure/test_material_variants_e10.py": "7b6b2ded9216d096f4d34abfd4ebf383d42aabf10b2c12278c96b9bc60fad0de",
+    "tests/infrastructure/test_ray_backend_replay_e11c.py": "6e8d4cdaae3a6bd305b69193c026d5d71bef8c5715817eaacd487cde145ff2c8",
+    "tests/infrastructure/test_verified_ray_backend.py": "adccea4e963197b3c1f2b132508d5dbdeec93b5804961515f47a355ffb0dc1db"
+  },
+  "static_validation": {
+    "all_new_npz_reads_allow_pickle_false": true,
+    "copied_artifacts_exact": 9,
+    "frozen_source_files_verified": 54,
+    "markdown_links": "pass",
+    "original_pilot_and_v3_freezes_unchanged": true,
+    "pinned_scientific_snapshots_verified": 2,
+    "prior_tests_repeated": false,
+    "python38_ast": true,
+    "scientific_reexecution": false,
+    "status": "pass"
+  },
+  "v3_generation": {
+    "bytes": 475481,
+    "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/geometry/generation.json",
+    "sha256": "5035b22b594848900426fd5dfaa8b96382b57a76cfde97864b7ef7591c46e6d7"
+  },
+  "verification_notes": [
+    "The existing approval and researcher-run completed pilot were found before any launch; no new authorization or native retry was requested.",
+    "Original readiness record reports prelaunch Codex Docker-socket denial and is preserved; it is not the terminal researcher execution status.",
+    "Empty CUDA HOME directories are metadata only. Exact recursive regular-file inventory and symlink rejection are enforced.",
+    "Figure layout revised separately under paper-figures-v2; original analysis figures remain unchanged.",
+    "No standalone image inspection from Codex; recorded immutable image and binary selection are checked by the frozen launcher/runtime and bind to the preserved source/authorization."
+  ],
+  "verification_status": "pass"
+}
