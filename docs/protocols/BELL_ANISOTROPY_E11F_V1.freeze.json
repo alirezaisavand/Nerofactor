@@ -1,0 +1,215 @@
+{
+  "E11D_E11E_evidence_replaced": false,
+  "base_commit": "151d027c4e13808e80589f978b029283ab371c69",
+  "camera_id": "58",
+  "canonical_isotropic_mean": "sqrt(original mx*my)",
+  "convergence_thresholds_unchanged": {
+    "max_rgb": 0.003,
+    "relative_l2": 0.002
+  },
+  "files": {
+    "AGENTS.md": "6f5d64e1b1cb0bebd0921436defffa61e8d20b2c1bca11b6f7d933e5673ab0c6",
+    "audits/bell_calibration_e11.py": "14ffee7690bd1507ecb6e3a69098c64faabbf7f89c31e407ed248440684b5f71",
+    "benchmarks/__init__.py": "8ba25520d88eaaa4a902a99b9cdda2d3c7ea829f4dc94b9825bcd1984234902c",
+    "benchmarks/bell_e11.py": "01b18245999d0d9ffcf0fdfe9b317fdfd427d9e1bee6ca7db395eaa0b3c94e8a",
+    "benchmarks/bell_geometry_e11.py": "491f86b7799d03911c4665e1884ceb81b62ae8dc085141b7f112b43891ab3737",
+    "benchmarks/bell_reference_e11.py": "be4b95e3a8f37d5142920637a6533da89ecb2ff96c916343423254016ca7f673",
+    "benchmarks/generate_bell_e11.py": "877b826ce3e2eabda860d296051de6791cf048f543e1bb41dbe60886654c7647",
+    "benchmarks/inputs/bell_mask_identities_e11_v1.json": "bb3561f25927ed692335fb63ac733f8fa921fe1fb8eb000bfb97f0a992484b21",
+    "benchmarks/inputs/bell_reference_tapes_e11_v1.npz": "ed6a73e067aa8f384ab3b7cbe73c642009417c473cf1ad2362ad992c059421a4",
+    "benchmarks/run_bell_e11.sh": "970862ec3f475d43042114a252a291e7277db3f5c4a44b1b0d4c76a7e4e849d7",
+    "benchmarks/verify_bell_e11.py": "b40b00d18ac97fb49287ab5764f5c3e042e98c12717553a30930a58b458e828e",
+    "configs/experiments/material_a_bell_core_known_v1.yaml": "deda9bbc4b0d2fcafb7ab41458f34e45cc830393475b08adbd3d2ce8fdfd56b9",
+    "configs/experiments/material_a_bell_estimator_known_v1.yaml": "e17ebbae2d4d738926da4dd690f741e348385f0d81d57626e316f18f2d762345",
+    "configs/experiments/material_a_bell_original_known_v1.yaml": "bca2d7db050c06171857e52f917d05bf22f218b8ea73f8d551deb0a293742907",
+    "configs/material_corrected/bell_core_known_v1.yaml": "872a57902b3ebf9d84821876006b447c89e74a135004ec751fd760e8f1a06406",
+    "configs/material_corrected/bell_estimator_known_v1.yaml": "6007326640757dedd381bc14ccd77b30d7f3bd838eea9cf281a5837e29c5ff7d",
+    "configs/material_corrected/bell_original_known_v1.yaml": "79c6204a3c2ae8890941d8fa119ce582aa055398cd810751c80bef4f8bc48713",
+    "docs/BELL_HIGHLIGHT_PILOT_E11D_RESULTS_V1.md": "fb56c3f1c8bae3fb64876976fe55793a47758bbed3fcfadce31bce9ee6e41a91",
+    "docs/BELL_QUADRATURE_E11E_RESULTS_V1.md": "100362edfb6b36097f81d20b779a917f5fab39c7caf2d7bc9ea45e77cbd8be94",
+    "docs/NATIVE_MATERIAL_A_CORRECTIONS_E10.md": "12ee97320930844ed7dc2a579c2ea84e51427b0b529d9b875c0ab5f6bbaf2d3d",
+    "docs/evidence/BELL_HIGHLIGHT_PILOT_E11D_RESULTS_V1.json": "1c4bfd30829a6ddbdfacbd833a37133c6fcc290c22f067aa543210512f8767f9",
+    "docs/evidence/BELL_QUADRATURE_E11E_RESULTS_V1.json": "88fe5ecce94cfeb27ae1e3a01653fc7617746562bdcabafbb2a378723c96e165",
+    "docs/evidence/PAPER_BENCHMARK_E10_ASSET_INVENTORY_V1.json": "02420ed6751aaadcb38f555a4533d1bca75422952597233597194f56cce8fd35",
+    "docs/evidence/RAY_BACKEND_E11C_ACCEPTANCE_V2.json": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "docs/protocols/BELL_ANISOTROPY_E11F_V1.md": "c63722aecbaaeaf12d25efd40beabaa72fda20d428091d677930d7244a7c20cb",
+    "docs/protocols/BELL_HIGHLIGHT_PILOT_E11D_V1.freeze.json": "33e500cad37190b4bd0e4f9adc69b39533d631e92d2fad7ec11538b8f79e496c",
+    "docs/protocols/BELL_HIGHLIGHT_PILOT_E11D_V1.md": "a6908331d4b8e76d77c9b4159daaa2f03e4527bf72f18c9cde12d984ae186114",
+    "docs/protocols/BELL_ORACLE_GENERATION_E11_V1.md": "8cb7d6c8d9ea98a413f74c9bee01d626774f8221d50f63a534b9394902a188c6",
+    "docs/protocols/BELL_ORACLE_GENERATION_E11_V2.md": "3845c03c835e0845e60a557ba1ba77aff7178983e1582da6804021272ba66836",
+    "docs/protocols/BELL_ORACLE_GENERATION_E11_V3.freeze.json": "e32cda8967d386115dfe3c38409b742283706f469e6f86220ed531f256ed99bf",
+    "docs/protocols/BELL_ORACLE_GENERATION_E11_V3.md": "eb9b4750062789f0940fc775ee4e7f6634622e5f2e03aac4280e4e30137b1468",
+    "docs/protocols/BELL_QUADRATURE_E11E_V1.freeze.json": "9ba88ae03ae73be9c7a10f465d6262eba3738c15b66fa9a4ca9ee742ef2fa11f",
+    "docs/protocols/BELL_QUADRATURE_E11E_V1.md": "3b85bab43dc2b96b0d3c41a826453b2e2fb10449e02fa32aefa067f5f06063f4",
+    "docs/protocols/PAPER_ANISOTROPIC_BENCHMARK_E10_V1.md": "d0d894d4e5acd1290181409deecf320339148d728ae3783ffd717c6d2e5dd850",
+    "experiments/analyze_bell_highlight_e11d.py": "8700ea9165b423171d5797b6813cdeee993237221cdc146c0a3c97234459ea82",
+    "experiments/analyze_bell_quadrature_e11e.py": "e3691c7efc5d6490fb4f57bbbf476121a8f833db7b5e1655c6d6b60b03273d96",
+    "experiments/bell_anisotropy_e11f.py": "38e629d977c102c399d16ac1d44a215c9c91428e2c0af32269db8d9fba0cf628",
+    "experiments/bell_highlight_e11d.py": "93ef7b7a693622ad54b278a61c96d10575e647969326675411a265da94f3ee19",
+    "experiments/bell_highlight_pilot_e11d.py": "0c781ed2a380462c52c59b8442a61a77cdf919c75f52fb50c814faa33f7b18c6",
+    "experiments/bell_quadrature_e11e.py": "d91c09671eae577b890ac15603c3ae646d4daa88d8fbd1c73c5763a536b42098",
+    "experiments/run_bell_anisotropy_e11f.sh": "11420865e2e483599adb8f1ae6875988fc3c2a58ca716be681b5248e80b918cb",
+    "experiments/run_bell_highlight_e11d.sh": "9ab64de7009e1c3c63b1d77212bacea33a9f529cacc26d828710478fc8229b1d",
+    "experiments/run_bell_quadrature_e11e.sh": "fca7f98492461887c1d20fb7fa523f33aa0bd865d5e09b718d3ba18a62d3f452",
+    "generate_bell_benchmark_e11.py": "7ee21a041e6b7d4f1749b1c2f41e248d002b539344d75f708b63417a308ad7d4",
+    "infrastructure/__init__.py": "44bf3f8e7c78ad996c713c6ac676a22546d6900a14b07b786d24144529d41dd2",
+    "infrastructure/bounded_training.py": "6dd898a744546c1e2bf2779f41d836d443d7cf016997df2b364880f46d438fa9",
+    "infrastructure/corrected_material_smoke.py": "9e54e8232f938e81ff41ce6bd16f4bd42cbb97487d8348074780b8c5abda9818",
+    "infrastructure/material_smoke.py": "22c70ed7aa7379d88837b2c58fa4777167222166f454e62374402756492be69c",
+    "infrastructure/material_variants.py": "7d3432e5d50bbb9830117153fddc921ecc4016bb23dbb8c750522cd287bedddb",
+    "infrastructure/paths.py": "e771fa11a5243a03724b8291dba790502e822531f1fc9179ba27c9b8a06cece4",
+    "infrastructure/ray_backend_e11c.py": "73e2a75bdd6dad7317f644a23c7cfcc9ffddfc7e25f814da85ebcb04002a8191",
+    "infrastructure/signatures.py": "f3eb6c82de610913c1049745271d8be5391d34f02d78866a14fad0032b7f4759",
+    "infrastructure/stage_execution.py": "36991f654fffd3ef83102fd2734be4234ee0d14b9053b24cc37e5b9731a64a1f",
+    "infrastructure/stage_sources.py": "3c904a09662663fd9f37e3a6afee33576963675508e416dbc6141a5c68d44dc8",
+    "infrastructure/stage_workspace.py": "5d1eb334f39ed86a9d53dc999b56a19a7c1cb3283f16b23d09fd2c969ce6b591",
+    "infrastructure/training_probe.py": "236bf1b0cf7f1d5b6c906c02cbe45ee374faa9f95e2e94d69b44f495867ab45c",
+    "infrastructure/verified_ray_backend.py": "e103775b70a72a24d0772dd6f09d622820d403d8d9ced63837521981df81dffd",
+    "run_bell_anisotropy_e11f.py": "910ac3f94094a05e8d7ef1244cd6a2ba631c44de678f8fdbdcacd500691df713",
+    "run_bell_highlight_pilot_e11d.py": "eaab7aef62063e5060f8f00bd6b915b6a09ac3203c3e00d48156116e9489c03d",
+    "run_bell_quadrature_e11e.py": "63d8f72170f8d634258fb373fa73113d8f5a30f8395a00def22afd6ae4681cfa",
+    "run_stage_experiment.py": "c2fc301c5c04bddeb2841f0d021be2e3c9c2bb1b4d24eac2281f69652b5d6725",
+    "scientific_sources/manifest-v1.json": "39b9baecce2aab6fc62ec57bd6f45e453d8e9d68215f6af3f25b8ed118c5a3f6",
+    "scientific_variants/__init__.py": "ccf218a2cc95b2b6501db4b1efde3afb0fef57274ffc812db560e2666eb6ed64",
+    "scientific_variants/material_a_v1.py": "52603dc041920f7220748c9114f8293ad2499f778ffd688ef639bbe4e8759875",
+    "tests/benchmarks/test_bell_anisotropy_e11f.py": "766af1102b8906e4bf0074687d05d694ae0a69dec8611471be736d94e27ea928",
+    "tests/benchmarks/test_bell_e11.py": "92fc478f66ede32ec9cb5d336ca59bb8836b8a241c1b333fb158a947c9e0f23b",
+    "tests/benchmarks/test_bell_e11_mask_fix.py": "214fdc69045a47515250d5cf996552393c82a831ea464f56c0b11586636ca397",
+    "tests/benchmarks/test_bell_highlight_e11d.py": "f7271fa4316279326770e01f1bb999734d7b281a9b043cd681708c90743d878b",
+    "tests/benchmarks/test_bell_quadrature_e11e.py": "05b985816071f470d7e55c42130787376cd16f11eb3a3c4d215c94409276f91d",
+    "tests/infrastructure/test_material_variants_e10.py": "7b6b2ded9216d096f4d34abfd4ebf383d42aabf10b2c12278c96b9bc60fad0de",
+    "tests/infrastructure/test_ray_backend_replay_e11c.py": "6e8d4cdaae3a6bd305b69193c026d5d71bef8c5715817eaacd487cde145ff2c8",
+    "tests/infrastructure/test_verified_ray_backend.py": "adccea4e963197b3c1f2b132508d5dbdeec93b5804961515f47a355ffb0dc1db"
+  },
+  "grids": [
+    256,
+    512
+  ],
+  "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "lighting": {
+    "ambient": [
+      0.01,
+      0.01,
+      0.01
+    ],
+    "lobes": [
+      {
+        "RGB": [
+          2.8142857142857136,
+          2.957142857142857,
+          3.40952380952381
+        ],
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "power": 64
+      },
+      {
+        "RGB": [
+          2.8142857142857136,
+          2.957142857142857,
+          3.40952380952381
+        ],
+        "axis": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "power": 64
+      },
+      {
+        "RGB": [
+          2.8142857142857136,
+          2.957142857142857,
+          3.40952380952381
+        ],
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "power": 64
+      },
+      {
+        "RGB": [
+          2.8142857142857136,
+          2.957142857142857,
+          3.40952380952381
+        ],
+        "axis": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "power": 64
+      },
+      {
+        "RGB": [
+          2.8142857142857136,
+          2.957142857142857,
+          3.40952380952381
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "power": 64
+      },
+      {
+        "RGB": [
+          2.8142857142857136,
+          2.957142857142857,
+          3.40952380952381
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "power": 64
+      }
+    ]
+  },
+  "limits": {
+    "brdf_point_directions": 192675840,
+    "cpu_threads": 4,
+    "cuda_allocator_fraction": 0.25,
+    "direction_chunk": 16384,
+    "environment_point_directions": 27525120,
+    "grace_seconds": 30,
+    "host_memory_gib": 64,
+    "new_primary_rays": 0,
+    "new_shadow_queries": 0,
+    "output_bytes": 268435456,
+    "point_batch": 4,
+    "wall_seconds": 900
+  },
+  "material_transformation": "mx_new=mx*sqrt(mx/my);my_new=my/sqrt(mx/my)",
+  "new_cases": [
+    "truth",
+    "theta_plus",
+    "theta_minus",
+    "major_plus",
+    "major_minus",
+    "minor_plus",
+    "minor_minus"
+  ],
+  "probes": 84,
+  "protocol": "bell-stronger-anisotropy-e11f-v1",
+  "reference_sha256": "589f894d653b715a55739aad2e7667ce0105b14eb0119bb5b54e69010f7cc383",
+  "response_thresholds_unchanged": {
+    "grid_factor": 4,
+    "max_channel": 0.003,
+    "native_srgb_codes": 2
+  },
+  "reused_case": "isotropic",
+  "schema_version": 1,
+  "scientific_sources": {
+    "geometry": "79252178e65914ad1acbc14790b1514f276bfea0",
+    "material": "e1e859779301faced46d6476691e20b546c27ae0"
+  },
+  "status": "prepared_requires_new_explicit_execution_approval"
+}

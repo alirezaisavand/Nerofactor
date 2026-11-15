@@ -1,0 +1,211 @@
+{
+  "authorization_path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc-authorization.json",
+  "authorized": false,
+  "base_commit": "151d027c4e13808e80589f978b029283ab371c69",
+  "cached_reference_sha256": "589f894d653b715a55739aad2e7667ce0105b14eb0119bb5b54e69010f7cc383",
+  "camera_id": "58",
+  "commit_binding": "Final preparation commit must be named by the separate E11F approval",
+  "container_output_directory": "/outputs/anisotropy",
+  "focused_test_receipt": {
+    "bytes": 2195,
+    "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-cpu-validation-v1/receipt.json",
+    "sha256": "2a16d5a98b827e33d23fe08dfd2eeeb257f8219c20be20e74e20bd0525bd80d7"
+  },
+  "focused_tests": {
+    "artifacts": [
+      {
+        "bytes": 3056,
+        "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-cpu-validation-v1/junit.xml",
+        "sha256": "b6c783df9157ae5889471bc730c2d056964c2a2a79414185276660f1b7d3e8e2"
+      },
+      {
+        "bytes": 201,
+        "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-cpu-validation-v1/console.log",
+        "sha256": "656bf00d4a72be99e76133b202ca6398336dc2d56eeb8b207cfd55611eb9f1c5"
+      },
+      {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-cpu-validation-v1/exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    ],
+    "command": [
+      "python3",
+      "-B",
+      "-m",
+      "pytest",
+      "-p",
+      "no:cacheprovider",
+      "-q",
+      "tests/benchmarks/test_bell_anisotropy_e11f.py",
+      "--junitxml=/home/isavand/paper/evidence/bell-anisotropy-e11f-cpu-validation-v1/junit.xml"
+    ],
+    "errors": 0,
+    "exit_code": 0,
+    "failed": 0,
+    "inventory": [
+      "test_exact_requested_factor_no_mutation_product_axis_and_isotropic_limit",
+      "test_isotropic_equivalence_is_explicit_and_nonwidth_changes_are_forbidden",
+      "test_invalid_physical_inputs_stop_without_clipping[unordered]",
+      "test_invalid_physical_inputs_stop_without_clipping[nan]",
+      "test_invalid_physical_inputs_stop_without_clipping[outside_domain]",
+      "test_invalid_physical_inputs_stop_without_clipping[wrong_shape]",
+      "test_invalid_physical_inputs_stop_without_clipping[wrong_dtype]",
+      "test_screens_retain_original_gates_and_do_not_authorize_full_dataset",
+      "test_nonzero_parallel_columns_are_reported_as_coupled_not_darkness",
+      "test_metadata_import_and_zero_ray_boundary",
+      "test_new_execution_requires_its_own_exact_authorization[approved]",
+      "test_new_execution_requires_its_own_exact_authorization[commit]",
+      "test_new_execution_requires_its_own_exact_authorization[freeze_sha256]",
+      "test_new_execution_requires_its_own_exact_authorization[image_id]",
+      "test_new_execution_requires_its_own_exact_authorization[output_directory]",
+      "test_new_execution_requires_its_own_exact_authorization[limits]"
+    ],
+    "passed": 16,
+    "skipped": 0,
+    "tests": 16
+  },
+  "freeze": {
+    "bytes": 11317,
+    "path": "/home/isavand/paper/Nerofactor-3d2-e2a/docs/protocols/BELL_ANISOTROPY_E11F_V1.freeze.json",
+    "sha256": "f129d3b8015333d036afe7010792d210be80680d4417cee3a869c731b234dbda"
+  },
+  "host_benchmark": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark",
+  "host_output_directory": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc",
+  "host_pilot": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c/pilot",
+  "host_reference": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature",
+  "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "inputs": [
+    {
+      "bytes": 475481,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/geometry/generation.json",
+      "sha256": "5035b22b594848900426fd5dfaa8b96382b57a76cfde97864b7ef7591c46e6d7"
+    },
+    {
+      "bytes": 58216,
+      "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c/pilot/pilot.json",
+      "sha256": "4ad7c79fb63713c5710aa8407c3229fb8bd71341dc81d39e985cb24608a3f1f1"
+    },
+    {
+      "bytes": 4729497,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/geometry/mesh.ply",
+      "sha256": "4ea98341ca915cf55f2b37581556583308cc50a8e2d2d8d48140d49224866e01"
+    },
+    {
+      "bytes": 905043,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/geometry/labels/58.npz",
+      "sha256": "7b2b3f06e3df269fdc80c732f70b8e7c56074594bc57be19aee29d2ca0a61688"
+    },
+    {
+      "bytes": 321821,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/geometry/rays/58.npz",
+      "sha256": "213d441a31c309b2f32a37f40b9e0667f62e004c644da94e68c76b3e24667187"
+    },
+    {
+      "bytes": 762035,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/references/58.npz",
+      "sha256": "e47372b8c75008ffe51a296ccdc66fc837a7f10abb1258c3fa76a5ca788a03a7"
+    },
+    {
+      "bytes": 768052,
+      "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c/pilot/58-L2_six_cardinal.npz",
+      "sha256": "71d64abbaf312c2c2d24a337639e0458b9e3025678c7b3d92494a89dab889797"
+    },
+    {
+      "bytes": 42729,
+      "path": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature/quadrature.json",
+      "sha256": "589f894d653b715a55739aad2e7667ce0105b14eb0119bb5b54e69010f7cc383"
+    },
+    {
+      "bytes": 26720,
+      "path": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature/comparison.json",
+      "sha256": "3c6345215c3dce658dbe7935cde33beae168cee4cdce33b06ac5ac894feef658"
+    },
+    {
+      "bytes": 477890,
+      "path": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature/directions-256.npz",
+      "sha256": "697eecd5f8963f54e08eccdfa9671c985e90d9fa7223a2a0038a4548d3e6aeba"
+    },
+    {
+      "bytes": 1950474,
+      "path": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature/directions-512.npz",
+      "sha256": "e82bc2acbdc86ff70911cbcf197d898a41b73bc43fc2dd2bc53f517bf1d05111"
+    },
+    {
+      "bytes": 50203,
+      "path": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature/grid-256.npz",
+      "sha256": "57d6717795dd6c02721bfe02c410a40692b3615efbd9e4b320d69a05556fe22c"
+    },
+    {
+      "bytes": 73720,
+      "path": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature/grid-512.npz",
+      "sha256": "7ccffadf095c381798e7bc8e2417b15ea957bf7b7794d84a2f26f692f27e557b"
+    }
+  ],
+  "limitations": [
+    "One fixed camera and light cannot prove whole-object coverage or uniquely separate directional illumination from parameter coupling.",
+    "Single-panel screens are not three-view/full-dataset admission.",
+    "Canonical isotropic reuse is mathematically exact; floating transformed-product residue must be disclosed and gated before real BRDF work."
+  ],
+  "limits": {
+    "brdf_point_directions": 192675840,
+    "cpu_threads": 4,
+    "cuda_allocator_fraction": 0.25,
+    "direction_chunk": 16384,
+    "environment_point_directions": 27525120,
+    "grace_seconds": 30,
+    "host_memory_gib": 64,
+    "new_primary_rays": 0,
+    "new_shadow_queries": 0,
+    "output_bytes": 268435456,
+    "point_batch": 4,
+    "wall_seconds": 900
+  },
+  "output_allocated": false,
+  "parameter_only_checks": {
+    "not_rendered": true,
+    "original_ratio_min_median_max": [
+      1.0875511674832514,
+      1.7336987513585842,
+      1.9217778726271475
+    ],
+    "product_relative_error": 2.968853785623366e-16,
+    "strong_ratio_min_median_max": [
+      1.1827675418941832,
+      3.0057499562001553,
+      3.6932301917193247
+    ],
+    "strong_width_max": [
+      0.6001314722451533,
+      0.2200749303836833
+    ],
+    "strong_width_min": [
+      0.26029748444244266,
+      0.15070659968949549
+    ]
+  },
+  "preserved_preliminary_tests": {
+    "bytes": 3056,
+    "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-preliminary-tests.xml",
+    "sha256": "db62633adef256403aaf02c046190b9fa02d07a45e1aaa8367d5e2890416558a"
+  },
+  "probe_count": 84,
+  "protocol": "bell-stronger-anisotropy-e11f-v1",
+  "sampled_cells": 28,
+  "schema_version": 1,
+  "scientific_execution": {
+    "new_GPU_queries": 0,
+    "new_model_calls": 0,
+    "new_optimizer_updates": 0,
+    "new_real_BRDF_evaluations": 0,
+    "new_shadow_queries": 0
+  },
+  "static_checks": {
+    "E11E_D_frozen_science_preserved": true,
+    "G_A_snapshots_byte_verified": true,
+    "bash_syntax": "pass",
+    "python38_ast": "pass",
+    "safe_npz_reads": "pass"
+  },
+  "status": "prepared_requires_one_new_E11F_execution_approval"
+}
