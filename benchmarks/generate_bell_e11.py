@@ -14,7 +14,7 @@ from infrastructure.stage_sources import ROOT, digest, baseline, PINS
 from infrastructure.stage_workspace import source_records
 from audits.bell_calibration_e11 import rays
 from benchmarks.bell_e11 import (PROTOCOL,IMAGE,MESH,LAW,ENV,RELIGHT,LIMITS,TOL,INPUT,TAPES,
-    admit_inputs,split,record,linear_to_srgb,convergence,geometry_gate,verify_authorization,verify_labels,source_paths)
+    admit_inputs,split,record,linear_to_srgb,convergence,geometry_gate,verify_authorization,verify_labels,source_paths,mask_for_primary_rays)
 from benchmarks.bell_geometry_e11 import mesh_arrays,intersect
 
 
@@ -137,7 +137,7 @@ def render(args,out,report,budget,progress,P,K):
             a=dict(origins=on,directions=dn,positions=pos.cpu().numpy(),raw_normals=raw.cpu().numpy(),normals=norm.cpu().numpy(),depth=dep,hit=hit)
             with Image.open(args.cameras/'masks_train'/(str(i)+'.png')) as source:
                 mask=np.asarray(source);require(mask.shape==(800,800),'Original Bell mask dimensions changed')
-            index=np.floor((np.arange(128)+.5)*800/128).astype(int);mask=mask[np.ix_(index,index)]>127
+            index=np.floor((np.arange(128)+.5)*800/128).astype(int);mask=mask_for_primary_rays(mask[np.ix_(index,index)]>127)
             stats=geometry_gate(on,dn,a['positions'],a['raw_normals'],a['normals'],dep,hit,mask,P[i],K[i]);stats['independent_ray_error']=ray_error
             report['views'].append({'camera_id':str(i),'geometry':stats});report['counters']['primary_rays']+=len(dep)
             # Miss payloads of the original BVH are unspecified. Zero only storage slots for misses.

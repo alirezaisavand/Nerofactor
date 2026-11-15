@@ -1,0 +1,99 @@
+{
+  "counter_caveat": "Saved primary_rays counter is zero because increment follows geometry_gate; traceback establishes a first-camera BVH return before this accounting point. Do not infer no GPU work.",
+  "files": [
+    {
+      "bytes": 7815,
+      "device": 66310,
+      "inode": 109716611,
+      "mtime_ns": 1794705378124391610,
+      "path": "/home/isavand/paper/Nerofactor-3d2-e2a/docs/protocols/BELL_ORACLE_GENERATION_E11_V1.freeze.json",
+      "sha256": "4682a6304be08d3f03d525dde10c27ecc90910e9f6581395f8c09bd83d1fb3af"
+    },
+    {
+      "bytes": 52707,
+      "device": 66310,
+      "inode": 109452519,
+      "mtime_ns": 1794705681590344391,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-432eb086711a493aa23cf6fa69fb75d2/benchmark/failure.json",
+      "sha256": "2b347c39c06074b1a0fc4d226f67bed18a4ea7ed3ef1919cfb4cba68c03802bd"
+    },
+    {
+      "bytes": 5325,
+      "device": 66310,
+      "inode": 109452517,
+      "mtime_ns": 1794705681554343685,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-432eb086711a493aa23cf6fa69fb75d2/benchmark/geometry/calibrations-safe.npz",
+      "sha256": "4d8f4e13d7fd5fffec8d258bfc7c5599ef6d81525547d678ba088e76b1656c9c"
+    },
+    {
+      "bytes": 4729497,
+      "device": 66310,
+      "inode": 109452515,
+      "mtime_ns": 1794705681550343606,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-432eb086711a493aa23cf6fa69fb75d2/benchmark/geometry/mesh.ply",
+      "sha256": "4ea98341ca915cf55f2b37581556583308cc50a8e2d2d8d48140d49224866e01"
+    },
+    {
+      "bytes": 1120,
+      "device": 66310,
+      "inode": 109452486,
+      "mtime_ns": 1794705681590344391,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-432eb086711a493aa23cf6fa69fb75d2/console.log",
+      "sha256": "12c27907e5e139d607e287e0b3efc3c6d74b62fcdf1a707dc0be8c92e2ce20fc"
+    },
+    {
+      "bytes": 64,
+      "device": 66310,
+      "inode": 109452488,
+      "mtime_ns": 1794705677702268116,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-432eb086711a493aa23cf6fa69fb75d2/container.cid",
+      "sha256": "569116c5048f8e827a7664b8051a5216075170d8802032927213747383cfc70e"
+    },
+    {
+      "bytes": 2,
+      "device": 66310,
+      "inode": 109452521,
+      "mtime_ns": 1794705682106354514,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-432eb086711a493aa23cf6fa69fb75d2/exit-code.txt",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "bytes": 788,
+      "device": 66310,
+      "inode": 109452484,
+      "mtime_ns": 1794705677626266624,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-432eb086711a493aa23cf6fa69fb75d2/launch.json",
+      "sha256": "9e8c2ba19f6aac2915a713b9926330a096814d8fde4f6f300026b65a1785e53d"
+    },
+    {
+      "bytes": 1034,
+      "device": 66310,
+      "inode": 109218150,
+      "mtime_ns": 1794705517419124046,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-432eb086711a493aa23cf6fa69fb75d2-authorization.json",
+      "sha256": "4214d5c2495650a91d4219b0507b09ae729d0508b0aaa14407f2015c8f2036cd"
+    },
+    {
+      "bytes": 2205,
+      "device": 66310,
+      "inode": 109218152,
+      "mtime_ns": 1794705606076863108,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-432eb086711a493aa23cf6fa69fb75d2-codex-preflight.json",
+      "sha256": "094718fcffa67f31313d7577313acf0c31636c7e23d0fae34da2d1eddb5de55b"
+    },
+    {
+      "bytes": 952,
+      "device": 66310,
+      "inode": 109218151,
+      "mtime_ns": 1794705606040862402,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-432eb086711a493aa23cf6fa69fb75d2-researcher-launch.sh",
+      "sha256": "4b53b8805201f8a8a069af95eecbb5f6b9b0cdd890fad9f826356cce31dbe401"
+    }
+  ],
+  "new_proposed_output_directory": "/home/isavand/paper/evidence/bell-oracle-e11-v2-7a327024561e4bf3bf4a7f0450107bc3",
+  "previous_exit_code": 1,
+  "previous_failure": "ValueError: operands could not be broadcast together with shapes (16384,) (128,128)",
+  "previous_run_directory": "/home/isavand/paper/evidence/bell-oracle-e11-432eb086711a493aa23cf6fa69fb75d2",
+  "schema_version": 1,
+  "scope": "read-only preservation inventory; no original rewritten or copied in place"
+}

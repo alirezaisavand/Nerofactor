@@ -78,7 +78,18 @@ def convergence(fine,coarse):
             'passed':absolute<=TOL['convergence_rgb_abs'] and relative<=TOL['convergence_relative_l2']}
 
 
+def mask_for_primary_rays(mask):
+    """Row-major image mask: ray y*128+x corresponds to pixel [y,x]."""
+    require(mask.shape==(128,128) and mask.dtype==np.bool_,'Expected128x128 Boolean source mask')
+    return mask.ravel(order='C')
+
+
 def geometry_gate(o,d,p,raw,n,depth,hit,mask,P,K):
+    require(hit.shape==mask.shape==depth.shape==(128*128,) and
+            all(v.shape==(128*128,3) for v in (o,d,p,raw,n)),
+            'Matching flattened128x128 ray, depth and mask shapes required')
+    require(hit.dtype==np.bool_ and mask.dtype==np.bool_,'Boolean hit and mask arrays required')
+    union=int((hit|mask).sum());require(union>0,'Nonempty hit/mask union required')
     require(hit.any() and hit.dtype==np.bool_ and mask.dtype==np.bool_,'Empty/invalid primary hits or masks')
     require(np.isfinite(depth).all() and np.array_equal(hit,depth<10) and (depth[hit]>0).all(),'Invalid native depth policy')
     require(all(np.isfinite(v[hit]).all() for v in (p,raw,n)),'Nonfinite native intersections/normals')
@@ -88,7 +99,7 @@ def geometry_gate(o,d,p,raw,n,depth,hit,mask,P,K):
     norm=float(abs(np.linalg.norm(n[hit],axis=1)-1).max());facing=(n[hit]*-d[hit]).sum(1)
     xyz=p[hit]@P[:,:3].T+P[:,3];uv=xyz@K.T;uv=uv[:,:2]/uv[:,2:]
     pixels=np.stack(np.meshgrid(np.arange(128)+.5,np.arange(128)+.5),-1).reshape(-1,2)[hit]
-    reproj=float(abs(uv-pixels).max());iou=float((hit&mask).sum()/(hit|mask).sum())
+    reproj=float(abs(uv-pixels).max());iou=float((hit&mask).sum()/union)
     passed=negation<=TOL['unit_normal_abs'] and err<=TOL['intersection_abs'] and norm<=TOL['unit_normal_abs'] and reproj<=TOL['reprojection_pixels'] and iou>=TOL['silhouette_iou_min'] and (facing>0).all()
     return {'passed':bool(passed),'hits':int(hit.sum()),'silhouette_iou':iou,'intersection_abs':err,
             'normal_length_abs':norm,'normal_negation_abs':negation,'reprojection_pixels':reproj,'normal_dot_view_min':float(facing.min()),
@@ -136,7 +147,8 @@ def source_paths():
     paths=[p.relative_to(ROOT).as_posix() for p in sorted((ROOT/'benchmarks').glob('*.py'))]
     paths+=['AGENTS.md','audits/bell_calibration_e11.py','generate_bell_benchmark_e11.py',
             'benchmarks/run_bell_e11.sh',TAPES,MASKS,INPUT,'scientific_sources/manifest-v1.json',
-            'tests/benchmarks/test_bell_e11.py','docs/protocols/BELL_ORACLE_GENERATION_E11_V1.md',
+            'tests/benchmarks/test_bell_e11.py','tests/benchmarks/test_bell_e11_mask_fix.py',
+            'docs/protocols/BELL_ORACLE_GENERATION_E11_V1.md','docs/protocols/BELL_ORACLE_GENERATION_E11_V2.md',
             'docs/protocols/PAPER_ANISOTROPIC_BENCHMARK_E10_V1.md','docs/NATIVE_MATERIAL_A_CORRECTIONS_E10.md',
             'scientific_variants/__init__.py','scientific_variants/material_a_v1.py','run_stage_experiment.py']
     paths+=['infrastructure/'+n+'.py' for n in ('__init__','stage_sources','stage_execution','stage_workspace',

@@ -1,0 +1,94 @@
+{
+  "correction": "Pack the original resized Boolean source mask in C order, with matching-shape and nonempty-union checks",
+  "invariants_unchanged": [
+    "primary rays",
+    "geometry",
+    "normals",
+    "mask values",
+    "nearest-center sampling",
+    "material field",
+    "BRDF integration",
+    "tolerances",
+    "random tape bytes",
+    "scientific work limits",
+    "scientific snapshots",
+    "previous evidence"
+  ],
+  "launch": {
+    "authorization_path": "/home/isavand/paper/evidence/bell-oracle-e11-v2-7a327024561e4bf3bf4a7f0450107bc3-authorization.json",
+    "commit_binding": "final corrected commit, recorded in separate explicit authorization after researcher approval",
+    "container_output_directory": "/outputs/benchmark",
+    "host_output_directory": "/home/isavand/paper/evidence/bell-oracle-e11-v2-7a327024561e4bf3bf4a7f0450107bc3",
+    "image_id": "sha256:2572950d9f662b7603b604878613e85c1a0fec90842447e9a256751a130ee137",
+    "launcher": "benchmarks/run_bell_e11.sh",
+    "mesh_sha256": "4ea98341ca915cf55f2b37581556583308cc50a8e2d2d8d48140d49224866e01",
+    "native_material_training_authorized": false,
+    "scientific_execution_authorized": false,
+    "selected_host_gpu": "0",
+    "tolerances": {
+      "convergence_relative_l2": 0.002,
+      "convergence_rgb_abs": 0.003,
+      "cpu_depth_abs": 0.0002,
+      "cpu_normal_abs": 0.0002,
+      "intersection_abs": 0.0002,
+      "reprojection_pixels": 0.0002,
+      "rotation_abs": 2e-06,
+      "silhouette_iou_min": 0.9,
+      "unit_normal_abs": 2e-06
+    },
+    "work_limits": {
+      "brdf_direction_evaluations": 35970351104,
+      "cpu_threads": 4,
+      "cuda_allocator_fraction": 0.25,
+      "grace_seconds": 30,
+      "host_memory_gib": 64,
+      "output_bytes": 4294967296,
+      "point_batch": 16,
+      "primary_rays": 2097152,
+      "shadow_directions": 34359738368,
+      "wall_seconds": 7200
+    }
+  },
+  "nearby_shape_audit": {
+    "RGB_components": "flat N,3,3 -> H,W,3,3; image[mask,2] agrees with flat[pixel_indices,2]",
+    "depth": "flat ray distances -> H,W uint16 in C order",
+    "labels": "np.flatnonzero(flat hit) uses y*128+x ordering",
+    "other_confirmed_defects": [],
+    "relighting": "same RGB/component indexing as original-light reference"
+  },
+  "new_freeze": {
+    "path": "docs/protocols/BELL_ORACLE_GENERATION_E11_V2.freeze.json",
+    "sha256": "368e30e30d50d5cdee4909b9e5bc3616a45109d51d82ddb60bc4a36396745457"
+  },
+  "original_preservation_inventory": {
+    "all_11_identities_reverified": true,
+    "path": "docs/evidence/BELL_E11_MASK_FIX_V2_PRESERVATION.json",
+    "sha256": "1de7f63e373ebb54c5e9f7480a1df841b949915fa3eac87eaf88d4364b9e3798"
+  },
+  "schema_version": 1,
+  "source_files_verified": {
+    "geometry": 99,
+    "material": 106
+  },
+  "status": "corrected_implementation_ready_execution_not_authorized",
+  "tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q -p no:cacheprovider tests/benchmarks/test_bell_e11_mask_fix.py",
+    "console": {
+      "path": "docs/evidence/BELL_E11_MASK_FIX_V2_TESTS.txt",
+      "sha256": "4c394955f7732a1cf4f985aec30ec84ba4ca67c8fca42389cd437ef13d3b72de"
+    },
+    "counts": {
+      "errors": 0,
+      "failures": 0,
+      "passed": 16,
+      "skipped": 0,
+      "tests": 16
+    },
+    "exit_code": 0,
+    "junit": {
+      "path": "docs/evidence/BELL_E11_MASK_FIX_V2_TESTS.xml",
+      "sha256": "b634c3168dce7b5f01ad1811247ef555f0c110169421c1ab1409af4ea758e15b"
+    },
+    "scope": "new focused synthetic CPU shape regressions only; no historical suite, renderer/BRDF/model or scientific rendering"
+  }
+}

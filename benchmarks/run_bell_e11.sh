@@ -7,7 +7,7 @@ E11_COMMIT=$(git -C "$E11_SOURCE" rev-parse HEAD)
 test "$(git -C "$E11_SOURCE" branch --show-current)" = feat/neural-material-early-step-e2a
 test -z "$(git -C "$E11_SOURCE" status --porcelain)"
 test "$(docker image inspect --format '{{.Id}}' nerofactor-paper:quick-candidate-1)" = "$E11_IMAGE"
-E11_FREEZE=$(sha256sum "$E11_SOURCE/docs/protocols/BELL_ORACLE_GENERATION_E11_V1.freeze.json" | cut -d' ' -f1)
+E11_FREEZE=$(sha256sum "$E11_SOURCE/docs/protocols/BELL_ORACLE_GENERATION_E11_V2.freeze.json" | cut -d' ' -f1)
 E11_AUTH_SHA=$(sha256sum "$E11_AUTH" | cut -d' ' -f1)
 # Data-only host preflight. No CUDA, native imports, source camera unpickling or rendering.
 python3 -B - "$E11_SOURCE" "$E11_AUTH" "$E11_AUTH_SHA" "$E11_FREEZE" "$E11_COMMIT" "$E11_BATCH" <<'PY'
@@ -54,7 +54,7 @@ timeout --foreground --signal=TERM --kill-after=30s 7200s \
   --workdir /workspace --entrypoint /usr/bin/timeout "$E11_IMAGE" \
   --signal=TERM --kill-after=20s 7140s /usr/bin/python3 -I -B /workspace/generate_bell_benchmark_e11.py \
   --mesh /inputs/mesh.ply --cameras /inputs/bell \
-  --freeze /workspace/docs/protocols/BELL_ORACLE_GENERATION_E11_V1.freeze.json --freeze-sha256 "$E11_FREEZE" \
+  --freeze /workspace/docs/protocols/BELL_ORACLE_GENERATION_E11_V2.freeze.json --freeze-sha256 "$E11_FREEZE" \
   --authorization /authorization.json --authorization-sha256 "$E11_AUTH_SHA" \
   --commit "$E11_COMMIT" --image-id "$E11_IMAGE" --output /outputs/benchmark --execute \
   > "$E11_BATCH/console.log" 2>&1

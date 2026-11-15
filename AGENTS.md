@@ -2,6 +2,14 @@
 
 ## E.11 Bell benchmark and native-admission boundary
 
+The follow-up authorizes only the confirmed row-major mask-shape correction,
+matching-shape/nonempty-union guards, focused synthetic regressions and a new
+v2 execution freeze. Preserve the failed v1 run, freeze and authorization as
+historical evidence. Corrected rendering requires a fresh explicit approval,
+commit/hash binding and output directory; the former approval is not reused.
+No scientific settings or thresholds change. See
+[the v2 amendment](docs/protocols/BELL_ORACLE_GENERATION_E11_V2.md).
+
 The current request authorizes E.11 source/calibration inspection, an independent
 Bell oracle generator, focused synthetic CPU tests and comparison preparation
 from `fd53e6eb29cc7a7764795943e632e1535f2d1296`. This supersedes earlier status
