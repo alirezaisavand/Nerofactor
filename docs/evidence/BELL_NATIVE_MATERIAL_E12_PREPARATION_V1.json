@@ -1,0 +1,91 @@
+{
+  "admission": {
+    "bytes": 98313,
+    "path": "/home/isavand/paper/evidence/bell-oracle-e12-admission-v1/oracle-admission.json",
+    "sha256": "f89fe72d13e9f6d05067b012ff4575852eef26ba35b5b3c072ac236e51e74605"
+  },
+  "admission_receipt": {
+    "bytes": 748,
+    "path": "/home/isavand/paper/evidence/bell-oracle-e12-admission-v1/admission-receipt.json",
+    "sha256": "b9a3d958fb64ab07c0ce11b7b1ce4189d34804b24a5f7a4c474dfa1d8ebcdb1b"
+  },
+  "authorization_path": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0-authorization.json",
+  "base_commit": "38e7137a9bea632d933ce3b2781c0cfa88853c54",
+  "container_output_directory": "/outputs",
+  "expected_learning_rates": [
+    0,
+    5e-07
+  ],
+  "freeze": {
+    "bytes": 9346,
+    "path": "/home/isavand/paper/Nerofactor-3d2-e2a/docs/protocols/BELL_MATERIAL_SMOKE_E12_V1.freeze.json",
+    "sha256": "faaffe48071184c495d135b1edae883756e244ed88c824ee0fb3ab45cb53fad4"
+  },
+  "host_admission": "/home/isavand/paper/evidence/bell-oracle-e12-admission-v1/oracle-admission.json",
+  "host_benchmark": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark",
+  "host_output_directory": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0",
+  "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "limits": {
+    "backwards": 2,
+    "cpu_threads": 4,
+    "diffuse_samples": 512,
+    "grace_seconds": 30,
+    "host_memory_gib": 64,
+    "optimizer_returns": 2,
+    "pids": 128,
+    "random_seed": 6033,
+    "shader_forwards": 2,
+    "specular_samples": 1024,
+    "train_rays": 512,
+    "wall_seconds": 900,
+    "worker_num": 8
+  },
+  "material_implementation": {
+    "algorithm": "anisotropic-material-A_corrected_core_v1",
+    "base_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+    "derivative_files": {
+      "infrastructure/material_variants.py": "7d3432e5d50bbb9830117153fddc921ecc4016bb23dbb8c750522cd287bedddb",
+      "scientific_variants/__init__.py": "ccf218a2cc95b2b6501db4b1efde3afb0fef57274ffc812db560e2666eb6ed64",
+      "scientific_variants/material_a_v1.py": "52603dc041920f7220748c9114f8293ad2499f778ffd688ef639bbe4e8759875"
+    },
+    "energy_bound_scope": "Normalized even Beckmann NDF/unit geometry/Fresnel in [0,1]; finite sampled radiance is not clamped",
+    "historical_checkpoint_equivalent": false,
+    "ideal_directional_energy_bound_proved": false,
+    "lighting_mode": "known_env_v1",
+    "regularization_version": "disabled_v1",
+    "variant": "A_corrected_core_v1"
+  },
+  "native_execution_authorized": false,
+  "new_scientific_calls": 0,
+  "original_candidate": {
+    "bytes": 97139,
+    "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/geometry/oracle-admission.candidate.json",
+    "sha256": "80c47aae7cd1d9e5b8757527b3b929583f140916884e8c7d39fa3da416f61af6"
+  },
+  "original_candidate_unchanged": true,
+  "output_allocated": false,
+  "protocol": "bell-native-core-two-update-e12-v1",
+  "researcher_dataset_confirmation": "I approve",
+  "run_id": "bell-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0",
+  "schema_version": 1,
+  "scientific_commits": {
+    "geometry": "79252178e65914ad1acbc14790b1514f276bfea0",
+    "material": "e1e859779301faced46d6476691e20b546c27ae0"
+  },
+  "secondary_proposal": "docs/protocols/BELL_TWO_LIGHT_INFORMATION_E12_V1.md",
+  "secondary_two_light_execution_authorized": false,
+  "status": "dataset_admitted_native_smoke_requires_execution_approval",
+  "validation": {
+    "actual_validate_only_CLI_exit_code": 0,
+    "bash_syntax": "pass",
+    "frozen_files": 64,
+    "guard_python38_AST": "pass",
+    "metadata_plan_and_admit_oracle": "pass",
+    "native_dataset_files_hashed": 512,
+    "new_native_execution": false,
+    "original_trainer_AST_boundary": "pass",
+    "previous_scientific_tests_repeated": false,
+    "saved_review_receipt_hashes": 10,
+    "scientific_modules_imported": false
+  }
+}
