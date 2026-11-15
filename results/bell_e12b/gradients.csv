@@ -1,0 +1,17 @@
+step,group,expected_active,gradient_l2,gradients_present,changed_elements
+0,mx_predictor,True,0.004387948945424691,12,0
+0,my_predictor,True,0.0038474537802540504,12,0
+0,rotation_predictor,True,0.000977320018215443,12,0
+0,metallic_predictor,True,0.017672408046235225,12,0
+0,kd_predictor,True,0.0707765255189614,12,0
+0,feats_network,True,0.002381333373119736,24,0
+0,outer_light,False,0.0,0,0
+0,inner_light,False,0.0,0,0
+1,mx_predictor,True,0.004187969343000489,12,57907
+1,my_predictor,True,0.0035727402053530827,12,56979
+1,rotation_predictor,True,0.00013849005904925397,12,24212
+1,metallic_predictor,True,0.01776943881822076,12,95917
+1,kd_predictor,True,0.07040374500707068,12,110272
+1,feats_network,True,0.0023826955787767125,24,148574
+1,outer_light,False,0.0,0,0
+1,inner_light,False,0.0,0,0

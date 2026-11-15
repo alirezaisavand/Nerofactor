@@ -1,0 +1,648 @@
+{
+  "admission": {
+    "bytes": 98313,
+    "path": "/home/isavand/paper/evidence/bell-oracle-e12-admission-v1/oracle-admission.json",
+    "sha256": "f89fe72d13e9f6d05067b012ff4575852eef26ba35b5b3c072ac236e51e74605"
+  },
+  "all_physical_run_files": [
+    {
+      "bytes": 672,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/console.log",
+      "sha256": "dcf214b7ba585269bd3e2424f54b9ec35bb256ac53fd8bd35b6683f111226d51"
+    },
+    {
+      "bytes": 64,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/container.cid",
+      "sha256": "36dded20f0c909fdada162aace473637ca96d619a81b150a972338cd1ce56ddc"
+    },
+    {
+      "bytes": 2,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 685,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/launch.json",
+      "sha256": "71a19afda194f74e4a278beb60a718990ebcbf28510d9a02f54f74aa83674be7"
+    },
+    {
+      "bytes": 89,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/run/.experiment.json",
+      "sha256": "793b0544c9ed64f6c152d0c77c9086d843caa7916c3cd94e09e43f451fe22690"
+    },
+    {
+      "bytes": 24399,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/run/cache/runtime/matplotlib/fontlist-v330.json",
+      "sha256": "142a7c38daee6f77826000524cdec0ddf6e96a5545c35c2bb27de19a60dc9175"
+    },
+    {
+      "bytes": 122174,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/run/cache/stage-cache-identity.json",
+      "sha256": "a7d660d76e548e95ef63c4d5498d1639da04c195ff60827459d3ad6dcca5531e"
+    },
+    {
+      "bytes": 236,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/run/config.envelope.yaml",
+      "sha256": "deda9bbc4b0d2fcafb7ab41458f34e45cc830393475b08adbd3d2ce8fdfd56b9"
+    },
+    {
+      "bytes": 1470,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/run/config.original.yaml",
+      "sha256": "872a57902b3ebf9d84821876006b447c89e74a135004ec751fd760e8f1a06406"
+    },
+    {
+      "bytes": 580,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/run/logs/console.log",
+      "sha256": "43e45f9b18477da723164357b3c11693165b5654f95f31843c40cbb51d28f6f8"
+    },
+    {
+      "bytes": 40,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/run/logs/events.out.tfevents.1794783844.195ccd23d254",
+      "sha256": "61c32edc00052c5f5e0a9c2e3bab0317189c07886d75c7e0881014dbc81c78a4"
+    },
+    {
+      "bytes": 888268,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/run/stage-run.json",
+      "sha256": "09ff4545f0e4b1ac973003c393fe34897bd7a048a907802739a5fb6173eddbe2"
+    }
+  ],
+  "authorization": {
+    "bytes": 2431,
+    "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2-authorization.json",
+    "sha256": "caefbee61d23136e4afc88fa63bcae33ef179d437d2ae60fed797a9fd1292a3f"
+  },
+  "cleanup_errors": [],
+  "cleanup_interpretation": "Owned iterator/progress/writer cleanup returned without errors; no independent Docker engine inspection.",
+  "decision": "PROCEED",
+  "execution_commit": "8247fe3a5107577660c7a211294b639deb897280",
+  "execution_receipts": [
+    {
+      "bytes": 685,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/launch.json",
+      "sha256": "71a19afda194f74e4a278beb60a718990ebcbf28510d9a02f54f74aa83674be7"
+    },
+    {
+      "bytes": 2,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 672,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/console.log",
+      "sha256": "dcf214b7ba585269bd3e2424f54b9ec35bb256ac53fd8bd35b6683f111226d51"
+    },
+    {
+      "bytes": 64,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/container.cid",
+      "sha256": "36dded20f0c909fdada162aace473637ca96d619a81b150a972338cd1ce56ddc"
+    }
+  ],
+  "focused_test_receipt": {
+    "bytes": 1612,
+    "path": "/home/isavand/paper/evidence/material-e12b-verification-cpu-v1/receipt.json",
+    "sha256": "b8631e05ac9e58b3c66f05d1d801c326317ed79ec96e658330f6c34230f806eb"
+  },
+  "focused_tests": {
+    "artifacts": [
+      {
+        "bytes": 1757,
+        "path": "/home/isavand/paper/evidence/material-e12b-verification-cpu-v1/junit.xml",
+        "sha256": "1c0b8db9a7ce02fa90ea92124847d3b8311775eafad2e02b5d957995af9b409a"
+      },
+      {
+        "bytes": 195,
+        "path": "/home/isavand/paper/evidence/material-e12b-verification-cpu-v1/console.log",
+        "sha256": "6203d7bd89021cc7ee8adab48072ca041127303726e49f89779f0563f91fd20b"
+      },
+      {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/material-e12b-verification-cpu-v1/exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    ],
+    "command": [
+      "python3",
+      "-B",
+      "-m",
+      "pytest",
+      "-p",
+      "no:cacheprovider",
+      "-q",
+      "tests/infrastructure/test_verify_bell_material_smoke_e12b.py",
+      "--junitxml=/home/isavand/paper/evidence/material-e12b-verification-cpu-v1/junit.xml"
+    ],
+    "errors": 0,
+    "exit_code": 0,
+    "failures": 0,
+    "inventory": [
+      "test_two_recorded_returns_and_zero_rate_displacement",
+      "test_corrupt_or_incomplete_update_evidence_rejected[missing_group]",
+      "test_corrupt_or_incomplete_update_evidence_rejected[inactive_gradient]",
+      "test_corrupt_or_incomplete_update_evidence_rejected[Adam_step]",
+      "test_corrupt_or_incomplete_update_evidence_rejected[first_displacement]",
+      "test_corrupt_or_incomplete_update_evidence_rejected[second_displacement]",
+      "test_corrupt_or_incomplete_update_evidence_rejected[nonfinite_loss]",
+      "test_offline_verifier_import_blocks_scientific_modules"
+    ],
+    "passed": 8,
+    "skipped": 0,
+    "tests": 8
+  },
+  "freeze": {
+    "bytes": 10400,
+    "path": "/home/isavand/paper/Nerofactor-3d2-e2a/docs/protocols/BELL_MATERIAL_SMOKE_E12B_V1.freeze.json",
+    "sha256": "54e53195734bfef17275d366f44e894a6c42ab60a8aa4b96dbb71adcddfa8d58"
+  },
+  "gate_decisions": {
+    "backward_active_gradients": true,
+    "bounded_stop_after_second_return": true,
+    "checkpoints_or_validation_NVS_written": false,
+    "fresh_Adam_steps_1_2": true,
+    "full_training_authorized": false,
+    "known_light_inactive_groups": true,
+    "model_shader_constructed": true,
+    "native_anisotropic_forward_RGB": true,
+    "nonzero_step1_displacement": true,
+    "physical_recovery_proved": false,
+    "recorded_owned_cleanup": true,
+    "zero_step0_displacement": true
+  },
+  "gradient_summary": [
+    {
+      "changed_elements": 0,
+      "expected_active": true,
+      "gradient_l2": 0.004387948945424691,
+      "gradients_present": 12,
+      "group": "mx_predictor",
+      "step": 0
+    },
+    {
+      "changed_elements": 0,
+      "expected_active": true,
+      "gradient_l2": 0.0038474537802540504,
+      "gradients_present": 12,
+      "group": "my_predictor",
+      "step": 0
+    },
+    {
+      "changed_elements": 0,
+      "expected_active": true,
+      "gradient_l2": 0.000977320018215443,
+      "gradients_present": 12,
+      "group": "rotation_predictor",
+      "step": 0
+    },
+    {
+      "changed_elements": 0,
+      "expected_active": true,
+      "gradient_l2": 0.017672408046235225,
+      "gradients_present": 12,
+      "group": "metallic_predictor",
+      "step": 0
+    },
+    {
+      "changed_elements": 0,
+      "expected_active": true,
+      "gradient_l2": 0.0707765255189614,
+      "gradients_present": 12,
+      "group": "kd_predictor",
+      "step": 0
+    },
+    {
+      "changed_elements": 0,
+      "expected_active": true,
+      "gradient_l2": 0.002381333373119736,
+      "gradients_present": 24,
+      "group": "feats_network",
+      "step": 0
+    },
+    {
+      "changed_elements": 0,
+      "expected_active": false,
+      "gradient_l2": 0.0,
+      "gradients_present": 0,
+      "group": "outer_light",
+      "step": 0
+    },
+    {
+      "changed_elements": 0,
+      "expected_active": false,
+      "gradient_l2": 0.0,
+      "gradients_present": 0,
+      "group": "inner_light",
+      "step": 0
+    },
+    {
+      "changed_elements": 57907,
+      "expected_active": true,
+      "gradient_l2": 0.004187969343000489,
+      "gradients_present": 12,
+      "group": "mx_predictor",
+      "step": 1
+    },
+    {
+      "changed_elements": 56979,
+      "expected_active": true,
+      "gradient_l2": 0.0035727402053530827,
+      "gradients_present": 12,
+      "group": "my_predictor",
+      "step": 1
+    },
+    {
+      "changed_elements": 24212,
+      "expected_active": true,
+      "gradient_l2": 0.00013849005904925397,
+      "gradients_present": 12,
+      "group": "rotation_predictor",
+      "step": 1
+    },
+    {
+      "changed_elements": 95917,
+      "expected_active": true,
+      "gradient_l2": 0.01776943881822076,
+      "gradients_present": 12,
+      "group": "metallic_predictor",
+      "step": 1
+    },
+    {
+      "changed_elements": 110272,
+      "expected_active": true,
+      "gradient_l2": 0.07040374500707068,
+      "gradients_present": 12,
+      "group": "kd_predictor",
+      "step": 1
+    },
+    {
+      "changed_elements": 148574,
+      "expected_active": true,
+      "gradient_l2": 0.0023826955787767125,
+      "gradients_present": 24,
+      "group": "feats_network",
+      "step": 1
+    },
+    {
+      "changed_elements": 0,
+      "expected_active": false,
+      "gradient_l2": 0.0,
+      "gradients_present": 0,
+      "group": "outer_light",
+      "step": 1
+    },
+    {
+      "changed_elements": 0,
+      "expected_active": false,
+      "gradient_l2": 0.0,
+      "gradients_present": 0,
+      "group": "inner_light",
+      "step": 1
+    }
+  ],
+  "limitations": [
+    "Hash/finite-statistic/state-continuity verification of recorded detached metadata, not independent recomputation of tensors/backpropagation.",
+    "Both recorded losses precede the first nonzero-LR update; different batches/tapes prevent interpreting their difference as learning progress.",
+    "A_original/A_estimator, checkpoint/evaluation/export/relighting interfaces and long-run stability remain unvalidated by this smoke."
+  ],
+  "native_outputs": [
+    {
+      "bytes": 236,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/run/config.envelope.yaml",
+      "sha256": "deda9bbc4b0d2fcafb7ab41458f34e45cc830393475b08adbd3d2ce8fdfd56b9"
+    },
+    {
+      "bytes": 1470,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/run/config.original.yaml",
+      "sha256": "872a57902b3ebf9d84821876006b447c89e74a135004ec751fd760e8f1a06406"
+    },
+    {
+      "bytes": 122174,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/run/cache/stage-cache-identity.json",
+      "sha256": "a7d660d76e548e95ef63c4d5498d1639da04c195ff60827459d3ad6dcca5531e"
+    },
+    {
+      "bytes": 24399,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/run/cache/runtime/matplotlib/fontlist-v330.json",
+      "sha256": "142a7c38daee6f77826000524cdec0ddf6e96a5545c35c2bb27de19a60dc9175"
+    },
+    {
+      "bytes": 580,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/run/logs/console.log",
+      "sha256": "43e45f9b18477da723164357b3c11693165b5654f95f31843c40cbb51d28f6f8"
+    },
+    {
+      "bytes": 40,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/run/logs/events.out.tfevents.1794783844.195ccd23d254",
+      "sha256": "61c32edc00052c5f5e0a9c2e3bab0317189c07886d75c7e0881014dbc81c78a4"
+    }
+  ],
+  "native_report": {
+    "bytes": 888268,
+    "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/run/stage-run.json",
+    "sha256": "09ff4545f0e4b1ac973003c393fe34897bd7a048a907802739a5fb6173eddbe2"
+  },
+  "new_optimizer_returns_during_analysis": 0,
+  "new_scientific_calls": 0,
+  "next_review_proposal": "docs/protocols/BELL_THREE_ARM_RECOVERY_AFTER_E12B_V1.md",
+  "observer_lifecycle": {
+    "guards_prepared_before_run": true,
+    "method_bindings": 1
+  },
+  "offline_acceptance": {
+    "bytes": 11724,
+    "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2-analysis-v1/acceptance.json",
+    "sha256": "1c4533f744a1ef5f306a53a3d45fd1d00bb151b3498ce6151d80c0b1c8011690"
+  },
+  "offline_outputs": [
+    {
+      "bytes": 11724,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2-analysis-v1/acceptance.json",
+      "sha256": "1c4533f744a1ef5f306a53a3d45fd1d00bb151b3498ce6151d80c0b1c8011690"
+    },
+    {
+      "bytes": 791,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2-analysis-v1/gradients.csv",
+      "sha256": "a8728ad7bf73f92d5d33254850385c87444711ffe325c63ea17a075228b2b799"
+    },
+    {
+      "bytes": 441,
+      "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2-analysis-v1/updates.csv",
+      "sha256": "0e459f42bef25d8875b33c3d6af25064f0432041bd36c1b04f17e78b2cdf3a41"
+    }
+  ],
+  "preliminary_test_evidence": {
+    "bytes": 1757,
+    "path": "/home/isavand/paper/evidence/material-e12b-verification-preliminary.xml",
+    "sha256": "b60888c668a373d6ef6cd61ac1c1c0c39f545da612a1d3078eba9877fee38cb8"
+  },
+  "protocol": "bell-e12b-native-smoke-results-v1",
+  "ray_backend": {
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "variant": "predicate_fp64"
+  },
+  "recorded_run_seconds": 17.165555,
+  "runtime": {
+    "cuda": "11.1",
+    "cudnn_allow_tf32": true,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": false,
+    "default_dtype": "torch.float32",
+    "driver": "NVRM version: NVIDIA UNIX x86_64 Kernel Module  550.163.01  Tue Apr  8 12:41:17 UTC 2025\nGCC version:  gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.3) \n",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "loader_start_method": "fork",
+    "matmul_allow_tf32": true,
+    "num_interop_threads": 16,
+    "num_threads": 4,
+    "packages": {
+      "PyYAML": "6.0.2",
+      "numpy": "1.24.4",
+      "nvdiffrast": "0.3.3",
+      "open3d": "0.16.0",
+      "opencv-python": "4.10.0.84",
+      "scikit-image": "0.21.0",
+      "scipy": "1.10.1",
+      "tensorboardX": "2.6.2.2"
+    },
+    "python": "3.8.10 (default, Mar 18 2025, 20:04:55) \n[GCC 9.4.0]",
+    "torch": "1.8.1+cu111",
+    "torch_cxx11_abi": false
+  },
+  "schema_version": 1,
+  "scope": "corrected-core native two-update execution only",
+  "source_identity": {
+    "admitted_dataset_records": 512,
+    "frozen_source_files": 69,
+    "old_observer_archive_sha256": "9e54e8232f938e81ff41ce6bd16f4bd42cbb97487d8348074780b8c5abda9818",
+    "original_failed_E12_unchanged": true,
+    "scientific_snapshots": {
+      "geometry": "79252178e65914ad1acbc14790b1514f276bfea0",
+      "material": "e1e859779301faced46d6476691e20b546c27ae0"
+    },
+    "scientific_sources_unchanged": true
+  },
+  "splits": {
+    "nvs_ids": [
+      "11",
+      "105",
+      "114",
+      "17",
+      "76"
+    ],
+    "test_ids": [
+      "58"
+    ],
+    "train_ids": [
+      "14",
+      "98",
+      "103",
+      "117",
+      "91",
+      "63",
+      "67",
+      "104",
+      "20",
+      "39",
+      "74",
+      "35",
+      "51",
+      "18",
+      "87",
+      "2",
+      "47",
+      "100",
+      "22",
+      "32",
+      "62",
+      "72",
+      "106",
+      "19",
+      "88",
+      "59",
+      "86",
+      "54",
+      "123",
+      "99",
+      "16",
+      "3",
+      "75",
+      "122",
+      "8",
+      "84",
+      "64",
+      "23",
+      "119",
+      "36",
+      "0",
+      "60",
+      "6",
+      "10",
+      "120",
+      "121",
+      "116",
+      "70",
+      "29",
+      "102",
+      "27",
+      "55",
+      "97",
+      "25",
+      "109",
+      "82",
+      "127",
+      "124",
+      "125",
+      "57",
+      "28",
+      "52",
+      "24",
+      "41",
+      "77",
+      "26",
+      "15",
+      "126",
+      "68",
+      "95",
+      "81",
+      "107",
+      "30",
+      "12",
+      "33",
+      "94",
+      "111",
+      "80",
+      "43",
+      "31",
+      "110",
+      "21",
+      "78",
+      "37",
+      "101",
+      "44",
+      "5",
+      "40",
+      "48",
+      "89",
+      "1",
+      "49",
+      "108",
+      "79",
+      "66",
+      "71",
+      "65",
+      "34",
+      "42",
+      "61",
+      "46",
+      "83",
+      "90",
+      "113",
+      "13",
+      "9",
+      "7",
+      "56",
+      "96",
+      "85",
+      "4",
+      "112",
+      "92",
+      "50",
+      "115",
+      "118",
+      "69",
+      "45",
+      "73",
+      "53",
+      "38",
+      "93"
+    ]
+  },
+  "static_checks": {
+    "Python38_AST": "pass",
+    "copies_exact": true,
+    "local_links": "pass",
+    "old_test_suites_repeated": false,
+    "scientific_reexecution": false
+  },
+  "tracked_copies": [
+    {
+      "original": {
+        "bytes": 441,
+        "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2-analysis-v1/updates.csv",
+        "sha256": "0e459f42bef25d8875b33c3d6af25064f0432041bd36c1b04f17e78b2cdf3a41"
+      },
+      "tracked": {
+        "bytes": 441,
+        "path": "/home/isavand/paper/Nerofactor-3d2-e2a/results/bell_e12b/updates.csv",
+        "sha256": "0e459f42bef25d8875b33c3d6af25064f0432041bd36c1b04f17e78b2cdf3a41"
+      }
+    },
+    {
+      "original": {
+        "bytes": 791,
+        "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2-analysis-v1/gradients.csv",
+        "sha256": "a8728ad7bf73f92d5d33254850385c87444711ffe325c63ea17a075228b2b799"
+      },
+      "tracked": {
+        "bytes": 791,
+        "path": "/home/isavand/paper/Nerofactor-3d2-e2a/results/bell_e12b/gradients.csv",
+        "sha256": "a8728ad7bf73f92d5d33254850385c87444711ffe325c63ea17a075228b2b799"
+      }
+    },
+    {
+      "original": {
+        "bytes": 672,
+        "path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2/console.log",
+        "sha256": "dcf214b7ba585269bd3e2424f54b9ec35bb256ac53fd8bd35b6683f111226d51"
+      },
+      "tracked": {
+        "bytes": 672,
+        "path": "/home/isavand/paper/Nerofactor-3d2-e2a/results/bell_e12b/console.txt",
+        "sha256": "dcf214b7ba585269bd3e2424f54b9ec35bb256ac53fd8bd35b6683f111226d51"
+      }
+    }
+  ],
+  "update_summary": [
+    {
+      "Adam_state_parameters": 84,
+      "Adam_step": 1,
+      "CUDA_peak_allocated_bytes": 273756672,
+      "aggregate_loss": 0.09208256006240845,
+      "changed_elements": 0,
+      "displacement_l2": 0.0,
+      "gradient_l2": 0.0732278189643773,
+      "loss_rgb": 0.09208256006240845,
+      "lr": 0.0,
+      "maximum_displacement": 0.0,
+      "observed_step_seconds": 0.5597808081656694,
+      "step": 0
+    },
+    {
+      "Adam_state_parameters": 84,
+      "Adam_step": 2,
+      "CUDA_peak_allocated_bytes": 321570816,
+      "aggregate_loss": 0.09209322929382324,
+      "changed_elements": 493861,
+      "displacement_l2": 3.4180685981643005e-05,
+      "gradient_l2": 0.07285904366957856,
+      "loss_rgb": 0.09209322929382324,
+      "lr": 5e-07,
+      "maximum_displacement": 4.991888999938965e-07,
+      "observed_step_seconds": 0.7644335087388754,
+      "step": 1
+    }
+  ],
+  "verification_code": [
+    {
+      "bytes": 13975,
+      "path": "/home/isavand/paper/Nerofactor-3d2-e2a/experiments/verify_bell_material_smoke_e12b.py",
+      "sha256": "daaefb89b306e2337b88e76eae6615666ee724c44127bba81f8c910c20d94e53"
+    },
+    {
+      "bytes": 4550,
+      "path": "/home/isavand/paper/Nerofactor-3d2-e2a/tests/infrastructure/test_verify_bell_material_smoke_e12b.py",
+      "sha256": "e44622033bd0950ae508e91a2d9b7a76e8c71ee7e0099e227e640b5191d9a8ef"
+    }
+  ],
+  "verification_status": "pass"
+}

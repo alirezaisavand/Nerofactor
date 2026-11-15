@@ -1,0 +1,14 @@
+train set len 99999999
+val val set len 1
+Computing vertex normals...
+images len: 128
+above images are saved
+images len: 122
+above images are saved
+images len: 1
+above images are saved
+images len: 5
+above images are saved
+warn!!! the normals are flipped in NeuS by default. You may flip the normal according to your mesh!
+| 0/2000 [00:00<?, ?it/s]| 0/2000 [00:00<?, ?it/s, loss=0.0921, lr=0, others=, loss_rgb: 0.0921]| 1/2000 [00:00<20:12,  1.65it/s, loss=0.0921, lr=0, others=, loss_rgb: 0.0921]| 1/2000 [00:01<54:46,  1.64s/it, loss=0.0921, lr=0, others=, loss_rgb: 0.0921]
+stage_execution_complete; native acceptance still requires reviewed G R/R-repeat/C evidence
