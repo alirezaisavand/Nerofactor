@@ -1,0 +1,160 @@
+{
+  "authorization_path": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f-authorization.json",
+  "authorized": false,
+  "commit_binding": "Exact final preparation commit must be bound by the future execution approval",
+  "container_output_directory": "/outputs/quadrature",
+  "controls": {
+    "pdf": 0.15915494309189535,
+    "rows": [
+      {
+        "area_error": 0.0,
+        "cosine_integral_error": 0.0,
+        "size": 4,
+        "unit_error": 2.220446049250313e-16,
+        "z2_integral": 2.061670178918302,
+        "z2_midpoint_exact": 2.061670178918302
+      },
+      {
+        "area_error": 0.0,
+        "cosine_integral_error": 0.0,
+        "size": 8,
+        "unit_error": 1.1102230246251565e-16,
+        "z2_integral": 2.086213871524472,
+        "z2_midpoint_exact": 2.086213871524472
+      },
+      {
+        "area_error": 0.0,
+        "cosine_integral_error": 0.0,
+        "size": 32,
+        "unit_error": 1.1102230246251565e-16,
+        "z2_integral": 2.0938837754639,
+        "z2_midpoint_exact": 2.0938837754639
+      }
+    ],
+    "solid_angle_domain": "z=cos(theta) in(0,1),phi in(0,2pi)",
+    "status": "pass",
+    "weight": "dOmega=2*pi/N; SUM f*Li*cos*dOmega, not mean and no extra sin(theta)"
+  },
+  "focused_tests": {
+    "errors": 0,
+    "exit_observation": "actual exec completion",
+    "failed": 0,
+    "inventory": [
+      "test_midpoint_domain_pdf_solid_angle_and_exact_analytic_moments[4]",
+      "test_midpoint_domain_pdf_solid_angle_and_exact_analytic_moments[8]",
+      "test_midpoint_domain_pdf_solid_angle_and_exact_analytic_moments[32]",
+      "test_cpu_controls_and_world_frame_rotation_without_original_shader",
+      "test_actual_weighted_accumulator_integrates_lambert_and_directional_controls",
+      "test_invalid_grid_specifications_fail[0]",
+      "test_invalid_grid_specifications_fail[1]",
+      "test_invalid_grid_specifications_fail[4.0]",
+      "test_invalid_grid_specifications_fail[True]",
+      "test_visibility_matches_offset_float32_and_existing_depth_cutoff_with_analytic_plane",
+      "test_nonfinite_shadow_depth_fails_without_redraw",
+      "test_followup_comparison_never_changes_historical_failed_admission",
+      "test_visibility_packing_preserves_probe_and_direction_order",
+      "test_metadata_imports_with_torch_and_scientific_modules_blocked",
+      "test_authorization_mismatch_precedes_all_native_work[approved]",
+      "test_authorization_mismatch_precedes_all_native_work[commit]",
+      "test_authorization_mismatch_precedes_all_native_work[freeze_sha256]",
+      "test_authorization_mismatch_precedes_all_native_work[image_id]",
+      "test_authorization_mismatch_precedes_all_native_work[output_directory]",
+      "test_authorization_mismatch_precedes_all_native_work[limits]",
+      "test_work_budget_and_python38_grammar"
+    ],
+    "junit": {
+      "bytes": 3837,
+      "path": "/home/isavand/paper/evidence/bell-quadrature-e11e-controls-v1.xml",
+      "sha256": "ca3066ae119b1582732fe718660d1877223caabd3304430f968b9836232329fa"
+    },
+    "passed": 21,
+    "process_exit_code": 0,
+    "skipped": 0,
+    "tests": 21
+  },
+  "freeze": {
+    "bytes": 10269,
+    "path": "/home/isavand/paper/Nerofactor-3d2-e2a/docs/protocols/BELL_QUADRATURE_E11E_V1.freeze.json",
+    "sha256": "9ba88ae03ae73be9c7a10f465d6262eba3738c15b66fa9a4ca9ee742ef2fa11f"
+  },
+  "host_E11D_pilot": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c/pilot",
+  "host_benchmark": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark",
+  "host_output_directory": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f",
+  "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "inputs": [
+    {
+      "bytes": 475481,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/geometry/generation.json",
+      "sha256": "5035b22b594848900426fd5dfaa8b96382b57a76cfde97864b7ef7591c46e6d7"
+    },
+    {
+      "bytes": 58216,
+      "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c/pilot/pilot.json",
+      "sha256": "4ad7c79fb63713c5710aa8407c3229fb8bd71341dc81d39e985cb24608a3f1f1"
+    },
+    {
+      "bytes": 4729497,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/geometry/mesh.ply",
+      "sha256": "4ea98341ca915cf55f2b37581556583308cc50a8e2d2d8d48140d49224866e01"
+    },
+    {
+      "bytes": 905043,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/geometry/labels/58.npz",
+      "sha256": "7b2b3f06e3df269fdc80c732f70b8e7c56074594bc57be19aee29d2ca0a61688"
+    },
+    {
+      "bytes": 321821,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/geometry/rays/58.npz",
+      "sha256": "213d441a31c309b2f32a37f40b9e0667f62e004c644da94e68c76b3e24667187"
+    },
+    {
+      "bytes": 762035,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/references/58.npz",
+      "sha256": "e47372b8c75008ffe51a296ccdc66fc837a7f10abb1258c3fa76a5ca788a03a7"
+    },
+    {
+      "bytes": 768052,
+      "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c/pilot/58-L2_six_cardinal.npz",
+      "sha256": "71d64abbaf312c2c2d24a337639e0458b9e3025678c7b3d92494a89dab889797"
+    }
+  ],
+  "limits": {
+    "brdf_point_directions": 220200960,
+    "cpu_threads": 4,
+    "cuda_allocator_fraction": 0.25,
+    "direction_chunk": 16384,
+    "grace_seconds": 30,
+    "host_memory_gib": 64,
+    "output_bytes": 268435456,
+    "point_batch": 4,
+    "shadow_directions": 27525120,
+    "wall_seconds": 900
+  },
+  "output_allocated": false,
+  "preliminary_test_correction": "Rotated moment uses exact finite-grid covariance, rather than a continuum error bound at floating-point boundary. No scientific acceptance threshold changed.",
+  "preservation": {
+    "E11D_failed_admission": "unchanged",
+    "E11D_freeze_sha256": "33e500cad37190b4bd0e4f9adc69b39533d631e92d2fad7ec11538b8f79e496c",
+    "old_sources_configs_and_evidence": "unchanged",
+    "pinned_G_A_snapshots": "byte verified"
+  },
+  "preserved_preliminary_junit": {
+    "bytes": 5563,
+    "path": "/home/isavand/paper/evidence/bell-quadrature-e11e-preliminary-tests.xml",
+    "sha256": "3f89d984eaa2b3a3af285dd0ba14d491b9142321284582df27367a4418081341"
+  },
+  "protocol": "bell-l2-midpoint-quadrature-e11e-v1",
+  "schema_version": 1,
+  "scientific_execution": {
+    "new_GPU_queries": 0,
+    "new_model_calls": 0,
+    "new_optimizer_returns": 0,
+    "new_real_input_BRDF_queries": 0
+  },
+  "static_validation": {
+    "frozen_source_files": 62,
+    "old_E11D_and_v3_source_closures": "pass",
+    "python38_ast": "pass"
+  },
+  "status": "prepared_awaiting_one_explicit_gpu_execution_approval"
+}
