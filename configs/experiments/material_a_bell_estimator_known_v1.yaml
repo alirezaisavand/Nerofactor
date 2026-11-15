@@ -1,0 +1,11 @@
+schema_version: 1
+stage: material
+legacy_config: ../material_corrected/bell_estimator_known_v1.yaml
+inputs:
+  dataset: GlossySynthetic
+  mesh:
+    root: geometry
+    path: mesh.ply
+preprocessing:
+  cache: cache/stage-workspace
+overrides: {}

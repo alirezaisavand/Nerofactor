@@ -1,0 +1,75 @@
+# Proposed paired oracle benchmark, 2000-update budget; scientific execution not authorized.
+name: bell_A_estimator_known_v1
+network: material
+database_name: syn/bell
+mesh: data/meshes-pretrained/syn/bell.ply
+reg_diffuse_light: false
+reg_diffuse_light_lambda: 0.1
+reg_mat: false
+shader_cfg:
+  diffuse_sample_num: 512
+  specular_sample_num: 1024
+  outer_light_version: direction
+  light_exp_max: 5.0
+  inner_light_exp_max: 5.0
+  human_lights: false
+  anisotropy: true
+  reg_change: true
+  random_azimuth: true
+  regularization_version: legacy_v1
+  reg_lambda1: 0.05
+  reg_energy_loss: true
+  reg_spec_loss: true
+  reg_energy_loss_lambda: 0.05
+  reg_spec_loss_lambda: 0.05
+  illumination_mode: known_env_v1
+  indirect_mode: zero_bounce_v1
+  known_environment:
+    ambient:
+    - 0.08
+    - 0.08
+    - 0.08
+    lobes:
+    - axis:
+      - 0
+      - 0
+      - 1
+      RGB:
+      - 1.0
+      - 0.8
+      - 0.6
+      power: 12
+    - axis:
+      - 1
+      - 0
+      - 0
+      RGB:
+      - 0.3
+      - 0.5
+      - 0.9
+      power: 6
+loss:
+- nerf_render
+- mat_reg
+val_metric:
+- mat_render
+key_metric_name: psnr
+train_dataset_type: stage_variant_dummy_v1
+dataset_dir: data/GlossySynthetic
+train_dataset_cfg:
+  database_name: syn/bell
+val_set_list:
+- name: val
+  type: dummy
+  cfg:
+    database_name: syn/bell
+optimizer_type: adam
+lr_type: warm_up_cos
+lr_cfg:
+  end_warm: 1000
+  end_iter: 100000
+total_step: 2000
+val_interval: 2000
+save_interval: 2000
+train_log_step: 10
+n_lobes: 1

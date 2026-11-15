@@ -13,8 +13,15 @@ from infrastructure.stage_sources import ROOT, PINS, baseline, activate, importe
 from infrastructure.stage_workspace import prepare_view, source_records, handoff
 
 
-def plan(stage, commit, arm, datasets, thesis, output, cfg_path=None, config_root=None, extra_roots=None):
+def plan(stage, commit, arm, datasets, thesis, output, cfg_path=None, config_root=None, extra_roots=None,
+         material_variant='A_original',oracle_benchmark=False):
     science, source = baseline(stage, commit)
+    from infrastructure.material_variants import VARIANTS,ORIGINAL,configuration
+    require(material_variant in VARIANTS and (stage=='material' or material_variant==ORIGINAL),
+            'Material variants cannot change geometry selection')
+    corrected=material_variant!=ORIGINAL
+    require(type(oracle_benchmark) is bool and (not oracle_benchmark or stage=='material'),
+            'Oracle benchmark is a separate material-only geometry policy')
     require(arm in ('R','R-repeat','C') and (stage=='geometry' or arm=='C'), 'Invalid stage/configuration arm')
     roots={'datasets':datasets,'thesis':thesis}
     for name,path in (extra_roots or {}).items():
@@ -26,11 +33,29 @@ def plan(stage, commit, arm, datasets, thesis, output, cfg_path=None, config_roo
     if arm=='C':
         from infrastructure.config import load_config
         config=load_config(cfg_path,config_root=config_root)
+        if corrected or oracle_benchmark:
+            require(config.legacy_source.parent==ROOT/'configs/material_corrected' and
+                    config.legacy_source.name in ('bell_core_v1.yaml','bear_core_v1.yaml','bell_estimator_v1.yaml','bell_original_data_v1.yaml',
+                                                 'bell_core_known_v1.yaml','bell_estimator_known_v1.yaml','bell_original_known_v1.yaml',
+                                                 'bell_core_prior_candidate_v1.yaml','bell_energy_budget_known_v1.yaml'),
+                    'Explicit versioned corrected material configuration required')
+            legacy=config.legacy_source
+            require(('estimator' in legacy.name)==(material_variant=='A_estimator_v1'),
+                    'Corrected configuration/variant mismatch')
+            require(('original' in legacy.name)==(material_variant==ORIGINAL),'Original benchmark configuration/variant mismatch')
+            require(('energy_budget' in legacy.name)==(material_variant=='A_energy_budget_v1'),'Energy benchmark configuration/variant mismatch')
         require(config.stage==stage and config.legacy_source==legacy and config.original.get('overrides')=={},
                 'Envelope must select exact stage scientific configuration, without overrides')
         require(config.inputs.checkpoint is None,'No checkpoint initialization/resume admitted by reset')
         require(config.preprocessing.cache=='cache/stage-workspace','This version implements only the stage filesystem cache')
         raw=legacy.read_bytes();values=deepcopy(config.legacy);selection=config.inputs
+        if corrected or oracle_benchmark:values=configuration(values,material_variant)
+        if corrected or oracle_benchmark:
+            require(values.get('train_dataset_type')=='stage_variant_dummy_v1',
+                    'Versioned material configurations require the stage-only entry guard')
+            values['train_dataset_type']='dummy'  # Exact original dataset class, never a new split/sampler.
+        require(values.get('shader_cfg',{}).get('illumination_mode')!='known_env_v1' or oracle_benchmark,
+                'Known-light configuration requires admitted generated oracle benchmark data')
         envelope=Path(cfg_path).read_bytes()
     else:
         import yaml
@@ -39,13 +64,17 @@ def plan(stage, commit, arm, datasets, thesis, output, cfg_path=None, config_roo
         selection=InputSelection('GlossySynthetic');envelope=None
     require(values.get('network')==('shape' if stage=='geometry' else 'material'),'Foreign renderer selection')
     selected=resolver.resolve_inputs(selection)
-    require(selection.dataset==('GlossySynthetic' if stage=='geometry' else 'GlossyReal'),'Pinned stage dataset family required')
-    require((selected.mesh is not None)==(stage=='material') and selected.checkpoint is None,'Ambiguous stage inputs')
     scene='bell' if stage=='geometry' else 'bear'
+    if corrected or oracle_benchmark:
+        require(values['database_name'] in ('syn/bell','real/bear/raw_1024'),'Unsupported corrected native scene')
+        scene='bell' if values['database_name']=='syn/bell' else 'bear'
+    require(selection.dataset==('GlossySynthetic' if stage=='geometry' or scene=='bell' else 'GlossyReal'),'Pinned stage dataset family required')
+    require((selected.mesh is not None)==(stage=='material') and selected.checkpoint is None,'Ambiguous stage inputs')
     require((selected.dataset/scene).is_dir(),'Required source scene is missing')
     return {'stage':stage,'scientific_commit':commit,'science':science,'source':source,'arm':arm,
             'route':'schema-1-pinned-stage' if arm=='C' else 'independent-pinned-legacy-FullLoader',
-            'resolver':resolver,'selected':selected,'scene':scene,'configuration':values,'raw':raw,'envelope':envelope}
+            'resolver':resolver,'selected':selected,'scene':scene,'configuration':values,'raw':raw,'envelope':envelope,
+            'material_variant':material_variant,'oracle_benchmark':oracle_benchmark}
 
 
 def native_guards(p, image_id):
@@ -85,6 +114,12 @@ def native_run(p,run,report,persist):
     import sys
     require(sys.version_info[:2]==(3,8),'Reviewed Python 3.8 runtime required')
     from train.trainer import Trainer
+    if p['stage']=='material' and (p.get('material_variant','A_original')!='A_original' or
+            report['runtime_configuration'].get('shader_cfg',{}).get('illumination_mode')=='known_env_v1'):
+        from infrastructure.material_variants import install
+        import network.renderer as renderer_module
+        import network.field as field_module
+        install(renderer_module,field_module,p['material_variant'],report['runtime_configuration'])
     require(Path(Trainer.run.__code__.co_filename).resolve()==p['science']/'train/trainer.py','Mixed stage trainer')
     from infrastructure.geometry_training_smoke import runtime_identity
     report['runtime']=runtime_identity(torch)
@@ -98,6 +133,10 @@ def native_run(p,run,report,persist):
         probe=GTrainingProbe(trainer,torch,np,report,persist)
         GTwoUpdateTrace(trainer,probe,p['science']/'train/trainer.py').run()
         require(report['optimizer_calls_completed']==2 and not list(run.checkpoints.glob('*.pth')),'Unexpected G checkpoint/update budget')
+    elif report.get('corrected_material_smoke') is True:
+        from infrastructure.corrected_material_smoke import run_bounded
+        run_bounded(trainer,p['science'],torch,np,report,persist)
+        require(not list(run.checkpoints.iterdir()),'Corrected material smoke wrote checkpoints')
     elif report.get('bounded_material') is True:
         from infrastructure.material_smoke import PROTOCOL,run_bounded
         require(report['protocol']==PROTOCOL,'Unknown bounded material protocol')
@@ -152,9 +191,12 @@ def run_material_owned(trainer,report,persist,capture=None):
     require(not errors,'Material owned resource cleanup failed')
 
 
-def execute(p,run_id,image_id,infrastructure_commit,mesh_handoff=None,bounded_material=False):
+def execute(p,run_id,image_id,infrastructure_commit,mesh_handoff=None,bounded_material=False,corrected_material_smoke=False,oracle_manifest=None):
     validate_run_id(run_id)
     require(type(bounded_material) is bool,'Explicit bounded-material boolean required')
+    require(type(corrected_material_smoke) is bool and (not corrected_material_smoke or
+            (p['stage']=='material' and p.get('material_variant','A_original')!='A_original' and not bounded_material)),
+            'Corrected smoke requires explicit derivative, with ordinary research mesh admission')
     diagnostic_mesh=None
     if bounded_material:
         from infrastructure.material_smoke import PROTOCOL,admit_mesh,diagnostic_files
@@ -162,7 +204,13 @@ def execute(p,run_id,image_id,infrastructure_commit,mesh_handoff=None,bounded_ma
         diagnostic_mesh=admit_mesh(p)
     require(p['stage']!='geometry' or mesh_handoff is None,'Geometry cannot accept a material mesh-handoff argument')
     native_guards(p,image_id)
-    transfer=handoff(mesh_handoff,p['selected'].mesh,p['resolver'],p['configuration']['database_name']) if p['stage']=='material' and not bounded_material else None
+    oracle=None
+    if p.get('oracle_benchmark'):
+        require(mesh_handoff is None and not bounded_material,'Oracle benchmark cannot claim a G/historical handoff')
+        from infrastructure.material_variants import admit_oracle
+        oracle=admit_oracle(p,oracle_manifest)
+    else:require(oracle_manifest is None,'Oracle evidence requires explicit oracle benchmark planning')
+    transfer=handoff(mesh_handoff,p['selected'].mesh,p['resolver'],p['configuration']['database_name']) if p['stage']=='material' and not bounded_material and oracle is None else None
     # Cold import isolation is activated before Torch/scientific imports or allocation.
     activate(p['stage'],p['scientific_commit'])
     run=RunStore(p['resolver'],layout='mounted').create(run_id)
@@ -171,21 +219,31 @@ def execute(p,run_id,image_id,infrastructure_commit,mesh_handoff=None,bounded_ma
                     'declared_infrastructure_commit':infrastructure_commit,
                     'declared_image_id':image_id,
                     'infrastructure_files':infrastructure_identity()}
+    if p['stage']=='material':
+        from infrastructure.material_variants import identity
+        source_context['material_implementation']=identity(p.get('material_variant','A_original'),p['configuration'])
+        if 'derivative_files' in source_context['material_implementation']:
+            source_context['base_algorithm']=source_context['algorithm']
+            source_context['algorithm']=source_context['material_implementation']['algorithm']
     if bounded_material:source_context['diagnostic_files']=diagnostic_files()
     report={'schema_version':1,'protocol':PROTOCOL if bounded_material else ('bell-G-two-update-training-v1' if p['stage']=='geometry' else 'material-A-stage-execution-v1'),
             'bounded_material':bounded_material,
+            'corrected_material_smoke':corrected_material_smoke,
             'status':'running','phase':'allocated','stage':p['stage'],'scientific_commit':p['scientific_commit'],
             'run_id':run_id,'arm':p['arm'],'route':p['route'],'source':source_context,'declared_image_id':image_id,
             'original_configuration':p['configuration'],'legacy_sha256':__import__('hashlib').sha256(p['raw']).hexdigest(),
-            'mesh_handoff':transfer,'checkpoint_input':None,'optimizer_calls_completed':0 if p['stage']=='geometry' else None,
+            'mesh_handoff':transfer,'oracle_benchmark':oracle,'checkpoint_input':None,'optimizer_calls_completed':0 if p['stage']=='geometry' else None,
             'mesh_handoff_identity':{'path':str(mesh_handoff),'sha256':digest(mesh_handoff)} if transfer else None,
             'mesh_identity':diagnostic_mesh if bounded_material else ({'path':str(p['selected'].mesh),'sha256':digest(p['selected'].mesh),
-                             'bytes':p['selected'].mesh.stat().st_size} if transfer else None),
+                             'bytes':p['selected'].mesh.stat().st_size} if transfer or oracle else None),
             'started_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
             'limitations':['Fresh weights only; historical checkpoint G production/resume eligibility not established.',
                            'Native execution and this source selection require separate review; CPU fixtures are not native acceptance.',
                            'Original relative-path writers use an experiment-owned filesystem view; input files are mounted read-only.',
                            'Infrastructure/image commit declarations and handoff metadata are not independent historical attestation.']}
+    if corrected_material_smoke:
+        report.update(protocol='corrected-A-native-two-update-v1',optimizer_calls_completed=0,diagnostic_only=True)
+    elif p.get('material_variant','A_original')!='A_original':report['protocol']='corrected-A-native-stage-v1'
     if bounded_material:
         report.update(optimizer_calls_completed=0,diagnostic_only=True,research_geometry_admitted=False,
                       acceptance_scope='A anisotropic two-update diagnostic only; no G handoff, full training or publication result')
@@ -214,16 +272,25 @@ def execute(p,run_id,image_id,infrastructure_commit,mesh_handoff=None,bounded_ma
                         digest(mesh_handoff)==report['mesh_handoff_identity']['sha256'],'Input mesh/handoff changed during execution')
                 require(handoff(mesh_handoff,p['selected'].mesh,p['resolver'],p['configuration']['database_name'])==transfer,
                         'Producing geometry evidence changed during execution')
+            if oracle is not None:
+                require(admit_oracle(p,oracle_manifest)==oracle,'Oracle benchmark evidence changed during execution')
             if bounded_material:
                 require(digest(p['selected'].mesh)==diagnostic_mesh['sha256'] and diagnostic_files()==source_context['diagnostic_files'],
                         'Diagnostic mesh/definition changed during execution')
                 require(report['optimizer_calls_completed']==2 and len(report.get('updates',[]))==2 and
                         not list(run.checkpoints.iterdir()),'Invalid bounded material completion')
                 require(not any(q.is_file() for q in run.output('renders').rglob('*')),'Unexpected material validation/NVS render')
+            if corrected_material_smoke:
+                require(report['optimizer_calls_completed']==2 and len(report.get('updates',[]))==2 and not list(run.checkpoints.iterdir()),
+                        'Corrected material smoke did not stop at two original optimizer returns')
+                require(not any(q.is_file() for q in run.output('renders').rglob('*')),'Corrected smoke reached validation/NVS')
             baseline(p['stage'],p['scientific_commit'])
+            if p['stage']=='material':
+                require(identity(p.get('material_variant','A_original'),p['configuration'])==source_context['material_implementation'],
+                        'Material derivative source/identity changed during execution')
             require(digest(ROOT/'scientific_sources/manifest-v1.json')==source_context['source_manifest_sha256'] and
                     infrastructure_identity()==source_context['infrastructure_files'],'Source manifest/infrastructure changed')
-            report.update(status='complete',phase='bounded_stop_after_second_optimizer_return' if p['stage']=='geometry' or bounded_material else 'training_complete',
+            report.update(status='complete',phase='bounded_stop_after_second_optimizer_return' if p['stage']=='geometry' or bounded_material or corrected_material_smoke else 'training_complete',
                           finished_at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat())
             report['output_hashes']={q.relative_to(run.root).as_posix():digest(q) for q in run.root.rglob('*')
                 if q.is_file() and q.resolve()==q and q!=run.output('stage-run.json') and '.experiment.json'!=q.name

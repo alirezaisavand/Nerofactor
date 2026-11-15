@@ -1,0 +1,76 @@
+{
+  "asset_inventory": "docs/evidence/PAPER_BENCHMARK_E10_ASSET_INVENTORY_V1.json",
+  "camera_source": "hash-pinned original calibration; numeric/trust review pending; no pickle loading in E10",
+  "execution_authorized": false,
+  "first_panel": {
+    "arms": [
+      "A_original",
+      "A_estimator_v1",
+      "A_corrected_core_v1"
+    ],
+    "indirect": "zero_bounce_v1",
+    "known_lighting": true,
+    "objective": "original native sRGB Charbonnier, not E9 linear MSE",
+    "priors": false,
+    "seed": 6033,
+    "target_family": "Kurt-a0-metallic-additive-v1",
+    "updates_each": 2000
+  },
+  "first_scene": "bell",
+  "generated_artifacts": {
+    "dataset": null,
+    "independent_generation_report": null,
+    "labels": null,
+    "oracle_admission": null,
+    "safe_calibration_archive": null
+  },
+  "geometry_policy": "benchmark-defined immutable oracle surface; no new G provenance",
+  "material_field": {
+    "Q_world": "a^2*(I-n*nT)+b^2*((I-n*nT)*normalize(grain))*((I-n*nT)*normalize(grain))T",
+    "RGB": [
+      ".35+.08*q_x",
+      ".50+.06*q_y",
+      ".20+.04*q_z"
+    ],
+    "a": ".23+.03*q_x",
+    "b": ".35+.03*q_y",
+    "coordinates": "q=(p-bbox_center)/(max_bbox_extent/2); no mesh/camera transform",
+    "grain": [
+      1,
+      2,
+      3
+    ],
+    "metallic": ".25+.05*sin(pi*q_x)*cos(pi*q_y)",
+    "orientation": "Derived from physical tensor/native T/B; undefined at isotropy, not scored as zero"
+  },
+  "native_execution_completed": false,
+  "protocol": "paper-anisotropic-object-benchmark-e10-v1-draft",
+  "reference_generation_completed": false,
+  "reserve_scene": "cat",
+  "resolution": [
+    128,
+    128
+  ],
+  "schema_version": 1,
+  "separate_physical_variant": {
+    "arm": "A_energy_budget_v1",
+    "inverse_comparison_authorized": false,
+    "target_family": "Kurt-a0-convex-budget-v1"
+  },
+  "split": {
+    "held_views": [
+      "11",
+      "105",
+      "114",
+      "17",
+      "76"
+    ],
+    "historical_thesis_attribution": false,
+    "policy": "A private mirror seed6033 over ordered0..127",
+    "train_count": 122,
+    "validation": [
+      "58"
+    ]
+  },
+  "status": "preparation_only_missing_generated_data"
+}

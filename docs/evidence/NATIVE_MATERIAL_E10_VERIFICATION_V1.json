@@ -1,0 +1,523 @@
+{
+  "GPU_or_Docker_execution": false,
+  "JUnit_inventory": [
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_native_shader_path_trace_lighting_rgb_and_backward",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_shader_full_path_autograd_matches_local_finite_differences",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_invalid_raw_orientation_fails_before_light_queries_and_without_update[raw0]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_invalid_raw_orientation_fails_before_light_queries_and_without_update[raw1]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_frames_are_orthonormal_at_negative_axis_and_regular_points[encoding0]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_frames_are_orthonormal_at_negative_axis_and_regular_points[encoding1]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_frames_are_orthonormal_at_negative_axis_and_regular_points[encoding2]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_frames_are_orthonormal_at_negative_axis_and_regular_points[encoding3]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_frames_are_orthonormal_at_negative_axis_and_regular_points[encoding4]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_periodicity_axis_swap_and_original_reference_seam_are_not_hidden",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_diffuse_midpoints_constant_and_directional_moments",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_total_count_specular_expectation_against_independent_directional_integration[widths0-0]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_total_count_specular_expectation_against_independent_directional_integration[widths1-80]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_uniform_endpoint_and_zero_draw_grazing_are_finite_not_clipped_to_eps_ring",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_unconditional_priors_repeat_invariant_and_direct_gradient_scope",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_configuration_single_owner_and_explicit_prior_versions",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_variant_checkpoint_tags_strict_loading_and_registry_geometry_unchanged",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_anisotropic_export_Q_and_relighting_use_native_visibility_and_cleanup",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_actual_shader_axis_swap_with_explicit_world_sample_coupling",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_energy_prior_autograd_reaches_roughness_through_actual_native_shader",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_estimator_only_preserves_legacy_decoder_and_prior_diagnostics",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_actual_shader_material_boundaries_have_finite_gradients[0.04-0.0-0.0]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_actual_shader_material_boundaries_have_finite_gradients[1.0-1.0-1.0]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_orientation_overflow_and_renderer_failure_do_not_leave_runtime_mutations",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_known_illumination_preserves_native_BVH_but_has_no_learned_light_gradients",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_original_known_light_comparator_retains_exact_original_math_method_objects",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_nonfinite_backward_is_rejected_before_any_optimizer_or_weight_change",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_near_parallel_explicit_tangent_source_rejected_without_nonunit_frame",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_energy_budget_only_changes_specular_allocation_with_finite_native_gradients",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_energy_bound_pairing_inequality_and_independent_directional_integration",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_incompatible_tensor_catalog_is_rejected_before_weight_copy[dtype]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_incompatible_tensor_catalog_is_rejected_before_weight_copy[shape]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_incompatible_tensor_catalog_is_rejected_before_weight_copy[missing]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_incompatible_tensor_catalog_is_rejected_before_weight_copy[nan]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_actual_shader_negative_axis_has_finite_forward_and_backward[0.0]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_actual_shader_negative_axis_has_finite_forward_and_backward[0.0001]",
+    "paper.Nerofactor-3d2-e2a.tests.scientific.test_native_material_a_e10::test_actual_shader_negative_axis_has_finite_forward_and_backward[-0.0001]",
+    "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_variants_e10::test_explicit_native_variant_plan_resolves_original_inputs_and_preserves_schedule[A_corrected_core_v1-bell]",
+    "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_variants_e10::test_explicit_native_variant_plan_resolves_original_inputs_and_preserves_schedule[A_corrected_core_v1-bear]",
+    "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_variants_e10::test_explicit_native_variant_plan_resolves_original_inputs_and_preserves_schedule[A_estimator_v1-bell]",
+    "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_variants_e10::test_original_A_plan_and_defaults_are_unchanged",
+    "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_variants_e10::test_variant_mismatch_geometry_and_research_handoff_fail_closed",
+    "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_variants_e10::test_cold_plan_does_not_import_torch_or_scientific_modules",
+    "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_variants_e10::test_oracle_benchmark_is_separate_from_G_handoff_and_requires_complete_generated_evidence",
+    "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_variants_e10::test_original_oracle_benchmark_does_not_install_corrected_mathematics",
+    "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_variants_e10::test_known_light_three_arm_benchmark_has_identical_data_objective_budget_and_light[A_original-original]",
+    "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_variants_e10::test_known_light_three_arm_benchmark_has_identical_data_objective_budget_and_light[A_estimator_v1-estimator]",
+    "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_variants_e10::test_known_light_three_arm_benchmark_has_identical_data_objective_budget_and_light[A_corrected_core_v1-core]",
+    "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_variants_e10::test_known_light_cannot_train_on_historical_images_without_generated_oracle_admission",
+    "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_variants_e10::test_native_prior_candidate_is_explicit_and_independent_of_spatial_change_gate",
+    "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_variants_e10::test_separate_energy_model_requires_matching_ground_truth_family_and_configuration",
+    "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_variants_e10::test_candidate_configs_fail_closed_in_legacy_dispatch_without_modifying_legacy_entry",
+    "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_smoke.PlanningTests::test_original_bear_configuration_no_overrides_and_cpu_only_preflight",
+    "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_smoke.PlanningTests::test_default_research_execution_still_requires_G_handoff",
+    "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_smoke.PlanningTests::test_bounded_orchestration_reuses_output_failure_and_cleanup_framework"
+  ],
+  "base_commit": "c5db1693625044e80bbd518bfc6fc0aa59bcb520",
+  "decision": "FIX AND PROCEED",
+  "errors": 0,
+  "execution_authorized": false,
+  "exit_code": 0,
+  "experiment_optimizer_returns": 0,
+  "failed": 0,
+  "files": {
+    "AGENTS.md": {
+      "bytes": 76406,
+      "path": "AGENTS.md",
+      "sha256": "a23df1f17a28bb1222557c74b840da8a3f6bc83c036fae7c7a426f84a6f9e026"
+    },
+    "configs/experiments/material_a_bear_core_v1.yaml": {
+      "bytes": 225,
+      "path": "configs/experiments/material_a_bear_core_v1.yaml",
+      "sha256": "29afe0be2f79188ffe5a49bf50e76244f457478fcdad9a930263ba964ba30b3d"
+    },
+    "configs/experiments/material_a_bell_core_known_v1.yaml": {
+      "bytes": 236,
+      "path": "configs/experiments/material_a_bell_core_known_v1.yaml",
+      "sha256": "deda9bbc4b0d2fcafb7ab41458f34e45cc830393475b08adbd3d2ce8fdfd56b9"
+    },
+    "configs/experiments/material_a_bell_core_prior_candidate_v1.yaml": {
+      "bytes": 246,
+      "path": "configs/experiments/material_a_bell_core_prior_candidate_v1.yaml",
+      "sha256": "1304a235c43e831b47a4a18aa7531c5d737e7132efef12e5d882c6b119f7e0da"
+    },
+    "configs/experiments/material_a_bell_core_v1.yaml": {
+      "bytes": 230,
+      "path": "configs/experiments/material_a_bell_core_v1.yaml",
+      "sha256": "ae229d46c001335435fec9c2adb9adc6790efb35db4933cb9a52e862cfc687a1"
+    },
+    "configs/experiments/material_a_bell_energy_budget_known_v1.yaml": {
+      "bytes": 245,
+      "path": "configs/experiments/material_a_bell_energy_budget_known_v1.yaml",
+      "sha256": "9981a5bdcf260bef502d7e3f7b08b11053c639b8e83d3cc5ebaa58ed59e2223b"
+    },
+    "configs/experiments/material_a_bell_estimator_known_v1.yaml": {
+      "bytes": 241,
+      "path": "configs/experiments/material_a_bell_estimator_known_v1.yaml",
+      "sha256": "e17ebbae2d4d738926da4dd690f741e348385f0d81d57626e316f18f2d762345"
+    },
+    "configs/experiments/material_a_bell_estimator_v1.yaml": {
+      "bytes": 235,
+      "path": "configs/experiments/material_a_bell_estimator_v1.yaml",
+      "sha256": "d9d277b29274a8079a9ea10d544aa925eb9c65f8e81536ff222a741635953305"
+    },
+    "configs/experiments/material_a_bell_original_data_v1.yaml": {
+      "bytes": 239,
+      "path": "configs/experiments/material_a_bell_original_data_v1.yaml",
+      "sha256": "60226f07d2bc36f00cdd8b29d08727d77509fcd491e1010b9abedee3af44afad"
+    },
+    "configs/experiments/material_a_bell_original_known_v1.yaml": {
+      "bytes": 240,
+      "path": "configs/experiments/material_a_bell_original_known_v1.yaml",
+      "sha256": "bca2d7db050c06171857e52f917d05bf22f218b8ea73f8d551deb0a293742907"
+    },
+    "configs/material_corrected/bear_core_v1.yaml": {
+      "bytes": 1133,
+      "path": "configs/material_corrected/bear_core_v1.yaml",
+      "sha256": "e3b7b1d271f3630700d5e886aeeccbb5b5c2cb059db62815f7837f476c8c1d47"
+    },
+    "configs/material_corrected/bell_core_known_v1.yaml": {
+      "bytes": 1470,
+      "path": "configs/material_corrected/bell_core_known_v1.yaml",
+      "sha256": "872a57902b3ebf9d84821876006b447c89e74a135004ec751fd760e8f1a06406"
+    },
+    "configs/material_corrected/bell_core_prior_candidate_v1.yaml": {
+      "bytes": 1124,
+      "path": "configs/material_corrected/bell_core_prior_candidate_v1.yaml",
+      "sha256": "920ca1488f1a3cb95fc2412f6896a3432cc0140a2cb9e70e31e2c584f214b8da"
+    },
+    "configs/material_corrected/bell_core_v1.yaml": {
+      "bytes": 1101,
+      "path": "configs/material_corrected/bell_core_v1.yaml",
+      "sha256": "8a3ab03b4c98936e46b4d3f48e4c9f9624f3b7a3077b69e8e33757fc81a9115a"
+    },
+    "configs/material_corrected/bell_energy_budget_known_v1.yaml": {
+      "bytes": 1485,
+      "path": "configs/material_corrected/bell_energy_budget_known_v1.yaml",
+      "sha256": "e2c4db66e6feb3c5360edd3e1aeb486a6f6b36da7f9a84679ccd052cb4e4f143"
+    },
+    "configs/material_corrected/bell_estimator_known_v1.yaml": {
+      "bytes": 1470,
+      "path": "configs/material_corrected/bell_estimator_known_v1.yaml",
+      "sha256": "6007326640757dedd381bc14ccd77b30d7f3bd838eea9cf281a5837e29c5ff7d"
+    },
+    "configs/material_corrected/bell_estimator_v1.yaml": {
+      "bytes": 1099,
+      "path": "configs/material_corrected/bell_estimator_v1.yaml",
+      "sha256": "a00c966d09e9fdb282f1c37b0e2deb5af2a46d6590dd2e125b1842b33bb94b8b"
+    },
+    "configs/material_corrected/bell_original_data_v1.yaml": {
+      "bytes": 998,
+      "path": "configs/material_corrected/bell_original_data_v1.yaml",
+      "sha256": "488361c428e3cdc305c18fec545c98168dce2e9d3028fff5d7fe5082e71db4f2"
+    },
+    "configs/material_corrected/bell_original_known_v1.yaml": {
+      "bytes": 1350,
+      "path": "configs/material_corrected/bell_original_known_v1.yaml",
+      "sha256": "79c6204a3c2ae8890941d8fa119ce582aa055398cd810751c80bef4f8bc48713"
+    },
+    "docs/NATIVE_MATERIAL_A_CORRECTIONS_E10.md": {
+      "bytes": 19104,
+      "path": "docs/NATIVE_MATERIAL_A_CORRECTIONS_E10.md",
+      "sha256": "12ee97320930844ed7dc2a579c2ea84e51427b0b529d9b875c0ab5f6bbaf2d3d"
+    },
+    "docs/evidence/PAPER_BENCHMARK_E10_ASSET_INVENTORY_V1.json": {
+      "bytes": 62685,
+      "path": "docs/evidence/PAPER_BENCHMARK_E10_ASSET_INVENTORY_V1.json",
+      "sha256": "02420ed6751aaadcb38f555a4533d1bca75422952597233597194f56cce8fd35"
+    },
+    "docs/evidence/native_material_e10_v1/exit-code.txt": {
+      "bytes": 2,
+      "path": "docs/evidence/native_material_e10_v1/exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "docs/evidence/native_material_e10_v1/launcher.py": {
+      "bytes": 1316,
+      "path": "docs/evidence/native_material_e10_v1/launcher.py",
+      "sha256": "df3df5b2b35c52d9d19617fcf5b72561b01cb839643694b3786b89c9d9424916"
+    },
+    "docs/evidence/native_material_e10_v1/pytest.xml": {
+      "bytes": 16533,
+      "path": "docs/evidence/native_material_e10_v1/pytest.xml",
+      "sha256": "c52c5f42252af88b334eb04e02c1cdffbab52de5c1a2abc8e36939ead3895aba"
+    },
+    "docs/evidence/native_material_e10_v1/stdout.txt": {
+      "bytes": 976,
+      "path": "docs/evidence/native_material_e10_v1/stdout.txt",
+      "sha256": "eda44360953ababc4991239a6afd66797f7d4ebe615562367e45a02d8aa6e804"
+    },
+    "docs/protocols/PAPER_ANISOTROPIC_BENCHMARK_E10_V1.json": {
+      "bytes": 2158,
+      "path": "docs/protocols/PAPER_ANISOTROPIC_BENCHMARK_E10_V1.json",
+      "sha256": "426c5889880b5380d4bdae78146a4be09a992308c8ef1daf64b21ab4fcb9186a"
+    },
+    "docs/protocols/PAPER_ANISOTROPIC_BENCHMARK_E10_V1.md": {
+      "bytes": 14990,
+      "path": "docs/protocols/PAPER_ANISOTROPIC_BENCHMARK_E10_V1.md",
+      "sha256": "d0d894d4e5acd1290181409deecf320339148d728ae3783ffd717c6d2e5dd850"
+    },
+    "infrastructure/corrected_material_smoke.py": {
+      "bytes": 4526,
+      "path": "infrastructure/corrected_material_smoke.py",
+      "sha256": "9e54e8232f938e81ff41ce6bd16f4bd42cbb97487d8348074780b8c5abda9818"
+    },
+    "infrastructure/material_variants.py": {
+      "bytes": 11231,
+      "path": "infrastructure/material_variants.py",
+      "sha256": "d107454efd25c3489f30f962c9c5325414f11f779165eb0d8765bb02c93309f4"
+    },
+    "infrastructure/stage_execution.py": {
+      "bytes": 21997,
+      "path": "infrastructure/stage_execution.py",
+      "sha256": "c582e3fefa223efac9e07d2cfcd8738b09948c01d7a4479c6b68f33d5859e546"
+    },
+    "run_stage_experiment.py": {
+      "bytes": 4152,
+      "path": "run_stage_experiment.py",
+      "sha256": "c2fc301c5c04bddeb2841f0d021be2e3c9c2bb1b4d24eac2281f69652b5d6725"
+    },
+    "scientific_variants/__init__.py": {
+      "bytes": 100,
+      "path": "scientific_variants/__init__.py",
+      "sha256": "ccf218a2cc95b2b6501db4b1efde3afb0fef57274ffc812db560e2666eb6ed64"
+    },
+    "scientific_variants/material_a_v1.py": {
+      "bytes": 20738,
+      "path": "scientific_variants/material_a_v1.py",
+      "sha256": "52603dc041920f7220748c9114f8293ad2499f778ffd688ef639bbe4e8759875"
+    },
+    "tests/infrastructure/test_material_variants_e10.py": {
+      "bytes": 10855,
+      "path": "tests/infrastructure/test_material_variants_e10.py",
+      "sha256": "b4eb4017a9e311812c544e294ba4d0721f9b128e627ec616e1d15293823ec175"
+    },
+    "tests/scientific/test_native_material_a_e10.py": {
+      "bytes": 25503,
+      "path": "tests/scientific/test_native_material_a_e10.py",
+      "sha256": "b1a5997e335cb231fd488119019846d0739292a1529d8de5d69ae86914366e60"
+    }
+  },
+  "implementation_bundle_recipe": "SHA256 UTF8 json.dumps(source_sha256,sort_keys=True,separators=(comma,colon))",
+  "implementation_bundle_sha256": "0b46199db5473f85f8df47a80cbd780794853571e682a97fc50d6592f15d1c06",
+  "native_import_blocker_verified": true,
+  "new_test_cases": 52,
+  "numerical_fixture_properties": {
+    "test_energy_bound_pairing_inequality_and_independent_directional_integration": {
+      "directional_integrals": "18",
+      "largest_independently_integrated_budget_reflectance": "0.9980667488129495"
+    },
+    "test_shader_full_path_autograd_matches_local_finite_differences": {
+      "maximum_absolute_local_gradient_error": "7.884949445724487e-05"
+    },
+    "test_total_count_specular_expectation_against_independent_directional_integration[widths0-0]": {
+      "independent_integral": "0.027254501946337474",
+      "specular_estimate": "0.027233267202973366",
+      "two_grid_difference": "1.2836953722228372e-16"
+    },
+    "test_total_count_specular_expectation_against_independent_directional_integration[widths1-80]": {
+      "independent_integral": "0.016179908561068667",
+      "specular_estimate": "0.01614239066839218",
+      "two_grid_difference": "4.5102810375396984e-17"
+    }
+  },
+  "passed": 55,
+  "phase": "E10 implementation and benchmark preparation only",
+  "preliminary_engineering_records": [
+    {
+      "bytes": 13487,
+      "path": "/home/isavand/paper/evidence/material-e10-preliminary-tests-v1/nerofactor-e10-test-energy.xml",
+      "sha256": "230eff28ba86f6869e4e1be16eeb76a8f77e550de9957c7f5837a8ac2cf8d54f"
+    },
+    {
+      "bytes": 7339,
+      "path": "/home/isavand/paper/evidence/material-e10-preliminary-tests-v1/nerofactor-e10-test-fifth.xml",
+      "sha256": "d1b5fc91740952f300db4401f4d6d8acbadeccc11362ef2fc2758981a4f51635"
+    },
+    {
+      "bytes": 6849,
+      "path": "/home/isavand/paper/evidence/material-e10-preliminary-tests-v1/nerofactor-e10-test-fourth.xml",
+      "sha256": "0a240705ac54cbc7b5264e1bc51cbbcb32539f57d838710c700e288c9d538b89"
+    },
+    {
+      "bytes": 4996,
+      "path": "/home/isavand/paper/evidence/material-e10-preliminary-tests-v1/nerofactor-e10-test-initial.xml",
+      "sha256": "5750164cc239b41b686475b51b3162d1c668536cc2d252e7cdc35225a1552ea7"
+    },
+    {
+      "bytes": 5140,
+      "path": "/home/isavand/paper/evidence/material-e10-preliminary-tests-v1/nerofactor-e10-test-second.xml",
+      "sha256": "9de1a17a267f3af62fb0af8da9f3a2f286bc6642c5d9b57b5e0e530ed5fd35e4"
+    },
+    {
+      "bytes": 5534,
+      "path": "/home/isavand/paper/evidence/material-e10-preliminary-tests-v1/nerofactor-e10-test-third.xml",
+      "sha256": "8f9f248c519f56265d577514a89364b071887a09ac4e4fdb8a92f1e98c469438"
+    },
+    {
+      "files": [
+        {
+          "bytes": 2,
+          "path": "/home/isavand/paper/evidence/material-e10-preparation-v1/exit-code.txt",
+          "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+        },
+        {
+          "bytes": 1295,
+          "path": "/home/isavand/paper/evidence/material-e10-preparation-v1/launcher.py",
+          "sha256": "f350980f2acf129bd451daa905587075dc706de13ee8b0fa1c08fc5b0c339cd6"
+        },
+        {
+          "bytes": 12409,
+          "path": "/home/isavand/paper/evidence/material-e10-preparation-v1/pytest.xml",
+          "sha256": "ca4856c25b6be0852a26284481034639897b834ce70194fa579b3ec4c6dba95d"
+        },
+        {
+          "bytes": 976,
+          "path": "/home/isavand/paper/evidence/material-e10-preparation-v1/stdout.txt",
+          "sha256": "242e9e5934e80385145ee4de0b090f71b6eba8797191ca54eec6707c3f3f4289"
+        }
+      ],
+      "path": "/home/isavand/paper/evidence/material-e10-preparation-v1",
+      "status": "historical engineering validation, not current-source admission"
+    },
+    {
+      "files": [
+        {
+          "bytes": 2,
+          "path": "/home/isavand/paper/evidence/material-e10-preparation-v2/exit-code.txt",
+          "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+        },
+        {
+          "bytes": 1316,
+          "path": "/home/isavand/paper/evidence/material-e10-preparation-v2/launcher.py",
+          "sha256": "7a5f85ab3e16c186ae47ad459c8d8fedf40483eaff7ee1bba1ac366d00684bde"
+        },
+        {
+          "bytes": 16237,
+          "path": "/home/isavand/paper/evidence/material-e10-preparation-v2/pytest.xml",
+          "sha256": "93947c49fc8a23c289c2d7144239131c984db9509a4ae9a9f4f6c755fa65891c"
+        },
+        {
+          "bytes": 976,
+          "path": "/home/isavand/paper/evidence/material-e10-preparation-v2/stdout.txt",
+          "sha256": "57f2873cb959ea819067c41dd2172025c8426712205d7b750b41cd41083ec398"
+        }
+      ],
+      "path": "/home/isavand/paper/evidence/material-e10-preparation-v2",
+      "status": "historical engineering validation, not current-source admission"
+    },
+    {
+      "files": [
+        {
+          "bytes": 2,
+          "path": "/home/isavand/paper/evidence/material-e10-preparation-v3/exit-code.txt",
+          "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+        },
+        {
+          "bytes": 1316,
+          "path": "/home/isavand/paper/evidence/material-e10-preparation-v3/launcher.py",
+          "sha256": "18bd2c809989e8879a1121e65889f461d6d1c32419a83967962bdab10d3fb6f4"
+        },
+        {
+          "bytes": 16237,
+          "path": "/home/isavand/paper/evidence/material-e10-preparation-v3/pytest.xml",
+          "sha256": "ac3bee0341ae1bd51c98757c6bd90e0b9fecfb26c1ad82aede2c096433ea2d92"
+        },
+        {
+          "bytes": 976,
+          "path": "/home/isavand/paper/evidence/material-e10-preparation-v3/stdout.txt",
+          "sha256": "b497c58ba11ffa984b05da6658803fb591dfb326afdcd20262d43637cfce2230"
+        }
+      ],
+      "path": "/home/isavand/paper/evidence/material-e10-preparation-v3",
+      "status": "historical engineering validation, not current-source admission"
+    },
+    {
+      "files": [
+        {
+          "bytes": 2,
+          "path": "/home/isavand/paper/evidence/material-e10-preparation-v4/exit-code.txt",
+          "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+        },
+        {
+          "bytes": 1316,
+          "path": "/home/isavand/paper/evidence/material-e10-preparation-v4/launcher.py",
+          "sha256": "5625107fb3720444a9a8e113cb70ded9437270ca79eb5cf0dd4a20d862d8b5cf"
+        },
+        {
+          "bytes": 16237,
+          "path": "/home/isavand/paper/evidence/material-e10-preparation-v4/pytest.xml",
+          "sha256": "93ef4ed4b3e3d83f2e7109c6f87459af2089f13e2793b8007b77b4b9c2d59651"
+        },
+        {
+          "bytes": 976,
+          "path": "/home/isavand/paper/evidence/material-e10-preparation-v4/stdout.txt",
+          "sha256": "df723bea2985a4c432f7a4afb1de41dc931e17e49e7f27ea72a6814eb8423470"
+        }
+      ],
+      "path": "/home/isavand/paper/evidence/material-e10-preparation-v4",
+      "status": "historical engineering validation, not current-source admission"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/material-e10-preparation-v5",
+      "status": "Superseded passing engineering validation; raw files/draft preserved unchanged"
+    }
+  ],
+  "previous_tracked_modifications": [
+    "AGENTS.md",
+    "infrastructure/stage_execution.py",
+    "run_stage_experiment.py"
+  ],
+  "protected_previous_paths_unchanged": [
+    "scientific_sources",
+    "experiments",
+    "audits",
+    "network",
+    "dataset",
+    "train",
+    "utils",
+    "run_training.py",
+    "docs/results",
+    "docs/protocols",
+    "docs/evidence",
+    "configs/material",
+    "configs/shape"
+  ],
+  "raw_final_test_root": "/home/isavand/paper/evidence/material-e10-preparation-v6",
+  "real_native_model_constructions": 0,
+  "reference_dataset_targets_generated": 0,
+  "remaining_native_gates": [
+    "admitted generated oracle dataset/GT labels/calibration/normals or attributable G mesh",
+    "researcher review of model semantics and exact native execution budget",
+    "native Python3.8/Torch1.8/GPU initialization/backward/strict roundtrip/relighting validation"
+  ],
+  "reused_engineering_contract_cases": 3,
+  "runtime": {
+    "CUDA_VISIBLE_DEVICES": "",
+    "device": "CPU fixtures only",
+    "numpy": "1.21.5",
+    "python": "3.9.12",
+    "torch": "2.4.0"
+  },
+  "schema_version": 1,
+  "scope": "Core and separate convex energy-budget implementation; no original scientific source/evidence/config rewrite, no new optimizer study",
+  "skipped": 0,
+  "snapshots_preserved": {
+    "geometry": {
+      "commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+      "files": 99
+    },
+    "material": {
+      "commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "files": 106
+    }
+  },
+  "source_sha256": {
+    "configs/experiments/material_a_bear_core_v1.yaml": "29afe0be2f79188ffe5a49bf50e76244f457478fcdad9a930263ba964ba30b3d",
+    "configs/experiments/material_a_bell_core_known_v1.yaml": "deda9bbc4b0d2fcafb7ab41458f34e45cc830393475b08adbd3d2ce8fdfd56b9",
+    "configs/experiments/material_a_bell_core_prior_candidate_v1.yaml": "1304a235c43e831b47a4a18aa7531c5d737e7132efef12e5d882c6b119f7e0da",
+    "configs/experiments/material_a_bell_core_v1.yaml": "ae229d46c001335435fec9c2adb9adc6790efb35db4933cb9a52e862cfc687a1",
+    "configs/experiments/material_a_bell_energy_budget_known_v1.yaml": "9981a5bdcf260bef502d7e3f7b08b11053c639b8e83d3cc5ebaa58ed59e2223b",
+    "configs/experiments/material_a_bell_estimator_known_v1.yaml": "e17ebbae2d4d738926da4dd690f741e348385f0d81d57626e316f18f2d762345",
+    "configs/experiments/material_a_bell_estimator_v1.yaml": "d9d277b29274a8079a9ea10d544aa925eb9c65f8e81536ff222a741635953305",
+    "configs/experiments/material_a_bell_original_data_v1.yaml": "60226f07d2bc36f00cdd8b29d08727d77509fcd491e1010b9abedee3af44afad",
+    "configs/experiments/material_a_bell_original_known_v1.yaml": "bca2d7db050c06171857e52f917d05bf22f218b8ea73f8d551deb0a293742907",
+    "configs/material_corrected/bear_core_v1.yaml": "e3b7b1d271f3630700d5e886aeeccbb5b5c2cb059db62815f7837f476c8c1d47",
+    "configs/material_corrected/bell_core_known_v1.yaml": "872a57902b3ebf9d84821876006b447c89e74a135004ec751fd760e8f1a06406",
+    "configs/material_corrected/bell_core_prior_candidate_v1.yaml": "920ca1488f1a3cb95fc2412f6896a3432cc0140a2cb9e70e31e2c584f214b8da",
+    "configs/material_corrected/bell_core_v1.yaml": "8a3ab03b4c98936e46b4d3f48e4c9f9624f3b7a3077b69e8e33757fc81a9115a",
+    "configs/material_corrected/bell_energy_budget_known_v1.yaml": "e2c4db66e6feb3c5360edd3e1aeb486a6f6b36da7f9a84679ccd052cb4e4f143",
+    "configs/material_corrected/bell_estimator_known_v1.yaml": "6007326640757dedd381bc14ccd77b30d7f3bd838eea9cf281a5837e29c5ff7d",
+    "configs/material_corrected/bell_estimator_v1.yaml": "a00c966d09e9fdb282f1c37b0e2deb5af2a46d6590dd2e125b1842b33bb94b8b",
+    "configs/material_corrected/bell_original_data_v1.yaml": "488361c428e3cdc305c18fec545c98168dce2e9d3028fff5d7fe5082e71db4f2",
+    "configs/material_corrected/bell_original_known_v1.yaml": "79c6204a3c2ae8890941d8fa119ce582aa055398cd810751c80bef4f8bc48713",
+    "infrastructure/corrected_material_smoke.py": "9e54e8232f938e81ff41ce6bd16f4bd42cbb97487d8348074780b8c5abda9818",
+    "infrastructure/material_variants.py": "d107454efd25c3489f30f962c9c5325414f11f779165eb0d8765bb02c93309f4",
+    "infrastructure/stage_execution.py": "c582e3fefa223efac9e07d2cfcd8738b09948c01d7a4479c6b68f33d5859e546",
+    "run_stage_experiment.py": "c2fc301c5c04bddeb2841f0d021be2e3c9c2bb1b4d24eac2281f69652b5d6725",
+    "scientific_variants/__init__.py": "ccf218a2cc95b2b6501db4b1efde3afb0fef57274ffc812db560e2666eb6ed64",
+    "scientific_variants/material_a_v1.py": "52603dc041920f7220748c9114f8293ad2499f778ffd688ef639bbe4e8759875",
+    "tests/infrastructure/test_material_variants_e10.py": "b4eb4017a9e311812c544e294ba4d0721f9b128e627ec616e1d15293823ec175",
+    "tests/scientific/test_native_material_a_e10.py": "b1a5997e335cb231fd488119019846d0739292a1529d8de5d69ae86914366e60"
+  },
+  "static_checks": {
+    "Python38_grammar_files": 9,
+    "YAML_files": 18,
+    "legacy_entry_unchanged": true,
+    "relative_Markdown_links_verified": 87,
+    "shell_syntax": "pass",
+    "whitespace": "pass"
+  },
+  "synthetic_corrected_operator_forwards_and_backwards_executed": true,
+  "synthetic_fixtures_are_not_native_admission": true,
+  "test_evidence": {
+    "exit-code.txt": {
+      "bytes": 2,
+      "original": "/home/isavand/paper/evidence/material-e10-preparation-v6/exit-code.txt",
+      "path": "docs/evidence/native_material_e10_v1/exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "launcher.py": {
+      "bytes": 1316,
+      "original": "/home/isavand/paper/evidence/material-e10-preparation-v6/launcher.py",
+      "path": "docs/evidence/native_material_e10_v1/launcher.py",
+      "sha256": "df3df5b2b35c52d9d19617fcf5b72561b01cb839643694b3786b89c9d9424916"
+    },
+    "pytest.xml": {
+      "bytes": 16533,
+      "original": "/home/isavand/paper/evidence/material-e10-preparation-v6/pytest.xml",
+      "path": "docs/evidence/native_material_e10_v1/pytest.xml",
+      "sha256": "c52c5f42252af88b334eb04e02c1cdffbab52de5c1a2abc8e36939ead3895aba"
+    },
+    "stdout.txt": {
+      "bytes": 976,
+      "original": "/home/isavand/paper/evidence/material-e10-preparation-v6/stdout.txt",
+      "path": "docs/evidence/native_material_e10_v1/stdout.txt",
+      "sha256": "eda44360953ababc4991239a6afd66797f7d4ebe615562367e45a02d8aa6e804"
+    }
+  },
+  "warning_count": 1
+}

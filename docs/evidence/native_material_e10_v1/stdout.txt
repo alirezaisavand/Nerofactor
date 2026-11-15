@@ -1,0 +1,10 @@
+.......................................................                  [100%]
+=============================== warnings summary ===============================
+paper/Nerofactor-3d2-e2a/tests/scientific/test_native_material_a_e10.py::test_orientation_overflow_and_renderer_failure_do_not_leave_runtime_mutations
+  /home/isavand/anaconda3/lib/python3.9/site-packages/torch/__init__.py:955: UserWarning: torch.set_default_tensor_type() is deprecated as of PyTorch 2.1, please use torch.set_default_dtype() and torch.set_default_device() as alternatives. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:432.)
+    _C._set_default_tensor_type(t)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /home/isavand/paper/evidence/material-e10-preparation-v6/pytest.xml -
+55 passed, 1 warning in 14.28s
+E10 native/full-N1/scientific-experiment import blocker verified; only synthetic CPU stand-ins and metadata tests executed

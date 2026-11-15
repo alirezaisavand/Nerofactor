@@ -1,5 +1,29 @@
 # Research and development rules
 
+## E.10 authorization and scientific variants
+
+The current researcher request authorizes E.10 implementation, focused CPU
+synthetic tests, native-entry integration and benchmark preparation from
+`c5db1693625044e80bbd518bfc6fc0aa59bcb520` on
+`feat/neural-material-early-step-e2a`. It supersedes older milestone-status
+restrictions below only within this scope. G/A snapshots, legacy YAML, accepted
+experiments/protocols and evidence remain immutable. New derivatives live under
+`scientific_variants/`, with explicit original/estimator/core/convex-energy-budget identities and
+strict behavior-tagged checkpoint loading. Preserve original-A defaults and G
+selection. Oracle synthetic benchmarks have their own reviewed dataset admission;
+they never satisfy or weaken the research G-to-A handoff.
+
+No new scientific renderer/model experiment, reference production, recovery,
+GPU/native execution or reconstruction is authorized by E.10 preparation. Tiny
+CPU stand-ins may exercise corrected methods/autograd; they are not native
+admission. Obtain one explicit bounded execution approval before such work.
+Keep the separately derived convex-budget model distinct from core; do not
+treat a soft prior as conservation,
+or promote corrected-core to a fully physical/recovery-validated model. Commit
+this implementation/report and attempt one ordinary push; no retries or network
+workarounds. See `docs/NATIVE_MATERIAL_A_CORRECTIONS_E10.md` and the paper
+benchmark proposal. Use `python3` in every Python command.
+
 ## Purpose and methodology
 
 This repository develops NeRO-based geometry reconstruction and anisotropic
