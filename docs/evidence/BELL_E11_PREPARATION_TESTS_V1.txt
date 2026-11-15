@@ -1,0 +1,9 @@
+................................                                         [100%]
+=============================== warnings summary ===============================
+paper/Nerofactor-3d2-e2a/tests/benchmarks/test_bell_e11.py::test_original_A_pinhole_arithmetic_matches_independent_numpy_without_rng
+  /home/isavand/anaconda3/lib/python3.9/site-packages/torch/functional.py:513: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3609.)
+    return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+---------- generated xml file: /tmp/bell-e11-preparation-tests-v1.xml ----------
+32 passed, 1 warning in 1.72s

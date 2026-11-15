@@ -1,0 +1,92 @@
+{
+  "data_only_input_inspection": {
+    "K128_first": [
+      [
+        177.77777099609375,
+        0,
+        64
+      ],
+      [
+        0,
+        177.77777099609375,
+        64
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "camera_shape": [
+      128,
+      3,
+      4
+    ],
+    "consumed_file_identities": 257,
+    "pickle_object_deserialization": false,
+    "rendering": false,
+    "source_mask0_mode": "L",
+    "source_mask0_size": [
+      800,
+      800
+    ],
+    "status": "pass"
+  },
+  "freeze": {
+    "path": "docs/protocols/BELL_ORACLE_GENERATION_E11_V1.freeze.json",
+    "sha256": "4682a6304be08d3f03d525dde10c27ecc90910e9f6581395f8c09bd83d1fb3af"
+  },
+  "limitations": [
+    "Actual camera/mesh/silhouette and normals admission unexecuted",
+    "Real independent reference convergence unexecuted",
+    "Native construction/backward/checkpoint/export/relight not established on new oracle",
+    "Finite two-grid convergence does not prove a statistical bound; additive model not globally passive"
+  ],
+  "native_training": {
+    "authorized": false,
+    "executed": false,
+    "requires_separate_admitted_dataset_review": true
+  },
+  "old_scientific_sources_configs_experiments_evidence_unchanged": true,
+  "protocol": "bell-oracle-e11-preparation-v1",
+  "real_generation": {
+    "authorized": false,
+    "container_output_directory": "/outputs/benchmark",
+    "executed": false,
+    "planned_selected_gpu": "0",
+    "proposed_host_output_directory": "/home/isavand/paper/evidence/bell-oracle-e11-432eb086711a493aa23cf6fa69fb75d2"
+  },
+  "schema_version": 1,
+  "source_identity_files_verified": {
+    "geometry": 99,
+    "material": 106
+  },
+  "static_checks": {
+    "git_diff_check": "pass",
+    "python38_grammar": "pass (fixture)",
+    "shell_syntax": "pass",
+    "source_input_freeze": "38 files verified"
+  },
+  "status": "implementation_ready_real_generation_not_authorized",
+  "tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q -p no:cacheprovider tests/benchmarks/test_bell_e11.py",
+    "console": {
+      "path": "docs/evidence/BELL_E11_PREPARATION_TESTS_V1.txt",
+      "sha256": "93b48b9fcd785a08cb6466d9506c64f1a02de24437663a94b067b70174bfea11"
+    },
+    "counts": {
+      "errors": 0,
+      "failures": 0,
+      "passed": 32,
+      "skipped": 0,
+      "tests": 32
+    },
+    "junit": {
+      "path": "docs/evidence/BELL_E11_PREPARATION_TESTS_V1.xml",
+      "sha256": "c63cfd3b171177f5829ec63a461e257bda6c5cd796540c6f57dfefd8c81e43eb"
+    },
+    "process_exit_code": 0,
+    "python": "3.9 host; Python3.8 AST grammar checked, native Torch1.8 execution remains pending",
+    "scope": "new synthetic CPU fixtures only; no native model/GPU/real asset rendering"
+  }
+}

@@ -1,5 +1,27 @@
 # Research and development rules
 
+## E.11 Bell benchmark and native-admission boundary
+
+The current request authorizes E.11 source/calibration inspection, an independent
+Bell oracle generator, focused synthetic CPU tests and comparison preparation
+from `fd53e6eb29cc7a7764795943e632e1535f2d1296`. This supersedes earlier status
+text only for this scope. Use the E.10 additive family and three original /
+estimator / core arms; retain the separate energy-budget model distinction.
+Data-only interpretation of the bounded reviewed NumPy calibration dialect is
+permitted; never execute original pickle reducers. Preserve originals and frozen
+G/A/E.1–E.10 evidence and protocols. Use python3 for every Python command.
+
+Real benchmark rendering requires ONE explicit approval binding the final source,
+freeze, input identities, resource/work limits and a fresh evidence directory.
+No rendering has been authorized by implementation approval alone. After successful
+rendering and offline verification, native corrected-A execution requires a
+SEPARATE approval admitting the dataset and authorizing exactly two original Adam
+returns through the existing smoke path. No automatic retries, threshold changes,
+2,000-update comparison, new optimizer study or full reconstruction. Do not bypass
+Docker/device restrictions. Commit/push completed preparation and small evidence;
+keep generated datasets/raw outputs outside Git. See
+[the E.11 protocol](docs/protocols/BELL_ORACLE_GENERATION_E11_V1.md).
+
 ## E.10 authorization and scientific variants
 
 The current researcher request authorizes E.10 implementation, focused CPU
