@@ -3,13 +3,47 @@
 No historical-mesh exception. Reuse the accepted trace, resource cleanup, Adam,
 clipping and parameter-change guards. No model imports outside native runtime.
 """
+import inspect
+
 from infrastructure.signatures import require
 from infrastructure.material_smoke import MaterialProbe,GROUPS
 from infrastructure.training_probe import TrainingProbe,parameter_copies,snapshot,optimizer_record,array_record,tensor_copy
 
 
 class CorrectedProbe(MaterialProbe):
+    def prepare_calls(self,renderer,rgb_loss,regularizer,trainer_class,evaluator):
+        """Guard forbidden bodies now; actual shader identity requires lazy init."""
+        require(not hasattr(self,'_binding_types'),'Corrected observer guards already prepared')
+        self._binding_types=(renderer,rgb_loss,regularizer,trainer_class,evaluator)
+        self._binding_count=0
+        self.calls={}
+        self.forbidden={inspect.unwrap(getattr(renderer,n)).__code__ for n in
+                        ('test_step','nvs','predict_materials')}
+        self.forbidden.update(inspect.unwrap(f).__code__ for f in (trainer_class._save_model,evaluator.__call__))
+        self.report['observer_lifecycle']={'guards_prepared_before_run':True,'method_bindings':0}
+        self.persist()
+
+    def event(self,boundary,values):
+        require(hasattr(self,'_binding_types'),'Corrected observer guards were not prepared')
+        if boundary=='initialized':
+            require(self._binding_count==0,'Corrected observer initialized more than once')
+            network=getattr(self.trainer,'network',None)
+            shader=getattr(network,'shader_network',None)
+            require(network is not None and shader is not None,'Original network/shader missing at initialized boundary')
+            renderer,rgb_loss,regularizer,trainer_class,evaluator=self._binding_types
+            require(type(network) is renderer,'Initialized renderer differs from selected registry class')
+            early_guards=self.forbidden.copy()
+            self.bind_calls(type(network),type(shader),rgb_loss,regularizer,trainer_class,evaluator)
+            require(early_guards<=self.forbidden,'Lazy binding removed an early forbidden-call guard')
+            self._binding_count=1
+            self.report['observer_lifecycle']['method_bindings']=1
+            self.persist()
+        elif boundary in ('fresh_restore_gate','iteration','before_forward','before_backward','before_clip','before_optimizer'):
+            require(self._binding_count==1,'Missing initialized observer boundary before training')
+        super().event(boundary,values)
+
     def initialize(self):
+        require(getattr(self,'_binding_count',0)==1,'Corrected observer methods not bound at initialization')
         t=self.trainer;shader=t.network.shader_network
         require(t.train_network is t.network and not t.cfg['multi_gpus'],'Single original A network required')
         require(t.cfg['total_step'] in (100000,2000) and t.cfg['random_seed']==6033 and t.cfg['worker_num']==8 and
@@ -51,11 +85,13 @@ class CorrectedProbe(MaterialProbe):
 
 
 def run_bounded(trainer,science,torch,np,report,persist):
+    from network.renderer import name2renderer
     from network.loss import NeRFRenderLoss,MaterialRegLoss
     from train.trainer import Trainer
     from train.train_valid import ValidationEvaluator
     from infrastructure.bounded_training import TwoUpdateTrace
     probe=CorrectedProbe(trainer,torch,np,report,persist)
-    probe.bind_calls(type(trainer.network),type(trainer.network.shader_network),NeRFRenderLoss,MaterialRegLoss,Trainer,ValidationEvaluator)
+    probe.prepare_calls(name2renderer[trainer.cfg['network']],NeRFRenderLoss,MaterialRegLoss,Trainer,ValidationEvaluator)
     with probe.observe_calls():TwoUpdateTrace(trainer,probe,science/'train/trainer.py').run()
-    require(report['optimizer_calls_completed']==2 and len(report['updates'])==2,'Corrected smoke did not stop after two original returns')
+    require(probe._binding_count==1 and report['optimizer_calls_completed']==2 and len(report['updates'])==2,
+            'Corrected smoke did not bind once and stop after two original returns')

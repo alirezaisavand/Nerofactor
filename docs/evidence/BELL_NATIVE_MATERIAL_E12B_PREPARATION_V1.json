@@ -1,0 +1,148 @@
+{
+  "CPU_toy_steps_are_not_native_acceptance": true,
+  "admission": {
+    "bytes": 98313,
+    "path": "/home/isavand/paper/evidence/bell-oracle-e12-admission-v1/oracle-admission.json",
+    "sha256": "f89fe72d13e9f6d05067b012ff4575852eef26ba35b5b3c072ac236e51e74605"
+  },
+  "authorization_path": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2-authorization.json",
+  "base_commit": "0ea9630eb7cad08a961370f87366282cd812f1f6",
+  "expected_learning_rates": [
+    0,
+    5e-07
+  ],
+  "focused_test_receipt": {
+    "bytes": 2007,
+    "path": "/home/isavand/paper/evidence/material-e12b-lazy-cpu-validation-v1/receipt.json",
+    "sha256": "a75fa60a4a562d9d185276b31cd4bd64f8bc95af55e23eb9beff92e2e852d8fe"
+  },
+  "focused_tests": {
+    "artifacts": [
+      {
+        "bytes": 2141,
+        "path": "/home/isavand/paper/evidence/material-e12b-lazy-cpu-validation-v1/junit.xml",
+        "sha256": "8d265ebd964530d074eade23c1119bc612fc188a8dd600fe09fc0820a7922e6b"
+      },
+      {
+        "bytes": 948,
+        "path": "/home/isavand/paper/evidence/material-e12b-lazy-cpu-validation-v1/console.log",
+        "sha256": "6ab9b789e178e04afaf658282f536b4181d7dcdc6b1fb10ac10dfa0692657686"
+      },
+      {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/material-e12b-lazy-cpu-validation-v1/exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    ],
+    "command": [
+      "python3",
+      "-B",
+      "-m",
+      "pytest",
+      "-p",
+      "no:cacheprovider",
+      "-q",
+      "tests/infrastructure/test_corrected_material_lazy_binding_e12b.py",
+      "--junitxml=/home/isavand/paper/evidence/material-e12b-lazy-cpu-validation-v1/junit.xml"
+    ],
+    "errors": 0,
+    "exit_code": 0,
+    "failures": 0,
+    "inventory": [
+      "test_actual_lazy_run_binds_once_two_returns_and_cleanup",
+      "test_forbidden_bodies_guarded_before_original_run[validation]",
+      "test_forbidden_bodies_guarded_before_original_run[nvs]",
+      "test_forbidden_bodies_guarded_before_original_run[extraction]",
+      "test_forbidden_bodies_guarded_before_original_run[checkpoint]",
+      "test_forbidden_bodies_guarded_before_original_run[evaluator]",
+      "test_missing_lazy_boundary_or_objects_fail_explicitly[network]",
+      "test_missing_lazy_boundary_or_objects_fail_explicitly[shader]",
+      "test_missing_lazy_boundary_or_objects_fail_explicitly[boundary]",
+      "test_pre_backward_failure_preserves_count_and_cleanup"
+    ],
+    "passed": 10,
+    "skipped": 0,
+    "source_files": {
+      "infrastructure/corrected_material_smoke.py": "04926e53effdb36c07db63f5a15f16c8b7f49876574b18b20fdf620535530efc",
+      "tests/infrastructure/test_corrected_material_lazy_binding_e12b.py": "1a022033e75f7bb22b3d4937d3a37e8b8e33b83cc79271b8e6bb861655a4539f"
+    },
+    "tests": 10
+  },
+  "freeze": {
+    "bytes": 10400,
+    "path": "/home/isavand/paper/Nerofactor-3d2-e2a/docs/protocols/BELL_MATERIAL_SMOKE_E12B_V1.freeze.json",
+    "sha256": "54e53195734bfef17275d366f44e894a6c42ab60a8aa4b96dbb71adcddfa8d58"
+  },
+  "historical_source_verification": "Original commits/manifests preserved; old observer verified from Git/source archive; current tree intentionally has one corrected infrastructure file.",
+  "host_admission": "/home/isavand/paper/evidence/bell-oracle-e12-admission-v1/oracle-admission.json",
+  "host_benchmark": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark",
+  "host_output_directory": "/home/isavand/paper/evidence/material-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2",
+  "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "limits": {
+    "backwards": 2,
+    "cpu_threads": 4,
+    "diffuse_samples": 512,
+    "grace_seconds": 30,
+    "host_memory_gib": 64,
+    "optimizer_returns": 2,
+    "pids": 128,
+    "random_seed": 6033,
+    "shader_forwards": 2,
+    "specular_samples": 1024,
+    "train_rays": 512,
+    "wall_seconds": 900,
+    "worker_num": 8
+  },
+  "material_implementation": {
+    "algorithm": "anisotropic-material-A_corrected_core_v1",
+    "base_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+    "derivative_files": {
+      "infrastructure/material_variants.py": "7d3432e5d50bbb9830117153fddc921ecc4016bb23dbb8c750522cd287bedddb",
+      "scientific_variants/__init__.py": "ccf218a2cc95b2b6501db4b1efde3afb0fef57274ffc812db560e2666eb6ed64",
+      "scientific_variants/material_a_v1.py": "52603dc041920f7220748c9114f8293ad2499f778ffd688ef639bbe4e8759875"
+    },
+    "energy_bound_scope": "Normalized even Beckmann NDF/unit geometry/Fresnel in [0,1]; finite sampled radiance is not clamped",
+    "historical_checkpoint_equivalent": false,
+    "ideal_directional_energy_bound_proved": false,
+    "lighting_mode": "known_env_v1",
+    "regularization_version": "disabled_v1",
+    "variant": "A_corrected_core_v1"
+  },
+  "native_execution_authorized": false,
+  "new_native_GPU_execution": false,
+  "new_real_optimizer_updates": 0,
+  "output_allocated": false,
+  "preliminary_test_evidence": {
+    "bytes": 2141,
+    "path": "/home/isavand/paper/evidence/material-e12b-lazy-preliminary.xml",
+    "sha256": "2a895630aba6f8f2314f3ab2eec00e54b0d13fd224015a3fc3562e59ff8554ed"
+  },
+  "preserved_failed_report": {
+    "bytes": 238000,
+    "path": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0/run/stage-run.json",
+    "sha256": "ff1c14755884707d0b3bc6c965218b293cbf11793c68721c5cacd53cfa752abe"
+  },
+  "preserved_old_observer": {
+    "bytes": 4526,
+    "path": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0-source-archive/corrected_material_smoke.py",
+    "sha256": "9e54e8232f938e81ff41ce6bd16f4bd42cbb97487d8348074780b8c5abda9818"
+  },
+  "protocol": "bell-native-core-two-update-e12b-v1",
+  "run_id": "bell-core-e12b-smoke-94fdfd743da34558a6d8be81c8e78aa2",
+  "schema_version": 1,
+  "scientific_commits": {
+    "geometry": "79252178e65914ad1acbc14790b1514f276bfea0",
+    "material": "e1e859779301faced46d6476691e20b546c27ae0"
+  },
+  "source_change_scope": [
+    "infrastructure/corrected_material_smoke.py"
+  ],
+  "static_checks": {
+    "admission_unchanged": true,
+    "bash_syntax": "pass",
+    "old_failure_artifacts_unchanged": true,
+    "python38_AST": "pass",
+    "scientific_snapshots_unchanged": true
+  },
+  "status": "corrected_lazy_observer_prepared_requires_fresh_native_authorization"
+}
