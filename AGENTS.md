@@ -1,5 +1,18 @@
 # Research and development rules
 
+## E.11C backend correction boundary
+
+Current task: prepare only the pinned raytracing predicate sidecar derivative and
+focused CPU fixtures immediately. One explicit researcher approval must bind the
+source/patch/freeze, isolated build, GPU0 microtest, resource caps and fresh evidence
+root before any build or CUDA. After that approval, complete that one build and
+microtest without an extra review cycle; preserve failures and stop on mandatory
+checks. Preserve the original extension/image and frozen G/A. Only on verified
+GPU success may the common backend selection and a fresh Bell generation freeze
+be prepared. Full Bell generation and material training need separate approval.
+See [E.11C protocol](docs/protocols/RAY_BACKEND_E11C_V1.md). Commit/push completed
+code and small reports; keep compiled artifacts outside Git. No security bypass.
+
 ## E.11 Bell benchmark and native-admission boundary
 
 The follow-up authorizes only the confirmed row-major mask-shape correction,

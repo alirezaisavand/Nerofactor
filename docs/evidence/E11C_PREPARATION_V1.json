@@ -1,0 +1,50 @@
+{
+  "accepted_base": "d3ea1a3542b13635afcea54e65b58a38d1c75773",
+  "case_counts": {
+    "bell": 36,
+    "cube": 8,
+    "max_total_native_queries": 1638488,
+    "performance_batch": 32768
+  },
+  "conditional_next_step": "Only after native success: integrate common explicit sidecar selection and create Bell generation v3 freeze with actual binary/image identities",
+  "evidence_root": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b",
+  "freeze": {
+    "path": "docs/protocols/RAY_BACKEND_E11C_V1.freeze.json",
+    "sha256": "f55d193f5d2cc05287da36c73c2a50575cbaa941d71e4324f8f4733286e62925"
+  },
+  "model_or_optimizer_calls": 0,
+  "native_build": false,
+  "native_gpu_test": false,
+  "new_generation": false,
+  "schema_version": 1,
+  "scientific_snapshot_files_verified": {
+    "geometry": 99,
+    "material": 106
+  },
+  "source_staging": {
+    "files": 12,
+    "only_changed_file": "include/raytracing/triangle.cuh",
+    "source_manifest_sha256": "06530456f6b8307322f4b14ed97093b40ba9899ebdec6d855a6ef5feae2e860d",
+    "upstream_commit": "29329268a86921f1c938b05277937369531209a4"
+  },
+  "status": "prepared_no_build_or_cuda_authorized_yet",
+  "tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q -p no:cacheprovider tests/infrastructure/test_ray_backend_e11c.py",
+    "console": {
+      "path": "docs/evidence/E11C_PREPARATION_TESTS_V1.txt",
+      "sha256": "1196fcc587faf3a43365ba4b9470ffaf3a5e4673ba08938f3b710c891eebbead"
+    },
+    "counts": {
+      "errors": 0,
+      "failures": 0,
+      "passed": 11,
+      "skipped": 0,
+      "tests": 11
+    },
+    "exit_code": 0,
+    "junit": {
+      "path": "docs/evidence/E11C_PREPARATION_TESTS_V1.xml",
+      "sha256": "5c093612a5466d90583eb68711da24d840ba2fdec2616a2acd9b924ee4d61454"
+    }
+  }
+}
