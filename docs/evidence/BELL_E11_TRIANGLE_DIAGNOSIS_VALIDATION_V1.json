@@ -1,0 +1,60 @@
+{
+  "candidate_patch": {
+    "active_pipeline_unchanged": true,
+    "compiled_CUDA_correctness": "unexecuted; CPU witness does not prove actual machine instruction path",
+    "expected_header_sha256": "b19bcfba69334ebfa5c788f47f3066953898254a531b9c1fe4d5a2c9a67f19c7",
+    "path": "docker/paper/patches/raytracing-triangle-fp64-v1.patch",
+    "sha256": "73fc52bb2d9de3d88fb12516ee5dad6e3a5edd978f68140ccc2ec0ff2f1a5b9e",
+    "upstream_commit": "29329268a86921f1c938b05277937369531209a4"
+  },
+  "continuation_requirements": [
+    "Separate authorization for a derivative extension/image build and exact saved-ray native microcase",
+    "Pass primitive/shared-edge/miss controls before considering another full generation",
+    "If that passes, new backend binary/image identity and generation freeze/auth/output; preserve old identities",
+    "Keep front-facing threshold/cameras/mesh/normals/material/BRDF/tapes unchanged; same tracing backend in A/B/C"
+  ],
+  "failed_execution_artifacts_unchanged": true,
+  "limitations": [
+    "The exact native traversal/AABB contribution is unresolved",
+    "Float64 promotion is not a general watertightness proof",
+    "Global self-intersection and microcomponent physical interpretation not established"
+  ],
+  "old_generation_sources_and_freezes_unchanged": true,
+  "pinned_sources_verified": {
+    "geometry": 99,
+    "material": 106
+  },
+  "report": {
+    "path": "docs/evidence/BELL_E11_TRIANGLE_DIAGNOSIS_V1.json",
+    "sha256": "9b7204d780177e9bb8a61d6db51b2bab937c57102fa6df2729f30ef1f100a913"
+  },
+  "schema_version": 1,
+  "scientific_scope": {
+    "image_or_dependency_changes": false,
+    "native_compilation": false,
+    "new_GPU_or_image_rendering": false,
+    "new_camera_rays": false,
+    "saved_ray_CPU_intersection_diagnosis": true,
+    "training_or_checkpoint_loading": false
+  },
+  "status": "offline_verified_candidate_patch_native_validation_required",
+  "tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q -p no:cacheprovider tests/benchmarks/test_bell_triangle_diagnostic_e11.py",
+    "console": {
+      "path": "docs/evidence/BELL_E11_TRIANGLE_DIAGNOSIS_TESTS_V1.txt",
+      "sha256": "209308ba5ba5a751915d17528e3512fa12d98e972545fc20b6db2384b80aa10f"
+    },
+    "counts": {
+      "errors": 0,
+      "failures": 0,
+      "passed": 9,
+      "skipped": 0,
+      "tests": 9
+    },
+    "junit": {
+      "path": "docs/evidence/BELL_E11_TRIANGLE_DIAGNOSIS_TESTS_V1.xml",
+      "sha256": "0604a587e67d8201091e7dbb88b4578426cab6d8029edb3b66ab23bce1d393d9"
+    },
+    "process_exit_code": 0
+  }
+}

@@ -1,0 +1,31 @@
+--- a/include/raytracing/triangle.cuh
++++ b/include/raytracing/triangle.cuh
+@@ -27,13 +27,17 @@
+     __host__ __device__ float ray_intersect(const Eigen::Vector3f &ro, const Eigen::Vector3f &rd, Eigen::Vector3f& n) const { // based on https://www.iquilezles.org/www/articles/intersectors/intersectors.htm
+-        Eigen::Vector3f v1v0 = b - a;
+-        Eigen::Vector3f v2v0 = c - a;
+-        Eigen::Vector3f rov0 = ro - a;
+-        n = v1v0.cross( v2v0 );
+-        Eigen::Vector3f q = rov0.cross( rd );
+-        float d = 1.0f/rd.dot( n );
+-        float u = d*-q.dot( v2v0 );
+-        float v = d* q.dot( v1v0 );
+-        float t = d*-n.dot( rov0 );
+-        if( u<0.0f || u>1.0f || v<0.0f || (u+v)>1.0f || t<0.0f) t = 1e6f;
+-        return t; // Eigen::Vector3f( t, u, v );
++        // Predicate-only precision variant. Keep inputs, stored geometry,
++        // returned depth type, normal convention and strict bounds unchanged.
++        n = (b - a).cross(c - a);
++        const Eigen::Vector3d v1v0 = b.cast<double>() - a.cast<double>();
++        const Eigen::Vector3d v2v0 = c.cast<double>() - a.cast<double>();
++        const Eigen::Vector3d rov0 = ro.cast<double>() - a.cast<double>();
++        const Eigen::Vector3d rd64 = rd.cast<double>();
++        const Eigen::Vector3d plane_normal = v1v0.cross(v2v0);
++        const Eigen::Vector3d q = rov0.cross(rd64);
++        double d = 1.0 / rd64.dot(plane_normal);
++        double u = d * -q.dot(v2v0);
++        double v = d * q.dot(v1v0);
++        double t = d * -plane_normal.dot(rov0);
++        if (u<0.0 || u>1.0 || v<0.0 || (u+v)>1.0 || t<0.0) t = 1e6;
++        return static_cast<float>(t);
+     }
