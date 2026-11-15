@@ -1,0 +1,196 @@
+{
+  "admission": {
+    "bytes": 98313,
+    "path": "/home/isavand/paper/evidence/bell-oracle-e12-admission-v1/oracle-admission.json",
+    "sha256": "f89fe72d13e9f6d05067b012ff4575852eef26ba35b5b3c072ac236e51e74605"
+  },
+  "all_existing_physical_files": [
+    {
+      "bytes": 651,
+      "path": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0/console.log",
+      "sha256": "c6b8d464cc734ae6d4af244f4fcfacf3262069598e8a8dcafeba03106ce83dc1"
+    },
+    {
+      "bytes": 64,
+      "path": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0/container.cid",
+      "sha256": "730dc05d578a6f70b85025dfefe9d6db87827ed4b218e4b3d8d62dd47bc9613b"
+    },
+    {
+      "bytes": 2,
+      "path": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0/exit-code.txt",
+      "sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3"
+    },
+    {
+      "bytes": 683,
+      "path": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0/launch.json",
+      "sha256": "6ce5387429c6f2480ba933c6a88942273c4acd5abdfc87da13439ddc86ced5d5"
+    },
+    {
+      "bytes": 88,
+      "path": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0/run/.experiment.json",
+      "sha256": "bda745678d81cb6af1ea6ec5fb858dd02150f204f7e2ec80bb6fdba5cdc6688b"
+    },
+    {
+      "bytes": 24399,
+      "path": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0/run/cache/runtime/matplotlib/fontlist-v330.json",
+      "sha256": "b65d23ad37275cbde9297176fbb0aa3129a813e62188aaa85cf9fb668d7efd8f"
+    },
+    {
+      "bytes": 122174,
+      "path": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0/run/cache/stage-cache-identity.json",
+      "sha256": "c65c8a087be141a24fc1dddf311c36f6eb9cb36868e543e85b1fd588993720a6"
+    },
+    {
+      "bytes": 236,
+      "path": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0/run/config.envelope.yaml",
+      "sha256": "deda9bbc4b0d2fcafb7ab41458f34e45cc830393475b08adbd3d2ce8fdfd56b9"
+    },
+    {
+      "bytes": 1470,
+      "path": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0/run/config.original.yaml",
+      "sha256": "872a57902b3ebf9d84821876006b447c89e74a135004ec751fd760e8f1a06406"
+    },
+    {
+      "bytes": 586,
+      "path": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0/run/logs/console.log",
+      "sha256": "2d61fe2629bbfcc2886827f3044c55844d5a9d36a994a6b719575c782adad31b"
+    },
+    {
+      "bytes": 238000,
+      "path": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0/run/stage-run.json",
+      "sha256": "ff1c14755884707d0b3bc6c965218b293cbf11793c68721c5cacd53cfa752abe"
+    }
+  ],
+  "authorization": {
+    "bytes": 2388,
+    "path": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0-authorization.json",
+    "sha256": "e8621f5059d962b5b11eec2f804ca2eb4e1fbdc00cb6e56eea93b13f7727ba63"
+  },
+  "decision": "BLOCKED_INSTRUMENTATION",
+  "error": "'StageTrainer' object has no attribute 'network'",
+  "error_type": "AttributeError",
+  "execution_commit": "0e3706cf82d8eea0e37fcec0eedd2e7472923263",
+  "exit_code": 2,
+  "freeze": {
+    "bytes": 9346,
+    "path": "/home/isavand/paper/Nerofactor-3d2-e2a/docs/protocols/BELL_MATERIAL_SMOKE_E12_V1.freeze.json",
+    "sha256": "faaffe48071184c495d135b1edae883756e244ed88c824ee0fb3ab45cb53fad4"
+  },
+  "gate_status": {
+    "Adam_state": "not_created",
+    "RGB_loss": "not_executed",
+    "active_gradients": "not_measured",
+    "backward": "not_executed",
+    "checkpoint_files": 0,
+    "loop_resource_cleanup": "not_recorded_observer_not_entered",
+    "native_model_construction": "not_entered",
+    "parameter_displacement": "not_measured",
+    "trainer_constructor": "reached",
+    "training_forward": "not_executed",
+    "two_update_stop": "not_entered",
+    "validation_NVS_files": 0
+  },
+  "host_output_directory": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0",
+  "limitation": "Runtime imports and Trainer constructor succeeded; scientific model/optimizer gates remain unexecuted. No independent Docker-engine cleanup inspection was available.",
+  "native_report": {
+    "bytes": 238000,
+    "path": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0/run/stage-run.json",
+    "sha256": "ff1c14755884707d0b3bc6c965218b293cbf11793c68721c5cacd53cfa752abe"
+  },
+  "new_launch_authorized": false,
+  "optimizer_returns": 0,
+  "phase": "trainer_constructor",
+  "protocol": "bell-native-core-two-update-e12-failure-v1",
+  "ray_backend": {
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "variant": "predicate_fp64"
+  },
+  "readonly_checks": {
+    "AST_lazy_initialization": "pass",
+    "admission_generation_labels_hashes": "pass",
+    "dataset_records": 512,
+    "launch_and_approval_hashes": "pass",
+    "scientific_reexecution": false,
+    "source_hashes": "pass"
+  },
+  "receipt_files": [
+    {
+      "bytes": 683,
+      "path": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0/launch.json",
+      "sha256": "6ce5387429c6f2480ba933c6a88942273c4acd5abdfc87da13439ddc86ced5d5"
+    },
+    {
+      "bytes": 2,
+      "path": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0/exit-code.txt",
+      "sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3"
+    },
+    {
+      "bytes": 651,
+      "path": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0/console.log",
+      "sha256": "c6b8d464cc734ae6d4af244f4fcfacf3262069598e8a8dcafeba03106ce83dc1"
+    },
+    {
+      "bytes": 64,
+      "path": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0/container.cid",
+      "sha256": "730dc05d578a6f70b85025dfefe9d6db87827ed4b218e4b3d8d62dd47bc9613b"
+    }
+  ],
+  "repair_proposed_not_implemented": "Bind actual corrected renderer/shader methods at the original post-network observer initialization boundary, retaining early fail-closed guards and exact two-update trace. Do not move or duplicate native initialization.",
+  "run_id": "bell-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0",
+  "runtime": {
+    "cuda": "11.1",
+    "cudnn_allow_tf32": true,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": false,
+    "default_dtype": "torch.float32",
+    "driver": "NVRM version: NVIDIA UNIX x86_64 Kernel Module  550.163.01  Tue Apr  8 12:41:17 UTC 2025\nGCC version:  gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.3) \n",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "loader_start_method": "fork",
+    "matmul_allow_tf32": true,
+    "num_interop_threads": 16,
+    "num_threads": 4,
+    "packages": {
+      "PyYAML": "6.0.2",
+      "numpy": "1.24.4",
+      "nvdiffrast": "0.3.3",
+      "open3d": "0.16.0",
+      "opencv-python": "4.10.0.84",
+      "scikit-image": "0.21.0",
+      "scipy": "1.10.1",
+      "tensorboardX": "2.6.2.2"
+    },
+    "python": "3.8.10 (default, Mar 18 2025, 20:04:55) \n[GCC 9.4.0]",
+    "torch": "1.8.1+cu111",
+    "torch_cxx11_abi": false
+  },
+  "schema_version": 1,
+  "secondary_two_light_executed": false,
+  "source_identity": {
+    "all_E11D_E11E_E11F_E11G_freezes_unchanged": true,
+    "frozen_files_verified": 64,
+    "original_candidate_and_dataset_unchanged": true,
+    "scientific_snapshots": {
+      "geometry": "79252178e65914ad1acbc14790b1514f276bfea0",
+      "material": "e1e859779301faced46d6476691e20b546c27ae0"
+    },
+    "scientific_sources_modified": false
+  },
+  "status": "failed",
+  "tracked_console": {
+    "original": {
+      "bytes": 651,
+      "path": "/home/isavand/paper/evidence/material-core-e12-smoke-43dc4f8845b14a58b91674c4eaa842c0/console.log",
+      "sha256": "c6b8d464cc734ae6d4af244f4fcfacf3262069598e8a8dcafeba03106ce83dc1"
+    },
+    "tracked": {
+      "bytes": 651,
+      "path": "/home/isavand/paper/Nerofactor-3d2-e2a/results/bell_e12_smoke_failure/console.txt",
+      "sha256": "c6b8d464cc734ae6d4af244f4fcfacf3262069598e8a8dcafeba03106ce83dc1"
+    }
+  },
+  "updates_count": 0,
+  "verification_status": "failed_execution_evidence_verified"
+}

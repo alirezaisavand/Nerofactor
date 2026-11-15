@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/workspace/infrastructure/stage_execution.py", line 273, in execute
+    try:native_run(p,run,report,persist)
+  File "/workspace/infrastructure/stage_execution.py", line 144, in native_run
+    run_bounded(trainer,p['science'],torch,np,report,persist)
+  File "/workspace/infrastructure/corrected_material_smoke.py", line 59, in run_bounded
+    probe.bind_calls(type(trainer.network),type(trainer.network.shader_network),NeRFRenderLoss,MaterialRegLoss,Trainer,ValidationEvaluator)
+AttributeError: 'StageTrainer' object has no attribute 'network'
+AttributeError: 'StageTrainer' object has no attribute 'network'
