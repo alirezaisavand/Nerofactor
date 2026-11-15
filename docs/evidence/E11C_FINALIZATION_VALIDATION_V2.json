@@ -1,0 +1,41 @@
+{
+  "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+  "full_generation_authorized": false,
+  "generation_v3_freeze_sha256": "e32cda8967d386115dfe3c38409b742283706f469e6f86220ed531f256ed99bf",
+  "new_builds": 0,
+  "new_gpu_queries": 0,
+  "new_images": 0,
+  "original_evidence_inventory_sha256": "8d1f40391dda6aefd0cbd270d7c614c52fad317a7896398705ea1bb7c5a31f20",
+  "original_files_unchanged": 83,
+  "remaining_limits": [
+    "No globally watertight guarantee",
+    "No completed Bell dataset or neural material admission",
+    "No standalone old failed-analysis log found; source and nine strict-replay deltas preserved"
+  ],
+  "schema_version": 2,
+  "scientific_snapshot_files_verified": {
+    "geometry": 99,
+    "material": 106
+  },
+  "status": "PROCEED_native_backend_only",
+  "tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q -p no:cacheprovider tests/infrastructure/test_ray_backend_replay_e11c.py tests/infrastructure/test_verified_ray_backend.py tests/infrastructure/test_material_variants_e10.py::test_oracle_benchmark_is_separate_from_G_handoff_and_requires_complete_generated_evidence",
+    "console": {
+      "path": "docs/evidence/E11C_FINALIZATION_TESTS_V2.txt",
+      "sha256": "8828db962b372615395fcaffcbd2827224cadd4b15e2881bbc00046a214a9a93"
+    },
+    "counts": {
+      "errors": 0,
+      "failures": 0,
+      "passed": 26,
+      "skipped": 0,
+      "tests": 26
+    },
+    "exit_code": 0,
+    "junit": {
+      "path": "docs/evidence/E11C_FINALIZATION_TESTS_V2.xml",
+      "sha256": "228b9cc022e4afe3904e5f0f102f4f74dcd7ce13e9f5ae04f381b24154b8c969"
+    }
+  },
+  "training_updates": 0
+}

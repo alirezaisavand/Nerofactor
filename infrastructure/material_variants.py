@@ -133,6 +133,9 @@ def admit_oracle(p,path):
                     generated.get('independent_reference') is True and generated.get('dataset_files')==proof.get('dataset_files') and
                     generated.get('material_labels_sha256')==proof.get('material_labels',{}).get('sha256'),
                     'Incomplete/mismatched independent benchmark generation evidence')
+            from infrastructure.verified_ray_backend import identity as ray_identity
+            require(p.get('ray_backend')=='predicate_fp64' and generated.get('ray_backend')==ray_identity(),
+                    'Oracle dataset and A/B/C must use the same admitted tracing backend')
             if p['configuration']['shader_cfg'].get('illumination_mode')=='known_env_v1':
                 require(generated.get('known_environment')==p['configuration']['shader_cfg']['known_environment'] and
                         generated.get('indirect_mode')=='zero_bounce_v1',

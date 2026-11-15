@@ -1,0 +1,45 @@
+{
+  "authorization_path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240-authorization.json",
+  "commit_binding": "final committed source must be named by the future explicit authorization",
+  "container_output_directory": "/outputs/benchmark",
+  "freeze": {
+    "path": "docs/protocols/BELL_ORACLE_GENERATION_E11_V3.freeze.json",
+    "sha256": "e32cda8967d386115dfe3c38409b742283706f469e6f86220ed531f256ed99bf"
+  },
+  "full_generation_authorized": false,
+  "host_output_directory": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240",
+  "launcher": "benchmarks/run_bell_e11.sh",
+  "native_material_training_authorized": false,
+  "ray_backend": {
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "variant": "predicate_fp64"
+  },
+  "schema_version": 3,
+  "status": "prepared_requires_separate_generation_authorization",
+  "tolerances": {
+    "convergence_relative_l2": 0.002,
+    "convergence_rgb_abs": 0.003,
+    "cpu_depth_abs": 0.0002,
+    "cpu_normal_abs": 0.0002,
+    "intersection_abs": 0.0002,
+    "reprojection_pixels": 0.0002,
+    "rotation_abs": 2e-06,
+    "silhouette_iou_min": 0.9,
+    "unit_normal_abs": 2e-06
+  },
+  "work_limits": {
+    "brdf_direction_evaluations": 35970351104,
+    "cpu_threads": 4,
+    "cuda_allocator_fraction": 0.25,
+    "grace_seconds": 30,
+    "host_memory_gib": 64,
+    "output_bytes": 4294967296,
+    "point_batch": 16,
+    "primary_rays": 2097152,
+    "shadow_directions": 34359738368,
+    "wall_seconds": 7200
+  }
+}

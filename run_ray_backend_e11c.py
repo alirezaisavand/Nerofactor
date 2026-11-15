@@ -113,39 +113,19 @@ def probe(a):
 
 
 def analyze(root):
-    records=[]
-    for stage in ('original','corrected'):
-        folder=root/stage/'out';receipt=json.loads((folder/'completion.json').read_text())
-        require(digest(folder/'probe.json')==receipt['report_sha256'],'Probe report/receipt mismatch')
-        result=json.loads((folder/'probe.json').read_text());records.append(result)
-        for r in result['artifacts']:
-            p=folder/Path(r['path']).name;require(digest(p)==r['sha256'] and p.stat().st_size==r['bytes'],'Native capture hash mismatch')
-        for name,sha in result['input_sha256'].items():require(digest(root.parent/'inputs'/name)==sha,'Staged input changed after native probe')
-        refs=json.loads((root.parent/'inputs/references.json').read_text())
-        with np.load(root.parent/'inputs/panels.npz',allow_pickle=False) as z:
-            for scene in ('bell','cube'):
-                with np.load(folder/(scene+'.npz'),allow_pickle=False) as raw:
-                    computed=compare(z[scene+'_o'],z[scene+'_d'],raw['positions'],raw['raw_normals'],raw['depth'],refs[scene])
-                require(computed==result['cases'][scene],'Native comparisons do not reproduce from captured arrays')
-        require(result['counts']['returned_rays']==LIMITS['max_native_ray_queries']//2,'Incomplete native work')
-    original,corrected=records
-    require(original['commit']==corrected['commit'] and original['freeze_sha256']==corrected['freeze_sha256'],'Cross-backend source/freeze mismatch')
-    require(all(x['passed'] for rows in corrected['cases'].values() for x in rows) or corrected['status']=='fail','Corrected success contradicts captured comparisons')
-    ratio=float(np.median(corrected['performance']['wall_ms'])/np.median(original['performance']['wall_ms']))
-    return dict(status='pass' if original['status']==corrected['status']=='pass' else 'fail',original=original,corrected=corrected,
-        image=json.loads((root/'image.json').read_text()),performance_wall_median_ratio=ratio,substantial_penalty_over_2x=ratio>2,
-        interpretation='Representative sequential same-image API timing, not significance test or whole-generation extrapolation',
-        actual_native_rays=sum(x['counts']['returned_rays'] for x in records),
-        globally_watertight=False,full_generation_authorized=False,material_training_authorized=False)
+    # Versioned file-only replay; native compare/probe/build remain unchanged.
+    from infrastructure.ray_backend_acceptance_e11c import analyze as offline_analyze
+    return offline_analyze(root)
 
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--mode',choices=['build','probe','analyze'],required=True)
     p.add_argument('--backend',choices=['original','predicate_fp64']);p.add_argument('--root',type=Path)
+    p.add_argument('--analysis-output',type=Path,help='New offline report path; never overwrites prior analysis')
     p.add_argument('--freeze',type=Path);p.add_argument('--freeze-sha256');p.add_argument('--authorization',type=Path)
     p.add_argument('--authorization-sha256');p.add_argument('--commit');p.add_argument('--host-root',type=Path);a=p.parse_args()
     if a.mode=='analyze':
-        result=analyze(a.root);json_new(a.root/'comparison.json',result);return 0 if result['status']=='pass' else 1
+        result=analyze(a.root);json_new(a.analysis_output or a.root/'comparison.json',result);return 0 if result['status']=='PROCEED' else 1
     frozen=guarded(a);started=time.monotonic()
     try:
         result=build() if a.mode=='build' else probe(a)

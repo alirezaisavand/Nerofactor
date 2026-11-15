@@ -1,0 +1,672 @@
+{
+  "files": [
+    {
+      "bytes": 1146,
+      "device": 66310,
+      "inode": 109452688,
+      "mtime_ns": 1794717520556927155,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/authorization.json",
+      "sha256": "36015f818e247856cb7c8b2660457ab52b570629e92230459b189241c34ec34c"
+    },
+    {
+      "bytes": 1994,
+      "device": 66310,
+      "inode": 109452690,
+      "mtime_ns": 1794717556221630456,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/codex-preflight.json",
+      "sha256": "8479f6b53a989adb71e63f1a4dc60890209ef0d9a543513ba092e177652211b9"
+    },
+    {
+      "bytes": 1556,
+      "device": 66310,
+      "inode": 109452696,
+      "mtime_ns": 1794717880424015346,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/base-layers.json",
+      "sha256": "fa9f883039c118287e4d379951bd4b3670ee0903d97be7bad15d48789ec1c6a6"
+    },
+    {
+      "bytes": 0,
+      "device": 66310,
+      "inode": 109452701,
+      "mtime_ns": 1794717880436015583,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/build/console.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 64,
+      "device": 66310,
+      "inode": 109452703,
+      "mtime_ns": 1794717880456015976,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/build/container.cid",
+      "sha256": "bf7a51507c4dd48d103f333fb4f292753fe513e6f09b4ae3b5ef546e14e6229a"
+    },
+    {
+      "bytes": 2,
+      "device": 66310,
+      "inode": 109452733,
+      "mtime_ns": 1794717915040696393,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/build/exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 91480,
+      "device": 66310,
+      "inode": 109452722,
+      "mtime_ns": 1794717914364683094,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/build/out/build/.ninja_deps",
+      "sha256": "a54ba88292a44c91c2262aacee6431ffb91d34a3aba834eee04226edfa2f957a"
+    },
+    {
+      "bytes": 277,
+      "device": 66310,
+      "inode": 109452717,
+      "mtime_ns": 1794717914360683015,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/build/out/build/.ninja_log",
+      "sha256": "27b9bef535f10ee691f5350a8023ccd6622d2f799ea0b7110f7ef8ba4376a6d5"
+    },
+    {
+      "bytes": 2378,
+      "device": 66310,
+      "inode": 109452715,
+      "mtime_ns": 1794717882004046434,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/build/out/build/build.ninja",
+      "sha256": "a0a7e45e0dc4614286fabe067d7d07766746bf0351911bb73024688b4497644d"
+    },
+    {
+      "bytes": 15758248,
+      "device": 66310,
+      "inode": 109452726,
+      "mtime_ns": 1794717898528371543,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/build/out/build/inputs/source/src/bindings.o",
+      "sha256": "3a1465169d2aabbf2550b099d8856f710ea3dce22826133b823450e2d9d2b37d"
+    },
+    {
+      "bytes": 55032,
+      "device": 66310,
+      "inode": 109452720,
+      "mtime_ns": 1794717887272150084,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/build/out/build/inputs/source/src/bvh.o",
+      "sha256": "dbdc0af3be9346b7834d3413b574920f35fc4070651ddebcdb7eed1a993b10f9"
+    },
+    {
+      "bytes": 58776,
+      "device": 66310,
+      "inode": 109452724,
+      "mtime_ns": 1794717914348682779,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/build/out/build/inputs/source/src/raytracer.o",
+      "sha256": "fb96d4e388e2fce4028f8e8d529e9a43ad27190ddde355090975ee38a7dcf872"
+    },
+    {
+      "bytes": 11865,
+      "device": 66310,
+      "inode": 109452730,
+      "mtime_ns": 1794717914892693481,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/build/out/build.json",
+      "sha256": "bf751cd3ec089f117411e83f9161b1eb42f3892e94a82fb35b911ac2d45a76a0"
+    },
+    {
+      "bytes": 76675,
+      "device": 66310,
+      "inode": 109452705,
+      "mtime_ns": 1794717914364683094,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/build/out/compile.log",
+      "sha256": "07567baae7fee53cac704245456e88f044e8e6934546148df97f0d44b077f161"
+    },
+    {
+      "bytes": 114,
+      "device": 66310,
+      "inode": 109452732,
+      "mtime_ns": 1794717914892693481,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/build/out/completion.json",
+      "sha256": "e3651f36f31dad0ec0d3a21c37f92dacaffcf476c23c017f921f544fb63bf074"
+    },
+    {
+      "bytes": 9268056,
+      "device": 66310,
+      "inode": 109452728,
+      "mtime_ns": 1794717914704689782,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/build/out/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+      "sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5"
+    },
+    {
+      "bytes": 0,
+      "device": 66310,
+      "inode": 109452827,
+      "mtime_ns": 1794717919744788933,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/corrected/console.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 64,
+      "device": 66310,
+      "inode": 109452829,
+      "mtime_ns": 1794717919808790192,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/corrected/container.cid",
+      "sha256": "1b475b216fc4789ccdfdeb440993867e6e78802af70619ce1e98a350ccc20feb"
+    },
+    {
+      "bytes": 2,
+      "device": 66310,
+      "inode": 109452850,
+      "mtime_ns": 1794717924152875648,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/corrected/exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 1776,
+      "device": 66310,
+      "inode": 109452837,
+      "mtime_ns": 1794717923620865183,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/corrected/out/bell.npz",
+      "sha256": "3395a8f6f6cc841683118bce52f7a3e480d548e9aaf7ac2dbd02562c20b2cc5a"
+    },
+    {
+      "bytes": 110,
+      "device": 66310,
+      "inode": 109452847,
+      "mtime_ns": 1794717923680866363,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/corrected/out/completion.json",
+      "sha256": "c6ce8f0b3df06cdff0b4442fcb3ec54ef6e5f8ce772c82b20762dbf175b94e97"
+    },
+    {
+      "bytes": 992,
+      "device": 66310,
+      "inode": 109452840,
+      "mtime_ns": 1794717923620865183,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/corrected/out/cube.npz",
+      "sha256": "3e41d2ad1a553d32e30d533164e73cc9d6a5849eb95c17eae8124da32754a673"
+    },
+    {
+      "bytes": 472185,
+      "device": 66310,
+      "inode": 109452841,
+      "mtime_ns": 1794717923660865970,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/corrected/out/performance-last.npz",
+      "sha256": "40a594a36763085e54b3dfef1991c627362bb5af1324f0e9ef6bdae5d5a413bb"
+    },
+    {
+      "bytes": 21440,
+      "device": 66310,
+      "inode": 109452844,
+      "mtime_ns": 1794717923680866363,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/corrected/out/probe.json",
+      "sha256": "846178eefd28319d838518edd62e9724b4b02318796aa87010b2e4174f22fd87"
+    },
+    {
+      "bytes": 1630,
+      "device": 66310,
+      "inode": 109452794,
+      "mtime_ns": 1794717915320701901,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/derivative-layers.json",
+      "sha256": "ecafd531ee369cad5719ad82e7a0fb6c0dce11d19db293912a7862d42b758eea"
+    },
+    {
+      "bytes": 2,
+      "device": 66310,
+      "inode": 109452792,
+      "mtime_ns": 1794717915292701350,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/image-build-exit.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 1113,
+      "device": 66310,
+      "inode": 109452790,
+      "mtime_ns": 1794717915284701193,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/image-build.log",
+      "sha256": "bfbf43753f1dde3c3fa5bdbcc6fb901cc75c56f0849cff876cf3fd35a95d4b90"
+    },
+    {
+      "bytes": 233,
+      "device": 66310,
+      "inode": 109452788,
+      "mtime_ns": 1794717915080697179,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/image-context/Dockerfile",
+      "sha256": "1edd4bb0ce4c21e81e75d9a128c4bcd43c49a19865ddf9c460c261fad8d8eacd"
+    },
+    {
+      "bytes": 11865,
+      "device": 66310,
+      "inode": 109452743,
+      "mtime_ns": 1794717915076697101,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/image-context/e11c/build.json",
+      "sha256": "bf751cd3ec089f117411e83f9161b1eb42f3892e94a82fb35b911ac2d45a76a0"
+    },
+    {
+      "bytes": 9268056,
+      "device": 66310,
+      "inode": 109452741,
+      "mtime_ns": 1794717914704689782,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/image-context/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+      "sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5"
+    },
+    {
+      "bytes": 1656,
+      "device": 66310,
+      "inode": 109452786,
+      "mtime_ns": 1794717915076697101,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/image-context/e11c/predicate.patch",
+      "sha256": "73fc52bb2d9de3d88fb12516ee5dad6e3a5edd978f68140ccc2ec0ff2f1a5b9e"
+    },
+    {
+      "bytes": 1061,
+      "device": 66310,
+      "inode": 109452749,
+      "mtime_ns": 1794716252331790984,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/image-context/e11c/source/LICENSE",
+      "sha256": "5d7b1ba932e22dbea220f52ce2cc8827a6ef7b1eca3a5084adf293b5bb20c567"
+    },
+    {
+      "bytes": 4412,
+      "device": 66310,
+      "inode": 109452781,
+      "mtime_ns": 1794716252439793098,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/image-context/e11c/source/LICENSE_NVIDIA",
+      "sha256": "2924da9e4104de4f28528972011e3c2b781b1369db1cf92ddbeebaaab2c03d31"
+    },
+    {
+      "bytes": 7801,
+      "device": 66310,
+      "inode": 109452756,
+      "mtime_ns": 1794716252539795055,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/image-context/e11c/source/include/raytracing/bounding_box.cuh",
+      "sha256": "f09c74a9083f9f7fcf70d243c3ae4663cf42d96c8562a8aa582ef5302732dd3c"
+    },
+    {
+      "bytes": 1877,
+      "device": 66310,
+      "inode": 109452758,
+      "mtime_ns": 1794716252643797092,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/image-context/e11c/source/include/raytracing/bvh.cuh",
+      "sha256": "3977ceefc0d9c98957a271abd9611590332979037f852a8a4b51481bec187fff"
+    },
+    {
+      "bytes": 1478,
+      "device": 66310,
+      "inode": 109452766,
+      "mtime_ns": 1794716252743799049,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/image-context/e11c/source/include/raytracing/common.h",
+      "sha256": "54f13bd295409907ea50796faae0693545e706d0de8b0b219996a1ea7c19fd7e"
+    },
+    {
+      "bytes": 14531,
+      "device": 66310,
+      "inode": 109452762,
+      "mtime_ns": 1794716252847801085,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/image-context/e11c/source/include/raytracing/gpu_memory.h",
+      "sha256": "b614abf0c7ea6dad697beb5eafb0ccdead3c5edbede1e02c9fbac3b314b7dc9d"
+    },
+    {
+      "bytes": 680,
+      "device": 66310,
+      "inode": 109452764,
+      "mtime_ns": 1794716252951803121,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/image-context/e11c/source/include/raytracing/raytracer.h",
+      "sha256": "34177f60302b5805094c8a58f8e19851c54dd350a0afeab6813c7afb8ba3a31e"
+    },
+    {
+      "bytes": 6058,
+      "device": 66310,
+      "inode": 109452769,
+      "mtime_ns": 1794716361953936803,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/image-context/e11c/source/include/raytracing/triangle.cuh",
+      "sha256": "3444c963eb777c9d0e188660ff50d29653fce726928b83a58af2602eece6accb"
+    },
+    {
+      "bytes": 5648,
+      "device": 66310,
+      "inode": 109452747,
+      "mtime_ns": 1794716253167807350,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/image-context/e11c/source/setup.py",
+      "sha256": "7f7e40427d2ed8c1e2658f49b4a2762d1590e68d5ef06b912cbd1022d895f96c"
+    },
+    {
+      "bytes": 377,
+      "device": 66310,
+      "inode": 109452778,
+      "mtime_ns": 1794716253275809464,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/image-context/e11c/source/src/bindings.cpp",
+      "sha256": "2debadd0c93056b6c307f7bc2e362161e479ca47805ff8fef9739651ea948ffe"
+    },
+    {
+      "bytes": 28545,
+      "device": 66310,
+      "inode": 109452775,
+      "mtime_ns": 1794716253383811578,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/image-context/e11c/source/src/bvh.cu",
+      "sha256": "516c257a3f89e66fc863f274fa653e5c206d44a77dccd66aa77fbbd561d263a2"
+    },
+    {
+      "bytes": 1989,
+      "device": 66310,
+      "inode": 109452773,
+      "mtime_ns": 1794716253495813771,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/image-context/e11c/source/src/raytracer.cu",
+      "sha256": "c085c0a2752414c8cef3b8b643d4bbea78bddb79c5c9ec5d9eb39088360c78bb"
+    },
+    {
+      "bytes": 6019,
+      "device": 66310,
+      "inode": 109452784,
+      "mtime_ns": 1794717915076697101,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/image-context/e11c/source-manifest.json",
+      "sha256": "06530456f6b8307322f4b14ed97093b40ba9899ebdec6d855a6ef5feae2e860d"
+    },
+    {
+      "bytes": 3684,
+      "device": 66310,
+      "inode": 109452796,
+      "mtime_ns": 1794717915344702373,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/image.json",
+      "sha256": "c09a32d511f02f123ca11274347960cc9be9c4a3c07c9d613f0543616a566eef"
+    },
+    {
+      "bytes": 0,
+      "device": 66310,
+      "inode": 109452803,
+      "mtime_ns": 1794717915372702924,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/original/console.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 64,
+      "device": 66310,
+      "inode": 109452806,
+      "mtime_ns": 1794717915392703317,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/original/container.cid",
+      "sha256": "cb3691822d7a02f551abebd6ed1411a2e1bad6176438abcdc9018a2fff10ed78"
+    },
+    {
+      "bytes": 2,
+      "device": 66310,
+      "inode": 109452822,
+      "mtime_ns": 1794717919736788776,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/original/exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 1776,
+      "device": 66310,
+      "inode": 109452811,
+      "mtime_ns": 1794717919204778310,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/original/out/bell.npz",
+      "sha256": "57eeed7dddf38bfc95730f1d5e26ba9d003ba439666060364a31f68b3ef36ba5"
+    },
+    {
+      "bytes": 110,
+      "device": 66310,
+      "inode": 109452820,
+      "mtime_ns": 1794717919260779411,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/original/out/completion.json",
+      "sha256": "a13473f0ee4c1d939cbdab727eb061f169567dd5eb8f022917dc899a1cbe1faa"
+    },
+    {
+      "bytes": 992,
+      "device": 66310,
+      "inode": 109452813,
+      "mtime_ns": 1794717919204778310,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/original/out/cube.npz",
+      "sha256": "3e41d2ad1a553d32e30d533164e73cc9d6a5849eb95c17eae8124da32754a673"
+    },
+    {
+      "bytes": 472163,
+      "device": 66310,
+      "inode": 109452815,
+      "mtime_ns": 1794717919244779097,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/original/out/performance-last.npz",
+      "sha256": "85fdc3d3e93814411dc52f346db2d8b10acb23c50564d59f69983cbcb3722cc9"
+    },
+    {
+      "bytes": 21482,
+      "device": 66310,
+      "inode": 109452818,
+      "mtime_ns": 1794717919260779411,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/original/out/probe.json",
+      "sha256": "e2392fde3b4eaa1cfdf660bfe4ab740c681e08d80e471b798c83bb1ae98234be"
+    },
+    {
+      "bytes": 2785,
+      "device": 66310,
+      "inode": 109452639,
+      "mtime_ns": 1794716253599815807,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/git-blobs.json",
+      "sha256": "daec50da2fd4a074c101255098879e299b5055979073315b928949a79c6be9e4"
+    },
+    {
+      "bytes": 1061,
+      "device": 66310,
+      "inode": 109452606,
+      "mtime_ns": 1794716252331790984,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/original/LICENSE",
+      "sha256": "5d7b1ba932e22dbea220f52ce2cc8827a6ef7b1eca3a5084adf293b5bb20c567"
+    },
+    {
+      "bytes": 4412,
+      "device": 66310,
+      "inode": 109452608,
+      "mtime_ns": 1794716252439793098,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/original/LICENSE_NVIDIA",
+      "sha256": "2924da9e4104de4f28528972011e3c2b781b1369db1cf92ddbeebaaab2c03d31"
+    },
+    {
+      "bytes": 7801,
+      "device": 66310,
+      "inode": 109452614,
+      "mtime_ns": 1794716252539795055,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/original/include/raytracing/bounding_box.cuh",
+      "sha256": "f09c74a9083f9f7fcf70d243c3ae4663cf42d96c8562a8aa582ef5302732dd3c"
+    },
+    {
+      "bytes": 1877,
+      "device": 66310,
+      "inode": 109452616,
+      "mtime_ns": 1794716252643797092,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/original/include/raytracing/bvh.cuh",
+      "sha256": "3977ceefc0d9c98957a271abd9611590332979037f852a8a4b51481bec187fff"
+    },
+    {
+      "bytes": 1478,
+      "device": 66310,
+      "inode": 109452617,
+      "mtime_ns": 1794716252743799049,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/original/include/raytracing/common.h",
+      "sha256": "54f13bd295409907ea50796faae0693545e706d0de8b0b219996a1ea7c19fd7e"
+    },
+    {
+      "bytes": 14531,
+      "device": 66310,
+      "inode": 109452619,
+      "mtime_ns": 1794716252847801085,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/original/include/raytracing/gpu_memory.h",
+      "sha256": "b614abf0c7ea6dad697beb5eafb0ccdead3c5edbede1e02c9fbac3b314b7dc9d"
+    },
+    {
+      "bytes": 680,
+      "device": 66310,
+      "inode": 109452626,
+      "mtime_ns": 1794716252951803121,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/original/include/raytracing/raytracer.h",
+      "sha256": "34177f60302b5805094c8a58f8e19851c54dd350a0afeab6813c7afb8ba3a31e"
+    },
+    {
+      "bytes": 5660,
+      "device": 66310,
+      "inode": 109452628,
+      "mtime_ns": 1794716253063805314,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/original/include/raytracing/triangle.cuh",
+      "sha256": "b19bcfba69334ebfa5c788f47f3066953898254a531b9c1fe4d5a2c9a67f19c7"
+    },
+    {
+      "bytes": 5648,
+      "device": 66310,
+      "inode": 109452630,
+      "mtime_ns": 1794716253167807350,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/original/setup.py",
+      "sha256": "7f7e40427d2ed8c1e2658f49b4a2762d1590e68d5ef06b912cbd1022d895f96c"
+    },
+    {
+      "bytes": 377,
+      "device": 66310,
+      "inode": 109452634,
+      "mtime_ns": 1794716253275809464,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/original/src/bindings.cpp",
+      "sha256": "2debadd0c93056b6c307f7bc2e362161e479ca47805ff8fef9739651ea948ffe"
+    },
+    {
+      "bytes": 28545,
+      "device": 66310,
+      "inode": 109452635,
+      "mtime_ns": 1794716253383811578,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/original/src/bvh.cu",
+      "sha256": "516c257a3f89e66fc863f274fa653e5c206d44a77dccd66aa77fbbd561d263a2"
+    },
+    {
+      "bytes": 1989,
+      "device": 66310,
+      "inode": 109452637,
+      "mtime_ns": 1794716253495813771,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/original/src/raytracer.cu",
+      "sha256": "c085c0a2752414c8cef3b8b643d4bbea78bddb79c5c9ec5d9eb39088360c78bb"
+    },
+    {
+      "bytes": 789702,
+      "device": 66310,
+      "inode": 109452677,
+      "mtime_ns": 1794716362645950346,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/panels.npz",
+      "sha256": "2ce8249daee10aedf8e1a05cba75c8f1b8ff9d18831321ab426d234a4155d15f"
+    },
+    {
+      "bytes": 14328,
+      "device": 66310,
+      "inode": 109452679,
+      "mtime_ns": 1794716362653950502,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/references.json",
+      "sha256": "7144302ba97bfe5b32bb2072f9e52390db15b1db0a2132248270fb5936e3c2ae"
+    },
+    {
+      "bytes": 1061,
+      "device": 66310,
+      "inode": 109452646,
+      "mtime_ns": 1794716252331790984,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/source/LICENSE",
+      "sha256": "5d7b1ba932e22dbea220f52ce2cc8827a6ef7b1eca3a5084adf293b5bb20c567"
+    },
+    {
+      "bytes": 4412,
+      "device": 66310,
+      "inode": 109452675,
+      "mtime_ns": 1794716252439793098,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/source/LICENSE_NVIDIA",
+      "sha256": "2924da9e4104de4f28528972011e3c2b781b1369db1cf92ddbeebaaab2c03d31"
+    },
+    {
+      "bytes": 7801,
+      "device": 66310,
+      "inode": 109452651,
+      "mtime_ns": 1794716252539795055,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/source/include/raytracing/bounding_box.cuh",
+      "sha256": "f09c74a9083f9f7fcf70d243c3ae4663cf42d96c8562a8aa582ef5302732dd3c"
+    },
+    {
+      "bytes": 1877,
+      "device": 66310,
+      "inode": 109452653,
+      "mtime_ns": 1794716252643797092,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/source/include/raytracing/bvh.cuh",
+      "sha256": "3977ceefc0d9c98957a271abd9611590332979037f852a8a4b51481bec187fff"
+    },
+    {
+      "bytes": 1478,
+      "device": 66310,
+      "inode": 109452662,
+      "mtime_ns": 1794716252743799049,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/source/include/raytracing/common.h",
+      "sha256": "54f13bd295409907ea50796faae0693545e706d0de8b0b219996a1ea7c19fd7e"
+    },
+    {
+      "bytes": 14531,
+      "device": 66310,
+      "inode": 109452656,
+      "mtime_ns": 1794716252847801085,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/source/include/raytracing/gpu_memory.h",
+      "sha256": "b614abf0c7ea6dad697beb5eafb0ccdead3c5edbede1e02c9fbac3b314b7dc9d"
+    },
+    {
+      "bytes": 680,
+      "device": 66310,
+      "inode": 109452660,
+      "mtime_ns": 1794716252951803121,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/source/include/raytracing/raytracer.h",
+      "sha256": "34177f60302b5805094c8a58f8e19851c54dd350a0afeab6813c7afb8ba3a31e"
+    },
+    {
+      "bytes": 6058,
+      "device": 66310,
+      "inode": 109452663,
+      "mtime_ns": 1794716361953936803,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/source/include/raytracing/triangle.cuh",
+      "sha256": "3444c963eb777c9d0e188660ff50d29653fce726928b83a58af2602eece6accb"
+    },
+    {
+      "bytes": 5648,
+      "device": 66310,
+      "inode": 109452644,
+      "mtime_ns": 1794716253167807350,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/source/setup.py",
+      "sha256": "7f7e40427d2ed8c1e2658f49b4a2762d1590e68d5ef06b912cbd1022d895f96c"
+    },
+    {
+      "bytes": 377,
+      "device": 66310,
+      "inode": 109452673,
+      "mtime_ns": 1794716253275809464,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/source/src/bindings.cpp",
+      "sha256": "2debadd0c93056b6c307f7bc2e362161e479ca47805ff8fef9739651ea948ffe"
+    },
+    {
+      "bytes": 28545,
+      "device": 66310,
+      "inode": 109452671,
+      "mtime_ns": 1794716253383811578,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/source/src/bvh.cu",
+      "sha256": "516c257a3f89e66fc863f274fa653e5c206d44a77dccd66aa77fbbd561d263a2"
+    },
+    {
+      "bytes": 1989,
+      "device": 66310,
+      "inode": 109452668,
+      "mtime_ns": 1794716253495813771,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/source/src/raytracer.cu",
+      "sha256": "c085c0a2752414c8cef3b8b643d4bbea78bddb79c5c9ec5d9eb39088360c78bb"
+    },
+    {
+      "bytes": 6019,
+      "device": 66310,
+      "inode": 109452676,
+      "mtime_ns": 1794716361957936881,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/inputs/source-manifest.json",
+      "sha256": "06530456f6b8307322f4b14ed97093b40ba9899ebdec6d855a6ef5feae2e860d"
+    },
+    {
+      "bytes": 727,
+      "device": 66310,
+      "inode": 109452681,
+      "mtime_ns": 1794716362653950502,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/preparation.json",
+      "sha256": "10e7a008e98ad125cfb993972ad612b0631d19209484ba1f0a4cb3fdb76a47e2"
+    },
+    {
+      "bytes": 534,
+      "device": 66310,
+      "inode": 109452682,
+      "mtime_ns": 1794717234107268995,
+      "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/researcher-launch.sh",
+      "sha256": "9dbde315ec17683a810ae7f599b86c4e2112964e2bec606480132c439d2cb00c"
+    }
+  ],
+  "missing_evidence": "No standalone failed offline-analysis log/report found under this root; previous strict replay failure is researcher-reported and independently recountable from captures.",
+  "root": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b",
+  "schema_version": 1,
+  "scope": "before offline comparator correction; all existing evidence preserved"
+}

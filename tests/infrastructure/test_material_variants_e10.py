@@ -88,7 +88,8 @@ def test_oracle_benchmark_is_separate_from_G_handoff_and_requires_complete_gener
             (scene/name).write_bytes(b'synthetic metadata fixture only; never decoded')
     labels=geometry/'labels.json';labels.write_text('{}\n')
     environment=yaml.safe_load((ROOT/'configs/material_corrected/bell_core_known_v1.yaml').read_text())['shader_cfg']['known_environment']
-    generated=geometry/'generation.json';generated.write_text(json.dumps(dict(known_environment=environment,indirect_mode='zero_bounce_v1',protocol='paper-benchmark-generation-v1',status='complete',database_name='syn/bell',BRDF='Kurt-a0-metallic-additive-v1',mesh_sha256=digest(geometry/'mesh.ply'),independent_reference=True,dataset_files=source_records(scene),material_labels_sha256=digest(labels))))
+    from infrastructure.verified_ray_backend import identity as ray_identity
+    generated=geometry/'generation.json';generated.write_text(json.dumps(dict(ray_backend=ray_identity(),known_environment=environment,indirect_mode='zero_bounce_v1',protocol='paper-benchmark-generation-v1',status='complete',database_name='syn/bell',BRDF='Kurt-a0-metallic-additive-v1',mesh_sha256=digest(geometry/'mesh.ply'),independent_reference=True,dataset_files=source_records(scene),material_labels_sha256=digest(labels))))
     p=stage.plan('material',PINS['material'],'C',data,thesis,out,ROOT/'configs/experiments/material_a_bell_core_known_v1.yaml',ROOT,{'geometry':geometry},material_variant=CORE,oracle_benchmark=True)
     proof=dict(schema_version=1,protocol='paper-anisotropic-oracle-dataset-v1',status='complete',database_name='syn/bell',
         mesh_sha256=digest(geometry/'mesh.ply'),coordinates='fixture world',normals='fixture outward',image_formation='fixture independent linear RGB',
@@ -96,6 +97,15 @@ def test_oracle_benchmark_is_separate_from_G_handoff_and_requires_complete_gener
         generation_report=dict(root='geometry',path='generation.json',sha256=digest(generated)),material_labels=dict(root='geometry',path='labels.json',sha256=digest(labels)),dataset_files=source_records(scene))
     path=geometry/'oracle.json';path.write_text(json.dumps(proof))
     v=admit_oracle(p,path);assert v['research_G_handoff_admitted'] is False
+    with pytest.raises(ValueError,match='same admitted tracing'):
+        admit_oracle({**p,'ray_backend':'original'},path)
+    saved_generated=generated.read_bytes()
+    altered=json.loads(saved_generated);altered['ray_backend']=ray_identity('original')
+    generated.write_text(json.dumps(altered))
+    mismatched=dict(proof,generation_report=dict(root='geometry',path='generation.json',sha256=digest(generated)))
+    path.write_text(json.dumps(mismatched))
+    with pytest.raises(ValueError,match='same admitted tracing'):admit_oracle(p,path)
+    generated.write_bytes(saved_generated);path.write_text(json.dumps(proof))
     for key,value in [('status','pending'),('mesh_sha256','0'*64),('known_material_labels',False),('dataset_files',[])]:
         path.write_text(json.dumps({**proof,key:value}))
         with pytest.raises(ValueError):admit_oracle(p,path)

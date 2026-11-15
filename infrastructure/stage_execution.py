@@ -74,7 +74,8 @@ def plan(stage, commit, arm, datasets, thesis, output, cfg_path=None, config_roo
     return {'stage':stage,'scientific_commit':commit,'science':science,'source':source,'arm':arm,
             'route':'schema-1-pinned-stage' if arm=='C' else 'independent-pinned-legacy-FullLoader',
             'resolver':resolver,'selected':selected,'scene':scene,'configuration':values,'raw':raw,'envelope':envelope,
-            'material_variant':material_variant,'oracle_benchmark':oracle_benchmark}
+            'material_variant':material_variant,'oracle_benchmark':oracle_benchmark,
+            'ray_backend':'predicate_fp64' if oracle_benchmark else 'original'}
 
 
 def native_guards(p, image_id):
@@ -85,7 +86,8 @@ def native_guards(p, image_id):
     for root in [ROOT,*p['resolver'].input_roots.values()]:
         require(os.statvfs(str(root)).f_flag & os.ST_RDONLY,'Read-only source and input mounts required')
     require({line.split(':',1)[0].strip() for line in Path('/proc/net/dev').read_text().splitlines()[2:]}=={'lo'},'No-network runtime required')
-    require(image_id=='sha256:2572950d9f662b7603b604878613e85c1a0fec90842447e9a256751a130ee137','Reviewed image identity required')
+    from infrastructure.verified_ray_backend import image_for
+    require(image_id==image_for(p.get('ray_backend','original')),'Reviewed tracing backend/image identity required')
     if p['stage']=='geometry':require(not any(p['resolver'].input_roots['thesis'].iterdir()),'Geometry smoke requires empty read-only thesis placeholder')
 
 
@@ -113,6 +115,10 @@ def native_run(p,run,report,persist):
             'Reviewed Torch/CUDA runtime and one selected A100 80GB PCIe required')
     import sys
     require(sys.version_info[:2]==(3,8),'Reviewed Python 3.8 runtime required')
+    if p.get('ray_backend','original')=='predicate_fp64':
+        from infrastructure.verified_ray_backend import load as load_ray_backend
+        report['ray_backend']=load_ray_backend('predicate_fp64',report['declared_image_id'])
+        persist()
     from train.trainer import Trainer
     if p['stage']=='material' and (p.get('material_variant','A_original')!='A_original' or
             report['runtime_configuration'].get('shader_cfg',{}).get('illumination_mode')=='known_env_v1'):

@@ -1,5 +1,16 @@
 # Research and development rules
 
+## E.11C offline acceptance finalization
+
+The current task authorizes file-only reanalysis of existing native captures,
+replay tolerance ONLY for finite facing_dot diagnostics, and conditional common
+backend integration plus a fresh Bell freeze. Scientific decisions/thresholds,
+counts and identities remain exact. Preserve all original reports/receipts and
+failed analyses; write a new versioned acceptance report. No rebuild, CUDA, new
+images or training is authorized. Native regression acceptance does not admit
+full Bell generation; that still needs its own explicit authorization. Preserve
+historical backend selection and frozen G/A. Commit and push these changes.
+
 ## E.11C backend correction boundary
 
 Current task: prepare only the pinned raytracing predicate sidecar derivative and

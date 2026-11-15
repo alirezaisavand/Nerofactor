@@ -8,7 +8,7 @@ from infrastructure.stage_sources import ROOT, PINS, baseline, digest
 from audits.bell_calibration_e11 import calibrations
 
 PROTOCOL='bell-oracle-generation-e11-v1'
-IMAGE='sha256:2572950d9f662b7603b604878613e85c1a0fec90842447e9a256751a130ee137'
+from infrastructure.verified_ray_backend import CORRECTED_IMAGE as IMAGE
 MESH='4ea98341ca915cf55f2b37581556583308cc50a8e2d2d8d48140d49224866e01'
 LAW='Kurt-a0-metallic-additive-v1'
 ENV={'ambient':[.08,.08,.08],'lobes':[{'axis':[0,0,1],'RGB':[1.,.8,.6],'power':12},
@@ -149,6 +149,10 @@ def source_paths():
             'benchmarks/run_bell_e11.sh',TAPES,MASKS,INPUT,'scientific_sources/manifest-v1.json',
             'tests/benchmarks/test_bell_e11.py','tests/benchmarks/test_bell_e11_mask_fix.py',
             'docs/protocols/BELL_ORACLE_GENERATION_E11_V1.md','docs/protocols/BELL_ORACLE_GENERATION_E11_V2.md',
+            'docs/protocols/BELL_ORACLE_GENERATION_E11_V3.md','infrastructure/verified_ray_backend.py',
+            'docs/evidence/RAY_BACKEND_E11C_ACCEPTANCE_V2.json','infrastructure/ray_backend_e11c.py',
+            'tests/infrastructure/test_ray_backend_replay_e11c.py','tests/infrastructure/test_verified_ray_backend.py',
+            'tests/infrastructure/test_material_variants_e10.py',
             'docs/protocols/PAPER_ANISOTROPIC_BENCHMARK_E10_V1.md','docs/NATIVE_MATERIAL_A_CORRECTIONS_E10.md',
             'scientific_variants/__init__.py','scientific_variants/material_a_v1.py','run_stage_experiment.py']
     paths+=['infrastructure/'+n+'.py' for n in ('__init__','stage_sources','stage_execution','stage_workspace',

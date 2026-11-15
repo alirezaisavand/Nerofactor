@@ -1,0 +1,255 @@
+{
+  "actual_native_ray_queries": 1638488,
+  "analysis_sources": {
+    "infrastructure/ray_backend_acceptance_e11c.py": "349948cac83e94bbfbbc2b6aadee8797ff4b13ec66a0783937f2234d14b0fd87",
+    "run_ray_backend_e11c.py": "5bf30ae3bf8eecf7089b72ffe9ccd440226f9e1d09ce19c2eb9cdf27ba524b93"
+  },
+  "build_record": {
+    "bytes": 11865,
+    "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/build/out/build.json",
+    "sha256": "bf751cd3ec089f117411e83f9161b1eb42f3892e94a82fb35b911ac2d45a76a0"
+  },
+  "corrected_binary": {
+    "bytes": 9268056,
+    "path": "/outputs/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5"
+  },
+  "corrected_native_report": {
+    "bytes": 21440,
+    "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/corrected/out/probe.json",
+    "sha256": "846178eefd28319d838518edd62e9724b4b02318796aa87010b2e4174f22fd87"
+  },
+  "corrected_reference_matches": 44,
+  "facing_dot_replay_absolute_tolerance": 5.960464477539063e-08,
+  "failed_analysis_evidence_note": "No standalone failed-analysis output file found in original evidence root; original strict-equality failure is independently demonstrated by the nine retained replay deltas. Native reports and all receipts remain unchanged.",
+  "full_generation_authorized": false,
+  "globally_watertight": false,
+  "image": {
+    "base_id": "sha256:2572950d9f662b7603b604878613e85c1a0fec90842447e9a256751a130ee137",
+    "base_layers": [
+      "sha256:6c3e7df31590f02f10cb71fc4eb27653e9b428df2e6e5421a455b062bd2e39f9",
+      "sha256:1faf4c44e1029715fd78bb16a18a9f396ca4282ef9d3a7bbc5bc50d2da3ca756",
+      "sha256:84ae6aa37107e05307c3f0d3b98a37eaf084c43ad9679454e8af86008fd5de14",
+      "sha256:bf219cf788f8826dea0f9c3e2d1afd19344d6c63ae6244159283288e3c97fa66",
+      "sha256:82bfdcac200ddb0fe87e62062bfe8bf341904475e5a0007fe1b779a80afdd4a8",
+      "sha256:8bf49858b2e968bfed5ac58f81675595f0e37aa9d14bc2e5e02ee2d10136e9c4",
+      "sha256:2bce8db24c11b87fa32a4deeebb174f4aea9c01936b81ad3cfa9d9f660e613aa",
+      "sha256:20d0a8d00679043de4d50f781bb30f176b50249fccdf7fc3c1794d685ba106f1",
+      "sha256:952e054dde504ffe2c320f36cf4a9588e3caa9c962ecf7c8c7e6d621fe9903f9",
+      "sha256:5f2c69cb7c9aa59fb487394c99c83645840b2d84249a464e756e14f611be6eee",
+      "sha256:8e00f01c7803e4a2d5f30164dd63609cf53af939acfda33810271bae72a3ddaa",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "sha256:24be79eb08e95395ea435fddefb11adf6f3cfe59e057931cb793e306b447839f",
+      "sha256:e3d302da8df1ab5990eaae33247fc7a014744ae6dea190b5b61b3a2b4fd5b346",
+      "sha256:c1fccba32690558ea0187f7682436633b29cacee6fd7da846cf031f1759b9b8f",
+      "sha256:fc4a3529001296e1171f94a33f8bd30369903f4c1c2fb94a587477126c22688a",
+      "sha256:1273822309873212de2eacdbace26c9f6566386e8af6295f3f717b4934046bc6",
+      "sha256:464e39e5be78c7f914815df53dc2099f36c6636aa76b7ed4eb13aeca6e551f9b",
+      "sha256:0e659e80c205311ceacc68983d09d03ccf0b61f45414b403138d90feed8e1a84",
+      "sha256:b2a3b03d5ae9da872bc2f9cc4dbcfe50aad4a20401932be14535c80be86ad4c2",
+      "sha256:95bc74c304ac50f1b188c288404e80cecfca2f296b1b2858e960ecd2a87f398d"
+    ],
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "layers": [
+      "sha256:6c3e7df31590f02f10cb71fc4eb27653e9b428df2e6e5421a455b062bd2e39f9",
+      "sha256:1faf4c44e1029715fd78bb16a18a9f396ca4282ef9d3a7bbc5bc50d2da3ca756",
+      "sha256:84ae6aa37107e05307c3f0d3b98a37eaf084c43ad9679454e8af86008fd5de14",
+      "sha256:bf219cf788f8826dea0f9c3e2d1afd19344d6c63ae6244159283288e3c97fa66",
+      "sha256:82bfdcac200ddb0fe87e62062bfe8bf341904475e5a0007fe1b779a80afdd4a8",
+      "sha256:8bf49858b2e968bfed5ac58f81675595f0e37aa9d14bc2e5e02ee2d10136e9c4",
+      "sha256:2bce8db24c11b87fa32a4deeebb174f4aea9c01936b81ad3cfa9d9f660e613aa",
+      "sha256:20d0a8d00679043de4d50f781bb30f176b50249fccdf7fc3c1794d685ba106f1",
+      "sha256:952e054dde504ffe2c320f36cf4a9588e3caa9c962ecf7c8c7e6d621fe9903f9",
+      "sha256:5f2c69cb7c9aa59fb487394c99c83645840b2d84249a464e756e14f611be6eee",
+      "sha256:8e00f01c7803e4a2d5f30164dd63609cf53af939acfda33810271bae72a3ddaa",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "sha256:24be79eb08e95395ea435fddefb11adf6f3cfe59e057931cb793e306b447839f",
+      "sha256:e3d302da8df1ab5990eaae33247fc7a014744ae6dea190b5b61b3a2b4fd5b346",
+      "sha256:c1fccba32690558ea0187f7682436633b29cacee6fd7da846cf031f1759b9b8f",
+      "sha256:fc4a3529001296e1171f94a33f8bd30369903f4c1c2fb94a587477126c22688a",
+      "sha256:1273822309873212de2eacdbace26c9f6566386e8af6295f3f717b4934046bc6",
+      "sha256:464e39e5be78c7f914815df53dc2099f36c6636aa76b7ed4eb13aeca6e551f9b",
+      "sha256:0e659e80c205311ceacc68983d09d03ccf0b61f45414b403138d90feed8e1a84",
+      "sha256:b2a3b03d5ae9da872bc2f9cc4dbcfe50aad4a20401932be14535c80be86ad4c2",
+      "sha256:95bc74c304ac50f1b188c288404e80cecfca2f296b1b2858e960ecd2a87f398d",
+      "sha256:0a6065dadc2ec71c774e44613a2b41dd6ea117bc57ef85c1fd042cb89d5ee248"
+    ],
+    "tag": "nerofactor-paper:ray-predicate-fp64-e11c-ffbde4d0e261"
+  },
+  "image_identity_scope": "Inspected researcher-captured immutable ID, layer ancestry and COPY-context binary/source hashes; no Docker or GPU re-execution",
+  "known_ray": {
+    "depth": 2.751337766647339,
+    "depth_abs": 1.6898853871794017e-08,
+    "expected_depth": 2.751337749748485,
+    "expected_hit": true,
+    "facing_dot": 0.9585404992103577,
+    "hit": true,
+    "normal_abs": 2.0607917705639522e-08,
+    "passed": true,
+    "position_abs": 2.9802322387695312e-08,
+    "unit_normal_abs": 0.0
+  },
+  "material_training_authorized": false,
+  "native_freeze_sha256": "f55d193f5d2cc05287da36c73c2a50575cbaa941d71e4324f8f4733286e62925",
+  "native_source_commit": "6af0474dc0167a64ad1dfedcc3b1f5f4dc049ca2",
+  "new_builds": 0,
+  "new_gpu_queries": 0,
+  "original_binary": {
+    "bytes": 9268096,
+    "path": "/usr/local/lib/python3.8/dist-packages/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "sha256": "9cff02fdd0752c17a613874c0f71e47803a666234e5e5046cf194c5646102180"
+  },
+  "original_failure_reproduced": true,
+  "original_native_report": {
+    "bytes": 21482,
+    "path": "/home/isavand/paper/evidence/e11c-ray-backend-ffbde4d0e261491bb097d01fe072883b/execution/original/out/probe.json",
+    "sha256": "e2392fde3b4eaa1cfdf660bfe4ab740c681e08d80e471b798c83bb1ae98234be"
+  },
+  "original_reference_matches": 42,
+  "preservation_manifest": {
+    "path": "/home/isavand/paper/evidence/e11c-offline-acceptance-v2-88e38c0dad564457a85b484f8b0294b7/preservation.json",
+    "sha256": "8d1f40391dda6aefd0cbd270d7c614c52fad317a7896398705ea1bb7c5a31f20"
+  },
+  "protocol": "e11c-offline-replay-v2",
+  "remaining_mismatches": [],
+  "replay": {
+    "corrected": {
+      "bell": {
+        "mismatches": [],
+        "passed": true,
+        "permitted_facing_roundoff": [
+          {
+            "absolute_difference": 5.960464477539063e-08,
+            "path": [
+              "bell",
+              0,
+              "facing_dot"
+            ],
+            "replayed": 0.9365999698638916,
+            "saved": 0.9365999102592468
+          },
+          {
+            "absolute_difference": 5.960464477539063e-08,
+            "path": [
+              "bell",
+              9,
+              "facing_dot"
+            ],
+            "replayed": 0.9735420942306519,
+            "saved": 0.9735421538352966
+          },
+          {
+            "absolute_difference": 5.960464477539063e-08,
+            "path": [
+              "bell",
+              27,
+              "facing_dot"
+            ],
+            "replayed": 0.9579111337661743,
+            "saved": 0.9579111933708191
+          },
+          {
+            "absolute_difference": 5.960464477539063e-08,
+            "path": [
+              "bell",
+              35,
+              "facing_dot"
+            ],
+            "replayed": -0.7267991304397583,
+            "saved": -0.7267991900444031
+          }
+        ]
+      },
+      "cube": {
+        "mismatches": [],
+        "passed": true,
+        "permitted_facing_roundoff": []
+      }
+    },
+    "original": {
+      "bell": {
+        "mismatches": [],
+        "passed": true,
+        "permitted_facing_roundoff": [
+          {
+            "absolute_difference": 5.960464477539063e-08,
+            "path": [
+              "bell",
+              0,
+              "facing_dot"
+            ],
+            "replayed": 0.9365999698638916,
+            "saved": 0.9365999102592468
+          },
+          {
+            "absolute_difference": 5.960464477539063e-08,
+            "path": [
+              "bell",
+              9,
+              "facing_dot"
+            ],
+            "replayed": 0.9735420942306519,
+            "saved": 0.9735421538352966
+          },
+          {
+            "absolute_difference": 5.960464477539063e-08,
+            "path": [
+              "bell",
+              12,
+              "facing_dot"
+            ],
+            "replayed": -0.7267991304397583,
+            "saved": -0.7267991900444031
+          },
+          {
+            "absolute_difference": 5.960464477539063e-08,
+            "path": [
+              "bell",
+              27,
+              "facing_dot"
+            ],
+            "replayed": 0.9579111337661743,
+            "saved": 0.9579111933708191
+          },
+          {
+            "absolute_difference": 5.960464477539063e-08,
+            "path": [
+              "bell",
+              35,
+              "facing_dot"
+            ],
+            "replayed": -0.7267991304397583,
+            "saved": -0.7267991900444031
+          }
+        ]
+      },
+      "cube": {
+        "mismatches": [],
+        "passed": true,
+        "permitted_facing_roundoff": []
+      }
+    }
+  },
+  "schema_version": 2,
+  "scientific_tolerances_unchanged": {
+    "depth_abs": 0.0002,
+    "normal_abs": 0.0002,
+    "normal_unit_abs": 2e-06,
+    "position_abs": 0.0002
+  },
+  "status": "PROCEED",
+  "timing": {
+    "cuda_median_ms": {
+      "corrected": 0.6712319850921631,
+      "original": 0.6369280219078064
+    },
+    "cuda_ratio": 1.0538584612459116,
+    "interpretation": "Sequential same-image small panel, no significance or full-generation extrapolation",
+    "substantial_penalty_over_2x": false,
+    "wall_median_ms": {
+      "corrected": 0.687730498611927,
+      "original": 0.6527630612254143
+    },
+    "wall_ratio": 1.0535683457958993
+  }
+}

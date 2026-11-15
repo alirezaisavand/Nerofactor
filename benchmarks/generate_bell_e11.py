@@ -105,6 +105,8 @@ def render(args,out,report,budget,progress,P,K):
     require(torch.__version__=='1.8.1+cu111' and torch.cuda.device_count()==1,'Reviewed Torch/CUDA and exactly one selected GPU required')
     torch.set_num_threads(4);torch.cuda.set_per_process_memory_fraction(LIMITS['cuda_allocator_fraction'])
     require('A100' in torch.cuda.get_device_name(0),'Reviewed A100 generation device required')
+    from infrastructure.verified_ray_backend import load as load_ray_backend
+    report['ray_backend']=load_ray_backend('predicate_fp64',args.image_id)
     science,_=baseline('material',PINS['material'])
     spec=importlib.util.spec_from_file_location('_e11_pinned_bvh',science/'raytracing/raytracer.py')
     wrapper=importlib.util.module_from_spec(spec);spec.loader.exec_module(wrapper)
