@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "status": "preparation_complete_awaiting_explicit_authorization",
+  "protocol": "bell-physical-recovery-e15-v1",
+  "base_commit": "c43ac1d6bf9cde06368f899657b271f17b7bc759",
+  "freeze": {
+    "path": "docs/protocols/BELL_PHYSICAL_RECOVERY_E15_V1.freeze.json",
+    "sha256": "ebc145566a47ff02268ca27ea98f0c0bbab9f202e05e6d7e04dbd23dc4419bfc"
+  },
+  "host_output_directory": "/home/isavand/paper/evidence/bell-physical-e15-4fee87af79b44eed974a8dcc76e37a87",
+  "host_inputs": {
+    "benchmark": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark",
+    "pilot": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c/pilot",
+    "reference": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature",
+    "factor": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc/anisotropy",
+    "multiview": "/home/isavand/paper/evidence/bell-multiview-e11g-b0cfbb9da81c4dd0a8039d1e4f8e62ef/multiview",
+    "two_light": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370/two-light"
+  },
+  "source_files": 104,
+  "input_artifacts": 28,
+  "panels": 16,
+  "point_start_histories": 4032,
+  "train_observations": 137,
+  "heldout_observations": 83,
+  "test_command": [
+    "python3",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "tests/benchmarks/test_material_inverse_e15.py",
+    "--junitxml=/home/isavand/paper/evidence/bell-physical-e15-preparation-7f65fb0179e44a97bbb7680b15b79a6a/junit.xml"
+  ],
+  "test_process_exit_code": 0,
+  "test_counts": {
+    "tests": 10,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 10
+  },
+  "test_evidence": [
+    {
+      "path": "/home/isavand/paper/evidence/bell-physical-e15-preparation-7f65fb0179e44a97bbb7680b15b79a6a/console.log",
+      "bytes": 225,
+      "sha256": "661a1f8d6b7b14656bda4b1d079bb734dfc5e8d83e8c9fffadaecf4ee29bb269"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-physical-e15-preparation-7f65fb0179e44a97bbb7680b15b79a6a/e15-focused-corrected.xml",
+      "bytes": 1424,
+      "sha256": "7797285145d018269bae2ce2d983c7e8a95d5d94f80988a75e1e94cf34796c2e"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-physical-e15-preparation-7f65fb0179e44a97bbb7680b15b79a6a/e15-focused-expanded.xml",
+      "bytes": 2186,
+      "sha256": "7543ff870ef6ac67cf083b67a4e2dc3ac5188958ad281ae162e13cf1e94f58e5"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-physical-e15-preparation-7f65fb0179e44a97bbb7680b15b79a6a/e15-focused.xml",
+      "bytes": 2948,
+      "sha256": "4ad69faef0837d1e9be17b83f370ea21695845c35287ea5949920b377eec1234"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-physical-e15-preparation-7f65fb0179e44a97bbb7680b15b79a6a/exit-code.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-physical-e15-preparation-7f65fb0179e44a97bbb7680b15b79a6a/junit.xml",
+      "bytes": 2186,
+      "sha256": "9a1755f11610990878bef0bbd8ef17497432f9d3fbb7fe0bdd45ee0b5ee58f2a"
+    }
+  ],
+  "static_checks": {
+    "python38_grammar": true,
+    "bash_syntax": true,
+    "metadata_only_with_scientific_import_blocker": true
+  },
+  "development_correction": "Synthetic derivative check found the new log-ratio analytic derivative sign error; corrected from -A+B to A-B before any real-data execution. Original failed development JUnit preserved.",
+  "new_real_data_BRDF_calls": 0,
+  "new_geometry_queries": 0,
+  "new_references": 0,
+  "GPU_execution_occurred": false,
+  "limitations": [
+    "Full512-grid factorization/runtime not yet admitted on real GPU; mandatory parity/derivative gates precede all optimization.",
+    "Truth-fixed ratio and same-kernel inversion are oracle diagnostics, not neural recovery.",
+    "One point has no held-out view; after geometric holdout36 points have only one fitting view.",
+    "No simulated noise; codes use interval residuals and actual code comparisons remain separate.",
+    "One-hour foreground watchdog; performance estimate10-45minutes is unmeasured, no extension or retry.",
+    "Codex Docker access restricted; researcher-side approved foreground workflow required."
+  ],
+  "new_real_data_optimizer_updates": 0,
+  "synthetic_optimizer_fixtures_executed": true
+}
