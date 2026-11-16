@@ -21,7 +21,7 @@ from infrastructure.material_recovery_e13 import (PROTOCOL, ARMS, RETURNS, Recov
 IMAGE = 'sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331'
 ADMISSION = 'f89fe72d13e9f6d05067b012ff4575852eef26ba35b5b3c072ac236e51e74605'
 SUFFIXES = ('original', 'estimator', 'core')
-FREEZE = ROOT/'docs/protocols/BELL_THREE_ARM_RECOVERY_E13_V1.freeze.json'
+FREEZE = ROOT/'docs/protocols/BELL_THREE_ARM_RECOVERY_E13_V2.freeze.json'
 
 
 def verify_freeze(expected):

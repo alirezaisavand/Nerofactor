@@ -273,7 +273,8 @@ def test_checkpoint_and_quantization_conventions_statically_preserved():
 
 
 def test_metadata_preflight_has_no_scientific_imports_or_output(tmp_path):
-    freeze=ROOT/'docs/protocols/BELL_THREE_ARM_RECOVERY_E13_V1.freeze.json'
+    from experiments.bell_material_recovery_e13 import FREEZE
+    freeze=FREEZE
     value=json.loads(freeze.read_text())
     script='''
 import builtins,runpy,sys

@@ -48,7 +48,10 @@ class CorrectedProbe(MaterialProbe):
         require(t.train_network is t.network and not t.cfg['multi_gpus'],'Single original A network required')
         require(t.cfg['total_step'] in (100000,2000) and t.cfg['random_seed']==6033 and t.cfg['worker_num']==8 and
                 t.cfg['val_interval']==t.cfg['save_interval']==2000 and t.cfg['train_log_step']==10,'Corrected smoke budget/configuration differs')
-        require(t.network.material_variant==t.cfg['material_variant']==shader.material_variant,'Corrected shader/renderer not selected')
+        # Original-A configurations preserve their implicit legacy variant; the
+        # missing key is not permission to select a corrected renderer/shader.
+        selected_variant=t.cfg.get('material_variant','A_original')
+        require(t.network.material_variant==selected_variant==shader.material_variant,'Corrected shader/renderer not selected')
         self.groups=tuple(n for n in GROUPS if n!='human_light' or shader.cfg['human_lights'])
         initial=parameter_copies(t.network,self.np);require(initial,'No corrected native parameters')
         self.previous_state=optimizer_record(t.optimizer,t.network,self.np)

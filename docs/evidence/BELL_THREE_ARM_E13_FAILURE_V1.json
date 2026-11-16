@@ -1,0 +1,82 @@
+{
+  "batch": "/home/isavand/paper/evidence/bell-material-e13-66f3d41da36948e0a19a13cc0a989d58",
+  "cleanup_errors": [],
+  "cleanup_verified": false,
+  "error": "'material_variant'",
+  "error_type": "KeyError",
+  "historical_frozen_sources_verified_against_original_commit": 81,
+  "native_construction": "Occurred before the initialized observer; not a zero-native-work run. Constructor ray counts were not separately measured.",
+  "old_freeze_sha256": "5133290f15f2b902cd78449bf4c0a7cbe195757bb1a0e607a241f348e15c8e5e",
+  "optimizer_calls_completed": 0,
+  "other_arms": {
+    "A_corrected_core_v1": "unexecuted; output directory absent",
+    "A_estimator_v1": "unexecuted; output directory absent"
+  },
+  "phase": "initialized",
+  "producing_evidence": "Saved report, console traceback and frozen original Trainer place failure before logger initialization and first training iteration.",
+  "records": [
+    {
+      "bytes": 334,
+      "path": "/home/isavand/paper/evidence/bell-material-e13-66f3d41da36948e0a19a13cc0a989d58/launch.json",
+      "sha256": "ddd42ea52baf6c145bc2294de6c6ff872dde39060ece8a465d84ff9a7e134db5"
+    },
+    {
+      "bytes": 196,
+      "path": "/home/isavand/paper/evidence/bell-material-e13-66f3d41da36948e0a19a13cc0a989d58/panel-status.json",
+      "sha256": "5feeffbd7970e0282f79291ef0977d8a6a27cbb3a7fe2ede0053a03ce52eadf3"
+    },
+    {
+      "bytes": 2,
+      "path": "/home/isavand/paper/evidence/bell-material-e13-66f3d41da36948e0a19a13cc0a989d58/A_original.exit-code.txt",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "bytes": 1859,
+      "path": "/home/isavand/paper/evidence/bell-material-e13-66f3d41da36948e0a19a13cc0a989d58/A_original.console.log",
+      "sha256": "5d8770daa7c18355952b133c1fd2d30bc0a49f0cdbfc312525009e6713a41a75"
+    },
+    {
+      "bytes": 127050,
+      "path": "/home/isavand/paper/evidence/bell-material-e13-66f3d41da36948e0a19a13cc0a989d58/A_original/recovery.json",
+      "sha256": "b984096fa946383fcc6850d6a5f20fcb56a78b86921f1cc100a51fdf8aad7ea6"
+    },
+    {
+      "bytes": 1350,
+      "path": "/home/isavand/paper/evidence/bell-material-e13-66f3d41da36948e0a19a13cc0a989d58/A_original/config.original.yaml",
+      "sha256": "79c6204a3c2ae8890941d8fa119ce582aa055398cd810751c80bef4f8bc48713"
+    },
+    {
+      "bytes": 240,
+      "path": "/home/isavand/paper/evidence/bell-material-e13-66f3d41da36948e0a19a13cc0a989d58/A_original/config.envelope.yaml",
+      "sha256": "bca2d7db050c06171857e52f917d05bf22f218b8ea73f8d551deb0a293742907"
+    },
+    {
+      "bytes": 2103,
+      "path": "/home/isavand/paper/evidence/bell-material-e13-66f3d41da36948e0a19a13cc0a989d58-launch/authorization.json",
+      "sha256": "abafd1e2371aa6001935fc26b39169835ef8e3b3374a5204a8ee0eb7aa6fe083"
+    },
+    {
+      "bytes": 812,
+      "path": "/home/isavand/paper/evidence/bell-material-e13-66f3d41da36948e0a19a13cc0a989d58-launch/prelaunch-receipt.json",
+      "sha256": "611a1fe49e28fc0a271a398672f4a2867eedd7a27a107cc2fd30820ed4d0e9d1"
+    },
+    {
+      "bytes": 1169,
+      "path": "/home/isavand/paper/evidence/bell-material-e13-66f3d41da36948e0a19a13cc0a989d58-launch/launch-once.sh",
+      "sha256": "439d1098d8c6f56c46e58d8a18675f4673a29290a9b39391083032126f5ab4d4"
+    },
+    {
+      "bytes": 32,
+      "path": "/home/isavand/paper/evidence/bell-material-e13-66f3d41da36948e0a19a13cc0a989d58-launch/launch.claimed",
+      "sha256": "21cf0079b6c30a9f6febcf8b86130b7be94aff095b1c59c21c2198d0d35528b6"
+    }
+  ],
+  "restrictions": "Preserve originals unchanged. No native execution, retry or old-authorization reuse is authorized by the correction.",
+  "root_cause": "Observer directly indexes optional material_variant; A_original configuration intentionally preserves its absence.",
+  "schema_version": 1,
+  "scientific_work_complete": false,
+  "source_commit": "63c21d1200d174c36ee0a924643033cc365a6d14",
+  "status": "verified_failed_before_training",
+  "training_backwards": 0,
+  "training_forwards": 0
+}

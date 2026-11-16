@@ -7,7 +7,7 @@ E13_BENCHMARK=/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b
 E13_ADMISSION=/home/isavand/paper/evidence/bell-oracle-e12-admission-v1/oracle-admission.json
 E13_COMMIT=$(git -C "$E13_SOURCE" rev-parse HEAD)
 test -z "$(git -C "$E13_SOURCE" status --porcelain)"
-E13_FREEZE=$(sha256sum "$E13_SOURCE/docs/protocols/BELL_THREE_ARM_RECOVERY_E13_V1.freeze.json" | cut -d' ' -f1)
+E13_FREEZE=$(sha256sum "$E13_SOURCE/docs/protocols/BELL_THREE_ARM_RECOVERY_E13_V2.freeze.json" | cut -d' ' -f1)
 E13_AUTH_SHA=$(sha256sum "$E13_AUTH" | cut -d' ' -f1)
 python3 -I -B - "$E13_SOURCE" "$E13_AUTH" "$E13_BATCH" "$E13_COMMIT" "$E13_FREEZE" <<'PY'
 import json,sys
@@ -57,7 +57,7 @@ trap 'exit 130' INT
 trap 'exit 143' TERM
 E13_INDEX=0
 for E13_VARIANT in A_original A_estimator_v1 A_corrected_core_v1; do
- E13_RUN_ID=$(python3 -I -B - "$E13_SOURCE/docs/protocols/BELL_THREE_ARM_RECOVERY_E13_V1.freeze.json" "$E13_VARIANT" <<'PY'
+ E13_RUN_ID=$(python3 -I -B - "$E13_SOURCE/docs/protocols/BELL_THREE_ARM_RECOVERY_E13_V2.freeze.json" "$E13_VARIANT" <<'PY'
 import json,sys
 print(json.load(open(sys.argv[1]))['run_ids'][sys.argv[2]])
 PY
