@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "status": "preparation_complete_awaiting_explicit_authorization",
+  "protocol": "bell-two-light-observability-e14-v1",
+  "base_commit": "813e9a6092e53955ab8432179fc61f077022cb8c",
+  "freeze": {
+    "path": "docs/protocols/BELL_TWO_LIGHT_OBSERVABILITY_E14_V1.freeze.json",
+    "sha256": "662d14190b3394655a2cd497ab08c0aec9e64d3094b85d2657bed11a7ee1d102"
+  },
+  "host_output_directory": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370",
+  "host_inputs": {
+    "benchmark": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark",
+    "pilot": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c/pilot",
+    "reference": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature",
+    "factor": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc/anisotropy",
+    "multiview": "/home/isavand/paper/evidence/bell-multiview-e11g-b0cfbb9da81c4dd0a8039d1e4f8e62ef/multiview"
+  },
+  "admitted_artifacts": 24,
+  "frozen_source_files": 94,
+  "admitted_point_view_observations": 220,
+  "view_count_strata": {
+    "1": 1,
+    "2": 35,
+    "3": 43,
+    "4": 5
+  },
+  "test_command": [
+    "python3",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "tests/benchmarks/test_material_information_e14.py",
+    "tests/benchmarks/test_bell_two_light_e14.py",
+    "--junitxml=/home/isavand/paper/evidence/bell-two-light-e14-preparation-98b03764ad5e4c0c9241cf4b4c320307/junit.xml"
+  ],
+  "test_process_exit_code": 0,
+  "test_counts": {
+    "tests": 16,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 16
+  },
+  "test_evidence": [
+    {
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-preparation-98b03764ad5e4c0c9241cf4b4c320307/console.log",
+      "bytes": 226,
+      "sha256": "6cb695f5274a0c8b53e9faa0612bc2af98c498c6340fd3bb77295100c7f3fd79"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-preparation-98b03764ad5e4c0c9241cf4b4c320307/exit-code.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-preparation-98b03764ad5e4c0c9241cf4b4c320307/junit.xml",
+      "bytes": 3045,
+      "sha256": "b71440e4add73323112858f311818a0a3e411745847754b9cda33b7bf35614de"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-preparation-98b03764ad5e4c0c9241cf4b4c320307/test-inventory.json",
+      "bytes": 3532,
+      "sha256": "c9a0c5b8872690faa2597ba8ae6c289483bd2c05ea23a608d1539b2a6f6a9747"
+    }
+  ],
+  "static_checks": {
+    "python38_grammar": true,
+    "bash_syntax": true,
+    "metadata_only_under_scientific_import_blocker": true,
+    "execution_output_absent": true,
+    "prior_tracked_files_unchanged": true
+  },
+  "scientific_execution": {
+    "new_brdf_queries": 0,
+    "new_geometry_queries": 0,
+    "new_model_calls": 0,
+    "new_optimizer_updates": 0,
+    "gpu_calls": 0
+  },
+  "limitations": [
+    "CPU orchestration uses synthetic stand-ins, not native scientific admission.",
+    "Host fixture versions differ from reviewed image; image SciPy1.10.1 and Torch1.8.1+cu111 required.",
+    "Docker access is restricted in Codex; no bypass; approved researcher-side launch required.",
+    "Finite conditional secants and hypothetical noise do not establish full material recovery."
+  ],
+  "preserved": [
+    "E.11D/E/F/G outcomes, source freezes and evidence",
+    "E.13 checkpoints, evaluation and failed physical-recovery conclusions",
+    "Frozen G/A scientific implementations"
+  ],
+  "authorization_required": true
+}
