@@ -1,0 +1,556 @@
+{
+  "schema_version": 1,
+  "protocol": "bell-two-light-e14-results-v1",
+  "decision": "FIX_AND_PROCEED",
+  "full_benchmark_admitted": false,
+  "execution_commit": "2bff40f8c9f323c912325d61712468498e78e5d7",
+  "freeze_sha256": "662d14190b3394655a2cd497ab08c0aec9e64d3094b85d2657bed11a7ee1d102",
+  "image": {
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "variant": "predicate_fp64"
+  },
+  "native_report": {
+    "bytes": 6243587,
+    "path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370/two-light/two-light.json",
+    "sha256": "215eb11f9dd0a2fff9074cf6bab5eca6be832402a1860e3dcf27138f8458bab5"
+  },
+  "authorization": {
+    "bytes": 1268,
+    "path": "/home/isavand/paper/evidence/bell-two-light-e14-launch-v1-725f0892b7444e4791a389149aac4370/authorization.json",
+    "sha256": "c410b09fb4adde2559be083ec8b57915dafce3a921b32108fa114d3a50a844f1"
+  },
+  "native_artifacts": [
+    {
+      "bytes": 586,
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370/console.log",
+      "sha256": "a6521f7448d81999158ab353c560fd14cfd57839b71cd205ea45ffc2116c72d9"
+    },
+    {
+      "bytes": 64,
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370/container.cid",
+      "sha256": "70096e82b44939569e9c92cf859b7f6c50c2f1ad6089f8ad298421114695a11b"
+    },
+    {
+      "bytes": 2,
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370/exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 945,
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370/launch.json",
+      "sha256": "3b46805b2cb6df21f2745026af2c8e785dbbbff6ba0487f67b7caa84ea4648b8"
+    },
+    {
+      "bytes": 5855579,
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370/two-light/comparison.json",
+      "sha256": "b6882a7573e3ee7044c42c9d9865451e7904eb8bc7cbf4167ab67d948126c5e4"
+    },
+    {
+      "bytes": 513871,
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370/two-light/grid-256.npz",
+      "sha256": "1e15ce82c137e51a08d5764693aba36902bf6c2465c510ca91322a964f3240a8"
+    },
+    {
+      "bytes": 513853,
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370/two-light/grid-512.npz",
+      "sha256": "b85e2cae7b7dc5f534ead68a113ed947faf24f901726807441b03cd38d06816c"
+    },
+    {
+      "bytes": 319,
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370/two-light/progress.json",
+      "sha256": "3199951d5b0743d4bafa841850d3fba34e5cc013ba5c3996063fb73bcd1f1899"
+    },
+    {
+      "bytes": 6243587,
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370/two-light/two-light.json",
+      "sha256": "215eb11f9dd0a2fff9074cf6bab5eca6be832402a1860e3dcf27138f8458bab5"
+    }
+  ],
+  "input_artifacts": [
+    {
+      "bytes": 475481,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/geometry/generation.json",
+      "sha256": "5035b22b594848900426fd5dfaa8b96382b57a76cfde97864b7ef7591c46e6d7"
+    },
+    {
+      "bytes": 58216,
+      "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c/pilot/pilot.json",
+      "sha256": "4ad7c79fb63713c5710aa8407c3229fb8bd71341dc81d39e985cb24608a3f1f1"
+    },
+    {
+      "bytes": 4729497,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/geometry/mesh.ply",
+      "sha256": "4ea98341ca915cf55f2b37581556583308cc50a8e2d2d8d48140d49224866e01"
+    },
+    {
+      "bytes": 905043,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/geometry/labels/58.npz",
+      "sha256": "7b2b3f06e3df269fdc80c732f70b8e7c56074594bc57be19aee29d2ca0a61688"
+    },
+    {
+      "bytes": 321821,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/geometry/rays/58.npz",
+      "sha256": "213d441a31c309b2f32a37f40b9e0667f62e004c644da94e68c76b3e24667187"
+    },
+    {
+      "bytes": 762035,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/references/58.npz",
+      "sha256": "e47372b8c75008ffe51a296ccdc66fc837a7f10abb1258c3fa76a5ca788a03a7"
+    },
+    {
+      "bytes": 768052,
+      "path": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c/pilot/58-L2_six_cardinal.npz",
+      "sha256": "71d64abbaf312c2c2d24a337639e0458b9e3025678c7b3d92494a89dab889797"
+    },
+    {
+      "bytes": 42729,
+      "path": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature/quadrature.json",
+      "sha256": "589f894d653b715a55739aad2e7667ce0105b14eb0119bb5b54e69010f7cc383"
+    },
+    {
+      "bytes": 26720,
+      "path": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature/comparison.json",
+      "sha256": "3c6345215c3dce658dbe7935cde33beae168cee4cdce33b06ac5ac894feef658"
+    },
+    {
+      "bytes": 477890,
+      "path": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature/directions-256.npz",
+      "sha256": "697eecd5f8963f54e08eccdfa9671c985e90d9fa7223a2a0038a4548d3e6aeba"
+    },
+    {
+      "bytes": 1950474,
+      "path": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature/directions-512.npz",
+      "sha256": "e82bc2acbdc86ff70911cbcf197d898a41b73bc43fc2dd2bc53f517bf1d05111"
+    },
+    {
+      "bytes": 50203,
+      "path": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature/grid-256.npz",
+      "sha256": "57d6717795dd6c02721bfe02c410a40692b3615efbd9e4b320d69a05556fe22c"
+    },
+    {
+      "bytes": 73720,
+      "path": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature/grid-512.npz",
+      "sha256": "7ccffadf095c381798e7bc8e2417b15ea957bf7b7794d84a2f26f692f27e557b"
+    },
+    {
+      "bytes": 50208,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc/anisotropy/anisotropy.json",
+      "sha256": "9f8c8a3e52d0aaea434c11f623a05c6da948d08d266ee38fef4f3e940bcbadae"
+    },
+    {
+      "bytes": 32151,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc/anisotropy/comparison.json",
+      "sha256": "2c5befa475c0f6022e27507499bc6617c019f117be4588abe0d9b16e34cda90e"
+    },
+    {
+      "bytes": 33945,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc/anisotropy/grid-256.npz",
+      "sha256": "c28f02752f08e0623d5926b86ae6e9962460324b9c93e0dfa584ba13274a7f52"
+    },
+    {
+      "bytes": 33938,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc/anisotropy/grid-512.npz",
+      "sha256": "755416af4fc90a95a1958c1e1e1ba17015fb42b13f56c612806145450ee74ecd"
+    },
+    {
+      "bytes": 4340,
+      "path": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc/anisotropy/material-factor.npz",
+      "sha256": "7cf2554fe67bab49272c2e6671915fba8c92d615a6f0c29264746b7d3882b38f"
+    },
+    {
+      "bytes": 5325,
+      "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/geometry/calibrations-safe.npz",
+      "sha256": "4d8f4e13d7fd5fffec8d258bfc7c5599ef6d81525547d678ba088e76b1656c9c"
+    },
+    {
+      "bytes": 380316,
+      "path": "/home/isavand/paper/evidence/bell-multiview-e11g-b0cfbb9da81c4dd0a8039d1e4f8e62ef/multiview/multiview.json",
+      "sha256": "db1c0b3d5ce630501645d07612f940e46df6bfa77e551d839882be8503205e09"
+    },
+    {
+      "bytes": 336432,
+      "path": "/home/isavand/paper/evidence/bell-multiview-e11g-b0cfbb9da81c4dd0a8039d1e4f8e62ef/multiview/comparison.json",
+      "sha256": "45f69a77a7712b8f62c1f8fa2a080ce003954b084ada19be6e71e8a115047db5"
+    },
+    {
+      "bytes": 257779,
+      "path": "/home/isavand/paper/evidence/bell-multiview-e11g-b0cfbb9da81c4dd0a8039d1e4f8e62ef/multiview/grid-256.npz",
+      "sha256": "59c9522c3c6616a1aa80e3323e307e87c3b5f7b30b85bec35e585145dbc4cf21"
+    },
+    {
+      "bytes": 257751,
+      "path": "/home/isavand/paper/evidence/bell-multiview-e11g-b0cfbb9da81c4dd0a8039d1e4f8e62ef/multiview/grid-512.npz",
+      "sha256": "d26f0c1004672265356e7e1bf5ddc4cf9b3a5ff6b7c78471cc894ccc50fc0abf"
+    },
+    {
+      "bytes": 21261,
+      "path": "/home/isavand/paper/evidence/bell-multiview-e11g-b0cfbb9da81c4dd0a8039d1e4f8e62ef/multiview/outgoing-geometry.npz",
+      "sha256": "3e4acabbddbe857d9a0228c62beeb1df3ee61ad27aa3e360abec0fbbe7ac6909"
+    }
+  ],
+  "frozen_source_hashes": {
+    "AGENTS.md": "6f5d64e1b1cb0bebd0921436defffa61e8d20b2c1bca11b6f7d933e5673ab0c6",
+    "audits/bell_calibration_e11.py": "14ffee7690bd1507ecb6e3a69098c64faabbf7f89c31e407ed248440684b5f71",
+    "benchmarks/__init__.py": "8ba25520d88eaaa4a902a99b9cdda2d3c7ea829f4dc94b9825bcd1984234902c",
+    "benchmarks/bell_e11.py": "01b18245999d0d9ffcf0fdfe9b317fdfd427d9e1bee6ca7db395eaa0b3c94e8a",
+    "benchmarks/bell_geometry_e11.py": "491f86b7799d03911c4665e1884ceb81b62ae8dc085141b7f112b43891ab3737",
+    "benchmarks/bell_reference_e11.py": "be4b95e3a8f37d5142920637a6533da89ecb2ff96c916343423254016ca7f673",
+    "benchmarks/generate_bell_e11.py": "877b826ce3e2eabda860d296051de6791cf048f543e1bb41dbe60886654c7647",
+    "benchmarks/inputs/bell_mask_identities_e11_v1.json": "bb3561f25927ed692335fb63ac733f8fa921fe1fb8eb000bfb97f0a992484b21",
+    "benchmarks/inputs/bell_reference_tapes_e11_v1.npz": "ed6a73e067aa8f384ab3b7cbe73c642009417c473cf1ad2362ad992c059421a4",
+    "benchmarks/material_information_e14.py": "e25636c941fcf417a515d031e58deb3782b90ed2e7e5095984a5943e38f4883e",
+    "benchmarks/run_bell_e11.sh": "970862ec3f475d43042114a252a291e7277db3f5c4a44b1b0d4c76a7e4e849d7",
+    "benchmarks/verify_bell_e11.py": "b40b00d18ac97fb49287ab5764f5c3e042e98c12717553a30930a58b458e828e",
+    "configs/experiments/material_a_bell_core_known_v1.yaml": "deda9bbc4b0d2fcafb7ab41458f34e45cc830393475b08adbd3d2ce8fdfd56b9",
+    "configs/experiments/material_a_bell_estimator_known_v1.yaml": "e17ebbae2d4d738926da4dd690f741e348385f0d81d57626e316f18f2d762345",
+    "configs/experiments/material_a_bell_original_known_v1.yaml": "bca2d7db050c06171857e52f917d05bf22f218b8ea73f8d551deb0a293742907",
+    "configs/material_corrected/bell_core_known_v1.yaml": "872a57902b3ebf9d84821876006b447c89e74a135004ec751fd760e8f1a06406",
+    "configs/material_corrected/bell_estimator_known_v1.yaml": "6007326640757dedd381bc14ccd77b30d7f3bd838eea9cf281a5837e29c5ff7d",
+    "configs/material_corrected/bell_original_known_v1.yaml": "79c6204a3c2ae8890941d8fa119ce582aa055398cd810751c80bef4f8bc48713",
+    "docs/BELL_ANISOTROPY_E11F_RESULTS_V1.md": "2d69d76452edaef8224c70faf0b6b3f69e76ea4c5bc36fa510b08dac1d939758",
+    "docs/BELL_HIGHLIGHT_PILOT_E11D_RESULTS_V1.md": "fb56c3f1c8bae3fb64876976fe55793a47758bbed3fcfadce31bce9ee6e41a91",
+    "docs/BELL_MULTIVIEW_E11G_RESULTS_V1.md": "e9921b7b2bc35a8725ed9218a5bdbf4aed3e9df630560e860c49e8cfbb8e995d",
+    "docs/BELL_QUADRATURE_E11E_RESULTS_V1.md": "100362edfb6b36097f81d20b779a917f5fab39c7caf2d7bc9ea45e77cbd8be94",
+    "docs/NATIVE_MATERIAL_A_CORRECTIONS_E10.md": "12ee97320930844ed7dc2a579c2ea84e51427b0b529d9b875c0ab5f6bbaf2d3d",
+    "docs/evidence/BELL_ANISOTROPY_E11F_RESULTS_V1.json": "638075d3a1a910129f1de41aafbf6bbdc0273b87205662fdcff8c303acfcbb7c",
+    "docs/evidence/BELL_HIGHLIGHT_PILOT_E11D_RESULTS_V1.json": "1c4bfd30829a6ddbdfacbd833a37133c6fcc290c22f067aa543210512f8767f9",
+    "docs/evidence/BELL_MULTIVIEW_E11G_RESULTS_V1.json": "1dc40a71d56f2f0bec783efea6893480a7b796082099796d3a8b6e30864b0c3d",
+    "docs/evidence/BELL_QUADRATURE_E11E_RESULTS_V1.json": "88fe5ecce94cfeb27ae1e3a01653fc7617746562bdcabafbb2a378723c96e165",
+    "docs/evidence/PAPER_BENCHMARK_E10_ASSET_INVENTORY_V1.json": "02420ed6751aaadcb38f555a4533d1bca75422952597233597194f56cce8fd35",
+    "docs/evidence/RAY_BACKEND_E11C_ACCEPTANCE_V2.json": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "docs/protocols/BELL_ANISOTROPY_E11F_V1.freeze.json": "f129d3b8015333d036afe7010792d210be80680d4417cee3a869c731b234dbda",
+    "docs/protocols/BELL_ANISOTROPY_E11F_V1.md": "c63722aecbaaeaf12d25efd40beabaa72fda20d428091d677930d7244a7c20cb",
+    "docs/protocols/BELL_HIGHLIGHT_PILOT_E11D_V1.freeze.json": "33e500cad37190b4bd0e4f9adc69b39533d631e92d2fad7ec11538b8f79e496c",
+    "docs/protocols/BELL_HIGHLIGHT_PILOT_E11D_V1.md": "a6908331d4b8e76d77c9b4159daaa2f03e4527bf72f18c9cde12d984ae186114",
+    "docs/protocols/BELL_MULTIVIEW_E11G_V1.freeze.json": "c7486b2ce23836ba03abc1edccf3cc3c649c2f9364f9b6960d940814561eeba7",
+    "docs/protocols/BELL_MULTIVIEW_E11G_V1.md": "870fedf939e32fbaa1b565294d2885e7c39939b88f10b98074c0af6d1f7f348c",
+    "docs/protocols/BELL_ORACLE_GENERATION_E11_V1.md": "8cb7d6c8d9ea98a413f74c9bee01d626774f8221d50f63a534b9394902a188c6",
+    "docs/protocols/BELL_ORACLE_GENERATION_E11_V2.md": "3845c03c835e0845e60a557ba1ba77aff7178983e1582da6804021272ba66836",
+    "docs/protocols/BELL_ORACLE_GENERATION_E11_V3.freeze.json": "e32cda8967d386115dfe3c38409b742283706f469e6f86220ed531f256ed99bf",
+    "docs/protocols/BELL_ORACLE_GENERATION_E11_V3.md": "eb9b4750062789f0940fc775ee4e7f6634622e5f2e03aac4280e4e30137b1468",
+    "docs/protocols/BELL_QUADRATURE_E11E_V1.freeze.json": "9ba88ae03ae73be9c7a10f465d6262eba3738c15b66fa9a4ca9ee742ef2fa11f",
+    "docs/protocols/BELL_QUADRATURE_E11E_V1.md": "3b85bab43dc2b96b0d3c41a826453b2e2fb10449e02fa32aefa067f5f06063f4",
+    "docs/protocols/BELL_TWO_LIGHT_INFORMATION_E12_V1.md": "d3f2c0eb01cf889884ee31ce19f40d7a0ee9aa2a4fc11239ee6c5b85e6ebf5b9",
+    "docs/protocols/BELL_TWO_LIGHT_OBSERVABILITY_E14_V1.md": "ac976d0dca0d07f6b385ec998b0128e5a28d1abef2102c37637e3addfe7fde7c",
+    "docs/protocols/PAPER_ANISOTROPIC_BENCHMARK_E10_V1.md": "d0d894d4e5acd1290181409deecf320339148d728ae3783ffd717c6d2e5dd850",
+    "experiments/analyze_bell_anisotropy_e11f.py": "a2c0b4bee8ad9e68e8ecc587a4720d443a77dfe76258971aae5a69a8e3aabd2e",
+    "experiments/analyze_bell_highlight_e11d.py": "8700ea9165b423171d5797b6813cdeee993237221cdc146c0a3c97234459ea82",
+    "experiments/analyze_bell_multiview_e11g.py": "5709863dcd368f47d213f90e01e98dde0838f4c78246b4b4aaa6d9772303f106",
+    "experiments/analyze_bell_quadrature_e11e.py": "e3691c7efc5d6490fb4f57bbbf476121a8f833db7b5e1655c6d6b60b03273d96",
+    "experiments/bell_anisotropy_e11f.py": "38e629d977c102c399d16ac1d44a215c9c91428e2c0af32269db8d9fba0cf628",
+    "experiments/bell_highlight_e11d.py": "93ef7b7a693622ad54b278a61c96d10575e647969326675411a265da94f3ee19",
+    "experiments/bell_highlight_pilot_e11d.py": "0c781ed2a380462c52c59b8442a61a77cdf919c75f52fb50c814faa33f7b18c6",
+    "experiments/bell_multiview_e11g.py": "78b738bcaa75d9d258bf5d352542caca7bb1b08a9e5e3eab0d077b56d55404dd",
+    "experiments/bell_quadrature_e11e.py": "d91c09671eae577b890ac15603c3ae646d4daa88d8fbd1c73c5763a536b42098",
+    "experiments/bell_two_light_e14.py": "a130b2a94acb5eacbdfda4f51df101d4a8f4e2b3d9b8c3b70500e988ebc72a39",
+    "experiments/bell_two_light_e14_analysis.py": "b3c07f24278f9f5962a275106e559ee2abbc2a154cdc02bc718802bb726022df",
+    "experiments/run_bell_anisotropy_e11f.sh": "11420865e2e483599adb8f1ae6875988fc3c2a58ca716be681b5248e80b918cb",
+    "experiments/run_bell_highlight_e11d.sh": "9ab64de7009e1c3c63b1d77212bacea33a9f529cacc26d828710478fc8229b1d",
+    "experiments/run_bell_multiview_e11g.sh": "27034ddf28e80f88f5af0b142ad3ab5fe11f458e0cad7130d60564144a05ea1a",
+    "experiments/run_bell_quadrature_e11e.sh": "fca7f98492461887c1d20fb7fa523f33aa0bd865d5e09b718d3ba18a62d3f452",
+    "experiments/run_bell_two_light_e14.sh": "a47f3cb28f3a1034ab2518c8057ea22d646cbee6363929c46af8ac76dc5f5bec",
+    "generate_bell_benchmark_e11.py": "7ee21a041e6b7d4f1749b1c2f41e248d002b539344d75f708b63417a308ad7d4",
+    "infrastructure/__init__.py": "44bf3f8e7c78ad996c713c6ac676a22546d6900a14b07b786d24144529d41dd2",
+    "infrastructure/bounded_training.py": "6dd898a744546c1e2bf2779f41d836d443d7cf016997df2b364880f46d438fa9",
+    "infrastructure/corrected_material_smoke.py": "e55e2540e7250e049bf59298b7dc203dee827ae281e11f1c42972f64f03b775b",
+    "infrastructure/material_smoke.py": "22c70ed7aa7379d88837b2c58fa4777167222166f454e62374402756492be69c",
+    "infrastructure/material_variants.py": "7d3432e5d50bbb9830117153fddc921ecc4016bb23dbb8c750522cd287bedddb",
+    "infrastructure/paths.py": "e771fa11a5243a03724b8291dba790502e822531f1fc9179ba27c9b8a06cece4",
+    "infrastructure/ray_backend_e11c.py": "73e2a75bdd6dad7317f644a23c7cfcc9ffddfc7e25f814da85ebcb04002a8191",
+    "infrastructure/signatures.py": "f3eb6c82de610913c1049745271d8be5391d34f02d78866a14fad0032b7f4759",
+    "infrastructure/stage_execution.py": "36991f654fffd3ef83102fd2734be4234ee0d14b9053b24cc37e5b9731a64a1f",
+    "infrastructure/stage_sources.py": "3c904a09662663fd9f37e3a6afee33576963675508e416dbc6141a5c68d44dc8",
+    "infrastructure/stage_workspace.py": "5d1eb334f39ed86a9d53dc999b56a19a7c1cb3283f16b23d09fd2c969ce6b591",
+    "infrastructure/training_probe.py": "236bf1b0cf7f1d5b6c906c02cbe45ee374faa9f95e2e94d69b44f495867ab45c",
+    "infrastructure/verified_ray_backend.py": "e103775b70a72a24d0772dd6f09d622820d403d8d9ced63837521981df81dffd",
+    "run_bell_anisotropy_e11f.py": "910ac3f94094a05e8d7ef1244cd6a2ba631c44de678f8fdbdcacd500691df713",
+    "run_bell_highlight_pilot_e11d.py": "eaab7aef62063e5060f8f00bd6b915b6a09ac3203c3e00d48156116e9489c03d",
+    "run_bell_multiview_e11g.py": "f3f45315e13c1d5b2441699675b19a93805d56b797786158d26c7af9fa4badef",
+    "run_bell_quadrature_e11e.py": "63d8f72170f8d634258fb373fa73113d8f5a30f8395a00def22afd6ae4681cfa",
+    "run_bell_two_light_e14.py": "fa02c3886ba08904799b8b3fdec9a00333df150900afb70decb56b521bdf702c",
+    "run_stage_experiment.py": "c2fc301c5c04bddeb2841f0d021be2e3c9c2bb1b4d24eac2281f69652b5d6725",
+    "scientific_sources/manifest-v1.json": "39b9baecce2aab6fc62ec57bd6f45e453d8e9d68215f6af3f25b8ed118c5a3f6",
+    "scientific_variants/__init__.py": "ccf218a2cc95b2b6501db4b1efde3afb0fef57274ffc812db560e2666eb6ed64",
+    "scientific_variants/material_a_v1.py": "52603dc041920f7220748c9114f8293ad2499f778ffd688ef639bbe4e8759875",
+    "tests/benchmarks/test_bell_anisotropy_e11f.py": "766af1102b8906e4bf0074687d05d694ae0a69dec8611471be736d94e27ea928",
+    "tests/benchmarks/test_bell_e11.py": "92fc478f66ede32ec9cb5d336ca59bb8836b8a241c1b333fb158a947c9e0f23b",
+    "tests/benchmarks/test_bell_e11_mask_fix.py": "214fdc69045a47515250d5cf996552393c82a831ea464f56c0b11586636ca397",
+    "tests/benchmarks/test_bell_highlight_e11d.py": "f7271fa4316279326770e01f1bb999734d7b281a9b043cd681708c90743d878b",
+    "tests/benchmarks/test_bell_multiview_e11g.py": "a475f0bc46c1356393e70f92bf86383afa99dae13a19260ff2cc7c9433a5f01a",
+    "tests/benchmarks/test_bell_quadrature_e11e.py": "05b985816071f470d7e55c42130787376cd16f11eb3a3c4d215c94409276f91d",
+    "tests/benchmarks/test_bell_two_light_e14.py": "18959e641b0841f6f1dc89aa01827352eb6be38140035dc490ab5e192b9416e8",
+    "tests/benchmarks/test_material_information_e14.py": "dc2514f66eb6d0fcb6bf57d4a819400d251263dfd01a67ed270a2364ab89f618",
+    "tests/infrastructure/test_material_variants_e10.py": "7b6b2ded9216d096f4d34abfd4ebf383d42aabf10b2c12278c96b9bc60fad0de",
+    "tests/infrastructure/test_ray_backend_replay_e11c.py": "6e8d4cdaae3a6bd305b69193c026d5d71bef8c5715817eaacd487cde145ff2c8",
+    "tests/infrastructure/test_verified_ray_backend.py": "adccea4e963197b3c1f2b132508d5dbdeec93b5804961515f47a355ffb0dc1db"
+  },
+  "analysis_artifacts": [
+    {
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370-analysis-v1/analysis.json",
+      "bytes": 144065,
+      "sha256": "4670e22954b049b0abd3b212bdf5a53003aba15dc2997e74f41a6daf02406e8c"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370-analysis-v1/conditioning.svg",
+      "bytes": 161687,
+      "sha256": "1ab43e86367594c32a8fd2fa5ae029b304f9d77cac08b3ac36021b8463685c74"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370-analysis-v1/deterministic_quantization.csv",
+      "bytes": 38923,
+      "sha256": "1d550ae031cd6da6e2b1c774cb3cf08356709de1a55706b391253a85703198a0"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370-analysis-v1/information_by_probe.csv",
+      "bytes": 272093,
+      "sha256": "167cf00c33319b726fdc740456a842de24dfee9e9c07031ae1b1ea4e82de3029"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370-analysis-v1/information_summary.csv",
+      "bytes": 29914,
+      "sha256": "bf1e1bbae916b1a75a8fae339aabbb1d72a4f5c8a55ffa0ac60e56224851c606"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370-analysis-v1/noise_quantization.svg",
+      "bytes": 173656,
+      "sha256": "ca059512bdb222faafdf06d4406df8c9f17ee868e8b0979785f031a5f5f06814"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370-analysis-v1/offline-focused-tests.xml",
+      "bytes": 1244,
+      "sha256": "af743308abe168f23ef3ee1c7141de657374ca5e6ea3c42c5c211bfc2c39a37c"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370-analysis-v1/offline-test-receipt.json",
+      "bytes": 1692,
+      "sha256": "d46919633a71032721f57d8459572bbcf085afdd74b7eb314d7feee7c52c9251"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370-analysis-v1/response_coverage.csv",
+      "bytes": 5804,
+      "sha256": "5d592a1a10ec6eeadb85a7cdd9f45c9d95596cbe3a565c6d25ee34df16486614"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370-analysis-v1/response_coverage.svg",
+      "bytes": 47263,
+      "sha256": "5d208693c095bc335b120f80088826d9e2160ef4be2adea993e9a42531eaeb2e"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370-analysis-v1/retained_screen.csv",
+      "bytes": 433,
+      "sha256": "2602697d12325e4f9a4dcad70d36fe4e5bb935c4165a20a1ab5c45643ec46e7c"
+    }
+  ],
+  "tracked_copies": [
+    {
+      "path": "results/bell_e14/conditioning.svg",
+      "bytes": 161687,
+      "sha256": "1ab43e86367594c32a8fd2fa5ae029b304f9d77cac08b3ac36021b8463685c74",
+      "original_path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370-analysis-v1/conditioning.svg"
+    },
+    {
+      "path": "results/bell_e14/deterministic_quantization.csv",
+      "bytes": 38923,
+      "sha256": "1d550ae031cd6da6e2b1c774cb3cf08356709de1a55706b391253a85703198a0",
+      "original_path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370-analysis-v1/deterministic_quantization.csv"
+    },
+    {
+      "path": "results/bell_e14/information_by_probe.csv",
+      "bytes": 272093,
+      "sha256": "167cf00c33319b726fdc740456a842de24dfee9e9c07031ae1b1ea4e82de3029",
+      "original_path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370-analysis-v1/information_by_probe.csv"
+    },
+    {
+      "path": "results/bell_e14/information_summary.csv",
+      "bytes": 29914,
+      "sha256": "bf1e1bbae916b1a75a8fae339aabbb1d72a4f5c8a55ffa0ac60e56224851c606",
+      "original_path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370-analysis-v1/information_summary.csv"
+    },
+    {
+      "path": "results/bell_e14/noise_quantization.svg",
+      "bytes": 173656,
+      "sha256": "ca059512bdb222faafdf06d4406df8c9f17ee868e8b0979785f031a5f5f06814",
+      "original_path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370-analysis-v1/noise_quantization.svg"
+    },
+    {
+      "path": "results/bell_e14/response_coverage.csv",
+      "bytes": 5804,
+      "sha256": "5d592a1a10ec6eeadb85a7cdd9f45c9d95596cbe3a565c6d25ee34df16486614",
+      "original_path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370-analysis-v1/response_coverage.csv"
+    },
+    {
+      "path": "results/bell_e14/response_coverage.svg",
+      "bytes": 47263,
+      "sha256": "5d208693c095bc335b120f80088826d9e2160ef4be2adea993e9a42531eaeb2e",
+      "original_path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370-analysis-v1/response_coverage.svg"
+    },
+    {
+      "path": "results/bell_e14/retained_screen.csv",
+      "bytes": 433,
+      "sha256": "2602697d12325e4f9a4dcad70d36fe4e5bb935c4165a20a1ab5c45643ec46e7c",
+      "original_path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370-analysis-v1/retained_screen.csv"
+    },
+    {
+      "path": "results/bell_e14/summary.json",
+      "bytes": 1883,
+      "sha256": "fe9be0376765416876a4699d7a54e1ba0c9b1c4b4b76d272a0196a898e7b4eb5",
+      "original_path": null
+    }
+  ],
+  "verification": {
+    "direct_Docker_daemon_inspection": false,
+    "input_hashes": 24,
+    "native_cleanup_reported": true,
+    "original_L2_bitwise_preserved": true,
+    "saved_decisions_replayed": true,
+    "shared_isotropic_controls_exact": true,
+    "source_hashes": 94
+  },
+  "scientific_summary": {
+    "verification": "pass",
+    "decision": "FIX_AND_PROCEED",
+    "frozen_screen": "FROZEN_SCREEN_NOT_MET",
+    "full_benchmark_admitted": false,
+    "convergence": {
+      "cases": 192,
+      "maximum_RGB_difference": 0.0004255566876559397,
+      "maximum_relative_L2": 0.0011570284071166772,
+      "passed": 192
+    },
+    "screens": [
+      {
+        "basis": "legacy_scaled",
+        "major_resolved": 26,
+        "matched_points": 83,
+        "material": 0,
+        "median_paired_RMS_smin_gain": 7.952365198895926,
+        "median_paired_condition_ratio": 0.12441790558618902,
+        "minor_resolved": 12,
+        "original_screen_passed": false
+      },
+      {
+        "basis": "theta_logmean_logratio",
+        "major_resolved": 26,
+        "matched_points": 83,
+        "material": 0,
+        "median_paired_RMS_smin_gain": 8.615935735899738,
+        "median_paired_condition_ratio": 0.12325557982497455,
+        "minor_resolved": 12,
+        "original_screen_passed": false
+      },
+      {
+        "basis": "legacy_scaled",
+        "major_resolved": 33,
+        "matched_points": 83,
+        "material": 1,
+        "median_paired_RMS_smin_gain": 5.952990748342055,
+        "median_paired_condition_ratio": 0.17098939055346843,
+        "minor_resolved": 3,
+        "original_screen_passed": false
+      },
+      {
+        "basis": "theta_logmean_logratio",
+        "major_resolved": 33,
+        "matched_points": 83,
+        "material": 1,
+        "median_paired_RMS_smin_gain": 5.8009992827871715,
+        "median_paired_condition_ratio": 0.1606112332711859,
+        "minor_resolved": 3,
+        "original_screen_passed": false
+      }
+    ],
+    "counters": {
+      "brdf_attempts": 1658060800,
+      "brdf_returns": 1658060800,
+      "environment_attempts": 27525120,
+      "environment_returns": 27525120,
+      "model_calls": 0,
+      "new_L2_brdf_queries": 0,
+      "new_outgoing_queries": 0,
+      "new_primary_rays": 0,
+      "new_shadow_queries": 0,
+      "optimizer_returns": 0
+    }
+  },
+  "analysis_sources": {
+    "benchmarks/material_information_e14.py": "e25636c941fcf417a515d031e58deb3782b90ed2e7e5095984a5943e38f4883e",
+    "experiments/analyze_bell_two_light_e14.py": "e4ca42d4ba135ec59036fc5b48e69bd1543540087b2546e26d6aca160aed3512",
+    "experiments/bell_two_light_e14_analysis.py": "b3c07f24278f9f5962a275106e559ee2abbc2a154cdc02bc718802bb726022df"
+  },
+  "new_test_source": {
+    "path": "tests/benchmarks/test_bell_two_light_e14_offline.py",
+    "sha256": "10d7196b9208f75518af94487e9045cb5d0b990a72d89b3eab7d0a48598bc89e"
+  },
+  "tests": {
+    "process_exit_code": 0,
+    "counts": {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 6
+    },
+    "command": [
+      "python3",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "tests/benchmarks/test_bell_two_light_e14_offline.py",
+      "--junitxml=/tmp/e14-offline-focused.xml"
+    ],
+    "junit": {
+      "path": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370-analysis-v1/offline-focused-tests.xml",
+      "bytes": 1244,
+      "sha256": "af743308abe168f23ef3ee1c7141de657374ca5e6ea3c42c5c211bfc2c39a37c"
+    },
+    "inventory": [
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_bell_two_light_e14_offline",
+        "name": "test_receipt_fails_closed[extra_query]"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_bell_two_light_e14_offline",
+        "name": "test_receipt_fails_closed[incomplete_cleanup]"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_bell_two_light_e14_offline",
+        "name": "test_receipt_fails_closed[missing_return]"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_bell_two_light_e14_offline",
+        "name": "test_saved_grid_preserves_L2_and_unavailable_correspondences"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_bell_two_light_e14_offline",
+        "name": "test_replay_roundoff_never_changes_scientific_decisions_or_counts"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_bell_two_light_e14_offline",
+        "name": "test_offline_entry_import_has_no_model_or_tracing_dependencies"
+      }
+    ]
+  },
+  "resources": {
+    "cuda_peak_allocated_bytes": 24552960,
+    "cuda_peak_reserved_bytes": 33554432,
+    "host_peak_rss_bytes": 4781723648
+  },
+  "elapsed_seconds": 53.17493678443134,
+  "native_batch_bytes": 13128806,
+  "offline_new_scientific_queries": 0,
+  "previous_evidence_replaced": false,
+  "limitations": [
+    "No direct Docker-daemon or driver inspection by Codex.",
+    "Frozen conditional response screen fails minor-width coverage; no full benchmark/recovery admission.",
+    "Hypothetical sigma=.001 is not measured noise; deterministic codes have intervals, not Fisher information.",
+    "Three finite-secant coordinates with known color/metal; no global/seven-parameter identifiability proof.",
+    "One original-material noisy8-bit weak-information point has nonpositive two-grid proxy lower bound.",
+    "No measured geometry or historical checkpoint producing-run attribution follows from this experiment."
+  ]
+}
