@@ -1,6 +1,7 @@
 # First bounded native three-arm recovery comparison — review proposal
 
-**Prepared, not execution-authorized or launch-frozen.** E.12B admits corrected-
+**Historical review proposal; finalized by [E.13 v1](BELL_THREE_ARM_RECOVERY_E13_V1.md).**
+The E.13 source freeze is not execution authorization. E.12B admits corrected-
 core native construction and two updates only. This proposal uses the existing
 admitted Bell v3 weak-cue control. It does not wait for another lighting search,
 claim the control is a fully informative primary benchmark, or authorize the
@@ -56,7 +57,9 @@ No automatic retries, recovery-state restoration or parameter repair.
 ## Endpoint, export and evaluation definition
 
 Use the endpoint after2000 returns, not the checkpoint selected for best held
-performance. Preserve original validation/checkpoint scheduling; native final
+performance. This proposal originally requested native final scheduling; E.13
+explicitly stops before final dispatch and performs one endpoint adapter pass.
+Training arithmetic/scheduling remain unchanged. Native final
 validation's zero-based step1999 versus stored step2000 must be explicit in any
 separate inference call. Save source/config/variant-bound checkpoints and retain
 all logs; strict loading only, no cross-variant/partial state substitution.

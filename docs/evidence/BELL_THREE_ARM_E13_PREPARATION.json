@@ -1,0 +1,196 @@
+{
+  "base_commit": "0d82199af5d6fb5e8654b8781a4f9f55f028bb2c",
+  "docker_access": {
+    "bypass_attempted": false,
+    "exit_code": 1,
+    "next_execution_route": "explicitly approved researcher-side foreground tmux",
+    "operation": "read-only docker image inspect",
+    "result": "permission denied at unix:///var/run/docker.sock"
+  },
+  "freeze": {
+    "consumed_inputs": 667,
+    "path": "docs/protocols/BELL_THREE_ARM_RECOVERY_E13_V1.freeze.json",
+    "sha256": "5133290f15f2b902cd78449bf4c0a7cbe195757bb1a0e607a241f348e15c8e5e",
+    "source_files": 81
+  },
+  "host_output_directory": "/home/isavand/paper/evidence/bell-material-e13-66f3d41da36948e0a19a13cc0a989d58",
+  "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "limitations": [
+    "No E13 native execution or dataset regeneration has occurred.",
+    "Full panel runtime/endpoint native adapters are unverified until approved execution.",
+    "Bell v3 is an admitted weak-cue control, not proof of object-level identifiability.",
+    "CPU tests used host Python/Torch; native Python3.8/Torch1.8 execution remains pending.",
+    "No per-step held-out material-truth scoring; only loss/gradient trajectories and one fixed physical endpoint per arm.",
+    "All existing frozen E12B definitions and historical scientific snapshots are unchanged.",
+    "Native evaluation continues each arm endpoint RNG; no Monte Carlo variance estimate is authorized."
+  ],
+  "protocol": "bell-native-three-arm-recovery-e13-v1",
+  "rejected_suspicions": [
+    "Complete pinned source includes rgb_pr in validation output table.",
+    "Complete pinned Trainer call and NVS method both use imgs_dir."
+  ],
+  "run_ids": {
+    "A_corrected_core_v1": "bell-e13-2-66f3d41da36948e0a19a13cc0a989d58",
+    "A_estimator_v1": "bell-e13-1-66f3d41da36948e0a19a13cc0a989d58",
+    "A_original": "bell-e13-0-66f3d41da36948e0a19a13cc0a989d58"
+  },
+  "schema_version": 1,
+  "scientific_execution": {
+    "GPU_launches": 0,
+    "native_model_constructions": 0,
+    "native_optimizer_returns": 0,
+    "native_training_backwards": 0,
+    "native_training_forwards": 0,
+    "reference_integrations": 0
+  },
+  "static_checks": {
+    "E12B_69_source_files_unchanged": "pass",
+    "G_and_A_full_snapshot_manifests": "pass",
+    "Python_3_8_grammar_4_new_Python_files": "pass",
+    "bash_syntax": "pass",
+    "cold_preflight_all_three_variants_no_scientific_imports_or_output": "pass",
+    "git_diff_check": "pass",
+    "saved_label_archives_and_six_ray_archives_finite_numeric_inspection": "pass"
+  },
+  "status": "prepared_not_execution_authorized",
+  "tests": {
+    "command": "python3 -B -m pytest -q -p no:cacheprovider tests/infrastructure/test_material_recovery_e13.py tests/infrastructure/test_corrected_material_lazy_binding_e12b.py --junitxml=/tmp/e13-focused-final.xml",
+    "counts": {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 29
+    },
+    "inventory": [
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_recovery_e13",
+        "name": "test_gauge_equivalent_Q_orientation_and_recovery[False]"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_recovery_e13",
+        "name": "test_gauge_equivalent_Q_orientation_and_recovery[True]"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_recovery_e13",
+        "name": "test_frame_invalid_is_retained_and_no_repair"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_recovery_e13",
+        "name": "test_reversed_actual_handedness_is_invalid"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_recovery_e13",
+        "name": "test_orientation_eligibility_and_undefined_prediction"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_recovery_e13",
+        "name": "test_world_local_Q_in_rotated_world_frame"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_recovery_e13",
+        "name": "test_initialization_parity_exact_no_substitution"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_recovery_e13",
+        "name": "test_numeric_archive_rejects_pickle_and_nonfinite"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_recovery_e13",
+        "name": "test_component_and_native_image_metrics"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_recovery_e13",
+        "name": "test_actual_native_linear_capture_no_extra_calls_and_cleanup"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_recovery_e13",
+        "name": "test_native_tensor_default_restores_on_failure"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_recovery_e13",
+        "name": "test_complete_twelve_image_adapter_with_cpu_standins"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_recovery_e13",
+        "name": "test_strict_checkpoint_roundtrip_and_foreign_tag"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_recovery_e13",
+        "name": "test_endpoint_stops_exactly_2000_original_returns_and_cleanup[None]"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_recovery_e13",
+        "name": "test_endpoint_stops_exactly_2000_original_returns_and_cleanup[3]"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_recovery_e13",
+        "name": "test_original_scheduler_arithmetic_and_native_shuffle_cursor"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_recovery_e13",
+        "name": "test_no_frozen_scientific_or_existing_evidence_edits"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_recovery_e13",
+        "name": "test_checkpoint_and_quantization_conventions_statically_preserved"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_material_recovery_e13",
+        "name": "test_metadata_preflight_has_no_scientific_imports_or_output"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_corrected_material_lazy_binding_e12b",
+        "name": "test_actual_lazy_run_binds_once_two_returns_and_cleanup"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_corrected_material_lazy_binding_e12b",
+        "name": "test_forbidden_bodies_guarded_before_original_run[validation]"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_corrected_material_lazy_binding_e12b",
+        "name": "test_forbidden_bodies_guarded_before_original_run[nvs]"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_corrected_material_lazy_binding_e12b",
+        "name": "test_forbidden_bodies_guarded_before_original_run[extraction]"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_corrected_material_lazy_binding_e12b",
+        "name": "test_forbidden_bodies_guarded_before_original_run[checkpoint]"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_corrected_material_lazy_binding_e12b",
+        "name": "test_forbidden_bodies_guarded_before_original_run[evaluator]"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_corrected_material_lazy_binding_e12b",
+        "name": "test_missing_lazy_boundary_or_objects_fail_explicitly[network]"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_corrected_material_lazy_binding_e12b",
+        "name": "test_missing_lazy_boundary_or_objects_fail_explicitly[shader]"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_corrected_material_lazy_binding_e12b",
+        "name": "test_missing_lazy_boundary_or_objects_fail_explicitly[boundary]"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_corrected_material_lazy_binding_e12b",
+        "name": "test_pre_backward_failure_preserves_count_and_cleanup"
+      }
+    ],
+    "junit": {
+      "bytes": 5381,
+      "path": "/home/isavand/paper/evidence/bell-material-e13-preparation-66f3d41da36948e0a19a13cc0a989d58/focused-tests-final.xml",
+      "sha256": "4d1dd0dec831396faa6b089d2e55c151afd7e94b5d785d7b47c2c84f7c11d954"
+    },
+    "passed": 29,
+    "process_exit_code": 0,
+    "python": "3.9.12",
+    "torch": "2.4.0+cu121; CPU fixtures only",
+    "warnings": [
+      "Host Torch pickle-default warning for own synthetic checkpoint; PyTorch1.8 compatibility intentionally retained.",
+      "Original torch.cross deprecation in CPU AST fixture; scientific source unchanged."
+    ]
+  }
+}
