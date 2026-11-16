@@ -1,0 +1,190 @@
+{
+  "analysis": {
+    "bytes": 136554,
+    "path": "/home/isavand/paper/evidence/bell-material-e13-v2-be28c65f719543e09065d728bd2bad71-analysis-v3/analysis.json",
+    "sha256": "4213f0b00b0f6317a87c2945fbd41451bacf5e767615498727ca2c4f2dbb188a"
+  },
+  "analysis_completion": {
+    "bytes": 2125,
+    "path": "/home/isavand/paper/evidence/bell-material-e13-v2-be28c65f719543e09065d728bd2bad71-analysis-v3/completion.json",
+    "sha256": "d084b924ed522408535af28b7e36b1164e847bee71e38414a03cc3f38812ab1c"
+  },
+  "analysis_history": "First file-only reader stopped on unavailable imageio.v2; original failure retained. Tested Pillow decoder used instead. Final v3 changes figure spacing/captions from successful v2; all four CSV identities match v2 exactly. No native scientific rerun.",
+  "assessment": "One known-light weak-cue oracle, one seed, one fixed endpoint per arm. All native validity/lifecycle gates passed; image and physical recovery targets must be assessed separately.",
+  "batch": "/home/isavand/paper/evidence/bell-material-e13-v2-be28c65f719543e09065d728bd2bad71",
+  "checkpoints": [
+    {
+      "bytes": 25209407,
+      "path": "/home/isavand/paper/evidence/bell-material-e13-v2-be28c65f719543e09065d728bd2bad71/A_original/checkpoints/endpoint-2000.pth",
+      "sha256": "b7630e6e5db871b00b7a79536ed5938b0107d3a2c5857e2c1363f98b7b882c23"
+    },
+    {
+      "bytes": 25209431,
+      "path": "/home/isavand/paper/evidence/bell-material-e13-v2-be28c65f719543e09065d728bd2bad71/A_estimator_v1/checkpoints/endpoint-2000.pth",
+      "sha256": "8434531b25d11195283bae166f971f1ab33d5eace26c562985bd390c8741e737"
+    },
+    {
+      "bytes": 25209007,
+      "path": "/home/isavand/paper/evidence/bell-material-e13-v2-be28c65f719543e09065d728bd2bad71/A_corrected_core_v1/checkpoints/endpoint-2000.pth",
+      "sha256": "e8aa3151d310d47889ff56b1031bc80847772bb3fb77d6936c36c120c929571d"
+    }
+  ],
+  "decision": "PROCEED_FOR_NATIVE_LIFECYCLE_ONLY",
+  "execution_commit": "c372859dfa38789528517859a49e7f0f132cbdab",
+  "first_failed_offline_analysis": {
+    "bytes": 106,
+    "path": "/home/isavand/paper/evidence/bell-material-e13-v2-be28c65f719543e09065d728bd2bad71-analysis-v1/failure.json",
+    "sha256": "b616da22e3cb37db4693d796273f2fd9d1fd840e8d9332a2cdbfc1632f9d9ed3"
+  },
+  "freeze": {
+    "bytes": 117828,
+    "path": "/home/isavand/paper/Nerofactor-3d2-e2a/docs/protocols/BELL_THREE_ARM_RECOVERY_E13_V2.freeze.json",
+    "sha256": "4fd53bd58ed55d2900b4e959b1bb8c48ca86b7f26db90aff87aaec87596cf7cb"
+  },
+  "full_recorded_output_inventory": "results/bell_e13/analysis.json contains all486 native output records with absolute locations, sizes and SHA-256.",
+  "intermediate_successful_offline_analysis": {
+    "bytes": 136554,
+    "path": "/home/isavand/paper/evidence/bell-material-e13-v2-be28c65f719543e09065d728bd2bad71-analysis-v2/analysis.json",
+    "sha256": "f5133d58cf8f25d945cb6d62097ca5af671026b92d0cfc3ac1407e60a1bd80ed"
+  },
+  "physical_recovery": "Not established:0/19846 held observations meet Q-relative<=.05 in each arm.",
+  "protocol": "bell-e13-three-arm-results-v1",
+  "raw_reports": [
+    {
+      "bytes": 3170243,
+      "path": "/home/isavand/paper/evidence/bell-material-e13-v2-be28c65f719543e09065d728bd2bad71/A_original/recovery.json",
+      "sha256": "140dc6e05fa8ff388d543bae8328757f5c7dde8f796c09470bca2b364f66b819"
+    },
+    {
+      "bytes": 3215446,
+      "path": "/home/isavand/paper/evidence/bell-material-e13-v2-be28c65f719543e09065d728bd2bad71/A_estimator_v1/recovery.json",
+      "sha256": "9a1ba36ba74370200823fbc48ce05f5b1314902c7cdc5f3a7e1ab8310f9b5d9c"
+    },
+    {
+      "bytes": 3215225,
+      "path": "/home/isavand/paper/evidence/bell-material-e13-v2-be28c65f719543e09065d728bd2bad71/A_corrected_core_v1/recovery.json",
+      "sha256": "1d1acf0da1c3603e3da31dc5827a2cda3b15ccc6bdc2af877eae6101ec1e24d0"
+    }
+  ],
+  "recommended_next_action": "Separately authorize the already proposed bounded two-light observability study; do not assume longer training establishes identifiability.",
+  "schema_version": 1,
+  "scientific_work_completed": {
+    "new_scientific_queries_in_offline_finalization": 0,
+    "researcher_native_optimizer_returns": 6000,
+    "researcher_native_training_backwards": 6000,
+    "researcher_native_training_forwards": 6000
+  },
+  "status": "complete",
+  "tests": {
+    "command": "python3 -B -m pytest -q -p no:cacheprovider tests/infrastructure/test_analyze_material_recovery_e13.py --junitxml=/tmp/e13-analysis-tests-final.xml",
+    "counts": {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 6
+    },
+    "inventory": [
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_analyze_material_recovery_e13",
+        "name": "test_original_loss_weight_schedule_and_charbonnier_floor"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_analyze_material_recovery_e13",
+        "name": "test_exact_decisions_and_float_verification_are_distinct"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_analyze_material_recovery_e13",
+        "name": "test_numeric_readers_reject_pickle_and_nonfinite"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_analyze_material_recovery_e13",
+        "name": "test_png_decoder_preserves_all_uint8_values"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_analyze_material_recovery_e13",
+        "name": "test_independent_material_reference_and_frozen_statistics"
+      },
+      {
+        "classname": "paper.Nerofactor-3d2-e2a.tests.infrastructure.test_analyze_material_recovery_e13",
+        "name": "test_analysis_refuses_reuse_without_reading_native_evidence"
+      }
+    ],
+    "junit": {
+      "bytes": 1294,
+      "path": "/home/isavand/paper/evidence/bell-material-e13-v2-be28c65f719543e09065d728bd2bad71-publication-v1/analysis-tests.xml",
+      "sha256": "a87e2aad8c61030b5163dfb03e2f3016e03b1bcc4092095390d1dad75b09de53"
+    },
+    "passed": 6,
+    "process_exit_code": 0
+  },
+  "tracked_copies": [
+    {
+      "bytes": 136554,
+      "sha256": "4213f0b00b0f6317a87c2945fbd41451bacf5e767615498727ca2c4f2dbb188a",
+      "source": "/home/isavand/paper/evidence/bell-material-e13-v2-be28c65f719543e09065d728bd2bad71-analysis-v3/analysis.json",
+      "tracked_path": "results/bell_e13/analysis.json"
+    },
+    {
+      "bytes": 2125,
+      "sha256": "d084b924ed522408535af28b7e36b1164e847bee71e38414a03cc3f38812ab1c",
+      "source": "/home/isavand/paper/evidence/bell-material-e13-v2-be28c65f719543e09065d728bd2bad71-analysis-v3/completion.json",
+      "tracked_path": "results/bell_e13/completion.json"
+    },
+    {
+      "bytes": 2067,
+      "sha256": "6ef21352034c8836c3f7f58367fb8fa445968cedd5d42d993fc0c38363bd591e",
+      "source": "/home/isavand/paper/evidence/bell-material-e13-v2-be28c65f719543e09065d728bd2bad71-analysis-v3/endpoints.csv",
+      "tracked_path": "results/bell_e13/endpoints.csv"
+    },
+    {
+      "bytes": 516305,
+      "sha256": "7e53052c0e57325c5fb95cf500b1534090d76d071da5513a90e6cdf82aa056e0",
+      "source": "/home/isavand/paper/evidence/bell-material-e13-v2-be28c65f719543e09065d728bd2bad71-analysis-v3/observations.svg",
+      "tracked_path": "results/bell_e13/observations.svg"
+    },
+    {
+      "bytes": 5010,
+      "sha256": "958605526bc2f4962002639595d6934dd89b7b6c1025e5965a4d03c564a9f3d0",
+      "source": "/home/isavand/paper/evidence/bell-material-e13-v2-be28c65f719543e09065d728bd2bad71-analysis-v3/per_view_images.csv",
+      "tracked_path": "results/bell_e13/per_view_images.csv"
+    },
+    {
+      "bytes": 84372,
+      "sha256": "6a983f03748c8d094fa0acf0df45110b52a8cf3bb097d4f986599faf1bc917c9",
+      "source": "/home/isavand/paper/evidence/bell-material-e13-v2-be28c65f719543e09065d728bd2bad71-analysis-v3/per_view_materials.csv",
+      "tracked_path": "results/bell_e13/per_view_materials.csv"
+    },
+    {
+      "bytes": 83407,
+      "sha256": "68dc7e25d3123bd87792e2642239893cdd5e758bdd3e2360308d5421f7302003",
+      "source": "/home/isavand/paper/evidence/bell-material-e13-v2-be28c65f719543e09065d728bd2bad71-analysis-v3/physical_recovery.svg",
+      "tracked_path": "results/bell_e13/physical_recovery.svg"
+    },
+    {
+      "bytes": 41542,
+      "sha256": "9de5c75f27efaa9d11d01be93785f44dafe03619b7c5a6df896758eb5b4c438b",
+      "source": "/home/isavand/paper/evidence/bell-material-e13-v2-be28c65f719543e09065d728bd2bad71-analysis-v3/training.svg",
+      "tracked_path": "results/bell_e13/training.svg"
+    },
+    {
+      "bytes": 15313,
+      "sha256": "a9afcee6531d4111cf8eca3f0a35a56bd84091de00b361b6b68227bbb76bc02a",
+      "source": "/home/isavand/paper/evidence/bell-material-e13-v2-be28c65f719543e09065d728bd2bad71-analysis-v3/training_50_update_bins.csv",
+      "tracked_path": "results/bell_e13/training_50_update_bins.csv"
+    }
+  ],
+  "verification": {
+    "84_active_parameter_tensors_changed_24_lighting_tensors_unchanged_each_arm": "pass",
+    "85_frozen_sources_and_667_inputs": "pass",
+    "G_A_full_snapshot_files": "pass",
+    "Python3.8_AST_new_files": "pass",
+    "code_and_documentation_whitespace": "pass; generated CSV/SVG are excluded to preserve their exact original CRLF/Matplotlib bytes",
+    "completion_seals_and_486_output_hashes": "pass",
+    "copied_artifact_byte_equality": "pass",
+    "distinct_variant_tags_common_parameters_and_buffer": "pass",
+    "failed_v1_native_evidence_unchanged": "pass",
+    "independent_36_image_score_recalculations": "pass",
+    "independent_numpy_material_calculations_and_all_statistics": "pass",
+    "training_Adam_and_RNG_records": "pass"
+  }
+}
