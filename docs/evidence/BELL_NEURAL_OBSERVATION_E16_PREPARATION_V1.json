@@ -1,0 +1,323 @@
+{
+  "schema_version": 1,
+  "status": "preparation_complete_awaiting_explicit_execution_authorization",
+  "protocol": "bell-observation-guided-neural-e16-v1",
+  "base_commit": "d907c9a59a3c0eb4a701cee900d4fe534c433393",
+  "freeze": {
+    "path": "docs/protocols/BELL_NEURAL_OBSERVATION_E16_V1.freeze.json",
+    "sha256": "10c51b7d8ac1dc1ca59abe657c30f9769a0f50f93893d3761c26022f4a17ba48"
+  },
+  "source_files": 116,
+  "input_artifacts": 33,
+  "host_inputs": {
+    "benchmark": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark",
+    "pilot": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c/pilot",
+    "reference": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature",
+    "factor": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc/anisotropy",
+    "multiview": "/home/isavand/paper/evidence/bell-multiview-e11g-b0cfbb9da81c4dd0a8039d1e4f8e62ef/multiview",
+    "two_light": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370/two-light",
+    "physical": "/home/isavand/paper/evidence/bell-physical-e15-4fee87af79b44eed974a8dcc76e37a87/recovery"
+  },
+  "host_output_directory": "/home/isavand/paper/evidence/bell-neural-e16-05d9ed3a61a34a72b0752672968d5cae",
+  "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "tracing_identity": {
+    "variant": "predicate_fp64",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15"
+  },
+  "scientific_sources": {
+    "geometry": "79252178e65914ad1acbc14790b1514f276bfea0",
+    "material": "e1e859779301faced46d6476691e20b546c27ae0"
+  },
+  "histories": [
+    {
+      "material": "original",
+      "arm": "A"
+    },
+    {
+      "material": "original",
+      "arm": "B"
+    },
+    {
+      "material": "stronger",
+      "arm": "A"
+    },
+    {
+      "material": "stronger",
+      "arm": "B"
+    }
+  ],
+  "points": 84,
+  "fitting_correspondences": 137,
+  "withheld_correspondences": 83,
+  "policy": {
+    "seed": 6033,
+    "photometric_updates": 1000,
+    "distillation_updates": 200,
+    "baseline_extra_max": 1000,
+    "lr": 0.001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "amsgrad": true,
+    "weight_decay": 0.0,
+    "gradient_clip": 0.7,
+    "compatibility_repeats": 32,
+    "evaluation_repeats": 8,
+    "compatibility_SE_multiplier": 6.0,
+    "compatibility_absolute": 0.001,
+    "compatibility_relative": 0.02,
+    "gradient_absolute": 0.001,
+    "gradient_relative": 0.1,
+    "float32_guard": 7.62939453125e-06,
+    "gradient_probe_indices": [
+      0,
+      16,
+      33,
+      49,
+      66,
+      83
+    ],
+    "confidence_near_fit_RMSE": 0.0001
+  },
+  "limits": {
+    "wall_seconds": 3600,
+    "inner_seconds": 3480,
+    "grace_seconds": 30,
+    "cpu_threads": 4,
+    "host_memory_gib": 64,
+    "cuda_allocator_fraction": 0.25,
+    "output_bytes": 2147483648,
+    "photometric_Adam_returns": 6000,
+    "distillation_Adam_returns": 400,
+    "gate_shader_calls": 128,
+    "photo_shader_calls": 12000,
+    "eval_shader_calls": 192,
+    "gate_reverse_sweeps": 384,
+    "photo_backwards": 6000,
+    "distillation_backwards": 400,
+    "shadow_rays": 2616999936,
+    "field_calls": 6412,
+    "independent_point_directions": 869007360,
+    "coefficient_point_directions": 72089600,
+    "environment_point_directions": 55050240
+  },
+  "teacher_cost": {
+    "original": {
+      "fitting_forward_calls": 76,
+      "analytic_Jacobian_calls": 20,
+      "fitting_point_directions": 8188329984,
+      "endpoint_point_directions": 216268800,
+      "per_panel_wall_time_available": false,
+      "charged_wall_seconds": 72.43427120149136
+    },
+    "stronger": {
+      "fitting_forward_calls": 80,
+      "analytic_Jacobian_calls": 20,
+      "fitting_point_directions": 8619294720,
+      "endpoint_point_directions": 216268800,
+      "per_panel_wall_time_available": false,
+      "charged_wall_seconds": 72.43427120149136
+    }
+  },
+  "teacher_context": {
+    "full_E15_work": {
+      "coefficient_point_directions": 72089600,
+      "endpoint_point_directions": 3460300800,
+      "environment_point_directions": 55050240,
+      "fit_point_directions": 135215185920,
+      "gate_point_directions": 519045120
+    },
+    "full_E15_elapsed_seconds": 72.43427120149136,
+    "cost_policy": "Full prior-run time conservatively charged to each guided field; no amortized speedup claim."
+  },
+  "test_process_exit_code": 0,
+  "test_counts": {
+    "tests": 10,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 10
+  },
+  "test_command": [
+    "python3",
+    "-B",
+    "-c",
+    "import sys,importlib.abc\nclass Block(importlib.abc.MetaPathFinder):\n def find_spec(self,fullname,path=None,target=None):\n  if fullname.split('.')[0] in {'network','train','dataset','raytracing','_raytracing','open3d','nvdiffrast'}:raise AssertionError('Scientific import forbidden: '+fullname)\nsys.meta_path.insert(0,Block())\nimport pytest\nraise SystemExit(pytest.main(sys.argv[1:]))\n",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "tests/benchmarks/test_neural_observation_e16.py",
+    "--junitxml=/home/isavand/paper/evidence/bell-neural-e16-preparation-bde518df05af496ca3e987da97926209/focused.xml"
+  ],
+  "test_inventory": [
+    {
+      "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_neural_observation_e16",
+      "name": "test_Q_equivalences_world_frame_and_differentiable_uniform_distillation"
+    },
+    {
+      "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_neural_observation_e16",
+      "name": "test_teacher_reads_no_truth_or_withheld_fields_and_keeps_all_bad_estimates"
+    },
+    {
+      "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_neural_observation_e16",
+      "name": "test_known_fitting_RGB_objective_and_mechanical_compute_match"
+    },
+    {
+      "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_neural_observation_e16",
+      "name": "test_compatibility_separates_bias_variance_precision_and_incomplete_panels"
+    },
+    {
+      "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_neural_observation_e16",
+      "name": "test_real_corrected_method_adapter_with_synthetic_native_dependencies"
+    },
+    {
+      "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_neural_observation_e16",
+      "name": "test_compatibility_reverse_counts_and_fail_closed_before_updates[True]"
+    },
+    {
+      "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_neural_observation_e16",
+      "name": "test_compatibility_reverse_counts_and_fail_closed_before_updates[False]"
+    },
+    {
+      "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_neural_observation_e16",
+      "name": "test_full_toy_field_update_uses_all_parameters_without_head_freezing"
+    },
+    {
+      "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_neural_observation_e16",
+      "name": "test_cold_metadata_import_and_work_ceilings"
+    },
+    {
+      "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_neural_observation_e16",
+      "name": "test_paired_training_lifecycle_resets_guided_Adam_and_bounds_extension"
+    }
+  ],
+  "test_evidence": [
+    {
+      "path": "/home/isavand/paper/evidence/bell-neural-e16-preparation-bde518df05af496ca3e987da97926209/console.log",
+      "bytes": 225,
+      "sha256": "b217045c8bdbc6b37d130736048e19f3263c4ae004ca2ca2cc93f07865c39d01"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-neural-e16-preparation-bde518df05af496ca3e987da97926209/development-test-evidence.json",
+      "bytes": 1077,
+      "sha256": "f98831c2bc0acfd29ee88720fa310667966b966de7e858df0412020c4e731151"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-neural-e16-preparation-bde518df05af496ca3e987da97926209/e16-focused-corrected.xml",
+      "bytes": 1855,
+      "sha256": "140bb6ff27aaaa7406ff47983a538e6eafa5176a022427ae7581eb5d579aec34"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-neural-e16-preparation-bde518df05af496ca3e987da97926209/e16-focused-expanded.xml",
+      "bytes": 5465,
+      "sha256": "dead4e180a07c23bcd0b19fd4e8a956ac684efe3a6fdf6a641cb7ff34e5199e2"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-neural-e16-preparation-bde518df05af496ca3e987da97926209/e16-focused-final.xml",
+      "bytes": 2041,
+      "sha256": "0eaf14fb703a2a58e539c29f122059f30ba2c570393a17d95dac34a4b67275c2"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-neural-e16-preparation-bde518df05af496ca3e987da97926209/e16-focused.xml",
+      "bytes": 10856,
+      "sha256": "f35540e6c1e5dace2841d473b4706dd55f5b1db982e680b7ccb5edc882c0669d"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-neural-e16-preparation-bde518df05af496ca3e987da97926209/exit-code.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-neural-e16-preparation-bde518df05af496ca3e987da97926209/focused.xml",
+      "bytes": 2041,
+      "sha256": "155172c69b800bcc4e753f0f81eb92535fff2cf11e4714dca73d4f8c4c1d9a73"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-neural-e16-preparation-bde518df05af496ca3e987da97926209/metadata-console.log",
+      "bytes": 73,
+      "sha256": "8e788a31ea1e9c27d44d9867aec3a7b96455a112f1cc83068e4d0548c53b4e2e"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-neural-e16-preparation-bde518df05af496ca3e987da97926209/metadata-receipt.json",
+      "bytes": 1579,
+      "sha256": "a800547f8ad8a812ddd1baa32fd4b47b63549e9bb041d66d77b774e2c73d9918"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-neural-e16-preparation-bde518df05af496ca3e987da97926209/static-checks.json",
+      "bytes": 453,
+      "sha256": "a8936d7108175bc99675129d5db1b3bc31c3805c7b6665b2e11174a55b8b09cb"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-neural-e16-preparation-bde518df05af496ca3e987da97926209/test-receipt.json",
+      "bytes": 3023,
+      "sha256": "ebc950603497892743a9c9da2f1220cbfe0fd8fa3f2010470d84a8424b82299d"
+    }
+  ],
+  "static_checks": {
+    "python38_grammar": true,
+    "bash_syntax": true,
+    "strict_shader_configuration": true,
+    "pinned_sources_verified": {
+      "geometry": "79252178e65914ad1acbc14790b1514f276bfea0",
+      "material": "e1e859779301faced46d6476691e20b546c27ae0"
+    },
+    "baseline_scientific_config_protocol_diff_empty": true,
+    "source_files": 116,
+    "input_artifacts": 33,
+    "metadata_only_with_scientific_import_blocker": true,
+    "scientific_output_not_allocated": true
+  },
+  "development_history": [
+    {
+      "evidence": "e16-focused.xml",
+      "outcome": "7 passed, 2 failed",
+      "reason": "CPU fixture omitted device interception and reached unavailable CUDA initialization; no kernels or full field construction occurred."
+    },
+    {
+      "evidence": "e16-focused-corrected.xml",
+      "outcome": "9 passed",
+      "correction": "CPU device interception plus fail-before-driver CUDA guard."
+    },
+    {
+      "evidence": "e16-focused-expanded.xml",
+      "outcome": "9 passed, 1 failed",
+      "reason": "New Tiny lifecycle fixture omitted one device interception; synthetic CUDA guard rejected it before driver access."
+    },
+    {
+      "evidence": "e16-focused-final.xml",
+      "outcome": "10 passed",
+      "correction": "Completed device interception in Tiny lifecycle fixture."
+    },
+    {
+      "evidence": "focused.xml",
+      "outcome": "10 passed, 0 failed/errors/skipped",
+      "note": "Final sources; process-level scientific import blocker, synthetic CUDA initialization guard; full JUnit and actual exit code archived."
+    }
+  ],
+  "new_real_data_optimizer_updates": 0,
+  "new_native_shader_queries": 0,
+  "new_real_data_BRDF_evaluations": 0,
+  "new_geometry_queries": 0,
+  "GPU_kernels_executed": false,
+  "full_native_material_field_constructed": false,
+  "synthetic_optimizer_fixtures_executed": true,
+  "execution_authorized": false,
+  "limitations": [
+    "Mandatory real forward AND pathwise-gradient compatibility gates remain unexecuted; failure stops before any Adam update.",
+    "Native material-dependent sampling requires at most 2,616,999,936 NEW shadow rays; quadrature visibility cannot replace native traced visibility.",
+    "Teacher ambiguity and all 84 fitting-selected estimates are retained uniformly; diagnostic confidence never weights or filters labels.",
+    "One seed, two material fields, sparse 84-point field; no held-out spatial positions or unseen lighting, no full-object reconstruction claim.",
+    "Known albedo/metallic and illumination bypass their predictors; all original material architecture and trainability retained.",
+    "New explicit paired Adam LR .001/eps1e-8/no scheduler differs from legacy Trainer settings; no legacy implementation/configuration is edited.",
+    "Approximate total-compute comparison conservatively charges whole E15 time to each guided field and caps baseline extension; capped comparisons may remain unmatched.",
+    "Finite deterministic quadrature discrepancy is a proxy, not an absolute integration certificate; empirical repeated-native SE is not a simultaneous confidence proof.",
+    "Native single-draw MSE includes variance; hard visibility may bias pathwise gradients. Endpoint native/reference comparisons remain required.",
+    "Codex Docker access is restricted; no bypass or new Docker probe attempted. Approved researcher-side foreground launcher required.",
+    "No scientific execution until separate exact commit/freeze/output authorization; no automatic retry, tuning, extension or full benchmark generation."
+  ]
+}
