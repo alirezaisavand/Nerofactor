@@ -1,5 +1,22 @@
 # Research and development rules
 
+## Corrected sphere replay boundary
+
+The current researcher task authorizes a separate fresh sphere replay adapter,
+working configuration, original-style progression visualizations and focused
+synthetic/static checks. Preserve frozen G/A, corrected variants, original YAML,
+historical sphere assets, Bell/E.17 and all accepted/failed evidence. Use pinned
+A with `A_corrected_core_v1`, learned lighting, original sphere preprocessing,
+full network, seed/Adam/scheduler and effective compatible legacy priors.
+Do not weaken stage G-to-A admission. One explicit bounded approval of final
+source/freeze/inputs/fresh output is required before the100000-step run. Save
+fixed validation maps/checkpoints each2000 and original NVS each10000, with RNG
+restoration around added evaluations. Preserve partial work on failure/timeout;
+no retries/extensions, historical overwrite, Bell/E.17 launch or implicit resume.
+After the approved run, analyze saved images, commit/push only implementation
+and small results. Historical final checkpoint step is unresolved; do not claim
+equal-budget comparison. See [sphere replay](docs/SPHERE_CORRECTED_REPLAY_V1.md).
+
 ## E.11C offline acceptance finalization
 
 The current task authorizes file-only reanalysis of existing native captures,

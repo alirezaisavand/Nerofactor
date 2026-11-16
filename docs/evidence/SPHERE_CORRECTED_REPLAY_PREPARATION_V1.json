@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "protocol": "sphere-corrected-core-replay-v1",
+  "status": "prepared_not_executed",
+  "branch": "feat/corrected-sphere-replay-v1",
+  "accepted_infrastructure_base": "4bdc18b881bd35b8e9ba3e5c9f392c7729841b81",
+  "tests": {
+    "command": "python3 -B -m pytest -q -p no:cacheprovider tests/infrastructure/test_sphere_replay.py --junitxml=/tmp/sphere-replay-tests.xml",
+    "process_exit_code": 0,
+    "passed": 15,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "inventory": [
+      "test_effective_legacy_sphere_semantics_and_no_rng_consumption",
+      "test_split_matches_exact_pinned_function_without_global_rng_change",
+      "test_original_adam_scheduler_loss_and_frozen_sources",
+      "test_orientation_physical_axis_equivalence_and_exact_isotropy",
+      "test_lossless_maps_fixed_scales_no_overwrite",
+      "test_capture_observes_same_shade_calls_and_pixel_order",
+      "test_extra_evaluation_restores_all_rng_modes_even_failure",
+      "test_lazy_trainer_binds_only_original_once_and_refuses_resume",
+      "test_nvs_10k_cadence_no_final_duplicate",
+      "test_budget_fails_without_removing_partial_evidence",
+      "test_workspace_only_output_owned_links",
+      "test_authorization_is_explicit_and_binds_budget_output_commit",
+      "test_unsafe_missing_inputs_fail_before_scientific_import",
+      "test_duplicate_view_rejected_before_any_new_shader_call",
+      "test_native_dependency_imports_remain_cold_until_explicit_execution"
+    ],
+    "junit_path": "docs/evidence/SPHERE_CORRECTED_REPLAY_TESTS_V1.xml",
+    "junit_sha256": "780bb1511c51e2ee5cd4ab94f64b5f8ad28977dfc6a6598696243f50fab63178",
+    "python": "3.9.12",
+    "torch_distribution": "2.4.0",
+    "warning": "Local Torch deprecates set_default_tensor_type; legacy Torch1.8 requires it."
+  },
+  "static_checks": {
+    "shell_syntax": "pass",
+    "Python38_AST": "pass",
+    "git_diff_whitespace": "pass",
+    "frozen_G_A_unchanged": true,
+    "corrected_variants_unchanged": true,
+    "legacy_YAML_unchanged": true
+  },
+  "scientific_execution": {
+    "native_models": 0,
+    "native_shader_calls": 0,
+    "CUDA_calls": 0,
+    "training_runs": 0,
+    "scope": "Synthetic CPU fixtures only, including a toy Linear/Adam lifecycle fixture"
+  },
+  "limitations": [
+    "Native sphere construction, normal domains, runtime/memory, convergence and reconstruction quality remain untested pending approval.",
+    "Historical material checkpoint/producing config/final NVS step not located; no equal-budget baseline claim.",
+    "Codex Docker socket access is denied; researcher foreground execution required."
+  ]
+}

@@ -1,0 +1,1274 @@
+{
+  "schema_version": 1,
+  "protocol": "sphere-corrected-core-replay-v1",
+  "source_dataset": "/home/isavand/nero/data/nerf_synthetic",
+  "historical_root": "/home/isavand/nero/final_results",
+  "records": [
+    {
+      "root": "datasets",
+      "path": "sphere/transforms_train.json",
+      "bytes": 86432,
+      "sha256": "c39d4423b0a0ae7da607c822e2b6d22fb20a0582cd85d4ddb93ceaf9fca46630"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0001.png",
+      "bytes": 1407168,
+      "sha256": "23dcaa4e809a1e776d383819d6eb498517c87c48a66391421b9af1d773579265"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0001.png",
+      "bytes": 4955,
+      "sha256": "0dfa75af3d23c2bb66023bd9dfd8c711df1bee87e493d6d00ea9f96302883bbc"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0002.png",
+      "bytes": 1343440,
+      "sha256": "1f1a39fd163ec8a88d659a4c02ffb5b5dcf89f0882838c6c475a2017375f5c5d"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0002.png",
+      "bytes": 4930,
+      "sha256": "e486ab87c1ab56cc4b95a90caf35a3515e7d2a83c3842f4df27f009fdc44fb4f"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0003.png",
+      "bytes": 1462970,
+      "sha256": "18c18af63093202cbc778a5a383b574597e4c51f342bd95b72326306f05e314f"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0003.png",
+      "bytes": 4936,
+      "sha256": "bf4f16a0d7540039d42d56d2058403c560b174072c079b77abb9e2027590d8d1"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0004.png",
+      "bytes": 1285267,
+      "sha256": "652fb380e3876a3be772599190cc7a6bff496573a7d346c97e6ca8e43e52051e"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0004.png",
+      "bytes": 4934,
+      "sha256": "827a5e6db104d701d2b1c525dfca5551bf0121eba3821a3336e4c1a6f4aa3f4b"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0005.png",
+      "bytes": 1265327,
+      "sha256": "ddfa088d8377dbaac762ac9d76c7c37e4e91157ccdaa03216ee7501eec0c2adc"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0005.png",
+      "bytes": 4933,
+      "sha256": "0749966b5ea8a0aabae4791950d9e6b0e1bda319bd191e84de19daa38aa6117f"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0006.png",
+      "bytes": 1386217,
+      "sha256": "9f1cc498e68c4945977fc89fc3a42ebc0067fcc05fc9bc45bf62fb1ed8d2688c"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0006.png",
+      "bytes": 4913,
+      "sha256": "31a3d612b6de8feb141b7d8737caff820ae7e11518556bc8643ab6daf6ae3be2"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0007.png",
+      "bytes": 1463353,
+      "sha256": "16ecda8c697fc8f652d33763b1265a8144cf9d0156586d3adae579690b025992"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0007.png",
+      "bytes": 4945,
+      "sha256": "45ea42c8e2f71b1025035d6d2a17e3dc3fb89b06325f0d7314e5df484a837c11"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0008.png",
+      "bytes": 1491523,
+      "sha256": "fc4664d0357dbbef1a445630d1dfa1982927740ea8e92b7c655be841198dd1b5"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0008.png",
+      "bytes": 4941,
+      "sha256": "c333a7b1dedaacd3097b540a502df3f6fc3329130a2697de4a56c89d338099da"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0009.png",
+      "bytes": 1332156,
+      "sha256": "de74ea9ea8d855d21f354926dd44e8c36c57a8a962a684c4386708f5a64d29f1"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0009.png",
+      "bytes": 4932,
+      "sha256": "d2743f3e70db37f4eeef456ac54a8c3d59041fecb28c66213b0784018ae9cf18"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0010.png",
+      "bytes": 1341748,
+      "sha256": "7f2e7856648f6d2b3b888d9741d8154a132a558f8332228b39fdb0e88f6f1ce6"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0010.png",
+      "bytes": 4916,
+      "sha256": "568764582f76e7cd9ee6a479728aee25c0b6b407b37f96380896ef8773025e44"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0011.png",
+      "bytes": 1396291,
+      "sha256": "806d426f5a6efccfc90d937c35530f176fc06091995386e104e47821eea2b321"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0011.png",
+      "bytes": 4948,
+      "sha256": "80222e3447494893226eda10861224f6f0e2ec0d9e0c5df2029b8fd31d496370"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0012.png",
+      "bytes": 1467871,
+      "sha256": "a6dbf7bc679de47a5a3bcd2648cf595949f2fec2b23689d7d2a26321e1de014d"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0012.png",
+      "bytes": 4914,
+      "sha256": "95bb1cd9c0048273ce99f72a6175acaa88b6ec8c36378c993cbfe4df6e72940e"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0013.png",
+      "bytes": 1362201,
+      "sha256": "d4a9ce0aa4d430c0077b84e37fabcb213cdb407b335c6a251338680647ceddfa"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0013.png",
+      "bytes": 4929,
+      "sha256": "25c8e6ee485e4c838f94b51b95a58ff9398ba9e62d5bf6a0ede6b3a364f43672"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0014.png",
+      "bytes": 1282981,
+      "sha256": "44d517688517d47523239033bd5b0514300918046efe541da9c932222371d816"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0014.png",
+      "bytes": 4940,
+      "sha256": "eae7c3957d5b878c95379f3eda5e256165842b03fcc10ea642edf185866c3892"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0015.png",
+      "bytes": 1294986,
+      "sha256": "7e36594a91a2f3aa7eeda05ff3562879df475ebd54b197f6d577ec9d59cb2cec"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0015.png",
+      "bytes": 4917,
+      "sha256": "755e2c8fef7e9794efbe716d9add2337b671dd172c2247a2798acd25037755c3"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0016.png",
+      "bytes": 1242101,
+      "sha256": "2932f83ea16727c27ed49b5dc2d84485bc07c7683215f8c3fb443cdd86b1bcfa"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0016.png",
+      "bytes": 4922,
+      "sha256": "5409b3f75cb0c6fa4d90c51d1e721f5c9d890e3110274be0082e28cfb8507cdb"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0017.png",
+      "bytes": 1411251,
+      "sha256": "4c5729a587548ccff6977d040039552c76147b4f3563e779de659440810cdd19"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0017.png",
+      "bytes": 4924,
+      "sha256": "c53e0cc865807c8a28d23d579833023e41884890b8adb4d8c47fa90375f3c883"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0018.png",
+      "bytes": 1373317,
+      "sha256": "febbcf3531121ff9f24b24be0b2bfdbf9e0cdfd63bc5ec75a6e80c536f8e75eb"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0018.png",
+      "bytes": 4951,
+      "sha256": "571287f0bc86c88ec41f7641f50043e9b6a40f435a195f58176df08ef65db3fc"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0019.png",
+      "bytes": 1471408,
+      "sha256": "5ef5295632ed5488ad86ef12a61db6cc6ee9e7542b288435b07aa1769638db6f"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0019.png",
+      "bytes": 4947,
+      "sha256": "4506def557c80f46b13f0dbe6a1f378e4aa91f5ff11c7edc6ff6b762d8c1d9c6"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0020.png",
+      "bytes": 1421981,
+      "sha256": "235a490e86a96c65789aec007ab44cd9d29914ea88350a127a773de5acc7fba9"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0020.png",
+      "bytes": 4940,
+      "sha256": "b6e2657f3fa8fa7c3a9475490ec782a9a76ed59503ff9443eaf61dde8a25d07e"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0021.png",
+      "bytes": 1255740,
+      "sha256": "fa8227184d24d8aecd047f8aefcef154b776190a0b3e5ae4dba9fcd203566e57"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0021.png",
+      "bytes": 4929,
+      "sha256": "e19094b9f08d39ffa7dc388f913d8e42cffdbfb0a8187fddc6ad8133bdb4f686"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0022.png",
+      "bytes": 1452186,
+      "sha256": "2d00d1797300998babed7232b074313b1d08c98232d755bfde9b477ef344b930"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0022.png",
+      "bytes": 4933,
+      "sha256": "8c270a86515248e611754f4cf270483fd4ffb556313170a5944bf42f2af8ceee"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0023.png",
+      "bytes": 1337252,
+      "sha256": "870c7684d52b042372271fe9bba5c7010c34ea9cfb5a5fc79098eea1a730ff44"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0023.png",
+      "bytes": 4939,
+      "sha256": "82b783ef127e0f025cc6011c07a1c33cdb4f9e232ae0029eaf14bb35212f7c62"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0024.png",
+      "bytes": 1374136,
+      "sha256": "160fcf16aa6cf5895aff7881b175d36f907b65692fa864a6ca7df4365a98ba96"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0024.png",
+      "bytes": 4928,
+      "sha256": "61cb23f9117bc681b4eb56ac99e85dd77fe78c251e67e93a1daa6d8870882528"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0025.png",
+      "bytes": 1432067,
+      "sha256": "a2b47bc4cdec533202ba4a0bee9eb6446179ac540081e615a3a5adf27ae3021d"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0025.png",
+      "bytes": 4933,
+      "sha256": "a3f74dab53b27724eef7c807cafe8eeb9218b9c451277dd81f11b6d13edad7ca"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0026.png",
+      "bytes": 1334120,
+      "sha256": "0764cc9f275c6d7162882e948359c6fdfd209c8b27701569d36cb953deb26cd6"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0026.png",
+      "bytes": 4939,
+      "sha256": "22b0888ea41f1d320dea6b2dac8bae3e716a7612edb3345d61d69532834bedbd"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0027.png",
+      "bytes": 1195946,
+      "sha256": "8c31d94e12416f316866828b6d9728a9af2d394422f7272779b6d05acafb1072"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0027.png",
+      "bytes": 4928,
+      "sha256": "ade64f0c5eba4cbe284abcffa5b9e47f07215b62052cc0eeb68fd9ba9bd62683"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0028.png",
+      "bytes": 1358715,
+      "sha256": "6ec3942fea73a1a765cb89fbcab013e8caafe0e8237f371587df7556d30bbfe9"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0028.png",
+      "bytes": 4927,
+      "sha256": "266d63e15beac94e18d6546329fc2abdcbb91d4f28136d83c246bc6d3ee7d3e5"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0029.png",
+      "bytes": 1391043,
+      "sha256": "dc6e4dc25f1da58f1cfb9487649863450e631de3dbaee9b4d6580711e2684b8b"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0029.png",
+      "bytes": 4921,
+      "sha256": "5a970595859b0da20a38e45a54ae4d66d95be9d4e6eaf822720610f5c34af347"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0030.png",
+      "bytes": 1247197,
+      "sha256": "241905b08d83700dd7d97dd755865d11ae5156bdc62ad7e8af61d1d4b1f24bec"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0030.png",
+      "bytes": 4923,
+      "sha256": "ca316b30fa115b614123ba1d877ac5b82839d07878b4d37ad8e873bdd78b2eee"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0031.png",
+      "bytes": 1246095,
+      "sha256": "75aa35d4df25e465d8c31be3196d54981170b54607cea8b76c0f5d482488741b"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0031.png",
+      "bytes": 4933,
+      "sha256": "3d89d9bfe34254edebc6e95e258500c90dbec2a23fac57b7dc2241485505189d"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0032.png",
+      "bytes": 1240972,
+      "sha256": "a9e1f12fce6bb243c7621251dca826ae5b1c2eba7c90804b0087864e2b233914"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0032.png",
+      "bytes": 4929,
+      "sha256": "e3d1b1722222984a2eebaa2278d3f8ff1fbffb8a0228bbc921ced76f4e7b964f"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0033.png",
+      "bytes": 1415325,
+      "sha256": "3f986036bd1fb785aa797d3e9207373ad733c841eff39c955ca5a428095bcc17"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0033.png",
+      "bytes": 4944,
+      "sha256": "655f38fbf9d63bb7c893ddd6a3c428ac00d5924f44e35baec4adfeec79a9f3e3"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0034.png",
+      "bytes": 1432643,
+      "sha256": "baadf02684ccb29a4b0b4545553d28b10df3ddd77c53dde6c94f0efccdb52add"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0034.png",
+      "bytes": 4947,
+      "sha256": "280234d3c15211b11107c7f88d65c6a3733bf93828f646ca9d3a8a39f1c95ab9"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0035.png",
+      "bytes": 1247344,
+      "sha256": "5999e737085f44828bd4d147677655bb09c5cc871d1e342c2a64878c9ea88b89"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0035.png",
+      "bytes": 4930,
+      "sha256": "59cd7942231a80d6608711befec098d249185b6674a2e2328f0f520f53debfbb"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0036.png",
+      "bytes": 1444452,
+      "sha256": "b823f8494f8cfca40e479c924e9af2e5d2a5457cedf8a5cd357a7c5d085bf83f"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0036.png",
+      "bytes": 4920,
+      "sha256": "6e03117953e20bef6da2520e3b54f08878a0cc43a38e775e902155ca73ce0370"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0037.png",
+      "bytes": 1324704,
+      "sha256": "3c3b5626bd973591ac1d82abf827d998fc01c8489ec71c4e096d32bee84ba396"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0037.png",
+      "bytes": 4928,
+      "sha256": "6485b5163033ad99dfa96f8b68a9525011af80b1ed87e3657e7beffe296e615e"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0038.png",
+      "bytes": 1322972,
+      "sha256": "332143f1abbc22d5cafb0b3db71c3918ba5182e6cad9d0fd4a42f360b099b37e"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0038.png",
+      "bytes": 4940,
+      "sha256": "90e97225678bba4f7daaa0921ada11a12648c12fd942f5853b3a02f719c533a9"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0039.png",
+      "bytes": 1464513,
+      "sha256": "1787f08ad8e9e8b447cbcc89ce928cf7f55a72d5bc902d3efc3dd4c2c6396e10"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0039.png",
+      "bytes": 4929,
+      "sha256": "c8de1401dd0124fc5f46114a84ae3cd307b69bfee6e2bdf683d3866b1da03dc5"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0040.png",
+      "bytes": 1396752,
+      "sha256": "2e7bf4f2ac90daf3fd3b68dab5e1ab1153c49df0bdda8016485a6af0df48d743"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0040.png",
+      "bytes": 4925,
+      "sha256": "7a30f13dab83ea3fc2a85707aa0817eae07ceec16924261aa79f6dc70e71a20c"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0041.png",
+      "bytes": 1327475,
+      "sha256": "b5b74c198091404b39154531fbdf73cc07348be072447a33ace4422a2081da07"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0041.png",
+      "bytes": 4929,
+      "sha256": "dca720eb38ad89bb719c4bef24a2a6defe4c9968d0300e9d109fc7f22d8905bf"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0042.png",
+      "bytes": 1331969,
+      "sha256": "1a28d8fd35828ec57844fc4a76b163d87ab804e8e22d4cef6d2291e9521f1c70"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0042.png",
+      "bytes": 4958,
+      "sha256": "000130753b40b3837789e0ed9fad109e17bcc85c8078771baaf332226a7bddca"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0043.png",
+      "bytes": 1232061,
+      "sha256": "953fc25ccbd08334347adfa6a3825151b82a8d4a42ed7ce473a7eb290ee43956"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0043.png",
+      "bytes": 4921,
+      "sha256": "21e3a79b16db042586f7a79bb7e5004f28bc88fe6218f28d89ef4b668285af72"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0044.png",
+      "bytes": 1489413,
+      "sha256": "2019e1294494553adf7f91a815ad064c233871d1c4c4c8f560668c08b2bd36b9"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0044.png",
+      "bytes": 4944,
+      "sha256": "59b097f3ff6559820f7f18d56e91e4873dbcf34c2485eecd2da04dcf57787a81"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0045.png",
+      "bytes": 1238474,
+      "sha256": "dd63cdc0b68fa9bedba400cd47057019a06d71f5573af45c40438a9dc5688e8b"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0045.png",
+      "bytes": 4937,
+      "sha256": "1f75c3e5b351875cbd8fd7ada43cbbad63bd5fda4a31205ac4d700d145230892"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0046.png",
+      "bytes": 1330523,
+      "sha256": "9ca52b7614c0a2d94e98f4f67413cf674dee47645a9eb839d7b044d52580da5f"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0046.png",
+      "bytes": 4946,
+      "sha256": "0c322a0d092db01f08624c696b9eba137b0dc4a271a6d7ad9ca187788e9c0fec"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0047.png",
+      "bytes": 1322104,
+      "sha256": "5522a8fad25722f8259451102dbdacafbd3ff40d82706901983929dfcd2469bf"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0047.png",
+      "bytes": 4905,
+      "sha256": "d2b1e559f4c44c5ae795e4c3c25b4a696a1054b2bcb8b658757490d4d4c5503b"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0048.png",
+      "bytes": 1222255,
+      "sha256": "d14fdb7d7f6cb8a4853659d62cef55db72f9f784b2ae0a578776ae1e43787576"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0048.png",
+      "bytes": 4937,
+      "sha256": "0f2da4c44a74e6f72adda820e12e9365462455e8be68008cea3c0117dc645d1c"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0049.png",
+      "bytes": 1470031,
+      "sha256": "c411e158cdbe421d260366114fb5603146e72c0377b3a43fa43ca1981f5d27eb"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0049.png",
+      "bytes": 4946,
+      "sha256": "7b9b6268ad003cacc550759170bb83c30a323b2a0bd3349b72d982a9d2bc86ba"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0050.png",
+      "bytes": 1198658,
+      "sha256": "201bb9c5aecf7f063a804740e3753602a7a6842be3126bf3c0d4fd6f2037d77a"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0050.png",
+      "bytes": 4922,
+      "sha256": "4fe75333addf1393a74d6b958f60b8e849be326c9380078f944f642a9d2b66d9"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0051.png",
+      "bytes": 1286972,
+      "sha256": "92efa57596b83f73661cccdbcb1fb4ee4dc6ce8906e8772959ed4b3966a859f9"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0051.png",
+      "bytes": 4933,
+      "sha256": "0ab4db7ddc5e427317cbde384e18d36c4c91d31ef2919a9b3ba8ffe8bf51daa3"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0052.png",
+      "bytes": 1276498,
+      "sha256": "450544f49b4d8d281dcb3e1a330069dbb4ceddac04c980f67e9eb59c00074b8f"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0052.png",
+      "bytes": 4937,
+      "sha256": "db4ebf4b839d4d749e1493bafc3dc749a71f83e496d1918539d00e9f81ee3db1"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0053.png",
+      "bytes": 1346344,
+      "sha256": "75bd6df40352ff1ceebbd19d7ab11eba27f794f2f0684a2fc577a20d76ae67cb"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0053.png",
+      "bytes": 4915,
+      "sha256": "7513ee5d009388192cc5847a1e2696771097141a87c9e1cb731125af204187c6"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0054.png",
+      "bytes": 1328829,
+      "sha256": "d2d71c8563a445cd6ae36121a5fe6cb7b3bacc1b35e846731303542ec71864b1"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0054.png",
+      "bytes": 4924,
+      "sha256": "21eb2dd97cd40b3f2bd8469b2f0823ea330ba38d0323216d97b308545a45166a"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0055.png",
+      "bytes": 1305537,
+      "sha256": "a31042d5bad7ba32fa222c6f82b81729d4318e084225bcf1ee8a578fbb2946ff"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0055.png",
+      "bytes": 4947,
+      "sha256": "d902ef585f509c70645464bcc3e14a3f718a8ecccea8cd19418a19da87f6055a"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0056.png",
+      "bytes": 1322533,
+      "sha256": "af09c85e61ffd450b224339c0b022f48ca3c3b98a7f8181abefba77e686d86a5"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0056.png",
+      "bytes": 4927,
+      "sha256": "572346fc45959b532aee2eaf61a6bfc928766d039473f03b4441c29aebfa4cbd"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0057.png",
+      "bytes": 1213692,
+      "sha256": "755143c153d8adc2a3811297b7c8112bd2e474033ae3a686aea6d0f792dc38a1"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0057.png",
+      "bytes": 4938,
+      "sha256": "88630f145e0ea9ffc264d13507e4da7b8ba59e8a602ad7c68d490cad416af55e"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0058.png",
+      "bytes": 1305493,
+      "sha256": "db66e1c792cf014dbc9f548192b18a358ef7bfeb0895853bed4cf1f900dbdbc3"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0058.png",
+      "bytes": 4915,
+      "sha256": "f03d7bcb5e5437d5700815ea4d5c99abbda1cb1ab3a06c76bc7a6b32c5a86676"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0059.png",
+      "bytes": 1339506,
+      "sha256": "ade200eba54eaa3cba0e75105b4416c1cdc072ef6edb5dd133352ca42f256d80"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0059.png",
+      "bytes": 4935,
+      "sha256": "6cffa0ffd2168bc95691dcb570df3091d5e2d8277ba2544d2aee7d97b792a06a"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0060.png",
+      "bytes": 1254232,
+      "sha256": "dee694869fe49a3a4c5d4f82c730708d9139634cb3ce7161f8d8bc0556fd6f5f"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0060.png",
+      "bytes": 4928,
+      "sha256": "5a596d9c9d195c509174679ac0ab97872e3758493d2fc0e5e235580c35556039"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0061.png",
+      "bytes": 1277915,
+      "sha256": "61fdc9c7467f5d0ca6ccac361d29523df90bcd3139c4ef1c66526561b3cb0cee"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0061.png",
+      "bytes": 4936,
+      "sha256": "685617e533472c747e8e02beb81dc1ba0f5621092047781630fd4fe3ef44f872"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0062.png",
+      "bytes": 1400375,
+      "sha256": "cae9b83ef960fc6429b58f223bf72e77bd43e3de727bcc6e08d4b7ed52d43646"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0062.png",
+      "bytes": 4966,
+      "sha256": "c1785ae3b6a231b9f8cffa7558e29ad62527dc81e77c9f58af55768b05b15667"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0063.png",
+      "bytes": 1350870,
+      "sha256": "e092382cbf19756fa6fe05c347e986edfd8e174b7f9bb94bedc6648feedf74e2"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0063.png",
+      "bytes": 4945,
+      "sha256": "4cbd8989926255a824f4081c3df470adbcca1039e6e6accfcfa4ad127cd63a63"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0064.png",
+      "bytes": 1268865,
+      "sha256": "f37087f422619172b37f130958a0d9a567e6a5b14ea5cdcbcbc15f677dc8ca24"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0064.png",
+      "bytes": 4957,
+      "sha256": "75b7f42a5c2d4fcce361fc75df823fb645e5a2701f0480bfde3b7895231c2386"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0065.png",
+      "bytes": 1301864,
+      "sha256": "2f813019fbb2389af1ffd73c8f84f73885d6e8c015fe72ab93fa42f7aa942413"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0065.png",
+      "bytes": 4946,
+      "sha256": "f4795f1f79c49c54a0119fa7806e63d942225517278cfadcd3e691e866030bd6"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0066.png",
+      "bytes": 1343450,
+      "sha256": "4ad2c0f51d285dcc2e3d157db348dcdb0a17d02469003606be7cda44cf0e510d"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0066.png",
+      "bytes": 4934,
+      "sha256": "a8476cb002255cac47008038a5f723d452ccd6d9acb9d5c5c8e48c222c17963e"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0067.png",
+      "bytes": 1395137,
+      "sha256": "0fad754092d4857265b36f387402723f0e1b87fc0fff806034322ea54adf4f83"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0067.png",
+      "bytes": 4935,
+      "sha256": "537d33e05924139216768fe42815483c41a7aec8f196adc4fb52af4c0ec2813a"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0068.png",
+      "bytes": 1438923,
+      "sha256": "96852d26d1de18647e9304544ee599165fb5f8e30e3ef195907c6982861a86ef"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0068.png",
+      "bytes": 4939,
+      "sha256": "b9f141cb95f8b897c72ce004d9baace2e24b2a8407d34ff48dc7b18fa7e7361a"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0069.png",
+      "bytes": 1347359,
+      "sha256": "e65926124d037b5583f70e11b78fcb4e0b2aae16107b7c3b89da692c5cc721e9"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0069.png",
+      "bytes": 4935,
+      "sha256": "9fe6a646ee694f685ce38ae73bea8e24be0afb465b522584f60daf401eebcf17"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0070.png",
+      "bytes": 1260244,
+      "sha256": "906856b1365680a5b33197f89a48258af9831c411448cf3023be4ba9e4a2b275"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0070.png",
+      "bytes": 4930,
+      "sha256": "cf0f272193efaebfb2411245dc22c8921f9df7a0af3ea72f1e6dd8b54d4eba69"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0071.png",
+      "bytes": 1247531,
+      "sha256": "0e01ec291832440490a291236dee2b72da95bf8c2fd0020e23a5d589428a4e44"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0071.png",
+      "bytes": 4938,
+      "sha256": "1c8c013bf720d1738b1712814a0191759415d49f8295a5613b0cd3f0c5093095"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0072.png",
+      "bytes": 1369520,
+      "sha256": "61b899dfece63e21d75dbeb6292b4755de8a6286cb12a1ae25ef7fa38dbc4b38"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0072.png",
+      "bytes": 4939,
+      "sha256": "edb01f7be44eaa98b435967faf03ad13725df72f2c6383d2e723cc0bc83a7dce"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0073.png",
+      "bytes": 1366528,
+      "sha256": "a7ae6109d5d3fe8cf5a33fca3f93d97d5b6a435308260a89d65b070ef2dd0e05"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0073.png",
+      "bytes": 4947,
+      "sha256": "61aacf0b6f85c9ac4b2fbfc2500657a322f51afaf008e7a82a06082cfee99dfd"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0074.png",
+      "bytes": 1436413,
+      "sha256": "413eba6bd520b69e82c188547b1424a02b0ce428836eca269f2f99792ac8a47f"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0074.png",
+      "bytes": 4922,
+      "sha256": "0fb19aa14d5ba570585eb445e34cc8cafa167d94e59cc64f7968dc764f595d16"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0075.png",
+      "bytes": 1474676,
+      "sha256": "0c4ab897a77bbc823044d6921ecea1773131a2422c5684a421d8b1514413cf0f"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0075.png",
+      "bytes": 4922,
+      "sha256": "abffa41f27cf8eeb388f054dcf4c98e89278b1cb68a989607de1741ff33979e0"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0076.png",
+      "bytes": 1445804,
+      "sha256": "cbf65c1f8d23472af4da7861467d2228b3d372db3ad287351fe9c798f00847dd"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0076.png",
+      "bytes": 4930,
+      "sha256": "5641167458817254046e1a1d8bd19f053e77fb9775455b971c393c955e95b7a1"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0077.png",
+      "bytes": 1366149,
+      "sha256": "ec9e7c277de137b7e0b6b179f476b0f990c6f4db79c9737b526db1448ab6ad3b"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0077.png",
+      "bytes": 4925,
+      "sha256": "22628923123871a0adc632db638ec9bf9d38d42b9555a752707c7ab80df8aeb8"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0078.png",
+      "bytes": 1356965,
+      "sha256": "c69edc93af2a17ab3adcb7537cb2e2eb4aeecf7224e80c865020a25c373e3ab4"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0078.png",
+      "bytes": 4912,
+      "sha256": "ae1aec2e01fc3ab7c0ee5ad55b8be85716752a23cc6b31c418e9bba438adc6df"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0079.png",
+      "bytes": 1369053,
+      "sha256": "ccc486cd4c47257a15cd381f0ae6842940b05d60c50f275282b78b591a4117cd"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0079.png",
+      "bytes": 4949,
+      "sha256": "ca097fc1e51cfc21d2ea7d6230215c5d39b1c4e790bc03c097afc4fa92d9ed99"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0080.png",
+      "bytes": 1335813,
+      "sha256": "ad33b50249e5c81041f4fe766024618b6d382343876346d382b3e0103370fa06"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0080.png",
+      "bytes": 4933,
+      "sha256": "af3caeb0fad0ae14d8a95a7549c4b5cc80c67f5f9e26fe647886a1313009cfa4"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0081.png",
+      "bytes": 1377221,
+      "sha256": "1129fff3abb6800e44ea9019425a02456f0bcffff9cc456801a849967830f009"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0081.png",
+      "bytes": 4922,
+      "sha256": "fe34047f7c9ab6556aa9304bda695c9d17165d6d8f5538a39b8a1fc8fbb2978f"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0082.png",
+      "bytes": 1258345,
+      "sha256": "b306303ec2f3ab2b73d7dce45d191721bd1fe160957851f17e27b4fe19efe3ba"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0082.png",
+      "bytes": 4916,
+      "sha256": "8784233698ca5f34a782597e78cb4b837589b75de36920a4844fd1c19e2bbbf8"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0083.png",
+      "bytes": 1452584,
+      "sha256": "8d34d5b776362cbe4d34ea2f5e90adc16b98c656ea8f81e8c501d53fe10b8eb8"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0083.png",
+      "bytes": 4925,
+      "sha256": "c1c48cac0c4981cee8fec189923775998e8ba72505e4e68c7276a9da61593799"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0084.png",
+      "bytes": 1363206,
+      "sha256": "802ed330c932eba5823617cdc8d1a4e49a5f4b1842f8fd3ea7384cb9ac2a526c"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0084.png",
+      "bytes": 4939,
+      "sha256": "b0c9b58d7e1822736cfc64fc98d0e17dec4cf8c68ec666d9b059cc6204f37311"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0085.png",
+      "bytes": 1327484,
+      "sha256": "e43855ee27cc263abb7ee5918a90698ebddc0853025b4ce3b4199dc72de0efc1"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0085.png",
+      "bytes": 4924,
+      "sha256": "ca2cb4f1a48f29b09fdc7f5fbc21413c00e0d06243d7b2771758991fc76522f3"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0086.png",
+      "bytes": 1503467,
+      "sha256": "4bdadc916ea50109fd23402673bf4deafb38672e8df1e44bc5a13801658c0e65"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0086.png",
+      "bytes": 4935,
+      "sha256": "5af2195244360e6b10b54b67f446e01e711c4f7c54cc941a16073900b2207c55"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0087.png",
+      "bytes": 1373091,
+      "sha256": "fc2404981edd395bf79d4cab2e6f3e1e20ce2ba8e9da977333f7f2d6156042f9"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0087.png",
+      "bytes": 4949,
+      "sha256": "e0383ae2ac12b694f4383d4fe19ec0b51c5789d035f80eaca75ab5994e0cb017"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0088.png",
+      "bytes": 1336768,
+      "sha256": "03961d98f6252fdebc142d24c991cce239e046ad108f62aed39d11eb0b681a65"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0088.png",
+      "bytes": 4930,
+      "sha256": "fee30736e39743ed002042b4dd537a71dfe054fd0721f64321a131654926083d"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0089.png",
+      "bytes": 1312951,
+      "sha256": "0ea6285a606e76d3ed25381e5b9e4a87d7465d7efa41c945603c159aad3849fc"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0089.png",
+      "bytes": 4937,
+      "sha256": "a26ea8d560e8cc0ee253fac66df91dccdefb7a5678bc9bf12a65258a830ee9d1"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0090.png",
+      "bytes": 1309188,
+      "sha256": "83d6912b1aae77325b5e4d3a5a2b77a831e7b99881f350480531a96627e0cb7f"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0090.png",
+      "bytes": 4936,
+      "sha256": "5e02917b60c801be4310989c8f1acdead2cb33eccf4e9860802f82ed25c4b705"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0091.png",
+      "bytes": 1332419,
+      "sha256": "9c6d7c9c09d3dc4fb8d70f0330f3fba6fdb5e7ee855e56e38df3ae48898c8a34"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0091.png",
+      "bytes": 4941,
+      "sha256": "5b3dcb040e7f3efd80b5b3a8f111f4b4e3fbf1db43168602cfc5adcfac1d60cb"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0092.png",
+      "bytes": 1407580,
+      "sha256": "a4eae31f1f30bf227fc9af2e58a8212d476fefd94fb50f01e27b41a950a02f33"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0092.png",
+      "bytes": 4928,
+      "sha256": "a3a7ef11d82d16f40975ef1f1b9dbdfb409b7e3f64198aabf6ee1c778cb8c7d7"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0093.png",
+      "bytes": 1423874,
+      "sha256": "5ef683965c10c6ae9b342dea9941d22e8af94990898a93c8d0e770936cbfd792"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0093.png",
+      "bytes": 4923,
+      "sha256": "63a23f4b2397bcfdcdad9f1e43930cf458b4e3fa612cb6bbfa11c60d11721d52"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0094.png",
+      "bytes": 1229200,
+      "sha256": "c59d88403d81b3791ae912760a8ad47cada77a182491aa6d520ad7ad84ea4947"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0094.png",
+      "bytes": 4934,
+      "sha256": "56b2c794c5278d6ae67f6dbd2e24c1d5e3ee1075608ebc21c35e8a6438abbfe2"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0095.png",
+      "bytes": 1279899,
+      "sha256": "242d7d2b6a6f181330ada6ee112e910631372d6b0d26e0a6a8235e5c2c89b2cf"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0095.png",
+      "bytes": 4947,
+      "sha256": "7eb1b1f8c752b3ab8ea72edf01b50d78dbdcf3b30bafd83c7fa0f58c33c8eac7"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0096.png",
+      "bytes": 1384351,
+      "sha256": "04a636c9878993bbc3e2c5062bd2ad8e9e9022283c9339c8976d98e5656ce1e2"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0096.png",
+      "bytes": 4928,
+      "sha256": "0b2401064dd0bd8f1c4cd4a2d6f81cdb5f266fb29e3cd1edcbddd6e0e59b8cc0"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0097.png",
+      "bytes": 1351795,
+      "sha256": "4a811138152f41de85bd1959bf899954466d4a2d658f284d67dc3d5ae3751f63"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0097.png",
+      "bytes": 4957,
+      "sha256": "2435e9180969694755b70103822f5b10b51cd64e26da08aa27380ff7126ccf44"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0098.png",
+      "bytes": 1478027,
+      "sha256": "7f28b4489b6ed4e798310e5516b983d30e9fe3ef35bcbd541b6c8ca633ccb619"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0098.png",
+      "bytes": 4952,
+      "sha256": "34f19c57ddbbbdb0ad317b81f03d2e017bc67f469717b4841047bb994b469254"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0099.png",
+      "bytes": 1215027,
+      "sha256": "c3d704b817b7a5ddc4a5d99ec075ea5dbe0af5982cba3c6c1453d840bdcead69"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0099.png",
+      "bytes": 4919,
+      "sha256": "7eb990511cc94f1985523eca59c7b4c6bd6eef010b377c83260ef20505c4a22c"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/train/0100.png",
+      "bytes": 1305611,
+      "sha256": "737d537d7da325f40f9938a8f40dba14225ea18a8ced0d8d1f406a39ed16b651"
+    },
+    {
+      "root": "datasets",
+      "path": "sphere/masks_train/0100.png",
+      "bytes": 4944,
+      "sha256": "4e91d6bcd2426a031eb3caa56c91b515be21fdaca2588cf21d4c0d8552ca78f8"
+    },
+    {
+      "root": "thesis",
+      "path": "meshes/sphere_shape-300000.ply",
+      "bytes": 8583965,
+      "sha256": "3e512585ad62aafdbdfdde785f64d1be2454a891fde2f730c027f5b02ed60eba"
+    },
+    {
+      "root": "thesis",
+      "path": "nvs_imgs/sphere_material/test_39.png",
+      "bytes": 715185,
+      "sha256": "086605f11791e9b4b889ca347d0883ae2a9cae465c315f28d886080238cb23f9"
+    },
+    {
+      "root": "thesis",
+      "path": "nvs_imgs/sphere_material/test_2.png",
+      "bytes": 719190,
+      "sha256": "62a9e1708bb3f15747c23052c2a6e0183041778895c8de163d3f601bfb7d76ae"
+    },
+    {
+      "root": "thesis",
+      "path": "nvs_imgs/sphere_material/test_94.png",
+      "bytes": 713790,
+      "sha256": "d05f80b82c0dbb53e2cc3400c076d35e9ccacc93a47fd770dcbd0f9d446133bc"
+    },
+    {
+      "root": "thesis",
+      "path": "nvs_imgs/sphere_material/test_62.png",
+      "bytes": 682048,
+      "sha256": "50d812cb1e167309d4830ac628029090d560ec848438f8794ca0cbec20b722ed"
+    },
+    {
+      "root": "thesis",
+      "path": "nvs_imgs/sphere_material/test_23.png",
+      "bytes": 726917,
+      "sha256": "64d1587be047c1d87ac661a5409a7452f65339582a07ef74405ead041c767453"
+    },
+    {
+      "root": "thesis",
+      "path": "logs/sphere_material/log.txt",
+      "bytes": 196,
+      "sha256": "881e1ec614b31ebd8d511d097e6530ef173d35d20d2ed8c17e84e567c6073728"
+    },
+    {
+      "root": "thesis",
+      "path": "train_vis/sphere_material-val/99999-index-0.jpg",
+      "bytes": 543810,
+      "sha256": "1421aee1c74e071024b99d14c9eccd7138d5416ba83aeb5fd21a0bb83b1454e5"
+    }
+  ],
+  "dataset_copy_comparison": {
+    "other_root": "/home/isavand/paper/data/nerf_synthetic/sphere",
+    "active_files": 201,
+    "SHA256_mismatches": 0
+  },
+  "resolution": [
+    1080,
+    1080
+  ],
+  "historical_NVS_training_step": "unknown",
+  "camera_convention": "original OpenGL c2w; translation /2; train JSON only",
+  "historical_GT_supported_pixel_max_uint8_difference": 1
+}
