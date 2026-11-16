@@ -1,0 +1,244 @@
+{
+  "schema_version": 1,
+  "status": "preparation_complete_awaiting_exact_execution_authorization",
+  "protocol": "bell-neural-Q-retention-e17-v1",
+  "base_commit": "18c419250cd15508567fe848f97346b14daf73c0",
+  "freeze": {
+    "path": "docs/protocols/BELL_NEURAL_RETENTION_E17_V1.freeze.json",
+    "sha256": "c52bbff31a96e07f8bdaafeaa1b4389bfaa55d39becc3d877db07dd07595c635"
+  },
+  "host_inputs": {
+    "benchmark": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark",
+    "pilot": "/home/isavand/paper/evidence/bell-highlight-e11d-08fb9def2696483ba97f8828fa86da6c/pilot",
+    "reference": "/home/isavand/paper/evidence/bell-quadrature-e11e-4f228ac5e56c4803b7b33772680c7a7f/quadrature",
+    "factor": "/home/isavand/paper/evidence/bell-anisotropy-e11f-dd561242e4df4381a7c664d3f3b7c7fc/anisotropy",
+    "multiview": "/home/isavand/paper/evidence/bell-multiview-e11g-b0cfbb9da81c4dd0a8039d1e4f8e62ef/multiview",
+    "two_light": "/home/isavand/paper/evidence/bell-two-light-e14-725f0892b7444e4791a389149aac4370/two-light",
+    "physical": "/home/isavand/paper/evidence/bell-physical-e15-4fee87af79b44eed974a8dcc76e37a87/recovery",
+    "neural": "/home/isavand/paper/evidence/bell-neural-e16-05d9ed3a61a34a72b0752672968d5cae/neural"
+  },
+  "host_output_directory": "/home/isavand/paper/evidence/bell-retention-e17-6e2cba3589b04bc596a4d50147221aa2",
+  "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "tracing_identity": {
+    "variant": "predicate_fp64",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15"
+  },
+  "scientific_sources": {
+    "geometry": "79252178e65914ad1acbc14790b1514f276bfea0",
+    "material": "e1e859779301faced46d6476691e20b546c27ae0"
+  },
+  "source_files": 126,
+  "input_artifacts": 44,
+  "planned_histories": [
+    {
+      "material": "original",
+      "arm": "C"
+    },
+    {
+      "material": "stronger",
+      "arm": "C"
+    }
+  ],
+  "restorations": {
+    "original": {
+      "network_state_sha256": "3fe86a5db626ec80cea241daeeb0c6d690016b59fb9a57d908e163b1d1bfba20",
+      "keys": 110
+    },
+    "stronger": {
+      "network_state_sha256": "cefc5cb21a12bbdc087cace3de757052a5ec0372bf0551c76b11695bbb06f120",
+      "keys": 110
+    }
+  },
+  "coefficient_evidence": {
+    "fields": [
+      {
+        "material": "original",
+        "post_distillation_Q_loss": 0.0009652460578455377,
+        "final_Q_loss": 0.011426660967251126,
+        "Q_loss_increase": 0.010461414909405588,
+        "last100_fitting_loss": 1.5070737447331339e-06
+      },
+      {
+        "material": "stronger",
+        "post_distillation_Q_loss": 3.9105965571328594e-05,
+        "final_Q_loss": 0.02024837819556778,
+        "Q_loss_increase": 0.020209272229996453,
+        "last100_fitting_loss": 1.5852163971885603e-06
+      }
+    ],
+    "pooled_fitting_loss": 1.5461450709608472e-06,
+    "pooled_Q_loss_increase": 0.01533534356970102,
+    "ratio": 0.00010082233005954043,
+    "nearest_decade_coefficient": 0.0001,
+    "uses_GT_or_withheld": false,
+    "policy": "One nearest-decade scale; no candidate search or outcome tuning."
+  },
+  "policy": {
+    "photometric_updates": 1000,
+    "retention_coefficient": 0.0001,
+    "gradient_probe_steps": [
+      0,
+      999
+    ],
+    "initialization": "exact_E16_B_post_distillation",
+    "optimizer_state": "fresh",
+    "confidence_weighting": false
+  },
+  "limits": {
+    "wall_seconds": 1800,
+    "inner_seconds": 1680,
+    "grace_seconds": 30,
+    "cpu_threads": 4,
+    "host_memory_gib": 64,
+    "cuda_allocator_fraction": 0.25,
+    "output_bytes": 2147483648,
+    "photometric_Adam_returns": 2000,
+    "photo_backwards": 2000,
+    "photo_shader_calls": 4000,
+    "eval_shader_calls": 32,
+    "retention_reverse_sweeps": 8,
+    "field_calls": 2004,
+    "shadow_rays": 852541440,
+    "independent_point_directions": 144179200,
+    "coefficient_point_directions": 72089600,
+    "environment_point_directions": 55050240
+  },
+  "test_process_exit_code": 0,
+  "test_counts": {
+    "tests": 10,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 10
+  },
+  "test_command": [
+    "python3",
+    "-B",
+    "-c",
+    "import sys,importlib.abc\nclass Block(importlib.abc.MetaPathFinder):\n def find_spec(self,fullname,path=None,target=None):\n  if fullname.split('.')[0] in {'network','train','dataset','raytracing','_raytracing','open3d','nvdiffrast'}:raise AssertionError(fullname)\nsys.meta_path.insert(0,Block())\nimport pytest\nraise SystemExit(pytest.main(sys.argv[1:]))\n",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "tests/benchmarks/test_neural_retention_e17.py",
+    "--junitxml=/home/isavand/paper/evidence/bell-retention-e17-preparation-f4c01a0b6d7b4ccb95703479ffedcf84/focused.xml"
+  ],
+  "test_inventory": [
+    {
+      "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_neural_retention_e17",
+      "name": "test_coefficient_uses_only_fitting_and_teacher_drift"
+    },
+    {
+      "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_neural_retention_e17",
+      "name": "test_uniform_retention_has_exact_declared_value_and_gradient"
+    },
+    {
+      "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_neural_retention_e17",
+      "name": "test_strict_restoration_rejects_incompatibility[keys]"
+    },
+    {
+      "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_neural_retention_e17",
+      "name": "test_strict_restoration_rejects_incompatibility[shape]"
+    },
+    {
+      "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_neural_retention_e17",
+      "name": "test_strict_restoration_rejects_incompatibility[dtype]"
+    },
+    {
+      "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_neural_retention_e17",
+      "name": "test_strict_restoration_rejects_incompatibility[hash]"
+    },
+    {
+      "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_neural_retention_e17",
+      "name": "test_exact_restoration_preserves_all_weights_and_keeps_Adam_fresh"
+    },
+    {
+      "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_neural_retention_e17",
+      "name": "test_component_probes_do_not_change_combined_gradient_weights_or_RNG"
+    },
+    {
+      "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_neural_retention_e17",
+      "name": "test_retention_lifecycle_only_trains_new_C_and_preserves_two_starts"
+    },
+    {
+      "classname": "paper.Nerofactor-3d2-e2a.tests.benchmarks.test_neural_retention_e17",
+      "name": "test_cold_import_and_work_limits"
+    }
+  ],
+  "test_evidence": [
+    {
+      "path": "/home/isavand/paper/evidence/bell-retention-e17-preparation-f4c01a0b6d7b4ccb95703479ffedcf84/console.log",
+      "bytes": 228,
+      "sha256": "1277b82e5782aed7cc5fb427dc83fe47415869a80ba2ce36e46f74a7c4cf622b"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-retention-e17-preparation-f4c01a0b6d7b4ccb95703479ffedcf84/development.xml",
+      "bytes": 1908,
+      "sha256": "1eca5b56ad7358661e2d9497e0bac8ff0341aad57db8f58c99c3cd819fa7d037"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-retention-e17-preparation-f4c01a0b6d7b4ccb95703479ffedcf84/exit-code.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-retention-e17-preparation-f4c01a0b6d7b4ccb95703479ffedcf84/focused.xml",
+      "bytes": 1908,
+      "sha256": "6a7accc57b01378b98f479f8b355e5c850e35db9b43bd674233eb33f7f5ba1ee"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-retention-e17-preparation-f4c01a0b6d7b4ccb95703479ffedcf84/metadata-console.log",
+      "bytes": 73,
+      "sha256": "d0c71e7fa70e1169fd0ffc905fbac300d126e36bad8b20eb8c58066e69dd7e3b"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-retention-e17-preparation-f4c01a0b6d7b4ccb95703479ffedcf84/metadata-receipt.json",
+      "bytes": 1588,
+      "sha256": "4739fac5cfb5708dd59b0e7c34af5f5f60e8b0ff15095e8c3f47e6160f1db694"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-retention-e17-preparation-f4c01a0b6d7b4ccb95703479ffedcf84/static-checks.json",
+      "bytes": 457,
+      "sha256": "3745e421aea6d59ca8809bba59115fa9749c65f5e526f87a2d40354e6a452855"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/bell-retention-e17-preparation-f4c01a0b6d7b4ccb95703479ffedcf84/test-receipt.json",
+      "bytes": 2548,
+      "sha256": "d1306940f7b0e6a4c4d2bcc86902ca3222f17ccb0f01f67385f56ced0b5b8ba9"
+    }
+  ],
+  "static_checks": {
+    "python38_grammar": true,
+    "bash_syntax": true,
+    "frozen_E16_sources_verified": 116,
+    "pinned_source_trees_verified": {
+      "geometry": "79252178e65914ad1acbc14790b1514f276bfea0",
+      "material": "e1e859779301faced46d6476691e20b546c27ae0"
+    },
+    "new_source_closure_files": 126,
+    "input_artifacts": 44,
+    "source_worktree_old_files_unchanged": true,
+    "metadata_only_with_scientific_import_blocker": true,
+    "execution_output_not_allocated": true
+  },
+  "scientific_execution_authorized": false,
+  "new_real_native_field_constructions": 0,
+  "new_real_shader_queries": 0,
+  "new_scientific_Adam_updates": 0,
+  "GPU_execution_occurred": false,
+  "synthetic_CPU_optimizer_fixture_executed": true,
+  "limitations": [
+    "Exact native field restoration at both saved post-distillation states remains unexecuted; both gates must pass before C updates.",
+    "Single fitting-only scale coefficient1e-4 is prospective, not proven to balance gradients or preserve Q.",
+    "Incorrect E15 teachers remain uniformly weighted; their errors can be reinforced.",
+    "Eight additional component-gradient reverse sweeps inspect scale/timing without altering .grad or RNG; they do not add optimizer steps.",
+    "New native sampling requires852,541,440 maximum shadow rays; cached visibility is reused only for independent endpoint evaluation.",
+    "No A/B training, distillation, physical-teacher optimization,32-draw compatibility validation or dataset generation is repeated.",
+    "Only two new final endpoint8-draw assessments; old post-distillation/A/B captures are historical comparisons.",
+    "No new empirical degradation threshold: report nominal Pareto ordering and grid sensitivity against B and unrefined post-distillation.",
+    "One seed,84 observed locations, known color/metal/light; no full-object/spatial/relighting generalization claim.",
+    "Codex Docker access remains restricted; after approval provide the bound researcher-side foreground command without bypassing permissions."
+  ]
+}
