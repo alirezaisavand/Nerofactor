@@ -5,9 +5,11 @@ set -euo pipefail
 DONUT_IMAGE=sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331
 DONUT_COMMIT=$(git -C "$DONUT_SOURCE" rev-parse HEAD)
 test -z "$(git -C "$DONUT_SOURCE" status --porcelain)"
-DONUT_FREEZE=$(sha256sum "$DONUT_SOURCE/docs/protocols/DONUT_KURT_RECOVERY_V1.freeze.json" | cut -d' ' -f1)
+DONUT_FREEZE_NAME=${DONUT_FREEZE_NAME:-DONUT_KURT_RECOVERY_V1.freeze.json}
+case "$DONUT_FREEZE_NAME" in DONUT_KURT_RECOVERY_V1.freeze.json|DONUT_KURT_REFERENCE_V2.freeze.json) ;; *) exit 2 ;; esac
+DONUT_FREEZE=$(sha256sum "$DONUT_SOURCE/docs/protocols/$DONUT_FREEZE_NAME" | cut -d' ' -f1)
 DONUT_AUTH_SHA=$(sha256sum "$DONUT_AUTH" | cut -d' ' -f1)
-python3 -B - "$DONUT_SOURCE" "$DONUT_AUTH" "$DONUT_BATCH" "$DONUT_PHASE" "$DONUT_COMMIT" "$DONUT_FREEZE" "$DONUT_IMAGE" "$DONUT_GPU" <<'PY'
+python3 -B - "$DONUT_SOURCE" "$DONUT_AUTH" "$DONUT_BATCH" "$DONUT_PHASE" "$DONUT_COMMIT" "$DONUT_FREEZE" "$DONUT_IMAGE" "$DONUT_GPU" "$DONUT_FREEZE_NAME" <<'PY'
 import json,sys
 from pathlib import Path
 sys.path.insert(0,sys.argv[1])
@@ -15,9 +17,9 @@ from benchmarks.donut_recovery_v1 import REFERENCE,TRAINING,REFERENCE_LIMITS,TRA
 from infrastructure.signatures import require
 a=json.loads(Path(sys.argv[2]).read_text());batch=Path(sys.argv[3]);phase=sys.argv[4]
 require(phase in ('reference','training'),'Explicit phase required')
-f=verify_freeze(Path(sys.argv[1])/'docs/protocols/DONUT_KURT_RECOVERY_V1.freeze.json',sys.argv[6])
-require(a.get('approved') is True and a.get('protocol')==(REFERENCE if phase=='reference' else TRAINING) and
- a.get('limits')==(REFERENCE_LIMITS if phase=='reference' else TRAIN_LIMITS) and
+f=verify_freeze(Path(sys.argv[1])/'docs/protocols'/sys.argv[9],sys.argv[6])
+require(a.get('approved') is True and a.get('protocol')==(f.get('reference_protocol',REFERENCE) if phase=='reference' else TRAINING) and
+ a.get('limits')==(f['reference_limits'] if phase=='reference' else TRAIN_LIMITS) and
  a.get('commit')==sys.argv[5] and a.get('freeze_sha256')==sys.argv[6] and a.get('image_id')==sys.argv[7] and
  a.get('selected_gpu')==sys.argv[8]=='0' and a.get('host_output_directory')==str(batch)==f['host_'+phase+'_output'], 'Exact separate approval required')
 require(batch.is_absolute() and batch.resolve()==batch and not batch.exists(),'Fresh batch required')
@@ -26,7 +28,7 @@ test "$(docker image inspect --format '{{.Id}}' "$DONUT_IMAGE")" = "$DONUT_IMAGE
 test -z "$(docker ps -q --filter label=nerofactor.donut-recovery)"
 mkdir "$DONUT_BATCH"
 cp "$DONUT_AUTH" "$DONUT_BATCH/authorization.json"
-cp "$DONUT_SOURCE/docs/protocols/DONUT_KURT_RECOVERY_V1.freeze.json" "$DONUT_BATCH/freeze.json"
+cp "$DONUT_SOURCE/docs/protocols/$DONUT_FREEZE_NAME" "$DONUT_BATCH/freeze.json"
 DONUT_OWNED_CID=''
 cleanup_owned() {
  test -n "$DONUT_OWNED_CID" && test -s "$DONUT_OWNED_CID" || return 0
@@ -46,6 +48,11 @@ if test "$DONUT_PHASE" = training; then
 fi
 for arm in "${arms[@]}"; do
  extra=();mounts=()
+ if test "$DONUT_PHASE" = reference && test "$DONUT_FREEZE_NAME" = DONUT_KURT_REFERENCE_V2.freeze.json; then
+  : "${DONUT_PREVIOUS:?}"
+  extra+=(--previous /inputs/previous)
+  mounts+=(--mount "type=bind,src=$DONUT_PREVIOUS,dst=/inputs/previous,readonly")
+ fi
  if test "$DONUT_PHASE" = training; then
   BENCHMARK_SHA=$(sha256sum "$DONUT_BENCHMARK/generation.json" | cut -d' ' -f1)
   extra+=(--benchmark /inputs/benchmark --benchmark-sha256 "$BENCHMARK_SHA")
@@ -78,7 +85,7 @@ PY
  --workdir /workspace --entrypoint /usr/bin/timeout "$DONUT_IMAGE" \
  --signal=TERM --kill-after=20s "${inner}s" /usr/bin/python3 -I -B /workspace/run_donut_recovery.py \
  --phase "$arm" --oracle /inputs/oracle --cameras /inputs/cameras.json --output "/outputs/$arm" \
- --freeze /workspace/docs/protocols/DONUT_KURT_RECOVERY_V1.freeze.json --freeze-sha256 "$DONUT_FREEZE" \
+ --freeze "/workspace/docs/protocols/$DONUT_FREEZE_NAME" --freeze-sha256 "$DONUT_FREEZE" \
  --authorization /authorization.json --authorization-sha256 "$DONUT_AUTH_SHA" \
  --commit "$DONUT_COMMIT" --image-id "$DONUT_IMAGE" "${extra[@]}" --execute > "$DONUT_BATCH/$arm-console.txt" 2>&1
  code=$?

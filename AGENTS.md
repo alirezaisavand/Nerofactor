@@ -1,5 +1,22 @@
 # Research and development rules
 
+## Donut reflectance v2 and conditional reference completion
+
+The reviewed3a428803 reporting fix does not admit the failed reference. Prepare
+an independent float64 slope-space unoccluded-reflectance quadrature, analytic
+Lambert allocation and exact valid radial support. Preserve Kurt BRDF, material,
+lighting, geometry, image integration, tolerances and D1/D2 scientific training
+settings. One separately approved bounded execution must FIRST validate the five
+saved grazing observations and fixed ordinary-angle independent crosschecks,
+with zero new geometry/visibility rays. Only after all gates pass: recompute
+camera0 reflectance everywhere, reuse its unchanged RGB/geometry/material arrays,
+and generate the five unstarted cameras in a fresh versioned output. Preserve
+failed reports/freezes/authorizations untouched. No native Material A models,
+optimization, training, retries, threshold changes or image rebuild. Reference
+admission and the subsequent D1/D2 launch require separate explicit approval.
+See docs/protocols/DONUT_KURT_REFERENCE_V2.md. Commit/push completed code and small
+evidence; keep numerical archives outside Git.
+
 ## Controlled donut physical recovery
 
 The current researcher request authorizes a small new additive Kurt/Beckmann

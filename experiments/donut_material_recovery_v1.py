@@ -38,7 +38,7 @@ def benchmark(root, expected):
     g=json.loads((root/'generation.json').read_text())
     from benchmarks.donut_recovery_v1 import REFERENCE, ENVIRONMENT
     from infrastructure.verified_ray_backend import identity
-    require(g['status']=='complete_pending_researcher_admission' and g['protocol']==REFERENCE and
+    require(g['status']=='complete_pending_researcher_admission' and g['protocol'] in (REFERENCE,'donut-kurt-reference-v2') and
         g['cleanup_verified'] and g['splits']==SPLITS and g['environment']==ENVIRONMENT and
         g['backend']==identity() and g['material']['color']==COLOR and g['material']['widths_major_minor']==WIDTHS and
         g['material']['metallic']==METALLIC and g['BRDF']=='Kurt-a0-metallic-additive-v1' and
@@ -50,6 +50,14 @@ def benchmark(root, expected):
                 digest(p)==item['sha256'],'Reference artifact changed: '+name)
     require(len(g['views'])==6 and all(r['radiance_convergence']['passed'] and r['energy_convergence']['passed'] for r in g['views']),
             'Reference scientific gates incomplete')
+    if g['protocol']=='donut-kurt-reference-v2':
+        require(g.get('reflectance_orders')==[64,128] and
+            g.get('validation',{}).get('grazing',{}).get('slope_two_grid',{}).get('passed') is True and
+            all(g.get('validation',{}).get('ordinary',{}).get(key,{}).get('passed') is True
+                for key in ('slope_two_grid','old_incident_two_grid','slope_vs_independent_incident')) and
+            g.get('camera0_reuse',{}).get('array_equality_verified') is True and
+            g['camera0_reuse'].get('new_camera0_primary_rays')==g['camera0_reuse'].get('new_camera0_RGB_integrations')==0,
+            'V2 slope validation/camera0 reuse evidence incomplete')
     return g,{camera:numeric(root/('view-%d.npz'%camera)) for camera in PANEL}
 
 

@@ -190,7 +190,14 @@ def physical_errors(pred, truth):
 def verify_freeze(path, expected):
     require(digest(path)==expected, 'Freeze hash mismatch')
     f=json.loads(path.read_text())
-    require(f['reference_limits']==REFERENCE_LIMITS and f['training_limits']==TRAIN_LIMITS and
+    reference_limits=REFERENCE_LIMITS
+    if f.get('reference_protocol')=='donut-kurt-reference-v2':
+        from benchmarks.donut_reference_v2 import LIMITS as reference_limits,ORDERS,ORDINARY_COSINE_MIN,ORDINARY_COUNT
+        require(f['reflectance_orders']==list(ORDERS) and f['ordinary_cosine_min']==ORDINARY_COSINE_MIN and
+                f['ordinary_count']==ORDINARY_COUNT,'Frozen slope validation definition differs')
+    else:
+        require(f.get('reference_protocol',REFERENCE)==REFERENCE,'Unknown reference definition')
+    require(f['reference_limits']==reference_limits and f['training_limits']==TRAIN_LIMITS and
             f['policy']==POLICY and f['shader']==SHADER and f['panel']==PANEL and f['splits']==SPLITS,
             'Frozen scientific definition differs')
     for name,sha in f['sources'].items():
@@ -202,9 +209,10 @@ def verify_freeze(path, expected):
 def runtime(args, phase):
     import os
     f=verify_freeze(args.freeze,args.freeze_sha256)
-    a=json.loads(args.authorization.read_text()); limits=REFERENCE_LIMITS if phase=='reference' else TRAIN_LIMITS
+    a=json.loads(args.authorization.read_text());limits=f['reference_limits'] if phase=='reference' else TRAIN_LIMITS
+    reference_protocol=f.get('reference_protocol',REFERENCE)
     require(digest(args.authorization)==args.authorization_sha256 and a.get('approved') is True and
-        a.get('protocol')==(REFERENCE if phase=='reference' else TRAINING) and a.get('commit')==args.commit and
+        a.get('protocol')==(reference_protocol if phase=='reference' else TRAINING) and a.get('commit')==args.commit and
         a.get('freeze_sha256')==args.freeze_sha256 and a.get('image_id')==args.image_id==IMAGE and
         a.get('limits')==limits and a.get('output_directories',{}).get(phase)==str(args.output),
         'Separate exact reference/training authorization required')

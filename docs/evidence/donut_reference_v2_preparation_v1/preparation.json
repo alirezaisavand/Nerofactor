@@ -1,0 +1,73 @@
+{
+  "CPU_command": [
+    "/home/isavand/anaconda3/bin/python3",
+    "-B",
+    "-m",
+    "pytest",
+    "tests/benchmarks/test_beckmann_reflectance_v2.py",
+    "tests/benchmarks/test_donut_reference_v2.py",
+    "tests/benchmarks/test_donut_recovery_v1.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=/home/isavand/paper/Nerofactor-donut-recovery/docs/evidence/donut_reference_v2_preparation_v1/tests.junit.xml"
+  ],
+  "CPU_counts": {
+    "errors": 0,
+    "failures": 0,
+    "passed": 32,
+    "skipped": 0,
+    "tests": 32
+  },
+  "CPU_exit_code": 0,
+  "CPU_output_sha256": "baf24f10d20361e39610b55325a481c5586199135a29f47079702e41d096eaf0",
+  "JUnit_sha256": "5296539efdec8ff390902bb7465a3e29fbf63cae7d8ffcac84eeeeb8a0ca2d7b",
+  "Python38_AST": true,
+  "base_commit": "3a4288032b9f81f26e8f223318894020dc5d8699",
+  "branch": "feat/donut-physical-recovery-v1",
+  "freeze_path": "docs/protocols/DONUT_KURT_REFERENCE_V2.freeze.json",
+  "freeze_sha256": "1c0af2688f36bef6e4da7e15666e0245a76c9a11294a3f719bfe5601c53b7730",
+  "grazing_pixels": [
+    12635,
+    4037,
+    12581,
+    4825,
+    4027
+  ],
+  "host_reference_output": "/home/isavand/paper/evidence/donut-kurt-reference-v2-262b3cfcf73340a0867829c48c0198f7",
+  "host_training_output": "/home/isavand/paper/evidence/donut-kurt-recovery-v1-1cd964f4026f4711bed5b5dd83f7f863",
+  "metadata_output_sha256": "a7d42a272e3427f72cfb83b3e2881871a94cb2d5b71939c3f299b687144e614d",
+  "metadata_preflight_exit_code": 0,
+  "native_material_models": 0,
+  "new_incident_BRDF_evaluations": 0,
+  "new_primary_rays": 0,
+  "new_shadow_queries": 0,
+  "optimizer_returns": 0,
+  "ordinary_pixels": [
+    4151,
+    5713,
+    6812,
+    8217,
+    9771,
+    10784,
+    11835,
+    13508
+  ],
+  "original_camera0_NPZ_sha256": "8e49c382adeba827163f42b55f1b79d2d3c43fe1fdc9530dc4307fc97b4ab99c",
+  "original_freeze_and_failed_evidence_unchanged": true,
+  "pending_gates": [
+    "five real grazing slope comparisons",
+    "eight real ordinary-angle slope/independent incident comparisons",
+    "all4536 camera0 reflectance comparison",
+    "remaining five cameras RGB and slope convergence",
+    "separate dataset review and training approval"
+  ],
+  "previous_artifacts_verified": 11,
+  "real_dataset_slope_evaluations": 0,
+  "schema_version": 1,
+  "shell_syntax": true,
+  "source_files_frozen": 285,
+  "status": "prepared_REAL_VALIDATION_AND_GENERATION_NOT_EXECUTED",
+  "training_authorized": false,
+  "training_body_and_scientific_policy_AST_identical_to_reviewed_3a428803": true
+}
