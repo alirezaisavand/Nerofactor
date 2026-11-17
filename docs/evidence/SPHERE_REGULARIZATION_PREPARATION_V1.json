@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "status": "prepared_NOT_executed",
+  "base_commit": "92d433dd809bab5fe8667a2920dc54ce94071f35",
+  "frozen_scientific_sources": {
+    "geometry": {
+      "commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+      "files": 99,
+      "status": "all exact bytes verified"
+    },
+    "material": {
+      "commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "files": 106,
+      "status": "all exact bytes verified"
+    }
+  },
+  "unchanged_source_hashes": {
+    "scientific_variants/material_a_v1.py": "52603dc041920f7220748c9114f8293ad2499f778ffd688ef639bbe4e8759875",
+    "infrastructure/material_variants.py": "7d3432e5d50bbb9830117153fddc921ecc4016bb23dbb8c750522cd287bedddb",
+    "infrastructure/sphere_replay.py": "a8149046bb6dec1e15f5e9ee7a31fa2fcf7351c8a5191a2838631becc9f3190e",
+    "configs/material/nerf/sphere.yaml": "06d7de5307054ddf775f55b40874d28cf63a75ee47a4b63f4b4b1dc6c943b4c7"
+  },
+  "CPU_tests": {
+    "tests": 23,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 23
+  },
+  "CPU_test_process_exit": 0,
+  "python38_AST": {
+    "files": [
+      "run_sphere_surface_experiment.py",
+      "infrastructure/surface_q_regularization.py",
+      "infrastructure/sphere_surface_experiment.py",
+      "infrastructure/sphere_visuals.py",
+      "experiments/analyze_sphere_regularization.py",
+      "experiments/visualize_sphere_q_audit.py",
+      "tests/infrastructure/test_surface_q_regularization.py",
+      "tests/infrastructure/test_sphere_replay.py"
+    ],
+    "passed": true,
+    "actual_python": "3.9.12 (main, Apr  5 2022, 06:56:58) \n[GCC 7.5.0]"
+  },
+  "bash_n_exit": 0,
+  "diff_check_exit": 0,
+  "original_artifact_identity_records": 69,
+  "new_native_execution": false,
+  "new_training_updates": 0,
+  "remaining_blockers": [
+    "Explicit one-time source/freeze/checkpoint-trust execution authorization pending.",
+    "Native surface visibility, gradients and exact restoration not yet executed.",
+    "Seven of24 reflectance quadrature checks unresolved; energy correction NOT enabled.",
+    "Old launcher exit receipt missing and cleanup unverified; host launcher must reject an active prior container.",
+    "Unknown-light sphere has no independent material ground truth; no physical accuracy claim."
+  ]
+}

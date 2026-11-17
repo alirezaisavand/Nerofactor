@@ -1,5 +1,19 @@
 # Research and development rules
 
+## Sphere regularization audit and bounded candidate
+
+Current scope: file-only sphere evidence analysis, uploaded PBR-NeRF/official-loss
+comparison, minimal CPU numerical checks, explicit surface_world_q_v1 candidate,
+visual exports and one prepared matched surface-spatial comparison. Preserve
+frozen A/G, corrected-core source, legacy/unconditional/disabled priors and all
+old runs/checkpoints/freezes. No unsafe checkpoint fallback. Do not restart the
+interrupted100000-step run or launch Bell/E.17. New GPU work needs one explicit
+source/freeze/budget/output approval. Hold energy/specular priors fixed in the
+candidate comparison; do not infer causality from aggregate historical losses or
+claim Q smoothness establishes physical material accuracy. Record unresolved
+quadrature checks and cleanup. See [audit](docs/SPHERE_REGULARIZATION_AUDIT_V1.md)
+and [bounded protocol](docs/protocols/SPHERE_SURFACE_COMPARISON_V1.md).
+
 ## Corrected sphere replay boundary
 
 The first authorized v1 launch failed before its first optimizer return because

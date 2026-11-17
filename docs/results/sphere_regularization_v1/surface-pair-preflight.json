@@ -1,0 +1,19 @@
+{
+  "status": "surface_pair_CPU_preflight_pass",
+  "mesh_sha256": "3e512585ad62aafdbdfdde785f64d1be2454a891fde2f730c027f5b02ed60eba",
+  "vertices": 225888,
+  "faces": 451776,
+  "pairs": 677655,
+  "excluded_non_two_face_edges": 4,
+  "excluded_degenerate_faces": 4,
+  "excluded_distance_or_dihedral": 0,
+  "surface_distance_range": [
+    0.00010708488844866017,
+    0.003239396203893208
+  ],
+  "elapsed_seconds": 0.6189046539366245,
+  "mesh_modified": false,
+  "new_GPU_or_visibility_queries": 0,
+  "preflight_correction": "Zero-area faces excluded only from new loss domain, never repaired/removed from original rendering mesh.",
+  "parser": "Existing verified() admission plus data-only exact simple binary PLY decoding; no trimesh dependency"
+}

@@ -1,0 +1,61 @@
+{
+  "exit_code": 0,
+  "counts": {
+    "tests": 23,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 23
+  },
+  "python": "3.9.12 (main, Apr  5 2022, 06:56:58) \n[GCC 7.5.0]",
+  "scientific_import_blocker": "import importlib.abc,json,sys\nclass Block(importlib.abc.MetaPathFinder):\n def find_spec(self,fullname,path=None,target=None):\n  if fullname.split('.')[0] in ('network','train','dataset','_raytracing','nvdiffrast','scientific_variants','scientific_sources'):\n   raise ImportError('Scientific native imports forbidden during engineering fixtures: '+fullname)\nsys.meta_path.insert(0,Block())\nimport pytest\nraise SystemExit(pytest.main(sys.argv[1:]))\n",
+  "command": [
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "tests/infrastructure/test_surface_q_regularization.py",
+    "tests/infrastructure/test_sphere_replay.py::test_lossless_maps_fixed_scales_no_overwrite",
+    "tests/infrastructure/test_sphere_replay.py::test_capture_observes_same_shade_calls_and_pixel_order",
+    "--junitxml=/home/isavand/paper/Nerofactor-sphere-regularization/docs/results/sphere_regularization_v1/focused-tests.junit.xml"
+  ],
+  "CUDA_VISIBLE_DEVICES": "",
+  "native_model_construction": false,
+  "native_shader_calls": 0,
+  "scientific_optimizer_updates": 0,
+  "synthetic_fixture_Adam_steps": "Self-created toy model only",
+  "evidence": {
+    "focused-tests.junit.xml": {
+      "bytes": 4619,
+      "sha256": "27c99a6afd56be925af58315c424da72a3a46747a3c7353d8e7bc071af852eef"
+    },
+    "focused-tests.log": {
+      "bytes": 1653,
+      "sha256": "6c2ca1c067d39a268693ee9003d934286434184619ff2859495acdc3fa3ee311"
+    }
+  },
+  "inventory": [
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_surface_q_regularization::test_pi_and_axis_swap_equivalence",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_surface_q_regularization::test_reference_frame_change_keeps_world_tensor",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_surface_q_regularization::test_transport_preserves_curved_surface_tensor",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_surface_q_regularization::test_gradients_widths_orientation_and_isotropic_limit",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_surface_q_regularization::test_surface_pairs_do_not_connect_close_disjoint_sheets",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_surface_q_regularization::test_degenerate_faces_excluded_from_loss_only_without_mesh_repair",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_surface_q_regularization::test_boundary_weights_detached_and_sharp_color_edge_downweighted",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_surface_q_regularization::test_gradient_observer_does_not_accumulate_or_consume_rng",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_surface_q_regularization::test_world_export_is_gauge_invariant_and_raw_data_preserved",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_surface_q_regularization::test_analytical_local_specular_partials_and_quadrature_measure",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_surface_q_regularization::test_frozen_variants_and_sources_unchanged",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_surface_q_regularization::test_selectable_pair_regularizer_and_finite_field_gradients",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_surface_q_regularization::test_external_hook_preserves_energy_and_specular_exactly",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_surface_q_regularization::test_endpoint_stop_occurs_after_owned_checkpoint_only",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_surface_q_regularization::test_unconditional_energy_candidate_keeps_rejected_proposals_in_denominator",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_surface_q_regularization::test_surface_modes_preserve_original_neighborhood_rng_consumption",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_surface_q_regularization::test_uniform_hemisphere_energy_reference_matches_half_sample_estimator",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_surface_q_regularization::test_detached_ndf_weights_cannot_by_themselves_localize_constant_diffuse",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_surface_q_regularization::test_execution_entry_is_cold_and_requires_explicit_authorization",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_surface_q_regularization::test_clipped_light_chromaticity_has_no_scale_anchor",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_surface_q_regularization::test_exact_checkpoint_adam_fork_restoration_uses_synthetic_fixture_only",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_sphere_replay::test_lossless_maps_fixed_scales_no_overwrite",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_sphere_replay::test_capture_observes_same_shade_calls_and_pixel_order"
+  ]
+}

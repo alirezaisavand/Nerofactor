@@ -3,3 +3,5 @@ scientific_sources/geometry_g/** -text -whitespace
 scientific_sources/material_a/** -text -whitespace
 # Source audit patches retain literal historical whitespace.
 docs/audits/*.patch -whitespace
+# Byte-identical saved audit CSVs use the original csv.writer CRLF terminators.
+docs/results/sphere_regularization_v1/*.csv -text whitespace=cr-at-eol

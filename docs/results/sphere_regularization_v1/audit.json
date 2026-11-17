@@ -1,0 +1,1867 @@
+{
+  "schema_version": 1,
+  "status": "offline_audit_complete",
+  "source_run_status": "incomplete",
+  "source_optimizer_returns": 41427,
+  "source_report_sha256": "ab84cc6e3d99ca59a54d4a1e2c548fdce58fa44fc5933dde40ec24d739ee8a46",
+  "effective_shader": {
+    "diffuse_sample_num": 512,
+    "specular_sample_num": 1024,
+    "human_lights": false,
+    "light_exp_max": 20,
+    "inner_light_exp_max": 20,
+    "outer_light_version": "direction",
+    "geometry_type": "schlick",
+    "reg_change": true,
+    "change_eps": 0.02,
+    "change_type": "gaussian",
+    "reg_lambda1": 0.05,
+    "reg_min_max": true,
+    "random_azimuth": true,
+    "is_real": false,
+    "anisotropy": true,
+    "max_n_exp": 20,
+    "max_alpha_exp": 10,
+    "reg_energy_loss": true,
+    "reg_energy_loss_lambda": 0.05,
+    "reg_spec_loss": true,
+    "reg_spec_loss_lambda": 0.05,
+    "regularization_version": "legacy_v1",
+    "illumination_mode": "learned_native",
+    "indirect_mode": "native_learned"
+  },
+  "artifacts": {
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-002000/validation/camera-36/materials.npz": {
+      "sha256": "a3f2f3bba7347305a6a97d54aa2fd438bd09cdafb93d93308a23edafa1f06449",
+      "bytes": 65309735
+    },
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-004000/validation/camera-36/materials.npz": {
+      "sha256": "b99112536645c71bf4bc5809e35cf3ea55c44ed0b646717b1bdb70bd804a46d5",
+      "bytes": 65114124
+    },
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-006000/validation/camera-36/materials.npz": {
+      "sha256": "74ca4b11bb09fd7b21a9a066d890830f9d024c5dd9b812fe55cfad627628b7bc",
+      "bytes": 65751647
+    },
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-008000/validation/camera-36/materials.npz": {
+      "sha256": "7fd554278a7199864652f0f7a979dd009ce5e0f580563ccc4ffab48b54f08a35",
+      "bytes": 65145594
+    },
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-010000/validation/camera-36/materials.npz": {
+      "sha256": "337adb618fbe342347b348b316b18eb7d0d6ef2b62e76d645abc262d03ddb77a",
+      "bytes": 64961843
+    },
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-012000/validation/camera-36/materials.npz": {
+      "sha256": "1d7e09b0eb7b5897537882382eaf910fb34e65fa269e5e548e33b218a34f824e",
+      "bytes": 64866972
+    },
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-014000/validation/camera-36/materials.npz": {
+      "sha256": "9344a9a87ebdcbbe055885466de7f2d8e55125bf335572b4ad3536378d972ebf",
+      "bytes": 64765984
+    },
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-016000/validation/camera-36/materials.npz": {
+      "sha256": "98727950dcc35b26294a2554aa92a3ac41187aab9175c9c2b8de7933a1cf9dee",
+      "bytes": 64614547
+    },
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-018000/validation/camera-36/materials.npz": {
+      "sha256": "02cf48dc6e81408ba29921541b7d77de6bac42fa87ce4244212aba8333f19834",
+      "bytes": 64505252
+    },
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-020000/validation/camera-36/materials.npz": {
+      "sha256": "bab916e8d4e60ffcefc4c64e73a9ef97f2753c483701702eb9382b43e7e5aba4",
+      "bytes": 64456622
+    },
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-022000/validation/camera-36/materials.npz": {
+      "sha256": "109d55c0e49d99ad229380c10cb82a21c0b96168e3130e86aa8b8ce4d19e4781",
+      "bytes": 64440803
+    },
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-024000/validation/camera-36/materials.npz": {
+      "sha256": "176e209757ea13cb78ef7dcf13cb1e6d03ddd4a4e2cb93b5c435884c6db85a02",
+      "bytes": 64373796
+    },
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-026000/validation/camera-36/materials.npz": {
+      "sha256": "0a99584e79d57f7f844db1377787d8eb9d092db9e626350338c9b3fa7ed1b297",
+      "bytes": 64493403
+    },
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-028000/validation/camera-36/materials.npz": {
+      "sha256": "c59555c9f649681a921878643a7c3596293630936156e731c1e86935e6dcc6ef",
+      "bytes": 64467409
+    },
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-030000/validation/camera-36/materials.npz": {
+      "sha256": "459f6d80cae88581ca68c4497d2abd57ebd1ddd40d75df1a0d54c390fdb87573",
+      "bytes": 64434712
+    },
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-032000/validation/camera-36/materials.npz": {
+      "sha256": "8c4b7e8c8c0acbe4d71c3158b071396faf1e0a179358cef73e7b4218c89e8e48",
+      "bytes": 64387759
+    },
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-034000/validation/camera-36/materials.npz": {
+      "sha256": "86c5f8a94ae1b0922d9de665701013f3d2c0996aeabdccefb3b971c9941a06ee",
+      "bytes": 64371304
+    },
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-036000/validation/camera-36/materials.npz": {
+      "sha256": "f1eb490f07bf4c34190e0bfd99a4f3f2795537d373f252b8b0a6e75afbf2eca0",
+      "bytes": 64286688
+    },
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-038000/validation/camera-36/materials.npz": {
+      "sha256": "dc4ad26e7416526e921a020a26257c4c8d97ea8b8ee2b56f967be5980a7d0f8e",
+      "bytes": 64296316
+    },
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-040000/validation/camera-36/materials.npz": {
+      "sha256": "a56944a9cc4e20d75985a5a185dc64e14031cdc8d0360a387f4cce60fd0e321a",
+      "bytes": 64282274
+    }
+  },
+  "checkpoints": [
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-002000.pth",
+      "bytes": 28892957,
+      "protocol": "sphere-corrected-core-replay-v1",
+      "variant": "A_corrected_core_v1",
+      "scientific_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "mesh_sha256": "3e512585ad62aafdbdfdde785f64d1be2454a891fde2f730c027f5b02ed60eba",
+      "completed_updates": 2000,
+      "checkpoint_sha256": "5b89191b56ce4e136866a19b79073ba8f6c38328f0d971ac536b0452b633adb5",
+      "historical_initialization": false,
+      "implicit_resume_permitted": false,
+      "config_sha256": "e5ce5bc12233239fa91ee1e9049502865f14012356f1b2077c8abf28dbccaee1"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-004000.pth",
+      "bytes": 28892957,
+      "protocol": "sphere-corrected-core-replay-v1",
+      "variant": "A_corrected_core_v1",
+      "scientific_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "mesh_sha256": "3e512585ad62aafdbdfdde785f64d1be2454a891fde2f730c027f5b02ed60eba",
+      "completed_updates": 4000,
+      "checkpoint_sha256": "610b42044d43d64fd3bf5c8d309fe8acd9f266b05e85acccd92acdd222f173ea",
+      "historical_initialization": false,
+      "implicit_resume_permitted": false,
+      "config_sha256": "e5ce5bc12233239fa91ee1e9049502865f14012356f1b2077c8abf28dbccaee1"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-006000.pth",
+      "bytes": 28892957,
+      "protocol": "sphere-corrected-core-replay-v1",
+      "variant": "A_corrected_core_v1",
+      "scientific_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "mesh_sha256": "3e512585ad62aafdbdfdde785f64d1be2454a891fde2f730c027f5b02ed60eba",
+      "completed_updates": 6000,
+      "checkpoint_sha256": "a07bb77808635a5ac783eee5be55efd843918e8fc487b5d395411ab57d61b8e6",
+      "historical_initialization": false,
+      "implicit_resume_permitted": false,
+      "config_sha256": "e5ce5bc12233239fa91ee1e9049502865f14012356f1b2077c8abf28dbccaee1"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-008000.pth",
+      "bytes": 28892957,
+      "protocol": "sphere-corrected-core-replay-v1",
+      "variant": "A_corrected_core_v1",
+      "scientific_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "mesh_sha256": "3e512585ad62aafdbdfdde785f64d1be2454a891fde2f730c027f5b02ed60eba",
+      "completed_updates": 8000,
+      "checkpoint_sha256": "87a47cf898d8c6f7809189cc94a39672f36bd64e3171ec293628ff187322a5f6",
+      "historical_initialization": false,
+      "implicit_resume_permitted": false,
+      "config_sha256": "e5ce5bc12233239fa91ee1e9049502865f14012356f1b2077c8abf28dbccaee1"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-010000.pth",
+      "bytes": 28892957,
+      "protocol": "sphere-corrected-core-replay-v1",
+      "variant": "A_corrected_core_v1",
+      "scientific_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "mesh_sha256": "3e512585ad62aafdbdfdde785f64d1be2454a891fde2f730c027f5b02ed60eba",
+      "completed_updates": 10000,
+      "checkpoint_sha256": "f3a7063c7e7cd736923b90651a7db249c5995d6095e8f4271cdff902367b6060",
+      "historical_initialization": false,
+      "implicit_resume_permitted": false,
+      "config_sha256": "e5ce5bc12233239fa91ee1e9049502865f14012356f1b2077c8abf28dbccaee1"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-012000.pth",
+      "bytes": 28892957,
+      "protocol": "sphere-corrected-core-replay-v1",
+      "variant": "A_corrected_core_v1",
+      "scientific_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "mesh_sha256": "3e512585ad62aafdbdfdde785f64d1be2454a891fde2f730c027f5b02ed60eba",
+      "completed_updates": 12000,
+      "checkpoint_sha256": "3e95b18fea06d0f78c099e3a9907b02282f23b905710e2177850443216fe02e9",
+      "historical_initialization": false,
+      "implicit_resume_permitted": false,
+      "config_sha256": "e5ce5bc12233239fa91ee1e9049502865f14012356f1b2077c8abf28dbccaee1"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-014000.pth",
+      "bytes": 28892957,
+      "protocol": "sphere-corrected-core-replay-v1",
+      "variant": "A_corrected_core_v1",
+      "scientific_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "mesh_sha256": "3e512585ad62aafdbdfdde785f64d1be2454a891fde2f730c027f5b02ed60eba",
+      "completed_updates": 14000,
+      "checkpoint_sha256": "67b389d112d2c6a3e2b579450d0829c2458b2c1116c237df8ea484d2533db14f",
+      "historical_initialization": false,
+      "implicit_resume_permitted": false,
+      "config_sha256": "e5ce5bc12233239fa91ee1e9049502865f14012356f1b2077c8abf28dbccaee1"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-016000.pth",
+      "bytes": 28892957,
+      "protocol": "sphere-corrected-core-replay-v1",
+      "variant": "A_corrected_core_v1",
+      "scientific_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "mesh_sha256": "3e512585ad62aafdbdfdde785f64d1be2454a891fde2f730c027f5b02ed60eba",
+      "completed_updates": 16000,
+      "checkpoint_sha256": "34ae848594b03f38baf3df471a7438d79943815a3ef2fad1e54298698c001d76",
+      "historical_initialization": false,
+      "implicit_resume_permitted": false,
+      "config_sha256": "e5ce5bc12233239fa91ee1e9049502865f14012356f1b2077c8abf28dbccaee1"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-018000.pth",
+      "bytes": 28892957,
+      "protocol": "sphere-corrected-core-replay-v1",
+      "variant": "A_corrected_core_v1",
+      "scientific_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "mesh_sha256": "3e512585ad62aafdbdfdde785f64d1be2454a891fde2f730c027f5b02ed60eba",
+      "completed_updates": 18000,
+      "checkpoint_sha256": "040e1647160f9a4d0839c57f82b98dd31f7745a4f12f9180d5ac07e6b8c22007",
+      "historical_initialization": false,
+      "implicit_resume_permitted": false,
+      "config_sha256": "e5ce5bc12233239fa91ee1e9049502865f14012356f1b2077c8abf28dbccaee1"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-020000.pth",
+      "bytes": 28892957,
+      "protocol": "sphere-corrected-core-replay-v1",
+      "variant": "A_corrected_core_v1",
+      "scientific_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "mesh_sha256": "3e512585ad62aafdbdfdde785f64d1be2454a891fde2f730c027f5b02ed60eba",
+      "completed_updates": 20000,
+      "checkpoint_sha256": "5f54b48ea482ed53a2b73f31e2ab6877e111264d66590e5f5459eb4b331ce03c",
+      "historical_initialization": false,
+      "implicit_resume_permitted": false,
+      "config_sha256": "e5ce5bc12233239fa91ee1e9049502865f14012356f1b2077c8abf28dbccaee1"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-022000.pth",
+      "bytes": 28892957,
+      "protocol": "sphere-corrected-core-replay-v1",
+      "variant": "A_corrected_core_v1",
+      "scientific_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "mesh_sha256": "3e512585ad62aafdbdfdde785f64d1be2454a891fde2f730c027f5b02ed60eba",
+      "completed_updates": 22000,
+      "checkpoint_sha256": "83ab1a61d2d8ffb7e48cf9c4c86f68916d4bd62edb5d5045e94366035718b40d",
+      "historical_initialization": false,
+      "implicit_resume_permitted": false,
+      "config_sha256": "e5ce5bc12233239fa91ee1e9049502865f14012356f1b2077c8abf28dbccaee1"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-024000.pth",
+      "bytes": 28892957,
+      "protocol": "sphere-corrected-core-replay-v1",
+      "variant": "A_corrected_core_v1",
+      "scientific_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "mesh_sha256": "3e512585ad62aafdbdfdde785f64d1be2454a891fde2f730c027f5b02ed60eba",
+      "completed_updates": 24000,
+      "checkpoint_sha256": "0e88f16cb0258bb18107e8c56495c7f8f8f9750757df38c8c5b6e33fa3f99eee",
+      "historical_initialization": false,
+      "implicit_resume_permitted": false,
+      "config_sha256": "e5ce5bc12233239fa91ee1e9049502865f14012356f1b2077c8abf28dbccaee1"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-026000.pth",
+      "bytes": 28892957,
+      "protocol": "sphere-corrected-core-replay-v1",
+      "variant": "A_corrected_core_v1",
+      "scientific_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "mesh_sha256": "3e512585ad62aafdbdfdde785f64d1be2454a891fde2f730c027f5b02ed60eba",
+      "completed_updates": 26000,
+      "checkpoint_sha256": "79f34e4305850c8c141ce55bd7684faf9078f836cd9c7dffc21d91f5c1eca643",
+      "historical_initialization": false,
+      "implicit_resume_permitted": false,
+      "config_sha256": "e5ce5bc12233239fa91ee1e9049502865f14012356f1b2077c8abf28dbccaee1"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-028000.pth",
+      "bytes": 28892957,
+      "protocol": "sphere-corrected-core-replay-v1",
+      "variant": "A_corrected_core_v1",
+      "scientific_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "mesh_sha256": "3e512585ad62aafdbdfdde785f64d1be2454a891fde2f730c027f5b02ed60eba",
+      "completed_updates": 28000,
+      "checkpoint_sha256": "7c5c87a984441d91065afa864019bd1feed018e099c9f97484356df3171640c9",
+      "historical_initialization": false,
+      "implicit_resume_permitted": false,
+      "config_sha256": "e5ce5bc12233239fa91ee1e9049502865f14012356f1b2077c8abf28dbccaee1"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-030000.pth",
+      "bytes": 28892957,
+      "protocol": "sphere-corrected-core-replay-v1",
+      "variant": "A_corrected_core_v1",
+      "scientific_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "mesh_sha256": "3e512585ad62aafdbdfdde785f64d1be2454a891fde2f730c027f5b02ed60eba",
+      "completed_updates": 30000,
+      "checkpoint_sha256": "a66411594158d74156c503c8ef1db7a0e23caa99cd95d6b19a8c4fdec8ad94f3",
+      "historical_initialization": false,
+      "implicit_resume_permitted": false,
+      "config_sha256": "e5ce5bc12233239fa91ee1e9049502865f14012356f1b2077c8abf28dbccaee1"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-032000.pth",
+      "bytes": 28892957,
+      "protocol": "sphere-corrected-core-replay-v1",
+      "variant": "A_corrected_core_v1",
+      "scientific_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "mesh_sha256": "3e512585ad62aafdbdfdde785f64d1be2454a891fde2f730c027f5b02ed60eba",
+      "completed_updates": 32000,
+      "checkpoint_sha256": "d2f89d32d0d1c07b2b2ee89b1f44ec9c8ce248575767c0818d4e6416300dbb5a",
+      "historical_initialization": false,
+      "implicit_resume_permitted": false,
+      "config_sha256": "e5ce5bc12233239fa91ee1e9049502865f14012356f1b2077c8abf28dbccaee1"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-034000.pth",
+      "bytes": 28892957,
+      "protocol": "sphere-corrected-core-replay-v1",
+      "variant": "A_corrected_core_v1",
+      "scientific_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "mesh_sha256": "3e512585ad62aafdbdfdde785f64d1be2454a891fde2f730c027f5b02ed60eba",
+      "completed_updates": 34000,
+      "checkpoint_sha256": "e614503cfd1bce87e5b6c01792ed21faf8d9e405ab5fc75488ca973d1ae9deab",
+      "historical_initialization": false,
+      "implicit_resume_permitted": false,
+      "config_sha256": "e5ce5bc12233239fa91ee1e9049502865f14012356f1b2077c8abf28dbccaee1"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-036000.pth",
+      "bytes": 28892957,
+      "protocol": "sphere-corrected-core-replay-v1",
+      "variant": "A_corrected_core_v1",
+      "scientific_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "mesh_sha256": "3e512585ad62aafdbdfdde785f64d1be2454a891fde2f730c027f5b02ed60eba",
+      "completed_updates": 36000,
+      "checkpoint_sha256": "db0eca300ad1848e15f6b0edfa437f7170b2b9f38056ec2fcffcf2ed7e882686",
+      "historical_initialization": false,
+      "implicit_resume_permitted": false,
+      "config_sha256": "e5ce5bc12233239fa91ee1e9049502865f14012356f1b2077c8abf28dbccaee1"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-038000.pth",
+      "bytes": 28892957,
+      "protocol": "sphere-corrected-core-replay-v1",
+      "variant": "A_corrected_core_v1",
+      "scientific_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "mesh_sha256": "3e512585ad62aafdbdfdde785f64d1be2454a891fde2f730c027f5b02ed60eba",
+      "completed_updates": 38000,
+      "checkpoint_sha256": "9ccb03830ddfce017a27b836c4f3f6d0d35d67606bd8fc7bcbae1b181b30eff8",
+      "historical_initialization": false,
+      "implicit_resume_permitted": false,
+      "config_sha256": "e5ce5bc12233239fa91ee1e9049502865f14012356f1b2077c8abf28dbccaee1"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-040000.pth",
+      "bytes": 28892957,
+      "protocol": "sphere-corrected-core-replay-v1",
+      "variant": "A_corrected_core_v1",
+      "scientific_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "mesh_sha256": "3e512585ad62aafdbdfdde785f64d1be2454a891fde2f730c027f5b02ed60eba",
+      "completed_updates": 40000,
+      "checkpoint_sha256": "1d68296a62822ed5a8f16c2f141bb456a44d9b278ba1e159cc4f2ee9522f9374",
+      "historical_initialization": false,
+      "implicit_resume_permitted": false,
+      "config_sha256": "e5ce5bc12233239fa91ee1e9049502865f14012356f1b2077c8abf28dbccaee1"
+    }
+  ],
+  "progression": [
+    {
+      "step": 2000,
+      "pixels": 340315,
+      "kd_red": 0.9974925058296435,
+      "kd_mean": 0.33250167487932736,
+      "metallic": 0.8207127505270511,
+      "diffuse_allocation_red": 0.17881434889257056,
+      "diffuse_red": 0.08418141503959557,
+      "specular_red": 0.14436369330236767,
+      "effective_diffuse_incident_red": 0.4529278765590346,
+      "mx_mean": 0.999816682490811,
+      "my_mean": 0.04017278333439826,
+      "raw_orientation_norm_p05": 0.045334916189312936,
+      "specular_direct_dkd_l2": 7.055020331271536e-09,
+      "specular_direct_dmetal_l2": 2.192166671055862e-08,
+      "energy": 0.0,
+      "specular": 2.2922948190114464e-06,
+      "energy_violating_fraction": 0.0
+    },
+    {
+      "step": 4000,
+      "pixels": 340315,
+      "kd_red": 0.9924240864041484,
+      "kd_mean": 0.3308094314816643,
+      "metallic": 0.8464494802493527,
+      "diffuse_allocation_red": 0.1522682152312759,
+      "diffuse_red": 0.0763806407687439,
+      "specular_red": 0.1571637430593725,
+      "effective_diffuse_incident_red": 0.4680682325863566,
+      "mx_mean": 0.9999351094761203,
+      "my_mean": 0.04015760619325824,
+      "raw_orientation_norm_p05": 0.051163551211357114,
+      "specular_direct_dkd_l2": 6.2121760382882156e-09,
+      "specular_direct_dmetal_l2": 2.1812632306986998e-08,
+      "energy": 0.0,
+      "specular": 1.9512615996025843e-06,
+      "energy_violating_fraction": 0.0
+    },
+    {
+      "step": 6000,
+      "pixels": 340315,
+      "kd_red": 0.305603871133086,
+      "kd_mean": 0.10188144163900072,
+      "metallic": 0.8241928761399444,
+      "diffuse_allocation_red": 0.05322381024076652,
+      "diffuse_red": 0.08097197856906524,
+      "specular_red": 0.14097550035648865,
+      "effective_diffuse_incident_red": 1.4370473755624822,
+      "mx_mean": 0.9999231477051584,
+      "my_mean": 0.040526562286971476,
+      "raw_orientation_norm_p05": 0.05201157368719578,
+      "specular_direct_dkd_l2": 7.1026222784859284e-09,
+      "specular_direct_dmetal_l2": 6.736719790724668e-09,
+      "energy": 0.0,
+      "specular": 6.826492388105319e-07,
+      "energy_violating_fraction": 0.0
+    },
+    {
+      "step": 8000,
+      "pixels": 340315,
+      "kd_red": 0.09050065984372666,
+      "kd_mean": 0.0301713832933166,
+      "metallic": 0.8430061869017516,
+      "diffuse_allocation_red": 0.014138496798666488,
+      "diffuse_red": 0.06761221493528437,
+      "specular_red": 0.14781343756939544,
+      "effective_diffuse_incident_red": 4.378783545042077,
+      "mx_mean": 0.9999629631605468,
+      "my_mean": 0.04036389700955104,
+      "raw_orientation_norm_p05": 0.051582814380526545,
+      "specular_direct_dkd_l2": 6.581723079677048e-09,
+      "specular_direct_dmetal_l2": 1.9933571028702085e-09,
+      "energy": 0.0,
+      "specular": 1.809818822278128e-07,
+      "energy_violating_fraction": 0.0
+    },
+    {
+      "step": 10000,
+      "pixels": 340315,
+      "kd_red": 0.07361612041722171,
+      "kd_mean": 0.02454145951614774,
+      "metallic": 0.8445903881235127,
+      "diffuse_allocation_red": 0.01160981926138244,
+      "diffuse_red": 0.066457636810472,
+      "specular_red": 0.15276130763704523,
+      "effective_diffuse_incident_red": 5.2360301653746895,
+      "mx_mean": 0.9999776459610007,
+      "my_mean": 0.04056824127965648,
+      "raw_orientation_norm_p05": 0.04962131455540657,
+      "specular_direct_dkd_l2": 6.555175929413637e-09,
+      "specular_direct_dmetal_l2": 1.6286506834058166e-09,
+      "energy": 0.0,
+      "specular": 1.48737405645032e-07,
+      "energy_violating_fraction": 0.0
+    },
+    {
+      "step": 12000,
+      "pixels": 340315,
+      "kd_red": 0.07644207076903424,
+      "kd_mean": 0.025483651741934156,
+      "metallic": 0.8510374354764103,
+      "diffuse_allocation_red": 0.01154159624371176,
+      "diffuse_red": 0.06653872718724901,
+      "specular_red": 0.15848357655404244,
+      "effective_diffuse_incident_red": 5.2667884899735204,
+      "mx_mean": 0.9999812503470389,
+      "my_mean": 0.040507755972675,
+      "raw_orientation_norm_p05": 0.049128348007798195,
+      "specular_direct_dkd_l2": 6.342182724611289e-09,
+      "specular_direct_dmetal_l2": 1.6913321322236337e-09,
+      "energy": 0.0,
+      "specular": 1.477757883257076e-07,
+      "energy_violating_fraction": 0.0
+    },
+    {
+      "step": 14000,
+      "pixels": 340315,
+      "kd_red": 0.0727463054556635,
+      "kd_mean": 0.02425085591094583,
+      "metallic": 0.8493381180183233,
+      "diffuse_allocation_red": 0.011120714769166247,
+      "diffuse_red": 0.06571138485763865,
+      "specular_red": 0.15642462253975362,
+      "effective_diffuse_incident_red": 5.426913282140139,
+      "mx_mean": 0.9999852183770189,
+      "my_mean": 0.0405767162652128,
+      "raw_orientation_norm_p05": 0.04825547076761723,
+      "specular_direct_dkd_l2": 6.359049656716799e-09,
+      "specular_direct_dmetal_l2": 1.610964186234304e-09,
+      "energy": 0.0,
+      "specular": 1.4250569575044228e-07,
+      "energy_violating_fraction": 0.0
+    },
+    {
+      "step": 16000,
+      "pixels": 340315,
+      "kd_red": 0.07459332046661511,
+      "kd_mean": 0.024866378663750216,
+      "metallic": 0.8500414240977298,
+      "diffuse_allocation_red": 0.01138947698686226,
+      "diffuse_red": 0.06833927967660909,
+      "specular_red": 0.16240040590081078,
+      "effective_diffuse_incident_red": 5.474197144563263,
+      "mx_mean": 0.9999891238578079,
+      "my_mean": 0.04050361795150778,
+      "raw_orientation_norm_p05": 0.047519861906766894,
+      "specular_direct_dkd_l2": 6.38090045319746e-09,
+      "specular_direct_dmetal_l2": 1.6520346457569998e-09,
+      "energy": 0.0,
+      "specular": 1.458977944902652e-07,
+      "energy_violating_fraction": 0.0
+    },
+    {
+      "step": 18000,
+      "pixels": 340315,
+      "kd_red": 0.07300701372265433,
+      "kd_mean": 0.024337260674290824,
+      "metallic": 0.8502735305576476,
+      "diffuse_allocation_red": 0.011116353549869853,
+      "diffuse_red": 0.06673904952254815,
+      "specular_red": 0.16044849442210013,
+      "effective_diffuse_incident_red": 5.4952502615874,
+      "mx_mean": 0.9999892215231486,
+      "my_mean": 0.04045601872069357,
+      "raw_orientation_norm_p05": 0.046381648257374765,
+      "specular_direct_dkd_l2": 6.3518856833044516e-09,
+      "specular_direct_dmetal_l2": 1.615523947000331e-09,
+      "energy": 0.0,
+      "specular": 1.4231281820822906e-07,
+      "energy_violating_fraction": 0.0
+    },
+    {
+      "step": 20000,
+      "pixels": 340315,
+      "kd_red": 0.07250179513584379,
+      "kd_mean": 0.02416881107921644,
+      "metallic": 0.8467889735666227,
+      "diffuse_allocation_red": 0.011293926296025578,
+      "diffuse_red": 0.0671184187527905,
+      "specular_red": 0.15837343836332196,
+      "effective_diffuse_incident_red": 5.454270067403076,
+      "mx_mean": 0.9999939628258168,
+      "my_mean": 0.04050317438834062,
+      "raw_orientation_norm_p05": 0.04620093293488026,
+      "specular_direct_dkd_l2": 6.481186430154836e-09,
+      "specular_direct_dmetal_l2": 1.6061690256781263e-09,
+      "energy": 0.0,
+      "specular": 1.4466428043409482e-07,
+      "energy_violating_fraction": 0.0
+    },
+    {
+      "step": 22000,
+      "pixels": 340315,
+      "kd_red": 0.07158765285728176,
+      "kd_mean": 0.023863912285501675,
+      "metallic": 0.8513483052427958,
+      "diffuse_allocation_red": 0.010823479358797327,
+      "diffuse_red": 0.06441318427771073,
+      "specular_red": 0.15621609056463076,
+      "effective_diffuse_incident_red": 5.448044611298124,
+      "mx_mean": 0.9999911522235823,
+      "my_mean": 0.04047044320619148,
+      "raw_orientation_norm_p05": 0.042105183750391004,
+      "specular_direct_dkd_l2": 6.302676491681102e-09,
+      "specular_direct_dmetal_l2": 1.5851874447305888e-09,
+      "energy": 0.0,
+      "specular": 1.3855868358002543e-07,
+      "energy_violating_fraction": 0.0
+    },
+    {
+      "step": 24000,
+      "pixels": 340315,
+      "kd_red": 0.0732860400334377,
+      "kd_mean": 0.024429956997138347,
+      "metallic": 0.8515223737303359,
+      "diffuse_allocation_red": 0.01105476599795392,
+      "diffuse_red": 0.06635365317786979,
+      "specular_red": 0.15981214153005877,
+      "effective_diffuse_incident_red": 5.503638648776928,
+      "mx_mean": 0.9999912979863325,
+      "my_mean": 0.040336712292869614,
+      "raw_orientation_norm_p05": 0.03915284760296345,
+      "specular_direct_dkd_l2": 6.269140336098224e-09,
+      "specular_direct_dmetal_l2": 1.6216509471119963e-09,
+      "energy": 0.0,
+      "specular": 1.4138717065550678e-07,
+      "energy_violating_fraction": 0.0
+    },
+    {
+      "step": 26000,
+      "pixels": 340315,
+      "kd_red": 0.07296562606499912,
+      "kd_mean": 0.024323393970468347,
+      "metallic": 0.847115101831154,
+      "diffuse_allocation_red": 0.011362161327318173,
+      "diffuse_red": 0.06754559919404697,
+      "specular_red": 0.1576690498502241,
+      "effective_diffuse_incident_red": 5.4464999828063565,
+      "mx_mean": 0.9999885657011142,
+      "my_mean": 0.04041637186060458,
+      "raw_orientation_norm_p05": 0.040620030090212825,
+      "specular_direct_dkd_l2": 6.4523228540906596e-09,
+      "specular_direct_dmetal_l2": 1.6160273632415832e-09,
+      "energy": 0.0,
+      "specular": 1.4540909315203746e-07,
+      "energy_violating_fraction": 0.0
+    },
+    {
+      "step": 28000,
+      "pixels": 340315,
+      "kd_red": 0.07265248781210312,
+      "kd_mean": 0.0242188907430319,
+      "metallic": 0.8516519604301553,
+      "diffuse_allocation_red": 0.010953295558491475,
+      "diffuse_red": 0.06630559022425553,
+      "specular_red": 0.16000193491594084,
+      "effective_diffuse_incident_red": 5.5374269663523545,
+      "mx_mean": 0.9999899652913492,
+      "my_mean": 0.04046515904975272,
+      "raw_orientation_norm_p05": 0.042580916360020635,
+      "specular_direct_dkd_l2": 6.301928092398638e-09,
+      "specular_direct_dmetal_l2": 1.6085249482215283e-09,
+      "energy": 0.0,
+      "specular": 1.402272792162635e-07,
+      "energy_violating_fraction": 0.0
+    },
+    {
+      "step": 30000,
+      "pixels": 340315,
+      "kd_red": 0.07152158154811422,
+      "kd_mean": 0.023841898333091287,
+      "metallic": 0.8496531052250195,
+      "diffuse_allocation_red": 0.010976567413196543,
+      "diffuse_red": 0.06603622930042678,
+      "specular_red": 0.15791256760018665,
+      "effective_diffuse_incident_red": 5.509826274884329,
+      "mx_mean": 0.9999901285038468,
+      "my_mean": 0.04046026495402639,
+      "raw_orientation_norm_p05": 0.04260418936610222,
+      "specular_direct_dkd_l2": 6.370041492357868e-09,
+      "specular_direct_dmetal_l2": 1.5836204133594019e-09,
+      "energy": 0.0,
+      "specular": 1.4051694213212823e-07,
+      "energy_violating_fraction": 0.0
+    },
+    {
+      "step": 32000,
+      "pixels": 340315,
+      "kd_red": 0.07236152784769297,
+      "kd_mean": 0.024121798658150197,
+      "metallic": 0.8485516157876491,
+      "diffuse_allocation_red": 0.011141945638619529,
+      "diffuse_red": 0.06694978220295138,
+      "specular_red": 0.15862177963670487,
+      "effective_diffuse_incident_red": 5.512030858868499,
+      "mx_mean": 0.9999920603008664,
+      "my_mean": 0.04041492259036699,
+      "raw_orientation_norm_p05": 0.04392789453268051,
+      "specular_direct_dkd_l2": 6.403688431195817e-09,
+      "specular_direct_dmetal_l2": 1.6027528290407046e-09,
+      "energy": 0.0,
+      "specular": 1.4260280135495275e-07,
+      "energy_violating_fraction": 0.0
+    },
+    {
+      "step": 34000,
+      "pixels": 340315,
+      "kd_red": 0.07223356343839067,
+      "kd_mean": 0.024079068911050935,
+      "metallic": 0.8528716624346204,
+      "diffuse_allocation_red": 0.010842229183612375,
+      "diffuse_red": 0.06609144064088099,
+      "specular_red": 0.16080321853149657,
+      "effective_diffuse_incident_red": 5.55998350655478,
+      "mx_mean": 0.9999931475753033,
+      "my_mean": 0.040436992978221856,
+      "raw_orientation_norm_p05": 0.04435813836753368,
+      "specular_direct_dkd_l2": 6.259087532166496e-09,
+      "specular_direct_dmetal_l2": 1.5998913358285459e-09,
+      "energy": 0.0,
+      "specular": 1.3883651771174972e-07,
+      "energy_violating_fraction": 0.0
+    },
+    {
+      "step": 36000,
+      "pixels": 340315,
+      "kd_red": 0.07270631186366139,
+      "kd_mean": 0.02423679739280671,
+      "metallic": 0.8502731965411454,
+      "diffuse_allocation_red": 0.011080764434211831,
+      "diffuse_red": 0.06761132685074912,
+      "specular_red": 0.16180961924883758,
+      "effective_diffuse_incident_red": 5.59291164909975,
+      "mx_mean": 0.9999930752374048,
+      "my_mean": 0.04039197135929314,
+      "raw_orientation_norm_p05": 0.04460074342787266,
+      "specular_direct_dkd_l2": 6.3327615932730526e-09,
+      "specular_direct_dmetal_l2": 1.6093326541443119e-09,
+      "energy": 0.0,
+      "specular": 1.4180154124162752e-07,
+      "energy_violating_fraction": 0.0
+    },
+    {
+      "step": 38000,
+      "pixels": 340315,
+      "kd_red": 0.07165990827936454,
+      "kd_mean": 0.023887944094111553,
+      "metallic": 0.8475574723523134,
+      "diffuse_allocation_red": 0.011119146293786372,
+      "diffuse_red": 0.06793538136933666,
+      "specular_red": 0.1604349492723027,
+      "effective_diffuse_incident_red": 5.603784572170824,
+      "mx_mean": 0.9999933598050748,
+      "my_mean": 0.0403812140606211,
+      "raw_orientation_norm_p05": 0.0450240895152092,
+      "specular_direct_dkd_l2": 6.43837287669535e-09,
+      "specular_direct_dmetal_l2": 1.5866092939479125e-09,
+      "energy": 0.0,
+      "specular": 1.422966733110434e-07,
+      "energy_violating_fraction": 0.0
+    },
+    {
+      "step": 40000,
+      "pixels": 340315,
+      "kd_red": 0.07059306070776568,
+      "kd_mean": 0.023532186343920663,
+      "metallic": 0.848279828084597,
+      "diffuse_allocation_red": 0.01088544289220023,
+      "diffuse_red": 0.06694279499297091,
+      "specular_red": 0.15901722900147228,
+      "effective_diffuse_incident_red": 5.638779268606509,
+      "mx_mean": 0.9999941894511479,
+      "my_mean": 0.04042677436854633,
+      "raw_orientation_norm_p05": 0.045611809194087985,
+      "specular_direct_dkd_l2": 6.416781347556748e-09,
+      "specular_direct_dmetal_l2": 1.5632385958549149e-09,
+      "energy": 0.0,
+      "specular": 1.393228453089887e-07,
+      "energy_violating_fraction": 0.0
+    }
+  ],
+  "quadrature": [
+    {
+      "step": 2000,
+      "rows": [
+        {
+          "pixel": 228405,
+          "status": "measured",
+          "widths": [
+            0.9999964237213135,
+            0.040000103414058685
+          ],
+          "cosine": 0.015176709978643288,
+          "reflectance_coarse": [
+            0.5459983550172847,
+            0.026173512217455074,
+            0.026173512307546845
+          ],
+          "reflectance_fine": [
+            0.5514959393509551,
+            0.03007361265185084,
+            0.03007361274221948
+          ],
+          "grid_max_absolute_difference": 0.005497584333670424,
+          "two_grid_bound_pass": false,
+          "analytical_acceptance": 0.5043582004993526,
+          "accepted_mass": [
+            0.4470672262806431,
+            0.49780820677594545
+          ],
+          "saved_conditional_energy_proxy": [
+            0.9101490210703957,
+            0.05842958390927215,
+            0.05842958394515084
+          ],
+          "expected_conditional_limit": [
+            0.8990070921048571,
+            0.06041204673089962,
+            0.06041204687623803
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.35865308171944066,
+            0.02835597125742131,
+            0.02835597120293136
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        },
+        {
+          "pixel": 408539,
+          "status": "measured",
+          "widths": [
+            0.9971797466278076,
+            0.04184584319591522
+          ],
+          "cosine": 0.4728170085176515,
+          "reflectance_coarse": [
+            0.4331738622697745,
+            0.017325786570609365,
+            0.017362563715256633
+          ],
+          "reflectance_fine": [
+            0.43317386226977117,
+            0.0173257865706096,
+            0.017362563715256865
+          ],
+          "grid_max_absolute_difference": 3.3306690738754696e-15,
+          "two_grid_bound_pass": true,
+          "analytical_acceptance": 0.8415794445218829,
+          "accepted_mass": [
+            0.841579459181955,
+            0.8415794591822259
+          ],
+          "saved_conditional_energy_proxy": [
+            0.47513684513552334,
+            0.02042107572715915,
+            0.020461291185485023
+          ],
+          "expected_conditional_limit": [
+            0.4743081882607044,
+            0.020585682048962196,
+            0.02062580876642413
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.041962982865752174,
+            0.0030952891565495487,
+            0.0030987274702281575
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        },
+        {
+          "pixel": 527267,
+          "status": "measured",
+          "widths": [
+            0.999442458152771,
+            0.040459372103214264
+          ],
+          "cosine": 0.25742769574136304,
+          "reflectance_coarse": [
+            0.3454711573634607,
+            0.03150012292225525,
+            0.03150329258246918
+          ],
+          "reflectance_fine": [
+            0.3454711626036105,
+            0.031500125588925725,
+            0.03150329524916564
+          ],
+          "grid_max_absolute_difference": 5.240149814067507e-09,
+          "two_grid_bound_pass": true,
+          "analytical_acceptance": 0.6958856775632483,
+          "accepted_mass": [
+            0.6958849694553348,
+            0.6958854381276528
+          ],
+          "saved_conditional_energy_proxy": [
+            0.4302299299908441,
+            0.04548395287581772,
+            0.04548783139473871
+          ],
+          "expected_conditional_limit": [
+            0.43063128014985047,
+            0.045266055586846564,
+            0.04526994599929275
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.08475876738723359,
+            0.013983827286891994,
+            0.013984536145573073
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        },
+        {
+          "pixel": 639096,
+          "status": "measured",
+          "widths": [
+            0.9999992251396179,
+            0.04000025615096092
+          ],
+          "cosine": 0.5145151760036741,
+          "reflectance_coarse": [
+            0.4327441291368111,
+            0.009005253306203744,
+            0.009005253402162086
+          ],
+          "reflectance_fine": [
+            0.432744129132911,
+            0.009005253305881823,
+            0.009005253401840168
+          ],
+          "grid_max_absolute_difference": 3.9001024632057124e-12,
+          "two_grid_bound_pass": true,
+          "analytical_acceptance": 0.7631554154460845,
+          "accepted_mass": [
+            0.7631553457433697,
+            0.763155345705276
+          ],
+          "saved_conditional_energy_proxy": [
+            0.5349814651029163,
+            0.012002575212638242,
+            0.012002575235405509
+          ],
+          "expected_conditional_limit": [
+            0.5358443079006927,
+            0.011800026503418238,
+            0.011800026622091375
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.10223733597000534,
+            0.002997321906756419,
+            0.0029973218335653407
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        },
+        {
+          "pixel": 757838,
+          "status": "measured",
+          "widths": [
+            0.9999845623970032,
+            0.0400133840739727
+          ],
+          "cosine": 0.5440719623744323,
+          "reflectance_coarse": [
+            0.5020731744585527,
+            0.005987779020066034,
+            0.00598780608600327
+          ],
+          "reflectance_fine": [
+            0.5020731734267458,
+            0.005987778859793389,
+            0.005987805925730578
+          ],
+          "grid_max_absolute_difference": 1.0318068621728571e-09,
+          "two_grid_bound_pass": true,
+          "analytical_acceptance": 0.7127200954982668,
+          "accepted_mass": [
+            0.7127201079164983,
+            0.7127200598258345
+          ],
+          "saved_conditional_energy_proxy": [
+            0.6676585672426043,
+            0.008468555031326359,
+            0.008468590865626806
+          ],
+          "expected_conditional_limit": [
+            0.666763511992226,
+            0.00840130508887353,
+            0.008401341008475949
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.16558539381585846,
+            0.0024807761715329698,
+            0.0024807849398962283
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        },
+        {
+          "pixel": 938001,
+          "status": "measured",
+          "widths": [
+            0.999649703502655,
+            0.04018542170524597
+          ],
+          "cosine": 0.014611098698454228,
+          "reflectance_coarse": [
+            0.5290466081940188,
+            0.037592389862551145,
+            0.03759411157587768
+          ],
+          "reflectance_fine": [
+            0.5237663392168102,
+            0.032982313940725726,
+            0.0329840333061625
+          ],
+          "grid_max_absolute_difference": 0.00528026897720868,
+          "two_grid_bound_pass": false,
+          "analytical_acceptance": 0.5047615504299628,
+          "accepted_mass": [
+            0.5858153855176964,
+            0.47862736786290194
+          ],
+          "saved_conditional_energy_proxy": [
+            0.8065123509371332,
+            0.06852473949305575,
+            0.06852732762018623
+          ],
+          "expected_conditional_limit": [
+            0.845562894076346,
+            0.06890999526791952,
+            0.06891271611880667
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.2827460117203231,
+            0.035542425552330024,
+            0.035543294314023734
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        }
+      ],
+      "chart": {
+        "projected_neighbor_pairs": 678886,
+        "raw_angle_jump_p95_degrees": 1.299295117932466,
+        "transported_Q_absolute_difference_p95": 0.04744239281022966,
+        "large_raw_jump_small_Q_count": 0,
+        "large_raw_jump_large_Q_count": 476,
+        "diagnostic_only_thresholds": {
+          "raw_angle_degrees": 45,
+          "Q_absolute": 0.05,
+          "world_distance": 0.02,
+          "normal_cosine": 0.99
+        },
+        "limitation": "Screen-neighbor diagnostic; no source face IDs, so not a certified mesh-surface neighborhood."
+      }
+    },
+    {
+      "step": 10000,
+      "rows": [
+        {
+          "pixel": 228405,
+          "status": "measured",
+          "widths": [
+            0.9999952912330627,
+            0.04005863890051842
+          ],
+          "cosine": 0.015176709978643288,
+          "reflectance_coarse": [
+            0.0810435779833676,
+            0.03240292914735734,
+            0.0324035382892991
+          ],
+          "reflectance_fine": [
+            0.07909769993217591,
+            0.030593648337683955,
+            0.030594255768976075
+          ],
+          "grid_max_absolute_difference": 0.0019458780511916879,
+          "two_grid_bound_pass": false,
+          "analytical_acceptance": 0.5043296397522367,
+          "accepted_mass": [
+            0.5163822097617865,
+            0.5190689711864042
+          ],
+          "saved_conditional_energy_proxy": [
+            0.13785712745190315,
+            0.058713617977550765,
+            0.05871460974491505
+          ],
+          "expected_conditional_limit": [
+            0.13523363374156536,
+            0.058939429361647235,
+            0.0589403848176478
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.058759427519727236,
+            0.02811996963986681,
+            0.028120353975938973
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        },
+        {
+          "pixel": 408539,
+          "status": "measured",
+          "widths": [
+            0.9995729923248291,
+            0.04300756752490997
+          ],
+          "cosine": 0.4728170085176515,
+          "reflectance_coarse": [
+            0.04859957251851695,
+            0.017443026296303156,
+            0.01744855801015283
+          ],
+          "reflectance_fine": [
+            0.04859957251851645,
+            0.017443026296302903,
+            0.01744855801015258
+          ],
+          "grid_max_absolute_difference": 4.996003610813204e-16,
+          "two_grid_bound_pass": true,
+          "analytical_acceptance": 0.8406365049957213,
+          "accepted_mass": [
+            0.8406365408478633,
+            0.8406365408478249
+          ],
+          "saved_conditional_energy_proxy": [
+            0.05359024700302761,
+            0.020233860962670863,
+            0.0202397831661754
+          ],
+          "expected_conditional_limit": [
+            0.05463558802659654,
+            0.02074964008510818,
+            0.020755656392763094
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.004990674484511161,
+            0.00279083466636796,
+            0.002791225156022821
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        },
+        {
+          "pixel": 527267,
+          "status": "measured",
+          "widths": [
+            0.9999028444290161,
+            0.040999885648489
+          ],
+          "cosine": 0.25742769574136304,
+          "reflectance_coarse": [
+            0.054860872735939745,
+            0.03084103356473816,
+            0.030845631188405238
+          ],
+          "reflectance_fine": [
+            0.05486087053672412,
+            0.030841031475665928,
+            0.030845629099311926
+          ],
+          "grid_max_absolute_difference": 2.199215622111783e-09,
+          "two_grid_bound_pass": true,
+          "analytical_acceptance": 0.6877917054983356,
+          "accepted_mass": [
+            0.6877917711666063,
+            0.6877913278914564
+          ],
+          "saved_conditional_energy_proxy": [
+            0.07431629478158541,
+            0.045058834237192286,
+            0.04506443327925789
+          ],
+          "expected_conditional_limit": [
+            0.07433046968381492,
+            0.044840412532606296,
+            0.04484605720756584
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.01945542424486129,
+            0.014217802761526357,
+            0.014218804179945962
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        },
+        {
+          "pixel": 639096,
+          "status": "measured",
+          "widths": [
+            1.0,
+            0.04000028967857361
+          ],
+          "cosine": 0.5145151760036741,
+          "reflectance_coarse": [
+            0.04188217363090571,
+            0.0075431061019307025,
+            0.007543141897937237
+          ],
+          "reflectance_fine": [
+            0.04188217362105327,
+            0.0075431060954645295,
+            0.007543141891471061
+          ],
+          "grid_max_absolute_difference": 9.852438309643219e-12,
+          "two_grid_bound_pass": true,
+          "analytical_acceptance": 0.7514211282742687,
+          "accepted_mass": [
+            0.7514210985263479,
+            0.7514210963642173
+          ],
+          "saved_conditional_energy_proxy": [
+            0.05422000703469765,
+            0.009722127945838549,
+            0.009722174818402523
+          ],
+          "expected_conditional_limit": [
+            0.05475338279729016,
+            0.010038453858710876,
+            0.010038500470806186
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.012337833413644375,
+            0.002179021850374019,
+            0.002179032926931462
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        },
+        {
+          "pixel": 757838,
+          "status": "measured",
+          "widths": [
+            0.9999986290931702,
+            0.04001875966787338
+          ],
+          "cosine": 0.5440719623744323,
+          "reflectance_coarse": [
+            0.035522501171639576,
+            0.005216368938222102,
+            0.005217170796254395
+          ],
+          "reflectance_fine": [
+            0.03552250091776581,
+            0.005216368751845656,
+            0.005217170609876164
+          ],
+          "grid_max_absolute_difference": 2.538737622903575e-10,
+          "two_grid_bound_pass": true,
+          "analytical_acceptance": 0.712603786822365,
+          "accepted_mass": [
+            0.7126038398328047,
+            0.712603783906081
+          ],
+          "saved_conditional_energy_proxy": [
+            0.04811812151860728,
+            0.007457554194944714,
+            0.007458630054045709
+          ],
+          "expected_conditional_limit": [
+            0.048547172978998514,
+            0.007320146708805248,
+            0.0073212375184772875
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.012595620600841469,
+            0.002241185443099058,
+            0.0022414594441695452
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        },
+        {
+          "pixel": 938001,
+          "status": "measured",
+          "widths": [
+            0.9999896883964539,
+            0.040058352053165436
+          ],
+          "cosine": 0.014611098698454228,
+          "reflectance_coarse": [
+            0.04014003212605537,
+            0.02814687410374567,
+            0.028146918145514843
+          ],
+          "reflectance_fine": [
+            0.041092830414642866,
+            0.029103609734406562,
+            0.029103653761716856
+          ],
+          "grid_max_absolute_difference": 0.0009567356306608918,
+          "two_grid_bound_pass": true,
+          "analytical_acceptance": 0.5042756671186414,
+          "accepted_mass": [
+            0.47388047517139764,
+            0.49272070510480526
+          ],
+          "saved_conditional_energy_proxy": [
+            0.07910348664501132,
+            0.05766777814503101,
+            0.0576678518294031
+          ],
+          "expected_conditional_limit": [
+            0.08049687996017406,
+            0.059067152694692815,
+            0.05906723138982045
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.03801065623036846,
+            0.02856416841062445,
+            0.028564198067686244
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        }
+      ],
+      "chart": {
+        "projected_neighbor_pairs": 678886,
+        "raw_angle_jump_p95_degrees": 0.9730634780635721,
+        "transported_Q_absolute_difference_p95": 0.038380348121431866,
+        "large_raw_jump_small_Q_count": 0,
+        "large_raw_jump_large_Q_count": 847,
+        "diagnostic_only_thresholds": {
+          "raw_angle_degrees": 45,
+          "Q_absolute": 0.05,
+          "world_distance": 0.02,
+          "normal_cosine": 0.99
+        },
+        "limitation": "Screen-neighbor diagnostic; no source face IDs, so not a certified mesh-surface neighborhood."
+      }
+    },
+    {
+      "step": 20000,
+      "rows": [
+        {
+          "pixel": 228405,
+          "status": "measured",
+          "widths": [
+            0.9999985098838806,
+            0.040100328624248505
+          ],
+          "cosine": 0.015176709978643288,
+          "reflectance_coarse": [
+            0.08307606771112165,
+            0.036701275325617795,
+            0.036702074493765585
+          ],
+          "reflectance_fine": [
+            0.07502440084197745,
+            0.028839019453806753,
+            0.02883981535787016
+          ],
+          "grid_max_absolute_difference": 0.0080516668691442,
+          "two_grid_bound_pass": false,
+          "analytical_acceptance": 0.5043503834963419,
+          "accepted_mass": [
+            0.6290274376287825,
+            0.47584355077622437
+          ],
+          "saved_conditional_energy_proxy": [
+            0.13336329719955486,
+            0.06036181787136124,
+            0.06036308005674007
+          ],
+          "expected_conditional_limit": [
+            0.13794584297586687,
+            0.06060602893328127,
+            0.06060736171587198
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.05833889635757741,
+            0.03152279841755448,
+            0.031523264698869916
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        },
+        {
+          "pixel": 408539,
+          "status": "measured",
+          "widths": [
+            1.0,
+            0.04360133782029152
+          ],
+          "cosine": 0.4728170085176515,
+          "reflectance_coarse": [
+            0.04796924218401136,
+            0.017440481083570988,
+            0.017442315996635507
+          ],
+          "reflectance_fine": [
+            0.04796924218401089,
+            0.017440481083570717,
+            0.017442315996635233
+          ],
+          "grid_max_absolute_difference": 4.649058915617843e-16,
+          "two_grid_bound_pass": true,
+          "analytical_acceptance": 0.8403335670517759,
+          "accepted_mass": [
+            0.8403335715956475,
+            0.8403335715955803
+          ],
+          "saved_conditional_energy_proxy": [
+            0.0534332525829706,
+            0.020613154401910798,
+            0.020615127580275984
+          ],
+          "expected_conditional_limit": [
+            0.053954858358779556,
+            0.020754192961669377,
+            0.020756188467955638
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.005464010398959711,
+            0.003172673318340081,
+            0.0031728115836407514
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        },
+        {
+          "pixel": 527267,
+          "status": "measured",
+          "widths": [
+            0.9999740123748779,
+            0.040211837738752365
+          ],
+          "cosine": 0.25742769574136304,
+          "reflectance_coarse": [
+            0.054159123299152345,
+            0.03096520937335899,
+            0.03096815087274122
+          ],
+          "reflectance_fine": [
+            0.054159117467940075,
+            0.030965203915918456,
+            0.030968145415253286
+          ],
+          "grid_max_absolute_difference": 5.8312122699910596e-09,
+          "two_grid_bound_pass": true,
+          "analytical_acceptance": 0.689257960512039,
+          "accepted_mass": [
+            0.6892587814955137,
+            0.6892578848541159
+          ],
+          "saved_conditional_energy_proxy": [
+            0.0730116277193531,
+            0.044441876177214734,
+            0.044445494653919726
+          ],
+          "expected_conditional_limit": [
+            0.07340674155090504,
+            0.044925257283141604,
+            0.04492886936295904
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.018852510251413025,
+            0.013476672261296278,
+            0.01347734923866644
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        },
+        {
+          "pixel": 639096,
+          "status": "measured",
+          "widths": [
+            1.0,
+            0.04000002145767212
+          ],
+          "cosine": 0.5145151760036741,
+          "reflectance_coarse": [
+            0.04239602026893284,
+            0.007488645833172202,
+            0.00748868608166031
+          ],
+          "reflectance_fine": [
+            0.04239602025967817,
+            0.007488645827192287,
+            0.007488686075680392
+          ],
+          "grid_max_absolute_difference": 9.254673416503323e-12,
+          "two_grid_bound_pass": true,
+          "analytical_acceptance": 0.7515819121375924,
+          "accepted_mass": [
+            0.7515818668930896,
+            0.7515818649078823
+          ],
+          "saved_conditional_energy_proxy": [
+            0.05613702880961213,
+            0.009919353230914562,
+            0.009919407539018158
+          ],
+          "expected_conditional_limit": [
+            0.05552458636132679,
+            0.009963845692818343,
+            0.009963898224724816
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.013741008549933965,
+            0.002430707403722275,
+            0.002430721463337766
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        },
+        {
+          "pixel": 757838,
+          "status": "measured",
+          "widths": [
+            0.9999992251396179,
+            0.04000093787908554
+          ],
+          "cosine": 0.5440719623744323,
+          "reflectance_coarse": [
+            0.035964211848892855,
+            0.005115298269247499,
+            0.00511571826175571
+          ],
+          "reflectance_fine": [
+            0.035964211882759,
+            0.005115298289263895,
+            0.0051157182817722965
+          ],
+          "grid_max_absolute_difference": 3.386614599865112e-11,
+          "two_grid_bound_pass": true,
+          "analytical_acceptance": 0.7107422593585884,
+          "accepted_mass": [
+            0.7107422264442905,
+            0.71074223543273
+          ],
+          "saved_conditional_energy_proxy": [
+            0.04918908989917892,
+            0.007520268227053292,
+            0.007520835802779294
+          ],
+          "expected_conditional_limit": [
+            0.049350066567886965,
+            0.007197118551414292,
+            0.0071976924426899215
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.013224878016419916,
+            0.002404969937789397,
+            0.002405117521006997
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        },
+        {
+          "pixel": 938001,
+          "status": "measured",
+          "widths": [
+            0.9999983906745911,
+            0.04000631347298622
+          ],
+          "cosine": 0.014611098698454228,
+          "reflectance_coarse": [
+            0.04202556899031799,
+            0.031687134355712465,
+            0.031687149220366674
+          ],
+          "reflectance_fine": [
+            0.03905383521628915,
+            0.02872611734919807,
+            0.028726132198443652
+          ],
+          "grid_max_absolute_difference": 0.0029717337740288383,
+          "two_grid_bound_pass": false,
+          "analytical_acceptance": 0.5041727182548881,
+          "accepted_mass": [
+            0.5428862324670365,
+            0.48639727221824197
+          ],
+          "saved_conditional_energy_proxy": [
+            0.07359487338262127,
+            0.056446642167557425,
+            0.05644665787447257
+          ],
+          "expected_conditional_limit": [
+            0.07696442608395776,
+            0.05905896011632241,
+            0.05905898586089298
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.034541038166332125,
+            0.027720524818359356,
+            0.027720525676028916
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        }
+      ],
+      "chart": {
+        "projected_neighbor_pairs": 678886,
+        "raw_angle_jump_p95_degrees": 1.0343522795668234,
+        "transported_Q_absolute_difference_p95": 0.03986633093010621,
+        "large_raw_jump_small_Q_count": 0,
+        "large_raw_jump_large_Q_count": 1088,
+        "diagnostic_only_thresholds": {
+          "raw_angle_degrees": 45,
+          "Q_absolute": 0.05,
+          "world_distance": 0.02,
+          "normal_cosine": 0.99
+        },
+        "limitation": "Screen-neighbor diagnostic; no source face IDs, so not a certified mesh-surface neighborhood."
+      }
+    },
+    {
+      "step": 40000,
+      "rows": [
+        {
+          "pixel": 228405,
+          "status": "measured",
+          "widths": [
+            0.9999985098838806,
+            0.040134914219379425
+          ],
+          "cosine": 0.015176709978643288,
+          "reflectance_coarse": [
+            0.07081190475000651,
+            0.02601619674569164,
+            0.026017672049398484
+          ],
+          "reflectance_fine": [
+            0.07486812671227099,
+            0.02993096607099584,
+            0.029932446033309704
+          ],
+          "grid_max_absolute_difference": 0.004056221962264475,
+          "two_grid_bound_pass": false,
+          "analytical_acceptance": 0.5043581362593935,
+          "accepted_mass": [
+            0.44725363875423507,
+            0.4985777000126972
+          ],
+          "saved_conditional_energy_proxy": [
+            0.131659316456318,
+            0.05951946508976309,
+            0.059521838841735585
+          ],
+          "expected_conditional_limit": [
+            0.13296301919196735,
+            0.06003258594752712,
+            0.06003498784144287
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.056791189744047024,
+            0.029588499018767252,
+            0.02958939280842588
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        },
+        {
+          "pixel": 408539,
+          "status": "measured",
+          "widths": [
+            0.9999148845672607,
+            0.04147512465715408
+          ],
+          "cosine": 0.4728170085176515,
+          "reflectance_coarse": [
+            0.04661593443328344,
+            0.01731786411076087,
+            0.017320673942013826
+          ],
+          "reflectance_fine": [
+            0.046615934433284115,
+            0.01731786411076167,
+            0.017320673942014628
+          ],
+          "grid_max_absolute_difference": 8.014422459012849e-16,
+          "two_grid_bound_pass": true,
+          "analytical_acceptance": 0.8406060819557827,
+          "accepted_mass": [
+            0.8406059563882294,
+            0.8406059563887993
+          ],
+          "saved_conditional_energy_proxy": [
+            0.05250264367595214,
+            0.020423027058226396,
+            0.02042610444262954
+          ],
+          "expected_conditional_limit": [
+            0.05256357543882903,
+            0.020601579364230974,
+            0.020604644679266697
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.005886709242668028,
+            0.0031051629474647263,
+            0.0031054305006149134
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        },
+        {
+          "pixel": 527267,
+          "status": "measured",
+          "widths": [
+            0.9999880790710449,
+            0.04008733853697777
+          ],
+          "cosine": 0.25742769574136304,
+          "reflectance_coarse": [
+            0.05321219758613736,
+            0.030887045478279182,
+            0.030888784668537318
+          ],
+          "reflectance_fine": [
+            0.053212191618332155,
+            0.03088703987016135,
+            0.03088877906039147
+          ],
+          "grid_max_absolute_difference": 5.967805201401166e-09,
+          "two_grid_bound_pass": true,
+          "analytical_acceptance": 0.6887370145274687,
+          "accepted_mass": [
+            0.6887381655621869,
+            0.6887372109670054
+          ],
+          "saved_conditional_energy_proxy": [
+            0.07210154420713755,
+            0.044259088945681806,
+            0.04426125926963249
+          ],
+          "expected_conditional_limit": [
+            0.07234187031025645,
+            0.04484581428511637,
+            0.044847956302897264
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.01888935258880539,
+            0.013372049075520455,
+            0.013372480209241016
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        },
+        {
+          "pixel": 639096,
+          "status": "measured",
+          "widths": [
+            1.0,
+            0.04000003635883331
+          ],
+          "cosine": 0.5145151760036741,
+          "reflectance_coarse": [
+            0.04104724283466601,
+            0.007455310649043879,
+            0.0074554461284574896
+          ],
+          "reflectance_fine": [
+            0.04104724282571291,
+            0.007455310643203962,
+            0.0074554461226175595
+          ],
+          "grid_max_absolute_difference": 8.953095209651707e-12,
+          "two_grid_bound_pass": true,
+          "analytical_acceptance": 0.7516245188936374,
+          "accepted_mass": [
+            0.7516244910509889,
+            0.7516244891157661
+          ],
+          "saved_conditional_energy_proxy": [
+            0.05438745708943449,
+            0.010028866605152323,
+            0.010029045707179501
+          ],
+          "expected_conditional_limit": [
+            0.053824685031837245,
+            0.009918929464469888,
+            0.009919106540500688
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.013340214263721575,
+            0.002573555961948361,
+            0.0025735995845619416
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        },
+        {
+          "pixel": 757838,
+          "status": "measured",
+          "widths": [
+            0.9999995231628418,
+            0.04000046104192734
+          ],
+          "cosine": 0.5440719623744323,
+          "reflectance_coarse": [
+            0.034173184363544315,
+            0.0051664271962744476,
+            0.005166926109742258
+          ],
+          "reflectance_fine": [
+            0.03417318401386632,
+            0.0051664269337045095,
+            0.005166925847170822
+          ],
+          "grid_max_absolute_difference": 3.496779948930495e-10,
+          "two_grid_bound_pass": true,
+          "analytical_acceptance": 0.712172702620315,
+          "accepted_mass": [
+            0.7121727608546076,
+            0.7121726841088531
+          ],
+          "saved_conditional_energy_proxy": [
+            0.04650398411509804,
+            0.007596303174559938,
+            0.007596972898413372
+          ],
+          "expected_conditional_limit": [
+            0.04678932344227705,
+            0.007254454603734464,
+            0.0072551345997229144
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.01233080010123172,
+            0.0024298762408554286,
+            0.0024300470512425495
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        },
+        {
+          "pixel": 938001,
+          "status": "measured",
+          "widths": [
+            0.9999991059303284,
+            0.040001172572374344
+          ],
+          "cosine": 0.014611098698454228,
+          "reflectance_coarse": [
+            0.03733767847337939,
+            0.02679186398445108,
+            0.02679187973319367
+          ],
+          "reflectance_fine": [
+            0.04137693978995666,
+            0.030800989988201067,
+            0.030801005781946656
+          ],
+          "grid_max_absolute_difference": 0.004039261316577267,
+          "two_grid_bound_pass": false,
+          "analytical_acceptance": 0.5041278084600178,
+          "accepted_mass": [
+            0.46906260683575884,
+            0.568500520660189
+          ],
+          "saved_conditional_energy_proxy": [
+            0.0741954151141263,
+            0.05634978832017574,
+            0.056349815261703594
+          ],
+          "expected_conditional_limit": [
+            0.07044979631846923,
+            0.054179351945615295,
+            0.05417937624331563
+          ],
+          "saved_proxy_minus_true_DHR": [
+            0.03281847532416965,
+            0.02554879833197467,
+            0.025548809479756938
+          ],
+          "caution": "Saved proxy is one finite1024-sample conditional estimate; no bitwise/MC-convergence claim."
+        }
+      ],
+      "chart": {
+        "projected_neighbor_pairs": 678886,
+        "raw_angle_jump_p95_degrees": 1.0037790320840805,
+        "transported_Q_absolute_difference_p95": 0.03882629740192607,
+        "large_raw_jump_small_Q_count": 0,
+        "large_raw_jump_large_Q_count": 159,
+        "diagnostic_only_thresholds": {
+          "raw_angle_degrees": 45,
+          "Q_absolute": 0.05,
+          "world_distance": 0.02,
+          "normal_cosine": 0.99
+        },
+        "limitation": "Screen-neighbor diagnostic; no source face IDs, so not a certified mesh-surface neighborhood."
+      }
+    }
+  ],
+  "declared_vs_effective_energy_specular": {
+    "top_level": [
+      0.01,
+      0.01
+    ],
+    "effective_shader": [
+      0.05,
+      0.05
+    ],
+    "mode": "legacy_v1"
+  },
+  "unavailable": [
+    "Historical per-component neural/illumination gradients and their directions were not saved.",
+    "Training minibatch spatial/energy/specular split and sampled-neighbor graphs were not saved.",
+    "Full HDR learned environment and per-sample incident radiance were not saved; diffuse irradiance ratio is an effective sample mean.",
+    "No independent material ground truth for this sphere."
+  ],
+  "derivative_scope": "Analytical local physical partials of archived detached-NDF specular loss, not historical network gradients",
+  "quadrature_rule": "Gauss-Legendre mu / uniform midpoint azimuth at128x256 and256x512; .001+.002|fine| two-grid bound, no absolute-accuracy proof",
+  "new_native_model_calls": 0,
+  "new_GPU_work": 0,
+  "checkpoint_deserialization": false
+}

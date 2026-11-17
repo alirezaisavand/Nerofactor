@@ -40,6 +40,13 @@ def write_view(directory, arrays, identity, np):
     angle, orientation_rgb = orientation_maps(arrays['rotation'], arrays['mx'], arrays['my'], mask, np)
     arrays = dict(arrays, major_width=np.maximum(arrays['mx'], arrays['my']),
                   minor_width=np.minimum(arrays['mx'], arrays['my']), major_angle_radians=angle)
+    t,b=2*arrays['tangents']-1,2*arrays['bitangents']-1
+    Q=arrays['mx'][...,None]**2*t[..., :,None]*t[...,None,:]+arrays['my'][...,None]**2*b[..., :,None]*b[...,None,:]
+    axis=np.where(arrays['my']>arrays['mx'],b,t)
+    projector=axis[..., :,None]*axis[...,None,:]
+    gap=np.abs(arrays['mx']**2-arrays['my']**2)/np.maximum(arrays['mx']**2+arrays['my']**2,1e-12)
+    raw_angle=np.mod(.5*np.arctan2(arrays['rotation'][...,1],arrays['rotation'][...,0]),np.pi)
+    arrays.update(Q_world=Q,major_axis_projector_world=projector,anisotropy_gap=gap,raw_angle_radians=raw_angle)
     # Keep raw head coordinates, linear components and original encoded frames.
     np.savez_compressed(directory / 'materials.npz', **arrays)
     names = dict(ground_truth='rgb_gt', reconstructed='rgb_pr', albedo='kd', metallic='metallic',
@@ -51,12 +58,24 @@ def write_view(directory, arrays, identity, np):
             image = image[..., 0]
         Image.fromarray(image).save(directory / (filename + '.png'))
     Image.fromarray(uint8(orientation_rgb, np)).save(directory / 'orientation.png')
+    _,raw_rgb=orientation_maps(arrays['rotation'],np.ones_like(arrays['mx']),np.zeros_like(arrays['my']),mask,np)
+    Image.fromarray(uint8(raw_rgb,np)).save(directory/'orientation_raw.png')
+    world_rgb=np.stack([projector[...,0,1],projector[...,0,2],projector[...,1,2]],-1)+.5
+    # Fixed, display-only eligibility. Q itself is defined even at isotropy.
+    world_rgb=np.where(gap<.1,.5,world_rgb)*mask[...,None]
+    Image.fromarray(uint8(world_rgb,np)).save(directory/'orientation_world_projector.png')
+    for i in range(3):
+        for j in range(i,3):
+            channel=Q[...,i,j]+(0 if i==j else .5)
+            Image.fromarray(uint8(channel*mask,np)).save(directory/('Q_world_%d%d.png'%(i,j)))
     Image.fromarray(mask.astype(np.uint8) * 255).save(directory / 'mask.png')
     record = dict(identity, width_scale=[0,1], albedo_scale=[0,1], metallic_scale=[0,1],
         RGB='original color_map_backward, RGB uint8; no extra gamma; linear components in NPZ',
         orientation='major-width angle mod pi, hue=angle/pi; corrected local tangent chart; grey only exact isotropy',
         axes='mx/my are original raw predictor axes; major=max(mx,my), minor=min(mx,my); no training head reordering',
         frame='tangents/bitangents/normals are original encoded (vector+1)/2; position and normal are world coordinates',
+        world_Q='mx^2*t*tT+my^2*b*bT; diagonal0..1, offdiagonal-.5...5 shifted+.5; no learned scale',
+        world_orientation='Unoriented major-axis projector; RGB=Pxy,Pxz,Pyz shifted+.5; gap<.1 grey for display only; raw orientation retained',
         background='original mesh-hit mask; original test_step zeros RGB outside hits',
         files={p.name:dict(bytes=p.stat().st_size, sha256=digest(p)) for p in directory.iterdir() if p.is_file()})
     (directory / 'view.json').write_text(json.dumps(record, indent=2, allow_nan=False) + '\n')

@@ -1,0 +1,458 @@
+{
+  "schema_version": 1,
+  "status": "file_identities_verified",
+  "originals_modified": false,
+  "original_run": {
+    "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1",
+    "source_commit": "92d433dd809bab5fe8667a2920dc54ce94071f35",
+    "status": "incomplete",
+    "optimizer_returns": 41427,
+    "last_complete_checkpoint": 40000,
+    "cleanup_verified": false,
+    "launcher_exit_code": "missing; not reconstructed",
+    "previous_container_id": "d6615cb6505b9c2e511952f05eeef7904b4db123178da5afc8599052ee970f3a"
+  },
+  "large_external_artifacts": [
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-002000/validation/camera-36/materials.npz",
+      "bytes": 65309735,
+      "sha256": "a3f2f3bba7347305a6a97d54aa2fd438bd09cdafb93d93308a23edafa1f06449"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-004000/validation/camera-36/materials.npz",
+      "bytes": 65114124,
+      "sha256": "b99112536645c71bf4bc5809e35cf3ea55c44ed0b646717b1bdb70bd804a46d5"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-006000/validation/camera-36/materials.npz",
+      "bytes": 65751647,
+      "sha256": "74ca4b11bb09fd7b21a9a066d890830f9d024c5dd9b812fe55cfad627628b7bc"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-008000/validation/camera-36/materials.npz",
+      "bytes": 65145594,
+      "sha256": "7fd554278a7199864652f0f7a979dd009ce5e0f580563ccc4ffab48b54f08a35"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-010000/validation/camera-36/materials.npz",
+      "bytes": 64961843,
+      "sha256": "337adb618fbe342347b348b316b18eb7d0d6ef2b62e76d645abc262d03ddb77a"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-012000/validation/camera-36/materials.npz",
+      "bytes": 64866972,
+      "sha256": "1d7e09b0eb7b5897537882382eaf910fb34e65fa269e5e548e33b218a34f824e"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-014000/validation/camera-36/materials.npz",
+      "bytes": 64765984,
+      "sha256": "9344a9a87ebdcbbe055885466de7f2d8e55125bf335572b4ad3536378d972ebf"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-016000/validation/camera-36/materials.npz",
+      "bytes": 64614547,
+      "sha256": "98727950dcc35b26294a2554aa92a3ac41187aab9175c9c2b8de7933a1cf9dee"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-018000/validation/camera-36/materials.npz",
+      "bytes": 64505252,
+      "sha256": "02cf48dc6e81408ba29921541b7d77de6bac42fa87ce4244212aba8333f19834"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-020000/validation/camera-36/materials.npz",
+      "bytes": 64456622,
+      "sha256": "bab916e8d4e60ffcefc4c64e73a9ef97f2753c483701702eb9382b43e7e5aba4"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-022000/validation/camera-36/materials.npz",
+      "bytes": 64440803,
+      "sha256": "109d55c0e49d99ad229380c10cb82a21c0b96168e3130e86aa8b8ce4d19e4781"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-024000/validation/camera-36/materials.npz",
+      "bytes": 64373796,
+      "sha256": "176e209757ea13cb78ef7dcf13cb1e6d03ddd4a4e2cb93b5c435884c6db85a02"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-026000/validation/camera-36/materials.npz",
+      "bytes": 64493403,
+      "sha256": "0a99584e79d57f7f844db1377787d8eb9d092db9e626350338c9b3fa7ed1b297"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-028000/validation/camera-36/materials.npz",
+      "bytes": 64467409,
+      "sha256": "c59555c9f649681a921878643a7c3596293630936156e731c1e86935e6dcc6ef"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-030000/validation/camera-36/materials.npz",
+      "bytes": 64434712,
+      "sha256": "459f6d80cae88581ca68c4497d2abd57ebd1ddd40d75df1a0d54c390fdb87573"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-032000/validation/camera-36/materials.npz",
+      "bytes": 64387759,
+      "sha256": "8c4b7e8c8c0acbe4d71c3158b071396faf1e0a179358cef73e7b4218c89e8e48"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-034000/validation/camera-36/materials.npz",
+      "bytes": 64371304,
+      "sha256": "86c5f8a94ae1b0922d9de665701013f3d2c0996aeabdccefb3b971c9941a06ee"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-036000/validation/camera-36/materials.npz",
+      "bytes": 64286688,
+      "sha256": "f1eb490f07bf4c34190e0bfd99a4f3f2795537d373f252b8b0a6e75afbf2eca0"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-038000/validation/camera-36/materials.npz",
+      "bytes": 64296316,
+      "sha256": "dc4ad26e7416526e921a020a26257c4c8d97ea8b8ee2b56f967be5980a7d0f8e"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-040000/validation/camera-36/materials.npz",
+      "bytes": 64282274,
+      "sha256": "a56944a9cc4e20d75985a5a185dc64e14031cdc8d0360a387f4cce60fd0e321a"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-002000.pth",
+      "bytes": 28892957,
+      "sha256": "5b89191b56ce4e136866a19b79073ba8f6c38328f0d971ac536b0452b633adb5"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-002000.json",
+      "bytes": 523,
+      "sha256": "6a99b0149093820759adc3774d1cdd1ed80965f68ce26e66d3a0780b1f1fa25e"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-004000.pth",
+      "bytes": 28892957,
+      "sha256": "610b42044d43d64fd3bf5c8d309fe8acd9f266b05e85acccd92acdd222f173ea"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-004000.json",
+      "bytes": 523,
+      "sha256": "f34b32d1a082f07b9f76ca2c2b8ecf556be014cdb310c4afacfd920f63b10e4b"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-006000.pth",
+      "bytes": 28892957,
+      "sha256": "a07bb77808635a5ac783eee5be55efd843918e8fc487b5d395411ab57d61b8e6"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-006000.json",
+      "bytes": 523,
+      "sha256": "53273b86af5c1e132e3730a8acfb853c4611063d133deda7646473181ff9b4e8"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-008000.pth",
+      "bytes": 28892957,
+      "sha256": "87a47cf898d8c6f7809189cc94a39672f36bd64e3171ec293628ff187322a5f6"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-008000.json",
+      "bytes": 523,
+      "sha256": "ca572b0acf9ed6a2a31c545738cede5be9abc4f139b44d06486dd344dc9ac62b"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-010000.pth",
+      "bytes": 28892957,
+      "sha256": "f3a7063c7e7cd736923b90651a7db249c5995d6095e8f4271cdff902367b6060"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-010000.json",
+      "bytes": 524,
+      "sha256": "ee8c2fd41e5afe9068094360c573bfc70e67b77eb69be64a6da6dc1d4d132b85"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-012000.pth",
+      "bytes": 28892957,
+      "sha256": "3e95b18fea06d0f78c099e3a9907b02282f23b905710e2177850443216fe02e9"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-012000.json",
+      "bytes": 524,
+      "sha256": "9a7617dad8880918c414987a24b82dedd68fc1f0f8d90bae62c58586326ee08c"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-014000.pth",
+      "bytes": 28892957,
+      "sha256": "67b389d112d2c6a3e2b579450d0829c2458b2c1116c237df8ea484d2533db14f"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-014000.json",
+      "bytes": 524,
+      "sha256": "cc57583a97362e5c0d6cbf81fdc9af6ba0c2524d2b71c7bd5b356af4a5470e80"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-016000.pth",
+      "bytes": 28892957,
+      "sha256": "34ae848594b03f38baf3df471a7438d79943815a3ef2fad1e54298698c001d76"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-016000.json",
+      "bytes": 524,
+      "sha256": "cd25dd6ac8310a204ee8bc63d2808b98692a04f76470eec03ac6ff367c1e4832"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-018000.pth",
+      "bytes": 28892957,
+      "sha256": "040e1647160f9a4d0839c57f82b98dd31f7745a4f12f9180d5ac07e6b8c22007"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-018000.json",
+      "bytes": 524,
+      "sha256": "c4bc02a5f75cc15151659d0261fbebdcb224031748d21bd3ac6bb060231f4f3b"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-020000.pth",
+      "bytes": 28892957,
+      "sha256": "5f54b48ea482ed53a2b73f31e2ab6877e111264d66590e5f5459eb4b331ce03c"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-020000.json",
+      "bytes": 524,
+      "sha256": "c0d47fc22d9954a73af964c41343b3f3cf2bc8ef5f2c2ae6fd19f0073f0d403d"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-022000.pth",
+      "bytes": 28892957,
+      "sha256": "83ab1a61d2d8ffb7e48cf9c4c86f68916d4bd62edb5d5045e94366035718b40d"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-022000.json",
+      "bytes": 524,
+      "sha256": "9688e2a95803765bcc798d8f5475dcb00add819d90a07fc49e95d18e9b3bc314"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-024000.pth",
+      "bytes": 28892957,
+      "sha256": "0e88f16cb0258bb18107e8c56495c7f8f8f9750757df38c8c5b6e33fa3f99eee"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-024000.json",
+      "bytes": 524,
+      "sha256": "91506f36fcfd52059bf5db19d476cbea3f136f2c8f42aef17f61dece645e8e9d"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-026000.pth",
+      "bytes": 28892957,
+      "sha256": "79f34e4305850c8c141ce55bd7684faf9078f836cd9c7dffc21d91f5c1eca643"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-026000.json",
+      "bytes": 524,
+      "sha256": "e470b167479d41a41665e4cfc7db439e8f2c2474aed400f3d30fa2b6a687ab0a"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-028000.pth",
+      "bytes": 28892957,
+      "sha256": "7c5c87a984441d91065afa864019bd1feed018e099c9f97484356df3171640c9"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-028000.json",
+      "bytes": 524,
+      "sha256": "53712e6b6adedadc37d1c2f699222907e6456e036b1cdc41fa358b4a0391ff5f"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-030000.pth",
+      "bytes": 28892957,
+      "sha256": "a66411594158d74156c503c8ef1db7a0e23caa99cd95d6b19a8c4fdec8ad94f3"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-030000.json",
+      "bytes": 524,
+      "sha256": "f970da6406a1d30658a70a1582b861cc9730234e13654f17e2731969aae0848f"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-032000.pth",
+      "bytes": 28892957,
+      "sha256": "d2f89d32d0d1c07b2b2ee89b1f44ec9c8ce248575767c0818d4e6416300dbb5a"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-032000.json",
+      "bytes": 524,
+      "sha256": "6351c77d9562e13475c1e18169c8a56908d3901e160f16368cc19a99bd531b74"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-034000.pth",
+      "bytes": 28892957,
+      "sha256": "e614503cfd1bce87e5b6c01792ed21faf8d9e405ab5fc75488ca973d1ae9deab"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-034000.json",
+      "bytes": 524,
+      "sha256": "a2f83dac7cf47048bb3b5326ba64b5b23c92cddd87a0650b2b125d3334822111"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-036000.pth",
+      "bytes": 28892957,
+      "sha256": "db0eca300ad1848e15f6b0edfa437f7170b2b9f38056ec2fcffcf2ed7e882686"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-036000.json",
+      "bytes": 524,
+      "sha256": "3cb2965701fd8c5d9255959af64e81168359295e233ab76687d07f0a27a9709c"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-038000.pth",
+      "bytes": 28892957,
+      "sha256": "9ccb03830ddfce017a27b836c4f3f6d0d35d67606bd8fc7bcbae1b181b30eff8"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-038000.json",
+      "bytes": 524,
+      "sha256": "20efb8791fbc8c59c3414c49f96f4cea07ca6d922e9983b71e30e52527ad019c"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-040000.pth",
+      "bytes": 28892957,
+      "sha256": "1d68296a62822ed5a8f16c2f141bb456a44d9b278ba1e159cc4f2ee9522f9374"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-040000.json",
+      "bytes": 524,
+      "sha256": "5d9c8cfa01c1a397208870c838964b308c844a051e2f379ea6ee46c3bd0a749f"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/container.cid",
+      "bytes": 64,
+      "sha256": "bde971516a6d86785a56e8f88fcbe22d2ea3dab2ce11ad48f181d1c9312779a0"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/console.log",
+      "bytes": 9021061,
+      "sha256": "bd95e92775c079fa2bfb5458fb48fd0df4be34590782cf3b6f59bb8ca2a64cd8"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/freeze.json",
+      "bytes": 9723,
+      "sha256": "d422403b9c48aba10457087ba9ba5f29258b9d7d23b4fec53738e822a0b9a534"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/launch.json",
+      "bytes": 434,
+      "sha256": "60faf32b2c1af61f5ea6aff59d034101c90882cfbedbf40056ed314f1f36d379"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/authorization.json",
+      "bytes": 1415,
+      "sha256": "da7ce0b0ec371b7a56ed6147a0bf63e76e5ae3bbe631667e051c93c3354110d8"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/sphere-replay.json",
+      "bytes": 200215,
+      "sha256": "ab84cc6e3d99ca59a54d4a1e2c548fdce58fa44fc5933dde40ec24d739ee8a46"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/training.jsonl",
+      "bytes": 686327,
+      "sha256": "00e5d023a3e829b59dc86f9f51023ef4fdf1ad6d456c8774b12643494dc3cf80"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/config.effective.yaml",
+      "bytes": 1359,
+      "sha256": "e5ce5bc12233239fa91ee1e9049502865f14012356f1b2077c8abf28dbccaee1"
+    },
+    {
+      "path": "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/config.original.yaml",
+      "bytes": 1393,
+      "sha256": "06d7de5307054ddf775f55b40874d28cf63a75ee47a4b63f4b4b1dc6c943b4c7"
+    }
+  ],
+  "copied_small_artifacts": [
+    {
+      "original": {
+        "path": "/home/isavand/paper/evidence/sphere-regularization-audit-v1/saved-map-progression.png",
+        "bytes": 630608,
+        "sha256": "b850bce0e82ba43458a04b8579cdb56769f206c4754a8e75580ee3c493417563"
+      },
+      "tracked_path": "docs/results/sphere_regularization_v1/saved-map-progression.png",
+      "copied_sha256": "b850bce0e82ba43458a04b8579cdb56769f206c4754a8e75580ee3c493417563"
+    },
+    {
+      "original": {
+        "path": "/home/isavand/paper/evidence/sphere-regularization-audit-v1/progression.png",
+        "bytes": 138100,
+        "sha256": "8643539974aea2a65bf21585b11877604482515529b0e5bfc86703896a6106da"
+      },
+      "tracked_path": "docs/results/sphere_regularization_v1/progression.png",
+      "copied_sha256": "8643539974aea2a65bf21585b11877604482515529b0e5bfc86703896a6106da"
+    },
+    {
+      "original": {
+        "path": "/home/isavand/paper/evidence/sphere-regularization-audit-v1/illumination-clipping.csv",
+        "bytes": 595,
+        "sha256": "f05fc54a0e1897eb5bce5906aecc26237b93deb36bb748117b276a2eabbba817"
+      },
+      "tracked_path": "docs/results/sphere_regularization_v1/illumination-clipping.csv",
+      "copied_sha256": "f05fc54a0e1897eb5bce5906aecc26237b93deb36bb748117b276a2eabbba817"
+    },
+    {
+      "original": {
+        "path": "/home/isavand/paper/evidence/sphere-regularization-audit-v1/world-Q-diagnostics.png",
+        "bytes": 565699,
+        "sha256": "05977b7887e3a03b6661f37a2d41bf88815cf5d43c8cbff2e5ec652a677466e7"
+      },
+      "tracked_path": "docs/results/sphere_regularization_v1/world-Q-diagnostics.png",
+      "copied_sha256": "05977b7887e3a03b6661f37a2d41bf88815cf5d43c8cbff2e5ec652a677466e7"
+    },
+    {
+      "original": {
+        "path": "/home/isavand/paper/evidence/sphere-regularization-audit-v1/logged-losses.png",
+        "bytes": 80135,
+        "sha256": "f20059ec17fb245ed44ad375a6bffc863daa052f84b50f5badd19d55e0eedbfa"
+      },
+      "tracked_path": "docs/results/sphere_regularization_v1/logged-losses.png",
+      "copied_sha256": "f20059ec17fb245ed44ad375a6bffc863daa052f84b50f5badd19d55e0eedbfa"
+    },
+    {
+      "original": {
+        "path": "/home/isavand/paper/evidence/sphere-regularization-audit-v1/audit.json",
+        "bytes": 71123,
+        "sha256": "24543a5228024749cfb775343634f64df99cac378bf8727fa9f6be9b87418d6b"
+      },
+      "tracked_path": "docs/results/sphere_regularization_v1/audit.json",
+      "copied_sha256": "24543a5228024749cfb775343634f64df99cac378bf8727fa9f6be9b87418d6b"
+    },
+    {
+      "original": {
+        "path": "/home/isavand/paper/evidence/sphere-regularization-audit-v1/progression.csv",
+        "bytes": 5968,
+        "sha256": "3deec45ad728dacf4873929d19d199cc7ab62a5e185e37b54df1b2a4d7581be6"
+      },
+      "tracked_path": "docs/results/sphere_regularization_v1/progression.csv",
+      "copied_sha256": "3deec45ad728dacf4873929d19d199cc7ab62a5e185e37b54df1b2a4d7581be6"
+    },
+    {
+      "original": {
+        "path": "/home/isavand/paper/evidence/sphere-regularization-audit-v1/surface-pair-preflight.json",
+        "bytes": 746,
+        "sha256": "8990fae7b7910bbe15dc2f429d0d575828f10abf080747958992bc1681fafd5a"
+      },
+      "tracked_path": "docs/results/sphere_regularization_v1/surface-pair-preflight.json",
+      "copied_sha256": "8990fae7b7910bbe15dc2f429d0d575828f10abf080747958992bc1681fafd5a"
+    }
+  ],
+  "literature": {
+    "researcher_pdf": {
+      "path": "/home/isavand/paper/data/PBR-NeRF.pdf",
+      "bytes": 40845139,
+      "sha256": "b39249084436b76f7f34791950ec7fa78545387676ead49822353a9995b0594d"
+    },
+    "official_repository": "https://github.com/s3anwu/pbrnerf",
+    "official_commit": "9d50aab977bcb50ad03db728f2d4957cba13b95e",
+    "official_path": "code/model/loss.py",
+    "official_content_sha256": "2aa6c45477253758cd2f16261aaf100fd9eb7e1774c9e12e12b79813f242ea50",
+    "third_party_source_copied_into_project": false
+  },
+  "runtime_image": {
+    "recorded_image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "basis": "Accepted prior native runtime evidence; no Docker inspection or invocation in this task"
+  },
+  "historical_checkpoint_loading": {
+    "restricted_weights_only_attempt": "Blocked by NumPy scalar metadata at40000; no unsafe fallback",
+    "neural_state_restoration_in_Codex": false
+  },
+  "new_scientific_GPU_calls": 0,
+  "old_neural_gradients_available": false
+}

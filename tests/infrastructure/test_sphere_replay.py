@@ -81,6 +81,8 @@ def tiny_arrays():
     a.update(hit_mask=mask,mx=np.ones((2,2,1),np.float32)*.2,my=np.ones((2,2,1),np.float32)*.4,
              metallic=np.ones((2,2,1),np.float32)*.6,rotation=np.broadcast_to([1.,0.],(2,2,2)).copy())
     a['normals'][mask]=[.5,.5,1.]
+    a['tangents']=np.zeros((2,2,3),np.float32);a['tangents'][mask]=[.5,1.,.5]
+    a['bitangents']=np.zeros((2,2,3),np.float32);a['bitangents'][mask]=[0.,.5,.5]
     return a
 
 
