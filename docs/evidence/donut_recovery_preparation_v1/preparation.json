@@ -1,0 +1,78 @@
+{
+  "Adam_returns": 0,
+  "CPU_counts": {
+    "errors": 0,
+    "failures": 0,
+    "passed": 17,
+    "skipped": 0,
+    "tests": 17
+  },
+  "CPU_exit_code": 0,
+  "JUnit_sha256": "c4bfebb82872f198a79a8ece58f71c4d1c5b76150673e685ddba6a5f6f84a8b3",
+  "Python38_AST": true,
+  "branch": "feat/donut-physical-recovery-v1",
+  "freeze_path": "docs/protocols/DONUT_KURT_RECOVERY_V1.freeze.json",
+  "freeze_sha256": "064147fa7f2a966f523dcc104b1a88cd1618d9ec2d4649af1ebb7de4bd265718",
+  "geometry_camera_panel": [
+    0,
+    50,
+    1,
+    45,
+    28,
+    34
+  ],
+  "host_reference_output": "/home/isavand/paper/evidence/donut-kurt-reference-v1-5df0234193664e9b93cae546542ca7a2",
+  "host_training_output": "/home/isavand/paper/evidence/donut-kurt-recovery-v1-1cd964f4026f4711bed5b5dd83f7f863",
+  "input_metadata_verified": {
+    "native-chart-orientation-reference.npz": {
+      "bytes": 804634,
+      "path": "/home/isavand/paper/evidence/donut-blend-inspection-v2/native-chart-orientation-reference.npz",
+      "sha256": "cc498faabe0b8b3e2ebf63a87a51d48316396b90e8650098cf19a559f442834c"
+    },
+    "oracle-geometry-and-frames.npz": {
+      "bytes": 2589411,
+      "path": "/home/isavand/paper/evidence/donut-blend-inspection-v2/oracle-geometry-and-frames.npz",
+      "sha256": "cfe903c177dfe404c47390aed2a3fa025ea9499ca0af644dba667b721c0139f1"
+    },
+    "transforms_train.json": {
+      "bytes": 86413,
+      "path": "/home/isavand/nero/data/nerf_synthetic/donut/transforms_train.json",
+      "sha256": "89fc7b8d05db69437f3654cac1a8c6e68a23cfb411c28703824e18f0fdcaa82a"
+    }
+  },
+  "known_pending_gates": [
+    "real closest-hit/normal/camera consistency",
+    "reference and reflectance convergence",
+    "native/reference MC precision",
+    "native full-field gradients/checkpoint roundtrip",
+    "D1/D2 physical recovery and D2 scale ambiguity"
+  ],
+  "metadata_import_guard_no_Torch_or_scientific_runtime": true,
+  "metadata_output_sha256": "a7d42a272e3427f72cfb83b3e2881871a94cb2d5b71939c3f299b687144e614d",
+  "metadata_preflight_exit_code": 0,
+  "native_Docker_GPU_status": "NOT_EXECUTED; separate approval required; existing Codex Docker restrictions will not be bypassed",
+  "native_model_constructions": 0,
+  "new_BRDF_reference_evaluations": 0,
+  "new_primary_or_shadow_rays": 0,
+  "original_scientific_sources_verified": {
+    "geometry": "79252178e65914ad1acbc14790b1514f276bfea0",
+    "material": "e1e859779301faced46d6476691e20b546c27ae0"
+  },
+  "schema_version": 1,
+  "scientific_source_changes": [],
+  "shell_syntax": true,
+  "source_files_frozen": 275,
+  "status": "prepared_NOT_SCIENTIFICALLY_EXECUTED",
+  "test_command": [
+    "/home/isavand/anaconda3/bin/python3",
+    "-B",
+    "-m",
+    "pytest",
+    "tests/benchmarks/test_donut_recovery_v1.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=/home/isavand/paper/Nerofactor-donut-recovery/docs/evidence/donut_recovery_preparation_v1/tests.junit.xml"
+  ],
+  "test_output_sha256": "985ffccd17fe35f553cab50a6c1b8e9712934f82f75a95de77433bb90a366941"
+}

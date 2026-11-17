@@ -1,5 +1,26 @@
 # Research and development rules
 
+## Controlled donut physical recovery
+
+The current researcher request authorizes a small new additive Kurt/Beckmann
+oracle benchmark and matched D1 known-environment/D2 learned-environment adapters.
+Preserve accepted camera0 reproduction, Blender/sphere/Bell data, frozen G/A,
+corrected-core and all previous evidence. Use the existing exported oracle arrays
+and calibrations; no Blender scene load or reproduction rerun is needed. Keep
+zero indirect illumination and no point light in BOTH arms. D2 may use the
+existing corrected-core environment callback to invoke original A's direct MLP;
+never enable learned indirect light as a side effect. Keep full material capacity,
+matched initialization and10000 updates per arm, with existing legacy_v1 priors
+and no new regularizer. Do not weaken ordinary research G-to-A admission.
+
+Preparation, small synthetic CPU checks and exact freezes are authorized now.
+New reference rendering requires one explicit final source/freeze/work/output
+approval. Training requires a separate approval against the generated, reviewed
+dataset; reference approval cannot authorize either model construction or Adam.
+Preserve all failures, stop on mandatory identity/numerical/resource failures,
+and do not retry, tune, extend or regenerate implicitly. Use python3. Keep large
+outputs outside Git. See docs/protocols/DONUT_KURT_RECOVERY_V1.md.
+
 ## Sphere surface launcher correction
 
 The first surface-comparison launch performed metadata-only validation because
