@@ -1,0 +1,2538 @@
+{
+  "schema_version": 1,
+  "status": "saved_execution_and_outputs_verified",
+  "execution_commit": "c1a06d4e685628974f8fcbd1f9791f8c6b6f8ab1",
+  "freeze_sha256": "5b1660f4c7fed73676e08646dd41e3ec95460214384660092160a240acb3627e",
+  "batch": "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6",
+  "initial": {
+    "psnr": 34.25007587172924,
+    "ssim": 0.9527413620771977,
+    "foreground_pixels": 340315,
+    "kd_red": 0.9924240864041484,
+    "metallic": 0.8464494802493527,
+    "diffuse_allocation_red": 0.1522682152312759,
+    "effective_diffuse_incident_red": 0.4680682325863566,
+    "light_ratio_supported_red": 340315,
+    "linear_diffuse_red": 0.0763806407687439,
+    "linear_specular_red": 0.1571637430593725,
+    "mean_major_width": 0.9999351094761203,
+    "mean_minor_width": 0.04015760619325824,
+    "major_width_quantiles": [
+      0.9998307824134827,
+      0.9999962449073792,
+      1.0
+    ],
+    "minor_width_quantiles": [
+      0.03999999910593033,
+      0.040003031492233276,
+      0.04067706875503063
+    ],
+    "mean_gap": 0.9967785414487363,
+    "mean_Q_trace": 1.00148339355069,
+    "neighbor_Q_p95": 0.039569542367582936,
+    "neighbor_diagnostics": {
+      "projected_neighbor_pairs": 678886,
+      "raw_angle_jump_p95_degrees": 1.0282422260013349,
+      "transported_Q_absolute_difference_p95": 0.039569542367582936,
+      "large_raw_jump_small_Q_count": 0,
+      "large_raw_jump_large_Q_count": 943,
+      "diagnostic_only_thresholds": {
+        "raw_angle_degrees": 45,
+        "Q_absolute": 0.05,
+        "world_distance": 0.02,
+        "normal_cosine": 0.99
+      },
+      "limitation": "Screen-neighbor diagnostic; no source face IDs, so not a certified mesh-surface neighborhood."
+    },
+    "diffuse_light_all_channels_clipped_fraction": 0.0,
+    "raw_rotation_norm_p05": 0.051163551211357114,
+    "validation_priors": {
+      "energy": 0.0,
+      "specular": 1.9512615996025843e-06,
+      "energy_violating_fraction": 0.0
+    }
+  },
+  "observations": [
+    {
+      "arm": "surface_chart_control_v1",
+      "step": 6000,
+      "psnr": 35.25760759616803,
+      "ssim": 0.9550127343572777,
+      "foreground_pixels": 340315,
+      "kd_red": 0.314206818224441,
+      "metallic": 0.827439797594873,
+      "diffuse_allocation_red": 0.053640126700906704,
+      "effective_diffuse_incident_red": 1.3913796470345772,
+      "light_ratio_supported_red": 340315,
+      "linear_diffuse_red": 0.07852676454321636,
+      "linear_specular_red": 0.13918309455227112,
+      "mean_major_width": 0.9999410055973912,
+      "mean_minor_width": 0.040621234154813064,
+      "major_width_quantiles": [
+        0.9997228980064392,
+        0.9999788403511047,
+        1.0
+      ],
+      "minor_width_quantiles": [
+        0.03999999910593033,
+        0.040102194994688034,
+        0.04271305985748767
+      ],
+      "mean_gap": 0.9966950603864405,
+      "mean_Q_trace": 1.0015370807801456,
+      "neighbor_Q_p95": 0.04018798493851608,
+      "neighbor_diagnostics": {
+        "projected_neighbor_pairs": 678886,
+        "raw_angle_jump_p95_degrees": 1.0190406319337624,
+        "transported_Q_absolute_difference_p95": 0.04018798493851608,
+        "large_raw_jump_small_Q_count": 0,
+        "large_raw_jump_large_Q_count": 947,
+        "diagnostic_only_thresholds": {
+          "raw_angle_degrees": 45,
+          "Q_absolute": 0.05,
+          "world_distance": 0.02,
+          "normal_cosine": 0.99
+        },
+        "limitation": "Screen-neighbor diagnostic; no source face IDs, so not a certified mesh-surface neighborhood."
+      },
+      "diffuse_light_all_channels_clipped_fraction": 0.8032616840280329,
+      "raw_rotation_norm_p05": 0.0537501148879528,
+      "validation_priors": {
+        "energy": 0.0,
+        "specular": 6.877919885583881e-07,
+        "energy_violating_fraction": 0.0
+      }
+    },
+    {
+      "arm": "surface_chart_control_v1",
+      "step": 8000,
+      "psnr": 35.68083073026272,
+      "ssim": 0.9574141327307703,
+      "foreground_pixels": 340315,
+      "kd_red": 0.09739577836381236,
+      "metallic": 0.845060315152528,
+      "diffuse_allocation_red": 0.01501679454018245,
+      "effective_diffuse_incident_red": 4.143821538423241,
+      "light_ratio_supported_red": 340315,
+      "linear_diffuse_red": 0.06785742925026368,
+      "linear_specular_red": 0.1490688018460316,
+      "mean_major_width": 0.999976976637349,
+      "mean_minor_width": 0.040461448411722736,
+      "major_width_quantiles": [
+        0.999932587146759,
+        0.9999901652336121,
+        1.0
+      ],
+      "minor_width_quantiles": [
+        0.04000019654631615,
+        0.040074363350868225,
+        0.04240175224840641
+      ],
+      "mean_gap": 0.9967284372598068,
+      "mean_Q_trace": 1.0015923482111984,
+      "neighbor_Q_p95": 0.038001510296712025,
+      "neighbor_diagnostics": {
+        "projected_neighbor_pairs": 678886,
+        "raw_angle_jump_p95_degrees": 0.9753457118956808,
+        "transported_Q_absolute_difference_p95": 0.038001510296712025,
+        "large_raw_jump_small_Q_count": 0,
+        "large_raw_jump_large_Q_count": 675,
+        "diagnostic_only_thresholds": {
+          "raw_angle_degrees": 45,
+          "Q_absolute": 0.05,
+          "world_distance": 0.02,
+          "normal_cosine": 0.99
+        },
+        "limitation": "Screen-neighbor diagnostic; no source face IDs, so not a certified mesh-surface neighborhood."
+      },
+      "diffuse_light_all_channels_clipped_fraction": 0.9334910303689229,
+      "raw_rotation_norm_p05": 0.05354086421430111,
+      "validation_priors": {
+        "energy": 0.0,
+        "specular": 1.9245617596888235e-07,
+        "energy_violating_fraction": 0.0
+      }
+    },
+    {
+      "arm": "surface_world_q_v1",
+      "step": 6000,
+      "psnr": 35.29799435866783,
+      "ssim": 0.9560570800744879,
+      "foreground_pixels": 340315,
+      "kd_red": 0.29090129656161723,
+      "metallic": 0.8334193720207079,
+      "diffuse_allocation_red": 0.048051523536511376,
+      "effective_diffuse_incident_red": 1.4764859760848685,
+      "light_ratio_supported_red": 340315,
+      "linear_diffuse_red": 0.07547458501044675,
+      "linear_specular_red": 0.13992052490264675,
+      "mean_major_width": 0.9999013083419289,
+      "mean_minor_width": 0.04076315349950996,
+      "major_width_quantiles": [
+        0.999647581577301,
+        0.9999672770500183,
+        0.9999998807907104
+      ],
+      "minor_width_quantiles": [
+        0.03999999910593033,
+        0.04013075679540634,
+        0.04344045668840408
+      ],
+      "mean_gap": 0.9966651046238643,
+      "mean_Q_trace": 1.001472677368835,
+      "neighbor_Q_p95": 0.03864185390133282,
+      "neighbor_diagnostics": {
+        "projected_neighbor_pairs": 678886,
+        "raw_angle_jump_p95_degrees": 0.9930694762449955,
+        "transported_Q_absolute_difference_p95": 0.03864185390133282,
+        "large_raw_jump_small_Q_count": 0,
+        "large_raw_jump_large_Q_count": 1006,
+        "diagnostic_only_thresholds": {
+          "raw_angle_degrees": 45,
+          "Q_absolute": 0.05,
+          "world_distance": 0.02,
+          "normal_cosine": 0.99
+        },
+        "limitation": "Screen-neighbor diagnostic; no source face IDs, so not a certified mesh-surface neighborhood."
+      },
+      "diffuse_light_all_channels_clipped_fraction": 0.8282649897888721,
+      "raw_rotation_norm_p05": 0.05273989103734493,
+      "validation_priors": {
+        "energy": 0.0,
+        "specular": 6.167429576419403e-07,
+        "energy_violating_fraction": 0.0
+      }
+    },
+    {
+      "arm": "surface_world_q_v1",
+      "step": 8000,
+      "psnr": 35.84898696838969,
+      "ssim": 0.9571348437544459,
+      "foreground_pixels": 340315,
+      "kd_red": 0.09579012734944402,
+      "metallic": 0.8482669539004488,
+      "diffuse_allocation_red": 0.014450604477734214,
+      "effective_diffuse_incident_red": 4.302931310660568,
+      "light_ratio_supported_red": 340315,
+      "linear_diffuse_red": 0.0679185373532605,
+      "linear_specular_red": 0.15372708605910476,
+      "mean_major_width": 0.9999414810148199,
+      "mean_minor_width": 0.04053737624512895,
+      "major_width_quantiles": [
+        0.9998066425323486,
+        0.999977707862854,
+        0.9999998807907104
+      ],
+      "minor_width_quantiles": [
+        0.040000226348638535,
+        0.04008154198527336,
+        0.04299234263598919
+      ],
+      "mean_gap": 0.996715292104998,
+      "mean_Q_trace": 1.0015278460949595,
+      "neighbor_Q_p95": 0.03891888458646215,
+      "neighbor_diagnostics": {
+        "projected_neighbor_pairs": 678886,
+        "raw_angle_jump_p95_degrees": 1.018896381570232,
+        "transported_Q_absolute_difference_p95": 0.03891888458646215,
+        "large_raw_jump_small_Q_count": 1,
+        "large_raw_jump_large_Q_count": 349,
+        "diagnostic_only_thresholds": {
+          "raw_angle_degrees": 45,
+          "Q_absolute": 0.05,
+          "world_distance": 0.02,
+          "normal_cosine": 0.99
+        },
+        "limitation": "Screen-neighbor diagnostic; no source face IDs, so not a certified mesh-surface neighborhood."
+      },
+      "diffuse_light_all_channels_clipped_fraction": 0.9334410766495747,
+      "raw_rotation_norm_p05": 0.05255449078977108,
+      "validation_priors": {
+        "energy": 0.0,
+        "specular": 1.8524737465053046e-07,
+        "energy_violating_fraction": 0.0
+      }
+    }
+  ],
+  "decision": {
+    "checks": {
+      "Q_p95_reduction_at_least_20pct": false,
+      "PSNR_loss_at_most_point2dB": true,
+      "SSIM_loss_at_most_point005": true
+    },
+    "all_primary_checks_pass": false,
+    "neighbor_Q_p95_fraction_reduction": -0.02414046922312707,
+    "PSNR_candidate_minus_control": 0.16815623812696856,
+    "SSIM_candidate_minus_control": -0.00027928897632434335,
+    "mean_gap_fraction_change": -1.3188301163480354e-05,
+    "mean_Q_trace_fraction_change": -6.439956969928051e-05,
+    "isotropization_flag": false,
+    "tensor_shrinkage_flag": false
+  },
+  "original_input_files_verified": 209,
+  "exact_scientific_work": {
+    "new_Adam_returns": 8000,
+    "inherited_step_per_arm": 4000,
+    "final_step_per_arm": 8000,
+    "extra_component_reverse_sweeps": 36,
+    "surface_predictor_points": 8192000,
+    "extra_visibility_rays": 2048,
+    "validation_views": 4
+  },
+  "initial_parity_checks": [
+    "initial_parameters",
+    "initial_buffers",
+    "initial_sample_tapes",
+    "initial_optimizer",
+    "initial_rng",
+    "split_ids",
+    "surface_pairs",
+    "effective_configuration",
+    "effective_shader",
+    "runtime",
+    "scheduler",
+    "imported_sources"
+  ],
+  "surface_pair_coverage": {
+    "camera_id": "8",
+    "selected_pairs": 512,
+    "visible_pairs": 192,
+    "positive_weight_pairs": 192,
+    "visibility_queries": 1024,
+    "excluded_degenerate_faces": 4,
+    "face_pairs_sha256": "8d7fb7a703cdb84215dcc0d81783dc01267215b41d8fafeb2fe91f84d443a556",
+    "pair_array_hashes": {
+      "points0": "fbf4bed4a16c245b855a8e4baea8b1060d5be4619a0cdb86762c256c27a0c8fe",
+      "points1": "ea58beb0eb2bf0cfa6ec0c95b6f0a25997afd72e342738426d2c52faf207c209",
+      "normals0": "593eddef67b3a8bf4bc1a45e9dd730f5286cf20355d2f08fdc36646125b16b3b",
+      "normals1": "d3786fdd36b8d2d787bbf00f022ca8f619afe66d1efc25630525f5514848e237",
+      "weights": "fd679383b2ed3c894944d75a9c30f6ff259e49e372c5e7cff14633d06e17d2c8",
+      "distance": "2da8aa69fb1526949c4c13e4ae2e645bf17c21b2e55b1dedad59291472743911"
+    },
+    "boundary_gate": "Fixed visible training-image RGB contrast exp(-||delta RGB||/.1); no GT material/held-out supervision",
+    "normal_convention": "negative raw mesh face normals, matching original A.trace"
+  },
+  "resources": {
+    "surface_chart_control_v1": {
+      "native_wall_seconds": 551.9825264755636,
+      "peak_RSS_KiB": 29076160,
+      "peak_cuda_allocated_bytes": 7572826624,
+      "peak_cuda_reserved_bytes": 82978013184
+    },
+    "surface_world_q_v1": {
+      "native_wall_seconds": 575.6103807259351,
+      "peak_RSS_KiB": 33673716,
+      "peak_cuda_allocated_bytes": 7572992512,
+      "peak_cuda_reserved_bytes": 82460016640
+    }
+  },
+  "runtime": {
+    "python": "3.8.10 (default, Mar 18 2025, 20:04:55) \n[GCC 9.4.0]",
+    "torch": "1.8.1+cu111",
+    "cuda": "11.1",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "torch_cxx11_abi": false,
+    "driver": "NVRM version: NVIDIA UNIX x86_64 Kernel Module  550.163.01  Tue Apr  8 12:41:17 UTC 2025\nGCC version:  gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04.3) \n",
+    "packages": {
+      "numpy": "1.24.4",
+      "scipy": "1.10.1",
+      "scikit-image": "0.21.0",
+      "opencv-python": "4.10.0.84",
+      "open3d": "0.16.0",
+      "nvdiffrast": "0.3.3",
+      "tensorboardX": "2.6.2.2",
+      "PyYAML": "6.0.2"
+    },
+    "default_dtype": "torch.float32",
+    "num_threads": 4,
+    "num_interop_threads": 16,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": false,
+    "cudnn_allow_tf32": true,
+    "matmul_allow_tf32": true
+  },
+  "backend": {
+    "variant": "predicate_fp64",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15"
+  },
+  "gradient_probes": {
+    "surface_chart_control_v1": [
+      {
+        "zero_based_step": 4000,
+        "terms": {
+          "loss_surface_q": {
+            "weighted_loss": 7.038862804620294e-06,
+            "gradient_l2": 0.00014342967187985778,
+            "groups": {
+              "feats_network": 0.00013459294859785587,
+              "mx_predictor": 1.871385939011816e-05,
+              "my_predictor": 4.5868539018556476e-05,
+              "metallic_predictor": 0.0,
+              "rotation_predictor": 1.6357465710825636e-06,
+              "kd_predictor": 0.0,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "loss_surface_scalar": {
+            "weighted_loss": 0.0002823897812049836,
+            "gradient_l2": 0.0033447525929659605,
+            "groups": {
+              "feats_network": 0.003157996805384755,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 0.0009290252928622067,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 0.0005927392048761249,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "energy": {
+            "weighted_loss": 0.0,
+            "gradient_l2": 0.0,
+            "groups": {
+              "feats_network": 0.0,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 0.0,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 0.0,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "specular": {
+            "weighted_loss": 1.9011475842489745e-06,
+            "gradient_l2": 7.737818123132456e-06,
+            "groups": {
+              "feats_network": 4.3876198105863295e-06,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 6.347007911244873e-06,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 5.814769110656925e-07,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "rgb": {
+            "weighted_loss": 0.28646332025527954,
+            "gradient_l2": 0.5918314456939697,
+            "groups": {
+              "feats_network": 0.3361615240573883,
+              "mx_predictor": 9.003430022858083e-06,
+              "my_predictor": 0.0007328928331844509,
+              "metallic_predictor": 0.05905291438102722,
+              "rotation_predictor": 0.38463687896728516,
+              "kd_predictor": 0.013791143894195557,
+              "outer_light": 0.2926369905471802,
+              "inner_light": 1.7774980278773e-06
+            }
+          },
+          "diffuse_light": {
+            "weighted_loss": 0.003341084811836481,
+            "gradient_l2": 0.0228057149797678,
+            "groups": {
+              "feats_network": 0.0,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 0.0,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 0.0,
+              "outer_light": 0.0228057149797678,
+              "inner_light": 0.0
+            }
+          }
+        },
+        "gradient_cosines": {
+          "loss_surface_q__loss_surface_scalar": 0.16677813231945038,
+          "loss_surface_q__energy": null,
+          "loss_surface_q__specular": 0.08946385979652405,
+          "loss_surface_q__rgb": -0.027493339031934738,
+          "loss_surface_q__diffuse_light": 0.0,
+          "loss_surface_scalar__energy": null,
+          "loss_surface_scalar__specular": 0.10552467405796051,
+          "loss_surface_scalar__rgb": -0.012827439233660698,
+          "loss_surface_scalar__diffuse_light": 0.0,
+          "energy__specular": null,
+          "energy__rgb": null,
+          "energy__diffuse_light": null,
+          "specular__rgb": 0.056097619235515594,
+          "specular__diffuse_light": 0.0,
+          "rgb__diffuse_light": -0.07443124055862427
+        },
+        "group_gradient_cosines": {
+          "loss_surface_q__loss_surface_scalar": {
+            "feats_network": 0.18823833763599396,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_q__specular": {
+            "feats_network": 0.16813334822654724,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_q__rgb": {
+            "feats_network": -0.04953986406326294,
+            "mx_predictor": 0.3312572240829468,
+            "my_predictor": 0.905958890914917,
+            "metallic_predictor": null,
+            "rotation_predictor": -0.19531503319740295,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_scalar__specular": {
+            "feats_network": 0.13691791892051697,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": 0.19982421398162842,
+            "rotation_predictor": null,
+            "kd_predictor": -0.9990110397338867,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_scalar__rgb": {
+            "feats_network": -0.029842304065823555,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": 0.26320546865463257,
+            "rotation_predictor": null,
+            "kd_predictor": -0.9972028136253357,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__loss_surface_q": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__loss_surface_scalar": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__specular": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__rgb": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "rgb__specular": {
+            "feats_network": -0.07015175372362137,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": 0.9401589035987854,
+            "rotation_predictor": null,
+            "kd_predictor": 0.9961175322532654,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__loss_surface_q": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__loss_surface_scalar": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__energy": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__specular": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__rgb": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": -0.1505303531885147,
+            "inner_light": null
+          }
+        },
+        "interpretation": "Additional local AD probes; not archived training gradients"
+      },
+      {
+        "zero_based_step": 5999,
+        "terms": {
+          "loss_surface_q": {
+            "weighted_loss": 1.2597156455740333e-05,
+            "gradient_l2": 0.00035710001247934997,
+            "groups": {
+              "feats_network": 0.0003315215581096709,
+              "mx_predictor": 1.4175740034261253e-05,
+              "my_predictor": 0.0001303702883888036,
+              "metallic_predictor": 0.0,
+              "rotation_predictor": 2.0408506316016428e-05,
+              "kd_predictor": 0.0,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "loss_surface_scalar": {
+            "weighted_loss": 0.00017707963706925511,
+            "gradient_l2": 0.0036609049420803785,
+            "groups": {
+              "feats_network": 0.0033171004615724087,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 0.0009137322194874287,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 0.0012506648199632764,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "energy": {
+            "weighted_loss": 0.0,
+            "gradient_l2": 0.0,
+            "groups": {
+              "feats_network": 0.0,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 0.0,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 0.0,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "specular": {
+            "weighted_loss": 6.859189056740433e-07,
+            "gradient_l2": 7.555274805781664e-06,
+            "groups": {
+              "feats_network": 1.4808903188168188e-06,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 2.1566527266259072e-06,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 7.087876383593539e-06,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "rgb": {
+            "weighted_loss": 0.2818129062652588,
+            "gradient_l2": 1.4823939800262451,
+            "groups": {
+              "feats_network": 0.4008069634437561,
+              "mx_predictor": 4.212602652842179e-05,
+              "my_predictor": 0.005175360478460789,
+              "metallic_predictor": 0.014504014514386654,
+              "rotation_predictor": 0.4854561388492584,
+              "kd_predictor": 1.0136899948120117,
+              "outer_light": 0.8794165849685669,
+              "inner_light": 3.548419044818729e-06
+            }
+          },
+          "diffuse_light": {
+            "weighted_loss": 0.000880537903867662,
+            "gradient_l2": 0.006202003452926874,
+            "groups": {
+              "feats_network": 0.0,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 0.0,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 0.0,
+              "outer_light": 0.006202003452926874,
+              "inner_light": 0.0
+            }
+          }
+        },
+        "gradient_cosines": {
+          "loss_surface_q__loss_surface_scalar": 0.07183271646499634,
+          "loss_surface_q__energy": null,
+          "loss_surface_q__specular": 0.04194928705692291,
+          "loss_surface_q__rgb": -0.0012341209221631289,
+          "loss_surface_q__diffuse_light": 0.0,
+          "loss_surface_scalar__energy": null,
+          "loss_surface_scalar__specular": 0.3276600241661072,
+          "loss_surface_scalar__rgb": -0.20908290147781372,
+          "loss_surface_scalar__diffuse_light": 0.0,
+          "energy__specular": null,
+          "energy__rgb": null,
+          "energy__diffuse_light": null,
+          "specular__rgb": -0.6397228240966797,
+          "specular__diffuse_light": 0.0,
+          "rgb__diffuse_light": 0.39525285363197327
+        },
+        "group_gradient_cosines": {
+          "loss_surface_q__loss_surface_scalar": {
+            "feats_network": 0.08539456129074097,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_q__specular": {
+            "feats_network": 0.23053137958049774,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_q__rgb": {
+            "feats_network": 0.007353525608778,
+            "mx_predictor": -0.2289581447839737,
+            "my_predictor": -0.8284898996353149,
+            "metallic_predictor": null,
+            "rotation_predictor": -0.10812854766845703,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_scalar__specular": {
+            "feats_network": 0.11604607105255127,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": 0.035292018204927444,
+            "rotation_predictor": null,
+            "kd_predictor": 0.9502109289169312,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_scalar__rgb": {
+            "feats_network": 0.05006120353937149,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": 0.10473260283470154,
+            "rotation_predictor": null,
+            "kd_predictor": -0.9485965371131897,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__loss_surface_q": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__loss_surface_scalar": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__specular": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__rgb": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "rgb__specular": {
+            "feats_network": 0.06693261116743088,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": -0.6935951113700867,
+            "rotation_predictor": null,
+            "kd_predictor": -0.999714732170105,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__loss_surface_q": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__loss_surface_scalar": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__energy": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__specular": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__rgb": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": 0.6662604212760925,
+            "inner_light": null
+          }
+        },
+        "interpretation": "Additional local AD probes; not archived training gradients"
+      },
+      {
+        "zero_based_step": 7999,
+        "terms": {
+          "loss_surface_q": {
+            "weighted_loss": 9.31932754610898e-06,
+            "gradient_l2": 0.00033022958086803555,
+            "groups": {
+              "feats_network": 0.00031953907455317676,
+              "mx_predictor": 5.7629899856692646e-06,
+              "my_predictor": 8.311519923154265e-05,
+              "metallic_predictor": 0.0,
+              "rotation_predictor": 2.2352967334882123e-06,
+              "kd_predictor": 0.0,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "loss_surface_scalar": {
+            "weighted_loss": 8.075354708125815e-05,
+            "gradient_l2": 0.0026973069179803133,
+            "groups": {
+              "feats_network": 0.002569697331637144,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 0.0006818478577770293,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 0.0004551973834168166,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "energy": {
+            "weighted_loss": 0.0,
+            "gradient_l2": 0.0,
+            "groups": {
+              "feats_network": 0.0,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 0.0,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 0.0,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "specular": {
+            "weighted_loss": 1.7542411967497173e-07,
+            "gradient_l2": 2.4116773147397907e-06,
+            "groups": {
+              "feats_network": 4.705669027771364e-07,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 5.882639015908353e-07,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 2.291003738719155e-06,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "rgb": {
+            "weighted_loss": 0.1389440894126892,
+            "gradient_l2": 0.4275725483894348,
+            "groups": {
+              "feats_network": 0.17751100659370422,
+              "mx_predictor": 2.5816221750574186e-05,
+              "my_predictor": 0.0023425142280757427,
+              "metallic_predictor": 0.037214040756225586,
+              "rotation_predictor": 0.19695575535297394,
+              "kd_predictor": 0.030120499432086945,
+              "outer_light": 0.33199241757392883,
+              "inner_light": 1.713536903480417e-07
+            }
+          },
+          "diffuse_light": {
+            "weighted_loss": 0.0017539537511765957,
+            "gradient_l2": 0.005825218744575977,
+            "groups": {
+              "feats_network": 0.0,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 0.0,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 0.0,
+              "outer_light": 0.005825218744575977,
+              "inner_light": 0.0
+            }
+          }
+        },
+        "gradient_cosines": {
+          "loss_surface_q__loss_surface_scalar": 0.12962888181209564,
+          "loss_surface_q__energy": null,
+          "loss_surface_q__specular": 0.0484408475458622,
+          "loss_surface_q__rgb": -0.05653342977166176,
+          "loss_surface_q__diffuse_light": 0.0,
+          "loss_surface_scalar__energy": null,
+          "loss_surface_scalar__specular": 0.15305040776729584,
+          "loss_surface_scalar__rgb": -0.021298792213201523,
+          "loss_surface_scalar__diffuse_light": 0.0,
+          "energy__specular": null,
+          "energy__rgb": null,
+          "energy__diffuse_light": null,
+          "specular__rgb": 0.05534893646836281,
+          "specular__diffuse_light": 0.0,
+          "rgb__diffuse_light": -0.43605494499206543
+        },
+        "group_gradient_cosines": {
+          "loss_surface_q__loss_surface_scalar": {
+            "feats_network": 0.14061839878559113,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_q__specular": {
+            "feats_network": 0.25656741857528687,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_q__rgb": {
+            "feats_network": -0.1344357281923294,
+            "mx_predictor": 0.8976635932922363,
+            "my_predictor": -0.9353232383728027,
+            "metallic_predictor": null,
+            "rotation_predictor": -0.3974071741104126,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_scalar__specular": {
+            "feats_network": 0.053052015602588654,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": 0.06551933288574219,
+            "rotation_predictor": null,
+            "kd_predictor": 0.86796635389328,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_scalar__rgb": {
+            "feats_network": -0.06627604365348816,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": 0.03643585368990898,
+            "rotation_predictor": null,
+            "kd_predictor": 0.34596720337867737,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__loss_surface_q": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__loss_surface_scalar": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__specular": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__rgb": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "rgb__specular": {
+            "feats_network": 0.00937102735042572,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": 0.9576334357261658,
+            "rotation_predictor": null,
+            "kd_predictor": 0.5119401216506958,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__loss_surface_q": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__loss_surface_scalar": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__energy": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__specular": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__rgb": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": -0.561594545841217,
+            "inner_light": null
+          }
+        },
+        "interpretation": "Additional local AD probes; not archived training gradients"
+      }
+    ],
+    "surface_world_q_v1": [
+      {
+        "zero_based_step": 4000,
+        "terms": {
+          "loss_surface_q": {
+            "weighted_loss": 0.002954809693619609,
+            "gradient_l2": 0.03896239772439003,
+            "groups": {
+              "feats_network": 0.03209780156612396,
+              "mx_predictor": 1.4960069165681489e-06,
+              "my_predictor": 2.109540275796462e-07,
+              "metallic_predictor": 0.0,
+              "rotation_predictor": 0.022086182609200478,
+              "kd_predictor": 0.0,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "loss_surface_scalar": {
+            "weighted_loss": 0.0002823897812049836,
+            "gradient_l2": 0.0033447525929659605,
+            "groups": {
+              "feats_network": 0.003157996805384755,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 0.0009290252928622067,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 0.0005927392048761249,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "energy": {
+            "weighted_loss": 0.0,
+            "gradient_l2": 0.0,
+            "groups": {
+              "feats_network": 0.0,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 0.0,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 0.0,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "specular": {
+            "weighted_loss": 1.9011475842489745e-06,
+            "gradient_l2": 7.737818123132456e-06,
+            "groups": {
+              "feats_network": 4.3876198105863295e-06,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 6.347007911244873e-06,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 5.814769110656925e-07,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "rgb": {
+            "weighted_loss": 0.28646332025527954,
+            "gradient_l2": 0.5918314456939697,
+            "groups": {
+              "feats_network": 0.3361615240573883,
+              "mx_predictor": 9.003430022858083e-06,
+              "my_predictor": 0.0007328928331844509,
+              "metallic_predictor": 0.05905291438102722,
+              "rotation_predictor": 0.38463687896728516,
+              "kd_predictor": 0.013791143894195557,
+              "outer_light": 0.2926369905471802,
+              "inner_light": 1.7774980278773e-06
+            }
+          },
+          "diffuse_light": {
+            "weighted_loss": 0.003341084811836481,
+            "gradient_l2": 0.0228057149797678,
+            "groups": {
+              "feats_network": 0.0,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 0.0,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 0.0,
+              "outer_light": 0.0228057149797678,
+              "inner_light": 0.0
+            }
+          }
+        },
+        "gradient_cosines": {
+          "loss_surface_q__loss_surface_scalar": -0.01237090490758419,
+          "loss_surface_q__energy": null,
+          "loss_surface_q__specular": -0.01641976274549961,
+          "loss_surface_q__rgb": 0.2575903832912445,
+          "loss_surface_q__diffuse_light": 0.0,
+          "loss_surface_scalar__energy": null,
+          "loss_surface_scalar__specular": 0.10552467405796051,
+          "loss_surface_scalar__rgb": -0.012827439233660698,
+          "loss_surface_scalar__diffuse_light": 0.0,
+          "energy__specular": null,
+          "energy__rgb": null,
+          "energy__diffuse_light": null,
+          "specular__rgb": 0.056097619235515594,
+          "specular__diffuse_light": 0.0,
+          "rgb__diffuse_light": -0.07443124055862427
+        },
+        "group_gradient_cosines": {
+          "loss_surface_q__loss_surface_scalar": {
+            "feats_network": -0.015904651954770088,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_q__specular": {
+            "feats_network": -0.03515011817216873,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_q__rgb": {
+            "feats_network": 0.28149232268333435,
+            "mx_predictor": -0.4452367424964905,
+            "my_predictor": -0.95116126537323,
+            "metallic_predictor": null,
+            "rotation_predictor": 0.3416658043861389,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_scalar__specular": {
+            "feats_network": 0.13691791892051697,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": 0.19982421398162842,
+            "rotation_predictor": null,
+            "kd_predictor": -0.9990110397338867,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_scalar__rgb": {
+            "feats_network": -0.029842304065823555,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": 0.26320546865463257,
+            "rotation_predictor": null,
+            "kd_predictor": -0.9972028136253357,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__loss_surface_q": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__loss_surface_scalar": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__specular": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__rgb": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "rgb__specular": {
+            "feats_network": -0.07015175372362137,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": 0.9401589035987854,
+            "rotation_predictor": null,
+            "kd_predictor": 0.9961175322532654,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__loss_surface_q": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__loss_surface_scalar": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__energy": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__specular": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__rgb": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": -0.1505303531885147,
+            "inner_light": null
+          }
+        },
+        "interpretation": "Additional local AD probes; not archived training gradients"
+      },
+      {
+        "zero_based_step": 5999,
+        "terms": {
+          "loss_surface_q": {
+            "weighted_loss": 0.0004461814824026078,
+            "gradient_l2": 0.004672686103731394,
+            "groups": {
+              "feats_network": 0.0037858025170862675,
+              "mx_predictor": 2.1566256691585295e-06,
+              "my_predictor": 5.808976766275009e-07,
+              "metallic_predictor": 0.0,
+              "rotation_predictor": 0.0027389207389205694,
+              "kd_predictor": 0.0,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "loss_surface_scalar": {
+            "weighted_loss": 0.00015484541654586792,
+            "gradient_l2": 0.0033893310464918613,
+            "groups": {
+              "feats_network": 0.0030931748915463686,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 0.0008841310045681894,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 0.0010668394388630986,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "energy": {
+            "weighted_loss": 0.0,
+            "gradient_l2": 0.0,
+            "groups": {
+              "feats_network": 0.0,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 0.0,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 0.0,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "specular": {
+            "weighted_loss": 5.982106472401938e-07,
+            "gradient_l2": 6.830462098150747e-06,
+            "groups": {
+              "feats_network": 1.3696509313376737e-06,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 1.929725840454921e-06,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 6.407450655387947e-06,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "rgb": {
+            "weighted_loss": 0.2847307622432709,
+            "gradient_l2": 3.4110336303710938,
+            "groups": {
+              "feats_network": 0.3081417381763458,
+              "mx_predictor": 8.604964386904612e-05,
+              "my_predictor": 0.003802392864599824,
+              "metallic_predictor": 0.21064503490924835,
+              "rotation_predictor": 0.2794860899448395,
+              "kd_predictor": 2.702861785888672,
+              "outer_light": 2.0278656482696533,
+              "inner_light": 4.231681941746501e-06
+            }
+          },
+          "diffuse_light": {
+            "weighted_loss": 0.0008847519056871533,
+            "gradient_l2": 0.005260154604911804,
+            "groups": {
+              "feats_network": 0.0,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 0.0,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 0.0,
+              "outer_light": 0.005260154604911804,
+              "inner_light": 0.0
+            }
+          }
+        },
+        "gradient_cosines": {
+          "loss_surface_q__loss_surface_scalar": 0.01883690059185028,
+          "loss_surface_q__energy": null,
+          "loss_surface_q__specular": -0.005289967637509108,
+          "loss_surface_q__rgb": -0.022511886432766914,
+          "loss_surface_q__diffuse_light": 0.0,
+          "loss_surface_scalar__energy": null,
+          "loss_surface_scalar__specular": 0.2862105071544647,
+          "loss_surface_scalar__rgb": -0.23429474234580994,
+          "loss_surface_scalar__diffuse_light": 0.0,
+          "energy__specular": null,
+          "energy__rgb": null,
+          "energy__diffuse_light": null,
+          "specular__rgb": -0.7661159038543701,
+          "specular__diffuse_light": 0.0,
+          "rgb__diffuse_light": 0.31885915994644165
+        },
+        "group_gradient_cosines": {
+          "loss_surface_q__loss_surface_scalar": {
+            "feats_network": 0.025475788861513138,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_q__specular": {
+            "feats_network": -0.03256131336092949,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_q__rgb": {
+            "feats_network": -0.13613581657409668,
+            "mx_predictor": 0.7449911832809448,
+            "my_predictor": 0.7242593765258789,
+            "metallic_predictor": null,
+            "rotation_predictor": -0.26127129793167114,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_scalar__specular": {
+            "feats_network": 0.03300434350967407,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": 0.05159488320350647,
+            "rotation_predictor": null,
+            "kd_predictor": 0.9359831213951111,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_scalar__rgb": {
+            "feats_network": -0.004946939181536436,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": -0.05190667882561684,
+            "rotation_predictor": null,
+            "kd_predictor": -0.9343885779380798,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__loss_surface_q": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__loss_surface_scalar": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__specular": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__rgb": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "rgb__specular": {
+            "feats_network": -0.3038984537124634,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": -0.9961698055267334,
+            "rotation_predictor": null,
+            "kd_predictor": -0.9998868703842163,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__loss_surface_q": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__loss_surface_scalar": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__energy": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__specular": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__rgb": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": 0.5363467931747437,
+            "inner_light": null
+          }
+        },
+        "interpretation": "Additional local AD probes; not archived training gradients"
+      },
+      {
+        "zero_based_step": 7999,
+        "terms": {
+          "loss_surface_q": {
+            "weighted_loss": 0.0003218035853933543,
+            "gradient_l2": 0.007136833854019642,
+            "groups": {
+              "feats_network": 0.00496137049049139,
+              "mx_predictor": 9.511435337117291e-07,
+              "my_predictor": 4.979127652404713e-07,
+              "metallic_predictor": 0.0,
+              "rotation_predictor": 0.0051302239298820496,
+              "kd_predictor": 0.0,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "loss_surface_scalar": {
+            "weighted_loss": 8.226184581872076e-05,
+            "gradient_l2": 0.0030309786088764668,
+            "groups": {
+              "feats_network": 0.0029015259351581335,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 0.0007413518032990396,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 0.0004673076909966767,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "energy": {
+            "weighted_loss": 0.0,
+            "gradient_l2": 0.0,
+            "groups": {
+              "feats_network": 0.0,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 0.0,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 0.0,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "specular": {
+            "weighted_loss": 1.687310060560776e-07,
+            "gradient_l2": 2.3232864805322606e-06,
+            "groups": {
+              "feats_network": 4.5690526917496754e-07,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 5.668156859428564e-07,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 2.2062677089706995e-06,
+              "outer_light": 0.0,
+              "inner_light": 0.0
+            }
+          },
+          "rgb": {
+            "weighted_loss": 0.13810797035694122,
+            "gradient_l2": 0.7019370794296265,
+            "groups": {
+              "feats_network": 0.15442226827144623,
+              "mx_predictor": 6.619974737986922e-05,
+              "my_predictor": 0.0025969354901462793,
+              "metallic_predictor": 0.04649113491177559,
+              "rotation_predictor": 0.17374767363071442,
+              "kd_predictor": 0.4038669764995575,
+              "outer_light": 0.5228809118270874,
+              "inner_light": 1.8585436123430554e-07
+            }
+          },
+          "diffuse_light": {
+            "weighted_loss": 0.0017513049533590674,
+            "gradient_l2": 0.0058880760334432125,
+            "groups": {
+              "feats_network": 0.0,
+              "mx_predictor": 0.0,
+              "my_predictor": 0.0,
+              "metallic_predictor": 0.0,
+              "rotation_predictor": 0.0,
+              "kd_predictor": 0.0,
+              "outer_light": 0.0058880760334432125,
+              "inner_light": 0.0
+            }
+          }
+        },
+        "gradient_cosines": {
+          "loss_surface_q__loss_surface_scalar": 0.04740506038069725,
+          "loss_surface_q__energy": null,
+          "loss_surface_q__specular": 0.002593842102214694,
+          "loss_surface_q__rgb": 0.11372344940900803,
+          "loss_surface_q__diffuse_light": 0.0,
+          "loss_surface_scalar__energy": null,
+          "loss_surface_scalar__specular": 0.11952972412109375,
+          "loss_surface_scalar__rgb": 0.0729253962635994,
+          "loss_surface_scalar__diffuse_light": 0.0,
+          "energy__specular": null,
+          "energy__rgb": null,
+          "energy__diffuse_light": null,
+          "specular__rgb": 0.5692903995513916,
+          "specular__diffuse_light": 0.0,
+          "rgb__diffuse_light": -0.2728579044342041
+        },
+        "group_gradient_cosines": {
+          "loss_surface_q__loss_surface_scalar": {
+            "feats_network": 0.07123362272977829,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_q__specular": {
+            "feats_network": 0.018972478806972504,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_q__rgb": {
+            "feats_network": 0.031377438455820084,
+            "mx_predictor": -0.982806921005249,
+            "my_predictor": 0.829196572303772,
+            "metallic_predictor": null,
+            "rotation_predictor": 0.6121729612350464,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_scalar__specular": {
+            "feats_network": -0.04932123050093651,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": 0.04048306494951248,
+            "rotation_predictor": null,
+            "kd_predictor": 0.8633154034614563,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "loss_surface_scalar__rgb": {
+            "feats_network": -0.021025080233812332,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": 0.056207139045000076,
+            "rotation_predictor": null,
+            "kd_predictor": 0.8617388606071472,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__loss_surface_q": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__loss_surface_scalar": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__specular": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "energy__rgb": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "rgb__specular": {
+            "feats_network": 0.19495095312595367,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": 0.9814437031745911,
+            "rotation_predictor": null,
+            "kd_predictor": 0.9974667429924011,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__loss_surface_q": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__loss_surface_scalar": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__energy": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__specular": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": null,
+            "inner_light": null
+          },
+          "diffuse_light__rgb": {
+            "feats_network": null,
+            "mx_predictor": null,
+            "my_predictor": null,
+            "metallic_predictor": null,
+            "rotation_predictor": null,
+            "kd_predictor": null,
+            "outer_light": -0.36629578471183777,
+            "inner_light": null
+          }
+        },
+        "interpretation": "Additional local AD probes; not archived training gradients"
+      }
+    ]
+  },
+  "optimizer_events": {
+    "surface_chart_control_v1": [
+      {
+        "absolute_zero_based_step": 4000,
+        "absolute_completed_updates": 4001,
+        "new_returns": 1,
+        "parameter_displacement_l1": 18.428032311974675,
+        "lr": [
+          0.0004990943845146169
+        ],
+        "active_state_counters_advanced": true
+      },
+      {
+        "absolute_zero_based_step": 5999,
+        "absolute_completed_updates": 6000,
+        "new_returns": 2000,
+        "parameter_displacement_l1": 13.366070358868456,
+        "lr": [
+          0.0004974887804156917
+        ],
+        "active_state_counters_advanced": true
+      },
+      {
+        "absolute_zero_based_step": 7999,
+        "absolute_completed_updates": 8000,
+        "new_returns": 4000,
+        "parameter_displacement_l1": 11.386243536102484,
+        "lr": [
+          0.0004950873555131005
+        ],
+        "active_state_counters_advanced": true
+      }
+    ],
+    "surface_world_q_v1": [
+      {
+        "absolute_zero_based_step": 4000,
+        "absolute_completed_updates": 4001,
+        "new_returns": 1,
+        "parameter_displacement_l1": 18.39035345686534,
+        "lr": [
+          0.0004990943845146169
+        ],
+        "active_state_counters_advanced": true
+      },
+      {
+        "absolute_zero_based_step": 5999,
+        "absolute_completed_updates": 6000,
+        "new_returns": 2000,
+        "parameter_displacement_l1": 13.06059323012687,
+        "lr": [
+          0.0004974887804156917
+        ],
+        "active_state_counters_advanced": true
+      },
+      {
+        "absolute_zero_based_step": 7999,
+        "absolute_completed_updates": 8000,
+        "new_returns": 4000,
+        "parameter_displacement_l1": 12.511030906407996,
+        "lr": [
+          0.0004950873555131005
+        ],
+        "active_state_counters_advanced": true
+      }
+    ]
+  },
+  "component_log_summary": {
+    "surface_chart_control_v1": {
+      "rows": 400,
+      "energy_nonzero_rows": 0,
+      "mean_specular": 8.573164867087257e-07
+    },
+    "surface_world_q_v1": {
+      "rows": 400,
+      "energy_nonzero_rows": 0,
+      "mean_specular": 8.218168192897224e-07
+    }
+  },
+  "external_artifacts": {
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/freeze.json": {
+      "bytes": 14849,
+      "sha256": "5b1660f4c7fed73676e08646dd41e3ec95460214384660092160a240acb3627e"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/authorization.json": {
+      "bytes": 1946,
+      "sha256": "ffabebc8541b71904b5a72fb1f5dd469d02a64d822b4f2b953fa854d876a036f"
+    },
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/checkpoints/step-004000.pth": {
+      "bytes": 28892957,
+      "sha256": "610b42044d43d64fd3bf5c8d309fe8acd9f266b05e85acccd92acdd222f173ea"
+    },
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-004000/validation/camera-36/materials.npz": {
+      "bytes": 65114124,
+      "sha256": "b99112536645c71bf4bc5809e35cf3ea55c44ed0b646717b1bdb70bd804a46d5"
+    },
+    "/home/isavand/paper/evidence/sphere-core-v2-ec8cee6b6d234133b0c7e1168fff02e1/sphere/renders/step-004000/validation/camera-36/view.json": {
+      "bytes": 2654,
+      "sha256": "8fde829e61fc32ddc20c47997583aacfdc896ff9f9abd4c176e2a05fa5e46b16"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/checkpoints/step-006000.pth": {
+      "bytes": 28896137,
+      "sha256": "472bc8bb46ef2f17812715947811722a38de35115c4f900466b9fbf1566d031f"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/checkpoints/step-006000.json": {
+      "bytes": 654,
+      "sha256": "d5683c900057124572416c69bd83ea01cbdc12ab7a49a154510435c9c25b238e"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/checkpoints/model.pth": {
+      "bytes": 28896137,
+      "sha256": "48cd17e650e6988e6bcadaf2921d3fc339c6e5b4e49a9a26f4169eb329d61f53"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/checkpoints/model_best.pth": {
+      "bytes": 28896137,
+      "sha256": "48cd17e650e6988e6bcadaf2921d3fc339c6e5b4e49a9a26f4169eb329d61f53"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/checkpoints/step-008000.pth": {
+      "bytes": 28896137,
+      "sha256": "48cd17e650e6988e6bcadaf2921d3fc339c6e5b4e49a9a26f4169eb329d61f53"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/checkpoints/step-008000.json": {
+      "bytes": 654,
+      "sha256": "e5cd6950f6945dfd861e0e83796e0b292491d5bef1c724625a0d7eeaaf0b959d"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/reconstructed.png": {
+      "bytes": 415910,
+      "sha256": "eda939cdf24921065b17cdee68d3ff6083dd561ea59e435fd428890c5cd7354a"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/metallic.png": {
+      "bytes": 44377,
+      "sha256": "81612afdf1b5c2e9e8d65bd362318b179f0257b836cf1a1c43b18eaba4ec42a7"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/ground_truth.png": {
+      "bytes": 274901,
+      "sha256": "9256cf080d330100e2d313d08a58114690cfd631ef32204a9a59db640228cf5f"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/Q_world_22.png": {
+      "bytes": 105775,
+      "sha256": "0de54e414e5ff1b84c072bd5077a7d4cab16e3323bf7451e2ac28e787c0baa6e"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/mask.png": {
+      "bytes": 4951,
+      "sha256": "0078c20ed9168b663b456e5f2e025de4e8028c1389948a0027bbcd872eaeba27"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/my.png": {
+      "bytes": 6103,
+      "sha256": "dc31d2857080357c2c66b4cb6bcabaf4650213d23ce75237b80ede58dcba94ed"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/materials.npz": {
+      "bytes": 84451415,
+      "sha256": "3078cc7a1d4ab3508332e4e8f0e4123c9c3ffc3fd4f7159f642269a91b01ef9a"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/normal.png": {
+      "bytes": 240271,
+      "sha256": "adac11eea976ddb8ccdb589edff9bb67515971ca34c0b6b7ab5f01cd24057b4f"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/mx.png": {
+      "bytes": 6038,
+      "sha256": "0574c48a43e0c9e7305d34cf230538e3785f12f67e92c1719722e7fd20d9a9a3"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/albedo.png": {
+      "bytes": 23425,
+      "sha256": "835539347858bec34e7df1ad1a8d0e653bb1b8c169c2b200e97975fc45655cb8"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/Q_world_00.png": {
+      "bytes": 76798,
+      "sha256": "8a3a1e58c752b2f1b9f4dfc81bc2b9532d9fd1b1d8efd7501328bafcb09cd56f"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/diffuse.png": {
+      "bytes": 71815,
+      "sha256": "71a6a95fdb16889db683afd803a2d5d6298757e385ee8e2dbafb9112d5f2ea90"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/specular.png": {
+      "bytes": 438563,
+      "sha256": "c8798a600c4aa788f6bb6b10d103e4bbf8e17d6d73f627fb01c9fc33cb183742"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/Q_world_01.png": {
+      "bytes": 91195,
+      "sha256": "4220a048ef0a68e5154a7db0ead2e7990f0622334a32a99848aae138984d8fce"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/major_width.png": {
+      "bytes": 6038,
+      "sha256": "0574c48a43e0c9e7305d34cf230538e3785f12f67e92c1719722e7fd20d9a9a3"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/Q_world_11.png": {
+      "bytes": 100416,
+      "sha256": "4812ad51db7bf3ef976dd6e0adeeecaab7d3fa51b2a3f6e90a2e6c60f188d9dc"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/orientation_raw.png": {
+      "bytes": 139329,
+      "sha256": "6414eb3ea18128bed2545b692e93c1fe481de2235923287e081451a9f4911ed4"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/orientation_world_projector.png": {
+      "bytes": 317633,
+      "sha256": "854f44dffb3613808e1ed716926cf4bf9152f58fd51c4544f2c224386a327fbe"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/minor_width.png": {
+      "bytes": 6103,
+      "sha256": "dc31d2857080357c2c66b4cb6bcabaf4650213d23ce75237b80ede58dcba94ed"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/Q_world_02.png": {
+      "bytes": 90962,
+      "sha256": "59e647939045df4ba8a6c3c08ba72ad408016d3844742763d58d7b155af7e3b1"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/Q_world_12.png": {
+      "bytes": 133598,
+      "sha256": "f816978c29365b863aa142dbe25ca4d35b02a260ce8a9958b829fc497162c51d"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/orientation.png": {
+      "bytes": 139329,
+      "sha256": "6414eb3ea18128bed2545b692e93c1fe481de2235923287e081451a9f4911ed4"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-008000/validation/camera-36/view.json": {
+      "bytes": 4010,
+      "sha256": "13c8363042939cbd7b203475c111bab97a30fd0a5ec8733bf7e3583847ac834e"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/reconstructed.png": {
+      "bytes": 423641,
+      "sha256": "eedd5ea1a31885e31742741bc0ed7be19553cdec0cfa45532e8139901624dc1d"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/metallic.png": {
+      "bytes": 43166,
+      "sha256": "408e6ec9693be2008b8d4b008f1909a20d2bafc8adc4c9b86be38230998acc21"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/ground_truth.png": {
+      "bytes": 274901,
+      "sha256": "9256cf080d330100e2d313d08a58114690cfd631ef32204a9a59db640228cf5f"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/Q_world_22.png": {
+      "bytes": 105757,
+      "sha256": "bc10e9e5a34715d78f56a05658f4fc41c061875d44be4e2c7a5c3cc2224b6e4b"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/mask.png": {
+      "bytes": 4951,
+      "sha256": "0078c20ed9168b663b456e5f2e025de4e8028c1389948a0027bbcd872eaeba27"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/my.png": {
+      "bytes": 7386,
+      "sha256": "a8c618c23cc87987e9998fb958b930373d0521d780c48ded0f33ac4ee0a3a6e9"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/materials.npz": {
+      "bytes": 85035867,
+      "sha256": "1afa8b815dadc55ef8b6358804b13a8b45b4dd524556864e1556be9ae39b573a"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/normal.png": {
+      "bytes": 240271,
+      "sha256": "adac11eea976ddb8ccdb589edff9bb67515971ca34c0b6b7ab5f01cd24057b4f"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/mx.png": {
+      "bytes": 5973,
+      "sha256": "2143919131660bd85b78b7bc581d1927ef938d333ea3d49ca8eabc69930a7e2c"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/albedo.png": {
+      "bytes": 39000,
+      "sha256": "b1948235e5980a8ba249dd89a9059f8adbd87b6f7c01063cee1adfe09cd3a0be"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/Q_world_00.png": {
+      "bytes": 77544,
+      "sha256": "0b06c9dda61d0c75c0f676bf9106b255eefe81a4b2112886d7f2b847d402c1d1"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/diffuse.png": {
+      "bytes": 75085,
+      "sha256": "a3e0f6f0e970229b5407a13b2e701a1eaf58c7822940747ff33ecc9996e68194"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/specular.png": {
+      "bytes": 451524,
+      "sha256": "534dd8e6578c774e3ed5bfca798cd06c4d34b4ed83aa34ad438a8af9653c050a"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/Q_world_01.png": {
+      "bytes": 91993,
+      "sha256": "ddc386a433cc451534c9e3362cd9fbbed250b96b9cad71626d723e76e599523d"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/major_width.png": {
+      "bytes": 5973,
+      "sha256": "2143919131660bd85b78b7bc581d1927ef938d333ea3d49ca8eabc69930a7e2c"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/Q_world_11.png": {
+      "bytes": 100662,
+      "sha256": "9efd0d2d3d2fb1619212fe1896623047a15e51eac9a9932a866d34e7b755ad2a"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/orientation_raw.png": {
+      "bytes": 143607,
+      "sha256": "7cd5d20762bb0742dbd9536b0f09a17508ace5986460583f84b15e46968b8913"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/orientation_world_projector.png": {
+      "bytes": 320642,
+      "sha256": "3eb383268e8f09dcb42425586a96947d93a79e1bf49638c081abc6e910c03e98"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/minor_width.png": {
+      "bytes": 7386,
+      "sha256": "a8c618c23cc87987e9998fb958b930373d0521d780c48ded0f33ac4ee0a3a6e9"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/Q_world_02.png": {
+      "bytes": 93137,
+      "sha256": "5c0d400d91bacf22f825a5cb3151d67e2308d0f31177529b2ff4e882c4771174"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/Q_world_12.png": {
+      "bytes": 133874,
+      "sha256": "c3b6bfa7d51f5b2a963a30c2aed1e4387a50fec53d607c99881fc88e20dec638"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/orientation.png": {
+      "bytes": 143607,
+      "sha256": "7cd5d20762bb0742dbd9536b0f09a17508ace5986460583f84b15e46968b8913"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/step-006000/validation/camera-36/view.json": {
+      "bytes": 4010,
+      "sha256": "9efe2fa15b3d185df53a803cd155214887e04e06986ee32e4faa28ad663c40a3"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/legacy_validation/sphere_surface-val/5999-index-0.jpg": {
+      "bytes": 538494,
+      "sha256": "c8ce8ed347ba698af7eab71690a234bd99dad9e4f6e75585f66551e59b97c51e"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/renders/legacy_validation/sphere_surface-val/7999-index-0.jpg": {
+      "bytes": 533404,
+      "sha256": "9e1d7cfa7933cdadfba6c9044970f2bf6dd0e5a80c13eeff418a1826409e3877"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/surface-run.json": {
+      "bytes": 144067,
+      "sha256": "3ed10af9413901f6b059462328288ccbcc904573a582b69a4a59e9d7df142426"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/exit-code.txt": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/console.log": {
+      "bytes": 1033936,
+      "sha256": "d4219c048c62cf5f4e2bbbe5d9474b413a4bcad6562a23801923f2feab7c42d5"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/container.cid": {
+      "bytes": 64,
+      "sha256": "5e70182d2218dd50b5fdb427cfb19e9dc797b4e742a0ce5f3e4f4a8e1d1ba545"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/training.jsonl": {
+      "bytes": 65739,
+      "sha256": "f3104d2a1947ce3a286885c1af7b14e1ef7fe57ee61ef5c971e91b1907d958be"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/components.jsonl": {
+      "bytes": 66523,
+      "sha256": "845ff43ffa419e204bae5d00b9712e1f76a1d26b490b679dc2d07f09b3d2966a"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/config.effective.yaml": {
+      "bytes": 1349,
+      "sha256": "77f45f7f310500f4ad10e2eeaed77603b92da4a71ec6a33272d09a577c6b2eb4"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/config.original.yaml": {
+      "bytes": 1393,
+      "sha256": "06d7de5307054ddf775f55b40874d28cf63a75ee47a4b63f4b4b1dc6c943b4c7"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_chart_control_v1/run/cache/surface-pairs.npz": {
+      "bytes": 25118,
+      "sha256": "66cd6cd974bf8bc2b18f4cbe8f62f61a3c32a0451d6ea146d513f29517abf10b"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/checkpoints/step-006000.pth": {
+      "bytes": 28895889,
+      "sha256": "f8bfbe787eefa93631fce25b23f7d72c0464d943d7423f89b636f8c87de512c5"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/checkpoints/step-006000.json": {
+      "bytes": 648,
+      "sha256": "0f298d4a2c046b955ebd554897d7ccb782ee1851dcc9ccd1b8c2d9f14cbefd9f"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/checkpoints/model.pth": {
+      "bytes": 28895889,
+      "sha256": "a01e43ccd5204b731be86d6bfbaeaa913fe5b99129464964f9ecfd49ae454abc"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/checkpoints/model_best.pth": {
+      "bytes": 28895889,
+      "sha256": "a01e43ccd5204b731be86d6bfbaeaa913fe5b99129464964f9ecfd49ae454abc"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/checkpoints/step-008000.pth": {
+      "bytes": 28895889,
+      "sha256": "a01e43ccd5204b731be86d6bfbaeaa913fe5b99129464964f9ecfd49ae454abc"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/checkpoints/step-008000.json": {
+      "bytes": 648,
+      "sha256": "e340930da8223e5017f8be3b2bf8aa7611faa2889279b277261654482f9732e7"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/reconstructed.png": {
+      "bytes": 416341,
+      "sha256": "87dc5d57739c05a6571233d24bff3c85c84e93fbae0d455bf2f3dc448d9910db"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/metallic.png": {
+      "bytes": 44872,
+      "sha256": "a88075845d53b1bbe9ccb8d73653dbf472f5c8fb5a9cc69bdb4980a8c32b991d"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/ground_truth.png": {
+      "bytes": 274901,
+      "sha256": "9256cf080d330100e2d313d08a58114690cfd631ef32204a9a59db640228cf5f"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/Q_world_22.png": {
+      "bytes": 106018,
+      "sha256": "e8612dfdcb553afc0bfc2ff4c1aff71ddd9da51ae5310bfa1bfc5b82cb021af7"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/mask.png": {
+      "bytes": 4951,
+      "sha256": "0078c20ed9168b663b456e5f2e025de4e8028c1389948a0027bbcd872eaeba27"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/my.png": {
+      "bytes": 6320,
+      "sha256": "1cb7bc0b34225e0ce266277f9dc8842228eb0cb38362dbcfdc3262bab97d46b9"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/materials.npz": {
+      "bytes": 84713424,
+      "sha256": "1417afb1b474c5b601843e6f456ad19622e0b654e53669d358afda35042ce8e3"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/normal.png": {
+      "bytes": 240271,
+      "sha256": "adac11eea976ddb8ccdb589edff9bb67515971ca34c0b6b7ab5f01cd24057b4f"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/mx.png": {
+      "bytes": 5709,
+      "sha256": "03fdbad18e008729a13c7cfd3a276fae3fe7d6da287fda054497338c9ec3edb8"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/albedo.png": {
+      "bytes": 25345,
+      "sha256": "c9f4c8fdc3ad54a02fb1b765918475547c9fba93a58480cb232f7d40a524b4bb"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/Q_world_00.png": {
+      "bytes": 77681,
+      "sha256": "7342a8ab0a46f945d9ed88990fa4303ec54b33e56953fa6c88b39e89a3dbcf7a"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/diffuse.png": {
+      "bytes": 72348,
+      "sha256": "8f3d4396d65185b0ca1cf1535e0b9ca11d5564de9be1bfd1f3e2eeedfd8d82ab"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/specular.png": {
+      "bytes": 438844,
+      "sha256": "75bee8c4d7d7403d03883319d60b22d79d740f1c6139afd8b3fd538f454b5fed"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/Q_world_01.png": {
+      "bytes": 92015,
+      "sha256": "ce4d276d342255d31a969f9bdf7f50c63b540ba9110b0426735d8de191b63592"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/major_width.png": {
+      "bytes": 5709,
+      "sha256": "03fdbad18e008729a13c7cfd3a276fae3fe7d6da287fda054497338c9ec3edb8"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/Q_world_11.png": {
+      "bytes": 101440,
+      "sha256": "a4bc2a42173f7c1dba5b3e335b46c0cefcbfc268556415868600c6c7e50eee93"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/orientation_raw.png": {
+      "bytes": 144244,
+      "sha256": "5fb867623c3cd7cf70779064f5bf33a87a770574a99404fa0ba728b82c3fbfc2"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/orientation_world_projector.png": {
+      "bytes": 320262,
+      "sha256": "d43edbdfe1b95d18612b3cd35e103a9cfa7991fa1d669c0a83abae6159e85f89"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/minor_width.png": {
+      "bytes": 6320,
+      "sha256": "1cb7bc0b34225e0ce266277f9dc8842228eb0cb38362dbcfdc3262bab97d46b9"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/Q_world_02.png": {
+      "bytes": 92588,
+      "sha256": "447c9a80551264df3e1932fb5d9d99404124b99e822f62526c5b1fcba3792477"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/Q_world_12.png": {
+      "bytes": 133992,
+      "sha256": "1db1adebc558a3ec5e61240e0e49aa15074b26e2f0a8a9a595bfdc30e87066f8"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/orientation.png": {
+      "bytes": 144244,
+      "sha256": "5fb867623c3cd7cf70779064f5bf33a87a770574a99404fa0ba728b82c3fbfc2"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-008000/validation/camera-36/view.json": {
+      "bytes": 4010,
+      "sha256": "4c61893ba7f7865db05bd659a1857b354af9818bb36efc28be7d49dcdb4c55fe"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/reconstructed.png": {
+      "bytes": 423642,
+      "sha256": "2359fc155a13c0ddcf7dc0830dfc40ff482ffc679c7735763a1410d039c3c86b"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/metallic.png": {
+      "bytes": 42781,
+      "sha256": "f80a73700c155a0c8b20c7c7a16b7d66f3971630a67e689e07cfae80fd490c51"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/ground_truth.png": {
+      "bytes": 274901,
+      "sha256": "9256cf080d330100e2d313d08a58114690cfd631ef32204a9a59db640228cf5f"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/Q_world_22.png": {
+      "bytes": 105116,
+      "sha256": "03505636b2a1e3c577cc4ab37da608c1a512d887330e1e560871e2145fe2f076"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/mask.png": {
+      "bytes": 4951,
+      "sha256": "0078c20ed9168b663b456e5f2e025de4e8028c1389948a0027bbcd872eaeba27"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/my.png": {
+      "bytes": 8013,
+      "sha256": "fcf22da58b0e87d3abc604a598fa811727be75203e233475a4974096c6001a50"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/materials.npz": {
+      "bytes": 85180509,
+      "sha256": "7695055af4aa2ae8ef50f319997d2de7771831e2aabfd721e64f61436264275e"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/normal.png": {
+      "bytes": 240271,
+      "sha256": "adac11eea976ddb8ccdb589edff9bb67515971ca34c0b6b7ab5f01cd24057b4f"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/mx.png": {
+      "bytes": 5901,
+      "sha256": "6526b7e321a8deb4c67f651f455bcf41de5c1495f1999bc5b8449d2bfb0ad549"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/albedo.png": {
+      "bytes": 37181,
+      "sha256": "99d302ccbd1b4fe0b4fb68af537f81fda5d7e1ae9f69dc9e23b7ade9f573f4d7"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/Q_world_00.png": {
+      "bytes": 77027,
+      "sha256": "ab283bebae3007323fd0b2c365649fa7938cd29bb77c59d73361a3ed9538236e"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/diffuse.png": {
+      "bytes": 73936,
+      "sha256": "3662727a1246771c501f51771219099468593413088a9775b0dc914c6fb57f72"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/specular.png": {
+      "bytes": 450246,
+      "sha256": "ec72f09aad2bc0615c04f09602215e94814d950242005d558fbc0c387073b98a"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/Q_world_01.png": {
+      "bytes": 90970,
+      "sha256": "68a048dfe95a81717c07a303cab6a78df6543904e5d7515274ee769e09c474d9"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/major_width.png": {
+      "bytes": 5901,
+      "sha256": "6526b7e321a8deb4c67f651f455bcf41de5c1495f1999bc5b8449d2bfb0ad549"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/Q_world_11.png": {
+      "bytes": 100373,
+      "sha256": "f37117579543f1abacf4081759bad764a94c884f22945c0d33a92c8b791c8256"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/orientation_raw.png": {
+      "bytes": 140225,
+      "sha256": "024fb388100e9036731298f1467cf1f88e97931c433601ea0df2b647bb7cc2d7"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/orientation_world_projector.png": {
+      "bytes": 318607,
+      "sha256": "159611a7103d173022d2a363d8c5371c4edebe5b275f1a4932ebb7d90e05aca4"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/minor_width.png": {
+      "bytes": 8013,
+      "sha256": "fcf22da58b0e87d3abc604a598fa811727be75203e233475a4974096c6001a50"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/Q_world_02.png": {
+      "bytes": 91512,
+      "sha256": "a10b4f7282fa0db26e9bd70096349fe3608eca70bf131c1303dad1edcc1fe6c3"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/Q_world_12.png": {
+      "bytes": 133661,
+      "sha256": "983ecc4145f0b9450656cf16430d4638e737e21cc8725ebc641af21ba4f8813d"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/orientation.png": {
+      "bytes": 140225,
+      "sha256": "024fb388100e9036731298f1467cf1f88e97931c433601ea0df2b647bb7cc2d7"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/step-006000/validation/camera-36/view.json": {
+      "bytes": 4010,
+      "sha256": "62a020c378122449c70eef1b2d05e111c949d2c8838bbb8cdda1c4fe2f32fd74"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/legacy_validation/sphere_surface-val/5999-index-0.jpg": {
+      "bytes": 537493,
+      "sha256": "108d6f83dbfd02f4e58c343b7848bc56c64d84dd8884ac973180488423a07600"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/renders/legacy_validation/sphere_surface-val/7999-index-0.jpg": {
+      "bytes": 533337,
+      "sha256": "b5619ff239d830fbe1601761c24f3b6122246ab74a8773a0f0162f39902ddd52"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/surface-run.json": {
+      "bytes": 144102,
+      "sha256": "5a4eafe2658ae0e65547dd0585ed37f38f52df27392213d57b2baf145cb918f6"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/exit-code.txt": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/console.log": {
+      "bytes": 1036322,
+      "sha256": "c0094549caea9c1f64bcb716598105b718d14e9bf50f39c3823eb2c4141785d4"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/container.cid": {
+      "bytes": 64,
+      "sha256": "d61373a53d5115536853e5ff35cf8e6ce29b1ac583dcaedc0e1b46a0410c73c1"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/training.jsonl": {
+      "bytes": 65459,
+      "sha256": "cb4f15e96eea496dac71f13dad1df5607330e5a1281eb4844381167fb66ff2c7"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/components.jsonl": {
+      "bytes": 66398,
+      "sha256": "58a1667c26693d6e03bed61febe567f35dd93aa5c656f0848817601b1e350026"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/config.effective.yaml": {
+      "bytes": 1349,
+      "sha256": "77f45f7f310500f4ad10e2eeaed77603b92da4a71ec6a33272d09a577c6b2eb4"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/config.original.yaml": {
+      "bytes": 1393,
+      "sha256": "06d7de5307054ddf775f55b40874d28cf63a75ee47a4b63f4b4b1dc6c943b4c7"
+    },
+    "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6/surface_world_q_v1/run/cache/surface-pairs.npz": {
+      "bytes": 25118,
+      "sha256": "66cd6cd974bf8bc2b18f4cbe8f62f61a3c32a0451d6ea146d513f29517abf10b"
+    }
+  },
+  "limitations": [
+    "One seed, one saved validation camera, no independent material ground truth or NVS in this bounded study.",
+    "Common RNG/sampler reset; not an exact historical continuation. Chart control also changes legacy neighborhood selection.",
+    "Screen-neighbor Q statistic excludes invalid/distant/normal-discontinuous neighbors; not a whole-mesh accuracy metric.",
+    "192 of512 selected training-camera pairs are visible; a single image gate cannot cover all material boundaries.",
+    "Pair descriptor hashes name pre-conversion float64 arrays; saved pair NPZ holds float32. Cache lacks original terminal file hash; current hash and cross-arm equality verified separately.",
+    "Native ownership/runtime cleanup flags and zero process exits are verified; daemon-level container removal is not independently inspected here (no cleanup.log produced under --rm).",
+    "Prior seven unresolved reflectance quadrature checks remain unresolved; this analysis performs no new integration.",
+    "Three gradient probes cannot establish global loss causality, and400 component records do not observe every minibatch."
+  ],
+  "new_GPU_calls": 0,
+  "new_renderer_calls": 0,
+  "new_checkpoint_deserialization": false
+}

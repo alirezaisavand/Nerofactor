@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "exit_code": 0,
+  "counts": {
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 3
+  },
+  "python": "3.9.12 (main, Apr  5 2022, 06:56:58) \n[GCC 7.5.0]",
+  "scientific_import_blocker": "import importlib.abc,sys\nclass Block(importlib.abc.MetaPathFinder):\n def find_spec(self,fullname,path=None,target=None):\n  if fullname.split('.')[0] in ('torch','network','train','dataset','_raytracing','nvdiffrast','scientific_variants','scientific_sources'):\n   raise ImportError('No native/scientific model imports in offline analysis fixtures: '+fullname)\nsys.meta_path.insert(0,Block())\nimport pytest\nraise SystemExit(pytest.main(sys.argv[1:]))\n",
+  "test_selectors": [
+    "tests/infrastructure/test_sphere_surface_analysis.py"
+  ],
+  "evidence": {
+    "offline-tests.junit.xml": {
+      "bytes": 806,
+      "sha256": "416356385068b3fabf61e66d284a20c15f4f7cdd5b5f0921caa4080c43754c19"
+    },
+    "offline-tests-output.txt": {
+      "bytes": 241,
+      "sha256": "a0960c47bdfa327173968eb4281a1f55e987a0f93216da05cc4e00cc35435dcb"
+    }
+  },
+  "new_GPU_calls": 0,
+  "new_renderer_calls": 0,
+  "checkpoint_deserialization": false
+}

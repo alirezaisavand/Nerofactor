@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "numerical_results_status": "verified_from_saved_artifacts",
+  "execution_commit": "c1a06d4e685628974f8fcbd1f9791f8c6b6f8ab1",
+  "external_analysis_directory": "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6-analysis-v1",
+  "copied_artifacts": [
+    {
+      "original_path": "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6-analysis-v1/results.json",
+      "original_sha256": "4c138ebd3104bd2b896377d36e212ede1585f3d5079718e148944a8faecae8c5",
+      "bytes": 108778,
+      "tracked_path": "docs/results/sphere_surface_comparison_v2/results.json"
+    },
+    {
+      "original_path": "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6-analysis-v1/endpoints.csv",
+      "original_sha256": "f741d5a2abf455eb7d1741fc5065f2ca71816124b169e1fae010ccd8eb4c6874",
+      "bytes": 1631,
+      "tracked_path": "docs/results/sphere_surface_comparison_v2/endpoints.csv"
+    },
+    {
+      "original_path": "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6-analysis-v1/gradients.csv",
+      "original_sha256": "4f99cad20e73d9539a4868850d2f40b767b0c524d4b16c109a3fa8990676fac9",
+      "bytes": 6039,
+      "tracked_path": "docs/results/sphere_surface_comparison_v2/gradients.csv"
+    },
+    {
+      "original_path": "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6-analysis-v1/figures-layout-v2/material-comparison.png",
+      "original_sha256": "d61432e630bdfc6839e8b4178cdd266ef0673fe7969416dafdde21d7bfd217b6",
+      "bytes": 620845,
+      "tracked_path": "docs/results/sphere_surface_comparison_v2/material-comparison.png"
+    },
+    {
+      "original_path": "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6-analysis-v1/figures-layout-v2/progression.png",
+      "original_sha256": "353b3e898c759b16141725b5846e2b649d45d3eb5b27ff8757139da62ecae2fe",
+      "bytes": 224618,
+      "tracked_path": "docs/results/sphere_surface_comparison_v2/progression.png"
+    },
+    {
+      "original_path": "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6-analysis-v1/figures-layout-v2/RGB-component-comparison.png",
+      "original_sha256": "be24a7c64ce174a61906b80d1f90fdcc947873584fee90b06b6aad60f4dccca8",
+      "bytes": 702700,
+      "tracked_path": "docs/results/sphere_surface_comparison_v2/RGB-component-comparison.png"
+    },
+    {
+      "original_path": "/home/isavand/paper/evidence/sphere-surface-v2-712adf6d038d49cc87807855ec360fd6-analysis-v1/figures-layout-v2/loss-gradient-diagnostics.png",
+      "original_sha256": "97d47003c16668a4017d563a51c957ccc34718d6bc21030f8f3272f4e1243cb9",
+      "bytes": 193922,
+      "tracked_path": "docs/results/sphere_surface_comparison_v2/loss-gradient-diagnostics.png"
+    }
+  ],
+  "presentation_note": "Layout-v2 figures use a taller canvas to prevent clipped titles. Original figure versions and all numerical results remain unchanged.",
+  "analysis_sources": {
+    "experiments/analyze_sphere_surface_comparison.py": "8f218bf0aedc08c227b2fda6283ac9f76e48ffe7403760d2cd76ac6a335a4de6",
+    "experiments/visualize_sphere_surface_components.py": "155da6299193a9a86e46b0f4ed898114f325b891699638b84369b5504fbb2aa0",
+    "experiments/analyze_sphere_regularization.py": "146866c8fd9d559ec65065d772c4c08b6bdd19829d24b762b6459d2d6017b477"
+  },
+  "native_reports_copied": false,
+  "large_archives_copied": false
+}

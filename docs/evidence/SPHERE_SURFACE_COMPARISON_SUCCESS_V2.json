@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "status": "final_offline_integrity_verified",
+  "source_execution_commit": "c1a06d4e685628974f8fcbd1f9791f8c6b6f8ab1",
+  "freeze_sha256": "5b1660f4c7fed73676e08646dd41e3ec95460214384660092160a240acb3627e",
+  "authorization_sha256": "ffabebc8541b71904b5a72fb1f5dd469d02a64d822b4f2b953fa854d876a036f",
+  "external_artifacts_verified": 131,
+  "copied_artifacts_verified": 7,
+  "prior_failed_files_preserved": 7,
+  "owned_output_bytes": {
+    "surface_chart_control_v1": 294171608,
+    "surface_world_q_v1": 294584843
+  },
+  "frozen_scientific_sources": {
+    "geometry": {
+      "commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+      "files": 99
+    },
+    "material": {
+      "commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "files": 106
+    }
+  },
+  "python38_AST": true,
+  "new_GPU_calls": 0,
+  "new_checkpoint_deserialization": false,
+  "analysis_exit_code": 0,
+  "offline_test_exit_code": 0
+}
