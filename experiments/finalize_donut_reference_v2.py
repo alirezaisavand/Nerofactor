@@ -134,7 +134,7 @@ def finalize(batch,prior,destination):
     destination.mkdir(parents=True)
     json_new(destination/'verification.json',result)
     with (destination/'view-metrics.csv').open('x',newline='') as stream:
-        writer=csv.DictWriter(stream,fieldnames=list(rows[0]));writer.writeheader();writer.writerows(rows)
+        writer=csv.DictWriter(stream,fieldnames=list(rows[0]),lineterminator='\n');writer.writeheader();writer.writerows(rows)
     shutil.copyfile(package/'reference-RGB-diffuse-specular.png',destination/'reference-RGB-diffuse-specular.png')
     figure(package,prior,destination,rows)
     json_new(destination/'artifact-manifest.json',dict(schema_version=1,external_artifacts=artifacts,batch_root=str(batch),
