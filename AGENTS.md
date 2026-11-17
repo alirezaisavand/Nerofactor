@@ -1,5 +1,14 @@
 # Research and development rules
 
+## Sphere surface launcher correction
+
+The first surface-comparison launch performed metadata-only validation because
+its shell command omitted --execute. Preserve that failed batch, authorization,
+v1 freeze and zero-update evidence. The v2 launcher must explicitly execute and
+require each arm's complete matching work/cleanup report before proceeding.
+This is an execution-plumbing correction only; science and budgets are unchanged.
+No automatic retry: obtain fresh exact-source/v2-freeze/output approval.
+
 ## Sphere regularization audit and bounded candidate
 
 Current scope: file-only sphere evidence analysis, uploaded PBR-NeRF/official-loss

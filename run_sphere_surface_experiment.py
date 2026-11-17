@@ -44,6 +44,19 @@ def authorize(path,sha,f,freeze_sha,commit):
     return a
 
 
+def completed_arm(path,arm,freeze_sha,commit):
+    """Exit zero alone is insufficient: require the actual bounded native receipt."""
+    require(path.is_file() and path.resolve()==path,'Missing or redirected completed arm report: '+str(path))
+    value=json.loads(path.read_text())
+    require(value.get('status')=='complete' and value.get('protocol')==PROTOCOL and
+            value.get('arm')==arm and value.get('commit')==commit and
+            value.get('freeze_sha256')==freeze_sha and value.get('optimizer_returns')==8000 and
+            value.get('new_optimizer_returns')==4000 and value.get('cleanup_verified') is True and
+            value.get('owned_cleanup_verified') is True,
+            'Arm did not complete its authorized native work and cleanup')
+    return value
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     for name in ('datasets','thesis','output','freeze'):
@@ -71,12 +84,7 @@ def main():
     control=None
     if args.arm==ARMS[1]:
         require(args.control==Path('/inputs/control.json'),'Explicit completed control packet required')
-        control=json.loads(args.control.read_text())
-        require(control['status']=='complete' and control['protocol']==PROTOCOL and control['arm']==ARMS[0] and
-                control['optimizer_returns']==8000 and control['new_optimizer_returns']==4000 and control['cleanup_verified'] is True and
-                control['owned_cleanup_verified'] is True and
-                control['commit']==args.commit and control['freeze_sha256']==args.freeze_sha256,
-                'Control not complete or from foreign source')
+        control=completed_arm(args.control,ARMS[0],args.freeze_sha256,args.commit)
     else:require(args.control is None,'First arm cannot use a control packet')
     from infrastructure.paths import PathResolver
     from infrastructure.runs import RunStore

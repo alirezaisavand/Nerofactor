@@ -7,7 +7,7 @@ fi
 SURFACE_IMAGE=sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331
 SURFACE_COMMIT=$(git -C "$SURFACE_SOURCE" rev-parse HEAD)
 test -z "$(git -C "$SURFACE_SOURCE" status --porcelain)"
-SURFACE_FREEZE=$(sha256sum "$SURFACE_SOURCE/docs/protocols/SPHERE_SURFACE_COMPARISON_V1.freeze.json" | cut -d' ' -f1)
+SURFACE_FREEZE=$(sha256sum "$SURFACE_SOURCE/docs/protocols/SPHERE_SURFACE_COMPARISON_V2.freeze.json" | cut -d' ' -f1)
 SURFACE_AUTH_SHA=$(sha256sum "$SURFACE_AUTH" | cut -d' ' -f1)
 python3 -B - "$SURFACE_SOURCE" "$SURFACE_BATCH" "$SURFACE_AUTH" "$SURFACE_AUTH_SHA" "$SURFACE_FREEZE" "$SURFACE_COMMIT" "$SURFACE_GPU" <<'PY'
 import sys
@@ -15,14 +15,14 @@ from pathlib import Path
 sys.path.insert(0,sys.argv[1])
 from run_sphere_surface_experiment import preflight,authorize
 from infrastructure.signatures import require
-f=preflight(Path(sys.argv[1])/'docs/protocols/SPHERE_SURFACE_COMPARISON_V1.freeze.json',sys.argv[5])
+f=preflight(Path(sys.argv[1])/'docs/protocols/SPHERE_SURFACE_COMPARISON_V2.freeze.json',sys.argv[5])
 authorize(Path(sys.argv[3]),sys.argv[4],f,sys.argv[5],sys.argv[6])
 out=Path(sys.argv[2]);require(str(out)==f['host_output_directory'] and out.is_absolute() and out.resolve()==out and not out.exists() and sys.argv[7]=='0','Fresh exact batch/GPU required')
 from infrastructure.stage_sources import digest
 c=Path(f['initial_checkpoint']['host_path']);require(c.is_absolute() and c.resolve()==c and digest(c)==f['initial_checkpoint']['sha256'],'Selected initial checkpoint changed')
 PY
 test "$(docker image inspect --format '{{.Id}}' "$SURFACE_IMAGE")" = "$SURFACE_IMAGE"
-SURFACE_PRIOR_CID=$(python3 -B - "$SURFACE_SOURCE/docs/protocols/SPHERE_SURFACE_COMPARISON_V1.freeze.json" <<'PY'
+SURFACE_PRIOR_CID=$(python3 -B - "$SURFACE_SOURCE/docs/protocols/SPHERE_SURFACE_COMPARISON_V2.freeze.json" <<'PY'
 import json,re,sys
 value=json.load(open(sys.argv[1]))['previous_container_id']
 assert re.fullmatch('[a-f0-9]{64}',value)
@@ -36,14 +36,14 @@ while IFS= read -r SURFACE_CID; do
   exit 1
  fi
 done <<< "$SURFACE_RUNNING"
-SURFACE_INITIAL_CHECKPOINT=$(python3 -B - "$SURFACE_SOURCE/docs/protocols/SPHERE_SURFACE_COMPARISON_V1.freeze.json" <<'PY'
+SURFACE_INITIAL_CHECKPOINT=$(python3 -B - "$SURFACE_SOURCE/docs/protocols/SPHERE_SURFACE_COMPARISON_V2.freeze.json" <<'PY'
 import json,sys
 print(json.load(open(sys.argv[1]))['initial_checkpoint']['host_path'])
 PY
 )
 mkdir "$SURFACE_BATCH"
 cp -- "$SURFACE_AUTH" "$SURFACE_BATCH/authorization.json"
-cp -- "$SURFACE_SOURCE/docs/protocols/SPHERE_SURFACE_COMPARISON_V1.freeze.json" "$SURFACE_BATCH/freeze.json"
+cp -- "$SURFACE_SOURCE/docs/protocols/SPHERE_SURFACE_COMPARISON_V2.freeze.json" "$SURFACE_BATCH/freeze.json"
 SURFACE_CURRENT=
 cleanup_owned() {
  test -n "$SURFACE_CURRENT" && test -s "$SURFACE_CURRENT/container.cid" || return 0
@@ -82,8 +82,8 @@ for SURFACE_ARM in surface_chart_control_v1 surface_world_q_v1; do
  --workdir /workspace --entrypoint /usr/bin/timeout "$SURFACE_IMAGE" \
  --signal=TERM --kill-after=20s 1680s /usr/bin/python3 -I -B /workspace/run_sphere_surface_experiment.py \
  --datasets /inputs/datasets/nerf_synthetic --thesis /inputs/thesis --output /outputs/run --checkpoint /inputs/initial.pth \
- --arm "$SURFACE_ARM" "${SURFACE_CONTROL_ARGS[@]}" \
- --freeze /workspace/docs/protocols/SPHERE_SURFACE_COMPARISON_V1.freeze.json --freeze-sha256 "$SURFACE_FREEZE" \
+ --arm "$SURFACE_ARM" "${SURFACE_CONTROL_ARGS[@]}" --execute \
+ --freeze /workspace/docs/protocols/SPHERE_SURFACE_COMPARISON_V2.freeze.json --freeze-sha256 "$SURFACE_FREEZE" \
  --commit "$SURFACE_COMMIT" --authorization /authorization.json --authorization-sha256 "$SURFACE_AUTH_SHA" \
  > "$SURFACE_CURRENT/console.log" 2>&1
  SURFACE_EXIT=$?
@@ -92,4 +92,11 @@ for SURFACE_ARM in surface_chart_control_v1 surface_world_q_v1; do
  cleanup_owned
  tail -n 30 "$SURFACE_CURRENT/console.log"
  test "$SURFACE_EXIT" = 0 || exit "$SURFACE_EXIT"
+ python3 -B - "$SURFACE_SOURCE" "$SURFACE_CURRENT/run/surface-run.json" "$SURFACE_ARM" "$SURFACE_FREEZE" "$SURFACE_COMMIT" <<'PY'
+import sys
+from pathlib import Path
+sys.path.insert(0,sys.argv[1])
+from run_sphere_surface_experiment import completed_arm
+completed_arm(Path(sys.argv[2]),sys.argv[3],sys.argv[4],sys.argv[5])
+PY
 done

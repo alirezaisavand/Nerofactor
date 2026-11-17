@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "status": "focused_launcher_regression_tests_pass",
+  "exit_code": 0,
+  "counts": {
+    "tests": 5,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 5
+  },
+  "python": "3.9.12 (main, Apr  5 2022, 06:56:58) \n[GCC 7.5.0]",
+  "scientific_import_blocker": "import importlib.abc,sys\nclass Block(importlib.abc.MetaPathFinder):\n def find_spec(self,fullname,path=None,target=None):\n  if fullname.split('.')[0] in ('network','train','dataset','_raytracing','nvdiffrast','scientific_variants','scientific_sources'):\n   raise ImportError('Native scientific imports forbidden in launcher fixtures: '+fullname)\nsys.meta_path.insert(0,Block())\nimport pytest\nraise SystemExit(pytest.main(sys.argv[1:]))\n",
+  "test_selectors": [
+    "tests/infrastructure/test_sphere_surface_launcher.py",
+    "tests/infrastructure/test_surface_q_regularization.py::test_execution_entry_is_cold_and_requires_explicit_authorization"
+  ],
+  "inventory": [
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_sphere_surface_launcher::test_completed_receipt_requires_real_work_identity_and_cleanup",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_sphere_surface_launcher::test_actual_shell_explicit_execute_and_stop_before_missing_control_mount[complete]",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_sphere_surface_launcher::test_actual_shell_explicit_execute_and_stop_before_missing_control_mount[metadata_only]",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_sphere_surface_launcher::test_actual_shell_explicit_execute_and_stop_before_missing_control_mount[missing]",
+    "paper.Nerofactor-sphere-regularization.tests.infrastructure.test_surface_q_regularization::test_execution_entry_is_cold_and_requires_explicit_authorization"
+  ],
+  "evidence": {
+    "tests.junit.xml": {
+      "bytes": 1266,
+      "sha256": "acfd396a7458f6b904e102e45fb7a74580aaf8d5dd1c7789d9333806f1354a81"
+    },
+    "tests-output.txt": {
+      "bytes": 229,
+      "sha256": "17e9fe8c3fbcdb14e52f54e330c887e0521bc8306723b6e9a2b9a8110dd93f85"
+    }
+  },
+  "bash_n_exit": 0,
+  "python38_AST": true,
+  "frozen_scientific_sources": {
+    "geometry": {
+      "commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+      "files": 99
+    },
+    "material": {
+      "commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "files": 106
+    }
+  },
+  "unchanged_scientific_adapter_hashes": {
+    "infrastructure/surface_q_regularization.py": "db8c2b3e6cb5e85fcec74944e01d719dea19b539a84973ac0e7911505dcef50c",
+    "infrastructure/sphere_surface_experiment.py": "f236ba224ba0d28e23459e5d99c0ae5dadb8d541a36e95a6c3f36db2f959e558",
+    "infrastructure/sphere_visuals.py": "56e28641ece240ddcae1de42ffaaabb2ea39ef0105044716bcbeca11b7a438e0",
+    "infrastructure/sphere_replay.py": "a8149046bb6dec1e15f5e9ee7a31fa2fcf7351c8a5191a2838631becc9f3190e",
+    "scientific_variants/material_a_v1.py": "52603dc041920f7220748c9114f8293ad2499f778ffd688ef639bbe4e8759875",
+    "infrastructure/material_variants.py": "7d3432e5d50bbb9830117153fddc921ecc4016bb23dbb8c750522cd287bedddb",
+    "configs/material/nerf/sphere.yaml": "06d7de5307054ddf775f55b40874d28cf63a75ee47a4b63f4b4b1dc6c943b4c7"
+  },
+  "real_Docker_invocations": 0,
+  "native_model_construction": false,
+  "real_checkpoint_deserialization": false,
+  "scientific_optimizer_updates": 0
+}

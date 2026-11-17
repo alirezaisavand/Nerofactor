@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "status": "failed_launch_before_scientific_execution",
+  "source_commit": "7937a1f10d8186af1514da2e2c83d20a426e3695",
+  "batch": "/home/isavand/paper/evidence/sphere-surface-adb195af0a874453a73cb42ae697a9ae",
+  "files": {
+    "authorization.json": {
+      "bytes": 1939,
+      "sha256": "6326bcf82b1c49b7de00cc024b602c91948e56b60e3fb44830ea0c49bf9b53f2"
+    },
+    "freeze.json": {
+      "bytes": 13517,
+      "sha256": "a44c0287c0a7030a20ec0472b2f2958504795dfdf378f733c1c483f110c3c556"
+    },
+    "surface_chart_control_v1/console.log": {
+      "bytes": 94,
+      "sha256": "ed9220f3f1a31e157b602d9983804a2f98f6ac2df12921417b6077451228acd5"
+    },
+    "surface_chart_control_v1/container.cid": {
+      "bytes": 64,
+      "sha256": "dea0bb1303e25647725c30d8719e3abaebd9379e4023af5e35adb02f33bac018"
+    },
+    "surface_chart_control_v1/exit-code.txt": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "surface_world_q_v1/console.log": {
+      "bytes": 276,
+      "sha256": "873b5f92ed3eb968aae46153f88357cd0df19003eae640cb3b358a74dfc805af"
+    },
+    "surface_world_q_v1/exit-code.txt": {
+      "bytes": 4,
+      "sha256": "a5e45837a2959db847f7e67a915d0ecaddd47f943af2af5fa6453be497faabca"
+    }
+  },
+  "originals_modified": false,
+  "first_arm": {
+    "exit_code": 0,
+    "status": "metadata_only",
+    "model_constructed": false,
+    "new_optimizer_returns": 0,
+    "basis": "Saved metadata_only console receipt and reviewed entry-point early return before native setup."
+  },
+  "second_arm": {
+    "exit_code": 125,
+    "status": "container_start_rejected_missing_bind_source",
+    "model_constructed": false,
+    "new_optimizer_returns": 0,
+    "basis": "Docker daemon mount rejection; no control run report exists."
+  },
+  "cause": "Shell omitted --execute, and zero exit was accepted without a completed native-work report.",
+  "scientific_success": false,
+  "cleanup_scope": "Original run configured --rm; actual daemon container state not independently inspected during this correction task."
+}
