@@ -1,0 +1,121 @@
+{
+  "analysis_script": {
+    "bytes": 25392,
+    "path": "/home/isavand/paper/Nerofactor-donut-recovery/experiments/analyze_donut_recovery_v2.py",
+    "sha256": "124ebdd2c56a0700d029ba1821e9aabda4d4fd6bda4b892bb171e3b43557957b"
+  },
+  "artifacts": {
+    "README.md": {
+      "bytes": 1645,
+      "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/results/donut_kurt_recovery_v2/README.md",
+      "sha256": "c18e74869b8227d460c00a41e2e945804291a62e50acb0b2a8df67595f0fc383"
+    },
+    "RGB-comparison.png": {
+      "bytes": 392607,
+      "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/results/donut_kurt_recovery_v2/RGB-comparison.png",
+      "sha256": "5c75b56bea5b9d06b34fc06f9227b78b2d0e30c6489f8f8fd463e5b6c833ffdc"
+    },
+    "analysis.json": {
+      "bytes": 134655,
+      "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/results/donut_kurt_recovery_v2/analysis.json",
+      "sha256": "c3dbc03dfa4d10e876d6edfdf03922d501ccd8c719db5a086c4eda57d7cfec00"
+    },
+    "artifact-manifest.json": {
+      "bytes": 9418,
+      "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/results/donut_kurt_recovery_v2/artifact-manifest.json",
+      "sha256": "f9d43aedc75188c67ac5d20c4adb2b722838ad97b9c00b422f45a4d098168309"
+    },
+    "components-and-illumination.png": {
+      "bytes": 161060,
+      "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/results/donut_kurt_recovery_v2/components-and-illumination.png",
+      "sha256": "6f3262b7296da0af4efd255260a056c305abfeb01622f61e4e36e8183be2333f"
+    },
+    "endpoint-metrics.csv": {
+      "bytes": 26351,
+      "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/results/donut_kurt_recovery_v2/endpoint-metrics.csv",
+      "sha256": "0ed76bbccd4ef278c71b049efebc25c0f12ca068c3c5d6d5a55343e1ca1a37b6"
+    },
+    "losses-and-gradients.png": {
+      "bytes": 247834,
+      "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/results/donut_kurt_recovery_v2/losses-and-gradients.png",
+      "sha256": "f606ec6099abc5f20347767e3fde09bd802e6bd7946eda42e31b0bc7e5af60dd"
+    },
+    "material-comparison-camera0.png": {
+      "bytes": 118137,
+      "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/results/donut_kurt_recovery_v2/material-comparison-camera0.png",
+      "sha256": "b8cb91b7e16d8aa413a5fb7bd8943093e0f50f870fe8e417051f64b1dde3bc66"
+    },
+    "progression-camera0.png": {
+      "bytes": 308952,
+      "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/results/donut_kurt_recovery_v2/progression-camera0.png",
+      "sha256": "3d9edc066efb42d94b21b2e9ce63c3b30bcdb86d3bc99dccd1941d9a072ab1ab"
+    },
+    "recovery-curves.png": {
+      "bytes": 194348,
+      "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/results/donut_kurt_recovery_v2/recovery-curves.png",
+      "sha256": "9f2354b8c935114052fb027ecedb706888ed3ecc163a921ace14e497d256f97f"
+    }
+  },
+  "checkpoint_deserializations": 0,
+  "checks": {
+    "frozen_source_records": 288,
+    "independently_replayed_camera_endpoints": 72,
+    "matched_initial_material_maps": true,
+    "matched_initial_state": true,
+    "preserved_failed_batch_files": 154,
+    "reference_artifacts": 31,
+    "verified_arm_output_records": 1780
+  },
+  "model_calls": 0,
+  "optimizer_returns": 0,
+  "previous_focused_tests": "15 passed, zero failures/errors/skips; preserved in docs/evidence/donut_training_preview_v2; not rerun during this finalization",
+  "renderer_calls": 0,
+  "results_report": {
+    "bytes": 10674,
+    "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/DONUT_KURT_RECOVERY_V2_RESULTS.md",
+    "sha256": "016bc96792ac0e19f147c0529687de25184eb72ca7bf3c63604aff77052a030e"
+  },
+  "roundoff_note": "Native NumPy1.24.4 versus offline1.21.5:44 scalar differences, maximum2.384185791015625e-7 /5float32ULPs; all recorded, no scientific acceptance threshold or count changed.",
+  "schema_version": 1,
+  "scope": "Offline evidence and reporting only",
+  "status": "pass",
+  "validation": {
+    "CSV_matches_JSON": true,
+    "CSV_rows": 36,
+    "frozen_sources_rechecked": 288,
+    "native_reference_gates_replayed_from_saved_draws": {
+      "D1": {
+        "RMS_single_draw_std": 0.003206410365737423,
+        "component_failures": 0,
+        "empirical_SE_L2": 0.004809615548606133,
+        "empirical_SE_limit": 0.019279835780757364,
+        "maximum_empirical_SE": 0.0029115910414312103,
+        "maximum_mean_absolute": 0.003562693208089718,
+        "maximum_unexplained_absolute": 0.00035612670352670294,
+        "passed": true,
+        "pooled_difference": 0.004830310699521192,
+        "pooled_limit": 0.039954544377002715,
+        "pooled_relative_L2": 0.008949532361621493,
+        "precision_adequate": true
+      },
+      "D2": {
+        "RMS_single_draw_std": 0.003206410365737423,
+        "component_failures": 0,
+        "empirical_SE_L2": 0.004809615548606133,
+        "empirical_SE_limit": 0.019279835780757364,
+        "maximum_empirical_SE": 0.0029115910414312103,
+        "maximum_mean_absolute": 0.003562693208089718,
+        "maximum_unexplained_absolute": 0.00035612670352670294,
+        "passed": true,
+        "pooled_difference": 0.004830310699521192,
+        "pooled_limit": 0.039954544377002715,
+        "pooled_relative_L2": 0.008949532361621493,
+        "precision_adequate": true
+      }
+    },
+    "physical_errors_rechecked_against_raw_archives": true,
+    "predicted_values_and_absolute_errors_have_distinct_columns": true,
+    "scientific_import_blocker": "active",
+    "source_compile": "pass"
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "batch": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63",
+  "batch_bytes": 369080774,
+  "full_output_hashes": "Each immutable recovery.json binds890 independently verified output identities; checkpoints are never deserialized here.",
+  "records": {
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D1-console.txt": {
+      "bytes": 0,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D1-console.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D1-exit-code.txt": {
+      "bytes": 2,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D1-exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D1/checkpoint-02000.pth": {
+      "bytes": 25346378,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D1/checkpoint-02000.pth",
+      "sha256": "096d20ea0d65f699e50b4371a7f0fafd7f305afbded7d28c019fa8956281d499"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D1/checkpoint-04000.pth": {
+      "bytes": 25346314,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D1/checkpoint-04000.pth",
+      "sha256": "cc48d7e4f65b9629a8a174a149b05953318447ec733ebabf4c8e26ef8947b86a"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D1/checkpoint-06000.pth": {
+      "bytes": 25346314,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D1/checkpoint-06000.pth",
+      "sha256": "4480b4b098eee9057d6e052a70527d6164904524d958faeb6b1197d979df6251"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D1/checkpoint-08000.pth": {
+      "bytes": 25346314,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D1/checkpoint-08000.pth",
+      "sha256": "f01bdaa26a1dc43c8d913a25b416d4c5ee95fb3615d6042aec2e0cb4d377202c"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D1/checkpoint-10000.pth": {
+      "bytes": 25346314,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D1/checkpoint-10000.pth",
+      "sha256": "72b8b3b06e8d0c0f8e5681b26d61a4c3e9e1978447d0267106ad441bc06015fa"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D1/initial.json": {
+      "bytes": 141,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D1/initial.json",
+      "sha256": "0407da2d23f545004a5505e475d497ba2c41760988048d2ff09654e18b5ab6a9"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D1/native-reference-gate.npz": {
+      "bytes": 10530,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D1/native-reference-gate.npz",
+      "sha256": "a81fe6db449da102bd72b21e778ae66fdc30fe0e9aad55c022bc83c744d22d96"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D1/recovery.json": {
+      "bytes": 213673,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D1/recovery.json",
+      "sha256": "74b7708e46b0b014edf2d5df44d94aa557659feed95aea9ef3a89c75ba21ed90"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D1/training.jsonl": {
+      "bytes": 7924135,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D1/training.jsonl",
+      "sha256": "05cbd19905c8cd2814afca8a3a4fa8e594096279be72c4c95e47cec8dae56e07"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2-console.txt": {
+      "bytes": 0,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2-console.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2-exit-code.txt": {
+      "bytes": 2,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2-exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/checkpoint-02000.pth": {
+      "bytes": 27179070,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/checkpoint-02000.pth",
+      "sha256": "f535140cc5cd1eefdc521f40c1c212fe0d57a91402f9ecb72eba3856b80659c1"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/checkpoint-04000.pth": {
+      "bytes": 27179006,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/checkpoint-04000.pth",
+      "sha256": "1c39bef228dc0c928c5f3ff09de89a9be6764431d531f4071bdd11ab4fcfc40f"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/checkpoint-06000.pth": {
+      "bytes": 27179070,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/checkpoint-06000.pth",
+      "sha256": "1970714e7f3435d9b3e07ba8735efab18186e62292af979453996cfac3b67a23"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/checkpoint-08000.pth": {
+      "bytes": 27179070,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/checkpoint-08000.pth",
+      "sha256": "3665db70da99eb2e683a599b42ee955578e21ed0bc99f0392133e025150c4a37"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/checkpoint-10000.pth": {
+      "bytes": 27179070,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/checkpoint-10000.pth",
+      "sha256": "62989fcf8cb7b5557bc9c4ae8f5daac7b7a2b6310d4472d1314f91530d66fc60"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/initial.json": {
+      "bytes": 141,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/initial.json",
+      "sha256": "0407da2d23f545004a5505e475d497ba2c41760988048d2ff09654e18b5ab6a9"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/native-reference-gate.npz": {
+      "bytes": 10530,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/native-reference-gate.npz",
+      "sha256": "a81fe6db449da102bd72b21e778ae66fdc30fe0e9aad55c022bc83c744d22d96"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/recovery.json": {
+      "bytes": 213635,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/recovery.json",
+      "sha256": "35fa32f3482d25be793286de56185aafc7c41d94739fd454f076ef6437f3a490"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/training.jsonl": {
+      "bytes": 8090578,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/training.jsonl",
+      "sha256": "e97e02106a50a8fb574b0409dfe183a98d02e6d8f5f08f67b893cf12a4f3ca6d"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/authorization.json": {
+      "bytes": 3295,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/authorization.json",
+      "sha256": "7f53ad4ae75a8473ab2820ef76a17f52a68549d7fa71c9916c7b7b6e00811657"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/freeze.json": {
+      "bytes": 44128,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/freeze.json",
+      "sha256": "d39ac455354bb444c61739a630d389fd59818788c2466046abb1e87359ba0f6a"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-reference-v2-262b3cfcf73340a0867829c48c0198f7-admission.json": {
+      "bytes": 8020,
+      "path": "/home/isavand/paper/evidence/donut-kurt-reference-v2-262b3cfcf73340a0867829c48c0198f7-admission.json",
+      "sha256": "02e4f7ca909de6b7c2c9fa2a2e291850a9bff190b426e319daf82e3ecdb82c9e"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-reference-v2-262b3cfcf73340a0867829c48c0198f7/reference/generation.json": {
+      "bytes": 35030,
+      "path": "/home/isavand/paper/evidence/donut-kurt-reference-v2-262b3cfcf73340a0867829c48c0198f7/reference/generation.json",
+      "sha256": "2052306bdf87a0beaa0a3f9b0bddeeb12d787f1d65357d520b5ce2fe0a33ee64"
+    }
+  },
+  "schema_version": 1
+}
