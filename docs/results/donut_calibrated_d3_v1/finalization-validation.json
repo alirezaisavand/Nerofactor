@@ -1,0 +1,72 @@
+{
+  "checked_artifacts": 38,
+  "figures_replay_and_decode_verified": 8,
+  "new_scientific_execution": false,
+  "result_hashes": {
+    "docs/DONUT_KURT_CALIBRATED_D3_V1_RESULTS.md": "618babb97c07c8b263ff94a6160c736f15a8da41356b8513c8c9d5a199a14931",
+    "docs/results/donut_calibrated_d3_v1/README.md": "259b89b7d8d1d90e9029ab5f8311a13dc8fb7ce446ff3c7c14ebb37acd3965c2",
+    "docs/results/donut_calibrated_d3_v1/RGB-comparison.png": "fbaca0458d8093e3001efdbdc067b373ccbe9d1c6916d3813e2aff936ee300db",
+    "docs/results/donut_calibrated_d3_v1/analysis.json": "c2c308197ab9c612f07adfc636e553c3b71f8f5e2e1da35a2355549e2de5e41c",
+    "docs/results/donut_calibrated_d3_v1/artifact-manifest.json": "26212664623102235abab1dc88e2aeba6dcd4d4312551408e0550a41e9667622",
+    "docs/results/donut_calibrated_d3_v1/camera34-coverage.png": "6b5edaec5987c941c2e41cb713700a8f8f3ca888db9a7836127680baa20f1fb8",
+    "docs/results/donut_calibrated_d3_v1/components-and-illumination.png": "102b8811c8585eb6120f326ea0cc9556a2d594b03f4e5172222032aba9f594e9",
+    "docs/results/donut_calibrated_d3_v1/coverage/camera34-coverage.json": "cf83aaf6c8a022317f2b0a5b0ec9cc4c365f31280593cf91486c4287d687767a",
+    "docs/results/donut_calibrated_d3_v1/coverage/camera34-coverage.npz": "0a995f98f6f672e7c3cb427adf4a8ffb7f47ab0607dcafd4ce385dbb263be2bc",
+    "docs/results/donut_calibrated_d3_v1/endpoint-distributions.png": "34ffe757ecabfe9b3a81a4f22f8e0297a8081a22f9837d0b8aaba9d7f48f95af",
+    "docs/results/donut_calibrated_d3_v1/endpoint-metrics.csv": "73191d5417e6373c86f6f0947c5c2462fbf6486d80a47ce7a4987fe8fb8e1030",
+    "docs/results/donut_calibrated_d3_v1/losses-and-gradients.png": "31b7fdc92c124e084d07e5621dec557c9d6ad2fe15f86da53a49cc9a70569842",
+    "docs/results/donut_calibrated_d3_v1/material-comparison-camera0.png": "9fe517b9bbfb4fa70f3d3f9ebe218144afb4be10ca85bbd34387903101e18227",
+    "docs/results/donut_calibrated_d3_v1/per-camera-metrics.csv": "d5974a6d8de60beea83e2d1326e937a57a795ca574762e7659eb9d51560a913d",
+    "docs/results/donut_calibrated_d3_v1/progression-camera0.png": "c23f0d35f1b31767926bc037d6025b71020c5105d15402f141ecaff98193cebd",
+    "docs/results/donut_calibrated_d3_v1/recovery-curves.png": "4af98e6cff3b4fbaaa7daee42bec46cf987ed7224db63e6d2689b61a7aa4ba57",
+    "experiments/analyze_donut_calibrated_d3.py": "afdf684d534cbd02f912baad5bf0e4b25ca01f5e997bae22461e50d2d9be47ed"
+  },
+  "saved_numerical_replay_byte_identical": true,
+  "source_compile": "passed",
+  "status": "pass",
+  "three_arm_receipt_and_hash_verification": true,
+  "verified_native_reference_gates": {
+    "D1": {
+      "RMS_single_draw_std": 0.003206410365737423,
+      "component_failures": 0,
+      "empirical_SE_L2": 0.004809615548606133,
+      "empirical_SE_limit": 0.019279835780757364,
+      "maximum_empirical_SE": 0.0029115910414312103,
+      "maximum_mean_absolute": 0.003562693208089718,
+      "maximum_unexplained_absolute": 0.00035612670352670294,
+      "passed": true,
+      "pooled_difference": 0.004830310699521192,
+      "pooled_limit": 0.039954544377002715,
+      "pooled_relative_L2": 0.008949532361621493,
+      "precision_adequate": true
+    },
+    "D2": {
+      "RMS_single_draw_std": 0.003206410365737423,
+      "component_failures": 0,
+      "empirical_SE_L2": 0.004809615548606133,
+      "empirical_SE_limit": 0.019279835780757364,
+      "maximum_empirical_SE": 0.0029115910414312103,
+      "maximum_mean_absolute": 0.003562693208089718,
+      "maximum_unexplained_absolute": 0.00035612670352670294,
+      "passed": true,
+      "pooled_difference": 0.004830310699521192,
+      "pooled_limit": 0.039954544377002715,
+      "pooled_relative_L2": 0.008949532361621493,
+      "precision_adequate": true
+    },
+    "D3": {
+      "RMS_single_draw_std": 0.003206410365737423,
+      "component_failures": 0,
+      "empirical_SE_L2": 0.004809615548606133,
+      "empirical_SE_limit": 0.019279835780757364,
+      "maximum_empirical_SE": 0.0029115910414312103,
+      "maximum_mean_absolute": 0.003562693208089718,
+      "maximum_unexplained_absolute": 0.00035612670352670294,
+      "passed": true,
+      "pooled_difference": 0.004830310699521192,
+      "pooled_limit": 0.039954544377002715,
+      "pooled_relative_L2": 0.008949532361621493,
+      "precision_adequate": true
+    }
+  }
+}
