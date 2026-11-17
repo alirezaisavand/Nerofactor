@@ -1,0 +1,88 @@
+{
+  "actual_saved_HDR_replay": {
+    "input": "/home/isavand/paper/evidence/donut-kurt-recovery-v1-1cd964f4026f4711bed5b5dd83f7f863/D1/step-00000/illumination.npz",
+    "input_dtype": "float32",
+    "input_sha256": "5380d6b6977decd196da8b18a5017ebad6c55c4c77b341a29d31c986e53d93a4",
+    "input_shape": [
+      128,
+      256,
+      3
+    ],
+    "maximum": 3.4031355381011963,
+    "minimum": 0.009999999776482582,
+    "preview_metadata": {
+      "channels_above_one": 13952,
+      "display_only_upper_clip": 1.0,
+      "encoding": "standard-sRGB uint8",
+      "exposure": 1.0,
+      "pixels_with_channel_above_one": 4928,
+      "scientific_linear_values": "unchanged in illumination.npz and illumination metrics"
+    },
+    "preview_sha256": "2b187794dafbbc835b24ce04f12bba976019edaac7040f9b2e83b5f09cd09e44",
+    "raw_bytes_unchanged": true
+  },
+  "base_commit": "a2dc573f1d5ac319bf393e70671884c13e28dcc4",
+  "freeze_sha256": "d39ac455354bb444c61739a630d389fd59818788c2466046abb1e87359ba0f6a",
+  "fresh_training_output": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63",
+  "frozen_source_records_verified": 288,
+  "new_model_constructions": 0,
+  "new_optimizer_returns": 0,
+  "new_rays": 0,
+  "new_shader_calls": 0,
+  "preserved_failure_files": 154,
+  "preserved_reference_artifacts": 31,
+  "previous_authorization_consumed": true,
+  "schema_version": 1,
+  "scientific_import_blocker": "active during focused tests and saved-array preview replay",
+  "static_checks": {
+    "git_diff_check": "pass",
+    "metadata_D1_preflight": "pass; scientific_execution=false",
+    "shell_syntax": "pass"
+  },
+  "status": "correction_ready_pending_new_execution_authorization",
+  "test_counts": {
+    "errors": 0,
+    "failures": 0,
+    "passed": 15,
+    "skipped": 0,
+    "tests": 15
+  },
+  "test_evidence": {
+    "pytest-exit-code.txt": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "pytest.txt": {
+      "bytes": 220,
+      "sha256": "6c688ff878f97cd86fd4c0d1bacea8676c7296bbe21395e048b20b03d2e0326e"
+    },
+    "pytest.xml": {
+      "bytes": 3025,
+      "sha256": "8e386eef34d16df78f3660ac808bccc5ebb642050116e9857c6f388527c30fed"
+    }
+  },
+  "test_inventory": [
+    "paper.Nerofactor-donut-recovery.tests.benchmarks.test_donut_illumination_preview::test_HDR_preview_clips_only_display_and_preserves_raw_arrays",
+    "paper.Nerofactor-donut-recovery.tests.benchmarks.test_donut_illumination_preview::test_in_domain_preview_is_identical_to_existing_encoder",
+    "paper.Nerofactor-donut-recovery.tests.benchmarks.test_donut_illumination_preview::test_invalid_illumination_fails_without_preview[nan]",
+    "paper.Nerofactor-donut-recovery.tests.benchmarks.test_donut_illumination_preview::test_invalid_illumination_fails_without_preview[inf]",
+    "paper.Nerofactor-donut-recovery.tests.benchmarks.test_donut_illumination_preview::test_invalid_illumination_fails_without_preview[-inf]",
+    "paper.Nerofactor-donut-recovery.tests.benchmarks.test_donut_illumination_preview::test_invalid_illumination_fails_without_preview[-0.001]",
+    "paper.Nerofactor-donut-recovery.tests.benchmarks.test_donut_illumination_preview::test_invalid_preview_shape_is_rejected[shape0]",
+    "paper.Nerofactor-donut-recovery.tests.benchmarks.test_donut_illumination_preview::test_invalid_preview_shape_is_rejected[shape1]",
+    "paper.Nerofactor-donut-recovery.tests.benchmarks.test_donut_illumination_preview::test_invalid_preview_shape_is_rejected[shape2]",
+    "paper.Nerofactor-donut-recovery.tests.benchmarks.test_donut_illumination_preview::test_actual_evaluation_wires_explicit_preview_and_unmodified_HDR",
+    "paper.Nerofactor-donut-recovery.tests.benchmarks.test_donut_illumination_preview::test_scientific_settings_and_sources_remain_at_accepted_definition",
+    "paper.Nerofactor-donut-recovery.tests.benchmarks.test_donut_illumination_preview::test_training_freeze_explicitly_binds_unchanged_reference[old-freeze0-old-True]",
+    "paper.Nerofactor-donut-recovery.tests.benchmarks.test_donut_illumination_preview::test_training_freeze_explicitly_binds_unchanged_reference[old-freeze1-new-True]",
+    "paper.Nerofactor-donut-recovery.tests.benchmarks.test_donut_illumination_preview::test_training_freeze_explicitly_binds_unchanged_reference[wrong-freeze2-new-False]",
+    "paper.Nerofactor-donut-recovery.tests.benchmarks.test_donut_illumination_preview::test_training_freeze_explicitly_binds_unchanged_reference[old-freeze3-new-False]"
+  ],
+  "test_process_exit_code": 0,
+  "training_authorized": false,
+  "unchanged_scientific_AST": {
+    "complete_training_loop_including_original_losses_and_optimizer": "dafc920190a99df09fbe71fb927753d3db034857697e40b58f840956ab8d3205",
+    "shade": "5c6a8c99e1486d002142b84ff2d6e6c43ebc68930bc6119ee4c8d95937212fa6",
+    "shader_lighting": "c99305a0ab8ae9a1e164fe873233a625ee2aa6e99fdbdc7646f7b353a429d329"
+  }
+}

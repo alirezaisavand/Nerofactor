@@ -6,7 +6,7 @@ DONUT_IMAGE=sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45
 DONUT_COMMIT=$(git -C "$DONUT_SOURCE" rev-parse HEAD)
 test -z "$(git -C "$DONUT_SOURCE" status --porcelain)"
 DONUT_FREEZE_NAME=${DONUT_FREEZE_NAME:-DONUT_KURT_RECOVERY_V1.freeze.json}
-case "$DONUT_FREEZE_NAME" in DONUT_KURT_RECOVERY_V1.freeze.json|DONUT_KURT_REFERENCE_V2.freeze.json) ;; *) exit 2 ;; esac
+case "$DONUT_FREEZE_NAME" in DONUT_KURT_RECOVERY_V1.freeze.json|DONUT_KURT_REFERENCE_V2.freeze.json|DONUT_KURT_RECOVERY_V2.freeze.json) ;; *) exit 2 ;; esac
 DONUT_FREEZE=$(sha256sum "$DONUT_SOURCE/docs/protocols/$DONUT_FREEZE_NAME" | cut -d' ' -f1)
 DONUT_AUTH_SHA=$(sha256sum "$DONUT_AUTH" | cut -d' ' -f1)
 python3 -B - "$DONUT_SOURCE" "$DONUT_AUTH" "$DONUT_BATCH" "$DONUT_PHASE" "$DONUT_COMMIT" "$DONUT_FREEZE" "$DONUT_IMAGE" "$DONUT_GPU" "$DONUT_FREEZE_NAME" <<'PY'

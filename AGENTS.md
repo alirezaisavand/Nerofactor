@@ -1,5 +1,19 @@
 # Research and development rules
 
+## Donut HDR illumination preview correction
+
+The first D1/D2 launch stopped during its initial illumination PNG export, with
+zero optimizer returns; preserve the batch, authorization, freeze and all saved
+arrays unchanged. The known L2 radiance legitimately exceeds one. Correct only
+the display preview: explicitly upper-clip its PNG input, report clipping counts,
+and retain unmodified HDR arrays and illumination metrics. Preserve the strict
+reference PNG encoder, native shader, priors, scientific settings and budgets.
+Add focused synthetic CPU tests. A fresh training freeze must explicitly bind
+the existing admitted reference's original generation freeze, not regenerate it.
+Any new launch needs a fresh output and separate exact-source authorization;
+the consumed approval cannot authorize a retry. No native/GPU work during this
+correction. See docs/protocols/DONUT_KURT_RECOVERY_V2.md.
+
 ## Donut reflectance v2 and conditional reference completion
 
 The reviewed3a428803 reporting fix does not admit the failed reference. Prepare

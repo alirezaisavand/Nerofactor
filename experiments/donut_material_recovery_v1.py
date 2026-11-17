@@ -20,6 +20,20 @@ from infrastructure.signatures import require
 from infrastructure.stage_sources import PINS, activate, digest
 
 
+def illumination_preview(path, light):
+    """Display-only upper clipping; scientific HDR arrays are never modified."""
+    from benchmarks.bell_e11 import linear_to_srgb
+    from PIL import Image
+    require(light.ndim==3 and light.shape[-1]==3 and light.size>0 and
+        np.isfinite(light).all() and (light>=0).all(), 'Invalid illumination preview input')
+    above=light>1
+    Image.fromarray(linear_to_srgb(np.minimum(light,1))).save(path)
+    return dict(encoding='standard-sRGB uint8',exposure=1.0,
+        display_only_upper_clip=1.0,channels_above_one=int(above.sum()),
+        pixels_with_channel_above_one=int(above.any(-1).sum()),
+        scientific_linear_values='unchanged in illumination.npz and illumination metrics')
+
+
 def shader_lighting(shader, original_shader, arm):
     """Existing environment callback supplies ONLY native direct MLP for D2.
 
@@ -67,7 +81,8 @@ def train(args):
     require(auth.get('researcher_admitted_dataset') is True and auth.get('benchmark_generation_sha256')==args.benchmark_sha256
         and os.statvfs(args.benchmark).f_flag&os.ST_RDONLY, 'Separate explicit dataset admission/training approval required')
     generation,data=benchmark(args.benchmark,args.benchmark_sha256)
-    require(generation['freeze_sha256']==args.freeze_sha256,'Reference and training source/configuration freeze differ')
+    require(generation['freeze_sha256']==freeze.get('reference_freeze_sha256',args.freeze_sha256),
+            'Reference does not match the explicitly bound generation freeze')
     geometry,_,records=inputs(args.oracle,args.cameras)
     expected_initial=None
     if args.phase=='D2':
@@ -235,16 +250,14 @@ def train(args):
                 require(np.isfinite(light).all() and (light>=0).all(),'Invalid illumination map')
                 from benchmarks.bell_reference_e11 import environment
                 from benchmarks.donut_recovery_v1 import ENVIRONMENT
-                from benchmarks.bell_e11 import linear_to_srgb
-                from PIL import Image
                 truth_light=environment(tensor(directions),ENVIRONMENT).cpu().numpy()
                 np.savez_compressed(destination/'illumination.npz',directions=directions,linear_RGB=light,known_linear_RGB=truth_light)
-                Image.fromarray(linear_to_srgb(light)).save(destination/'illumination-preview.png')
+                preview=illumination_preview(destination/'illumination-preview.png',light)
                 weight=np.sin(theta)[...,None]
                 metrics['illumination']=dict(minimum=light.min((0,1)).tolist(),maximum=light.max((0,1)).tolist(),
                     mean_spherical=((light*weight).sum((0,1))/weight.sum()).tolist(),
                     relative_L2=float(np.sqrt(((light-truth_light)**2*weight).sum()/max((truth_light**2*weight).sum(),1e-15))),
-                    indirect='exactly zero',mode=report['effective_lighting'])
+                    indirect='exactly zero',mode=report['effective_lighting'],preview=preview)
                 json_new(destination/'metrics.json',metrics)
             shader.train();report['saved_endpoints'].append(dict(step=step,metrics=metrics))
             progress()
