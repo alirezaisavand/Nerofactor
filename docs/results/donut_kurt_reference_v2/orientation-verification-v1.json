@@ -1,0 +1,128 @@
+{
+  "appearance_differences_intended": [
+    "Kurt/Beckmann additive BRDF versus Blender Principled MULTI_GGX",
+    "New Beckmann major/minor widths .35/.08 versus original GGX slope widths approximately .387379/.0387379; not equivalent material labels",
+    "L2 distant environment, no original HDR/point emitter, zero indirect",
+    "128x128 standard-sRGB previews versus original1080x1080 AgX/denoising"
+  ],
+  "conclusion": "Rotation is already baked into the exported world principal director. Adding another 90-degree rotation would change the intended anisotropic material. Unoriented projectors remove arbitrary eigenvector sign.",
+  "created_UTC": "2026-11-17T21:17:11.461157+00:00",
+  "export_rotation_max_absolute_error": 0.0,
+  "exported_corner_tangents": 36864,
+  "freeze_sha256": "1c0af2688f36bef6e4da7e15666e0245a76c9a11294a3f719bfe5601c53b7730",
+  "frozen_source_records_verified": 285,
+  "generation": {
+    "bytes": 35030,
+    "path": "/home/isavand/paper/evidence/donut-kurt-reference-v2-262b3cfcf73340a0867829c48c0198f7/reference/generation.json",
+    "sha256": "2052306bdf87a0beaa0a3f9b0bddeeb12d787f1d65357d520b5ce2fe0a33ee64"
+  },
+  "identity_roundoff_check_absolute_bound": 1e-12,
+  "input_identities": {
+    "blend": {
+      "bytes": 1600817,
+      "path": "/home/isavand/paper/data/blender/donut/donut.blend",
+      "sha256": "fcf8956740d6543782c190ec1c90e1bbef6f3ae36dcc9c3c0aa9b7fd7b742d57"
+    },
+    "geometry": {
+      "bytes": 2589411,
+      "path": "/home/isavand/paper/evidence/donut-blend-inspection-v2/oracle-geometry-and-frames.npz",
+      "sha256": "cfe903c177dfe404c47390aed2a3fa025ea9499ca0af644dba667b721c0139f1"
+    },
+    "metadata": {
+      "bytes": 124470,
+      "path": "/home/isavand/paper/evidence/donut-blend-inspection-v2/scene-metadata-compact.json",
+      "sha256": "ff55562a9b23d929b877567f92f14f6dc99e71e5dc08b0879927022600ccb199"
+    },
+    "native_chart": {
+      "bytes": 804634,
+      "path": "/home/isavand/paper/evidence/donut-blend-inspection-v2/native-chart-orientation-reference.npz",
+      "sha256": "cc498faabe0b8b3e2ebf63a87a51d48316396b90e8650098cf19a559f442834c"
+    },
+    "packaged_cycles_closure": {
+      "bytes": 59005,
+      "path": "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/4.5/scripts/addons_core/cycles/source/kernel/svm/closure.h",
+      "sha256": "b252f1bfb7617af0300c4f8ba8edb576ee14a2ab6ff4b7fb9ed3c386bc28ad4c"
+    }
+  },
+  "limitations": [
+    "This checks saved source-derived orientation references, not a new executed Cycles shader measurement.",
+    "It does not establish equivalence between Kurt/Beckmann and Blender MULTI_GGX appearance."
+  ],
+  "method": "Read-only NumPy arrays (allow_pickle=False); Rodrigues rotation reconstructed from unrotated exported tangent; independently reassembled interpolated line projectors and world-Q. No Blender load, BRDF integration, rays, model or optimizer calls.",
+  "protocol": "donut-rotation-preservation-file-check-v1",
+  "rotated_unrotated_max_absolute_dot": 1.7560999405875455e-16,
+  "rotation_radians": 1.5707963267948966,
+  "rotation_turns": 0.25,
+  "schema_version": 1,
+  "scientific_execution_calls": 0,
+  "scientific_output_identities_verified": 31,
+  "status": "verified_rotation_preserved",
+  "views": [
+    {
+      "Q_max_absolute_error": 6.938893903907228e-17,
+      "artifact": {
+        "bytes": 2026910,
+        "sha256": "edc97f6b5e98053ba840fe8e454ea59fbc3b9a532ff4bcf5e9a1f28609f946f2"
+      },
+      "axis_projector_max_absolute_error": 5.551115123125783e-16,
+      "camera": 0,
+      "surface_labels": 4539,
+      "valid_observations": 4536
+    },
+    {
+      "Q_max_absolute_error": 6.938893903907228e-17,
+      "artifact": {
+        "bytes": 1167321,
+        "sha256": "b7793a0b5cf761e3682dcf17c1555364fab6fce10e65f19247bda6ce9bfc934b"
+      },
+      "axis_projector_max_absolute_error": 4.996003610813204e-16,
+      "camera": 50,
+      "surface_labels": 2636,
+      "valid_observations": 2636
+    },
+    {
+      "Q_max_absolute_error": 6.938893903907228e-17,
+      "artifact": {
+        "bytes": 1844821,
+        "sha256": "579f799622946050acac9e18b1ba7e93f9a680acfc51730450d2f94cf4ed4078"
+      },
+      "axis_projector_max_absolute_error": 5.551115123125783e-16,
+      "camera": 1,
+      "surface_labels": 4148,
+      "valid_observations": 4144
+    },
+    {
+      "Q_max_absolute_error": 8.326672684688674e-17,
+      "artifact": {
+        "bytes": 1763242,
+        "sha256": "2e4c8cf1b6e2fee7661c29d70192da2d9270a1f41b255ff4728d063c72038d48"
+      },
+      "axis_projector_max_absolute_error": 6.661338147750939e-16,
+      "camera": 45,
+      "surface_labels": 3970,
+      "valid_observations": 3970
+    },
+    {
+      "Q_max_absolute_error": 6.938893903907228e-17,
+      "artifact": {
+        "bytes": 2164520,
+        "sha256": "71ba64ab249362deb192065eea30669e98597a89a2203d81178e012a45f46771"
+      },
+      "axis_projector_max_absolute_error": 6.661338147750939e-16,
+      "camera": 28,
+      "surface_labels": 4849,
+      "valid_observations": 4849
+    },
+    {
+      "Q_max_absolute_error": 6.938893903907228e-17,
+      "artifact": {
+        "bytes": 1100307,
+        "sha256": "33000c69c0cc6ef2df1493566cd93512e8b8b74e2e6bc523f6d4abbedcda0429"
+      },
+      "axis_projector_max_absolute_error": 6.106226635438361e-16,
+      "camera": 34,
+      "surface_labels": 2497,
+      "valid_observations": 2495
+    }
+  ]
+}
