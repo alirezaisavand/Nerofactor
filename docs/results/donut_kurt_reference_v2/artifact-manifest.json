@@ -1,0 +1,240 @@
+{
+  "batch_root": "/home/isavand/paper/evidence/donut-kurt-reference-v2-262b3cfcf73340a0867829c48c0198f7",
+  "external_artifacts": {
+    "authorization.json": {
+      "bytes": 3949,
+      "sha256": "060452975b60efe770522abd7271514dc55c15346dce9952a3ed495af9e76ede"
+    },
+    "freeze.json": {
+      "bytes": 43680,
+      "sha256": "1c0af2688f36bef6e4da7e15666e0245a76c9a11294a3f719bfe5601c53b7730"
+    },
+    "reference-console.txt": {
+      "bytes": 12940,
+      "sha256": "881e4040f3e64b4aca925af8962a07a35e5168443301b996a1c0ba822572615e"
+    },
+    "reference-exit-code.txt": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "reference.cid": {
+      "bytes": 64,
+      "sha256": "8377c9052416e637411ccdaf6b63bdb75ad5b57de450fbda12fbc171481e647b"
+    },
+    "reference/generation.json": {
+      "bytes": 35030,
+      "sha256": "2052306bdf87a0beaa0a3f9b0bddeeb12d787f1d65357d520b5ce2fe0a33ee64"
+    },
+    "reference/grazing-validation.json": {
+      "bytes": 223,
+      "sha256": "686224dfd44fcd19390320fb8f959c81a93636b931b1b115108dc59b50128fa3"
+    },
+    "reference/grazing-validation.npz": {
+      "bytes": 2114,
+      "sha256": "7033a93ae720a76988a5fad3e4ba60abacb31574163ceac228b802285a9cfecf"
+    },
+    "reference/ordinary-validation.json": {
+      "bytes": 559,
+      "sha256": "2d8057f160b131beaa249db87e79289361bd059bd63f5bd6b7d1f20424ce000e"
+    },
+    "reference/ordinary-validation.npz": {
+      "bytes": 2511,
+      "sha256": "c504c1e1fd2fe0d7ded65df4f884f10ae0fb2db8e1bfb3f93b324aae59431415"
+    },
+    "reference/progress.json": {
+      "bytes": 28879,
+      "sha256": "d450ebf61e706eeebc4055cc1c6afca7dabb2334f97e6670a8208ab229d087ba"
+    },
+    "reference/reference-RGB-diffuse-specular.png": {
+      "bytes": 71814,
+      "sha256": "46b0924231c42d40676b0276591045b6ea6c6a86e7ac3e89ac752397625cb67b"
+    },
+    "reference/slope-nodes-128.npz": {
+      "bytes": 7181,
+      "sha256": "c55f837bb6e4eec3b64f96d9cb59d0b3559ea65b28e308a8eb5a47980e6d9b49"
+    },
+    "reference/slope-nodes-64.npz": {
+      "bytes": 4074,
+      "sha256": "0bdc772a57b33c657532e9811a44af474d486d33ab176b409da5822ba65f5460"
+    },
+    "reference/view-0-diffuse-preview.png": {
+      "bytes": 2828,
+      "sha256": "68d332ac2b9b62c7a3f31df631ed5ec067ab436d4f75520d6200f3bdf0be7b0c"
+    },
+    "reference/view-0-preview.png": {
+      "bytes": 5993,
+      "sha256": "7e2b9450ea7a30e91132edb77e8c9df4f9c5c8266f38a5a62a2a8d1ae57da4fc"
+    },
+    "reference/view-0-specular-preview.png": {
+      "bytes": 6154,
+      "sha256": "99c97f4331629d91b088107b9f79917ee2417695c41aac2bb7afc5c7e65e0189"
+    },
+    "reference/view-0.npz": {
+      "bytes": 2026910,
+      "sha256": "edc97f6b5e98053ba840fe8e454ea59fbc3b9a532ff4bcf5e9a1f28609f946f2"
+    },
+    "reference/view-1-diffuse-preview.png": {
+      "bytes": 2332,
+      "sha256": "f62457ae3b410ff41ee8f459317242d8cd0e594b243bd45b4521d42218f0ecb5"
+    },
+    "reference/view-1-preview.png": {
+      "bytes": 5526,
+      "sha256": "de4126d367bb19d0948a236f8090d9326116570560922f4adc05552b5c12b5d0"
+    },
+    "reference/view-1-specular-preview.png": {
+      "bytes": 5788,
+      "sha256": "f7403c22dfe33c768f58ff2e8365325911e0b0dc40af29d8580dd7bb9efaf4fd"
+    },
+    "reference/view-1.npz": {
+      "bytes": 1844821,
+      "sha256": "579f799622946050acac9e18b1ba7e93f9a680acfc51730450d2f94cf4ed4078"
+    },
+    "reference/view-28-diffuse-preview.png": {
+      "bytes": 3047,
+      "sha256": "eb5f6fde9ff1fe3d92fde128a36803a112ae9eb509fe9304bdd86fca95402ed9"
+    },
+    "reference/view-28-preview.png": {
+      "bytes": 6644,
+      "sha256": "5ffa9655c1ce7f9e7e1eeacf8fc96122b8dc5c363aec43b75af7b24efdb5f504"
+    },
+    "reference/view-28-specular-preview.png": {
+      "bytes": 7085,
+      "sha256": "90592b88c99240b944ede43a8c3a4926c8bb1400c88901ff4e06b80c24acd78d"
+    },
+    "reference/view-28.npz": {
+      "bytes": 2164520,
+      "sha256": "71ba64ab249362deb192065eea30669e98597a89a2203d81178e012a45f46771"
+    },
+    "reference/view-34-diffuse-preview.png": {
+      "bytes": 1087,
+      "sha256": "aed9f00882436047a0f19afb107528c1705258d1fd06707a3bd3f4c5b4047fc3"
+    },
+    "reference/view-34-preview.png": {
+      "bytes": 3078,
+      "sha256": "580062bcd9d4df9b107a23be1621d0c42a20b34f91c07e9c80435a7a7cc6233a"
+    },
+    "reference/view-34-specular-preview.png": {
+      "bytes": 3310,
+      "sha256": "52b2c110af497adace07af5ec4a3ee1fe74caec014beb935a179e7cc19dd04e4"
+    },
+    "reference/view-34.npz": {
+      "bytes": 1100307,
+      "sha256": "33000c69c0cc6ef2df1493566cd93512e8b8b74e2e6bc523f6d4abbedcda0429"
+    },
+    "reference/view-45-diffuse-preview.png": {
+      "bytes": 2126,
+      "sha256": "832ea1db2a920b703e68accdbb8f86ff59f4153203e36e8a3098a9f84e75b442"
+    },
+    "reference/view-45-preview.png": {
+      "bytes": 5080,
+      "sha256": "aaa6dff92eb87a50b9068eaed4f2cb713ea0365bdee6cb60f2a674da813fdcfc"
+    },
+    "reference/view-45-specular-preview.png": {
+      "bytes": 5174,
+      "sha256": "e788e6b7b9db8af73c9e12f5b6cfe5af568e6c8c205b81ad4c345a0af0433ea5"
+    },
+    "reference/view-45.npz": {
+      "bytes": 1763242,
+      "sha256": "2e4c8cf1b6e2fee7661c29d70192da2d9270a1f41b255ff4728d063c72038d48"
+    },
+    "reference/view-50-diffuse-preview.png": {
+      "bytes": 1156,
+      "sha256": "4ebf70952fc74f7bc0d50a2d3c40b165657d59d6fcad8fb7e0a6579732e1a86c"
+    },
+    "reference/view-50-preview.png": {
+      "bytes": 3397,
+      "sha256": "ce01cc91ef525a161f345624444d6710bdf1b3f3edb6dd3e8312783b0529d4bc"
+    },
+    "reference/view-50-specular-preview.png": {
+      "bytes": 3587,
+      "sha256": "12dac21486ccb110eca37a61e651da9877168cc2cc39d89bd99f3ace1b8d7692"
+    },
+    "reference/view-50.npz": {
+      "bytes": 1167321,
+      "sha256": "b7793a0b5cf761e3682dcf17c1555364fab6fce10e65f19247bda6ce9bfc934b"
+    }
+  },
+  "finalization_code": {
+    "path": "/home/isavand/paper/Nerofactor-donut-recovery/experiments/finalize_donut_reference_v2.py",
+    "sha256": "40ffbcd7215bd837a25259cff2a29b6d03203d180722984cc03c584d1121a090"
+  },
+  "freeze_sha256": "1c0af2688f36bef6e4da7e15666e0245a76c9a11294a3f719bfe5601c53b7730",
+  "prior_artifacts": {
+    "authorization.json": {
+      "bytes": 2033,
+      "sha256": "37ee717305372fb719bd34dd9b79ae23d29e8dcab1ef839e8e5ad5189250bf95"
+    },
+    "freeze.json": {
+      "bytes": 40243,
+      "sha256": "064147fa7f2a966f523dcc104b1a88cd1618d9ec2d4649af1ebb7de4bd265718"
+    },
+    "reference-console.txt": {
+      "bytes": 18173,
+      "sha256": "84f5df629ad808acaec43d1fc3b17dfcf1aa6e8964914dd3ff64e78f9615f3e8"
+    },
+    "reference-exit-code.txt": {
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    "reference.cid": {
+      "bytes": 64,
+      "sha256": "c458fe4052f52f1939155ed200b98bb284bae753e62459206d0d015767b47b84"
+    },
+    "reference/generation.json": {
+      "bytes": 9284,
+      "sha256": "39ad9415353e1d0ea71041db106e571dd36e1997b23b548579e93e5272c1dba9"
+    },
+    "reference/progress.json": {
+      "bytes": 222,
+      "sha256": "29ed834abb92c786a57a7b91766894e14d7cc58ea6610c97d447a89be3b05743"
+    },
+    "reference/view-0-diffuse-preview.png": {
+      "bytes": 2828,
+      "sha256": "68d332ac2b9b62c7a3f31df631ed5ec067ab436d4f75520d6200f3bdf0be7b0c"
+    },
+    "reference/view-0-preview.png": {
+      "bytes": 5993,
+      "sha256": "7e2b9450ea7a30e91132edb77e8c9df4f9c5c8266f38a5a62a2a8d1ae57da4fc"
+    },
+    "reference/view-0-specular-preview.png": {
+      "bytes": 6154,
+      "sha256": "99c97f4331629d91b088107b9f79917ee2417695c41aac2bb7afc5c7e65e0189"
+    },
+    "reference/view-0.npz": {
+      "bytes": 1720599,
+      "sha256": "8e49c382adeba827163f42b55f1b79d2d3c43fe1fdc9530dc4307fc97b4ab99c"
+    }
+  },
+  "prior_batch_root": "/home/isavand/paper/evidence/donut-kurt-reference-v1-5df0234193664e9b93cae546542ca7a2",
+  "schema_version": 1,
+  "tracked_artifacts": {
+    "README.md": {
+      "bytes": 1426,
+      "sha256": "2667d00dc138a72374236d1a1bf7a14ed68f2ea9e988f3df7fa088bcad095db1"
+    },
+    "convergence.pdf": {
+      "bytes": 20415,
+      "sha256": "e51eed47b7b59319b1e02b085309a7af9920d9bef5c734d0e24c6598c7007f0d"
+    },
+    "convergence.png": {
+      "bytes": 93088,
+      "sha256": "b3af0d81e9dd8a5cee6de8d614092665e83de0bc9d365185aa11dc383c3ad7cc"
+    },
+    "finalization-validation.json": {
+      "bytes": 650,
+      "sha256": "6a319cd5b0dd791f4e7ef316699d8aae35b92328d6427b3f70747cc96ed4eb02"
+    },
+    "reference-RGB-diffuse-specular.png": {
+      "bytes": 71814,
+      "sha256": "46b0924231c42d40676b0276591045b6ea6c6a86e7ac3e89ac752397625cb67b"
+    },
+    "verification.json": {
+      "bytes": 8793,
+      "sha256": "d30a4fb31465a2577065197d01fe1a213f53c8c3f0bf2cc6cccdf2bffec8598b"
+    },
+    "view-metrics.csv": {
+      "bytes": 1563,
+      "sha256": "7fe65e61f5d899027d3c770410d42942f1389cac65d889aed87b0cbf912c22bc"
+    }
+  }
+}

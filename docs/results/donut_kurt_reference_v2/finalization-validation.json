@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "status": "pass_file_only_verification_and_static_checks",
+  "finalizer_process_exit_code": 0,
+  "Python38_AST": true,
+  "no_direct_native_or_integrator_calls": true,
+  "local_links": true,
+  "frozen_sources_and_protocols_unchanged": true,
+  "old_and_new_scientific_artifacts_unchanged": true,
+  "sealed_preparation_CPU_counts": {
+    "errors": 0,
+    "failures": 0,
+    "passed": 32,
+    "skipped": 0,
+    "tests": 32
+  },
+  "sealed_tests_rerun": false,
+  "new_BRDF_integrations": 0,
+  "new_rays": 0,
+  "new_models": 0,
+  "optimizer_returns": 0,
+  "training_output_exists": false,
+  "researcher_admitted_dataset": false
+}

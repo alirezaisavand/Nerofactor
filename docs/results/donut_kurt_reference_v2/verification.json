@@ -1,0 +1,248 @@
+{
+  "Docker_cleanup_independently_queried": false,
+  "GPU_peak_allocated_bytes": 22420480,
+  "GPU_peak_reserved_bytes": 35651584,
+  "authorization_sha256": "060452975b60efe770522abd7271514dc55c15346dce9952a3ed495af9e76ede",
+  "backend": {
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "variant": "predicate_fp64"
+  },
+  "batch_root": "/home/isavand/paper/evidence/donut-kurt-reference-v2-262b3cfcf73340a0867829c48c0198f7",
+  "camera0_reuse": {
+    "array_equality_verified": true,
+    "array_verification": "dtype,shape,and exact C-order bytes",
+    "new_camera0_RGB_integrations": 0,
+    "new_camera0_primary_rays": 0,
+    "old_reflectance_retained_as_diagnostic": true,
+    "replaced_fields": [
+      "reflectance",
+      "coarse_reflectance"
+    ],
+    "source_NPZ_sha256": "8e49c382adeba827163f42b55f1b79d2d3c43fe1fdc9530dc4307fc97b4ab99c",
+    "unchanged_array_names": [
+      "pixel_indices",
+      "hit_mask",
+      "shader_valid",
+      "position",
+      "outgoing",
+      "raw_BVH_normals",
+      "depth",
+      "normals",
+      "axis",
+      "Q_world",
+      "triangle",
+      "barycentric",
+      "face_normal",
+      "surface_residual",
+      "color",
+      "metallic",
+      "widths_major_minor",
+      "linear_components",
+      "coarse_components",
+      "visible_counts"
+    ]
+  },
+  "cleanup_verified_from_saved_receipt": true,
+  "counters": {
+    "BRDF_point_directions": 5929041920,
+    "CPU_primary_crosschecks": 40,
+    "primary_rays": 81920,
+    "shadow_directions": 5929041920,
+    "slope_nodes_attempted": 1853849600,
+    "slope_nodes_returned": 1853849600
+  },
+  "elapsed_seconds": 254.01149796694517,
+  "fitting_observations": 15286,
+  "freeze_sha256": "1c0af2688f36bef6e4da7e15666e0245a76c9a11294a3f719bfe5601c53b7730",
+  "generation_sha256": "2052306bdf87a0beaa0a3f9b0bddeeb12d787f1d65357d520b5ce2fe0a33ee64",
+  "geometry_hits": 22639,
+  "held_out_observations": 7344,
+  "host_peak_RSS_bytes": 4841529344,
+  "input_artifacts_verified": {
+    "native-chart-orientation-reference.npz": {
+      "bytes": 804634,
+      "path": "/home/isavand/paper/evidence/donut-blend-inspection-v2/native-chart-orientation-reference.npz",
+      "sha256": "cc498faabe0b8b3e2ebf63a87a51d48316396b90e8650098cf19a559f442834c"
+    },
+    "oracle-geometry-and-frames.npz": {
+      "bytes": 2589411,
+      "path": "/home/isavand/paper/evidence/donut-blend-inspection-v2/oracle-geometry-and-frames.npz",
+      "sha256": "cfe903c177dfe404c47390aed2a3fa025ea9499ca0af644dba667b721c0139f1"
+    },
+    "transforms_train.json": {
+      "bytes": 86413,
+      "path": "/home/isavand/nero/data/nerf_synthetic/donut/transforms_train.json",
+      "sha256": "89fc7b8d05db69437f3654cac1a8c6e68a23cfb411c28703824e18f0fdcaa82a"
+    }
+  },
+  "maximum_metric_replay_roundoff": 1.0842021724855044e-19,
+  "native_exit_code": 0,
+  "new_reference_or_model_queries_during_finalization": 0,
+  "original_failed_evidence_unchanged": true,
+  "output_bytes": 10353533,
+  "package_root": "/home/isavand/paper/evidence/donut-kurt-reference-v2-262b3cfcf73340a0867829c48c0198f7/reference",
+  "per_view": [
+    {
+      "camera": 0,
+      "geometry_hits": 4539,
+      "highlight_fraction": 0.3205467372134039,
+      "image_max_difference": 0.0012401835733787114,
+      "image_relative_L2": 0.0007598627730038538,
+      "linear_RGB_max": 0.4541053768486636,
+      "primary_position_max_error": 7.473123431189777e-08,
+      "reflectance_channels_above_one": 0,
+      "reflectance_max": 0.9365998689463205,
+      "reflectance_max_difference": 2.98839451862154e-06,
+      "reflectance_relative_L2": 2.302958931311847e-06,
+      "specular_fraction": 0.7069923626796806,
+      "split": "fitting",
+      "valid": 4536,
+      "world_Q_max_error": 0.0
+    },
+    {
+      "camera": 50,
+      "geometry_hits": 2636,
+      "highlight_fraction": 0.34635811836115327,
+      "image_max_difference": 0.0006305816303793649,
+      "image_relative_L2": 0.00019689250194333528,
+      "linear_RGB_max": 0.45903336783034016,
+      "primary_position_max_error": 7.317119132821404e-08,
+      "reflectance_channels_above_one": 0,
+      "reflectance_max": 0.9364988208162304,
+      "reflectance_max_difference": 2.990946738168354e-06,
+      "reflectance_relative_L2": 2.271361488904459e-06,
+      "specular_fraction": 0.705555460624859,
+      "split": "fitting",
+      "valid": 2636,
+      "world_Q_max_error": 0.0
+    },
+    {
+      "camera": 1,
+      "geometry_hits": 4148,
+      "highlight_fraction": 0.30694980694980695,
+      "image_max_difference": 0.0011861136295535646,
+      "image_relative_L2": 0.0005294958971402896,
+      "linear_RGB_max": 0.45376776371062644,
+      "primary_position_max_error": 7.670479362786864e-08,
+      "reflectance_channels_above_one": 0,
+      "reflectance_max": 0.9365588531839579,
+      "reflectance_max_difference": 2.988326345376713e-06,
+      "reflectance_relative_L2": 2.2410010606934886e-06,
+      "specular_fraction": 0.700050175128901,
+      "split": "fitting",
+      "valid": 4144,
+      "world_Q_max_error": 0.0
+    },
+    {
+      "camera": 45,
+      "geometry_hits": 3970,
+      "highlight_fraction": 0.33324937027707807,
+      "image_max_difference": 0.0005133711118607762,
+      "image_relative_L2": 0.0002358856043621648,
+      "linear_RGB_max": 0.4525531053131849,
+      "primary_position_max_error": 7.803092061386963e-08,
+      "reflectance_channels_above_one": 0,
+      "reflectance_max": 0.9366656091440653,
+      "reflectance_max_difference": 2.991067086566268e-06,
+      "reflectance_relative_L2": 2.2446867612709464e-06,
+      "specular_fraction": 0.6980712876893351,
+      "split": "fitting",
+      "valid": 3970,
+      "world_Q_max_error": 0.0
+    },
+    {
+      "camera": 28,
+      "geometry_hits": 4849,
+      "highlight_fraction": 0.17735615590843473,
+      "image_max_difference": 0.00209068134681073,
+      "image_relative_L2": 0.0014941514928238381,
+      "linear_RGB_max": 0.45954519871319643,
+      "primary_position_max_error": 7.135295376770046e-08,
+      "reflectance_channels_above_one": 0,
+      "reflectance_max": 0.9366633588435329,
+      "reflectance_max_difference": 2.9900664881843397e-06,
+      "reflectance_relative_L2": 2.3836848994344306e-06,
+      "specular_fraction": 0.7947653336319614,
+      "split": "held_out",
+      "valid": 4849,
+      "world_Q_max_error": 0.0
+    },
+    {
+      "camera": 34,
+      "geometry_hits": 2497,
+      "highlight_fraction": 0.35511022044088175,
+      "image_max_difference": 0.0015704727558370195,
+      "image_relative_L2": 0.0009092807390184527,
+      "linear_RGB_max": 0.45722022242576343,
+      "primary_position_max_error": 6.332406710107819e-08,
+      "reflectance_channels_above_one": 0,
+      "reflectance_max": 0.9365498760846116,
+      "reflectance_max_difference": 2.9899667531863017e-06,
+      "reflectance_relative_L2": 2.2944037789173853e-06,
+      "specular_fraction": 0.7060549921838192,
+      "split": "held_out",
+      "valid": 2495,
+      "world_Q_max_error": 0.0
+    }
+  ],
+  "researcher_admitted_dataset": false,
+  "runtime": {
+    "CUDA": "11.1",
+    "GPU": "NVIDIA A100 80GB PCIe",
+    "declared_image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "numpy": "1.24.4",
+    "torch": "1.8.1+cu111"
+  },
+  "schema_version": 1,
+  "scientific_thresholds_unchanged": true,
+  "source_commit": "dbd60d9f45eeb04a32b3f670d56797a934a417ec",
+  "status": "TECHNICAL_VERIFICATION_PASS_PENDING_RESEARCHER_ADMISSION",
+  "training_authorized": false,
+  "valid_observations": 22630,
+  "validation": {
+    "grazing": {
+      "pixel_indices": [
+        12635,
+        4037,
+        12581,
+        4825,
+        4027
+      ],
+      "slope_two_grid": {
+        "maximum_rgb_difference": 1.2765526591351772e-06,
+        "passed": true,
+        "relative_l2": 3.3594745345363725e-06
+      }
+    },
+    "ordinary": {
+      "old_incident_two_grid": {
+        "maximum_rgb_difference": 0.00010950941294307626,
+        "passed": true,
+        "relative_l2": 5.431895793685107e-05
+      },
+      "pixel_indices": [
+        4151,
+        5713,
+        6812,
+        8217,
+        9771,
+        10784,
+        11835,
+        13508
+      ],
+      "slope_two_grid": {
+        "maximum_rgb_difference": 2.9784189609083356e-06,
+        "passed": true,
+        "relative_l2": 2.3878952532743024e-06
+      },
+      "slope_vs_independent_incident": {
+        "maximum_rgb_difference": 3.720254790684496e-05,
+        "passed": true,
+        "relative_l2": 1.845827962768438e-05
+      }
+    }
+  }
+}
