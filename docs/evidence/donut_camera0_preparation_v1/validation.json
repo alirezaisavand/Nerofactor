@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "status": "prepared_NOT_rendered",
+  "CPU_tests": {
+    "exit_code": 0,
+    "counts": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 4
+    },
+    "python": "3.9.12 (main, Apr  5 2022, 06:56:58) \n[GCC 7.5.0]",
+    "scientific_import_blocker": "import importlib.abc,sys\nclass Block(importlib.abc.MetaPathFinder):\n def find_spec(self,fullname,path=None,target=None):\n  if fullname.split('.')[0] in ('torch','network','train','dataset','bpy','_cycles','_raytracing','scientific_sources','scientific_variants'):\n   raise ImportError('No native/scientific rendering imports in CPU fixtures: '+fullname)\nsys.meta_path.insert(0,Block())\nimport pytest\nraise SystemExit(pytest.main(sys.argv[1:]))\n",
+    "JUnit_sha256": "ab3c6375dbad9ada9e6c3f6ef9e3ae3fb2d8d0f47905859f5898c7551a8538a6",
+    "stdout_sha256": "450f6a8f6912f0188251d5ae07edd85dbb964b01b3fcb9e1c41fbbe6f2285b51"
+  },
+  "metadata_only_Blender_preflight_exit": 0,
+  "freeze_sha256": "649c87782142e6a89f5c3a9aef335453fa10db07641d0f912ffe151c6046c1c6",
+  "input_files_verified": 81,
+  "python38_AST": true,
+  "frozen_scientific_sources": {
+    "geometry": {
+      "commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+      "files": 99
+    },
+    "material": {
+      "commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "files": 106
+    }
+  },
+  "scientific_render_calls": 0,
+  "original_data_unchanged": true,
+  "output_directory_created": false,
+  "unresolved": [
+    "Actual EXR/AgX roundtrip, foreground alignment and historical RGB residuals require the authorized one-frame execution.",
+    "Historical Blender/Cycles/denoiser build is unavailable; a close image match cannot prove exact producing identity.",
+    "Native CPU render runtime and memory are not yet measured; stop on resource failure without retry."
+  ]
+}

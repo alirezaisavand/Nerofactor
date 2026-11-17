@@ -1,0 +1,24 @@
+{
+  "command": [
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/blender",
+    "--background",
+    "--factory-startup",
+    "--disable-autoexec",
+    "--threads",
+    "1",
+    "--python-exit-code",
+    "2",
+    "--python",
+    "/home/isavand/paper/Nerofactor-donut-reproduction/experiments/render_donut_camera0.py",
+    "--",
+    "--freeze",
+    "/home/isavand/paper/Nerofactor-donut-reproduction/docs/protocols/DONUT_CAMERA0_REPRODUCTION_V1.freeze.json",
+    "--freeze-sha256",
+    "649c87782142e6a89f5c3a9aef335453fa10db07641d0f912ffe151c6046c1c6",
+    "--output",
+    "/home/isavand/paper/evidence/donut-camera0-reproduction-a0dc1eb96ffa49d2b727e83e1da8de42"
+  ],
+  "exit_code": 0,
+  "freeze_sha256": "649c87782142e6a89f5c3a9aef335453fa10db07641d0f912ffe151c6046c1c6",
+  "scientific_rendering": false
+}

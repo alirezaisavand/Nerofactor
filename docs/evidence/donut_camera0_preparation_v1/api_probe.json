@@ -1,0 +1,44 @@
+{
+  "OIIO_version": "3.0.19.1",
+  "format_properties": [
+    "rna_type",
+    "file_format",
+    "color_mode",
+    "color_depth",
+    "quality",
+    "compression",
+    "use_preview",
+    "exr_codec",
+    "use_jpeg2k_ycc",
+    "use_jpeg2k_cinema_preset",
+    "use_jpeg2k_cinema_48",
+    "jpeg2k_codec",
+    "tiff_codec",
+    "use_cineon_log",
+    "cineon_black",
+    "cineon_white",
+    "cineon_gamma",
+    "views_format",
+    "stereo_3d_format",
+    "color_management",
+    "view_settings",
+    "display_settings",
+    "linear_colorspace_settings",
+    "has_linear_colorspace"
+  ],
+  "EXR_linear_colorspace_properties": [
+    "rna_type",
+    "name",
+    "is_data"
+  ],
+  "EXR_linear_colorspace": "Linear Rec.709",
+  "source_PNG": {
+    "width": 1080,
+    "height": 1080,
+    "channels": 4,
+    "OIIO_format": "uint16",
+    "dtype": "float32",
+    "min": 0,
+    "max": 1
+  }
+}
