@@ -1,0 +1,373 @@
+{
+  "Blender_build_hash": "3f6797307da5",
+  "Blender_executable": "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/blender",
+  "Blender_release": "4.5.16",
+  "authorization_status": "pending_fresh_explicit_approval",
+  "base_commit": "a51ca60bebaed84faf5ae15ae14029eb689bb089",
+  "failed_v1_output": "/home/isavand/paper/evidence/donut-camera0-reproduction-a0dc1eb96ffa49d2b727e83e1da8de42",
+  "inputs": {
+    "/home/isavand/nero/data/nerf_synthetic/donut/masks_train/0001.png": {
+      "bytes": 5968,
+      "sha256": "f43c169584f7bd5abe44c9a6919a2ade3745c49fc6b67883dffed7b6c74345e6"
+    },
+    "/home/isavand/nero/data/nerf_synthetic/donut/train/0001.png": {
+      "bytes": 9347904,
+      "sha256": "294b43f798573ffc939cc1b23e6a4c4f831760a8322e0b99ab2f7e05cd1fe040"
+    },
+    "/home/isavand/nero/data/nerf_synthetic/donut/transforms_train.json": {
+      "bytes": 86413,
+      "sha256": "89fc7b8d05db69437f3654cac1a8c6e68a23cfb411c28703824e18f0fdcaa82a"
+    },
+    "/home/isavand/paper/data/blender/donut/donut.blend": {
+      "bytes": 1600817,
+      "sha256": "fcf8956740d6543782c190ec1c90e1bbef6f3ae36dcc9c3c0aa9b7fd7b742d57"
+    },
+    "/home/isavand/paper/data/blender/donut/university_workshop_4k.hdr": {
+      "bytes": 26217430,
+      "sha256": "f3c5838d0e3f656c08af3e00cf32982e6cbecf7d398913eedd6d410906ae4b4d"
+    },
+    "/home/isavand/paper/evidence/donut-blend-inspection-v2/DONUT_GROUND_TRUTH_REPORT.md": {
+      "bytes": 12584,
+      "sha256": "61fec22842ccedbb70f94818ea979b01e0b8b12baeb31723de5585301fe7e2a0"
+    },
+    "/home/isavand/paper/evidence/donut-blend-inspection-v2/inspection-manifest.json": {
+      "bytes": 7305,
+      "sha256": "73089c66034cb1eea368f2fa6487aa5a63f23f4aa79f05b5f7cd9f28f44a1da1"
+    },
+    "/home/isavand/paper/evidence/donut-blend-inspection-v2/native-chart-orientation-reference.npz": {
+      "bytes": 804634,
+      "sha256": "cc498faabe0b8b3e2ebf63a87a51d48316396b90e8650098cf19a559f442834c"
+    },
+    "/home/isavand/paper/evidence/donut-blend-inspection-v2/oracle-geometry-and-frames.npz": {
+      "bytes": 2589411,
+      "sha256": "cfe903c177dfe404c47390aed2a3fa025ea9499ca0af644dba667b721c0139f1"
+    },
+    "/home/isavand/paper/evidence/donut-blend-inspection-v2/scene-metadata-compact.json": {
+      "bytes": 124470,
+      "sha256": "ff55562a9b23d929b877567f92f14f6dc99e71e5dc08b0879927022600ccb199"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/4.5/datafiles/colormanagement/config.ocio": {
+      "bytes": 30585,
+      "sha256": "aa4142b29b5a472aa5cb895020aa8cb673c95a31660eeee451f8a820694d3b16"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/4.5/datafiles/colormanagement/filmic/filmic_desat_33.cube": {
+      "bytes": 1078249,
+      "sha256": "77776b30ffc12d3d2a377039aa6a4faec083a5391cb77881244a5fb7f7d31908"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/4.5/datafiles/colormanagement/filmic/filmic_to_0-35_1-30.spi1d": {
+      "bytes": 94270,
+      "sha256": "0ea26b926904d395085968e400c187afc3ca6bd20365f086520201b024504565"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/4.5/datafiles/colormanagement/filmic/filmic_to_0-48_1-09.spi1d": {
+      "bytes": 94270,
+      "sha256": "c165ededf8613a4bbaeb4b86923e6c0750e85c2d0e503d5813440d2d05490ae9"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/4.5/datafiles/colormanagement/filmic/filmic_to_0-60_1-04.spi1d": {
+      "bytes": 94270,
+      "sha256": "d6eb719914486271fd74a81188b17e8fe2308f163d311311eae30bd8328cb7e9"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/4.5/datafiles/colormanagement/filmic/filmic_to_0-70_1-03.spi1d": {
+      "bytes": 94270,
+      "sha256": "ff0e4cd3745c3d6857c163ee33caa2c796d6c5bddd91859e4646518110bf5b13"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/4.5/datafiles/colormanagement/filmic/filmic_to_0-85_1-011.spi1d": {
+      "bytes": 94270,
+      "sha256": "49611d68ea8d7fb454266ad239ab91213f05d41affc32ab552d1097d4b3028cd"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/4.5/datafiles/colormanagement/filmic/filmic_to_0.99_1-0075.spi1d": {
+      "bytes": 94270,
+      "sha256": "b75f1de373e704c757217170c5245801e241014ced7d664b213e02b791674c27"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/4.5/datafiles/colormanagement/filmic/filmic_to_1.20_1-00.spi1d": {
+      "bytes": 94270,
+      "sha256": "9bdef6f44239b090482cc3570895167432a59e28fb49a8b4288d75f29f912a9e"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/4.5/datafiles/colormanagement/luts/AgX_Base_P3.cube": {
+      "bytes": 2740073,
+      "sha256": "6075ac4726cc41ca2d36de65782959d060d20cc9306202c02395796d3b3f7328"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/4.5/datafiles/colormanagement/luts/AgX_Base_Rec2020.cube": {
+      "bytes": 2809107,
+      "sha256": "e0ea8fcba273798517baa5ee877197b36cb471fefab188756815af82e8424a3a"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/4.5/datafiles/colormanagement/luts/AgX_Base_sRGB.cube": {
+      "bytes": 2716206,
+      "sha256": "e707a36f3e90ee79bc342332febf91334c02ce3974cac700ece00ca9d4507491"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/4.5/datafiles/colormanagement/luts/AgX_False_Color.spi1d": {
+      "bytes": 127040,
+      "sha256": "77fb04f881f17a64f0cc1905d82372380ee6bcfeb29e09679fe501665463eea1"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/4.5/datafiles/colormanagement/luts/Guard_Rail_Shaper_EOTF.spi1d": {
+      "bytes": 45766,
+      "sha256": "ef9cb510a8a7e234636fe27deea20c17356a447af0f808e254f083adbc4d37d0"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/4.5/datafiles/colormanagement/luts/Inverse_AgX_Base_Rec2020.cube": {
+      "bytes": 4387435,
+      "sha256": "b4d1efd1ece87e0204060efb74d805674668075ebbfa800f0bd1c25b03086f38"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/4.5/datafiles/colormanagement/luts/luminance_compensation_bt2020.cube": {
+      "bytes": 1519956,
+      "sha256": "e3f5adcd8c08f77a96be141e8d504d58125cc80216a7a641abc970c85840cfd2"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/4.5/datafiles/colormanagement/luts/luminance_compensation_p3.cube": {
+      "bytes": 1519878,
+      "sha256": "e2deac3c44d4cf20f223ace06b9b87a6088485a005755b5ffd66ec1842f6d0a6"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/4.5/datafiles/colormanagement/luts/luminance_compensation_srgb.cube": {
+      "bytes": 1519884,
+      "sha256": "d7dfd19b54986526834135bbdea0a38ec3531beba67a28b79cda371d3d9c2796"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/4.5/datafiles/colormanagement/luts/pbrNeutral.cube": {
+      "bytes": 5495377,
+      "sha256": "cc177eeaa09e43a7d1a3e59e0745beba09a5190764259db58a485513a143f0b9"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/4.5/datafiles/colormanagement/luts/xyz_E_to_D65.spimtx": {
+      "bytes": 115,
+      "sha256": "24c1d78b42022f9a996b0f568b3fd6ceadb70a41e58520bc720fd618559c5301"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/4.5/python/lib/python3.11/site-packages/OpenImageIO/OpenImageIO.cpython-311-x86_64-linux-gnu.so": {
+      "bytes": 1608384,
+      "sha256": "e17410bd9c76044cd4980552b131ebe3a21e9333dfbc7d257d8ab2d65f74b1bc"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/blender": {
+      "bytes": 163629720,
+      "sha256": "c752cdc50bc29b5968e23b6e5588936bb05046e29dbc119e26aab79a9de2b55b"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libIex.so.32.3.3.11": {
+      "bytes": 517008,
+      "sha256": "ac2a9940114453e1f57eb39cec1b9d4717d54e7809195478837dde72ab94e36e"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libIlmThread.so.32.3.3.11": {
+      "bytes": 39528,
+      "sha256": "dab6ecb69b6dcb8773c1cb17c163cbcead4ed8bd33fc0473af2b90d10c58e7b2"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libImath.so.30.0.1": {
+      "bytes": 325824,
+      "sha256": "ccb3848a814a59ff687b90b10dc75d59ac9eb3feec484de69e3631119acc6b1a"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libMaterialXCore.so.1.39.2": {
+      "bytes": 1141432,
+      "sha256": "34ba72373f2f57f3c54ce66564987b26707b2a7233ee81b2bdef6d8b64ebc4ca"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libMaterialXFormat.so.1.39.2": {
+      "bytes": 298464,
+      "sha256": "3db122deb3c33106e26496a1b18d7c790df370cbca8020d30c49e4914a7882da"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libMaterialXGenGlsl.so.1.39.2": {
+      "bytes": 392584,
+      "sha256": "9682a421182d69817fe6076fa96d924befd51b7bfaa8b71da3dae1db379ccdab"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libMaterialXGenMdl.so.1.39.2": {
+      "bytes": 335552,
+      "sha256": "f8781ebbcdba873c464191b9c488fd6bb1513dc0ca5134a460472a9613085fbc"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libMaterialXGenMsl.so.1.39.2": {
+      "bytes": 347632,
+      "sha256": "25152e082271bd601945047522857e8d2b312dfb4afb8cb16c3573ad28a6b7c1"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libMaterialXGenOsl.so.1.39.2": {
+      "bytes": 195736,
+      "sha256": "a3a8ffe3d5cc5fadded83ad24a93c26fc58ec1b04acb89c70c75fdc55415e344"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libMaterialXGenShader.so.1.39.2": {
+      "bytes": 919632,
+      "sha256": "17c8a115e087bcf3a59c437c8307f0c7c837014b3974737f9227d668fa3b5166"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libMaterialXRender.so.1.39.2": {
+      "bytes": 578128,
+      "sha256": "a7f9c9a5a5667e1b42592142c395f3b01b33cff71b1e24a268b19989d006520e"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libMaterialXRenderGlsl.so.1.39.2": {
+      "bytes": 405624,
+      "sha256": "b6994f8d27f9c0fa21c76647be2eaa6ed075178418c557fd3d44ab79bdc16915"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libMaterialXRenderHw.so.1.39.2": {
+      "bytes": 18696,
+      "sha256": "509b25d94a378d493161f3e3af528e6a01c30f1fc7cfc6df29ac5aa9c52263a5"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libMaterialXRenderOsl.so.1.39.2": {
+      "bytes": 84912,
+      "sha256": "2c7528863cc3066acdeac1af857aa8777732c649bcb593ba1710e30ace9884f6"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libOpenColorIO.so.2.4.1": {
+      "bytes": 6259360,
+      "sha256": "4ff8a4d25bb4bdacb53314ef9a7107e233d0c32905d60046a50909be2d013696"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libOpenEXR.so.32.3.3.11": {
+      "bytes": 1252944,
+      "sha256": "d16cb308c85f7648b4f94ddf1dab17064015dbbf985a5139bf2fadbd5fe6b524"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libOpenEXRCore.so.32.3.3.11": {
+      "bytes": 897600,
+      "sha256": "7b8b56b4038fd278b909d6189a24694b7e4378b5b19b1ec64037fa1b7984ba66"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libOpenEXRUtil.so.32.3.3.11": {
+      "bytes": 217632,
+      "sha256": "955b580ae1ff79c2d83cb23e31fbb7ba5b3893710104167dffd7afd09ea4180c"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libOpenImageDenoise.so.2.3.3": {
+      "bytes": 100360,
+      "sha256": "9a220453d6a7ea32a036559e6579768a312653c9da12b819282f91bf8b2acc11"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libOpenImageDenoise_core.so.2.3.3": {
+      "bytes": 46897200,
+      "sha256": "5ee271c174239386fa68fcad392a0f3e054aefeb9bc36741d409553b06fc09a3"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libOpenImageDenoise_device_cpu.so.2.3.3": {
+      "bytes": 469136,
+      "sha256": "5aeb212937a174a5990242556716db737462a15846cf99f4e77c825e7e48d3fb"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libOpenImageDenoise_device_cuda.so.2.3.3": {
+      "bytes": 3976008,
+      "sha256": "82521b91a0efb74b5bddbd0976e4cfb42438cb593635120a8727adbfd79edfe8"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libOpenImageDenoise_device_hip.so.2.3.3": {
+      "bytes": 7423448,
+      "sha256": "0739c3c606009b47a40bd4c541338ce6d457334153fccc0240911f4891cbb17a"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libOpenImageDenoise_device_sycl.so.2.3.3": {
+      "bytes": 825696,
+      "sha256": "5b9219bb7a5a36774a2174cbfcb4ec52a20f25f856c13b5a624ea7a66838ff0f"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libOpenImageIO.so.3.0.19": {
+      "bytes": 9612000,
+      "sha256": "598a1911824516af18802b2266384f1af59fb13df1cc9c05fc1ae481652c6213"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libOpenImageIO_Util.so.3.0.19": {
+      "bytes": 966128,
+      "sha256": "5f5e734e1e76ac68a4a2a6899bbb66bd616ba47853b1358d06dd6dbc1e796f09"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libblender_cpu_check.so": {
+      "bytes": 13016,
+      "sha256": "d90fd197f32ae0db0ae44e96981d9021c637a4aa9cd8725589da2a3d399c8d3b"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libcycles_kernel_oneapi_aot.so": {
+      "bytes": 30233000,
+      "sha256": "d84f83f88470e5df4bdb9351538029cfac7685f1234092df5f7e65b44ad91def"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libembree4.so.4": {
+      "bytes": 27880592,
+      "sha256": "f0c17e85fe9ce7a8a063bb2763cacb6fca3588340cb749c4522ccbe019017293"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libhiprt64.so": {
+      "bytes": 23153456,
+      "sha256": "c6aaaa4f15f4d6b1d2bfa7235eb9cb61d7de385abae2fa3a936591b47563fce8"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libopenvdb.so.12.0.0": {
+      "bytes": 52981240,
+      "sha256": "511f7faca99764252de6a6d14bdf753272485442df8d6fcf942529e05ae2282b"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libosdCPU.so.3.6.0": {
+      "bytes": 794424,
+      "sha256": "25007eeb3aaa2297b44480410510d4abe9c82cc7e1dab09f8a0650fb13ab2ba5"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libosdGPU.so.3.6.0": {
+      "bytes": 834344,
+      "sha256": "22f4e5cb3c15c4e51942266807f52911de2036ad3813bfb311aaa9caecff0681"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/liboslcomp.so.1.14.4": {
+      "bytes": 41641400,
+      "sha256": "294b74f3e19a2bac60d51d4f9bf5bb0a83ee18d89c4f572e776aa65474548ee6"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/liboslexec.so.1.14.4": {
+      "bytes": 51711816,
+      "sha256": "6c7faa03f21966c8ca7d29f7a3e383ff7920bee259758f457a1cec9e04a65e7f"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/liboslnoise.so.1.14.4": {
+      "bytes": 76880,
+      "sha256": "f6aa69bce5267e755846bf9680b814478cbb7b36b3642cac11c5f3fb0a0a7a13"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/liboslquery.so.1.14.4": {
+      "bytes": 215784,
+      "sha256": "09d5ef996d34ebd1baf8f120e4445b5c367e148d9170bb05298daaeb5590d9f7"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libsycl.so.8.0.0-0": {
+      "bytes": 3994224,
+      "sha256": "9eb4a27ad48a071dab96709adb2482e2cd020b1ad8a0a2df784a740483ee2a0a"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libtbb.so.12.13": {
+      "bytes": 266848,
+      "sha256": "961d3a027b7cd4b74aea59380bb83c601f0cda27b525c741ba2f50defd0c9c6f"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libtbbmalloc.so.2.13": {
+      "bytes": 131368,
+      "sha256": "a3c315b0121624af8e5bcb26b361ec794e91e4fff5b1580b1a5e4ad04ab321f6"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libtbbmalloc_proxy.so.2.13": {
+      "bytes": 24504,
+      "sha256": "816c390d88b6b40977fbf069ceed5289faddaf614de41f01d419f9be1613c85c"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libur_adapter_level_zero.so.0.11.8": {
+      "bytes": 1477648,
+      "sha256": "aae4a31e47f18e08c57cb8ad27856ba8d26075823bdaf1e5893bef947123acc8"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libur_loader.so.0.11.8": {
+      "bytes": 16169640,
+      "sha256": "d495da5c6561f6536614d95f0c90e03c5af24ce0238d39609a3e3890a99be11c"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libusd_ms.so": {
+      "bytes": 57342624,
+      "sha256": "158a1b990d9b5324c10479a3c027c228d71ede87a82531269a7ed41da9bc1b12"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/libvulkan.so.1.3.296": {
+      "bytes": 498920,
+      "sha256": "a8aeecb30d1c544caa8ad46ec3a3c27695f9ceb1bf8fbb470445742c90d56298"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/mesa/libGL.so.1.5.0": {
+      "bytes": 53994264,
+      "sha256": "ec6bc2ce152f4e81eac756edb5e27653d275e52357e9b83321bf617f8094a25f"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/mesa/libGLU.so.1.3.1": {
+      "bytes": 716760,
+      "sha256": "e1ebf229dfa97b69acd6ae023b5efc1825297df0fac8a4f622e781e33bbcc464"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/blender-4.5.16-linux-x64/lib/mesa/libglapi.so.0.0.0": {
+      "bytes": 207024,
+      "sha256": "d91f05521ab11bfd89235cc3128a6f24d08f7e1fab4ae5cc55cbdba1a823c79f"
+    },
+    "/home/isavand/paper/tools/blender-4.5.16-portable/installation-manifest.json": {
+      "bytes": 2252,
+      "sha256": "daeb776f3847ce3b5136b266a98d9b9bcfbc3c2ea7b85455bf6e325f360acc60"
+    }
+  },
+  "limits": {
+    "CPU_threads": 8,
+    "RSS_bytes": 17179869184,
+    "address_space_bytes": 34359738368,
+    "kill_grace_seconds": 30,
+    "output_bytes": 536870912,
+    "render_calls": 1,
+    "resolution": [
+      1080,
+      1080
+    ],
+    "samples": 4096,
+    "wall_seconds": 3600
+  },
+  "output_directory": "/home/isavand/paper/evidence/donut-camera0-reproduction-v2-cacfd58bc62d44aa84141984ae5e16ea",
+  "paths": {
+    "HDR": "/home/isavand/paper/data/blender/donut/university_workshop_4k.hdr",
+    "camera_JSON": "/home/isavand/nero/data/nerf_synthetic/donut/transforms_train.json",
+    "reference_PNG": "/home/isavand/nero/data/nerf_synthetic/donut/train/0001.png",
+    "reference_mask": "/home/isavand/nero/data/nerf_synthetic/donut/masks_train/0001.png",
+    "scene": "/home/isavand/paper/data/blender/donut/donut.blend"
+  },
+  "previous_freeze_sha256": "649c87782142e6a89f5c3a9aef335453fa10db07641d0f912ffe151c6046c1c6",
+  "protocol": "donut-camera0-blender-reproduction-v1",
+  "revision": 2,
+  "run_id": "donut-camera0-reproduction-v2-cacfd58bc62d44aa84141984ae5e16ea",
+  "schema_version": 1,
+  "sources": {
+    "docs/DONUT_CAMERA0_LAUNCH_CORRECTION_V2.md": "8e586f6da4ce4da505bc174f6cbd7a7d343fbcb4f1ea24fd2f00a5adcd6275b1",
+    "docs/evidence/donut_camera0_correction_v2/failure.json": "d791b7347ca20e1c793d4f19eb7f8d58a821fe1bfb578f814a28533554efd2f3",
+    "docs/evidence/donut_camera0_correction_v2/tests-output.txt": "223792d235b7629b9a4acaa8e03f5b0cb992c5f317f9b159846bf484696e25c6",
+    "docs/evidence/donut_camera0_correction_v2/tests.junit.xml": "9439c03bd50abebdaddc44902b41f4569b54e4f72321b61ef3b15b305eec513f",
+    "docs/evidence/donut_camera0_correction_v2/validation.json": "ba4c4bc175025ae75dc19c4c8cfdd918aa2c6400e93000c8fa477377ee24d9aa",
+    "docs/protocols/DONUT_CAMERA0_REPRODUCTION_V1.freeze.json": "649c87782142e6a89f5c3a9aef335453fa10db07641d0f912ffe151c6046c1c6",
+    "docs/protocols/DONUT_CAMERA0_REPRODUCTION_V1.md": "9e2883a65610e401b48ac858ab95618e369b50497bbc81f3605d52cf0300a10a",
+    "experiments/donut_camera0_reproduction.py": "942eae94300a9fe82fd6b12c306ed78b93d34e39a61b9f68ca5a3c70244c1507",
+    "experiments/render_donut_camera0.py": "2a3011d3a187c33e2e406f2fbce6c97541c757293f940f33660d2e7f217ab18f",
+    "tests/infrastructure/test_donut_camera0_reproduction.py": "0e861647f4fd767ccadea08efcc99336ee7c375a4f4c839884f775c35926ac5a"
+  }
+}

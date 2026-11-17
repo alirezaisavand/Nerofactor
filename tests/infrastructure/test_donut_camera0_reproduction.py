@@ -50,3 +50,33 @@ def test_only_one_render_call_and_launcher_explicitly_executes_it():
     launch=(root/'experiments/donut_camera0_reproduction.py').read_text()
     assert "'--','--execute'" in launch and "receipt['successful_render_returns']==1" in launch
     assert 'save_mainfile' not in script and 'save_as_mainfile' not in script
+
+
+def test_relative_control_paths_survive_actual_child_working_directory(tmp_path,monkeypatch):
+    """Exercise launch's argv/cwd boundary with a fake process, never Blender."""
+    from types import SimpleNamespace
+    import experiments.donut_camera0_reproduction as module
+    source=tmp_path/'source';source.mkdir();(source/'freeze.json').write_text('{}');(source/'authorization.json').write_text('{}')
+    output=tmp_path/'fresh-render';monkeypatch.chdir(source)
+    definition=dict(output_directory=str(output),Blender_executable='/fake/blender')
+    monkeypatch.setattr(module,'verify_freeze',lambda path,sha:definition)
+    monkeypatch.setattr(module,'authorize',lambda *args:None)
+    monkeypatch.setattr(module.subprocess,'check_output',lambda args,**kwargs:'c'*40+'\n' if 'rev-parse' in args else '')
+    calls=[]
+    class Process:
+        returncode=0
+        def __init__(self,command,**kwargs):
+            calls.append(command)
+            # Reproduce the OS's relative-file lookup from the child's DIFFERENT
+            # working directory. The original launcher fails these reads.
+            for option in ('--freeze','--authorization'):
+                p=Path(command[command.index(option)+1])
+                child_path=p if p.is_absolute() else Path(kwargs['cwd'])/p
+                assert child_path.read_text()=='{}'
+        def poll(self):return 0
+    monkeypatch.setattr(module.subprocess,'Popen',Process)
+    monkeypatch.setattr(module,'analyze',lambda path:dict(synthetic_fixture_only=True))
+    module.launch(SimpleNamespace(freeze=Path('freeze.json'),freeze_sha256='f'*64,authorization=Path('authorization.json')))
+    assert len(calls)==1 and '--execute' in calls[0]
+    assert Path(calls[0][calls[0].index('--freeze')+1])==source/'freeze.json'
+    assert (output/'execution-receipt.json').is_file()

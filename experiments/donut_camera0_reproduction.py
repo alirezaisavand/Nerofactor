@@ -116,6 +116,8 @@ def analyze(output):
 
 
 def launch(args):
+    args.freeze=args.freeze.resolve(strict=True)
+    args.authorization=args.authorization.resolve(strict=True)
     f=verify_freeze(args.freeze,args.freeze_sha256)
     commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=str(ROOT),text=True).strip()
     require(not subprocess.check_output(['git','status','--porcelain'],cwd=str(ROOT),text=True),'Clean reviewed source required')

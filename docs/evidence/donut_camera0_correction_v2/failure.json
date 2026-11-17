@@ -1,0 +1,29 @@
+{
+  "status": "launch_failed_before_scene_load_or_render",
+  "batch": "/home/isavand/paper/evidence/donut-camera0-reproduction-a0dc1eb96ffa49d2b727e83e1da8de42",
+  "source_commit": "cd1e5e9d42f9dd1f60051df964f9b60cadd92219",
+  "Blender_exit_code": 2,
+  "supervisor_exit_code": 1,
+  "scientific_render_calls": 0,
+  "supervisor_cleanup_complete": true,
+  "root_cause": "Relative freeze path passed into a different child cwd.",
+  "files": {
+    "execution-receipt.json": {
+      "bytes": 1021,
+      "sha256": "0a5b9ee225a9e78835a346c42ef3271314ff44ab4f66de88fc030cebdf5d56c0"
+    },
+    "console.log": {
+      "bytes": 1441,
+      "sha256": "02ec8ca355dbffa307a0a91507d304f0f9d17e10b39b2a8dd70942062c3a5f17"
+    },
+    "freeze.json": {
+      "bytes": 20529,
+      "sha256": "649c87782142e6a89f5c3a9aef335453fa10db07641d0f912ffe151c6046c1c6"
+    },
+    "authorization.json": {
+      "bytes": 993,
+      "sha256": "5946dd55a6b8fa58dec5521521928b4dca4119a3ddfc9a47c810f32fdf87ccc8"
+    }
+  },
+  "originals_modified": false
+}
