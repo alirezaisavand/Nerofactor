@@ -58,8 +58,11 @@ POLICY = dict(seed=6033, optimizer='original A Adam', lr_initial=.001, eps=.0001
 
 
 def json_new(path, value):
+    # Validate the complete payload before creating an exclusive output file.
+    # A reporting type/NaN error must not leave a truncated terminal record.
+    text=json.dumps(value, indent=2, sort_keys=True, allow_nan=False)+'\n'
     with Path(path).open('x') as stream:
-        json.dump(value, stream, indent=2, sort_keys=True, allow_nan=False); stream.write('\n')
+        stream.write(text)
 
 
 def numeric(path):

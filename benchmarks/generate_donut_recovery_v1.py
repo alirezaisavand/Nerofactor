@@ -11,6 +11,16 @@ from infrastructure.signatures import require
 from infrastructure.stage_sources import PINS, activate, digest
 
 
+def highlight_record(components):
+    """Keep the existing scalar summary in JSON and the Boolean mask in NPZ."""
+    from experiments.bell_highlight_e11d import measures
+    summary,mask=measures(components)
+    require(isinstance(summary,dict) and mask.dtype==np.bool_ and mask.shape==(len(components),),
+            'Unexpected saved-component highlight result')
+    json.dumps(summary,allow_nan=False)  # No generic ndarray/string fallback.
+    return summary,mask
+
+
 def generate(args):
     freeze,_=runtime(args,'reference')
     geometry,meta,records=inputs(args.oracle,args.cameras)
@@ -36,7 +46,6 @@ def generate(args):
         from benchmarks.bell_reference_e11 import basis,environment
         from benchmarks.bell_e11 import convergence,linear_to_srgb
         from experiments.bell_highlight_pilot_e11d import kernel_axes
-        from experiments.bell_highlight_e11d import measures
         from experiments.bell_quadrature_e11e import midpoint_grid,controls,weighted_components
         require(torch.__version__=='1.8.1+cu111' and torch.cuda.device_count()==1 and 'A100' in torch.cuda.get_device_name(0), 'Reviewed native GPU runtime required')
         torch.set_num_threads(4);torch.cuda.set_per_process_memory_fraction(.25)
@@ -113,8 +122,10 @@ def generate(args):
                     row['grids'].append(dict(size=grid,valid_points=int(valid.sum()),directions_per_point=N))
                 cg=convergence(results[512][valid,2],results[256][valid,2])
                 eg=convergence(energies[512][valid],energies[256][valid])
+                highlight_summary,strong=highlight_record(results[512][valid])
+                highlight_mask=np.zeros(len(ids),bool);highlight_mask[valid]=strong
                 row.update(radiance_convergence=cg,energy_convergence=eg,
-                    highlight_diagnostics=measures(results[512][valid]),
+                    highlight_diagnostics=highlight_summary,
                     directional_reflectance_max=energies[512][valid].max(0).tolist(),
                     reflectance_channels_above_one=int((energies[512][valid]>1).sum()),
                     energy_interpretation='Unoccluded directional-hemispherical reflectance; additive core has no conservation guarantee; never normalized or clipped.')
@@ -123,6 +134,7 @@ def generate(args):
                     raw_BVH_normals=raw[ids],depth=depth[ids],**frame,
                     color=np.broadcast_to(COLOR,(len(ids),3)),metallic=np.full((len(ids),1),METALLIC),
                     widths_major_minor=np.broadcast_to(WIDTHS,(len(ids),2)),
+                    highlight_mask=highlight_mask,
                     linear_components=results[512],coarse_components=results[256],
                     reflectance=energies[512],coarse_reflectance=energies[256],
                     visible_counts=shadow_counts[512])

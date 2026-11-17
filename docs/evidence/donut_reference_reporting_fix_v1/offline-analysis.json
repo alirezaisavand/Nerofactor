@@ -1,0 +1,493 @@
+{
+  "cameras_completed_numerically": [
+    0
+  ],
+  "cameras_not_started": [
+    50,
+    1,
+    45,
+    28,
+    34
+  ],
+  "cleanup_note": "Original flag false; helper has finally cleanup, but no complete terminal receipt survives. No Docker query/relaunch used.",
+  "conclusions": [
+    "Actual exception is tuple/ndarray JSON misuse, followed by truncated terminal JSON.",
+    "Saved camera0 image convergence passes unchanged gates.",
+    "Unoccluded reflectance absolute convergence independently fails at five grazing configurations; relative gate passes.",
+    "Grazing association suggests quadrature resolution difficulty, but neither fine-grid absolute accuracy nor its cause is established.",
+    "No admission, training, retry or higher-resolution integration is authorized."
+  ],
+  "exit_code": 1,
+  "explicitly_salvaged_prefix_fields": {
+    "Blender_calls": 0,
+    "cleanup_verified": false,
+    "commit": "8f22b544b1a9f35de387223bdc7352263ca13f34",
+    "counters": {
+      "BRDF_point_directions": 1486356480,
+      "CPU_primary_crosschecks": 8,
+      "primary_rays": 16384,
+      "shadow_directions": 1486356480
+    },
+    "elapsed_seconds": 60.67686421982944,
+    "freeze_sha256": "064147fa7f2a966f523dcc104b1a88cd1618d9ec2d4649af1ebb7de4bd265718",
+    "native_model_calls": 0,
+    "optimizer_returns": 0,
+    "status": "failed"
+  },
+  "failed_points": [
+    {
+      "absolute_reflectance_difference": [
+        0.007466620817494676,
+        0.008422707391222473,
+        0.007383442084124836
+      ],
+      "coarse_reflectance": [
+        0.08852442428987065,
+        0.3567751423341756,
+        0.06518683586890087
+      ],
+      "cosine": 0.0015503584022789618,
+      "fine_reflectance": [
+        0.08105780347237597,
+        0.34835243494295315,
+        0.05780339378477603
+      ],
+      "maximum_image_difference": 8.024085459400546e-05,
+      "normal": [
+        -0.9302903495178639,
+        -0.13061631165203344,
+        -0.34278162833551845
+      ],
+      "outgoing": [
+        -0.36823179781070586,
+        0.34375376370150745,
+        0.8638510826653768
+      ],
+      "pixel_index": 12635,
+      "pixel_xy": [
+        91,
+        98
+      ],
+      "position": [
+        -0.47820353507995605,
+        -0.06707340478897095,
+        -0.05142630636692047
+      ],
+      "triangle": 9982
+    },
+    {
+      "absolute_reflectance_difference": [
+        0.00503280426890701,
+        0.005898835166828265,
+        0.004957460304115868
+      ],
+      "coarse_reflectance": [
+        0.08669511001214278,
+        0.37266746397968065,
+        0.061815754067350834
+      ],
+      "cosine": 0.021274306268732696,
+      "fine_reflectance": [
+        0.08166230574323577,
+        0.3667686288128524,
+        0.056858293763234966
+      ],
+      "maximum_image_difference": 2.9647202211706414e-05,
+      "normal": [
+        0.5148240129803914,
+        -0.34824370490874185,
+        0.7833789361798025
+      ],
+      "outgoing": [
+        -0.6810036487926918,
+        0.3629071138833786,
+        0.6360286605365175
+      ],
+      "pixel_index": 4037,
+      "pixel_xy": [
+        69,
+        31
+      ],
+      "position": [
+        0.36264175176620483,
+        -0.2452715039253235,
+        0.11447092890739441
+      ],
+      "triangle": 16568
+    },
+    {
+      "absolute_reflectance_difference": [
+        0.004405100401228296,
+        0.00513840216985495,
+        0.004341303759827483
+      ],
+      "coarse_reflectance": [
+        0.08602673418972198,
+        0.35644903142413603,
+        0.06250022019296328
+      ],
+      "cosine": 0.007797231272647143,
+      "fine_reflectance": [
+        0.08162163378849369,
+        0.3513106292542811,
+        0.058158916433135796
+      ],
+      "maximum_image_difference": 5.5334138226677265e-05,
+      "normal": [
+        -0.4717184545944968,
+        0.8149001017715697,
+        -0.3367781520937265
+      ],
+      "outgoing": [
+        -0.4975869049655641,
+        0.07854027436802459,
+        0.863851085146616
+      ],
+      "pixel_index": 12581,
+      "pixel_xy": [
+        37,
+        98
+      ],
+      "position": [
+        -0.24207322299480438,
+        0.4182089865207672,
+        -0.0505218431353569
+      ],
+      "triangle": 6527
+    },
+    {
+      "absolute_reflectance_difference": [
+        0.004348358743129513,
+        0.005042228756762357,
+        0.004287992631478887
+      ],
+      "coarse_reflectance": [
+        0.07817051032271206,
+        0.34464668541599475,
+        0.054987305656344035
+      ],
+      "cosine": 0.0010316487111695083,
+      "fine_reflectance": [
+        0.08251886906584158,
+        0.3496889141727571,
+        0.05927529828782292
+      ],
+      "maximum_image_difference": 3.872595534066409e-05,
+      "normal": [
+        0.2692516749217343,
+        -0.6582040312753799,
+        0.7030440873548965
+      ],
+      "outgoing": [
+        -0.6074608602144108,
+        0.44949527324207417,
+        0.6549391594954459
+      ],
+      "pixel_index": 4825,
+      "pixel_xy": [
+        89,
+        37
+      ],
+      "position": [
+        0.17048494517803192,
+        -0.41667473316192627,
+        0.10325217992067337
+      ],
+      "triangle": 14642
+    },
+    {
+      "absolute_reflectance_difference": [
+        0.003961385030549297,
+        0.004691814504457548,
+        0.003897838276390002
+      ],
+      "coarse_reflectance": [
+        0.0858860860828581,
+        0.3711769022984366,
+        0.06106602335325135
+      ],
+      "cosine": 0.01982033189674525,
+      "fine_reflectance": [
+        0.0819247010523088,
+        0.36648508779397904,
+        0.05716818507686135
+      ],
+      "maximum_image_difference": 2.723041138361082e-05,
+      "normal": [
+        0.5924004599327429,
+        -0.19180016365986982,
+        0.7824796433719677
+      ],
+      "outgoing": [
+        -0.7052388922723477,
+        0.3132182098918188,
+        0.6360286611613004
+      ],
+      "pixel_index": 4027,
+      "pixel_xy": [
+        59,
+        31
+      ],
+      "position": [
+        0.416666716337204,
+        -0.13482257723808289,
+        0.11435628682374954
+      ],
+      "triangle": 17334
+    }
+  ],
+  "geometry_hits": 4539,
+  "highlight_diagnostics": {
+    "highlight_coverage": 0.3205467372134039,
+    "integrated_specular_fraction": 0.7069923626796806,
+    "integrated_specular_to_diffuse": 2.4128803233438854,
+    "linear_rgb_max": 0.4541053768486636,
+    "mean_diffuse_luminance": 0.01807319551694728,
+    "mean_specular_luminance": 0.04360845784278901,
+    "out_of_png_domain": false,
+    "pixels": 4536,
+    "quantization_linear_rgb_rmse": 0.0003882867622962663,
+    "quantization_rmse_over_specular_rms": 0.0063110278731246874,
+    "specular_at_least_two_codes_fraction": 0.9942680776014109,
+    "specular_contrast_p99_minus_p50": 0.27073886292632426,
+    "specular_contrast_ratio": 24.893040609846167,
+    "specular_dominant_fraction": 0.4417989417989418,
+    "specular_fraction_median": 0.42576303942592875,
+    "specular_luminance_p50": 0.011331285429396314,
+    "specular_luminance_p99": 0.2820701483557206,
+    "specular_zero_code_fraction": 0.0
+  },
+  "input_hashes_verified": true,
+  "new_BRDF_evaluations": 0,
+  "new_optimizer_returns": 0,
+  "new_primary_rays": 0,
+  "new_shadow_queries": 0,
+  "next_action": "Review a bounded unoccluded-reflectance reference check at these five saved material/view points. No new visibility rays are needed; new BRDF integrations need separate approval.",
+  "numerical_archive": {
+    "Q_world": {
+      "dtype": "float64",
+      "shape": [
+        4539,
+        3,
+        3
+      ]
+    },
+    "axis": {
+      "dtype": "float64",
+      "shape": [
+        4539,
+        3
+      ]
+    },
+    "barycentric": {
+      "dtype": "float64",
+      "shape": [
+        4539,
+        3
+      ]
+    },
+    "coarse_components": {
+      "dtype": "float64",
+      "shape": [
+        4539,
+        3,
+        3
+      ]
+    },
+    "coarse_reflectance": {
+      "dtype": "float64",
+      "shape": [
+        4539,
+        3
+      ]
+    },
+    "color": {
+      "dtype": "float64",
+      "shape": [
+        4539,
+        3
+      ]
+    },
+    "depth": {
+      "dtype": "float32",
+      "shape": [
+        4539
+      ]
+    },
+    "face_normal": {
+      "dtype": "float64",
+      "shape": [
+        4539,
+        3
+      ]
+    },
+    "hit_mask": {
+      "dtype": "bool",
+      "shape": [
+        128,
+        128
+      ]
+    },
+    "linear_components": {
+      "dtype": "float64",
+      "shape": [
+        4539,
+        3,
+        3
+      ]
+    },
+    "metallic": {
+      "dtype": "float64",
+      "shape": [
+        4539,
+        1
+      ]
+    },
+    "normals": {
+      "dtype": "float64",
+      "shape": [
+        4539,
+        3
+      ]
+    },
+    "outgoing": {
+      "dtype": "float64",
+      "shape": [
+        4539,
+        3
+      ]
+    },
+    "pixel_indices": {
+      "dtype": "int64",
+      "shape": [
+        4539
+      ]
+    },
+    "position": {
+      "dtype": "float64",
+      "shape": [
+        4539,
+        3
+      ]
+    },
+    "raw_BVH_normals": {
+      "dtype": "float32",
+      "shape": [
+        4539,
+        3
+      ]
+    },
+    "reflectance": {
+      "dtype": "float64",
+      "shape": [
+        4539,
+        3
+      ]
+    },
+    "shader_valid": {
+      "dtype": "bool",
+      "shape": [
+        4539
+      ]
+    },
+    "surface_residual": {
+      "dtype": "float64",
+      "shape": [
+        4539
+      ]
+    },
+    "triangle": {
+      "dtype": "int64",
+      "shape": [
+        4539
+      ]
+    },
+    "visible_counts": {
+      "dtype": "int64",
+      "shape": [
+        4539
+      ]
+    },
+    "widths_major_minor": {
+      "dtype": "float64",
+      "shape": [
+        4539,
+        2
+      ]
+    }
+  },
+  "original_artifacts": {
+    "authorization.json": {
+      "bytes": 2033,
+      "sha256": "37ee717305372fb719bd34dd9b79ae23d29e8dcab1ef839e8e5ad5189250bf95"
+    },
+    "freeze.json": {
+      "bytes": 40243,
+      "sha256": "064147fa7f2a966f523dcc104b1a88cd1618d9ec2d4649af1ebb7de4bd265718"
+    },
+    "reference-console.txt": {
+      "bytes": 18173,
+      "sha256": "84f5df629ad808acaec43d1fc3b17dfcf1aa6e8964914dd3ff64e78f9615f3e8"
+    },
+    "reference-exit-code.txt": {
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    "reference.cid": {
+      "bytes": 64,
+      "sha256": "c458fe4052f52f1939155ed200b98bb284bae753e62459206d0d015767b47b84"
+    },
+    "reference/generation.json": {
+      "bytes": 9284,
+      "sha256": "39ad9415353e1d0ea71041db106e571dd36e1997b23b548579e93e5272c1dba9"
+    },
+    "reference/progress.json": {
+      "bytes": 222,
+      "sha256": "29ed834abb92c786a57a7b91766894e14d7cc58ea6610c97d447a89be3b05743"
+    },
+    "reference/view-0-diffuse-preview.png": {
+      "bytes": 2828,
+      "sha256": "68d332ac2b9b62c7a3f31df631ed5ec067ab436d4f75520d6200f3bdf0be7b0c"
+    },
+    "reference/view-0-preview.png": {
+      "bytes": 5993,
+      "sha256": "7e2b9450ea7a30e91132edb77e8c9df4f9c5c8266f38a5a62a2a8d1ae57da4fc"
+    },
+    "reference/view-0-specular-preview.png": {
+      "bytes": 6154,
+      "sha256": "99c97f4331629d91b088107b9f79917ee2417695c41aac2bb7afc5c7e65e0189"
+    },
+    "reference/view-0.npz": {
+      "bytes": 1720599,
+      "sha256": "8e49c382adeba827163f42b55f1b79d2d3c43fe1fdc9530dc4307fc97b4ab99c"
+    }
+  },
+  "original_evidence_root": "/home/isavand/paper/evidence/donut-kurt-reference-v1-5df0234193664e9b93cae546542ca7a2",
+  "original_terminal_report": {
+    "parse_error": "Expecting value: line 325 column 9 (char 9284)",
+    "rewritten": false,
+    "valid_JSON": false
+  },
+  "radiance_convergence": {
+    "maximum_rgb_difference": 0.0012401835733787114,
+    "passed": true,
+    "relative_l2": 0.0007598627730038538
+  },
+  "reflectance_absolute_failure_points": 5,
+  "reflectance_channels_above_one": 0,
+  "reflectance_convergence": {
+    "maximum_rgb_difference": 0.008422707391222473,
+    "passed": false,
+    "relative_l2": 0.0004421936774133849
+  },
+  "reflectance_failure_fraction": 0.0011022927689594356,
+  "reflectance_max_per_channel": [
+    0.10769115297990456,
+    0.9365055540059081,
+    0.05927529828782292
+  ],
+  "schema_version": 1,
+  "shader_valid_points": 4536,
+  "status": "BLOCKED_reference_reflectance_convergence_and_reporting_failure",
+  "terminal_cleanup_verified": false
+}
