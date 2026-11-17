@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "protocol": "sphere-corrected-core-replay-v1",
+  "revision": 2,
+  "status": "prepared_not_executed",
+  "previous_execution": "docs/evidence/SPHERE_CORRECTED_REPLAY_FAILURE_V1.json",
+  "previous_source_commit": "6661e363ec49e0d339625cf34c461a415f08a727",
+  "view_direction_interface": "sphere-unit-outgoing-at-shade-v1",
+  "correction": "Out-of-place normalize outgoing shader argument only for train/validation/NVS; raw rays, tracer inputs, normals and frozen variant remain unchanged",
+  "tests": {
+    "command": "python3 -B -m pytest -q -p no:cacheprovider tests/infrastructure/test_sphere_replay.py --junitxml=/tmp/sphere-replay-tests-v2.xml",
+    "process_exit_code": 0,
+    "passed": 22,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "python": "3.9.12",
+    "junit_path": "docs/evidence/SPHERE_CORRECTED_REPLAY_TESTS_V2.xml",
+    "junit_sha256": "e5417fda8f8d7fb41dc6c363b07a454d5919728f0d9569f5f290ea1895197b27"
+  },
+  "static_checks": {
+    "Python38_AST": "pass",
+    "bash_syntax": "pass",
+    "whitespace": "pass",
+    "frozen_G_A_and_variants_unchanged": true,
+    "old_freeze_and_reports_unchanged": true
+  },
+  "new_native_execution": false,
+  "new_GPU_execution": false,
+  "new_scientific_shader_calls": 0,
+  "gates_remaining": [
+    "Native unit-view, upper-hemisphere normal, numerical and reconstruction gates remain unexecuted for v2.",
+    "Original v1 authorization consumed; fresh exact approval/output required."
+  ]
+}

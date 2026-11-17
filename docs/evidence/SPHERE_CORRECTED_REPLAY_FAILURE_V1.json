@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "protocol": "sphere-corrected-core-replay-v1",
+  "status": "failed",
+  "source_commit": "6661e363ec49e0d339625cf34c461a415f08a727",
+  "original_batch": "/home/isavand/paper/evidence/sphere-core-8c2c1feb8b6449678ac18f7460c9b261",
+  "exit_code": 1,
+  "optimizer_returns": 0,
+  "backward_returns": 0,
+  "first_training_forward_completed": false,
+  "checkpoint_count": 0,
+  "error": "Unit views required; no normal repair",
+  "cleanup_errors": [],
+  "cleanup_verified": false,
+  "resources": {
+    "native_wall_seconds": 72.1076721008867,
+    "peak_RSS_KiB": 34426680,
+    "peak_cuda_allocated_bytes": 54525952,
+    "peak_cuda_reserved_bytes": 113246208
+  },
+  "ray_backend": {
+    "variant": "predicate_fp64",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15"
+  },
+  "cause": "Original NeRF raw camera rays reach corrected shader as nonunit outgoing vectors",
+  "derived_camera_grid": {
+    "resolution": [
+      1080,
+      1080
+    ],
+    "ray_norm_min": 1.0,
+    "ray_norm_max": 1.122140884399414,
+    "pixels_outside_unit_tolerance": 1166263,
+    "pixels": 1166400,
+    "tolerance": 1e-05,
+    "scope": "Offline original camera-coordinate grid calculation; actual first-batch vectors were not saved"
+  },
+  "artifacts": {
+    "authorization.json": {
+      "path": "/home/isavand/paper/evidence/sphere-core-8c2c1feb8b6449678ac18f7460c9b261/authorization.json",
+      "bytes": 1203,
+      "sha256": "8c1cd85eaf5acf4e1b39ec8820a7dba449c846b35eee7751772c44462360c67f"
+    },
+    "freeze.json": {
+      "path": "/home/isavand/paper/evidence/sphere-core-8c2c1feb8b6449678ac18f7460c9b261/freeze.json",
+      "bytes": 8830,
+      "sha256": "6998588d5c214eac1542f34f87866598f13605449ce19c153b1831a1a46949d1"
+    },
+    "launch.json": {
+      "path": "/home/isavand/paper/evidence/sphere-core-8c2c1feb8b6449678ac18f7460c9b261/launch.json",
+      "bytes": 431,
+      "sha256": "1cb549aac2429b18ab00bed1be0514fba2a7464eebb866b33ffa31d4428ff78f"
+    },
+    "console.log": {
+      "path": "/home/isavand/paper/evidence/sphere-core-8c2c1feb8b6449678ac18f7460c9b261/console.log",
+      "bytes": 9388,
+      "sha256": "31c75bfe50d490dd80e64a2d94a0371f39917d99c3db4d4659dff7c5831b14bb"
+    },
+    "exit-code.txt": {
+      "path": "/home/isavand/paper/evidence/sphere-core-8c2c1feb8b6449678ac18f7460c9b261/exit-code.txt",
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    "sphere/sphere-replay.json": {
+      "path": "/home/isavand/paper/evidence/sphere-core-8c2c1feb8b6449678ac18f7460c9b261/sphere/sphere-replay.json",
+      "bytes": 50151,
+      "sha256": "195e6a046f90c166a499de284d70a1c7f6084ed5aa8edabf9d6bfede4f423fc0"
+    },
+    "sphere/config.original.yaml": {
+      "path": "/home/isavand/paper/evidence/sphere-core-8c2c1feb8b6449678ac18f7460c9b261/sphere/config.original.yaml",
+      "bytes": 1393,
+      "sha256": "06d7de5307054ddf775f55b40874d28cf63a75ee47a4b63f4b4b1dc6c943b4c7"
+    },
+    "sphere/config.effective.yaml": {
+      "path": "/home/isavand/paper/evidence/sphere-core-8c2c1feb8b6449678ac18f7460c9b261/sphere/config.effective.yaml",
+      "bytes": 1359,
+      "sha256": "e5ce5bc12233239fa91ee1e9049502865f14012356f1b2077c8abf28dbccaee1"
+    },
+    "sphere/logs/console.log": {
+      "path": "/home/isavand/paper/evidence/sphere-core-8c2c1feb8b6449678ac18f7460c9b261/sphere/logs/console.log",
+      "bytes": 3377,
+      "sha256": "e31f91d88db16eef28f95ae0f6114df9440e62c62b40887f9a1279563084c37b"
+    }
+  },
+  "preservation": "Original run/freeze/authorization unmodified. Original source hashes independently verified from Git commit.",
+  "conclusion": "Fresh unit-outgoing shader-boundary adaptation requires a new source/freeze and explicit execution authorization."
+}

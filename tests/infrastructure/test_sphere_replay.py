@@ -106,7 +106,7 @@ def test_capture_observes_same_shade_calls_and_pixel_order(tmp_path):
             return {k:torch.ones((len(pts),2 if k.startswith('rotation') else 3))*i for i,k in enumerate(CAPTURE_KEYS,1)}
         def test_step(self,index,is_nvs=False):
             pts=torch.tensor([[1.,2.,3.],[4.,5.,6.]])
-            self.shade(pts,None,pts,None,False)
+            self.shade(pts,-pts,pts,None,False)
             return {k:torch.from_numpy(v) for k,v in a.items() if k!='hit_mask'}
     report={'optimizer_returns':2000}
     cls=renderer_adapter(Base,tmp_path,report,Budget(tmp_path),torch,np);obj=cls()
@@ -236,3 +236,46 @@ assert not any(n.split('.')[0] in ('torch','network','dataset','train','raytraci
 '''
     result=subprocess.run([sys.executable,'-B','-c',code],cwd=str(ROOT),capture_output=True,text=True)
     assert result.returncode==0,result.stderr
+
+
+@pytest.mark.parametrize('is_train',[True,False])
+def test_original_nerf_nonunit_views_adapt_at_actual_shade_boundary(tmp_path,is_train):
+    torch=pytest.importorskip('torch')
+    from infrastructure.sphere_replay import unit_outgoing_views,VIEW_INTERFACE
+    # Use the actual corrected unit-domain guard, without importing/constructing
+    # native shader classes or executing any BRDF/sampling/model calculation.
+    source=ast.parse((ROOT/'scientific_variants/material_a_v1.py').read_text())
+    helpers=[n for n in source.body if isinstance(n,ast.FunctionDef) and n.name in ('finite','unit')]
+    env=dict(torch=torch,require=lambda condition,message: (_ for _ in ()).throw(SignatureError(message)) if not condition else None)
+    exec(compile(ast.Module(body=helpers,type_ignores=[]),'<corrected-unit-guard>','exec'),env)
+    views=torch.tensor([[.36,-.36,-1.],[0.,0.,-1.]],dtype=torch.float32)
+    raw=views.clone();normals=torch.tensor([[0.,0.,-1.],[0.,0.,-1.]])
+    pts=torch.zeros_like(views);poses=torch.eye(4).repeat(2,1,1);calls=[];token=object()
+    with pytest.raises(SignatureError,match='Unit views'):env['unit'](views,'views')
+    class Base:
+        def shade(self,p,v,n,h,train,step=None):
+            env['unit'](v,'views')
+            calls.append((p,v,n,h,train,step));return token
+    report={};obj=renderer_adapter(Base,tmp_path,report,Budget(tmp_path),torch,np)()
+    py,ns,ts=random.getstate(),np.random.get_state(),torch.get_rng_state().clone()
+    assert obj.shade(pts,views,normals,poses,is_train,step=0) is token
+    assert len(calls)==1 and calls[0][0] is pts and calls[0][2] is normals and calls[0][3] is poses
+    assert calls[0][4:]==(is_train,0) and torch.equal(views,raw)
+    actual=calls[0][1]
+    assert actual.dtype==views.dtype and actual.device==views.device
+    assert torch.allclose(actual,raw/torch.linalg.norm(raw,dim=-1,keepdim=True))
+    assert torch.allclose(torch.cross(actual,raw,dim=-1),torch.zeros_like(raw),atol=1e-7)
+    assert torch.all((actual*raw).sum(-1)>0)  # Same outgoing half-line, no sign flip.
+    assert random.getstate()==py and np.array_equal(np.random.get_state()[1],ns[1]) and torch.equal(torch.get_rng_state(),ts)
+    assert report['view_direction_adapter']['identity']==VIEW_INTERFACE
+    assert torch.equal(unit_outgoing_views(torch.tensor([[0.,0.,-1.]]),torch),torch.tensor([[0.,0.,-1.]]))
+
+
+@pytest.mark.parametrize('bad',[[[0.,0.,0.]],[[float('nan'),0.,1.]],[[float('inf'),0.,1.]],[[1.,2.]], [1.,2.,3.]])
+def test_invalid_views_fail_before_shader_no_fallback(tmp_path,bad):
+    torch=pytest.importorskip('torch')
+    class Base:
+        def shade(self,*args,**kwargs):raise AssertionError('Invalid views reached shader')
+    obj=renderer_adapter(Base,tmp_path,{},Budget(tmp_path),torch,np)()
+    with pytest.raises(SignatureError,match='Sphere outgoing views'):
+        obj.shade(None,torch.tensor(bad,dtype=torch.float32),None,None,True)

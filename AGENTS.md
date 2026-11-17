@@ -2,6 +2,16 @@
 
 ## Corrected sphere replay boundary
 
+The first authorized v1 launch failed before its first optimizer return because
+the original NeRF ray builder supplies nonunit outgoing shader vectors. The
+current correction prepares only a sphere-specific, out-of-place unit-view
+adaptation at shade, focused CPU regressions and a fresh v2 freeze. Preserve
+raw camera rays/intersections/normals and all frozen scientific code. This is
+an explicit input-representation correction relative to historical raw-ray A,
+not an observer-only change. Preserve v1 run/freeze/authorization/reports;
+its approval does not authorize a retry. Obtain fresh exact execution approval
+for v2 before any native launch. See [v2 correction](docs/SPHERE_CORRECTED_REPLAY_V2.md).
+
 The current researcher task authorizes a separate fresh sphere replay adapter,
 working configuration, original-style progression visualizations and focused
 synthetic/static checks. Preserve frozen G/A, corrected variants, original YAML,

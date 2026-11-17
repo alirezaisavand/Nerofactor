@@ -27,6 +27,23 @@ LIMITS = dict(updates=100000, validation_interval=2000, novel_view_interval=1000
               outer_seconds=86400, inner_seconds=85800, memory_gib=128, cpus=4,
               pids=256, output_bytes=64 * 1024**3, gpu='0')
 CAPTURE_KEYS = ('rotation', 'rotation_raw', 'linear_rgb', 'linear_diffuse', 'linear_specular')
+VIEW_INTERFACE = 'sphere-unit-outgoing-at-shade-v1'
+
+
+def unit_outgoing_views(view_dirs, torch):
+    """Adapt original nonunit NeRF rays ONLY at corrected shader's boundary.
+
+    Preserve the raw camera-ray batch and tracer's depth/intersection convention.
+    This explicitly changes shader inputs relative to historical raw-ray A;
+    corrected-core's existing unit-vector contract and formulas stay unchanged.
+    """
+    require(isinstance(view_dirs, torch.Tensor) and view_dirs.ndim == 2 and
+            view_dirs.shape[-1] == 3 and view_dirs.is_floating_point(),
+            'Sphere outgoing views must be floating Nx3 vectors')
+    lengths = torch.linalg.norm(view_dirs, dim=-1, keepdim=True)
+    require(bool(torch.isfinite(view_dirs).all() & torch.isfinite(lengths).all() & (lengths > 0).all()),
+            'Sphere outgoing views must be finite and nonzero; no fallback')
+    return view_dirs / lengths  # Out-of-place: no ray-batch or normal mutation.
 
 
 def split_ids():
@@ -200,7 +217,15 @@ def renderer_adapter(base, output, report, budget, torch, np):
             return result
 
         def shade(self, pts, view_dirs, normals, human_poses, is_train, step=None):
-            value = super().shade(pts, view_dirs, normals, human_poses, is_train, step)
+            shader_views = unit_outgoing_views(view_dirs, torch)
+            adapter = report.setdefault('view_direction_adapter',dict(identity=VIEW_INTERFACE,
+                raw_camera_rays_preserved=True, normals_unchanged=True, first_calls={}))
+            mode = 'training' if is_train else 'evaluation'
+            if mode not in adapter['first_calls']:
+                lengths = torch.linalg.norm(view_dirs,dim=-1)
+                adapter['first_calls'][mode] = dict(raw_min=float(lengths.min().cpu()),
+                    raw_max=float(lengths.max().cpu()), dtype=str(view_dirs.dtype),device=str(view_dirs.device))
+            value = super().shade(pts, shader_views, normals, human_poses, is_train, step)
             if self._captures is not None:
                 require(not is_train, 'Visualization capture entered training')
                 capture = {k: value[k].detach().cpu().numpy() for k in CAPTURE_KEYS}

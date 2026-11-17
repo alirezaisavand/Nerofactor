@@ -13,7 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from infrastructure.signatures import require
 from infrastructure.stage_sources import ROOT, PINS, baseline, digest
 from infrastructure.sphere_replay import (PROTOCOL, IMAGE, LIMITS, ORIGINAL_CFG, BudgetStop,
-    effective_configuration, input_records, native_execute, workspace)
+    effective_configuration, input_records, native_execute, workspace, VIEW_INTERFACE)
 
 
 def verify_freeze(path, sha):
@@ -21,6 +21,8 @@ def verify_freeze(path, sha):
     f = json.loads(path.read_text())
     require(f['protocol'] == PROTOCOL and f['limits'] == LIMITS and f['image_id'] == IMAGE and
             f['scientific_commit'] == PINS['material'], 'Freeze definition mismatch')
+    require(f.get('revision') == 2 and f.get('view_direction_interface') == VIEW_INTERFACE,
+            'Reviewed v2 unit-outgoing interface freeze required; v1 launch is consumed')
     for name, expected in f['files'].items():
         target = ROOT / name
         require(target.resolve() == target and ROOT in target.parents and digest(target) == expected,
