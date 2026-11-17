@@ -1,0 +1,36 @@
+{
+  "CPU_tests": {
+    "JUnit_sha256": "291a7de4f66306e5a06a8e0096c7f2ad17b88a7b5f5ff416584bfde761f82cc6",
+    "errors": 0,
+    "exit_code": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 41
+  },
+  "accepted_reference_identity": "2052306bdf87a0beaa0a3f9b0bddeeb12d787f1d65357d520b5ce2fe0a33ee64",
+  "checks": {
+    "calibrated_RGB_replayed_from_bound_D1_map": true,
+    "fresh_output_absent": true,
+    "metadata_preflight": "pass",
+    "old_frozen_scientific_settings_match": true,
+    "shell_syntax": "pass"
+  },
+  "coverage_sha256": {
+    "camera34-coverage.json": "70c8da48293f82ad662310c951ac02303500b3e441732abe0dc842915ad37637",
+    "camera34-coverage.npz": "0a995f98f6f672e7c3cb427adf4a8ffb7f47ab0607dcafd4ce385dbb263be2bc"
+  },
+  "freeze_sha256": "ce32a272fb0e7f4ccf65420a858e2070bc16fcd778dc8fac19913596c53bf639",
+  "frozen_source_identities": 293,
+  "host_calibrated_output": "/home/isavand/paper/evidence/donut-kurt-calibrated-d3-805284134859458fbc3da128c6e513bc",
+  "prior_D1_D2_initial_identity": "0407da2d23f545004a5505e475d497ba2c41760988048d2ff09654e18b5ab6a9",
+  "reference_artifact_identities": 31,
+  "schema_version": 1,
+  "scientific_execution": {
+    "geometry_rays": 0,
+    "native_models": 0,
+    "native_shader_calls": 0,
+    "optimizer_returns": 0
+  },
+  "status": "pending_explicit_D3_execution_approval",
+  "valid_observations": 22630
+}

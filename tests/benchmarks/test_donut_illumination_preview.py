@@ -81,7 +81,9 @@ def test_scientific_settings_and_sources_remain_at_accepted_definition():
     assert d.TRAIN_LIMITS==old['training_limits']
     assert d.POLICY==old['policy'] and d.SHADER==old['shader']
     assert d.PANEL==old['panel'] and d.SPLITS==old['splits']
-    changed={'AGENTS.md','experiments/donut_material_recovery_v1.py','experiments/run_donut_recovery_v1.sh'}
+    # The shared runner and metadata checks also dispatch the separately frozen D3 arm.
+    changed={'AGENTS.md','experiments/donut_material_recovery_v1.py','experiments/run_donut_recovery_v1.sh',
+             'benchmarks/donut_recovery_v1.py','run_donut_recovery.py'}
     for name,sha in old['sources'].items():
         if name not in changed:
             assert hashlib.sha256((d.ROOT/name).read_bytes()).hexdigest()==sha,name

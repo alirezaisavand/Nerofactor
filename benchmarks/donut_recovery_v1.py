@@ -200,6 +200,12 @@ def verify_freeze(path, expected):
     require(f['reference_limits']==reference_limits and f['training_limits']==TRAIN_LIMITS and
             f['policy']==POLICY and f['shader']==SHADER and f['panel']==PANEL and f['splits']==SPLITS,
             'Frozen scientific definition differs')
+    if 'calibrated_training' in f:
+        from benchmarks.donut_calibration_d3 import CALIBRATION, NEW_LIMITS, PROTOCOL
+        d3=f['calibrated_training']
+        require(d3['protocol']==PROTOCOL and d3['calibration']==CALIBRATION and
+                d3['limits']==dict(TRAIN_LIMITS, **NEW_LIMITS),
+                'Frozen D3 calibration or work limits differ')
     for name,sha in f['sources'].items():
         p=ROOT/name;require(p.resolve()==p and ROOT in p.parents and digest(p)==sha,'Frozen source changed: '+name)
     baseline('material',PINS['material'])
@@ -211,8 +217,19 @@ def runtime(args, phase):
     f=verify_freeze(args.freeze,args.freeze_sha256)
     a=json.loads(args.authorization.read_text());limits=f['reference_limits'] if phase=='reference' else TRAIN_LIMITS
     reference_protocol=f.get('reference_protocol',REFERENCE)
+    d3=f.get('calibrated_training')
+    require((phase=='D3')==(d3 is not None), 'D3 requires its dedicated execution freeze')
+    protocol=reference_protocol if phase=='reference' else TRAINING
+    if phase=='D3':
+        protocol,limits=d3['protocol'],d3['limits']
+        require(a.get('host_output_directory')==f['host_calibrated_output']
+                and a.get('benchmark_generation_sha256')==d3['benchmark_generation_sha256']
+                and a.get('dataset_admission_sha256')==d3['dataset_admission_sha256']
+                and a.get('initial_sha256')==d3['initial_sha256']
+                and a.get('selected_gpu')=='0' and a.get('maximum_execution_launches')==1,
+                'D3 authorization differs from the frozen dataset, initial state or launch')
     require(digest(args.authorization)==args.authorization_sha256 and a.get('approved') is True and
-        a.get('protocol')==(reference_protocol if phase=='reference' else TRAINING) and a.get('commit')==args.commit and
+        a.get('protocol')==protocol and a.get('commit')==args.commit and
         a.get('freeze_sha256')==args.freeze_sha256 and a.get('image_id')==args.image_id==IMAGE and
         a.get('limits')==limits and a.get('output_directories',{}).get(phase)==str(args.output),
         'Separate exact reference/training authorization required')

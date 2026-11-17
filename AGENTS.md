@@ -1,5 +1,18 @@
 # Research and development rules
 
+## Donut D3 calibrated illumination
+
+Use the accepted D1/D2 outputs from cce13b5795f1818434abfdfc096be7f87469ccad
+as immutable comparison evidence. D3 uses the D2 model, initialization, fitting
+data, RNG policy, optimizer, legacy priors and 10,000-update budget. Its learned
+direct environment has its spherical mean constrained to three calibrated RGB
+values through a differentiable denominator. Record a separate diffuse-white
+gradient probe at each existing diagnostic boundary and retain all visualizations
+and checkpoints. Camera 34 coverage analysis uses saved arrays only and cannot
+change fitting or selection. See docs/protocols/DONUT_KURT_CALIBRATED_D3_V1.md.
+One exact, separately approved launch is required. No D1/D2 rerun, reference
+regeneration, new loss, prior ablation, retry or automatic extension.
+
 ## Donut HDR illumination preview correction
 
 The first D1/D2 launch stopped during its initial illumination PNG export, with

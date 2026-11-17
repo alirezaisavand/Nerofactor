@@ -1,4 +1,4 @@
-"""Cold-process entry for the separately authorized reference or D1/D2 arm."""
+"""Cold-process entry for the separately authorized reference or recovery arm."""
 import argparse
 import json
 from pathlib import Path
@@ -10,7 +10,7 @@ from benchmarks.donut_recovery_v1 import inputs,verify_freeze,PANEL,SPLITS
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--phase',choices=('reference','D1','D2'),required=True)
+    p.add_argument('--phase',choices=('reference','D1','D2','D3'),required=True)
     for name in ('oracle','cameras','freeze','output'):
         p.add_argument('--'+name,type=Path,required=True)
     p.add_argument('--freeze-sha256',required=True)
