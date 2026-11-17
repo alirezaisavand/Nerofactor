@@ -1,0 +1,480 @@
+{
+  "schema_version": 1,
+  "protocol": "donut-camera0-blender-reproduction-v1",
+  "status": "complete",
+  "commit": "c2ced59da6f20804a452ec4ff9705498f714c942",
+  "freeze_sha256": "e435d3190b22d50b708903d574bd72d3780d3d72d4aad4428f953a6f21dbf2c2",
+  "render_attempts": 1,
+  "successful_render_returns": 1,
+  "physical_settings_before": {
+    "cycles": {
+      "device": "CPU",
+      "samples": 4096,
+      "use_adaptive_sampling": true,
+      "adaptive_threshold": 0.009999999776482582,
+      "adaptive_min_samples": 0,
+      "use_denoising": true,
+      "denoiser": "OPENIMAGEDENOISE",
+      "denoising_prefilter": "ACCURATE",
+      "denoising_quality": "HIGH",
+      "denoising_input_passes": "RGB_ALBEDO_NORMAL",
+      "denoising_use_gpu": false,
+      "max_bounces": 12,
+      "diffuse_bounces": 4,
+      "glossy_bounces": 4,
+      "transmission_bounces": 12,
+      "volume_bounces": 0,
+      "transparent_max_bounces": 8,
+      "sample_clamp_direct": 0.0,
+      "sample_clamp_indirect": 10.0,
+      "seed": 0,
+      "use_animated_seed": false,
+      "pixel_filter_type": "BLACKMAN_HARRIS",
+      "filter_width": 1.5,
+      "blur_glossy": 1.0,
+      "film_exposure": 1.0,
+      "use_light_tree": true
+    },
+    "material_inputs": {
+      "Base Color": [
+        0.10804545879364014,
+        1.0,
+        0.030446164309978485,
+        1.0
+      ],
+      "Metallic": 0.800000011920929,
+      "Roughness": 0.3499999940395355,
+      "IOR": 1.5,
+      "Alpha": 1.0,
+      "Normal": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Weight": 0.0,
+      "Diffuse Roughness": 0.0,
+      "Subsurface Weight": 0.0,
+      "Subsurface Radius": [
+        1.0,
+        0.20000000298023224,
+        0.10000000149011612
+      ],
+      "Subsurface Scale": 0.05000000074505806,
+      "Subsurface IOR": 1.399999976158142,
+      "Subsurface Anisotropy": 0.0,
+      "Specular IOR Level": 0.5,
+      "Specular Tint": [
+        0.9573224186897278,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "Anisotropic": 1.0,
+      "Anisotropic Rotation": 0.25,
+      "Tangent": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Transmission Weight": 0.0,
+      "Coat Weight": 0.0,
+      "Coat Roughness": 0.029999999329447746,
+      "Coat IOR": 1.5,
+      "Coat Tint": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "Coat Normal": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Sheen Weight": 0.0,
+      "Sheen Roughness": 0.5,
+      "Sheen Tint": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "Emission Color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "Emission Strength": 0.0,
+      "Thin Film Thickness": 0.0,
+      "Thin Film IOR": 1.3300000429153442
+    },
+    "distribution": "MULTI_GGX",
+    "camera_world": [
+      [
+        -0.43837618827819824,
+        0.6888188719749451,
+        -0.5773689150810242,
+        -2.3037452697753906
+      ],
+      [
+        -0.8987915515899658,
+        -0.3359642028808594,
+        0.28160566091537476,
+        1.1236276626586914
+      ],
+      [
+        1.4901161193847656e-08,
+        0.6423835158348083,
+        0.7663832902908325,
+        3.057926893234253
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "camera_angle": 0.6911112070083618,
+    "torus_world": [
+      [
+        0.7142857313156128,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.7142857313156128,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.75,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "vertices": 9216,
+    "polygons": 9216,
+    "light": {
+      "energy": 1000.0,
+      "color": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "radius": 0.10000000149011612,
+      "world": [
+        [
+          -0.29086464643478394,
+          -0.7711008191108704,
+          0.5663931965827942,
+          4.076245307922363
+        ],
+        [
+          0.9551711678504944,
+          -0.1998833566904068,
+          0.21839119493961334,
+          1.0054539442062378
+        ],
+        [
+          -0.05518905818462372,
+          0.6045247316360474,
+          0.7946722507476807,
+          5.903861999511719
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "world_strength": 0.19999998807907104,
+    "view": {
+      "view": "AgX",
+      "look": "None",
+      "exposure": 0.0,
+      "gamma": 1.0
+    },
+    "render": {
+      "film_transparent": false,
+      "dither": 1.0,
+      "PNG_color_depth": "16",
+      "PNG_color_mode": "RGBA"
+    }
+  },
+  "source_scene_sha256": "fcf8956740d6543782c190ec1c90e1bbef6f3ae36dcc9c3c0aa9b7fd7b742d57",
+  "image_only_roundtrip": true,
+  "outputs": {
+    "linear-to-AgX.png": {
+      "bytes": 9347735,
+      "sha256": "1606c7fe94d3795b6765808bc984a4ee47a7ee4b44dacf136b64d10aa8e15ace"
+    },
+    "comparison-inputs.npz": {
+      "bytes": 31572949,
+      "sha256": "4ad8fe5c3c64e6a8b559cd5236f197ff6053f8263b10bd4728011bded5596667"
+    },
+    "reproduced.png": {
+      "bytes": 9347913,
+      "sha256": "38b9687836539a720315eb4c040f81f520ee998af5d4dac565ebcf0f1e9b8f65"
+    },
+    "source-depth/Image0001.png": {
+      "bytes": 2338030,
+      "sha256": "ec77a6232acb32834c72d5dac3e9e7016466648be6ca152bff78033a1f352734"
+    },
+    "HDR/scene-linear-0001.exr": {
+      "bytes": 13248452,
+      "sha256": "4071a2755c38213f5a18d3ae30fb56b3a357e5711aa449cb7173c307c36353ac"
+    }
+  },
+  "operator_return": [
+    "FINISHED"
+  ],
+  "render_wall_seconds": 273.1303663738072,
+  "physical_settings_after": {
+    "cycles": {
+      "device": "CPU",
+      "samples": 4096,
+      "use_adaptive_sampling": true,
+      "adaptive_threshold": 0.009999999776482582,
+      "adaptive_min_samples": 0,
+      "use_denoising": true,
+      "denoiser": "OPENIMAGEDENOISE",
+      "denoising_prefilter": "ACCURATE",
+      "denoising_quality": "HIGH",
+      "denoising_input_passes": "RGB_ALBEDO_NORMAL",
+      "denoising_use_gpu": false,
+      "max_bounces": 12,
+      "diffuse_bounces": 4,
+      "glossy_bounces": 4,
+      "transmission_bounces": 12,
+      "volume_bounces": 0,
+      "transparent_max_bounces": 8,
+      "sample_clamp_direct": 0.0,
+      "sample_clamp_indirect": 10.0,
+      "seed": 0,
+      "use_animated_seed": false,
+      "pixel_filter_type": "BLACKMAN_HARRIS",
+      "filter_width": 1.5,
+      "blur_glossy": 1.0,
+      "film_exposure": 1.0,
+      "use_light_tree": true
+    },
+    "material_inputs": {
+      "Base Color": [
+        0.10804545879364014,
+        1.0,
+        0.030446164309978485,
+        1.0
+      ],
+      "Metallic": 0.800000011920929,
+      "Roughness": 0.3499999940395355,
+      "IOR": 1.5,
+      "Alpha": 1.0,
+      "Normal": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Weight": 0.0,
+      "Diffuse Roughness": 0.0,
+      "Subsurface Weight": 0.0,
+      "Subsurface Radius": [
+        1.0,
+        0.20000000298023224,
+        0.10000000149011612
+      ],
+      "Subsurface Scale": 0.05000000074505806,
+      "Subsurface IOR": 1.399999976158142,
+      "Subsurface Anisotropy": 0.0,
+      "Specular IOR Level": 0.5,
+      "Specular Tint": [
+        0.9573224186897278,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "Anisotropic": 1.0,
+      "Anisotropic Rotation": 0.25,
+      "Tangent": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Transmission Weight": 0.0,
+      "Coat Weight": 0.0,
+      "Coat Roughness": 0.029999999329447746,
+      "Coat IOR": 1.5,
+      "Coat Tint": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "Coat Normal": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Sheen Weight": 0.0,
+      "Sheen Roughness": 0.5,
+      "Sheen Tint": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "Emission Color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "Emission Strength": 0.0,
+      "Thin Film Thickness": 0.0,
+      "Thin Film IOR": 1.3300000429153442
+    },
+    "distribution": "MULTI_GGX",
+    "camera_world": [
+      [
+        -0.43837618827819824,
+        0.6888188719749451,
+        -0.5773689150810242,
+        -2.3037452697753906
+      ],
+      [
+        -0.8987915515899658,
+        -0.3359642028808594,
+        0.28160566091537476,
+        1.1236276626586914
+      ],
+      [
+        1.4901161193847656e-08,
+        0.6423835158348083,
+        0.7663832902908325,
+        3.057926893234253
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "camera_angle": 0.6911112070083618,
+    "torus_world": [
+      [
+        0.7142857313156128,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.7142857313156128,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.75,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "vertices": 9216,
+    "polygons": 9216,
+    "light": {
+      "energy": 1000.0,
+      "color": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "radius": 0.10000000149011612,
+      "world": [
+        [
+          -0.29086464643478394,
+          -0.7711008191108704,
+          0.5663931965827942,
+          4.076245307922363
+        ],
+        [
+          0.9551711678504944,
+          -0.1998833566904068,
+          0.21839119493961334,
+          1.0054539442062378
+        ],
+        [
+          -0.05518905818462372,
+          0.6045247316360474,
+          0.7946722507476807,
+          5.903861999511719
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "world_strength": 0.19999998807907104,
+    "view": {
+      "view": "AgX",
+      "look": "None",
+      "exposure": 0.0,
+      "gamma": 1.0
+    },
+    "render": {
+      "film_transparent": false,
+      "dither": 1.0,
+      "PNG_color_depth": "16",
+      "PNG_color_mode": "RGBA"
+    }
+  },
+  "source_unchanged": true,
+  "PNG_specs": {
+    "reference": {
+      "width": 1080,
+      "height": 1080,
+      "channels": 4,
+      "format": "uint16"
+    },
+    "reproduced": {
+      "width": 1080,
+      "height": 1080,
+      "channels": 4,
+      "format": "uint16"
+    },
+    "roundtrip": {
+      "width": 1080,
+      "height": 1080,
+      "channels": 4,
+      "format": "uint16"
+    }
+  },
+  "EXR_spec": {
+    "width": 1080,
+    "height": 1080,
+    "channels": 3,
+    "format": "float"
+  }
+}

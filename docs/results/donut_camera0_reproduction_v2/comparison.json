@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "protocol": "donut-camera0-blender-reproduction-v1",
+  "status": "file_only_comparison_complete",
+  "render_receipt_sha256": "0fb5e7ab01d723c113b32f58a6568a0752e793e033d0ed69ffabb264b1bbd057",
+  "comparison": {
+    "regions": {
+      "full_image": {
+        "pixels": 1166400,
+        "MSE": 8.375817018652224e-10,
+        "PSNR_dB": 90.76972818991305,
+        "exact_match": false,
+        "MAE": 6.114610848369158e-06,
+        "max_absolute_error": 0.012024109254596793,
+        "absolute_error_quantiles": [
+          0.0,
+          3.0518043793392735e-05,
+          7.629510948348531e-05
+        ],
+        "mean_signed_RGB": [
+          -3.5523275084267397e-07,
+          -4.967293050562223e-08,
+          -3.19335326216015e-07
+        ],
+        "SSIM": 0.999999632698857,
+        "fraction_RGB_components_within_2_LSB": 0.9622325102880659
+      },
+      "fixed_original_foreground": {
+        "pixels": 317811,
+        "MSE": 2.3174034334981576e-09,
+        "PSNR_dB": 86.34998353913849,
+        "exact_match": false,
+        "MAE": 1.9870531134742376e-05,
+        "max_absolute_error": 0.007324330510414312,
+        "absolute_error_quantiles": [
+          1.5259021896696368e-05,
+          7.629510948348184e-05,
+          0.00015259021896696368
+        ],
+        "mean_signed_RGB": [
+          -1.275078095190435e-06,
+          -1.5690609688904869e-07,
+          -1.1780440615879985e-06
+        ],
+        "SSIM": 0.9999987894522305,
+        "fraction_RGB_components_within_2_LSB": 0.8674725963963907
+      },
+      "common_foreground": {
+        "pixels": 317807,
+        "MSE": 2.3173051217723795e-09,
+        "PSNR_dB": 86.35016778476907,
+        "exact_match": false,
+        "MAE": 1.9869884978581982e-05,
+        "max_absolute_error": 0.007324330510414312,
+        "absolute_error_quantiles": [
+          1.5259021896696368e-05,
+          7.629510948348184e-05,
+          0.00015259021896696368
+        ],
+        "mean_signed_RGB": [
+          -1.2747100357619366e-06,
+          -1.5647595037659705e-07,
+          -1.1777227943502393e-06
+        ],
+        "SSIM": 0.9999987895250319,
+        "fraction_RGB_components_within_2_LSB": 0.8674761726456623
+      },
+      "common_SSIM_window_interior": {
+        "pixels": 298627,
+        "MSE": 1.8358688169768436e-09,
+        "PSNR_dB": 87.36158354778846,
+        "exact_match": false,
+        "MAE": 1.954155150897075e-05,
+        "max_absolute_error": 0.004333562218661879,
+        "absolute_error_quantiles": [
+          1.5259021896696368e-05,
+          7.629510948348184e-05,
+          0.00015259021896696368
+        ],
+        "mean_signed_RGB": [
+          -1.2645039292413174e-06,
+          -3.7301000862579824e-08,
+          -1.2766139802062886e-06
+        ],
+        "SSIM": 0.9999989620058618,
+        "fraction_RGB_components_within_2_LSB": 0.8679110283620257
+      }
+    },
+    "foreground_IoU": 0.9850357214809304,
+    "original_foreground_pixels": 317811,
+    "render_foreground_pixels": 322631,
+    "original_only_pixels": 4,
+    "render_only_pixels": 4824
+  },
+  "EXR_to_AgX_roundtrip": {
+    "max_LSB": 0,
+    "different_components": 0,
+    "within_2_LSB": true
+  },
+  "linear_RGB": {
+    "min_per_channel": [
+      0.006469582673162222,
+      0.029198622331023216,
+      0.0015413843793794513
+    ],
+    "max_per_channel": [
+      1.0371804237365723,
+      8.966292381286621,
+      0.3617558181285858
+    ],
+    "negative_components": 0,
+    "components_above_one": 29487
+  },
+  "interpretation": "No camera, exposure, color gain, crop or registration fitting. Scores alone cannot establish historical renderer identity.",
+  "new_render_calls": 0
+}
