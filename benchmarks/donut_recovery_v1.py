@@ -189,6 +189,14 @@ def physical_errors(pred, truth):
     return errors,summary
 
 
+def tensor_definition(protocol):
+    from benchmarks import donut_tensor_d8, donut_tensor_d9
+    for definition in (donut_tensor_d8,donut_tensor_d9):
+        if definition.PROTOCOL==protocol:
+            return definition
+    require(False,'Unknown paired tensor protocol')
+
+
 def verify_freeze(path, expected):
     require(digest(path)==expected, 'Freeze hash mismatch')
     f=json.loads(path.read_text())
@@ -235,14 +243,14 @@ def verify_freeze(path, expected):
                 and d7['diffuse_white_in_objective'] is True and d7['limits']==dict(TRAIN_LIMITS, **chart.LIMITS),
                 'Frozen D7 chart policy or work limits differ')
     if 'tensor_training' in f:
-        from benchmarks import donut_tensor_d8 as tensor
-        d8=f['tensor_training']
+        paired=f['tensor_training']
+        tensor=tensor_definition(paired['protocol'])
         require(not any(key in f for key in ('surface_q_training','surface_chart_training',
                                             'calibrated_training','diffuse_white_ablation'))
-                and d8['protocol']==tensor.PROTOCOL and d8['arms']==list(tensor.ARMS)
-                and d8['spatial_policy']==tensor.POLICY and d8['representation']==tensor.REPRESENTATION
-                and d8['diffuse_white_in_objective'] is True and d8['limits']==tensor.limits(TRAIN_LIMITS),
-                'Frozen D8 representation or work limits differ')
+                and paired['arms']==list(tensor.ARMS)
+                and paired['spatial_policy']==tensor.POLICY and paired['representation']==tensor.REPRESENTATION
+                and paired['diffuse_white_in_objective'] is True and paired['limits']==tensor.limits(TRAIN_LIMITS),
+                'Frozen tensor representation or work limits differ')
     for name,sha in f['sources'].items():
         p=ROOT/name;require(p.resolve()==p and ROOT in p.parents and digest(p)==sha,'Frozen source changed: '+name)
     baseline('material',PINS['material'])
@@ -251,7 +259,8 @@ def verify_freeze(path, expected):
 
 def runtime(args, phase):
     import os
-    from benchmarks.donut_tensor_d8 import ARMS as TENSOR_ARMS
+    from benchmarks.donut_tensor_d8 import ARMS as D8_ARMS
+    from benchmarks.donut_tensor_d9 import ARMS as D9_ARMS
     f=verify_freeze(args.freeze,args.freeze_sha256)
     a=json.loads(args.authorization.read_text());limits=f['reference_limits'] if phase=='reference' else TRAIN_LIMITS
     reference_protocol=f.get('reference_protocol',REFERENCE)
@@ -259,13 +268,16 @@ def runtime(args, phase):
     ablation=f.get('diffuse_white_ablation')
     d6=f.get('surface_q_training')
     d7=f.get('surface_chart_training')
-    d8=f.get('tensor_training')
+    paired=f.get('tensor_training')
     require((phase=='D3')==(d3 is not None), 'D3 requires its dedicated execution freeze')
     require((phase in ABLATION_ARMS)==(ablation is not None),
             'D4/D5 require their dedicated execution freeze')
     require((phase=='D6')==(d6 is not None), 'D6 requires its dedicated execution freeze')
     require((phase=='D7')==(d7 is not None), 'D7 requires its dedicated execution freeze')
-    require((phase in TENSOR_ARMS)==(d8 is not None), 'D8 requires its dedicated execution freeze')
+    tensor_arms=tensor_definition(paired['protocol']).ARMS if paired else ()
+    require((phase in D8_ARMS+D9_ARMS)==(paired is not None) and (not paired or phase in tensor_arms),
+            'D8 requires its dedicated execution freeze' if tensor_arms==D8_ARMS or phase in D8_ARMS
+            else 'D9 requires its dedicated execution freeze')
     protocol=reference_protocol if phase=='reference' else TRAINING
     if phase=='D3':
         protocol,limits=d3['protocol'],d3['limits']
@@ -286,11 +298,11 @@ def runtime(args, phase):
                 and a.get('wall_seconds')==ablation['wall_seconds']
                 and a.get('selected_gpu')=='0' and a.get('maximum_execution_launches')==1,
                 'D4/D5 authorization differs from the frozen dataset, initial state or batch')
-    spatial=d6 or d7 or d8
+    spatial=d6 or d7 or paired
     if spatial:
         protocol,limits=spatial['protocol'],spatial['limits']
         key='host_surface_output' if d6 else 'host_chart_output' if d7 else 'host_tensor_output'
-        expected_outputs={arm:'/outputs/'+arm for arm in (TENSOR_ARMS if d8 else (phase,))}
+        expected_outputs={arm:'/outputs/'+arm for arm in (tensor_arms if paired else (phase,))}
         require(a.get('host_output_directory')==f[key]
                 and a.get('benchmark_generation_sha256')==spatial['benchmark_generation_sha256']
                 and a.get('dataset_admission_sha256')==spatial['dataset_admission_sha256']
@@ -300,9 +312,9 @@ def runtime(args, phase):
                 and a.get('output_directories')==expected_outputs
                 and a.get('selected_gpu')=='0' and a.get('maximum_execution_launches')==1,
                 phase+' authorization differs from the frozen spatial policy, dataset, initial state or launch')
-        if d8:
-            require(a.get('arms')==list(TENSOR_ARMS) and a.get('wall_seconds')==limits['wall_seconds']
-                    and a.get('representation')==d8['representation'],'Exact paired D8 authorization required')
+        if paired:
+            require(a.get('arms')==list(tensor_arms) and a.get('wall_seconds')==limits['wall_seconds']
+                    and a.get('representation')==paired['representation'],'Exact paired tensor authorization required')
     require(digest(args.authorization)==args.authorization_sha256 and a.get('approved') is True and
         a.get('protocol')==protocol and a.get('commit')==args.commit and
         a.get('freeze_sha256')==args.freeze_sha256 and a.get('image_id')==args.image_id==IMAGE and

@@ -1,5 +1,16 @@
 # Research and development rules
 
+## Donut D9 initialization sensitivity
+
+Use D9-C and D9-T only under a dedicated paired freeze. Change the physical
+starting field to the predeclared geometry-only, projected world-X anchor
+near width .5. Preserve the D8 renderer, objectives, tapes, native settings,
+10,000-update budgets and original sources. The ambient arm adds the anchor
+in ambient tensor logits. Analyze the camera 28 ring from saved evidence
+only. One exact separate approval is required before the fresh batch.
+Preserve partials on failure and exclude retries or held-out tuning.
+See docs/protocols/DONUT_KURT_PAIRED_TENSOR_D9_V1.md.
+
 ## Donut D8 paired tensor control
 
 Select D8-C and D8-T only through their paired freeze. Keep the original

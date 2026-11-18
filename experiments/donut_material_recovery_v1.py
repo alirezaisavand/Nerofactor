@@ -16,7 +16,8 @@ import numpy as np
 from benchmarks.donut_recovery_v1 import (ABLATION_ARMS, TRAINING, TRAIN_LIMITS as LIMITS, SHADER,
     POLICY, PANEL, SPLITS, SIZE, COLOR, METALLIC, WIDTHS, inputs, numeric, unit,
     physical_errors, surface_frames, runtime, verify_freeze, json_new)
-from benchmarks.donut_tensor_d8 import ARMS as TENSOR_ARMS
+from benchmarks.donut_tensor_d8 import ARMS as D8_ARMS
+from benchmarks.donut_tensor_d9 import ARMS as D9_ARMS
 from infrastructure.signatures import require
 from infrastructure.stage_sources import PINS, activate, digest
 
@@ -41,7 +42,7 @@ def shader_lighting(shader, original_shader, arm, calibrated=None):
     Both arms retain the identical validated zero_bounce_v1 configuration.
     No modification to corrected-core, network capacity or BRDF is required.
     """
-    require(arm in ('D1','D2','D3','D6','D7',*TENSOR_ARMS,*ABLATION_ARMS) and shader.cfg['indirect_mode']=='zero_bounce_v1',
+    require(arm in ('D1','D2','D3','D6','D7',*D8_ARMS,*D9_ARMS,*ABLATION_ARMS) and shader.cfg['indirect_mode']=='zero_bounce_v1',
             'Matched direct-only acquisition required')
     if arm=='D1':return nullcontext()
     if arm in ('D3','D4'):
@@ -118,7 +119,7 @@ def train(args):
             'Reference does not match the explicitly bound generation freeze')
     geometry,_,records=inputs(args.oracle,args.cameras)
     expected_initial=None
-    if args.phase in ('D2','D3','D6','D7',*TENSOR_ARMS,*ABLATION_ARMS):
+    if args.phase in ('D2','D3','D6','D7',*D8_ARMS,*D9_ARMS,*ABLATION_ARMS):
         require(args.initial is not None and digest(args.initial)==args.initial_sha256 and
             os.statvfs(args.initial).f_flag&os.ST_RDONLY,'Explicit immutable initialization anchor required')
         if bound:
@@ -198,14 +199,17 @@ def train(args):
                                       'A_corrected_core_v1',field.linear_to_srgb)
         if tensor_plan:
             from scientific_variants import donut_tensor_d8 as tensor_math
-            from scientific_variants.donut_tensor_shader_d8 import tensor_shader
+            from scientific_variants.donut_tensor_shader_d8 import tensor_shader, paired_initial_gate
             shader_class=tensor_shader(shader_class,field.linear_to_srgb)
+            if args.phase in D9_ARMS:
+                from scientific_variants.donut_tensor_initialization_d9 import weak_start_shader, paired_initial_gate
+                shader_class=weak_start_shader(shader_class)
         shader=shader_class(deepcopy(SHADER),trace).cuda()
         initial=dict(state_sha256=state_hash(shader),variant='A_corrected_core_v1',seed=POLICY['seed'])
         require(expected_initial is None or initial==expected_initial,'Full initial weights/buffers differ from the admitted anchor')
         sibling=None
         if tensor_plan:
-            counterpart=next(a for a in TENSOR_ARMS if a!=args.phase)
+            counterpart=next(a for a in tensor_plan['arms'] if a!=args.phase)
             with torch.random.fork_rng(devices=[0]):
                 shader.select_tensor_representation(args.phase)
                 shader.cuda()
@@ -223,7 +227,7 @@ def train(args):
         report['trainable_parameters']={name:sum(p.numel() for n,p in shader.named_parameters() if p.requires_grad and n.startswith(name+'.'))
             for name in (*material_names,'outer_light','inner_light')}
         require(all(report['trainable_parameters'][name]>0 for name in material_names),'Full native material field required')
-        expected_count=1485584+((2*(256+2)) if args.phase=='D8-T' else 0)
+        expected_count=1485584+((2*(256+2)) if args.phase in ('D8-T','D9-T') else 0)
         require(sum(report['trainable_parameters'][name] for name in material_names)==expected_count,
                 'Full material capacity differs from the frozen inventory')
         def tensor(x):return torch.as_tensor(x,dtype=torch.float32,device='cuda')
@@ -463,7 +467,6 @@ def train(args):
             nonlocal cursor,order,sibling
             with shader_lighting(shader,field.MCShadingNetwork,args.phase,calibrated),native_tensor_default(torch):
                 if tensor_plan:
-                    from scientific_variants.donut_tensor_shader_d8 import paired_initial_gate
                     with evaluation_scope(shader,torch,np),torch.no_grad(),shader_lighting(
                             sibling,field.MCShadingNetwork,sibling.tensor_arm):
                         budget('shader_calls',2);budget('shadow_rays',2*len(p)*1536)
@@ -471,7 +474,7 @@ def train(args):
                         np.savez_compressed(args.output/'paired-initial-gate.npz',**capture)
                         report['paired_initial_gate']=gate
                     progress()
-                    require(gate['passed'],'D8 paired initial Q, scalar heads, light or RGB differ')
+                    require(gate['passed'],'Paired initial Q, scalar heads, light or RGB differ')
                     sibling=None
                 evaluate(0)
                 with (args.output/'training.jsonl').open('x') as log:

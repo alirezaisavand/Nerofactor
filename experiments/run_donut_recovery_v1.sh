@@ -6,7 +6,7 @@ DONUT_IMAGE=sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45
 DONUT_COMMIT=$(git -C "$DONUT_SOURCE" rev-parse HEAD)
 test -z "$(git -C "$DONUT_SOURCE" status --porcelain)"
 DONUT_FREEZE_NAME=${DONUT_FREEZE_NAME:-DONUT_KURT_RECOVERY_V1.freeze.json}
-case "$DONUT_FREEZE_NAME" in DONUT_KURT_RECOVERY_V1.freeze.json|DONUT_KURT_REFERENCE_V2.freeze.json|DONUT_KURT_RECOVERY_V2.freeze.json|DONUT_KURT_CALIBRATED_D3_V1.freeze.json|DONUT_KURT_DIFFUSE_WHITE_ABLATION_V1.freeze.json|DONUT_KURT_SURFACE_Q_D6_V1.freeze.json|DONUT_KURT_SURFACE_CHART_D7_V1.freeze.json|DONUT_KURT_SURFACE_CHART_D7_V2.freeze.json|DONUT_KURT_PAIRED_TENSOR_D8_V1.freeze.json) ;; *) exit 2 ;; esac
+case "$DONUT_FREEZE_NAME" in DONUT_KURT_RECOVERY_V1.freeze.json|DONUT_KURT_REFERENCE_V2.freeze.json|DONUT_KURT_RECOVERY_V2.freeze.json|DONUT_KURT_CALIBRATED_D3_V1.freeze.json|DONUT_KURT_DIFFUSE_WHITE_ABLATION_V1.freeze.json|DONUT_KURT_SURFACE_Q_D6_V1.freeze.json|DONUT_KURT_SURFACE_CHART_D7_V1.freeze.json|DONUT_KURT_SURFACE_CHART_D7_V2.freeze.json|DONUT_KURT_PAIRED_TENSOR_D8_V1.freeze.json|DONUT_KURT_PAIRED_TENSOR_D9_V1.freeze.json) ;; *) exit 2 ;; esac
 DONUT_FREEZE=$(sha256sum "$DONUT_SOURCE/docs/protocols/$DONUT_FREEZE_NAME" | cut -d' ' -f1)
 DONUT_AUTH_SHA=$(sha256sum "$DONUT_AUTH" | cut -d' ' -f1)
 python3 -B - "$DONUT_SOURCE" "$DONUT_AUTH" "$DONUT_BATCH" "$DONUT_PHASE" "$DONUT_COMMIT" "$DONUT_FREEZE" "$DONUT_IMAGE" "$DONUT_GPU" "$DONUT_FREEZE_NAME" "${DONUT_BENCHMARK:-}" "${DONUT_INITIAL:-}" <<'PY'
@@ -16,7 +16,6 @@ from pathlib import Path
 sys.path.insert(0,sys.argv[1])
 from benchmarks.donut_recovery_v1 import ABLATION_ARMS,REFERENCE,TRAINING,TRAIN_LIMITS,verify_freeze
 from infrastructure.signatures import require
-from benchmarks.donut_tensor_d8 import ARMS as TENSOR_ARMS
 a=json.loads(Path(sys.argv[2]).read_text());batch=Path(sys.argv[3]);phase=sys.argv[4]
 require(phase in ('reference','training','calibrated','ablation','surface','chart','tensor'),'Explicit phase required')
 f=verify_freeze(Path(sys.argv[1])/'docs/protocols'/sys.argv[9],sys.argv[6])
@@ -24,22 +23,22 @@ d3=f.get('calibrated_training')
 ablation=f.get('diffuse_white_ablation')
 d6=f.get('surface_q_training')
 d7=f.get('surface_chart_training')
-d8=f.get('tensor_training')
+paired=f.get('tensor_training')
 require((phase=='calibrated')==(d3 is not None),'D3 requires its dedicated execution freeze')
 require((phase=='ablation')==(ablation is not None),'D4/D5 require their dedicated execution freeze')
 require((phase=='surface')==(d6 is not None),'D6 requires its dedicated execution freeze')
 require((phase=='chart')==(d7 is not None),'D7 requires its dedicated execution freeze')
-require((phase=='tensor')==(d8 is not None),'D8 requires its dedicated execution freeze')
+require((phase=='tensor')==(paired is not None),'Paired tensor training requires its dedicated execution freeze')
 protocol=f.get('reference_protocol',REFERENCE) if phase=='reference' else TRAINING
 limits=f['reference_limits'] if phase=='reference' else TRAIN_LIMITS
-bound=d6 or d7 or d8 or d3 or ablation
+bound=d6 or d7 or paired or d3 or ablation
 if bound:
  protocol,limits=bound['protocol'],bound['limits']
- arms=ABLATION_ARMS if ablation else ({'surface':('D6',),'chart':('D7',),'calibrated':('D3',),'tensor':TENSOR_ARMS}[phase])
+ arms=ABLATION_ARMS if ablation else ({'surface':('D6',),'chart':('D7',),'calibrated':('D3',),'tensor':tuple(paired['arms']) if paired else ()}[phase])
  if ablation:
   require(a.get('arms')==list(arms) and a.get('wall_seconds')==ablation['wall_seconds'],
    'D4/D5 order or outer watchdog differs')
- if d6 or d7 or d8:
+ if d6 or d7 or paired:
   require(a.get('spatial_policy')==bound['spatial_policy'] and a.get('diffuse_white_in_objective') is True,
    'Frozen spatial or diffuse-white objective differs')
  def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
@@ -53,10 +52,10 @@ if bound:
   json.loads(admission.read_text()).get('researcher_admitted_dataset') is True and
   a.get('researcher_admitted_dataset') is True and a.get('maximum_execution_launches')==1 and
   a.get('output_directories')=={arm:'/outputs/'+arm for arm in arms}, 'Admission or one-launch authorization differs')
- if d8:
-  require(a.get('arms')==list(TENSOR_ARMS) and a.get('wall_seconds')==limits['wall_seconds'] and
-   a.get('representation')==d8['representation'],'D8 paired arm order, policy or watchdog differs')
- if d7 or d8:
+ if paired:
+  require(a.get('arms')==list(arms) and a.get('wall_seconds')==limits['wall_seconds'] and
+   a.get('representation')==paired['representation'],'Tensor paired arm order, policy or watchdog differs')
+ if d7 or paired:
   from infrastructure.stage_sources import digest as file_digest
   require(benchmark==Path(bound['benchmark_host_path']) and initial==Path(bound['initial_host_path']) and
    admission==Path(bound['dataset_admission_host_path']), 'Frozen spatial input paths differ')
@@ -106,6 +105,7 @@ fi
 if test "$DONUT_PHASE" = tensor; then
  : "${DONUT_BENCHMARK:?}" "${DONUT_INITIAL:?}"
  arms=(D8-C D8-T);seconds=3600;inner=3540
+ if test "$DONUT_FREEZE_NAME" = DONUT_KURT_PAIRED_TENSOR_D9_V1.freeze.json; then arms=(D9-C D9-T); fi
 fi
 for arm in "${arms[@]}"; do
  extra=();mounts=()
@@ -128,7 +128,7 @@ PY
    mounts+=(--mount "type=bind,src=$DONUT_BATCH/D1/initial.json,dst=/inputs/initial.json,readonly")
   fi
  fi
- if [[ "$arm" == D3 || "$arm" == D4 || "$arm" == D5 || "$arm" == D6 || "$arm" == D7 || "$arm" == D8-C || "$arm" == D8-T ]]; then
+ if [[ "$arm" == D3 || "$arm" == D4 || "$arm" == D5 || "$arm" == D6 || "$arm" == D7 || "$arm" == D8-C || "$arm" == D8-T || "$arm" == D9-C || "$arm" == D9-T ]]; then
   INITIAL_SHA=$(sha256sum "$DONUT_INITIAL" | cut -d' ' -f1)
   extra+=(--initial /inputs/initial.json --initial-sha256 "$INITIAL_SHA")
   mounts+=(--mount "type=bind,src=$DONUT_INITIAL,dst=/inputs/initial.json,readonly")
@@ -180,8 +180,8 @@ if arm in ('D4','D5'):
  assert r['counters']['component_reverse_sweeps']==f['limits'][arm]['component_reverse_sweeps']
  for key in ('calibration_evaluations','calibration_directions'):
   assert r['counters'].get(key,0)==f['limits'][arm].get(key,0)
-if arm in ('D6','D7','D8-C','D8-T'):
- key={'D6':'surface_q_training','D7':'surface_chart_training','D8-C':'tensor_training','D8-T':'tensor_training'}[arm]
+if arm in ('D6','D7','D8-C','D8-T','D9-C','D9-T'):
+ key={'D6':'surface_q_training','D7':'surface_chart_training'}.get(arm,'tensor_training')
  f=json.loads((p.parent/'freeze.json').read_text())[key]
  a=json.loads((p.parent/'authorization.json').read_text())
  assert r['protocol']==f['protocol'] and r['initialization_anchor_sha256']==f['initial_sha256']
@@ -192,7 +192,8 @@ if arm in ('D6','D7','D8-C','D8-T'):
   assert r['D6_domain_parity_verified'] is True
   assert r['optimization_terms']==['RGB_loss','material_prior','diffuse_white_prior','surface_chart_loss']
   assert [o['step'] for o in r['saved_endpoints']]==[0,2000,4000,6000,8000,10000]
- if arm in ('D8-C','D8-T'):
+ if key=='tensor_training':
+  assert arm in f['arms']
   assert r['D6_domain_parity_verified'] is True and r['paired_initial_gate']['passed'] is True
   assert r['representation']==f['representation']
   assert r['optimization_terms']==['RGB_loss','material_prior','diffuse_white_prior','surface_q_loss']

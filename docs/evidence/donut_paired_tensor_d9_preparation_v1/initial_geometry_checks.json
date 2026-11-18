@@ -1,0 +1,41 @@
+{
+  "geometry_rows": 15286,
+  "inputs": "saved fitting normals only",
+  "model_forwards": 0,
+  "prior_freeze_sha256": "47d1d7b62b528207169a9ec5a70e70462c2da564d348b89c19924a69fa5a289a",
+  "renderer_calls": 0,
+  "tested_views": {
+    "0": {
+      "median_gap": 0.07180895204415778,
+      "orientation_eligible": 0,
+      "points": 4536,
+      "width_max": 0.5200000000000001,
+      "width_min": 0.4799999999999999,
+      "world_Q_max_abs_difference": 2.220446049250313e-16
+    },
+    "1": {
+      "median_gap": 0.07313368716925683,
+      "orientation_eligible": 0,
+      "points": 4144,
+      "width_max": 0.5200000000000001,
+      "width_min": 0.48,
+      "world_Q_max_abs_difference": 2.220446049250313e-16
+    },
+    "45": {
+      "median_gap": 0.06821725833568852,
+      "orientation_eligible": 0,
+      "points": 3970,
+      "width_max": 0.5200000000000001,
+      "width_min": 0.48,
+      "world_Q_max_abs_difference": 2.220446049250313e-16
+    },
+    "50": {
+      "median_gap": 0.04184564384339215,
+      "orientation_eligible": 0,
+      "points": 2636,
+      "width_max": 0.5200000000000001,
+      "width_min": 0.4800001188191666,
+      "world_Q_max_abs_difference": 2.7755575615628914e-16
+    }
+  }
+}
