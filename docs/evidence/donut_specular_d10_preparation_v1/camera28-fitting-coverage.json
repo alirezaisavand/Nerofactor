@@ -1,0 +1,146 @@
+{
+  "camera": 28,
+  "fitting": [
+    0,
+    50,
+    1,
+    45
+  ],
+  "groups": {
+    "outside_ring": {
+      "highlight_camera_count": [
+        2126,
+        1631,
+        607,
+        0,
+        0
+      ],
+      "median_peak_nearby_specular_luminance": 0.03482386144629447,
+      "median_peak_specular_when_supported": 0.034927939420708085,
+      "nearby_camera_count": [
+        [
+          1053,
+          2235,
+          984,
+          86,
+          6
+        ],
+        [
+          12,
+          501,
+          2640,
+          1021,
+          190
+        ],
+        [
+          0,
+          174,
+          1828,
+          1617,
+          745
+        ]
+      ],
+      "points": 4364,
+      "same_triangle_camera_count": [
+        775,
+        1956,
+        1474,
+        152,
+        7
+      ]
+    },
+    "ring": {
+      "highlight_camera_count": [
+        392,
+        92,
+        1,
+        0,
+        0
+      ],
+      "median_peak_nearby_specular_luminance": 0.018316943833831683,
+      "median_peak_specular_when_supported": 0.018350871686546283,
+      "nearby_camera_count": [
+        [
+          103,
+          223,
+          140,
+          19,
+          0
+        ],
+        [
+          1,
+          17,
+          192,
+          215,
+          60
+        ],
+        [
+          0,
+          0,
+          20,
+          256,
+          209
+        ]
+      ],
+      "points": 485,
+      "same_triangle_camera_count": [
+        79,
+        201,
+        156,
+        45,
+        4
+      ]
+    }
+  },
+  "highlight_definition": "Saved specular luminance >= .01 and >= 3 times the fitting-view median",
+  "highlight_radius_native": 0.01,
+  "interpretation": "Nearby saved rays and same-face hits are coverage proxies. They do not measure point visibility or inversion conditioning.",
+  "minimum_normal_cosine": 0.8660254037844387,
+  "per_camera": {
+    "0": {
+      "outside_ring": {
+        "highlighted_matches": 1070,
+        "matches": 3168
+      },
+      "ring": {
+        "highlighted_matches": 33,
+        "matches": 472
+      }
+    },
+    "1": {
+      "outside_ring": {
+        "highlighted_matches": 665,
+        "matches": 2560
+      },
+      "ring": {
+        "highlighted_matches": 22,
+        "matches": 351
+      }
+    },
+    "45": {
+      "outside_ring": {
+        "highlighted_matches": 781,
+        "matches": 2736
+      },
+      "ring": {
+        "highlighted_matches": 37,
+        "matches": 343
+      }
+    },
+    "50": {
+      "outside_ring": {
+        "highlighted_matches": 329,
+        "matches": 1140
+      },
+      "ring": {
+        "highlighted_matches": 2,
+        "matches": 120
+      }
+    }
+  },
+  "radii_native": [
+    0.005,
+    0.01,
+    0.02
+  ]
+}
