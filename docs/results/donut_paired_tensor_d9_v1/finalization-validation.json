@@ -1,0 +1,32 @@
+{
+  "CSV_rows": {
+    "endpoint-metrics.csv": 90,
+    "per-camera-metrics.csv": 180
+  },
+  "PNG_checks": 2,
+  "analysis_work": {
+    "checkpoint_deserializations": 0,
+    "native_models": 0,
+    "optimizer_returns": 0,
+    "renderer_calls": 0
+  },
+  "artifact_sha256": {
+    "docs/DONUT_KURT_PAIRED_TENSOR_D9_V1_RESULTS.md": "bc2fd43baa7fd7a60c7ed72af03c05dff5d1ea8cedb193d22c9c4efdedccf1a6",
+    "docs/results/donut_paired_tensor_d9_v1/README.md": "47d7c09f32c397989b206c8a4cf80ecfdfc8533c95f7e00fcedfed9d0b52e8e2",
+    "docs/results/donut_paired_tensor_d9_v1/analysis.json": "b2b888f0b261a126ef45520e0be23c697463bea7a01f8b798906d29a185e9074",
+    "docs/results/donut_paired_tensor_d9_v1/artifact-manifest.json": "b56c64284d6832b09f9afd57aa54c56cf131b3ebc746b7d4026f3c8925b8a0f2",
+    "docs/results/donut_paired_tensor_d9_v1/camera28-radial-errors.json": "276c9f7f1fc2d0df66ae6c0b43c58d53d7550125c0f9e3258bff61f9f896916e",
+    "docs/results/donut_paired_tensor_d9_v1/camera34-coverage.json": "08c27ae24deeb570649d999f7f5959a3979746ce6a42b9e3691bf6e0ffa814a6",
+    "docs/results/donut_paired_tensor_d9_v1/endpoint-metrics.csv": "509dce9933e7cd517e36d7fa7dee3d61bef5bc145b60bae577c80e6451cee368",
+    "docs/results/donut_paired_tensor_d9_v1/held-out-views.png": "ce2ff4d9bcdc218592829d34fa1a7ea1237b463ce83693053b5b0ef794b808a9",
+    "docs/results/donut_paired_tensor_d9_v1/per-camera-metrics.csv": "40f2aa89efdbf5a8a5a4bd206775ff994a397826431193fb7495d459cc94cb36",
+    "docs/results/donut_paired_tensor_d9_v1/recovery-curves.png": "47304b963a62138924e3ee0f89c1e25ceab806591aaa356eb64ef278b8072921",
+    "experiments/analyze_donut_paired_tensor_d9.py": "97de0e8cf712943127ee248ed6d7723d46da487a0956bce2b10342b478581f0d"
+  },
+  "byte_identical_replay_artifacts": 8,
+  "execution_commit": "96435ff1991a0cbfd6c85bb5f34c72bae6b87846",
+  "indexed_evidence_identities": 76,
+  "schema": "donut-paired-tensor-d9-finalization-v1",
+  "status": "verified_complete",
+  "verified_run_outputs": 1796
+}

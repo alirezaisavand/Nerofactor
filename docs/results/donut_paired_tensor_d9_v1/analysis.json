@@ -1,0 +1,4241 @@
+{
+  "accepted_control_camera_endpoints": 108,
+  "analysis_work": {
+    "checkpoint_deserializations": 0,
+    "native_models": 0,
+    "optimizer_returns": 0,
+    "renderer_calls": 0
+  },
+  "authorization_sha256": "6c820cd19be1f7eb3a4001c37bfbcfb15beee403b127756d327a23e56dc3f0be",
+  "execution_commit": "96435ff1991a0cbfd6c85bb5f34c72bae6b87846",
+  "freeze_sha256": "59811c789ba222e6bcf17507c99d3bc5e49987dc936d0dd69bb76996f323bd85",
+  "frozen_sources": 332,
+  "gradient_probes": [
+    {
+      "arm": "D9-C",
+      "completed_updates": 1,
+      "gradient_cosines": {
+        "energy__specular": null,
+        "energy__surface_q": null,
+        "material__energy": null,
+        "material__specular": 0.22246846556663513,
+        "material__surface_q": 0.0,
+        "photo__energy": null,
+        "photo__material": 0.09632109850645065,
+        "photo__specular": 0.4103187620639801,
+        "photo__surface_q": -0.0036234636791050434,
+        "specular__surface_q": 0.0
+      },
+      "group_gradient_cosines": {
+        "energy__material": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__photo": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__specular": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__surface_q": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__photo": {
+          "feats_network": 0.034604039043188095,
+          "kd_predictor": 0.2172708362340927,
+          "metallic_predictor": 0.28434857726097107,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__specular": {
+          "feats_network": 0.018172455951571465,
+          "kd_predictor": 0.22150379419326782,
+          "metallic_predictor": 0.2843168377876282,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__surface_q": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__specular": {
+          "feats_network": 0.8774675726890564,
+          "kd_predictor": 0.9603569507598877,
+          "metallic_predictor": 0.999999463558197,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__surface_q": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": -1.0000001192092896,
+          "my_predictor": 1.0,
+          "outer_light": null,
+          "rotation_predictor": -0.7529036998748779
+        },
+        "specular__surface_q": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        }
+      },
+      "interpretation": "Additional local AD probes; not archived training gradients",
+      "terms": {
+        "energy": {
+          "gradient_l2": 0.0,
+          "groups": {
+            "feats_network": 0.0,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 0.0
+        },
+        "material": {
+          "gradient_l2": 4.2875308281509206e-05,
+          "groups": {
+            "feats_network": 2.1825289877597243e-05,
+            "kd_predictor": 2.426691571599804e-05,
+            "metallic_predictor": 2.780405520752538e-05,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 1.6227295418502763e-05
+        },
+        "photo": {
+          "gradient_l2": 0.25728026032447815,
+          "groups": {
+            "feats_network": 0.005195014178752899,
+            "kd_predictor": 0.10496404021978378,
+            "metallic_predictor": 0.06389661133289337,
+            "mx_predictor": 0.008356228470802307,
+            "my_predictor": 0.007724892348051071,
+            "outer_light": 0.22569094598293304,
+            "rotation_predictor": 8.27879375719931e-06
+          },
+          "weighted_loss": 0.29566437005996704
+        },
+        "specular": {
+          "gradient_l2": 9.189236152451485e-06,
+          "groups": {
+            "feats_network": 3.625860074407683e-07,
+            "kd_predictor": 4.552609880192904e-06,
+            "metallic_predictor": 7.973978426889516e-06,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 1.307882212131517e-05
+        },
+        "surface_q": {
+          "gradient_l2": 5.706227511836914e-06,
+          "groups": {
+            "feats_network": 0.0,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 4.2037559069285635e-06,
+            "my_predictor": 3.858687250613002e-06,
+            "outer_light": 0.0,
+            "rotation_predictor": 1.677501748620358e-10
+          },
+          "weighted_loss": 3.295408532721922e-07
+        }
+      }
+    },
+    {
+      "arm": "D9-C",
+      "completed_updates": 2000,
+      "gradient_cosines": {
+        "energy__specular": null,
+        "energy__surface_q": null,
+        "material__energy": null,
+        "material__specular": 0.21863611042499542,
+        "material__surface_q": 0.27386561036109924,
+        "photo__energy": null,
+        "photo__material": -0.054184913635253906,
+        "photo__specular": -0.12953145802021027,
+        "photo__surface_q": -0.6565336585044861,
+        "specular__surface_q": 0.16081759333610535
+      },
+      "group_gradient_cosines": {
+        "energy__material": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__photo": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__specular": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__surface_q": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__photo": {
+          "feats_network": -0.33113083243370056,
+          "kd_predictor": 0.27194944024086,
+          "metallic_predictor": -0.9997393488883972,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__specular": {
+          "feats_network": 0.37290528416633606,
+          "kd_predictor": 0.8728594183921814,
+          "metallic_predictor": 0.9997681975364685,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__surface_q": {
+          "feats_network": 0.7181664109230042,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__specular": {
+          "feats_network": -0.7554782629013062,
+          "kd_predictor": 0.551437258720398,
+          "metallic_predictor": -0.9998841881752014,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__surface_q": {
+          "feats_network": -0.4960702955722809,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": -0.9997630715370178,
+          "my_predictor": -0.9965952634811401,
+          "outer_light": null,
+          "rotation_predictor": -0.023096054792404175
+        },
+        "specular__surface_q": {
+          "feats_network": 0.5074262619018555,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        }
+      },
+      "interpretation": "Additional local AD probes; not archived training gradients",
+      "terms": {
+        "energy": {
+          "gradient_l2": 0.0,
+          "groups": {
+            "feats_network": 0.0,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 0.0
+        },
+        "material": {
+          "gradient_l2": 0.00078517448855564,
+          "groups": {
+            "feats_network": 0.0005319826886989176,
+            "kd_predictor": 0.000577142636757344,
+            "metallic_predictor": 1.9993101886939257e-05,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 0.00012437766417860985
+        },
+        "photo": {
+          "gradient_l2": 0.009916458278894424,
+          "groups": {
+            "feats_network": 0.0030692017171531916,
+            "kd_predictor": 0.0007590209715999663,
+            "metallic_predictor": 1.8269038264406845e-05,
+            "mx_predictor": 0.006841352675110102,
+            "my_predictor": 4.653975338442251e-05,
+            "outer_light": 0.006387160625308752,
+            "rotation_predictor": 0.0008588323253206909
+          },
+          "weighted_loss": 0.04601854458451271
+        },
+        "specular": {
+          "gradient_l2": 5.946534287204486e-08,
+          "groups": {
+            "feats_network": 3.348446853124187e-08,
+            "kd_predictor": 5.13883557928807e-09,
+            "metallic_predictor": 4.8872387026221986e-08,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 2.81415379888017e-09
+        },
+        "surface_q": {
+          "gradient_l2": 3.363325959071517e-05,
+          "groups": {
+            "feats_network": 1.8929975340142846e-05,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 2.780020804493688e-05,
+            "my_predictor": 2.739655613481773e-08,
+            "outer_light": 0.0,
+            "rotation_predictor": 5.940874014953579e-09
+          },
+          "weighted_loss": 2.4061646399786696e-06
+        }
+      }
+    },
+    {
+      "arm": "D9-C",
+      "completed_updates": 4000,
+      "gradient_cosines": {
+        "energy__specular": null,
+        "energy__surface_q": null,
+        "material__energy": null,
+        "material__specular": 0.4463513493537903,
+        "material__surface_q": 0.2617305517196655,
+        "photo__energy": null,
+        "photo__material": 0.2730279266834259,
+        "photo__specular": 0.5161041617393494,
+        "photo__surface_q": 0.45841121673583984,
+        "specular__surface_q": 0.410008043050766
+      },
+      "group_gradient_cosines": {
+        "energy__material": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__photo": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__specular": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__surface_q": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__photo": {
+          "feats_network": 0.48370441794395447,
+          "kd_predictor": 0.4256241023540497,
+          "metallic_predictor": 0.9841379523277283,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__specular": {
+          "feats_network": 0.7294403314590454,
+          "kd_predictor": 0.22476106882095337,
+          "metallic_predictor": 0.999587893486023,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__surface_q": {
+          "feats_network": 0.43227100372314453,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__specular": {
+          "feats_network": 0.7430896162986755,
+          "kd_predictor": -0.657289445400238,
+          "metallic_predictor": 0.9793286323547363,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__surface_q": {
+          "feats_network": 0.5019334554672241,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": 0.20981620252132416,
+          "my_predictor": 0.9373579025268555,
+          "outer_light": null,
+          "rotation_predictor": -0.010357030667364597
+        },
+        "specular__surface_q": {
+          "feats_network": 0.540477454662323,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        }
+      },
+      "interpretation": "Additional local AD probes; not archived training gradients",
+      "terms": {
+        "energy": {
+          "gradient_l2": 0.0,
+          "groups": {
+            "feats_network": 0.0,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 0.0
+        },
+        "material": {
+          "gradient_l2": 0.0003430589276831597,
+          "groups": {
+            "feats_network": 0.00021078420104458928,
+            "kd_predictor": 0.0002658092707861215,
+            "metallic_predictor": 5.1038026867900044e-05,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 4.3872889364138246e-05
+        },
+        "photo": {
+          "gradient_l2": 0.07525045424699783,
+          "groups": {
+            "feats_network": 0.06793387979269028,
+            "kd_predictor": 0.001075959880836308,
+            "metallic_predictor": 4.5566162043542136e-06,
+            "mx_predictor": 0.025056004524230957,
+            "my_predictor": 6.569357356056571e-05,
+            "outer_light": 0.02045346423983574,
+            "rotation_predictor": 0.0005560488207265735
+          },
+          "weighted_loss": 0.04058225825428963
+        },
+        "specular": {
+          "gradient_l2": 9.349109575396142e-08,
+          "groups": {
+            "feats_network": 7.197075291287547e-08,
+            "kd_predictor": 3.5319345226270116e-09,
+            "metallic_predictor": 5.956778537097307e-08,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 3.9849377131417896e-09
+        },
+        "surface_q": {
+          "gradient_l2": 0.004701422993093729,
+          "groups": {
+            "feats_network": 0.004632957745343447,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 0.0007994228508323431,
+            "my_predictor": 6.306922273324744e-07,
+            "outer_light": 0.0,
+            "rotation_predictor": 1.7125951501384407e-07
+          },
+          "weighted_loss": 0.00021807999291922897
+        }
+      }
+    },
+    {
+      "arm": "D9-C",
+      "completed_updates": 6000,
+      "gradient_cosines": {
+        "energy__specular": null,
+        "energy__surface_q": null,
+        "material__energy": null,
+        "material__specular": -0.11980383098125458,
+        "material__surface_q": 0.07531164586544037,
+        "photo__energy": null,
+        "photo__material": -0.26568150520324707,
+        "photo__specular": 0.11046985536813736,
+        "photo__surface_q": -0.0325189009308815,
+        "specular__surface_q": 0.06204529479146004
+      },
+      "group_gradient_cosines": {
+        "energy__material": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__photo": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__specular": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__surface_q": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__photo": {
+          "feats_network": -0.339368611574173,
+          "kd_predictor": -0.35985100269317627,
+          "metallic_predictor": 0.991389811038971,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__specular": {
+          "feats_network": -0.21313700079917908,
+          "kd_predictor": -0.3971867263317108,
+          "metallic_predictor": 0.999554455280304,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__surface_q": {
+          "feats_network": 0.10763495415449142,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__specular": {
+          "feats_network": 0.15687191486358643,
+          "kd_predictor": 0.895525336265564,
+          "metallic_predictor": 0.9872265458106995,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__surface_q": {
+          "feats_network": -0.03721094876527786,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": -0.7599583864212036,
+          "my_predictor": 0.9958713054656982,
+          "outer_light": null,
+          "rotation_predictor": 0.06945551186800003
+        },
+        "specular__surface_q": {
+          "feats_network": 0.09199170023202896,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        }
+      },
+      "interpretation": "Additional local AD probes; not archived training gradients",
+      "terms": {
+        "energy": {
+          "gradient_l2": 0.0,
+          "groups": {
+            "feats_network": 0.0,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 0.0
+        },
+        "material": {
+          "gradient_l2": 0.0010830590035766363,
+          "groups": {
+            "feats_network": 0.0007718918495811522,
+            "kd_predictor": 0.0007595280767418444,
+            "metallic_predictor": 1.7802914953790605e-05,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 0.00019254029029980302
+        },
+        "photo": {
+          "gradient_l2": 0.06436564028263092,
+          "groups": {
+            "feats_network": 0.049127351492643356,
+            "kd_predictor": 0.020679261535406113,
+            "metallic_predictor": 3.370577587702428e-06,
+            "mx_predictor": 0.0020777543541043997,
+            "my_predictor": 0.0010985822882503271,
+            "outer_light": 0.03599920868873596,
+            "rotation_predictor": 0.0005827770801261067
+          },
+          "weighted_loss": 0.03818425536155701
+        },
+        "specular": {
+          "gradient_l2": 2.0802019662369275e-08,
+          "groups": {
+            "feats_network": 1.4290956862339499e-08,
+            "kd_predictor": 2.0371728748358464e-09,
+            "metallic_predictor": 1.497806678685265e-08,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 9.155108893210695e-10
+        },
+        "surface_q": {
+          "gradient_l2": 0.004397479351609945,
+          "groups": {
+            "feats_network": 0.004317260347306728,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 0.0008360818028450012,
+            "my_predictor": 7.387700406980002e-06,
+            "outer_light": 0.0,
+            "rotation_predictor": 2.6274710762663744e-07
+          },
+          "weighted_loss": 0.00027897764812223613
+        }
+      }
+    },
+    {
+      "arm": "D9-C",
+      "completed_updates": 8000,
+      "gradient_cosines": {
+        "energy__specular": null,
+        "energy__surface_q": null,
+        "material__energy": null,
+        "material__specular": 0.016709929332137108,
+        "material__surface_q": -0.0728192925453186,
+        "photo__energy": null,
+        "photo__material": -0.3611757159233093,
+        "photo__specular": -0.07949747890233994,
+        "photo__surface_q": 0.022893151268363,
+        "specular__surface_q": 0.2878018021583557
+      },
+      "group_gradient_cosines": {
+        "energy__material": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__photo": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__specular": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__surface_q": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__photo": {
+          "feats_network": -0.4120902121067047,
+          "kd_predictor": -0.5259062647819519,
+          "metallic_predictor": -0.9997976422309875,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__specular": {
+          "feats_network": -0.05487785115838051,
+          "kd_predictor": 0.454069584608078,
+          "metallic_predictor": 0.9992918372154236,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__surface_q": {
+          "feats_network": -0.08225515484809875,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__specular": {
+          "feats_network": 0.10933296382427216,
+          "kd_predictor": -0.9668998122215271,
+          "metallic_predictor": -0.9994466304779053,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__surface_q": {
+          "feats_network": 0.019964877516031265,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": 0.8798481822013855,
+          "my_predictor": -0.995245099067688,
+          "outer_light": null,
+          "rotation_predictor": 0.015229173004627228
+        },
+        "specular__surface_q": {
+          "feats_network": 0.48214367032051086,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        }
+      },
+      "interpretation": "Additional local AD probes; not archived training gradients",
+      "terms": {
+        "energy": {
+          "gradient_l2": 0.0,
+          "groups": {
+            "feats_network": 0.0,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 0.0
+        },
+        "material": {
+          "gradient_l2": 0.00283599179238081,
+          "groups": {
+            "feats_network": 0.0025479255709797144,
+            "kd_predictor": 0.001245301216840744,
+            "metallic_predictor": 1.2213234185765032e-05,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 0.00047708008787594736
+        },
+        "photo": {
+          "gradient_l2": 0.13581667840480804,
+          "groups": {
+            "feats_network": 0.08390529453754425,
+            "kd_predictor": 0.0778995230793953,
+            "metallic_predictor": 4.382528913993156e-06,
+            "mx_predictor": 0.009791909717023373,
+            "my_predictor": 0.005893188528716564,
+            "outer_light": 0.07215949147939682,
+            "rotation_predictor": 0.0003625268000178039
+          },
+          "weighted_loss": 0.03420212119817734
+        },
+        "specular": {
+          "gradient_l2": 9.985681614921305e-09,
+          "groups": {
+            "feats_network": 6.049134082530827e-09,
+            "kd_predictor": 2.167723334167704e-09,
+            "metallic_predictor": 7.6434796270064e-09,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 4.377385121046018e-10
+        },
+        "surface_q": {
+          "gradient_l2": 0.003404289484024048,
+          "groups": {
+            "feats_network": 0.003354501910507679,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 0.0005800636135973036,
+            "my_predictor": 5.445900569611695e-06,
+            "outer_light": 0.0,
+            "rotation_predictor": 1.7699937870929716e-07
+          },
+          "weighted_loss": 9.198301995638758e-05
+        }
+      }
+    },
+    {
+      "arm": "D9-C",
+      "completed_updates": 10000,
+      "gradient_cosines": {
+        "energy__specular": null,
+        "energy__surface_q": null,
+        "material__energy": null,
+        "material__specular": 0.10494975000619888,
+        "material__surface_q": 0.05425882712006569,
+        "photo__energy": null,
+        "photo__material": -0.36335623264312744,
+        "photo__specular": -0.09938132762908936,
+        "photo__surface_q": 0.00784696452319622,
+        "specular__surface_q": 0.2051226943731308
+      },
+      "group_gradient_cosines": {
+        "energy__material": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__photo": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__specular": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__surface_q": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__photo": {
+          "feats_network": -0.453779011964798,
+          "kd_predictor": -0.4316754639148712,
+          "metallic_predictor": -0.9993982911109924,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__specular": {
+          "feats_network": 0.11788520216941833,
+          "kd_predictor": 0.3950524926185608,
+          "metallic_predictor": 0.999580442905426,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__surface_q": {
+          "feats_network": 0.060268599539995193,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__specular": {
+          "feats_network": 0.051151905208826065,
+          "kd_predictor": -0.9786216020584106,
+          "metallic_predictor": -0.9989789724349976,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__surface_q": {
+          "feats_network": 0.0005558542907238007,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": 0.46849387884140015,
+          "my_predictor": -0.6338760256767273,
+          "outer_light": null,
+          "rotation_predictor": 0.020221367478370667
+        },
+        "specular__surface_q": {
+          "feats_network": 0.33489906787872314,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        }
+      },
+      "interpretation": "Additional local AD probes; not archived training gradients",
+      "terms": {
+        "energy": {
+          "gradient_l2": 0.0,
+          "groups": {
+            "feats_network": 0.0,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 0.0
+        },
+        "material": {
+          "gradient_l2": 0.0031856524292379618,
+          "groups": {
+            "feats_network": 0.0028970364946871996,
+            "kd_predictor": 0.0013249237090349197,
+            "metallic_predictor": 1.1825314686575439e-05,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 0.0005829104338772595
+        },
+        "photo": {
+          "gradient_l2": 0.06175069510936737,
+          "groups": {
+            "feats_network": 0.03932683914899826,
+            "kd_predictor": 0.03458143398165703,
+            "metallic_predictor": 4.075394372193841e-06,
+            "mx_predictor": 0.007024554535746574,
+            "my_predictor": 0.006301759742200375,
+            "outer_light": 0.031330645084381104,
+            "rotation_predictor": 8.19799824967049e-05
+          },
+          "weighted_loss": 0.0331718735396862
+        },
+        "specular": {
+          "gradient_l2": 1.1085464990401306e-08,
+          "groups": {
+            "feats_network": 6.858512868745947e-09,
+            "kd_predictor": 2.416893130074982e-09,
+            "metallic_predictor": 8.367015524868293e-09,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 4.932720343298058e-10
+        },
+        "surface_q": {
+          "gradient_l2": 0.0022937864996492863,
+          "groups": {
+            "feats_network": 0.0022707886528223753,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 0.00032399786869063973,
+            "my_predictor": 1.110721427721728e-06,
+            "outer_light": 0.0,
+            "rotation_predictor": 1.613441042991326e-07
+          },
+          "weighted_loss": 6.203894736245275e-05
+        }
+      }
+    },
+    {
+      "arm": "D9-T",
+      "completed_updates": 1,
+      "gradient_cosines": {
+        "energy__specular": null,
+        "energy__surface_q": null,
+        "material__energy": null,
+        "material__specular": 0.22246845066547394,
+        "material__surface_q": 0.0,
+        "photo__energy": null,
+        "photo__material": 0.09629768878221512,
+        "photo__specular": 0.4102189838886261,
+        "photo__surface_q": -0.004596824292093515,
+        "specular__surface_q": 0.0
+      },
+      "group_gradient_cosines": {
+        "energy__material": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__photo": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__specular": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__surface_q": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__photo": {
+          "feats_network": 0.034604039043188095,
+          "kd_predictor": 0.2172708362340927,
+          "metallic_predictor": 0.28434857726097107,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__specular": {
+          "feats_network": 0.018172455951571465,
+          "kd_predictor": 0.22150379419326782,
+          "metallic_predictor": 0.2843168377876282,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__surface_q": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__specular": {
+          "feats_network": 0.8774675726890564,
+          "kd_predictor": 0.9603569507598877,
+          "metallic_predictor": 0.999999463558197,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__surface_q": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": 0.43080973625183105,
+          "my_predictor": -0.9943521618843079,
+          "outer_light": null,
+          "rotation_predictor": -0.27321264147758484
+        },
+        "specular__surface_q": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        }
+      },
+      "interpretation": "Additional local AD probes; not archived training gradients",
+      "terms": {
+        "energy": {
+          "gradient_l2": 0.0,
+          "groups": {
+            "feats_network": 0.0,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 0.0
+        },
+        "material": {
+          "gradient_l2": 4.2875308281509206e-05,
+          "groups": {
+            "feats_network": 2.1825289877597243e-05,
+            "kd_predictor": 2.426691571599804e-05,
+            "metallic_predictor": 2.780405520752538e-05,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 1.6227295418502763e-05
+        },
+        "photo": {
+          "gradient_l2": 0.25734278559684753,
+          "groups": {
+            "feats_network": 0.005195014178752899,
+            "kd_predictor": 0.10496404021978378,
+            "metallic_predictor": 0.06389661133289337,
+            "mx_predictor": 0.01022524107247591,
+            "my_predictor": 0.007459125481545925,
+            "outer_light": 0.22569094598293304,
+            "rotation_predictor": 0.0012216770555824041
+          },
+          "weighted_loss": 0.29566437005996704
+        },
+        "specular": {
+          "gradient_l2": 9.189237061946187e-06,
+          "groups": {
+            "feats_network": 3.625860074407683e-07,
+            "kd_predictor": 4.552609880192904e-06,
+            "metallic_predictor": 7.973978426889516e-06,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 1.307882212131517e-05
+        },
+        "surface_q": {
+          "gradient_l2": 6.74296825309284e-06,
+          "groups": {
+            "feats_network": 0.0,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 5.212237738305703e-06,
+            "my_predictor": 4.119181994610699e-06,
+            "outer_light": 0.0,
+            "rotation_predictor": 1.1543559139681747e-06
+          },
+          "weighted_loss": 3.295408532721922e-07
+        }
+      }
+    },
+    {
+      "arm": "D9-T",
+      "completed_updates": 2000,
+      "gradient_cosines": {
+        "energy__specular": null,
+        "energy__surface_q": null,
+        "material__energy": null,
+        "material__specular": 0.3901638686656952,
+        "material__surface_q": 0.038135744631290436,
+        "photo__energy": null,
+        "photo__material": 0.018999988213181496,
+        "photo__specular": 0.057860713452100754,
+        "photo__surface_q": -0.20305760204792023,
+        "specular__surface_q": 0.04377947002649307
+      },
+      "group_gradient_cosines": {
+        "energy__material": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__photo": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__specular": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__surface_q": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__photo": {
+          "feats_network": 0.33724555373191833,
+          "kd_predictor": -0.6980705261230469,
+          "metallic_predictor": -0.9998238682746887,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__specular": {
+          "feats_network": 0.6618947386741638,
+          "kd_predictor": 0.8459543585777283,
+          "metallic_predictor": 0.9997727870941162,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__surface_q": {
+          "feats_network": 0.24524085223674774,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__specular": {
+          "feats_network": 0.6078738570213318,
+          "kd_predictor": -0.9121440052986145,
+          "metallic_predictor": -0.9999682903289795,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__surface_q": {
+          "feats_network": 0.22547262907028198,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": -0.9731411337852478,
+          "my_predictor": -0.9220028519630432,
+          "outer_light": null,
+          "rotation_predictor": 0.34497520327568054
+        },
+        "specular__surface_q": {
+          "feats_network": 0.34233424067497253,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        }
+      },
+      "interpretation": "Additional local AD probes; not archived training gradients",
+      "terms": {
+        "energy": {
+          "gradient_l2": 0.0,
+          "groups": {
+            "feats_network": 0.0,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 0.0
+        },
+        "material": {
+          "gradient_l2": 0.0007368243532255292,
+          "groups": {
+            "feats_network": 0.0004768612270709127,
+            "kd_predictor": 0.0005531969363801181,
+            "metallic_predictor": 9.739933011587709e-05,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 0.00014809492859058082
+        },
+        "photo": {
+          "gradient_l2": 0.010223012417554855,
+          "groups": {
+            "feats_network": 0.0026282931212335825,
+            "kd_predictor": 0.0006609086412936449,
+            "metallic_predictor": 0.0002499257097952068,
+            "mx_predictor": 0.004788683727383614,
+            "my_predictor": 0.001343038398772478,
+            "outer_light": 0.008463391102850437,
+            "rotation_predictor": 0.0008593944949097931
+          },
+          "weighted_loss": 0.04184954613447189
+        },
+        "specular": {
+          "gradient_l2": 3.7986902157172153e-07,
+          "groups": {
+            "feats_network": 2.0218207907873875e-07,
+            "kd_predictor": 3.0374245341135975e-08,
+            "metallic_predictor": 3.2015663009588025e-07,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 2.126100007160403e-08
+        },
+        "surface_q": {
+          "gradient_l2": 6.533539271913469e-05,
+          "groups": {
+            "feats_network": 1.5698562492616475e-05,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 1.5043799066916108e-05,
+            "my_predictor": 6.14599121036008e-05,
+            "outer_light": 0.0,
+            "rotation_predictor": 4.316556442063302e-06
+          },
+          "weighted_loss": 8.326983333972748e-06
+        }
+      }
+    },
+    {
+      "arm": "D9-T",
+      "completed_updates": 4000,
+      "gradient_cosines": {
+        "energy__specular": null,
+        "energy__surface_q": null,
+        "material__energy": null,
+        "material__specular": 0.1589096486568451,
+        "material__surface_q": 0.042912647128105164,
+        "photo__energy": null,
+        "photo__material": 0.014833902008831501,
+        "photo__specular": -0.06371847540140152,
+        "photo__surface_q": 0.2465544044971466,
+        "specular__surface_q": -0.03044535219669342
+      },
+      "group_gradient_cosines": {
+        "energy__material": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__photo": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__specular": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__surface_q": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__photo": {
+          "feats_network": 0.015423145145177841,
+          "kd_predictor": -0.13193857669830322,
+          "metallic_predictor": 0.7409538626670837,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__specular": {
+          "feats_network": -0.03065875731408596,
+          "kd_predictor": 0.18462678790092468,
+          "metallic_predictor": 0.3128378987312317,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__surface_q": {
+          "feats_network": 0.06227988749742508,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__specular": {
+          "feats_network": -0.3175146281719208,
+          "kd_predictor": -0.986083984375,
+          "metallic_predictor": 0.565714955329895,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__surface_q": {
+          "feats_network": 0.13319070637226105,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": -0.8123337626457214,
+          "my_predictor": 0.83260577917099,
+          "outer_light": null,
+          "rotation_predictor": -0.48693135380744934
+        },
+        "specular__surface_q": {
+          "feats_network": -0.09297800064086914,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        }
+      },
+      "interpretation": "Additional local AD probes; not archived training gradients",
+      "terms": {
+        "energy": {
+          "gradient_l2": 0.0,
+          "groups": {
+            "feats_network": 0.0,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 0.0
+        },
+        "material": {
+          "gradient_l2": 0.00033415944199077785,
+          "groups": {
+            "feats_network": 0.0002543959126342088,
+            "kd_predictor": 0.00012031558435410261,
+            "metallic_predictor": 0.00018019269919022918,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 4.628721944754943e-05
+        },
+        "photo": {
+          "gradient_l2": 0.04714985936880112,
+          "groups": {
+            "feats_network": 0.028698131442070007,
+            "kd_predictor": 0.001136153470724821,
+            "metallic_predictor": 0.001042229006998241,
+            "mx_predictor": 0.005167792551219463,
+            "my_predictor": 0.031056717038154602,
+            "outer_light": 0.020133452489972115,
+            "rotation_predictor": 0.0007534389151260257
+          },
+          "weighted_loss": 0.03493022546172142
+        },
+        "specular": {
+          "gradient_l2": 1.8902235751738772e-05,
+          "groups": {
+            "feats_network": 6.838689387222985e-06,
+            "kd_predictor": 4.088095010956749e-06,
+            "metallic_predictor": 1.714101199468132e-05,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 3.802223318416509e-06
+        },
+        "surface_q": {
+          "gradient_l2": 0.0027016191743314266,
+          "groups": {
+            "feats_network": 0.0024451485369354486,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 0.000634837313555181,
+            "my_predictor": 0.0009567578672431409,
+            "outer_light": 0.0,
+            "rotation_predictor": 3.9873171772342175e-05
+          },
+          "weighted_loss": 5.633437467622571e-05
+        }
+      }
+    },
+    {
+      "arm": "D9-T",
+      "completed_updates": 6000,
+      "gradient_cosines": {
+        "energy__specular": null,
+        "energy__surface_q": null,
+        "material__energy": null,
+        "material__specular": -0.10494427382946014,
+        "material__surface_q": 0.006195994094014168,
+        "photo__energy": null,
+        "photo__material": 0.03718046471476555,
+        "photo__specular": 0.02233896777033806,
+        "photo__surface_q": -0.24379731714725494,
+        "specular__surface_q": -0.011253640986979008
+      },
+      "group_gradient_cosines": {
+        "energy__material": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__photo": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__specular": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__surface_q": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__photo": {
+          "feats_network": 0.0059770760126411915,
+          "kd_predictor": 0.6616769433021545,
+          "metallic_predictor": 0.8565995693206787,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__specular": {
+          "feats_network": -0.1813771277666092,
+          "kd_predictor": 0.6067411303520203,
+          "metallic_predictor": -0.11115509271621704,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__surface_q": {
+          "feats_network": 0.017169928178191185,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__specular": {
+          "feats_network": 0.12687663733959198,
+          "kd_predictor": 0.9209063649177551,
+          "metallic_predictor": -0.5947835445404053,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__surface_q": {
+          "feats_network": -0.21951140463352203,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": 0.09694230556488037,
+          "my_predictor": -0.6280651092529297,
+          "outer_light": null,
+          "rotation_predictor": 0.5641669631004333
+        },
+        "specular__surface_q": {
+          "feats_network": -0.030266251415014267,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        }
+      },
+      "interpretation": "Additional local AD probes; not archived training gradients",
+      "terms": {
+        "energy": {
+          "gradient_l2": 0.0,
+          "groups": {
+            "feats_network": 0.0,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 0.0
+        },
+        "material": {
+          "gradient_l2": 0.0011839987710118294,
+          "groups": {
+            "feats_network": 0.00047120629460550845,
+            "kd_predictor": 0.000131975844851695,
+            "metallic_predictor": 0.0010781466262415051,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 2.3405875253956765e-05
+        },
+        "photo": {
+          "gradient_l2": 0.034168291836977005,
+          "groups": {
+            "feats_network": 0.028956187888979912,
+            "kd_predictor": 0.0002812648599501699,
+            "metallic_predictor": 0.001513772294856608,
+            "mx_predictor": 0.006373582873493433,
+            "my_predictor": 0.016590863466262817,
+            "outer_light": 0.0032169444020837545,
+            "rotation_predictor": 0.0006423787563107908
+          },
+          "weighted_loss": 0.03301827609539032
+        },
+        "specular": {
+          "gradient_l2": 1.906750003399793e-05,
+          "groups": {
+            "feats_network": 7.818896847311407e-06,
+            "kd_predictor": 4.0642544263391756e-06,
+            "metallic_predictor": 1.690905810391996e-05,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 3.952225142711541e-06
+        },
+        "surface_q": {
+          "gradient_l2": 0.0031109729316085577,
+          "groups": {
+            "feats_network": 0.002820843132212758,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 0.0010154088959097862,
+            "my_predictor": 0.0008285506046377122,
+            "outer_light": 0.0,
+            "rotation_predictor": 5.8694338804343715e-05
+          },
+          "weighted_loss": 3.869022475555539e-05
+        }
+      }
+    },
+    {
+      "arm": "D9-T",
+      "completed_updates": 8000,
+      "gradient_cosines": {
+        "energy__specular": null,
+        "energy__surface_q": null,
+        "material__energy": null,
+        "material__specular": 0.2536545395851135,
+        "material__surface_q": 0.010482318699359894,
+        "photo__energy": null,
+        "photo__material": 0.014044986106455326,
+        "photo__specular": 0.019513793289661407,
+        "photo__surface_q": 0.6632571816444397,
+        "specular__surface_q": -0.0077601829543709755
+      },
+      "group_gradient_cosines": {
+        "energy__material": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__photo": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__specular": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__surface_q": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__photo": {
+          "feats_network": 0.014497601427137852,
+          "kd_predictor": -0.21719278395175934,
+          "metallic_predictor": 0.22315675020217896,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__specular": {
+          "feats_network": 0.2206125557422638,
+          "kd_predictor": 0.3912809491157532,
+          "metallic_predictor": 0.26175424456596375,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__surface_q": {
+          "feats_network": 0.028998402878642082,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__specular": {
+          "feats_network": -0.06255605071783066,
+          "kd_predictor": -0.7882725596427917,
+          "metallic_predictor": 0.9979590177536011,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__surface_q": {
+          "feats_network": 0.6695162653923035,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": 0.863804280757904,
+          "my_predictor": 0.8835055828094482,
+          "outer_light": null,
+          "rotation_predictor": 0.026708152145147324
+        },
+        "specular__surface_q": {
+          "feats_network": -0.02012130804359913,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        }
+      },
+      "interpretation": "Additional local AD probes; not archived training gradients",
+      "terms": {
+        "energy": {
+          "gradient_l2": 0.0,
+          "groups": {
+            "feats_network": 0.0,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 0.0
+        },
+        "material": {
+          "gradient_l2": 0.0018047499470412731,
+          "groups": {
+            "feats_network": 0.0007073366432450712,
+            "kd_predictor": 0.00011941405682591721,
+            "metallic_predictor": 0.0016560608055442572,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 1.694236561888829e-05
+        },
+        "photo": {
+          "gradient_l2": 0.08747793734073639,
+          "groups": {
+            "feats_network": 0.06908460706472397,
+            "kd_predictor": 0.0007391893304884434,
+            "metallic_predictor": 0.004134888295084238,
+            "mx_predictor": 0.031443752348423004,
+            "my_predictor": 0.03410734981298447,
+            "outer_light": 0.026632895693182945,
+            "rotation_predictor": 0.0008551107021048665
+          },
+          "weighted_loss": 0.03304862976074219
+        },
+        "specular": {
+          "gradient_l2": 1.928316123667173e-05,
+          "groups": {
+            "feats_network": 8.06342995929299e-06,
+            "kd_predictor": 4.175042704446241e-06,
+            "metallic_predictor": 1.7011478121276014e-05,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 4.073606305610156e-06
+        },
+        "surface_q": {
+          "gradient_l2": 0.0027168982196599245,
+          "groups": {
+            "feats_network": 0.0025058065075427294,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 0.000844817899633199,
+            "my_predictor": 0.0006234558532014489,
+            "outer_light": 0.0,
+            "rotation_predictor": 7.428835033351788e-06
+          },
+          "weighted_loss": 3.356548404553905e-05
+        }
+      }
+    },
+    {
+      "arm": "D9-T",
+      "completed_updates": 10000,
+      "gradient_cosines": {
+        "energy__specular": null,
+        "energy__surface_q": null,
+        "material__energy": null,
+        "material__specular": 0.014144595712423325,
+        "material__surface_q": -0.009009870700538158,
+        "photo__energy": null,
+        "photo__material": 0.0066720182076096535,
+        "photo__specular": 0.02195914275944233,
+        "photo__surface_q": 0.3534238338470459,
+        "specular__surface_q": -0.014122403226792812
+      },
+      "group_gradient_cosines": {
+        "energy__material": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__photo": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__specular": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "energy__surface_q": {
+          "feats_network": null,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__photo": {
+          "feats_network": -0.029780762270092964,
+          "kd_predictor": 0.05080227553844452,
+          "metallic_predictor": 0.24417811632156372,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__specular": {
+          "feats_network": 0.225202277302742,
+          "kd_predictor": -0.13549648225307465,
+          "metallic_predictor": -0.02445031702518463,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "material__surface_q": {
+          "feats_network": -0.025930263102054596,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__specular": {
+          "feats_network": -0.09982157498598099,
+          "kd_predictor": -0.9140828251838684,
+          "metallic_predictor": 0.9606680870056152,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        },
+        "photo__surface_q": {
+          "feats_network": 0.37462618947029114,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": 0.252424031496048,
+          "my_predictor": 0.8000033497810364,
+          "outer_light": null,
+          "rotation_predictor": -0.467367947101593
+        },
+        "specular__surface_q": {
+          "feats_network": -0.03721340373158455,
+          "kd_predictor": null,
+          "metallic_predictor": null,
+          "mx_predictor": null,
+          "my_predictor": null,
+          "outer_light": null,
+          "rotation_predictor": null
+        }
+      },
+      "interpretation": "Additional local AD probes; not archived training gradients",
+      "terms": {
+        "energy": {
+          "gradient_l2": 0.0,
+          "groups": {
+            "feats_network": 0.0,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 0.0
+        },
+        "material": {
+          "gradient_l2": 0.0039717210456728935,
+          "groups": {
+            "feats_network": 0.001519343233667314,
+            "kd_predictor": 0.0002636826829984784,
+            "metallic_predictor": 0.003660141257569194,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 2.1286232367856428e-05
+        },
+        "photo": {
+          "gradient_l2": 0.05490982159972191,
+          "groups": {
+            "feats_network": 0.03816835954785347,
+            "kd_predictor": 0.0009978418238461018,
+            "metallic_predictor": 0.0035455164033919573,
+            "mx_predictor": 0.011248732917010784,
+            "my_predictor": 0.025973979383707047,
+            "outer_light": 0.027260243892669678,
+            "rotation_predictor": 0.0006294762133620679
+          },
+          "weighted_loss": 0.032871559262275696
+        },
+        "specular": {
+          "gradient_l2": 1.8666050891624764e-05,
+          "groups": {
+            "feats_network": 7.798789738444611e-06,
+            "kd_predictor": 4.150354925513966e-06,
+            "metallic_predictor": 1.64430784934666e-05,
+            "mx_predictor": 0.0,
+            "my_predictor": 0.0,
+            "outer_light": 0.0,
+            "rotation_predictor": 0.0
+          },
+          "weighted_loss": 4.108388111490058e-06
+        },
+        "surface_q": {
+          "gradient_l2": 0.0019201773684471846,
+          "groups": {
+            "feats_network": 0.0017441177042201161,
+            "kd_predictor": 0.0,
+            "metallic_predictor": 0.0,
+            "mx_predictor": 0.0006211710860952735,
+            "my_predictor": 0.0005086010205559433,
+            "outer_light": 0.0,
+            "rotation_predictor": 2.4625622245366685e-05
+          },
+          "weighted_loss": 3.001307777594775e-05
+        }
+      }
+    }
+  ],
+  "illumination": [
+    {
+      "arm": "D9-C",
+      "completed_updates": 0,
+      "max_abs_mean_error": 0.3523757861673986,
+      "mean_RGB": [
+        0.4828739411557412,
+        0.49689758801892797,
+        0.519820324614846
+      ],
+      "mean_equalized_relative_L2": 0.9468803156877145,
+      "per_channel_relative_L2": [
+        1.234700508672908,
+        1.2213540651471528,
+        1.162263863230758
+      ],
+      "relative_L2": 1.2012880241962987,
+      "transported_Q_mean_squared": 1.9486374185362365e-06
+    },
+    {
+      "arm": "D9-C",
+      "completed_updates": 2000,
+      "max_abs_mean_error": 0.0309873302605371,
+      "mean_RGB": [
+        0.13658511145438762,
+        0.14094926896787874,
+        0.1364572081869102
+      ],
+      "mean_equalized_relative_L2": 0.7174114803829116,
+      "per_channel_relative_L2": [
+        0.7414958222380196,
+        0.6401200032212065,
+        0.7977589267703737
+      ],
+      "relative_L2": 0.7362316455496385,
+      "transported_Q_mean_squared": 1.4134575394564308e-05
+    },
+    {
+      "arm": "D9-C",
+      "completed_updates": 4000,
+      "max_abs_mean_error": 0.01684635791535441,
+      "mean_RGB": [
+        0.15680407557564108,
+        0.15618983021114013,
+        0.1570689508299485
+      ],
+      "mean_equalized_relative_L2": 0.571217701678939,
+      "per_channel_relative_L2": [
+        0.5373893958899044,
+        0.5490343334208382,
+        0.5949563601607403
+      ],
+      "relative_L2": 0.5652003268878875,
+      "transported_Q_mean_squared": 0.0008084220462478697
+    },
+    {
+      "arm": "D9-C",
+      "completed_updates": 6000,
+      "max_abs_mean_error": 0.09386656332367643,
+      "mean_RGB": [
+        0.2338242809839631,
+        0.2376748031832091,
+        0.23328198876781672
+      ],
+      "mean_equalized_relative_L2": 0.5263189484879228,
+      "per_channel_relative_L2": [
+        0.5185464725325343,
+        0.5223548702360566,
+        0.4718426812766326
+      ],
+      "relative_L2": 0.5011329639671773,
+      "transported_Q_mean_squared": 0.0010130747687071562
+    },
+    {
+      "arm": "D9-C",
+      "completed_updates": 8000,
+      "max_abs_mean_error": 0.18004732616847388,
+      "mean_RGB": [
+        0.32000504382876055,
+        0.32318197270914645,
+        0.32026346943540124
+      ],
+      "mean_equalized_relative_L2": 0.5622416374093744,
+      "per_channel_relative_L2": [
+        0.7139771809869486,
+        0.7073645047264847,
+        0.5643626938696142
+      ],
+      "relative_L2": 0.6544977052476972,
+      "transported_Q_mean_squared": 0.000562463013920933
+    },
+    {
+      "arm": "D9-C",
+      "completed_updates": 10000,
+      "max_abs_mean_error": 0.20965212396188623,
+      "mean_RGB": [
+        0.3496098416221729,
+        0.35387514728832875,
+        0.3496520858762044
+      ],
+      "mean_equalized_relative_L2": 0.5812040595550401,
+      "per_channel_relative_L2": [
+        0.7679396332908482,
+        0.7612081109899181,
+        0.6000876725133066
+      ],
+      "relative_L2": 0.7016500976162139,
+      "transported_Q_mean_squared": 0.00044117163633927703
+    },
+    {
+      "arm": "D9-T",
+      "completed_updates": 0,
+      "max_abs_mean_error": 0.3523757861673986,
+      "mean_RGB": [
+        0.4828739411557412,
+        0.49689758801892797,
+        0.519820324614846
+      ],
+      "mean_equalized_relative_L2": 0.9468803156877145,
+      "per_channel_relative_L2": [
+        1.234700508672908,
+        1.2213540651471528,
+        1.162263863230758
+      ],
+      "relative_L2": 1.2012880241962987,
+      "transported_Q_mean_squared": 1.9486374185362365e-06
+    },
+    {
+      "arm": "D9-T",
+      "completed_updates": 2000,
+      "max_abs_mean_error": 0.026566312377410584,
+      "mean_RGB": [
+        0.14312140617776212,
+        0.15212804517466225,
+        0.14087822607003672
+      ],
+      "mean_equalized_relative_L2": 0.5796106996459648,
+      "per_channel_relative_L2": [
+        0.5901529264813747,
+        0.30495873640641186,
+        0.7431677197105743
+      ],
+      "relative_L2": 0.5941808603853515,
+      "transported_Q_mean_squared": 4.547003482002765e-05
+    },
+    {
+      "arm": "D9-T",
+      "completed_updates": 4000,
+      "max_abs_mean_error": 0.020434559621651,
+      "mean_RGB": [
+        0.14638637331070953,
+        0.14845323309886843,
+        0.1470099788257963
+      ],
+      "mean_equalized_relative_L2": 0.19704046255167548,
+      "per_channel_relative_L2": [
+        0.19892112255905128,
+        0.20331499324805502,
+        0.2320641728211592
+      ],
+      "relative_L2": 0.21442534290891452,
+      "transported_Q_mean_squared": 0.00018625473603606224
+    },
+    {
+      "arm": "D9-T",
+      "completed_updates": 6000,
+      "max_abs_mean_error": 0.021324605051973172,
+      "mean_RGB": [
+        0.14585456803036212,
+        0.14562840917604944,
+        0.14611993339547413
+      ],
+      "mean_equalized_relative_L2": 0.15496396874759616,
+      "per_channel_relative_L2": [
+        0.1552637219664644,
+        0.16748979852154522,
+        0.20069833479349877
+      ],
+      "relative_L2": 0.17878592860909423,
+      "transported_Q_mean_squared": 0.00022832173272036016
+    },
+    {
+      "arm": "D9-T",
+      "completed_updates": 8000,
+      "max_abs_mean_error": 0.020744669328033566,
+      "mean_RGB": [
+        0.14645670070580413,
+        0.1464955530134586,
+        0.14669986911941374
+      ],
+      "mean_equalized_relative_L2": 0.1400089399638314,
+      "per_channel_relative_L2": [
+        0.141295897579469,
+        0.1513133073362385,
+        0.18869677112467242
+      ],
+      "relative_L2": 0.16519777894727627,
+      "transported_Q_mean_squared": 0.0002604388282634318
+    },
+    {
+      "arm": "D9-T",
+      "completed_updates": 10000,
+      "max_abs_mean_error": 0.021765571685523594,
+      "mean_RGB": [
+        0.14554666938804595,
+        0.14573106736434047,
+        0.1456789667619237
+      ],
+      "mean_equalized_relative_L2": 0.13147997044114362,
+      "per_channel_relative_L2": [
+        0.13100987204510944,
+        0.1431790850991222,
+        0.18938089916900194
+      ],
+      "relative_L2": 0.16084271798815597,
+      "transported_Q_mean_squared": 0.00014285916404332966
+    }
+  ],
+  "initial_view_checks": {
+    "0": {
+      "Q_tensor_direct": 2.220446049250313e-16,
+      "analytical_anchor_max_abs": 4.9713925309724516e-08,
+      "linear_diffuse": 0.0,
+      "linear_rgb": 0.0,
+      "linear_specular": 0.0
+    },
+    "1": {
+      "Q_tensor_direct": 2.220446049250313e-16,
+      "analytical_anchor_max_abs": 5.095175031888388e-08,
+      "linear_diffuse": 0.0,
+      "linear_rgb": 0.0,
+      "linear_specular": 0.0
+    },
+    "28": {
+      "Q_tensor_direct": 2.220446049250313e-16,
+      "analytical_anchor_max_abs": 4.905476796990271e-08,
+      "linear_diffuse": 0.0,
+      "linear_rgb": 0.0,
+      "linear_specular": 0.0
+    },
+    "34": {
+      "Q_tensor_direct": 2.7755575615628914e-16,
+      "analytical_anchor_max_abs": 5.309169198719488e-08,
+      "linear_diffuse": 0.0,
+      "linear_rgb": 0.0,
+      "linear_specular": 0.0
+    },
+    "45": {
+      "Q_tensor_direct": 2.220446049250313e-16,
+      "analytical_anchor_max_abs": 4.8582309675193613e-08,
+      "linear_diffuse": 0.0,
+      "linear_rgb": 0.0,
+      "linear_specular": 0.0
+    },
+    "50": {
+      "Q_tensor_direct": 2.220446049250313e-16,
+      "analytical_anchor_max_abs": 5.570176092595247e-08,
+      "linear_diffuse": 0.0,
+      "linear_rgb": 0.0,
+      "linear_specular": 0.0
+    }
+  },
+  "joint_orientation_eligibility": {
+    "all": {
+      "joint_count": 20968,
+      "summary": {
+        "D9-C": {
+          "mean": 28.71432863216281,
+          "median": 22.833559390576823,
+          "p95": 77.0500000944269
+        },
+        "D9-T": {
+          "mean": 2.557371533570029,
+          "median": 0.1369898600911525,
+          "p95": 11.613816380149622
+        }
+      }
+    },
+    "camera28": {
+      "joint_count": 4458,
+      "summary": {
+        "D9-C": {
+          "mean": 31.700369986538956,
+          "median": 26.934596598319242,
+          "p95": 78.97193694524957
+        },
+        "D9-T": {
+          "mean": 4.409237338409974,
+          "median": 0.4080445501686928,
+          "p95": 24.01025602016266
+        }
+      }
+    },
+    "camera34": {
+      "joint_count": 2258,
+      "summary": {
+        "D9-C": {
+          "mean": 31.221669537576442,
+          "median": 26.47298298862729,
+          "p95": 74.10230659947757
+        },
+        "D9-T": {
+          "mean": 0.24760641749178597,
+          "median": 0.07857122104950579,
+          "p95": 0.8137716520438941
+        }
+      }
+    },
+    "held_out": {
+      "joint_count": 6716,
+      "summary": {
+        "D9-C": {
+          "mean": 31.53942513636662,
+          "median": 26.82233450575518,
+          "p95": 77.4574341855624
+        },
+        "D9-T": {
+          "mean": 3.010046954337123,
+          "median": 0.19303835978913542,
+          "p95": 14.210372699714538
+        }
+      }
+    }
+  },
+  "last_200_loss_means": {
+    "D9-C": {
+      "RGB_loss": 0.03342266237363219,
+      "diffuse_white_prior": 2.038760587311117e-05,
+      "material_prior": 0.0005520400471868925,
+      "surface_q_loss": 7.561456463008654e-05
+    },
+    "D9-T": {
+      "RGB_loss": 0.03288984613493085,
+      "diffuse_white_prior": 7.17512085202543e-06,
+      "material_prior": 1.807231235943618e-05,
+      "surface_q_loss": 3.266916000029596e-05
+    }
+  },
+  "matched_D6_sampler_snapshots": 6,
+  "matched_learning_rates": true,
+  "native_reference_captures_agree": true,
+  "raw_tensor_export_checks": [
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 0,
+      "projection_max_abs": 1.4260681383167217e-08,
+      "reconstruction_max_abs": 8.730291178871141e-08,
+      "relative_Q_max_difference": 7.268185262532256e-07,
+      "step": 0
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 50,
+      "projection_max_abs": 1.4181057592099755e-08,
+      "reconstruction_max_abs": 8.629391767822625e-08,
+      "relative_Q_max_difference": 8.174636607627406e-07,
+      "step": 0
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 1,
+      "projection_max_abs": 1.4833110698053709e-08,
+      "reconstruction_max_abs": 9.530604100360662e-08,
+      "relative_Q_max_difference": 7.317298882369982e-07,
+      "step": 0
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 45,
+      "projection_max_abs": 1.51914012341825e-08,
+      "reconstruction_max_abs": 8.363960946056181e-08,
+      "relative_Q_max_difference": 6.890907204848418e-07,
+      "step": 0
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 28,
+      "projection_max_abs": 1.5660733504712504e-08,
+      "reconstruction_max_abs": 9.452359717165848e-08,
+      "relative_Q_max_difference": 6.942226264960993e-07,
+      "step": 0
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 34,
+      "projection_max_abs": 1.4276472171115273e-08,
+      "reconstruction_max_abs": 9.41712732238642e-08,
+      "relative_Q_max_difference": 8.148281693820536e-07,
+      "step": 0
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 0,
+      "projection_max_abs": 3.776944743072441e-09,
+      "reconstruction_max_abs": 2.018176852025544e-08,
+      "relative_Q_max_difference": 1.616203801901861e-07,
+      "step": 2000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 50,
+      "projection_max_abs": 3.5922780618202754e-09,
+      "reconstruction_max_abs": 2.5768029293660177e-08,
+      "relative_Q_max_difference": 2.0825579338801248e-07,
+      "step": 2000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 1,
+      "projection_max_abs": 4.079732780770673e-09,
+      "reconstruction_max_abs": 2.7951015682536884e-08,
+      "relative_Q_max_difference": 2.0776069797889818e-07,
+      "step": 2000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 45,
+      "projection_max_abs": 3.88288355981925e-09,
+      "reconstruction_max_abs": 2.2405266891789566e-08,
+      "relative_Q_max_difference": 1.8377698796090414e-07,
+      "step": 2000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 28,
+      "projection_max_abs": 3.324168013768558e-09,
+      "reconstruction_max_abs": 1.840667658570272e-08,
+      "relative_Q_max_difference": 1.5425287486214856e-07,
+      "step": 2000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 34,
+      "projection_max_abs": 3.1106957426585424e-09,
+      "reconstruction_max_abs": 1.7298017143674294e-08,
+      "relative_Q_max_difference": 1.5175599460404143e-07,
+      "step": 2000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 0,
+      "projection_max_abs": 1.3117458258493642e-08,
+      "reconstruction_max_abs": 1.035679200178663e-07,
+      "relative_Q_max_difference": 8.185021940221304e-07,
+      "step": 4000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 50,
+      "projection_max_abs": 1.3083135227964782e-08,
+      "reconstruction_max_abs": 7.321385753211729e-08,
+      "relative_Q_max_difference": 6.346302352522315e-07,
+      "step": 4000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 1,
+      "projection_max_abs": 1.4767792488878939e-08,
+      "reconstruction_max_abs": 8.959947755959874e-08,
+      "relative_Q_max_difference": 7.690509225000142e-07,
+      "step": 4000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 45,
+      "projection_max_abs": 1.3445887514507149e-08,
+      "reconstruction_max_abs": 8.304827125993341e-08,
+      "relative_Q_max_difference": 7.238467556458517e-07,
+      "step": 4000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 28,
+      "projection_max_abs": 1.2678163893720118e-08,
+      "reconstruction_max_abs": 9.950709173311978e-08,
+      "relative_Q_max_difference": 7.731161644208839e-07,
+      "step": 4000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 34,
+      "projection_max_abs": 7.296725446082064e-09,
+      "reconstruction_max_abs": 6.52746508511548e-08,
+      "relative_Q_max_difference": 5.364902663229643e-07,
+      "step": 4000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 0,
+      "projection_max_abs": 1.5506109452001482e-08,
+      "reconstruction_max_abs": 1.1043739084337645e-07,
+      "relative_Q_max_difference": 8.753168689867863e-07,
+      "step": 6000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 50,
+      "projection_max_abs": 1.4645568424676014e-08,
+      "reconstruction_max_abs": 7.45860265771725e-08,
+      "relative_Q_max_difference": 6.821083189390009e-07,
+      "step": 6000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 1,
+      "projection_max_abs": 1.6959312218456368e-08,
+      "reconstruction_max_abs": 9.131455236399688e-08,
+      "relative_Q_max_difference": 8.874641304057462e-07,
+      "step": 6000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 45,
+      "projection_max_abs": 1.5487908899824987e-08,
+      "reconstruction_max_abs": 1.1248067377511717e-07,
+      "relative_Q_max_difference": 1.015775984658518e-06,
+      "step": 6000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 28,
+      "projection_max_abs": 1.564349248750485e-08,
+      "reconstruction_max_abs": 1.1044213238387002e-07,
+      "relative_Q_max_difference": 9.363521866756486e-07,
+      "step": 6000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 34,
+      "projection_max_abs": 8.807702234214787e-09,
+      "reconstruction_max_abs": 7.4032388108769e-08,
+      "relative_Q_max_difference": 7.126179095706675e-07,
+      "step": 6000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 0,
+      "projection_max_abs": 1.6896528204357608e-08,
+      "reconstruction_max_abs": 9.487366320337642e-08,
+      "relative_Q_max_difference": 9.21231773531872e-07,
+      "step": 8000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 50,
+      "projection_max_abs": 1.5981077239324293e-08,
+      "reconstruction_max_abs": 9.346254320474756e-08,
+      "relative_Q_max_difference": 8.363633643426738e-07,
+      "step": 8000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 1,
+      "projection_max_abs": 1.8027713655222044e-08,
+      "reconstruction_max_abs": 9.914122567344918e-08,
+      "relative_Q_max_difference": 8.383944616330297e-07,
+      "step": 8000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 45,
+      "projection_max_abs": 1.8167993803830385e-08,
+      "reconstruction_max_abs": 1.0372550851567297e-07,
+      "relative_Q_max_difference": 8.828417648043541e-07,
+      "step": 8000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 28,
+      "projection_max_abs": 1.6925677664980654e-08,
+      "reconstruction_max_abs": 1.0555704738068883e-07,
+      "relative_Q_max_difference": 8.566400684362208e-07,
+      "step": 8000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 34,
+      "projection_max_abs": 9.123593158744114e-09,
+      "reconstruction_max_abs": 6.752851700042584e-08,
+      "relative_Q_max_difference": 5.694135614131568e-07,
+      "step": 8000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 0,
+      "projection_max_abs": 1.710480723726704e-08,
+      "reconstruction_max_abs": 1.0162075603226128e-07,
+      "relative_Q_max_difference": 8.801997248841786e-07,
+      "step": 10000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 50,
+      "projection_max_abs": 1.610793209927408e-08,
+      "reconstruction_max_abs": 8.27710409656568e-08,
+      "relative_Q_max_difference": 7.745598811226273e-07,
+      "step": 10000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 1,
+      "projection_max_abs": 1.6742953218296108e-08,
+      "reconstruction_max_abs": 1.1248102982364117e-07,
+      "relative_Q_max_difference": 7.683526117574502e-07,
+      "step": 10000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 45,
+      "projection_max_abs": 1.8366312387607664e-08,
+      "reconstruction_max_abs": 9.069492862279205e-08,
+      "relative_Q_max_difference": 7.801624934966611e-07,
+      "step": 10000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 28,
+      "projection_max_abs": 1.7141653679830782e-08,
+      "reconstruction_max_abs": 1.0012512180468391e-07,
+      "relative_Q_max_difference": 8.02547624800809e-07,
+      "step": 10000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-C",
+      "camera": 34,
+      "projection_max_abs": 8.721419822443899e-09,
+      "reconstruction_max_abs": 5.2523614985089395e-08,
+      "relative_Q_max_difference": 4.1120913607528564e-07,
+      "step": 10000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 0,
+      "projection_max_abs": 1.426068138923875e-08,
+      "reconstruction_max_abs": 8.730291162217796e-08,
+      "relative_Q_max_difference": 7.268185253650472e-07,
+      "step": 0
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 50,
+      "projection_max_abs": 1.4181057592099755e-08,
+      "reconstruction_max_abs": 8.629391756720395e-08,
+      "relative_Q_max_difference": 8.174636594304729e-07,
+      "step": 0
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 1,
+      "projection_max_abs": 1.4833110711931496e-08,
+      "reconstruction_max_abs": 9.530604089258432e-08,
+      "relative_Q_max_difference": 7.317298886810875e-07,
+      "step": 0
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 45,
+      "projection_max_abs": 1.51914012341825e-08,
+      "reconstruction_max_abs": 8.363960929402836e-08,
+      "relative_Q_max_difference": 6.890907195966633e-07,
+      "step": 0
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 28,
+      "projection_max_abs": 1.56607335025441e-08,
+      "reconstruction_max_abs": 9.452359706063618e-08,
+      "relative_Q_max_difference": 6.942226256079209e-07,
+      "step": 0
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 34,
+      "projection_max_abs": 1.4276472171115273e-08,
+      "reconstruction_max_abs": 9.417127305733075e-08,
+      "relative_Q_max_difference": 8.148281689379644e-07,
+      "step": 0
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 0,
+      "projection_max_abs": 4.209071663446471e-09,
+      "reconstruction_max_abs": 4.7849261997079395e-08,
+      "relative_Q_max_difference": 3.9243750299400304e-07,
+      "step": 2000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 50,
+      "projection_max_abs": 4.247808814438793e-09,
+      "reconstruction_max_abs": 4.428603547768084e-08,
+      "relative_Q_max_difference": 3.697758040321908e-07,
+      "step": 2000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 1,
+      "projection_max_abs": 4.637748303448763e-09,
+      "reconstruction_max_abs": 4.106906856260473e-08,
+      "relative_Q_max_difference": 3.1745888073864137e-07,
+      "step": 2000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 45,
+      "projection_max_abs": 3.871983295512631e-09,
+      "reconstruction_max_abs": 5.0710328131087223e-08,
+      "relative_Q_max_difference": 4.074286352184764e-07,
+      "step": 2000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 28,
+      "projection_max_abs": 3.9480850489923e-09,
+      "reconstruction_max_abs": 5.354727872219911e-08,
+      "relative_Q_max_difference": 4.346828660906077e-07,
+      "step": 2000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 34,
+      "projection_max_abs": 4.656367788742621e-09,
+      "reconstruction_max_abs": 4.880113224636773e-08,
+      "relative_Q_max_difference": 3.9847828503525307e-07,
+      "step": 2000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 0,
+      "projection_max_abs": 8.677155696008507e-09,
+      "reconstruction_max_abs": 5.242679260164529e-08,
+      "relative_Q_max_difference": 4.2187567506069e-07,
+      "step": 4000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 50,
+      "projection_max_abs": 1.6548550568935838e-08,
+      "reconstruction_max_abs": 4.646457335555354e-08,
+      "relative_Q_max_difference": 4.282992334125879e-07,
+      "step": 4000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 1,
+      "projection_max_abs": 8.942271673140212e-09,
+      "reconstruction_max_abs": 3.838250037246915e-08,
+      "relative_Q_max_difference": 3.173008670809274e-07,
+      "step": 4000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 45,
+      "projection_max_abs": 1.221270696204202e-08,
+      "reconstruction_max_abs": 6.545031114302269e-08,
+      "relative_Q_max_difference": 6.662920231104152e-07,
+      "step": 4000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 28,
+      "projection_max_abs": 1.9990284715748485e-08,
+      "reconstruction_max_abs": 5.173860975760114e-08,
+      "relative_Q_max_difference": 5.315705271513593e-07,
+      "step": 4000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 34,
+      "projection_max_abs": 7.34864049473094e-09,
+      "reconstruction_max_abs": 4.239833273356197e-08,
+      "relative_Q_max_difference": 3.8420088088741977e-07,
+      "step": 4000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 0,
+      "projection_max_abs": 9.642271592280593e-09,
+      "reconstruction_max_abs": 5.201659059039798e-08,
+      "relative_Q_max_difference": 5.247991965440235e-07,
+      "step": 6000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 50,
+      "projection_max_abs": 1.1691576439626372e-08,
+      "reconstruction_max_abs": 4.0807707823997674e-08,
+      "relative_Q_max_difference": 3.0834597852802403e-07,
+      "step": 6000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 1,
+      "projection_max_abs": 8.28361247651177e-09,
+      "reconstruction_max_abs": 4.0242708415627604e-08,
+      "relative_Q_max_difference": 3.882881682848449e-07,
+      "step": 6000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 45,
+      "projection_max_abs": 1.246139839927718e-08,
+      "reconstruction_max_abs": 4.9105127408743954e-08,
+      "relative_Q_max_difference": 5.072313007392637e-07,
+      "step": 6000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 28,
+      "projection_max_abs": 1.3883915378053863e-08,
+      "reconstruction_max_abs": 5.701107966271657e-08,
+      "relative_Q_max_difference": 4.5436860829362047e-07,
+      "step": 6000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 34,
+      "projection_max_abs": 6.734890277415584e-09,
+      "reconstruction_max_abs": 4.152442689697722e-08,
+      "relative_Q_max_difference": 3.824300538468606e-07,
+      "step": 6000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 0,
+      "projection_max_abs": 9.709598002352604e-09,
+      "reconstruction_max_abs": 4.789484181477732e-08,
+      "relative_Q_max_difference": 3.9920667055382e-07,
+      "step": 8000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 50,
+      "projection_max_abs": 1.3222207328154878e-08,
+      "reconstruction_max_abs": 4.78953796623216e-08,
+      "relative_Q_max_difference": 4.627788265931798e-07,
+      "step": 8000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 1,
+      "projection_max_abs": 8.420283734156264e-09,
+      "reconstruction_max_abs": 4.295192096437361e-08,
+      "relative_Q_max_difference": 4.882281797735644e-07,
+      "step": 8000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 45,
+      "projection_max_abs": 1.2156770826110552e-08,
+      "reconstruction_max_abs": 4.696130000148013e-08,
+      "relative_Q_max_difference": 5.129352103061535e-07,
+      "step": 8000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 28,
+      "projection_max_abs": 1.3403617619457686e-08,
+      "reconstruction_max_abs": 6.657968248946489e-08,
+      "relative_Q_max_difference": 5.975010965997285e-07,
+      "step": 8000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 34,
+      "projection_max_abs": 6.2553375985985316e-09,
+      "reconstruction_max_abs": 3.5295893180409266e-08,
+      "relative_Q_max_difference": 3.9930936690524277e-07,
+      "step": 8000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 0,
+      "projection_max_abs": 6.674301195920551e-09,
+      "reconstruction_max_abs": 3.566853340464249e-08,
+      "relative_Q_max_difference": 3.0784918996634714e-07,
+      "step": 10000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 50,
+      "projection_max_abs": 9.078379330186223e-09,
+      "reconstruction_max_abs": 4.083049928715887e-08,
+      "relative_Q_max_difference": 3.7295426735806103e-07,
+      "step": 10000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 1,
+      "projection_max_abs": 6.127258485311149e-09,
+      "reconstruction_max_abs": 4.021815258603567e-08,
+      "relative_Q_max_difference": 3.276451889452914e-07,
+      "step": 10000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 45,
+      "projection_max_abs": 8.060682824861297e-09,
+      "reconstruction_max_abs": 3.9077474311977056e-08,
+      "relative_Q_max_difference": 3.7488967852272737e-07,
+      "step": 10000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 28,
+      "projection_max_abs": 1.2012237865424019e-08,
+      "reconstruction_max_abs": 3.5341890053386393e-08,
+      "relative_Q_max_difference": 4.497472534392699e-07,
+      "step": 10000
+    },
+    {
+      "Q_cutoff_disagreements": 0,
+      "arm": "D9-T",
+      "camera": 34,
+      "projection_max_abs": 5.404393864719137e-09,
+      "reconstruction_max_abs": 2.9891833230877296e-08,
+      "relative_Q_max_difference": 2.6706447872615335e-07,
+      "step": 10000
+    }
+  ],
+  "reference_artifacts": 31,
+  "replayed_camera_endpoints": 72,
+  "resources": {
+    "D9-C": {
+      "cleanup_verified": true,
+      "counters": {
+        "component_reverse_sweeps": 30,
+        "shader_calls": 12290,
+        "shadow_rays": 9534038016,
+        "surface_q_batches": 10000,
+        "surface_q_pairs": 1280000,
+        "surface_q_predictor_calls": 20000,
+        "surface_q_predictor_points": 2560000
+      },
+      "elapsed_seconds": 1387.3822750039399,
+      "native_reference_gate": {
+        "RMS_single_draw_std": 0.0033820098724538328,
+        "component_failures": 0,
+        "empirical_SE_L2": 0.005073014808680749,
+        "empirical_SE_limit": 0.019279835780757364,
+        "maximum_empirical_SE": 0.00349370613550536,
+        "maximum_mean_absolute": 0.002971990074198849,
+        "maximum_unexplained_absolute": 0.00038284136233789453,
+        "passed": true,
+        "pooled_difference": 0.004736146779519926,
+        "pooled_limit": 0.0415478944167261,
+        "pooled_relative_L2": 0.008775066762662816,
+        "precision_adequate": true
+      },
+      "optimizer_returns": 10000,
+      "output_identities_verified": 898,
+      "paired_initial_gate": {
+        "RGB_component_max_abs": 0.0,
+        "local_initial_Q_max_abs": 1.6653345369377348e-16,
+        "passed": true,
+        "scalar_predictions_equal": true,
+        "shared_state_equal": true,
+        "world_Q_max_abs": 1.6653345369377348e-16
+      },
+      "resources": {
+        "CUDA_peak_allocated": 7346619392,
+        "CUDA_peak_reserved": 21120417792,
+        "host_peak_RSS": 5379031040
+      },
+      "runtime": {
+        "CUDA": "11.1",
+        "CXX11_ABI": false,
+        "GPU": "NVIDIA A100 80GB PCIe",
+        "declared_image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+        "numpy": "1.24.4",
+        "torch": "1.8.1+cu111"
+      },
+      "surface_q_timing": {
+        "forward_CUDA_seconds": 91.648476092338,
+        "setup_wall_seconds": 0.16792597621679306
+      },
+      "tensor_training_forward_CUDA_seconds": 308.63590138626034,
+      "trainable_parameters": {
+        "feats_network": 488960,
+        "inner_light": 0,
+        "kd_predictor": 199686,
+        "metallic_predictor": 199170,
+        "mx_predictor": 199170,
+        "my_predictor": 199170,
+        "outer_light": 151814,
+        "rotation_predictor": 199428
+      }
+    },
+    "D9-T": {
+      "cleanup_verified": true,
+      "counters": {
+        "component_reverse_sweeps": 30,
+        "shader_calls": 12290,
+        "shadow_rays": 9534038016,
+        "surface_q_batches": 10000,
+        "surface_q_pairs": 1280000,
+        "surface_q_predictor_calls": 20000,
+        "surface_q_predictor_points": 2560000
+      },
+      "elapsed_seconds": 1351.3817848395556,
+      "native_reference_gate": {
+        "RMS_single_draw_std": 0.0033820098724538328,
+        "component_failures": 0,
+        "empirical_SE_L2": 0.005073014808680749,
+        "empirical_SE_limit": 0.019279835780757364,
+        "maximum_empirical_SE": 0.00349370613550536,
+        "maximum_mean_absolute": 0.002971990074198849,
+        "maximum_unexplained_absolute": 0.00038284136233789453,
+        "passed": true,
+        "pooled_difference": 0.004736146779519926,
+        "pooled_limit": 0.0415478944167261,
+        "pooled_relative_L2": 0.008775066762662816,
+        "precision_adequate": true
+      },
+      "optimizer_returns": 10000,
+      "output_identities_verified": 898,
+      "paired_initial_gate": {
+        "RGB_component_max_abs": 0.0,
+        "local_initial_Q_max_abs": 1.6653345369377348e-16,
+        "passed": true,
+        "scalar_predictions_equal": true,
+        "shared_state_equal": true,
+        "world_Q_max_abs": 1.6653345369377348e-16
+      },
+      "resources": {
+        "CUDA_peak_allocated": 7264458752,
+        "CUDA_peak_reserved": 21002977280,
+        "host_peak_RSS": 5364043776
+      },
+      "runtime": {
+        "CUDA": "11.1",
+        "CXX11_ABI": false,
+        "GPU": "NVIDIA A100 80GB PCIe",
+        "declared_image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+        "numpy": "1.24.4",
+        "torch": "1.8.1+cu111"
+      },
+      "surface_q_timing": {
+        "forward_CUDA_seconds": 78.7558440923692,
+        "setup_wall_seconds": 0.1676134206354618
+      },
+      "tensor_training_forward_CUDA_seconds": 302.71924318885715,
+      "trainable_parameters": {
+        "feats_network": 488960,
+        "inner_light": 0,
+        "kd_predictor": 199686,
+        "metallic_predictor": 199170,
+        "mx_predictor": 199428,
+        "my_predictor": 199428,
+        "outer_light": 151814,
+        "rotation_predictor": 199428
+      }
+    }
+  },
+  "scalar_replay": [
+    {
+      "absolute_difference": 2.2737367544323206e-13,
+      "float32_ULPs": 1.0,
+      "label": "D9-C/0/predicted_mean_squared",
+      "reduction_values": 1024,
+      "roundoff_envelope": 4.766998343444718e-10
+    },
+    {
+      "absolute_difference": 9.094947017729282e-13,
+      "float32_ULPs": 1.0,
+      "label": "D9-C/2000/predicted_mean_squared",
+      "reduction_values": 1024,
+      "roundoff_envelope": 3.4577745961445707e-09
+    },
+    {
+      "absolute_difference": 2.9103830456733704e-11,
+      "float32_ULPs": 1.0,
+      "label": "D9-C/10000/predicted_mean_squared",
+      "reduction_values": 1024,
+      "roundoff_envelope": 1.079248675481695e-07
+    },
+    {
+      "absolute_difference": 2.384185791015625e-07,
+      "float32_ULPs": 1.0,
+      "label": "D9-C/0/0/RGB_relative_L2",
+      "reduction_values": 13608,
+      "roundoff_envelope": 0.007814265692826642
+    },
+    {
+      "absolute_difference": 4.76837158203125e-07,
+      "float32_ULPs": 2.0,
+      "label": "D9-C/0/50/RGB_relative_L2",
+      "reduction_values": 7908,
+      "roundoff_envelope": 0.004115048442376659
+    },
+    {
+      "absolute_difference": 2.384185791015625e-07,
+      "float32_ULPs": 1.0,
+      "label": "D9-C/0/1/RGB_relative_L2",
+      "reduction_values": 12432,
+      "roundoff_envelope": 0.007064635024737682
+    },
+    {
+      "absolute_difference": 4.76837158203125e-07,
+      "float32_ULPs": 2.0,
+      "label": "D9-C/0/34/RGB_relative_L2",
+      "reduction_values": 7485,
+      "roundoff_envelope": 0.0038575848024935354
+    },
+    {
+      "absolute_difference": 2.9802322387695312e-08,
+      "float32_ULPs": 1.0,
+      "label": "D9-C/2000/0/RGB_relative_L2",
+      "reduction_values": 13608,
+      "roundoff_envelope": 0.0012088377602827325
+    },
+    {
+      "absolute_difference": 5.960464477539063e-08,
+      "float32_ULPs": 2.0,
+      "label": "D9-C/2000/50/RGB_relative_L2",
+      "reduction_values": 7908,
+      "roundoff_envelope": 0.0006094427550706121
+    },
+    {
+      "absolute_difference": 2.9802322387695312e-08,
+      "float32_ULPs": 1.0,
+      "label": "D9-C/2000/45/RGB_relative_L2",
+      "reduction_values": 11910,
+      "roundoff_envelope": 0.0009394425843548644
+    },
+    {
+      "absolute_difference": 2.9802322387695312e-08,
+      "float32_ULPs": 1.0,
+      "label": "D9-C/2000/34/RGB_relative_L2",
+      "reduction_values": 7485,
+      "roundoff_envelope": 0.000650107566306743
+    },
+    {
+      "absolute_difference": 1.4901161193847656e-08,
+      "float32_ULPs": 1.0,
+      "label": "D9-C/4000/0/RGB_relative_L2",
+      "reduction_values": 13608,
+      "roundoff_envelope": 0.0007475124425865443
+    },
+    {
+      "absolute_difference": 2.9802322387695312e-08,
+      "float32_ULPs": 2.0,
+      "label": "D9-C/4000/50/RGB_relative_L2",
+      "reduction_values": 7908,
+      "roundoff_envelope": 0.00042851485800863453
+    },
+    {
+      "absolute_difference": 1.4901161193847656e-08,
+      "float32_ULPs": 1.0,
+      "label": "D9-C/4000/1/RGB_relative_L2",
+      "reduction_values": 12432,
+      "roundoff_envelope": 0.0006198624928534315
+    },
+    {
+      "absolute_difference": 5.960464477539063e-08,
+      "float32_ULPs": 1.0,
+      "label": "D9-C/4000/28/RGB_relative_L2",
+      "reduction_values": 14547,
+      "roundoff_envelope": 0.00228653840720704
+    },
+    {
+      "absolute_difference": 5.960464477539063e-08,
+      "float32_ULPs": 1.0,
+      "label": "D9-C/4000/34/RGB_relative_L2",
+      "reduction_values": 7485,
+      "roundoff_envelope": 0.0009361684905279917
+    },
+    {
+      "absolute_difference": 1.4901161193847656e-08,
+      "float32_ULPs": 1.0,
+      "label": "D9-C/6000/0/RGB_relative_L2",
+      "reduction_values": 13608,
+      "roundoff_envelope": 0.0006174452423473441
+    },
+    {
+      "absolute_difference": 2.9802322387695312e-08,
+      "float32_ULPs": 2.0,
+      "label": "D9-C/6000/50/RGB_relative_L2",
+      "reduction_values": 7908,
+      "roundoff_envelope": 0.0003363333369933845
+    },
+    {
+      "absolute_difference": 1.4901161193847656e-08,
+      "float32_ULPs": 1.0,
+      "label": "D9-C/6000/1/RGB_relative_L2",
+      "reduction_values": 12432,
+      "roundoff_envelope": 0.0005165024474343172
+    },
+    {
+      "absolute_difference": 1.4901161193847656e-08,
+      "float32_ULPs": 1.0,
+      "label": "D9-C/6000/45/RGB_relative_L2",
+      "reduction_values": 11910,
+      "roundoff_envelope": 0.000610692108030335
+    },
+    {
+      "absolute_difference": 1.1920928955078125e-07,
+      "float32_ULPs": 2.0,
+      "label": "D9-C/6000/34/RGB_relative_L2",
+      "reduction_values": 7485,
+      "roundoff_envelope": 0.001330548201465597
+    },
+    {
+      "absolute_difference": 2.9802322387695312e-08,
+      "float32_ULPs": 4.0,
+      "label": "D9-C/8000/50/RGB_relative_L2",
+      "reduction_values": 7908,
+      "roundoff_envelope": 0.00017765410530692002
+    },
+    {
+      "absolute_difference": 7.450580596923828e-09,
+      "float32_ULPs": 1.0,
+      "label": "D9-C/8000/45/RGB_relative_L2",
+      "reduction_values": 11910,
+      "roundoff_envelope": 0.0003050004993192187
+    },
+    {
+      "absolute_difference": 5.960464477539063e-08,
+      "float32_ULPs": 1.0,
+      "label": "D9-C/8000/34/RGB_relative_L2",
+      "reduction_values": 7485,
+      "roundoff_envelope": 0.0009745823731409131
+    },
+    {
+      "absolute_difference": 7.450580596923828e-09,
+      "float32_ULPs": 1.0,
+      "label": "D9-C/10000/0/RGB_relative_L2",
+      "reduction_values": 13608,
+      "roundoff_envelope": 0.0003322603333020428
+    },
+    {
+      "absolute_difference": 2.2351741790771484e-08,
+      "float32_ULPs": 3.0,
+      "label": "D9-C/10000/50/RGB_relative_L2",
+      "reduction_values": 7908,
+      "roundoff_envelope": 0.00013306722759912694
+    },
+    {
+      "absolute_difference": 7.450580596923828e-09,
+      "float32_ULPs": 1.0,
+      "label": "D9-C/10000/45/RGB_relative_L2",
+      "reduction_values": 11910,
+      "roundoff_envelope": 0.0002103529643413786
+    },
+    {
+      "absolute_difference": 8.940696716308594e-08,
+      "float32_ULPs": 3.0,
+      "label": "D9-C/10000/34/RGB_relative_L2",
+      "reduction_values": 7485,
+      "roundoff_envelope": 0.000809019840891123
+    },
+    {
+      "absolute_difference": 2.2737367544323206e-13,
+      "float32_ULPs": 1.0,
+      "label": "D9-T/0/predicted_mean_squared",
+      "reduction_values": 1024,
+      "roundoff_envelope": 4.766998343444718e-10
+    },
+    {
+      "absolute_difference": 3.637978807091713e-12,
+      "float32_ULPs": 1.0,
+      "label": "D9-T/2000/predicted_mean_squared",
+      "reduction_values": 1024,
+      "roundoff_envelope": 1.1123442119595915e-08
+    },
+    {
+      "absolute_difference": 1.4551915228366852e-11,
+      "float32_ULPs": 1.0,
+      "label": "D9-T/10000/predicted_mean_squared",
+      "reduction_values": 1024,
+      "roundoff_envelope": 3.494797861156016e-08
+    },
+    {
+      "absolute_difference": 2.384185791015625e-07,
+      "float32_ULPs": 1.0,
+      "label": "D9-T/0/0/RGB_relative_L2",
+      "reduction_values": 13608,
+      "roundoff_envelope": 0.007814265692826642
+    },
+    {
+      "absolute_difference": 4.76837158203125e-07,
+      "float32_ULPs": 2.0,
+      "label": "D9-T/0/50/RGB_relative_L2",
+      "reduction_values": 7908,
+      "roundoff_envelope": 0.004115048442376659
+    },
+    {
+      "absolute_difference": 2.384185791015625e-07,
+      "float32_ULPs": 1.0,
+      "label": "D9-T/0/1/RGB_relative_L2",
+      "reduction_values": 12432,
+      "roundoff_envelope": 0.007064635024737682
+    },
+    {
+      "absolute_difference": 4.76837158203125e-07,
+      "float32_ULPs": 2.0,
+      "label": "D9-T/0/34/RGB_relative_L2",
+      "reduction_values": 7485,
+      "roundoff_envelope": 0.0038575848024935354
+    },
+    {
+      "absolute_difference": 2.9802322387695312e-08,
+      "float32_ULPs": 2.0,
+      "label": "D9-T/2000/50/RGB_relative_L2",
+      "reduction_values": 7908,
+      "roundoff_envelope": 0.0004241663340810891
+    },
+    {
+      "absolute_difference": 2.9802322387695312e-08,
+      "float32_ULPs": 1.0,
+      "label": "D9-T/2000/1/RGB_relative_L2",
+      "reduction_values": 12432,
+      "roundoff_envelope": 0.0007911644868802273
+    },
+    {
+      "absolute_difference": 2.9802322387695312e-08,
+      "float32_ULPs": 1.0,
+      "label": "D9-T/2000/45/RGB_relative_L2",
+      "reduction_values": 11910,
+      "roundoff_envelope": 0.00073880419818547
+    },
+    {
+      "absolute_difference": 1.1175870895385742e-08,
+      "float32_ULPs": 3.0,
+      "label": "D9-T/4000/50/RGB_relative_L2",
+      "reduction_values": 7908,
+      "roundoff_envelope": 0.00010798106938907402
+    },
+    {
+      "absolute_difference": 7.450580596923828e-09,
+      "float32_ULPs": 1.0,
+      "label": "D9-T/4000/1/RGB_relative_L2",
+      "reduction_values": 12432,
+      "roundoff_envelope": 0.0003611897093307926
+    },
+    {
+      "absolute_difference": 1.1920928955078125e-07,
+      "float32_ULPs": 2.0,
+      "label": "D9-T/4000/28/RGB_relative_L2",
+      "reduction_values": 14547,
+      "roundoff_envelope": 0.001926217757271282
+    },
+    {
+      "absolute_difference": 5.960464477539063e-08,
+      "float32_ULPs": 2.0,
+      "label": "D9-T/4000/34/RGB_relative_L2",
+      "reduction_values": 7485,
+      "roundoff_envelope": 0.0005680644637208618
+    },
+    {
+      "absolute_difference": 1.1175870895385742e-08,
+      "float32_ULPs": 3.0,
+      "label": "D9-T/6000/50/RGB_relative_L2",
+      "reduction_values": 7908,
+      "roundoff_envelope": 7.273100826100954e-05
+    },
+    {
+      "absolute_difference": 7.450580596923828e-09,
+      "float32_ULPs": 1.0,
+      "label": "D9-T/6000/1/RGB_relative_L2",
+      "reduction_values": 12432,
+      "roundoff_envelope": 0.0002504527872841221
+    },
+    {
+      "absolute_difference": 2.9802322387695312e-08,
+      "float32_ULPs": 1.0,
+      "label": "D9-T/6000/28/RGB_relative_L2",
+      "reduction_values": 14547,
+      "roundoff_envelope": 0.0016119618696834623
+    },
+    {
+      "absolute_difference": 1.4901161193847656e-08,
+      "float32_ULPs": 1.0,
+      "label": "D9-T/6000/34/RGB_relative_L2",
+      "reduction_values": 7485,
+      "roundoff_envelope": 0.0003464970095156948
+    },
+    {
+      "absolute_difference": 7.450580596923828e-09,
+      "float32_ULPs": 1.0,
+      "label": "D9-T/8000/0/RGB_relative_L2",
+      "reduction_values": 13608,
+      "roundoff_envelope": 0.00030139808100324825
+    },
+    {
+      "absolute_difference": 7.450580596923828e-09,
+      "float32_ULPs": 2.0,
+      "label": "D9-T/8000/50/RGB_relative_L2",
+      "reduction_values": 7908,
+      "roundoff_envelope": 6.475406835472029e-05
+    },
+    {
+      "absolute_difference": 7.450580596923828e-09,
+      "float32_ULPs": 1.0,
+      "label": "D9-T/8000/1/RGB_relative_L2",
+      "reduction_values": 12432,
+      "roundoff_envelope": 0.00023489910484694517
+    },
+    {
+      "absolute_difference": 1.4901161193847656e-08,
+      "float32_ULPs": 1.0,
+      "label": "D9-T/8000/34/RGB_relative_L2",
+      "reduction_values": 7485,
+      "roundoff_envelope": 0.00028980033366880536
+    },
+    {
+      "absolute_difference": 7.450580596923828e-09,
+      "float32_ULPs": 1.0,
+      "label": "D9-T/10000/0/RGB_relative_L2",
+      "reduction_values": 13608,
+      "roundoff_envelope": 0.00030277267080970887
+    },
+    {
+      "absolute_difference": 1.1175870895385742e-08,
+      "float32_ULPs": 3.0,
+      "label": "D9-T/10000/50/RGB_relative_L2",
+      "reduction_values": 7908,
+      "roundoff_envelope": 8.776782602152379e-05
+    },
+    {
+      "absolute_difference": 1.4901161193847656e-08,
+      "float32_ULPs": 2.0,
+      "label": "D9-T/10000/1/RGB_relative_L2",
+      "reduction_values": 12432,
+      "roundoff_envelope": 0.00021545295684218948
+    },
+    {
+      "absolute_difference": 3.725290298461914e-09,
+      "float32_ULPs": 1.0,
+      "label": "D9-T/10000/45/RGB_relative_L2",
+      "reduction_values": 11910,
+      "roundoff_envelope": 0.00016101152714347944
+    },
+    {
+      "absolute_difference": 2.9802322387695312e-08,
+      "float32_ULPs": 1.0,
+      "label": "D9-T/10000/28/RGB_relative_L2",
+      "reduction_values": 14547,
+      "roundoff_envelope": 0.0015038862852420703
+    },
+    {
+      "absolute_difference": 2.9802322387695312e-08,
+      "float32_ULPs": 2.0,
+      "label": "D9-T/10000/34/RGB_relative_L2",
+      "reduction_values": 7485,
+      "roundoff_envelope": 0.00026706806870271715
+    }
+  ],
+  "status": "verified_complete",
+  "surface_history": {
+    "D9-C": [
+      {
+        "by_supported_faces": {
+          "0": {
+            "mean": 1.8111759345629252e-06,
+            "median": 8.997524219012121e-07,
+            "p95": 7.937407690405942e-06
+          },
+          "1": {
+            "mean": 1.8674670627660817e-06,
+            "median": 1.1373550705684465e-06,
+            "p95": 7.707556505920364e-06
+          },
+          "2": {
+            "mean": 2.119698365277145e-06,
+            "median": 1.4868994639982702e-06,
+            "p95": 7.646621816093097e-06
+          }
+        },
+        "gap": {
+          "mean": 0.05944567918777466,
+          "median": 0.06931357085704803,
+          "p95": 0.07981054782867432
+        },
+        "ineligible_endpoints": 2048,
+        "step": 0,
+        "training_coverage": {
+          "pair_draws": 0,
+          "sampled_in_fit": {
+            "area": 1.0846740904807095,
+            "faces": 9380,
+            "visited_area": 0.0,
+            "visited_faces": 0
+          },
+          "surface_area_fraction": 0.0,
+          "unique_pairs": 0,
+          "unsampled_in_fit": {
+            "area": 0.8778193282452534,
+            "faces": 9052,
+            "visited_area": 0.0,
+            "visited_faces": 0
+          },
+          "visited_faces": 0
+        },
+        "transported_sq": {
+          "mean": 1.948637645909912e-06,
+          "median": 1.1608532304308028e-06,
+          "p95": 7.791491498210228e-06
+        }
+      },
+      {
+        "by_supported_faces": {
+          "0": {
+            "mean": 1.1609063221840188e-05,
+            "median": 3.75550075659703e-06,
+            "p95": 4.113295726710927e-05
+          },
+          "1": {
+            "mean": 1.8056121916742995e-05,
+            "median": 5.8046175581694115e-06,
+            "p95": 6.956746801733953e-05
+          },
+          "2": {
+            "mean": 1.4171220755088143e-05,
+            "median": 3.5374041544855572e-06,
+            "p95": 7.63544056098908e-05
+          }
+        },
+        "gap": {
+          "mean": 0.8958747386932373,
+          "median": 0.9218798875808716,
+          "p95": 0.9523456513881683
+        },
+        "ineligible_endpoints": 0,
+        "step": 2000,
+        "training_coverage": {
+          "pair_draws": 256000,
+          "sampled_in_fit": {
+            "area": 1.0846740904807095,
+            "faces": 9380,
+            "visited_area": 1.0846740904807095,
+            "visited_faces": 9380
+          },
+          "surface_area_fraction": 1.0,
+          "unique_pairs": 26624,
+          "unsampled_in_fit": {
+            "area": 0.8778193282452534,
+            "faces": 9052,
+            "visited_area": 0.8778193282452534,
+            "visited_faces": 9052
+          },
+          "visited_faces": 18432
+        },
+        "transported_sq": {
+          "mean": 1.4134574485069606e-05,
+          "median": 3.877341441693716e-06,
+          "p95": 6.317545776255423e-05
+        }
+      },
+      {
+        "by_supported_faces": {
+          "0": {
+            "mean": 0.0006245620897971094,
+            "median": 6.21577855781652e-05,
+            "p95": 0.0027285247342661006
+          },
+          "1": {
+            "mean": 0.0009978098096325994,
+            "median": 0.00013675910304300487,
+            "p95": 0.004579678550362586
+          },
+          "2": {
+            "mean": 0.0008662397740408778,
+            "median": 5.681564289261587e-05,
+            "p95": 0.005110175069421522
+          }
+        },
+        "gap": {
+          "mean": 0.7833506464958191,
+          "median": 0.9449301958084106,
+          "p95": 0.9793822765350342
+        },
+        "ineligible_endpoints": 105,
+        "step": 4000,
+        "training_coverage": {
+          "pair_draws": 512000,
+          "sampled_in_fit": {
+            "area": 1.0846740904807095,
+            "faces": 9380,
+            "visited_area": 1.0846740904807095,
+            "visited_faces": 9380
+          },
+          "surface_area_fraction": 1.0,
+          "unique_pairs": 26624,
+          "unsampled_in_fit": {
+            "area": 0.8778193282452534,
+            "faces": 9052,
+            "visited_area": 0.8778193282452534,
+            "visited_faces": 9052
+          },
+          "visited_faces": 18432
+        },
+        "transported_sq": {
+          "mean": 0.0008084220462478697,
+          "median": 7.768494833726436e-05,
+          "p95": 0.003903441340662532
+        }
+      },
+      {
+        "by_supported_faces": {
+          "0": {
+            "mean": 0.0007989800069481134,
+            "median": 7.048881525406614e-05,
+            "p95": 0.0023407696862705026
+          },
+          "1": {
+            "mean": 0.001193713746033609,
+            "median": 0.00018880244169849902,
+            "p95": 0.005434764549136152
+          },
+          "2": {
+            "mean": 0.0011032926850020885,
+            "median": 9.497841529082507e-05,
+            "p95": 0.005520457495003936
+          }
+        },
+        "gap": {
+          "mean": 0.676474928855896,
+          "median": 0.8582537174224854,
+          "p95": 0.9489678889513016
+        },
+        "ineligible_endpoints": 242,
+        "step": 6000,
+        "training_coverage": {
+          "pair_draws": 768000,
+          "sampled_in_fit": {
+            "area": 1.0846740904807095,
+            "faces": 9380,
+            "visited_area": 1.0846740904807095,
+            "visited_faces": 9380
+          },
+          "surface_area_fraction": 1.0,
+          "unique_pairs": 26624,
+          "unsampled_in_fit": {
+            "area": 0.8778193282452534,
+            "faces": 9052,
+            "visited_area": 0.8778193282452534,
+            "visited_faces": 9052
+          },
+          "visited_faces": 18432
+        },
+        "transported_sq": {
+          "mean": 0.0010130747687071562,
+          "median": 9.891401714412495e-05,
+          "p95": 0.004623196017928413
+        }
+      },
+      {
+        "by_supported_faces": {
+          "0": {
+            "mean": 0.00038564420538023114,
+            "median": 3.728131559910253e-05,
+            "p95": 0.0013588962145149686
+          },
+          "1": {
+            "mean": 0.0006178740877658129,
+            "median": 8.316081220982596e-05,
+            "p95": 0.002407412510365246
+          },
+          "2": {
+            "mean": 0.000690787099301815,
+            "median": 8.404148684348911e-05,
+            "p95": 0.003614716976881026
+          }
+        },
+        "gap": {
+          "mean": 0.630110502243042,
+          "median": 0.7294502258300781,
+          "p95": 0.9501622259616852
+        },
+        "ineligible_endpoints": 112,
+        "step": 8000,
+        "training_coverage": {
+          "pair_draws": 1024000,
+          "sampled_in_fit": {
+            "area": 1.0846740904807095,
+            "faces": 9380,
+            "visited_area": 1.0846740904807095,
+            "visited_faces": 9380
+          },
+          "surface_area_fraction": 1.0,
+          "unique_pairs": 26624,
+          "unsampled_in_fit": {
+            "area": 0.8778193282452534,
+            "faces": 9052,
+            "visited_area": 0.8778193282452534,
+            "visited_faces": 9052
+          },
+          "visited_faces": 18432
+        },
+        "transported_sq": {
+          "mean": 0.000562463013920933,
+          "median": 5.8805144362850115e-05,
+          "p95": 0.0022996362065896385
+        }
+      },
+      {
+        "by_supported_faces": {
+          "0": {
+            "mean": 0.0003379140980541706,
+            "median": 2.6706227799877524e-05,
+            "p95": 0.000600684672826901
+          },
+          "1": {
+            "mean": 0.00043302899575792253,
+            "median": 4.13287925766781e-05,
+            "p95": 0.0019620860926806926
+          },
+          "2": {
+            "mean": 0.0005393511964939535,
+            "median": 5.509950642590411e-05,
+            "p95": 0.001962389191612601
+          }
+        },
+        "gap": {
+          "mean": 0.6155081391334534,
+          "median": 0.6810410618782043,
+          "p95": 0.9617018461227417
+        },
+        "ineligible_endpoints": 125,
+        "step": 10000,
+        "training_coverage": {
+          "pair_draws": 1280000,
+          "sampled_in_fit": {
+            "area": 1.0846740904807095,
+            "faces": 9380,
+            "visited_area": 1.0846740904807095,
+            "visited_faces": 9380
+          },
+          "surface_area_fraction": 1.0,
+          "unique_pairs": 26624,
+          "unsampled_in_fit": {
+            "area": 0.8778193282452534,
+            "faces": 9052,
+            "visited_area": 0.8778193282452534,
+            "visited_faces": 9052
+          },
+          "visited_faces": 18432
+        },
+        "transported_sq": {
+          "mean": 0.0004411716654431075,
+          "median": 3.933459083782509e-05,
+          "p95": 0.0016486297186929706
+        }
+      }
+    ],
+    "D9-T": [
+      {
+        "by_supported_faces": {
+          "0": {
+            "mean": 1.8111759345629252e-06,
+            "median": 8.997524219012121e-07,
+            "p95": 7.937407690405942e-06
+          },
+          "1": {
+            "mean": 1.8674670627660817e-06,
+            "median": 1.1373550705684465e-06,
+            "p95": 7.707556505920364e-06
+          },
+          "2": {
+            "mean": 2.119698365277145e-06,
+            "median": 1.4868994639982702e-06,
+            "p95": 7.646621816093097e-06
+          }
+        },
+        "gap": {
+          "mean": 0.05944567918777466,
+          "median": 0.06931357085704803,
+          "p95": 0.07981054782867432
+        },
+        "ineligible_endpoints": 2048,
+        "step": 0,
+        "training_coverage": {
+          "pair_draws": 0,
+          "sampled_in_fit": {
+            "area": 1.0846740904807095,
+            "faces": 9380,
+            "visited_area": 0.0,
+            "visited_faces": 0
+          },
+          "surface_area_fraction": 0.0,
+          "unique_pairs": 0,
+          "unsampled_in_fit": {
+            "area": 0.8778193282452534,
+            "faces": 9052,
+            "visited_area": 0.0,
+            "visited_faces": 0
+          },
+          "visited_faces": 0
+        },
+        "transported_sq": {
+          "mean": 1.948637645909912e-06,
+          "median": 1.1608532304308028e-06,
+          "p95": 7.791491498210228e-06
+        }
+      },
+      {
+        "by_supported_faces": {
+          "0": {
+            "mean": 3.29400718328543e-05,
+            "median": 1.291544504056219e-05,
+            "p95": 0.00014838344795862197
+          },
+          "1": {
+            "mean": 5.850777233717963e-05,
+            "median": 2.8661095711868256e-05,
+            "p95": 0.0002584256930276751
+          },
+          "2": {
+            "mean": 4.9335074436385185e-05,
+            "median": 1.6920981579460204e-05,
+            "p95": 0.0002322332031326368
+          }
+        },
+        "gap": {
+          "mean": 0.4415922164916992,
+          "median": 0.4328452944755554,
+          "p95": 0.8777786225080491
+        },
+        "ineligible_endpoints": 474,
+        "step": 2000,
+        "training_coverage": {
+          "pair_draws": 256000,
+          "sampled_in_fit": {
+            "area": 1.0846740904807095,
+            "faces": 9380,
+            "visited_area": 1.0846740904807095,
+            "visited_faces": 9380
+          },
+          "surface_area_fraction": 1.0,
+          "unique_pairs": 26624,
+          "unsampled_in_fit": {
+            "area": 0.8778193282452534,
+            "faces": 9052,
+            "visited_area": 0.8778193282452534,
+            "visited_faces": 9052
+          },
+          "visited_faces": 18432
+        },
+        "transported_sq": {
+          "mean": 4.547003118204884e-05,
+          "median": 1.7297359590884298e-05,
+          "p95": 0.00022207692818483323
+        }
+      },
+      {
+        "by_supported_faces": {
+          "0": {
+            "mean": 8.854332554619759e-05,
+            "median": 1.7927432054420933e-05,
+            "p95": 0.0004405803469126107
+          },
+          "1": {
+            "mean": 0.00011882478429470211,
+            "median": 2.791226506815292e-05,
+            "p95": 0.0005220528459176419
+          },
+          "2": {
+            "mean": 0.0003134338476229459,
+            "median": 5.063550270278938e-05,
+            "p95": 0.0012110852170735596
+          }
+        },
+        "gap": {
+          "mean": 0.6563694477081299,
+          "median": 0.837407648563385,
+          "p95": 0.9562342524528503
+        },
+        "ineligible_endpoints": 234,
+        "step": 4000,
+        "training_coverage": {
+          "pair_draws": 512000,
+          "sampled_in_fit": {
+            "area": 1.0846740904807095,
+            "faces": 9380,
+            "visited_area": 1.0846740904807095,
+            "visited_faces": 9380
+          },
+          "surface_area_fraction": 1.0,
+          "unique_pairs": 26624,
+          "unsampled_in_fit": {
+            "area": 0.8778193282452534,
+            "faces": 9052,
+            "visited_area": 0.8778193282452534,
+            "visited_faces": 9052
+          },
+          "visited_faces": 18432
+        },
+        "transported_sq": {
+          "mean": 0.00018625473603606224,
+          "median": 3.008903149748221e-05,
+          "p95": 0.0007013013964751716
+        }
+      },
+      {
+        "by_supported_faces": {
+          "0": {
+            "mean": 7.519164500990883e-05,
+            "median": 1.4302891941042617e-05,
+            "p95": 0.00030097941198619065
+          },
+          "1": {
+            "mean": 0.000238261854974553,
+            "median": 1.9763481759582646e-05,
+            "p95": 0.0005771466763690112
+          },
+          "2": {
+            "mean": 0.00036128744250163436,
+            "median": 3.3318487112410367e-05,
+            "p95": 0.001118890452198684
+          }
+        },
+        "gap": {
+          "mean": 0.7056795358657837,
+          "median": 0.8669856786727905,
+          "p95": 0.9240122348070144
+        },
+        "ineligible_endpoints": 153,
+        "step": 6000,
+        "training_coverage": {
+          "pair_draws": 768000,
+          "sampled_in_fit": {
+            "area": 1.0846740904807095,
+            "faces": 9380,
+            "visited_area": 1.0846740904807095,
+            "visited_faces": 9380
+          },
+          "surface_area_fraction": 1.0,
+          "unique_pairs": 26624,
+          "unsampled_in_fit": {
+            "area": 0.8778193282452534,
+            "faces": 9052,
+            "visited_area": 0.8778193282452534,
+            "visited_faces": 9052
+          },
+          "visited_faces": 18432
+        },
+        "transported_sq": {
+          "mean": 0.00022832173272036016,
+          "median": 2.1406680389191024e-05,
+          "p95": 0.000728226875071413
+        }
+      },
+      {
+        "by_supported_faces": {
+          "0": {
+            "mean": 7.267237378982827e-05,
+            "median": 1.4489189197774976e-05,
+            "p95": 0.0003357865483849306
+          },
+          "1": {
+            "mean": 0.0001652739301789552,
+            "median": 1.6907510143937543e-05,
+            "p95": 0.0008243753341957916
+          },
+          "2": {
+            "mean": 0.00048508463078178465,
+            "median": 3.9005335565889254e-05,
+            "p95": 0.0014346643583849057
+          }
+        },
+        "gap": {
+          "mean": 0.7314611077308655,
+          "median": 0.8753901720046997,
+          "p95": 0.9196693688631058
+        },
+        "ineligible_endpoints": 97,
+        "step": 8000,
+        "training_coverage": {
+          "pair_draws": 1024000,
+          "sampled_in_fit": {
+            "area": 1.0846740904807095,
+            "faces": 9380,
+            "visited_area": 1.0846740904807095,
+            "visited_faces": 9380
+          },
+          "surface_area_fraction": 1.0,
+          "unique_pairs": 26624,
+          "unsampled_in_fit": {
+            "area": 0.8778193282452534,
+            "faces": 9052,
+            "visited_area": 0.8778193282452534,
+            "visited_faces": 9052
+          },
+          "visited_faces": 18432
+        },
+        "transported_sq": {
+          "mean": 0.0002604388282634318,
+          "median": 2.2880885808262974e-05,
+          "p95": 0.0009013936010887845
+        }
+      },
+      {
+        "by_supported_faces": {
+          "0": {
+            "mean": 6.231325096450746e-05,
+            "median": 1.2834496374125592e-05,
+            "p95": 0.00026407952827867045
+          },
+          "1": {
+            "mean": 0.00011270256800344214,
+            "median": 2.285759910591878e-05,
+            "p95": 0.00045622457982972257
+          },
+          "2": {
+            "mean": 0.00023310437973123044,
+            "median": 2.3874972612247802e-05,
+            "p95": 0.0007722708745859535
+          }
+        },
+        "gap": {
+          "mean": 0.7314625978469849,
+          "median": 0.8671201467514038,
+          "p95": 0.9134019523859024
+        },
+        "ineligible_endpoints": 98,
+        "step": 10000,
+        "training_coverage": {
+          "pair_draws": 1280000,
+          "sampled_in_fit": {
+            "area": 1.0846740904807095,
+            "faces": 9380,
+            "visited_area": 1.0846740904807095,
+            "visited_faces": 9380
+          },
+          "surface_area_fraction": 1.0,
+          "unique_pairs": 26624,
+          "unsampled_in_fit": {
+            "area": 0.8778193282452534,
+            "faces": 9052,
+            "visited_area": 0.8778193282452534,
+            "visited_faces": 9052
+          },
+          "visited_faces": 18432
+        },
+        "transported_sq": {
+          "mean": 0.00014285917859524488,
+          "median": 1.986845745705068e-05,
+          "p95": 0.0005177168524824069
+        }
+      }
+    ]
+  }
+}

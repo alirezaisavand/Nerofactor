@@ -1,0 +1,946 @@
+{
+  "arms": {
+    "D6": {
+      "facing_cross_tab_at_001": {
+        "supported_grazing": {
+          "Q_above_005": 124,
+          "Q_median": 0.0553120671610019,
+          "Q_p95": 0.08442698748173752,
+          "linear_RGB_RMSE": 0.0019088964919679195,
+          "observations": 138,
+          "orientation_median_degrees": 0.8015395788919327
+        },
+        "supported_near_frontal": {
+          "Q_above_005": 1078,
+          "Q_median": 0.06339777991196541,
+          "Q_p95": 0.23253692852689234,
+          "linear_RGB_RMSE": 0.008423457558899042,
+          "observations": 1104,
+          "orientation_median_degrees": 1.525424956824464
+        },
+        "supported_oblique": {
+          "Q_above_005": 506,
+          "Q_median": 0.05579284756098295,
+          "Q_p95": 0.1496088346555967,
+          "linear_RGB_RMSE": 0.007320357616608811,
+          "observations": 524,
+          "orientation_median_degrees": 0.8851435569480373
+        },
+        "unsupported_grazing": {
+          "Q_above_005": 69,
+          "Q_median": 0.17637395092397712,
+          "Q_p95": 0.5403665817187129,
+          "linear_RGB_RMSE": 0.002127021292063317,
+          "observations": 69,
+          "orientation_median_degrees": 7.312011190004535
+        },
+        "unsupported_near_frontal": {
+          "Q_above_005": 379,
+          "Q_median": 0.10748628377622081,
+          "Q_p95": 0.3284033960824519,
+          "linear_RGB_RMSE": 0.009300922239252158,
+          "observations": 387,
+          "orientation_median_degrees": 4.059209067082534
+        },
+        "unsupported_oblique": {
+          "Q_above_005": 273,
+          "Q_median": 0.15553335596070594,
+          "Q_p95": 0.5012788147980953,
+          "linear_RGB_RMSE": 0.011441119353865822,
+          "observations": 273,
+          "orientation_median_degrees": 6.366692381808599
+        }
+      },
+      "radius_sensitivity": {
+        "0.005": {
+          "one_or_more": {
+            "Q_above_005": 1060,
+            "Q_median": 0.05652795459296888,
+            "Q_p95": 0.12676036416163441,
+            "linear_RGB_RMSE": 0.006311494099867272,
+            "observations": 1108,
+            "orientation_median_degrees": 0.9650940185210262
+          },
+          "zero": {
+            "Q_above_005": 1369,
+            "Q_median": 0.08681635835445398,
+            "Q_p95": 0.37231606585494353,
+            "linear_RGB_RMSE": 0.00976676413450534,
+            "observations": 1387,
+            "orientation_median_degrees": 2.9900985121510963
+          }
+        },
+        "0.01": {
+          "one_or_more": {
+            "Q_above_005": 1708,
+            "Q_median": 0.059172712582417075,
+            "Q_p95": 0.20166234893948126,
+            "linear_RGB_RMSE": 0.007780856696891452,
+            "observations": 1766,
+            "orientation_median_degrees": 1.2234136102074484
+          },
+          "zero": {
+            "Q_above_005": 721,
+            "Q_median": 0.12764307687740747,
+            "Q_p95": 0.42962243756840757,
+            "linear_RGB_RMSE": 0.009765840414879995,
+            "observations": 729,
+            "orientation_median_degrees": 5.03294963749655
+          }
+        },
+        "0.02": {
+          "one_or_more": {
+            "Q_above_005": 1916,
+            "Q_median": 0.06090299451637471,
+            "Q_p95": 0.24932392182019372,
+            "linear_RGB_RMSE": 0.0086818711755783,
+            "observations": 1974,
+            "orientation_median_degrees": 1.370879746355397
+          },
+          "zero": {
+            "Q_above_005": 513,
+            "Q_median": 0.12767852604181334,
+            "Q_p95": 0.46499752545323253,
+            "linear_RGB_RMSE": 0.007285327525797281,
+            "observations": 521,
+            "orientation_median_degrees": 4.972267779082971
+          }
+        }
+      },
+      "recovery_report_sha256": "70cf281b3b2698eb461c00b731f524ddddcc76a04d3df20d9a94bd81e5bc5ff6",
+      "same_triangle_camera_count": {
+        "0": {
+          "Q_above_005": 997,
+          "Q_median": 0.10715930807246515,
+          "Q_p95": 0.4039373881271118,
+          "linear_RGB_RMSE": 0.010124857561467249,
+          "observations": 1005,
+          "orientation_median_degrees": 4.059209067082534
+        },
+        "1": {
+          "Q_above_005": 1134,
+          "Q_median": 0.05799116547747551,
+          "Q_p95": 0.18925979777210758,
+          "linear_RGB_RMSE": 0.007422458125607416,
+          "observations": 1183,
+          "orientation_median_degrees": 1.1212072752291662
+        },
+        "2": {
+          "Q_above_005": 295,
+          "Q_median": 0.057178548597193256,
+          "Q_p95": 0.0782578406127168,
+          "linear_RGB_RMSE": 0.005206638791960908,
+          "observations": 304,
+          "orientation_median_degrees": 0.9366169379083518
+        },
+        "3": {
+          "Q_above_005": 3,
+          "Q_median": 0.054149385041037175,
+          "Q_p95": 0.06338721945016221,
+          "linear_RGB_RMSE": 0.0006512075886807783,
+          "observations": 3,
+          "orientation_median_degrees": 0.6121809817855446
+        },
+        "4": null
+      },
+      "within_001_camera_count": {
+        "0": {
+          "Q_above_005": 721,
+          "Q_median": 0.12764307687740747,
+          "Q_p95": 0.42962243756840757,
+          "linear_RGB_RMSE": 0.009765840414879995,
+          "observations": 729,
+          "orientation_median_degrees": 5.03294963749655
+        },
+        "1": {
+          "Q_above_005": 1067,
+          "Q_median": 0.06049048600694308,
+          "Q_p95": 0.24558941454337943,
+          "linear_RGB_RMSE": 0.00906476974995798,
+          "observations": 1106,
+          "orientation_median_degrees": 1.370879746355397
+        },
+        "2": {
+          "Q_above_005": 628,
+          "Q_median": 0.05830336660915971,
+          "Q_p95": 0.08669039156693535,
+          "linear_RGB_RMSE": 0.0049833522732982,
+          "observations": 644,
+          "orientation_median_degrees": 1.0486173694038268
+        },
+        "3": {
+          "Q_above_005": 13,
+          "Q_median": 0.05702328202909275,
+          "Q_p95": 0.08501490650613816,
+          "linear_RGB_RMSE": 0.0016517741920140739,
+          "observations": 16,
+          "orientation_median_degrees": 0.9722152325214094
+        },
+        "4": null
+      }
+    },
+    "D8-C": {
+      "facing_cross_tab_at_001": {
+        "supported_grazing": {
+          "Q_above_005": 129,
+          "Q_median": 0.15388839214236305,
+          "Q_p95": 0.9117668188706473,
+          "linear_RGB_RMSE": 0.005187077360862497,
+          "observations": 138,
+          "orientation_median_degrees": 4.267649521087881
+        },
+        "supported_near_frontal": {
+          "Q_above_005": 1050,
+          "Q_median": 0.6065337827182237,
+          "Q_p95": 0.9574658710269831,
+          "linear_RGB_RMSE": 0.03774977010323099,
+          "observations": 1104,
+          "orientation_median_degrees": 12.215448749715275
+        },
+        "supported_oblique": {
+          "Q_above_005": 491,
+          "Q_median": 0.2466406067188856,
+          "Q_p95": 0.8823217138573565,
+          "linear_RGB_RMSE": 0.022884164338561597,
+          "observations": 524,
+          "orientation_median_degrees": 6.512450512571067
+        },
+        "unsupported_grazing": {
+          "Q_above_005": 67,
+          "Q_median": 0.8654726174220555,
+          "Q_p95": 1.278954546554549,
+          "linear_RGB_RMSE": 0.009501416517456271,
+          "observations": 69,
+          "orientation_median_degrees": 44.96702103340456
+        },
+        "unsupported_near_frontal": {
+          "Q_above_005": 387,
+          "Q_median": 0.8676803129621096,
+          "Q_p95": 1.281419554817421,
+          "linear_RGB_RMSE": 0.05589186202975136,
+          "observations": 387,
+          "orientation_median_degrees": 47.15371898975976
+        },
+        "unsupported_oblique": {
+          "Q_above_005": 273,
+          "Q_median": 0.8920150374630568,
+          "Q_p95": 1.2897044571462293,
+          "linear_RGB_RMSE": 0.045034946873029315,
+          "observations": 273,
+          "orientation_median_degrees": 43.585357401671565
+        }
+      },
+      "radius_sensitivity": {
+        "0.005": {
+          "one_or_more": {
+            "Q_above_005": 1043,
+            "Q_median": 0.30924231049939965,
+            "Q_p95": 0.9480256449409116,
+            "linear_RGB_RMSE": 0.029211690717585465,
+            "observations": 1108,
+            "orientation_median_degrees": 6.880582622921949
+          },
+          "zero": {
+            "Q_above_005": 1354,
+            "Q_median": 0.7593066021827743,
+            "Q_p95": 1.2202131378497234,
+            "linear_RGB_RMSE": 0.043914074321697236,
+            "observations": 1387,
+            "orientation_median_degrees": 31.986838653486227
+          }
+        },
+        "0.01": {
+          "one_or_more": {
+            "Q_above_005": 1670,
+            "Q_median": 0.4146812284021727,
+            "Q_p95": 0.9466878636625713,
+            "linear_RGB_RMSE": 0.03237812554489867,
+            "observations": 1766,
+            "orientation_median_degrees": 8.856885293742458
+          },
+          "zero": {
+            "Q_above_005": 727,
+            "Q_median": 0.8784776160935155,
+            "Q_p95": 1.2864908975900564,
+            "linear_RGB_RMSE": 0.049258736819838805,
+            "observations": 729,
+            "orientation_median_degrees": 44.96941141060638
+          }
+        },
+        "0.02": {
+          "one_or_more": {
+            "Q_above_005": 1877,
+            "Q_median": 0.4918143319340231,
+            "Q_p95": 0.9512753740571361,
+            "linear_RGB_RMSE": 0.03250699176199648,
+            "observations": 1974,
+            "orientation_median_degrees": 10.825190300568607
+          },
+          "zero": {
+            "Q_above_005": 520,
+            "Q_median": 0.9269439222618983,
+            "Q_p95": 1.3042917199059656,
+            "linear_RGB_RMSE": 0.05426708548617789,
+            "observations": 521,
+            "orientation_median_degrees": 50.55191137800714
+          }
+        }
+      },
+      "recovery_report_sha256": "098f5da0fe91d42d2a49e5d5d951e78426c8378a5014b4f9e5264df4d37f5576",
+      "same_triangle_camera_count": {
+        "0": {
+          "Q_above_005": 998,
+          "Q_median": 0.8286263246456173,
+          "Q_p95": 1.2525691988711687,
+          "linear_RGB_RMSE": 0.0472461471961993,
+          "observations": 1005,
+          "orientation_median_degrees": 39.63352828018868
+        },
+        "1": {
+          "Q_above_005": 1099,
+          "Q_median": 0.34348219233487587,
+          "Q_p95": 0.9239438260666097,
+          "linear_RGB_RMSE": 0.03235688897569053,
+          "observations": 1183,
+          "orientation_median_degrees": 7.705188184624306
+        },
+        "2": {
+          "Q_above_005": 297,
+          "Q_median": 0.4268739386130619,
+          "Q_p95": 0.9612739632738477,
+          "linear_RGB_RMSE": 0.02132972672914239,
+          "observations": 304,
+          "orientation_median_degrees": 6.407315419166231
+        },
+        "3": {
+          "Q_above_005": 3,
+          "Q_median": 0.11039881344552326,
+          "Q_p95": 0.1505035420128874,
+          "linear_RGB_RMSE": 0.0014566812762291802,
+          "observations": 3,
+          "orientation_median_degrees": 4.616868111977816
+        },
+        "4": null
+      },
+      "within_001_camera_count": {
+        "0": {
+          "Q_above_005": 727,
+          "Q_median": 0.8784776160935155,
+          "Q_p95": 1.2864908975900564,
+          "linear_RGB_RMSE": 0.049258736819838805,
+          "observations": 729,
+          "orientation_median_degrees": 44.96941141060638
+        },
+        "1": {
+          "Q_above_005": 1024,
+          "Q_median": 0.4046718284198653,
+          "Q_p95": 0.9070764107463778,
+          "linear_RGB_RMSE": 0.035812540668240765,
+          "observations": 1106,
+          "orientation_median_degrees": 11.092100903436016
+        },
+        "2": {
+          "Q_above_005": 630,
+          "Q_median": 0.42854016641428516,
+          "Q_p95": 0.9591690074480842,
+          "linear_RGB_RMSE": 0.025902939767789686,
+          "observations": 644,
+          "orientation_median_degrees": 6.831684290134158
+        },
+        "3": {
+          "Q_above_005": 16,
+          "Q_median": 0.20870705489891359,
+          "Q_p95": 0.9192244552440418,
+          "linear_RGB_RMSE": 0.0070131308324993605,
+          "observations": 16,
+          "orientation_median_degrees": 4.766178391742183
+        },
+        "4": null
+      }
+    },
+    "D8-T": {
+      "facing_cross_tab_at_001": {
+        "supported_grazing": {
+          "Q_above_005": 86,
+          "Q_median": 0.08707370162670243,
+          "Q_p95": 0.9285111888163436,
+          "linear_RGB_RMSE": 0.003821743613312677,
+          "observations": 138,
+          "orientation_median_degrees": 0.232991119437769
+        },
+        "supported_near_frontal": {
+          "Q_above_005": 379,
+          "Q_median": 0.028260533663512284,
+          "Q_p95": 0.24729026334303375,
+          "linear_RGB_RMSE": 0.006869993547382808,
+          "observations": 1104,
+          "orientation_median_degrees": 0.07953558752527079
+        },
+        "supported_oblique": {
+          "Q_above_005": 294,
+          "Q_median": 0.059324462582005605,
+          "Q_p95": 0.3855414287214384,
+          "linear_RGB_RMSE": 0.006706973519972773,
+          "observations": 524,
+          "orientation_median_degrees": 0.16164167117627382
+        },
+        "unsupported_grazing": {
+          "Q_above_005": 68,
+          "Q_median": 0.5314538021994349,
+          "Q_p95": 0.8053811186599316,
+          "linear_RGB_RMSE": 0.001954596273942394,
+          "observations": 69,
+          "orientation_median_degrees": 0.34445096308418244
+        },
+        "unsupported_near_frontal": {
+          "Q_above_005": 271,
+          "Q_median": 0.11860561225640993,
+          "Q_p95": 0.4978656047850059,
+          "linear_RGB_RMSE": 0.012904984132196973,
+          "observations": 387,
+          "orientation_median_degrees": 0.13704117625181844
+        },
+        "unsupported_oblique": {
+          "Q_above_005": 249,
+          "Q_median": 0.38253497789402885,
+          "Q_p95": 0.7979809562509445,
+          "linear_RGB_RMSE": 0.021895378510091094,
+          "observations": 273,
+          "orientation_median_degrees": 0.28619687160345514
+        }
+      },
+      "radius_sensitivity": {
+        "0.005": {
+          "one_or_more": {
+            "Q_above_005": 541,
+            "Q_median": 0.047496015464137134,
+            "Q_p95": 0.4218481977821382,
+            "linear_RGB_RMSE": 0.007316523494641649,
+            "observations": 1108,
+            "orientation_median_degrees": 0.12009635435004373
+          },
+          "zero": {
+            "Q_above_005": 806,
+            "Q_median": 0.07163105294179327,
+            "Q_p95": 0.6362168805347825,
+            "linear_RGB_RMSE": 0.012420522544843155,
+            "observations": 1387,
+            "orientation_median_degrees": 0.1253909415537201
+          }
+        },
+        "0.01": {
+          "one_or_more": {
+            "Q_above_005": 759,
+            "Q_median": 0.03967055257298016,
+            "Q_p95": 0.3500718569467534,
+            "linear_RGB_RMSE": 0.006632746775969417,
+            "observations": 1766,
+            "orientation_median_degrees": 0.10291769508804909
+          },
+          "zero": {
+            "Q_above_005": 588,
+            "Q_median": 0.22220428361730982,
+            "Q_p95": 0.7165085269900435,
+            "linear_RGB_RMSE": 0.016379933934420093,
+            "observations": 729,
+            "orientation_median_degrees": 0.20452999079969633
+          }
+        },
+        "0.02": {
+          "one_or_more": {
+            "Q_above_005": 873,
+            "Q_median": 0.04157208413903958,
+            "Q_p95": 0.3389296469145391,
+            "linear_RGB_RMSE": 0.006401427684513296,
+            "observations": 1974,
+            "orientation_median_degrees": 0.10437355567541357
+          },
+          "zero": {
+            "Q_above_005": 474,
+            "Q_median": 0.36326788078751965,
+            "Q_p95": 0.7738515019321374,
+            "linear_RGB_RMSE": 0.019216587156130543,
+            "observations": 521,
+            "orientation_median_degrees": 0.255652563738249
+          }
+        }
+      },
+      "recovery_report_sha256": "760de22fb899edc1b6c641c0977da62d78dcf87f28386d6c15fd380b87e6f783",
+      "same_triangle_camera_count": {
+        "0": {
+          "Q_above_005": 670,
+          "Q_median": 0.11565441296217577,
+          "Q_p95": 0.677379785251203,
+          "linear_RGB_RMSE": 0.014154449051200937,
+          "observations": 1005,
+          "orientation_median_degrees": 0.14680458498888335
+        },
+        "1": {
+          "Q_above_005": 477,
+          "Q_median": 0.03716911928823806,
+          "Q_p95": 0.2768844062515785,
+          "linear_RGB_RMSE": 0.006273954796628996,
+          "observations": 1183,
+          "orientation_median_degrees": 0.10633436128664027
+        },
+        "2": {
+          "Q_above_005": 197,
+          "Q_median": 0.08790029264071053,
+          "Q_p95": 0.514025890852856,
+          "linear_RGB_RMSE": 0.009134765522146263,
+          "observations": 304,
+          "orientation_median_degrees": 0.1329991782287187
+        },
+        "3": {
+          "Q_above_005": 3,
+          "Q_median": 0.13761597462756503,
+          "Q_p95": 0.2211350093053685,
+          "linear_RGB_RMSE": 0.0007243731413148585,
+          "observations": 3,
+          "orientation_median_degrees": 0.171539459515679
+        },
+        "4": null
+      },
+      "within_001_camera_count": {
+        "0": {
+          "Q_above_005": 588,
+          "Q_median": 0.22220428361730982,
+          "Q_p95": 0.7165085269900435,
+          "linear_RGB_RMSE": 0.016379933934420093,
+          "observations": 729,
+          "orientation_median_degrees": 0.20452999079969633
+        },
+        "1": {
+          "Q_above_005": 344,
+          "Q_median": 0.027183892656462316,
+          "Q_p95": 0.16086481375136252,
+          "linear_RGB_RMSE": 0.0045318005444602944,
+          "observations": 1106,
+          "orientation_median_degrees": 0.09576551680786646
+        },
+        "2": {
+          "Q_above_005": 399,
+          "Q_median": 0.07179530814158658,
+          "Q_p95": 0.4846801363178492,
+          "linear_RGB_RMSE": 0.009179314276433882,
+          "observations": 644,
+          "orientation_median_degrees": 0.11627697427836081
+        },
+        "3": {
+          "Q_above_005": 16,
+          "Q_median": 0.8870027013550911,
+          "Q_p95": 1.1212002612378216,
+          "linear_RGB_RMSE": 0.006683661562218512,
+          "observations": 16,
+          "orientation_median_degrees": 6.107001060136141
+        },
+        "4": null
+      }
+    },
+    "D9-C": {
+      "facing_cross_tab_at_001": {
+        "supported_grazing": {
+          "Q_above_005": 138,
+          "Q_median": 0.7423120254588711,
+          "Q_p95": 0.9880084943840032,
+          "linear_RGB_RMSE": 0.014743996957638679,
+          "observations": 138,
+          "orientation_median_degrees": 14.562779610331159
+        },
+        "supported_near_frontal": {
+          "Q_above_005": 1104,
+          "Q_median": 0.8178054966276427,
+          "Q_p95": 0.9214483578422766,
+          "linear_RGB_RMSE": 0.03757925568991958,
+          "observations": 1104,
+          "orientation_median_degrees": 25.037722466243075
+        },
+        "supported_oblique": {
+          "Q_above_005": 521,
+          "Q_median": 0.769207585899885,
+          "Q_p95": 0.9287335820235885,
+          "linear_RGB_RMSE": 0.0334849093049772,
+          "observations": 524,
+          "orientation_median_degrees": 21.233200283807218
+        },
+        "unsupported_grazing": {
+          "Q_above_005": 69,
+          "Q_median": 0.794631193810465,
+          "Q_p95": 0.9131336314569507,
+          "linear_RGB_RMSE": 0.017846304621043398,
+          "observations": 69,
+          "orientation_median_degrees": 32.26216359025792
+        },
+        "unsupported_near_frontal": {
+          "Q_above_005": 387,
+          "Q_median": 0.8624084878867948,
+          "Q_p95": 1.0465431939446888,
+          "linear_RGB_RMSE": 0.04789977617771285,
+          "observations": 387,
+          "orientation_median_degrees": 55.37976342607796
+        },
+        "unsupported_oblique": {
+          "Q_above_005": 273,
+          "Q_median": 0.8565456584210633,
+          "Q_p95": 0.979897392036434,
+          "linear_RGB_RMSE": 0.03422307365647198,
+          "observations": 273,
+          "orientation_median_degrees": 29.192949176477082
+        }
+      },
+      "radius_sensitivity": {
+        "0.005": {
+          "one_or_more": {
+            "Q_above_005": 1106,
+            "Q_median": 0.8217665296502799,
+            "Q_p95": 0.9288628043487425,
+            "linear_RGB_RMSE": 0.03430117989600291,
+            "observations": 1108,
+            "orientation_median_degrees": 22.85611273059694
+          },
+          "zero": {
+            "Q_above_005": 1386,
+            "Q_median": 0.8316749169969495,
+            "Q_p95": 0.9737737524265463,
+            "linear_RGB_RMSE": 0.0389350313448207,
+            "observations": 1387,
+            "orientation_median_degrees": 33.209324166779815
+          }
+        },
+        "0.01": {
+          "one_or_more": {
+            "Q_above_005": 1763,
+            "Q_median": 0.811025952357822,
+            "Q_p95": 0.9288715521613025,
+            "linear_RGB_RMSE": 0.03510700204620181,
+            "observations": 1766,
+            "orientation_median_degrees": 22.912668471585768
+          },
+          "zero": {
+            "Q_above_005": 729,
+            "Q_median": 0.8556385552989018,
+            "Q_p95": 1.0097188130044936,
+            "linear_RGB_RMSE": 0.041070165576627585,
+            "observations": 729,
+            "orientation_median_degrees": 43.14081108452734
+          }
+        },
+        "0.02": {
+          "one_or_more": {
+            "Q_above_005": 1971,
+            "Q_median": 0.810670457428297,
+            "Q_p95": 0.9468426497316959,
+            "linear_RGB_RMSE": 0.03490744552776373,
+            "observations": 1974,
+            "orientation_median_degrees": 24.61342205175695
+          },
+          "zero": {
+            "Q_above_005": 521,
+            "Q_median": 0.8586816800333917,
+            "Q_p95": 0.9828663090835218,
+            "linear_RGB_RMSE": 0.043829783880364064,
+            "observations": 521,
+            "orientation_median_degrees": 45.80183584536021
+          }
+        }
+      },
+      "recovery_report_sha256": "d58d815c8422a245b122871f4c2d9c91ca99298943ebc4b9d828119af6096961",
+      "same_triangle_camera_count": {
+        "0": {
+          "Q_above_005": 1005,
+          "Q_median": 0.8408362352826512,
+          "Q_p95": 1.0005063990229721,
+          "linear_RGB_RMSE": 0.04023571197281175,
+          "observations": 1005,
+          "orientation_median_degrees": 37.96434421203168
+        },
+        "1": {
+          "Q_above_005": 1180,
+          "Q_median": 0.7972062826580114,
+          "Q_p95": 0.923281989537343,
+          "linear_RGB_RMSE": 0.03484215933345453,
+          "observations": 1183,
+          "orientation_median_degrees": 21.21460615884544
+        },
+        "2": {
+          "Q_above_005": 304,
+          "Q_median": 0.8515452005748496,
+          "Q_p95": 0.9362201732777572,
+          "linear_RGB_RMSE": 0.03357591948317202,
+          "observations": 304,
+          "orientation_median_degrees": 28.93004585696542
+        },
+        "3": {
+          "Q_above_005": 3,
+          "Q_median": 0.9137847071659079,
+          "Q_p95": 0.9520404629121001,
+          "linear_RGB_RMSE": 0.01142966123016643,
+          "observations": 3,
+          "orientation_median_degrees": 51.369376344692654
+        },
+        "4": null
+      },
+      "within_001_camera_count": {
+        "0": {
+          "Q_above_005": 729,
+          "Q_median": 0.8556385552989018,
+          "Q_p95": 1.0097188130044936,
+          "linear_RGB_RMSE": 0.041070165576627585,
+          "observations": 729,
+          "orientation_median_degrees": 43.14081108452734
+        },
+        "1": {
+          "Q_above_005": 1103,
+          "Q_median": 0.7571016964670235,
+          "Q_p95": 0.9148577032941326,
+          "linear_RGB_RMSE": 0.03622029472273423,
+          "observations": 1106,
+          "orientation_median_degrees": 21.233200283807218
+        },
+        "2": {
+          "Q_above_005": 644,
+          "Q_median": 0.8444555204403019,
+          "Q_p95": 0.9369949755476749,
+          "linear_RGB_RMSE": 0.03344753368933258,
+          "observations": 644,
+          "orientation_median_degrees": 25.81233971893878
+        },
+        "3": {
+          "Q_above_005": 16,
+          "Q_median": 0.9192923640618819,
+          "Q_p95": 0.9522671573047359,
+          "linear_RGB_RMSE": 0.017955975682016623,
+          "observations": 16,
+          "orientation_median_degrees": 20.372340984297775
+        },
+        "4": null
+      }
+    },
+    "D9-T": {
+      "facing_cross_tab_at_001": {
+        "supported_grazing": {
+          "Q_above_005": 104,
+          "Q_median": 0.16683150243873496,
+          "Q_p95": 0.9407460943193475,
+          "linear_RGB_RMSE": 0.0035302093519218604,
+          "observations": 138,
+          "orientation_median_degrees": 0.16789601221702027
+        },
+        "supported_near_frontal": {
+          "Q_above_005": 666,
+          "Q_median": 0.06989012412748793,
+          "Q_p95": 0.36210902814371465,
+          "linear_RGB_RMSE": 0.01004323002422486,
+          "observations": 1104,
+          "orientation_median_degrees": 0.07766213221962114
+        },
+        "supported_oblique": {
+          "Q_above_005": 408,
+          "Q_median": 0.1174509712815417,
+          "Q_p95": 0.6498424458288873,
+          "linear_RGB_RMSE": 0.010801647207676745,
+          "observations": 524,
+          "orientation_median_degrees": 0.08766411377094205
+        },
+        "unsupported_grazing": {
+          "Q_above_005": 68,
+          "Q_median": 0.5361499663086786,
+          "Q_p95": 0.8231953515553988,
+          "linear_RGB_RMSE": 0.0013376288935069492,
+          "observations": 69,
+          "orientation_median_degrees": 0.3804011706900883
+        },
+        "unsupported_near_frontal": {
+          "Q_above_005": 297,
+          "Q_median": 0.16150286122045113,
+          "Q_p95": 0.4149969062585808,
+          "linear_RGB_RMSE": 0.012031989271606053,
+          "observations": 387,
+          "orientation_median_degrees": 0.04776820425720125
+        },
+        "unsupported_oblique": {
+          "Q_above_005": 259,
+          "Q_median": 0.4007142418676913,
+          "Q_p95": 0.8293520665817918,
+          "linear_RGB_RMSE": 0.022712660297718967,
+          "observations": 273,
+          "orientation_median_degrees": 0.210740780887064
+        }
+      },
+      "radius_sensitivity": {
+        "0.005": {
+          "one_or_more": {
+            "Q_above_005": 778,
+            "Q_median": 0.09389269054421162,
+            "Q_p95": 0.5773037871303779,
+            "linear_RGB_RMSE": 0.011013134612019545,
+            "observations": 1108,
+            "orientation_median_degrees": 0.0991794442892465
+          },
+          "zero": {
+            "Q_above_005": 1024,
+            "Q_median": 0.13130611955799376,
+            "Q_p95": 0.6744064064549521,
+            "linear_RGB_RMSE": 0.013066469019986602,
+            "observations": 1387,
+            "orientation_median_degrees": 0.07148329407849985
+          }
+        },
+        "0.01": {
+          "one_or_more": {
+            "Q_above_005": 1178,
+            "Q_median": 0.08439797406373259,
+            "Q_p95": 0.4739576429582413,
+            "linear_RGB_RMSE": 0.009932227749252382,
+            "observations": 1766,
+            "orientation_median_degrees": 0.08133734349452847
+          },
+          "zero": {
+            "Q_above_005": 624,
+            "Q_median": 0.25547469048748295,
+            "Q_p95": 0.765643328937346,
+            "linear_RGB_RMSE": 0.016437940769273934,
+            "observations": 729,
+            "orientation_median_degrees": 0.0814087024097466
+          }
+        },
+        "0.02": {
+          "one_or_more": {
+            "Q_above_005": 1325,
+            "Q_median": 0.08614927798044666,
+            "Q_p95": 0.4492328818701368,
+            "linear_RGB_RMSE": 0.009647210150800535,
+            "observations": 1974,
+            "orientation_median_degrees": 0.07562178326499731
+          },
+          "zero": {
+            "Q_above_005": 477,
+            "Q_median": 0.3245666979413842,
+            "Q_p95": 0.808216033551587,
+            "linear_RGB_RMSE": 0.01896946491014392,
+            "observations": 521,
+            "orientation_median_degrees": 0.1439373146986902
+          }
+        }
+      },
+      "recovery_report_sha256": "68487699331e26c5c2bd542f049fc5be3faa4584f95a0f30b26f7458be3a2e6e",
+      "same_triangle_camera_count": {
+        "0": {
+          "Q_above_005": 770,
+          "Q_median": 0.16415862202141993,
+          "Q_p95": 0.7162604273340438,
+          "linear_RGB_RMSE": 0.014492982253565151,
+          "observations": 1005,
+          "orientation_median_degrees": 0.07113860320687557
+        },
+        "1": {
+          "Q_above_005": 783,
+          "Q_median": 0.07960351036061776,
+          "Q_p95": 0.39234393100182546,
+          "linear_RGB_RMSE": 0.008928563379454503,
+          "observations": 1183,
+          "orientation_median_degrees": 0.07570481305501532
+        },
+        "2": {
+          "Q_above_005": 247,
+          "Q_median": 0.18616450706484733,
+          "Q_p95": 0.7328720452619468,
+          "linear_RGB_RMSE": 0.014710857300081473,
+          "observations": 304,
+          "orientation_median_degrees": 0.23444558292352946
+        },
+        "3": {
+          "Q_above_005": 2,
+          "Q_median": 0.14508423955636254,
+          "Q_p95": 0.5033148022194781,
+          "linear_RGB_RMSE": 0.0006897355867351617,
+          "observations": 3,
+          "orientation_median_degrees": 0.22376599260989455
+        },
+        "4": null
+      },
+      "within_001_camera_count": {
+        "0": {
+          "Q_above_005": 624,
+          "Q_median": 0.25547469048748295,
+          "Q_p95": 0.765643328937346,
+          "linear_RGB_RMSE": 0.016437940769273934,
+          "observations": 729,
+          "orientation_median_degrees": 0.0814087024097466
+        },
+        "1": {
+          "Q_above_005": 627,
+          "Q_median": 0.06224722438665987,
+          "Q_p95": 0.23479964902490652,
+          "linear_RGB_RMSE": 0.005814226363398967,
+          "observations": 1106,
+          "orientation_median_degrees": 0.05903242067310237
+        },
+        "2": {
+          "Q_above_005": 537,
+          "Q_median": 0.17292861812488808,
+          "Q_p95": 0.6617332916403713,
+          "linear_RGB_RMSE": 0.014540202352914602,
+          "observations": 644,
+          "orientation_median_degrees": 0.19782542924573027
+        },
+        "3": {
+          "Q_above_005": 14,
+          "Q_median": 0.775880126375186,
+          "Q_p95": 0.942113965602917,
+          "linear_RGB_RMSE": 0.006485334851174347,
+          "observations": 16,
+          "orientation_median_degrees": 5.3267000152537936
+        },
+        "4": null
+      }
+    }
+  },
+  "camera": 34,
+  "coverage_counts_by_radius": [
+    [
+      1387,
+      930,
+      178,
+      0,
+      0
+    ],
+    [
+      729,
+      1106,
+      644,
+      16,
+      0
+    ],
+    [
+      521,
+      1043,
+      884,
+      47,
+      0
+    ]
+  ],
+  "fitting_cameras": [
+    0,
+    50,
+    1,
+    45
+  ],
+  "interpretation": "Nearby compatible normal hits and same-triangle samples are coverage proxies, not exact visibility, photometric conditioning or causal attribution.",
+  "median_camera34_pixel_footprint_native_units": 0.008925925940275192,
+  "minimum_normal_cosine": 0.8660254037844387,
+  "observations": 2495,
+  "radius_native_units": [
+    0.005,
+    0.01,
+    0.02
+  ],
+  "reference_generation_sha256": "2052306bdf87a0beaa0a3f9b0bddeeb12d787f1d65357d520b5ce2fe0a33ee64",
+  "same_triangle_camera_counts": [
+    1005,
+    1183,
+    304,
+    3,
+    0
+  ]
+}
