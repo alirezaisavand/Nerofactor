@@ -1,5 +1,17 @@
 # Research and development rules
 
+## Donut D6 surface-wide Q
+
+D6 adds only the normal-transported world-Q term to the accepted D2 recipe.
+Keep free learned lighting, the diffuse-white and other legacy terms, fresh
+initial state, all fitting settings, and 10,000 updates. Geometry-only
+neighborhoods span the oracle surface with an independent sampler. Reserve
+the existing D2 diagnostic pairs and never select neighborhoods or estimate
+their training loss using reference materials or held-out images. Preserve
+D1–D5 evidence and use D4 as a calibrated-light comparison. One exact
+execution needs separate approval. See docs/protocols/DONUT_KURT_SURFACE_Q_D6_V1.md.
+No new model variant, reference generation, historical rerun, tuning, or extension.
+
 ## Donut D4/D5 diffuse-white ablation
 
 Use accepted D2/D3 outputs as immutable controls. Add only D4 (calibrated light)

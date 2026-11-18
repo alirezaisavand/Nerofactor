@@ -1,0 +1,84 @@
+{
+  "batch": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7",
+  "coefficient_check": {
+    "D2_last_1000_training_medians": {
+      "RGB_loss": 0.03214418515563011,
+      "diffuse_white_prior": 6.90313640916429e-06,
+      "material_prior": 1.9373208488104865e-05
+    },
+    "D2_training_log": {
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/training.jsonl",
+      "sha256": "e97e02106a50a8fb574b0409dfe183a98d02e6d8f5f08f67b893cf12a4f3ca6d"
+    },
+    "fitting_material_prediction_identities": [
+      {
+        "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/step-10000/camera-0/materials.npz",
+        "sha256": "501d01536dee2ec8db6225f7b599ff23b41e19ddb141a400c0e4e899e35787a1"
+      },
+      {
+        "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/step-10000/camera-50/materials.npz",
+        "sha256": "c62db5144e8c9a09168728feeb8895ae2b927d2c2f48b98c725cee54ec023801"
+      },
+      {
+        "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/step-10000/camera-1/materials.npz",
+        "sha256": "274b03e12e289280b584d6b91ddc7a39cfcc771472655eb3489823b078dfe909"
+      },
+      {
+        "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/step-10000/camera-45/materials.npz",
+        "sha256": "5c5caabc73f1d3a0a0a6075f03ff06b45f68ee63d90f01b212da974831feab5e"
+      }
+    ],
+    "fitting_pairs": 10345,
+    "weighted_surface_q_proxy_mean": 1.4625697325374721e-05,
+    "weighted_surface_q_proxy_median": 6.585118564085162e-07,
+    "weighted_surface_q_proxy_p95": 1.1201959654961442e-05
+  },
+  "diagnostic_centroid_face_and_smooth_normal_match": true,
+  "domain": {
+    "diagnostic_pairs_by_number_of_supported_faces": [
+      374,
+      237,
+      413
+    ],
+    "eligible_pairs": 27648,
+    "fitting_supported_faces": 9380,
+    "fitting_unsupported_faces": 9052,
+    "fitting_unsupported_surface_area_fraction": 0.4472979730118676,
+    "mesh_faces": 18432,
+    "reserved_pairs": 1024,
+    "training_pairs": 26624,
+    "training_pairs_by_number_of_supported_faces": [
+      9892,
+      6387,
+      10345
+    ]
+  },
+  "dry_sampler": {
+    "count_vector_little_endian_int64_sha256": "c94b6e575f90948492b1c939fc01f3edd5048de0699204a454fd3297043a39c5",
+    "draws": 1280000,
+    "first_sweep_updates": 208,
+    "summary": {
+      "pair_draws": 1280000,
+      "sampled_in_fit": {
+        "area": 1.0846740904807095,
+        "faces": 9380,
+        "visited_area": 1.0846740904807095,
+        "visited_faces": 9380
+      },
+      "surface_area_fraction": 1.0,
+      "unique_pairs": 26624,
+      "unsampled_in_fit": {
+        "area": 0.8778193282452534,
+        "faces": 9052,
+        "visited_area": 0.8778193282452534,
+        "visited_faces": 9052
+      },
+      "visited_faces": 18432
+    },
+    "train_max": 49,
+    "train_min": 48
+  },
+  "freeze_sha256": "02b181b05bf499cb312f634622122977ea47a24f0c18d93ccb150409fa4ecec4",
+  "reference_artifacts": 31,
+  "source_identities": 300
+}

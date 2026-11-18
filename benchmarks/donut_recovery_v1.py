@@ -220,6 +220,13 @@ def verify_freeze(path, expected):
                     'D4': dict(TRAIN_LIMITS, **dict(NEW_LIMITS, wall_seconds=TRAIN_LIMITS['wall_seconds'])),
                     'D5': dict(TRAIN_LIMITS, component_reverse_sweeps=30),
                 }, 'Frozen diffuse-white ablation or work limits differ')
+    if 'surface_q_training' in f:
+        from benchmarks import donut_surface_q_d6 as spatial
+        d6=f['surface_q_training']
+        require('calibrated_training' not in f and 'diffuse_white_ablation' not in f and
+                d6['protocol']==spatial.PROTOCOL and d6['spatial_policy']==spatial.POLICY and
+                d6['diffuse_white_in_objective'] is True and d6['limits']==dict(TRAIN_LIMITS, **spatial.LIMITS),
+                'Frozen D6 surface-Q policy or work limits differ')
     for name,sha in f['sources'].items():
         p=ROOT/name;require(p.resolve()==p and ROOT in p.parents and digest(p)==sha,'Frozen source changed: '+name)
     baseline('material',PINS['material'])
@@ -233,9 +240,11 @@ def runtime(args, phase):
     reference_protocol=f.get('reference_protocol',REFERENCE)
     d3=f.get('calibrated_training')
     ablation=f.get('diffuse_white_ablation')
+    d6=f.get('surface_q_training')
     require((phase=='D3')==(d3 is not None), 'D3 requires its dedicated execution freeze')
     require((phase in ABLATION_ARMS)==(ablation is not None),
             'D4/D5 require their dedicated execution freeze')
+    require((phase=='D6')==(d6 is not None), 'D6 requires its dedicated execution freeze')
     protocol=reference_protocol if phase=='reference' else TRAINING
     if phase=='D3':
         protocol,limits=d3['protocol'],d3['limits']
@@ -256,6 +265,17 @@ def runtime(args, phase):
                 and a.get('wall_seconds')==ablation['wall_seconds']
                 and a.get('selected_gpu')=='0' and a.get('maximum_execution_launches')==1,
                 'D4/D5 authorization differs from the frozen dataset, initial state or batch')
+    if d6:
+        protocol,limits=d6['protocol'],d6['limits']
+        require(a.get('host_output_directory')==f['host_surface_output']
+                and a.get('benchmark_generation_sha256')==d6['benchmark_generation_sha256']
+                and a.get('dataset_admission_sha256')==d6['dataset_admission_sha256']
+                and a.get('initial_sha256')==d6['initial_sha256']
+                and a.get('spatial_policy')==d6['spatial_policy']
+                and a.get('diffuse_white_in_objective') is True
+                and a.get('output_directories')=={'D6':'/outputs/D6'}
+                and a.get('selected_gpu')=='0' and a.get('maximum_execution_launches')==1,
+                'D6 authorization differs from the frozen spatial policy, dataset, initial state or launch')
     require(digest(args.authorization)==args.authorization_sha256 and a.get('approved') is True and
         a.get('protocol')==protocol and a.get('commit')==args.commit and
         a.get('freeze_sha256')==args.freeze_sha256 and a.get('image_id')==args.image_id==IMAGE and

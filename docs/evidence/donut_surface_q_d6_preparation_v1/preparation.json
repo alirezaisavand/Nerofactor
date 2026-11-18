@@ -1,0 +1,45 @@
+{
+  "CPU_tests": {
+    "errors": 0,
+    "exit_code": 0,
+    "failures": 0,
+    "junit_sha256": "33c0ffe038de0ed1a6011c1afd98f9fc94a661dfe465521f3251e98bacb2ea7c",
+    "known_warning": "PyTorch future warning for the existing owned synthetic checkpoint fixture",
+    "skipped": 0,
+    "tests": 70
+  },
+  "accepted_control_receipts": {
+    "D2": {
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/recovery.json",
+      "sha256": "35fa32f3482d25be793286de56185aafc7c41d94739fd454f076ef6437f3a490"
+    },
+    "D4": {
+      "path": "/home/isavand/paper/evidence/donut-kurt-diffuse-white-ablation-25c58aa9eb94402aba940efc6f28194a/D4/recovery.json",
+      "sha256": "ab4cf6f7e0fe72716e9c4903e14d6e98d874369c211405ce218a68cb841782f8"
+    }
+  },
+  "arm": "D6",
+  "authorized_launches": 0,
+  "checks": {
+    "dry_sampler_counts": "pass",
+    "host_and_receipt_gates": "pass on synthetic fixture",
+    "metadata_only_preflight": "pass",
+    "shell_syntax": "pass",
+    "topology_and_saved_D2_diagnostic_alignment": "pass",
+    "unchanged_controls": true
+  },
+  "dataset_admission_sha256": "02e4f7ca909de6b7c2c9fa2a2e291850a9bff190b426e319daf82e3ecdb82c9e",
+  "dataset_generation_sha256": "2052306bdf87a0beaa0a3f9b0bddeeb12d787f1d65357d520b5ce2fe0a33ee64",
+  "freeze_sha256": "02b181b05bf499cb312f634622122977ea47a24f0c18d93ccb150409fa4ecec4",
+  "fresh_initial_sha256": "0407da2d23f545004a5505e475d497ba2c41760988048d2ff09654e18b5ab6a9",
+  "frozen_source_identities": 300,
+  "geometry_and_scale_report_sha256": "1d2ea318f7f309d9e92d637bad702844144fff4c1818bd1a0ec52348e79abb49",
+  "host_batch": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7",
+  "scientific_execution": {
+    "geometry_rays": 0,
+    "native_models": 0,
+    "optimizer_returns": 0,
+    "renderer_calls": 0
+  },
+  "status": "pending_explicit_D6_execution_approval"
+}
