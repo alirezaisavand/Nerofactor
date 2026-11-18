@@ -1,0 +1,154 @@
+{
+  "focused_CPU_tests": {
+    "failed": 0,
+    "passed": 5,
+    "skipped": 0
+  },
+  "freeze_sha256": "330eafdac4dc70555cd8d5d1e6da54d2a92b91b9047f89d8c7f04329fc90e4e1",
+  "fresh_batch": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v1-9f748fd96ca64df08605cb566344fcc7",
+  "geometry_area_native": 1.9624934187259628,
+  "geometry_triangles": 18432,
+  "geometry_view_SHA256_verified": 6,
+  "limits": {
+    "BRDF_point_directions": 7415398400,
+    "CPU_primary_crosschecks": 0,
+    "cpu_threads": 4,
+    "cuda_allocator_fraction": 0.25,
+    "direction_chunk": 16384,
+    "grace_seconds": 30,
+    "host_memory_gib": 64,
+    "inner_seconds": 7080,
+    "output_bytes": 536870912,
+    "point_batch": 4,
+    "primary_rays": 0,
+    "shadow_directions": 7415398400,
+    "slope_nodes_attempted": 1853849600,
+    "slope_nodes_returned": 1853849600,
+    "wall_seconds": 7200
+  },
+  "model_calls": 0,
+  "optimizer_returns": 0,
+  "per_camera": {
+    "0": {
+      "maximum_widths": [
+        0.4549999998252379,
+        0.214
+      ],
+      "minimum_widths": [
+        0.223,
+        0.09600000092797091
+      ],
+      "near_boundary": 576,
+      "nearly_isotropic": 13,
+      "observations": 4536,
+      "regions": [
+        2476,
+        2060
+      ]
+    },
+    "1": {
+      "maximum_widths": [
+        0.4549969584938686,
+        0.214
+      ],
+      "minimum_widths": [
+        0.223,
+        0.09600000010926407
+      ],
+      "near_boundary": 502,
+      "nearly_isotropic": 15,
+      "observations": 4144,
+      "regions": [
+        1390,
+        2754
+      ]
+    },
+    "28": {
+      "maximum_widths": [
+        0.4549999904936229,
+        0.214
+      ],
+      "minimum_widths": [
+        0.223,
+        0.09600000008686904
+      ],
+      "near_boundary": 641,
+      "nearly_isotropic": 244,
+      "observations": 4849,
+      "regions": [
+        2498,
+        2351
+      ]
+    },
+    "34": {
+      "maximum_widths": [
+        0.4549999645961732,
+        0.1859999987303962
+      ],
+      "minimum_widths": [
+        0.2650004011084095,
+        0.09600378926682197
+      ],
+      "near_boundary": 228,
+      "nearly_isotropic": 0,
+      "observations": 2495,
+      "regions": [
+        2096,
+        399
+      ]
+    },
+    "45": {
+      "maximum_widths": [
+        0.45499998993063157,
+        0.214
+      ],
+      "minimum_widths": [
+        0.223,
+        0.096000001302914
+      ],
+      "near_boundary": 475,
+      "nearly_isotropic": 282,
+      "observations": 3970,
+      "regions": [
+        1799,
+        2171
+      ]
+    },
+    "50": {
+      "maximum_widths": [
+        0.45499682931612223,
+        0.214
+      ],
+      "minimum_widths": [
+        0.223,
+        0.09600000417260192
+      ],
+      "near_boundary": 255,
+      "nearly_isotropic": 472,
+      "observations": 2636,
+      "regions": [
+        1892,
+        744
+      ]
+    }
+  },
+  "ring_radius_native": 0.3561243410836427,
+  "scientific_render_calls": 0,
+  "source_hashes_verified": 348,
+  "split_coverage": {
+    "fitting": {
+      "near_boundary": 1808,
+      "nearly_isotropic": 782,
+      "observations": 15286,
+      "observed_triangle_area_fraction": 0.5527020269881325
+    },
+    "held_out": {
+      "near_boundary": 869,
+      "nearly_isotropic": 244,
+      "observations": 7344,
+      "observed_triangle_area_fraction": 0.3522868551932683
+    }
+  },
+  "status": "pending_reference_generation_approval",
+  "training_authorized": false
+}
