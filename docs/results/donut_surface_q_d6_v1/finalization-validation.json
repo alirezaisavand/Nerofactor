@@ -1,0 +1,38 @@
+{
+  "CSV_row_counts": {
+    "endpoint-metrics.csv": 54,
+    "per-camera-metrics.csv": 108
+  },
+  "PNG_decode_checks": 8,
+  "analysis_work": {
+    "checkpoint_deserializations": 0,
+    "native_models": 0,
+    "optimizer_returns": 0,
+    "renderer_calls": 0
+  },
+  "artifact_sha256": {
+    "docs/DONUT_KURT_SURFACE_Q_D6_V1_RESULTS.md": "1a9539b9bf7657422be03a0688e141560ffae33a462221383fa5fc608362367b",
+    "docs/results/donut_surface_q_d6_v1/D6-camera34-material-progression.png": "001600ef139362d18bf30ef35f8ac32fd48e9e7bcfe34940c574a41dc5a77c8d",
+    "docs/results/donut_surface_q_d6_v1/D6-six-view-progression.png": "e520968935f5664400c8e5a5916d84935ddc8ec06ad14091ca52c6cf35fea85f",
+    "docs/results/donut_surface_q_d6_v1/README.md": "fef08779ad0fb92983bafeec175cf858170ab9a616692b23c947a66bf4cd624b",
+    "docs/results/donut_surface_q_d6_v1/RGB-comparison.png": "0a40f0ee5e9712ffd975392d534f8be350ee89be2ce02323f0ef8e31c54e3a8f",
+    "docs/results/donut_surface_q_d6_v1/analysis.json": "1db844533e9e89c12f98ce915a87cff592726ab84c1212847951705d8d1d62bb",
+    "docs/results/donut_surface_q_d6_v1/artifact-manifest.json": "e2c635bd2482c73eb89f3d48ad3bc58ba349ec503f57d35cbbbbbcd896f08b2c",
+    "docs/results/donut_surface_q_d6_v1/camera34-coverage.json": "72f4882a8ffd223b15d2378b69c32b1cd0474c56be40497985b7702a766eca4f",
+    "docs/results/donut_surface_q_d6_v1/camera34-coverage.png": "da45552edfba80731bc3ffdefcc5db03c8750155f82886a42665d651f9d2df85",
+    "docs/results/donut_surface_q_d6_v1/endpoint-distributions.png": "48ddfa0a74db9dc51499a94737f120a718ba10b9ff732419fedaaf02247a2728",
+    "docs/results/donut_surface_q_d6_v1/endpoint-metrics.csv": "57f0be36011e27705519e9566812716fce207e82bf26f6c3bba17ccd70aed512",
+    "docs/results/donut_surface_q_d6_v1/illumination.png": "00bfd05d9e2cd449c2fbd58c542b35568bad6713810072d6f6bd8164d5be8b0b",
+    "docs/results/donut_surface_q_d6_v1/losses-and-gradients.png": "84905cdbc8e0b96aee2874f1b50b65f740f91e22bafca76b7183f79c73a1cba7",
+    "docs/results/donut_surface_q_d6_v1/per-camera-metrics.csv": "1c3ac7596c568d8b8b415515104d1ab4ca9d7d539013bcc7ce1b69b02e05d724",
+    "docs/results/donut_surface_q_d6_v1/recovery-curves.png": "f9c9d0b229a0f0fe73d92a50fc65e1f7c6c7e915fc39650065b6157f7af1d5c5",
+    "experiments/analyze_donut_surface_q_d6.py": "2e444b81fe65d2467e5e3d54f570c577392854a6342edbf2e548fb84b60dc714"
+  },
+  "execution_commit": "1a66ff579b4a330942f4a78ea25374b0c2e87332",
+  "frozen_source_identities_verified": 300,
+  "independent_replay_byte_identical_files": 13,
+  "indexed_evidence_identity_checks": 42,
+  "reference_artifact_identities_verified": 31,
+  "schema": "donut-surface-q-d6-finalization-v1",
+  "status": "verified_complete"
+}
