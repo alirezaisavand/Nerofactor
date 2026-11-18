@@ -1,0 +1,254 @@
+{
+  "absolute_threshold_failures": 1,
+  "approval_sha256": "e93d8c37c3cbd7a1b5df728b14386fa327fec15f169827c04b64b003d7c860cd",
+  "camera_checks": {
+    "0": {
+      "component_convergence": {
+        "RGB": {
+          "absolute": 0.00023448041729632468,
+          "relative_L2": 0.000509704472621125
+        },
+        "diffuse": {
+          "absolute": 5.510451389260061e-05,
+          "relative_L2": 0.0004462185775931832
+        },
+        "specular": {
+          "absolute": 0.0002075936242849838,
+          "relative_L2": 0.0005558399165962006
+        }
+      },
+      "gates": {
+        "ordinary_incident_convergence": {
+          "maximum_rgb_difference": 1.2924525223390049e-05,
+          "passed": true,
+          "relative_l2": 1.677051309274076e-05
+        },
+        "ordinary_slope_vs_incident": {
+          "maximum_rgb_difference": 4.680204174323244e-06,
+          "passed": true,
+          "relative_l2": 5.586473404779115e-06
+        },
+        "radiance_convergence": {
+          "maximum_rgb_difference": 0.00023448041729632468,
+          "passed": true,
+          "relative_l2": 0.000509704472621125
+        },
+        "reflectance_convergence": {
+          "maximum_rgb_difference": 1.929154033630809e-06,
+          "passed": true,
+          "relative_l2": 1.93514679826166e-06
+        }
+      },
+      "geometry_labels_verified": true,
+      "valid": 4536
+    },
+    "50": {
+      "component_convergence": {
+        "RGB": {
+          "absolute": 0.006989579921519995,
+          "relative_L2": 0.0024265205637483004
+        },
+        "diffuse": {
+          "absolute": 4.295683833148434e-05,
+          "relative_L2": 0.00014482414096560968
+        },
+        "specular": {
+          "absolute": 0.006989580438938034,
+          "relative_L2": 0.0035027630355394627
+        }
+      },
+      "gates": {
+        "ordinary_incident_convergence": {
+          "maximum_rgb_difference": 3.1041026382627734e-06,
+          "passed": true,
+          "relative_l2": 3.5609311834164393e-06
+        },
+        "ordinary_slope_vs_incident": {
+          "maximum_rgb_difference": 7.631650043027349e-07,
+          "passed": true,
+          "relative_l2": 8.906694884673549e-07
+        },
+        "radiance_convergence": {
+          "maximum_rgb_difference": 0.006989579921519995,
+          "passed": false,
+          "relative_l2": 0.0024265205637483004
+        },
+        "reflectance_convergence": {
+          "maximum_rgb_difference": 2.506415269776241e-06,
+          "passed": true,
+          "relative_l2": 1.8500598228725829e-06
+        }
+      },
+      "geometry_labels_verified": true,
+      "valid": 2636
+    }
+  },
+  "cleanup_success_attested": false,
+  "execution_commit": "925732d2655f4529b6daa25198eabcdba4d13c35",
+  "failed_exit_code": 1,
+  "freeze_sha256": "330eafdac4dc70555cd8d5d1e6da54d2a92b91b9047f89d8c7f04329fc90e4e1",
+  "localization_only": {
+    "excludes_witness": true,
+    "remaining_max_abs": 0.0006931669865488238,
+    "remaining_relative_L2": 0.0004621808014265712,
+    "used_for_admission": false
+  },
+  "offline_BRDF_calls": 0,
+  "offline_BVH_calls": 0,
+  "offline_model_calls": 0,
+  "original_counters": {
+    "BRDF_point_directions": 2350120960,
+    "CPU_primary_crosschecks": 0,
+    "primary_rays": 0,
+    "shadow_directions": 2350120960,
+    "slope_nodes_attempted": 587530240,
+    "slope_nodes_returned": 587530240
+  },
+  "prior_and_failed_files": {
+    "/home/isavand/paper/evidence/donut-heterogeneous-reference-v1-9f748fd96ca64df08605cb566344fcc7/authorization.json": {
+      "bytes": 1188,
+      "sha256": "e93d8c37c3cbd7a1b5df728b14386fa327fec15f169827c04b64b003d7c860cd"
+    },
+    "/home/isavand/paper/evidence/donut-heterogeneous-reference-v1-9f748fd96ca64df08605cb566344fcc7/console.txt": {
+      "bytes": 1016,
+      "sha256": "b9eaa3ca0c42442e6595bc61aede7ed6b2a5ebbe0d027552e44315aa381a40e5"
+    },
+    "/home/isavand/paper/evidence/donut-heterogeneous-reference-v1-9f748fd96ca64df08605cb566344fcc7/container.cid": {
+      "bytes": 64,
+      "sha256": "ba4f07f810070835423f2909a8cb1966e73861e0df92f4fb2a83e4cd72b2f421"
+    },
+    "/home/isavand/paper/evidence/donut-heterogeneous-reference-v1-9f748fd96ca64df08605cb566344fcc7/exit-code.txt": {
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    "/home/isavand/paper/evidence/donut-heterogeneous-reference-v1-9f748fd96ca64df08605cb566344fcc7/freeze.json": {
+      "bytes": 49436,
+      "sha256": "330eafdac4dc70555cd8d5d1e6da54d2a92b91b9047f89d8c7f04329fc90e4e1"
+    },
+    "/home/isavand/paper/evidence/donut-heterogeneous-reference-v1-9f748fd96ca64df08605cb566344fcc7/reference/generation.json": {
+      "bytes": 9902,
+      "sha256": "b08f8b9eb249b43e40c4cc63c2b92a183ac7838b334fb25b619713a181d17218"
+    },
+    "/home/isavand/paper/evidence/donut-heterogeneous-reference-v1-9f748fd96ca64df08605cb566344fcc7/reference/progress.json": {
+      "bytes": 7652,
+      "sha256": "d11193c130abae2dea645764565e50d8df2c7e41bc1d240a7f85f31b3c9f81da"
+    },
+    "/home/isavand/paper/evidence/donut-heterogeneous-reference-v1-9f748fd96ca64df08605cb566344fcc7/reference/surface-area.npz": {
+      "bytes": 114680,
+      "sha256": "118193ac8c479316c4222a79ee08a734f9bee6895cfc16b3c453ad3e1e525f24"
+    },
+    "/home/isavand/paper/evidence/donut-heterogeneous-reference-v1-9f748fd96ca64df08605cb566344fcc7/reference/view-0-RGB.png": {
+      "bytes": 7201,
+      "sha256": "00f7060fd4763dd1fbc7b455904a28d13ed635b0e855855e48a1a2c96ebcf9ec"
+    },
+    "/home/isavand/paper/evidence/donut-heterogeneous-reference-v1-9f748fd96ca64df08605cb566344fcc7/reference/view-0-diffuse.png": {
+      "bytes": 3716,
+      "sha256": "b3b353eafe7c48e0ff2be351cc912e94e3286ae3fff5e76547b124dcf22564fa"
+    },
+    "/home/isavand/paper/evidence/donut-heterogeneous-reference-v1-9f748fd96ca64df08605cb566344fcc7/reference/view-0-specular.png": {
+      "bytes": 7707,
+      "sha256": "e2732df631e7813592ef5b0e9ebcd37d27959fb88088647041c0bc023ba41838"
+    },
+    "/home/isavand/paper/evidence/donut-heterogeneous-reference-v1-9f748fd96ca64df08605cb566344fcc7/reference/view-0.npz": {
+      "bytes": 2403543,
+      "sha256": "e570bfd965ad8a5775c44e4306a029f9b2c1515a0f9bb1f256cfff150cd8a134"
+    },
+    "/home/isavand/paper/evidence/donut-heterogeneous-reference-v1-9f748fd96ca64df08605cb566344fcc7/reference/view-50.npz": {
+      "bytes": 1383114,
+      "sha256": "8225c344e1d63eb0c8cb32aa61eb8e62d1c1fd21fe8450ef3329ee05c147204e"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-reference-v2-262b3cfcf73340a0867829c48c0198f7/reference/view-50.npz": {
+      "bytes": 1167321,
+      "sha256": "b7793a0b5cf761e3682dcf17c1555364fab6fce10e65f19247bda6ce9bfc934b"
+    }
+  },
+  "remaining_cameras_unexecuted": [
+    1,
+    45,
+    28,
+    34
+  ],
+  "roots": {
+    "executed_source": "/home/isavand/paper/Nerofactor-donut-recovery",
+    "failed_batch": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v1-9f748fd96ca64df08605cb566344fcc7"
+  },
+  "schema_version": 1,
+  "status": "not_admitted",
+  "terminal_report_sha256": "b08f8b9eb249b43e40c4cc63c2b92a183ac7838b334fb25b619713a181d17218",
+  "witness": {
+    "boundary_distance_native": 0.2603396109758991,
+    "diffuse_delta": [
+      3.7158710136653283e-10,
+      1.666532571664714e-09,
+      5.174180355005387e-10
+    ],
+    "fraction_of_RGB_difference_SSE": 0.9637876205659561,
+    "homogeneous_RGB_grid_max_delta": 0.0006305816303793649,
+    "homogeneous_visible_count_fine": 258802,
+    "incident_reflectance_coarse": [
+      0.12490983438470384,
+      0.3324780537464022,
+      0.11578483251059347
+    ],
+    "incident_reflectance_fine": [
+      0.12065315682570937,
+      0.3280272138851037,
+      0.11153669060979297
+    ],
+    "material_region": 1,
+    "near_boundary": false,
+    "nearly_isotropic": false,
+    "normal": [
+      -0.18509604799955834,
+      -0.8019646709247888,
+      0.5679719355773137
+    ],
+    "outgoing": [
+      0.9797066658350587,
+      -0.19181514036322692,
+      0.058153253097207695
+    ],
+    "pixel_index": 7317,
+    "pixel_xy": [
+      21,
+      57
+    ],
+    "position": [
+      -0.10480699688196182,
+      -0.45413312315940857,
+      0.08406722545623779
+    ],
+    "reference_RGB_coarse": [
+      0.09588758137300357,
+      0.14945745561226487,
+      0.11344667587877054
+    ],
+    "reference_RGB_fine": [
+      0.09009792116626625,
+      0.14306230888664653,
+      0.10645709595725054
+    ],
+    "slope_reflectance_coarse": [
+      0.12117635837986146,
+      0.32856333051115927,
+      0.11205932439853436
+    ],
+    "slope_reflectance_fine": [
+      0.12117634799822019,
+      0.32856383411913087,
+      0.11205929142115953
+    ],
+    "specular_delta": [
+      -0.005789660578324418,
+      -0.006395148392150926,
+      -0.006989580438938034
+    ],
+    "triangle": 13099,
+    "view_cosine": 0.005518549596632616,
+    "visible_count_fine": 258802,
+    "widths": [
+      0.26812782298122273,
+      0.10483418678938675
+    ]
+  }
+}
