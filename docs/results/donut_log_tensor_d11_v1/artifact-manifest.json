@@ -1,0 +1,408 @@
+{
+  "endpoint_figure_inputs": {
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-10000/camera-28-errors.npz": {
+      "bytes": 256005,
+      "path": "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-10000/camera-28-errors.npz",
+      "sha256": "89af4049cd282f1bf967f04a12d76f5469408f0249551393b30ec0115bba0572"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-10000/camera-28/materials.npz": {
+      "bytes": 1470567,
+      "path": "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-10000/camera-28/materials.npz",
+      "sha256": "4e9f1a722d4040c6f88f3c624aea615846ccba74495ef60a5b9857b089ce655b"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-10000/camera-34-errors.npz": {
+      "bytes": 133920,
+      "path": "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-10000/camera-34-errors.npz",
+      "sha256": "3088f3e889731cf2ffdae1b28090c429a9740cca1b72e4b7e028361a694360a7"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-10000/camera-34/materials.npz": {
+      "bytes": 761961,
+      "path": "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-10000/camera-34/materials.npz",
+      "sha256": "2e35953d142b6bae3494ce7035da30def55410e6112feb117d74f252d467d542"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-10000/camera-28-errors.npz": {
+      "bytes": 256035,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-10000/camera-28-errors.npz",
+      "sha256": "920955fcd30b00e14f9f9ab09bc12952a81c9f517261aa08a1c9ebbbb60355f8"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-10000/camera-28/materials.npz": {
+      "bytes": 1470020,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-10000/camera-28/materials.npz",
+      "sha256": "e6d5481b34d8b74ff0a367991be4ce8d30108bf99dc1dae85257fab5fb122aa0"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-10000/camera-34-errors.npz": {
+      "bytes": 133843,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-10000/camera-34-errors.npz",
+      "sha256": "be294c4eee63c9e3cdd9699d89fd07cb31618cf884de20eb759328f624432538"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-10000/camera-34/materials.npz": {
+      "bytes": 761850,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-10000/camera-34/materials.npz",
+      "sha256": "370f417fa6e2f1df5be582ce8ab95f75f46ba63b02af7069711ebcd49b325b07"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/step-10000/camera-28-errors.npz": {
+      "bytes": 243864,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/step-10000/camera-28-errors.npz",
+      "sha256": "0498ea67a69139eabfd1e30233073e7cac5a0aff4da7fc7d3aca16a30a568afe"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/step-10000/camera-28/materials.npz": {
+      "bytes": 1195976,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/step-10000/camera-28/materials.npz",
+      "sha256": "3ec47a305f92c250da840ac3b54856a7324c12f4eeebeefba0303d9282894aa2"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/step-10000/camera-34-errors.npz": {
+      "bytes": 130410,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/step-10000/camera-34-errors.npz",
+      "sha256": "66a353f51c55e252089ef40deeb0fff979ad3aa2371d3557e7f8fe5fd2b02606"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/step-10000/camera-34/materials.npz": {
+      "bytes": 623640,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/step-10000/camera-34/materials.npz",
+      "sha256": "a5686f66ee6a898b165b086a4675cc91465572171a717f800e89998951ebc655"
+    }
+  },
+  "exact_D8_T_known_light_capture_replay": true,
+  "execution_batch": "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4",
+  "execution_commit": "f5cdfa94eae2126afa5093a7ae6aa384a1274f3c",
+  "freeze_sha256": "398afa45464dd403e5242ef67fa8e4c4b8e2e070283588bfd9ece91c96b6f57d",
+  "joint_orientation_eligibility": {
+    "28": {
+      "fixed_ring": {
+        "joint_eligible": 468,
+        "observations": 485,
+        "orientation_degrees": {
+          "D11": {
+            "median": 16.346702328113032,
+            "p95": 76.78155559979864
+          },
+          "D6": {
+            "median": 0.7401154281503619,
+            "p95": 2.13161164075234
+          },
+          "D8-T": {
+            "median": 16.441546716233997,
+            "p95": 77.6005331742625
+          }
+        }
+      },
+      "foreground": {
+        "joint_eligible": 4796,
+        "observations": 4849,
+        "orientation_degrees": {
+          "D11": {
+            "median": 0.24406230265313905,
+            "p95": 28.285756588515497
+          },
+          "D6": {
+            "median": 0.8588431355213688,
+            "p95": 3.5906566556332318
+          },
+          "D8-T": {
+            "median": 0.2684643260580739,
+            "p95": 28.184155273005267
+          }
+        }
+      },
+      "outside_ring": {
+        "joint_eligible": 4328,
+        "observations": 4364,
+        "orientation_degrees": {
+          "D11": {
+            "median": 0.20543192235702137,
+            "p95": 10.96408231415899
+          },
+          "D6": {
+            "median": 0.8672986547455683,
+            "p95": 3.865498002326651
+          },
+          "D8-T": {
+            "median": 0.23742847908141296,
+            "p95": 10.608823796789082
+          }
+        }
+      }
+    },
+    "34": {
+      "foreground": {
+        "joint_eligible": 2494,
+        "observations": 2495,
+        "orientation_degrees": {
+          "D11": {
+            "median": 0.1142860848557117,
+            "p95": 0.43513590925164025
+          },
+          "D6": {
+            "median": 1.6568078605094858,
+            "p95": 14.24157090215475
+          },
+          "D8-T": {
+            "median": 0.12336309665742778,
+            "p95": 0.5016430443129208
+          }
+        }
+      }
+    }
+  },
+  "map_and_checkpoint_locations": {
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/checkpoint-02000.pth": {
+      "bytes": 27639236,
+      "sha256": "5749e8476f4de7a3f5eb9d9e3b5dfea59664f38f48d0ce531fe2a701fddfd9fe"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/checkpoint-04000.pth": {
+      "bytes": 27639172,
+      "sha256": "229459ad252a8cca426b1ccecd51771a2e63a0ddf76a75e4522609a3d267607c"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/checkpoint-06000.pth": {
+      "bytes": 27639172,
+      "sha256": "67092c7ecfa75d0b57eb6f703ab6b41c76fac088c6ff2c05455d48306cf16757"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/checkpoint-08000.pth": {
+      "bytes": 27639236,
+      "sha256": "dff4357161e6c8c137bac9502dad7d63e965b722582fbc3e2d06c56139dde20d"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/checkpoint-10000.pth": {
+      "bytes": 27639236,
+      "sha256": "eea2544853797eb1ca78a11baf48b74f294c0e9057da3789ead49aeba44e36da"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-00000/camera-0/materials.npz": {
+      "bytes": 1150318,
+      "sha256": "33a0de27ab0f9d15da015f9f2b17cc24ac8428cc14fd27f5f7280b8bff0b2f47"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-00000/camera-1/materials.npz": {
+      "bytes": 1038948,
+      "sha256": "8158ead0aecb352ea6feaf6c7b373899a248f6f1d9bc8b1bc43d336130f2e082"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-00000/camera-28/materials.npz": {
+      "bytes": 1224593,
+      "sha256": "88ea6dc4d9d55073191d0541cc460ddb08f13fa2f07bbbed3dbe58cae0f62a27"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-00000/camera-34/materials.npz": {
+      "bytes": 647552,
+      "sha256": "8391b4f2da25ebfffdac6cd4c6fe388aa60fb75c8762dfb16cf7cff5e622a7cd"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-00000/camera-45/materials.npz": {
+      "bytes": 1002217,
+      "sha256": "84190aaf1c1f63ef65657d97e38d9fd17b622c675366f778c474bba621ded8c0"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-00000/camera-50/materials.npz": {
+      "bytes": 681766,
+      "sha256": "f517fbc9636d1902a1480ccf9c8042427e9552fba141593e0990e9813e849965"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-02000/camera-0/materials.npz": {
+      "bytes": 1387357,
+      "sha256": "b27c9b260ae93ecb8e42c4aa1d9a5f656c542eb1f0bcb30ae601a3687c31a126"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-02000/camera-1/materials.npz": {
+      "bytes": 1264795,
+      "sha256": "1042cf87b46684e545c2befc90b7c3d945a75bb5c93546b94d9fc0c3252fa286"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-02000/camera-28/materials.npz": {
+      "bytes": 1482340,
+      "sha256": "625a0b0ffad31ec61420e6235cbce4c0a6e69377b058e118147c8c2b32e9e1c7"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-02000/camera-34/materials.npz": {
+      "bytes": 768609,
+      "sha256": "41da9c08a2053ef7808c66ad27ff7371df9b5a85e3675b73321b28a524e0db2b"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-02000/camera-45/materials.npz": {
+      "bytes": 1213241,
+      "sha256": "a1a25fdf9c8a06fad6bdd9202e10d7f5d944724db05d8b4485616f5e22efa52a"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-02000/camera-50/materials.npz": {
+      "bytes": 812832,
+      "sha256": "1d65f8800230e0c3074261ed2e6b415b4f6a9b441f138e6c675efd3c81d4f89d"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-04000/camera-0/materials.npz": {
+      "bytes": 1381411,
+      "sha256": "3fd7ca2ac210b80fe1a06e3e75cb658b7f99af59ad487bae11d1dff52edd5fd5"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-04000/camera-1/materials.npz": {
+      "bytes": 1259314,
+      "sha256": "76cb5c68f630eb153a632b9475e6c44c8d6a51e06497319173eb48e7558fc41c"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-04000/camera-28/materials.npz": {
+      "bytes": 1475757,
+      "sha256": "57b90ef85ecbd7e8fcdc583436c050af28c969df80a2380f0ea0075a93637c95"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-04000/camera-34/materials.npz": {
+      "bytes": 765010,
+      "sha256": "edd3717a04816751fa7784d86fc64b35a3f84f4566321f13972e8e0186510630"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-04000/camera-45/materials.npz": {
+      "bytes": 1206577,
+      "sha256": "71e2be33c7bb3f1da017ad0e51e0b60dd723adb2c968dc910d9d83f4a928e46c"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-04000/camera-50/materials.npz": {
+      "bytes": 808320,
+      "sha256": "3bf533fe962cbdba3bd225baa752c4a1238c806f60415cb60982439c1cd0ac05"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-06000/camera-0/materials.npz": {
+      "bytes": 1379237,
+      "sha256": "fc89fde23290810f9904dbcdf11922920da915958bad6a11d17b0c2b6acfc447"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-06000/camera-1/materials.npz": {
+      "bytes": 1256737,
+      "sha256": "a1f702db893fb7df2132b3a414cdcbd3c97dfa108fb83172e1076460f19457c1"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-06000/camera-28/materials.npz": {
+      "bytes": 1473689,
+      "sha256": "b02590b54364a1096bb39fd0f44e82b99558263f1464447d18b6c3d3b1d1dc21"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-06000/camera-34/materials.npz": {
+      "bytes": 763111,
+      "sha256": "62ac1097ab0088af52b413fa466dcbadb06936bfeaf751ef4dff2051a87c94f3"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-06000/camera-45/materials.npz": {
+      "bytes": 1204639,
+      "sha256": "9fac99643b94a9cf2176baa4d6d1ae100b9037f5c1dce0520c907e0600accb50"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-06000/camera-50/materials.npz": {
+      "bytes": 806629,
+      "sha256": "f7cdb3eb424f7d7946b3af80c50dcbd5aa88220d3cfd479937b0858eeb78f0e8"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-08000/camera-0/materials.npz": {
+      "bytes": 1377465,
+      "sha256": "929eab3d4ba3d2d2dcf11bed9edfadd64ed250a0204f092d257fd366f8e4a7d4"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-08000/camera-1/materials.npz": {
+      "bytes": 1255502,
+      "sha256": "6c0dfdef500e3a4a03d9dc456b5221601de178b532bbe20d502a2fd0bfc70b57"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-08000/camera-28/materials.npz": {
+      "bytes": 1472306,
+      "sha256": "40382cd4579ca1c5855f60223c4bccf6dbe63bc4e6279fe79428afe1bfb6a46d"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-08000/camera-34/materials.npz": {
+      "bytes": 762182,
+      "sha256": "01b7afabfc1dfa4dbce8bb3920da2942e4b42151f1a58e4e1bf861c409efaa7b"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-08000/camera-45/materials.npz": {
+      "bytes": 1203627,
+      "sha256": "fd1a9e9fe8820106ac21b9e54f1a79da07e39f67959101958db59508af9dddc3"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-08000/camera-50/materials.npz": {
+      "bytes": 805602,
+      "sha256": "1cadbacdf64ffca137f02f4eabb6743c59b7f528343ae8cfbcbd574cd8ea4247"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-10000/camera-0/materials.npz": {
+      "bytes": 1376156,
+      "sha256": "ddcb7270e2895645d0b9d9fdfd8a66c83824e2f4536900a9db655295b4761083"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-10000/camera-1/materials.npz": {
+      "bytes": 1254021,
+      "sha256": "dce7767ce9164bf6c6377adb66f85e730f29d61f34a834be5ef143f9b2614efd"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-10000/camera-28/materials.npz": {
+      "bytes": 1470567,
+      "sha256": "4e9f1a722d4040c6f88f3c624aea615846ccba74495ef60a5b9857b089ce655b"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-10000/camera-34/materials.npz": {
+      "bytes": 761961,
+      "sha256": "2e35953d142b6bae3494ce7035da30def55410e6112feb117d74f252d467d542"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-10000/camera-45/materials.npz": {
+      "bytes": 1202627,
+      "sha256": "dc402433d56dbb5a7d51e956ff3b4a9ff345bf3305dba2fe63448e3409e79bad"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/step-10000/camera-50/materials.npz": {
+      "bytes": 805234,
+      "sha256": "3eb95fb7326fd0166ce795864426309dc0c8f2556a6611545f97a1a76fa1273c"
+    }
+  },
+  "native_output_identity_count": 898,
+  "original_records": {
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4-authorization.json": {
+      "bytes": 6625,
+      "path": "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4-authorization.json",
+      "sha256": "0ffbfe579480c40333428a2ca5dc75457c3e55ebac9c746071caa6c8d8ee0a5b"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11-console.txt": {
+      "bytes": 0,
+      "path": "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11-console.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11-exit-code.txt": {
+      "bytes": 2,
+      "path": "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11-exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/recovery.json": {
+      "bytes": 221939,
+      "path": "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/D11/recovery.json",
+      "sha256": "7c100558a0016720cd98a0f139c562d26d64e389528928fbe5dd19795deca70b"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/authorization.json": {
+      "bytes": 6625,
+      "path": "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/authorization.json",
+      "sha256": "0ffbfe579480c40333428a2ca5dc75457c3e55ebac9c746071caa6c8d8ee0a5b"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/freeze.json": {
+      "bytes": 58013,
+      "path": "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4/freeze.json",
+      "sha256": "398afa45464dd403e5242ef67fa8e4c4b8e2e070283588bfd9ece91c96b6f57d"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/recovery.json": {
+      "bytes": 220553,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/recovery.json",
+      "sha256": "760de22fb899edc1b6c641c0977da62d78dcf87f28386d6c15fd380b87e6f783"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/recovery.json": {
+      "bytes": 219403,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/recovery.json",
+      "sha256": "70cf281b3b2698eb461c00b731f524ddddcc76a04d3df20d9a94bd81e5bc5ff6"
+    }
+  },
+  "protocol": "donut-kurt-log-euclidean-tensor-d11-v1",
+  "saved_analysis": {
+    "analysis.json": {
+      "bytes": 213739,
+      "path": "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4-analysis-v1/analysis.json",
+      "sha256": "63105ce85f2f176afbfd471912feb676029f217902058335f349314c6bca4504"
+    },
+    "endpoint-metrics.csv": {
+      "bytes": 49649,
+      "path": "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4-analysis-v1/endpoint-metrics.csv",
+      "sha256": "04b7f1fe36f31de59305ebd87cbd52f7f437deb17755335ca374d7ddc90a1dca"
+    },
+    "per-camera-metrics.csv": {
+      "bytes": 97793,
+      "path": "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4-analysis-v1/per-camera-metrics.csv",
+      "sha256": "fa9539979120a48e2a1130528d954a55ea4afe211724d3896e30d98442f76a5b"
+    },
+    "recovery-curves.png": {
+      "bytes": 156472,
+      "path": "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4-analysis-v1/recovery-curves.png",
+      "sha256": "6242e380a2f96a37b67b338704cc703aed501083df6bb255c3194652f44e7466"
+    }
+  },
+  "schema_version": 1,
+  "tracked_result_files": {
+    "analysis.json": {
+      "bytes": 213739,
+      "sha256": "63105ce85f2f176afbfd471912feb676029f217902058335f349314c6bca4504"
+    },
+    "endpoint-metrics.csv": {
+      "bytes": 49649,
+      "sha256": "04b7f1fe36f31de59305ebd87cbd52f7f437deb17755335ca374d7ddc90a1dca"
+    },
+    "held-out-views.png": {
+      "bytes": 231948,
+      "sha256": "63d08fcb3f5c7cbbb63155411c302802b32c281ff7fc4dfef0a4ad4f0fc8e2c0"
+    },
+    "per-camera-metrics.csv": {
+      "bytes": 97793,
+      "sha256": "fa9539979120a48e2a1130528d954a55ea4afe211724d3896e30d98442f76a5b"
+    },
+    "recovery-curves.png": {
+      "bytes": 156472,
+      "sha256": "6242e380a2f96a37b67b338704cc703aed501083df6bb255c3194652f44e7466"
+    }
+  },
+  "verification": {
+    "camera_endpoints": 108,
+    "checkpoint_loads_in_offline_analysis": 0,
+    "frozen_sources": 340,
+    "matched_optimizer_returns": 10000,
+    "native_cleanup_attested": true
+  }
+}
