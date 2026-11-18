@@ -13,7 +13,7 @@ import traceback
 from types import SimpleNamespace
 import numpy as np
 
-from benchmarks.donut_recovery_v1 import (TRAINING, TRAIN_LIMITS as LIMITS, SHADER,
+from benchmarks.donut_recovery_v1 import (ABLATION_ARMS, TRAINING, TRAIN_LIMITS as LIMITS, SHADER,
     POLICY, PANEL, SPLITS, SIZE, COLOR, METALLIC, WIDTHS, inputs, numeric, unit,
     physical_errors, surface_frames, runtime, verify_freeze, json_new)
 from infrastructure.signatures import require
@@ -35,20 +35,36 @@ def illumination_preview(path, light):
 
 
 def shader_lighting(shader, original_shader, arm, calibrated=None):
-    """The existing callback supplies native direct light for D2 and D3.
+    """Use the native direct light, with the D3 calibration in D3 and D4.
 
     Both arms retain the identical validated zero_bounce_v1 configuration.
     No modification to corrected-core, network capacity or BRDF is required.
     """
-    require(arm in ('D1','D2','D3') and shader.cfg['indirect_mode']=='zero_bounce_v1',
+    require(arm in ('D1','D2','D3',*ABLATION_ARMS) and shader.cfg['indirect_mode']=='zero_bounce_v1',
             'Matched direct-only acquisition required')
     if arm=='D1':return nullcontext()
-    if arm=='D3':
+    if arm in ('D3','D4'):
         require(calibrated is not None and shader.cfg['outer_light_version']=='direction',
-                'D3 requires the calibrated directional environment')
+                'Calibrated arm requires a calibrated directional environment')
         return shader.environment(calibrated, 'donut-D3-calibrated-directional-MLP-zero-indirect-v1')
     return shader.environment(lambda p,d:original_shader.predict_outer_lights(shader,p,d),
                               'donut-D2-native-directional-MLP-zero-indirect-v1')
+
+
+def training_objective(photo, material_prior, diffuse_white, *, include_diffuse_white):
+    loss = photo + material_prior
+    return loss + diffuse_white if include_diffuse_white else loss
+
+
+def calibration_mean_record(grid_light, weights, definition):
+    realized_mean = (grid_light * weights[..., None]).sum(axis=(0, 1))
+    target = definition['mean_linear_RGB']
+    mean_error = abs(realized_mean - target)
+    require(np.isfinite(grid_light).all() and (grid_light >= 0).all() and
+            (mean_error <= definition['absolute_mean_tolerance']).all(),
+            'Exported environment violates the calibrated grid mean')
+    return dict(target_mean_RGB=target, realized_mean_RGB=realized_mean.tolist(),
+                absolute_error=mean_error.tolist())
 
 
 def benchmark(root, expected):
@@ -82,9 +98,13 @@ def benchmark(root, expected):
 def train(args):
     freeze,auth=runtime(args,args.phase)
     import os
-    d3=freeze.get('calibrated_training') if args.phase=='D3' else None
-    limits=d3['limits'] if d3 else LIMITS
-    protocol=d3['protocol'] if d3 else TRAINING
+    ablation=freeze.get('diffuse_white_ablation') if args.phase in ABLATION_ARMS else None
+    bound=ablation or (freeze.get('calibrated_training') if args.phase=='D3' else None)
+    calibration=bound['calibration'] if args.phase in ('D3','D4') else None
+    limits=ablation['limits'][args.phase] if ablation else (bound['limits'] if bound else LIMITS)
+    protocol=bound['protocol'] if bound else TRAINING
+    include_diffuse_white=ablation is None
+    probe_diffuse_white=args.phase in ('D3',*ABLATION_ARMS)
     require(auth.get('researcher_admitted_dataset') is True and auth.get('benchmark_generation_sha256')==args.benchmark_sha256
         and os.statvfs(args.benchmark).f_flag&os.ST_RDONLY, 'Separate explicit dataset admission/training approval required')
     generation,data=benchmark(args.benchmark,args.benchmark_sha256)
@@ -92,13 +112,13 @@ def train(args):
             'Reference does not match the explicitly bound generation freeze')
     geometry,_,records=inputs(args.oracle,args.cameras)
     expected_initial=None
-    if args.phase in ('D2','D3'):
+    if args.phase in ('D2','D3',*ABLATION_ARMS):
         require(args.initial is not None and digest(args.initial)==args.initial_sha256 and
             os.statvfs(args.initial).f_flag&os.ST_RDONLY,'Explicit immutable initialization anchor required')
-        if d3:
-            require(args.initial_sha256==d3['initial_sha256'] and
-                    args.benchmark_sha256==d3['benchmark_generation_sha256'],
-                    'D3 initialization or dataset differs from the freeze')
+        if bound:
+            require(args.initial_sha256==bound['initial_sha256'] and
+                    args.benchmark_sha256==bound['benchmark_generation_sha256'],
+                    'Initialization or dataset differs from the freeze')
         expected_initial=json.loads(args.initial.read_text())
     args.output.mkdir();(args.output/'runtime/cache').mkdir(parents=True);started=time.monotonic()
     report=dict(schema_version=1,protocol=protocol,status='incomplete',arm=args.phase,
@@ -108,10 +128,14 @@ def train(args):
         effective_lighting=('known analytic L2' if args.phase=='D1' else 'original A directional outer_light MLP'),
         indirect_illumination='identically zero in D1/D2',research_G_handoff_admitted=False,
         counters=dict(shader_calls=0,shadow_rays=0,component_reverse_sweeps=0))
-    if d3:
+    if bound:
+        report.update(indirect_illumination='identically zero', initialization_anchor_sha256=args.initial_sha256)
+    if ablation:
+        report.update(diffuse_white_in_objective=False, diffuse_white_diagnostic_coefficient=POLICY['diffuse_white_prior'],
+                      optimization_terms=['RGB_loss','material_prior'], mean_calibration=calibration is not None)
+    if calibration:
         report.update(effective_lighting='original A directional outer_light MLP with fixed spherical mean RGB',
-                      indirect_illumination='identically zero', calibration=d3['calibration'],
-                      initialization_anchor_sha256=args.initial_sha256)
+                      calibration=calibration)
         report['counters'].update(calibration_evaluations=0, calibration_directions=0)
         timing = report['calibration_timing'] = {
             stage: dict(setup_wall_seconds=0., grid_forward_and_reduction_CUDA_seconds=0.)
@@ -160,7 +184,7 @@ def train(args):
         json_new(args.output/'initial.json',initial);report['initial']=initial
         material_names=('feats_network','mx_predictor','my_predictor','rotation_predictor','kd_predictor','metallic_predictor')
         for name,p in shader.named_parameters():
-            p.requires_grad_(name.split('.')[0] in material_names or (args.phase in ('D2','D3') and name.startswith('outer_light.')))
+            p.requires_grad_(name.split('.')[0] in material_names or (args.phase!='D1' and name.startswith('outer_light.')))
         report['trainable_parameters']={name:sum(p.numel() for n,p in shader.named_parameters() if p.requires_grad and n.startswith(name+'.'))
             for name in (*material_names,'outer_light','inner_light')}
         require(all(report['trainable_parameters'][name]>0 for name in material_names),'Full native material field required')
@@ -168,13 +192,13 @@ def train(args):
                 'Original full material capacity changed')
         def tensor(x):return torch.as_tensor(x,dtype=torch.float32,device='cuda')
         calibrated = None
-        if d3:
+        if calibration:
             from benchmarks.donut_calibration_d3 import CalibratedEnvironment, quadrature
             calibration_dirs, calibration_weights = quadrature()
             calibrated = CalibratedEnvironment(
                 lambda points, directions: field.MCShadingNetwork.predict_outer_lights(shader, points, directions),
                 tensor(calibration_dirs.reshape(-1,3)), tensor(calibration_weights.reshape(-1,1)),
-                tensor(d3['calibration']['mean_linear_RGB']), torch)
+                tensor(calibration['mean_linear_RGB']), torch)
 
         def calibration_scope(evaluation):
             if calibrated is None:
@@ -205,7 +229,7 @@ def train(args):
         gate=compatibility(np.stack(captures),reference,abs(reference-coarse),POLICY['compatibility_absolute'],POLICY['compatibility_relative'])
         np.savez_compressed(args.output/'native-reference-gate.npz',native_draws=np.stack(captures),reference=reference,coarse=coarse,pixel_indices=first['pixel_indices'][ix])
         report['native_reference_gate']=gate
-        if d3:
+        if bound:
             report['native_reference_gate_lighting']='known L2, same compatibility control as D1/D2'
         progress()
         require(gate['passed'],'Native/reference compatibility or precision gate failed before optimization')
@@ -224,13 +248,9 @@ def train(args):
             destination=args.output/('step-%05d'%step);destination.mkdir()
             metrics={};shader.eval()
             with evaluation_scope(shader,torch,np),torch.no_grad(),native_tensor_default(torch),calibration_scope(True):
-                if d3:
+                if calibration:
                     grid_light = calibrated.grid_radiance().cpu().numpy().reshape(*calibration_dirs.shape)
-                    mean = (grid_light * calibration_weights[...,None]).sum(axis=(0,1))
-                    mean_error = abs(mean - d3['calibration']['mean_linear_RGB'])
-                    require(np.isfinite(grid_light).all() and (grid_light >= 0).all() and
-                            (mean_error <= d3['calibration']['absolute_mean_tolerance']).all(),
-                            'D3 exported environment violates the calibrated grid mean')
+                    calibration_record = calibration_mean_record(grid_light, calibration_weights, calibration)
                 for camera,d in data.items():
                     indices=np.flatnonzero(d['shader_valid']);chunks=[]
                     for start in range(0,len(indices),512):
@@ -248,10 +268,10 @@ def train(args):
                         dict(kd=3,mx=1,my=1,metallic=1,rotation=2,rotation_raw=2,tangents=3,bitangents=3,normals=3,
                              linear_rgb=3,linear_diffuse=3,linear_specular=3).items()}
                     standard_error=np.zeros((SIZE*SIZE,3,3),np.float32)
-                    for ids,physical,mean,se in chunks:
+                    for ids,physical,render_mean,se in chunks:
                         pixels=d['pixel_indices'][ids]
                         for key,value in physical.items():arrays[key].reshape(-1,value.shape[-1])[pixels]=value
-                        for k,key in enumerate(('linear_rgb','linear_diffuse','linear_specular')):arrays[key].reshape(-1,3)[pixels]=mean[:,k]
+                        for k,key in enumerate(('linear_rgb','linear_diffuse','linear_specular')):arrays[key].reshape(-1,3)[pixels]=render_mean[:,k]
                         standard_error[pixels]=se
                     # Preserve geometric mask separately from one-sided BRDF domain.
                     mask=np.zeros(SIZE*SIZE,bool);mask[d['pixel_indices'][indices]]=True;mask=mask.reshape(SIZE,SIZE)
@@ -290,8 +310,8 @@ def train(args):
                     oracle_mean_squared=float(truth_delta.square().sum((-1,-2)).mean()),new_loss=False)
                 y,x=np.mgrid[:128,:256];phi=(x+.5)/256*2*np.pi;theta=(y+.5)/128*np.pi
                 directions=np.stack([np.sin(theta)*np.cos(phi),np.sin(theta)*np.sin(phi),np.cos(theta)],-1)
-                if d3:
-                    require(np.array_equal(directions, calibration_dirs), 'D3 export grid differs from calibration')
+                if calibration:
+                    require(np.array_equal(directions, calibration_dirs), 'Export grid differs from calibration')
                     light = grid_light
                 else:
                     light=shader.predict_outer_lights(tensor(np.zeros((32768,3))),tensor(directions.reshape(-1,3))).cpu().numpy().reshape(128,256,3)
@@ -306,10 +326,9 @@ def train(args):
                     mean_spherical=((light*weight).sum((0,1))/weight.sum()).tolist(),
                     relative_L2=float(np.sqrt(((light-truth_light)**2*weight).sum()/max((truth_light**2*weight).sum(),1e-15))),
                     indirect='exactly zero',mode=report['effective_lighting'],preview=preview)
-                if d3:
-                    metrics['illumination']['calibration'] = dict(
-                        target_mean_RGB=d3['calibration']['mean_linear_RGB'], realized_mean_RGB=mean.tolist(),
-                        absolute_error=mean_error.tolist(), raw_mean_RGB=calibrated.raw_mean.cpu().tolist(),
+                if calibration:
+                    metrics['illumination']['calibration'] = dict(calibration_record,
+                        raw_mean_RGB=calibrated.raw_mean.cpu().tolist(),
                         scale_RGB=calibrated.scale.cpu().tolist())
                 json_new(destination/'metrics.json',metrics)
             shader.train();report['saved_endpoints'].append(dict(step=step,metrics=metrics))
@@ -330,16 +349,19 @@ def train(args):
                         photo=renderer.NeROMaterialRenderer.compute_rgb_loss(SimpleNamespace(cfg={'rgb_loss':'charbonier'}),o['linear_rgb'],tensor(pool['linear_components'][selected,2])).mean()
                         reg=shader.anisotropic_regularization(pp,nn,o['tangents'],o['bitangents'],o['mx'],o['my'],o['metallic'],o['kd'],o['f_d'],o['f_s_sum'],o['L_spec'],o['rotation'],o['rotation_raw'],step).mean()
                         white=renderer.NeROMaterialRenderer.compute_diffuse_light_regularization(SimpleNamespace(cfg={'reg_diffuse_light_lambda':.01}),o['diffuse_light']).mean()
-                        loss=photo+reg+white
-                        require(bool(torch.isfinite(loss)),'Nonfinite joint loss')
+                        loss=training_objective(photo,reg,white,include_diffuse_white=include_diffuse_white)
+                        require(bool(torch.isfinite(loss) & torch.isfinite(white)),
+                                'Nonfinite joint loss or diffuse-white diagnostic')
                         row=dict(completed_updates=step+1,lr=lr,RGB_loss=float(photo.detach()),material_prior=float(reg.detach()),
                             diffuse_white_prior=float(white.detach()),kd_mean=o['kd'].detach().mean(0).cpu().tolist(),
                             metallic_mean=float(o['metallic'].detach().mean()),diffuse_allocation=o['f_d'].detach().mean(0).cpu().tolist(),
                             mx_mean=float(o['mx'].detach().mean()),my_mean=float(o['my'].detach().mean()))
+                        if ablation:
+                            row['optimization_loss']=float(loss.detach())
                         if step==0 or (step+1)%2000==0:
                             energy,spec=legacy_energy_specular(o['f_d'],o['f_s_sum'],o['L_spec'],.05,.05,torch)
                             terms=dict(photo=photo,material=reg,energy=energy,specular=spec)
-                            if d3:
+                            if probe_diffuse_white:
                                 terms['diffuse_white']=white
                             budget('component_reverse_sweeps',len(terms))
                             named=[(n,p) for n,p in shader.named_parameters() if p.requires_grad]
@@ -351,7 +373,7 @@ def train(args):
                             if name.startswith(group+'.') and p.grad is not None)**.5 for group in (*material_names,'outer_light','inner_light')}
                         require(all(any(name.startswith(group+'.') and p.grad is not None for name,p in shader.named_parameters())
                             for group in material_names),'A material predictor has no gradient')
-                        require(args.phase not in ('D2','D3') or any(name.startswith('outer_light.') and p.grad is not None
+                        require(args.phase=='D1' or any(name.startswith('outer_light.') and p.grad is not None
                             for name,p in shader.named_parameters()),'Learned direct light is disconnected')
                         norm=torch.nn.utils.clip_grad_norm_(shader.parameters(),.7);row['preclip_gradient_l2']=float(norm)
                         require(bool(torch.isfinite(norm)), 'Nonfinite total gradient norm')
@@ -382,10 +404,12 @@ def train(args):
                             del loaded,saved
                             evaluate(step+1)
                 require(report['optimizer_returns']==10000,'Incomplete recovery history')
-                if d3:
-                    require(all(report['counters'][key]==limits[key] for key in
-                                ('calibration_evaluations','calibration_directions','component_reverse_sweeps')),
-                            'Incomplete D3 calibration or diagnostic accounting')
+                if probe_diffuse_white:
+                    measured=('component_reverse_sweeps',)
+                    if calibration:
+                        measured+=('calibration_evaluations','calibration_directions')
+                    require(all(report['counters'][key]==limits[key] for key in measured),
+                            'Incomplete calibration or diagnostic accounting')
             return {}
         run_with_cleanup(work,torch)
         report['cleanup_verified']=True

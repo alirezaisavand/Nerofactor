@@ -1,0 +1,41 @@
+{
+  "CPU_tests": {
+    "errors": 0,
+    "exit_code": 0,
+    "failures": 0,
+    "junit_sha256": "f1ee2f13e4184c1e87bfa85543daf0b5fe19e1d39b8350649a0974d2b63838cc",
+    "skipped": 0,
+    "tests": 46
+  },
+  "D2_report_sha256": "35fa32f3482d25be793286de56185aafc7c41d94739fd454f076ef6437f3a490",
+  "D3_output_identities_rehashed": 890,
+  "D3_report_sha256": "11125309f8fe468f0ef1006124c85c1ebbf93f41be9d60cd3837d8a0611f0ff3",
+  "arm_order": [
+    "D4",
+    "D5"
+  ],
+  "authorized_launches": 0,
+  "checks": {
+    "D4_D5_metadata_preflight": "pass",
+    "arm_order_and_included_white_rejected": true,
+    "fresh_batch_absent": true,
+    "frozen_scientific_settings_match": true,
+    "host_and_arm_receipt_gates": "pass in synthetic fixtures",
+    "shell_syntax": "pass"
+  },
+  "dataset_admission_sha256": "02e4f7ca909de6b7c2c9fa2a2e291850a9bff190b426e319daf82e3ecdb82c9e",
+  "dataset_generation_sha256": "2052306bdf87a0beaa0a3f9b0bddeeb12d787f1d65357d520b5ce2fe0a33ee64",
+  "freeze_sha256": "1e0f78d52a171e048b3f5a7f453a6a5655c47e31814f92d9eba28d1f47f279aa",
+  "frozen_source_identities": 296,
+  "host_batch": "/home/isavand/paper/evidence/donut-kurt-diffuse-white-ablation-25c58aa9eb94402aba940efc6f28194a",
+  "initial_sha256": "0407da2d23f545004a5505e475d497ba2c41760988048d2ff09654e18b5ab6a9",
+  "reference_artifact_identities": 31,
+  "schema_version": 1,
+  "scientific_execution": {
+    "geometry_rays": 0,
+    "native_model_calls": 0,
+    "optimizer_returns": 0,
+    "shader_calls": 0
+  },
+  "status": "pending_explicit_D4_D5_execution_approval"
+}

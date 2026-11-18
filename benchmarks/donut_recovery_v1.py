@@ -11,6 +11,8 @@ from infrastructure.verified_ray_backend import CORRECTED_IMAGE as IMAGE
 
 REFERENCE = 'donut-kurt-reference-v1'
 TRAINING = 'donut-kurt-recovery-v1'
+ABLATION = 'donut-kurt-diffuse-white-ablation-v1'
+ABLATION_ARMS = ('D4', 'D5')
 SIZE = 128
 GRIDS = (256, 512)
 COLOR = [0.10804546, 1.0, 0.03044616]
@@ -206,6 +208,18 @@ def verify_freeze(path, expected):
         require(d3['protocol']==PROTOCOL and d3['calibration']==CALIBRATION and
                 d3['limits']==dict(TRAIN_LIMITS, **NEW_LIMITS),
                 'Frozen D3 calibration or work limits differ')
+    if 'diffuse_white_ablation' in f:
+        from benchmarks.donut_calibration_d3 import CALIBRATION, NEW_LIMITS
+        ablation = f['diffuse_white_ablation']
+        require('calibrated_training' not in f and ablation['protocol'] == ABLATION
+                and ablation['arms'] == list(ABLATION_ARMS)
+                and ablation['calibration'] == CALIBRATION
+                and ablation['diffuse_white_in_objective'] is False
+                and ablation['wall_seconds'] == TRAIN_LIMITS['wall_seconds']
+                and ablation['limits'] == {
+                    'D4': dict(TRAIN_LIMITS, **dict(NEW_LIMITS, wall_seconds=TRAIN_LIMITS['wall_seconds'])),
+                    'D5': dict(TRAIN_LIMITS, component_reverse_sweeps=30),
+                }, 'Frozen diffuse-white ablation or work limits differ')
     for name,sha in f['sources'].items():
         p=ROOT/name;require(p.resolve()==p and ROOT in p.parents and digest(p)==sha,'Frozen source changed: '+name)
     baseline('material',PINS['material'])
@@ -218,7 +232,10 @@ def runtime(args, phase):
     a=json.loads(args.authorization.read_text());limits=f['reference_limits'] if phase=='reference' else TRAIN_LIMITS
     reference_protocol=f.get('reference_protocol',REFERENCE)
     d3=f.get('calibrated_training')
+    ablation=f.get('diffuse_white_ablation')
     require((phase=='D3')==(d3 is not None), 'D3 requires its dedicated execution freeze')
+    require((phase in ABLATION_ARMS)==(ablation is not None),
+            'D4/D5 require their dedicated execution freeze')
     protocol=reference_protocol if phase=='reference' else TRAINING
     if phase=='D3':
         protocol,limits=d3['protocol'],d3['limits']
@@ -228,6 +245,17 @@ def runtime(args, phase):
                 and a.get('initial_sha256')==d3['initial_sha256']
                 and a.get('selected_gpu')=='0' and a.get('maximum_execution_launches')==1,
                 'D3 authorization differs from the frozen dataset, initial state or launch')
+    if ablation:
+        protocol,limits=ablation['protocol'],ablation['limits']
+        require(a.get('host_output_directory')==f['host_ablation_output']
+                and a.get('benchmark_generation_sha256')==ablation['benchmark_generation_sha256']
+                and a.get('dataset_admission_sha256')==ablation['dataset_admission_sha256']
+                and a.get('initial_sha256')==ablation['initial_sha256']
+                and a.get('arms')==list(ABLATION_ARMS)
+                and a.get('output_directories')=={arm:'/outputs/'+arm for arm in ABLATION_ARMS}
+                and a.get('wall_seconds')==ablation['wall_seconds']
+                and a.get('selected_gpu')=='0' and a.get('maximum_execution_launches')==1,
+                'D4/D5 authorization differs from the frozen dataset, initial state or batch')
     require(digest(args.authorization)==args.authorization_sha256 and a.get('approved') is True and
         a.get('protocol')==protocol and a.get('commit')==args.commit and
         a.get('freeze_sha256')==args.freeze_sha256 and a.get('image_id')==args.image_id==IMAGE and

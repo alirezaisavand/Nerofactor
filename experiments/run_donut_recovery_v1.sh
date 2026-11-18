@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # Exactly one approved reference or training batch, foreground only.
 set -euo pipefail
-: "${DONUT_SOURCE:?}" "${DONUT_ORACLE:?}" "${DONUT_CAMERAS:?}" "${DONUT_BATCH:?}" "${DONUT_AUTH:?}" "${DONUT_GPU:?}" "${DONUT_PHASE:?reference, training or calibrated}"
+: "${DONUT_SOURCE:?}" "${DONUT_ORACLE:?}" "${DONUT_CAMERAS:?}" "${DONUT_BATCH:?}" "${DONUT_AUTH:?}" "${DONUT_GPU:?}" "${DONUT_PHASE:?reference, training, calibrated or ablation}"
 DONUT_IMAGE=sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331
 DONUT_COMMIT=$(git -C "$DONUT_SOURCE" rev-parse HEAD)
 test -z "$(git -C "$DONUT_SOURCE" status --porcelain)"
 DONUT_FREEZE_NAME=${DONUT_FREEZE_NAME:-DONUT_KURT_RECOVERY_V1.freeze.json}
-case "$DONUT_FREEZE_NAME" in DONUT_KURT_RECOVERY_V1.freeze.json|DONUT_KURT_REFERENCE_V2.freeze.json|DONUT_KURT_RECOVERY_V2.freeze.json|DONUT_KURT_CALIBRATED_D3_V1.freeze.json) ;; *) exit 2 ;; esac
+case "$DONUT_FREEZE_NAME" in DONUT_KURT_RECOVERY_V1.freeze.json|DONUT_KURT_REFERENCE_V2.freeze.json|DONUT_KURT_RECOVERY_V2.freeze.json|DONUT_KURT_CALIBRATED_D3_V1.freeze.json|DONUT_KURT_DIFFUSE_WHITE_ABLATION_V1.freeze.json) ;; *) exit 2 ;; esac
 DONUT_FREEZE=$(sha256sum "$DONUT_SOURCE/docs/protocols/$DONUT_FREEZE_NAME" | cut -d' ' -f1)
 DONUT_AUTH_SHA=$(sha256sum "$DONUT_AUTH" | cut -d' ' -f1)
 python3 -B - "$DONUT_SOURCE" "$DONUT_AUTH" "$DONUT_BATCH" "$DONUT_PHASE" "$DONUT_COMMIT" "$DONUT_FREEZE" "$DONUT_IMAGE" "$DONUT_GPU" "$DONUT_FREEZE_NAME" "${DONUT_BENCHMARK:-}" "${DONUT_INITIAL:-}" <<'PY'
@@ -14,28 +14,35 @@ import hashlib
 import json,sys
 from pathlib import Path
 sys.path.insert(0,sys.argv[1])
-from benchmarks.donut_recovery_v1 import REFERENCE,TRAINING,REFERENCE_LIMITS,TRAIN_LIMITS,verify_freeze
+from benchmarks.donut_recovery_v1 import ABLATION_ARMS,REFERENCE,TRAINING,TRAIN_LIMITS,verify_freeze
 from infrastructure.signatures import require
 a=json.loads(Path(sys.argv[2]).read_text());batch=Path(sys.argv[3]);phase=sys.argv[4]
-require(phase in ('reference','training','calibrated'),'Explicit phase required')
+require(phase in ('reference','training','calibrated','ablation'),'Explicit phase required')
 f=verify_freeze(Path(sys.argv[1])/'docs/protocols'/sys.argv[9],sys.argv[6])
 d3=f.get('calibrated_training')
+ablation=f.get('diffuse_white_ablation')
 require((phase=='calibrated')==(d3 is not None),'D3 requires its dedicated execution freeze')
+require((phase=='ablation')==(ablation is not None),'D4/D5 require their dedicated execution freeze')
 protocol=f.get('reference_protocol',REFERENCE) if phase=='reference' else TRAINING
 limits=f['reference_limits'] if phase=='reference' else TRAIN_LIMITS
-if d3:
- protocol,limits=d3['protocol'],d3['limits']
+bound=d3 or ablation
+if bound:
+ protocol,limits=bound['protocol'],bound['limits']
+ arms=ABLATION_ARMS if ablation else ('D3',)
+ if ablation:
+  require(a.get('arms')==list(arms) and a.get('wall_seconds')==ablation['wall_seconds'],
+   'D4/D5 order or outer watchdog differs')
  def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
  benchmark=Path(sys.argv[10]);initial=Path(sys.argv[11])
  require(benchmark.is_absolute() and benchmark.resolve()==benchmark and
-  digest(benchmark/'generation.json')==a.get('benchmark_generation_sha256')==d3['benchmark_generation_sha256'] and
-  initial.is_absolute() and initial.resolve()==initial and digest(initial)==a.get('initial_sha256')==d3['initial_sha256'],
-  'D3 dataset or initialization anchor differs')
+  digest(benchmark/'generation.json')==a.get('benchmark_generation_sha256')==bound['benchmark_generation_sha256'] and
+  initial.is_absolute() and initial.resolve()==initial and digest(initial)==a.get('initial_sha256')==bound['initial_sha256'],
+  'Dataset or initialization anchor differs')
  admission=Path(a['dataset_admission_path'])
- require(admission.is_absolute() and digest(admission)==a.get('dataset_admission_sha256')==d3['dataset_admission_sha256'] and
+ require(admission.is_absolute() and digest(admission)==a.get('dataset_admission_sha256')==bound['dataset_admission_sha256'] and
   json.loads(admission.read_text()).get('researcher_admitted_dataset') is True and
   a.get('researcher_admitted_dataset') is True and a.get('maximum_execution_launches')==1 and
-  a.get('output_directories')=={'D3':'/outputs/D3'}, 'D3 admission or one-launch authorization differs')
+  a.get('output_directories')=={arm:'/outputs/'+arm for arm in arms}, 'Admission or one-launch authorization differs')
 require(a.get('approved') is True and a.get('protocol')==protocol and a.get('limits')==limits and
  a.get('commit')==sys.argv[5] and a.get('freeze_sha256')==sys.argv[6] and a.get('image_id')==sys.argv[7] and
  a.get('selected_gpu')==sys.argv[8]=='0' and a.get('host_output_directory')==str(batch)==f['host_'+phase+'_output'], 'Exact separate approval required')
@@ -67,6 +74,10 @@ if test "$DONUT_PHASE" = calibrated; then
  : "${DONUT_BENCHMARK:?}" "${DONUT_INITIAL:?}"
  arms=(D3);seconds=3600;inner=3540
 fi
+if test "$DONUT_PHASE" = ablation; then
+ : "${DONUT_BENCHMARK:?}" "${DONUT_INITIAL:?}"
+ arms=(D4 D5);seconds=3600;inner=3540
+fi
 for arm in "${arms[@]}"; do
  extra=();mounts=()
  if test "$DONUT_PHASE" = reference && test "$DONUT_FREEZE_NAME" = DONUT_KURT_REFERENCE_V2.freeze.json; then
@@ -88,7 +99,7 @@ PY
    mounts+=(--mount "type=bind,src=$DONUT_BATCH/D1/initial.json,dst=/inputs/initial.json,readonly")
   fi
  fi
- if test "$arm" = D3; then
+ if [[ "$arm" == D3 || "$arm" == D4 || "$arm" == D5 ]]; then
   INITIAL_SHA=$(sha256sum "$DONUT_INITIAL" | cut -d' ' -f1)
   extra+=(--initial /inputs/initial.json --initial-sha256 "$INITIAL_SHA")
   mounts+=(--mount "type=bind,src=$DONUT_INITIAL,dst=/inputs/initial.json,readonly")
@@ -131,6 +142,15 @@ if arm=='D3':
  f=json.loads((p.parent/'freeze.json').read_text())['calibrated_training']
  assert r['protocol']==f['protocol'] and r['initialization_anchor_sha256']==f['initial_sha256']
  assert all(r['counters'][k]==f['limits'][k] for k in ('calibration_evaluations','calibration_directions','component_reverse_sweeps'))
+if arm in ('D4','D5'):
+ f=json.loads((p.parent/'freeze.json').read_text())['diffuse_white_ablation']
+ a=json.loads((p.parent/'authorization.json').read_text())
+ assert r['protocol']==f['protocol'] and r['initialization_anchor_sha256']==f['initial_sha256']
+ assert r['commit']==a['commit'] and r['freeze_sha256']==a['freeze_sha256']
+ assert r['diffuse_white_in_objective'] is False and r['mean_calibration']==(arm=='D4')
+ assert r['counters']['component_reverse_sweeps']==f['limits'][arm]['component_reverse_sweeps']
+ for key in ('calibration_evaluations','calibration_directions'):
+  assert r['counters'].get(key,0)==f['limits'][arm].get(key,0)
 PY
 done
 trap - EXIT

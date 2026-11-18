@@ -1,5 +1,17 @@
 # Research and development rules
 
+## Donut D4/D5 diffuse-white ablation
+
+Use accepted D2/D3 outputs as immutable controls. Add only D4 (calibrated light)
+and D5 (free light). Both omit the existing diffuse-white term from the actual
+objective while reporting its original weighted value and counterfactual gradient.
+Preserve the admitted reference, exact fresh state, sampling, all other priors,
+optimizer and 10,000 updates per arm. Correct the calibrated-mean metadata field
+for future runs without editing D3 evidence. See
+docs/protocols/DONUT_KURT_DIFFUSE_WHITE_ABLATION_V1.md. A separate approval must
+bind the source/freeze and one new D4-then-D5 batch before native execution.
+No control reruns, new geometry or reference work, tuning, retries or extensions.
+
 ## Donut D3 calibrated illumination
 
 Use the accepted D1/D2 outputs from cce13b5795f1818434abfdfc096be7f87469ccad
