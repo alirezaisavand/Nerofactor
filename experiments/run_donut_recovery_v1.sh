@@ -6,10 +6,10 @@ DONUT_IMAGE=sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45
 DONUT_COMMIT=$(git -C "$DONUT_SOURCE" rev-parse HEAD)
 test -z "$(git -C "$DONUT_SOURCE" status --porcelain)"
 DONUT_FREEZE_NAME=${DONUT_FREEZE_NAME:-DONUT_KURT_RECOVERY_V1.freeze.json}
-case "$DONUT_FREEZE_NAME" in DONUT_KURT_RECOVERY_V1.freeze.json|DONUT_KURT_REFERENCE_V2.freeze.json|DONUT_KURT_RECOVERY_V2.freeze.json|DONUT_KURT_CALIBRATED_D3_V1.freeze.json|DONUT_KURT_DIFFUSE_WHITE_ABLATION_V1.freeze.json|DONUT_KURT_SURFACE_Q_D6_V1.freeze.json|DONUT_KURT_SURFACE_CHART_D7_V1.freeze.json|DONUT_KURT_SURFACE_CHART_D7_V2.freeze.json|DONUT_KURT_PAIRED_TENSOR_D8_V1.freeze.json|DONUT_KURT_PAIRED_TENSOR_D9_V1.freeze.json) ;; *) exit 2 ;; esac
+case "$DONUT_FREEZE_NAME" in DONUT_KURT_RECOVERY_V1.freeze.json|DONUT_KURT_REFERENCE_V2.freeze.json|DONUT_KURT_RECOVERY_V2.freeze.json|DONUT_KURT_CALIBRATED_D3_V1.freeze.json|DONUT_KURT_DIFFUSE_WHITE_ABLATION_V1.freeze.json|DONUT_KURT_SURFACE_Q_D6_V1.freeze.json|DONUT_KURT_SURFACE_CHART_D7_V1.freeze.json|DONUT_KURT_SURFACE_CHART_D7_V2.freeze.json|DONUT_KURT_PAIRED_TENSOR_D8_V1.freeze.json|DONUT_KURT_PAIRED_TENSOR_D9_V1.freeze.json|DONUT_KURT_LOG_TENSOR_D11_V1.freeze.json) ;; *) exit 2 ;; esac
 DONUT_FREEZE=$(sha256sum "$DONUT_SOURCE/docs/protocols/$DONUT_FREEZE_NAME" | cut -d' ' -f1)
 DONUT_AUTH_SHA=$(sha256sum "$DONUT_AUTH" | cut -d' ' -f1)
-python3 -B - "$DONUT_SOURCE" "$DONUT_AUTH" "$DONUT_BATCH" "$DONUT_PHASE" "$DONUT_COMMIT" "$DONUT_FREEZE" "$DONUT_IMAGE" "$DONUT_GPU" "$DONUT_FREEZE_NAME" "${DONUT_BENCHMARK:-}" "${DONUT_INITIAL:-}" <<'PY'
+python3 -B - "$DONUT_SOURCE" "$DONUT_AUTH" "$DONUT_BATCH" "$DONUT_PHASE" "$DONUT_COMMIT" "$DONUT_FREEZE" "$DONUT_IMAGE" "$DONUT_GPU" "$DONUT_FREEZE_NAME" "${DONUT_BENCHMARK:-}" "${DONUT_INITIAL:-}" "${DONUT_D11_INITIAL:-}" <<'PY'
 import hashlib
 import json,sys
 from pathlib import Path
@@ -54,7 +54,13 @@ if bound:
   a.get('output_directories')=={arm:'/outputs/'+arm for arm in arms}, 'Admission or one-launch authorization differs')
  if paired:
   require(a.get('arms')==list(arms) and a.get('wall_seconds')==limits['wall_seconds'] and
-   a.get('representation')==paired['representation'],'Tensor paired arm order, policy or watchdog differs')
+   a.get('representation')==paired['representation'],'Tensor arm order, policy or watchdog differs')
+  if arms==('D11',):
+   from benchmarks import donut_log_tensor_d11 as d11
+   d11.verify_initial_controls(Path(sys.argv[12]),paired['D8_T_initial_controls'])
+   require(sys.argv[12]==paired['D8_T_initial_host_path'] and
+    a.get('spatial_regularizer')==d11.LOSS_ID and a.get('coefficient_sha256')==paired['coefficient_sha256'] and
+    a.get('D8_T_initial_controls')==paired['D8_T_initial_controls'], 'Exact D11 objective and initialization required')
  if d7 or paired:
   from infrastructure.stage_sources import digest as file_digest
   require(benchmark==Path(bound['benchmark_host_path']) and initial==Path(bound['initial_host_path']) and
@@ -106,6 +112,10 @@ if test "$DONUT_PHASE" = tensor; then
  : "${DONUT_BENCHMARK:?}" "${DONUT_INITIAL:?}"
  arms=(D8-C D8-T);seconds=3600;inner=3540
  if test "$DONUT_FREEZE_NAME" = DONUT_KURT_PAIRED_TENSOR_D9_V1.freeze.json; then arms=(D9-C D9-T); fi
+ if test "$DONUT_FREEZE_NAME" = DONUT_KURT_LOG_TENSOR_D11_V1.freeze.json; then
+  arms=(D11)
+  : "${DONUT_D11_INITIAL:?}"
+ fi
 fi
 for arm in "${arms[@]}"; do
  extra=();mounts=()
@@ -128,10 +138,15 @@ PY
    mounts+=(--mount "type=bind,src=$DONUT_BATCH/D1/initial.json,dst=/inputs/initial.json,readonly")
   fi
  fi
- if [[ "$arm" == D3 || "$arm" == D4 || "$arm" == D5 || "$arm" == D6 || "$arm" == D7 || "$arm" == D8-C || "$arm" == D8-T || "$arm" == D9-C || "$arm" == D9-T ]]; then
+ if [[ "$arm" == D3 || "$arm" == D4 || "$arm" == D5 || "$arm" == D6 || "$arm" == D7 || "$arm" == D8-C || "$arm" == D8-T || "$arm" == D9-C || "$arm" == D9-T || "$arm" == D11 ]]; then
   INITIAL_SHA=$(sha256sum "$DONUT_INITIAL" | cut -d' ' -f1)
   extra+=(--initial /inputs/initial.json --initial-sha256 "$INITIAL_SHA")
   mounts+=(--mount "type=bind,src=$DONUT_INITIAL,dst=/inputs/initial.json,readonly")
+ fi
+ if test "$arm" = D11; then
+  for name in initial.json paired-initial-gate.npz; do
+   mounts+=(--mount "type=bind,src=$DONUT_D11_INITIAL/$name,dst=/inputs/d11-initial/$name,readonly")
+  done
  fi
  DONUT_OWNED_CID="$DONUT_BATCH/$arm.cid"
  set +e
@@ -180,7 +195,7 @@ if arm in ('D4','D5'):
  assert r['counters']['component_reverse_sweeps']==f['limits'][arm]['component_reverse_sweeps']
  for key in ('calibration_evaluations','calibration_directions'):
   assert r['counters'].get(key,0)==f['limits'][arm].get(key,0)
-if arm in ('D6','D7','D8-C','D8-T','D9-C','D9-T'):
+if arm in ('D6','D7','D8-C','D8-T','D9-C','D9-T','D11'):
  key={'D6':'surface_q_training','D7':'surface_chart_training'}.get(arm,'tensor_training')
  f=json.loads((p.parent/'freeze.json').read_text())[key]
  a=json.loads((p.parent/'authorization.json').read_text())
@@ -196,7 +211,11 @@ if arm in ('D6','D7','D8-C','D8-T','D9-C','D9-T'):
   assert arm in f['arms']
   assert r['D6_domain_parity_verified'] is True and r['paired_initial_gate']['passed'] is True
   assert r['representation']==f['representation']
-  assert r['optimization_terms']==['RGB_loss','material_prior','diffuse_white_prior','surface_q_loss']
+  term='surface_log_q_loss' if arm=='D11' else 'surface_q_loss'
+  assert r['optimization_terms']==['RGB_loss','material_prior','diffuse_white_prior',term]
+  if arm=='D11':
+   assert r['D8_T_initial_state_verified'] is True and r['D8_T_initial_capture_verified'] is True
+   assert r['spatial_regularizer']==f['spatial_regularizer'] and r['coefficient_sha256']==f['coefficient_sha256']
   assert [o['step'] for o in r['saved_endpoints']]==[0,2000,4000,6000,8000,10000]
  keys=('component_reverse_sweeps','surface_q_batches','surface_q_pairs','surface_q_predictor_calls','surface_q_predictor_points')
  assert all(r['counters'][key]==f['limits'][key] for key in keys)

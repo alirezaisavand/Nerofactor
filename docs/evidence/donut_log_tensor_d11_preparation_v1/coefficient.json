@@ -1,0 +1,643 @@
+{
+  "archived_training_gradient_context": [
+    {
+      "photo": {
+        "gradient_l2": 0.27141016721725464,
+        "groups": {
+          "feats_network": 0.005393203813582659,
+          "kd_predictor": 0.11112283915281296,
+          "metallic_predictor": 0.055735599249601364,
+          "mx_predictor": 0.0035041100345551968,
+          "my_predictor": 0.0022422114852815866,
+          "outer_light": 0.24116846919059753,
+          "rotation_predictor": 0.000319138343911618
+        },
+        "weighted_loss": 0.3144223690032959
+      },
+      "step": 1,
+      "surface_q": {
+        "gradient_l2": 1.4110164859443275e-12,
+        "groups": {
+          "feats_network": 0.0,
+          "kd_predictor": 0.0,
+          "metallic_predictor": 0.0,
+          "mx_predictor": 1.3067758680707087e-13,
+          "my_predictor": 3.1445001767368974e-13,
+          "outer_light": 0.0,
+          "rotation_predictor": 1.369310697815762e-12
+        },
+        "weighted_loss": 1.9720480457270486e-17
+      }
+    },
+    {
+      "photo": {
+        "gradient_l2": 0.009243890643119812,
+        "groups": {
+          "feats_network": 0.0015047912020236254,
+          "kd_predictor": 0.00027590931858867407,
+          "metallic_predictor": 0.002155764726921916,
+          "mx_predictor": 0.0012884666211903095,
+          "my_predictor": 0.0022630952298641205,
+          "outer_light": 0.008424350991845131,
+          "rotation_predictor": 0.0008427570573985577
+        },
+        "weighted_loss": 0.04009736329317093
+      },
+      "step": 2000,
+      "surface_q": {
+        "gradient_l2": 5.201808744459413e-05,
+        "groups": {
+          "feats_network": 1.5205699128273409e-05,
+          "kd_predictor": 0.0,
+          "metallic_predictor": 0.0,
+          "mx_predictor": 8.270822945632972e-06,
+          "my_predictor": 4.890118361799978e-05,
+          "outer_light": 0.0,
+          "rotation_predictor": 3.864720383717213e-06
+        },
+        "weighted_loss": 7.392146017082268e-06
+      }
+    },
+    {
+      "photo": {
+        "gradient_l2": 0.11924714595079422,
+        "groups": {
+          "feats_network": 0.10050051659345627,
+          "kd_predictor": 0.0015844155568629503,
+          "metallic_predictor": 0.006407147739082575,
+          "mx_predictor": 0.03458195552229881,
+          "my_predictor": 0.04370404779911041,
+          "outer_light": 0.031127329915761948,
+          "rotation_predictor": 0.001048527774401009
+        },
+        "weighted_loss": 0.03375934064388275
+      },
+      "step": 4000,
+      "surface_q": {
+        "gradient_l2": 0.0030870966147631407,
+        "groups": {
+          "feats_network": 0.0027345134876668453,
+          "kd_predictor": 0.0,
+          "metallic_predictor": 0.0,
+          "mx_predictor": 0.0008895061910152435,
+          "my_predictor": 0.0011228728108108044,
+          "outer_light": 0.0,
+          "rotation_predictor": 2.317096368642524e-05
+        },
+        "weighted_loss": 4.129681838094257e-05
+      }
+    },
+    {
+      "photo": {
+        "gradient_l2": 0.06913504749536514,
+        "groups": {
+          "feats_network": 0.05854947119951248,
+          "kd_predictor": 0.0002226471115136519,
+          "metallic_predictor": 0.004135412629693747,
+          "mx_predictor": 0.023420965299010277,
+          "my_predictor": 0.025508426129817963,
+          "outer_light": 0.011616343632340431,
+          "rotation_predictor": 0.0005490663461387157
+        },
+        "weighted_loss": 0.03283752501010895
+      },
+      "step": 6000,
+      "surface_q": {
+        "gradient_l2": 0.0006036310223862529,
+        "groups": {
+          "feats_network": 0.000529247394297272,
+          "kd_predictor": 0.0,
+          "metallic_predictor": 0.0,
+          "mx_predictor": 0.0001661745918681845,
+          "my_predictor": 0.0002379787911195308,
+          "outer_light": 0.0,
+          "rotation_predictor": 4.43675935457577e-06
+        },
+        "weighted_loss": 9.967369805963244e-06
+      }
+    },
+    {
+      "photo": {
+        "gradient_l2": 0.06255505234003067,
+        "groups": {
+          "feats_network": 0.05053605139255524,
+          "kd_predictor": 0.00039179757004603744,
+          "metallic_predictor": 0.00311500346288085,
+          "mx_predictor": 0.020753957331180573,
+          "my_predictor": 0.0259292870759964,
+          "outer_light": 0.01568605564534664,
+          "rotation_predictor": 0.0005278940661810338
+        },
+        "weighted_loss": 0.03287094831466675
+      },
+      "step": 8000,
+      "surface_q": {
+        "gradient_l2": 0.0023749645333737135,
+        "groups": {
+          "feats_network": 0.0021324092522263527,
+          "kd_predictor": 0.0,
+          "metallic_predictor": 0.0,
+          "mx_predictor": 0.0007906489772722125,
+          "my_predictor": 0.0006842011935077608,
+          "outer_light": 0.0,
+          "rotation_predictor": 5.5630489441682585e-06
+        },
+        "weighted_loss": 2.7851854611071758e-05
+      }
+    },
+    {
+      "photo": {
+        "gradient_l2": 0.023757001385092735,
+        "groups": {
+          "feats_network": 0.015143935568630695,
+          "kd_predictor": 0.00022632034961134195,
+          "metallic_predictor": 0.0020102811977267265,
+          "mx_predictor": 0.00638799462467432,
+          "my_predictor": 0.006086668930947781,
+          "outer_light": 0.015904858708381653,
+          "rotation_predictor": 0.00038128579035401344
+        },
+        "weighted_loss": 0.032591357827186584
+      },
+      "step": 10000,
+      "surface_q": {
+        "gradient_l2": 0.0026070435997098684,
+        "groups": {
+          "feats_network": 0.002393902512267232,
+          "kd_predictor": 0.0,
+          "metallic_predictor": 0.0,
+          "mx_predictor": 0.0006625993992201984,
+          "my_predictor": 0.0007912806468084455,
+          "outer_light": 0.0,
+          "rotation_predictor": 2.727072933339514e-05
+        },
+        "weighted_loss": 2.8382737582433037e-05
+      }
+    }
+  ],
+  "artifacts": {
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/recovery.json": {
+      "bytes": 220553,
+      "sha256": "760de22fb899edc1b6c641c0977da62d78dcf87f28386d6c15fd380b87e6f783"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-02000/camera-0/materials.npz": {
+      "bytes": 1387093,
+      "sha256": "4d5825a6ae1c571bb3ebd6209ebc4f7133c4518d4a6059a7abce2955bd4579e5"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-02000/camera-1/materials.npz": {
+      "bytes": 1265074,
+      "sha256": "ba728772b05e349dad064336d50042a4d634ed6fb76a0c4a21262372544fd4c1"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-02000/camera-45/materials.npz": {
+      "bytes": 1213131,
+      "sha256": "e0aa2899a326ba701126cacd55c2fab8aa52ee1dded5f37ef63da46f82b029c2"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-02000/camera-50/materials.npz": {
+      "bytes": 812704,
+      "sha256": "5646048c3cc594dd05945334dcd138c1fa340a540d77e5fa36d074fb9fe39d01"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-04000/camera-0/materials.npz": {
+      "bytes": 1381167,
+      "sha256": "9efb83807d191d3186dfea279a7068e53adf9131978d7180f20e601751c369e0"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-04000/camera-1/materials.npz": {
+      "bytes": 1259306,
+      "sha256": "43bfbad2732a1676c3b42e6fd029052a06af31ce997b391a7b8b180abaa08642"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-04000/camera-45/materials.npz": {
+      "bytes": 1206382,
+      "sha256": "359651a2c90e71163136191cd90dd8ea30981f58353a2ef95b8908ed54691129"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-04000/camera-50/materials.npz": {
+      "bytes": 808284,
+      "sha256": "52bea05631b0d9b0c0cd4d61df256bd7f3af5cf272b3a3a95f53c67ecb8a7c42"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-06000/camera-0/materials.npz": {
+      "bytes": 1378688,
+      "sha256": "f9dc7753d770b2bb43e212bf604efffb68c2b7f328c41fa79ce91ea5961e4b59"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-06000/camera-1/materials.npz": {
+      "bytes": 1257192,
+      "sha256": "c1d1148d644a39dcc9e4b841006da4092e0d10d4128b26d1bb91b26e54fb1f36"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-06000/camera-45/materials.npz": {
+      "bytes": 1204605,
+      "sha256": "c58f703003723a2f971cce43bcaf16f99c4fdebf4bb8e563917dd6c942336521"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-06000/camera-50/materials.npz": {
+      "bytes": 806471,
+      "sha256": "a00e2055a19af87da6c6f7737d31c1c498c49bc82ae1d496cf448e672ea98a35"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-08000/camera-0/materials.npz": {
+      "bytes": 1377698,
+      "sha256": "66515c4c47815ac89c3905e296cfe60488c4e070e9b26073231d70dc3e967055"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-08000/camera-1/materials.npz": {
+      "bytes": 1255665,
+      "sha256": "130e3a739f80bb67d0e25fd5225a2acd74df28c98fa7d8c07cd4b178ddf2b7fc"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-08000/camera-45/materials.npz": {
+      "bytes": 1203416,
+      "sha256": "53db9cf1526e56b5c299aee98b96c453e261877804e20357d7873e6c628d1e34"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-08000/camera-50/materials.npz": {
+      "bytes": 805617,
+      "sha256": "3d40988ebbc87d9839ce21c703f5b34665bb86517b82dda67a34fcb1d38c0cb3"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-10000/camera-0/materials.npz": {
+      "bytes": 1375897,
+      "sha256": "dc5cac0eec6490a94504dcc49c523489b1e08ebeaf12645ff2902ec84ae412c8"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-10000/camera-1/materials.npz": {
+      "bytes": 1254038,
+      "sha256": "9a90868e4be0e3c24c1e8102324ac370b37fcb37e768f67d2d087834f5329f75"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-10000/camera-45/materials.npz": {
+      "bytes": 1202107,
+      "sha256": "a68839fc933bf56e0b15e1ca4cb5149772faa0d51147dd94c52b233b54992404"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-10000/camera-50/materials.npz": {
+      "bytes": 805161,
+      "sha256": "abdad1d218ff0bc686c7f60ec9882afd2ab5ce7dbb6de7627680a8ab52ac7f23"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/surface-q-domain.npz": {
+      "bytes": 2137477,
+      "sha256": "d9eff6b38acbd165b24846187a413e95799c340b297f786e62704d9073df79cf"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/training.jsonl": {
+      "bytes": 8911489,
+      "sha256": "bd15d04079d3c2edcc55b54749d08ee9277dd3a21bd10627609862f9be37062f"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-reference-v2-262b3cfcf73340a0867829c48c0198f7/reference/generation.json": {
+      "bytes": 35030,
+      "sha256": "2052306bdf87a0beaa0a3f9b0bddeeb12d787f1d65357d520b5ce2fe0a33ee64"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-reference-v2-262b3cfcf73340a0867829c48c0198f7/reference/view-0.npz": {
+      "bytes": 2026910,
+      "sha256": "edc97f6b5e98053ba840fe8e454ea59fbc3b9a532ff4bcf5e9a1f28609f946f2"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-reference-v2-262b3cfcf73340a0867829c48c0198f7/reference/view-1.npz": {
+      "bytes": 1844821,
+      "sha256": "579f799622946050acac9e18b1ba7e93f9a680acfc51730450d2f94cf4ed4078"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-reference-v2-262b3cfcf73340a0867829c48c0198f7/reference/view-45.npz": {
+      "bytes": 1763242,
+      "sha256": "2e4c8cf1b6e2fee7661c29d70192da2d9270a1f41b255ff4728d063c72038d48"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-reference-v2-262b3cfcf73340a0867829c48c0198f7/reference/view-50.npz": {
+      "bytes": 1167321,
+      "sha256": "b7793a0b5cf761e3682dcf17c1555364fab6fce10e65f19247bda6ce9bfc934b"
+    }
+  },
+  "base_coefficient": 0.05,
+  "coefficient": 7.12783964832624e-05,
+  "fitting_pairs_across_checkpoints": 55075,
+  "geometry_proxy": "Right/down pixel neighbors on the same face or a D6 training edge; chord distance and 15 degree normal gate.",
+  "policy": "Match pooled RMS per-pair physical tangent-Q Frobenius gradient under the D6 distance factor.",
+  "pooled_rms_log": 97.77154734869964,
+  "pooled_rms_raw": 0.13937998233405352,
+  "rows": [
+    {
+      "camera": 0,
+      "log": {
+        "gradient_square_sum": 2276652.001243319,
+        "mean": 0.02781511615344738,
+        "median": 0.015938165182326262
+      },
+      "pairs": 2861,
+      "raw": {
+        "gradient_square_sum": 6.595192923473459,
+        "mean": 9.377352243731085e-05,
+        "median": 1.226534724875994e-05
+      },
+      "step": 2000,
+      "weighted_log_mean": 1.982616877413419e-06,
+      "weighted_raw_mean": 4.688676121865543e-06
+    },
+    {
+      "camera": 0,
+      "log": {
+        "gradient_square_sum": 35808285.79920682,
+        "mean": 0.23412034993806077,
+        "median": 0.04231797520416258
+      },
+      "pairs": 2861,
+      "raw": {
+        "gradient_square_sum": 109.15470115561469,
+        "mean": 0.0013541580405199058,
+        "median": 0.00018834155428695994
+      },
+      "step": 4000,
+      "weighted_log_mean": 1.6687723127685235e-05,
+      "weighted_raw_mean": 6.77079020259953e-05
+    },
+    {
+      "camera": 0,
+      "log": {
+        "gradient_square_sum": 69811691.07903203,
+        "mean": 0.26191163190425876,
+        "median": 0.03409152912175598
+      },
+      "pairs": 2861,
+      "raw": {
+        "gradient_square_sum": 59.52734659511626,
+        "mean": 0.0007436802635442684,
+        "median": 0.0001301906941583344
+      },
+      "step": 6000,
+      "weighted_log_mean": 1.8668641142450035e-05,
+      "weighted_raw_mean": 3.718401317721342e-05
+    },
+    {
+      "camera": 0,
+      "log": {
+        "gradient_square_sum": 95120252.62823005,
+        "mean": 0.35450287313901846,
+        "median": 0.03422567898363761
+      },
+      "pairs": 2861,
+      "raw": {
+        "gradient_square_sum": 152.61824649070164,
+        "mean": 0.0019227927267843842,
+        "median": 0.00012941261719120846
+      },
+      "step": 8000,
+      "weighted_log_mean": 2.526839634605863e-05,
+      "weighted_raw_mean": 9.613963633921921e-05
+    },
+    {
+      "camera": 0,
+      "log": {
+        "gradient_square_sum": 110559547.7930496,
+        "mean": 0.3898789214388855,
+        "median": 0.0362618315667731
+      },
+      "pairs": 2861,
+      "raw": {
+        "gradient_square_sum": 185.08927794698496,
+        "mean": 0.0023058013288458127,
+        "median": 0.00014257022668608848
+      },
+      "step": 10000,
+      "weighted_log_mean": 2.7789944342787593e-05,
+      "weighted_raw_mean": 0.00011529006644229064
+    },
+    {
+      "camera": 50,
+      "log": {
+        "gradient_square_sum": 1465267.9632998733,
+        "mean": 0.0348824490939597,
+        "median": 0.0053842804522636995
+      },
+      "pairs": 2372,
+      "raw": {
+        "gradient_square_sum": 20.263883863378183,
+        "mean": 0.0002413761331325508,
+        "median": 5.031402441193478e-05
+      },
+      "step": 2000,
+      "weighted_log_mean": 2.4863650368264766e-06,
+      "weighted_raw_mean": 1.206880665662754e-05
+    },
+    {
+      "camera": 50,
+      "log": {
+        "gradient_square_sum": 3759160.291927368,
+        "mean": 0.01876642018414528,
+        "median": 0.007886457079977604
+      },
+      "pairs": 2372,
+      "raw": {
+        "gradient_square_sum": 16.434958652248092,
+        "mean": 0.0002316064299111596,
+        "median": 3.8883049611303584e-05
+      },
+      "step": 4000,
+      "weighted_log_mean": 1.3376403384570055e-06,
+      "weighted_raw_mean": 1.158032149555798e-05
+    },
+    {
+      "camera": 50,
+      "log": {
+        "gradient_square_sum": 2488414.7677819165,
+        "mean": 0.016821181609900888,
+        "median": 0.006533923073354522
+      },
+      "pairs": 2372,
+      "raw": {
+        "gradient_square_sum": 12.379150769039889,
+        "mean": 0.00017421184657050298,
+        "median": 2.9756530205169995e-05
+      },
+      "step": 6000,
+      "weighted_log_mean": 1.1989868521074777e-06,
+      "weighted_raw_mean": 8.71059232852515e-06
+    },
+    {
+      "camera": 50,
+      "log": {
+        "gradient_square_sum": 2091175.7609955193,
+        "mean": 0.017290745674965295,
+        "median": 0.0063047171875646926
+      },
+      "pairs": 2372,
+      "raw": {
+        "gradient_square_sum": 13.034248199618155,
+        "mean": 0.00019545856519945183,
+        "median": 3.7098301694745056e-05
+      },
+      "step": 8000,
+      "weighted_log_mean": 1.232456625711431e-06,
+      "weighted_raw_mean": 9.772928259972591e-06
+    },
+    {
+      "camera": 50,
+      "log": {
+        "gradient_square_sum": 2329535.6667577117,
+        "mean": 0.017125184488739856,
+        "median": 0.006737737925377751
+      },
+      "pairs": 2372,
+      "raw": {
+        "gradient_square_sum": 13.885003369755717,
+        "mean": 0.00019598162434814026,
+        "median": 3.9212123347573905e-05
+      },
+      "step": 10000,
+      "weighted_log_mean": 1.2206556898374148e-06,
+      "weighted_raw_mean": 9.799081217407014e-06
+    },
+    {
+      "camera": 1,
+      "log": {
+        "gradient_square_sum": 2581698.7772134985,
+        "mean": 0.03349402851204934,
+        "median": 0.012880461279511049
+      },
+      "pairs": 2959,
+      "raw": {
+        "gradient_square_sum": 17.543619519603528,
+        "mean": 0.0001805830084687989,
+        "median": 3.532748482832757e-05
+      },
+      "step": 2000,
+      "weighted_log_mean": 2.3874006441035485e-06,
+      "weighted_raw_mean": 9.029150423439946e-06
+    },
+    {
+      "camera": 1,
+      "log": {
+        "gradient_square_sum": 14844506.828734588,
+        "mean": 0.08763879711206438,
+        "median": 0.012913839926072741
+      },
+      "pairs": 2959,
+      "raw": {
+        "gradient_square_sum": 45.91376612919392,
+        "mean": 0.0005250211176716351,
+        "median": 5.361144917051005e-05
+      },
+      "step": 4000,
+      "weighted_log_mean": 6.2467529278699165e-06,
+      "weighted_raw_mean": 2.6251055883581755e-05
+    },
+    {
+      "camera": 1,
+      "log": {
+        "gradient_square_sum": 26327752.054123603,
+        "mean": 0.09162546417203096,
+        "median": 0.010618897405017147
+      },
+      "pairs": 2959,
+      "raw": {
+        "gradient_square_sum": 23.46415555886553,
+        "mean": 0.00027335128291275374,
+        "median": 4.425759363971795e-05
+      },
+      "step": 6000,
+      "weighted_log_mean": 6.5309161632169775e-06,
+      "weighted_raw_mean": 1.3667564145637687e-05
+    },
+    {
+      "camera": 1,
+      "log": {
+        "gradient_square_sum": 35047915.54146761,
+        "mean": 0.1224276847661447,
+        "median": 0.010283536203023856
+      },
+      "pairs": 2959,
+      "raw": {
+        "gradient_square_sum": 57.911767975064514,
+        "mean": 0.0007452540554651788,
+        "median": 4.8147731587082586e-05
+      },
+      "step": 8000,
+      "weighted_log_mean": 8.726449055289126e-06,
+      "weighted_raw_mean": 3.726270277325894e-05
+    },
+    {
+      "camera": 1,
+      "log": {
+        "gradient_square_sum": 39753351.58327106,
+        "mean": 0.1325384432256421,
+        "median": 0.011393121415892911
+      },
+      "pairs": 2959,
+      "raw": {
+        "gradient_square_sum": 72.27958900358949,
+        "mean": 0.0009211502149954637,
+        "median": 5.254304412116771e-05
+      },
+      "step": 10000,
+      "weighted_log_mean": 9.44712770551168e-06,
+      "weighted_raw_mean": 4.605751074977319e-05
+    },
+    {
+      "camera": 45,
+      "log": {
+        "gradient_square_sum": 2291945.201406004,
+        "mean": 0.03271768730787262,
+        "median": 0.010941485528312665
+      },
+      "pairs": 2823,
+      "raw": {
+        "gradient_square_sum": 17.18439956967686,
+        "mean": 0.00018527099917237143,
+        "median": 3.3514768859597806e-05
+      },
+      "step": 2000,
+      "weighted_log_mean": 2.3320642879459467e-06,
+      "weighted_raw_mean": 9.263549958618572e-06
+    },
+    {
+      "camera": 45,
+      "log": {
+        "gradient_square_sum": 9581844.296311852,
+        "mean": 0.08018579472970155,
+        "median": 0.011852263440509474
+      },
+      "pairs": 2823,
+      "raw": {
+        "gradient_square_sum": 59.4746895763751,
+        "mean": 0.0007710746783633022,
+        "median": 6.292844287158557e-05
+      },
+      "step": 4000,
+      "weighted_log_mean": 5.7155148690691605e-06,
+      "weighted_raw_mean": 3.8553733918165114e-05
+    },
+    {
+      "camera": 45,
+      "log": {
+        "gradient_square_sum": 18081927.705721676,
+        "mean": 0.08283825679831452,
+        "median": 0.010507226230327267
+      },
+      "pairs": 2823,
+      "raw": {
+        "gradient_square_sum": 30.8000055476576,
+        "mean": 0.00038587132171787573,
+        "median": 4.854690459248243e-05
+      },
+      "step": 6000,
+      "weighted_log_mean": 5.90457811205257e-06,
+      "weighted_raw_mean": 1.9293566085893787e-05
+    },
+    {
+      "camera": 45,
+      "log": {
+        "gradient_square_sum": 24203085.20635729,
+        "mean": 0.11470225435389031,
+        "median": 0.010158599524360415
+      },
+      "pairs": 2823,
+      "raw": {
+        "gradient_square_sum": 74.77776674858696,
+        "mean": 0.0010480923084491352,
+        "median": 5.426886443920745e-05
+      },
+      "step": 8000,
+      "weighted_log_mean": 8.175792763360605e-06,
+      "weighted_raw_mean": 5.2404615422456765e-05
+    },
+    {
+      "camera": 45,
+      "log": {
+        "gradient_square_sum": 28053085.61693649,
+        "mean": 0.12153974695419843,
+        "median": 0.010926722333687846
+      },
+      "pairs": 2823,
+      "raw": {
+        "gradient_square_sum": 81.59811001537263,
+        "mean": 0.0011356807796783395,
+        "median": 5.4649858919119475e-05
+      },
+      "step": 10000,
+      "weighted_log_mean": 8.66315827187674e-06,
+      "weighted_raw_mean": 5.6784038983916976e-05
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Fitting prediction arrays and geometry only; archived probes describe network-gradient context."
+}

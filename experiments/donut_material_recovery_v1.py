@@ -18,6 +18,7 @@ from benchmarks.donut_recovery_v1 import (ABLATION_ARMS, TRAINING, TRAIN_LIMITS 
     physical_errors, surface_frames, runtime, verify_freeze, json_new)
 from benchmarks.donut_tensor_d8 import ARMS as D8_ARMS
 from benchmarks.donut_tensor_d9 import ARMS as D9_ARMS
+from benchmarks import donut_log_tensor_d11 as d11
 from infrastructure.signatures import require
 from infrastructure.stage_sources import PINS, activate, digest
 
@@ -42,7 +43,7 @@ def shader_lighting(shader, original_shader, arm, calibrated=None):
     Both arms retain the identical validated zero_bounce_v1 configuration.
     No modification to corrected-core, network capacity or BRDF is required.
     """
-    require(arm in ('D1','D2','D3','D6','D7',*D8_ARMS,*D9_ARMS,*ABLATION_ARMS) and shader.cfg['indirect_mode']=='zero_bounce_v1',
+    require(arm in ('D1','D2','D3','D6','D7',*D8_ARMS,*D9_ARMS,*d11.ARMS,*ABLATION_ARMS) and shader.cfg['indirect_mode']=='zero_bounce_v1',
             'Matched direct-only acquisition required')
     if arm=='D1':return nullcontext()
     if arm in ('D3','D4'):
@@ -103,9 +104,10 @@ def train(args):
     ablation=freeze.get('diffuse_white_ablation') if args.phase in ABLATION_ARMS else None
     chart=freeze.get('surface_chart_training') if args.phase=='D7' else None
     tensor_plan=freeze.get('tensor_training')
+    log_tensor=args.phase in d11.ARMS
     spatial=freeze.get('surface_q_training') or chart or tensor_plan
     parity_plan=chart or tensor_plan
-    spatial_name='surface_chart' if chart else 'surface_q'
+    spatial_name='surface_log_q' if log_tensor else ('surface_chart' if chart else 'surface_q')
     bound=spatial or ablation or (freeze.get('calibrated_training') if args.phase=='D3' else None)
     calibration=bound['calibration'] if args.phase in ('D3','D4') else None
     limits=ablation['limits'][args.phase] if ablation else (bound['limits'] if bound else LIMITS)
@@ -119,7 +121,7 @@ def train(args):
             'Reference does not match the explicitly bound generation freeze')
     geometry,_,records=inputs(args.oracle,args.cameras)
     expected_initial=None
-    if args.phase in ('D2','D3','D6','D7',*D8_ARMS,*D9_ARMS,*ABLATION_ARMS):
+    if args.phase in ('D2','D3','D6','D7',*D8_ARMS,*D9_ARMS,*d11.ARMS,*ABLATION_ARMS):
         require(args.initial is not None and digest(args.initial)==args.initial_sha256 and
             os.statvfs(args.initial).f_flag&os.ST_RDONLY,'Explicit immutable initialization anchor required')
         if bound:
@@ -127,6 +129,11 @@ def train(args):
                     args.benchmark_sha256==bound['benchmark_generation_sha256'],
                     'Initialization or dataset differs from the freeze')
         expected_initial=json.loads(args.initial.read_text())
+    if log_tensor:
+        initial_controls=Path('/inputs/d11-initial')
+        require(all(os.statvfs(initial_controls/name).f_flag & os.ST_RDONLY for name in d11.CONTROL_FILES),
+                'Immutable D8-T initialization controls required')
+        d11.verify_initial_controls(initial_controls, tensor_plan['D8_T_initial_controls'])
     args.output.mkdir();(args.output/'runtime/cache').mkdir(parents=True);started=time.monotonic()
     report=dict(schema_version=1,protocol=protocol,status='incomplete',arm=args.phase,
         commit=args.commit,freeze_sha256=args.freeze_sha256,benchmark_sha256=args.benchmark_sha256,
@@ -151,6 +158,9 @@ def train(args):
         report.update(representation=tensor_plan['representation'],
                       effective_regularization='legacy_scalar_energy_specular_white_plus_surface_Q_v1',
                       tensor_training_forward_CUDA_seconds=0.)
+    if log_tensor:
+        report.update(effective_regularization='legacy_scalar_energy_specular_white_plus_surface_log_Q_v1',
+                      spatial_regularizer=d11.LOSS_ID,coefficient_sha256=tensor_plan['coefficient_sha256'])
     if calibration:
         report.update(effective_lighting='original A directional outer_light MLP with fixed spherical mean RGB',
                       calibration=calibration)
@@ -209,9 +219,10 @@ def train(args):
         require(expected_initial is None or initial==expected_initial,'Full initial weights/buffers differ from the admitted anchor')
         sibling=None
         if tensor_plan:
-            counterpart=next(a for a in tensor_plan['arms'] if a!=args.phase)
+            representation='D8-T' if log_tensor else args.phase
+            counterpart='D8-C' if log_tensor else next(a for a in tensor_plan['arms'] if a!=args.phase)
             with torch.random.fork_rng(devices=[0]):
-                shader.select_tensor_representation(args.phase)
+                shader.select_tensor_representation(representation)
                 shader.cuda()
                 torch.manual_seed(POLICY['seed']);torch.cuda.manual_seed_all(POLICY['seed'])
                 sibling=shader_class(deepcopy(SHADER),trace).cuda()
@@ -220,6 +231,10 @@ def train(args):
                 sibling.cuda()
             initial=dict(common_base_state_sha256=initial['state_sha256'],state_sha256=state_hash(shader),
                          variant=shader.tensor_variant,seed=POLICY['seed'])
+        if log_tensor:
+            require(initial==json.loads((initial_controls/'initial.json').read_text()),
+                    'Fresh D11 weights or buffers differ from accepted D8-T')
+            report['D8_T_initial_state_verified']=True
         json_new(args.output/'initial.json',initial);report['initial']=initial
         material_names=('feats_network','mx_predictor','my_predictor','rotation_predictor','kd_predictor','metallic_predictor')
         for name,p in shader.named_parameters():
@@ -227,7 +242,7 @@ def train(args):
         report['trainable_parameters']={name:sum(p.numel() for n,p in shader.named_parameters() if p.requires_grad and n.startswith(name+'.'))
             for name in (*material_names,'outer_light','inner_light')}
         require(all(report['trainable_parameters'][name]>0 for name in material_names),'Full native material field required')
-        expected_count=1485584+((2*(256+2)) if args.phase in ('D8-T','D9-T') else 0)
+        expected_count=1485584+((2*(256+2)) if args.phase in ('D8-T','D9-T',*d11.ARMS) else 0)
         require(sum(report['trainable_parameters'][name] for name in material_names)==expected_count,
                 'Full material capacity differs from the frozen inventory')
         def tensor(x):return torch.as_tensor(x,dtype=torch.float32,device='cuda')
@@ -315,6 +330,9 @@ def train(args):
             if chart:
                 from benchmarks.donut_surface_chart_d7 import surface_chart_term
                 spatial_term=surface_chart_term
+            elif log_tensor:
+                from scientific_variants.donut_log_tensor_d11 import surface_log_q_term, world_log_tensor
+                spatial_term=surface_log_q_term
             elif tensor_plan:
                 from scientific_variants.donut_tensor_shader_d8 import tensor_surface_term
                 spatial_term=tensor_surface_term
@@ -407,11 +425,14 @@ def train(args):
                     np.savez_compressed(destination/('camera-%d-errors.npz'%camera),**errors,native_component_SE=standard_error,geometry_hit_mask=d['hit_mask'])
                 q=[]
                 diagnostic_widths=[]
+                diagnostic_log_q=[]
                 for pp,ff in zip(pair_points,pair_frames):
                     pn=tensor(ff['normals'])
                     if tensor_plan:
                         local,u,_,_=shader.predict_tensor(tensor(pp),pn)
                         q.append(tensor_math.world_tensor(local,u).to(pn.dtype))
+                        if log_tensor:
+                            diagnostic_log_q.append(world_log_tensor(local,u))
                         widths=tensor_math.export_axes(local,u)[:2]
                     else:
                         a=shader.predict_anisotropic_components(tensor(pp))
@@ -434,10 +455,19 @@ def train(args):
                     widths=np.stack(diagnostic_widths,axis=1)
                     squared=widths**2
                     gap=abs(squared[...,0]-squared[...,1])/squared.sum(axis=-1)
+                    log_diagnostic={}
+                    if log_tensor:
+                        transport=R.double()
+                        log_residual=diagnostic_log_q[0]-transport@diagnostic_log_q[1]@transport.transpose(-1,-2)
+                        log_square=log_residual.square().sum((-1,-2))
+                        require(bool(torch.isfinite(log_square).all()), 'Nonfinite reserved-edge log-Q')
+                        log_diagnostic['log_transported_square']=log_square.cpu().numpy()
+                        metrics['surface_log_Q_smoothness_diagnostic']=dict(pairs=len(pair_ix),
+                            predicted_mean_squared=float(log_square.mean()),used_for_training=False)
                     np.savez_compressed(destination/'surface-q-diagnostic.npz',pair_ids=pair_ix,
                         transported_square=delta.square().sum((-1,-2)).cpu().numpy(),
                         oracle_transported_square=truth_delta.square().sum((-1,-2)).cpu().numpy(),
-                        widths=widths,anisotropy_gap=gap,training_pair_counts=sampler.counts)
+                        widths=widths,anisotropy_gap=gap,training_pair_counts=sampler.counts,**log_diagnostic)
                 y,x=np.mgrid[:128,:256];phi=(x+.5)/256*2*np.pi;theta=(y+.5)/128*np.pi
                 directions=np.stack([np.sin(theta)*np.cos(phi),np.sin(theta)*np.sin(phi),np.cos(theta)],-1)
                 if calibration:
@@ -473,6 +503,13 @@ def train(args):
                         gate,capture=paired_initial_gate(shader,sibling,p,n,wo,tensor_plan['representation'])
                         np.savez_compressed(args.output/'paired-initial-gate.npz',**capture)
                         report['paired_initial_gate']=gate
+                        if log_tensor:
+                            archived=numeric(initial_controls/'paired-initial-gate.npz')
+                            require(capture.keys()==archived.keys() and
+                                    all(v.dtype==archived[k].dtype and np.array_equal(v,archived[k])
+                                        for k,v in capture.items()),
+                                    'D11 initial native RGB or physical field differs from D8-T capture')
+                            report['D8_T_initial_capture_verified']=True
                     progress()
                     require(gate['passed'],'Paired initial Q, scalar heads, light or RGB differ')
                     sibling=None

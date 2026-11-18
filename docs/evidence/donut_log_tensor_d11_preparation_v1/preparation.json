@@ -1,0 +1,42 @@
+{
+  "Docker_inspection": "permission denied on the local Docker socket; researcher-side launcher verifies immutable image",
+  "arm": "D11",
+  "coefficient": 7.12783964832624e-05,
+  "coefficient_sha256": "dfe63b089d48fcc38a79545c2b5ad60660084833d826e9eee81a2d1235e1b926",
+  "exact_initial_control_files": {
+    "initial.json": {
+      "bytes": 243,
+      "sha256": "52cd2d060e6033666f2911f203e68f43ce0a4fefc15b4a5f94206dde214147bd"
+    },
+    "paired-initial-gate.npz": {
+      "bytes": 7510,
+      "sha256": "610f8b074b17cf42f2109348a581bf0471235f21bf663fd852883f36566aa43a"
+    }
+  },
+  "focused_CPU_tests": {
+    "failed": 0,
+    "passed": 9,
+    "skipped": 0
+  },
+  "freeze_sha256": "398afa45464dd403e5242ef67fa8e4c4b8e2e070283588bfd9ece91c96b6f57d",
+  "historical_control_receipt_sha256": "760de22fb899edc1b6c641c0977da62d78dcf87f28386d6c15fd380b87e6f783",
+  "host_output": "/home/isavand/paper/evidence/donut-kurt-log-tensor-d11-b0f3eae54d4e4fe8a0803611e92c3fb4",
+  "preapproval_work": {
+    "checkpoint_deserializations": 0,
+    "native_model_calls": 0,
+    "optimizer_returns": 0,
+    "scientific_renders": 0
+  },
+  "protocol": "donut-kurt-log-euclidean-tensor-d11-v1",
+  "reference_artifacts": 31,
+  "schema_version": 1,
+  "source_identities": 340,
+  "status": "awaiting_explicit_execution_approval",
+  "verified_checks": [
+    "Python 3.8 grammar",
+    "Bash syntax",
+    "metadata-only entrypoint",
+    "byte-identical fitting coefficient replay",
+    "D6 and D8-T reserved-edge archive replay"
+  ]
+}
