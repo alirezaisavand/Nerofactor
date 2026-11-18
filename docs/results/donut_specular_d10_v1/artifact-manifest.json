@@ -1,0 +1,197 @@
+{
+  "additional_array_checks": {
+    "archived_coverage_reproduced": true,
+    "fixed_light_diffuse_components_bitwise_equal": true,
+    "ineligible_pixels_bitwise_equal_to_R1": {
+      "orientation_only": true,
+      "width_only": true
+    },
+    "orientation_eligible_counts": {
+      "foreground": 4799,
+      "ring": 468
+    }
+  },
+  "authorized_launch_record": {
+    "bytes": 923,
+    "path": "/home/isavand/paper/evidence/donut-specular-d10-b8858531c9634538809f8ecfe7ff1597-authorization.json",
+    "sha256": "cca2701ee35aaefafb4493b0ec1fe8ba43b6f68acd44969c748c72e5f8356a27"
+  },
+  "eligible_width_orientation_SSE_interactions": {
+    "foreground": {
+      "paired_MC_95_lower": [
+        0.0,
+        -3.8490576612114475,
+        -3.9174715540922582
+      ],
+      "paired_MC_95_upper": [
+        0.0,
+        -3.818102934293896,
+        -3.886334656192809
+      ],
+      "paired_MC_SE": [
+        0.0,
+        0.007745108068143488,
+        0.007790688633122709
+      ],
+      "value": [
+        0.0,
+        -3.833580297752672,
+        -3.9019031051425337
+      ]
+    },
+    "ring": {
+      "paired_MC_95_lower": [
+        0.0,
+        -1.973555038035348,
+        -2.0261662063904846
+      ],
+      "paired_MC_95_upper": [
+        0.0,
+        -1.9493478061114815,
+        -2.001809555007878
+      ],
+      "paired_MC_SE": [
+        0.0,
+        0.006056833509800784,
+        0.006094219394629036
+      ],
+      "value": [
+        0.0,
+        -1.9614514220734147,
+        -2.0139878806991813
+      ]
+    }
+  },
+  "frozen_source_files_verified": 339,
+  "generated_analysis": {
+    "analysis.json": {
+      "bytes": 118641,
+      "path": "/home/isavand/paper/evidence/donut-specular-d10-b8858531c9634538809f8ecfe7ff1597-analysis-v1/analysis.json",
+      "sha256": "36d193b5feb655fecc7664da7e7fb0403e4ec7f18a08fc0d59f7de9cc25fb269"
+    },
+    "camera28-attribution.png": {
+      "bytes": 822236,
+      "path": "/home/isavand/paper/evidence/donut-specular-d10-b8858531c9634538809f8ecfe7ff1597-analysis-v1/camera28-attribution.png",
+      "sha256": "90842fdff381d887a6c0bc476ca4e70b0bd769afc651837c5e40c09260b0fd6c"
+    }
+  },
+  "historical_inputs": {
+    "admission": {
+      "bytes": 8020,
+      "path": "/home/isavand/paper/evidence/donut-kurt-reference-v2-262b3cfcf73340a0867829c48c0198f7-admission.json",
+      "sha256": "02e4f7ca909de6b7c2c9fa2a2e291850a9bff190b426e319daf82e3ecdb82c9e"
+    },
+    "camera": {
+      "bytes": 86413,
+      "path": "/home/isavand/nero/data/nerf_synthetic/donut/transforms_train.json",
+      "sha256": "89fc7b8d05db69437f3654cac1a8c6e68a23cfb411c28703824e18f0fdcaa82a"
+    },
+    "checkpoint": {
+      "bytes": 27639236,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/checkpoint-10000.pth",
+      "sha256": "3e05bba92fbd120af9c4999b39ddb4b5ed3af7ae51e70776da2e4107820c7919"
+    },
+    "errors": {
+      "bytes": 256035,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-10000/camera-28-errors.npz",
+      "sha256": "920955fcd30b00e14f9f9ab09bc12952a81c9f517261aa08a1c9ebbbb60355f8"
+    },
+    "frames": {
+      "bytes": 804634,
+      "path": "/home/isavand/paper/evidence/donut-blend-inspection-v2/native-chart-orientation-reference.npz",
+      "sha256": "cc498faabe0b8b3e2ebf63a87a51d48316396b90e8650098cf19a559f442834c"
+    },
+    "generation": {
+      "bytes": 35030,
+      "path": "/home/isavand/paper/evidence/donut-kurt-reference-v2-262b3cfcf73340a0867829c48c0198f7/reference/generation.json",
+      "sha256": "2052306bdf87a0beaa0a3f9b0bddeeb12d787f1d65357d520b5ce2fe0a33ee64"
+    },
+    "geometry": {
+      "bytes": 2589411,
+      "path": "/home/isavand/paper/evidence/donut-blend-inspection-v2/oracle-geometry-and-frames.npz",
+      "sha256": "cfe903c177dfe404c47390aed2a3fa025ea9499ca0af644dba667b721c0139f1"
+    },
+    "maps": {
+      "bytes": 1470020,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-10000/camera-28/materials.npz",
+      "sha256": "e6d5481b34d8b74ff0a367991be4ce8d30108bf99dc1dae85257fab5fb122aa0"
+    },
+    "receipt": {
+      "bytes": 220553,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/recovery.json",
+      "sha256": "760de22fb899edc1b6c641c0977da62d78dcf87f28386d6c15fd380b87e6f783"
+    }
+  },
+  "native_batch": "/home/isavand/paper/evidence/donut-specular-d10-b8858531c9634538809f8ecfe7ff1597",
+  "native_commit": "b97d2dd84f03b01ba8e631b3bd0c24d3c2d87beb",
+  "protocol": "donut-specular-attribution-d10-v1",
+  "raw_evidence": {
+    "/home/isavand/paper/evidence/donut-specular-d10-b8858531c9634538809f8ecfe7ff1597/authorization.json": {
+      "bytes": 923,
+      "sha256": "cca2701ee35aaefafb4493b0ec1fe8ba43b6f68acd44969c748c72e5f8356a27"
+    },
+    "/home/isavand/paper/evidence/donut-specular-d10-b8858531c9634538809f8ecfe7ff1597/console.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/home/isavand/paper/evidence/donut-specular-d10-b8858531c9634538809f8ecfe7ff1597/exit-code.txt": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "/home/isavand/paper/evidence/donut-specular-d10-b8858531c9634538809f8ecfe7ff1597/freeze.json": {
+      "bytes": 47156,
+      "sha256": "e6d67d69fc13b373d5faa3c82b6db012d35e5501443b7c04044771e4c58f32b2"
+    },
+    "/home/isavand/paper/evidence/donut-specular-d10-b8858531c9634538809f8ecfe7ff1597/run/R1-archived-replay.npz": {
+      "bytes": 1284694,
+      "sha256": "bf2273facbb575071661feadab4c01514802339b978963652cdb30ac0d0d438e"
+    },
+    "/home/isavand/paper/evidence/donut-specular-d10-b8858531c9634538809f8ecfe7ff1597/run/R1.npz": {
+      "bytes": 10275728,
+      "sha256": "a493d6af059811d2c2608016b75fe623ba77d6855d1ade1a4ee3512ac73c1f14"
+    },
+    "/home/isavand/paper/evidence/donut-specular-d10-b8858531c9634538809f8ecfe7ff1597/run/R2.npz": {
+      "bytes": 10263231,
+      "sha256": "115d44ae9b1dab6881eb21b67da54653fea9aa9e782c1b1862fdfcade31c036a"
+    },
+    "/home/isavand/paper/evidence/donut-specular-d10-b8858531c9634538809f8ecfe7ff1597/run/R3.npz": {
+      "bytes": 10256866,
+      "sha256": "0d76d69bd002255f907cf2406546bbb3e50a03909058dcb51b55db314ec20b63"
+    },
+    "/home/isavand/paper/evidence/donut-specular-d10-b8858531c9634538809f8ecfe7ff1597/run/R4.npz": {
+      "bytes": 10244993,
+      "sha256": "0ba4e4c69611fd835d8b59d4214361861c96008243cba6ec1e191185f068a172"
+    },
+    "/home/isavand/paper/evidence/donut-specular-d10-b8858531c9634538809f8ecfe7ff1597/run/R5.npz": {
+      "bytes": 10247437,
+      "sha256": "f91d104ef2c82769935e58daa2b8615927c12c21ebbb9c4fd06dda48bacec071"
+    },
+    "/home/isavand/paper/evidence/donut-specular-d10-b8858531c9634538809f8ecfe7ff1597/run/orientation_only.npz": {
+      "bytes": 10274605,
+      "sha256": "c20edaf7e54f6c4d480101c56b979cb41d072ed86ef9bf3b3155f448f8cfcbea"
+    },
+    "/home/isavand/paper/evidence/donut-specular-d10-b8858531c9634538809f8ecfe7ff1597/run/panel.npz": {
+      "bytes": 8083,
+      "sha256": "0543c6ea25813cec26af9c630e6ed375638c82f901ba02d8a5b5c9018af4c844"
+    },
+    "/home/isavand/paper/evidence/donut-specular-d10-b8858531c9634538809f8ecfe7ff1597/run/render-receipt.json": {
+      "bytes": 3561,
+      "sha256": "46bb05cec05e7d590b5b5e18022891d04758c7a3fe79da9baf800098313e1651"
+    },
+    "/home/isavand/paper/evidence/donut-specular-d10-b8858531c9634538809f8ecfe7ff1597/run/width_only.npz": {
+      "bytes": 10269029,
+      "sha256": "3e89409af0b92350f7e45ecbaff8ba93e3aaeef548d85ab1fc19c4d15653bec7"
+    }
+  },
+  "schema_version": 1,
+  "tracked_copies": {
+    "analysis.json": {
+      "bytes": 118641,
+      "sha256": "36d193b5feb655fecc7664da7e7fb0403e4ec7f18a08fc0d59f7de9cc25fb269"
+    },
+    "camera28-attribution.png": {
+      "bytes": 822236,
+      "sha256": "90842fdff381d887a6c0bc476ca4e70b0bd769afc651837c5e40c09260b0fd6c"
+    }
+  }
+}
