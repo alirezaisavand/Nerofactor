@@ -1,5 +1,15 @@
 # Research and development rules
 
+## Donut D7 surface chart control
+
+Reuse D6's exact domain, draws, priors, free-light training and 10,000-update
+budget. The only added objective change is the frozen local squared-width and
+periodic-angle chart penalty. Justify its scale from fitting-only predictions.
+Preserve D1–D6, frozen G/A and corrected core. Require separate exact-source
+approval before one new native launch. Stop on failure without retries, tuning,
+reference generation or historical reruns. D8 is an offline design only.
+See docs/protocols/DONUT_KURT_SURFACE_CHART_D7_V1.md.
+
 ## Donut D6 surface-wide Q
 
 D6 adds only the normal-transported world-Q term to the accepted D2 recipe.

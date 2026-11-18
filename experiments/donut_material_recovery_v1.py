@@ -40,7 +40,7 @@ def shader_lighting(shader, original_shader, arm, calibrated=None):
     Both arms retain the identical validated zero_bounce_v1 configuration.
     No modification to corrected-core, network capacity or BRDF is required.
     """
-    require(arm in ('D1','D2','D3','D6',*ABLATION_ARMS) and shader.cfg['indirect_mode']=='zero_bounce_v1',
+    require(arm in ('D1','D2','D3','D6','D7',*ABLATION_ARMS) and shader.cfg['indirect_mode']=='zero_bounce_v1',
             'Matched direct-only acquisition required')
     if arm=='D1':return nullcontext()
     if arm in ('D3','D4'):
@@ -99,8 +99,10 @@ def train(args):
     freeze,auth=runtime(args,args.phase)
     import os
     ablation=freeze.get('diffuse_white_ablation') if args.phase in ABLATION_ARMS else None
-    d6=freeze.get('surface_q_training') if args.phase=='D6' else None
-    bound=d6 or ablation or (freeze.get('calibrated_training') if args.phase=='D3' else None)
+    chart=freeze.get('surface_chart_training') if args.phase=='D7' else None
+    spatial=freeze.get('surface_q_training') or chart
+    spatial_name='surface_chart' if chart else 'surface_q'
+    bound=spatial or ablation or (freeze.get('calibrated_training') if args.phase=='D3' else None)
     calibration=bound['calibration'] if args.phase in ('D3','D4') else None
     limits=ablation['limits'][args.phase] if ablation else (bound['limits'] if bound else LIMITS)
     protocol=bound['protocol'] if bound else TRAINING
@@ -113,7 +115,7 @@ def train(args):
             'Reference does not match the explicitly bound generation freeze')
     geometry,_,records=inputs(args.oracle,args.cameras)
     expected_initial=None
-    if args.phase in ('D2','D3','D6',*ABLATION_ARMS):
+    if args.phase in ('D2','D3','D6','D7',*ABLATION_ARMS):
         require(args.initial is not None and digest(args.initial)==args.initial_sha256 and
             os.statvfs(args.initial).f_flag&os.ST_RDONLY,'Explicit immutable initialization anchor required')
         if bound:
@@ -134,10 +136,10 @@ def train(args):
     if ablation:
         report.update(diffuse_white_in_objective=False, diffuse_white_diagnostic_coefficient=POLICY['diffuse_white_prior'],
                       optimization_terms=['RGB_loss','material_prior'], mean_calibration=calibration is not None)
-    if d6:
-        spatial_policy=d6['spatial_policy']
+    if spatial:
+        spatial_policy=spatial['spatial_policy']
         report.update(diffuse_white_in_objective=True, mean_calibration=False, surface_q_policy=spatial_policy,
-                      optimization_terms=['RGB_loss','material_prior','diffuse_white_prior','surface_q_loss'],
+                      optimization_terms=['RGB_loss','material_prior','diffuse_white_prior',spatial_name+'_loss'],
                       surface_q_timing=dict(setup_wall_seconds=0., forward_CUDA_seconds=0.))
         report['counters'].update(surface_q_batches=0,surface_q_pairs=0,
                                   surface_q_predictor_calls=0,surface_q_predictor_points=0)
@@ -253,18 +255,26 @@ def train(args):
         pair_ix=np.linspace(0,len(pairs['points0'])-1,min(1024,len(pairs['points0']))).astype(int)
         pair_points=[pairs[k][pair_ix] for k in ('points0','points1')]
         pair_frames=[surface_frames(geometry,v) for v in pair_points]
-        if d6:
+        if spatial:
             from benchmarks.donut_surface_q_d6 import (
                 NeighborhoodSampler, coverage_summary, fitting_face_counts, neighborhoods, surface_q_term,
             )
+            spatial_term=surface_q_term
+            if chart:
+                from benchmarks.donut_surface_chart_d7 import array_hash, surface_chart_term
+                spatial_term=surface_chart_term
             setup_started=time.monotonic()
             domain=neighborhoods(geometry,spatial_policy)
             require(len(domain['face_area'])==spatial_policy['expected_mesh_faces'] and
                     len(domain['face_pairs'])==spatial_policy['expected_pairs'] and
                     np.array_equal(domain['face_pairs'],pairs['face_pairs']) and
-                    np.array_equal(domain['diagnostic_ids'],pair_ix), 'D6 geometry or diagnostic identity differs')
+                    np.array_equal(domain['diagnostic_ids'],pair_ix), 'Surface geometry or diagnostic identity differs')
             sampler=NeighborhoodSampler(domain['training_ids'],len(domain['face_pairs']),spatial_policy['rng_seed'])
             fitting_counts=fitting_face_counts(data,SPLITS['fitting'],len(domain['face_area']))
+            if chart:
+                hashes={k:array_hash(v) for k,v in dict(domain,fitting_camera_count=fitting_counts).items()}
+                require(hashes==chart['D6_domain_array_sha256'], 'D7 neighborhood domain differs from accepted D6')
+                report['D6_domain_parity_verified']=True
             surface_tensors={k:tensor(domain[k]) for k in ('points0','points1','normals0','normals1','distance')}
             np.savez_compressed(args.output/'surface-q-domain.npz',**domain,fitting_camera_count=fitting_counts)
             spatial_start=torch.cuda.Event(enable_timing=True)
@@ -332,7 +342,7 @@ def train(args):
                 for pp,ff in zip(pair_points,pair_frames):
                     a=shader.predict_anisotropic_components(tensor(pp))
                     q.append(world_q(a[0],a[1],a[4],tensor(ff['normals']),torch))
-                    if d6:
+                    if spatial:
                         diagnostic_widths.append(torch.cat([a[0],a[1]],dim=-1).cpu().numpy())
                 R=normal_transport(tensor(pair_frames[1]['normals']),tensor(pair_frames[0]['normals']),torch)
                 delta=q[0]-R@q[1]@R.transpose(-1,-2)
@@ -340,7 +350,10 @@ def train(args):
                 truth_delta=gt0-R@gt1@R.transpose(-1,-2)
                 metrics['surface_Q_smoothness_diagnostic']=dict(pairs=len(pair_ix),predicted_mean_squared=float(delta.square().sum((-1,-2)).mean()),
                     oracle_mean_squared=float(truth_delta.square().sum((-1,-2)).mean()),new_loss=False)
-                if d6:
+                if spatial:
+                    if chart:
+                        require(array_hash(sampler.counts)==chart['D6_sampler_snapshots'][str(step)],
+                                'D7 sampled pair counts differ from accepted D6')
                     sampled=coverage_summary(domain,sampler.counts,fitting_counts)
                     metrics['surface_Q_training_coverage']=sampled
                     widths=np.stack(diagnostic_widths,axis=1)
@@ -392,7 +405,7 @@ def train(args):
                         reg=shader.anisotropic_regularization(pp,nn,o['tangents'],o['bitangents'],o['mx'],o['my'],o['metallic'],o['kd'],o['f_d'],o['f_s_sum'],o['L_spec'],o['rotation'],o['rotation_raw'],step).mean()
                         white=renderer.NeROMaterialRenderer.compute_diffuse_light_regularization(SimpleNamespace(cfg={'reg_diffuse_light_lambda':.01}),o['diffuse_light']).mean()
                         loss=training_objective(photo,reg,white,include_diffuse_white=include_diffuse_white)
-                        if d6:
+                        if spatial:
                             count=spatial_policy['batch_pairs']
                             budget('surface_q_batches',1)
                             charge('surface_q_pairs',count)
@@ -402,27 +415,27 @@ def train(args):
                             spatial_start.record()
                             index=torch.as_tensor(indices,dtype=torch.long,device='cuda')
                             neighborhood={k:v.index_select(0,index) for k,v in surface_tensors.items()}
-                            q_loss=surface_q_term(shader,neighborhood,spatial_policy,torch)
+                            spatial_loss=spatial_term(shader,neighborhood,spatial_policy,torch)
                             spatial_end.record()
-                            loss=loss+q_loss
+                            loss=loss+spatial_loss
                         require(bool(torch.isfinite(loss) & torch.isfinite(white)),
                                 'Nonfinite joint loss or diffuse-white diagnostic')
                         row=dict(completed_updates=step+1,lr=lr,RGB_loss=float(photo.detach()),material_prior=float(reg.detach()),
                             diffuse_white_prior=float(white.detach()),kd_mean=o['kd'].detach().mean(0).cpu().tolist(),
                             metallic_mean=float(o['metallic'].detach().mean()),diffuse_allocation=o['f_d'].detach().mean(0).cpu().tolist(),
                             mx_mean=float(o['mx'].detach().mean()),my_mean=float(o['my'].detach().mean()))
-                        if ablation or d6:
+                        if ablation or spatial:
                             row['optimization_loss']=float(loss.detach())
-                        if d6:
-                            row['surface_q_loss']=float(q_loss.detach())
+                        if spatial:
+                            row[spatial_name+'_loss']=float(spatial_loss.detach())
                             report['surface_q_timing']['forward_CUDA_seconds']+=spatial_start.elapsed_time(spatial_end)/1000
                         if step==0 or (step+1)%2000==0:
                             energy,spec=legacy_energy_specular(o['f_d'],o['f_s_sum'],o['L_spec'],.05,.05,torch)
                             terms=dict(photo=photo,material=reg,energy=energy,specular=spec)
                             if probe_diffuse_white:
                                 terms['diffuse_white']=white
-                            if d6:
-                                terms['surface_q']=q_loss
+                            if spatial:
+                                terms[spatial_name]=spatial_loss
                             budget('component_reverse_sweeps',len(terms))
                             named=[(n,p) for n,p in shader.named_parameters() if p.requires_grad]
                             row['gradient_interactions']=gradient_diagnostics(terms,[p for _,p in named],torch,[n for n,_ in named])
@@ -455,7 +468,7 @@ def train(args):
                                 completed_updates=step+1,network_state_dict=shader.state_dict(),optimizer_state_dict=optimizer.state_dict(),
                                 torch_RNG=torch.get_rng_state(),CUDA_RNG=torch.cuda.get_rng_state_all(),
                                 sample_RNG=sample_rng.get_state(),sample_order=order,sample_cursor=cursor)
-                            if d6:
+                            if spatial:
                                 saved['surface_q_sampler']=sampler.checkpoint()
                             torch.save(saved,checkpoint)
                             # Trust is limited to this process's own newly written checkpoint.
@@ -472,14 +485,14 @@ def train(args):
                         measured+=('calibration_evaluations','calibration_directions')
                     require(all(report['counters'][key]==limits[key] for key in measured),
                             'Incomplete calibration or diagnostic accounting')
-                if d6:
+                if spatial:
                     measured=('component_reverse_sweeps','surface_q_batches','surface_q_pairs',
                               'surface_q_predictor_calls','surface_q_predictor_points')
                     require(all(report['counters'][key]==limits[key] for key in measured) and
                             sampler.counts.sum()==limits['surface_q_pairs'] and
                             (sampler.counts[domain['training_ids']]>0).all() and
                             not sampler.counts[domain['diagnostic_ids']].any(),
-                            'Incomplete D6 work accounting, coverage or diagnostic isolation')
+                            'Incomplete surface work accounting, coverage or diagnostic isolation')
             return {}
         run_with_cleanup(work,torch)
         report['cleanup_verified']=True

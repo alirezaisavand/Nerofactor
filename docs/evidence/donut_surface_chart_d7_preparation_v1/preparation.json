@@ -1,0 +1,57 @@
+{
+  "CPU_tests": {
+    "errors": 0,
+    "existing_synthetic_checkpoint_warning": true,
+    "exit_code": 0,
+    "failures": 0,
+    "junit_sha256": "8d9aeede091905a2e3c2c92397248549e0a110bffc2fffc2117b86a6a6940b36",
+    "skipped": 0,
+    "tests": 59
+  },
+  "D8_design_sanity": "80 float64 matrices, bounded map and NDF parity including repeated eigenvalue",
+  "Docker_image_metadata_probe": "Docker API access denied in this session; image identity bound to the accepted D6 evidence and rechecked by the researcher-side launcher",
+  "arm": "D7",
+  "authorized_launches": 0,
+  "dataset_admission_sha256": "02e4f7ca909de6b7c2c9fa2a2e291850a9bff190b426e319daf82e3ecdb82c9e",
+  "dataset_generation_sha256": "2052306bdf87a0beaa0a3f9b0bddeeb12d787f1d65357d520b5ce2fe0a33ee64",
+  "fitting_scale_sha256": "32bcfe07be127837b3972e13f0cb344d1f46483587ae97bf6eb4839e537bd7d3",
+  "freeze_sha256": "b445cacbb9862a98d7cac6c81de3a92a075f300236683c235bf6f453362163b1",
+  "fresh_initial_sha256": "0407da2d23f545004a5505e475d497ba2c41760988048d2ff09654e18b5ab6a9",
+  "frozen_source_identities": 308,
+  "host_batch": "/home/isavand/paper/evidence/donut-kurt-surface-chart-d7-fbe65c0654444253af92e373db47e278",
+  "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "metadata_preflight": {
+    "panel": [
+      0,
+      50,
+      1,
+      45,
+      28,
+      34
+    ],
+    "scientific_execution": false,
+    "splits": {
+      "fitting": [
+        0,
+        50,
+        1,
+        45
+      ],
+      "held_out": [
+        28,
+        34
+      ]
+    },
+    "status": "metadata_only"
+  },
+  "reference_artifact_identities": 31,
+  "scientific_execution": {
+    "geometry_rays": 0,
+    "native_models": 0,
+    "optimizer_returns": 0,
+    "renderer_calls": 0
+  },
+  "status": "pending_explicit_D7_execution_approval",
+  "verified_D6_domain_arrays": 10,
+  "verified_D6_sampler_snapshots": 6
+}

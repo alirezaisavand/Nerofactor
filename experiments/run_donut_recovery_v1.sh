@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # Exactly one approved reference or training batch, foreground only.
 set -euo pipefail
-: "${DONUT_SOURCE:?}" "${DONUT_ORACLE:?}" "${DONUT_CAMERAS:?}" "${DONUT_BATCH:?}" "${DONUT_AUTH:?}" "${DONUT_GPU:?}" "${DONUT_PHASE:?reference, training, calibrated, ablation or surface}"
+: "${DONUT_SOURCE:?}" "${DONUT_ORACLE:?}" "${DONUT_CAMERAS:?}" "${DONUT_BATCH:?}" "${DONUT_AUTH:?}" "${DONUT_GPU:?}" "${DONUT_PHASE:?reference, training, calibrated, ablation, surface or chart}"
 DONUT_IMAGE=sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331
 DONUT_COMMIT=$(git -C "$DONUT_SOURCE" rev-parse HEAD)
 test -z "$(git -C "$DONUT_SOURCE" status --porcelain)"
 DONUT_FREEZE_NAME=${DONUT_FREEZE_NAME:-DONUT_KURT_RECOVERY_V1.freeze.json}
-case "$DONUT_FREEZE_NAME" in DONUT_KURT_RECOVERY_V1.freeze.json|DONUT_KURT_REFERENCE_V2.freeze.json|DONUT_KURT_RECOVERY_V2.freeze.json|DONUT_KURT_CALIBRATED_D3_V1.freeze.json|DONUT_KURT_DIFFUSE_WHITE_ABLATION_V1.freeze.json|DONUT_KURT_SURFACE_Q_D6_V1.freeze.json) ;; *) exit 2 ;; esac
+case "$DONUT_FREEZE_NAME" in DONUT_KURT_RECOVERY_V1.freeze.json|DONUT_KURT_REFERENCE_V2.freeze.json|DONUT_KURT_RECOVERY_V2.freeze.json|DONUT_KURT_CALIBRATED_D3_V1.freeze.json|DONUT_KURT_DIFFUSE_WHITE_ABLATION_V1.freeze.json|DONUT_KURT_SURFACE_Q_D6_V1.freeze.json|DONUT_KURT_SURFACE_CHART_D7_V1.freeze.json) ;; *) exit 2 ;; esac
 DONUT_FREEZE=$(sha256sum "$DONUT_SOURCE/docs/protocols/$DONUT_FREEZE_NAME" | cut -d' ' -f1)
 DONUT_AUTH_SHA=$(sha256sum "$DONUT_AUTH" | cut -d' ' -f1)
 python3 -B - "$DONUT_SOURCE" "$DONUT_AUTH" "$DONUT_BATCH" "$DONUT_PHASE" "$DONUT_COMMIT" "$DONUT_FREEZE" "$DONUT_IMAGE" "$DONUT_GPU" "$DONUT_FREEZE_NAME" "${DONUT_BENCHMARK:-}" "${DONUT_INITIAL:-}" <<'PY'
@@ -17,26 +17,28 @@ sys.path.insert(0,sys.argv[1])
 from benchmarks.donut_recovery_v1 import ABLATION_ARMS,REFERENCE,TRAINING,TRAIN_LIMITS,verify_freeze
 from infrastructure.signatures import require
 a=json.loads(Path(sys.argv[2]).read_text());batch=Path(sys.argv[3]);phase=sys.argv[4]
-require(phase in ('reference','training','calibrated','ablation','surface'),'Explicit phase required')
+require(phase in ('reference','training','calibrated','ablation','surface','chart'),'Explicit phase required')
 f=verify_freeze(Path(sys.argv[1])/'docs/protocols'/sys.argv[9],sys.argv[6])
 d3=f.get('calibrated_training')
 ablation=f.get('diffuse_white_ablation')
 d6=f.get('surface_q_training')
+d7=f.get('surface_chart_training')
 require((phase=='calibrated')==(d3 is not None),'D3 requires its dedicated execution freeze')
 require((phase=='ablation')==(ablation is not None),'D4/D5 require their dedicated execution freeze')
 require((phase=='surface')==(d6 is not None),'D6 requires its dedicated execution freeze')
+require((phase=='chart')==(d7 is not None),'D7 requires its dedicated execution freeze')
 protocol=f.get('reference_protocol',REFERENCE) if phase=='reference' else TRAINING
 limits=f['reference_limits'] if phase=='reference' else TRAIN_LIMITS
-bound=d6 or d3 or ablation
+bound=d6 or d7 or d3 or ablation
 if bound:
  protocol,limits=bound['protocol'],bound['limits']
- arms=ABLATION_ARMS if ablation else (('D6',) if d6 else ('D3',))
+ arms=ABLATION_ARMS if ablation else ({'surface':('D6',),'chart':('D7',),'calibrated':('D3',)}[phase])
  if ablation:
   require(a.get('arms')==list(arms) and a.get('wall_seconds')==ablation['wall_seconds'],
    'D4/D5 order or outer watchdog differs')
- if d6:
-  require(a.get('spatial_policy')==d6['spatial_policy'] and a.get('diffuse_white_in_objective') is True,
-   'D6 spatial or diffuse-white objective differs')
+ if d6 or d7:
+  require(a.get('spatial_policy')==bound['spatial_policy'] and a.get('diffuse_white_in_objective') is True,
+   'Frozen spatial or diffuse-white objective differs')
  def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
  benchmark=Path(sys.argv[10]);initial=Path(sys.argv[11])
  require(benchmark.is_absolute() and benchmark.resolve()==benchmark and
@@ -48,6 +50,13 @@ if bound:
   json.loads(admission.read_text()).get('researcher_admitted_dataset') is True and
   a.get('researcher_admitted_dataset') is True and a.get('maximum_execution_launches')==1 and
   a.get('output_directories')=={arm:'/outputs/'+arm for arm in arms}, 'Admission or one-launch authorization differs')
+ if d7:
+  from infrastructure.stage_sources import digest as file_digest
+  require(benchmark==Path(d7['benchmark_host_path']) and initial==Path(d7['initial_host_path']) and
+   admission==Path(d7['dataset_admission_host_path']), 'D7 requires the frozen input paths')
+  for item in d7['controls'].values():
+   p=Path(item['path'])
+   require(p.resolve()==p and file_digest(p)==item['sha256'], 'Accepted control changed: '+str(p))
 require(a.get('approved') is True and a.get('protocol')==protocol and a.get('limits')==limits and
  a.get('commit')==sys.argv[5] and a.get('freeze_sha256')==sys.argv[6] and a.get('image_id')==sys.argv[7] and
  a.get('selected_gpu')==sys.argv[8]=='0' and a.get('host_output_directory')==str(batch)==f['host_'+phase+'_output'], 'Exact separate approval required')
@@ -83,9 +92,10 @@ if test "$DONUT_PHASE" = ablation; then
  : "${DONUT_BENCHMARK:?}" "${DONUT_INITIAL:?}"
  arms=(D4 D5);seconds=3600;inner=3540
 fi
-if test "$DONUT_PHASE" = surface; then
+if [[ "$DONUT_PHASE" == surface || "$DONUT_PHASE" == chart ]]; then
  : "${DONUT_BENCHMARK:?}" "${DONUT_INITIAL:?}"
  arms=(D6);seconds=3600;inner=3540
+ if test "$DONUT_PHASE" = chart; then arms=(D7); fi
 fi
 for arm in "${arms[@]}"; do
  extra=();mounts=()
@@ -108,7 +118,7 @@ PY
    mounts+=(--mount "type=bind,src=$DONUT_BATCH/D1/initial.json,dst=/inputs/initial.json,readonly")
   fi
  fi
- if [[ "$arm" == D3 || "$arm" == D4 || "$arm" == D5 || "$arm" == D6 ]]; then
+ if [[ "$arm" == D3 || "$arm" == D4 || "$arm" == D5 || "$arm" == D6 || "$arm" == D7 ]]; then
   INITIAL_SHA=$(sha256sum "$DONUT_INITIAL" | cut -d' ' -f1)
   extra+=(--initial /inputs/initial.json --initial-sha256 "$INITIAL_SHA")
   mounts+=(--mount "type=bind,src=$DONUT_INITIAL,dst=/inputs/initial.json,readonly")
@@ -160,13 +170,17 @@ if arm in ('D4','D5'):
  assert r['counters']['component_reverse_sweeps']==f['limits'][arm]['component_reverse_sweeps']
  for key in ('calibration_evaluations','calibration_directions'):
   assert r['counters'].get(key,0)==f['limits'][arm].get(key,0)
-if arm=='D6':
- f=json.loads((p.parent/'freeze.json').read_text())['surface_q_training']
+if arm in ('D6','D7'):
+ f=json.loads((p.parent/'freeze.json').read_text())['surface_q_training' if arm=='D6' else 'surface_chart_training']
  a=json.loads((p.parent/'authorization.json').read_text())
  assert r['protocol']==f['protocol'] and r['initialization_anchor_sha256']==f['initial_sha256']
  assert r['commit']==a['commit'] and r['freeze_sha256']==a['freeze_sha256']
  assert r['diffuse_white_in_objective'] is True and r['mean_calibration'] is False
  assert r['surface_q_policy']==f['spatial_policy']
+ if arm=='D7':
+  assert r['D6_domain_parity_verified'] is True
+  assert r['optimization_terms']==['RGB_loss','material_prior','diffuse_white_prior','surface_chart_loss']
+  assert [o['step'] for o in r['saved_endpoints']]==[0,2000,4000,6000,8000,10000]
  keys=('component_reverse_sweeps','surface_q_batches','surface_q_pairs','surface_q_predictor_calls','surface_q_predictor_points')
  assert all(r['counters'][key]==f['limits'][key] for key in keys)
 PY
