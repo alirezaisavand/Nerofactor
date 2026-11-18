@@ -1,0 +1,199 @@
+{
+  "D6_domain_and_six_snapshots_verified": true,
+  "admission": {
+    "bytes": 6626,
+    "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9-admission.json",
+    "sha256": "a6eab416054c5bf74b43834c3be224847e2d78d9af7eb4989745fe37333618fb"
+  },
+  "cohorts_by_camera": {
+    "0": {
+      "cross_boundary_pairs": 17,
+      "fitting_camera_matches": [
+        890,
+        2681,
+        806,
+        159,
+        0
+      ],
+      "highlight_camera_matches": [
+        3439,
+        1082,
+        15,
+        0,
+        0
+      ]
+    },
+    "1": {
+      "cross_boundary_pairs": 20,
+      "fitting_camera_matches": [
+        1145,
+        2223,
+        651,
+        125,
+        0
+      ],
+      "highlight_camera_matches": [
+        3433,
+        687,
+        24,
+        0,
+        0
+      ]
+    },
+    "28": {
+      "cross_boundary_pairs": 20,
+      "fitting_camera_matches": [
+        13,
+        518,
+        2832,
+        1236,
+        250
+      ],
+      "highlight_camera_matches": [
+        2694,
+        1759,
+        389,
+        7,
+        0
+      ]
+    },
+    "34": {
+      "cross_boundary_pairs": 9,
+      "fitting_camera_matches": [
+        729,
+        1106,
+        644,
+        16,
+        0
+      ],
+      "highlight_camera_matches": [
+        1747,
+        703,
+        45,
+        0,
+        0
+      ]
+    },
+    "45": {
+      "cross_boundary_pairs": 14,
+      "fitting_camera_matches": [
+        1138,
+        2051,
+        657,
+        124,
+        0
+      ],
+      "highlight_camera_matches": [
+        3254,
+        650,
+        66,
+        0,
+        0
+      ]
+    },
+    "50": {
+      "cross_boundary_pairs": 12,
+      "fitting_camera_matches": [
+        876,
+        1381,
+        242,
+        137,
+        0
+      ],
+      "highlight_camera_matches": [
+        2020,
+        591,
+        25,
+        0,
+        0
+      ]
+    }
+  },
+  "controls_verified": 4,
+  "diagnostic_pixel_ids": [
+    4027,
+    4783,
+    5199,
+    5589,
+    5960,
+    6316,
+    6613,
+    6949,
+    7333,
+    7778,
+    8284,
+    8793,
+    9256,
+    9685,
+    10035,
+    10317,
+    10649,
+    10941,
+    11238,
+    11594,
+    11965,
+    12355,
+    12848,
+    13512
+  ],
+  "expected_counters": {
+    "D2": {
+      "component_reverse_sweeps": 24,
+      "shader_calls": 12288,
+      "shadow_rays": 9533964288
+    },
+    "D6": {
+      "component_reverse_sweeps": 30,
+      "shader_calls": 12288,
+      "shadow_rays": 9533964288,
+      "surface_q_batches": 10000,
+      "surface_q_pairs": 1280000,
+      "surface_q_predictor_calls": 20000,
+      "surface_q_predictor_points": 2560000
+    },
+    "D8-C": {
+      "component_reverse_sweeps": 30,
+      "shader_calls": 12290,
+      "shadow_rays": 9534038016,
+      "surface_q_batches": 10000,
+      "surface_q_pairs": 1280000,
+      "surface_q_predictor_calls": 20000,
+      "surface_q_predictor_points": 2560000
+    },
+    "D8-T": {
+      "component_reverse_sweeps": 30,
+      "shader_calls": 12290,
+      "shadow_rays": 9534038016,
+      "surface_q_batches": 10000,
+      "surface_q_pairs": 1280000,
+      "surface_q_predictor_calls": 20000,
+      "surface_q_predictor_points": 2560000
+    }
+  },
+  "focused_CPU_tests": {
+    "failed": 0,
+    "passed": 7,
+    "skipped": 0
+  },
+  "generation": {
+    "bytes": 25006,
+    "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/generation.json",
+    "sha256": "de8dda85559b286456d926e09731c6c501dfcbd6707d1aaf3aef9cf8784c58a0"
+  },
+  "host_output": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2",
+  "live_Docker_access": "denied; researcher-side launcher required",
+  "native_calls": 0,
+  "native_checkpoint_deserializations": 0,
+  "optimizer_returns": 0,
+  "reference_artifacts": 39,
+  "schema_version": 1,
+  "source_count": 368,
+  "status": "dataset_admitted_training_approval_pending",
+  "training_authorized": false,
+  "training_freeze_sha256": "d6be4b2ab1d3885a4f35a27d435f345780ee7c1f263c98ec4103b3b2f4129ed3",
+  "verification": {
+    "bytes": 15604,
+    "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9-verification-v1.json",
+    "sha256": "22e7894fdba2f84ed0355299999cc74a1784cb40c74667f7b0b9e432cb598340"
+  }
+}

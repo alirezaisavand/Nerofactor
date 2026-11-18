@@ -98,17 +98,23 @@ def benchmark(root, expected):
     return g,{camera:numeric(root/('view-%d.npz'%camera)) for camera in PANEL}
 
 
-def train(args):
-    freeze,auth=runtime(args,args.phase)
+def train(args, *, heterogeneous=False):
+    if heterogeneous:
+        from benchmarks import donut_heterogeneous_training_v1 as hetero
+        freeze,auth=hetero.runtime(args)
+    else:
+        freeze,auth=runtime(args,args.phase)
     import os
     ablation=freeze.get('diffuse_white_ablation') if args.phase in ABLATION_ARMS else None
     chart=freeze.get('surface_chart_training') if args.phase=='D7' else None
     tensor_plan=freeze.get('tensor_training')
     log_tensor=args.phase in d11.ARMS
     spatial=freeze.get('surface_q_training') or chart or tensor_plan
-    parity_plan=chart or tensor_plan
+    parity_plan=chart or tensor_plan or (spatial if heterogeneous else None)
     spatial_name='surface_log_q' if log_tensor else ('surface_chart' if chart else 'surface_q')
     bound=spatial or ablation or (freeze.get('calibrated_training') if args.phase=='D3' else None)
+    if heterogeneous:
+        bound=freeze['arm_training']
     calibration=bound['calibration'] if args.phase in ('D3','D4') else None
     limits=ablation['limits'][args.phase] if ablation else (bound['limits'] if bound else LIMITS)
     protocol=bound['protocol'] if bound else TRAINING
@@ -116,7 +122,10 @@ def train(args):
     probe_diffuse_white=args.phase in ('D3',*ABLATION_ARMS)
     require(auth.get('researcher_admitted_dataset') is True and auth.get('benchmark_generation_sha256')==args.benchmark_sha256
         and os.statvfs(args.benchmark).f_flag&os.ST_RDONLY, 'Separate explicit dataset admission/training approval required')
-    generation,data=benchmark(args.benchmark,args.benchmark_sha256)
+    if heterogeneous:
+        generation,data=hetero.dataset(freeze,args.benchmark,args.admission,args.verification)
+    else:
+        generation,data=benchmark(args.benchmark,args.benchmark_sha256)
     require(generation['freeze_sha256']==freeze.get('reference_freeze_sha256',args.freeze_sha256),
             'Reference does not match the explicitly bound generation freeze')
     geometry,_,records=inputs(args.oracle,args.cameras)
@@ -144,6 +153,9 @@ def train(args):
         counters=dict(shader_calls=0,shadow_rays=0,component_reverse_sweeps=0))
     if bound:
         report.update(indirect_illumination='identically zero', initialization_anchor_sha256=args.initial_sha256)
+    if heterogeneous:
+        report.update(heterogeneous_dataset=True,authorization_sha256=args.authorization_sha256,
+                      dataset_admission_sha256=hetero.ADMISSION)
     if ablation:
         report.update(diffuse_white_in_objective=False, diffuse_white_diagnostic_coefficient=POLICY['diffuse_white_prior'],
                       optimization_terms=['RGB_loss','material_prior'], mean_calibration=calibration is not None)
@@ -235,6 +247,10 @@ def train(args):
             require(initial==json.loads((initial_controls/'initial.json').read_text()),
                     'Fresh D11 weights or buffers differ from accepted D8-T')
             report['D8_T_initial_state_verified']=True
+        if heterogeneous:
+            require(initial==json.loads(args.arm_initial.read_text()),
+                    'Fresh arm weights or buffers differ from its accepted historical initialization')
+            report['historical_arm_initial_parity_verified']=True
         json_new(args.output/'initial.json',initial);report['initial']=initial
         material_names=('feats_network','mx_predictor','my_predictor','rotation_predictor','kd_predictor','metallic_predictor')
         for name,p in shader.named_parameters():
@@ -292,8 +308,12 @@ def train(args):
             for draw in range(32):
                 torch.manual_seed(900000+draw);torch.cuda.manual_seed_all(900000+draw)
                 budget('shader_calls',1);budget('shadow_rays',len(ix)*1536)
-                mx,my=(n.new_full((24,1),v) for v in WIDTHS)
-                metallic,kd=n.new_full((24,1),METALLIC),n.new_tensor(COLOR).expand(24,3)
+                if heterogeneous:
+                    mx,my=tensor(first['widths_major_minor'][ix]).split(1,dim=1)
+                    metallic,kd=(tensor(first[key][ix]) for key in ('metallic','color'))
+                else:
+                    mx,my=(n.new_full((24,1),v) for v in WIDTHS)
+                    metallic,kd=n.new_full((24,1),METALLIC),n.new_tensor(COLOR).expand(24,3)
                 if tensor_plan:
                     u=tensor_math.frame(n)
                     q=tensor_math.chart_q(mx,my,axis,u)
@@ -309,8 +329,11 @@ def train(args):
             report['native_reference_gate_lighting']='known L2, same compatibility control as D1/D2'
         progress()
         require(gate['passed'],'Native/reference compatibility or precision gate failed before optimization')
-        pool={key:np.concatenate([data[i][key][data[i]['shader_valid']] for i in SPLITS['fitting']])
-              for key in ('position','normals','outgoing','linear_components')}
+        if heterogeneous:
+            pool=hetero.fit_pool(data)
+        else:
+            pool={key:np.concatenate([data[i][key][data[i]['shader_valid']] for i in SPLITS['fitting']])
+                  for key in ('position','normals','outgoing','linear_components')}
         require(len(pool['position'])>=512,'Insufficient original fitting observations')
         sample_rng=np.random.RandomState(POLICY['seed']);order=sample_rng.permutation(len(pool['position']));cursor=0
         schedule=WarmUpCosLR(dict(end_warm=1000,end_iter=100000))
@@ -320,6 +343,10 @@ def train(args):
         pair_ix=np.linspace(0,len(pairs['points0'])-1,min(1024,len(pairs['points0']))).astype(int)
         pair_points=[pairs[k][pair_ix] for k in ('points0','points1')]
         pair_frames=[surface_frames(geometry,v) for v in pair_points]
+        if heterogeneous:
+            from benchmarks.donut_heterogeneous_v1 import material_field
+            for pp,ff in zip(pair_points,pair_frames):
+                ff['Q_world']=material_field(pp,ff['normals'],generation['ring_radius_native'])['Q_world']
         if spatial:
             from benchmarks.donut_surface_q_d6 import (
                 NeighborhoodSampler, coverage_summary, fitting_face_counts, neighborhoods, surface_q_term,
@@ -416,7 +443,10 @@ def train(args):
                         require(np.max(abs(point_pred['Q_world']-direct[mask]))<=
                                 tensor_plan['representation']['export_world_Q_atol'],
                                 'Exported axes do not reconstruct the evaluated world tensor')
-                    errors,physical=physical_errors(point_pred,{k:d[k][indices] for k in ('normals','axis','Q_world')})
+                    if heterogeneous:
+                        errors,physical=hetero.point_errors(point_pred,{k:d[k][indices] for k in hetero.TARGET_KEYS})
+                    else:
+                        errors,physical=physical_errors(point_pred,{k:d[k][indices] for k in ('normals','axis','Q_world')})
                     difference=arrays['linear_rgb'][mask]-arrays['linear_gt'][mask]
                     metrics[str(camera)]=dict(split='fitting' if camera in SPLITS['fitting'] else 'held_out',physical=physical,
                         RGB_linear_RMSE=float(np.sqrt(np.mean(difference**2))),RGB_relative_L2=float(np.linalg.norm(difference)/max(np.linalg.norm(arrays['linear_gt'][mask]),1e-15)),
@@ -630,7 +660,13 @@ def train(args):
         import resource
         report['resources']=dict(CUDA_peak_allocated=torch.cuda.max_memory_allocated(),
             CUDA_peak_reserved=torch.cuda.max_memory_reserved(),host_peak_RSS=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024)
-        verify_freeze(args.freeze,args.freeze_sha256);benchmark(args.benchmark,args.benchmark_sha256);inputs(args.oracle,args.cameras)
+        if heterogeneous:
+            require(report['counters']==bound['work'], 'Heterogeneous work counters differ from fixed plan')
+            hetero.freeze(args.freeze,args.freeze_sha256)
+            hetero.dataset(freeze,args.benchmark,args.admission,args.verification)
+        else:
+            verify_freeze(args.freeze,args.freeze_sha256);benchmark(args.benchmark,args.benchmark_sha256)
+        inputs(args.oracle,args.cameras)
         report.update(status='complete',scientific_work_complete=True)
         report['outputs']={p.relative_to(args.output).as_posix():dict(bytes=p.stat().st_size,sha256=digest(p))
             for p in args.output.rglob('*') if p.is_file() and p.name not in ('progress.json','progress.next')}
