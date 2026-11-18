@@ -1,0 +1,50 @@
+{
+  "camera0_all_gates_verified": true,
+  "camera50_first_refinement_pixel": 7317,
+  "dataset_admission_authorized": false,
+  "diagnostic_pixels": [
+    7317,
+    7955,
+    6577
+  ],
+  "diagnostic_view_cosines": [
+    0.00551854959663263,
+    0.06134877030142327,
+    0.2580796939651105
+  ],
+  "freeze_sha256": "0bf3836aaa58491224df419c0bc5feaf921393137b196f2a252f4589e2badb38",
+  "fresh_batch": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9",
+  "frozen_source_identities": 356,
+  "limits": {
+    "BRDF_point_directions": 5752094720,
+    "CPU_primary_crosschecks": 0,
+    "cpu_threads": 4,
+    "cuda_allocator_fraction": 0.25,
+    "direction_chunk": 16384,
+    "grace_seconds": 30,
+    "host_memory_gib": 64,
+    "inner_seconds": 7080,
+    "output_bytes": 536870912,
+    "point_batch": 4,
+    "primary_rays": 0,
+    "shadow_directions": 5752094720,
+    "slope_nodes_attempted": 1266319360,
+    "slope_nodes_returned": 1266319360,
+    "wall_seconds": 7200
+  },
+  "new_native_BRDF_calls": 0,
+  "new_native_BVH_calls": 0,
+  "optimizer_returns": 0,
+  "remaining_baseline_observations": 15458,
+  "retained_baseline_views": [
+    0,
+    50
+  ],
+  "retained_failed_files_verified": 13,
+  "status": "pending_researcher_execution_approval",
+  "tests": {
+    "failed": 0,
+    "passed": 8,
+    "skipped": 0
+  }
+}
