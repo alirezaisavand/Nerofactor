@@ -1,0 +1,32 @@
+{
+  "CSV_rows": {
+    "endpoint-metrics.csv": 54,
+    "per-camera-metrics.csv": 108
+  },
+  "PNG_checks": 4,
+  "analysis_work": {
+    "checkpoint_deserializations": 0,
+    "native_models": 0,
+    "optimizer_returns": 0,
+    "renderer_calls": 0
+  },
+  "artifact_sha256": {
+    "docs/DONUT_KURT_SURFACE_CHART_D7_V2_RESULTS.md": "6faaf50cf4075c124c6738b33582c39f6b1c68d7fd6657d6dac80fcfffbae134",
+    "docs/results/donut_surface_chart_d7_v2/D7-camera34-material-progression.png": "c1c2c7df29e4f9ec9ca8b96e2c2d9b2b0455576fda41622c89f2345af5976098",
+    "docs/results/donut_surface_chart_d7_v2/README.md": "bf39ac94ca96d6056e60495d8690959245bc04162a10a64d9cff3c74c5290a34",
+    "docs/results/donut_surface_chart_d7_v2/analysis.json": "20f4b4168436cbcbf33037881cce652bb47f97d4dd0a642f7de95c05bb90a86e",
+    "docs/results/donut_surface_chart_d7_v2/artifact-manifest.json": "d03f5e51d51e41733678b608025db8f9da22c60344e0d090cf33e800c712ba70",
+    "docs/results/donut_surface_chart_d7_v2/camera34-coverage.json": "93ee623760722675ab0a6d16967108df6381693be9e67b94a1cea2a8fbda811d",
+    "docs/results/donut_surface_chart_d7_v2/camera34-coverage.png": "95524df2e003c4c9d4eae027549bce86d1b6c4b6fd148aeb57318d51b17a33de",
+    "docs/results/donut_surface_chart_d7_v2/endpoint-metrics.csv": "a8d1dcb60d7ba842a71883e41c68933d67bd49cef559e52558e499f1f798ad64",
+    "docs/results/donut_surface_chart_d7_v2/gradient-probes.png": "af69a8da64169647d532a5a3cd1937918a80321ecd666c7ee0c3fdf4d35215fe",
+    "docs/results/donut_surface_chart_d7_v2/per-camera-metrics.csv": "1ee907d5b97edfc4b4f25a21f69f6beacbbcc7879c2580d727d99d393ed68aa3",
+    "docs/results/donut_surface_chart_d7_v2/recovery-curves.png": "ad8b8bc45ed56cbe2708a998a6fb4710d27eca98ef9185f0a4b08f9c3c9b455f",
+    "experiments/analyze_donut_surface_chart_d7.py": "1ae326429f356b092e0909db3a8bfd8646f4ece283c5af6183f5b051d4ffc437"
+  },
+  "byte_identical_replay_artifacts": 9,
+  "execution_commit": "39d4d2ea7e7447271e3f1098aca5cfb8ea7a9f62",
+  "indexed_evidence_identities": 66,
+  "schema": "donut-surface-chart-d7-finalization-v1",
+  "status": "verified_complete"
+}
