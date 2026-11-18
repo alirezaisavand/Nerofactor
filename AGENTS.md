@@ -1,5 +1,18 @@
 # Research and development rules
 
+## Donut D8 paired tensor control
+
+Select D8-C and D8-T only through their paired freeze. Keep the original
+G/A and corrected-core files and accepted D1–D7 artifacts intact. Both
+arms share the tensor evaluator/sampler, nominal width .25 at isotropic
+initialization, common world tapes and D6 surface domain. Retain scalar
+perturbation, legacy energy/specular and white, with no chart-specific
+spatial anisotropy in either objective. Run focused analytical CPU checks
+first. One explicit exact-source approval is required for the 10,000
+updates per arm and saved-data evaluation. Stop on mandatory failure
+without a retry, new reference, historical rerun or threshold changes.
+See docs/protocols/DONUT_KURT_PAIRED_TENSOR_D8_V1.md.
+
 ## Donut D7 surface chart control
 
 Reuse D6's exact domain, draws, priors, free-light training and 10,000-update

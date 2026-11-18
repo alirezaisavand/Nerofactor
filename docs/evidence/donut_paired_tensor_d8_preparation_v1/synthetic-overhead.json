@@ -1,0 +1,21 @@
+{
+  "cpu_only": true,
+  "dtype": "float32 directions; float64 tensor factor/NDF",
+  "expected_material_parameters": {
+    "D8-C": 1485584,
+    "D8-T": 1486100
+  },
+  "legacy_angle_median_seconds": 0.010240602307021618,
+  "repeats_each": 12,
+  "scope": "forward half-vector construction, reflection and NDF only; no light, BVH or network",
+  "shape": [
+    128,
+    1024
+  ],
+  "tapes": "preallocated, independently fixed seed 6608",
+  "tensor_median_seconds": 0.018222590908408165,
+  "tensor_to_angle_ratio": 1.7794452281301443,
+  "threads": 1,
+  "torch": "2.4.0+cu121",
+  "warmup_each": 3
+}

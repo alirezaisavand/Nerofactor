@@ -1,0 +1,33 @@
+{
+  "CPU_tests": {
+    "errors": 0,
+    "exit_code": 0,
+    "failures": 0,
+    "junit_sha256": "a28d33f91cf19c14092091b23f32703ac8fc6c7e3f46cf44a35612b42f91d8cb",
+    "skipped": 0,
+    "tests": 72,
+    "warning_count": 2
+  },
+  "Docker_access": "read-only image metadata probe denied in this session; exact prior image identity retained",
+  "arms": [
+    "D8-C",
+    "D8-T"
+  ],
+  "freeze_sha256": "47d1d7b62b528207169a9ec5a70e70462c2da564d348b89c19924a69fa5a289a",
+  "host_batch": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6",
+  "prelaunch_native_work": {
+    "optimizer_returns": 0,
+    "renderer_calls": 0,
+    "training_models": 0
+  },
+  "source_identities": 318,
+  "static_checks": {
+    "accepted_sources_and_evidence_unchanged": true,
+    "bash_syntax": true,
+    "metadata_only": true,
+    "python38_grammar": true
+  },
+  "status": "pending_explicit_D8_execution_approval",
+  "verified_D6_artifacts": 8,
+  "verified_reference_artifacts": 31
+}

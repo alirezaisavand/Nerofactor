@@ -16,6 +16,7 @@ import numpy as np
 from benchmarks.donut_recovery_v1 import (ABLATION_ARMS, TRAINING, TRAIN_LIMITS as LIMITS, SHADER,
     POLICY, PANEL, SPLITS, SIZE, COLOR, METALLIC, WIDTHS, inputs, numeric, unit,
     physical_errors, surface_frames, runtime, verify_freeze, json_new)
+from benchmarks.donut_tensor_d8 import ARMS as TENSOR_ARMS
 from infrastructure.signatures import require
 from infrastructure.stage_sources import PINS, activate, digest
 
@@ -40,7 +41,7 @@ def shader_lighting(shader, original_shader, arm, calibrated=None):
     Both arms retain the identical validated zero_bounce_v1 configuration.
     No modification to corrected-core, network capacity or BRDF is required.
     """
-    require(arm in ('D1','D2','D3','D6','D7',*ABLATION_ARMS) and shader.cfg['indirect_mode']=='zero_bounce_v1',
+    require(arm in ('D1','D2','D3','D6','D7',*TENSOR_ARMS,*ABLATION_ARMS) and shader.cfg['indirect_mode']=='zero_bounce_v1',
             'Matched direct-only acquisition required')
     if arm=='D1':return nullcontext()
     if arm in ('D3','D4'):
@@ -100,7 +101,9 @@ def train(args):
     import os
     ablation=freeze.get('diffuse_white_ablation') if args.phase in ABLATION_ARMS else None
     chart=freeze.get('surface_chart_training') if args.phase=='D7' else None
-    spatial=freeze.get('surface_q_training') or chart
+    tensor_plan=freeze.get('tensor_training')
+    spatial=freeze.get('surface_q_training') or chart or tensor_plan
+    parity_plan=chart or tensor_plan
     spatial_name='surface_chart' if chart else 'surface_q'
     bound=spatial or ablation or (freeze.get('calibrated_training') if args.phase=='D3' else None)
     calibration=bound['calibration'] if args.phase in ('D3','D4') else None
@@ -115,7 +118,7 @@ def train(args):
             'Reference does not match the explicitly bound generation freeze')
     geometry,_,records=inputs(args.oracle,args.cameras)
     expected_initial=None
-    if args.phase in ('D2','D3','D6','D7',*ABLATION_ARMS):
+    if args.phase in ('D2','D3','D6','D7',*TENSOR_ARMS,*ABLATION_ARMS):
         require(args.initial is not None and digest(args.initial)==args.initial_sha256 and
             os.statvfs(args.initial).f_flag&os.ST_RDONLY,'Explicit immutable initialization anchor required')
         if bound:
@@ -143,6 +146,10 @@ def train(args):
                       surface_q_timing=dict(setup_wall_seconds=0., forward_CUDA_seconds=0.))
         report['counters'].update(surface_q_batches=0,surface_q_pairs=0,
                                   surface_q_predictor_calls=0,surface_q_predictor_points=0)
+    if tensor_plan:
+        report.update(representation=tensor_plan['representation'],
+                      effective_regularization='legacy_scalar_energy_specular_white_plus_surface_Q_v1',
+                      tensor_training_forward_CUDA_seconds=0.)
     if calibration:
         report.update(effective_lighting='original A directional outer_light MLP with fixed spherical mean RGB',
                       calibration=calibration)
@@ -189,9 +196,26 @@ def train(args):
         torch.manual_seed(POLICY['seed']);torch.cuda.manual_seed_all(POLICY['seed'])
         shader_class,_=native_classes(field.MCShadingNetwork,renderer.NeROMaterialRenderer,
                                       'A_corrected_core_v1',field.linear_to_srgb)
+        if tensor_plan:
+            from scientific_variants import donut_tensor_d8 as tensor_math
+            from scientific_variants.donut_tensor_shader_d8 import tensor_shader
+            shader_class=tensor_shader(shader_class,field.linear_to_srgb)
         shader=shader_class(deepcopy(SHADER),trace).cuda()
         initial=dict(state_sha256=state_hash(shader),variant='A_corrected_core_v1',seed=POLICY['seed'])
         require(expected_initial is None or initial==expected_initial,'Full initial weights/buffers differ from the admitted anchor')
+        sibling=None
+        if tensor_plan:
+            counterpart=next(a for a in TENSOR_ARMS if a!=args.phase)
+            with torch.random.fork_rng(devices=[0]):
+                shader.select_tensor_representation(args.phase)
+                shader.cuda()
+                torch.manual_seed(POLICY['seed']);torch.cuda.manual_seed_all(POLICY['seed'])
+                sibling=shader_class(deepcopy(SHADER),trace).cuda()
+                require(state_hash(sibling)==initial['state_sha256'],'Paired fresh base state differs')
+                sibling.select_tensor_representation(counterpart)
+                sibling.cuda()
+            initial=dict(common_base_state_sha256=initial['state_sha256'],state_sha256=state_hash(shader),
+                         variant=shader.tensor_variant,seed=POLICY['seed'])
         json_new(args.output/'initial.json',initial);report['initial']=initial
         material_names=('feats_network','mx_predictor','my_predictor','rotation_predictor','kd_predictor','metallic_predictor')
         for name,p in shader.named_parameters():
@@ -199,8 +223,9 @@ def train(args):
         report['trainable_parameters']={name:sum(p.numel() for n,p in shader.named_parameters() if p.requires_grad and n.startswith(name+'.'))
             for name in (*material_names,'outer_light','inner_light')}
         require(all(report['trainable_parameters'][name]>0 for name in material_names),'Full native material field required')
-        require(sum(report['trainable_parameters'][name] for name in material_names)==1485584,
-                'Original full material capacity changed')
+        expected_count=1485584+((2*(256+2)) if args.phase=='D8-T' else 0)
+        require(sum(report['trainable_parameters'][name] for name in material_names)==expected_count,
+                'Full material capacity differs from the frozen inventory')
         def tensor(x):return torch.as_tensor(x,dtype=torch.float32,device='cuda')
         calibrated = None
         if calibration:
@@ -216,10 +241,25 @@ def train(args):
                 return nullcontext()
             return calibrated.scope(budget, timing, torch, evaluation=evaluation)
 
-        def shade(p,wo,n,step,training):
+        if tensor_plan:
+            tensor_start=torch.cuda.Event(enable_timing=True)
+            tensor_end=torch.cuda.Event(enable_timing=True)
+
+        def shade(p,wo,n,step,training,seed=None,export=False):
             budget('shader_calls',1);budget('shadow_rays',len(p)*1536)
-            _,o=shader(p,wo,n,None,step,training)
+            if tensor_plan:
+                if training:
+                    tensor_start.record()
+                tape=tensor_plan['representation']
+                tape_seed=tape['training_tape_seed_offset']+step if training else tape['evaluation_tape_seed_offset']+seed
+                o=shader(p,wo,n,None,step,training,tape_seed=tape_seed,export=export)
+                if training:
+                    tensor_end.record()
+            else:
+                _,o=shader(p,wo,n,None,step,training)
             require(all(bool(torch.isfinite(v).all()) for v in o.values() if isinstance(v,torch.Tensor)),'Nonfinite native output')
+            if tensor_plan and training:
+                report['tensor_training_forward_CUDA_seconds']+=tensor_start.elapsed_time(tensor_end)/1000
             return o
         # No training gradient or state update enters this independent parity gate.
         first=data[PANEL[0]];valid=np.flatnonzero(first['shader_valid'])
@@ -233,8 +273,14 @@ def train(args):
             for draw in range(32):
                 torch.manual_seed(900000+draw);torch.cuda.manual_seed_all(900000+draw)
                 budget('shader_calls',1);budget('shadow_rays',len(ix)*1536)
-                _,o=shader.shade_anisotropic_mixed(p,n,wo,n.new_full((24,1),WIDTHS[0]),n.new_full((24,1),WIDTHS[1]),
-                    n.new_full((24,1),METALLIC),n.new_tensor(COLOR).expand(24,3),rotation,(rotation+1)/2,None,False)
+                mx,my=(n.new_full((24,1),v) for v in WIDTHS)
+                metallic,kd=n.new_full((24,1),METALLIC),n.new_tensor(COLOR).expand(24,3)
+                if tensor_plan:
+                    u=tensor_math.frame(n)
+                    q=tensor_math.chart_q(mx,my,axis,u)
+                    o=shader.shade_tensor(p,n,wo,q,u,kd,metallic,900000+draw,False)
+                else:
+                    _,o=shader.shade_anisotropic_mixed(p,n,wo,mx,my,metallic,kd,rotation,(rotation+1)/2,None,False)
                 captures.append(o['linear_rgb'].cpu().numpy())
         reference=first['linear_components'][ix,2];coarse=first['coarse_components'][ix,2]
         gate=compatibility(np.stack(captures),reference,abs(reference-coarse),POLICY['compatibility_absolute'],POLICY['compatibility_relative'])
@@ -260,9 +306,14 @@ def train(args):
                 NeighborhoodSampler, coverage_summary, fitting_face_counts, neighborhoods, surface_q_term,
             )
             spatial_term=surface_q_term
+            if parity_plan:
+                from benchmarks.donut_surface_chart_d7 import array_hash
             if chart:
-                from benchmarks.donut_surface_chart_d7 import array_hash, surface_chart_term
+                from benchmarks.donut_surface_chart_d7 import surface_chart_term
                 spatial_term=surface_chart_term
+            elif tensor_plan:
+                from scientific_variants.donut_tensor_shader_d8 import tensor_surface_term
+                spatial_term=tensor_surface_term
             setup_started=time.monotonic()
             domain=neighborhoods(geometry,spatial_policy)
             require(len(domain['face_area'])==spatial_policy['expected_mesh_faces'] and
@@ -271,9 +322,9 @@ def train(args):
                     np.array_equal(domain['diagnostic_ids'],pair_ix), 'Surface geometry or diagnostic identity differs')
             sampler=NeighborhoodSampler(domain['training_ids'],len(domain['face_pairs']),spatial_policy['rng_seed'])
             fitting_counts=fitting_face_counts(data,SPLITS['fitting'],len(domain['face_area']))
-            if chart:
+            if parity_plan:
                 hashes={k:array_hash(v) for k,v in dict(domain,fitting_camera_count=fitting_counts).items()}
-                require(hashes==chart['D6_domain_array_sha256'], 'D7 neighborhood domain differs from accepted D6')
+                require(hashes==parity_plan['D6_domain_array_sha256'], 'Neighborhood domain differs from accepted D6')
                 report['D6_domain_parity_verified']=True
             surface_tensors={k:tensor(domain[k]) for k in ('points0','points1','normals0','normals1','distance')}
             np.savez_compressed(args.output/'surface-q-domain.npz',**domain,fitting_camera_count=fitting_counts)
@@ -298,18 +349,20 @@ def train(args):
                         for draw in range(8):
                             seed=800000+camera*1000+start+draw
                             torch.manual_seed(seed);torch.cuda.manual_seed_all(seed)
-                            last=shade(pp,vv,nn,step,False)
+                            last=shade(pp,vv,nn,step,False,seed,export=draw==7)
                             draws.append(np.stack([last[k].cpu().numpy() for k in ('linear_rgb','linear_diffuse','linear_specular')],1))
                         # Deterministic field maps from the same returned forward, no extra material query.
                         chunks.append((ids,{k:v.cpu().numpy() for k,v in last.items() if k in
-                            ('kd','mx','my','metallic','rotation','rotation_raw','tangents','bitangents','normals')},np.mean(draws,axis=0),np.std(draws,axis=0,ddof=1)/np.sqrt(8)))
+                            ('kd','mx','my','metallic','rotation','rotation_raw','tangents','bitangents','normals','Q')},np.mean(draws,axis=0),np.std(draws,axis=0,ddof=1)/np.sqrt(8)))
                     arrays={k:np.zeros((SIZE,SIZE,width),np.float32) for k,width in
                         dict(kd=3,mx=1,my=1,metallic=1,rotation=2,rotation_raw=2,tangents=3,bitangents=3,normals=3,
                              linear_rgb=3,linear_diffuse=3,linear_specular=3).items()}
+                    if tensor_plan:
+                        arrays['Q']=np.zeros((SIZE,SIZE,9),np.float64)
                     standard_error=np.zeros((SIZE*SIZE,3,3),np.float32)
                     for ids,physical,render_mean,se in chunks:
                         pixels=d['pixel_indices'][ids]
-                        for key,value in physical.items():arrays[key].reshape(-1,value.shape[-1])[pixels]=value
+                        for key,value in physical.items():arrays[key].reshape(SIZE*SIZE,-1)[pixels]=value.reshape(len(ids),-1)
                         for k,key in enumerate(('linear_rgb','linear_diffuse','linear_specular')):arrays[key].reshape(-1,3)[pixels]=render_mean[:,k]
                         standard_error[pixels]=se
                     # Preserve geometric mask separately from one-sided BRDF domain.
@@ -324,12 +377,23 @@ def train(args):
                     arrays['linear_gt']=arrays['rgb_gt'].copy();arrays['rgb_gt']=field.linear_to_srgb(tensor(arrays['linear_gt'])).cpu().numpy()
                     arrays['position'].reshape(-1,3)[d['pixel_indices']]=d['position']
                     arrays['normal'].reshape(-1,3)[d['pixel_indices']]=d['normals']
-                    write_view(destination/('camera-%d'%camera),arrays,dict(arm=args.phase,completed_updates=step,camera_id=camera),np)
+                    view_identity=dict(arm=args.phase,completed_updates=step,camera_id=camera)
+                    if tensor_plan:
+                        direct=arrays.pop('Q').reshape(SIZE,SIZE,3,3)
+                        arrays['Q_tensor_direct']=direct
+                        view_identity.update(tensor_variant=initial['variant'],
+                            physical_Q_array='Q_tensor_direct',
+                            exported_axes='Sorted evaluation eigensystem of Q, with presentation angles in the A display chart')
+                    write_view(destination/('camera-%d'%camera),arrays,view_identity,np)
                     point_pred={k:arrays[k].reshape(-1,arrays[k].shape[-1])[d['pixel_indices'][indices]] for k in ('kd','mx','my','metallic')}
                     t=2*arrays['tangents'].reshape(-1,3)[d['pixel_indices'][indices]]-1
                     b=2*arrays['bitangents'].reshape(-1,3)[d['pixel_indices'][indices]]-1
                     point_pred['axis']=np.where(point_pred['mx']>=point_pred['my'],t,b)
                     point_pred['Q_world']=point_pred['mx'][:,:,None]**2*t[:,:,None]*t[:,None,:]+point_pred['my'][:,:,None]**2*b[:,:,None]*b[:,None,:]
+                    if tensor_plan:
+                        require(np.max(abs(point_pred['Q_world']-direct[mask]))<=
+                                tensor_plan['representation']['export_world_Q_atol'],
+                                'Exported axes do not reconstruct the evaluated world tensor')
                     errors,physical=physical_errors(point_pred,{k:d[k][indices] for k in ('normals','axis','Q_world')})
                     difference=arrays['linear_rgb'][mask]-arrays['linear_gt'][mask]
                     metrics[str(camera)]=dict(split='fitting' if camera in SPLITS['fitting'] else 'held_out',physical=physical,
@@ -340,10 +404,17 @@ def train(args):
                 q=[]
                 diagnostic_widths=[]
                 for pp,ff in zip(pair_points,pair_frames):
-                    a=shader.predict_anisotropic_components(tensor(pp))
-                    q.append(world_q(a[0],a[1],a[4],tensor(ff['normals']),torch))
+                    pn=tensor(ff['normals'])
+                    if tensor_plan:
+                        local,u,_,_=shader.predict_tensor(tensor(pp),pn)
+                        q.append(tensor_math.world_tensor(local,u).to(pn.dtype))
+                        widths=tensor_math.export_axes(local,u)[:2]
+                    else:
+                        a=shader.predict_anisotropic_components(tensor(pp))
+                        q.append(world_q(a[0],a[1],a[4],pn,torch))
+                        widths=a[:2]
                     if spatial:
-                        diagnostic_widths.append(torch.cat([a[0],a[1]],dim=-1).cpu().numpy())
+                        diagnostic_widths.append(torch.cat(widths,dim=-1).cpu().numpy())
                 R=normal_transport(tensor(pair_frames[1]['normals']),tensor(pair_frames[0]['normals']),torch)
                 delta=q[0]-R@q[1]@R.transpose(-1,-2)
                 gt0,gt1=(tensor(ff['Q_world']) for ff in pair_frames)
@@ -351,9 +422,9 @@ def train(args):
                 metrics['surface_Q_smoothness_diagnostic']=dict(pairs=len(pair_ix),predicted_mean_squared=float(delta.square().sum((-1,-2)).mean()),
                     oracle_mean_squared=float(truth_delta.square().sum((-1,-2)).mean()),new_loss=False)
                 if spatial:
-                    if chart:
-                        require(array_hash(sampler.counts)==chart['D6_sampler_snapshots'][str(step)],
-                                'D7 sampled pair counts differ from accepted D6')
+                    if parity_plan:
+                        require(array_hash(sampler.counts)==parity_plan['D6_sampler_snapshots'][str(step)],
+                                'Sampled pair counts differ from accepted D6')
                     sampled=coverage_summary(domain,sampler.counts,fitting_counts)
                     metrics['surface_Q_training_coverage']=sampled
                     widths=np.stack(diagnostic_widths,axis=1)
@@ -389,8 +460,19 @@ def train(args):
             shader.train();report['saved_endpoints'].append(dict(step=step,metrics=metrics))
             progress()
         def work():
-            nonlocal cursor,order
+            nonlocal cursor,order,sibling
             with shader_lighting(shader,field.MCShadingNetwork,args.phase,calibrated),native_tensor_default(torch):
+                if tensor_plan:
+                    from scientific_variants.donut_tensor_shader_d8 import paired_initial_gate
+                    with evaluation_scope(shader,torch,np),torch.no_grad(),shader_lighting(
+                            sibling,field.MCShadingNetwork,sibling.tensor_arm):
+                        budget('shader_calls',2);budget('shadow_rays',2*len(p)*1536)
+                        gate,capture=paired_initial_gate(shader,sibling,p,n,wo,tensor_plan['representation'])
+                        np.savez_compressed(args.output/'paired-initial-gate.npz',**capture)
+                        report['paired_initial_gate']=gate
+                    progress()
+                    require(gate['passed'],'D8 paired initial Q, scalar heads, light or RGB differ')
+                    sibling=None
                 evaluate(0)
                 with (args.output/'training.jsonl').open('x') as log:
                     for step in range(10000):
@@ -402,7 +484,11 @@ def train(args):
                         with calibration_scope(False):
                             o=shade(pp,vv,nn,step,True)
                         photo=renderer.NeROMaterialRenderer.compute_rgb_loss(SimpleNamespace(cfg={'rgb_loss':'charbonier'}),o['linear_rgb'],tensor(pool['linear_components'][selected,2])).mean()
-                        reg=shader.anisotropic_regularization(pp,nn,o['tangents'],o['bitangents'],o['mx'],o['my'],o['metallic'],o['kd'],o['f_d'],o['f_s_sum'],o['L_spec'],o['rotation'],o['rotation_raw'],step).mean()
+                        if tensor_plan:
+                            scalar,energy,spec=shader.regularize_tensor(pp,nn,o)
+                            reg=(scalar+energy+spec).mean()
+                        else:
+                            reg=shader.anisotropic_regularization(pp,nn,o['tangents'],o['bitangents'],o['mx'],o['my'],o['metallic'],o['kd'],o['f_d'],o['f_s_sum'],o['L_spec'],o['rotation'],o['rotation_raw'],step).mean()
                         white=renderer.NeROMaterialRenderer.compute_diffuse_light_regularization(SimpleNamespace(cfg={'reg_diffuse_light_lambda':.01}),o['diffuse_light']).mean()
                         loss=training_objective(photo,reg,white,include_diffuse_white=include_diffuse_white)
                         if spatial:
@@ -420,17 +506,21 @@ def train(args):
                             loss=loss+spatial_loss
                         require(bool(torch.isfinite(loss) & torch.isfinite(white)),
                                 'Nonfinite joint loss or diffuse-white diagnostic')
+                        if tensor_plan:
+                            q_widths=tensor_math.sorted_widths(o['Q_local'].detach())
                         row=dict(completed_updates=step+1,lr=lr,RGB_loss=float(photo.detach()),material_prior=float(reg.detach()),
                             diffuse_white_prior=float(white.detach()),kd_mean=o['kd'].detach().mean(0).cpu().tolist(),
                             metallic_mean=float(o['metallic'].detach().mean()),diffuse_allocation=o['f_d'].detach().mean(0).cpu().tolist(),
-                            mx_mean=float(o['mx'].detach().mean()),my_mean=float(o['my'].detach().mean()))
+                            mx_mean=float((q_widths[:,0] if tensor_plan else o['mx']).detach().mean()),
+                            my_mean=float((q_widths[:,1] if tensor_plan else o['my']).detach().mean()))
                         if ablation or spatial:
                             row['optimization_loss']=float(loss.detach())
                         if spatial:
                             row[spatial_name+'_loss']=float(spatial_loss.detach())
                             report['surface_q_timing']['forward_CUDA_seconds']+=spatial_start.elapsed_time(spatial_end)/1000
                         if step==0 or (step+1)%2000==0:
-                            energy,spec=legacy_energy_specular(o['f_d'],o['f_s_sum'],o['L_spec'],.05,.05,torch)
+                            if not tensor_plan:
+                                energy,spec=legacy_energy_specular(o['f_d'],o['f_s_sum'],o['L_spec'],.05,.05,torch)
                             terms=dict(photo=photo,material=reg,energy=energy,specular=spec)
                             if probe_diffuse_white:
                                 terms['diffuse_white']=white
@@ -463,7 +553,7 @@ def train(args):
                         if (step+1)%2000==0:
                             log.flush()
                             checkpoint=args.output/('checkpoint-%05d.pth'%(step+1))
-                            saved=dict(protocol=protocol,variant='A_corrected_core_v1',arm=args.phase,
+                            saved=dict(protocol=protocol,variant=initial['variant'],arm=args.phase,
                                 benchmark_sha256=args.benchmark_sha256,freeze_sha256=args.freeze_sha256,
                                 completed_updates=step+1,network_state_dict=shader.state_dict(),optimizer_state_dict=optimizer.state_dict(),
                                 torch_RNG=torch.get_rng_state(),CUDA_RNG=torch.cuda.get_rng_state_all(),
