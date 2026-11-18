@@ -1,0 +1,417 @@
+{
+  "batch": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6",
+  "records": {
+    "/home/isavand/nero/data/nerf_synthetic/donut/transforms_train.json": {
+      "bytes": 86413,
+      "path": "/home/isavand/nero/data/nerf_synthetic/donut/transforms_train.json",
+      "sha256": "89fc7b8d05db69437f3654cac1a8c6e68a23cfb411c28703824e18f0fdcaa82a"
+    },
+    "/home/isavand/paper/Nerofactor-donut-recovery/docs/results/donut_calibrated_d3_v1/coverage/camera34-coverage.npz": {
+      "bytes": 26089,
+      "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/results/donut_calibrated_d3_v1/coverage/camera34-coverage.npz",
+      "sha256": "0a995f98f6f672e7c3cb427adf4a8ffb7f47ab0607dcafd4ce385dbb263be2bc"
+    },
+    "/home/isavand/paper/Nerofactor-donut-recovery/docs/results/donut_surface_q_d6_v1/camera34-coverage.json": {
+      "bytes": 19591,
+      "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/results/donut_surface_q_d6_v1/camera34-coverage.json",
+      "sha256": "72f4882a8ffd223b15d2378b69c32b1cd0474c56be40497985b7702a766eca4f"
+    },
+    "/home/isavand/paper/evidence/donut-blend-inspection-v2/native-chart-orientation-reference.npz": {
+      "bytes": 804634,
+      "path": "/home/isavand/paper/evidence/donut-blend-inspection-v2/native-chart-orientation-reference.npz",
+      "sha256": "cc498faabe0b8b3e2ebf63a87a51d48316396b90e8650098cf19a559f442834c"
+    },
+    "/home/isavand/paper/evidence/donut-blend-inspection-v2/oracle-geometry-and-frames.npz": {
+      "bytes": 2589411,
+      "path": "/home/isavand/paper/evidence/donut-blend-inspection-v2/oracle-geometry-and-frames.npz",
+      "sha256": "cfe903c177dfe404c47390aed2a3fa025ea9499ca0af644dba667b721c0139f1"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6-authorization.json": {
+      "bytes": 6289,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6-authorization.json",
+      "sha256": "15897042bc2516eb074618e9dfe06ab771c620cefdcf66d233e47cb07779c2c8"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C-console.txt": {
+      "bytes": 0,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C-console.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C-exit-code.txt": {
+      "bytes": 2,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C-exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/checkpoint-02000.pth": {
+      "bytes": 27631043,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/checkpoint-02000.pth",
+      "sha256": "b988b420d9696d881d58deb7a0ae6c2afedbe811742c37bab1d3560908d7aaaf"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/checkpoint-04000.pth": {
+      "bytes": 27630979,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/checkpoint-04000.pth",
+      "sha256": "ab7677c1da5d3780c63a5eecd8724a974d94908a635a6342dfc8060942336d67"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/checkpoint-06000.pth": {
+      "bytes": 27630979,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/checkpoint-06000.pth",
+      "sha256": "f3aaa056ffacc86ceda84262081c6d88c6958fcca285750a694a1c4a24f7d18a"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/checkpoint-08000.pth": {
+      "bytes": 27631043,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/checkpoint-08000.pth",
+      "sha256": "a68e89b1e6aa22dfdb8694a5e05f52c185610013262599a42878594acbcbf47f"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/checkpoint-10000.pth": {
+      "bytes": 27631043,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/checkpoint-10000.pth",
+      "sha256": "5a44c502d0b62dc5bf8ff7dd246b8f6efed1540666e17ff945b7ece653de84c9"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/initial.json": {
+      "bytes": 241,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/initial.json",
+      "sha256": "a164cd4df8b790c35ee3c587e93945fdb13b2dcb766b1ebc96347056ab9c0886"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/native-reference-gate.npz": {
+      "bytes": 10529,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/native-reference-gate.npz",
+      "sha256": "8746ee8c2bf4b120a454722eaf945da22419eb8b8311dcb55c334d2df78db2f7"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/paired-initial-gate.npz": {
+      "bytes": 7510,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/paired-initial-gate.npz",
+      "sha256": "139f8a6ab0c99f7d9a4eaa3bbb35884bc52e6019f9302043200040b6e9a38c16"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/recovery.json": {
+      "bytes": 220459,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/recovery.json",
+      "sha256": "098f5da0fe91d42d2a49e5d5d951e78426c8378a5014b4f9e5264df4d37f5576"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/step-00000/surface-q-diagnostic.npz": {
+      "bytes": 9115,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/step-00000/surface-q-diagnostic.npz",
+      "sha256": "86198a91b68ca2d76df268b679fed41c1d3834a293570097059a15d66738c949"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/step-02000/surface-q-diagnostic.npz": {
+      "bytes": 40504,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/step-02000/surface-q-diagnostic.npz",
+      "sha256": "5234d634a88310e444a923350788853fa1f92c15197f546ea20ed9b6ba09a663"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/step-04000/surface-q-diagnostic.npz": {
+      "bytes": 39592,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/step-04000/surface-q-diagnostic.npz",
+      "sha256": "e8fe424dd0d245a9156c63e3054a506396a0be189aec2c53b3213ae9b94c7165"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/step-06000/surface-q-diagnostic.npz": {
+      "bytes": 38518,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/step-06000/surface-q-diagnostic.npz",
+      "sha256": "46b8237fb80eb98ea0390f3ad3c2f1b0ccc20e3ea76be818898b33926328933a"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/step-08000/surface-q-diagnostic.npz": {
+      "bytes": 40576,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/step-08000/surface-q-diagnostic.npz",
+      "sha256": "e00aee6f4776068b10272d41ad7fe2a1d6cd7c2d540a78acd116a2ccd3353265"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/step-10000/surface-q-diagnostic.npz": {
+      "bytes": 36868,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/step-10000/surface-q-diagnostic.npz",
+      "sha256": "5f1e2d0c0c1544468639646205368bcfff724d44fa3a45785a9f3e834ede657b"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/surface-q-domain.npz": {
+      "bytes": 2137477,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/surface-q-domain.npz",
+      "sha256": "d9eff6b38acbd165b24846187a413e95799c340b297f786e62704d9073df79cf"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/training.jsonl": {
+      "bytes": 8923406,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/training.jsonl",
+      "sha256": "fb07269d2eebe4e9ee1035821923ebd02b6bc21a0aa2ee37eca3549916bb4016"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T-console.txt": {
+      "bytes": 0,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T-console.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T-exit-code.txt": {
+      "bytes": 2,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T-exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/checkpoint-02000.pth": {
+      "bytes": 27639236,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/checkpoint-02000.pth",
+      "sha256": "43277404fb165f4fe43e84047688690ff952cb7fb992542b2a7cd59c82459eaa"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/checkpoint-04000.pth": {
+      "bytes": 27639172,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/checkpoint-04000.pth",
+      "sha256": "ec3d7af4a56e3b9a2a7e26274be59017c3f62c3f27672df12454f9b056bec65e"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/checkpoint-06000.pth": {
+      "bytes": 27639172,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/checkpoint-06000.pth",
+      "sha256": "8ab464d210bd9ae415acdc6dfaef9c284ee8f1f8162146d712fbf04c0c04667d"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/checkpoint-08000.pth": {
+      "bytes": 27639236,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/checkpoint-08000.pth",
+      "sha256": "b230717e92c934c550f7e0e86bf83534999e85f09d5b4505f8e1c0f8cdca04b8"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/checkpoint-10000.pth": {
+      "bytes": 27639236,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/checkpoint-10000.pth",
+      "sha256": "3e05bba92fbd120af9c4999b39ddb4b5ed3af7ae51e70776da2e4107820c7919"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/initial.json": {
+      "bytes": 243,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/initial.json",
+      "sha256": "52cd2d060e6033666f2911f203e68f43ce0a4fefc15b4a5f94206dde214147bd"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/native-reference-gate.npz": {
+      "bytes": 10529,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/native-reference-gate.npz",
+      "sha256": "8746ee8c2bf4b120a454722eaf945da22419eb8b8311dcb55c334d2df78db2f7"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/paired-initial-gate.npz": {
+      "bytes": 7510,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/paired-initial-gate.npz",
+      "sha256": "610f8b074b17cf42f2109348a581bf0471235f21bf663fd852883f36566aa43a"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/recovery.json": {
+      "bytes": 220553,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/recovery.json",
+      "sha256": "760de22fb899edc1b6c641c0977da62d78dcf87f28386d6c15fd380b87e6f783"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-00000/surface-q-diagnostic.npz": {
+      "bytes": 9121,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-00000/surface-q-diagnostic.npz",
+      "sha256": "ef8f7cb8be27509929da94aa7f188c117d72a40f6e09cab4eb87ddda03cc115d"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-02000/surface-q-diagnostic.npz": {
+      "bytes": 40680,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-02000/surface-q-diagnostic.npz",
+      "sha256": "80bc60dc3f87b0bde1268b6ca8ce001089f95c7aa9f219cbdca1daeeb3c668ef"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-04000/surface-q-diagnostic.npz": {
+      "bytes": 39361,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-04000/surface-q-diagnostic.npz",
+      "sha256": "23e599c6e805fc71d157c023bd950eee0072a6f7dedfc16c58d5ffd851b0faeb"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-06000/surface-q-diagnostic.npz": {
+      "bytes": 38320,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-06000/surface-q-diagnostic.npz",
+      "sha256": "ef1866f1ab5fe25dc0c9aa3846767c452779eeec7e876e8b8f5f2861141d68fc"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-08000/surface-q-diagnostic.npz": {
+      "bytes": 40351,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-08000/surface-q-diagnostic.npz",
+      "sha256": "0c08366284b63c88ac97a817530ecdb4245471d49a49d5e830233bf88990b7be"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-10000/surface-q-diagnostic.npz": {
+      "bytes": 36712,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/step-10000/surface-q-diagnostic.npz",
+      "sha256": "f5189c6c97cefb6f200af96e777284c159e321beef94c43dda10301a5e4c2316"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/surface-q-domain.npz": {
+      "bytes": 2137477,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/surface-q-domain.npz",
+      "sha256": "d9eff6b38acbd165b24846187a413e95799c340b297f786e62704d9073df79cf"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/training.jsonl": {
+      "bytes": 8911489,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/training.jsonl",
+      "sha256": "bd15d04079d3c2edcc55b54749d08ee9277dd3a21bd10627609862f9be37062f"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/authorization.json": {
+      "bytes": 6289,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/authorization.json",
+      "sha256": "15897042bc2516eb074618e9dfe06ab771c620cefdcf66d233e47cb07779c2c8"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/freeze.json": {
+      "bytes": 54329,
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/freeze.json",
+      "sha256": "47d1d7b62b528207169a9ec5a70e70462c2da564d348b89c19924a69fa5a289a"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/initial.json": {
+      "bytes": 141,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/initial.json",
+      "sha256": "0407da2d23f545004a5505e475d497ba2c41760988048d2ff09654e18b5ab6a9"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/recovery.json": {
+      "bytes": 213635,
+      "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/recovery.json",
+      "sha256": "35fa32f3482d25be793286de56185aafc7c41d94739fd454f076ef6437f3a490"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-reference-v2-262b3cfcf73340a0867829c48c0198f7-admission.json": {
+      "bytes": 8020,
+      "path": "/home/isavand/paper/evidence/donut-kurt-reference-v2-262b3cfcf73340a0867829c48c0198f7-admission.json",
+      "sha256": "02e4f7ca909de6b7c2c9fa2a2e291850a9bff190b426e319daf82e3ecdb82c9e"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-reference-v2-262b3cfcf73340a0867829c48c0198f7/reference/generation.json": {
+      "bytes": 35030,
+      "path": "/home/isavand/paper/evidence/donut-kurt-reference-v2-262b3cfcf73340a0867829c48c0198f7/reference/generation.json",
+      "sha256": "2052306bdf87a0beaa0a3f9b0bddeeb12d787f1d65357d520b5ce2fe0a33ee64"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6-console.txt": {
+      "bytes": 0,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6-console.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6-exit-code.txt": {
+      "bytes": 2,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6-exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/checkpoint-02000.pth": {
+      "bytes": 27630719,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/checkpoint-02000.pth",
+      "sha256": "524f3a9682bec4a643333eeff6c82e03d279e5246769ed3d0cc50c7c4c210fd8"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/checkpoint-04000.pth": {
+      "bytes": 27630655,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/checkpoint-04000.pth",
+      "sha256": "b8b190b7c3e7f9e8b69743fc67e172477a14638da4f028cb8d064f78b922c14d"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/checkpoint-06000.pth": {
+      "bytes": 27630655,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/checkpoint-06000.pth",
+      "sha256": "0af60b7cd9ce9a4379bd19580b4b5a23137fb53c9079ae41c24692b2f73fa6aa"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/checkpoint-08000.pth": {
+      "bytes": 27630719,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/checkpoint-08000.pth",
+      "sha256": "fffd60c3df953c3ccbc41e975c75c593e48a563f828174c81664897e3c3193f8"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/checkpoint-10000.pth": {
+      "bytes": 27630719,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/checkpoint-10000.pth",
+      "sha256": "f015f1a414fa6a54890e9ed6b642f0cf2c62c6471acbdb9ba801e36e140822d5"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/initial.json": {
+      "bytes": 141,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/initial.json",
+      "sha256": "0407da2d23f545004a5505e475d497ba2c41760988048d2ff09654e18b5ab6a9"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/native-reference-gate.npz": {
+      "bytes": 10530,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/native-reference-gate.npz",
+      "sha256": "a81fe6db449da102bd72b21e778ae66fdc30fe0e9aad55c022bc83c744d22d96"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/recovery.json": {
+      "bytes": 219403,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/recovery.json",
+      "sha256": "70cf281b3b2698eb461c00b731f524ddddcc76a04d3df20d9a94bd81e5bc5ff6"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/step-00000/surface-q-diagnostic.npz": {
+      "bytes": 26742,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/step-00000/surface-q-diagnostic.npz",
+      "sha256": "a6ce6111b46866e4afeb1f7c85650cdfc5227c1e5537a51112891785c250af17"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/step-02000/surface-q-diagnostic.npz": {
+      "bytes": 39365,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/step-02000/surface-q-diagnostic.npz",
+      "sha256": "3193e0247320b64cb305c3773d8cc6c5f100ad89fe1e67cb3ec2bb3d9a673868"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/step-04000/surface-q-diagnostic.npz": {
+      "bytes": 37409,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/step-04000/surface-q-diagnostic.npz",
+      "sha256": "164c65cd81030ac983a8e438575590e7db96544726313680a0ffbfdc462348c0"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/step-06000/surface-q-diagnostic.npz": {
+      "bytes": 35853,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/step-06000/surface-q-diagnostic.npz",
+      "sha256": "3b999125c5c5530008a968a47ffb33213cf518b9874278dc76cfb1476c12752b"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/step-08000/surface-q-diagnostic.npz": {
+      "bytes": 37908,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/step-08000/surface-q-diagnostic.npz",
+      "sha256": "b749c6998634d83544fb951d82c778b79629d6abb2275e5138477d3d414498ed"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/step-10000/illumination.npz": {
+      "bytes": 597375,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/step-10000/illumination.npz",
+      "sha256": "7de1606cac99702e6c6a76bcf290b30be6ad8650cce421da0748e8e3907b78fa"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/step-10000/surface-q-diagnostic.npz": {
+      "bytes": 34155,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/step-10000/surface-q-diagnostic.npz",
+      "sha256": "68c6d62e31c1f8be8024cf1bb58574e705559651a853d43e65336334ac478036"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/surface-q-domain.npz": {
+      "bytes": 2137477,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/surface-q-domain.npz",
+      "sha256": "d9eff6b38acbd165b24846187a413e95799c340b297f786e62704d9073df79cf"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/training.jsonl": {
+      "bytes": 8934298,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/training.jsonl",
+      "sha256": "f656630a8e5f0ba08285ae377f0f274db578061e5ac27f73dd076838252152f3"
+    },
+    "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/freeze.json": {
+      "bytes": 48227,
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/freeze.json",
+      "sha256": "02b181b05bf499cb312f634622122977ea47a24f0c18d93ccb150409fa4ecec4"
+    }
+  },
+  "retained_outputs": {
+    "D6": {
+      "cameras": [
+        0,
+        50,
+        1,
+        45,
+        28,
+        34
+      ],
+      "endpoints": [
+        0,
+        2000,
+        4000,
+        6000,
+        8000,
+        10000
+      ],
+      "output_identities": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6/recovery.json",
+      "path": "/home/isavand/paper/evidence/donut-kurt-surface-q-d6-cde03768f4a14f13b231e82149b49ec7/D6"
+    },
+    "D8-C": {
+      "cameras": [
+        0,
+        50,
+        1,
+        45,
+        28,
+        34
+      ],
+      "endpoints": [
+        0,
+        2000,
+        4000,
+        6000,
+        8000,
+        10000
+      ],
+      "output_identities": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/recovery.json",
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C"
+    },
+    "D8-T": {
+      "cameras": [
+        0,
+        50,
+        1,
+        45,
+        28,
+        34
+      ],
+      "endpoints": [
+        0,
+        2000,
+        4000,
+        6000,
+        8000,
+        10000
+      ],
+      "output_identities": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/recovery.json",
+      "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T"
+    }
+  }
+}
