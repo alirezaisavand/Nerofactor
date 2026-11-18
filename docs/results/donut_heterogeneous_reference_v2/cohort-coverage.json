@@ -1,0 +1,70 @@
+{
+  "mesh_area_native": 1.9624934187259628,
+  "scope": "Verified saved observations only; repeated pixels are partitioned within triangle",
+  "splits": {
+    "fitting": {
+      "cameras": [
+        0,
+        50,
+        1,
+        45
+      ],
+      "groups": {
+        "highlight": {
+          "observations": 4126,
+          "weighted_fraction_of_observed_area": 0.2771868564651578
+        },
+        "near_boundary": {
+          "observations": 1808,
+          "weighted_fraction_of_observed_area": 0.11584978037267409
+        },
+        "near_isotropy": {
+          "observations": 782,
+          "weighted_fraction_of_observed_area": 0.04661003576384266
+        },
+        "width_family_0": {
+          "observations": 7557,
+          "weighted_fraction_of_observed_area": 0.4944383158115713
+        },
+        "width_family_1": {
+          "observations": 7729,
+          "weighted_fraction_of_observed_area": 0.5055616841884287
+        }
+      },
+      "observations": 15286,
+      "observed_area_weight_sum_native": 1.0846740904807095,
+      "observed_triangle_area_fraction": 0.5527020269881325
+    },
+    "held_out": {
+      "cameras": [
+        28,
+        34
+      ],
+      "groups": {
+        "highlight": {
+          "observations": 1645,
+          "weighted_fraction_of_observed_area": 0.22040645655831448
+        },
+        "near_boundary": {
+          "observations": 869,
+          "weighted_fraction_of_observed_area": 0.11796029184394308
+        },
+        "near_isotropy": {
+          "observations": 244,
+          "weighted_fraction_of_observed_area": 0.03977419034536706
+        },
+        "width_family_0": {
+          "observations": 4594,
+          "weighted_fraction_of_observed_area": 0.6117441329447245
+        },
+        "width_family_1": {
+          "observations": 2750,
+          "weighted_fraction_of_observed_area": 0.38825586705527537
+        }
+      },
+      "observations": 7344,
+      "observed_area_weight_sum_native": 0.6913606348204553,
+      "observed_triangle_area_fraction": 0.3522868551932683
+    }
+  }
+}

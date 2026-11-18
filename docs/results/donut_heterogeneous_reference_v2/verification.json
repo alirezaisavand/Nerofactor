@@ -1,0 +1,472 @@
+{
+  "authorization_sha256": "b84ead4abb75d65dcf9c4b8cde08947b9b82ccbc90dfdda1991d00f72c059f93",
+  "camera0_byte_identity_verified": true,
+  "counters": {
+    "BRDF_point_directions": 5081006080,
+    "CPU_primary_crosschecks": 0,
+    "primary_rays": 0,
+    "shadow_directions": 5081006080,
+    "slope_nodes_attempted": 1266319360,
+    "slope_nodes_returned": 1266319360
+  },
+  "diagnostic": {
+    "RGB": {
+      "maximum_rgb_difference": 4.4765878167082884e-05,
+      "passed": true,
+      "relative_l2": 0.00026130692550654537
+    },
+    "diffuse": {
+      "maximum_rgb_difference": 4.1517000405610904e-07,
+      "passed": true,
+      "relative_l2": 7.74938785645469e-06
+    },
+    "specular": {
+      "maximum_rgb_difference": 4.476203123097988e-05,
+      "passed": true,
+      "relative_l2": 0.000317704530786123
+    },
+    "unoccluded_incident_reflectance": {
+      "maximum_rgb_difference": 6.124978176585971e-05,
+      "passed": true,
+      "relative_l2": 0.00016887567184691837
+    }
+  },
+  "freeze_sha256": "0bf3836aaa58491224df419c0bc5feaf921393137b196f2a252f4589e2badb38",
+  "generation_sha256": "de8dda85559b286456d926e09731c6c501dfcbd6707d1aaf3aef9cf8784c58a0",
+  "native_commit": "cd15ac09f26635db1b682378c5447547b0a395a6",
+  "new_high_points": 0,
+  "outputs": {
+    "baseline-1.npz": {
+      "bytes": 2197033,
+      "sha256": "bc8dc230809f14ecef1dc41aa9ecef80a8dd71291da754f0bd533c9d68016816"
+    },
+    "baseline-28.npz": {
+      "bytes": 2577143,
+      "sha256": "360ad6109a9542ecb78e0a51dd810aa665a16c57911340f45c935200236bfca5"
+    },
+    "baseline-34.npz": {
+      "bytes": 1313395,
+      "sha256": "7b282d4a80ccaeb7e80b0e483a750640e0b60f9536a3e2a2c102b7f2354b6765"
+    },
+    "baseline-45.npz": {
+      "bytes": 2101137,
+      "sha256": "9930e58bc74738d3bb357c3545ba263445f3ce46ce05f78b5d1fc2c5501e6c00"
+    },
+    "baseline-50.npz": {
+      "bytes": 1383114,
+      "sha256": "8225c344e1d63eb0c8cb32aa61eb8e62d1c1fd21fe8450ef3329ee05c147204e"
+    },
+    "camera50-high-grid-diagnostic.npz": {
+      "bytes": 1620,
+      "sha256": "6f55e311c0c59af9cd61fb00091d0d0f506a5dff6d160fc50434fecb7e7605dc"
+    },
+    "patch-50-7317.npz": {
+      "bytes": 1225,
+      "sha256": "7409a461ced160eac37a2ec3273277ebac71a1b373c5c0bd939b1a043cad444a"
+    },
+    "quadrature-0.npz": {
+      "bytes": 7996,
+      "sha256": "0b9c3e0789f1ad8a4d26fd88580bf2be240b24d617aa0cfb2761d3dcb3d21274"
+    },
+    "quadrature-1.npz": {
+      "bytes": 16951,
+      "sha256": "4e9c1d88fbb9799e010b623cc0d7f0242c422add046e8feabe86580802fceeda"
+    },
+    "quadrature-28.npz": {
+      "bytes": 20180,
+      "sha256": "7b65619c5c95db9c15ca1ab1257c214df69b646972c5d49f99359c2d3aef5b03"
+    },
+    "quadrature-34.npz": {
+      "bytes": 9906,
+      "sha256": "05baa6480d35fbacea8822ff2757cc54ba39220318989c6e7e5456d8d39fa776"
+    },
+    "quadrature-45.npz": {
+      "bytes": 16155,
+      "sha256": "6ae057412749a33d59678d058e4cacaec166a676aae751b5561d2cb85d26b0db"
+    },
+    "quadrature-50.npz": {
+      "bytes": 5166,
+      "sha256": "6bcf17fcae4394386f41125043b4caa5665c83b04f63703bb2320d90937a6ae8"
+    },
+    "reference-components.png": {
+      "bytes": 80382,
+      "sha256": "effea443178541d0ba3026545f08743f279bf81718af31f68790965e130c15c1"
+    },
+    "surface-area.npz": {
+      "bytes": 114680,
+      "sha256": "118193ac8c479316c4222a79ee08a734f9bee6895cfc16b3c453ad3e1e525f24"
+    },
+    "view-0-RGB.png": {
+      "bytes": 7201,
+      "sha256": "00f7060fd4763dd1fbc7b455904a28d13ed635b0e855855e48a1a2c96ebcf9ec"
+    },
+    "view-0-diffuse.png": {
+      "bytes": 3716,
+      "sha256": "b3b353eafe7c48e0ff2be351cc912e94e3286ae3fff5e76547b124dcf22564fa"
+    },
+    "view-0-specular.png": {
+      "bytes": 7707,
+      "sha256": "e2732df631e7813592ef5b0e9ebcd37d27959fb88088647041c0bc023ba41838"
+    },
+    "view-0.npz": {
+      "bytes": 2403543,
+      "sha256": "e570bfd965ad8a5775c44e4306a029f9b2c1515a0f9bb1f256cfff150cd8a134"
+    },
+    "view-1-RGB.png": {
+      "bytes": 5603,
+      "sha256": "f3294a6c82471c298d01d5e75b151a2f058e56ee24a1997b0c67f1f9536c055d"
+    },
+    "view-1-diffuse.png": {
+      "bytes": 3131,
+      "sha256": "4784eb54bd4f9119c87ef7eacf2a143071d86879743383d8c10bc80741e5c1be"
+    },
+    "view-1-specular.png": {
+      "bytes": 6220,
+      "sha256": "1c6efa80aa196085384472f3ab81f1874d4b41323ad27dfca9a844981088aa68"
+    },
+    "view-1.npz": {
+      "bytes": 2187672,
+      "sha256": "f8ce285b6b0f3c1280b0d3bb41562e813ff688cee4f0d75f320d5e445e173d7d"
+    },
+    "view-28-RGB.png": {
+      "bytes": 7988,
+      "sha256": "f354db39d0ca3fb0719fbfe8cc6a9e3a0a0a1ac4bf744f415f9bc733306eba66"
+    },
+    "view-28-diffuse.png": {
+      "bytes": 4084,
+      "sha256": "771b475437100ae2de0fec4df9e030fbecf571ccfad50caf4e02b2e61c7516a1"
+    },
+    "view-28-specular.png": {
+      "bytes": 8716,
+      "sha256": "697dd8bc8ff18646ef53e1598b4aa22400e80e4bf50927fe2f7aa973f60dfc34"
+    },
+    "view-28.npz": {
+      "bytes": 2565614,
+      "sha256": "44e6ddb03d8519f7c490ca2aafce395ed553f20f173a0d96babddc647115639b"
+    },
+    "view-34-RGB.png": {
+      "bytes": 2412,
+      "sha256": "d998e573aa0642783e9ed80b37b5e4f47f31bfdfa04d80e1dbd42f7843a3415c"
+    },
+    "view-34-diffuse.png": {
+      "bytes": 1484,
+      "sha256": "7045a20ca3f891e065f0e7b4978f018489e4a7ce35e54d2132b0cefe2293c839"
+    },
+    "view-34-specular.png": {
+      "bytes": 2654,
+      "sha256": "8ec303444f7b7808d862f6d9bcda9a664caa3094084e5c2e55606a7f22229145"
+    },
+    "view-34.npz": {
+      "bytes": 1308423,
+      "sha256": "730739337f9fa08b6d6e9aceb8a34d121fae424d52991649b8175ad474226ba1"
+    },
+    "view-45-RGB.png": {
+      "bytes": 5132,
+      "sha256": "bbb587e296a8a3afb94841629f2d7aadd824de3ea97912f3a152310cd61a39f2"
+    },
+    "view-45-diffuse.png": {
+      "bytes": 2951,
+      "sha256": "c42db66f61db2b3f6be73e281bec1f5a9908a95e9564d390275e8394aa176eb4"
+    },
+    "view-45-specular.png": {
+      "bytes": 5506,
+      "sha256": "10c5af5362dc072590b7931e3521f47c78c4876542e7ac896b11f3c3b816e1a4"
+    },
+    "view-45.npz": {
+      "bytes": 2092230,
+      "sha256": "949802ee07a2b196ba1d6347f314df6ff31b66613eb1e0145bf4fd163527fe55"
+    },
+    "view-50-RGB.png": {
+      "bytes": 2915,
+      "sha256": "47695a4ac5d41256ff1423f959f9410d7516eb72a68da110034f69f6345418de"
+    },
+    "view-50-diffuse.png": {
+      "bytes": 1619,
+      "sha256": "eb2d90f51aa212de90697bc69ffecdee57c0de993a1cd7c1918ca8bbe8017478"
+    },
+    "view-50-specular.png": {
+      "bytes": 3304,
+      "sha256": "8c17ca5d74713a4343d9708a6aefa55c78d1dde989b4ac2aba65db7c84105877"
+    },
+    "view-50.npz": {
+      "bytes": 1383119,
+      "sha256": "daff67e19645246274dfb937f21a943f3f93a0c145050b3c52fadd0e81e253e5"
+    }
+  },
+  "package": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference",
+  "per_view": [
+    {
+      "camera": 0,
+      "final_gates": {
+        "ordinary_incident_convergence": {
+          "maximum_rgb_difference": 1.2924525223390049e-05,
+          "passed": true,
+          "relative_l2": 1.677051309274076e-05
+        },
+        "ordinary_slope_vs_incident": {
+          "maximum_rgb_difference": 4.680204174323244e-06,
+          "passed": true,
+          "relative_l2": 5.586473404779115e-06
+        },
+        "radiance_convergence": {
+          "maximum_rgb_difference": 0.00023448041729632468,
+          "passed": true,
+          "relative_l2": 0.000509704472621125
+        },
+        "reflectance_convergence": {
+          "maximum_rgb_difference": 1.929154033630809e-06,
+          "passed": true,
+          "relative_l2": 1.93514679826166e-06
+        }
+      },
+      "highlight_count": 1113,
+      "near_boundary": 576,
+      "nearly_isotropic": 13,
+      "original_RGB": {
+        "maximum_rgb_difference": 0.00023448041729632468,
+        "passed": true,
+        "relative_l2": 0.000509704472621125
+      },
+      "selected_pixels": [],
+      "valid": 4536
+    },
+    {
+      "camera": 50,
+      "final_gates": {
+        "ordinary_incident_convergence": {
+          "maximum_rgb_difference": 3.1041026382627734e-06,
+          "passed": true,
+          "relative_l2": 3.5609311834164393e-06
+        },
+        "ordinary_slope_vs_incident": {
+          "maximum_rgb_difference": 7.631650043027349e-07,
+          "passed": true,
+          "relative_l2": 8.906694884673549e-07
+        },
+        "radiance_convergence": {
+          "maximum_rgb_difference": 0.0006931669865488238,
+          "passed": true,
+          "relative_l2": 0.0004619979978009228
+        },
+        "reflectance_convergence": {
+          "maximum_rgb_difference": 2.506415269776241e-06,
+          "passed": true,
+          "relative_l2": 1.8500598228725829e-06
+        }
+      },
+      "highlight_count": 675,
+      "near_boundary": 255,
+      "nearly_isotropic": 472,
+      "original_RGB": {
+        "maximum_rgb_difference": 0.006989579921519995,
+        "passed": false,
+        "relative_l2": 0.0024265205637483004
+      },
+      "selected_pixels": [
+        7317
+      ],
+      "valid": 2636
+    },
+    {
+      "camera": 1,
+      "final_gates": {
+        "ordinary_incident_convergence": {
+          "maximum_rgb_difference": 1.550952332829425e-05,
+          "passed": true,
+          "relative_l2": 1.3919742210370768e-05
+        },
+        "ordinary_slope_vs_incident": {
+          "maximum_rgb_difference": 4.8844333799813455e-06,
+          "passed": true,
+          "relative_l2": 4.288778536400135e-06
+        },
+        "radiance_convergence": {
+          "maximum_rgb_difference": 0.0008777572116247731,
+          "passed": true,
+          "relative_l2": 0.00042255153305922584
+        },
+        "reflectance_convergence": {
+          "maximum_rgb_difference": 1.934182684015795e-06,
+          "passed": true,
+          "relative_l2": 1.752939158594546e-06
+        }
+      },
+      "highlight_count": 1115,
+      "near_boundary": 502,
+      "nearly_isotropic": 15,
+      "original_RGB": {
+        "maximum_rgb_difference": 0.0008777572116247731,
+        "passed": true,
+        "relative_l2": 0.00042255153305922584
+      },
+      "selected_pixels": [],
+      "valid": 4144
+    },
+    {
+      "camera": 45,
+      "final_gates": {
+        "ordinary_incident_convergence": {
+          "maximum_rgb_difference": 5.0512905602762e-06,
+          "passed": true,
+          "relative_l2": 4.891923531371648e-06
+        },
+        "ordinary_slope_vs_incident": {
+          "maximum_rgb_difference": 2.151076705425581e-06,
+          "passed": true,
+          "relative_l2": 1.9702288370826582e-06
+        },
+        "radiance_convergence": {
+          "maximum_rgb_difference": 0.00026099181180289956,
+          "passed": true,
+          "relative_l2": 0.0002380435888797507
+        },
+        "reflectance_convergence": {
+          "maximum_rgb_difference": 2.128790011934889e-06,
+          "passed": true,
+          "relative_l2": 2.0223145366928635e-06
+        }
+      },
+      "highlight_count": 1223,
+      "near_boundary": 475,
+      "nearly_isotropic": 282,
+      "original_RGB": {
+        "maximum_rgb_difference": 0.00026099181180289956,
+        "passed": true,
+        "relative_l2": 0.0002380435888797507
+      },
+      "selected_pixels": [],
+      "valid": 3970
+    },
+    {
+      "camera": 28,
+      "final_gates": {
+        "ordinary_incident_convergence": {
+          "maximum_rgb_difference": 3.875192575153452e-05,
+          "passed": true,
+          "relative_l2": 3.2717428308447274e-05
+        },
+        "ordinary_slope_vs_incident": {
+          "maximum_rgb_difference": 1.3265715679278145e-05,
+          "passed": true,
+          "relative_l2": 1.118934193668298e-05
+        },
+        "radiance_convergence": {
+          "maximum_rgb_difference": 0.0007431660917815164,
+          "passed": true,
+          "relative_l2": 0.0011310695871606128
+        },
+        "reflectance_convergence": {
+          "maximum_rgb_difference": 2.257761090085353e-06,
+          "passed": true,
+          "relative_l2": 2.202810299285991e-06
+        }
+      },
+      "highlight_count": 1198,
+      "near_boundary": 641,
+      "nearly_isotropic": 244,
+      "original_RGB": {
+        "maximum_rgb_difference": 0.0007431660917815164,
+        "passed": true,
+        "relative_l2": 0.0011310695871606128
+      },
+      "selected_pixels": [],
+      "valid": 4849
+    },
+    {
+      "camera": 34,
+      "final_gates": {
+        "ordinary_incident_convergence": {
+          "maximum_rgb_difference": 1.157889398017975e-05,
+          "passed": true,
+          "relative_l2": 1.3006379673305911e-05
+        },
+        "ordinary_slope_vs_incident": {
+          "maximum_rgb_difference": 4.290980367471775e-06,
+          "passed": true,
+          "relative_l2": 4.777648069873783e-06
+        },
+        "radiance_convergence": {
+          "maximum_rgb_difference": 0.0008574681381735613,
+          "passed": true,
+          "relative_l2": 0.0007765456710904182
+        },
+        "reflectance_convergence": {
+          "maximum_rgb_difference": 1.8551464412430718e-06,
+          "passed": true,
+          "relative_l2": 2.0111829529301725e-06
+        }
+      },
+      "highlight_count": 447,
+      "near_boundary": 228,
+      "nearly_isotropic": 0,
+      "original_RGB": {
+        "maximum_rgb_difference": 0.0008574681381735613,
+        "passed": true,
+        "relative_l2": 0.0007765456710904182
+      },
+      "selected_pixels": [],
+      "valid": 2495
+    }
+  ],
+  "protocol": "donut-kurt-heterogeneous-reference-v2",
+  "refined_points": 1,
+  "researcher_admitted_dataset": false,
+  "retained_failed_batch": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v1-9f748fd96ca64df08605cb566344fcc7",
+  "retained_failed_records": {
+    "authorization.json": {
+      "bytes": 1188,
+      "sha256": "e93d8c37c3cbd7a1b5df728b14386fa327fec15f169827c04b64b003d7c860cd"
+    },
+    "console.txt": {
+      "bytes": 1016,
+      "sha256": "b9eaa3ca0c42442e6595bc61aede7ed6b2a5ebbe0d027552e44315aa381a40e5"
+    },
+    "container.cid": {
+      "bytes": 64,
+      "sha256": "ba4f07f810070835423f2909a8cb1966e73861e0df92f4fb2a83e4cd72b2f421"
+    },
+    "exit-code.txt": {
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    "freeze.json": {
+      "bytes": 49436,
+      "sha256": "330eafdac4dc70555cd8d5d1e6da54d2a92b91b9047f89d8c7f04329fc90e4e1"
+    },
+    "reference/generation.json": {
+      "bytes": 9902,
+      "sha256": "b08f8b9eb249b43e40c4cc63c2b92a183ac7838b334fb25b619713a181d17218"
+    },
+    "reference/progress.json": {
+      "bytes": 7652,
+      "sha256": "d11193c130abae2dea645764565e50d8df2c7e41bc1d240a7f85f31b3c9f81da"
+    },
+    "reference/surface-area.npz": {
+      "bytes": 114680,
+      "sha256": "118193ac8c479316c4222a79ee08a734f9bee6895cfc16b3c453ad3e1e525f24"
+    },
+    "reference/view-0-RGB.png": {
+      "bytes": 7201,
+      "sha256": "00f7060fd4763dd1fbc7b455904a28d13ed635b0e855855e48a1a2c96ebcf9ec"
+    },
+    "reference/view-0-diffuse.png": {
+      "bytes": 3716,
+      "sha256": "b3b353eafe7c48e0ff2be351cc912e94e3286ae3fff5e76547b124dcf22564fa"
+    },
+    "reference/view-0-specular.png": {
+      "bytes": 7707,
+      "sha256": "e2732df631e7813592ef5b0e9ebcd37d27959fb88088647041c0bc023ba41838"
+    },
+    "reference/view-0.npz": {
+      "bytes": 2403543,
+      "sha256": "e570bfd965ad8a5775c44e4306a029f9b2c1515a0f9bb1f256cfff150cd8a134"
+    },
+    "reference/view-50.npz": {
+      "bytes": 1383114,
+      "sha256": "8225c344e1d63eb0c8cb32aa61eb8e62d1c1fd21fe8450ef3329ee05c147204e"
+    }
+  },
+  "schema_version": 1,
+  "status": "verified_pending_researcher_admission",
+  "training_authorized": false
+}

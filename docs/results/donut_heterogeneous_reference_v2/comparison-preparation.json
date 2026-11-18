@@ -1,0 +1,267 @@
+{
+  "analysis_groups": [
+    "fitting",
+    "held_out",
+    "near_boundary",
+    "smooth_interior",
+    "nearly_isotropic",
+    "nearby_fitting_camera_count",
+    "nearby_highlight_count"
+  ],
+  "arms": {
+    "D2": {
+      "accepted_per_arm_limits": {
+        "arm_seconds": 3600,
+        "batch_rays": 512,
+        "component_reverse_sweeps": 24,
+        "cpu_threads": 4,
+        "cuda_allocator_fraction": 0.25,
+        "evaluation_draws": 8,
+        "grace_seconds": 30,
+        "host_memory_gib": 64,
+        "illumination_map_calls": 6,
+        "inner_seconds": 3540,
+        "interval": 2000,
+        "output_bytes": 8589934592,
+        "shader_calls": 19248,
+        "shadow_rays": 15113256960,
+        "smoothness_field_calls": 12,
+        "updates_per_arm": 10000,
+        "wall_seconds": 7500
+      },
+      "historical_freeze": {
+        "bytes": 44128,
+        "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/protocols/DONUT_KURT_RECOVERY_V2.freeze.json",
+        "sha256": "d39ac455354bb444c61739a630d389fd59818788c2466046abb1e87359ba0f6a"
+      },
+      "planned_work_on_verified_counts": {
+        "component_reverse_sweeps": 24,
+        "shader_calls": 12288,
+        "shadow_rays": 9533964288,
+        "surface_q_pairs": 0,
+        "updates_per_arm": 10000
+      },
+      "spatial_policy": null,
+      "tensor_representation": null
+    },
+    "D6": {
+      "accepted_per_arm_limits": {
+        "arm_seconds": 3600,
+        "batch_rays": 512,
+        "component_reverse_sweeps": 30,
+        "cpu_threads": 4,
+        "cuda_allocator_fraction": 0.25,
+        "evaluation_draws": 8,
+        "grace_seconds": 30,
+        "host_memory_gib": 64,
+        "illumination_map_calls": 6,
+        "inner_seconds": 3540,
+        "interval": 2000,
+        "output_bytes": 8589934592,
+        "shader_calls": 19248,
+        "shadow_rays": 15113256960,
+        "smoothness_field_calls": 12,
+        "surface_q_batches": 10000,
+        "surface_q_pairs": 1280000,
+        "surface_q_predictor_calls": 20000,
+        "surface_q_predictor_points": 2560000,
+        "updates_per_arm": 10000,
+        "wall_seconds": 3720
+      },
+      "historical_freeze": {
+        "bytes": 48227,
+        "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/protocols/DONUT_KURT_SURFACE_Q_D6_V1.freeze.json",
+        "sha256": "02b181b05bf499cb312f634622122977ea47a24f0c18d93ccb150409fa4ecec4"
+      },
+      "planned_work_on_verified_counts": {
+        "component_reverse_sweeps": 30,
+        "shader_calls": 12288,
+        "shadow_rays": 9533964288,
+        "surface_q_pairs": 1280000,
+        "updates_per_arm": 10000
+      },
+      "spatial_policy": {
+        "batch_pairs": 128,
+        "coefficient": 0.05,
+        "diagnostic_pairs": 1024,
+        "expected_mesh_faces": 18432,
+        "expected_pairs": 27648,
+        "max_face_dihedral_degrees": 15.0,
+        "max_surface_distance": 0.02,
+        "pair_sampling": "uniform edge permutations without replacement",
+        "reference_distance": 0.02,
+        "rng_seed": 26061
+      },
+      "tensor_representation": null
+    },
+    "D8-C": {
+      "accepted_per_arm_limits": {
+        "arm_seconds": 3600,
+        "batch_rays": 512,
+        "component_reverse_sweeps": 30,
+        "cpu_threads": 4,
+        "cuda_allocator_fraction": 0.25,
+        "evaluation_draws": 8,
+        "grace_seconds": 30,
+        "host_memory_gib": 64,
+        "illumination_map_calls": 6,
+        "inner_seconds": 3540,
+        "interval": 2000,
+        "output_bytes": 8589934592,
+        "shader_calls": 19250,
+        "shadow_rays": 15113330688,
+        "smoothness_field_calls": 12,
+        "surface_q_batches": 10000,
+        "surface_q_pairs": 1280000,
+        "surface_q_predictor_calls": 20000,
+        "surface_q_predictor_points": 2560000,
+        "updates_per_arm": 10000,
+        "wall_seconds": 7500
+      },
+      "historical_freeze": {
+        "bytes": 54329,
+        "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/protocols/DONUT_KURT_PAIRED_TENSOR_D8_V1.freeze.json",
+        "sha256": "47d1d7b62b528207169a9ec5a70e70462c2da564d348b89c19924a69fa5a289a"
+      },
+      "planned_work_on_verified_counts": {
+        "component_reverse_sweeps": 30,
+        "shader_calls": 12290,
+        "shadow_rays": 9534038016,
+        "surface_q_pairs": 1280000,
+        "updates_per_arm": 10000
+      },
+      "spatial_policy": {
+        "batch_pairs": 128,
+        "coefficient": 0.05,
+        "diagnostic_pairs": 1024,
+        "expected_mesh_faces": 18432,
+        "expected_pairs": 27648,
+        "max_face_dihedral_degrees": 15.0,
+        "max_surface_distance": 0.02,
+        "pair_sampling": "uniform edge permutations without replacement",
+        "reference_distance": 0.02,
+        "rng_seed": 26061
+      },
+      "tensor_representation": {
+        "evaluation_tape_seed_offset": 1600000,
+        "export_world_Q_atol": 1e-06,
+        "initial_Q_atol": 2e-08,
+        "initial_RGB_atol": 1e-06,
+        "initial_gate_seed": 120008,
+        "initial_width": 0.25,
+        "native_gate_points": 24,
+        "perturbation": "legacy_scalar_only_v1",
+        "training_tape_seed_offset": 603300000
+      }
+    },
+    "D8-T": {
+      "accepted_per_arm_limits": {
+        "arm_seconds": 3600,
+        "batch_rays": 512,
+        "component_reverse_sweeps": 30,
+        "cpu_threads": 4,
+        "cuda_allocator_fraction": 0.25,
+        "evaluation_draws": 8,
+        "grace_seconds": 30,
+        "host_memory_gib": 64,
+        "illumination_map_calls": 6,
+        "inner_seconds": 3540,
+        "interval": 2000,
+        "output_bytes": 8589934592,
+        "shader_calls": 19250,
+        "shadow_rays": 15113330688,
+        "smoothness_field_calls": 12,
+        "surface_q_batches": 10000,
+        "surface_q_pairs": 1280000,
+        "surface_q_predictor_calls": 20000,
+        "surface_q_predictor_points": 2560000,
+        "updates_per_arm": 10000,
+        "wall_seconds": 7500
+      },
+      "historical_freeze": {
+        "bytes": 54329,
+        "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/protocols/DONUT_KURT_PAIRED_TENSOR_D8_V1.freeze.json",
+        "sha256": "47d1d7b62b528207169a9ec5a70e70462c2da564d348b89c19924a69fa5a289a"
+      },
+      "planned_work_on_verified_counts": {
+        "component_reverse_sweeps": 30,
+        "shader_calls": 12290,
+        "shadow_rays": 9534038016,
+        "surface_q_pairs": 1280000,
+        "updates_per_arm": 10000
+      },
+      "spatial_policy": {
+        "batch_pairs": 128,
+        "coefficient": 0.05,
+        "diagnostic_pairs": 1024,
+        "expected_mesh_faces": 18432,
+        "expected_pairs": 27648,
+        "max_face_dihedral_degrees": 15.0,
+        "max_surface_distance": 0.02,
+        "pair_sampling": "uniform edge permutations without replacement",
+        "reference_distance": 0.02,
+        "rng_seed": 26061
+      },
+      "tensor_representation": {
+        "evaluation_tape_seed_offset": 1600000,
+        "export_world_Q_atol": 1e-06,
+        "initial_Q_atol": 2e-08,
+        "initial_RGB_atol": 1e-06,
+        "initial_gate_seed": 120008,
+        "initial_width": 0.25,
+        "native_gate_points": 24,
+        "perturbation": "legacy_scalar_only_v1",
+        "training_tape_seed_offset": 603300000
+      }
+    }
+  },
+  "execution_order": [
+    "D2",
+    "D6",
+    "D8-C",
+    "D8-T"
+  ],
+  "generation": {
+    "bytes": 25006,
+    "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/generation.json",
+    "sha256": "de8dda85559b286456d926e09731c6c501dfcbd6707d1aaf3aef9cf8784c58a0"
+  },
+  "planned_totals": {
+    "component_reverse_sweeps": 114,
+    "optimizer_returns": 40000,
+    "shader_calls": 49156,
+    "shadow_rays": 38136004608,
+    "surface_q_pairs": 3840000
+  },
+  "protocol": "four-arm-heterogeneous-donut-recovery-proposal-v1",
+  "required_pretraining_gates": [
+    "separate researcher dataset admission",
+    "per-arm fresh initialized state hash",
+    "same observations and renderer integration settings",
+    "per-point heterogeneous known-light compatibility",
+    "D8 matched initial physical Q, scalar, lighting and paired RGB",
+    "D6 and D8 geometric sampler-domain identity",
+    "one separately frozen four-arm execution approval"
+  ],
+  "researcher_admitted_dataset": false,
+  "schema_version": 1,
+  "splits": {
+    "fitting": [
+      0,
+      50,
+      1,
+      45
+    ],
+    "held_out": [
+      28,
+      34
+    ]
+  },
+  "status": "comparison_defined_pending_dataset_admission",
+  "training_authorized": false,
+  "verification": {
+    "bytes": 15604,
+    "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9-verification-v1.json",
+    "sha256": "22e7894fdba2f84ed0355299999cc74a1784cb40c74667f7b0b9e432cb598340"
+  }
+}
