@@ -1,0 +1,195 @@
+{
+  "analysis": [
+    {
+      "bytes": 996800,
+      "path": "/home/isavand/paper/evidence/bell-robust-tensor-q-completion-45bd9216e3c04d8c90027c7e45efec2e-analysis-v1/analysis.json",
+      "sha256": "82ba1fdfcc3448215031eb932e91f0a36b6262413bac8fdd9d18cd789ca1deb7"
+    },
+    {
+      "bytes": 2192,
+      "path": "/home/isavand/paper/evidence/bell-robust-tensor-q-completion-45bd9216e3c04d8c90027c7e45efec2e-analysis-v1/summary.csv",
+      "sha256": "00a003712cae6f211be88436ab7912ef5691320536c5a2e4555ed02ff31da2c6"
+    },
+    {
+      "bytes": 37034,
+      "path": "/home/isavand/paper/evidence/bell-robust-tensor-q-completion-45bd9216e3c04d8c90027c7e45efec2e-analysis-v1/control-boundary-profiles.json",
+      "sha256": "3d14613ac98f3da51339eff7fdcd87c4dc921edf48b94a4363e6a86810f8636c"
+    }
+  ],
+  "batch": "/home/isavand/paper/evidence/bell-robust-tensor-q-completion-45bd9216e3c04d8c90027c7e45efec2e",
+  "checkpoints": {
+    "checkpoint-02000.pth": {
+      "bytes": 33340990,
+      "sha256": "c1697153cfa84c3aa0910ccc75367b15509dc00f8837614538b144136f82a201"
+    },
+    "checkpoint-04000.pth": {
+      "bytes": 33340990,
+      "sha256": "87d27aeb86f0df724d4508870819c91a280cf1617f335ae25e96dc5b59935e42"
+    },
+    "checkpoint-06000.pth": {
+      "bytes": 33340990,
+      "sha256": "9ee594ff32797e6dc5373cbe996dc884f8b4e4a0c27645809d1f26c977dd5ef5"
+    },
+    "checkpoint-08000.pth": {
+      "bytes": 33340926,
+      "sha256": "3a3a754e02c70d54cce2f435dc4748f3c3bd09d5f5d390cfe16ac50d388e9a07"
+    },
+    "checkpoint-10000.pth": {
+      "bytes": 33340990,
+      "sha256": "1d3a8a04246f9b507938b9fd3fe1f647213d579263dc1bfe18df0deb50976396"
+    }
+  },
+  "controls": {
+    "B2": {
+      "analysis": {
+        "bytes": 1749857,
+        "path": "/home/isavand/paper/evidence/bell-distance-robust-v1-84f4e6b287254f3c9c9ae987734c7f06-analysis-v1/analysis.json",
+        "sha256": "393d953f1a17612d5d30d4b8acb8b2204360fcdb74a0af1d262c39e7427c3906"
+      },
+      "manifest": {
+        "bytes": 9425,
+        "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/results/bell_distance_robust_v1/artifact-manifest.json",
+        "sha256": "dd48802bd4be17a53f3e4555846d1e2422e8739804df02597e86c64ae87ff93d"
+      },
+      "receipt": {
+        "bytes": 244513,
+        "path": "/home/isavand/paper/evidence/bell-distance-robust-v1-84f4e6b287254f3c9c9ae987734c7f06/B2/recovery.json",
+        "sha256": "eaffe21cd818a234c25e6839e46a1a122d38b4141d006755eb692a2a114f7363"
+      }
+    },
+    "D2": {
+      "analysis": {
+        "bytes": 3425484,
+        "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81-analysis-v1/analysis.json",
+        "sha256": "dbdfc753ba3415e7f445e1af7aa4f709306025fa19a3570fe1a96284fd71591d"
+      },
+      "manifest": {
+        "bytes": 10906,
+        "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/results/bell_heterogeneous_training_v1/artifact-manifest.json",
+        "sha256": "c6edec759a6f404a0647dabf6a07472e7ca1f07a6c32dd9cac89688d3a150f04"
+      },
+      "receipt": {
+        "bytes": 237658,
+        "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81/D2/recovery.json",
+        "sha256": "77c8f36976ec38c51eb706bcd0b9476ebb11bc98935d9d15afec7c3c583be868"
+      }
+    }
+  },
+  "dataset": {
+    "admission": {
+      "bytes": 6471,
+      "path": "/home/isavand/paper/evidence/bell-heterogeneous-reference-v1-2b1d4fecf96c40fb8f5467895c6ca06a-admission.json",
+      "sha256": "a1ec274ae406d1a47f07daa49aad0d73308f87e731e8e9ba69634f0fefb3c769"
+    },
+    "generation": {
+      "bytes": 30296,
+      "path": "/home/isavand/paper/evidence/bell-heterogeneous-reference-v1-2b1d4fecf96c40fb8f5467895c6ca06a/reference/generation.json",
+      "sha256": "c2d6c2996b8f19b99417d173724ef4eaf953818bf7008285d6b987165ada7e88"
+    },
+    "verification": {
+      "bytes": 17505,
+      "path": "/home/isavand/paper/evidence/bell-heterogeneous-reference-v1-2b1d4fecf96c40fb8f5467895c6ca06a-verification-v2.json",
+      "sha256": "e46e1e214bc352bd8db2f86a24cb6beaadf04d6b123817c02f695cfd9430454f"
+    }
+  },
+  "execution_commit": "b16ba45a296bedb70d20a3346ffa86a7ac8a7ea2",
+  "external_authorization": {
+    "bytes": 4292,
+    "path": "/home/isavand/paper/evidence/bell-robust-tensor-q-completion-45bd9216e3c04d8c90027c7e45efec2e-authorization.json",
+    "sha256": "f5ca6858d90fbb7c736251d7650d3297c4ee88f7a69fe93c5f3cbf11ac33ad6e"
+  },
+  "freeze_sha256": "72425fd4917eea92e3144124f7962e5977f64ec2b46b4e85000ec6a490b0334c",
+  "host_records": {
+    "Bell-R1-console.txt": {
+      "bytes": 0,
+      "path": "/home/isavand/paper/evidence/bell-robust-tensor-q-completion-45bd9216e3c04d8c90027c7e45efec2e/Bell-R1-console.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Bell-R1-exit-code.txt": {
+      "bytes": 2,
+      "path": "/home/isavand/paper/evidence/bell-robust-tensor-q-completion-45bd9216e3c04d8c90027c7e45efec2e/Bell-R1-exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "Bell-R1.cid": {
+      "bytes": 64,
+      "path": "/home/isavand/paper/evidence/bell-robust-tensor-q-completion-45bd9216e3c04d8c90027c7e45efec2e/Bell-R1.cid",
+      "sha256": "85cf858d32175fc25c316f2a3a3ab99b55a25a3ad40ad436db54c08a4c7d47af"
+    },
+    "authorization.json": {
+      "bytes": 4292,
+      "path": "/home/isavand/paper/evidence/bell-robust-tensor-q-completion-45bd9216e3c04d8c90027c7e45efec2e/authorization.json",
+      "sha256": "f5ca6858d90fbb7c736251d7650d3297c4ee88f7a69fe93c5f3cbf11ac33ad6e"
+    },
+    "freeze.json": {
+      "bytes": 63371,
+      "path": "/home/isavand/paper/evidence/bell-robust-tensor-q-completion-45bd9216e3c04d8c90027c7e45efec2e/freeze.json",
+      "sha256": "72425fd4917eea92e3144124f7962e5977f64ec2b46b4e85000ec6a490b0334c"
+    },
+    "previous-run-cleanup.json": {
+      "bytes": 280,
+      "path": "/home/isavand/paper/evidence/bell-robust-tensor-q-completion-45bd9216e3c04d8c90027c7e45efec2e/previous-run-cleanup.json",
+      "sha256": "58be3d5c08ae08e4c421d614530d82fa4558fba613d92b2e0a7e6cfec2736105"
+    }
+  },
+  "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "native_receipt": {
+    "bytes": 244663,
+    "path": "/home/isavand/paper/evidence/bell-robust-tensor-q-completion-45bd9216e3c04d8c90027c7e45efec2e/Bell-R1/recovery.json",
+    "sha256": "8f7ab0b03de65fd6f440ffef4facbdd21ceffc6b30a43b27d1a44ab91b45e34d"
+  },
+  "optimizer_returns": 10000,
+  "outcomes": [
+    0,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "output_bytes": 263400941,
+  "packaged_files": {
+    "boundary-and-recovery.png": {
+      "bytes": 191396,
+      "sha256": "e054c559bc4cd14980b95488eafecf985637aead09cb96194e98aab9eb8f051a"
+    },
+    "boundary-profiles.csv": {
+      "bytes": 14247,
+      "sha256": "5a2796dbcd7cad285b197ffa785d1adc9affd8dc1844b82e8627bc9fb1658f26"
+    },
+    "endpoint-cohorts.csv": {
+      "bytes": 47616,
+      "sha256": "ffb6183e7b58ac353c4c0990647200c3ed7d21a9626b8ad232e2531face9c619"
+    },
+    "endpoint-diagnostics.json": {
+      "bytes": 28038,
+      "sha256": "5856db1eba48f2aa88a3500723cb8d3f97209faf987ff2dda665ad260cf1f3b7"
+    }
+  },
+  "schema_version": 1,
+  "status": "complete",
+  "training_log": {
+    "bytes": 14220902,
+    "path": "/home/isavand/paper/evidence/bell-robust-tensor-q-completion-45bd9216e3c04d8c90027c7e45efec2e/Bell-R1/training.jsonl",
+    "sha256": "d514bdc20f50ba3a93e7f8a8d0ededc719d14f7fe6686cdb9d5d2330a69aa740"
+  },
+  "verification": {
+    "offline_RGB_renders": 0,
+    "offline_checkpoint_loads": 0,
+    "offline_optimizer_updates": 0,
+    "previous_failed_container_absence_receipt_verified": true,
+    "verified_outputs": 904
+  },
+  "work": {
+    "boundary_predictor_calls": 12,
+    "boundary_predictor_points": 29688,
+    "component_reverse_sweeps": 36,
+    "edge_diagnostic_batches": 10000,
+    "robust_diagnostic_batches": 10000,
+    "shader_calls": 12480,
+    "shadow_rays": 9683263488,
+    "surface_q_batches": 10000,
+    "surface_q_pairs": 1280000,
+    "surface_q_predictor_calls": 20000,
+    "surface_q_predictor_points": 2560000
+  }
+}
