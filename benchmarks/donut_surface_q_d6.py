@@ -101,7 +101,7 @@ def coverage_summary(domain, counts, fitting_counts):
     return result
 
 
-def surface_q_term(shader, batch, policy, torch, *, distance_weighting=None):
+def surface_q_term(shader, batch, policy, torch, *, distance_weighting=None, robust_delta=None):
     """Use the Q-only branch of surface_world_q_v1 without adding its scalar loss."""
     q = []
     for suffix in ('0', '1'):
@@ -111,8 +111,11 @@ def surface_q_term(shader, batch, policy, torch, *, distance_weighting=None):
     _, per_pair = transported_q_loss(q[0], q[1], batch['normals0'], batch['normals1'], weights, torch)
     multiplier = (policy['reference_distance'] / batch['distance']).square()
     if distance_weighting is not None:
-        bounded = multiplier.clamp_max(distance_weighting['cap']) * distance_weighting['scale']
-        normalized = per_pair * bounded
-        return policy['coefficient'] * normalized.mean(), normalized.detach() * (policy['coefficient']/len(normalized))
+        multiplier = multiplier.clamp_max(distance_weighting['cap']) * distance_weighting['scale']
     normalized = per_pair * multiplier
+    if robust_delta is not None:
+        from benchmarks.robust_tensor_q_v1 import reduce
+        return reduce(normalized,robust_delta,policy['coefficient'],torch)
+    if distance_weighting is not None:
+        return policy['coefficient'] * normalized.mean(), normalized.detach() * (policy['coefficient']/len(normalized))
     return policy['coefficient'] * normalized.mean()

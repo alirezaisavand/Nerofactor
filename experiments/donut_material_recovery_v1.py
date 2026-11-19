@@ -100,6 +100,7 @@ def benchmark(root, expected):
 
 def train(args, *, heterogeneous=False, acquisition=None):
     heterogeneous = heterogeneous or acquisition is not None
+    faceted = acquisition is not None and getattr(acquisition,'FACETED',True)
     if heterogeneous:
         if acquisition is None:
             from benchmarks import donut_heterogeneous_training_v1 as hetero
@@ -120,7 +121,8 @@ def train(args, *, heterogeneous=False, acquisition=None):
     if heterogeneous:
         bound=freeze['arm_training']
     weighting = spatial.get('distance_weighting') if spatial else None
-    lighting_arm = 'D6' if weighting is not None else args.phase
+    robust_delta = spatial.get('robust_delta') if spatial else None
+    lighting_arm = 'D6' if weighting is not None or robust_delta is not None else args.phase
     calibration=bound['calibration'] if args.phase in ('D3','D4') else None
     limits=ablation['limits'][args.phase] if ablation else (bound['limits'] if bound else LIMITS)
     protocol=bound['protocol'] if bound else TRAINING
@@ -137,11 +139,11 @@ def train(args, *, heterogeneous=False, acquisition=None):
     panel, splits = (PANEL, SPLITS) if acquisition is None else (acquisition.PANEL, acquisition.SPLITS)
 
     def source_geometry():
-        return inputs(args.oracle,args.cameras) if acquisition is None else acquisition.geometry(freeze,args.oracle)
+        return acquisition.geometry(freeze,args.oracle) if faceted else inputs(args.oracle,args.cameras)
 
     geometry,_,records=source_geometry()
     expected_initial=None
-    if weighting is not None or args.phase in ('D2','D3','D6','D7',*D8_ARMS,*D9_ARMS,*d11.ARMS,*ABLATION_ARMS):
+    if lighting_arm in ('D2','D3','D6','D7',*D8_ARMS,*D9_ARMS,*d11.ARMS,*ABLATION_ARMS):
         require(args.initial is not None and digest(args.initial)==args.initial_sha256 and
             os.statvfs(args.initial).f_flag&os.ST_RDONLY,'Explicit immutable initialization anchor required')
         if bound:
@@ -167,7 +169,7 @@ def train(args, *, heterogeneous=False, acquisition=None):
     if heterogeneous:
         report.update(heterogeneous_dataset=True,authorization_sha256=args.authorization_sha256,
                       dataset_admission_sha256=hetero.ADMISSION)
-    if acquisition is not None:
+    if faceted:
         report['counters'].update(boundary_predictor_calls=0, boundary_predictor_points=0)
     if ablation:
         report.update(diffuse_white_in_objective=False, diffuse_white_diagnostic_coefficient=POLICY['diffuse_white_prior'],
@@ -182,6 +184,9 @@ def train(args, *, heterogeneous=False, acquisition=None):
         if weighting is not None:
             report['surface_q_distance_weighting'] = weighting
             report['counters']['edge_diagnostic_batches'] = 0
+        if robust_delta is not None:
+            report['surface_q_penalty'] = dict(name='pseudo_huber_v1',delta=robust_delta)
+            report['counters']['robust_diagnostic_batches'] = 0
     if tensor_plan:
         report.update(representation=tensor_plan['representation'],
                       effective_regularization='legacy_scalar_energy_specular_white_plus_surface_Q_v1',
@@ -355,18 +360,18 @@ def train(args, *, heterogeneous=False, acquisition=None):
         schedule=WarmUpCosLR(dict(end_warm=1000,end_iter=100000))
         optimizer=schedule.construct_optimizer(torch.optim.Adam,shader)
         # The historical diagnostic edges remain disjoint from D6 training edges.
-        if acquisition is None:
+        if not faceted:
             pairs=surface_pairs(geometry['vertices_native'],geometry['triangles'])
             pair_ix=np.linspace(0,len(pairs['points0'])-1,min(1024,len(pairs['points0']))).astype(int)
         else:
             pairs,pair_ix,boundary = acquisition.diagnostics(geometry, freeze)
         pair_points=[pairs[k][pair_ix] for k in ('points0','points1')]
-        if acquisition is None:
+        if not faceted:
             pair_frames=[surface_frames(geometry,v) for v in pair_points]
         else:
             pair_frames=acquisition.diagnostic_frames(geometry,pairs,pair_ix)
             np.savez_compressed(args.output/'boundary-probes.npz',**boundary)
-        if heterogeneous and acquisition is None:
+        if heterogeneous and not faceted:
             from benchmarks.donut_heterogeneous_v1 import material_field
             for pp,ff in zip(pair_points,pair_frames):
                 ff['Q_world']=material_field(pp,ff['normals'],generation['ring_radius_native'])['Q_world']
@@ -387,7 +392,7 @@ def train(args, *, heterogeneous=False, acquisition=None):
                 from scientific_variants.donut_tensor_shader_d8 import tensor_surface_term
                 spatial_term=tensor_surface_term
             setup_started=time.monotonic()
-            domain=neighborhoods(geometry,spatial_policy) if acquisition is None else pairs
+            domain=pairs if faceted else neighborhoods(geometry,spatial_policy)
             require(len(domain['face_area'])==spatial_policy['expected_mesh_faces'] and
                     len(domain['face_pairs'])==spatial_policy['expected_pairs'] and
                     np.array_equal(domain['face_pairs'],pairs['face_pairs']) and
@@ -397,7 +402,7 @@ def train(args, *, heterogeneous=False, acquisition=None):
             if parity_plan:
                 hashes={k:array_hash(v) for k,v in dict(domain,fitting_camera_count=fitting_counts).items()}
                 expected=parity_plan['D6_domain_array_sha256']
-                matches = hashes==expected if acquisition is None else all(hashes[key]==value for key,value in expected.items())
+                matches = all(hashes[key]==value for key,value in expected.items()) if faceted else hashes==expected
                 require(matches, 'Frozen neighborhood domain differs')
                 report['D6_domain_parity_verified']=True
                 if acquisition is not None:
@@ -525,7 +530,7 @@ def train(args, *, heterogeneous=False, acquisition=None):
                         transported_square=delta.square().sum((-1,-2)).cpu().numpy(),
                         oracle_transported_square=truth_delta.square().sum((-1,-2)).cpu().numpy(),
                         widths=widths,anisotropy_gap=gap,training_pair_counts=sampler.counts,**log_diagnostic)
-                if acquisition is not None:
+                if faceted:
                     qu, wi = [], []
                     pn = tensor(boundary['normals'])
                     for pp in boundary['positions']:
@@ -616,7 +621,10 @@ def train(args, *, heterogeneous=False, acquisition=None):
                             spatial_start.record()
                             index=torch.as_tensor(indices,dtype=torch.long,device='cuda')
                             neighborhood={k:v.index_select(0,index) for k,v in surface_tensors.items()}
-                            if weighting is None:
+                            if robust_delta is not None:
+                                spatial_loss, quadratic_loss, edge_contributions, attenuation = spatial_term(
+                                    shader,neighborhood,spatial_policy,torch,distance_weighting=weighting,robust_delta=robust_delta)
+                            elif weighting is None:
                                 spatial_loss=spatial_term(shader,neighborhood,spatial_policy,torch)
                             else:
                                 spatial_loss, edge_contributions = spatial_term(
@@ -640,6 +648,11 @@ def train(args, *, heterogeneous=False, acquisition=None):
                             if weighting is not None:
                                 charge('edge_diagnostic_batches',1)
                                 row['edge_diagnostic']=acquisition.edge_diagnostic(indices,edge_contributions,o,weighting,torch)
+                            if robust_delta is not None:
+                                charge('robust_diagnostic_batches',1)
+                                ratio,mean_slope,min_slope,above=attenuation.tolist()
+                                row['robust_diagnostic']=dict(quadratic_loss=float(quadratic_loss.detach()),penalty_ratio=ratio,
+                                    mean_gradient_multiplier=mean_slope,min_gradient_multiplier=min_slope,fraction_above_delta=above)
                         if step==0 or (step+1)%2000==0:
                             if not tensor_plan:
                                 energy,spec=legacy_energy_specular(o['f_d'],o['f_s_sum'],o['L_spec'],.05,.05,torch)
@@ -648,6 +661,8 @@ def train(args, *, heterogeneous=False, acquisition=None):
                                 terms['diffuse_white']=white
                             if spatial:
                                 terms[spatial_name]=spatial_loss
+                            if robust_delta is not None:
+                                terms['surface_q_quadratic_counterfactual']=quadratic_loss
                             budget('component_reverse_sweeps',len(terms))
                             named=[(n,p) for n,p in shader.named_parameters() if p.requires_grad]
                             row['gradient_interactions']=gradient_diagnostics(terms,[p for _,p in named],torch,[n for n,_ in named])

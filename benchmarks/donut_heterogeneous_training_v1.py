@@ -101,10 +101,11 @@ def dataset(f, root, admission, verification):
     return g,{c:numeric(root/f'view-{c}.npz') for c in ref.PANEL}
 
 
-def runtime(args):
-    f=freeze(args.freeze,args.freeze_sha256)
-    require(args.phase in ARMS and args.image_id==IMAGE and digest(args.authorization)==args.authorization_sha256
-            and ref.read(args.authorization)==authorization(f,args.commit,args.freeze_sha256),
+def runtime(args, *, spec=None):
+    read_freeze, approve, arms = (freeze,authorization,ARMS) if spec is None else (spec.freeze,spec.authorization,spec.ARMS)
+    f=read_freeze(args.freeze,args.freeze_sha256)
+    require(args.phase in arms and args.image_id==IMAGE and digest(args.authorization)==args.authorization_sha256
+            and ref.read(args.authorization)==approve(f,args.commit,args.freeze_sha256),
             'Exact separate four-arm training authorization required')
     require(os.geteuid()!=0 and args.output==Path('/outputs')/args.phase
             and args.output.resolve()==args.output and not args.output.exists()
@@ -120,10 +121,11 @@ def runtime(args):
     ref.check_artifact(args.arm_initial,recipe['initial'])
     require(args.initial_sha256==f['base_initial']['sha256'] and args.benchmark_sha256==GENERATION,
             'Wrong benchmark or base initialization selected')
-    r=dict(recipe,initial_sha256=args.initial_sha256,benchmark_generation_sha256=GENERATION,protocol=PROTOCOL,
+    r=dict(recipe,initial_sha256=args.initial_sha256,benchmark_generation_sha256=GENERATION,
+           protocol=PROTOCOL if spec is None else spec.PROTOCOL,
            D6_domain_array_sha256=f['D6_domain_array_sha256'],D6_sampler_snapshots=f['D6_sampler_snapshots'])
     active=dict(f,arm_training=r)
-    if args.phase=='D6':
+    if args.phase=='D6' or 'robust_delta' in recipe:
         active['surface_q_training']=r
     if args.phase in d8.ARMS:
         active['tensor_training']=dict(r,arms=list(d8.ARMS))

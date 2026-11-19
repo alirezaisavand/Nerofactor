@@ -43,6 +43,9 @@ def arm_receipt(batch, arm, f, auth, views, *, spec=h):
                 and r['diffuse_white_in_objective'] is True, 'Surface parity differs')
     if 'distance_weighting' in recipe:
         require(r['surface_q_distance_weighting']==recipe['distance_weighting'],'Distance-weighting receipt differs')
+    if 'robust_delta' in recipe:
+        require(r['surface_q_penalty']==dict(name='pseudo_huber_v1',delta=recipe['robust_delta']),
+                'Robust penalty receipt differs')
     if arm in h.d8.ARMS:
         require(r['paired_initial_gate']['passed'] and r['representation']==recipe['representation'],
                 'D8 paired initialization gate did not pass')
@@ -102,6 +105,7 @@ def read_endpoint(root, step, camera, view):
 
 def analyze(sha, output, *, acquisition=None):
     spec=h if acquisition is None else acquisition
+    faceted=acquisition is not None and getattr(spec,'FACETED',True)
     panel,splits=(ref.PANEL,ref.SPLITS) if acquisition is None else (spec.PANEL,spec.SPLITS)
     f=spec.freeze(spec.ROOT/spec.FREEZE,sha)
     batch=Path(f['host_output'])
@@ -115,9 +119,12 @@ def analyze(sha, output, *, acquisition=None):
             'Fresh analysis-only output required')
     dataset=f['dataset']
     _,views=spec.dataset(f,Path(f['host_reference']),Path(dataset['admission']['path']),Path(dataset['verification']['path']))
-    if acquisition is None:
+    if not faceted:
         geometry,_,_=inputs(Path(f['host_inputs']['oracle']),Path(f['host_inputs']['cameras']))
         _,area=ref.geometry_fields(geometry)
+        if acquisition is not None:
+            from benchmarks.donut_surface_q_d6 import neighborhoods
+            domain=neighborhoods(geometry,f['arms'][spec.ARMS[0]]['spatial_policy'])
     else:
         geometry,_,_=spec.geometry(f,Path(f['mesh']['path']))
         area=geometry['area']
@@ -147,21 +154,30 @@ def analyze(sha, output, *, acquisition=None):
             gradient_probes=[dict(completed_updates=x['completed_updates'],**x['gradient_interactions'])
                              for x in hist if 'gradient_interactions' in x])
         if acquisition is not None:
-            spec.check_probe_archive(probes,numeric(root/'boundary-probes.npz'))
+            if faceted:
+                spec.check_probe_archive(probes,numeric(root/'boundary-probes.npz'))
             if arm!='D2':
-                spec.check_domain_archive(f,domain,views,r['surface_q_domain_hashes'],numeric(root/'surface-q-domain.npz'))
+                domain_check=spec.check_domain_archive if faceted else spec.check_donut_domain
+                domain_check(f,domain,views,r['surface_q_domain_hashes'],numeric(root/'surface-q-domain.npz'))
                 require(surface_hashes is None or surface_hashes==r['surface_q_domain_hashes'],
                         'Bell surface domains differ across arms')
                 surface_hashes=r['surface_q_domain_hashes']
             reports[arm]['boundary_history']=[]
             if 'distance_weighting' in f['arms'][arm]:
                 reports[arm]['weighted_shortest_edge_events']=spec.audit_weighted_history(f,domain,arm,hist)
+            if 'robust_delta' in f['arms'][arm]:
+                from benchmarks.robust_tensor_q_training_v1 import audit_robust_history
+                reports[arm]['robust_attenuation']=audit_robust_history(hist)
+                reports[arm]['reserved_edge_Q_history']=[
+                    dict(step=e['step'],**e['metrics']['surface_Q_smoothness_diagnostic'],
+                         coverage=e['metrics']['surface_Q_training_coverage']) for e in r['saved_endpoints']]
         for step in h.STEPS:
             by_camera={c:read_endpoint(root,step,c,views[c]) for c in panel}
             if acquisition is not None:
                 saved=root/f'step-{step:05d}'
-                scores=spec.boundary_score(probes,numeric(saved/'boundary-predictions.npz'))
-                reports[arm]['boundary_history'].append(dict(step=step,**scores))
+                if faceted:
+                    scores=spec.boundary_score(probes,numeric(saved/'boundary-predictions.npz'))
+                    reports[arm]['boundary_history'].append(dict(step=step,**scores))
                 if arm!='D2':
                     spec.check_sampler_capture(f,domain,step,numeric(saved/'surface-q-diagnostic.npz'))
                 if step==h.STEPS[-1]:
@@ -184,8 +200,9 @@ def analyze(sha, output, *, acquisition=None):
                 cohorts=dict(all=np.ones(len(weights),dtype=bool),boundary=boundary,smooth_interior=~boundary&~weak,
                              nearly_isotropic=weak,boundary_region_0=boundary&(region==0),
                              boundary_region_1=boundary&(region==1))
-                if acquisition is not None:
+                if faceted:
                     cohorts.update(exactly_isotropic=valid('exactly_isotropic'),weak_nonisotropic=weak&~valid('exactly_isotropic'))
+                if acquisition is not None:
                     angles.setdefault((step,split),{})[arm]=(e['orientation_eligible'],e['orientation_degrees'])
                 for n in range(5):
                     cohorts[f'fitting_cameras_{n}']=geom==n
@@ -195,8 +212,13 @@ def analyze(sha, output, *, acquisition=None):
                     values={k:v[i] for k,v in e.items()}
                     result[name]=dict(observation_weighted=m.score(values,rgb[i],gt[i],np.ones(int(i.sum()))),
                                       observed_triangle_area_weighted=m.score(values,rgb[i],gt[i],weights[i]))
-                rows.append(dict(arm=arm,step=step,split=split,coverage=coverage,metrics=result,
-                    boundary_by_camera={str(c):m.boundary_score(views[c],pairs[c],*by_camera[c][3:5]) for c in cameras}))
+                row=dict(arm=arm,step=step,split=split,coverage=coverage,metrics=result,
+                    boundary_by_camera={str(c):m.boundary_score(views[c],pairs[c],*by_camera[c][3:5]) for c in cameras})
+                if 'robust_delta' in f['arms'][arm]:
+                    from benchmarks.robust_tensor_q_v1 import width_profiles
+                    row['boundary_transition_profile']=width_profiles(valid('boundary_distance_native'),region,
+                        np.stack((e['major_predict'],e['minor_predict']),axis=1),valid('widths_major_minor'),weights)
+                rows.append(row)
         light=np.sin((np.arange(128)+.5)*np.pi/128)[:,None,None]
         for step,e in zip(h.STEPS,r['saved_endpoints']):
             a=numeric(root/f'step-{step:05d}/illumination.npz')
