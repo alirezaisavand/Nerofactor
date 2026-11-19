@@ -1,0 +1,234 @@
+{
+  "arms": {
+    "D2": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 27179071,
+          "sha256": "59102db9d0b4fbe89eb5af1b59f7e72f1991338dc9824b11563ba84be31341b1"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 27179071,
+          "sha256": "616201bf0669edfc8f0253973e9309538d5061d89d4685d9b2b6852c0865dcc4"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 27179071,
+          "sha256": "b20e96f7640f33eb6993eae335dec6a6e172e1b04ef3295725f4ed9dc96ed6a1"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 27179071,
+          "sha256": "c3d46ebdda19099d5d1ce9f1f3d439f5b740c93d8b226fe187f7caf03aa4fa50"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 27179071,
+          "sha256": "fb8aa624ee396132ffcf78c5c6de2e14be919d076a3437764a94fb6965445b24"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D2-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "log": {
+        "bytes": 0,
+        "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D2-console.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "output_bytes": 196528065,
+      "output_files": 890,
+      "receipt": {
+        "bytes": 236743,
+        "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D2/recovery.json",
+        "sha256": "e7acd1fd942b76878409078c67d33ef914e2893b0480137e9c2c2d9754c2cd27"
+      }
+    },
+    "D6": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 27630719,
+          "sha256": "caa3071dfd52159e89cc0ea0d549ee64dacb052bd10243fc808764ac28cbda91"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 27630655,
+          "sha256": "140bc187d18734fce78d6af904c73f1c6751ea00fbf0c82fb13c068b3cab784d"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 27630655,
+          "sha256": "154fa3f4f0c113f96e373a9f710fce3e8fafff5c021d1bbe1965987b53275823"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 27630719,
+          "sha256": "ef2d13a4b98a1f99038aefc18ee6c699eaaa4c704acf9d887dfd3d6739189c7f"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 27630719,
+          "sha256": "e7c5727d50247e482bf5d6f512d76ef3ae0038018ada4ef5986760063dccbf0e"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D6-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "log": {
+        "bytes": 0,
+        "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D6-console.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "output_bytes": 201969021,
+      "output_files": 897,
+      "receipt": {
+        "bytes": 242364,
+        "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D6/recovery.json",
+        "sha256": "81c20915efe568697b6d066fff8611ce43c532bfb9d38f5e49e85e5a11033849"
+      }
+    },
+    "D8-C": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 27631044,
+          "sha256": "bba59abc57aa0d150a719df2b529f2ec81afa836ba950c6920b04166f904b998"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 27630980,
+          "sha256": "60342c05518313dabeca582ded6bc5196b7afd0bc3c73c71ea68962cfc6d0fda"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 27630980,
+          "sha256": "b8ddd0be117185fbbde1e5b5f5f22d4c138d0287804c2de269b0faf49631e64c"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 27631044,
+          "sha256": "70bdca44cd1c4405cf4d8de13536a2a16cfe57e77dec258b08f49a22b0d7f8f2"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 27631044,
+          "sha256": "e3242d219aa4965603c7a61e21701c6a0adbf46892809e7a4130e18546f160a7"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D8-C-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "log": {
+        "bytes": 0,
+        "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D8-C-console.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "output_bytes": 207359120,
+      "output_files": 898,
+      "receipt": {
+        "bytes": 242968,
+        "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D8-C/recovery.json",
+        "sha256": "be78724958b815b4f08af1f36fce83d790687f7242bcd877d23666b9e0fb1622"
+      }
+    },
+    "D8-T": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 27639235,
+          "sha256": "20d36217ce401c37d231d505c524a8f054634109439007454b3a2a0bc8a2d565"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 27639171,
+          "sha256": "1137223f8e2c385f137d247638f6709be3f59dbb2cf6267632dc584e24e31f86"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 27639171,
+          "sha256": "13a76f0af634c4384409a248527124cd25b7899f7dd4c1c239d2a75b2bc1981f"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 27639235,
+          "sha256": "419dc6fd6132e98b3d6b835280d64cb689e879e9ae7787f372cc4805f95e1889"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 27639235,
+          "sha256": "8ae9552ca8f6959f0792e09e518cfe56bab0013351502832b72e1092f3d13fa1"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D8-T-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "log": {
+        "bytes": 0,
+        "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D8-T-console.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "output_bytes": 208585205,
+      "output_files": 898,
+      "receipt": {
+        "bytes": 243006,
+        "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D8-T/recovery.json",
+        "sha256": "b9e22d5618835c1acda837d94eabbb8d44b97e16ef69714ff010f57b66683b88"
+      }
+    }
+  },
+  "authorization": {
+    "bytes": 9050,
+    "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/authorization.json",
+    "sha256": "f421c50302587606c078846a60e2f06db2ec92c3380e68ed9cc122b06b7fb2eb"
+  },
+  "batch": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2",
+  "dataset": {
+    "admission": {
+      "bytes": 6626,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9-admission.json",
+      "sha256": "a6eab416054c5bf74b43834c3be224847e2d78d9af7eb4989745fe37333618fb"
+    },
+    "generation": {
+      "bytes": 25006,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/generation.json",
+      "sha256": "de8dda85559b286456d926e09731c6c501dfcbd6707d1aaf3aef9cf8784c58a0"
+    },
+    "verification": {
+      "bytes": 15604,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9-verification-v1.json",
+      "sha256": "22e7894fdba2f84ed0355299999cc74a1784cb40c74667f7b0b9e432cb598340"
+    }
+  },
+  "execution_commit": "997452ae0efb6c655598f538acfab3b0e60f4716",
+  "freeze": {
+    "bytes": 61207,
+    "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/freeze.json",
+    "sha256": "d6be4b2ab1d3885a4f35a27d435f345780ee7c1f263c98ec4103b3b2f4129ed3"
+  },
+  "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "offline_analysis": [
+    {
+      "bytes": 3192325,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2-analysis-v1/analysis.json",
+      "sha256": "39d1d67acd8cef704de6a9b7f5f8d48e9ba0b4294727f4d4d686263a3a13b105"
+    },
+    {
+      "bytes": 8252,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2-analysis-v1/summary.csv",
+      "sha256": "358b8cc8ad727afa9ea7eb81b3aa4a26f59f5b1c2e0e51429ac74bccabd82527"
+    }
+  ],
+  "packaged_files": {
+    "checkpoint-metrics.csv": {
+      "bytes": 8252,
+      "sha256": "358b8cc8ad727afa9ea7eb81b3aa4a26f59f5b1c2e0e51429ac74bccabd82527"
+    },
+    "endpoint-diagnostics.json": {
+      "bytes": 3048,
+      "sha256": "56dc563158aee569dbc569da3bd334394ab02d2c60c68b25cd744cb1a8879f2a"
+    },
+    "held-out-views.png": {
+      "bytes": 589367,
+      "sha256": "c610cfa2725e7d056eaf61f3f486a5bbc4b684b58c58e2561d2b2e98d65d0a07"
+    },
+    "per-camera-metrics.csv": {
+      "bytes": 12343,
+      "sha256": "f9c98f706c4ee3c6d01ddfc5bb448326db5ed0b3b6df714d2a38a73c8c2913bb"
+    },
+    "recovery-curves.png": {
+      "bytes": 176180,
+      "sha256": "f9abbcc9c05e629817ab206468cd063c01221fe7aa61454364a2d5d77b77f0df"
+    }
+  },
+  "reference": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference",
+  "schema_version": 1
+}
