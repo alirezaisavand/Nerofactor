@@ -1,0 +1,262 @@
+{
+  "arms": {
+    "D2": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 27198527,
+          "sha256": "3425670917e46d3310097ab93ef6091630175445d3d2ad040f3f03dfa6ef2bcb"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 27198527,
+          "sha256": "f3b75b3a7ed6a822b1bc142cb041338616a6bdd4639bd14211471d17c46fd375"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 27198527,
+          "sha256": "598a8d12a4dfa6127dbbc08a8ec598c146a84036c3a9a436aa29e4e39f58a64d"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 27198463,
+          "sha256": "a8a3fb93381fc7185e89a459b3aac37f00153bf57173fb38520bc12495ce0036"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 27198591,
+          "sha256": "9a8dfd19a10242d74847cf4ab96006275fa80325694e596888b75a8941d106e7"
+        }
+      },
+      "console": {
+        "bytes": 0,
+        "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81/D2-console.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81/D2-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 202569193,
+      "outputs": 897,
+      "receipt": {
+        "bytes": 237658,
+        "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81/D2/recovery.json",
+        "sha256": "77c8f36976ec38c51eb706bcd0b9476ebb11bc98935d9d15afec7c3c583be868"
+      }
+    },
+    "D6": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 33340991,
+          "sha256": "4a145b83ff37ac868ea052e90eee211a56f82386ebf72452d0497dcdbdead861"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 33340991,
+          "sha256": "5f99b9317e5c8d5e9514546a6e59bbf580f44df8cb2b65252bcb4959c2fac910"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 33340991,
+          "sha256": "70070591b5bfbfdad58321f26dc42e063626699f92695238dcf1cb21ac496ba0"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 33340927,
+          "sha256": "2b85738d415ebb5a5945ecd253d7f87ba4ea49c532d581eb7fad18dddb7ce257"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 33340991,
+          "sha256": "b8610092ade5524448063353e02a2f7987cdc20d3d4e3f6aae357bda270b7ea2"
+        }
+      },
+      "console": {
+        "bytes": 0,
+        "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81/D6-console.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81/D6-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 256766998,
+      "outputs": 904,
+      "receipt": {
+        "bytes": 239913,
+        "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81/D6/recovery.json",
+        "sha256": "f4b95b137e5bd6e2073bd3913c47543a161887066c4cac3d72f5087ec4c682ee"
+      }
+    },
+    "D8-C": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 33341316,
+          "sha256": "0c535ed34b39cb4f0de33ef4ec58d4e8899fcce1ccbf47d6bcfab5afb0c8abad"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 33341316,
+          "sha256": "934a54b1c2af0d657d8efc2fa040171300cb80a86f92ec365a8efb67c4af191a"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 33341316,
+          "sha256": "84c5a34e80cea6f680963a1072ad06ae81deda83d74051c34cfc0cee1cdb50b4"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 33341252,
+          "sha256": "e01723cb8a21537f83bbc4e620b8bd2d60e9dd460591ac4997c9adbf0d07889a"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 33341316,
+          "sha256": "e630121789fe23ca6497b16d00faa36e74e3e1e7a907fa7b9c96ccc9217185b0"
+        }
+      },
+      "console": {
+        "bytes": 0,
+        "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81/D8-C-console.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81/D8-C-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 263911200,
+      "outputs": 905,
+      "receipt": {
+        "bytes": 244887,
+        "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81/D8-C/recovery.json",
+        "sha256": "7437df2935bfec6d13910a20d9c472ea6cb88c94264aded495d4ac1b38da2b58"
+      }
+    },
+    "D8-T": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 33349508,
+          "sha256": "768f6050c3ccf4c015cc98145ccbe4d5d3543765897a2d957747318fa922ca51"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 33349508,
+          "sha256": "d236bf281b994aab50bb932293dbb58401a4f96c664570a2bba62edaf2007cd3"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 33349508,
+          "sha256": "f1367dac8504a2f291675c46864b4c8edf0048f1ff67e593f1aa8bf7bc41e068"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 33349444,
+          "sha256": "42f0ee3ec65969705d9e68d73df404fa49e98ca6494d294d965a59612f0933c8"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 33349508,
+          "sha256": "d4f5493c0b992024d9cc5b6d578812080340165b09f059071332557331e78608"
+        }
+      },
+      "console": {
+        "bytes": 0,
+        "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81/D8-T-console.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81/D8-T-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 265895143,
+      "outputs": 905,
+      "receipt": {
+        "bytes": 245023,
+        "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81/D8-T/recovery.json",
+        "sha256": "b76da3e59e3d3e5f15554f04e5f4dd387b47e6a74856d4c8363092da85465f64"
+      }
+    }
+  },
+  "authorization": {
+    "bytes": 8635,
+    "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81/authorization.json",
+    "sha256": "39acce3ad1ec01badf501954e96fa8eb4ce179279cb6ede9a7c47fc13a1d372d"
+  },
+  "batch": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81",
+  "dataset": {
+    "admission": {
+      "bytes": 6471,
+      "path": "/home/isavand/paper/evidence/bell-heterogeneous-reference-v1-2b1d4fecf96c40fb8f5467895c6ca06a-admission.json",
+      "sha256": "a1ec274ae406d1a47f07daa49aad0d73308f87e731e8e9ba69634f0fefb3c769"
+    },
+    "generation": {
+      "bytes": 30296,
+      "path": "/home/isavand/paper/evidence/bell-heterogeneous-reference-v1-2b1d4fecf96c40fb8f5467895c6ca06a/reference/generation.json",
+      "sha256": "c2d6c2996b8f19b99417d173724ef4eaf953818bf7008285d6b987165ada7e88"
+    },
+    "verification": {
+      "bytes": 17505,
+      "path": "/home/isavand/paper/evidence/bell-heterogeneous-reference-v1-2b1d4fecf96c40fb8f5467895c6ca06a-verification-v2.json",
+      "sha256": "e46e1e214bc352bd8db2f86a24cb6beaadf04d6b123817c02f695cfd9430454f"
+    }
+  },
+  "execution_commit": "34839ecfbd7594725d9711b237ebc22ebac216b9",
+  "freeze": {
+    "bytes": 62652,
+    "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81/freeze.json",
+    "sha256": "6c563597983ad80adbe235a7692e26089e6c24265fc6b2c9ec1b68197f6f10f7"
+  },
+  "historical_inputs": [
+    {
+      "bytes": 42694,
+      "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/results/donut_surface_q_d6_v1/endpoint-metrics.csv",
+      "sha256": "57f0be36011e27705519e9566812716fce207e82bf26f6c3bba17ccd70aed512"
+    },
+    {
+      "bytes": 42054,
+      "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/results/donut_paired_tensor_d8_v1/endpoint-metrics.csv",
+      "sha256": "6ae1e5f512de90401df6b3d6eac1360b30ae3962f8ab1f3525afc32516df3581"
+    },
+    {
+      "bytes": 8252,
+      "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/results/donut_heterogeneous_training_v1/checkpoint-metrics.csv",
+      "sha256": "358b8cc8ad727afa9ea7eb81b3aa4a26f59f5b1c2e0e51429ac74bccabd82527"
+    },
+    {
+      "bytes": 242364,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D6/recovery.json",
+      "sha256": "81c20915efe568697b6d066fff8611ce43c532bfb9d38f5e49e85e5a11033849"
+    }
+  ],
+  "offline_analysis": [
+    {
+      "bytes": 3425484,
+      "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81-analysis-v1/analysis.json",
+      "sha256": "dbdfc753ba3415e7f445e1af7aa4f709306025fa19a3570fe1a96284fd71591d"
+    },
+    {
+      "bytes": 8004,
+      "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81-analysis-v1/summary.csv",
+      "sha256": "a30a31dd6a0230c56401efbb6866a934fcfa1948887c8a732082ac7b21bfdf8f"
+    }
+  ],
+  "packaged_files": {
+    "checkpoint-metrics.csv": {
+      "bytes": 8004,
+      "sha256": "a30a31dd6a0230c56401efbb6866a934fcfa1948887c8a732082ac7b21bfdf8f"
+    },
+    "endpoint-diagnostics.json": {
+      "bytes": 19918,
+      "sha256": "152e5d2e5cb8566187867c7462863726e25c17a97e33cdade19c0269a3188441"
+    },
+    "held-out-views.png": {
+      "bytes": 300824,
+      "sha256": "0932a70ae3a8d225f460e14bf30a04e7751abf26f813f163596629106791abc4"
+    },
+    "per-camera-metrics.csv": {
+      "bytes": 6443,
+      "sha256": "53ea8abec13640f67ebde6b6463b5ddaab7ed02f452960b7d570e850dca30dc6"
+    },
+    "recovery-curves.png": {
+      "bytes": 170695,
+      "sha256": "b9ba122e95fd2f7810f5ced20c91a02bfb0618bd35b6b2f168b9f285dd2af7dd"
+    },
+    "spatial-collapse.png": {
+      "bytes": 137249,
+      "sha256": "39ba57775ef4e3f8119beec5b908bf14e90838e79476d5bd67ae3bd865702c6a"
+    },
+    "three-benchmark-endpoints.csv": {
+      "bytes": 1540,
+      "sha256": "c91e08c05b7e2c3dafa39f790619ac50fda19d8e29e79fefd03fb5b569ad8a54"
+    }
+  },
+  "schema_version": 1
+}
