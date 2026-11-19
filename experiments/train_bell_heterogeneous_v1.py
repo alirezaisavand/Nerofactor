@@ -5,13 +5,14 @@ import sys
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 
-from benchmarks import bell_heterogeneous_training_v1 as h
+from benchmarks import bell_heterogeneous_training_v1 as bell
 from infrastructure.signatures import require
 
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--phase',choices=h.ARMS,required=True)
+    p.add_argument('--phase',required=True)
+    p.add_argument('--distance-robust',action='store_true')
     for key in ('freeze','oracle','benchmark','admission','verification'):
         p.add_argument('--'+key,type=Path,required=True)
     for key in ('initial','arm-initial','output','authorization'):
@@ -21,6 +22,11 @@ def main():
     for key in ('authorization-sha256','commit','image-id'):
         p.add_argument('--'+key)
     a = p.parse_args()
+    if a.distance_robust:
+        from benchmarks import bell_distance_robust_v1 as h
+    else:
+        h = bell
+    require(a.phase in h.ARMS,'Arm outside the selected Bell experiment')
     f = h.freeze(a.freeze,a.freeze_sha256)
     if not a.execute:
         g,views = h.dataset(f,a.benchmark,a.admission,a.verification)

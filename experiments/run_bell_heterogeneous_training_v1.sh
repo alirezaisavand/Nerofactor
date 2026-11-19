@@ -1,22 +1,39 @@
 #!/usr/bin/env bash
-# One foreground four-arm batch under its exact admission and execution records.
+# One foreground Bell batch under its exact admission and execution records.
 set -euo pipefail
 : "${BELL_TRAIN_SOURCE:?}" "${BELL_TRAIN_AUTH:?}"
 test "$(id -u)" -ne 0
 test "$(realpath "$BELL_TRAIN_SOURCE")" = "$BELL_TRAIN_SOURCE"
 test -z "$(git -C "$BELL_TRAIN_SOURCE" status --porcelain)"
 commit=$(git -C "$BELL_TRAIN_SOURCE" rev-parse HEAD)
-freeze="$BELL_TRAIN_SOURCE/docs/protocols/BELL_HETEROGENEOUS_TRAINING_V1.freeze.json"
+mode=${1:-heterogeneous}
+native_mode=()
+case "$mode" in
+    heterogeneous)
+        freeze_name=docs/protocols/BELL_HETEROGENEOUS_TRAINING_V1.freeze.json
+        arms=(D2 D6 D8-C D8-T)
+        ;;
+    distance-robust)
+        freeze_name=docs/protocols/BELL_DISTANCE_ROBUST_V1.freeze.json
+        arms=(B1 B2)
+        native_mode=(--distance-robust)
+        ;;
+    *) exit 2 ;;
+esac
+freeze="$BELL_TRAIN_SOURCE/$freeze_name"
 sha=$(sha256sum "$freeze" | cut -d' ' -f1)
 auth_sha=$(sha256sum "$BELL_TRAIN_AUTH" | cut -d' ' -f1)
-spec=$(cd "$BELL_TRAIN_SOURCE" && python3 -B - "$BELL_TRAIN_AUTH" "$commit" "$sha" <<'PY'
+spec=$(cd "$BELL_TRAIN_SOURCE" && python3 -B - "$BELL_TRAIN_AUTH" "$commit" "$sha" "$mode" <<'PY'
 from pathlib import Path
 import sys
 from infrastructure.signatures import require
 from benchmarks import donut_heterogeneous_v1 as ref
-from benchmarks import bell_heterogeneous_training_v1 as h
 
-auth,commit,sha=sys.argv[1:]
+auth,commit,sha,mode=sys.argv[1:]
+if mode=='distance-robust':
+    from benchmarks import bell_distance_robust_v1 as h
+else:
+    from benchmarks import bell_heterogeneous_training_v1 as h
 f=h.freeze(h.ROOT/h.FREEZE,sha)
 require(ref.read(Path(auth))==h.authorization(f,commit,sha),'Exact separate Bell training approval required')
 out=Path(f['host_output'])
@@ -25,6 +42,8 @@ files=f['dataset']
 h.geometry(f,Path(f['mesh']['path']))
 h.dataset(f,Path(f['host_reference']),Path(files['admission']['path']),Path(files['verification']['path']))
 ref.check_artifact(Path(f['base_initial']['path']),f['base_initial'])
+if mode=='distance-robust':
+    ref.check_artifact(Path(f['weight_archive']['path']),f['weight_archive'])
 print(out)
 print(h.IMAGE)
 print(f'{f["mesh"]["path"]}\t/inputs/oracle.ply')
@@ -70,7 +89,6 @@ cleanup_owned() {
 trap cleanup_owned EXIT
 trap 'exit 130' INT
 trap 'exit 143' TERM
-arms=(D2 D6 D8-C D8-T)
 for i in "${!arms[@]}"; do
     arm=${arms[$i]}
     initial=${settings[$((7+i))]}
@@ -94,7 +112,7 @@ for i in "${!arms[@]}"; do
         --phase "$arm" --oracle /inputs/oracle.ply \
         --benchmark /inputs/reference --admission /inputs/admission.json --verification /inputs/verification.json \
         --initial /inputs/base-initial.json --arm-initial /inputs/arm-initial.json --output "/outputs/$arm" \
-        --freeze /workspace/docs/protocols/BELL_HETEROGENEOUS_TRAINING_V1.freeze.json --freeze-sha256 "$sha" \
+        --freeze "/workspace/$freeze_name" --freeze-sha256 "$sha" "${native_mode[@]}" \
         --authorization /authorization.json --authorization-sha256 "$auth_sha" --commit "$commit" --image-id "$image" --execute \
         >"$batch/$arm-console.txt" 2>&1
     code=$?

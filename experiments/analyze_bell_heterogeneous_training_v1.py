@@ -13,5 +13,10 @@ if __name__=='__main__':
     cli = argparse.ArgumentParser(description=__doc__)
     cli.add_argument('--freeze-sha256',required=True)
     cli.add_argument('--output',type=Path,required=True)
+    cli.add_argument('--distance-robust',action='store_true')
     args = cli.parse_args()
-    print(f'Verified and scored {analyze(args.freeze_sha256,args.output,acquisition=bell)} Bell arm/checkpoint/split combinations')
+    if args.distance_robust:
+        from benchmarks import bell_distance_robust_v1 as spec
+    else:
+        spec = bell
+    print(f'Verified and scored {analyze(args.freeze_sha256,args.output,acquisition=spec)} Bell arm/checkpoint/split combinations')

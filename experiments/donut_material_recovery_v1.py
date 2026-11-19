@@ -119,6 +119,8 @@ def train(args, *, heterogeneous=False, acquisition=None):
     bound=spatial or ablation or (freeze.get('calibrated_training') if args.phase=='D3' else None)
     if heterogeneous:
         bound=freeze['arm_training']
+    weighting = spatial.get('distance_weighting') if spatial else None
+    lighting_arm = 'D6' if weighting is not None else args.phase
     calibration=bound['calibration'] if args.phase in ('D3','D4') else None
     limits=ablation['limits'][args.phase] if ablation else (bound['limits'] if bound else LIMITS)
     protocol=bound['protocol'] if bound else TRAINING
@@ -139,7 +141,7 @@ def train(args, *, heterogeneous=False, acquisition=None):
 
     geometry,_,records=source_geometry()
     expected_initial=None
-    if args.phase in ('D2','D3','D6','D7',*D8_ARMS,*D9_ARMS,*d11.ARMS,*ABLATION_ARMS):
+    if weighting is not None or args.phase in ('D2','D3','D6','D7',*D8_ARMS,*D9_ARMS,*d11.ARMS,*ABLATION_ARMS):
         require(args.initial is not None and digest(args.initial)==args.initial_sha256 and
             os.statvfs(args.initial).f_flag&os.ST_RDONLY,'Explicit immutable initialization anchor required')
         if bound:
@@ -177,6 +179,9 @@ def train(args, *, heterogeneous=False, acquisition=None):
                       surface_q_timing=dict(setup_wall_seconds=0., forward_CUDA_seconds=0.))
         report['counters'].update(surface_q_batches=0,surface_q_pairs=0,
                                   surface_q_predictor_calls=0,surface_q_predictor_points=0)
+        if weighting is not None:
+            report['surface_q_distance_weighting'] = weighting
+            report['counters']['edge_diagnostic_batches'] = 0
     if tensor_plan:
         report.update(representation=tensor_plan['representation'],
                       effective_regularization='legacy_scalar_energy_specular_white_plus_surface_Q_v1',
@@ -565,7 +570,7 @@ def train(args, *, heterogeneous=False, acquisition=None):
             progress()
         def work():
             nonlocal cursor,order,sibling
-            with shader_lighting(shader,field.MCShadingNetwork,args.phase,calibrated),native_tensor_default(torch):
+            with shader_lighting(shader,field.MCShadingNetwork,lighting_arm,calibrated),native_tensor_default(torch):
                 if tensor_plan:
                     with evaluation_scope(shader,torch,np),torch.no_grad(),shader_lighting(
                             sibling,field.MCShadingNetwork,sibling.tensor_arm):
@@ -611,7 +616,11 @@ def train(args, *, heterogeneous=False, acquisition=None):
                             spatial_start.record()
                             index=torch.as_tensor(indices,dtype=torch.long,device='cuda')
                             neighborhood={k:v.index_select(0,index) for k,v in surface_tensors.items()}
-                            spatial_loss=spatial_term(shader,neighborhood,spatial_policy,torch)
+                            if weighting is None:
+                                spatial_loss=spatial_term(shader,neighborhood,spatial_policy,torch)
+                            else:
+                                spatial_loss, edge_contributions = spatial_term(
+                                    shader,neighborhood,spatial_policy,torch,distance_weighting=weighting)
                             spatial_end.record()
                             loss=loss+spatial_loss
                         require(bool(torch.isfinite(loss) & torch.isfinite(white)),
@@ -628,6 +637,9 @@ def train(args, *, heterogeneous=False, acquisition=None):
                         if spatial:
                             row[spatial_name+'_loss']=float(spatial_loss.detach())
                             report['surface_q_timing']['forward_CUDA_seconds']+=spatial_start.elapsed_time(spatial_end)/1000
+                            if weighting is not None:
+                                charge('edge_diagnostic_batches',1)
+                                row['edge_diagnostic']=acquisition.edge_diagnostic(indices,edge_contributions,o,weighting,torch)
                         if step==0 or (step+1)%2000==0:
                             if not tensor_plan:
                                 energy,spec=legacy_energy_specular(o['f_d'],o['f_s_sum'],o['L_spec'],.05,.05,torch)

@@ -109,11 +109,12 @@ def geometry(f, mesh):
     return dict(vertices_native=vertices,triangles=triangles,area=area,bounds=bounds),None,dict(mesh=f['mesh'])
 
 
-def runtime(args):
-    f = freeze(args.freeze,args.freeze_sha256)
+def runtime(args, *, spec=None):
+    read_freeze, approve, arms = (freeze,authorization,ARMS) if spec is None else (spec.freeze,spec.authorization,spec.ARMS)
+    f = read_freeze(args.freeze,args.freeze_sha256)
     a = b.read(args.authorization)
-    require(args.phase in ARMS and args.image_id==IMAGE and digest(args.authorization)==args.authorization_sha256
-            and a==authorization(f,args.commit,args.freeze_sha256), 'Exact separate Bell training authorization required')
+    require(args.phase in arms and args.image_id==IMAGE and digest(args.authorization)==args.authorization_sha256
+            and a==approve(f,args.commit,args.freeze_sha256), 'Exact separate Bell training authorization required')
     require(os.geteuid()!=0 and args.output==Path('/outputs')/args.phase and args.output.resolve()==args.output
             and not args.output.exists() and not os.statvfs('/outputs').f_flag&os.ST_RDONLY,
             'Fresh non-root Bell arm output required')
@@ -127,10 +128,11 @@ def runtime(args):
     b.check_artifact(args.arm_initial,recipe['initial'])
     require(args.initial_sha256==f['base_initial']['sha256'] and args.benchmark_sha256==GENERATION,
             'Wrong Bell dataset or base initialization')
-    r = dict(recipe,initial_sha256=args.initial_sha256,benchmark_generation_sha256=GENERATION,protocol=PROTOCOL,
+    r = dict(recipe,initial_sha256=args.initial_sha256,benchmark_generation_sha256=GENERATION,
+        protocol=PROTOCOL if spec is None else spec.PROTOCOL,
         D6_domain_array_sha256=f['integer_domain_hashes'],D6_sampler_snapshots=f['sampler_snapshots'])
     active = dict(f,arm_training=r)
-    if args.phase=='D6':
+    if args.phase=='D6' or 'distance_weighting' in recipe:
         active['surface_q_training'] = r
     if args.phase in d8.ARMS:
         active['tensor_training'] = dict(r,arms=list(d8.ARMS))

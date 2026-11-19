@@ -41,6 +41,8 @@ def arm_receipt(batch, arm, f, auth, views, *, spec=h):
     if arm!='D2':
         require(r['D6_domain_parity_verified'] and r['surface_q_policy']==recipe['spatial_policy']
                 and r['diffuse_white_in_objective'] is True, 'Surface parity differs')
+    if 'distance_weighting' in recipe:
+        require(r['surface_q_distance_weighting']==recipe['distance_weighting'],'Distance-weighting receipt differs')
     if arm in h.d8.ARMS:
         require(r['paired_initial_gate']['passed'] and r['representation']==recipe['representation'],
                 'D8 paired initialization gate did not pass')
@@ -126,7 +128,7 @@ def analyze(sha, output, *, acquisition=None):
     reports, rows, previous_lr, paired = {}, [], None, None
     angles,per_camera={},[]
     surface_hashes=None
-    for arm in h.ARMS:
+    for arm in spec.ARMS:
         root=batch/arm
         r,hist=arm_receipt(batch,arm,f,auth,views,spec=spec)
         lr=[v['lr'] for v in hist]
@@ -152,6 +154,8 @@ def analyze(sha, output, *, acquisition=None):
                         'Bell surface domains differ across arms')
                 surface_hashes=r['surface_q_domain_hashes']
             reports[arm]['boundary_history']=[]
+            if 'distance_weighting' in f['arms'][arm]:
+                reports[arm]['weighted_shortest_edge_events']=spec.audit_weighted_history(f,domain,arm,hist)
         for step in h.STEPS:
             by_camera={c:read_endpoint(root,step,c,views[c]) for c in panel}
             if acquisition is not None:
