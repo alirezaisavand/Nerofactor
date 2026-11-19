@@ -1,0 +1,366 @@
+{
+  "authorization": {
+    "bytes": 14013,
+    "path": "/home/isavand/paper/evidence/material-field-expressivity-v1-37504490e8004f288fe67e6553596210-authorization.json",
+    "sha256": "88fc5690b23db214e2c8c884333dd32f78260d393d9d3d4af13892b724690bdd"
+  },
+  "common_held_orientation": {
+    "bell": {
+      "6033": {
+        "D8-C": {
+          "median": 1.8279417642246123,
+          "p95": 31.39792461984023
+        },
+        "D8-T": {
+          "median": 0.564721020745707,
+          "p95": 4.123923417694756
+        },
+        "observations": 7495
+      },
+      "6034": {
+        "D8-C": {
+          "median": 1.926055078910826,
+          "p95": 30.86744435436862
+        },
+        "D8-T": {
+          "median": 0.6714392052747223,
+          "p95": 4.705718380182111
+        },
+        "observations": 7518
+      }
+    },
+    "donut": {
+      "6033": {
+        "D8-C": {
+          "median": 1.0236141917171815,
+          "p95": 22.743983759314236
+        },
+        "D8-T": {
+          "median": 1.3563378953860636,
+          "p95": 5.755352013430345
+        },
+        "observations": 7933
+      },
+      "6034": {
+        "D8-C": {
+          "median": 1.3656842727635272,
+          "p95": 12.719058883649394
+        },
+        "D8-T": {
+          "median": 1.3648210510881347,
+          "p95": 7.700262639721121
+        },
+        "observations": 7944
+      }
+    }
+  },
+  "elapsed_seconds": 221.38040455058217,
+  "execution_commit": "b16ba45a296bedb70d20a3346ffa86a7ac8a7ea2",
+  "foreground_console": {
+    "bytes": 484,
+    "path": "/home/isavand/paper/evidence/material-field-expressivity-v1-37504490e8004f288fe67e6553596210-console.txt",
+    "sha256": "d25518e50bae3e2bdce990e78798308e45c2982c91e5cd52c4679b3bcbcbb5f3"
+  },
+  "foreground_exit": {
+    "bytes": 2,
+    "path": "/home/isavand/paper/evidence/material-field-expressivity-v1-37504490e8004f288fe67e6553596210-exit-code.txt",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  "freeze": {
+    "bytes": 65390,
+    "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/protocols/MATERIAL_FIELD_EXPRESSIVITY_V1.freeze.json",
+    "sha256": "409750e667ec68da0ccd9d399f7479aaf512d2e41faa97d5f6d95be955d1a6db"
+  },
+  "histories": [
+    {
+      "arm": "D8-C",
+      "elapsed_seconds": 27.702206015586853,
+      "last100_batch_loss_median": 9.794310316045707e-05,
+      "last100_gradient_norm_median": 0.006780051160603762,
+      "parameters": 1086728,
+      "peak_gradient_norm": 0.1623138189315796,
+      "scene": "bell",
+      "seed": "6033",
+      "status": "complete",
+      "updates": 1000
+    },
+    {
+      "arm": "D8-T",
+      "elapsed_seconds": 27.080887511372566,
+      "last100_batch_loss_median": 0.0001808746910087128,
+      "last100_gradient_norm_median": 0.03545971401035786,
+      "parameters": 1087244,
+      "peak_gradient_norm": 1.2121580839157104,
+      "scene": "bell",
+      "seed": "6033",
+      "status": "complete",
+      "updates": 1000
+    },
+    {
+      "arm": "D8-C",
+      "elapsed_seconds": 27.719267232343554,
+      "last100_batch_loss_median": 0.00012996132055069238,
+      "last100_gradient_norm_median": 0.00887914840131998,
+      "parameters": 1086728,
+      "peak_gradient_norm": 0.18020299077033997,
+      "scene": "bell",
+      "seed": "6034",
+      "status": "complete",
+      "updates": 1000
+    },
+    {
+      "arm": "D8-T",
+      "elapsed_seconds": 26.897928761318326,
+      "last100_batch_loss_median": 0.0001413417355647548,
+      "last100_gradient_norm_median": 0.025420541875064373,
+      "parameters": 1087244,
+      "peak_gradient_norm": 0.22821727395057678,
+      "scene": "bell",
+      "seed": "6034",
+      "status": "complete",
+      "updates": 1000
+    },
+    {
+      "arm": "D8-C",
+      "elapsed_seconds": 27.771170116961002,
+      "last100_batch_loss_median": 1.870017194581082e-05,
+      "last100_gradient_norm_median": 0.0074569000862538815,
+      "parameters": 1086728,
+      "peak_gradient_norm": 0.1726255714893341,
+      "scene": "donut",
+      "seed": "6033",
+      "status": "complete",
+      "updates": 1000
+    },
+    {
+      "arm": "D8-T",
+      "elapsed_seconds": 27.113947240635753,
+      "last100_batch_loss_median": 0.00013426142638206637,
+      "last100_gradient_norm_median": 0.02946774661540985,
+      "parameters": 1087244,
+      "peak_gradient_norm": 0.26160678267478943,
+      "scene": "donut",
+      "seed": "6033",
+      "status": "complete",
+      "updates": 1000
+    },
+    {
+      "arm": "D8-C",
+      "elapsed_seconds": 27.773438112810254,
+      "last100_batch_loss_median": 7.433341753060277e-05,
+      "last100_gradient_norm_median": 0.009088198654353619,
+      "parameters": 1086728,
+      "peak_gradient_norm": 0.15622442960739136,
+      "scene": "donut",
+      "seed": "6034",
+      "status": "complete",
+      "updates": 1000
+    },
+    {
+      "arm": "D8-T",
+      "elapsed_seconds": 27.070291006937623,
+      "last100_batch_loss_median": 0.00010303836668196253,
+      "last100_gradient_norm_median": 0.012294856365770102,
+      "parameters": 1087244,
+      "peak_gradient_norm": 0.2644738256931305,
+      "scene": "donut",
+      "seed": "6034",
+      "status": "complete",
+      "updates": 1000
+    }
+  ],
+  "max_RSS_bytes": 651796480,
+  "output_root": "/home/isavand/paper/evidence/material-field-expressivity-v1-37504490e8004f288fe67e6553596210",
+  "outputs": {
+    "bell/6033-D8-C-boundary-final.npz": {
+      "bytes": 36139,
+      "sha256": "b99245d8e009b4c3b7dd1459c7c9036ac8753e898eb595634abb0540eb2b5e96"
+    },
+    "bell/6033-D8-C-fit-final.npz": {
+      "bytes": 284691,
+      "sha256": "e7747a2ba92fa4c8e298f21be16d3a717b5779fc702a5da3c041bb3c60715434"
+    },
+    "bell/6033-D8-C-independent-final.npz": {
+      "bytes": 568986,
+      "sha256": "b3727d38b3592606dcc84347eb95637ba844a7cf95857a5778e6ee6ddedb7ba4"
+    },
+    "bell/6033-D8-C-training.npy": {
+      "bytes": 16128,
+      "sha256": "4ec801e5e0e411aec4973ef28875eac3a410316114ba4a86bc7a1e60a8bfa334"
+    },
+    "bell/6033-D8-T-boundary-final.npz": {
+      "bytes": 36166,
+      "sha256": "b1a502d097bd415455f51ca841fba77a5f217779d847e0e16ec9460f81850284"
+    },
+    "bell/6033-D8-T-fit-final.npz": {
+      "bytes": 284636,
+      "sha256": "5b1d631731fa5205b9d101f9cd0bf3ad9b99b2af4764abf0f9fdef0e203f6ea5"
+    },
+    "bell/6033-D8-T-independent-final.npz": {
+      "bytes": 568708,
+      "sha256": "aaffc4af3631048b75d51fc7df9ec39aa5673a7c6e1d5cbdd3c7cc69f7affde2"
+    },
+    "bell/6033-D8-T-training.npy": {
+      "bytes": 16128,
+      "sha256": "35d7adebbe1336fd00bd7806da3d650ea39808c1ffdddd12a0fd467e63b22ac1"
+    },
+    "bell/6034-D8-C-boundary-final.npz": {
+      "bytes": 36142,
+      "sha256": "352c2cf0eba1f0cc0fe2b4a375e6833cb18fe0682ae5cf24b71f8caffa61a105"
+    },
+    "bell/6034-D8-C-fit-final.npz": {
+      "bytes": 284711,
+      "sha256": "0fd02d08e5fd4cb363b67bf62f0492ed0a548127000c4914e3d0c0873aac3822"
+    },
+    "bell/6034-D8-C-independent-final.npz": {
+      "bytes": 568843,
+      "sha256": "5e915e7dc035faf4cef454dbf7dcb0166b41b8a25c9a6e2e41e6957245ad9c10"
+    },
+    "bell/6034-D8-C-training.npy": {
+      "bytes": 16128,
+      "sha256": "76457dcb0419520600bce46d48e43b52345a4ffebe9f89887f9cc7f1b732fe2f"
+    },
+    "bell/6034-D8-T-boundary-final.npz": {
+      "bytes": 36130,
+      "sha256": "a7b4ad5e3112c0d6012f2d7066eb3470e6fe1b9202e339fa2614a0dc9886370b"
+    },
+    "bell/6034-D8-T-fit-final.npz": {
+      "bytes": 284539,
+      "sha256": "63a68768d0d2495b72a58d09cc738e4ac5734eea09abaf10d8cd0b63d7683e38"
+    },
+    "bell/6034-D8-T-independent-final.npz": {
+      "bytes": 568711,
+      "sha256": "d0f55854133af4f4f977fffc47da18ae770b52437fa8bf359fa66b679c499eaa"
+    },
+    "bell/6034-D8-T-training.npy": {
+      "bytes": 16128,
+      "sha256": "09b9f259bfe6d3c27c73c789dcc5662d0bb420a863f03d5e03e6dd85446be985"
+    },
+    "bell/boundary.npz": {
+      "bytes": 51231,
+      "sha256": "472d32767c7430e7cb0853d9881b82b3b7cf72871a227a725fcd5efac1baf4ca"
+    },
+    "bell/fit.npz": {
+      "bytes": 590781,
+      "sha256": "0e136ec8b571d91419ef6e716bf7cbfee3427764a9a2e462d5bac7b8d9a646e9"
+    },
+    "bell/independent.npz": {
+      "bytes": 1171853,
+      "sha256": "1935c72d1544fab5d0e3a0a5f77c6349adf2e8dd6cff0c3d1b4159e2290f4cf9"
+    },
+    "donut/6033-D8-C-boundary-final.npz": {
+      "bytes": 27433,
+      "sha256": "3d856b0ea1a981ec60b992ff9f7dd1fc4d085c9abc6b325d3535e2810f51d52b"
+    },
+    "donut/6033-D8-C-fit-final.npz": {
+      "bytes": 286310,
+      "sha256": "0c3c4efbec9502abf8eacc1f5fd17f7dc09d269b0944273f2e0bba084f712e1f"
+    },
+    "donut/6033-D8-C-independent-final.npz": {
+      "bytes": 571970,
+      "sha256": "3403baf8cd004330692db00898dae2c51981935d009f7074705d2f307092226b"
+    },
+    "donut/6033-D8-C-training.npy": {
+      "bytes": 16128,
+      "sha256": "94f5af689322013d1f488b039a5a98406fae5b27120b0934bf22ae64bb48570a"
+    },
+    "donut/6033-D8-T-boundary-final.npz": {
+      "bytes": 27485,
+      "sha256": "7d1ebf880e35281f1e4d0420c255c3ebc37ae0f9e0e89eae37b04edcf39b5153"
+    },
+    "donut/6033-D8-T-fit-final.npz": {
+      "bytes": 286336,
+      "sha256": "8dfcb594859f6114dee8510458654f4157ed416ee1ce3334a4d428817e03a2a3"
+    },
+    "donut/6033-D8-T-independent-final.npz": {
+      "bytes": 572347,
+      "sha256": "2d32ad04197cca0d22f68e5142afc75c89e707ff9b0d6b525dae9baae263bd86"
+    },
+    "donut/6033-D8-T-training.npy": {
+      "bytes": 16128,
+      "sha256": "99ef4079c2f23cc543c899959d26931a08fb3cb90ae293b35b45bdc75cf4baf4"
+    },
+    "donut/6034-D8-C-boundary-final.npz": {
+      "bytes": 27433,
+      "sha256": "1052b57da6c91308a9535a264819d16954b48cacc5458aba8edf2ae22aa81211"
+    },
+    "donut/6034-D8-C-fit-final.npz": {
+      "bytes": 286341,
+      "sha256": "56ee1c18a211eb6fb2406d913195b840df0b16826ec01aa32b3896b67012e3da"
+    },
+    "donut/6034-D8-C-independent-final.npz": {
+      "bytes": 571916,
+      "sha256": "f92beec044b7e040fc2c01011735b34ddf06d1f3f4859a387e290f9213370103"
+    },
+    "donut/6034-D8-C-training.npy": {
+      "bytes": 16128,
+      "sha256": "ddaf298468f9ac55c47d84bf00888f65250e7493c9982ea926ca64c8ea73d13f"
+    },
+    "donut/6034-D8-T-boundary-final.npz": {
+      "bytes": 27482,
+      "sha256": "1903167e52f6fe6337a613abb9180935f5d312808de6398442804ed1e2c20355"
+    },
+    "donut/6034-D8-T-fit-final.npz": {
+      "bytes": 286266,
+      "sha256": "0b842c4485db5f64714b5a7e1cf36c8dc4dbfa16336ab84367121c5227597144"
+    },
+    "donut/6034-D8-T-independent-final.npz": {
+      "bytes": 572311,
+      "sha256": "efb5618a14a405e6d784351bafa56825ce18e90ed3ff2d171b9a0f4999339b32"
+    },
+    "donut/6034-D8-T-training.npy": {
+      "bytes": 16128,
+      "sha256": "be81b103b84472f51c9ed411a52777afb960542fe69a58ca08736803ed2138fe"
+    },
+    "donut/boundary.npz": {
+      "bytes": 39810,
+      "sha256": "46ab6bd59672d4186bb0fc6a38b7a6968de482d11b37c91f1be497a302519a1c"
+    },
+    "donut/fit.npz": {
+      "bytes": 594689,
+      "sha256": "1a504d9f5d2a67bf56c31b49108c7c90f6f218b443937aee382c1690e84fa40e"
+    },
+    "donut/independent.npz": {
+      "bytes": 1186694,
+      "sha256": "035847a83e6edf71116637c5913d40886bba2c376f9dadd2b32fa13f9836c590"
+    }
+  },
+  "packaged_files": {
+    "metrics-by-checkpoint.csv": {
+      "bytes": 74285,
+      "sha256": "a1272d712c4165ee295c663637520a16ed7bf997c59c28ffbaa5297e047973ad"
+    },
+    "supervised-q-recovery.png": {
+      "bytes": 195670,
+      "sha256": "4cf6cfdb34a0ce63dfd546230b40761ca41d08852d8ff01d9882736c6e8331d5"
+    }
+  },
+  "protocol": "supervised-chart-ambient-material-expressivity-v1",
+  "report": {
+    "bytes": 216034,
+    "path": "/home/isavand/paper/evidence/material-field-expressivity-v1-37504490e8004f288fe67e6553596210/report.json",
+    "sha256": "e16d8cb58bec2c247cf5df4cb60e8298aeb898c2c80cf3704e67c4f2d472fa97"
+  },
+  "runtime": {
+    "device": "cpu",
+    "numpy": "1.21.5",
+    "python": "3.9.12",
+    "scipy": "1.7.3",
+    "torch": "2.4.0+cu121"
+  },
+  "schema_version": 1,
+  "status": "complete",
+  "verification": {
+    "offline_RGB_renders": 0,
+    "offline_field_calls": 0,
+    "offline_optimizer_updates": 0,
+    "verified_output_files": 38
+  },
+  "work": {
+    "RGB_renders": 0,
+    "evaluation_points": 440320,
+    "fit_points": 2048000,
+    "illumination_updates": 0,
+    "updates": 8000
+  }
+}
