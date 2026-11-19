@@ -1,0 +1,153 @@
+{
+  "protocol": "bell-kurt-heterogeneous-reference-v1",
+  "status": "prepared_pending_execution_authorization",
+  "reviewed_donut_commit": "ab483e425e2dbe7768d2e736e3a4086f1a43b2d3",
+  "freeze_sha256": "56efcb40527e67ce8848b62a293da246d7571c27e5ebd3caef94d457468059e3",
+  "frozen_source_files": 362,
+  "source_admission_sha256": "f89fe72d13e9f6d05067b012ff4575852eef26ba35b5b3c072ac236e51e74605",
+  "source_generation_sha256": "5035b22b594848900426fd5dfaa8b96382b57a76cfde97864b7ef7591c46e6d7",
+  "host_output": "/home/isavand/paper/evidence/bell-heterogeneous-reference-v1-2b1d4fecf96c40fb8f5467895c6ca06a",
+  "metadata_only_preflight": {
+    "counters": {
+      "BRDF_point_directions": 0,
+      "CPU_primary_crosschecks": 0,
+      "primary_rays": 0,
+      "shadow_directions": 0,
+      "slope_nodes_attempted": 0,
+      "slope_nodes_returned": 0
+    },
+    "coverage": {
+      "area_native": 5.2315011413366515,
+      "eligible_area_fraction": 0.9986960783072,
+      "eligible_faces": 248619,
+      "eligible_pairs": 362520,
+      "faces": 248908,
+      "maximum_eligible_dihedral_degrees": 14.99518632529987,
+      "observed_area_fraction": {
+        "fitting": 0.09434518474122357,
+        "held_out": 0.03844811870639346
+      },
+      "reserved_pairs": 1024,
+      "training_domain": {
+        "sampled_in_fit": {
+          "area": 0.4935669416533283,
+          "faces": 17080,
+          "visited_area": 0.4931158579482595,
+          "visited_faces": 17066
+        },
+        "surface_area_fraction": 0.9986592684156962,
+        "unsampled_in_fit": {
+          "area": 4.737934199683323,
+          "faces": 231828,
+          "visited_area": 4.73137124457488,
+          "visited_faces": 231546
+        },
+        "visited_faces": 248612
+      },
+      "training_pairs": 361496,
+      "transport_distance_native_max": 0.006506690868534374,
+      "transport_distance_native_min": 0.000008656554630561848,
+      "transport_exclusions": {
+        "excluded_degenerate_faces": 0,
+        "excluded_distance_or_dihedral": 10842,
+        "excluded_non_two_face_edges": 0
+      }
+    },
+    "geometry_checks": {
+      "0": {
+        "exactly_isotropic": 2,
+        "hits_with_alternative_face_candidate": 2,
+        "max_face_plane_residual": 1.5318011708489922e-7,
+        "near_boundary": 573,
+        "nearly_isotropic": 5,
+        "normal_dot_view_min": 0.040095316891753274,
+        "projection_isotropy_count": 0,
+        "shader_valid": 4395,
+        "world_Q_eigenvalue_error": 2.220446049250313e-16,
+        "world_Q_normal_null_error": 1.412444380205491e-16
+      },
+      "2": {
+        "exactly_isotropic": 422,
+        "hits_with_alternative_face_candidate": 0,
+        "max_face_plane_residual": 1.409809461854275e-7,
+        "near_boundary": 404,
+        "nearly_isotropic": 600,
+        "normal_dot_view_min": 0.01338542676511889,
+        "projection_isotropy_count": 0,
+        "shader_valid": 4421,
+        "world_Q_eigenvalue_error": 2.220446049250313e-16,
+        "world_Q_normal_null_error": 2.671474153004283e-16
+      },
+      "4": {
+        "exactly_isotropic": 389,
+        "hits_with_alternative_face_candidate": 2,
+        "max_face_plane_residual": 1.435318966779356e-7,
+        "near_boundary": 423,
+        "nearly_isotropic": 555,
+        "normal_dot_view_min": 0.01878176199603987,
+        "projection_isotropy_count": 0,
+        "shader_valid": 4365,
+        "world_Q_eigenvalue_error": 2.498001805406602e-16,
+        "world_Q_normal_null_error": 3.608224830031759e-16
+      },
+      "19": {
+        "exactly_isotropic": 0,
+        "hits_with_alternative_face_candidate": 1,
+        "max_face_plane_residual": 1.4678236372493367e-7,
+        "near_boundary": 569,
+        "nearly_isotropic": 0,
+        "normal_dot_view_min": 0.01811346567062666,
+        "projection_isotropy_count": 0,
+        "shader_valid": 4392,
+        "world_Q_eigenvalue_error": 1.6653345369377348e-16,
+        "world_Q_normal_null_error": 1.0061396160665481e-16
+      },
+      "105": {
+        "exactly_isotropic": 2,
+        "hits_with_alternative_face_candidate": 1,
+        "max_face_plane_residual": 1.379326972744373e-7,
+        "near_boundary": 438,
+        "nearly_isotropic": 5,
+        "normal_dot_view_min": 0.01197720237281652,
+        "projection_isotropy_count": 1,
+        "shader_valid": 3607,
+        "world_Q_eigenvalue_error": 1.6653345369377348e-16,
+        "world_Q_normal_null_error": 2.220446049250313e-16
+      },
+      "114": {
+        "exactly_isotropic": 214,
+        "hits_with_alternative_face_candidate": 0,
+        "max_face_plane_residual": 1.2983039881440646e-7,
+        "near_boundary": 345,
+        "nearly_isotropic": 310,
+        "normal_dot_view_min": 0.02637220676653007,
+        "projection_isotropy_count": 1,
+        "shader_valid": 3475,
+        "world_Q_eigenvalue_error": 2.498001805406602e-16,
+        "world_Q_normal_null_error": 3.608224830031759e-16
+      }
+    },
+    "panel": [
+      0,
+      4,
+      19,
+      2,
+      105,
+      114
+    ],
+    "status": "metadata_only"
+  },
+  "validation": {
+    "focused_cpu_tests": {
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "exit_code": 0
+    },
+    "bash_syntax": true,
+    "python_3_8_grammar": true,
+    "docker_image_identity_basis": "Admitted E.11C image and binary identities, local Docker socket access denied"
+  },
+  "reference_execution_authorized": false,
+  "training_authorized": false
+}
