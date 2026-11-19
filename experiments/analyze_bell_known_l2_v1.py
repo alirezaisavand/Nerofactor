@@ -22,8 +22,9 @@ def endpoint(root, receipt, camera, view):
     return read_endpoint(root,10000,camera,view)
 
 
-def compare_saved(f, output, analysis):
+def compare_saved(f, output, analysis, *, known_roots=None):
     batch = Path(f['host_output'])
+    known_roots = {arm:batch/arm for arm in spec.MATCH} if known_roots is None else known_roots
     files = f['dataset']
     _,views = spec.dataset(f,Path(f['host_reference']),Path(files['admission']['path']),Path(files['verification']['path']))
     geometry,_,_ = spec.geometry(f,Path(f['mesh']['path']))
@@ -33,10 +34,10 @@ def compare_saved(f, output, analysis):
     baseline_manifest = spec.b.read(spec.ROOT/spec.CONTROL_MANIFEST)
     baseline = baseline_manifest['offline_analysis'][0]
     old_analysis = spec.b.read(spec.b.check_artifact(Path(baseline['path']),baseline))
-    for arm,control in spec.MATCH.items():
+    for arm,known in known_roots.items():
+        control = spec.MATCH[arm]
         original = f['controls'][arm]
         old = Path(original['path']).parent
-        known = batch/arm
         before,after = (spec.b.read(root/'recovery.json') for root in (old,known))
         require(before['initial']==after['initial'],'Known-light initial state changed')
         old_gate = 'native-reference-gate.npz'
@@ -86,7 +87,7 @@ def compare_saved(f, output, analysis):
                            known_gradient_probes=analysis['arms'][arm]['gradient_probes'],
                            last_2000_updates=prior_values,
                            initial_material_and_reference_checks_exact=True,matching_learning_rates=True)
-    pairs = (('K2','K3'),('K1','K3'))
+    pairs = [(a,b) for a,b in (('K2','K3'),('K1','K3')) if {a,b}<=recovered.keys()]
     json_new(output/'matched-controls.json',dict(schema_version=1,learned_analysis=baseline,arms=scores,
         known_pairs={a+'-'+b:{split:common_orientation({k:recovered[k] for k in (a,b)},cameras)
                                for split,cameras in spec.SPLITS.items()} for a,b in pairs}))
@@ -106,8 +107,29 @@ if __name__=='__main__':
     cli = argparse.ArgumentParser(description=__doc__)
     cli.add_argument('--freeze-sha256',required=True)
     cli.add_argument('--output',type=Path,required=True)
+    cli.add_argument('--completion',action='store_true')
     a = cli.parse_args()
-    f = spec.freeze(spec.ROOT/spec.FREEZE,a.freeze_sha256)
-    count = analyze(a.freeze_sha256,a.output,acquisition=spec)
-    compare_saved(f,a.output,spec.b.read(a.output/'analysis.json'))
+    if a.completion:
+        from benchmarks import bell_known_l2_completion_v2 as completion
+        f = completion.freeze(spec.ROOT/completion.FREEZE,a.freeze_sha256)
+        cid,label = completion.verify_controls(f)
+        cleanup = spec.b.read(Path(f['host_output'])/'previous-run-cleanup.json')
+        require(cleanup['container_id']==cid and cleanup['label']==label
+                and cleanup['absent_by_id'] and cleanup['absent_by_owner_label'],'Previous K2 cleanup evidence differs')
+        count = analyze(a.freeze_sha256,a.output,acquisition=completion)
+        earlier = completion.prior_definition()
+        prior = spec.b.read(Path(f['prior_evidence']['K1-analysis']['path']))
+        latest = spec.b.read(a.output/'analysis.json')
+        combined = dict(latest,arms={**prior['arms'],**latest['arms']},results=prior['results']+latest['results'],
+                        per_camera_endpoint=prior['per_camera_endpoint']+latest['per_camera_endpoint'],
+                        common_orientation_arms=list(completion.ARMS))
+        json_new(a.output/'combined-analysis.json',dict(combined,evidence_origins={'K1':f['prior_evidence']['K1-analysis'],
+            'K2_K3':dict(path=str(a.output/'analysis.json'),sha256=spec.digest(a.output/'analysis.json'))}))
+        compare_saved(earlier,a.output,combined,known_roots={
+            'K1':Path(earlier['host_output'])/'K1',**{arm:Path(f['host_output'])/arm for arm in completion.ARMS}})
+        count += len(prior['results'])
+    else:
+        f = spec.freeze(spec.ROOT/spec.FREEZE,a.freeze_sha256)
+        count = analyze(a.freeze_sha256,a.output,acquisition=spec)
+        compare_saved(f,a.output,spec.b.read(a.output/'analysis.json'))
     print(f'Verified {count} Bell checkpoint/split combinations and three matched controls')

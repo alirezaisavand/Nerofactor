@@ -23,6 +23,11 @@ case "$mode" in
         arms=(K1 K2 K3)
         native_mode=(--known-l2)
         ;;
+    known-l2-completion)
+        freeze_name=docs/protocols/BELL_KNOWN_L2_COMPLETION_V2.freeze.json
+        arms=(K2 K3)
+        native_mode=(--known-l2-completion)
+        ;;
     *) exit 2 ;;
 esac
 freeze="$BELL_TRAIN_SOURCE/$freeze_name"
@@ -39,6 +44,8 @@ if mode=='distance-robust':
     from benchmarks import bell_distance_robust_v1 as h
 elif mode=='known-l2':
     from benchmarks import bell_known_l2_v1 as h
+elif mode=='known-l2-completion':
+    from benchmarks import bell_known_l2_completion_v2 as h
 else:
     from benchmarks import bell_heterogeneous_training_v1 as h
 f=h.freeze(h.ROOT/h.FREEZE,sha)
@@ -53,6 +60,8 @@ if mode=='distance-robust':
     ref.check_artifact(Path(f['weight_archive']['path']),f['weight_archive'])
 elif mode=='known-l2':
     h.verify_controls(f)
+elif mode=='known-l2-completion':
+    previous_container=h.verify_controls(f)
 print(out)
 print(h.IMAGE)
 print(f'{f["mesh"]["path"]}\t/inputs/oracle.ply')
@@ -64,17 +73,42 @@ for arm in h.ARMS:
     item=f['arms'][arm]['initial']
     ref.check_artifact(Path(item['path']),item)
     print(item['path'])
+if mode=='known-l2-completion':
+    print('\t'.join(previous_container))
 PY
 )
 mapfile -t settings <<< "$spec"
 batch=${settings[0]}
 image=${settings[1]}
 test "$(docker image inspect --format '{{.Id}}' "$image")" = "$image"
+if test "$mode" = known-l2-completion; then
+    IFS=$'\t' read -r previous_cid previous_label <<< "${settings[$((7+${#arms[@]}))]}"
+    present_by_id=$(docker container ls --all --no-trunc -q --filter "id=$previous_cid")
+    present_by_label=$(docker container ls --all --no-trunc -q --filter "label=nerofactor.donut-recovery=$previous_label")
+    if test -n "$present_by_id" || test -n "$present_by_label"; then
+        printf '%s\n' 'Previous K2 container still exists. Completion batch was not started.' >&2
+        exit 1
+    fi
+fi
 for active_label in nerofactor.donut-recovery nerofactor.donut-heterogeneous nerofactor.bell-heterogeneous; do
     active=$(docker ps -q --filter "label=$active_label")
     test -z "$active"
 done
 mkdir "$batch"
+if test "$mode" = known-l2-completion; then
+    python3 -B - "$batch" "$previous_cid" "$previous_label" <<'PY'
+from datetime import datetime, timezone
+import json
+from pathlib import Path
+import sys
+
+path,cid,label=sys.argv[1:]
+with (Path(path)/'previous-run-cleanup.json').open('x') as stream:
+    json.dump(dict(container_id=cid,label=label,checked_utc=datetime.now(timezone.utc).isoformat(),
+                   absent_by_id=True,absent_by_owner_label=True),stream,indent=2)
+    stream.write('\n')
+PY
+fi
 cp "$BELL_TRAIN_AUTH" "$batch/authorization.json"
 cp "$freeze" "$batch/freeze.json"
 test "$(sha256sum "$batch/authorization.json" | cut -d' ' -f1)" = "$auth_sha"

@@ -59,6 +59,13 @@ def training_objective(photo, material_prior, diffuse_white, *, include_diffuse_
     return loss + diffuse_white if include_diffuse_white else loss
 
 
+def tensor_pair(method, arms):
+    """Select the other representation using the native method identity."""
+    require(len(arms)==2 and len(set(arms))==2 and method in arms,
+            'Two distinct tensor representations including the selected method are required')
+    return method,next(arm for arm in arms if arm!=method)
+
+
 def calibration_mean_record(grid_light, weights, definition):
     realized_mean = (grid_light * weights[..., None]).sum(axis=(0, 1))
     target = definition['mean_linear_RGB']
@@ -263,8 +270,7 @@ def train(args, *, heterogeneous=False, acquisition=None):
         require(expected_initial is None or initial==expected_initial,'Full initial weights/buffers differ from the admitted anchor')
         sibling=None
         if tensor_plan:
-            representation='D8-T' if log_tensor else method
-            counterpart='D8-C' if log_tensor else next(a for a in tensor_plan['arms'] if a!=args.phase)
+            representation,counterpart=('D8-T','D8-C') if log_tensor else tensor_pair(method,tensor_plan['arms'])
             with torch.random.fork_rng(devices=[0]):
                 shader.select_tensor_representation(representation)
                 shader.cuda()
@@ -273,6 +279,8 @@ def train(args, *, heterogeneous=False, acquisition=None):
                 require(state_hash(sibling)==initial['state_sha256'],'Paired fresh base state differs')
                 sibling.select_tensor_representation(counterpart)
                 sibling.cuda()
+            require((shader.tensor_arm,sibling.tensor_arm)==(representation,counterpart),
+                    'Native tensor pair differs from its declared representations')
             initial=dict(common_base_state_sha256=initial['state_sha256'],state_sha256=state_hash(shader),
                          variant=shader.tensor_variant,seed=POLICY['seed'])
         if log_tensor:
