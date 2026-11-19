@@ -57,16 +57,18 @@ def endpoint_comparison(analysis):
     return rows
 
 
-def plot_views(batch, views, predictions, output, plt):
+def plot_views(batch, views, predictions, output, plt, *, arm_roots=None):
     from PIL import Image
 
     fig, axes = plt.subplots(6,5,figsize=(10,10.4),layout='constrained')
+    roots = {arm:batch/arm for arm in h.ARMS} if arm_roots is None else arm_roots
+    arms = tuple(roots)
     for row,camera in enumerate(h.SPLITS['held_out']):
         v = views[camera]
         visible = v['shader_valid']
         pixels = v['pixel_indices'][visible]
-        for col,arm in enumerate(('Oracle',*h.ARMS)):
-            root = batch/(arm if col else 'D2')/'step-10000'/f'camera-{camera}'
+        for col,arm in enumerate(('Oracle',*arms)):
+            root = roots[arm if col else arms[0]]/'step-10000'/f'camera-{camera}'
             ax = axes[3*row,col]
             with Image.open(root/('reconstructed.png' if col else 'ground_truth.png')) as png:
                 ax.imshow(np.asarray(png),interpolation='nearest')
@@ -78,7 +80,7 @@ def plot_views(batch, views, predictions, output, plt):
                 xy[pixels] = values
                 layer = axes[3*row+offset,col].imshow(xy.reshape(h.b.SIZE,h.b.SIZE),
                     interpolation='nearest',vmin=vmin,vmax=vmax,cmap=cmap)
-                if col==len(h.ARMS):
+                if col==len(arms):
                     fig.colorbar(layer,ax=axes[3*row+offset],fraction=.013,pad=.01,extend='max')
         for offset,label in enumerate((f'Camera {camera} RGB','Minor width','Relative Q error')):
             axes[3*row+offset,0].set_ylabel(label)

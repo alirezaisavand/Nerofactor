@@ -1,0 +1,231 @@
+{
+  "arms": {
+    "B1": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 33340991,
+          "sha256": "4963edc7378942866f5a5df4b0c725e3c137aa89fd54f9585abf0a41c6600fe3"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 33340991,
+          "sha256": "715fe9e97a587319e2b69d0a4ce400d827eb30a959d14736e9bcbfa9310da895"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 33340991,
+          "sha256": "5a680e58bcff463844efa424a72a18a9e9cc6231d934ea4578875fe2722e698b"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 33340927,
+          "sha256": "16de56c0fe37ffebba4ef88e36e4f030f427ef20d798bb931fd93ec6864eff8b"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 33340991,
+          "sha256": "cc812b6610721f738c8fcd860a22e92a152683c1066dfce924bedf4f029daf00"
+        }
+      },
+      "output_bytes": 261096148,
+      "outputs": 904,
+      "receipt": {
+        "bytes": 244512,
+        "path": "/home/isavand/paper/evidence/bell-distance-robust-v1-84f4e6b287254f3c9c9ae987734c7f06/B1/recovery.json",
+        "sha256": "9ada9bea61761f69c618856c448e908b93df090329c96d11f068cb7f684ccecc"
+      },
+      "train_log": {
+        "bytes": 11899284,
+        "path": "/home/isavand/paper/evidence/bell-distance-robust-v1-84f4e6b287254f3c9c9ae987734c7f06/B1/training.jsonl",
+        "sha256": "302f57f5399b9ce8fe71c4eb8a2f1ab9fe2a31b273b0b9ceff5cae399ba6a678"
+      }
+    },
+    "B2": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 33340991,
+          "sha256": "bd7c232ee9ceb956c942eef979f6056db3420ba224185c2ef998ec6467865905"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 33340991,
+          "sha256": "12f2d7e2e9e7cc16056ec8a0bad3991f924985be7536ddc3873d3ebc580212f5"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 33340991,
+          "sha256": "a5bcddffbbd631616ead16d6c50fd2c34e113d2da8bacad5411b60c74c6bf2bc"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 33340927,
+          "sha256": "b96c60e0a74440c59994445dc570adb931125553c2f0b58ca94027a5fb7755fa"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 33340991,
+          "sha256": "4e618f7654a19a4e27477082f5c327448a24f3c3584d58f990062efe21488c6f"
+        }
+      },
+      "output_bytes": 261027088,
+      "outputs": 904,
+      "receipt": {
+        "bytes": 244513,
+        "path": "/home/isavand/paper/evidence/bell-distance-robust-v1-84f4e6b287254f3c9c9ae987734c7f06/B2/recovery.json",
+        "sha256": "eaffe21cd818a234c25e6839e46a1a122d38b4141d006755eb692a2a114f7363"
+      },
+      "train_log": {
+        "bytes": 11900085,
+        "path": "/home/isavand/paper/evidence/bell-distance-robust-v1-84f4e6b287254f3c9c9ae987734c7f06/B2/training.jsonl",
+        "sha256": "1e7375777ad078942677d8038dc135c703f3ee0a77756aac00473507eae352bd"
+      }
+    },
+    "D2": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 27198527,
+          "sha256": "3425670917e46d3310097ab93ef6091630175445d3d2ad040f3f03dfa6ef2bcb"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 27198527,
+          "sha256": "f3b75b3a7ed6a822b1bc142cb041338616a6bdd4639bd14211471d17c46fd375"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 27198527,
+          "sha256": "598a8d12a4dfa6127dbbc08a8ec598c146a84036c3a9a436aa29e4e39f58a64d"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 27198463,
+          "sha256": "a8a3fb93381fc7185e89a459b3aac37f00153bf57173fb38520bc12495ce0036"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 27198591,
+          "sha256": "9a8dfd19a10242d74847cf4ab96006275fa80325694e596888b75a8941d106e7"
+        }
+      },
+      "output_bytes": 202569193,
+      "outputs": 897,
+      "receipt": {
+        "bytes": 237658,
+        "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81/D2/recovery.json",
+        "sha256": "77c8f36976ec38c51eb706bcd0b9476ebb11bc98935d9d15afec7c3c583be868"
+      },
+      "train_log": {
+        "bytes": 8067544,
+        "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81/D2/training.jsonl",
+        "sha256": "7f2c6f0520c87ec33ab3bc97a2ff6e618b9178c10326d596f9f3775abc1ce9a5"
+      }
+    },
+    "D6": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 33340991,
+          "sha256": "4a145b83ff37ac868ea052e90eee211a56f82386ebf72452d0497dcdbdead861"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 33340991,
+          "sha256": "5f99b9317e5c8d5e9514546a6e59bbf580f44df8cb2b65252bcb4959c2fac910"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 33340991,
+          "sha256": "70070591b5bfbfdad58321f26dc42e063626699f92695238dcf1cb21ac496ba0"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 33340927,
+          "sha256": "2b85738d415ebb5a5945ecd253d7f87ba4ea49c532d581eb7fad18dddb7ce257"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 33340991,
+          "sha256": "b8610092ade5524448063353e02a2f7987cdc20d3d4e3f6aae357bda270b7ea2"
+        }
+      },
+      "output_bytes": 256766998,
+      "outputs": 904,
+      "receipt": {
+        "bytes": 239913,
+        "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81/D6/recovery.json",
+        "sha256": "f4b95b137e5bd6e2073bd3913c47543a161887066c4cac3d72f5087ec4c682ee"
+      },
+      "train_log": {
+        "bytes": 8933187,
+        "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81/D6/training.jsonl",
+        "sha256": "44bfe5acae27c6f1b8b0c1939540f8e189c4469d4a5a9b5cc2ec174e9b8e7e64"
+      }
+    }
+  },
+  "authorization": {
+    "bytes": 5342,
+    "path": "/home/isavand/paper/evidence/bell-distance-robust-v1-84f4e6b287254f3c9c9ae987734c7f06/authorization.json",
+    "sha256": "537dfcbd72c5a868f05c026b3480113fd058ce488c9918360111c025baa87d6b"
+  },
+  "batch": "/home/isavand/paper/evidence/bell-distance-robust-v1-84f4e6b287254f3c9c9ae987734c7f06",
+  "control_analysis": {
+    "bytes": 3425484,
+    "path": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81-analysis-v1/analysis.json",
+    "sha256": "dbdfc753ba3415e7f445e1af7aa4f709306025fa19a3570fe1a96284fd71591d"
+  },
+  "controls": {
+    "bytes": 10906,
+    "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/results/bell_heterogeneous_training_v1/artifact-manifest.json",
+    "sha256": "c6edec759a6f404a0647dabf6a07472e7ca1f07a6c32dd9cac89688d3a150f04"
+  },
+  "dataset": {
+    "admission": {
+      "bytes": 6471,
+      "path": "/home/isavand/paper/evidence/bell-heterogeneous-reference-v1-2b1d4fecf96c40fb8f5467895c6ca06a-admission.json",
+      "sha256": "a1ec274ae406d1a47f07daa49aad0d73308f87e731e8e9ba69634f0fefb3c769"
+    },
+    "generation": {
+      "bytes": 30296,
+      "path": "/home/isavand/paper/evidence/bell-heterogeneous-reference-v1-2b1d4fecf96c40fb8f5467895c6ca06a/reference/generation.json",
+      "sha256": "c2d6c2996b8f19b99417d173724ef4eaf953818bf7008285d6b987165ada7e88"
+    },
+    "verification": {
+      "bytes": 17505,
+      "path": "/home/isavand/paper/evidence/bell-heterogeneous-reference-v1-2b1d4fecf96c40fb8f5467895c6ca06a-verification-v2.json",
+      "sha256": "e46e1e214bc352bd8db2f86a24cb6beaadf04d6b123817c02f695cfd9430454f"
+    }
+  },
+  "execution_commit": "45d84aa2abbffe9741f3aa2a277f038c48fda1ae",
+  "freeze": {
+    "bytes": 61674,
+    "path": "/home/isavand/paper/evidence/bell-distance-robust-v1-84f4e6b287254f3c9c9ae987734c7f06/freeze.json",
+    "sha256": "d0766caa6f362c8b698522ae54061db7127b5a8520edbd4b8e85655000cd9ecf"
+  },
+  "offline_analysis": [
+    {
+      "bytes": 1749857,
+      "path": "/home/isavand/paper/evidence/bell-distance-robust-v1-84f4e6b287254f3c9c9ae987734c7f06-analysis-v1/analysis.json",
+      "sha256": "393d953f1a17612d5d30d4b8acb8b2204360fcdb74a0af1d262c39e7427c3906"
+    },
+    {
+      "bytes": 4150,
+      "path": "/home/isavand/paper/evidence/bell-distance-robust-v1-84f4e6b287254f3c9c9ae987734c7f06-analysis-v1/summary.csv",
+      "sha256": "74c4e5fc3a6313bca4d73886a21ed1ea38e0fe1f4cbd1b482c1f13a44036c568"
+    }
+  ],
+  "packaged_files": {
+    "checkpoint-metrics.csv": {
+      "bytes": 4150,
+      "sha256": "74c4e5fc3a6313bca4d73886a21ed1ea38e0fe1f4cbd1b482c1f13a44036c568"
+    },
+    "endpoint-cohorts.csv": {
+      "bytes": 62147,
+      "sha256": "5829ef853cea2f9adf1a3cbbedf69ebcd6704cf1f7557a26536bbec62d2b6e5b"
+    },
+    "endpoint-diagnostics.json": {
+      "bytes": 34785,
+      "sha256": "6084f51218070647596ff1096e15a054efac0edaea1e01bd752b4074b75fbeaa"
+    },
+    "held-out-views.png": {
+      "bytes": 287074,
+      "sha256": "31ec8a7b647adcbe14132d54525d909a17cc66d60534c6655bf3306bd468cca4"
+    },
+    "per-camera-metrics.csv": {
+      "bytes": 6079,
+      "sha256": "dad2058d89a5ebc5320100eb52100b819b8b44f81dd33667766a427e9109953a"
+    },
+    "training-and-edge-event.png": {
+      "bytes": 252061,
+      "sha256": "45ec8c4688b47554b8e4ab86704bb5d69b1dd4e076ee909ef5b423af71e013e7"
+    }
+  },
+  "schema_version": 1,
+  "weights": {
+    "bytes": 11798996,
+    "path": "/home/isavand/paper/evidence/bell-distance-robust-v1-weights-4877a9f3f2e04e9383a282126086d7da.npz",
+    "sha256": "c4f67c6309117182d18e349e6225c06f3cdbdad2a07c3045d535519f2933f653"
+  }
+}

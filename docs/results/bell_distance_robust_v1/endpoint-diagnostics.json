@@ -1,0 +1,1151 @@
+{
+  "arms": {
+    "B1": {
+      "boundary": {
+        "Q_jump_projection_median": 0.01936161159411979,
+        "absolute_Q_jump_error_mean": 0.08340449348189882,
+        "near_zero_oracle_Q_jump": 0,
+        "pairs": 2474,
+        "predicted_signed_width_jump": [
+          0.004377583973109722,
+          0.0025714579969644547
+        ],
+        "ratio_eligible": 2474,
+        "reference_signed_width_jump": [
+          0.11983808868609341,
+          0.057922723193233466
+        ],
+        "signed_width_jump_MAE": [
+          0.11546050889828866,
+          0.0553512668420824
+        ],
+        "step": 10000
+      },
+      "elapsed_seconds": 1438.7436471823603,
+      "illumination": {
+        "RGB_relative_L2": 0.37394078738751185,
+        "spherical_mean_RGB": [
+          0.16962151900360353,
+          0.16961230586626025,
+          0.16961180092428288
+        ],
+        "step": 10000
+      },
+      "peak_preclip_gradient": {
+        "completed_updates": 4773,
+        "edge_diagnostic": {
+          "max_contribution": 4.904923480353318e-05,
+          "max_pair_id": 277027,
+          "minor_at_floor": 0,
+          "minor_major_min_mean_max": [
+            [
+              0.061173051595687866,
+              0.1961980164051056
+            ],
+            [
+              0.12359735369682312,
+              0.30931541323661804
+            ],
+            [
+              0.213373601436615,
+              0.38699841499328613
+            ]
+          ],
+          "shortest_contribution": null
+        },
+        "mx_mean": 0.30931541323661804,
+        "my_mean": 0.12359735369682312,
+        "preclip_gradient_l2": 0.5339908003807068,
+        "surface_q_loss": 5.294460061122663e-05
+      },
+      "peak_spatial_loss": {
+        "completed_updates": 1468,
+        "edge_diagnostic": {
+          "max_contribution": 0.0005797804333269596,
+          "max_pair_id": 241109,
+          "minor_at_floor": 0,
+          "minor_major_min_mean_max": [
+            [
+              0.048840686678886414,
+              0.43329209089279175
+            ],
+            [
+              0.06520120799541473,
+              0.4411464035511017
+            ],
+            [
+              0.09527485072612762,
+              0.4493849575519562
+            ]
+          ],
+          "shortest_contribution": null
+        },
+        "mx_mean": 0.4411464035511017,
+        "my_mean": 0.06520120799541473,
+        "preclip_gradient_l2": 0.025702064856886864,
+        "surface_q_loss": 0.0005918561364524066
+      },
+      "shortest_events": [
+        {
+          "max_contribution": 1.215016368405486e-06,
+          "max_pair_id": 156225,
+          "minor_at_floor": 0,
+          "minor_major_min_mean_max": [
+            [
+              0.040269821882247925,
+              0.1433066725730896
+            ],
+            [
+              0.04201400279998779,
+              0.1811715066432953
+            ],
+            [
+              0.046169400215148926,
+              0.22094297409057617
+            ]
+          ],
+          "preclip_gradient_l2": 0.005448308773338795,
+          "shortest_contribution": 1.215016368405486e-06,
+          "surface_q_loss": 1.384264351145248e-06,
+          "update": 1696
+        },
+        {
+          "max_contribution": 3.6902747524436563e-06,
+          "max_pair_id": 156225,
+          "minor_at_floor": 0,
+          "minor_major_min_mean_max": [
+            [
+              0.048929326236248016,
+              0.1398317813873291
+            ],
+            [
+              0.07804486155509949,
+              0.24164295196533203
+            ],
+            [
+              0.13422130048274994,
+              0.3498195707798004
+            ]
+          ],
+          "preclip_gradient_l2": 0.017512928694486618,
+          "shortest_contribution": 3.6902747524436563e-06,
+          "surface_q_loss": 1.2576048902701586e-05,
+          "update": 2885
+        },
+        {
+          "max_contribution": 7.874688890296966e-06,
+          "max_pair_id": 214196,
+          "minor_at_floor": 0,
+          "minor_major_min_mean_max": [
+            [
+              0.06312209367752075,
+              0.1889810860157013
+            ],
+            [
+              0.1291349232196808,
+              0.296586275100708
+            ],
+            [
+              0.22102996706962585,
+              0.3812996447086334
+            ]
+          ],
+          "preclip_gradient_l2": 0.028993403539061546,
+          "shortest_contribution": 6.302283054537838e-06,
+          "surface_q_loss": 2.010915159189608e-05,
+          "update": 5961
+        },
+        {
+          "max_contribution": 7.10410267856787e-06,
+          "max_pair_id": 156225,
+          "minor_at_floor": 0,
+          "minor_major_min_mean_max": [
+            [
+              0.06317906826734543,
+              0.20535501837730408
+            ],
+            [
+              0.12374419718980789,
+              0.30129092931747437
+            ],
+            [
+              0.20807629823684692,
+              0.4007137715816498
+            ]
+          ],
+          "preclip_gradient_l2": 0.009215773083269596,
+          "shortest_contribution": 7.10410267856787e-06,
+          "surface_q_loss": 1.2483104910643306e-05,
+          "update": 9993
+        }
+      ],
+      "surface_consistency": {
+        "new_loss": false,
+        "oracle_mean_squared": 4.2515948734944686e-05,
+        "pairs": 1024,
+        "predicted_mean_squared": 2.4867682441254146e-05
+      },
+      "surface_coverage": {
+        "pair_draws": 1280000,
+        "sampled_in_fit": {
+          "area": 0.4935669416533283,
+          "faces": 17080,
+          "visited_area": 0.4931158579482595,
+          "visited_faces": 17066
+        },
+        "surface_area_fraction": 0.9986592684156962,
+        "unique_pairs": 361496,
+        "unsampled_in_fit": {
+          "area": 4.737934199683323,
+          "faces": 231828,
+          "visited_area": 4.73137124457488,
+          "visited_faces": 231546
+        },
+        "visited_faces": 248612
+      },
+      "surface_q_timing": {
+        "forward_CUDA_seconds": 77.47350937747949,
+        "setup_wall_seconds": 1.8925162050873041
+      },
+      "update_1696_window": [
+        {
+          "completed_updates": 1695,
+          "edge_diagnostic": {
+            "max_contribution": 2.178307880740249e-07,
+            "max_pair_id": 209284,
+            "minor_at_floor": 0,
+            "minor_major_min_mean_max": [
+              [
+                0.04027402028441429,
+                0.14331266283988953
+              ],
+              [
+                0.04200655221939087,
+                0.180203378200531
+              ],
+              [
+                0.046261612325906754,
+                0.22049376368522644
+              ]
+            ],
+            "shortest_contribution": null
+          },
+          "mx_mean": 0.1802033632993698,
+          "my_mean": 0.04200655221939087,
+          "preclip_gradient_l2": 0.009480404667556286,
+          "surface_q_loss": 5.655903123624739e-07
+        },
+        {
+          "completed_updates": 1696,
+          "edge_diagnostic": {
+            "max_contribution": 1.215016368405486e-06,
+            "max_pair_id": 156225,
+            "minor_at_floor": 0,
+            "minor_major_min_mean_max": [
+              [
+                0.040269821882247925,
+                0.1433066725730896
+              ],
+              [
+                0.04201400279998779,
+                0.1811715066432953
+              ],
+              [
+                0.046169400215148926,
+                0.22094297409057617
+              ]
+            ],
+            "shortest_contribution": 1.215016368405486e-06
+          },
+          "mx_mean": 0.1811715066432953,
+          "my_mean": 0.042013999074697495,
+          "preclip_gradient_l2": 0.005448308773338795,
+          "surface_q_loss": 1.384264351145248e-06
+        },
+        {
+          "completed_updates": 1697,
+          "edge_diagnostic": {
+            "max_contribution": 1.1072532970501925e-06,
+            "max_pair_id": 159720,
+            "minor_at_floor": 0,
+            "minor_major_min_mean_max": [
+              [
+                0.04028533771634102,
+                0.14457428455352783
+              ],
+              [
+                0.04199864715337753,
+                0.18070518970489502
+              ],
+              [
+                0.04635569453239441,
+                0.22107061743736267
+              ]
+            ],
+            "shortest_contribution": null
+          },
+          "mx_mean": 0.18070518970489502,
+          "my_mean": 0.04199865087866783,
+          "preclip_gradient_l2": 0.01351207960397005,
+          "surface_q_loss": 1.1944244988626451e-06
+        },
+        {
+          "completed_updates": 1698,
+          "edge_diagnostic": {
+            "max_contribution": 1.1421828105540044e-07,
+            "max_pair_id": 241183,
+            "minor_at_floor": 0,
+            "minor_major_min_mean_max": [
+              [
+                0.04027210921049118,
+                0.14415068924427032
+              ],
+              [
+                0.042027346789836884,
+                0.18162649869918823
+              ],
+              [
+                0.046441901475191116,
+                0.2232196033000946
+              ]
+            ],
+            "shortest_contribution": null
+          },
+          "mx_mean": 0.18162651360034943,
+          "my_mean": 0.042027346789836884,
+          "preclip_gradient_l2": 0.008619958534836769,
+          "surface_q_loss": 3.9604250900993065e-07
+        },
+        {
+          "completed_updates": 1699,
+          "edge_diagnostic": {
+            "max_contribution": 1.8226379552288563e-06,
+            "max_pair_id": 211878,
+            "minor_at_floor": 0,
+            "minor_major_min_mean_max": [
+              [
+                0.040293607860803604,
+                0.14589345455169678
+              ],
+              [
+                0.0418311171233654,
+                0.17939803004264832
+              ],
+              [
+                0.04621092975139618,
+                0.22193199396133423
+              ]
+            ],
+            "shortest_contribution": null
+          },
+          "mx_mean": 0.17939803004264832,
+          "my_mean": 0.041831113398075104,
+          "preclip_gradient_l2": 0.01186343003064394,
+          "surface_q_loss": 1.9940371203119867e-06
+        },
+        {
+          "completed_updates": 1700,
+          "edge_diagnostic": {
+            "max_contribution": 2.433253314393369e-07,
+            "max_pair_id": 114645,
+            "minor_at_floor": 0,
+            "minor_major_min_mean_max": [
+              [
+                0.04029236361384392,
+                0.14602945744991302
+              ],
+              [
+                0.04192637279629707,
+                0.18134517967700958
+              ],
+              [
+                0.04604949429631233,
+                0.22074675559997559
+              ]
+            ],
+            "shortest_contribution": null
+          },
+          "mx_mean": 0.18134517967700958,
+          "my_mean": 0.041926369071006775,
+          "preclip_gradient_l2": 0.011171680875122547,
+          "surface_q_loss": 3.6196826158629847e-07
+        },
+        {
+          "completed_updates": 1701,
+          "edge_diagnostic": {
+            "max_contribution": 1.1905272145895651e-07,
+            "max_pair_id": 209255,
+            "minor_at_floor": 0,
+            "minor_major_min_mean_max": [
+              [
+                0.040293700993061066,
+                0.146331787109375
+              ],
+              [
+                0.04197680205106735,
+                0.18173767626285553
+              ],
+              [
+                0.04628840088844299,
+                0.22324016690254211
+              ]
+            ],
+            "shortest_contribution": null
+          },
+          "mx_mean": 0.18173766136169434,
+          "my_mean": 0.041976798325777054,
+          "preclip_gradient_l2": 0.010926486924290657,
+          "surface_q_loss": 2.993735961354105e-07
+        },
+        {
+          "completed_updates": 1702,
+          "edge_diagnostic": {
+            "max_contribution": 2.0351110379124293e-06,
+            "max_pair_id": 209246,
+            "minor_at_floor": 0,
+            "minor_major_min_mean_max": [
+              [
+                0.040295589715242386,
+                0.14641231298446655
+              ],
+              [
+                0.04196443781256676,
+                0.18140360713005066
+              ],
+              [
+                0.04644177109003067,
+                0.2238306999206543
+              ]
+            ],
+            "shortest_contribution": null
+          },
+          "mx_mean": 0.18140360713005066,
+          "my_mean": 0.041964441537857056,
+          "preclip_gradient_l2": 0.008140668272972107,
+          "surface_q_loss": 3.3222536330868024e-06
+        },
+        {
+          "completed_updates": 1703,
+          "edge_diagnostic": {
+            "max_contribution": 6.34775503272067e-08,
+            "max_pair_id": 117043,
+            "minor_at_floor": 0,
+            "minor_major_min_mean_max": [
+              [
+                0.040283773094415665,
+                0.14533305168151855
+              ],
+              [
+                0.04195777326822281,
+                0.18056166172027588
+              ],
+              [
+                0.046606648713350296,
+                0.22414284944534302
+              ]
+            ],
+            "shortest_contribution": null
+          },
+          "mx_mean": 0.18056166172027588,
+          "my_mean": 0.04195777699351311,
+          "preclip_gradient_l2": 0.008404526859521866,
+          "surface_q_loss": 1.6702523453204776e-07
+        }
+      ]
+    },
+    "B2": {
+      "boundary": {
+        "Q_jump_projection_median": 0.025200660770729265,
+        "absolute_Q_jump_error_mean": 0.08310262708373796,
+        "near_zero_oracle_Q_jump": 0,
+        "pairs": 2474,
+        "predicted_signed_width_jump": [
+          0.0047936453483998775,
+          0.0023983551654964685
+        ],
+        "ratio_eligible": 2474,
+        "reference_signed_width_jump": [
+          0.11983808868609341,
+          0.057922723193233466
+        ],
+        "signed_width_jump_MAE": [
+          0.11504444213269618,
+          0.05552436737366545
+        ],
+        "step": 10000
+      },
+      "elapsed_seconds": 1450.9995945710689,
+      "illumination": {
+        "RGB_relative_L2": 0.37666160863596854,
+        "spherical_mean_RGB": [
+          0.16525056542009073,
+          0.16528360022116872,
+          0.16542056059804985
+        ],
+        "step": 10000
+      },
+      "peak_preclip_gradient": {
+        "completed_updates": 1873,
+        "edge_diagnostic": {
+          "max_contribution": 1.4025968653186283e-07,
+          "max_pair_id": 243744,
+          "minor_at_floor": 0,
+          "minor_major_min_mean_max": [
+            [
+              0.040277015417814255,
+              0.15553049743175507
+            ],
+            [
+              0.04272295534610748,
+              0.19747360050678253
+            ],
+            [
+              0.049674928188323975,
+              0.2514960765838623
+            ]
+          ],
+          "shortest_contribution": null
+        },
+        "mx_mean": 0.19747361540794373,
+        "my_mean": 0.04272295534610748,
+        "preclip_gradient_l2": 0.2801123857498169,
+        "surface_q_loss": 3.966085557749466e-07
+      },
+      "peak_spatial_loss": {
+        "completed_updates": 1439,
+        "edge_diagnostic": {
+          "max_contribution": 0.0001439516054233536,
+          "max_pair_id": 159448,
+          "minor_at_floor": 0,
+          "minor_major_min_mean_max": [
+            [
+              0.17483201622962952,
+              0.4756040871143341
+            ],
+            [
+              0.21682105958461761,
+              0.47827577590942383
+            ],
+            [
+              0.26414376497268677,
+              0.48142483830451965
+            ]
+          ],
+          "shortest_contribution": null
+        },
+        "mx_mean": 0.47827574610710144,
+        "my_mean": 0.21682105958461761,
+        "preclip_gradient_l2": 0.016499113291502,
+        "surface_q_loss": 0.00014616093540098518
+      },
+      "shortest_events": [
+        {
+          "max_contribution": 2.547815256548347e-07,
+          "max_pair_id": 156225,
+          "minor_at_floor": 0,
+          "minor_major_min_mean_max": [
+            [
+              0.040304653346538544,
+              0.14676325023174286
+            ],
+            [
+              0.04215460270643234,
+              0.18510472774505615
+            ],
+            [
+              0.04654914140701294,
+              0.2250063121318817
+            ]
+          ],
+          "preclip_gradient_l2": 0.006404020357877016,
+          "shortest_contribution": 2.547815256548347e-07,
+          "surface_q_loss": 2.917466872531804e-07,
+          "update": 1696
+        },
+        {
+          "max_contribution": 7.693932388974645e-07,
+          "max_pair_id": 156225,
+          "minor_at_floor": 0,
+          "minor_major_min_mean_max": [
+            [
+              0.04755006730556488,
+              0.14430397748947144
+            ],
+            [
+              0.07474881410598755,
+              0.243858203291893
+            ],
+            [
+              0.12965543568134308,
+              0.35238024592399597
+            ]
+          ],
+          "preclip_gradient_l2": 0.01763259619474411,
+          "shortest_contribution": 7.693932388974645e-07,
+          "surface_q_loss": 2.7777452942245873e-06,
+          "update": 2885
+        },
+        {
+          "max_contribution": 2.559676659075194e-06,
+          "max_pair_id": 214196,
+          "minor_at_floor": 0,
+          "minor_major_min_mean_max": [
+            [
+              0.06233757734298706,
+              0.20028209686279297
+            ],
+            [
+              0.12087050825357437,
+              0.3128480911254883
+            ],
+            [
+              0.21415558457374573,
+              0.40258902311325073
+            ]
+          ],
+          "preclip_gradient_l2": 0.019242089241743088,
+          "shortest_contribution": 2.4328153358510463e-06,
+          "surface_q_loss": 6.087936526455451e-06,
+          "update": 5961
+        },
+        {
+          "max_contribution": 3.058321453863755e-06,
+          "max_pair_id": 156225,
+          "minor_at_floor": 0,
+          "minor_major_min_mean_max": [
+            [
+              0.0646381750702858,
+              0.20820724964141846
+            ],
+            [
+              0.11952318251132965,
+              0.3146948218345642
+            ],
+            [
+              0.21370232105255127,
+              0.41526302695274353
+            ]
+          ],
+          "preclip_gradient_l2": 0.017331546172499657,
+          "shortest_contribution": 3.058321453863755e-06,
+          "surface_q_loss": 5.894243258808274e-06,
+          "update": 9993
+        }
+      ],
+      "surface_consistency": {
+        "new_loss": false,
+        "oracle_mean_squared": 4.2515948734944686e-05,
+        "pairs": 1024,
+        "predicted_mean_squared": 4.669268673751503e-05
+      },
+      "surface_coverage": {
+        "pair_draws": 1280000,
+        "sampled_in_fit": {
+          "area": 0.4935669416533283,
+          "faces": 17080,
+          "visited_area": 0.4931158579482595,
+          "visited_faces": 17066
+        },
+        "surface_area_fraction": 0.9986592684156962,
+        "unique_pairs": 361496,
+        "unsampled_in_fit": {
+          "area": 4.737934199683323,
+          "faces": 231828,
+          "visited_area": 4.73137124457488,
+          "visited_faces": 231546
+        },
+        "visited_faces": 248612
+      },
+      "surface_q_timing": {
+        "forward_CUDA_seconds": 79.93620066547354,
+        "setup_wall_seconds": 1.8729787077754736
+      },
+      "update_1696_window": [
+        {
+          "completed_updates": 1695,
+          "edge_diagnostic": {
+            "max_contribution": 4.478496151705258e-08,
+            "max_pair_id": 209284,
+            "minor_at_floor": 0,
+            "minor_major_min_mean_max": [
+              [
+                0.04030928015708923,
+                0.14677530527114868
+              ],
+              [
+                0.042148686945438385,
+                0.1840476393699646
+              ],
+              [
+                0.046519212424755096,
+                0.22463461756706238
+              ]
+            ],
+            "shortest_contribution": null
+          },
+          "mx_mean": 0.1840476393699646,
+          "my_mean": 0.04214868322014809,
+          "preclip_gradient_l2": 0.007141623180359602,
+          "surface_q_loss": 1.178049373606882e-07
+        },
+        {
+          "completed_updates": 1696,
+          "edge_diagnostic": {
+            "max_contribution": 2.547815256548347e-07,
+            "max_pair_id": 156225,
+            "minor_at_floor": 0,
+            "minor_major_min_mean_max": [
+              [
+                0.040304653346538544,
+                0.14676325023174286
+              ],
+              [
+                0.04215460270643234,
+                0.18510472774505615
+              ],
+              [
+                0.04654914140701294,
+                0.2250063121318817
+              ]
+            ],
+            "shortest_contribution": 2.547815256548347e-07
+          },
+          "mx_mean": 0.18510472774505615,
+          "my_mean": 0.04215460270643234,
+          "preclip_gradient_l2": 0.006404020357877016,
+          "surface_q_loss": 2.917466872531804e-07
+        },
+        {
+          "completed_updates": 1697,
+          "edge_diagnostic": {
+            "max_contribution": 2.375509069452164e-07,
+            "max_pair_id": 159720,
+            "minor_at_floor": 0,
+            "minor_major_min_mean_max": [
+              [
+                0.04031774774193764,
+                0.14786046743392944
+              ],
+              [
+                0.04214196652173996,
+                0.18463757634162903
+              ],
+              [
+                0.04657431319355965,
+                0.2264980673789978
+              ]
+            ],
+            "shortest_contribution": null
+          },
+          "mx_mean": 0.18463757634162903,
+          "my_mean": 0.04214196652173996,
+          "preclip_gradient_l2": 0.018902193754911423,
+          "surface_q_loss": 2.5812974513428344e-07
+        },
+        {
+          "completed_updates": 1698,
+          "edge_diagnostic": {
+            "max_contribution": 2.2602630878054697e-08,
+            "max_pair_id": 241183,
+            "minor_at_floor": 0,
+            "minor_major_min_mean_max": [
+              [
+                0.04030759632587433,
+                0.14775732159614563
+              ],
+              [
+                0.042173273861408234,
+                0.1855982542037964
+              ],
+              [
+                0.046522222459316254,
+                0.22729632258415222
+              ]
+            ],
+            "shortest_contribution": null
+          },
+          "mx_mean": 0.1855982542037964,
+          "my_mean": 0.042173273861408234,
+          "preclip_gradient_l2": 0.007765686605125666,
+          "surface_q_loss": 8.173451959692102e-08
+        },
+        {
+          "completed_updates": 1699,
+          "edge_diagnostic": {
+            "max_contribution": 3.7552882758973283e-07,
+            "max_pair_id": 211878,
+            "minor_at_floor": 0,
+            "minor_major_min_mean_max": [
+              [
+                0.04032700136303902,
+                0.14911653101444244
+              ],
+              [
+                0.04196208715438843,
+                0.18320901691913605
+              ],
+              [
+                0.04635431617498398,
+                0.22731614112854004
+              ]
+            ],
+            "shortest_contribution": null
+          },
+          "mx_mean": 0.18320901691913605,
+          "my_mean": 0.04196208715438843,
+          "preclip_gradient_l2": 0.012140205129981041,
+          "surface_q_loss": 4.1231123759644106e-07
+        },
+        {
+          "completed_updates": 1700,
+          "edge_diagnostic": {
+            "max_contribution": 5.2900542613087964e-08,
+            "max_pair_id": 114645,
+            "minor_at_floor": 0,
+            "minor_major_min_mean_max": [
+              [
+                0.04033306986093521,
+                0.14975948631763458
+              ],
+              [
+                0.042056359350681305,
+                0.18510159850120544
+              ],
+              [
+                0.046329569071531296,
+                0.22556188702583313
+              ]
+            ],
+            "shortest_contribution": null
+          },
+          "mx_mean": 0.18510159850120544,
+          "my_mean": 0.042056359350681305,
+          "preclip_gradient_l2": 0.01191607117652893,
+          "surface_q_loss": 7.89040655035933e-08
+        },
+        {
+          "completed_updates": 1701,
+          "edge_diagnostic": {
+            "max_contribution": 2.427086975842485e-08,
+            "max_pair_id": 209255,
+            "minor_at_floor": 0,
+            "minor_major_min_mean_max": [
+              [
+                0.04032664746046066,
+                0.14954790472984314
+              ],
+              [
+                0.04210444167256355,
+                0.18546628952026367
+              ],
+              [
+                0.046418242156505585,
+                0.22554603219032288
+              ]
+            ],
+            "shortest_contribution": null
+          },
+          "mx_mean": 0.18546630442142487,
+          "my_mean": 0.04210444167256355,
+          "preclip_gradient_l2": 0.011556458659470081,
+          "surface_q_loss": 6.308575706270858e-08
+        },
+        {
+          "completed_updates": 1702,
+          "edge_diagnostic": {
+            "max_contribution": 4.2246870179951657e-07,
+            "max_pair_id": 209246,
+            "minor_at_floor": 0,
+            "minor_major_min_mean_max": [
+              [
+                0.04032980278134346,
+                0.14965030550956726
+              ],
+              [
+                0.04209497198462486,
+                0.185122549533844
+              ],
+              [
+                0.04648426175117493,
+                0.22696849703788757
+              ]
+            ],
+            "shortest_contribution": null
+          },
+          "mx_mean": 0.185122549533844,
+          "my_mean": 0.04209497198462486,
+          "preclip_gradient_l2": 0.008898654021322727,
+          "surface_q_loss": 6.905274290147645e-07
+        },
+        {
+          "completed_updates": 1703,
+          "edge_diagnostic": {
+            "max_contribution": 1.3729663628225808e-08,
+            "max_pair_id": 117043,
+            "minor_at_floor": 0,
+            "minor_major_min_mean_max": [
+              [
+                0.040315497666597366,
+                0.14848677814006805
+              ],
+              [
+                0.04207809269428253,
+                0.18411585688591003
+              ],
+              [
+                0.046400003135204315,
+                0.226432204246521
+              ]
+            ],
+            "shortest_contribution": null
+          },
+          "mx_mean": 0.18411585688591003,
+          "my_mean": 0.04207809269428253,
+          "preclip_gradient_l2": 0.011988585814833641,
+          "surface_q_loss": 3.7568714361668754e-08
+        }
+      ]
+    },
+    "D2": {
+      "boundary": {
+        "Q_jump_projection_median": 0.022523052160015915,
+        "absolute_Q_jump_error_mean": 0.0830875931661732,
+        "near_zero_oracle_Q_jump": 0,
+        "pairs": 2474,
+        "predicted_signed_width_jump": [
+          0.0049685207195580006,
+          0.0023141582496464252
+        ],
+        "ratio_eligible": 2474,
+        "reference_signed_width_jump": [
+          0.11983808868609341,
+          0.057922723193233466
+        ],
+        "signed_width_jump_MAE": [
+          0.11486956869420183,
+          0.05560856554777973
+        ],
+        "step": 10000
+      },
+      "elapsed_seconds": 1252.756174173206,
+      "illumination": {
+        "RGB_relative_L2": 0.37223677288168866,
+        "spherical_mean_RGB": [
+          0.1652269960825378,
+          0.16526956764805353,
+          0.16516710212354765
+        ],
+        "step": 10000
+      },
+      "shortest_events": null,
+      "surface_consistency": {
+        "new_loss": false,
+        "oracle_mean_squared": 4.2515948734944686e-05,
+        "pairs": 1024,
+        "predicted_mean_squared": 5.785930989077315e-05
+      },
+      "surface_coverage": null,
+      "surface_q_timing": null,
+      "update_1696_window": [
+        {
+          "completed_updates": 1695,
+          "mx_mean": 0.18071439862251282,
+          "my_mean": 0.041888944804668427,
+          "preclip_gradient_l2": 0.00905461236834526
+        },
+        {
+          "completed_updates": 1696,
+          "mx_mean": 0.18166415393352509,
+          "my_mean": 0.04189331457018852,
+          "preclip_gradient_l2": 0.005408113822340965
+        },
+        {
+          "completed_updates": 1697,
+          "mx_mean": 0.18120433390140533,
+          "my_mean": 0.04187857732176781,
+          "preclip_gradient_l2": 0.012523706071078777
+        },
+        {
+          "completed_updates": 1698,
+          "mx_mean": 0.1821059137582779,
+          "my_mean": 0.04190611466765404,
+          "preclip_gradient_l2": 0.008743572048842907
+        },
+        {
+          "completed_updates": 1699,
+          "mx_mean": 0.17981883883476257,
+          "my_mean": 0.04171903431415558,
+          "preclip_gradient_l2": 0.012238295748829842
+        },
+        {
+          "completed_updates": 1700,
+          "mx_mean": 0.1817476749420166,
+          "my_mean": 0.04180716723203659,
+          "preclip_gradient_l2": 0.011295290663838387
+        },
+        {
+          "completed_updates": 1701,
+          "mx_mean": 0.18213969469070435,
+          "my_mean": 0.041856519877910614,
+          "preclip_gradient_l2": 0.011023826897144318
+        },
+        {
+          "completed_updates": 1702,
+          "mx_mean": 0.18173760175704956,
+          "my_mean": 0.041843317449092865,
+          "preclip_gradient_l2": 0.007934513501822948
+        },
+        {
+          "completed_updates": 1703,
+          "mx_mean": 0.18080870807170868,
+          "my_mean": 0.04183552414178848,
+          "preclip_gradient_l2": 0.007995383813977242
+        }
+      ]
+    },
+    "D6": {
+      "boundary": {
+        "Q_jump_projection_median": 4.3837582851795217e-07,
+        "absolute_Q_jump_error_mean": 0.08598236430636427,
+        "near_zero_oracle_Q_jump": 0,
+        "pairs": 2474,
+        "predicted_signed_width_jump": [
+          5.720300578104798e-06,
+          5.235190656094346e-06
+        ],
+        "ratio_eligible": 2474,
+        "reference_signed_width_jump": [
+          0.11983808868609341,
+          0.057922723193233466
+        ],
+        "signed_width_jump_MAE": [
+          0.11983236838538958,
+          0.05791748800242224
+        ],
+        "step": 10000
+      },
+      "elapsed_seconds": 1427.1243383865803,
+      "illumination": {
+        "RGB_relative_L2": 0.6778590308802867,
+        "spherical_mean_RGB": [
+          0.2227218221855931,
+          0.22353151496755425,
+          0.22338968804501758
+        ],
+        "step": 10000
+      },
+      "shortest_events": null,
+      "surface_consistency": {
+        "new_loss": false,
+        "oracle_mean_squared": 4.2515948734944686e-05,
+        "pairs": 1024,
+        "predicted_mean_squared": 4.810030845847635e-12
+      },
+      "surface_coverage": {
+        "pair_draws": 1280000,
+        "sampled_in_fit": {
+          "area": 0.4935669416533283,
+          "faces": 17080,
+          "visited_area": 0.4931158579482595,
+          "visited_faces": 17066
+        },
+        "surface_area_fraction": 0.9986592684156962,
+        "unique_pairs": 361496,
+        "unsampled_in_fit": {
+          "area": 4.737934199683323,
+          "faces": 231828,
+          "visited_area": 4.73137124457488,
+          "visited_faces": 231546
+        },
+        "visited_faces": 248612
+      },
+      "surface_q_timing": {
+        "forward_CUDA_seconds": 77.95877886152304,
+        "setup_wall_seconds": 1.8735173121094704
+      },
+      "update_1696_window": [
+        {
+          "completed_updates": 1695,
+          "mx_mean": 0.17874690890312195,
+          "my_mean": 0.04229997098445892,
+          "preclip_gradient_l2": 0.00841270200908184,
+          "surface_q_loss": 5.653064931721019e-07
+        },
+        {
+          "completed_updates": 1696,
+          "mx_mean": 0.17935125529766083,
+          "my_mean": 0.042306143790483475,
+          "preclip_gradient_l2": 1.181457281112671,
+          "surface_q_loss": 0.0722469910979271
+        },
+        {
+          "completed_updates": 1697,
+          "mx_mean": 0.127537339925766,
+          "my_mean": 0.04148579388856888,
+          "preclip_gradient_l2": 0.034149691462516785,
+          "surface_q_loss": 2.1087794266350102e-07
+        },
+        {
+          "completed_updates": 1698,
+          "mx_mean": 0.09207917749881744,
+          "my_mean": 0.041023947298526764,
+          "preclip_gradient_l2": 0.03046802617609501,
+          "surface_q_loss": 1.9442458309981703e-08
+        },
+        {
+          "completed_updates": 1699,
+          "mx_mean": 0.06779823452234268,
+          "my_mean": 0.040633879601955414,
+          "preclip_gradient_l2": 0.030582111328840256,
+          "surface_q_loss": 1.2268789539859881e-08
+        },
+        {
+          "completed_updates": 1700,
+          "mx_mean": 0.055939268320798874,
+          "my_mean": 0.040496647357940674,
+          "preclip_gradient_l2": 0.034844979643821716,
+          "surface_q_loss": 2.4922461872023405e-09
+        },
+        {
+          "completed_updates": 1701,
+          "mx_mean": 0.0489366240799427,
+          "my_mean": 0.040396787226200104,
+          "preclip_gradient_l2": 0.03577322140336037,
+          "surface_q_loss": 8.399405060366405e-10
+        },
+        {
+          "completed_updates": 1702,
+          "mx_mean": 0.045005783438682556,
+          "my_mean": 0.04031457006931305,
+          "preclip_gradient_l2": 0.02258271351456642,
+          "surface_q_loss": 5.77637049303803e-10
+        },
+        {
+          "completed_updates": 1703,
+          "mx_mean": 0.04301227629184723,
+          "my_mean": 0.04028020426630974,
+          "preclip_gradient_l2": 0.02096845768392086,
+          "surface_q_loss": 1.7780459049543396e-10
+        }
+      ]
+    }
+  },
+  "held_out_common_orientation": {
+    "observations": 6767,
+    "statistics": {
+      "B1": {
+        "median": 4.937820812640039,
+        "p95": 32.79975027970106
+      },
+      "B2": {
+        "median": 4.521807681709905,
+        "p95": 28.198976276797982
+      },
+      "D2": {
+        "median": 4.280410945246376,
+        "p95": 28.203650807186
+      }
+    }
+  },
+  "initial_gate_and_held_out_arrays_match": true
+}
