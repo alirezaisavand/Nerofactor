@@ -39,7 +39,7 @@ def score(e, rgb, truth, weights):
         width_at_ceiling=int((e['major_predict']>=.9999).sum()),**values)
 
 
-def fitting_support(views, camera):
+def fitting_support(views, camera, *, fitting_cameras=None):
     """Count other fitting cameras with registered nearby points and highlights."""
     from scipy.spatial import cKDTree
 
@@ -48,7 +48,7 @@ def fitting_support(views, camera):
     q,n=(current[k][mask] for k in ('position','normals'))
     support=np.zeros(len(q),dtype=np.uint8)
     highlights=np.zeros_like(support)
-    for c in ref.SPLITS['fitting']:
+    for c in ref.SPLITS['fitting'] if fitting_cameras is None else fitting_cameras:
         if c==camera:
             continue
         v=views[c]

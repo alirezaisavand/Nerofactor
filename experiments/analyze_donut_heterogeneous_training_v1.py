@@ -19,7 +19,7 @@ from infrastructure.stage_sources import digest
 from infrastructure.verified_ray_backend import identity
 
 
-def arm_receipt(batch, arm, f, auth, views):
+def arm_receipt(batch, arm, f, auth, views, *, spec=h):
     root=batch/arm
     path=root/'recovery.json'
     r=ref.read(path)
@@ -27,8 +27,8 @@ def arm_receipt(batch, arm, f, auth, views):
     require((batch/f'{arm}-exit-code.txt').read_text().strip()=='0'
             and r['status']=='complete' and r['scientific_work_complete'] and r['cleanup_verified']
             and r['arm']==arm and r['commit']==auth['commit'] and r['freeze_sha256']==auth['freeze_sha256']
-            and r['authorization_sha256']==digest(batch/'authorization.json') and r['protocol']==h.PROTOCOL
-            and r['benchmark_sha256']==h.GENERATION and r['dataset_admission_sha256']==h.ADMISSION
+            and r['authorization_sha256']==digest(batch/'authorization.json') and r['protocol']==spec.PROTOCOL
+            and r['benchmark_sha256']==spec.GENERATION and r['dataset_admission_sha256']==spec.ADMISSION
             and r['counters']==recipe['work'] and r['historical_arm_initial_parity_verified']
             and r['optimizer_returns']==10000 and [e['step'] for e in r['saved_endpoints']]==h.STEPS
             and r['backend']==identity() and r['effective_shader']==h.SHADER and r['policy']==h.POLICY
@@ -98,28 +98,37 @@ def read_endpoint(root, step, camera, view):
     return errors,a['linear_rgb'][mask].astype(float),truth,q,width
 
 
-def analyze(sha, output):
-    f=h.freeze(h.ROOT/h.FREEZE,sha)
+def analyze(sha, output, *, acquisition=None):
+    spec=h if acquisition is None else acquisition
+    panel,splits=(ref.PANEL,ref.SPLITS) if acquisition is None else (spec.PANEL,spec.SPLITS)
+    f=spec.freeze(spec.ROOT/spec.FREEZE,sha)
     batch=Path(f['host_output'])
     p=batch/'authorization.json'
     auth=ref.read(p)
-    require(auth==h.authorization(f,auth['commit'],sha) and digest(batch/'freeze.json')==sha
+    require(auth==spec.authorization(f,auth['commit'],sha) and digest(batch/'freeze.json')==sha
             and digest(p)==digest(batch.with_name(batch.name+'-authorization.json')),
             'Exact heterogeneous launch evidence required')
     require(output.resolve()==output and not output.exists() and output.parent.is_dir()
             and batch not in output.parents and Path(f['host_reference']) not in output.parents,
             'Fresh analysis-only output required')
     dataset=f['dataset']
-    _,views=h.dataset(f,Path(f['host_reference']),Path(dataset['admission']['path']),Path(dataset['verification']['path']))
-    geometry,_,_=inputs(Path(f['host_inputs']['oracle']),Path(f['host_inputs']['cameras']))
-    _,area=ref.geometry_fields(geometry)
+    _,views=spec.dataset(f,Path(f['host_reference']),Path(dataset['admission']['path']),Path(dataset['verification']['path']))
+    if acquisition is None:
+        geometry,_,_=inputs(Path(f['host_inputs']['oracle']),Path(f['host_inputs']['cameras']))
+        _,area=ref.geometry_fields(geometry)
+    else:
+        geometry,_,_=spec.geometry(f,Path(f['mesh']['path']))
+        area=geometry['area']
+        domain,_,probes=spec.diagnostics(geometry,f)
     adj=m.mesh_adjacency(geometry['triangles'])
-    pairs={c:m.boundary_pairs(views[c],adj) for c in ref.PANEL}
-    support={c:m.fitting_support(views,c) for c in ref.PANEL}
+    pairs={c:m.boundary_pairs(views[c],adj) for c in panel}
+    support={c:m.fitting_support(views,c,fitting_cameras=splits['fitting']) for c in panel}
     reports, rows, previous_lr, paired = {}, [], None, None
+    angles,per_camera={},[]
+    surface_hashes=None
     for arm in h.ARMS:
         root=batch/arm
-        r,hist=arm_receipt(batch,arm,f,auth,views)
+        r,hist=arm_receipt(batch,arm,f,auth,views,spec=spec)
         lr=[v['lr'] for v in hist]
         require(previous_lr is None or previous_lr==lr,'Learning-rate streams differ')
         previous_lr=lr
@@ -135,9 +144,31 @@ def analyze(sha, output):
             resources=r['resources'],surface_q_timing=r.get('surface_q_timing'),
             gradient_probes=[dict(completed_updates=x['completed_updates'],**x['gradient_interactions'])
                              for x in hist if 'gradient_interactions' in x])
+        if acquisition is not None:
+            spec.check_probe_archive(probes,numeric(root/'boundary-probes.npz'))
+            if arm!='D2':
+                spec.check_domain_archive(f,domain,views,r['surface_q_domain_hashes'],numeric(root/'surface-q-domain.npz'))
+                require(surface_hashes is None or surface_hashes==r['surface_q_domain_hashes'],
+                        'Bell surface domains differ across arms')
+                surface_hashes=r['surface_q_domain_hashes']
+            reports[arm]['boundary_history']=[]
         for step in h.STEPS:
-            by_camera={c:read_endpoint(root,step,c,views[c]) for c in ref.PANEL}
-            for split, cameras in ref.SPLITS.items():
+            by_camera={c:read_endpoint(root,step,c,views[c]) for c in panel}
+            if acquisition is not None:
+                saved=root/f'step-{step:05d}'
+                scores=spec.boundary_score(probes,numeric(saved/'boundary-predictions.npz'))
+                reports[arm]['boundary_history'].append(dict(step=step,**scores))
+                if arm!='D2':
+                    spec.check_sampler_capture(f,domain,step,numeric(saved/'surface-q-diagnostic.npz'))
+                if step==h.STEPS[-1]:
+                    for camera,(e,rgb,gt,*_) in by_camera.items():
+                        g,l=support[camera]
+                        cohorts={'all':np.ones(len(g),bool),'no_fitting_support':g==0,
+                                 'no_highlight_support':l==0}
+                        per_camera.append(dict(arm=arm,camera=camera,metrics={
+                            name:m.score({k:v[mask] for k,v in e.items()},rgb[mask],gt[mask],np.ones(mask.sum()))
+                            for name,mask in cohorts.items()}))
+            for split, cameras in splits.items():
                 valid=lambda key: np.concatenate([views[c][key][views[c]['shader_valid']] for c in cameras])
                 e={k:np.concatenate([by_camera[c][0][k] for c in cameras]) for k in by_camera[cameras[0]][0]}
                 rgb,gt=(np.concatenate([by_camera[c][slot] for c in cameras]) for slot in (1,2))
@@ -149,6 +180,9 @@ def analyze(sha, output):
                 cohorts=dict(all=np.ones(len(weights),dtype=bool),boundary=boundary,smooth_interior=~boundary&~weak,
                              nearly_isotropic=weak,boundary_region_0=boundary&(region==0),
                              boundary_region_1=boundary&(region==1))
+                if acquisition is not None:
+                    cohorts.update(exactly_isotropic=valid('exactly_isotropic'),weak_nonisotropic=weak&~valid('exactly_isotropic'))
+                    angles.setdefault((step,split),{})[arm]=(e['orientation_eligible'],e['orientation_degrees'])
                 for n in range(5):
                     cohorts[f'fitting_cameras_{n}']=geom==n
                     cohorts[f'highlight_cameras_{n}']=light==n
@@ -168,11 +202,20 @@ def analyze(sha, output):
             row=dict(step=step,RGB_relative_L2=float(rgb),spherical_mean_RGB=mean.tolist())
             np.testing.assert_allclose(row['RGB_relative_L2'],e['metrics']['illumination']['relative_L2'],atol=1e-6,rtol=0)
             reports[arm].setdefault('illumination_history',[]).append(row)
+    extras={}
+    if acquisition is not None:
+        common=[]
+        for (step,split),by_arm in angles.items():
+            keep=np.logical_and.reduce([eligible for eligible,_ in by_arm.values()])
+            common.append(dict(step=step,split=split,observations=int(keep.sum()),orientation_degrees={
+                arm:dict(zip(('median','p95'),np.quantile(degrees[keep],[.5,.95]).tolist())) if keep.any() else None
+                for arm,(_,degrees) in by_arm.items()}))
+        extras=dict(common_orientation=common,per_camera_endpoint=per_camera)
     output.mkdir()
-    json_new(output/'analysis.json',dict(schema_version=1,protocol=h.PROTOCOL,status='verified_complete',
+    json_new(output/'analysis.json',dict(schema_version=1,protocol=spec.PROTOCOL,status='verified_complete',
         freeze_sha256=sha,execution_commit=auth['commit'],authorization_sha256=digest(p),arms=reports,results=rows,
         boundary_pairs_per_camera={str(c):len(v) for c,v in pairs.items()},offline_native_calls=0,
-        offline_checkpoint_loads=0,offline_optimizer_updates=0))
+        offline_checkpoint_loads=0,offline_optimizer_updates=0,**extras))
     with (output/'summary.csv').open('x',newline='') as stream:
         writer=csv.writer(stream,lineterminator='\n')
         writer.writerow(('arm','step','split','RGB_relative_L2','Q_median','Q_p95','major_width_MAE',

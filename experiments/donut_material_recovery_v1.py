@@ -98,9 +98,13 @@ def benchmark(root, expected):
     return g,{camera:numeric(root/('view-%d.npz'%camera)) for camera in PANEL}
 
 
-def train(args, *, heterogeneous=False):
+def train(args, *, heterogeneous=False, acquisition=None):
+    heterogeneous = heterogeneous or acquisition is not None
     if heterogeneous:
-        from benchmarks import donut_heterogeneous_training_v1 as hetero
+        if acquisition is None:
+            from benchmarks import donut_heterogeneous_training_v1 as hetero
+        else:
+            hetero = acquisition
         freeze,auth=hetero.runtime(args)
     else:
         freeze,auth=runtime(args,args.phase)
@@ -128,7 +132,12 @@ def train(args, *, heterogeneous=False):
         generation,data=benchmark(args.benchmark,args.benchmark_sha256)
     require(generation['freeze_sha256']==freeze.get('reference_freeze_sha256',args.freeze_sha256),
             'Reference does not match the explicitly bound generation freeze')
-    geometry,_,records=inputs(args.oracle,args.cameras)
+    panel, splits = (PANEL, SPLITS) if acquisition is None else (acquisition.PANEL, acquisition.SPLITS)
+
+    def source_geometry():
+        return inputs(args.oracle,args.cameras) if acquisition is None else acquisition.geometry(freeze,args.oracle)
+
+    geometry,_,records=source_geometry()
     expected_initial=None
     if args.phase in ('D2','D3','D6','D7',*D8_ARMS,*D9_ARMS,*d11.ARMS,*ABLATION_ARMS):
         require(args.initial is not None and digest(args.initial)==args.initial_sha256 and
@@ -156,6 +165,8 @@ def train(args, *, heterogeneous=False):
     if heterogeneous:
         report.update(heterogeneous_dataset=True,authorization_sha256=args.authorization_sha256,
                       dataset_admission_sha256=hetero.ADMISSION)
+    if acquisition is not None:
+        report['counters'].update(boundary_predictor_calls=0, boundary_predictor_points=0)
     if ablation:
         report.update(diffuse_white_in_objective=False, diffuse_white_diagnostic_coefficient=POLICY['diffuse_white_prior'],
                       optimization_terms=['RGB_loss','material_prior'], mean_calibration=calibration is not None)
@@ -297,7 +308,7 @@ def train(args, *, heterogeneous=False):
                 report['tensor_training_forward_CUDA_seconds']+=tensor_start.elapsed_time(tensor_end)/1000
             return o
         # No training gradient or state update enters this independent parity gate.
-        first=data[PANEL[0]];valid=np.flatnonzero(first['shader_valid'])
+        first=data[panel[0]];valid=np.flatnonzero(first['shader_valid'])
         ix=valid[np.linspace(0,len(valid)-1,24).astype(int)]
         p,n,wo=(tensor(first[k][ix]) for k in ('position','normals','outgoing'))
         T,B=shader.compute_tangent_bitangent_flat(n,None);axis=tensor(first['axis'][ix])
@@ -339,11 +350,18 @@ def train(args, *, heterogeneous=False):
         schedule=WarmUpCosLR(dict(end_warm=1000,end_iter=100000))
         optimizer=schedule.construct_optimizer(torch.optim.Adam,shader)
         # The historical diagnostic edges remain disjoint from D6 training edges.
-        pairs=surface_pairs(geometry['vertices_native'],geometry['triangles'])
-        pair_ix=np.linspace(0,len(pairs['points0'])-1,min(1024,len(pairs['points0']))).astype(int)
+        if acquisition is None:
+            pairs=surface_pairs(geometry['vertices_native'],geometry['triangles'])
+            pair_ix=np.linspace(0,len(pairs['points0'])-1,min(1024,len(pairs['points0']))).astype(int)
+        else:
+            pairs,pair_ix,boundary = acquisition.diagnostics(geometry, freeze)
         pair_points=[pairs[k][pair_ix] for k in ('points0','points1')]
-        pair_frames=[surface_frames(geometry,v) for v in pair_points]
-        if heterogeneous:
+        if acquisition is None:
+            pair_frames=[surface_frames(geometry,v) for v in pair_points]
+        else:
+            pair_frames=acquisition.diagnostic_frames(geometry,pairs,pair_ix)
+            np.savez_compressed(args.output/'boundary-probes.npz',**boundary)
+        if heterogeneous and acquisition is None:
             from benchmarks.donut_heterogeneous_v1 import material_field
             for pp,ff in zip(pair_points,pair_frames):
                 ff['Q_world']=material_field(pp,ff['normals'],generation['ring_radius_native'])['Q_world']
@@ -364,17 +382,21 @@ def train(args, *, heterogeneous=False):
                 from scientific_variants.donut_tensor_shader_d8 import tensor_surface_term
                 spatial_term=tensor_surface_term
             setup_started=time.monotonic()
-            domain=neighborhoods(geometry,spatial_policy)
+            domain=neighborhoods(geometry,spatial_policy) if acquisition is None else pairs
             require(len(domain['face_area'])==spatial_policy['expected_mesh_faces'] and
                     len(domain['face_pairs'])==spatial_policy['expected_pairs'] and
                     np.array_equal(domain['face_pairs'],pairs['face_pairs']) and
                     np.array_equal(domain['diagnostic_ids'],pair_ix), 'Surface geometry or diagnostic identity differs')
             sampler=NeighborhoodSampler(domain['training_ids'],len(domain['face_pairs']),spatial_policy['rng_seed'])
-            fitting_counts=fitting_face_counts(data,SPLITS['fitting'],len(domain['face_area']))
+            fitting_counts=fitting_face_counts(data,splits['fitting'],len(domain['face_area']))
             if parity_plan:
                 hashes={k:array_hash(v) for k,v in dict(domain,fitting_camera_count=fitting_counts).items()}
-                require(hashes==parity_plan['D6_domain_array_sha256'], 'Neighborhood domain differs from accepted D6')
+                expected=parity_plan['D6_domain_array_sha256']
+                matches = hashes==expected if acquisition is None else all(hashes[key]==value for key,value in expected.items())
+                require(matches, 'Frozen neighborhood domain differs')
                 report['D6_domain_parity_verified']=True
+                if acquisition is not None:
+                    report['surface_q_domain_hashes']=hashes
             surface_tensors={k:tensor(domain[k]) for k in ('points0','points1','normals0','normals1','distance')}
             np.savez_compressed(args.output/'surface-q-domain.npz',**domain,fitting_camera_count=fitting_counts)
             spatial_start=torch.cuda.Event(enable_timing=True)
@@ -448,7 +470,7 @@ def train(args, *, heterogeneous=False):
                     else:
                         errors,physical=physical_errors(point_pred,{k:d[k][indices] for k in ('normals','axis','Q_world')})
                     difference=arrays['linear_rgb'][mask]-arrays['linear_gt'][mask]
-                    metrics[str(camera)]=dict(split='fitting' if camera in SPLITS['fitting'] else 'held_out',physical=physical,
+                    metrics[str(camera)]=dict(split='fitting' if camera in splits['fitting'] else 'held_out',physical=physical,
                         RGB_linear_RMSE=float(np.sqrt(np.mean(difference**2))),RGB_relative_L2=float(np.linalg.norm(difference)/max(np.linalg.norm(arrays['linear_gt'][mask]),1e-15)),
                         preview_RGB_channels_above_one=int((arrays['linear_rgb'][mask]>1).sum()),
                         native_standard_error_RMS=float(np.sqrt(np.mean(standard_error.reshape(SIZE,SIZE,3,3)[mask]**2))))
@@ -498,6 +520,24 @@ def train(args, *, heterogeneous=False):
                         transported_square=delta.square().sum((-1,-2)).cpu().numpy(),
                         oracle_transported_square=truth_delta.square().sum((-1,-2)).cpu().numpy(),
                         widths=widths,anisotropy_gap=gap,training_pair_counts=sampler.counts,**log_diagnostic)
+                if acquisition is not None:
+                    qu, wi = [], []
+                    pn = tensor(boundary['normals'])
+                    for pp in boundary['positions']:
+                        budget('boundary_predictor_calls',1)
+                        charge('boundary_predictor_points',len(pp))
+                        if tensor_plan:
+                            local,u,_,_=shader.predict_tensor(tensor(pp),pn)
+                            qu.append(tensor_math.world_tensor(local,u).cpu().numpy())
+                            widths=tensor_math.export_axes(local,u)[:2]
+                        else:
+                            physical=shader.predict_anisotropic_components(tensor(pp))
+                            qu.append(world_q(physical[0],physical[1],physical[4],pn,torch).cpu().numpy())
+                            widths=physical[:2]
+                        wi.append(np.sort(torch.cat(widths,dim=-1).cpu().numpy(),axis=1)[:,::-1])
+                    require(all(np.isfinite(values).all() for values in (*qu,*wi)), 'Nonfinite Bell boundary predictions')
+                    np.savez_compressed(destination/'boundary-predictions.npz',
+                                        Q_world=np.stack(qu),widths_major_minor=np.stack(wi))
                 y,x=np.mgrid[:128,:256];phi=(x+.5)/256*2*np.pi;theta=(y+.5)/128*np.pi
                 directions=np.stack([np.sin(theta)*np.cos(phi),np.sin(theta)*np.sin(phi),np.cos(theta)],-1)
                 if calibration:
@@ -666,7 +706,7 @@ def train(args, *, heterogeneous=False):
             hetero.dataset(freeze,args.benchmark,args.admission,args.verification)
         else:
             verify_freeze(args.freeze,args.freeze_sha256);benchmark(args.benchmark,args.benchmark_sha256)
-        inputs(args.oracle,args.cameras)
+        source_geometry()
         report.update(status='complete',scientific_work_complete=True)
         report['outputs']={p.relative_to(args.output).as_posix():dict(bytes=p.stat().st_size,sha256=digest(p))
             for p in args.output.rglob('*') if p.is_file() and p.name not in ('progress.json','progress.next')}

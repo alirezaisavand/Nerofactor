@@ -1,0 +1,198 @@
+{
+  "boundary_distance_min_median_max": [
+    0.00023274059712081498,
+    0.0047906415026342745,
+    0.006586973335774443
+  ],
+  "boundary_reference": {
+    "Q_jump_projection_median": 1.0,
+    "absolute_Q_jump_error_mean": 0.0,
+    "near_zero_oracle_Q_jump": 0,
+    "pairs": 2474,
+    "predicted_signed_width_jump": [
+      0.11983808868609341,
+      0.057922723193233466
+    ],
+    "ratio_eligible": 2474,
+    "reference_signed_width_jump": [
+      0.11983808868609341,
+      0.057922723193233466
+    ],
+    "signed_width_jump_MAE": [
+      0.0,
+      0.0
+    ]
+  },
+  "dataset": {
+    "admission": {
+      "bytes": 6471,
+      "path": "/home/isavand/paper/evidence/bell-heterogeneous-reference-v1-2b1d4fecf96c40fb8f5467895c6ca06a-admission.json",
+      "sha256": "a1ec274ae406d1a47f07daa49aad0d73308f87e731e8e9ba69634f0fefb3c769"
+    },
+    "generation": {
+      "bytes": 30296,
+      "path": "/home/isavand/paper/evidence/bell-heterogeneous-reference-v1-2b1d4fecf96c40fb8f5467895c6ca06a/reference/generation.json",
+      "sha256": "c2d6c2996b8f19b99417d173724ef4eaf953818bf7008285d6b987165ada7e88"
+    },
+    "verification": {
+      "bytes": 17505,
+      "path": "/home/isavand/paper/evidence/bell-heterogeneous-reference-v1-2b1d4fecf96c40fb8f5467895c6ca06a-verification-v2.json",
+      "sha256": "e46e1e214bc352bd8db2f86a24cb6beaadf04d6b123817c02f695cfd9430454f"
+    }
+  },
+  "expected_batch_work": {
+    "boundary_predictor_calls": 48,
+    "boundary_predictor_points": 118752,
+    "component_reverse_sweeps": 114,
+    "shader_calls": 49924,
+    "shadow_rays": 38733201408,
+    "surface_q_batches": 30000,
+    "surface_q_pairs": 3840000,
+    "surface_q_predictor_calls": 60000,
+    "surface_q_predictor_points": 7680000
+  },
+  "expected_geometry_coverage": [
+    {
+      "pair_draws": 256000,
+      "sampled_in_fit": {
+        "area": 0.4935669416533283,
+        "faces": 17080,
+        "visited_area": 0.47930011919216525,
+        "visited_faces": 16581
+      },
+      "step": 2000,
+      "surface_area_fraction": 0.9662689102662296,
+      "unique_pairs": 256000,
+      "unsampled_in_fit": {
+        "area": 4.737934199683323,
+        "faces": 231828,
+        "visited_area": 4.57573678770374,
+        "visited_faces": 224064
+      },
+      "visited_faces": 240645
+    },
+    {
+      "pair_draws": 512000,
+      "sampled_in_fit": {
+        "area": 0.4935669416533283,
+        "faces": 17080,
+        "visited_area": 0.4931158579482595,
+        "visited_faces": 17066
+      },
+      "step": 4000,
+      "surface_area_fraction": 0.9986592684156962,
+      "unique_pairs": 361496,
+      "unsampled_in_fit": {
+        "area": 4.737934199683323,
+        "faces": 231828,
+        "visited_area": 4.73137124457488,
+        "visited_faces": 231546
+      },
+      "visited_faces": 248612
+    },
+    {
+      "pair_draws": 768000,
+      "sampled_in_fit": {
+        "area": 0.4935669416533283,
+        "faces": 17080,
+        "visited_area": 0.4931158579482595,
+        "visited_faces": 17066
+      },
+      "step": 6000,
+      "surface_area_fraction": 0.9986592684156962,
+      "unique_pairs": 361496,
+      "unsampled_in_fit": {
+        "area": 4.737934199683323,
+        "faces": 231828,
+        "visited_area": 4.73137124457488,
+        "visited_faces": 231546
+      },
+      "visited_faces": 248612
+    },
+    {
+      "pair_draws": 1024000,
+      "sampled_in_fit": {
+        "area": 0.4935669416533283,
+        "faces": 17080,
+        "visited_area": 0.4931158579482595,
+        "visited_faces": 17066
+      },
+      "step": 8000,
+      "surface_area_fraction": 0.9986592684156962,
+      "unique_pairs": 361496,
+      "unsampled_in_fit": {
+        "area": 4.737934199683323,
+        "faces": 231828,
+        "visited_area": 4.73137124457488,
+        "visited_faces": 231546
+      },
+      "visited_faces": 248612
+    },
+    {
+      "pair_draws": 1280000,
+      "sampled_in_fit": {
+        "area": 0.4935669416533283,
+        "faces": 17080,
+        "visited_area": 0.4931158579482595,
+        "visited_faces": 17066
+      },
+      "step": 10000,
+      "surface_area_fraction": 0.9986592684156962,
+      "unique_pairs": 361496,
+      "unsampled_in_fit": {
+        "area": 4.737934199683323,
+        "faces": 231828,
+        "visited_area": 4.73137124457488,
+        "visited_faces": 231546
+      },
+      "visited_faces": 248612
+    }
+  ],
+  "freeze_sha256": "6c563597983ad80adbe235a7692e26089e6c24265fc6b2c9ec1b68197f6f10f7",
+  "geometry_support": {
+    "0": {
+      "zero_fitting_support": 1903,
+      "zero_highlight_support": 3883
+    },
+    "105": {
+      "zero_fitting_support": 290,
+      "zero_highlight_support": 2877
+    },
+    "114": {
+      "zero_fitting_support": 296,
+      "zero_highlight_support": 2743
+    },
+    "19": {
+      "zero_fitting_support": 2265,
+      "zero_highlight_support": 4064
+    },
+    "2": {
+      "zero_fitting_support": 1742,
+      "zero_highlight_support": 3922
+    },
+    "4": {
+      "zero_fitting_support": 2070,
+      "zero_highlight_support": 3954
+    }
+  },
+  "host_output": "/home/isavand/paper/evidence/bell-heterogeneous-training-v1-64b81083c19744e1a24626f929f86a81",
+  "native_model_calls": 0,
+  "native_optimizer_returns": 0,
+  "protocol": "bell-kurt-heterogeneous-four-arm-recovery-v1",
+  "reference_calls": 0,
+  "schema_version": 1,
+  "source_files": 383,
+  "status": "prepared_pending_execution_authorization",
+  "training_execution_authorized": false,
+  "validation": {
+    "cold_metadata_arms_passed": ["D2", "D6", "D8-C", "D8-T"],
+    "focused_cpu_tests_passed": 13,
+    "python_3_8_grammar": "passed",
+    "shell_syntax": "passed"
+  },
+  "transport_exclusions": {
+    "excluded_degenerate_faces": 0,
+    "excluded_distance_or_dihedral": 10842,
+    "excluded_non_two_face_edges": 0
+  }
+}
