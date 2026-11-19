@@ -16,6 +16,7 @@ def main():
     variant.add_argument('--distance-robust',action='store_true')
     variant.add_argument('--known-l2',action='store_true')
     variant.add_argument('--known-l2-completion',action='store_true')
+    variant.add_argument('--known-l2-completion-v3',action='store_true')
     for key in ('freeze','oracle','benchmark','admission','verification'):
         p.add_argument('--'+key,type=Path,required=True)
     for key in ('initial','arm-initial','output','authorization'):
@@ -31,6 +32,8 @@ def main():
         from benchmarks import bell_known_l2_v1 as h
     elif a.known_l2_completion:
         from benchmarks import bell_known_l2_completion_v2 as h
+    elif a.known_l2_completion_v3:
+        from benchmarks import bell_known_l2_completion_v3 as h
     else:
         h = bell
     require(a.phase in h.ARMS,'Arm outside the selected Bell experiment')

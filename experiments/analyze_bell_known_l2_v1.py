@@ -107,10 +107,15 @@ if __name__=='__main__':
     cli = argparse.ArgumentParser(description=__doc__)
     cli.add_argument('--freeze-sha256',required=True)
     cli.add_argument('--output',type=Path,required=True)
-    cli.add_argument('--completion',action='store_true')
+    mode = cli.add_mutually_exclusive_group()
+    mode.add_argument('--completion',action='store_true')
+    mode.add_argument('--completion-v3',action='store_true')
     a = cli.parse_args()
-    if a.completion:
-        from benchmarks import bell_known_l2_completion_v2 as completion
+    if a.completion or a.completion_v3:
+        if a.completion_v3:
+            from benchmarks import bell_known_l2_completion_v3 as completion
+        else:
+            from benchmarks import bell_known_l2_completion_v2 as completion
         f = completion.freeze(spec.ROOT/completion.FREEZE,a.freeze_sha256)
         cid,label = completion.verify_controls(f)
         cleanup = spec.b.read(Path(f['host_output'])/'previous-run-cleanup.json')

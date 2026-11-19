@@ -28,6 +28,11 @@ case "$mode" in
         arms=(K2 K3)
         native_mode=(--known-l2-completion)
         ;;
+    known-l2-completion-v3)
+        freeze_name=docs/protocols/BELL_KNOWN_L2_COMPLETION_V3.freeze.json
+        arms=(K2 K3)
+        native_mode=(--known-l2-completion-v3)
+        ;;
     *) exit 2 ;;
 esac
 freeze="$BELL_TRAIN_SOURCE/$freeze_name"
@@ -46,6 +51,8 @@ elif mode=='known-l2':
     from benchmarks import bell_known_l2_v1 as h
 elif mode=='known-l2-completion':
     from benchmarks import bell_known_l2_completion_v2 as h
+elif mode=='known-l2-completion-v3':
+    from benchmarks import bell_known_l2_completion_v3 as h
 else:
     from benchmarks import bell_heterogeneous_training_v1 as h
 f=h.freeze(h.ROOT/h.FREEZE,sha)
@@ -60,7 +67,7 @@ if mode=='distance-robust':
     ref.check_artifact(Path(f['weight_archive']['path']),f['weight_archive'])
 elif mode=='known-l2':
     h.verify_controls(f)
-elif mode=='known-l2-completion':
+elif mode.startswith('known-l2-completion'):
     previous_container=h.verify_controls(f)
 print(out)
 print(h.IMAGE)
@@ -73,7 +80,7 @@ for arm in h.ARMS:
     item=f['arms'][arm]['initial']
     ref.check_artifact(Path(item['path']),item)
     print(item['path'])
-if mode=='known-l2-completion':
+if mode.startswith('known-l2-completion'):
     print('\t'.join(previous_container))
 PY
 )
@@ -81,7 +88,7 @@ mapfile -t settings <<< "$spec"
 batch=${settings[0]}
 image=${settings[1]}
 test "$(docker image inspect --format '{{.Id}}' "$image")" = "$image"
-if test "$mode" = known-l2-completion; then
+if [[ "$mode" == known-l2-completion* ]]; then
     IFS=$'\t' read -r previous_cid previous_label <<< "${settings[$((7+${#arms[@]}))]}"
     present_by_id=$(docker container ls --all --no-trunc -q --filter "id=$previous_cid")
     present_by_label=$(docker container ls --all --no-trunc -q --filter "label=nerofactor.donut-recovery=$previous_label")
@@ -95,7 +102,7 @@ for active_label in nerofactor.donut-recovery nerofactor.donut-heterogeneous ner
     test -z "$active"
 done
 mkdir "$batch"
-if test "$mode" = known-l2-completion; then
+if [[ "$mode" == known-l2-completion* ]]; then
     python3 -B - "$batch" "$previous_cid" "$previous_label" <<'PY'
 from datetime import datetime, timezone
 import json
