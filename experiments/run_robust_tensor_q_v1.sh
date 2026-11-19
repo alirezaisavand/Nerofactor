@@ -1,31 +1,47 @@
 #!/usr/bin/env bash
-# Run the two admitted acquisitions in one foreground, source-bound batch.
+# Run the requested frozen acquisition in a foreground, source-bound batch.
 set -euo pipefail
 : "${ROBUST_SOURCE:?}" "${ROBUST_AUTH:?}"
 test "$(id -u)" -ne 0
 test "$(realpath "$ROBUST_SOURCE")" = "$ROBUST_SOURCE"
 test -z "$(git -C "$ROBUST_SOURCE" status --porcelain)"
 commit=$(git -C "$ROBUST_SOURCE" rev-parse HEAD)
-freeze_name=docs/protocols/ROBUST_TENSOR_Q_TRAINING_V1.freeze.json
+mode=${1:-paired}
+native_mode=()
+case "$mode" in
+    paired) freeze_name=docs/protocols/ROBUST_TENSOR_Q_TRAINING_V1.freeze.json ;;
+    --bell-completion)
+        freeze_name=docs/protocols/BELL_ROBUST_TENSOR_Q_COMPLETION_V1.freeze.json
+        native_mode=(--bell-completion)
+        ;;
+    *) exit 2 ;;
+esac
 freeze="$ROBUST_SOURCE/$freeze_name"
 sha=$(sha256sum "$freeze" | cut -d' ' -f1)
 auth_sha=$(sha256sum "$ROBUST_AUTH" | cut -d' ' -f1)
-spec=$(cd "$ROBUST_SOURCE" && python3 -B - "$ROBUST_AUTH" "$commit" "$sha" <<'PYTHON'
+spec=$(cd "$ROBUST_SOURCE" && python3 -B - "$ROBUST_AUTH" "$commit" "$sha" "$mode" <<'PYTHON'
 from pathlib import Path
 import sys
 
-from benchmarks import robust_tensor_q_training_v1 as h
 from benchmarks.donut_heterogeneous_v1 import check_artifact, read
 from infrastructure.signatures import require
 
-auth,commit,sha=sys.argv[1:]
+auth,commit,sha,mode=sys.argv[1:]
+if mode=='--bell-completion':
+    from benchmarks import bell_robust_completion_v1 as h
+else:
+    from benchmarks import robust_tensor_q_training_v1 as h
 f=h.freeze(h.ROOT/h.FREEZE,sha)
 require(read(Path(auth))==h.authorization(f,commit,sha),'Exact separate robust tensor-Q training authorization required')
 out=Path(f['host_output'])
 require(out.resolve()==out and out.parent.is_dir() and not out.exists(),'Fresh robust batch required')
-h.verify_calibration(f)
 print(out)
 print(h.IMAGE)
+if mode=='--bell-completion':
+    print('\t'.join(h.verify_inputs(f)))
+else:
+    h.verify_calibration(f)
+    print('-')
 for arm in h.ARMS:
     acquired=h.Acquisition(arm)
     scene=f['scenes'][arm]
@@ -44,10 +60,34 @@ mapfile -t settings <<< "$spec"
 batch=${settings[0]}
 image=${settings[1]}
 test "$(docker image inspect --format '{{.Id}}' "$image")" = "$image"
-test -z "$(docker ps -q --filter label=nerofactor.donut-recovery)"
-test -z "$(docker ps -q --filter label=nerofactor.donut-heterogeneous)"
-test -z "$(docker ps -q --filter label=nerofactor.bell-heterogeneous)"
+if test "$mode" = --bell-completion; then
+    IFS=$'\t' read -r previous_cid previous_label <<< "${settings[2]}"
+    previous_by_id=$(docker container ls --all --no-trunc -q --filter "id=$previous_cid")
+    previous_by_label=$(docker container ls --all --no-trunc -q --filter "label=nerofactor.donut-recovery=$previous_label")
+    if test -n "$previous_by_id" || test -n "$previous_by_label"; then
+        printf '%s\n' 'Previous failed Donut container still exists. Bell-R1 was not launched.' >&2
+        exit 1
+    fi
+fi
+for active_label in nerofactor.donut-recovery nerofactor.donut-heterogeneous nerofactor.bell-heterogeneous; do
+    active=$(docker ps -q --filter "label=$active_label")
+    test -z "$active"
+done
 mkdir "$batch"
+if test "$mode" = --bell-completion; then
+    python3 -B - "$batch" "$previous_cid" "$previous_label" <<'PYTHON'
+from datetime import datetime, timezone
+import json
+from pathlib import Path
+import sys
+
+path,cid,label=sys.argv[1:]
+with (Path(path)/'previous-run-cleanup.json').open('x') as stream:
+    json.dump(dict(container_id=cid,label=label,checked_utc=datetime.now(timezone.utc).isoformat(),
+                   absent_by_exact_id=True,absent_by_owner_label=True),stream,indent=2)
+    stream.write('\n')
+PYTHON
+fi
 cp "$ROBUST_AUTH" "$batch/authorization.json"
 cp "$freeze" "$batch/freeze.json"
 test "$(sha256sum "$batch/authorization.json" | cut -d' ' -f1)" = "$auth_sha"
@@ -67,7 +107,7 @@ cleanup_owned() {
 trap cleanup_owned EXIT
 trap 'exit 130' INT
 trap 'exit 143' TERM
-for row in "${settings[@]:2}"; do
+for row in "${settings[@]:3}"; do
     IFS=$'\t' read -r arm oracle cameras reference admission verification base_initial initial <<< "$row"
     mounts=(
         --mount "type=bind,src=$oracle,dst=/inputs/oracle,readonly"
@@ -101,7 +141,7 @@ for row in "${settings[@]:2}"; do
         --phase "$arm" --oracle /inputs/oracle "${native_cameras[@]}" \
         --benchmark /inputs/reference --admission /inputs/admission.json --verification /inputs/verification.json \
         --initial /inputs/base-initial.json --arm-initial /inputs/arm-initial.json --output "/outputs/$arm" \
-        --freeze "/workspace/$freeze_name" --freeze-sha256 "$sha" \
+        --freeze "/workspace/$freeze_name" --freeze-sha256 "$sha" "${native_mode[@]}" \
         --authorization /authorization.json --authorization-sha256 "$auth_sha" --commit "$commit" --image-id "$image" --execute \
         >"$batch/$arm-console.txt" 2>&1
     code=$?

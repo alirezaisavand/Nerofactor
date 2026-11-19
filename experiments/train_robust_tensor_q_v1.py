@@ -19,8 +19,13 @@ def main():
     for key in ('freeze-sha256','authorization-sha256','commit','image-id'):
         p.add_argument('--'+key,required=key=='freeze-sha256')
     p.add_argument('--execute',action='store_true')
+    p.add_argument('--bell-completion',action='store_true')
     a = p.parse_args()
-    spec = h.Acquisition(a.phase)
+    acquisition = h.Acquisition
+    if a.bell_completion:
+        from benchmarks.bell_robust_completion_v1 import Acquisition
+        acquisition = Acquisition
+    spec = acquisition(a.phase)
     f = spec.freeze(a.freeze,a.freeze_sha256)
     require(spec.FACETED or a.cameras is not None,'Explicit Donut calibrations required')
     if not a.execute:

@@ -76,9 +76,21 @@ if __name__=='__main__':
     cli.add_argument('--phase',choices=h.ARMS,required=True)
     cli.add_argument('--freeze-sha256',required=True)
     cli.add_argument('--output',required=True,type=Path)
+    cli.add_argument('--bell-completion',action='store_true')
     x = cli.parse_args()
-    acquired = h.Acquisition(x.phase)
-    f = acquired.freeze(h.ROOT/h.FREEZE,x.freeze_sha256)
+    acquisition = h.Acquisition
+    if x.bell_completion:
+        from benchmarks.bell_robust_completion_v1 import Acquisition
+        acquisition = Acquisition
+    acquired = acquisition(x.phase)
+    f = acquired.freeze(h.ROOT/acquired.FREEZE,x.freeze_sha256)
+    if x.bell_completion:
+        from benchmarks.bell_robust_completion_v1 import verify_inputs
+        cid,label = verify_inputs(f['batch'])
+        cleanup = read(Path(f['host_output'])/'previous-run-cleanup.json')
+        require(cleanup['container_id']==cid and cleanup['label']==label
+                and cleanup['absent_by_exact_id'] is True and cleanup['absent_by_owner_label'] is True,
+                'Standalone Bell cleanup witness differs')
     count = analyze(x.freeze_sha256,x.output,acquisition=acquired)
     historical,orientation = historical_profiles(acquired,f,candidate_root=Path(f['host_output'])/x.phase)
     json_new(x.output/'control-boundary-profiles.json',dict(schema_version=1,step=10000,controls=historical,

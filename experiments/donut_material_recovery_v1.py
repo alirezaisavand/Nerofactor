@@ -739,6 +739,14 @@ def train(args, *, heterogeneous=False, acquisition=None):
             for p in args.output.rglob('*') if p.is_file() and p.name not in ('progress.json','progress.next')}
     except BaseException as exc:
         report.update(status='failed',scientific_work_complete=False,error=type(exc).__name__+': '+str(exc),traceback=traceback.format_exc())
+        if getattr(acquisition,'CAPTURE_ORIENTATION_FAILURE',False):
+            from benchmarks.bell_robust_completion_v1 import orientation_failure
+            try:
+                witness=orientation_failure(exc,report['optimizer_returns']+1)
+            except Exception as diagnostic_error:
+                witness=dict(status='unavailable',reason=str(diagnostic_error))
+            if witness is not None:
+                report['orientation_failure']=witness
         raise
     finally:
         report['elapsed_seconds']=time.monotonic()-started
