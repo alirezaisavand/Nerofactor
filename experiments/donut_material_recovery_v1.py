@@ -4,7 +4,7 @@ Frozen core owns BRDF, sampling, networks and existing material priors. This
 small observation adapter deliberately does not invoke the historical loader,
 tone-mapped RGB loss inputs, learned indirect network or automatic NVS.
 """
-from contextlib import nullcontext
+from contextlib import ExitStack, nullcontext
 from copy import deepcopy
 import json
 from pathlib import Path
@@ -122,12 +122,14 @@ def train(args, *, heterogeneous=False, acquisition=None):
         bound=freeze['arm_training']
     weighting = spatial.get('distance_weighting') if spatial else None
     robust_delta = spatial.get('robust_delta') if spatial else None
-    lighting_arm = 'D6' if weighting is not None or robust_delta is not None else args.phase
+    method = bound.get('learned_control',args.phase) if bound else args.phase
+    known_l2 = bound is not None and bound.get('illumination')=='known_L2'
+    lighting_arm = 'D1' if known_l2 else ('D6' if weighting is not None or robust_delta is not None else method)
     calibration=bound['calibration'] if args.phase in ('D3','D4') else None
     limits=ablation['limits'][args.phase] if ablation else (bound['limits'] if bound else LIMITS)
     protocol=bound['protocol'] if bound else TRAINING
     include_diffuse_white=ablation is None
-    probe_diffuse_white=args.phase in ('D3',*ABLATION_ARMS)
+    probe_diffuse_white=known_l2 or args.phase in ('D3',*ABLATION_ARMS)
     require(auth.get('researcher_admitted_dataset') is True and auth.get('benchmark_generation_sha256')==args.benchmark_sha256
         and os.statvfs(args.benchmark).f_flag&os.ST_RDONLY, 'Separate explicit dataset admission/training approval required')
     if heterogeneous:
@@ -143,7 +145,7 @@ def train(args, *, heterogeneous=False, acquisition=None):
 
     geometry,_,records=source_geometry()
     expected_initial=None
-    if lighting_arm in ('D2','D3','D6','D7',*D8_ARMS,*D9_ARMS,*d11.ARMS,*ABLATION_ARMS):
+    if known_l2 or lighting_arm in ('D2','D3','D6','D7',*D8_ARMS,*D9_ARMS,*d11.ARMS,*ABLATION_ARMS):
         require(args.initial is not None and digest(args.initial)==args.initial_sha256 and
             os.statvfs(args.initial).f_flag&os.ST_RDONLY,'Explicit immutable initialization anchor required')
         if bound:
@@ -161,11 +163,20 @@ def train(args, *, heterogeneous=False, acquisition=None):
         commit=args.commit,freeze_sha256=args.freeze_sha256,benchmark_sha256=args.benchmark_sha256,
         input_identities=records,optimizer_returns=0,cleanup_verified=False,
         effective_shader=deepcopy(SHADER),policy=POLICY,saved_endpoints=[],
-        effective_lighting=('known analytic L2' if args.phase=='D1' else 'original A directional outer_light MLP'),
+        effective_lighting=('known analytic L2' if lighting_arm=='D1' else 'original A directional outer_light MLP'),
         indirect_illumination='identically zero in D1/D2',research_G_handoff_admitted=False,
         counters=dict(shader_calls=0,shadow_rays=0,component_reverse_sweeps=0))
     if bound:
         report.update(indirect_illumination='identically zero', initialization_anchor_sha256=args.initial_sha256)
+    known_audit = None
+    light_handles = ExitStack()
+    if known_l2:
+        from infrastructure.known_l2_audit import KnownL2Audit
+        known_audit = KnownL2Audit()
+        report.update(learned_control=method,diffuse_white_in_objective=True)
+
+    def light_path(name, dispatches=1):
+        return known_audit.path(name,dispatches) if known_audit else nullcontext()
     if heterogeneous:
         report.update(heterogeneous_dataset=True,authorization_sha256=args.authorization_sha256,
                       dataset_admission_sha256=hetero.ADMISSION)
@@ -252,7 +263,7 @@ def train(args, *, heterogeneous=False, acquisition=None):
         require(expected_initial is None or initial==expected_initial,'Full initial weights/buffers differ from the admitted anchor')
         sibling=None
         if tensor_plan:
-            representation='D8-T' if log_tensor else args.phase
+            representation='D8-T' if log_tensor else method
             counterpart='D8-C' if log_tensor else next(a for a in tensor_plan['arms'] if a!=args.phase)
             with torch.random.fork_rng(devices=[0]):
                 shader.select_tensor_representation(representation)
@@ -275,13 +286,16 @@ def train(args, *, heterogeneous=False, acquisition=None):
         json_new(args.output/'initial.json',initial);report['initial']=initial
         material_names=('feats_network','mx_predictor','my_predictor','rotation_predictor','kd_predictor','metallic_predictor')
         for name,p in shader.named_parameters():
-            p.requires_grad_(name.split('.')[0] in material_names or (args.phase!='D1' and name.startswith('outer_light.')))
+            p.requires_grad_(name.split('.')[0] in material_names or (lighting_arm!='D1' and name.startswith('outer_light.')))
         report['trainable_parameters']={name:sum(p.numel() for n,p in shader.named_parameters() if p.requires_grad and n.startswith(name+'.'))
             for name in (*material_names,'outer_light','inner_light')}
         require(all(report['trainable_parameters'][name]>0 for name in material_names),'Full native material field required')
-        expected_count=1485584+((2*(256+2)) if args.phase in ('D8-T','D9-T',*d11.ARMS) else 0)
+        expected_count=1485584+((2*(256+2)) if method in ('D8-T','D9-T',*d11.ARMS) else 0)
         require(sum(report['trainable_parameters'][name] for name in material_names)==expected_count,
                 'Full material capacity differs from the frozen inventory')
+        if known_audit:
+            light_handles.enter_context(known_audit.attached(shader))
+            lighting_anchor = known_audit.lighting_hash(shader)
         def tensor(x):return torch.as_tensor(x,dtype=torch.float32,device='cuda')
         calibrated = None
         if calibration:
@@ -303,16 +317,17 @@ def train(args, *, heterogeneous=False, acquisition=None):
 
         def shade(p,wo,n,step,training,seed=None,export=False):
             budget('shader_calls',1);budget('shadow_rays',len(p)*1536)
-            if tensor_plan:
-                if training:
-                    tensor_start.record()
-                tape=tensor_plan['representation']
-                tape_seed=tape['training_tape_seed_offset']+step if training else tape['evaluation_tape_seed_offset']+seed
-                o=shader(p,wo,n,None,step,training,tape_seed=tape_seed,export=export)
-                if training:
-                    tensor_end.record()
-            else:
-                _,o=shader(p,wo,n,None,step,training)
+            with light_path('training' if training else 'evaluation'):
+                if tensor_plan:
+                    if training:
+                        tensor_start.record()
+                    tape=tensor_plan['representation']
+                    tape_seed=tape['training_tape_seed_offset']+step if training else tape['evaluation_tape_seed_offset']+seed
+                    o=shader(p,wo,n,None,step,training,tape_seed=tape_seed,export=export)
+                    if training:
+                        tensor_end.record()
+                else:
+                    _,o=shader(p,wo,n,None,step,training)
             require(all(bool(torch.isfinite(v).all()) for v in o.values() if isinstance(v,torch.Tensor)),'Nonfinite native output')
             if tensor_plan and training:
                 report['tensor_training_forward_CUDA_seconds']+=tensor_start.elapsed_time(tensor_end)/1000
@@ -325,7 +340,7 @@ def train(args, *, heterogeneous=False, acquisition=None):
         angle=torch.atan2((axis*B).sum(-1),(axis*T).sum(-1))
         rotation=torch.stack([torch.cos(2*angle),torch.sin(2*angle)],-1)
         captures=[]
-        with evaluation_scope(shader,torch,np),torch.no_grad(),native_tensor_default(torch):
+        with evaluation_scope(shader,torch,np),torch.no_grad(),native_tensor_default(torch),light_path('compatibility',32):
             for draw in range(32):
                 torch.manual_seed(900000+draw);torch.cuda.manual_seed_all(900000+draw)
                 budget('shader_calls',1);budget('shadow_rays',len(ix)*1536)
@@ -358,7 +373,8 @@ def train(args, *, heterogeneous=False, acquisition=None):
         require(len(pool['position'])>=512,'Insufficient original fitting observations')
         sample_rng=np.random.RandomState(POLICY['seed']);order=sample_rng.permutation(len(pool['position']));cursor=0
         schedule=WarmUpCosLR(dict(end_warm=1000,end_iter=100000))
-        optimizer=schedule.construct_optimizer(torch.optim.Adam,shader)
+        optimizer_source = SimpleNamespace(parameters=lambda: (p for p in shader.parameters() if p.requires_grad)) if known_l2 else shader
+        optimizer=schedule.construct_optimizer(torch.optim.Adam,optimizer_source)
         # The historical diagnostic edges remain disjoint from D6 training edges.
         if not faceted:
             pairs=surface_pairs(geometry['vertices_native'],geometry['triangles'])
@@ -418,6 +434,8 @@ def train(args, *, heterogeneous=False, acquisition=None):
         def evaluate(step):
             destination=args.output/('step-%05d'%step);destination.mkdir()
             metrics={};shader.eval()
+            if known_audit:
+                known_audit.checkpoint(step,shader,optimizer,lighting_anchor)
             with evaluation_scope(shader,torch,np),torch.no_grad(),native_tensor_default(torch),calibration_scope(True):
                 if calibration:
                     grid_light = calibrated.grid_radiance().cpu().numpy().reshape(*calibration_dirs.shape)
@@ -554,7 +572,8 @@ def train(args, *, heterogeneous=False, acquisition=None):
                     require(np.array_equal(directions, calibration_dirs), 'Export grid differs from calibration')
                     light = grid_light
                 else:
-                    light=shader.predict_outer_lights(tensor(np.zeros((32768,3))),tensor(directions.reshape(-1,3))).cpu().numpy().reshape(128,256,3)
+                    with light_path('illumination_map'):
+                        light=shader.predict_outer_lights(tensor(np.zeros((32768,3))),tensor(directions.reshape(-1,3))).cpu().numpy().reshape(128,256,3)
                 require(np.isfinite(light).all() and (light>=0).all(),'Invalid illumination map')
                 from benchmarks.bell_reference_e11 import environment
                 from benchmarks.donut_recovery_v1 import ENVIRONMENT
@@ -570,6 +589,8 @@ def train(args, *, heterogeneous=False, acquisition=None):
                     metrics['illumination']['calibration'] = dict(calibration_record,
                         raw_mean_RGB=calibrated.raw_mean.cpu().tolist(),
                         scale_RGB=calibrated.scale.cpu().tolist())
+                if known_audit:
+                    metrics['illumination']['analytic_agreement'] = acquisition.validate_map(light,truth_light)
                 json_new(destination/'metrics.json',metrics)
             shader.train();report['saved_endpoints'].append(dict(step=step,metrics=metrics))
             progress()
@@ -577,8 +598,10 @@ def train(args, *, heterogeneous=False, acquisition=None):
             nonlocal cursor,order,sibling
             with shader_lighting(shader,field.MCShadingNetwork,lighting_arm,calibrated),native_tensor_default(torch):
                 if tensor_plan:
+                    sibling_attachment = known_audit.attached(sibling) if known_audit else nullcontext()
+                    sibling_lighting = 'D1' if known_l2 else sibling.tensor_arm
                     with evaluation_scope(shader,torch,np),torch.no_grad(),shader_lighting(
-                            sibling,field.MCShadingNetwork,sibling.tensor_arm):
+                            sibling,field.MCShadingNetwork,sibling_lighting),sibling_attachment,light_path('paired',2):
                         budget('shader_calls',2);budget('shadow_rays',2*len(p)*1536)
                         gate,capture=paired_initial_gate(shader,sibling,p,n,wo,tensor_plan['representation'])
                         np.savez_compressed(args.output/'paired-initial-gate.npz',**capture)
@@ -666,6 +689,9 @@ def train(args, *, heterogeneous=False, acquisition=None):
                             budget('component_reverse_sweeps',len(terms))
                             named=[(n,p) for n,p in shader.named_parameters() if p.requires_grad]
                             row['gradient_interactions']=gradient_diagnostics(terms,[p for _,p in named],torch,[n for n,_ in named])
+                            if known_audit:
+                                require(row['gradient_interactions']['terms']['diffuse_white']['gradient_l2']==0.,
+                                        'Known L2 diffuse-white unexpectedly has a material derivative')
                         loss.backward()
                         active=[p for p in shader.parameters() if p.requires_grad and p.grad is not None]
                         require(active and all(bool(torch.isfinite(p.grad).all()) for p in active),'Missing/nonfinite native gradients')
@@ -673,7 +699,7 @@ def train(args, *, heterogeneous=False, acquisition=None):
                             if name.startswith(group+'.') and p.grad is not None)**.5 for group in (*material_names,'outer_light','inner_light')}
                         require(all(any(name.startswith(group+'.') and p.grad is not None for name,p in shader.named_parameters())
                             for group in material_names),'A material predictor has no gradient')
-                        require(args.phase=='D1' or any(name.startswith('outer_light.') and p.grad is not None
+                        require(lighting_arm=='D1' or any(name.startswith('outer_light.') and p.grad is not None
                             for name,p in shader.named_parameters()),'Learned direct light is disconnected')
                         norm=torch.nn.utils.clip_grad_norm_(shader.parameters(),.7);row['preclip_gradient_l2']=float(norm)
                         require(bool(torch.isfinite(norm)), 'Nonfinite total gradient norm')
@@ -722,6 +748,10 @@ def train(args, *, heterogeneous=False, acquisition=None):
                             'Incomplete surface work accounting, coverage or diagnostic isolation')
             return {}
         run_with_cleanup(work,torch)
+        light_handles.close()
+        if known_audit:
+            report['known_lighting_audit']=known_audit.final(acquisition.route_plan(bound['work'],tensor_plan is not None),
+                                                           freeze['steps'])
         report['cleanup_verified']=True
         report['cleanup_scope']='Native synchronization/cache cleanup and lighting/default/RNG scopes; process/container exit handled by foreground launcher'
         import resource
@@ -749,5 +779,6 @@ def train(args, *, heterogeneous=False, acquisition=None):
                 report['orientation_failure']=witness
         raise
     finally:
+        light_handles.close()
         report['elapsed_seconds']=time.monotonic()-started
         json_new(args.output/'recovery.json',report)

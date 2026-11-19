@@ -18,6 +18,11 @@ case "$mode" in
         arms=(B1 B2)
         native_mode=(--distance-robust)
         ;;
+    known-l2)
+        freeze_name=docs/protocols/BELL_KNOWN_L2_RECOVERY_V1.freeze.json
+        arms=(K1 K2 K3)
+        native_mode=(--known-l2)
+        ;;
     *) exit 2 ;;
 esac
 freeze="$BELL_TRAIN_SOURCE/$freeze_name"
@@ -32,6 +37,8 @@ from benchmarks import donut_heterogeneous_v1 as ref
 auth,commit,sha,mode=sys.argv[1:]
 if mode=='distance-robust':
     from benchmarks import bell_distance_robust_v1 as h
+elif mode=='known-l2':
+    from benchmarks import bell_known_l2_v1 as h
 else:
     from benchmarks import bell_heterogeneous_training_v1 as h
 f=h.freeze(h.ROOT/h.FREEZE,sha)
@@ -44,6 +51,8 @@ h.dataset(f,Path(f['host_reference']),Path(files['admission']['path']),Path(file
 ref.check_artifact(Path(f['base_initial']['path']),f['base_initial'])
 if mode=='distance-robust':
     ref.check_artifact(Path(f['weight_archive']['path']),f['weight_archive'])
+elif mode=='known-l2':
+    h.verify_controls(f)
 print(out)
 print(h.IMAGE)
 print(f'{f["mesh"]["path"]}\t/inputs/oracle.ply')
@@ -61,9 +70,10 @@ mapfile -t settings <<< "$spec"
 batch=${settings[0]}
 image=${settings[1]}
 test "$(docker image inspect --format '{{.Id}}' "$image")" = "$image"
-test -z "$(docker ps -q --filter label=nerofactor.donut-recovery)"
-test -z "$(docker ps -q --filter label=nerofactor.donut-heterogeneous)"
-test -z "$(docker ps -q --filter label=nerofactor.bell-heterogeneous)"
+for active_label in nerofactor.donut-recovery nerofactor.donut-heterogeneous nerofactor.bell-heterogeneous; do
+    active=$(docker ps -q --filter "label=$active_label")
+    test -z "$active"
+done
 mkdir "$batch"
 cp "$BELL_TRAIN_AUTH" "$batch/authorization.json"
 cp "$freeze" "$batch/freeze.json"
@@ -132,6 +142,8 @@ assert r['arm']==arm and r['status']=='complete' and r['scientific_work_complete
 assert r['commit']==commit and r['freeze_sha256']==sha and r['authorization_sha256']==auth_sha
 assert r['optimizer_returns']==10000 and r['historical_arm_initial_parity_verified']
 assert r['counters']==f['arms'][arm]['work'] and [x['step'] for x in r['saved_endpoints']]==f['steps']
+if f['arms'][arm].get('illumination')=='known_L2':
+    assert r['known_lighting_audit']['learned_module_calls']==0
 PY
 done
 trap - EXIT

@@ -38,7 +38,7 @@ def arm_receipt(batch, arm, f, auth, views, *, spec=h):
             'Incomplete or foreign heterogeneous arm receipt: '+arm)
     require(r['initial']==ref.read(root/'initial.json')==ref.read(Path(recipe['initial']['path'])),
             'Native initial state differs from accepted arm')
-    if arm!='D2':
+    if recipe['spatial_policy'] is not None:
         require(r['D6_domain_parity_verified'] and r['surface_q_policy']==recipe['spatial_policy']
                 and r['diffuse_white_in_objective'] is True, 'Surface parity differs')
     if 'distance_weighting' in recipe:
@@ -46,7 +46,7 @@ def arm_receipt(batch, arm, f, auth, views, *, spec=h):
     if 'robust_delta' in recipe:
         require(r['surface_q_penalty']==dict(name='pseudo_huber_v1',delta=recipe['robust_delta']),
                 'Robust penalty receipt differs')
-    if arm in h.d8.ARMS:
+    if recipe.get('learned_control',arm) in h.d8.ARMS:
         require(r['paired_initial_gate']['passed'] and r['representation']==recipe['representation'],
                 'D8 paired initialization gate did not pass')
     require(set(r['outputs'])=={p.relative_to(root).as_posix() for p in root.rglob('*')
@@ -74,6 +74,8 @@ def arm_receipt(batch, arm, f, auth, views, *, spec=h):
             and all(np.isfinite([v[k] for k in ('lr','RGB_loss','material_prior','diffuse_white_prior',
                                                 'preclip_gradient_l2')]).all() for v in history),
             'Incomplete/nonfinite optimization history')
+    if recipe.get('illumination')=='known_L2':
+        spec.verify_illumination_receipt(root,r,recipe,history)
     return r,history
 
 
@@ -141,7 +143,9 @@ def analyze(sha, output, *, acquisition=None):
         lr=[v['lr'] for v in hist]
         require(previous_lr is None or previous_lr==lr,'Learning-rate streams differ')
         previous_lr=lr
-        if arm in h.d8.ARMS:
+        recipe=f['arms'][arm]
+        spatial=recipe['spatial_policy'] is not None
+        if recipe.get('learned_control',arm) in h.d8.ARMS:
             capture=numeric(root/'paired-initial-gate.npz')
             if paired is None:
                 paired=capture
@@ -156,7 +160,7 @@ def analyze(sha, output, *, acquisition=None):
         if acquisition is not None:
             if faceted:
                 spec.check_probe_archive(probes,numeric(root/'boundary-probes.npz'))
-            if arm!='D2':
+            if spatial:
                 domain_check=spec.check_domain_archive if faceted else spec.check_donut_domain
                 domain_check(f,domain,views,r['surface_q_domain_hashes'],numeric(root/'surface-q-domain.npz'))
                 require(surface_hashes is None or surface_hashes==r['surface_q_domain_hashes'],
@@ -178,7 +182,7 @@ def analyze(sha, output, *, acquisition=None):
                 if faceted:
                     scores=spec.boundary_score(probes,numeric(saved/'boundary-predictions.npz'))
                     reports[arm]['boundary_history'].append(dict(step=step,**scores))
-                if arm!='D2':
+                if spatial:
                     spec.check_sampler_capture(f,domain,step,numeric(saved/'surface-q-diagnostic.npz'))
                 if step==h.STEPS[-1]:
                     for camera,(e,rgb,gt,*_) in by_camera.items():

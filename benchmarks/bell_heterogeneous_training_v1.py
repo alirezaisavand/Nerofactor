@@ -132,9 +132,10 @@ def runtime(args, *, spec=None):
         protocol=PROTOCOL if spec is None else spec.PROTOCOL,
         D6_domain_array_sha256=f['integer_domain_hashes'],D6_sampler_snapshots=f['sampler_snapshots'])
     active = dict(f,arm_training=r)
+    method = recipe.get('learned_control',args.phase)
     if args.phase=='D6' or 'distance_weighting' in recipe:
         active['surface_q_training'] = r
-    if args.phase in d8.ARMS:
+    if method in d8.ARMS:
         active['tensor_training'] = dict(r,arms=list(d8.ARMS))
     return active,a
 
