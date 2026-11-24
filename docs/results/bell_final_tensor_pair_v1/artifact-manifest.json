@@ -1,0 +1,225 @@
+{
+  "K1_Dense_analysis": {
+    "bytes": 3316450,
+    "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a-analysis-v1/analysis.json",
+    "sha256": "941b26a391bfc7b47a45fcdee3b6bdde7aad67ac5ced60674e61c668e0fcc5a1"
+  },
+  "arms": {
+    "Final-Ambient": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 25813648,
+          "path": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98/Final-Ambient/checkpoint-02000.pth",
+          "sha256": "0bf6562a987194adb222486472dc0699f52b605bb9a4ca6fd90af6dc1e84fdb6"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 25813584,
+          "path": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98/Final-Ambient/checkpoint-04000.pth",
+          "sha256": "d1f298b32fe6d0bd939b3ed0e5b2b2cde6cfa496e33f3ef8d989f1b636883cc7"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 25813648,
+          "path": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98/Final-Ambient/checkpoint-06000.pth",
+          "sha256": "72c378bf339c303a08018539799dc1be930b90566b79e0c2b8cf989e9751e799"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 25813648,
+          "path": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98/Final-Ambient/checkpoint-08000.pth",
+          "sha256": "8b804aff2da67a33aa138b19d47fb96bc564c798fbec967506c59034136726ea"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 25813648,
+          "path": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98/Final-Ambient/checkpoint-10000.pth",
+          "sha256": "143a89bc57fba286a764b29488d7d83b341c73f5b38746fa8983039bdfb1aab7"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98/Final-Ambient-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 339670262,
+      "outputs": 2628,
+      "photometric_stream": {
+        "bytes": 20480000,
+        "path": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98/Final-Ambient/photometric-indices.u32le",
+        "sha256": "ef14c749c0dbe1470f77a8fe8240907e612be0abbfa738b5889185e1b752bff8"
+      },
+      "receipt": {
+        "bytes": 681961,
+        "path": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98/Final-Ambient/recovery.json",
+        "sha256": "598b1562599188620dd068e323a4c354f87a85e9f8e60dc5281d7d874bf01848"
+      }
+    },
+    "Final-Chart": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 25805456,
+          "path": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98/Final-Chart/checkpoint-02000.pth",
+          "sha256": "3301271702edb183aa8a12607d6f68f207b374cb6b73f799224eed6f777cd8c2"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 25805392,
+          "path": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98/Final-Chart/checkpoint-04000.pth",
+          "sha256": "34709224ad29711dabbde5e5bc9a549663168fc576905f6720892c21a0560358"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 25805456,
+          "path": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98/Final-Chart/checkpoint-06000.pth",
+          "sha256": "1499725c32aa07351820b34fb883a0579b0ad45230cd7810dc0e2b93d3852161"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 25805456,
+          "path": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98/Final-Chart/checkpoint-08000.pth",
+          "sha256": "fab356df0144e29c2e6e5dcbc8dff52a6d0e2f792b93052c8e560ad8006c2562"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 25805456,
+          "path": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98/Final-Chart/checkpoint-10000.pth",
+          "sha256": "db9f68df1c289cc2790b0f102f5b2cd67f57f1492b3daae3655aa54e6a6790d3"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98/Final-Chart-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 338172114,
+      "outputs": 2628,
+      "photometric_stream": {
+        "bytes": 20480000,
+        "path": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98/Final-Chart/photometric-indices.u32le",
+        "sha256": "ef14c749c0dbe1470f77a8fe8240907e612be0abbfa738b5889185e1b752bff8"
+      },
+      "receipt": {
+        "bytes": 681689,
+        "path": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98/Final-Chart/recovery.json",
+        "sha256": "b6f993bd13d83b9bd0dbc07a121ff1251ce7b47c069e6b3b7c5c2006ae6a78d2"
+      }
+    },
+    "K1-Dense": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 25805067,
+          "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a/K1-Dense/checkpoint-02000.pth",
+          "sha256": "acf7c497dee6115fc248a947a6292ebabe79af50c33e4eeca462e41e9879ac42"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 25805067,
+          "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a/K1-Dense/checkpoint-04000.pth",
+          "sha256": "9a6abe13551f3c79a4861fcd475212e50bc56a66815da735a92011db0bd6e212"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 25805131,
+          "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a/K1-Dense/checkpoint-06000.pth",
+          "sha256": "541d902c0cf50bd38865ffc91b86b09ec77c14d5be61ffd69199a188bf8a4673"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 25805067,
+          "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a/K1-Dense/checkpoint-08000.pth",
+          "sha256": "3eb807d0cae726d12bcefdceecd3c85b033b6c1574e0a26109f4f46703e2703a"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 25805067,
+          "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a/K1-Dense/checkpoint-10000.pth",
+          "sha256": "1472516abe286c4f366b1fd19c21118ac75d0d76c596f70aa6d69f982ece06a5"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a/K1-Dense-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 317826461,
+      "outputs": 2626,
+      "photometric_stream": {
+        "bytes": 20480000,
+        "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a/K1-Dense/photometric-indices.u32le",
+        "sha256": "ef14c749c0dbe1470f77a8fe8240907e612be0abbfa738b5889185e1b752bff8"
+      },
+      "receipt": {
+        "bytes": 679802,
+        "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a/K1-Dense/recovery.json",
+        "sha256": "1c41b73cbbf8bb7e13c5aa49b72259f10d8b50b42aee436e86da8a61f47d5987"
+      }
+    }
+  },
+  "authorization": {
+    "bytes": 7168,
+    "path": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98/authorization.json",
+    "sha256": "8d50d35105766a84973745ba82dee69b668061a94a3340f39a4a61e0a52b8276"
+  },
+  "batch": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98",
+  "dataset": {
+    "admission": {
+      "bytes": 1714,
+      "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2-admission.json",
+      "sha256": "87197a0bc7e5cec3a320ed92193ac25e238151b2cfb408af58a79b0c20e7399c"
+    },
+    "generation": {
+      "bytes": 66671,
+      "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2/reference/generation.json",
+      "sha256": "d68db52c2d491f2fbf4870b1021bec0240355ae1e7f7c9c33ef1390622a027b4"
+    },
+    "verification": {
+      "bytes": 39637,
+      "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2-verification-v2/verification.json",
+      "sha256": "f0081135df01a7a89f0a640f6fd8e166a9aabfc9bd7fc5737ecaaed8ed9a1cd4"
+    }
+  },
+  "execution_commit": "5de74a58e18a8fd061c712e68c5848877c4ec121",
+  "freeze": {
+    "bytes": 16408,
+    "path": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98/freeze.json",
+    "sha256": "8c881df7ce05f512a3f784e423bc52e07e1e8a850b028f52de2bd35cc8d72af3"
+  },
+  "image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "offline_analysis": [
+    {
+      "bytes": 2199236,
+      "path": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98-analysis-v1/analysis.json",
+      "sha256": "5b6ffb1abda4673f528daf74e8f73e572dd34f59e2c6f224a26799f6708113c5"
+    },
+    {
+      "bytes": 1458001,
+      "path": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98-analysis-v1/method-comparison.json",
+      "sha256": "a699b6b4be8751499a66ca7d3379b2190071a116578517527754ee4a3abd5d2c"
+    },
+    {
+      "bytes": 4423,
+      "path": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98-analysis-v1/summary.csv",
+      "sha256": "b952460cce67edfb3abc92a76b1ff7e1018cf1d04a03c723336b9b8789d6809a"
+    }
+  ],
+  "packaged_files": {
+    "boundary-jumps.csv": {
+      "bytes": 709,
+      "sha256": "7315e5772c48722052d18b01917736e73ee998f99db708bdd3606ad510ab5c96"
+    },
+    "checkpoint-metrics.csv": {
+      "bytes": 92486,
+      "sha256": "d8ec6ee41976ee51b9fda96948d21c733b75882f18520841b543f2ee0f5a5682"
+    },
+    "held-out-cameras.csv": {
+      "bytes": 834,
+      "sha256": "02043d1123554b1a15db932ba9de8c9aade95ac361aadef2f450453e5fc9ca3c"
+    },
+    "held-out-endpoints.csv": {
+      "bytes": 782,
+      "sha256": "c6131b0daaee564935c48ddc9057708879f844e985504cd26ac0eab59403cbe2"
+    },
+    "held-out-views.png": {
+      "bytes": 379066,
+      "sha256": "58094b9dd2724b57806b6ae4e7e5dd56b1d3ba79b896907f101a50390b10c9b3"
+    },
+    "optimization-diagnostics.json": {
+      "bytes": 46091,
+      "sha256": "733ca3082a56d680cd737893f1787d4d78d762f005dcf2384b6f24fb85fe77b2"
+    },
+    "recovery-curves.png": {
+      "bytes": 185526,
+      "sha256": "cb6393695d62f48d409e0ed99a82b39e8f6b12cc07c54948093662233c652ae3"
+    }
+  },
+  "schema_version": 1
+}
