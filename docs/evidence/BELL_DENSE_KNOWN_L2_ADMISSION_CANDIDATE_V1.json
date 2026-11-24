@@ -1,0 +1,59 @@
+{
+  "generation": {
+    "bytes": 66671,
+    "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2/reference/generation.json",
+    "sha256": "d68db52c2d491f2fbf4870b1021bec0240355ae1e7f7c9c33ef1390622a027b4"
+  },
+  "held_out_support": {
+    "bytes": 89588,
+    "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2-verification-v2/held-out-support.npz",
+    "sha256": "5c131b9304aac83667956d16c48ad5b5d893e1624df20b8a0137f6fc9e12eb3e"
+  },
+  "observed_fitting_points": 65419,
+  "observed_held_out_points": 7082,
+  "package": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2/reference",
+  "protocol": "bell-dense-dataset-admission-v1",
+  "replay_policy": {
+    "bytes": 920,
+    "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2-verification-v2/replay-policy.json",
+    "sha256": "0a7068b1375fe198ab715c042ccabd41d5f4d10f5131334e50e74228e930f984"
+  },
+  "researcher_admitted_dataset": false,
+  "schema_version": 1,
+  "scope": [
+    "K1-Dense",
+    "K2-Dense",
+    "K3-Dense"
+  ],
+  "splits": {
+    "fitting": [
+      0,
+      4,
+      19,
+      2,
+      127,
+      71,
+      73,
+      56,
+      75,
+      95,
+      93,
+      110,
+      91,
+      7,
+      5,
+      3
+    ],
+    "held_out": [
+      105,
+      114
+    ]
+  },
+  "status": "pending_researcher_admission",
+  "training_authorized": false,
+  "verification": {
+    "bytes": 39637,
+    "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2-verification-v2/verification.json",
+    "sha256": "f0081135df01a7a89f0a640f6fd8e166a9aabfc9bd7fc5737ecaaed8ed9a1cd4"
+  }
+}

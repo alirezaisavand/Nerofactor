@@ -1,0 +1,575 @@
+{
+  "arms": {
+    "K1-Dense": {
+      "illumination": "known_L2",
+      "initial": {
+        "bytes": 141,
+        "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/initial.json",
+        "sha256": "0407da2d23f545004a5505e475d497ba2c41760988048d2ff09654e18b5ab6a9"
+      },
+      "learned_control": "D2",
+      "limits": {
+        "arm_seconds": 3600,
+        "batch_rays": 512,
+        "boundary_predictor_calls": 12,
+        "boundary_predictor_points": 29688,
+        "component_reverse_sweeps": 30,
+        "cpu_threads": 4,
+        "cuda_allocator_fraction": 0.25,
+        "evaluation_draws": 8,
+        "grace_seconds": 30,
+        "host_memory_gib": 64,
+        "illumination_map_calls": 6,
+        "inner_seconds": 3540,
+        "interval": 2000,
+        "output_bytes": 8589934592,
+        "shader_calls": 17184,
+        "shadow_rays": 13210853376,
+        "smoothness_field_calls": 12,
+        "updates_per_arm": 10000,
+        "wall_seconds": 7500
+      },
+      "representation": null,
+      "spatial_policy": null,
+      "work": {
+        "boundary_predictor_calls": 12,
+        "boundary_predictor_points": 29688,
+        "component_reverse_sweeps": 30,
+        "shader_calls": 17184,
+        "shadow_rays": 13210853376
+      }
+    },
+    "K2-Dense": {
+      "illumination": "known_L2",
+      "initial": {
+        "bytes": 241,
+        "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-C/initial.json",
+        "sha256": "a164cd4df8b790c35ee3c587e93945fdb13b2dcb766b1ebc96347056ab9c0886"
+      },
+      "learned_control": "D8-C",
+      "limits": {
+        "arm_seconds": 3600,
+        "batch_rays": 512,
+        "boundary_predictor_calls": 12,
+        "boundary_predictor_points": 29688,
+        "component_reverse_sweeps": 36,
+        "cpu_threads": 4,
+        "cuda_allocator_fraction": 0.25,
+        "evaluation_draws": 8,
+        "grace_seconds": 30,
+        "host_memory_gib": 64,
+        "illumination_map_calls": 6,
+        "inner_seconds": 3540,
+        "interval": 2000,
+        "output_bytes": 8589934592,
+        "shader_calls": 17186,
+        "shadow_rays": 13210927104,
+        "smoothness_field_calls": 12,
+        "surface_q_batches": 10000,
+        "surface_q_pairs": 1280000,
+        "surface_q_predictor_calls": 20000,
+        "surface_q_predictor_points": 2560000,
+        "updates_per_arm": 10000,
+        "wall_seconds": 7500
+      },
+      "representation": {
+        "evaluation_tape_seed_offset": 1600000,
+        "export_world_Q_atol": 1e-06,
+        "initial_Q_atol": 2e-08,
+        "initial_RGB_atol": 1e-06,
+        "initial_gate_seed": 120008,
+        "initial_width": 0.25,
+        "native_gate_points": 24,
+        "perturbation": "legacy_scalar_only_v1",
+        "training_tape_seed_offset": 603300000
+      },
+      "spatial_policy": {
+        "batch_pairs": 128,
+        "coefficient": 0.05,
+        "diagnostic_pairs": 1024,
+        "expected_mesh_faces": 248908,
+        "expected_pairs": 362520,
+        "max_face_dihedral_degrees": 15.0,
+        "max_surface_distance": 0.02,
+        "pair_sampling": "uniform edge permutations without replacement",
+        "reference_distance": 0.02,
+        "rng_seed": 26061
+      },
+      "work": {
+        "boundary_predictor_calls": 12,
+        "boundary_predictor_points": 29688,
+        "component_reverse_sweeps": 36,
+        "shader_calls": 17186,
+        "shadow_rays": 13210927104,
+        "surface_q_batches": 10000,
+        "surface_q_pairs": 1280000,
+        "surface_q_predictor_calls": 20000,
+        "surface_q_predictor_points": 2560000
+      }
+    },
+    "K3-Dense": {
+      "illumination": "known_L2",
+      "initial": {
+        "bytes": 243,
+        "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d8-ad9ec0ee9e6347779a46a56b6fea6cd6/D8-T/initial.json",
+        "sha256": "52cd2d060e6033666f2911f203e68f43ce0a4fefc15b4a5f94206dde214147bd"
+      },
+      "learned_control": "D8-T",
+      "limits": {
+        "arm_seconds": 3600,
+        "batch_rays": 512,
+        "boundary_predictor_calls": 12,
+        "boundary_predictor_points": 29688,
+        "component_reverse_sweeps": 36,
+        "cpu_threads": 4,
+        "cuda_allocator_fraction": 0.25,
+        "evaluation_draws": 8,
+        "grace_seconds": 30,
+        "host_memory_gib": 64,
+        "illumination_map_calls": 6,
+        "inner_seconds": 3540,
+        "interval": 2000,
+        "output_bytes": 8589934592,
+        "shader_calls": 17186,
+        "shadow_rays": 13210927104,
+        "smoothness_field_calls": 12,
+        "surface_q_batches": 10000,
+        "surface_q_pairs": 1280000,
+        "surface_q_predictor_calls": 20000,
+        "surface_q_predictor_points": 2560000,
+        "updates_per_arm": 10000,
+        "wall_seconds": 7500
+      },
+      "representation": {
+        "evaluation_tape_seed_offset": 1600000,
+        "export_world_Q_atol": 1e-06,
+        "initial_Q_atol": 2e-08,
+        "initial_RGB_atol": 1e-06,
+        "initial_gate_seed": 120008,
+        "initial_width": 0.25,
+        "native_gate_points": 24,
+        "perturbation": "legacy_scalar_only_v1",
+        "training_tape_seed_offset": 603300000
+      },
+      "spatial_policy": {
+        "batch_pairs": 128,
+        "coefficient": 0.05,
+        "diagnostic_pairs": 1024,
+        "expected_mesh_faces": 248908,
+        "expected_pairs": 362520,
+        "max_face_dihedral_degrees": 15.0,
+        "max_surface_distance": 0.02,
+        "pair_sampling": "uniform edge permutations without replacement",
+        "reference_distance": 0.02,
+        "rng_seed": 26061
+      },
+      "work": {
+        "boundary_predictor_calls": 12,
+        "boundary_predictor_points": 29688,
+        "component_reverse_sweeps": 36,
+        "shader_calls": 17186,
+        "shadow_rays": 13210927104,
+        "surface_q_batches": 10000,
+        "surface_q_pairs": 1280000,
+        "surface_q_predictor_calls": 20000,
+        "surface_q_predictor_points": 2560000
+      }
+    }
+  },
+  "base_initial": {
+    "bytes": 141,
+    "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/initial.json",
+    "sha256": "0407da2d23f545004a5505e475d497ba2c41760988048d2ff09654e18b5ab6a9"
+  },
+  "boundary_policy": {
+    "crossing": "one strict plane only",
+    "maximum_native_distance": 0.02,
+    "minimum_native_distance": 1e-06,
+    "offset_fraction": 0.5,
+    "order": "plane, original face index",
+    "ratio_floor": 1e-12,
+    "used_for_training": false
+  },
+  "boundary_probe_count": 2474,
+  "controls": {
+    "K1-Dense": {
+      "bytes": 240571,
+      "path": "/home/isavand/paper/evidence/bell-known-l2-recovery-v1-ae30459b3e43439ea43edb336a886bf1/K1/recovery.json",
+      "sha256": "e7acb12cee2dca33b054b05bc61677dcac487c4c7d3346b39e2ecb338782c4d1"
+    },
+    "K2-Dense": {
+      "bytes": 247509,
+      "path": "/home/isavand/paper/evidence/bell-known-l2-completion-v3-7527484d82c84762ba4a2b4d2046d3ab/K2/recovery.json",
+      "sha256": "59a6f8603507edce77be0a0c0d5d1c55b3095e89b6c417ec19c0f574d9ac3759"
+    },
+    "K3-Dense": {
+      "bytes": 247694,
+      "path": "/home/isavand/paper/evidence/bell-known-l2-completion-v3-7527484d82c84762ba4a2b4d2046d3ab/K3/recovery.json",
+      "sha256": "5814804ea465317a64933d210e9047668234c20b2391be8f728369e032fd80cc"
+    }
+  },
+  "dataset": {
+    "admission": {
+      "bytes": 1714,
+      "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2-admission.json",
+      "sha256": "87197a0bc7e5cec3a320ed92193ac25e238151b2cfb408af58a79b0c20e7399c"
+    },
+    "generation": {
+      "bytes": 66671,
+      "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2/reference/generation.json",
+      "sha256": "d68db52c2d491f2fbf4870b1021bec0240355ae1e7f7c9c33ef1390622a027b4"
+    },
+    "verification": {
+      "bytes": 39637,
+      "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2-verification-v2/verification.json",
+      "sha256": "f0081135df01a7a89f0a640f6fd8e166a9aabfc9bd7fc5737ecaaed8ed9a1cd4"
+    }
+  },
+  "foreground_seconds": 11160,
+  "held_out_support": {
+    "bytes": 89588,
+    "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2-verification-v2/held-out-support.npz",
+    "sha256": "5c131b9304aac83667956d16c48ad5b5d893e1624df20b8a0137f6fc9e12eb3e"
+  },
+  "host_output": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v1-56dd4749f2bf4542ac57e5d6758010c9",
+  "host_reference": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2/reference",
+  "image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "integer_domain_hashes": {
+    "diagnostic_ids": "77a342fc6ac8773a8340562da29fc4e83b82ff62a11fc0a241b52bd0db1061e5",
+    "face_pairs": "ec2fb1dfb15d511d0f903f4fc52c64f6dfcc4194b8933a505c9766dd7524cbc2",
+    "fitting_camera_count": "f3a8ef2f7207369e6e34f21d4293f98a141d2d3ba989248a09091a8cc6351b5d",
+    "training_ids": "bc878932c4a0ceea1fdd8d8713f969e8cbde6f3f4b358d5067b636732939baff"
+  },
+  "integer_probe_hashes": {
+    "face_ids": "de6b4416f3fdbfe54ef24a6ea3b2d7fa3f75ec1272ce7bd09da9807699b154e5",
+    "plane_ids": "b20457a118c945c72b7203aab5ea09203d185135641cabac41fcfd2484bd392a"
+  },
+  "lighting_policy": {
+    "diffuse_white_material_gradient": 0.0,
+    "direct": "known_env_v1",
+    "environment": {
+      "ambient": [
+        0.01,
+        0.01,
+        0.01
+      ],
+      "lobes": [
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            -1.0,
+            0.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "power": 64
+        }
+      ]
+    },
+    "indirect": "zero_bounce_v1",
+    "map_max_abs": 2e-05,
+    "map_relative_L2": 2e-06
+  },
+  "mesh": {
+    "bytes": 4729497,
+    "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/geometry/mesh.ply",
+    "sha256": "4ea98341ca915cf55f2b37581556583308cc50a8e2d2d8d48140d49224866e01"
+  },
+  "order": [
+    "K1-Dense",
+    "K2-Dense",
+    "K3-Dense"
+  ],
+  "panel": [
+    0,
+    4,
+    19,
+    2,
+    127,
+    71,
+    73,
+    56,
+    75,
+    95,
+    93,
+    110,
+    91,
+    7,
+    5,
+    3,
+    105,
+    114
+  ],
+  "photometric_index_sha256": "ef14c749c0dbe1470f77a8fe8240907e612be0abbfa738b5889185e1b752bff8",
+  "policy": {
+    "RGB_loss": "original Charbonnier on linear RGB, epsilon=.001",
+    "amsgrad": true,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "compatibility_SE_multiplier": 6,
+    "compatibility_absolute": 0.001,
+    "compatibility_relative": 0.02,
+    "diffuse_white_prior": 0.01,
+    "end_iter": 100000,
+    "end_warm": 1000,
+    "eps": 0.0001,
+    "gradient_clip": 0.7,
+    "lr_initial": 0.001,
+    "material_prior": "unchanged legacy_v1",
+    "optimizer": "original A Adam",
+    "orientation_eligibility_gap": 0.1,
+    "scheduled_lr": 0.0005,
+    "scheduler": "original WarmUpCosLR",
+    "seed": 6033,
+    "weight_decay": 0
+  },
+  "protocol": "bell-kurt-dense-known-L2-recovery-v1",
+  "reference_freeze_sha256": "fa2c6a69e1f7347e9ecdae206a3fe881a28fea22f6ec89d691e499c1b476a6fd",
+  "sampler_snapshots": {
+    "0": "47f5be5d0711bc29ec70595676f337c64ca40beee2de0062f4d69d684b3e7d8e",
+    "10000": "5d7bb1e16106b391c91dc2f5921507139cb93db4c2c629d1baa2ea0419181811",
+    "2000": "c9369049ee3184465cac4bb15f35ad84bf6bc5ff4642df2c8b8d50cc3ad90c92",
+    "4000": "86f7f1180cd08a07e6f38af14accb9d3731377cedb872a69bb6140906c115036",
+    "6000": "86e499e927f6d5d491a6e428dedeb6ca81fa29c1a4e4fceb568cac4b2b99bc37",
+    "8000": "d038bb1bc4e6be261abe323a8f5fe569a2da80db5847bc6fb5947198386910df"
+  },
+  "schema_version": 1,
+  "shader": {
+    "anisotropy": true,
+    "change_eps": 0.02,
+    "change_type": "gaussian",
+    "diffuse_sample_num": 512,
+    "human_lights": false,
+    "illumination_mode": "known_env_v1",
+    "indirect_mode": "zero_bounce_v1",
+    "inner_light_exp_max": 20,
+    "is_real": false,
+    "known_environment": {
+      "ambient": [
+        0.01,
+        0.01,
+        0.01
+      ],
+      "lobes": [
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            -1.0,
+            0.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "power": 64
+        }
+      ]
+    },
+    "light_exp_max": 20,
+    "outer_light_version": "direction",
+    "random_azimuth": true,
+    "reg_change": true,
+    "reg_energy_loss": true,
+    "reg_energy_loss_lambda": 0.05,
+    "reg_lambda1": 0.05,
+    "reg_spec_loss": true,
+    "reg_spec_loss_lambda": 0.05,
+    "regularization_version": "legacy_v1",
+    "specular_sample_num": 1024
+  },
+  "sources": {
+    "benchmarks/bell_dense_known_l2_v1.py": "190aeba55cfa4f4f066296ebf680bcb99e3f0dc5537c3f95318597db60eac171",
+    "docs/evidence/BELL_DENSE_KNOWN_L2_ADMISSION_CANDIDATE_V1.json": "4100318fb136928738e25cc53b35009ba5ee1d5a4f34859e5b2bd7035a24988f",
+    "docs/protocols/BELL_DENSE_KNOWN_L2_RECOVERY_V1.md": "00d31e5dfcc9ea0f39e9aa2bf0b86d1ebdcf02db6fa508b77ab666e0ff618100",
+    "docs/results/bell_dense_reference_v2/artifact-manifest.json": "a02d1aa615644113e2962da48a678ebbdcebd83ab87ce097adb669c0615b8ecf",
+    "docs/results/bell_known_l2_recovery_v1/artifact-manifest.json": "80bf7383c1b42ef6b4c7b841182aa8cc6723fe3b830a851691892d7b863fe712",
+    "experiments/analyze_bell_dense_known_l2_v1.py": "04869e776fbf6f65291950cc33a6cccaaadfe1ae903387945e4b4e296c639cd6",
+    "experiments/run_bell_dense_known_l2_v1.sh": "fe0e52a610107f329bd57a3df21c5245b9c09143201fee65421e7b1aa2a53550",
+    "experiments/train_bell_dense_known_l2_v1.py": "c4b459419f7bef59c791595a7c925f5d4e359edbd4b71f3af24bf6345bfcc431",
+    "tests/benchmarks/test_bell_dense_known_l2_v1.py": "b96e5ddece9d3374dc773d14cbe04839894f9493de48d2b008fca5c46f57afd6"
+  },
+  "sparse_analysis": {
+    "bytes": 2622008,
+    "path": "/home/isavand/paper/evidence/bell-known-l2-completion-v3-7527484d82c84762ba4a2b4d2046d3ab-analysis-v1/combined-analysis.json",
+    "sha256": "b71037501fe52e93781ff37eb436ef3c75bff32096a50f6673027c5336e0a440"
+  },
+  "splits": {
+    "fitting": [
+      0,
+      4,
+      19,
+      2,
+      127,
+      71,
+      73,
+      56,
+      75,
+      95,
+      93,
+      110,
+      91,
+      7,
+      5,
+      3
+    ],
+    "held_out": [
+      105,
+      114
+    ]
+  },
+  "steps": [
+    0,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "training_projection": {
+    "batch_size": 512,
+    "effective_passes": 78.26472431556581,
+    "evaluation_shader_calls": 7152,
+    "evaluation_shading_observations": 3480048,
+    "fitting_observations": 65419,
+    "full_batches_per_permutation": 127,
+    "held_observations": 7082,
+    "training_slots": 5120000,
+    "unused_tail_per_full_permutation": 395
+  }
+}
