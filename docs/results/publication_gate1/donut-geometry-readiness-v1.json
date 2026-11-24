@@ -1,0 +1,346 @@
+{
+  "BVH_or_RGB_calls": 0,
+  "bounds": [
+    [
+      -0.4915902614593506,
+      -0.4914858937263489,
+      -0.14372584223747253
+    ],
+    [
+      0.491009920835495,
+      0.4921463131904602,
+      0.14454561471939087
+    ]
+  ],
+  "checkpoint_loaded": false,
+  "dataset": {
+    "admission": {
+      "bytes": 6626,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9-admission.json",
+      "sha256": "a6eab416054c5bf74b43834c3be224847e2d78d9af7eb4989745fe37333618fb"
+    },
+    "generation": {
+      "bytes": 25006,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/generation.json",
+      "sha256": "de8dda85559b286456d926e09731c6c501dfcbd6707d1aaf3aef9cf8784c58a0"
+    },
+    "verification": {
+      "bytes": 15604,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9-verification-v1.json",
+      "sha256": "22e7894fdba2f84ed0355299999cc74a1784cb40c74667f7b0b9e432cb598340"
+    }
+  },
+  "exact_degenerate_faces": 4,
+  "faces": 371680,
+  "fitted_transform": false,
+  "inputs": {
+    "/home/isavand/nero/final_results/meshes/donut_shape-300000.ply": {
+      "bytes": 7062117,
+      "path": "/home/isavand/nero/final_results/meshes/donut_shape-300000.ply",
+      "sha256": "1206fa06e7b1b724731082dd8cc22185afa62bc2b14600ad54fb6593a758f20c"
+    },
+    "native-chart-orientation-reference.npz": {
+      "bytes": 804634,
+      "path": "/home/isavand/paper/evidence/donut-blend-inspection-v2/native-chart-orientation-reference.npz",
+      "sha256": "cc498faabe0b8b3e2ebf63a87a51d48316396b90e8650098cf19a559f442834c"
+    },
+    "oracle-geometry-and-frames.npz": {
+      "bytes": 2589411,
+      "path": "/home/isavand/paper/evidence/donut-blend-inspection-v2/oracle-geometry-and-frames.npz",
+      "sha256": "cfe903c177dfe404c47390aed2a3fa025ea9499ca0af644dba667b721c0139f1"
+    },
+    "transforms_train.json": {
+      "bytes": 86413,
+      "path": "/home/isavand/nero/data/nerf_synthetic/donut/transforms_train.json",
+      "sha256": "89fc7b8d05db69437f3654cac1a8c6e68a23cfb411c28703824e18f0fdcaa82a"
+    },
+    "view-0.npz": {
+      "bytes": 2403543,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-0.npz",
+      "sha256": "e570bfd965ad8a5775c44e4306a029f9b2c1515a0f9bb1f256cfff150cd8a134"
+    },
+    "view-1.npz": {
+      "bytes": 2187672,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-1.npz",
+      "sha256": "f8ce285b6b0f3c1280b0d3bb41562e813ff688cee4f0d75f320d5e445e173d7d"
+    },
+    "view-28.npz": {
+      "bytes": 2565614,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-28.npz",
+      "sha256": "44e6ddb03d8519f7c490ca2aafce395ed553f20f173a0d96babddc647115639b"
+    },
+    "view-34.npz": {
+      "bytes": 1308423,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-34.npz",
+      "sha256": "730739337f9fa08b6d6e9aceb8a34d121fae424d52991649b8175ad474226ba1"
+    },
+    "view-45.npz": {
+      "bytes": 2092230,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-45.npz",
+      "sha256": "949802ee07a2b196ba1d6347f314df6ff31b66613eb1e0145bf4fd163527fe55"
+    },
+    "view-50.npz": {
+      "bytes": 1383119,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-50.npz",
+      "sha256": "daff67e19645246274dfb937f21a943f3f93a0c145050b3c52fadd0e81e253e5"
+    }
+  },
+  "optimizer_updates": 0,
+  "oracle_bounds": [
+    [
+      -0.4922126563804099,
+      -0.4922126138056626,
+      -0.14330130815505981
+    ],
+    [
+      0.4922126138056626,
+      0.4922126138056626,
+      0.14330130815505981
+    ]
+  ],
+  "samples_per_camera_per_reference_class": 48,
+  "schema_version": 1,
+  "signed_volume": -0.13629176165896212,
+  "source_pins": {
+    "geometry": "79252178e65914ad1acbc14790b1514f276bfea0",
+    "material": "e1e859779301faced46d6476691e20b546c27ae0"
+  },
+  "status": "sampled_coordinate_compatibility_only",
+  "vertices": 185838,
+  "views": {
+    "0": {
+      "abs_depth": {
+        "max": 0.011021890651476074,
+        "median": 0.000619143912518938,
+        "p95": 0.004519322718490022
+      },
+      "counts": {
+        "both_hit": 47,
+        "both_miss": 48,
+        "oracle_only": 1,
+        "reconstruction_only": 0,
+        "reference_hit": 48,
+        "reference_miss": 48,
+        "transport_eligible": 47,
+        "transport_unresolved": 0
+      },
+      "director_deg": {
+        "max": 1.140447144933196,
+        "median": 0.2896750096292065,
+        "p95": 0.8075367640037027
+      },
+      "frame_Q_relative": {
+        "max": 0.05833265760490761,
+        "median": 0.00868346291254975,
+        "p95": 0.025264473930657914
+      },
+      "minimum_facing": 0.08455046375696168,
+      "nonpositive_facing": 0,
+      "normal_deg": {
+        "max": 4.838703725963849,
+        "median": 1.0036074290334243,
+        "p95": 2.0420143485624647
+      },
+      "position": {
+        "max": 0.011021843497173101,
+        "median": 0.0006191548950302573,
+        "p95": 0.00451929506456667
+      }
+    },
+    "1": {
+      "abs_depth": {
+        "max": 0.004437286756098224,
+        "median": 0.00041086421170000165,
+        "p95": 0.002373681398260707
+      },
+      "counts": {
+        "both_hit": 45,
+        "both_miss": 48,
+        "oracle_only": 3,
+        "reconstruction_only": 0,
+        "reference_hit": 48,
+        "reference_miss": 48,
+        "transport_eligible": 45,
+        "transport_unresolved": 0
+      },
+      "director_deg": {
+        "max": 1.0499290049853407,
+        "median": 0.2123693155370705,
+        "p95": 0.7742722393684002
+      },
+      "frame_Q_relative": {
+        "max": 0.02573166828671547,
+        "median": 0.005664218647032302,
+        "p95": 0.01928019028572883
+      },
+      "minimum_facing": 0.1232963035513305,
+      "nonpositive_facing": 0,
+      "normal_deg": {
+        "max": 2.669653795245047,
+        "median": 0.6542966349320116,
+        "p95": 1.7710982407447144
+      },
+      "position": {
+        "max": 0.004437308593121857,
+        "median": 0.00041086304328840815,
+        "p95": 0.0023736520783100624
+      }
+    },
+    "28": {
+      "abs_depth": {
+        "max": 0.002492041628504138,
+        "median": 0.0008100757460607344,
+        "p95": 0.0020279212772290824
+      },
+      "counts": {
+        "both_hit": 47,
+        "both_miss": 48,
+        "oracle_only": 1,
+        "reconstruction_only": 0,
+        "reference_hit": 48,
+        "reference_miss": 48,
+        "transport_eligible": 46,
+        "transport_unresolved": 1
+      },
+      "director_deg": {
+        "max": 1.4691167609037008,
+        "median": 0.31295616721998243,
+        "p95": 0.9297226865197781
+      },
+      "frame_Q_relative": {
+        "max": 0.03583993345604094,
+        "median": 0.008730960262473053,
+        "p95": 0.022789913557273493
+      },
+      "minimum_facing": 0.09323673262130588,
+      "nonpositive_facing": 0,
+      "normal_deg": {
+        "max": 1.9733172082842048,
+        "median": 0.7580293608769663,
+        "p95": 1.6475154755544037
+      },
+      "position": {
+        "max": 0.002492033376546342,
+        "median": 0.000810028383288152,
+        "p95": 0.002027907448741166
+      }
+    },
+    "34": {
+      "abs_depth": {
+        "max": 0.019085377652578783,
+        "median": 0.0008546546051615422,
+        "p95": 0.0034966194162822537
+      },
+      "counts": {
+        "both_hit": 47,
+        "both_miss": 48,
+        "oracle_only": 1,
+        "reconstruction_only": 0,
+        "reference_hit": 48,
+        "reference_miss": 48,
+        "transport_eligible": 47,
+        "transport_unresolved": 0
+      },
+      "director_deg": {
+        "max": 4.8814638890540545,
+        "median": 0.29346107518863396,
+        "p95": 1.3188151477393237
+      },
+      "frame_Q_relative": {
+        "max": 0.12187756882472256,
+        "median": 0.0077324980872199855,
+        "p95": 0.03236841589330779
+      },
+      "minimum_facing": 0.10487909057124208,
+      "nonpositive_facing": 0,
+      "normal_deg": {
+        "max": 8.408710882822216,
+        "median": 0.7044964118630256,
+        "p95": 1.963292166324046
+      },
+      "position": {
+        "max": 0.019085354239128133,
+        "median": 0.0008546589564767055,
+        "p95": 0.003496613559854984
+      }
+    },
+    "45": {
+      "abs_depth": {
+        "max": 0.004462030393196592,
+        "median": 0.0006641688263315793,
+        "p95": 0.0024054040109305454
+      },
+      "counts": {
+        "both_hit": 47,
+        "both_miss": 48,
+        "oracle_only": 1,
+        "reconstruction_only": 0,
+        "reference_hit": 48,
+        "reference_miss": 48,
+        "transport_eligible": 44,
+        "transport_unresolved": 3
+      },
+      "director_deg": {
+        "max": 1.239350941209179,
+        "median": 0.43229343165134326,
+        "p95": 1.0443365294452005
+      },
+      "frame_Q_relative": {
+        "max": 0.0306044186458446,
+        "median": 0.011377614004427192,
+        "p95": 0.025571301762034617
+      },
+      "minimum_facing": 0.12343068459564771,
+      "nonpositive_facing": 0,
+      "normal_deg": {
+        "max": 2.990434404662312,
+        "median": 0.7255497582581097,
+        "p95": 2.4281675894487873
+      },
+      "position": {
+        "max": 0.004462018307821048,
+        "median": 0.0006642125600360866,
+        "p95": 0.0024054189217143276
+      }
+    },
+    "50": {
+      "abs_depth": {
+        "max": 0.0206055476139948,
+        "median": 0.0008491456272797793,
+        "p95": 0.0023272911018382136
+      },
+      "counts": {
+        "both_hit": 46,
+        "both_miss": 48,
+        "oracle_only": 2,
+        "reconstruction_only": 0,
+        "reference_hit": 48,
+        "reference_miss": 48,
+        "transport_eligible": 38,
+        "transport_unresolved": 8
+      },
+      "director_deg": {
+        "max": 1.8607451904188357,
+        "median": 0.31271810381622966,
+        "p95": 0.9840595083032361
+      },
+      "frame_Q_relative": {
+        "max": 0.045456061877764804,
+        "median": 0.009478631254643353,
+        "p95": 0.024606202176494167
+      },
+      "minimum_facing": 0.05493219609756797,
+      "nonpositive_facing": 0,
+      "normal_deg": {
+        "max": 4.226404738273427,
+        "median": 0.790539780929082,
+        "p95": 2.27170571103862
+      },
+      "position": {
+        "max": 0.020605578422272022,
+        "median": 0.0008491541522896893,
+        "p95": 0.0023273028947940603
+      }
+    }
+  }
+}
