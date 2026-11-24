@@ -1,0 +1,339 @@
+{
+  "arms": {
+    "K1": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 25365707,
+          "sha256": "c7beb2d3f884a92e93abbb533a7e2cb0acacdce836ac256005def389eca542ad"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 25365771,
+          "sha256": "7c0cdc08f71a86095be56a77fb61b8020586c0eadc0d0a0a4b252823e30c25f5"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 25365707,
+          "sha256": "3821e110c769a1c1002d0f1bfa2b602b7ec852b26ffeafebcb6581b6725a09a4"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 25365643,
+          "sha256": "7fd8db0ed57971c33b81e1c74584e871340b391d7bd6d88d87d53f6660cc9620"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 25365771,
+          "sha256": "b864466efe9899f5eff31c617d9077150db2a9f26b22e96923d1ab7da1a9663a"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/bell-known-l2-recovery-v1-ae30459b3e43439ea43edb336a886bf1/K1-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 191294271,
+      "output_count": 897,
+      "receipt": {
+        "bytes": 240571,
+        "path": "/home/isavand/paper/evidence/bell-known-l2-recovery-v1-ae30459b3e43439ea43edb336a886bf1/K1/recovery.json",
+        "sha256": "e7acb12cee2dca33b054b05bc61677dcac487c4c7d3346b39e2ecb338782c4d1"
+      }
+    },
+    "K1-Dense": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 25805067,
+          "sha256": "acf7c497dee6115fc248a947a6292ebabe79af50c33e4eeca462e41e9879ac42"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 25805067,
+          "sha256": "9a6abe13551f3c79a4861fcd475212e50bc56a66815da735a92011db0bd6e212"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 25805131,
+          "sha256": "541d902c0cf50bd38865ffc91b86b09ec77c14d5be61ffd69199a188bf8a4673"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 25805067,
+          "sha256": "3eb807d0cae726d12bcefdceecd3c85b033b6c1574e0a26109f4f46703e2703a"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 25805067,
+          "sha256": "1472516abe286c4f366b1fd19c21118ac75d0d76c596f70aa6d69f982ece06a5"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a/K1-Dense-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 317826461,
+      "output_count": 2626,
+      "photometric_stream": {
+        "bytes": 20480000,
+        "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a/K1-Dense/photometric-indices.u32le",
+        "sha256": "ef14c749c0dbe1470f77a8fe8240907e612be0abbfa738b5889185e1b752bff8"
+      },
+      "receipt": {
+        "bytes": 679802,
+        "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a/K1-Dense/recovery.json",
+        "sha256": "1c41b73cbbf8bb7e13c5aa49b72259f10d8b50b42aee436e86da8a61f47d5987"
+      }
+    },
+    "K2": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 31508560,
+          "sha256": "66991fede7fd97a0b1d8c7f0e9100c8b591d577d50290bf69b5d46ef1645d3ff"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 31508560,
+          "sha256": "9f9c246639ed606b2b11361eea09abd14e03858696aee8380ecbd8dc926c586c"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 31508560,
+          "sha256": "315af78d452f0aafa2be80420c46fea34854ee600299495b4bc60abf22bc2325"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 31508496,
+          "sha256": "d4e0464df95c94e844cef8f71cb179e7086455eb1b5ea78ef43facf2b7c5bab9"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 31508560,
+          "sha256": "261bda60aa840e49d77653089c4c3c3e30591363b78ff5c23a8a659f22344697"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/bell-known-l2-completion-v3-7527484d82c84762ba4a2b4d2046d3ab/K2-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 252422522,
+      "output_count": 905,
+      "receipt": {
+        "bytes": 247509,
+        "path": "/home/isavand/paper/evidence/bell-known-l2-completion-v3-7527484d82c84762ba4a2b4d2046d3ab/K2/recovery.json",
+        "sha256": "59a6f8603507edce77be0a0c0d5d1c55b3095e89b6c417ec19c0f574d9ac3759"
+      }
+    },
+    "K2-Dense": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 31947920,
+          "sha256": "ecf31cfe60b0f1b2d9f462fce04fb6ffc669c8386a14471854f218bb999115e3"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 31947856,
+          "sha256": "94f31a7da8c3f7c502428afaf65c0307b3bae1050f1ff1da98fc82b0ed97c7a0"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 31947920,
+          "sha256": "fd2a814a89d9aa38574f759fc522f6b025c242922ff8a81982c04fa89247dcbd"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 31947856,
+          "sha256": "16d9a11c02d5b560efe370eae04354ffe22fa4364bd2fb672d6e509306c0ce54"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 31947856,
+          "sha256": "5d50f56e3519459844c21406e76d958a3997592c846955a562a422d14d66aeba"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a/K2-Dense-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 391062953,
+      "output_count": 2634,
+      "photometric_stream": {
+        "bytes": 20480000,
+        "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a/K2-Dense/photometric-indices.u32le",
+        "sha256": "ef14c749c0dbe1470f77a8fe8240907e612be0abbfa738b5889185e1b752bff8"
+      },
+      "receipt": {
+        "bytes": 685468,
+        "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a/K2-Dense/recovery.json",
+        "sha256": "fc3f12e1e3a935fa74106ed882a116b739c9fb5972b5e7a94e986b7b27424c5d"
+      }
+    },
+    "K3": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 31516752,
+          "sha256": "53dd34b2b5e3dd7f4bab96270d6d23d42f8cf58569915b40d27dc85350f0b449"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 31516752,
+          "sha256": "5af66a02b3794a6388e3095a60c8ff12b7439007e3deb79bda9f5262dc33616c"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 31516752,
+          "sha256": "b7c77e1d3b8e0b24b96e11642114faacaac500af253ae206fe061189fa682734"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 31516688,
+          "sha256": "f9665dbbe730dd85a966067e5a5f8ba06a25e96674801d4646c683a2e9c28bea"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 31516752,
+          "sha256": "9263f6eb2f9d6ea488767ebbc51990400371712aa3afd7220620a00a1529ff19"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/bell-known-l2-completion-v3-7527484d82c84762ba4a2b4d2046d3ab/K3-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 254542602,
+      "output_count": 905,
+      "receipt": {
+        "bytes": 247694,
+        "path": "/home/isavand/paper/evidence/bell-known-l2-completion-v3-7527484d82c84762ba4a2b4d2046d3ab/K3/recovery.json",
+        "sha256": "5814804ea465317a64933d210e9047668234c20b2391be8f728369e032fd80cc"
+      }
+    },
+    "K3-Dense": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 31956112,
+          "sha256": "83c9e78952993dc74dedd1a64bbc0238eee8e298c58a2f40d3ff262655a5b280"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 31956048,
+          "sha256": "ee524a1edbfcc8d018c1d5f93e11eaef557a4e9801a3affd1917c5dd6da2d659"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 31956112,
+          "sha256": "964ce7167cdbf624a749b3995d45486f086c1645e39cdc7e522369473ff7c4e9"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 31956112,
+          "sha256": "923f516d05e967cbc48f130d1ee1f0b5a103ee28e90cbc9d60b1f4234e4de3ae"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 31956048,
+          "sha256": "59a18738931ac88e6a9eabbcd810b467b1a8cd3de5b545de203d64b972fe3469"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a/K3-Dense-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 394793207,
+      "output_count": 2634,
+      "photometric_stream": {
+        "bytes": 20480000,
+        "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a/K3-Dense/photometric-indices.u32le",
+        "sha256": "ef14c749c0dbe1470f77a8fe8240907e612be0abbfa738b5889185e1b752bff8"
+      },
+      "receipt": {
+        "bytes": 685650,
+        "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a/K3-Dense/recovery.json",
+        "sha256": "045469103a2946daea0eee640a97df1222c22b9543a4b8bb42cf18774ea00fc6"
+      }
+    }
+  },
+  "authorization": {
+    "bytes": 8842,
+    "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a/authorization.json",
+    "sha256": "de7b05eb7eda6598a576a64fdf9ea18e0c0bfa7c519b466287fd317ef967a5b5"
+  },
+  "batch": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a",
+  "coverage": {
+    "bytes": 89588,
+    "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2-verification-v2/held-out-support.npz",
+    "sha256": "5c131b9304aac83667956d16c48ad5b5d893e1624df20b8a0137f6fc9e12eb3e"
+  },
+  "dataset": {
+    "admission": {
+      "bytes": 1714,
+      "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2-admission.json",
+      "sha256": "87197a0bc7e5cec3a320ed92193ac25e238151b2cfb408af58a79b0c20e7399c"
+    },
+    "generation": {
+      "bytes": 66671,
+      "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2/reference/generation.json",
+      "sha256": "d68db52c2d491f2fbf4870b1021bec0240355ae1e7f7c9c33ef1390622a027b4"
+    },
+    "verification": {
+      "bytes": 39637,
+      "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2-verification-v2/verification.json",
+      "sha256": "f0081135df01a7a89f0a640f6fd8e166a9aabfc9bd7fc5737ecaaed8ed9a1cd4"
+    }
+  },
+  "execution_commit": "f5838b53d889ce0f592417c3c7db0730e4e5fcf4",
+  "freeze": {
+    "bytes": 18381,
+    "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a/freeze.json",
+    "sha256": "1c7887d33f8f8ba3fb28cc48d795636ee2955eedbeebc7ead56bdef26736faf7"
+  },
+  "image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "offline_analysis": [
+    {
+      "bytes": 3316450,
+      "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a-analysis-v1/analysis.json",
+      "sha256": "941b26a391bfc7b47a45fcdee3b6bdde7aad67ac5ced60674e61c668e0fcc5a1"
+    },
+    {
+      "bytes": 798681,
+      "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a-analysis-v1/dense-vs-sparse.json",
+      "sha256": "cbaad73be1a323c23826f7a0727f3a4e370eb6e110165c1ff87f71ae1e4e03f4"
+    },
+    {
+      "bytes": 6440,
+      "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a-analysis-v1/summary.csv",
+      "sha256": "bf16b74528cf82077e7792df20da40349ed645e20a1e8b4f668ed75d6292d1fb"
+    }
+  ],
+  "packaged_files": {
+    "boundary-jumps.csv": {
+      "bytes": 1226,
+      "sha256": "288ac25703a58bad6d9838d75f6768916a67a007ea606228a8a3696e2cf725fa"
+    },
+    "checkpoint-metrics.csv": {
+      "bytes": 167312,
+      "sha256": "27f845cb7b6c5da779b5630308361cdf5f4b9504872602a98ea93ee13a109246"
+    },
+    "endpoint-diagnostics.json": {
+      "bytes": 3610,
+      "sha256": "ca1f673939009741ae62d5d2aabc43c0615ae00ec26f6b6ac76127ef601ebd9a"
+    },
+    "held-out-cameras.csv": {
+      "bytes": 860,
+      "sha256": "ab4138c122d8b15d898018aa999a48cb27fa6f1ed5fe123bf6b04cb4ba8e07f3"
+    },
+    "held-out-views.png": {
+      "bytes": 554340,
+      "sha256": "fac98b7c6333fa7dbee486cccb1da4c42f5955b5c3cb5ef7cb443a261061aebe"
+    },
+    "matched-endpoints.csv": {
+      "bytes": 72906,
+      "sha256": "10860fb9efab4dd114af79fce8f4ca7bc884950b76f3b8e6ae970d726f5214fd"
+    },
+    "recovery-curves.png": {
+      "bytes": 238296,
+      "sha256": "ad2c25efeaf5f5bb9a01b072320281671f2b0f636f54afbe29f92c1685dfc2e4"
+    }
+  },
+  "previous_failed_launch": {
+    "artifacts": {
+      "authorization.json": {
+        "bytes": 8842,
+        "sha256": "8e4e40ccbd52ffd8c17247cc9a6ca864b48d16cca633528dff0f0fa2d9fcb24d"
+      },
+      "freeze.json": {
+        "bytes": 17425,
+        "sha256": "49b2235d7ed716e77f8067a63a859cf8fe50cc2dbffc7bf84cbd89b1b1af83c6"
+      }
+    },
+    "authorization_sha256": "8e4e40ccbd52ffd8c17247cc9a6ca864b48d16cca633528dff0f0fa2d9fcb24d",
+    "commit": "977402c282691458ce5210573c8d31b0a28dff0a",
+    "freeze_sha256": "49b2235d7ed716e77f8067a63a859cf8fe50cc2dbffc7bf84cbd89b1b1af83c6",
+    "host_output": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v1-56dd4749f2bf4542ac57e5d6758010c9"
+  },
+  "schema_version": 1,
+  "sparse_analysis": {
+    "bytes": 2622008,
+    "path": "/home/isavand/paper/evidence/bell-known-l2-completion-v3-7527484d82c84762ba4a2b4d2046d3ab-analysis-v1/combined-analysis.json",
+    "sha256": "b71037501fe52e93781ff37eb436ef3c75bff32096a50f6673027c5336e0a440"
+  }
+}
