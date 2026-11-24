@@ -1,0 +1,243 @@
+{
+  "authorization": {
+    "bytes": 1835,
+    "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2/authorization.json",
+    "sha256": "dc69fee530f78607346c39452afd4f67418d3abf50ed15b01e1e92c19416fb2f"
+  },
+  "coverage": {
+    "dense": {
+      "fitting_observations": 65419,
+      "held_out": {
+        "105": {
+          "fitting_counts": [
+            2,
+            9,
+            70,
+            245,
+            573,
+            817,
+            622,
+            490,
+            337,
+            222,
+            148,
+            57,
+            14,
+            1,
+            0,
+            0,
+            0
+          ],
+          "highlight_counts": [
+            668,
+            1551,
+            1212,
+            155,
+            19,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "maximum_outgoing_angle_median": 89.23719786344762,
+          "no_fitting": 2,
+          "no_highlight": 668,
+          "observations": 3607,
+          "two_or_more_views": 3596
+        },
+        "114": {
+          "fitting_counts": [
+            6,
+            11,
+            79,
+            264,
+            534,
+            704,
+            605,
+            439,
+            370,
+            244,
+            144,
+            61,
+            13,
+            1,
+            0,
+            0,
+            0
+          ],
+          "highlight_counts": [
+            537,
+            1554,
+            1225,
+            144,
+            13,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "maximum_outgoing_angle_median": 89.62438429308816,
+          "no_fitting": 6,
+          "no_highlight": 537,
+          "observations": 3475,
+          "two_or_more_views": 3458
+        }
+      },
+      "observed_triangle_area": 0.2779440783863561
+    },
+    "matched_angular_change": {
+      "105": {
+        "median_increase_degrees": 17.53615317806544,
+        "observations": 1356
+      },
+      "114": {
+        "median_increase_degrees": 10.104157782326126,
+        "observations": 1315
+      }
+    },
+    "sparse": {
+      "fitting_observations": 17573,
+      "held_out": {
+        "105": {
+          "fitting_counts": [
+            290,
+            1961,
+            1316,
+            39,
+            1
+          ],
+          "highlight_counts": [
+            2877,
+            675,
+            55,
+            0,
+            0
+          ],
+          "maximum_outgoing_angle_median": 87.45231969459951,
+          "no_fitting": 290,
+          "no_highlight": 2877,
+          "observations": 3607,
+          "two_or_more_views": 1356
+        },
+        "114": {
+          "fitting_counts": [
+            296,
+            1864,
+            1271,
+            44,
+            0
+          ],
+          "highlight_counts": [
+            2743,
+            656,
+            76,
+            0,
+            0
+          ],
+          "maximum_outgoing_angle_median": 87.05923033175269,
+          "no_fitting": 296,
+          "no_highlight": 2743,
+          "observations": 3475,
+          "two_or_more_views": 1315
+        }
+      },
+      "observed_triangle_area": 0.09434518474122357
+    }
+  },
+  "execution_commit": "3cc52d681faf2387942835086b90b6699b70b3f6",
+  "exit_code": {
+    "bytes": 2,
+    "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2/exit-code.txt",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  "freeze": {
+    "bytes": 3262,
+    "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2/freeze.json",
+    "sha256": "fa2c6a69e1f7347e9ecdae206a3fe881a28fea22f6ec89d691e499c1b476a6fd"
+  },
+  "generation": {
+    "bytes": 66671,
+    "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2/reference/generation.json",
+    "sha256": "d68db52c2d491f2fbf4870b1021bec0240355ae1e7f7c9c33ef1390622a027b4"
+  },
+  "held_out_support": {
+    "bytes": 89588,
+    "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2-verification-v2/held-out-support.npz",
+    "sha256": "5c131b9304aac83667956d16c48ad5b5d893e1624df20b8a0137f6fc9e12eb3e"
+  },
+  "input_split": {
+    "fitting": [
+      0,
+      4,
+      19,
+      2,
+      127,
+      71,
+      73,
+      56,
+      75,
+      95,
+      93,
+      110,
+      91,
+      7,
+      5,
+      3
+    ],
+    "held_out": [
+      105,
+      114
+    ]
+  },
+  "outputs": {
+    "reference-preview.png": {
+      "bytes": 119179,
+      "sha256": "0069dcdb01dd2d16e79846e82f33f97de5e07ed7b8ea447bcd123291a3d02234"
+    },
+    "view-metrics.csv": {
+      "bytes": 1644,
+      "sha256": "d578d8a7ac97565c052aaaec66f6068a7b50f0d009dd6e00bac4be7861ee5832"
+    }
+  },
+  "package": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2/reference",
+  "replay_policy": {
+    "bytes": 920,
+    "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2-verification-v2/replay-policy.json",
+    "sha256": "0a7068b1375fe198ab715c042ccabd41d5f4d10f5131334e50e74228e930f984"
+  },
+  "schema_version": 1,
+  "status": "verified_pending_researcher_admission",
+  "training_projection": {
+    "batch_size": 512,
+    "effective_passes": 78.26472431556581,
+    "evaluation_shader_calls": 7152,
+    "evaluation_shading_observations": 3480048,
+    "fitting_observations": 65419,
+    "full_batches_per_permutation": 127,
+    "held_observations": 7082,
+    "training_slots": 5120000,
+    "unused_tail_per_full_permutation": 395
+  },
+  "verification": {
+    "bytes": 39637,
+    "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2-verification-v2/verification.json",
+    "sha256": "f0081135df01a7a89f0a640f6fd8e166a9aabfc9bd7fc5737ecaaed8ed9a1cd4"
+  },
+  "verified_artifact_count": 146
+}
