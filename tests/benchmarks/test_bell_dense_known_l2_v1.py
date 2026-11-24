@@ -97,3 +97,56 @@ def test_runtime_configures_the_original_native_route_and_dense_admission(arm,mo
         assert 'tensor_training' not in active
     else:
         assert active['tensor_training']['arms']==['D8-C','D8-T']
+
+
+def test_launcher_passes_the_same_freeze_to_docker(tmp_path):
+    """Exercise the actual shell expansion with a failing stand-in container."""
+    import os
+    import subprocess
+    from hashlib import sha256
+
+    repo = tmp_path/'source'
+    repo.mkdir()
+    freeze = repo/d.FREEZE
+    freeze.parent.mkdir(parents=True)
+    freeze.write_text('{}\n')
+    authorization = tmp_path/'authorized-fixture.json'
+    authorization.write_text('{}\n')
+    batch = tmp_path/'batch'
+
+    # The subprocess remains host-only. Stub preflight verification, image
+    # inspection and Docker, while using the actual launcher under set -u.
+    bin_dir = tmp_path/'bin'
+    bin_dir.mkdir()
+
+    def stub(name, body):
+        path = bin_dir/name
+        path.write_text('#!/bin/sh\n'+body+'\n')
+        path.chmod(0o755)
+
+    stub('id','case "$1" in -u|-g) printf "1000\\n";; *) exit 2;; esac')
+    stub('git','case "$3" in status) exit 0;; rev-parse) printf "fixture-commit\\n";; *) exit 2;; esac')
+    stub('python3','cat >/dev/null\nprintf "%s\\n" "$FIXTURE_PREFLIGHT"')
+    stub('docker',"""case "$1" in
+    image) printf '%s\\n' "$FIXTURE_IMAGE";;
+    ps) exit 0;;
+    run) printf '%s\\n' "$@" > "$FIXTURE_ARGV"; exit 23;;
+    *) exit 2;;
+esac""")
+    argv_file = tmp_path/'docker-argv'
+    expected_mounts = ('oracle.ply','reference','admission.json','verification.json','base-initial.json')
+    preflight = '\n'.join([str(batch),d.IMAGE,
+                           *(f'{tmp_path/name}\t/inputs/{name}' for name in expected_mounts),
+                           *(str(tmp_path/(arm+'-initial.json')) for arm in d.ARMS)])
+    env = dict(os.environ,PATH=str(bin_dir)+os.pathsep+os.environ['PATH'],BELL_TRAIN_SOURCE=str(repo),
+               BELL_TRAIN_AUTH=str(authorization),FIXTURE_PREFLIGHT=preflight,FIXTURE_IMAGE=d.IMAGE,
+               FIXTURE_ARGV=str(argv_file))
+    launch = d.ROOT/'experiments/run_bell_dense_known_l2_v1.sh'
+    result = subprocess.run(['bash',str(launch)],env=env,capture_output=True,text=True,timeout=15)
+    assert result.returncode!=0 and 'unbound variable' not in result.stderr, result.stderr
+    args = argv_file.read_text().splitlines()
+    assert args[args.index('--freeze')+1]=='/workspace/'+d.FREEZE
+    assert args[args.index('--freeze-sha256')+1]==sha256(freeze.read_bytes()).hexdigest()
+    assert args[args.index('--phase')+1]=='K1-Dense'
+    assert (batch/'K1-Dense-exit-code.txt').read_text().strip()=='23'
+    assert not (batch/'K2-Dense-exit-code.txt').exists()

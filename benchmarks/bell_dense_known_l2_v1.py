@@ -29,7 +29,11 @@ ADMISSION = '87197a0bc7e5cec3a320ed92193ac25e238151b2cfb408af58a79b0c20e7399c'
 MATCH = {arm+'-Dense':arm for arm in known.ARMS}
 ARMS = tuple(MATCH)
 PROTOCOL = 'bell-kurt-dense-known-L2-recovery-v1'
-FREEZE = 'docs/protocols/BELL_DENSE_KNOWN_L2_RECOVERY_V1.freeze.json'
+V1_FREEZE = 'docs/protocols/BELL_DENSE_KNOWN_L2_RECOVERY_V1.freeze.json'
+V1_SHA = '49b2235d7ed716e77f8067a63a859cf8fe50cc2dbffc7bf84cbd89b1b1af83c6'
+V1_COMMIT = '977402c282691458ce5210573c8d31b0a28dff0a'
+V1_AUTH_SHA = '8e4e40ccbd52ffd8c17247cc9a6ca864b48d16cca633528dff0f0fa2d9fcb24d'
+FREEZE = 'docs/protocols/BELL_DENSE_KNOWN_L2_RECOVERY_V2.freeze.json'
 STREAM = 'photometric-indices.u32le'
 FOREGROUND_SECONDS = known.FOREGROUND_SECONDS
 INDEX_DTYPE = np.dtype('<u4')
@@ -139,9 +143,38 @@ def index_hash(size, seed=known.POLICY['seed'], updates=10000, batch=512):
     return h.hexdigest()
 
 
+def original_launch():
+    path = ROOT/V1_FREEZE
+    require(b.digest(path)==V1_SHA,'Historical dense training freeze differs')
+    return b.read(path)
+
+
+def verify_prior_launch(f):
+    old = original_launch()
+    root = Path(old['host_output'])
+    files = f['failed_launch']['artifacts']
+    require(root.resolve()==root and {p.name for p in root.iterdir()}==set(files)=={'authorization.json','freeze.json'},
+            'Unexpected evidence in the pre-Docker failure directory')
+    for name,item in files.items():
+        b.check_artifact(root/name,item)
+    auth = root/'authorization.json'
+    require(b.digest(auth)==V1_AUTH_SHA and b.digest(root/'freeze.json')==V1_SHA
+            and b.read(auth)==authorization(old,V1_COMMIT,V1_SHA)
+            and b.digest(root.with_name(root.name+'-authorization.json'))==V1_AUTH_SHA,
+            'Pre-Docker failure launch identity differs')
+
+
 def freeze(path, sha):
     require(path.resolve()==path and b.digest(path)==sha,'Dense training freeze differs')
     f = b.read(path)
+    old = original_launch()
+    inherited = {k:v for k,v in old.items() if k not in ('host_output','sources')}
+    require(all(f[k]==value for k,value in inherited.items())
+            and f['host_output']!=old['host_output']
+            and f['failed_launch']['host_output']==old['host_output']
+            and f['failed_launch']['commit']==V1_COMMIT and f['failed_launch']['freeze_sha256']==V1_SHA
+            and f['failed_launch']['authorization_sha256']==V1_AUTH_SHA,
+            'Repaired launcher must preserve the approved scientific definition')
     sparse = sparse_definition()
     ref = b.read(ROOT/REFERENCE_MANIFEST)
     pending = b.read(ROOT/CANDIDATE)

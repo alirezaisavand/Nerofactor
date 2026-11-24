@@ -6,7 +6,8 @@ test "$(id -u)" -ne 0
 test "$(realpath "$BELL_TRAIN_SOURCE")" = "$BELL_TRAIN_SOURCE"
 test -z "$(git -C "$BELL_TRAIN_SOURCE" status --porcelain)"
 commit=$(git -C "$BELL_TRAIN_SOURCE" rev-parse HEAD)
-freeze="$BELL_TRAIN_SOURCE/docs/protocols/BELL_DENSE_KNOWN_L2_RECOVERY_V1.freeze.json"
+freeze_name=docs/protocols/BELL_DENSE_KNOWN_L2_RECOVERY_V2.freeze.json
+freeze="$BELL_TRAIN_SOURCE/$freeze_name"
 arms=(K1-Dense K2-Dense K3-Dense)
 sha=$(sha256sum "$freeze" | cut -d' ' -f1)
 auth_sha=$(sha256sum "$BELL_TRAIN_AUTH" | cut -d' ' -f1)
@@ -28,6 +29,7 @@ h.geometry(f,Path(f['mesh']['path']))
 h.dataset(f,Path(f['host_reference']),Path(files['admission']['path']),Path(files['verification']['path']))
 ref.check_artifact(Path(f['base_initial']['path']),f['base_initial'])
 h.verify_controls(f)
+h.verify_prior_launch(f)
 ref.check_artifact(Path(f['held_out_support']['path']),f['held_out_support'])
 print(out)
 print(h.IMAGE)
