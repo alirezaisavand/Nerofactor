@@ -1,0 +1,77 @@
+{
+  "audit_sha256": "d134b7f228481c0279c7890c01e5370c03a06d5bea76f0ccda76a8ab68f5dcd3",
+  "failed_batch": "/home/isavand/paper/evidence/bell-dense-reference-v1-c13519bb96174bdd90c574abf1f6d58d",
+  "failure_files": {
+    "authorization.json": {
+      "bytes": 1305,
+      "sha256": "5196e1a5ab6ceb5649ef3c5e1492ceaa195906ebfa40abc935988eefbfe320d5"
+    },
+    "console.txt": {
+      "bytes": 1139,
+      "sha256": "180701057b9d715170ec7c99573125ea88ad6d99dfe68354a215c8de96379913"
+    },
+    "container.cid": {
+      "bytes": 64,
+      "sha256": "ecf50d864e7a0a392bed94ac38559da3d654cf0ecada56eb50b1ad78ea04f856"
+    },
+    "exit-code.txt": {
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    "freeze.json": {
+      "bytes": 61602,
+      "sha256": "b72efa61da2596166b358f7d2452af46c64fa2331e35682b16569916fcb73842"
+    },
+    "reference/generation.json": {
+      "bytes": 29581,
+      "sha256": "b7a0e9aac8095aeb703ce909ea967f46d9efc1d04fd11267fcd14fb9bb72b43b"
+    }
+  },
+  "host_output": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2",
+  "limits": {
+    "BRDF_point_directions": 15099822080,
+    "CPU_primary_crosschecks": 0,
+    "cpu_threads": 4,
+    "cuda_allocator_fraction": 0.25,
+    "direction_chunk": 16384,
+    "grace_seconds": 30,
+    "host_memory_gib": 64,
+    "inner_seconds": 7080,
+    "output_bytes": 536870912,
+    "point_batch": 4,
+    "primary_rays": 0,
+    "shadow_directions": 15099822080,
+    "slope_nodes_attempted": 3649126400,
+    "slope_nodes_returned": 3649126400,
+    "wall_seconds": 7200
+  },
+  "prefix_patches": 32,
+  "previous_freeze_sha256": "b72efa61da2596166b358f7d2452af46c64fa2331e35682b16569916fcb73842",
+  "protocol": "bell-kurt-heterogeneous-dense-reference-v2",
+  "refinement": {
+    "baseline_grids": [
+      256,
+      512
+    ],
+    "high_grids": [
+      1024,
+      2048
+    ],
+    "max_refinements_per_pixel": 1,
+    "per_view": 64,
+    "selection": "Donut v2 maximum channel for absolute, RGB squared difference for pooled, lower pixel ID ties",
+    "total": 128
+  },
+  "schema_version": 1,
+  "sources": {
+    "benchmarks/bell_dense_reference_v2.py": "edae17b37e2255d952bc1c37adfb95492ee833486a7357385beed526a79e4f11",
+    "docs/protocols/BELL_DENSE_REFERENCE_V1.freeze.json": "b72efa61da2596166b358f7d2452af46c64fa2331e35682b16569916fcb73842",
+    "docs/protocols/BELL_DENSE_REFERENCE_V2.md": "f3e73cdbdaa3d8e4c6bb21691a7f05b198448dfe1207fc3ea4608dcb84d5d53b",
+    "docs/results/bell_dense_reference_failure_v1/README.md": "78574939d2e50a2c0cf0763aee93a8f95124e7cea5c05b4a6e6d87299b4a003b",
+    "docs/results/bell_dense_reference_failure_v1/analysis.json": "d134b7f228481c0279c7890c01e5370c03a06d5bea76f0ccda76a8ab68f5dcd3",
+    "experiments/audit_bell_dense_reference_failure_v1.py": "558e6ff8baf309c7b51440b1655b10bf01b5509b35a6fad9e30b66664f32c03c",
+    "experiments/bell_dense_reference_v2.py": "64d1defb4060ace50418c9bf091e37153f0860792bba2c2957e2592601e47598",
+    "experiments/run_bell_dense_reference_v2.sh": "2c7dcb39ce187cb0168eedb0a1c8079c4b6f3b9b29baecc282282eea82d2443a",
+    "tests/benchmarks/test_bell_dense_reference_v2.py": "a677488d83394faa13bce3c4562a75d64b094e34cd933dc83030eb0b74ac45ff"
+  }
+}

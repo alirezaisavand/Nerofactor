@@ -1,0 +1,336 @@
+{
+  "after_saved_patches": {
+    "RGB_residual_L2": 0.011164951327837944,
+    "absolute_offenders": 0,
+    "diffuse_residual_L2": 0.0009832961531196934,
+    "specular_residual_L2": 0.01032040248882022,
+    "view": {
+      "ordinary_incident_convergence": {
+        "maximum_rgb_difference": 6.46822747055742e-05,
+        "passed": true,
+        "relative_l2": 5.458492703250414e-05
+      },
+      "ordinary_slope_vs_incident": {
+        "maximum_rgb_difference": 2.2046730464131414e-05,
+        "passed": true,
+        "relative_l2": 1.8614399239225425e-05
+      },
+      "radiance_convergence": {
+        "maximum_rgb_difference": 0.0014799307599944744,
+        "passed": false,
+        "relative_l2": 0.0020850671840907248
+      },
+      "reflectance_convergence": {
+        "maximum_rgb_difference": 2.554623324990679e-06,
+        "passed": true,
+        "relative_l2": 2.0952770566931748e-06
+      }
+    }
+  },
+  "authorization_sha256": "5196e1a5ab6ceb5649ef3c5e1492ceaa195906ebfa40abc935988eefbfe320d5",
+  "baseline": {
+    "RGB_residual_L2": 0.016433605564931484,
+    "absolute_offenders": 3,
+    "diffuse_residual_L2": 0.001413125915660636,
+    "specular_residual_L2": 0.015140975270173282,
+    "view": {
+      "ordinary_incident_convergence": {
+        "maximum_rgb_difference": 6.46822747055742e-05,
+        "passed": true,
+        "relative_l2": 5.458492703250414e-05
+      },
+      "ordinary_slope_vs_incident": {
+        "maximum_rgb_difference": 2.2046730464131414e-05,
+        "passed": true,
+        "relative_l2": 1.8614399239225425e-05
+      },
+      "radiance_convergence": {
+        "maximum_rgb_difference": 0.004276785816722556,
+        "passed": false,
+        "relative_l2": 0.0030691876324500365
+      },
+      "reflectance_convergence": {
+        "maximum_rgb_difference": 2.554623324990679e-06,
+        "passed": true,
+        "relative_l2": 2.0952770566931748e-06
+      }
+    }
+  },
+  "cleanup_verified": true,
+  "counters": {
+    "BRDF_point_directions": 1249443840,
+    "CPU_primary_crosschecks": 0,
+    "primary_rays": 0,
+    "shadow_directions": 1249443840,
+    "slope_nodes_attempted": 270417920,
+    "slope_nodes_returned": 270417920
+  },
+  "deterministic_trace": [
+    {
+      "maximum_rgb_difference": 0.0036782902894455377,
+      "passed": false,
+      "pixel": 7368,
+      "relative_l2": 0.0029507095820008205
+    },
+    {
+      "maximum_rgb_difference": 0.0033918881459500255,
+      "passed": false,
+      "pixel": 9402,
+      "relative_l2": 0.0028600050258959335
+    },
+    {
+      "maximum_rgb_difference": 0.0028626559473997892,
+      "passed": false,
+      "pixel": 9532,
+      "relative_l2": 0.002780394287308215
+    },
+    {
+      "maximum_rgb_difference": 0.0028027382928423467,
+      "passed": false,
+      "pixel": 6857,
+      "relative_l2": 0.0027208821478550606
+    },
+    {
+      "maximum_rgb_difference": 0.002444119131174663,
+      "passed": false,
+      "pixel": 8001,
+      "relative_l2": 0.0026652709856484513
+    },
+    {
+      "maximum_rgb_difference": 0.002444119131174663,
+      "passed": false,
+      "pixel": 6729,
+      "relative_l2": 0.002620835875398249
+    },
+    {
+      "maximum_rgb_difference": 0.0024439953640149614,
+      "passed": false,
+      "pixel": 9024,
+      "relative_l2": 0.002575949377760478
+    },
+    {
+      "maximum_rgb_difference": 0.0024439953640149614,
+      "passed": false,
+      "pixel": 7619,
+      "relative_l2": 0.0025314314963250334
+    },
+    {
+      "maximum_rgb_difference": 0.002186126643491604,
+      "passed": false,
+      "pixel": 8256,
+      "relative_l2": 0.002486184548021945
+    },
+    {
+      "maximum_rgb_difference": 0.002186126643491604,
+      "passed": false,
+      "pixel": 9656,
+      "relative_l2": 0.002448608682447818
+    },
+    {
+      "maximum_rgb_difference": 0.0021383384925984655,
+      "passed": false,
+      "pixel": 7620,
+      "relative_l2": 0.0024105988663711223
+    },
+    {
+      "maximum_rgb_difference": 0.0020665680939410958,
+      "passed": false,
+      "pixel": 8127,
+      "relative_l2": 0.002374294773189688
+    },
+    {
+      "maximum_rgb_difference": 0.0019319899407695268,
+      "passed": false,
+      "pixel": 7496,
+      "relative_l2": 0.0023388353474147077
+    },
+    {
+      "maximum_rgb_difference": 0.0017819195045211955,
+      "passed": false,
+      "pixel": 9151,
+      "relative_l2": 0.0023105720423808956
+    },
+    {
+      "maximum_rgb_difference": 0.0017282928140623932,
+      "passed": false,
+      "pixel": 9531,
+      "relative_l2": 0.002287289648319302
+    },
+    {
+      "maximum_rgb_difference": 0.001588322984175522,
+      "passed": false,
+      "pixel": 9527,
+      "relative_l2": 0.002261651389237333
+    },
+    {
+      "maximum_rgb_difference": 0.0014388658844242674,
+      "passed": false,
+      "pixel": 6600,
+      "relative_l2": 0.0022412514712167176
+    },
+    {
+      "maximum_rgb_difference": 0.0012938152377364731,
+      "passed": false,
+      "pixel": 7113,
+      "relative_l2": 0.002222732104855342
+    },
+    {
+      "maximum_rgb_difference": 0.0012536531275179341,
+      "passed": false,
+      "pixel": 8002,
+      "relative_l2": 0.0022082918542737
+    },
+    {
+      "maximum_rgb_difference": 0.0012349623997164189,
+      "passed": false,
+      "pixel": 7497,
+      "relative_l2": 0.0021941162286765532
+    },
+    {
+      "maximum_rgb_difference": 0.0012349623997164189,
+      "passed": false,
+      "pixel": 7626,
+      "relative_l2": 0.0021803958458890584
+    },
+    {
+      "maximum_rgb_difference": 0.0011919406061820514,
+      "passed": false,
+      "pixel": 7874,
+      "relative_l2": 0.002167578198843723
+    },
+    {
+      "maximum_rgb_difference": 0.0014799307599944744,
+      "passed": false,
+      "pixel": 6856,
+      "relative_l2": 0.0021746310213246432
+    },
+    {
+      "maximum_rgb_difference": 0.0014799307599944744,
+      "passed": false,
+      "pixel": 7745,
+      "relative_l2": 0.0021670702867770705
+    },
+    {
+      "maximum_rgb_difference": 0.0014799307599944744,
+      "passed": false,
+      "pixel": 7624,
+      "relative_l2": 0.002156396293379486
+    },
+    {
+      "maximum_rgb_difference": 0.0014799307599944744,
+      "passed": false,
+      "pixel": 8247,
+      "relative_l2": 0.0021459939353990682
+    },
+    {
+      "maximum_rgb_difference": 0.0014799307599944744,
+      "passed": false,
+      "pixel": 8376,
+      "relative_l2": 0.002135295524659937
+    },
+    {
+      "maximum_rgb_difference": 0.0014799307599944744,
+      "passed": false,
+      "pixel": 9280,
+      "relative_l2": 0.002124645247634992
+    },
+    {
+      "maximum_rgb_difference": 0.0014799307599944744,
+      "passed": false,
+      "pixel": 7754,
+      "relative_l2": 0.0021142532526237942
+    },
+    {
+      "maximum_rgb_difference": 0.0014799307599944744,
+      "passed": false,
+      "pixel": 8257,
+      "relative_l2": 0.002103933719968586
+    },
+    {
+      "maximum_rgb_difference": 0.0014799307599944744,
+      "passed": false,
+      "pixel": 9785,
+      "relative_l2": 0.002094764230061206
+    },
+    {
+      "maximum_rgb_difference": 0.0014799307599944744,
+      "passed": false,
+      "pixel": 7114,
+      "relative_l2": 0.0020850671840907248
+    }
+  ],
+  "execution_commit": "56bd0645fa1f51388db352959ea00966f30f3368",
+  "experiment_batch": "/home/isavand/paper/evidence/bell-dense-reference-v1-c13519bb96174bdd90c574abf1f6d58d",
+  "freeze_sha256": "b72efa61da2596166b358f7d2452af46c64fa2331e35682b16569916fcb73842",
+  "generation_sha256": "b7a0e9aac8095aeb703ce909ea967f46d9efc1d04fd11267fcd14fb9bb72b43b",
+  "leading_32_remaining": {
+    "n_dot_view_min_median_max": [
+      0.9757528705921085,
+      0.9914728768294363,
+      0.999648159603384
+    ],
+    "specular_to_diffuse_residual_L2": 11.215760418633641
+  },
+  "native_outputs_checked": 58,
+  "next_selected_pixel": 7623,
+  "offline_BRDF_queries": 0,
+  "offline_primary_rays": 0,
+  "offline_visibility_rays": 0,
+  "original": {
+    "convergence_relative_l2": 0.002,
+    "convergence_rgb_abs": 0.003
+  },
+  "original_exit_code": 1,
+  "proposed_continuation": {
+    "maximum_new_patches": 96,
+    "maximum_new_work": {
+      "BRDF_point_directions": 15099822080,
+      "CPU_primary_crosschecks": 0,
+      "primary_rays": 0,
+      "shadow_directions": 15099822080,
+      "slope_nodes_attempted": 3649126400,
+      "slope_nodes_returned": 3649126400
+    },
+    "panel_cap": 128,
+    "per_view_cap": 64,
+    "saved_patches": 32
+  },
+  "scenario_fixed_fine_RGB_norm_and_zero_new_patch_residual": [
+    0.002075361567589565,
+    0.0020658634657665146,
+    0.002056482087273373,
+    0.002047296224127823,
+    0.0020387698552300397,
+    0.002030611166618593,
+    0.0020225116259487415,
+    0.0020145187005125146,
+    0.0020065135129041746,
+    0.001999463884160553,
+    0.0019924454613648897,
+    0.001985817737033126,
+    0.0019794233011195803,
+    0.0019732352655356883,
+    0.0019671055953491387,
+    0.001960987416137026,
+    0.001954992925510229,
+    0.001949082294788137,
+    0.0019431713239305647,
+    0.0019373249811778634,
+    0.0019315064580320718,
+    0.0019257245927856484,
+    0.0019199413935148588,
+    0.0019142381215240664,
+    0.001908543041545958,
+    0.0019028575173610706,
+    0.0018971875197281102,
+    0.0018916086849152375,
+    0.0018860308471754612,
+    0.0018804522217990875,
+    0.0018748857855943254,
+    0.0018694209034119508
+  ],
+  "schema_version": 1,
+  "status": "verified_incomplete",
+  "view": 127,
+  "wall_seconds": 78.67172834835947
+}
