@@ -1,0 +1,533 @@
+{
+  "arms": {
+    "Final-Ambient": {
+      "illumination": "known_L2",
+      "initial": {
+        "bytes": 254,
+        "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d9-58f62392c4f84f019fde495849b317c8/D9-T/initial.json",
+        "sha256": "267ec871db98e3144994c0c87cae8d24d9a9439200c41e14727484dc8ee82e8f"
+      },
+      "learned_control": "D9-T",
+      "limits": {
+        "arm_seconds": 3600,
+        "batch_rays": 512,
+        "boundary_predictor_calls": 12,
+        "boundary_predictor_points": 29688,
+        "component_reverse_sweeps": 30,
+        "cpu_threads": 4,
+        "cuda_allocator_fraction": 0.25,
+        "evaluation_draws": 8,
+        "grace_seconds": 30,
+        "host_memory_gib": 64,
+        "illumination_map_calls": 6,
+        "inner_seconds": 3540,
+        "interval": 2000,
+        "output_bytes": 8589934592,
+        "shader_calls": 17186,
+        "shadow_rays": 13210927104,
+        "smoothness_field_calls": 12,
+        "tensor_admission_predictor_calls": 2,
+        "tensor_admission_reverse_sweeps": 2,
+        "updates_per_arm": 10000,
+        "wall_seconds": 7500
+      },
+      "representation": {
+        "evaluation_tape_seed_offset": 1600000,
+        "export_world_Q_atol": 1e-06,
+        "initial_Q_atol": 2e-08,
+        "initial_RGB_atol": 1e-06,
+        "initial_gate_seed": 120008,
+        "initial_width": 0.5,
+        "initialization": {
+          "major_width": 0.52,
+          "minimum_minor_width": 0.48,
+          "name": "projected_world_x_rank_one_v1"
+        },
+        "native_gate_points": 24,
+        "perturbation": "legacy_scalar_only_v1",
+        "training_tape_seed_offset": 603300000
+      },
+      "spatial_policy": null,
+      "work": {
+        "boundary_predictor_calls": 12,
+        "boundary_predictor_points": 29688,
+        "component_reverse_sweeps": 30,
+        "shader_calls": 17186,
+        "shadow_rays": 13210927104,
+        "tensor_admission_predictor_calls": 2,
+        "tensor_admission_reverse_sweeps": 2
+      }
+    },
+    "Final-Chart": {
+      "illumination": "known_L2",
+      "initial": {
+        "bytes": 252,
+        "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d9-58f62392c4f84f019fde495849b317c8/D9-C/initial.json",
+        "sha256": "1467040c5f2861e1b04cd196781645a92deccec897bef0ea7409f1547d51c36c"
+      },
+      "learned_control": "D9-C",
+      "limits": {
+        "arm_seconds": 3600,
+        "batch_rays": 512,
+        "boundary_predictor_calls": 12,
+        "boundary_predictor_points": 29688,
+        "component_reverse_sweeps": 30,
+        "cpu_threads": 4,
+        "cuda_allocator_fraction": 0.25,
+        "evaluation_draws": 8,
+        "grace_seconds": 30,
+        "host_memory_gib": 64,
+        "illumination_map_calls": 6,
+        "inner_seconds": 3540,
+        "interval": 2000,
+        "output_bytes": 8589934592,
+        "shader_calls": 17186,
+        "shadow_rays": 13210927104,
+        "smoothness_field_calls": 12,
+        "tensor_admission_predictor_calls": 2,
+        "tensor_admission_reverse_sweeps": 2,
+        "updates_per_arm": 10000,
+        "wall_seconds": 7500
+      },
+      "representation": {
+        "evaluation_tape_seed_offset": 1600000,
+        "export_world_Q_atol": 1e-06,
+        "initial_Q_atol": 2e-08,
+        "initial_RGB_atol": 1e-06,
+        "initial_gate_seed": 120008,
+        "initial_width": 0.5,
+        "initialization": {
+          "major_width": 0.52,
+          "minimum_minor_width": 0.48,
+          "name": "projected_world_x_rank_one_v1"
+        },
+        "native_gate_points": 24,
+        "perturbation": "legacy_scalar_only_v1",
+        "training_tape_seed_offset": 603300000
+      },
+      "spatial_policy": null,
+      "work": {
+        "boundary_predictor_calls": 12,
+        "boundary_predictor_points": 29688,
+        "component_reverse_sweeps": 30,
+        "shader_calls": 17186,
+        "shadow_rays": 13210927104,
+        "tensor_admission_predictor_calls": 2,
+        "tensor_admission_reverse_sweeps": 2
+      }
+    }
+  },
+  "base_initial": {
+    "bytes": 141,
+    "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/initial.json",
+    "sha256": "0407da2d23f545004a5505e475d497ba2c41760988048d2ff09654e18b5ab6a9"
+  },
+  "baseline_freeze_sha256": "1c7887d33f8f8ba3fb28cc48d795636ee2955eedbeebc7ead56bdef26736faf7",
+  "boundary_policy": {
+    "crossing": "one strict plane only",
+    "maximum_native_distance": 0.02,
+    "minimum_native_distance": 1e-06,
+    "offset_fraction": 0.5,
+    "order": "plane, original face index",
+    "ratio_floor": 1e-12,
+    "used_for_training": false
+  },
+  "boundary_probe_count": 2474,
+  "controls": {
+    "K1-Dense": {
+      "bytes": 679802,
+      "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a/K1-Dense/recovery.json",
+      "sha256": "1c41b73cbbf8bb7e13c5aa49b72259f10d8b50b42aee436e86da8a61f47d5987"
+    }
+  },
+  "dataset": {
+    "admission": {
+      "bytes": 1714,
+      "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2-admission.json",
+      "sha256": "87197a0bc7e5cec3a320ed92193ac25e238151b2cfb408af58a79b0c20e7399c"
+    },
+    "generation": {
+      "bytes": 66671,
+      "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2/reference/generation.json",
+      "sha256": "d68db52c2d491f2fbf4870b1021bec0240355ae1e7f7c9c33ef1390622a027b4"
+    },
+    "verification": {
+      "bytes": 39637,
+      "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2-verification-v2/verification.json",
+      "sha256": "f0081135df01a7a89f0a640f6fd8e166a9aabfc9bd7fc5737ecaaed8ed9a1cd4"
+    }
+  },
+  "dense_analysis": {
+    "bytes": 3316450,
+    "path": "/home/isavand/paper/evidence/bell-dense-known-L2-recovery-v2-bf2ad4dcad8b42a0bb887c1af14ba43a-analysis-v1/analysis.json",
+    "sha256": "941b26a391bfc7b47a45fcdee3b6bdde7aad67ac5ced60674e61c668e0fcc5a1"
+  },
+  "foreground_seconds": 7500,
+  "held_out_support": {
+    "bytes": 89588,
+    "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2-verification-v2/held-out-support.npz",
+    "sha256": "5c131b9304aac83667956d16c48ad5b5d893e1624df20b8a0137f6fc9e12eb3e"
+  },
+  "host_output": "/home/isavand/paper/evidence/bell-final-tensor-pair-v1-817f824f422b418bbe88579c2bcc2f98",
+  "host_reference": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2/reference",
+  "image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "initialization": "validated_D9_weak_start_v1",
+  "integer_domain_hashes": {
+    "diagnostic_ids": "77a342fc6ac8773a8340562da29fc4e83b82ff62a11fc0a241b52bd0db1061e5",
+    "face_pairs": "ec2fb1dfb15d511d0f903f4fc52c64f6dfcc4194b8933a505c9766dd7524cbc2",
+    "fitting_camera_count": "f3a8ef2f7207369e6e34f21d4293f98a141d2d3ba989248a09091a8cc6351b5d",
+    "training_ids": "bc878932c4a0ceea1fdd8d8713f969e8cbde6f3f4b358d5067b636732939baff"
+  },
+  "integer_probe_hashes": {
+    "face_ids": "de6b4416f3fdbfe54ef24a6ea3b2d7fa3f75ec1272ce7bd09da9807699b154e5",
+    "plane_ids": "b20457a118c945c72b7203aab5ea09203d185135641cabac41fcfd2484bd392a"
+  },
+  "lighting_policy": {
+    "diffuse_white_material_gradient": 0.0,
+    "direct": "known_env_v1",
+    "environment": {
+      "ambient": [
+        0.01,
+        0.01,
+        0.01
+      ],
+      "lobes": [
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            -1.0,
+            0.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "power": 64
+        }
+      ]
+    },
+    "indirect": "zero_bounce_v1",
+    "map_max_abs": 2e-05,
+    "map_relative_L2": 2e-06
+  },
+  "mesh": {
+    "bytes": 4729497,
+    "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/geometry/mesh.ply",
+    "sha256": "4ea98341ca915cf55f2b37581556583308cc50a8e2d2d8d48140d49224866e01"
+  },
+  "order": [
+    "Final-Chart",
+    "Final-Ambient"
+  ],
+  "panel": [
+    0,
+    4,
+    19,
+    2,
+    127,
+    71,
+    73,
+    56,
+    75,
+    95,
+    93,
+    110,
+    91,
+    7,
+    5,
+    3,
+    105,
+    114
+  ],
+  "photometric_index_sha256": "ef14c749c0dbe1470f77a8fe8240907e612be0abbfa738b5889185e1b752bff8",
+  "policy": {
+    "RGB_loss": "original Charbonnier on linear RGB, epsilon=.001",
+    "amsgrad": true,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "compatibility_SE_multiplier": 6,
+    "compatibility_absolute": 0.001,
+    "compatibility_relative": 0.02,
+    "diffuse_white_prior": 0.01,
+    "end_iter": 100000,
+    "end_warm": 1000,
+    "eps": 0.0001,
+    "gradient_clip": 0.7,
+    "lr_initial": 0.001,
+    "material_prior": "unchanged legacy_v1",
+    "optimizer": "original A Adam",
+    "orientation_eligibility_gap": 0.1,
+    "scheduled_lr": 0.0005,
+    "scheduler": "original WarmUpCosLR",
+    "seed": 6033,
+    "weight_decay": 0
+  },
+  "protocol": "bell-final-chart-ambient-dense-known-L2-v1",
+  "reference_freeze_sha256": "fa2c6a69e1f7347e9ecdae206a3fe881a28fea22f6ec89d691e499c1b476a6fd",
+  "sampler_snapshots": {
+    "0": "47f5be5d0711bc29ec70595676f337c64ca40beee2de0062f4d69d684b3e7d8e",
+    "10000": "5d7bb1e16106b391c91dc2f5921507139cb93db4c2c629d1baa2ea0419181811",
+    "2000": "c9369049ee3184465cac4bb15f35ad84bf6bc5ff4642df2c8b8d50cc3ad90c92",
+    "4000": "86f7f1180cd08a07e6f38af14accb9d3731377cedb872a69bb6140906c115036",
+    "6000": "86e499e927f6d5d491a6e428dedeb6ca81fa29c1a4e4fceb568cac4b2b99bc37",
+    "8000": "d038bb1bc4e6be261abe323a8f5fe569a2da80db5847bc6fb5947198386910df"
+  },
+  "schema_version": 1,
+  "shader": {
+    "anisotropy": true,
+    "change_eps": 0.02,
+    "change_type": "gaussian",
+    "diffuse_sample_num": 512,
+    "human_lights": false,
+    "illumination_mode": "known_env_v1",
+    "indirect_mode": "zero_bounce_v1",
+    "inner_light_exp_max": 20,
+    "is_real": false,
+    "known_environment": {
+      "ambient": [
+        0.01,
+        0.01,
+        0.01
+      ],
+      "lobes": [
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            -1.0,
+            0.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "power": 64
+        }
+      ]
+    },
+    "light_exp_max": 20,
+    "outer_light_version": "direction",
+    "random_azimuth": true,
+    "reg_change": true,
+    "reg_energy_loss": true,
+    "reg_energy_loss_lambda": 0.05,
+    "reg_lambda1": 0.05,
+    "reg_spec_loss": true,
+    "reg_spec_loss_lambda": 0.05,
+    "regularization_version": "legacy_v1",
+    "specular_sample_num": 1024
+  },
+  "sources": {
+    "benchmarks/bell_final_tensor_v1.py": "c860407b8265b763780afdedd10048e6e344652854e49325cb834178b9f68e0a",
+    "benchmarks/donut_tensor_d9.py": "8989e6a4c9b3855e1c8ff977931b1b9251dc87b4e6f35e68f05abf81959407ef",
+    "docs/protocols/BELL_DENSE_KNOWN_L2_RECOVERY_V2.freeze.json": "1c7887d33f8f8ba3fb28cc48d795636ee2955eedbeebc7ead56bdef26736faf7",
+    "docs/protocols/BELL_FINAL_TENSOR_PAIR_V1.md": "fdba427bc28ca1596e43e431435ff0a74a35e85b1d5b1c19c72bf7faa1b8c363",
+    "docs/results/bell_dense_known_l2_recovery_v2/artifact-manifest.json": "a20d516b88c06a3cd30feb8fe58f6bae5463178e0d2529715aa88b40a20f29fd",
+    "docs/results/donut_paired_tensor_d9_v1/artifact-manifest.json": "b56c64284d6832b09f9afd57aa54c56cf131b3ebc746b7d4026f3c8925b8a0f2",
+    "experiments/analyze_bell_final_tensor_v1.py": "c5c04443f78670de2e569053ad71b42a9c049420778d478570797649fcfcd060",
+    "experiments/bell_final_tensor_admission_v1.py": "2a5a11daa91d3be62e25d3feeb2ad8e3ad0f5df11c7b7e922945d2170267b419",
+    "experiments/bell_final_tensor_trainer_v1.py": "44eb8062e2b5e34f129ef3675f8c93666f789081ab313b2e72be1024354e74ef",
+    "experiments/run_bell_final_tensor_v1.sh": "dcd3c847546c3c236a6d7cba84abf55f74d65f083504f1fbb27ccd71f19a0e60",
+    "experiments/train_bell_final_tensor_v1.py": "a554cf0dcecf5a9157c0330bc2911f667646d80e29def131f992014e0f43e8f5",
+    "scientific_variants/donut_tensor_d8.py": "a22c9df2260cfb02d5593d54ddc471f6d4beada8fa6fdaaa3423a5a51faf7163",
+    "scientific_variants/donut_tensor_initialization_d9.py": "3a8bccfe0c60a847391d0b5e9bb8f8afe1608acf53571693b914209a5fe154fa",
+    "scientific_variants/donut_tensor_shader_d8.py": "4c544ab46c00cc2faba3c5de7126dca78d9d05c18bdfdf6ba664bfe68e8017df",
+    "tests/scientific/test_bell_final_tensor_v1.py": "676adb24ae7be4944a2fa53c0d9ef5c6ebca0e83e6d557161608c24471980622"
+  },
+  "sparse_analysis": {
+    "bytes": 2622008,
+    "path": "/home/isavand/paper/evidence/bell-known-l2-completion-v3-7527484d82c84762ba4a2b4d2046d3ab-analysis-v1/combined-analysis.json",
+    "sha256": "b71037501fe52e93781ff37eb436ef3c75bff32096a50f6673027c5336e0a440"
+  },
+  "splits": {
+    "fitting": [
+      0,
+      4,
+      19,
+      2,
+      127,
+      71,
+      73,
+      56,
+      75,
+      95,
+      93,
+      110,
+      91,
+      7,
+      5,
+      3
+    ],
+    "held_out": [
+      105,
+      114
+    ]
+  },
+  "steps": [
+    0,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "tensor_admission": {
+    "directions_per_point": 16,
+    "groups": [
+      "mx_predictor",
+      "my_predictor",
+      "rotation_predictor",
+      "kd_predictor",
+      "metallic_predictor"
+    ],
+    "output_atol": 1e-08,
+    "output_rtol": 1e-06,
+    "points": 24,
+    "seed": 6806033
+  },
+  "trainer_overlay_sha256": "dd29191c65f537c245ac2416625542a1e05d81a8a385be3e18e7f6b423360267",
+  "training_projection": {
+    "batch_size": 512,
+    "effective_passes": 78.26472431556581,
+    "evaluation_shader_calls": 7152,
+    "evaluation_shading_observations": 3480048,
+    "fitting_observations": 65419,
+    "full_batches_per_permutation": 127,
+    "held_observations": 7082,
+    "training_slots": 5120000,
+    "unused_tail_per_full_permutation": 395
+  }
+}
