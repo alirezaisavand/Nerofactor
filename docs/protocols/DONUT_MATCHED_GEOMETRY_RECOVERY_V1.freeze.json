@@ -1,0 +1,906 @@
+{
+  "ambient_initial": {
+    "bytes": 254,
+    "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d9-58f62392c4f84f019fde495849b317c8/D9-T/initial.json",
+    "sha256": "267ec871db98e3144994c0c87cae8d24d9a9439200c41e14727484dc8ee82e8f"
+  },
+  "arms": {
+    "Ambient-Oracle": {
+      "geometry": "oracle",
+      "illumination": "known_L2",
+      "initial": {
+        "bytes": 254,
+        "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d9-58f62392c4f84f019fde495849b317c8/D9-T/initial.json",
+        "sha256": "267ec871db98e3144994c0c87cae8d24d9a9439200c41e14727484dc8ee82e8f"
+      },
+      "learned_control": "D9-T",
+      "limits": {
+        "arm_seconds": 3600,
+        "batch_rays": 512,
+        "boundary_predictor_calls": 12,
+        "boundary_predictor_points": 29688,
+        "component_reverse_sweeps": 30,
+        "cpu_threads": 4,
+        "cuda_allocator_fraction": 0.25,
+        "evaluation_draws": 8,
+        "grace_seconds": 30,
+        "host_memory_gib": 64,
+        "illumination_map_calls": 6,
+        "inner_seconds": 3540,
+        "interval": 2000,
+        "output_bytes": 8589934592,
+        "shader_calls": 12290,
+        "shadow_rays": 9524232192,
+        "smoothness_field_calls": 12,
+        "tensor_admission_predictor_calls": 2,
+        "tensor_admission_reverse_sweeps": 2,
+        "updates_per_arm": 10000,
+        "wall_seconds": 7500
+      },
+      "representation": {
+        "evaluation_tape_seed_offset": 1600000,
+        "export_world_Q_atol": 1e-06,
+        "initial_Q_atol": 2e-08,
+        "initial_RGB_atol": 1e-06,
+        "initial_gate_seed": 120008,
+        "initial_width": 0.5,
+        "initialization": {
+          "major_width": 0.52,
+          "minimum_minor_width": 0.48,
+          "name": "projected_world_x_rank_one_v1"
+        },
+        "native_gate_points": 24,
+        "perturbation": "legacy_scalar_only_v1",
+        "training_tape_seed_offset": 603300000
+      },
+      "spatial_policy": null,
+      "trainer_sha256": "3055b4b5b1ae6d47ae1f13b1d4364625516aaad0f8b4a8cda5716603c94cfe8b",
+      "work": {
+        "component_reverse_sweeps": 30,
+        "shader_calls": 12290,
+        "shadow_rays": 9524232192,
+        "tensor_admission_predictor_calls": 2,
+        "tensor_admission_reverse_sweeps": 2
+      }
+    },
+    "Ambient-Reconstruction": {
+      "geometry": "reconstruction",
+      "illumination": "known_L2",
+      "initial": {
+        "bytes": 254,
+        "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d9-58f62392c4f84f019fde495849b317c8/D9-T/initial.json",
+        "sha256": "267ec871db98e3144994c0c87cae8d24d9a9439200c41e14727484dc8ee82e8f"
+      },
+      "learned_control": "D9-T",
+      "limits": {
+        "arm_seconds": 3600,
+        "batch_rays": 512,
+        "boundary_predictor_calls": 12,
+        "boundary_predictor_points": 29688,
+        "component_reverse_sweeps": 30,
+        "cpu_threads": 4,
+        "cuda_allocator_fraction": 0.25,
+        "evaluation_draws": 8,
+        "grace_seconds": 30,
+        "host_memory_gib": 64,
+        "illumination_map_calls": 6,
+        "inner_seconds": 3540,
+        "interval": 2000,
+        "output_bytes": 8589934592,
+        "shader_calls": 12290,
+        "shadow_rays": 9524232192,
+        "smoothness_field_calls": 12,
+        "tensor_admission_predictor_calls": 2,
+        "tensor_admission_reverse_sweeps": 2,
+        "updates_per_arm": 10000,
+        "wall_seconds": 7500
+      },
+      "representation": {
+        "evaluation_tape_seed_offset": 1600000,
+        "export_world_Q_atol": 1e-06,
+        "initial_Q_atol": 2e-08,
+        "initial_RGB_atol": 1e-06,
+        "initial_gate_seed": 120008,
+        "initial_width": 0.5,
+        "initialization": {
+          "major_width": 0.52,
+          "minimum_minor_width": 0.48,
+          "name": "projected_world_x_rank_one_v1"
+        },
+        "native_gate_points": 24,
+        "perturbation": "legacy_scalar_only_v1",
+        "training_tape_seed_offset": 603300000
+      },
+      "spatial_policy": null,
+      "trainer_sha256": "3055b4b5b1ae6d47ae1f13b1d4364625516aaad0f8b4a8cda5716603c94cfe8b",
+      "work": {
+        "component_reverse_sweeps": 30,
+        "shader_calls": 12290,
+        "shadow_rays": 9524232192,
+        "tensor_admission_predictor_calls": 2,
+        "tensor_admission_reverse_sweeps": 2
+      }
+    },
+    "K1-Oracle": {
+      "geometry": "oracle",
+      "illumination": "known_L2",
+      "initial": {
+        "bytes": 141,
+        "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/initial.json",
+        "sha256": "0407da2d23f545004a5505e475d497ba2c41760988048d2ff09654e18b5ab6a9"
+      },
+      "learned_control": "D2",
+      "limits": {
+        "arm_seconds": 3600,
+        "batch_rays": 512,
+        "boundary_predictor_calls": 12,
+        "boundary_predictor_points": 29688,
+        "component_reverse_sweeps": 30,
+        "cpu_threads": 4,
+        "cuda_allocator_fraction": 0.25,
+        "evaluation_draws": 8,
+        "grace_seconds": 30,
+        "host_memory_gib": 64,
+        "illumination_map_calls": 6,
+        "inner_seconds": 3540,
+        "interval": 2000,
+        "output_bytes": 8589934592,
+        "shader_calls": 12288,
+        "shadow_rays": 9524158464,
+        "smoothness_field_calls": 12,
+        "updates_per_arm": 10000,
+        "wall_seconds": 7500
+      },
+      "representation": null,
+      "spatial_policy": null,
+      "trainer_sha256": "ae41f235f32a17574acb3460746b25218a6aa3124df1a9cdab9e69e31b934fb4",
+      "work": {
+        "component_reverse_sweeps": 30,
+        "shader_calls": 12288,
+        "shadow_rays": 9524158464
+      }
+    },
+    "K1-Reconstruction": {
+      "geometry": "reconstruction",
+      "illumination": "known_L2",
+      "initial": {
+        "bytes": 141,
+        "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/initial.json",
+        "sha256": "0407da2d23f545004a5505e475d497ba2c41760988048d2ff09654e18b5ab6a9"
+      },
+      "learned_control": "D2",
+      "limits": {
+        "arm_seconds": 3600,
+        "batch_rays": 512,
+        "boundary_predictor_calls": 12,
+        "boundary_predictor_points": 29688,
+        "component_reverse_sweeps": 30,
+        "cpu_threads": 4,
+        "cuda_allocator_fraction": 0.25,
+        "evaluation_draws": 8,
+        "grace_seconds": 30,
+        "host_memory_gib": 64,
+        "illumination_map_calls": 6,
+        "inner_seconds": 3540,
+        "interval": 2000,
+        "output_bytes": 8589934592,
+        "shader_calls": 12288,
+        "shadow_rays": 9524158464,
+        "smoothness_field_calls": 12,
+        "updates_per_arm": 10000,
+        "wall_seconds": 7500
+      },
+      "representation": null,
+      "spatial_policy": null,
+      "trainer_sha256": "ae41f235f32a17574acb3460746b25218a6aa3124df1a9cdab9e69e31b934fb4",
+      "work": {
+        "component_reverse_sweeps": 30,
+        "shader_calls": 12288,
+        "shadow_rays": 9524158464
+      }
+    }
+  },
+  "base_initial": {
+    "bytes": 141,
+    "path": "/home/isavand/paper/evidence/donut-kurt-recovery-v2-4c47339a0d204bc0abe8480be2325b63/D2/initial.json",
+    "sha256": "0407da2d23f545004a5505e475d497ba2c41760988048d2ff09654e18b5ab6a9"
+  },
+  "foreground_seconds": 14760,
+  "gate3": {
+    "backend": {
+      "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+      "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+      "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+      "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+      "variant": "predicate_fp64"
+    },
+    "baseline_grids": [
+      256,
+      512
+    ],
+    "gate2_manifest_sha256": "d87ed9189da0d9af3c2f5c0cc108ad79564b17106a92074f28cd911a925caca0",
+    "gate2_outputs": {
+      "correspondence-0.npz": {
+        "bytes": 2486684,
+        "sha256": "eb767071787651665abe1d314dcfa6c2ede3cfb9450279eeca852b31dc074675"
+      },
+      "correspondence-1.npz": {
+        "bytes": 2275972,
+        "sha256": "f8fb68eaf1779f1426bc06442da38c61c443867be7d6725e88d47835fc584ada"
+      },
+      "correspondence-28.npz": {
+        "bytes": 2650126,
+        "sha256": "7f8c7520eaa3eadb58db45eda414ffc9c95a5f8e825a2a3317d6c1400b7e048c"
+      },
+      "correspondence-34.npz": {
+        "bytes": 1367181,
+        "sha256": "8dfe4b68a177c46bb6654dd658fa53299e80765d462de36fde0b613fd48a1699"
+      },
+      "correspondence-45.npz": {
+        "bytes": 2167224,
+        "sha256": "db780934840188c5b1472eafae5dba0b441addc41c3df2785b26fa7ae391f60b"
+      },
+      "correspondence-50.npz": {
+        "bytes": 1425611,
+        "sha256": "9859ca085c200c6f0a9d23f05446c09a3e90a218dbc0bdc686098596972f9ad0"
+      },
+      "primary-0.npz": {
+        "bytes": 965130,
+        "sha256": "27e0e0d7288a43d0436dce246c292ae03323c789df86469eafb9c6665483bfbb"
+      },
+      "primary-1.npz": {
+        "bytes": 912823,
+        "sha256": "9d84095e3c9f6af6fea30aa20789bca4442f4683863f0d2320be92b45b8c363d"
+      },
+      "primary-28.npz": {
+        "bytes": 994333,
+        "sha256": "6416549e063c022a83de4ec8134654dd36c3f58f8f2942977b5263e96c10a54b"
+      },
+      "primary-34.npz": {
+        "bytes": 748337,
+        "sha256": "d53f136cdb909f3185d88d3c86a37b4adcbb31a155555a613dbabd84191fceeb"
+      },
+      "primary-45.npz": {
+        "bytes": 885225,
+        "sha256": "b1f035fe60de9ccc07dbaaa2c432f8e508ae2c9bed019b894c68a4e0750fc311"
+      },
+      "primary-50.npz": {
+        "bytes": 765833,
+        "sha256": "63cded7f4d911e9c42670c7df4aa7c6c4673825480d21718c6deba8bbb979cfd"
+      },
+      "witnesses-0.json": {
+        "bytes": 21704,
+        "sha256": "0fb9503a052ebf621bb13db6798489c2369598e2799403439fb725ad8408f944"
+      },
+      "witnesses-1.json": {
+        "bytes": 21726,
+        "sha256": "d3238646137c07f1bad62a9816409c22590d76194a87f2f09251ac8d9f41ed60"
+      },
+      "witnesses-28.json": {
+        "bytes": 21682,
+        "sha256": "6c86e80dc102e0c42a04fec8655cbfc7c548ac0126433fc982193d63edc7f9b3"
+      },
+      "witnesses-34.json": {
+        "bytes": 21658,
+        "sha256": "a580e8bb8df9ef6ef1cb043df3c5f18e679c1bc2e7be949760774ef75ef050d7"
+      },
+      "witnesses-45.json": {
+        "bytes": 21692,
+        "sha256": "0c929192fd20c3109df7f981d4372fea3baaa0f939c3feed5173d9cc2204e61b"
+      },
+      "witnesses-50.json": {
+        "bytes": 21706,
+        "sha256": "0b51e76bb4b5a94a2ddb89ffb4e3b8ca42ee638121fb32e6263b221faa43c30c"
+      }
+    },
+    "gate2_receipt": {
+      "bytes": 7588,
+      "path": "/home/isavand/paper/evidence/donut-geometry-gate2-e261dd42053f4b7ab24016d0346b00cd/audit/receipt.json",
+      "sha256": "5c99f7f93fa4f87fb3a8a5630ed2846f217fb9d1512131d0b24a622de0b978e2"
+    },
+    "geometry_audit": {
+      "backend": {
+        "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+        "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+        "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+        "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+        "variant": "predicate_fp64"
+      },
+      "cameras": {
+        "bytes": 86413,
+        "path": "/home/isavand/nero/data/nerf_synthetic/donut/transforms_train.json",
+        "sha256": "89fc7b8d05db69437f3654cac1a8c6e68a23cfb411c28703824e18f0fdcaa82a"
+      },
+      "dataset": {
+        "admission": {
+          "bytes": 6626,
+          "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9-admission.json",
+          "sha256": "a6eab416054c5bf74b43834c3be224847e2d78d9af7eb4989745fe37333618fb"
+        },
+        "generation": {
+          "bytes": 25006,
+          "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/generation.json",
+          "sha256": "de8dda85559b286456d926e09731c6c501dfcbd6707d1aaf3aef9cf8784c58a0"
+        },
+        "verification": {
+          "bytes": 15604,
+          "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9-verification-v1.json",
+          "sha256": "22e7894fdba2f84ed0355299999cc74a1784cb40c74667f7b0b9e432cb598340"
+        }
+      },
+      "historical_geometry_provenance": "unresolved",
+      "host_output": "/home/isavand/paper/evidence/donut-geometry-gate2-e261dd42053f4b7ab24016d0346b00cd",
+      "image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+      "limits": {
+        "cpu_ray_checks": 384,
+        "nearest_searches": 196608,
+        "primary_rays": 196608,
+        "projection_candidates": 40000000,
+        "visibility_rays": 98304
+      },
+      "material_optimization_authorized": false,
+      "mesh": {
+        "bytes": 7062117,
+        "path": "/home/isavand/nero/final_results/meshes/donut_shape-300000.ply",
+        "sha256": "1206fa06e7b1b724731082dd8cc22185afa62bc2b14600ad54fb6593a758f20c"
+      },
+      "oracle": {
+        "bytes": 2589411,
+        "path": "/home/isavand/paper/evidence/donut-blend-inspection-v2/oracle-geometry-and-frames.npz",
+        "sha256": "cfe903c177dfe404c47390aed2a3fa025ea9499ca0af644dba667b721c0139f1"
+      },
+      "panel": [
+        0,
+        50,
+        1,
+        45,
+        28,
+        34
+      ],
+      "protocol": "donut-reconstructed-geometry-validation-v1",
+      "resources": {
+        "allocator_fraction": 0.1,
+        "cpu_threads": 4,
+        "host_memory_gib": 16,
+        "inner_seconds": 870,
+        "kill_grace_seconds": 30,
+        "output_bytes": 1073741824,
+        "pids": 128,
+        "watchdog_seconds": 900
+      },
+      "schema_version": 1,
+      "size": 128,
+      "sources": {
+        "benchmarks/bell_geometry_e11.py": "491f86b7799d03911c4665e1884ceb81b62ae8dc085141b7f112b43891ab3737",
+        "benchmarks/donut_heterogeneous_v1.py": "301f8a2b70718cc6ad2da157e0b58c27c70e540e0c2ba4c788c87f86def34236",
+        "benchmarks/donut_reconstructed_geometry_v1.py": "4357f6c4f85499b970701002d32e4e0f245a57edc7dc53237c846ae8220cfaac",
+        "benchmarks/donut_recovery_v1.py": "28bc3cb19f371a33bf8715c0a2ca55f236a606fae295e1b3de3248121b80b556",
+        "benchmarks/generate_bell_e11.py": "877b826ce3e2eabda860d296051de6791cf048f543e1bb41dbe60886654c7647",
+        "docs/protocols/DONUT_RECONSTRUCTED_GEOMETRY_VALIDATION_V1.md": "48a859b476fa6a925a18aa24f91adf295361825b50519dfa1fa1390fa45a6cf1",
+        "docs/results/publication_gate1/donut-geometry-readiness-v1.json": "2560df2000992a9f62a26c17810d0e4e297228351864a2cb7e7528c4d5249276",
+        "experiments/donut_reconstructed_geometry_v1.py": "fd32bdbc52393b672a7e02349c7f04e142551e1993c3965b059250bcdf2c1553",
+        "experiments/run_donut_reconstructed_geometry_v1.sh": "18c96e0a569bb3043c8cc0ea35ac2398fde8fcb4fc167e7a92f26446ab7b980c",
+        "experiments/verify_donut_reconstructed_geometry_v1.py": "3b644cab9e86540170dd7bf790bc2d6fd41ff2c55e66a9563224633b2a98ced1",
+        "infrastructure/stage_sources.py": "3c904a09662663fd9f37e3a6afee33576963675508e416dbc6141a5c68d44dc8",
+        "infrastructure/verified_ray_backend.py": "e103775b70a72a24d0772dd6f09d622820d403d8d9ced63837521981df81dffd",
+        "scientific_sources/manifest-v1.json": "39b9baecce2aab6fc62ec57bd6f45e453d8e9d68215f6af3f25b8ed118c5a3f6",
+        "tests/scientific/test_donut_reconstructed_geometry_v1.py": "65c2abed1025086ef333a3e594dd8a57288896652302d47156323decab514151"
+      },
+      "splits": {
+        "fitting": [
+          0,
+          50,
+          1,
+          45
+        ],
+        "held_out": [
+          28,
+          34
+        ]
+      },
+      "tolerances": {
+        "coincident_direction": 1e-12,
+        "depth": 0.0002,
+        "edge": 1e-05,
+        "gap": 0.1,
+        "grazing_cosine": 0.1,
+        "normal": 0.0002,
+        "normal_degrees": 30.0,
+        "position": 0.0002,
+        "radius": 0.005,
+        "side_tie": 0.0002,
+        "transport_width": 2e-10,
+        "unit_normal": 2e-06
+      },
+      "views": {
+        "view-0.npz": {
+          "bytes": 2403543,
+          "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-0.npz",
+          "sha256": "e570bfd965ad8a5775c44e4306a029f9b2c1515a0f9bb1f256cfff150cd8a134"
+        },
+        "view-1.npz": {
+          "bytes": 2187672,
+          "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-1.npz",
+          "sha256": "f8ce285b6b0f3c1280b0d3bb41562e813ff688cee4f0d75f320d5e445e173d7d"
+        },
+        "view-28.npz": {
+          "bytes": 2565614,
+          "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-28.npz",
+          "sha256": "44e6ddb03d8519f7c490ca2aafce395ed553f20f173a0d96babddc647115639b"
+        },
+        "view-34.npz": {
+          "bytes": 1308423,
+          "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-34.npz",
+          "sha256": "730739337f9fa08b6d6e9aceb8a34d121fae424d52991649b8175ad474226ba1"
+        },
+        "view-45.npz": {
+          "bytes": 2092230,
+          "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-45.npz",
+          "sha256": "949802ee07a2b196ba1d6347f314df6ff31b66613eb1e0145bf4fd163527fe55"
+        },
+        "view-50.npz": {
+          "bytes": 1383119,
+          "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-50.npz",
+          "sha256": "daff67e19645246274dfb937f21a943f3f93a0c145050b3c52fadd0e81e253e5"
+        }
+      }
+    },
+    "historical_geometry_provenance": "unresolved",
+    "host_output": "/home/isavand/paper/evidence/donut-geometry-rgb-gate3-a0feb701948a45c2a41785fe1325a220",
+    "illumination": {
+      "ambient": [
+        0.01,
+        0.01,
+        0.01
+      ],
+      "lobes": [
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            -1.0,
+            0.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "power": 64
+        }
+      ]
+    },
+    "indirect": "zero",
+    "integrated_counts": {
+      "oracle": 22630,
+      "reconstruction": 22520
+    },
+    "limits": {
+      "BRDF_point_directions": 16136929280,
+      "shadow_directions": 16136929280
+    },
+    "max_refined_per_view": 32,
+    "max_refined_total": 128,
+    "panel": [
+      0,
+      50,
+      1,
+      45,
+      28,
+      34
+    ],
+    "point_light": "absent",
+    "protocol": "donut-geometry-fixed-material-rgb-v1",
+    "refined_grids": [
+      1024,
+      2048
+    ],
+    "resources": {
+      "allocator_fraction": 0.25,
+      "cpu_threads": 4,
+      "host_memory_gib": 64,
+      "inner_seconds": 1740,
+      "kill_grace_seconds": 30,
+      "output_bytes": 536870912,
+      "pids": 128,
+      "watchdog_seconds": 1800
+    },
+    "schema_version": 1,
+    "sources": {
+      "benchmarks/beckmann_reflectance_v2.py": "a791d4c8717e5b2f5064062134e57ec994607421f5a6e288d3b9b7de77c01fa9",
+      "benchmarks/bell_e11.py": "01b18245999d0d9ffcf0fdfe9b317fdfd427d9e1bee6ca7db395eaa0b3c94e8a",
+      "benchmarks/bell_reference_e11.py": "be4b95e3a8f37d5142920637a6533da89ecb2ff96c916343423254016ca7f673",
+      "benchmarks/donut_heterogeneous_v2.py": "00c4e042370a7d4d4b885f934f1414b090b98bb422797cbaffe81134daf46b06",
+      "benchmarks/donut_oracle_geometry_rgb_v1.py": "f208135444d5966c0ef8f81e6c858db6cf5daaf109ef382d3db994e95fbbaec6",
+      "docs/protocols/DONUT_ORACLE_GEOMETRY_RGB_FLOOR_V1.md": "b864cf90615852f9ba14b69207977db0e5ad182787a00838bb46d644f108c249",
+      "docs/results/publication_gate2/artifact-manifest.json": "d87ed9189da0d9af3c2f5c0cc108ad79564b17106a92074f28cd911a925caca0",
+      "docs/results/publication_gate2/depth-outliers.csv": "3ce560302a86d79bdae2b5f729c59f7cf311adf71320b67846eef103425117ce",
+      "docs/results/publication_gate2/geometry-metrics.json": "9c24b45f5e4810506ac24866fd4550385ac7622633350f3ed3ff7dea15297667",
+      "experiments/bell_highlight_pilot_e11d.py": "0c781ed2a380462c52c59b8442a61a77cdf919c75f52fb50c814faa33f7b18c6",
+      "experiments/bell_quadrature_e11e.py": "d91c09671eae577b890ac15603c3ae646d4daa88d8fbd1c73c5763a536b42098",
+      "experiments/donut_oracle_geometry_rgb_v1.py": "249db2f2b3df1a1c908965db7a6d67a1aec7d722fd19763b32b544efb020bd97",
+      "experiments/generate_donut_heterogeneous_v1.py": "8968e53668179615fc88145c41a580389af143126628338fa428124e0dd4c4ec",
+      "experiments/run_donut_oracle_geometry_rgb_v1.sh": "4ad61cc883465173d1afed38aa8d9d5a38be96fdfd6b71a79b6a7e044db2d85f",
+      "experiments/verify_donut_oracle_geometry_rgb_v1.py": "1a4bbbe29c70bf852dd648c86126ca0084f92609ed183479b1389ad4168d000e",
+      "tests/scientific/test_donut_oracle_geometry_rgb_v1.py": "6d6c527956ab17b6f50bdaa005fafcc8dd4f77bfecb25dfbb953d06e59f74933"
+    },
+    "splits": {
+      "fitting": [
+        0,
+        50,
+        1,
+        45
+      ],
+      "held_out": [
+        28,
+        34
+      ]
+    },
+    "tolerances": {
+      "convergence_relative_l2": 0.002,
+      "convergence_rgb_abs": 0.003
+    },
+    "training_authorized": false
+  },
+  "gate3_outputs": {
+    "camera-0-oracle-base-256.npz": {
+      "bytes": 326910,
+      "sha256": "c76a85cebbfda4b42f3a50ff846a297d74e4aadcd9b2445efb919a8e6ebb37a7"
+    },
+    "camera-0-oracle-base-512.npz": {
+      "bytes": 328097,
+      "sha256": "cfaf418d24ca94cfc557db1fcfb24948c75bae2b5ecd19241fb09b53c8774076"
+    },
+    "camera-0-reconstruction-base-256.npz": {
+      "bytes": 324022,
+      "sha256": "0eee65d60dde7dc0953bf77655d965c7788ff113a150b9febda4721dbf3aa6e5"
+    },
+    "camera-0-reconstruction-base-512.npz": {
+      "bytes": 325874,
+      "sha256": "cee73906dd863429ceaebfecec2d4a2eb7057ba81b8417036a9da99758c15894"
+    },
+    "camera-1-oracle-base-256.npz": {
+      "bytes": 298213,
+      "sha256": "25790d51d8523cc8e2f87306f5d044013abf5e89f87fc25bf286b557bbc7cbd8"
+    },
+    "camera-1-oracle-base-512.npz": {
+      "bytes": 299409,
+      "sha256": "421ae04a258633153bb869056ce7f89937d438bd35d5ac63ca946b0caae5b67d"
+    },
+    "camera-1-reconstruction-base-256.npz": {
+      "bytes": 296249,
+      "sha256": "5823a56536edf2713ca0213aadfafbfb6c95e4e76f5fb852168cc651e76dc51d"
+    },
+    "camera-1-reconstruction-base-512.npz": {
+      "bytes": 297938,
+      "sha256": "28504d59edfb328b68bb4e86d81c87759cfe0132d7a0cf5af725e6b3311a30d5"
+    },
+    "camera-28-oracle-base-256.npz": {
+      "bytes": 349677,
+      "sha256": "fa8a22b189b45d7fc64d04ff78e2d5080c1502cfe2c417ebdbe447b114a7dfad"
+    },
+    "camera-28-oracle-base-512.npz": {
+      "bytes": 350877,
+      "sha256": "6b15aecd56a93f8e182d76b50d20939039093442f05b7db7f65755be35312e37"
+    },
+    "camera-28-reconstruction-base-256.npz": {
+      "bytes": 347141,
+      "sha256": "fe3fba68981317de4f2f112db81bbb0f5a21eac1674e3cdc7513bdd13cc54a96"
+    },
+    "camera-28-reconstruction-base-512.npz": {
+      "bytes": 349031,
+      "sha256": "132eb37dd700df62dffaf595d45fb8359cfc87f670e3d9384d8592ea141bbc5a"
+    },
+    "camera-34-oracle-base-256.npz": {
+      "bytes": 179045,
+      "sha256": "db295adb9212e67461b171d66f97db998286406aabab7fa7cf26b97f191e255a"
+    },
+    "camera-34-oracle-base-512.npz": {
+      "bytes": 179803,
+      "sha256": "55fcfbff1c0c168e55f434c0caac2eb8e561a43189fe8b486022be37d971f5fb"
+    },
+    "camera-34-reconstruction-base-256.npz": {
+      "bytes": 177276,
+      "sha256": "1948248035d9ebde8388e12aef2029d97c64fd0cb920f28801d1a3b181b6e71f"
+    },
+    "camera-34-reconstruction-base-512.npz": {
+      "bytes": 178484,
+      "sha256": "e6993fca23723e685e0ca138b65af133b1d8fbbf7898ef5de976c9c300d1749e"
+    },
+    "camera-45-oracle-base-256.npz": {
+      "bytes": 285733,
+      "sha256": "f8878433d6f9135c35ba04488073fae26e4240d13d4cd13a0c44b9ebe95cecc6"
+    },
+    "camera-45-oracle-base-512.npz": {
+      "bytes": 286891,
+      "sha256": "2456feeaac8cbefb2e40f0cfc727b6a76153275ea67e72c50ae41b819b1cdf2f"
+    },
+    "camera-45-reconstruction-base-256.npz": {
+      "bytes": 282757,
+      "sha256": "21defacfcb6c7c75a981688d5c78357450d674339ac9f1ace07ff7a5c844e74b"
+    },
+    "camera-45-reconstruction-base-512.npz": {
+      "bytes": 284262,
+      "sha256": "07572aa5522071a0652152f7a0c84d99f9ae709b7bd53f1650e1b3613499a427"
+    },
+    "camera-50-oracle-base-256.npz": {
+      "bytes": 189215,
+      "sha256": "c330411add90285f223c2098fd5ae0f8bf4c7b6400f20ccde028b15b793148bf"
+    },
+    "camera-50-oracle-base-512.npz": {
+      "bytes": 190127,
+      "sha256": "d0a176b07a3905a13890030b98e67d003231801eed8ba1df141bbd6394b7ecfa"
+    },
+    "camera-50-oracle-pixel-7317-1024.npz": {
+      "bytes": 864,
+      "sha256": "9f279039eccbe809dafde8ffa648011f047398b86fcbcbe2d21ce825f03647a7"
+    },
+    "camera-50-oracle-pixel-7317-2048.npz": {
+      "bytes": 863,
+      "sha256": "aae65a538c8497990eadb0a554307f79011d124f7ccd2539246c1475627ecd01"
+    },
+    "camera-50-reconstruction-base-256.npz": {
+      "bytes": 185912,
+      "sha256": "cec055125ef65cead19df580610ddb7f4f309deb47530dc34b4a9014eb0860cf"
+    },
+    "camera-50-reconstruction-base-512.npz": {
+      "bytes": 187093,
+      "sha256": "467a55ce3f2de843782dfb97298723c5dd77b608bd44ac5e9f32e05154dc66bf"
+    },
+    "camera-50-reconstruction-pixel-7317-1024.npz": {
+      "bytes": 864,
+      "sha256": "bfdd09cbb5097fd148f90f0f51d7cd4e56d01161043b37138767eb47f5e5993f"
+    },
+    "camera-50-reconstruction-pixel-7317-2048.npz": {
+      "bytes": 863,
+      "sha256": "5d19770bc45f0b015db50aede69bf40a3f92f11296123eda250bd85e3c7b56fe"
+    }
+  },
+  "gate3_receipt": {
+    "bytes": 9580,
+    "path": "/home/isavand/paper/evidence/donut-geometry-rgb-gate3-a0feb701948a45c2a41785fe1325a220/render/receipt.json",
+    "sha256": "832fa3706725e8abad345fd72036b5ee6ad163dfc18190217b785a9d016c4d62"
+  },
+  "historical_geometry_provenance": "unresolved",
+  "history_checkpoint_loads_authorized": false,
+  "host_output": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7",
+  "order": [
+    "K1-Oracle",
+    "K1-Reconstruction",
+    "Ambient-Oracle",
+    "Ambient-Reconstruction"
+  ],
+  "policy": {
+    "RGB_loss": "original Charbonnier on linear RGB, epsilon=.001",
+    "amsgrad": true,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "compatibility_SE_multiplier": 6,
+    "compatibility_absolute": 0.001,
+    "compatibility_relative": 0.02,
+    "diffuse_white_prior": 0.01,
+    "end_iter": 100000,
+    "end_warm": 1000,
+    "eps": 0.0001,
+    "gradient_clip": 0.7,
+    "lr_initial": 0.001,
+    "material_prior": "unchanged legacy_v1",
+    "optimizer": "original A Adam",
+    "orientation_eligibility_gap": 0.1,
+    "scheduled_lr": 0.0005,
+    "scheduler": "original WarmUpCosLR",
+    "seed": 6033,
+    "weight_decay": 0
+  },
+  "protocol": "donut-matched-geometry-recovery-v1",
+  "reference_freeze_sha256": "0bf3836aaa58491224df419c0bc5feaf921393137b196f2a252f4589e2badb38",
+  "shader": {
+    "anisotropy": true,
+    "change_eps": 0.02,
+    "change_type": "gaussian",
+    "diffuse_sample_num": 512,
+    "human_lights": false,
+    "illumination_mode": "known_env_v1",
+    "indirect_mode": "zero_bounce_v1",
+    "inner_light_exp_max": 20,
+    "is_real": false,
+    "known_environment": {
+      "ambient": [
+        0.01,
+        0.01,
+        0.01
+      ],
+      "lobes": [
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            -1.0,
+            0.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "power": 64
+        },
+        {
+          "RGB": [
+            2.8142857142857136,
+            2.957142857142857,
+            3.40952380952381
+          ],
+          "axis": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "power": 64
+        }
+      ]
+    },
+    "light_exp_max": 20,
+    "outer_light_version": "direction",
+    "random_azimuth": true,
+    "reg_change": true,
+    "reg_energy_loss": true,
+    "reg_energy_loss_lambda": 0.05,
+    "reg_lambda1": 0.05,
+    "reg_spec_loss": true,
+    "reg_spec_loss_lambda": 0.05,
+    "regularization_version": "legacy_v1",
+    "specular_sample_num": 1024
+  },
+  "sources": {
+    "benchmarks/donut_heterogeneous_metrics_v1.py": "96eb441860c8ca6f64cc1d15946e271b34f36154b8e886b9b412e207020b3ffa",
+    "benchmarks/donut_matched_geometry_recovery_v1.py": "075cb3cf6df177356ada3126c35118714901644758c9475bd2ebffc313013d77",
+    "docs/protocols/DONUT_MATCHED_GEOMETRY_RECOVERY_V1.md": "427b02ab862783f60fda8b886c5786b91fedb58b26563fb7b494b0ff2b9a7ac4",
+    "docs/results/publication_gate3/artifact-manifest.json": "88233c6970fe1383905a475bd0961198f0911d5e1349d8b6af05f672da7014b9",
+    "docs/results/publication_gate3/rgb-metrics.json": "26090feeffe48263a385fbcc6ddf10d87c3e53774ae15f907f91ab7174cea22b",
+    "experiments/analyze_donut_heterogeneous_training_v1.py": "f70daf32cc8bc47b7be94baece084ff8a1cb2e3a582b7e0d202dfaff07aef86c",
+    "experiments/analyze_donut_matched_geometry_v1.py": "9ea577b3341ce5560861d1a178fa45312013f947b7ea7cd35403cd8410554ccd",
+    "experiments/run_donut_matched_geometry_v1.sh": "18ec0f91a5865ea5ecfd873531c1fd3b632edbe283fb9a2f5e11dd4ae7734bc7",
+    "experiments/train_donut_matched_geometry_v1.py": "9562ef63bbb4065c9300389642b8bf90b0128974956a77326813e29f6a7edc8c",
+    "tests/scientific/test_donut_matched_geometry_v1.py": "752fa1ffd62074950ce76a63362905b3fd46eebe4f3d53a6ec88443d8f7d4fde"
+  },
+  "steps": [
+    0,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "support": {
+    "camera_counts": {
+      "0": 4513,
+      "1": 4131,
+      "28": 4830,
+      "34": 2476,
+      "45": 3942,
+      "50": 2605
+    },
+    "fitting_observations": 15191,
+    "held_out_observations": 7306,
+    "observations_and_RGB_sha256": "c3634a728c082605e36e5bb4e60263f1f26bfac8c86b442b30eea28167c34575",
+    "photometric_index_sha256": "0c8b943813ee391218aa74d00f620c086cca509753a579f9d04c62cea588ce36"
+  }
+}
