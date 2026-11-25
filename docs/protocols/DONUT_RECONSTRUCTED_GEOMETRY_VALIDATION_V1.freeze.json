@@ -1,0 +1,147 @@
+{
+  "backend": {
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "variant": "predicate_fp64"
+  },
+  "cameras": {
+    "bytes": 86413,
+    "path": "/home/isavand/nero/data/nerf_synthetic/donut/transforms_train.json",
+    "sha256": "89fc7b8d05db69437f3654cac1a8c6e68a23cfb411c28703824e18f0fdcaa82a"
+  },
+  "dataset": {
+    "admission": {
+      "bytes": 6626,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9-admission.json",
+      "sha256": "a6eab416054c5bf74b43834c3be224847e2d78d9af7eb4989745fe37333618fb"
+    },
+    "generation": {
+      "bytes": 25006,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/generation.json",
+      "sha256": "de8dda85559b286456d926e09731c6c501dfcbd6707d1aaf3aef9cf8784c58a0"
+    },
+    "verification": {
+      "bytes": 15604,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9-verification-v1.json",
+      "sha256": "22e7894fdba2f84ed0355299999cc74a1784cb40c74667f7b0b9e432cb598340"
+    }
+  },
+  "historical_geometry_provenance": "unresolved",
+  "host_output": "/home/isavand/paper/evidence/donut-geometry-gate2-e261dd42053f4b7ab24016d0346b00cd",
+  "image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "limits": {
+    "cpu_ray_checks": 384,
+    "nearest_searches": 196608,
+    "primary_rays": 196608,
+    "projection_candidates": 40000000,
+    "visibility_rays": 98304
+  },
+  "material_optimization_authorized": false,
+  "mesh": {
+    "bytes": 7062117,
+    "path": "/home/isavand/nero/final_results/meshes/donut_shape-300000.ply",
+    "sha256": "1206fa06e7b1b724731082dd8cc22185afa62bc2b14600ad54fb6593a758f20c"
+  },
+  "oracle": {
+    "bytes": 2589411,
+    "path": "/home/isavand/paper/evidence/donut-blend-inspection-v2/oracle-geometry-and-frames.npz",
+    "sha256": "cfe903c177dfe404c47390aed2a3fa025ea9499ca0af644dba667b721c0139f1"
+  },
+  "panel": [
+    0,
+    50,
+    1,
+    45,
+    28,
+    34
+  ],
+  "protocol": "donut-reconstructed-geometry-validation-v1",
+  "resources": {
+    "allocator_fraction": 0.1,
+    "cpu_threads": 4,
+    "host_memory_gib": 16,
+    "inner_seconds": 870,
+    "kill_grace_seconds": 30,
+    "output_bytes": 1073741824,
+    "pids": 128,
+    "watchdog_seconds": 900
+  },
+  "schema_version": 1,
+  "size": 128,
+  "sources": {
+    "benchmarks/bell_geometry_e11.py": "491f86b7799d03911c4665e1884ceb81b62ae8dc085141b7f112b43891ab3737",
+    "benchmarks/donut_heterogeneous_v1.py": "301f8a2b70718cc6ad2da157e0b58c27c70e540e0c2ba4c788c87f86def34236",
+    "benchmarks/donut_reconstructed_geometry_v1.py": "4357f6c4f85499b970701002d32e4e0f245a57edc7dc53237c846ae8220cfaac",
+    "benchmarks/donut_recovery_v1.py": "28bc3cb19f371a33bf8715c0a2ca55f236a606fae295e1b3de3248121b80b556",
+    "benchmarks/generate_bell_e11.py": "877b826ce3e2eabda860d296051de6791cf048f543e1bb41dbe60886654c7647",
+    "docs/protocols/DONUT_RECONSTRUCTED_GEOMETRY_VALIDATION_V1.md": "48a859b476fa6a925a18aa24f91adf295361825b50519dfa1fa1390fa45a6cf1",
+    "docs/results/publication_gate1/donut-geometry-readiness-v1.json": "2560df2000992a9f62a26c17810d0e4e297228351864a2cb7e7528c4d5249276",
+    "experiments/donut_reconstructed_geometry_v1.py": "fd32bdbc52393b672a7e02349c7f04e142551e1993c3965b059250bcdf2c1553",
+    "experiments/run_donut_reconstructed_geometry_v1.sh": "18c96e0a569bb3043c8cc0ea35ac2398fde8fcb4fc167e7a92f26446ab7b980c",
+    "experiments/verify_donut_reconstructed_geometry_v1.py": "3b644cab9e86540170dd7bf790bc2d6fd41ff2c55e66a9563224633b2a98ced1",
+    "infrastructure/stage_sources.py": "3c904a09662663fd9f37e3a6afee33576963675508e416dbc6141a5c68d44dc8",
+    "infrastructure/verified_ray_backend.py": "e103775b70a72a24d0772dd6f09d622820d403d8d9ced63837521981df81dffd",
+    "scientific_sources/manifest-v1.json": "39b9baecce2aab6fc62ec57bd6f45e453d8e9d68215f6af3f25b8ed118c5a3f6",
+    "tests/scientific/test_donut_reconstructed_geometry_v1.py": "65c2abed1025086ef333a3e594dd8a57288896652302d47156323decab514151"
+  },
+  "splits": {
+    "fitting": [
+      0,
+      50,
+      1,
+      45
+    ],
+    "held_out": [
+      28,
+      34
+    ]
+  },
+  "tolerances": {
+    "coincident_direction": 1e-12,
+    "depth": 0.0002,
+    "edge": 1e-05,
+    "gap": 0.1,
+    "grazing_cosine": 0.1,
+    "normal": 0.0002,
+    "normal_degrees": 30.0,
+    "position": 0.0002,
+    "radius": 0.005,
+    "side_tie": 0.0002,
+    "transport_width": 2e-10,
+    "unit_normal": 2e-06
+  },
+  "views": {
+    "view-0.npz": {
+      "bytes": 2403543,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-0.npz",
+      "sha256": "e570bfd965ad8a5775c44e4306a029f9b2c1515a0f9bb1f256cfff150cd8a134"
+    },
+    "view-1.npz": {
+      "bytes": 2187672,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-1.npz",
+      "sha256": "f8ce285b6b0f3c1280b0d3bb41562e813ff688cee4f0d75f320d5e445e173d7d"
+    },
+    "view-28.npz": {
+      "bytes": 2565614,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-28.npz",
+      "sha256": "44e6ddb03d8519f7c490ca2aafce395ed553f20f173a0d96babddc647115639b"
+    },
+    "view-34.npz": {
+      "bytes": 1308423,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-34.npz",
+      "sha256": "730739337f9fa08b6d6e9aceb8a34d121fae424d52991649b8175ad474226ba1"
+    },
+    "view-45.npz": {
+      "bytes": 2092230,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-45.npz",
+      "sha256": "949802ee07a2b196ba1d6347f314df6ff31b66613eb1e0145bf4fd163527fe55"
+    },
+    "view-50.npz": {
+      "bytes": 1383119,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-50.npz",
+      "sha256": "daff67e19645246274dfb937f21a943f3f93a0c145050b3c52fadd0e81e253e5"
+    }
+  }
+}
