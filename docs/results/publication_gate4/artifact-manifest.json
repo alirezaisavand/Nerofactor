@@ -1,0 +1,244 @@
+{
+  "arms": {
+    "Ambient-Oracle": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 25354000,
+          "sha256": "e0a51c05c62cb8b80c8a226d4b6990b8079990ed696f56b80080afd6fca925f1"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 25354064,
+          "sha256": "dcea45c067ea8ab152e5301f5e48f5ffd1f23063c3a03ecd690ad70a04260fc6"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 25354000,
+          "sha256": "55db15e4b2e561ebe7b9ab5bef314b1df2b6018d54713d826fbabba015a0c528"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 25354064,
+          "sha256": "23049093a961aa2f8872495e3fb8954da2e91a1d96adbe4c0a5600c304c37e5e"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 25354000,
+          "sha256": "ae4f239a7eeabfb34ab1bc6665218d064b85bbd38b23914c463774e81a97b24c"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/Ambient-Oracle-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 212266224,
+      "output_count": 893,
+      "photometric_stream": {
+        "bytes": 20480000,
+        "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/Ambient-Oracle/photometric-indices.u32le",
+        "sha256": "0c8b943813ee391218aa74d00f620c086cca509753a579f9d04c62cea588ce36"
+      },
+      "receipt": {
+        "bytes": 240817,
+        "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/Ambient-Oracle/recovery.json",
+        "sha256": "27fa66e41f820af66d81470170e492d14e3eae860298d7b7f532424696d076c3"
+      }
+    },
+    "Ambient-Reconstruction": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 25353999,
+          "sha256": "257ff0ec41b5feeeb2b02db4ecb6a678cba3b897fb79d10ff1f7567f4fa78ae4"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 25354063,
+          "sha256": "ce6507bb011a8f0586aef71f5a4ceb1bda1ad1d36ad161e8708ae9ab23312e1b"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 25354063,
+          "sha256": "678631ad1ee5894d722f5dd2a556f835510266ce88dae78eb64c44bcb7e43817"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 25354063,
+          "sha256": "bfe55b148065268ddd99672198ab8f518b795c1c91e4a1d3bbc263647b395651"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 25353999,
+          "sha256": "f4bd55a1ff3eed9b943745d257701c914b5bb44f140a1025fe2901d7637d30c5"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/Ambient-Reconstruction-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 212402198,
+      "output_count": 893,
+      "photometric_stream": {
+        "bytes": 20480000,
+        "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/Ambient-Reconstruction/photometric-indices.u32le",
+        "sha256": "0c8b943813ee391218aa74d00f620c086cca509753a579f9d04c62cea588ce36"
+      },
+      "receipt": {
+        "bytes": 240885,
+        "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/Ambient-Reconstruction/recovery.json",
+        "sha256": "15a3f2ea30c7a6ab17cb109e9fc8507d4c12f2a0f830a6e494b9680ce85a06f1"
+      }
+    },
+    "K1-Oracle": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 25345481,
+          "sha256": "55411155ffe639a7ab15d5e8c9caf6af31793f49d803843e675a8fec873c2bd4"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 25345545,
+          "sha256": "d487543e98295567d517988bb062a9de37dd32334978a46cc43df8b2b1d6692d"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 25345481,
+          "sha256": "dcca9abcda4d2f138e4264f924011bf8a4c5b5a389148513530954a1c2c881cc"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 25345481,
+          "sha256": "1a781cff6f1d31d59e66230b286ee3d3f8b3e17d035a784c04638ad7458a7736"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 25345481,
+          "sha256": "e8d2b79ae6934eb59ab73c873c5ac41c0be79bea0056e80e55da4bcfe9417fb6"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/K1-Oracle-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 205542050,
+      "output_count": 891,
+      "photometric_stream": {
+        "bytes": 20480000,
+        "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/K1-Oracle/photometric-indices.u32le",
+        "sha256": "0c8b943813ee391218aa74d00f620c086cca509753a579f9d04c62cea588ce36"
+      },
+      "receipt": {
+        "bytes": 238418,
+        "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/K1-Oracle/recovery.json",
+        "sha256": "613b15c891e2251ffd4fe51684a01087d1387adc455a739486332fcafec281fb"
+      }
+    },
+    "K1-Reconstruction": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 25345483,
+          "sha256": "12e16d1c1277af413162ea5dfa588008139bacdab587098eb79ca0759f9a3902"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 25345547,
+          "sha256": "cf636d0cc017cc83fe00e88f5123557328d142ac7a28d438f6dcb0678f6fadc8"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 25345483,
+          "sha256": "d8352040e01c54641b7282c972401e2a9d57535b73c9ca6c462458f4ed2bfc26"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 25345483,
+          "sha256": "7382f1b6ef34b34410a1cb37c5faedf43940a5716ba55eb2bbbfdc32c80e6c8c"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 25345483,
+          "sha256": "e4d84c16c29fb27ea9ee8fe3ed55dfadea010768436939c5a8626597f58d2fae"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/K1-Reconstruction-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 205666950,
+      "output_count": 891,
+      "photometric_stream": {
+        "bytes": 20480000,
+        "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/K1-Reconstruction/photometric-indices.u32le",
+        "sha256": "0c8b943813ee391218aa74d00f620c086cca509753a579f9d04c62cea588ce36"
+      },
+      "receipt": {
+        "bytes": 238418,
+        "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/K1-Reconstruction/recovery.json",
+        "sha256": "c8e85cef3738bae4e2829bbc9e79194301c217004379a05d21a09fc13b2c0560"
+      }
+    }
+  },
+  "authorization": {
+    "bytes": 7749,
+    "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/authorization.json",
+    "sha256": "511442638cb8196cdcc89ce6e7e1fd01e37583c0b939f033c6dbf66f6e2ce074"
+  },
+  "batch": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7",
+  "execution_commit": "3646d7cce5bf9090bf18ddf6343bbcc829a22bc9",
+  "freeze": {
+    "bytes": 32468,
+    "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/freeze.json",
+    "sha256": "3dfcd4b6c9ad5ac4549dd11d93a4f0780a07820b48a03d0f66cae24e0033e517"
+  },
+  "gate3_receipt": {
+    "bytes": 9580,
+    "path": "/home/isavand/paper/evidence/donut-geometry-rgb-gate3-a0feb701948a45c2a41785fe1325a220/render/receipt.json",
+    "sha256": "832fa3706725e8abad345fd72036b5ee6ad163dfc18190217b785a9d016c4d62"
+  },
+  "offline": [
+    {
+      "bytes": 41230,
+      "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7-analysis-v1/coverage.npz",
+      "sha256": "4d21fd3cdacbc446677f9783868fd7d36d57bcd9d1d1f8eb6383dce8795cce41"
+    },
+    {
+      "bytes": 158911,
+      "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7-analysis-v1/held-out-geometry-trajectories.png",
+      "sha256": "9f0f81691971e315dd6771e42d8936d8ad854a30bce58c2c9f1e13516ca35e79"
+    },
+    {
+      "bytes": 388632,
+      "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7-analysis-v1/matched-results.json",
+      "sha256": "d22269ac97f1cfec6cdc8966e31797d9526463d5d732e6629ebc90ba785f74a2"
+    }
+  ],
+  "packaged_files": {
+    "boundary-jumps.csv": {
+      "bytes": 4302,
+      "sha256": "446fbe58b74421cdf436a148ef2531eec6f3f26d0538b60500aeb75490aa6639"
+    },
+    "endpoints.csv": {
+      "bytes": 2545,
+      "sha256": "dee4d1e04da6e44ee60cf88ab076dd1a3088f2814a13ada9f1a952294a3481e8"
+    },
+    "held-out-endpoint-maps.png": {
+      "bytes": 514475,
+      "sha256": "eca2ccbf69c0cb56a1bd984b1faa963395472a1c1f382a030ea9f00b0404628b"
+    },
+    "held-out-geometry-trajectories.png": {
+      "bytes": 158911,
+      "sha256": "9f0f81691971e315dd6771e42d8936d8ad854a30bce58c2c9f1e13516ca35e79"
+    },
+    "matched-results.json": {
+      "bytes": 388632,
+      "sha256": "d22269ac97f1cfec6cdc8966e31797d9526463d5d732e6629ebc90ba785f74a2"
+    },
+    "paired-deltas.csv": {
+      "bytes": 1380,
+      "sha256": "67142de76db2bf13e70ae80a7eac2ba7f256238a5d183087ae85632a642ce6a9"
+    }
+  },
+  "protocol": "donut-matched-geometry-recovery-v1",
+  "schema_version": 1,
+  "support": {
+    "camera_counts": {
+      "0": 4513,
+      "1": 4131,
+      "28": 4830,
+      "34": 2476,
+      "45": 3942,
+      "50": 2605
+    },
+    "fitting_observations": 15191,
+    "held_out_observations": 7306,
+    "observations_and_RGB_sha256": "c3634a728c082605e36e5bb4e60263f1f26bfac8c86b442b30eea28167c34575",
+    "photometric_index_sha256": "0c8b943813ee391218aa74d00f620c086cca509753a579f9d04c62cea588ce36"
+  }
+}
