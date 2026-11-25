@@ -1,5 +1,7 @@
 # Publication Gate 5 — Donut diagnostic and matched-chart readiness
 
+**Completed analysis.** [Gate 5 results and verified execution](RESULTS.md)
+
 **Decision: PROCEED to separate execution authorization.** The archived Ambient-Oracle history is a valid comparator for one new Final-Chart-Oracle history on the exact Gate 4 oracle observation pool. No Donut representation result exists yet. The prior K1 comparison tests a broader recipe. [Frozen protocol](../../protocols/DONUT_REPRESENTATION_GATE5_V1.md)
 
 ## What the saved oracle histories show

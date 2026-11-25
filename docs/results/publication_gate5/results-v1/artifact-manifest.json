@@ -1,0 +1,241 @@
+{
+  "arms": {
+    "Ambient-Oracle": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 25354000,
+          "sha256": "e0a51c05c62cb8b80c8a226d4b6990b8079990ed696f56b80080afd6fca925f1"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 25354064,
+          "sha256": "dcea45c067ea8ab152e5301f5e48f5ffd1f23063c3a03ecd690ad70a04260fc6"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 25354000,
+          "sha256": "55db15e4b2e561ebe7b9ab5bef314b1df2b6018d54713d826fbabba015a0c528"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 25354064,
+          "sha256": "23049093a961aa2f8872495e3fb8954da2e91a1d96adbe4c0a5600c304c37e5e"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 25354000,
+          "sha256": "ae4f239a7eeabfb34ab1bc6665218d064b85bbd38b23914c463774e81a97b24c"
+        }
+      },
+      "cleanup_verified": true,
+      "counters": {
+        "component_reverse_sweeps": 30,
+        "shader_calls": 12290,
+        "shadow_rays": 9524232192,
+        "tensor_admission_predictor_calls": 2,
+        "tensor_admission_reverse_sweeps": 2
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/Ambient-Oracle-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "fitting_stream": {
+        "bytes": 20480000,
+        "sha256": "0c8b943813ee391218aa74d00f620c086cca509753a579f9d04c62cea588ce36"
+      },
+      "optimizer_returns": 10000,
+      "receipt": {
+        "bytes": 240817,
+        "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/Ambient-Oracle/recovery.json",
+        "sha256": "27fa66e41f820af66d81470170e492d14e3eae860298d7b7f532424696d076c3"
+      },
+      "verified_native_artifacts": 893
+    },
+    "Final-Chart-Oracle": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 25345806,
+          "sha256": "98bc9c58a46e007b474afcdc01a6e0d035918cf5b8a7688f6c7b39760d91990f"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 25345870,
+          "sha256": "c45a947868df18c9b893976839ca9838ff862f82fae6a32aac5fe17c62381e44"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 25345806,
+          "sha256": "f24ddc6f9b5867d35d943cc9b80206f77a9cabd8ea90159f0c89ef38b199639a"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 25345806,
+          "sha256": "79bd62f0b85dc7e72895653cfc367537bff9b983cd22d7caba73678859f92c78"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 25345806,
+          "sha256": "2c39af09b6091cfa59a63aba31279bfb1fce06d784930d5d9a7b8c19f572dfb4"
+        }
+      },
+      "cleanup_verified": true,
+      "counters": {
+        "component_reverse_sweeps": 30,
+        "shader_calls": 12290,
+        "shadow_rays": 9524232192,
+        "tensor_admission_predictor_calls": 2,
+        "tensor_admission_reverse_sweeps": 2
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/donut-representation-gate5-5802ba37f6a942c799b78345a56aa09b/Final-Chart-Oracle-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "fitting_stream": {
+        "bytes": 20480000,
+        "sha256": "0c8b943813ee391218aa74d00f620c086cca509753a579f9d04c62cea588ce36"
+      },
+      "optimizer_returns": 10000,
+      "receipt": {
+        "bytes": 241701,
+        "path": "/home/isavand/paper/evidence/donut-representation-gate5-5802ba37f6a942c799b78345a56aa09b/Final-Chart-Oracle/recovery.json",
+        "sha256": "f36ffa6d6a2205750079f9965586062ddce06b43f632c2bcb752ddf071e8cd4b"
+      },
+      "verified_native_artifacts": 893
+    },
+    "K1-Oracle": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 25345481,
+          "sha256": "55411155ffe639a7ab15d5e8c9caf6af31793f49d803843e675a8fec873c2bd4"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 25345545,
+          "sha256": "d487543e98295567d517988bb062a9de37dd32334978a46cc43df8b2b1d6692d"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 25345481,
+          "sha256": "dcca9abcda4d2f138e4264f924011bf8a4c5b5a389148513530954a1c2c881cc"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 25345481,
+          "sha256": "1a781cff6f1d31d59e66230b286ee3d3f8b3e17d035a784c04638ad7458a7736"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 25345481,
+          "sha256": "e8d2b79ae6934eb59ab73c873c5ac41c0be79bea0056e80e55da4bcfe9417fb6"
+        }
+      },
+      "cleanup_verified": true,
+      "counters": {
+        "component_reverse_sweeps": 30,
+        "shader_calls": 12288,
+        "shadow_rays": 9524158464
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/K1-Oracle-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "fitting_stream": {
+        "bytes": 20480000,
+        "sha256": "0c8b943813ee391218aa74d00f620c086cca509753a579f9d04c62cea588ce36"
+      },
+      "optimizer_returns": 10000,
+      "receipt": {
+        "bytes": 238418,
+        "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/K1-Oracle/recovery.json",
+        "sha256": "613b15c891e2251ffd4fe51684a01087d1387adc455a739486332fcafec281fb"
+      },
+      "verified_native_artifacts": 891
+    }
+  },
+  "authorization": {
+    "bytes": 1240,
+    "path": "/home/isavand/paper/evidence/donut-representation-gate5-5802ba37f6a942c799b78345a56aa09b/authorization.json",
+    "sha256": "d4f9cc16cdd6dc90751dbde46e0b702ab21b08f01845874f0f23fcef9c4b1f45"
+  },
+  "commit": "36cb7ef4852aad400ba26de9165f393bf67bf84b",
+  "corrected_backend": {
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "variant": "predicate_fp64"
+  },
+  "evidence": {
+    "oracle-trajectories.png": {
+      "bytes": 169526,
+      "path": "/home/isavand/paper/evidence/donut-representation-gate5-5802ba37f6a942c799b78345a56aa09b-analysis-v1/oracle-trajectories.png",
+      "sha256": "828f8414b583fc963bdeb62384bd56bc1b46ef086522a1bd75097cd5e5bdb3dd"
+    },
+    "representation-results.json": {
+      "bytes": 1457255,
+      "path": "/home/isavand/paper/evidence/donut-representation-gate5-5802ba37f6a942c799b78345a56aa09b-analysis-v1/representation-results.json",
+      "sha256": "28dc476892440fc125397bf3eb63cef0cd74f234473f6b7229b2342bcc25cf7d"
+    }
+  },
+  "execution_freeze": {
+    "bytes": 5318,
+    "path": "/home/isavand/paper/evidence/donut-representation-gate5-5802ba37f6a942c799b78345a56aa09b/freeze.json",
+    "sha256": "215e4d184b00445e8d9016ece580b26695a07fb88a2ea59f29260fce66702d23"
+  },
+  "gate4_manifest": {
+    "bytes": 10259,
+    "path": "docs/results/publication_gate4/artifact-manifest.json",
+    "sha256": "c17ddfb54c647d2d09fb33898484de11a229654f5acaece89dd3e0b7425ff67c"
+  },
+  "image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "native_gate_artifacts": {
+    "native-reference-gate.npz": {
+      "bytes": 10386,
+      "path": "/home/isavand/paper/evidence/donut-representation-gate5-5802ba37f6a942c799b78345a56aa09b/Final-Chart-Oracle/native-reference-gate.npz",
+      "sha256": "feb9769bf2b047660236248072cca14073fd0388865613714645cb955b9225cb"
+    },
+    "paired-initial-gate.npz": {
+      "bytes": 7558,
+      "path": "/home/isavand/paper/evidence/donut-representation-gate5-5802ba37f6a942c799b78345a56aa09b/Final-Chart-Oracle/paired-initial-gate.npz",
+      "sha256": "3df1ffc80b5ebc553a8ea3bcf60ecd1bd8b56f46937af45cd55c86e763939244"
+    },
+    "tensor-physical-admission.npz": {
+      "bytes": 68142,
+      "path": "/home/isavand/paper/evidence/donut-representation-gate5-5802ba37f6a942c799b78345a56aa09b/Final-Chart-Oracle/tensor-physical-admission.npz",
+      "sha256": "a1ac5476549b0917c291b9026d787a8efeb4484c664c76d1f78b83f569631aa5"
+    }
+  },
+  "offline_checkpoint_loads": 0,
+  "offline_optimizer_updates": 0,
+  "offline_renderer_calls": 0,
+  "packaged_files": {
+    "held-out-physical-comparison.pdf": {
+      "bytes": 90532,
+      "sha256": "1b8b0a993a25ba885b4b4caaa4bf8f161125694d47d1b6fcfc143c4eaf20a08b"
+    },
+    "held-out-physical-comparison.png": {
+      "bytes": 268840,
+      "sha256": "b0d04683ada83e1db8d0811ada0dfc9525cb40653706d009cb8bc17bbeef635c"
+    },
+    "oracle-trajectories.png": {
+      "bytes": 169526,
+      "sha256": "828f8414b583fc963bdeb62384bd56bc1b46ef086522a1bd75097cd5e5bdb3dd"
+    },
+    "representation-results.json": {
+      "bytes": 1457255,
+      "sha256": "28dc476892440fc125397bf3eb63cef0cd74f234473f6b7229b2342bcc25cf7d"
+    },
+    "trajectory-endpoints.csv": {
+      "bytes": 11060,
+      "sha256": "932497cfddb272dcf3f16c8c654333eb91916405f1421d7519e87b7615724360"
+    }
+  },
+  "protocol": "donut-representation-gate5-v1",
+  "schema_version": 1,
+  "status": "verified_complete",
+  "support": {
+    "camera_counts": {
+      "0": 4513,
+      "1": 4131,
+      "28": 4830,
+      "34": 2476,
+      "45": 3942,
+      "50": 2605
+    },
+    "fitting_observations": 15191,
+    "held_out_observations": 7306,
+    "observations_and_RGB_sha256": "c3634a728c082605e36e5bb4e60263f1f26bfac8c86b442b30eea28167c34575",
+    "photometric_index_sha256": "0c8b943813ee391218aa74d00f620c086cca509753a579f9d04c62cea588ce36"
+  }
+}
