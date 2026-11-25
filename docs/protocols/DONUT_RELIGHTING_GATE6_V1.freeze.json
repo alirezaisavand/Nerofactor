@@ -1,0 +1,409 @@
+{
+  "BRDF": "Kurt-a0-metallic-additive-v1",
+  "artifacts": {
+    "admission": {
+      "bytes": 6626,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9-admission.json",
+      "sha256": "a6eab416054c5bf74b43834c3be224847e2d78d9af7eb4989745fe37333618fb"
+    },
+    "cameras": {
+      "bytes": 86413,
+      "path": "/home/isavand/nero/data/nerf_synthetic/donut/transforms_train.json",
+      "sha256": "89fc7b8d05db69437f3654cac1a8c6e68a23cfb411c28703824e18f0fdcaa82a"
+    },
+    "checkpoint_0": {
+      "bytes": 25345481,
+      "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/K1-Oracle/checkpoint-10000.pth",
+      "sha256": "e8d2b79ae6934eb59ab73c873c5ac41c0be79bea0056e80e55da4bcfe9417fb6"
+    },
+    "checkpoint_1": {
+      "bytes": 25345806,
+      "path": "/home/isavand/paper/evidence/donut-representation-gate5-5802ba37f6a942c799b78345a56aa09b/Final-Chart-Oracle/checkpoint-10000.pth",
+      "sha256": "2c39af09b6091cfa59a63aba31279bfb1fce06d784930d5d9a7b8c19f572dfb4"
+    },
+    "checkpoint_2": {
+      "bytes": 25354000,
+      "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/Ambient-Oracle/checkpoint-10000.pth",
+      "sha256": "ae4f239a7eeabfb34ab1bc6665218d064b85bbd38b23914c463774e81a97b24c"
+    },
+    "generation": {
+      "bytes": 25006,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/generation.json",
+      "sha256": "de8dda85559b286456d926e09731c6c501dfcbd6707d1aaf3aef9cf8784c58a0"
+    },
+    "oracle": {
+      "bytes": 2589411,
+      "path": "/home/isavand/paper/evidence/donut-blend-inspection-v2/oracle-geometry-and-frames.npz",
+      "sha256": "cfe903c177dfe404c47390aed2a3fa025ea9499ca0af644dba667b721c0139f1"
+    },
+    "receipt_0": {
+      "bytes": 238418,
+      "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/K1-Oracle/recovery.json",
+      "sha256": "613b15c891e2251ffd4fe51684a01087d1387adc455a739486332fcafec281fb"
+    },
+    "receipt_1": {
+      "bytes": 241701,
+      "path": "/home/isavand/paper/evidence/donut-representation-gate5-5802ba37f6a942c799b78345a56aa09b/Final-Chart-Oracle/recovery.json",
+      "sha256": "f36ffa6d6a2205750079f9965586062ddce06b43f632c2bcb752ddf071e8cd4b"
+    },
+    "receipt_2": {
+      "bytes": 240817,
+      "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/Ambient-Oracle/recovery.json",
+      "sha256": "27fa66e41f820af66d81470170e492d14e3eae860298d7b7f532424696d076c3"
+    },
+    "verification": {
+      "bytes": 15604,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9-verification-v1.json",
+      "sha256": "22e7894fdba2f84ed0355299999cc74a1784cb40c74667f7b0b9e432cb598340"
+    },
+    "view_28": {
+      "bytes": 2565614,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-28.npz",
+      "sha256": "44e6ddb03d8519f7c490ca2aafce395ed553f20f173a0d96babddc647115639b"
+    },
+    "view_34": {
+      "bytes": 1308423,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-34.npz",
+      "sha256": "730739337f9fa08b6d6e9aceb8a34d121fae424d52991649b8175ad474226ba1"
+    }
+  },
+  "backend": {
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "variant": "predicate_fp64"
+  },
+  "base_grids": [
+    256,
+    512
+  ],
+  "cameras": [
+    28,
+    34
+  ],
+  "endpoint": 10000,
+  "environment": {
+    "ambient": [
+      0.01,
+      0.01,
+      0.01
+    ],
+    "lobes": [
+      {
+        "RGB": [
+          2.8142857142857136,
+          2.957142857142857,
+          3.40952380952381
+        ],
+        "axis": [
+          0.804737854124365,
+          0.5058793634016805,
+          -0.31061721752604554
+        ],
+        "power": 64
+      },
+      {
+        "RGB": [
+          2.8142857142857136,
+          2.957142857142857,
+          3.40952380952381
+        ],
+        "axis": [
+          -0.804737854124365,
+          -0.5058793634016805,
+          0.31061721752604554
+        ],
+        "power": 64
+      },
+      {
+        "RGB": [
+          2.8142857142857136,
+          2.957142857142857,
+          3.40952380952381
+        ],
+        "axis": [
+          -0.31061721752604554,
+          0.804737854124365,
+          0.5058793634016805
+        ],
+        "power": 64
+      },
+      {
+        "RGB": [
+          2.8142857142857136,
+          2.957142857142857,
+          3.40952380952381
+        ],
+        "axis": [
+          0.31061721752604554,
+          -0.804737854124365,
+          -0.5058793634016805
+        ],
+        "power": 64
+      },
+      {
+        "RGB": [
+          2.8142857142857136,
+          2.957142857142857,
+          3.40952380952381
+        ],
+        "axis": [
+          0.5058793634016805,
+          -0.31061721752604554,
+          0.804737854124365
+        ],
+        "power": 64
+      },
+      {
+        "RGB": [
+          2.8142857142857136,
+          2.957142857142857,
+          3.40952380952381
+        ],
+        "axis": [
+          -0.5058793634016805,
+          0.31061721752604554,
+          -0.804737854124365
+        ],
+        "power": 64
+      }
+    ]
+  },
+  "fitting_environment": {
+    "ambient": [
+      0.01,
+      0.01,
+      0.01
+    ],
+    "lobes": [
+      {
+        "RGB": [
+          2.8142857142857136,
+          2.957142857142857,
+          3.40952380952381
+        ],
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "power": 64
+      },
+      {
+        "RGB": [
+          2.8142857142857136,
+          2.957142857142857,
+          3.40952380952381
+        ],
+        "axis": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "power": 64
+      },
+      {
+        "RGB": [
+          2.8142857142857136,
+          2.957142857142857,
+          3.40952380952381
+        ],
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "power": 64
+      },
+      {
+        "RGB": [
+          2.8142857142857136,
+          2.957142857142857,
+          3.40952380952381
+        ],
+        "axis": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "power": 64
+      },
+      {
+        "RGB": [
+          2.8142857142857136,
+          2.957142857142857,
+          3.40952380952381
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "power": 64
+      },
+      {
+        "RGB": [
+          2.8142857142857136,
+          2.957142857142857,
+          3.40952380952381
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "power": 64
+      }
+    ]
+  },
+  "frame_max_abs": 2e-06,
+  "gate5_manifest_sha256": "b52100c7eb3f91bf8efe85b1b73aca2ff87b444a6cfb638eae8b31a1439d87e0",
+  "gate5_support": {
+    "camera_counts": {
+      "0": 4513,
+      "1": 4131,
+      "28": 4830,
+      "34": 2476,
+      "45": 3942,
+      "50": 2605
+    },
+    "fitting_observations": 15191,
+    "held_out_observations": 7306,
+    "observations_and_RGB_sha256": "c3634a728c082605e36e5bb4e60263f1f26bfac8c86b442b30eea28167c34575",
+    "photometric_index_sha256": "0c8b943813ee391218aa74d00f620c086cca509753a579f9d04c62cea588ce36"
+  },
+  "high_grids": [
+    1024,
+    2048
+  ],
+  "host_output": "/home/isavand/paper/evidence/donut-relight-gate6-489e4c860f47404a9b215e9e51b1acaa",
+  "image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "independent_chunk": {
+    "directions": 16384,
+    "points": 4
+  },
+  "indirect": "zero",
+  "limits": {
+    "checkpoint_loads": 3,
+    "independent_BRDF_point_directions": 12310282240,
+    "independent_shadow_directions": 3077570560,
+    "native_shader_calls": 1440,
+    "native_shadow_slots": 1082916864,
+    "optimizer_updates": 0,
+    "primary_rays": 0
+  },
+  "matched": {
+    "28": 4830,
+    "34": 2476
+  },
+  "material_max_abs": 1e-06,
+  "max_refined_per_camera": 64,
+  "max_refined_total": 128,
+  "methods": {
+    "Ambient-Oracle": {
+      "checkpoint": "checkpoint_2",
+      "folder": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/Ambient-Oracle",
+      "receipt": "receipt_2",
+      "tensor_arm": "D9-T",
+      "variant": "donut_tensor_ambient_weak_start_v1"
+    },
+    "Final-Chart-Oracle": {
+      "checkpoint": "checkpoint_1",
+      "folder": "/home/isavand/paper/evidence/donut-representation-gate5-5802ba37f6a942c799b78345a56aa09b/Final-Chart-Oracle",
+      "receipt": "receipt_1",
+      "tensor_arm": "D9-C",
+      "variant": "donut_tensor_chart_weak_start_v1"
+    },
+    "K1-Oracle": {
+      "checkpoint": "checkpoint_0",
+      "folder": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/K1-Oracle",
+      "receipt": "receipt_0",
+      "tensor_arm": null,
+      "variant": "A_corrected_core_v1"
+    }
+  },
+  "native_chunk": 512,
+  "native_draws": 32,
+  "native_samples": {
+    "diffuse": 512,
+    "specular": 1024
+  },
+  "native_tape": {
+    "base": 6100000,
+    "camera_stride": 1000000,
+    "row_stride": 64,
+    "tensor_offset": 100000000
+  },
+  "oracle_foreground": {
+    "28": 4849,
+    "34": 2495
+  },
+  "point_light": "absent",
+  "protocol": "donut-unseen-light-gate6-v1",
+  "resources": {
+    "cpu_threads": 4,
+    "cuda_allocator_fraction": 0.25,
+    "gpu": "0",
+    "host_memory_gib": 64,
+    "inner_kill_grace_seconds": 20,
+    "inner_seconds": 1740,
+    "kill_grace_seconds": 30,
+    "output_bytes": 536870912,
+    "pids": 128,
+    "watchdog_seconds": 1800
+  },
+  "roles": [
+    "oracle",
+    "K1-Oracle",
+    "Final-Chart-Oracle",
+    "Ambient-Oracle"
+  ],
+  "schema_version": 1,
+  "size": 128,
+  "sources": {
+    "benchmarks/bell_e11.py": "01b18245999d0d9ffcf0fdfe9b317fdfd427d9e1bee6ca7db395eaa0b3c94e8a",
+    "benchmarks/bell_reference_e11.py": "be4b95e3a8f37d5142920637a6533da89ecb2ff96c916343423254016ca7f673",
+    "benchmarks/donut_relighting_gate6_v1.py": "85e14ca8247c4d8c6cdf836fc5db67ce3cc945c285e970b72972ee51398e2c98",
+    "benchmarks/generate_bell_e11.py": "877b826ce3e2eabda860d296051de6791cf048f543e1bb41dbe60886654c7647",
+    "benchmarks/generate_donut_recovery_v1.py": "e2bdb474823a9820c6d7ef054b8c9273df1b36944f83b736a8653c4b93917e4e",
+    "benchmarks/material_information_e14.py": "e25636c941fcf417a515d031e58deb3782b90ed2e7e5095984a5943e38f4883e",
+    "docs/protocols/DONUT_RELIGHTING_GATE6_V1.md": "7f58c28aef021ffd533b3d21ebfcb8e710524fd59a91b993d7eb72e3087e1a95",
+    "docs/protocols/DONUT_REPRESENTATION_GATE5_V1.freeze.json": "215e4d184b00445e8d9016ece580b26695a07fb88a2ea59f29260fce66702d23",
+    "docs/results/publication_gate5/results-v1/artifact-manifest.json": "b52100c7eb3f91bf8efe85b1b73aca2ff87b444a6cfb638eae8b31a1439d87e0",
+    "experiments/analyze_donut_relighting_gate6_v1.py": "4c894bfbd47e0bfd621a5e4446a575c7f96fb2769d3092a8ad536aaf96c79c85",
+    "experiments/analyze_donut_representation_gate5_v1.py": "1f9064cfbf6bac8efcf5386db5eaa2943bef8625c842335ece85090004696aae",
+    "experiments/bell_highlight_e11d.py": "93ef7b7a693622ad54b278a61c96d10575e647969326675411a265da94f3ee19",
+    "experiments/bell_highlight_pilot_e11d.py": "0c781ed2a380462c52c59b8442a61a77cdf919c75f52fb50c814faa33f7b18c6",
+    "experiments/bell_neural_material_e16.py": "4be6581994be035ed992ce9514089048dabf7fff43dad2126f1d62ce695efc9d",
+    "experiments/bell_quadrature_e11e.py": "d91c09671eae577b890ac15603c3ae646d4daa88d8fbd1c73c5763a536b42098",
+    "experiments/donut_reconstructed_geometry_v1.py": "fd32bdbc52393b672a7e02349c7f04e142551e1993c3965b059250bcdf2c1553",
+    "experiments/donut_relighting_gate6_v1.py": "933ffee8a7fe6b916caecdc6745f05dc10d26dbeaf2a702fcdb8e3e3a10b4701",
+    "experiments/run_donut_relighting_gate6_v1.sh": "ead23daa269306ffadd106ad6d551566392e0d3fab42ae062f78aecf917fd739",
+    "infrastructure/material_recovery_e13_evaluation.py": "1ba98e148c898808b161eaba4c93f37d46ac2f58007c1ab54e6086f860ed7616",
+    "infrastructure/sphere_replay.py": "a8149046bb6dec1e15f5e9ee7a31fa2fcf7351c8a5191a2838631becc9f3190e",
+    "infrastructure/stage_sources.py": "3c904a09662663fd9f37e3a6afee33576963675508e416dbc6141a5c68d44dc8",
+    "infrastructure/verified_ray_backend.py": "e103775b70a72a24d0772dd6f09d622820d403d8d9ced63837521981df81dffd",
+    "scientific_sources/manifest-v1.json": "39b9baecce2aab6fc62ec57bd6f45e453d8e9d68215f6af3f25b8ed118c5a3f6",
+    "scientific_variants/donut_tensor_d8.py": "a22c9df2260cfb02d5593d54ddc471f6d4beada8fa6fdaaa3423a5a51faf7163",
+    "scientific_variants/donut_tensor_initialization_d9.py": "3a8bccfe0c60a847391d0b5e9bb8f8afe1608acf53571693b914209a5fe154fa",
+    "scientific_variants/donut_tensor_shader_d8.py": "4c544ab46c00cc2faba3c5de7126dca78d9d05c18bdfdf6ba664bfe68e8017df",
+    "scientific_variants/material_a_v1.py": "52603dc041920f7220748c9114f8293ad2499f778ffd688ef639bbe4e8759875",
+    "tests/scientific/test_donut_relighting_gate6_v1.py": "d9f77ba59f617e3811838a5ea8b3ee1943fcb2b3a46307648b11c78673da7f5a"
+  },
+  "support": {
+    "28": {
+      "foreground_sha256": "9e4b28df320d41d68324fecdcb93d12f26a29d3f5aa37648c66c8d57ba960901",
+      "matched_sha256": "10377dd86e775cb5cb0a53d578ad9087a397ec8f7c0bb134d6d5b8f5487f5fa9"
+    },
+    "34": {
+      "foreground_sha256": "02d495340f57ec739b839f48c090d41000ecdbda5498d7442ebd656cdbe780c8",
+      "matched_sha256": "7a52b77ea18a0258f02e8ae20cee1994526f4604303a807952b45f8e616e26e1"
+    }
+  },
+  "tolerances": {
+    "convergence_relative_l2": 0.002,
+    "convergence_rgb_abs": 0.003
+  },
+  "training_authorized": false
+}
