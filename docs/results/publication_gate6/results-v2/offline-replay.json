@@ -1,0 +1,83 @@
+{
+  "adjacent_float64_roles": 6,
+  "cameras": {
+    "28": {
+      "camera": 28,
+      "refined_pixels": [],
+      "roles": {
+        "Ambient-Oracle": {
+          "absolute_difference": 5.421010862427522e-20,
+          "different_float64_steps": 1,
+          "native_relative_l2": 0.00025763950398301335,
+          "replayed_relative_l2": 0.0002576395039830134
+        },
+        "Final-Chart-Oracle": {
+          "absolute_difference": 5.421010862427522e-20,
+          "different_float64_steps": 1,
+          "native_relative_l2": 0.00028103310545284115,
+          "replayed_relative_l2": 0.0002810331054528412
+        },
+        "K1-Oracle": {
+          "absolute_difference": 0.0,
+          "different_float64_steps": 0,
+          "native_relative_l2": 0.0002578070712735036,
+          "replayed_relative_l2": 0.0002578070712735036
+        },
+        "oracle": {
+          "absolute_difference": 2.710505431213761e-20,
+          "different_float64_steps": 1,
+          "native_relative_l2": 0.00023358242193564398,
+          "replayed_relative_l2": 0.000233582421935644
+        }
+      }
+    },
+    "34": {
+      "camera": 34,
+      "refined_pixels": [
+        9366,
+        8467,
+        9624
+      ],
+      "roles": {
+        "Ambient-Oracle": {
+          "absolute_difference": 1.0842021724855044e-19,
+          "different_float64_steps": 1,
+          "native_relative_l2": 0.0005094857634953945,
+          "replayed_relative_l2": 0.0005094857634953944
+        },
+        "Final-Chart-Oracle": {
+          "absolute_difference": 0.0,
+          "different_float64_steps": 0,
+          "native_relative_l2": 0.0011250690378733826,
+          "replayed_relative_l2": 0.0011250690378733826
+        },
+        "K1-Oracle": {
+          "absolute_difference": 5.421010862427522e-20,
+          "different_float64_steps": 1,
+          "native_relative_l2": 0.0003750959215176317,
+          "replayed_relative_l2": 0.00037509592151763167
+        },
+        "oracle": {
+          "absolute_difference": 2.710505431213761e-20,
+          "different_float64_steps": 1,
+          "native_relative_l2": 0.00018686203201851676,
+          "replayed_relative_l2": 0.00018686203201851673
+        }
+      }
+    }
+  },
+  "checkpoint_loads": 0,
+  "comparator": "Relative L2 may have one adjacent representable FP64 value. All scientific gates, maxima, refined pixel sequences, inventories, hashes and work counts use the original checks.",
+  "exact_replayed_roles": 2,
+  "freeze_sha256": "0ed87914b995df462c12516333bd7ee2fbb8f3057c5d6bf906fdb2c3503ff6a3",
+  "maximum_absolute_relative_L2_replay_delta": 1.0842021724855044e-19,
+  "new_renders": 0,
+  "optimizer_updates": 0,
+  "original_offline_attempt": {
+    "error": "SignatureError: Grid refinement or convergence differs",
+    "exit_code": 1
+  },
+  "protocol": "donut-unseen-light-gate6-v2",
+  "receipt_sha256": "628333da1883a574a202fcd253d233c82009b34600219243aee01225a645c480",
+  "schema_version": 1
+}

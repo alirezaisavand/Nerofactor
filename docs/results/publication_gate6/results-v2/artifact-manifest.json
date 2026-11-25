@@ -1,0 +1,526 @@
+{
+  "backend": {
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "variant": "predicate_fp64"
+  },
+  "checkpoint_hashes": {
+    "Ambient-Oracle": "ae4f239a7eeabfb34ab1bc6665218d064b85bbd38b23914c463774e81a97b24c",
+    "Final-Chart-Oracle": "2c39af09b6091cfa59a63aba31279bfb1fce06d784930d5d9a7b8c19f572dfb4",
+    "K1-Oracle": "e8d2b79ae6934eb59ab73c873c5ac41c0be79bea0056e80e55da4bcfe9417fb6"
+  },
+  "cleanup_verified": true,
+  "commit": "d1bf1392ab10c8dbcc5e9ffcbef127c718380a6f",
+  "execution_artifacts": {
+    "authorization.json": {
+      "bytes": 1648,
+      "path": "/home/isavand/paper/evidence/donut-relight-gate6-v2-bd5d5897ce164928a044e8c04b2b5d71/authorization.json",
+      "sha256": "c0651688b98d24d9405e036b7265d39e683562ddaa60a2b0f8de5a77074b0eba"
+    },
+    "console.txt": {
+      "bytes": 224,
+      "path": "/home/isavand/paper/evidence/donut-relight-gate6-v2-bd5d5897ce164928a044e8c04b2b5d71/console.txt",
+      "sha256": "ba31bce8dbea4b0d02fcd706fc31c68eea20d3650687317dc33604c33fc51014"
+    },
+    "container.cid": {
+      "bytes": 64,
+      "path": "/home/isavand/paper/evidence/donut-relight-gate6-v2-bd5d5897ce164928a044e8c04b2b5d71/container.cid",
+      "sha256": "aaf5bfa1c3c537369470da42dc896a0cf8d513f18a7b791daa1fd35c931efbe5"
+    },
+    "exit-code.txt": {
+      "bytes": 2,
+      "path": "/home/isavand/paper/evidence/donut-relight-gate6-v2-bd5d5897ce164928a044e8c04b2b5d71/exit-code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "freeze.json": {
+      "bytes": 15343,
+      "path": "/home/isavand/paper/evidence/donut-relight-gate6-v2-bd5d5897ce164928a044e8c04b2b5d71/freeze.json",
+      "sha256": "0ed87914b995df462c12516333bd7ee2fbb8f3057c5d6bf906fdb2c3503ff6a3"
+    },
+    "run/receipt.json": {
+      "bytes": 16865,
+      "path": "/home/isavand/paper/evidence/donut-relight-gate6-v2-bd5d5897ce164928a044e8c04b2b5d71/run/receipt.json",
+      "sha256": "628333da1883a574a202fcd253d233c82009b34600219243aee01225a645c480"
+    }
+  },
+  "field_admission": {
+    "Ambient-Oracle": {
+      "28": {
+        "Q_axis_reconstruction_max_abs": 9.116215615723178e-09,
+        "batches": {
+          "archived": [
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            222
+          ],
+          "extra": [
+            19
+          ]
+        },
+        "common_rows": 4830,
+        "field_max_abs": {
+          "Q_world": 0.0,
+          "color": 0.0,
+          "metallic": 0.0
+        },
+        "maximum_error_pixels": {
+          "Q_world": 3130,
+          "color": 3130,
+          "metallic": 3130
+        },
+        "passed": true
+      },
+      "34": {
+        "Q_axis_reconstruction_max_abs": 1.3288664224564428e-08,
+        "batches": {
+          "archived": [
+            512,
+            512,
+            512,
+            512,
+            428
+          ],
+          "extra": [
+            19
+          ]
+        },
+        "common_rows": 2476,
+        "field_max_abs": {
+          "Q_world": 0.0,
+          "color": 0.0,
+          "metallic": 0.0
+        },
+        "maximum_error_pixels": {
+          "Q_world": 6448,
+          "color": 6448,
+          "metallic": 6448
+        },
+        "passed": true
+      }
+    },
+    "Final-Chart-Oracle": {
+      "28": {
+        "Q_axis_reconstruction_max_abs": 1.1088584134233415e-08,
+        "batches": {
+          "archived": [
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            222
+          ],
+          "extra": [
+            19
+          ]
+        },
+        "common_rows": 4830,
+        "field_max_abs": {
+          "Q_world": 0.0,
+          "color": 0.0,
+          "metallic": 0.0
+        },
+        "maximum_error_pixels": {
+          "Q_world": 3130,
+          "color": 3130,
+          "metallic": 3130
+        },
+        "passed": true
+      },
+      "34": {
+        "Q_axis_reconstruction_max_abs": 1.0662048050003037e-08,
+        "batches": {
+          "archived": [
+            512,
+            512,
+            512,
+            512,
+            428
+          ],
+          "extra": [
+            19
+          ]
+        },
+        "common_rows": 2476,
+        "field_max_abs": {
+          "Q_world": 0.0,
+          "color": 0.0,
+          "metallic": 0.0
+        },
+        "maximum_error_pixels": {
+          "Q_world": 6448,
+          "color": 6448,
+          "metallic": 6448
+        },
+        "passed": true
+      }
+    },
+    "K1-Oracle": {
+      "28": {
+        "Q_axis_reconstruction_max_abs": 1.6737697589030986e-08,
+        "batches": {
+          "archived": [
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            512,
+            222
+          ],
+          "extra": [
+            19
+          ]
+        },
+        "common_rows": 4830,
+        "field_max_abs": {
+          "Q_world": 0.0,
+          "color": 0.0,
+          "metallic": 0.0
+        },
+        "maximum_error_pixels": {
+          "Q_world": 3130,
+          "color": 3130,
+          "metallic": 3130
+        },
+        "passed": true
+      },
+      "34": {
+        "Q_axis_reconstruction_max_abs": 1.4111377608094777e-08,
+        "batches": {
+          "archived": [
+            512,
+            512,
+            512,
+            512,
+            428
+          ],
+          "extra": [
+            19
+          ]
+        },
+        "common_rows": 2476,
+        "field_max_abs": {
+          "Q_world": 0.0,
+          "color": 0.0,
+          "metallic": 0.0
+        },
+        "maximum_error_pixels": {
+          "Q_world": 6448,
+          "color": 6448,
+          "metallic": 6448
+        },
+        "passed": true
+      }
+    }
+  },
+  "frozen_artifacts": {
+    "admission": {
+      "bytes": 6626,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9-admission.json",
+      "sha256": "a6eab416054c5bf74b43834c3be224847e2d78d9af7eb4989745fe37333618fb"
+    },
+    "cameras": {
+      "bytes": 86413,
+      "path": "/home/isavand/nero/data/nerf_synthetic/donut/transforms_train.json",
+      "sha256": "89fc7b8d05db69437f3654cac1a8c6e68a23cfb411c28703824e18f0fdcaa82a"
+    },
+    "checkpoint_0": {
+      "bytes": 25345481,
+      "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/K1-Oracle/checkpoint-10000.pth",
+      "sha256": "e8d2b79ae6934eb59ab73c873c5ac41c0be79bea0056e80e55da4bcfe9417fb6"
+    },
+    "checkpoint_1": {
+      "bytes": 25345806,
+      "path": "/home/isavand/paper/evidence/donut-representation-gate5-5802ba37f6a942c799b78345a56aa09b/Final-Chart-Oracle/checkpoint-10000.pth",
+      "sha256": "2c39af09b6091cfa59a63aba31279bfb1fce06d784930d5d9a7b8c19f572dfb4"
+    },
+    "checkpoint_2": {
+      "bytes": 25354000,
+      "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/Ambient-Oracle/checkpoint-10000.pth",
+      "sha256": "ae4f239a7eeabfb34ab1bc6665218d064b85bbd38b23914c463774e81a97b24c"
+    },
+    "generation": {
+      "bytes": 25006,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/generation.json",
+      "sha256": "de8dda85559b286456d926e09731c6c501dfcbd6707d1aaf3aef9cf8784c58a0"
+    },
+    "oracle": {
+      "bytes": 2589411,
+      "path": "/home/isavand/paper/evidence/donut-blend-inspection-v2/oracle-geometry-and-frames.npz",
+      "sha256": "cfe903c177dfe404c47390aed2a3fa025ea9499ca0af644dba667b721c0139f1"
+    },
+    "receipt_0": {
+      "bytes": 238418,
+      "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/K1-Oracle/recovery.json",
+      "sha256": "613b15c891e2251ffd4fe51684a01087d1387adc455a739486332fcafec281fb"
+    },
+    "receipt_1": {
+      "bytes": 241701,
+      "path": "/home/isavand/paper/evidence/donut-representation-gate5-5802ba37f6a942c799b78345a56aa09b/Final-Chart-Oracle/recovery.json",
+      "sha256": "f36ffa6d6a2205750079f9965586062ddce06b43f632c2bcb752ddf071e8cd4b"
+    },
+    "receipt_2": {
+      "bytes": 240817,
+      "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/Ambient-Oracle/recovery.json",
+      "sha256": "27fa66e41f820af66d81470170e492d14e3eae860298d7b7f532424696d076c3"
+    },
+    "verification": {
+      "bytes": 15604,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9-verification-v1.json",
+      "sha256": "22e7894fdba2f84ed0355299999cc74a1784cb40c74667f7b0b9e432cb598340"
+    },
+    "view_28": {
+      "bytes": 2565614,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-28.npz",
+      "sha256": "44e6ddb03d8519f7c490ca2aafce395ed553f20f173a0d96babddc647115639b"
+    },
+    "view_34": {
+      "bytes": 1308423,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-34.npz",
+      "sha256": "730739337f9fa08b6d6e9aceb8a34d121fae424d52991649b8175ad474226ba1"
+    }
+  },
+  "gates": {
+    "28": {
+      "convergence": {
+        "Ambient-Oracle": {
+          "maximum_rgb_difference": 0.00025706534235886425,
+          "passed": true,
+          "relative_l2": 0.00025763950398301335
+        },
+        "Final-Chart-Oracle": {
+          "maximum_rgb_difference": 0.00031069576593784065,
+          "passed": true,
+          "relative_l2": 0.00028103310545284115
+        },
+        "K1-Oracle": {
+          "maximum_rgb_difference": 0.0002354208906481456,
+          "passed": true,
+          "relative_l2": 0.0002578070712735036
+        },
+        "oracle": {
+          "maximum_rgb_difference": 0.0002365899830785445,
+          "passed": true,
+          "relative_l2": 0.00023358242193564398
+        }
+      },
+      "refined_pixels": []
+    },
+    "34": {
+      "convergence": {
+        "Ambient-Oracle": {
+          "maximum_rgb_difference": 0.001093908442482569,
+          "passed": true,
+          "relative_l2": 0.0005094857634953945
+        },
+        "Final-Chart-Oracle": {
+          "maximum_rgb_difference": 0.0024605619326437123,
+          "passed": true,
+          "relative_l2": 0.0011250690378733826
+        },
+        "K1-Oracle": {
+          "maximum_rgb_difference": 0.0008113961833880745,
+          "passed": true,
+          "relative_l2": 0.0003750959215176317
+        },
+        "oracle": {
+          "maximum_rgb_difference": 0.00017715359558068133,
+          "passed": true,
+          "relative_l2": 0.00018686203201851676
+        }
+      },
+      "refined_pixels": [
+        9366,
+        8467,
+        9624
+      ]
+    }
+  },
+  "host_output": "/home/isavand/paper/evidence/donut-relight-gate6-v2-bd5d5897ce164928a044e8c04b2b5d71",
+  "image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "native_counters": {
+    "checkpoint_loads": 3,
+    "independent_BRDF_point_directions": 9688842240,
+    "independent_shadow_directions": 2422210560,
+    "material_field_calls": 51,
+    "material_field_points": 22032,
+    "native_shader_calls": 1440,
+    "native_shadow_slots": 1082916864,
+    "optimizer_updates": 0,
+    "primary_rays": 0
+  },
+  "native_outputs": {
+    "Ambient-Oracle-camera-28-native.npz": {
+      "bytes": 5553617,
+      "sha256": "76907f02f7b27f187dafa6463505080f7ece76091c06d7edde0c7f5f68108fd2"
+    },
+    "Ambient-Oracle-camera-34-native.npz": {
+      "bytes": 2859236,
+      "sha256": "c7d7bd463aa47edf21adf5ca8f1dc7398a00ea77001d2bef1528d37f55634c8c"
+    },
+    "Final-Chart-Oracle-camera-28-native.npz": {
+      "bytes": 5548511,
+      "sha256": "47f35e33cc4b719642c0f2823b9834e8377b1bdecaec25f21f655a241c99cff0"
+    },
+    "Final-Chart-Oracle-camera-34-native.npz": {
+      "bytes": 2859008,
+      "sha256": "303339ffda2c841f73b39540a10e107a7881d515d7e64732ac3ae7813007b48f"
+    },
+    "K1-Oracle-camera-28-native.npz": {
+      "bytes": 5456671,
+      "sha256": "ed23d18999192dcf021a36ff1794576164933ae1946a2ccd125cb9dd80092623"
+    },
+    "K1-Oracle-camera-34-native.npz": {
+      "bytes": 2815449,
+      "sha256": "04c6b3c0cedb14a8bdacc0489e047b0d3fc023bfad080796671959bb1146c188"
+    },
+    "camera-28-base-256.npz": {
+      "bytes": 1338462,
+      "sha256": "bbef49a6317f33630e25bf96bcf577a16cd9812843188daf9b528ac7bf97d92e"
+    },
+    "camera-28-base-512.npz": {
+      "bytes": 1339939,
+      "sha256": "54830b56dc5bca3f6cabc4330f7379253ab090cd9ce254600014f953b71a22d6"
+    },
+    "camera-34-base-256.npz": {
+      "bytes": 687813,
+      "sha256": "4c817d6c4fc252d2195cf8f61e8f80afc3c36f4fe53ca5c4f2c8dfb7ca01538f"
+    },
+    "camera-34-base-512.npz": {
+      "bytes": 688603,
+      "sha256": "8dcc96461d877e84e918e7a03c69c89b6842bcb1252eabc87e243e8b20fb9169"
+    },
+    "camera-34-pixel-8467-1024.npz": {
+      "bytes": 1092,
+      "sha256": "bec383133cbbc62c2cbbb8fee4817bb3bf08bb631d08fe463fd1375889891992"
+    },
+    "camera-34-pixel-8467-2048.npz": {
+      "bytes": 1092,
+      "sha256": "b6ebeaa50f282a5bbb50bd2d21af8eacac50597a029bbf4c759a4dce2ab0cddd"
+    },
+    "camera-34-pixel-9366-1024.npz": {
+      "bytes": 1092,
+      "sha256": "ea33850780adcf2e19f1d12b997d12d55b7f0bd8a73263bf9f0f478a06b24f39"
+    },
+    "camera-34-pixel-9366-2048.npz": {
+      "bytes": 1094,
+      "sha256": "c151dee57c95c873819008b8211dd3dcddbe5df0bb305bd7ee074e8dcb806292"
+    },
+    "camera-34-pixel-9624-1024.npz": {
+      "bytes": 1093,
+      "sha256": "ac36be9a2c15578d6bc3ad49dec663e7882b148f1fae0bc9f382f11b46aee2d2"
+    },
+    "camera-34-pixel-9624-2048.npz": {
+      "bytes": 1093,
+      "sha256": "1787529993afeb294fd4ab22f78280cf7460e82e7a8fa0d709db74268a7de752"
+    }
+  },
+  "offline_analysis": {
+    "camera-28-relighting.npz": {
+      "bytes": 3970032,
+      "path": "/home/isavand/paper/evidence/donut-relight-gate6-v2-bd5d5897ce164928a044e8c04b2b5d71-analysis-v2/camera-28-relighting.npz",
+      "sha256": "fc63bef2a6c6396818f93449092a71237ae7b43c2462df16c4843e36f72895c6"
+    },
+    "camera-34-relighting.npz": {
+      "bytes": 2049383,
+      "path": "/home/isavand/paper/evidence/donut-relight-gate6-v2-bd5d5897ce164928a044e8c04b2b5d71-analysis-v2/camera-34-relighting.npz",
+      "sha256": "2516a82baaafbb7abce0795af562a632ec8f2352d1052a8f562f75d5e451157e"
+    },
+    "independent-relighting.pdf": {
+      "bytes": 146527,
+      "path": "/home/isavand/paper/evidence/donut-relight-gate6-v2-bd5d5897ce164928a044e8c04b2b5d71-analysis-v2/independent-relighting.pdf",
+      "sha256": "0f8f14614be2a1a264ea7c7075302b31351c6bff3ca573493d0f255345b92f52"
+    },
+    "independent-relighting.png": {
+      "bytes": 232614,
+      "path": "/home/isavand/paper/evidence/donut-relight-gate6-v2-bd5d5897ce164928a044e8c04b2b5d71-analysis-v2/independent-relighting.png",
+      "sha256": "7ddd79d7a4e94af8113c4ec6ce579cd01e64d05bbbf6f48fee826e16c345f96d"
+    },
+    "native-relighting.pdf": {
+      "bytes": 148409,
+      "path": "/home/isavand/paper/evidence/donut-relight-gate6-v2-bd5d5897ce164928a044e8c04b2b5d71-analysis-v2/native-relighting.pdf",
+      "sha256": "a1882bbc420364c586dbd47224270c9c85017fc8f050cd08811338c57b2e7b55"
+    },
+    "native-relighting.png": {
+      "bytes": 235536,
+      "path": "/home/isavand/paper/evidence/donut-relight-gate6-v2-bd5d5897ce164928a044e8c04b2b5d71-analysis-v2/native-relighting.png",
+      "sha256": "64bedf5252f6f258d9e551e5ec1fcb9d63d0b9422e9647317de1fd369da1ad9d"
+    },
+    "offline-replay.json": {
+      "bytes": 2939,
+      "path": "/home/isavand/paper/evidence/donut-relight-gate6-v2-bd5d5897ce164928a044e8c04b2b5d71-analysis-v2/offline-replay.json",
+      "sha256": "65b92ba51f07289d9bf0e5a0f55664c164b109c4351c48c22bd539dc039fd68d"
+    },
+    "relighting-results.json": {
+      "bytes": 261406,
+      "path": "/home/isavand/paper/evidence/donut-relight-gate6-v2-bd5d5897ce164928a044e8c04b2b5d71-analysis-v2/relighting-results.json",
+      "sha256": "2421774ef19e3b214f2ae378fbdbd689bee27e76a1d25ec7e8f3635afc9f27fa"
+    }
+  },
+  "offline_checkpoint_loads": 0,
+  "offline_new_renders": 0,
+  "offline_optimizer_updates": 0,
+  "packaged_files": {
+    "convergence.csv": {
+      "bytes": 655,
+      "sha256": "a8b5cddb9c73fa98d7fe0cb5590b219202904f84b1e1378a935ce3ad355e6c46"
+    },
+    "independent-relighting.pdf": {
+      "bytes": 146527,
+      "sha256": "0f8f14614be2a1a264ea7c7075302b31351c6bff3ca573493d0f255345b92f52"
+    },
+    "independent-relighting.png": {
+      "bytes": 232614,
+      "sha256": "7ddd79d7a4e94af8113c4ec6ce579cd01e64d05bbbf6f48fee826e16c345f96d"
+    },
+    "native-relighting.pdf": {
+      "bytes": 148409,
+      "sha256": "a1882bbc420364c586dbd47224270c9c85017fc8f050cd08811338c57b2e7b55"
+    },
+    "native-relighting.png": {
+      "bytes": 235536,
+      "sha256": "64bedf5252f6f258d9e551e5ec1fcb9d63d0b9422e9647317de1fd369da1ad9d"
+    },
+    "offline-replay.json": {
+      "bytes": 2939,
+      "sha256": "65b92ba51f07289d9bf0e5a0f55664c164b109c4351c48c22bd539dc039fd68d"
+    },
+    "physical-associations.csv": {
+      "bytes": 6749,
+      "sha256": "1a5e8a0706fbe1a498142edd06c9de4c98b8d1eb8714b2afde1ebd136a25f0e7"
+    },
+    "relighting-metrics.csv": {
+      "bytes": 103341,
+      "sha256": "baae034bebe77e8cb3a741fc39bb1cfd44775f302e6526649d4c134a18d0f2bd"
+    },
+    "relighting-results.json": {
+      "bytes": 261406,
+      "sha256": "2421774ef19e3b214f2ae378fbdbd689bee27e76a1d25ec7e8f3635afc9f27fa"
+    },
+    "rendering-uncertainty.csv": {
+      "bytes": 2803,
+      "sha256": "bfba92f08339c065d28750163ebca4566c4635150de7a7a7d9f99206c6873f50"
+    }
+  },
+  "protocol": "donut-unseen-light-gate6-v2",
+  "schema_version": 1,
+  "status": "verified_complete",
+  "v1_failure_receipt_sha256": "5ae147dc86f002a45eac9b1b56709e7a5b42f85099e129df2928860afb0bc51d"
+}
