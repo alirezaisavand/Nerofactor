@@ -1,0 +1,148 @@
+{
+  "ambient_captures": {
+    "native": {
+      "bytes": 10386,
+      "sha256": "feb9769bf2b047660236248072cca14073fd0388865613714645cb955b9225cb"
+    },
+    "paired": {
+      "bytes": 7558,
+      "sha256": "d3affa76466b5cbf6411028364bd025687ac8d9acec34878eaf26ef6c3bfbe0c"
+    },
+    "physical": {
+      "bytes": 68142,
+      "sha256": "a1ac5476549b0917c291b9026d787a8efeb4484c664c76d1f78b83f569631aa5"
+    }
+  },
+  "arms": {
+    "Final-Chart-Oracle": {
+      "geometry": "oracle",
+      "illumination": "known_L2",
+      "initial": {
+        "bytes": 252,
+        "path": "/home/isavand/paper/evidence/donut-kurt-paired-tensor-d9-58f62392c4f84f019fde495849b317c8/D9-C/initial.json",
+        "sha256": "1467040c5f2861e1b04cd196781645a92deccec897bef0ea7409f1547d51c36c"
+      },
+      "learned_control": "D9-C",
+      "limits": {
+        "arm_seconds": 3600,
+        "batch_rays": 512,
+        "boundary_predictor_calls": 12,
+        "boundary_predictor_points": 29688,
+        "component_reverse_sweeps": 30,
+        "cpu_threads": 4,
+        "cuda_allocator_fraction": 0.25,
+        "evaluation_draws": 8,
+        "grace_seconds": 30,
+        "host_memory_gib": 64,
+        "illumination_map_calls": 6,
+        "inner_seconds": 3540,
+        "interval": 2000,
+        "output_bytes": 8589934592,
+        "shader_calls": 12290,
+        "shadow_rays": 9524232192,
+        "smoothness_field_calls": 12,
+        "tensor_admission_predictor_calls": 2,
+        "tensor_admission_reverse_sweeps": 2,
+        "updates_per_arm": 10000,
+        "wall_seconds": 7500
+      },
+      "representation": {
+        "evaluation_tape_seed_offset": 1600000,
+        "export_world_Q_atol": 1e-06,
+        "initial_Q_atol": 2e-08,
+        "initial_RGB_atol": 1e-06,
+        "initial_gate_seed": 120008,
+        "initial_width": 0.5,
+        "initialization": {
+          "major_width": 0.52,
+          "minimum_minor_width": 0.48,
+          "name": "projected_world_x_rank_one_v1"
+        },
+        "native_gate_points": 24,
+        "perturbation": "legacy_scalar_only_v1",
+        "training_tape_seed_offset": 603300000
+      },
+      "spatial_policy": null,
+      "trainer_sha256": "3055b4b5b1ae6d47ae1f13b1d4364625516aaad0f8b4a8cda5716603c94cfe8b",
+      "work": {
+        "component_reverse_sweeps": 30,
+        "shader_calls": 12290,
+        "shadow_rays": 9524232192,
+        "tensor_admission_predictor_calls": 2,
+        "tensor_admission_reverse_sweeps": 2
+      }
+    }
+  },
+  "gate4_controls": {
+    "Ambient-Oracle": {
+      "bytes": 240817,
+      "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/Ambient-Oracle/recovery.json",
+      "sha256": "27fa66e41f820af66d81470170e492d14e3eae860298d7b7f532424696d076c3"
+    },
+    "K1-Oracle": {
+      "bytes": 238418,
+      "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/K1-Oracle/recovery.json",
+      "sha256": "613b15c891e2251ffd4fe51684a01087d1387adc455a739486332fcafec281fb"
+    }
+  },
+  "gate4_freeze_sha256": "3dfcd4b6c9ad5ac4549dd11d93a4f0780a07820b48a03d0f66cae24e0033e517",
+  "gate4_manifest_sha256": "c17ddfb54c647d2d09fb33898484de11a229654f5acaece89dd3e0b7425ff67c",
+  "historical_checkpoint_loads_authorized": false,
+  "host_output": "/home/isavand/paper/evidence/donut-representation-gate5-5802ba37f6a942c799b78345a56aa09b",
+  "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "parity": {
+    "initial_Q_atol": 2e-08,
+    "initial_RGB_atol": 1e-06,
+    "native_RGB_atol": 1e-06,
+    "physical_atol": 1e-08,
+    "physical_rtol": 1e-06
+  },
+  "protocol": "donut-representation-gate5-v1",
+  "resources": {
+    "cpu_threads": 4,
+    "cuda_allocator_fraction": 0.25,
+    "foreground_seconds": 3600,
+    "gpu": "0",
+    "gpu_model": "A100",
+    "host_memory_gib": 64,
+    "inner_grace_seconds": 20,
+    "inner_seconds": 3540,
+    "kill_grace_seconds": 30,
+    "output_bytes": 8589934592,
+    "pids": 128
+  },
+  "schema_version": 1,
+  "seeds": [
+    6033
+  ],
+  "sources": {
+    "benchmarks/donut_representation_gate5_v1.py": "6b0d21cb4c2a3d9d2ae8dd2783503bcc657042106bd50c154e0218710ddb971a",
+    "docs/protocols/DONUT_REPRESENTATION_GATE5_V1.md": "e5029a1540f3ee96a245437c60703ba9574f85e5b2a58b523c654b5a3a1cc33c",
+    "experiments/analyze_donut_representation_gate5_v1.py": "1f9064cfbf6bac8efcf5386db5eaa2943bef8625c842335ece85090004696aae",
+    "experiments/run_donut_representation_gate5_v1.sh": "34f3f3464e83e6947307516d1cd6cc133272201ffb5cced493ea865d440d4793",
+    "experiments/train_donut_representation_gate5_v1.py": "ffa394a7d17fc8c006fda6f3266a82ac0c946f02037d145fb0bca53d2cc19de8",
+    "tests/scientific/test_donut_representation_gate5_v1.py": "2b48cd82cc51ced7eddbeae6eaf72b247662488e8b0b36961c1704cae1cdcfd7"
+  },
+  "steps": [
+    0,
+    2000,
+    4000,
+    6000,
+    8000,
+    10000
+  ],
+  "support": {
+    "camera_counts": {
+      "0": 4513,
+      "1": 4131,
+      "28": 4830,
+      "34": 2476,
+      "45": 3942,
+      "50": 2605
+    },
+    "fitting_observations": 15191,
+    "held_out_observations": 7306,
+    "observations_and_RGB_sha256": "c3634a728c082605e36e5bb4e60263f1f26bfac8c86b442b30eea28167c34575",
+    "photometric_index_sha256": "0c8b943813ee391218aa74d00f620c086cca509753a579f9d04c62cea588ce36"
+  }
+}
