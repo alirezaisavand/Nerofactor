@@ -1,0 +1,1062 @@
+{
+  "camera_metrics": {
+    "0": {
+      "counts": {
+        "both_hit": 4522,
+        "both_miss": 11844,
+        "near_degenerate": 0,
+        "oracle_grazing": 31,
+        "oracle_nonpositive_facing": 3,
+        "oracle_only": 17,
+        "orientation_eligible": 4501,
+        "reason_any": {
+          "boundary_side_ambiguity": 7,
+          "invalid_reconstructed_normal": 0,
+          "no_oracle_candidate": 0,
+          "normal_mismatch": 0,
+          "oracle_hidden": 1,
+          "reverse_unresolved": 0
+        },
+        "reason_primary": {
+          "boundary_side_ambiguity": 7,
+          "invalid_reconstructed_normal": 0,
+          "no_oracle_candidate": 0,
+          "normal_mismatch": 0,
+          "oracle_hidden": 1,
+          "reverse_unresolved": 0
+        },
+        "reconstruction_grazing": 29,
+        "reconstruction_nonpositive_facing": 0,
+        "reconstruction_only": 1,
+        "undefined_reconstruction_normal": 0,
+        "valid_common": 4514,
+        "valid_reconstruction_only": 1
+      },
+      "coverage_common": 0.9982308712958867,
+      "coverage_oracle_only": 0.0,
+      "coverage_reconstruction_only": 1.0,
+      "distributions": {
+        "displacement": {
+          "max": 0.012758487835526466,
+          "median": 0.0006587467796634883,
+          "min": 0.0,
+          "p95": 0.003363303618971258
+        },
+        "frame_relative_Q_shift": {
+          "max": 0.06778367463969025,
+          "median": 0.00777300502951716,
+          "min": 0.0001826260691206939,
+          "p95": 0.024389394583512452
+        },
+        "normal_angle_degrees": {
+          "max": 4.83870416570234,
+          "median": 0.7472622903494894,
+          "min": 0.014686413191846912,
+          "p95": 1.9367620616163532
+        },
+        "oracle_view_degrees": {
+          "max": 90.1244824497923,
+          "median": 42.72102617612282,
+          "min": 0.7678127589554923,
+          "p95": 74.27848499870576
+        },
+        "orientation_shift_degrees": {
+          "max": 2.8984624689066387,
+          "median": 0.30641530890315655,
+          "min": 0.0016013748674205926,
+          "p95": 1.0405126938194762
+        },
+        "projection_distance": {
+          "max": 0.0026180241731609934,
+          "median": 0.00044672341808690635,
+          "min": 1.5514802062117783e-08,
+          "p95": 0.0014988032948670931
+        },
+        "reconstruction_view_degrees": {
+          "max": 89.07135554290316,
+          "median": 42.74841765356405,
+          "min": 0.8986023831878049,
+          "p95": 74.63964510914596
+        },
+        "roundtrip_distance": {
+          "max": 0.00019269205530102567,
+          "median": 1.2152924421922594e-05,
+          "min": 2.6339231531633148e-08,
+          "p95": 6.210445201831526e-05
+        },
+        "sampling_relative_Q_shift": {
+          "max": 0.05949339463262848,
+          "median": 0.0006651737043748843,
+          "min": 1.959634373677979e-09,
+          "p95": 0.012309111846026457
+        },
+        "sampling_signed_major_width_shift": {
+          "max": 0.00879803944072266,
+          "median": 2.9587990613144655e-07,
+          "min": -0.0021546899301504996,
+          "p95": 0.0003580212891941488
+        },
+        "sampling_signed_minor_width_shift": {
+          "max": 0.0009387770559609876,
+          "median": 2.1389709309316274e-08,
+          "min": -0.0016531743872595928,
+          "p95": 0.00011028621201480812
+        },
+        "signed_depth": {
+          "max": 0.011510610580444336,
+          "median": -0.00045949220657348633,
+          "min": -0.012758493423461914,
+          "p95": 0.001340156793594358
+        },
+        "total_relative_Q_shift": {
+          "max": 0.08889863135078778,
+          "median": 0.008358992794531334,
+          "min": 0.00019183005240073461,
+          "p95": 0.02647221025056582
+        }
+      },
+      "silhouette_IoU": 0.9960352422907489
+    },
+    "1": {
+      "counts": {
+        "both_hit": 4134,
+        "both_miss": 12230,
+        "near_degenerate": 0,
+        "oracle_grazing": 28,
+        "oracle_nonpositive_facing": 4,
+        "oracle_only": 14,
+        "orientation_eligible": 4116,
+        "reason_any": {
+          "boundary_side_ambiguity": 3,
+          "invalid_reconstructed_normal": 0,
+          "no_oracle_candidate": 0,
+          "normal_mismatch": 0,
+          "oracle_hidden": 0,
+          "reverse_unresolved": 0
+        },
+        "reason_primary": {
+          "boundary_side_ambiguity": 3,
+          "invalid_reconstructed_normal": 0,
+          "no_oracle_candidate": 0,
+          "normal_mismatch": 0,
+          "oracle_hidden": 0,
+          "reverse_unresolved": 0
+        },
+        "reconstruction_grazing": 29,
+        "reconstruction_nonpositive_facing": 0,
+        "reconstruction_only": 6,
+        "undefined_reconstruction_normal": 0,
+        "valid_common": 4131,
+        "valid_reconstruction_only": 6
+      },
+      "coverage_common": 0.9992743105950653,
+      "coverage_oracle_only": 0.0,
+      "coverage_reconstruction_only": 1.0,
+      "distributions": {
+        "displacement": {
+          "max": 0.4164855480194092,
+          "median": 0.0006222605879884213,
+          "min": 3.4248492397637165e-07,
+          "p95": 0.003674858051817864
+        },
+        "frame_relative_Q_shift": {
+          "max": 1.2937254734082513,
+          "median": 0.00809983468907048,
+          "min": 4.4383187957039274e-05,
+          "p95": 0.02593370451212454
+        },
+        "normal_angle_degrees": {
+          "max": 110.59498184485383,
+          "median": 0.69508998326016,
+          "min": 0.006376575137479427,
+          "p95": 1.8834035057625964
+        },
+        "oracle_view_degrees": {
+          "max": 85.64745773627499,
+          "median": 49.411004543913,
+          "min": 0.9775931184889171,
+          "p95": 76.48646682049055
+        },
+        "orientation_shift_degrees": {
+          "max": 86.47521742118633,
+          "median": 0.35188155741561156,
+          "min": 0.0002158207384713322,
+          "p95": 1.1994730453676996
+        },
+        "projection_distance": {
+          "max": 0.002660239547525261,
+          "median": 0.0003922492381150757,
+          "min": 3.024539819513576e-07,
+          "p95": 0.0011046449087659864
+        },
+        "reconstruction_view_degrees": {
+          "max": 89.03635664023734,
+          "median": 49.51050949700746,
+          "min": 0.46749673319264434,
+          "p95": 76.85517189006195
+        },
+        "roundtrip_distance": {
+          "max": 0.00020694157072202165,
+          "median": 1.055066259725518e-05,
+          "min": 1.3824273173980024e-08,
+          "p95": 4.9714758955503396e-05
+        },
+        "sampling_relative_Q_shift": {
+          "max": 0.8462493666947036,
+          "median": 0.0007744062983221292,
+          "min": 3.319248389665046e-08,
+          "p95": 0.013260199755035179
+        },
+        "sampling_signed_major_width_shift": {
+          "max": 0.00953567511266279,
+          "median": -6.540073079208675e-07,
+          "min": -0.005177166099545494,
+          "p95": 0.0003562551677199488
+        },
+        "sampling_signed_minor_width_shift": {
+          "max": 0.0066677172791516914,
+          "median": -2.346303295458485e-06,
+          "min": -0.002344845346868435,
+          "p95": 0.00018709858363802345
+        },
+        "signed_depth": {
+          "max": 0.018221139907836914,
+          "median": -0.00017404556274414062,
+          "min": -0.4164855480194092,
+          "p95": 0.0019761979579925536
+        },
+        "total_relative_Q_shift": {
+          "max": 1.2722918016238804,
+          "median": 0.009094893316037333,
+          "min": 0.00018378796221266315,
+          "p95": 0.03010489945203287
+        }
+      },
+      "silhouette_IoU": 0.9951853635050554
+    },
+    "28": {
+      "counts": {
+        "both_hit": 4838,
+        "both_miss": 11533,
+        "near_degenerate": 0,
+        "oracle_grazing": 35,
+        "oracle_nonpositive_facing": 0,
+        "oracle_only": 11,
+        "orientation_eligible": 4589,
+        "reason_any": {
+          "boundary_side_ambiguity": 8,
+          "invalid_reconstructed_normal": 0,
+          "no_oracle_candidate": 0,
+          "normal_mismatch": 0,
+          "oracle_hidden": 2,
+          "reverse_unresolved": 0
+        },
+        "reason_primary": {
+          "boundary_side_ambiguity": 8,
+          "invalid_reconstructed_normal": 0,
+          "no_oracle_candidate": 0,
+          "normal_mismatch": 0,
+          "oracle_hidden": 2,
+          "reverse_unresolved": 0
+        },
+        "reconstruction_grazing": 30,
+        "reconstruction_nonpositive_facing": 0,
+        "reconstruction_only": 2,
+        "undefined_reconstruction_normal": 0,
+        "valid_common": 4830,
+        "valid_reconstruction_only": 0
+      },
+      "coverage_common": 0.9983464241422075,
+      "coverage_oracle_only": 0.0,
+      "coverage_reconstruction_only": 0.0,
+      "distributions": {
+        "displacement": {
+          "max": 0.01784646511077881,
+          "median": 0.0006932616233825684,
+          "min": 1.9029342865906074e-06,
+          "p95": 0.0020817735930904733
+        },
+        "frame_relative_Q_shift": {
+          "max": 0.12067801915776,
+          "median": 0.007393592378126462,
+          "min": 4.2772415223712675e-05,
+          "p95": 0.02345235175041668
+        },
+        "normal_angle_degrees": {
+          "max": 5.54311312448049,
+          "median": 0.6553065563705506,
+          "min": 0.005758551982801845,
+          "p95": 1.5819105028944724
+        },
+        "oracle_view_degrees": {
+          "max": 88.72777030671142,
+          "median": 33.61860044851606,
+          "min": 0.15065477649784662,
+          "p95": 73.05045437929542
+        },
+        "orientation_shift_degrees": {
+          "max": 5.14074822484251,
+          "median": 0.2822912176149657,
+          "min": 0.0009135964466847237,
+          "p95": 0.935155036758088
+        },
+        "projection_distance": {
+          "max": 0.002642840797855821,
+          "median": 0.0005103039450322447,
+          "min": 1.4217425592728532e-06,
+          "p95": 0.001661069702508615
+        },
+        "reconstruction_view_degrees": {
+          "max": 88.76591449664406,
+          "median": 33.78007518192541,
+          "min": 0.43204617845091675,
+          "p95": 73.15347299217359
+        },
+        "roundtrip_distance": {
+          "max": 0.0002027292054573166,
+          "median": 1.4127971273031252e-05,
+          "min": 2.917437708075631e-08,
+          "p95": 6.483209746171262e-05
+        },
+        "sampling_relative_Q_shift": {
+          "max": 0.031121767418953974,
+          "median": 0.0007236796934968948,
+          "min": 1.934391110803475e-07,
+          "p95": 0.0036319756277605722
+        },
+        "sampling_signed_major_width_shift": {
+          "max": 0.0018243087386150547,
+          "median": 1.2123817227926992e-10,
+          "min": -0.0009644816973331527,
+          "p95": 0.00020419767887492335
+        },
+        "sampling_signed_minor_width_shift": {
+          "max": 0.0005369905262634367,
+          "median": 1.2775979799650727e-06,
+          "min": -0.002102988019515306,
+          "p95": 8.594260855748914e-05
+        },
+        "signed_depth": {
+          "max": 0.00604403018951416,
+          "median": -0.0006656050682067871,
+          "min": -0.01784646511077881,
+          "p95": 0.0003291487693786615
+        },
+        "total_relative_Q_shift": {
+          "max": 0.12512012931295005,
+          "median": 0.007642828417122962,
+          "min": 0.0002850985541290829,
+          "p95": 0.023744196586944218
+        }
+      },
+      "silhouette_IoU": 0.997320140177283
+    },
+    "34": {
+      "counts": {
+        "both_hit": 2486,
+        "both_miss": 13880,
+        "near_degenerate": 3,
+        "oracle_grazing": 38,
+        "oracle_nonpositive_facing": 2,
+        "oracle_only": 11,
+        "orientation_eligible": 2478,
+        "reason_any": {
+          "boundary_side_ambiguity": 8,
+          "invalid_reconstructed_normal": 0,
+          "no_oracle_candidate": 0,
+          "normal_mismatch": 0,
+          "oracle_hidden": 0,
+          "reverse_unresolved": 0
+        },
+        "reason_primary": {
+          "boundary_side_ambiguity": 8,
+          "invalid_reconstructed_normal": 0,
+          "no_oracle_candidate": 0,
+          "normal_mismatch": 0,
+          "oracle_hidden": 0,
+          "reverse_unresolved": 0
+        },
+        "reconstruction_grazing": 35,
+        "reconstruction_nonpositive_facing": 0,
+        "reconstruction_only": 7,
+        "undefined_reconstruction_normal": 0,
+        "valid_common": 2478,
+        "valid_reconstruction_only": 7
+      },
+      "coverage_common": 0.996781979082864,
+      "coverage_oracle_only": 0.0,
+      "coverage_reconstruction_only": 1.0,
+      "distributions": {
+        "displacement": {
+          "max": 0.024896500632166862,
+          "median": 0.0008606342307757586,
+          "min": 8.601791137152759e-07,
+          "p95": 0.0036881585838273168
+        },
+        "frame_relative_Q_shift": {
+          "max": 0.11003327011980124,
+          "median": 0.008076826624905047,
+          "min": 0.00014319524667436565,
+          "p95": 0.024996527630065137
+        },
+        "normal_angle_degrees": {
+          "max": 9.253341573152548,
+          "median": 0.7169170590195374,
+          "min": 0.02028772336176555,
+          "p95": 2.008318135594843
+        },
+        "oracle_view_degrees": {
+          "max": 91.39694822428636,
+          "median": 47.171768134381296,
+          "min": 1.0177023957932065,
+          "p95": 79.33777134368478
+        },
+        "orientation_shift_degrees": {
+          "max": 6.471532283331872,
+          "median": 0.3202232055175932,
+          "min": 0.005101281677114007,
+          "p95": 1.0322462069942002
+        },
+        "projection_distance": {
+          "max": 0.0014531500904595874,
+          "median": 0.0005606059315933317,
+          "min": 3.6367478334766553e-07,
+          "p95": 0.0011234949056941426
+        },
+        "reconstruction_view_degrees": {
+          "max": 89.04298291911253,
+          "median": 47.43675795527324,
+          "min": 1.0035325020133026,
+          "p95": 78.84322060442977
+        },
+        "roundtrip_distance": {
+          "max": 0.00014100427479418499,
+          "median": 1.3169947747620647e-05,
+          "min": 1.8957831249350432e-08,
+          "p95": 5.9949615805002326e-05
+        },
+        "sampling_relative_Q_shift": {
+          "max": 0.09204146318014397,
+          "median": 0.0008828232946271938,
+          "min": 7.906442703685857e-07,
+          "p95": 0.005619130378615817
+        },
+        "sampling_signed_major_width_shift": {
+          "max": 0.0012562502600914627,
+          "median": 1.458045819582865e-05,
+          "min": -0.0023370574678829303,
+          "p95": 0.00020292799012398
+        },
+        "sampling_signed_minor_width_shift": {
+          "max": 0.0021742421997785755,
+          "median": -7.588136134537016e-06,
+          "min": -0.0012901028782222462,
+          "p95": 7.717078744346468e-05
+        },
+        "signed_depth": {
+          "max": 0.02489650249481201,
+          "median": 0.0007024407386779785,
+          "min": -0.020129919052124023,
+          "p95": 0.003088235855102539
+        },
+        "total_relative_Q_shift": {
+          "max": 0.1481210607309197,
+          "median": 0.00846764678091903,
+          "min": 0.00041095661540925933,
+          "p95": 0.025337459222961177
+        }
+      },
+      "silhouette_IoU": 0.9928115015974441
+    },
+    "45": {
+      "counts": {
+        "both_hit": 3954,
+        "both_miss": 12409,
+        "near_degenerate": 0,
+        "oracle_grazing": 29,
+        "oracle_nonpositive_facing": 0,
+        "oracle_only": 16,
+        "orientation_eligible": 3658,
+        "reason_any": {
+          "boundary_side_ambiguity": 12,
+          "invalid_reconstructed_normal": 0,
+          "no_oracle_candidate": 0,
+          "normal_mismatch": 0,
+          "oracle_hidden": 0,
+          "reverse_unresolved": 0
+        },
+        "reason_primary": {
+          "boundary_side_ambiguity": 12,
+          "invalid_reconstructed_normal": 0,
+          "no_oracle_candidate": 0,
+          "normal_mismatch": 0,
+          "oracle_hidden": 0,
+          "reverse_unresolved": 0
+        },
+        "reconstruction_grazing": 25,
+        "reconstruction_nonpositive_facing": 0,
+        "reconstruction_only": 5,
+        "undefined_reconstruction_normal": 0,
+        "valid_common": 3942,
+        "valid_reconstruction_only": 5
+      },
+      "coverage_common": 0.9969650986342944,
+      "coverage_oracle_only": 0.0,
+      "coverage_reconstruction_only": 1.0,
+      "distributions": {
+        "displacement": {
+          "max": 0.567322850227356,
+          "median": 0.0006456431583501399,
+          "min": 0.0,
+          "p95": 0.003688575082924216
+        },
+        "frame_relative_Q_shift": {
+          "max": 0.07075969631558525,
+          "median": 0.008682469291138705,
+          "min": 5.2112990482338467e-05,
+          "p95": 0.026563105099626498
+        },
+        "normal_angle_degrees": {
+          "max": 146.0653461321027,
+          "median": 0.7458349294592754,
+          "min": 0.012528479398927742,
+          "p95": 2.182620848380927
+        },
+        "oracle_view_degrees": {
+          "max": 89.51649654067859,
+          "median": 49.40250202709594,
+          "min": 0.05193985414526857,
+          "p95": 76.34048427952838
+        },
+        "orientation_shift_degrees": {
+          "max": 5.733612612110704,
+          "median": 0.385269321670697,
+          "min": 0.0008889231100209699,
+          "p95": 1.1075434922451088
+        },
+        "projection_distance": {
+          "max": 0.0025926178975383993,
+          "median": 0.00038995215725666537,
+          "min": 2.2375864148270432e-08,
+          "p95": 0.0014158296420963292
+        },
+        "reconstruction_view_degrees": {
+          "max": 89.68148845297803,
+          "median": 49.21944856782466,
+          "min": 0.9623850458413917,
+          "p95": 76.70295666400996
+        },
+        "roundtrip_distance": {
+          "max": 0.00020599456772205828,
+          "median": 1.1240670866560028e-05,
+          "min": 6.763470048955888e-09,
+          "p95": 6.281133738125978e-05
+        },
+        "sampling_relative_Q_shift": {
+          "max": 0.20864492273867233,
+          "median": 0.0008625545128801229,
+          "min": 5.281457747397651e-11,
+          "p95": 0.015977400172853238
+        },
+        "sampling_signed_major_width_shift": {
+          "max": 0.029913021955381813,
+          "median": 0.0,
+          "min": -0.00862926954108123,
+          "p95": 0.00039698462320178203
+        },
+        "sampling_signed_minor_width_shift": {
+          "max": 0.0024961945785689776,
+          "median": -1.7072241355886586e-06,
+          "min": -0.005082616108080751,
+          "p95": 0.00019477485445572296
+        },
+        "signed_depth": {
+          "max": 0.023452043533325195,
+          "median": -0.00019919872283935547,
+          "min": -0.567322850227356,
+          "p95": 0.002101427316665649
+        },
+        "total_relative_Q_shift": {
+          "max": 0.21916627994218466,
+          "median": 0.010261638045783464,
+          "min": 0.00012953845565082507,
+          "p95": 0.029013728029394732
+        }
+      },
+      "silhouette_IoU": 0.9947169811320755
+    },
+    "50": {
+      "counts": {
+        "both_hit": 2625,
+        "both_miss": 13747,
+        "near_degenerate": 0,
+        "oracle_grazing": 58,
+        "oracle_nonpositive_facing": 0,
+        "oracle_only": 11,
+        "orientation_eligible": 2128,
+        "reason_any": {
+          "boundary_side_ambiguity": 9,
+          "invalid_reconstructed_normal": 0,
+          "no_oracle_candidate": 0,
+          "normal_mismatch": 0,
+          "oracle_hidden": 13,
+          "reverse_unresolved": 0
+        },
+        "reason_primary": {
+          "boundary_side_ambiguity": 9,
+          "invalid_reconstructed_normal": 0,
+          "no_oracle_candidate": 0,
+          "normal_mismatch": 0,
+          "oracle_hidden": 11,
+          "reverse_unresolved": 0
+        },
+        "reconstruction_grazing": 49,
+        "reconstruction_nonpositive_facing": 0,
+        "reconstruction_only": 1,
+        "undefined_reconstruction_normal": 0,
+        "valid_common": 2605,
+        "valid_reconstruction_only": 1
+      },
+      "coverage_common": 0.9923809523809524,
+      "coverage_oracle_only": 0.0,
+      "coverage_reconstruction_only": 1.0,
+      "distributions": {
+        "displacement": {
+          "max": 0.5117735862731934,
+          "median": 0.0008200350566767156,
+          "min": 1.0591622867650585e-06,
+          "p95": 0.00417683934792876
+        },
+        "frame_relative_Q_shift": {
+          "max": 0.055290673319385676,
+          "median": 0.009952896777906244,
+          "min": 0.00021984266994417721,
+          "p95": 0.028443180797357734
+        },
+        "normal_angle_degrees": {
+          "max": 28.863416861911247,
+          "median": 0.769202692530262,
+          "min": 0.009335262801718447,
+          "p95": 2.304451643157626
+        },
+        "oracle_view_degrees": {
+          "max": 89.68380868978399,
+          "median": 48.359695282216414,
+          "min": 1.2213128621866018,
+          "p95": 79.28980644982107
+        },
+        "orientation_shift_degrees": {
+          "max": 4.977731310966779,
+          "median": 0.3333446026297746,
+          "min": 0.002289874558166679,
+          "p95": 1.2602066407361159
+        },
+        "projection_distance": {
+          "max": 0.0025529129491581874,
+          "median": 0.0005068079783135358,
+          "min": 8.794845489614802e-07,
+          "p95": 0.00127092337294692
+        },
+        "reconstruction_view_degrees": {
+          "max": 89.12339908620118,
+          "median": 48.36089890130494,
+          "min": 1.300874707450498,
+          "p95": 79.63734549535931
+        },
+        "roundtrip_distance": {
+          "max": 0.00018322878754349972,
+          "median": 1.3670213461893658e-05,
+          "min": 2.579959569543094e-08,
+          "p95": 6.809574396191595e-05
+        },
+        "sampling_relative_Q_shift": {
+          "max": 0.17232069117713644,
+          "median": 0.0006041291529534316,
+          "min": 2.4149486135394937e-07,
+          "p95": 0.014706424764115673
+        },
+        "sampling_signed_major_width_shift": {
+          "max": 0.0033154547763478703,
+          "median": -1.1212853601172412e-07,
+          "min": -0.03553910905766966,
+          "p95": 0.0010081571347334002
+        },
+        "sampling_signed_minor_width_shift": {
+          "max": 0.005953430558035405,
+          "median": 0.0,
+          "min": -0.002145523546635275,
+          "p95": 8.595697576832462e-05
+        },
+        "signed_depth": {
+          "max": 0.42807602882385254,
+          "median": 0.00045120716094970703,
+          "min": -0.5117735862731934,
+          "p95": 0.0024895429611206045
+        },
+        "total_relative_Q_shift": {
+          "max": 0.17724161944795336,
+          "median": 0.010779087633289473,
+          "min": 0.00039679251933281165,
+          "p95": 0.03341155399052496
+        }
+      },
+      "silhouette_IoU": 0.9954493742889647
+    }
+  },
+  "historical_geometry_provenance": "unresolved",
+  "pooled": {
+    "counts": {
+      "both_hit": 22559,
+      "both_miss": 75643,
+      "near_degenerate": 3,
+      "oracle_grazing": 219,
+      "oracle_nonpositive_facing": 9,
+      "oracle_only": 80,
+      "orientation_eligible": 21470,
+      "reason_any": {
+        "boundary_side_ambiguity": 47,
+        "invalid_reconstructed_normal": 0,
+        "no_oracle_candidate": 0,
+        "normal_mismatch": 0,
+        "oracle_hidden": 16,
+        "reverse_unresolved": 0
+      },
+      "reason_primary": {
+        "boundary_side_ambiguity": 47,
+        "invalid_reconstructed_normal": 0,
+        "no_oracle_candidate": 0,
+        "normal_mismatch": 0,
+        "oracle_hidden": 14,
+        "reverse_unresolved": 0
+      },
+      "reconstruction_grazing": 197,
+      "reconstruction_nonpositive_facing": 0,
+      "reconstruction_only": 22,
+      "undefined_reconstruction_normal": 0,
+      "valid_common": 22500,
+      "valid_reconstruction_only": 20
+    },
+    "coverage_common": 0.9973846358437874,
+    "coverage_oracle_only": 0.0,
+    "coverage_reconstruction_only": 0.9090909090909091,
+    "distributions": {
+      "displacement": {
+        "max": 0.567322850227356,
+        "median": 0.000694404065143317,
+        "min": 0.0,
+        "p95": 0.0033326659584417915
+      },
+      "frame_relative_Q_shift": {
+        "max": 1.2937254734082513,
+        "median": 0.008181125272536525,
+        "min": 4.2772415223712675e-05,
+        "p95": 0.025407038152288047
+      },
+      "normal_angle_degrees": {
+        "max": 146.0653461321027,
+        "median": 0.7173046251336807,
+        "min": 0.005758551982801845,
+        "p95": 1.934463836461463
+      },
+      "oracle_view_degrees": {
+        "max": 91.39694822428636,
+        "median": 44.33287710476139,
+        "min": 0.05193985414526857,
+        "p95": 76.2696219050592
+      },
+      "orientation_shift_degrees": {
+        "max": 86.47521742118633,
+        "median": 0.325766363474673,
+        "min": 0.0002158207384713322,
+        "p95": 1.0753286349739906
+      },
+      "projection_distance": {
+        "max": 0.002660239547525261,
+        "median": 0.0004618154498061149,
+        "min": 1.5514802062117783e-08,
+        "p95": 0.0013289555516881656
+      },
+      "reconstruction_view_degrees": {
+        "max": 89.68148845297803,
+        "median": 44.36613554348116,
+        "min": 0.43204617845091675,
+        "p95": 76.5088480948417
+      },
+      "roundtrip_distance": {
+        "max": 0.00020694157072202165,
+        "median": 1.238264127931518e-05,
+        "min": 6.763470048955888e-09,
+        "p95": 6.087933603284452e-05
+      },
+      "sampling_relative_Q_shift": {
+        "max": 0.8462493666947036,
+        "median": 0.000733101958216995,
+        "min": 5.281457747397651e-11,
+        "p95": 0.011375858391555596
+      },
+      "sampling_signed_major_width_shift": {
+        "max": 0.029913021955381813,
+        "median": 0.0,
+        "min": -0.03553910905766966,
+        "p95": 0.000346544560980266
+      },
+      "sampling_signed_minor_width_shift": {
+        "max": 0.0066677172791516914,
+        "median": -5.935418620275912e-07,
+        "min": -0.005082616108080751,
+        "p95": 0.0001135682015525857
+      },
+      "signed_depth": {
+        "max": 0.42807602882385254,
+        "median": -0.00022125244140625,
+        "min": -0.567322850227356,
+        "p95": 0.002010178565979003
+      },
+      "total_relative_Q_shift": {
+        "max": 1.2722918016238804,
+        "median": 0.008906247979718245,
+        "min": 0.00012953845565082507,
+        "p95": 0.027696696478283853
+      }
+    },
+    "silhouette_IoU": 0.9954988747186797
+  },
+  "protocol": "donut-reconstructed-geometry-validation-v1",
+  "receipt_sha256": "5c99f7f93fa4f87fb3a8a5630ed2846f217fb9d1512131d0b24a622de0b978e2",
+  "split_metrics": {
+    "fitting": {
+      "counts": {
+        "both_hit": 15235,
+        "both_miss": 50230,
+        "near_degenerate": 0,
+        "oracle_grazing": 146,
+        "oracle_nonpositive_facing": 7,
+        "oracle_only": 58,
+        "orientation_eligible": 14403,
+        "reason_any": {
+          "boundary_side_ambiguity": 31,
+          "invalid_reconstructed_normal": 0,
+          "no_oracle_candidate": 0,
+          "normal_mismatch": 0,
+          "oracle_hidden": 14,
+          "reverse_unresolved": 0
+        },
+        "reason_primary": {
+          "boundary_side_ambiguity": 31,
+          "invalid_reconstructed_normal": 0,
+          "no_oracle_candidate": 0,
+          "normal_mismatch": 0,
+          "oracle_hidden": 12,
+          "reverse_unresolved": 0
+        },
+        "reconstruction_grazing": 132,
+        "reconstruction_nonpositive_facing": 0,
+        "reconstruction_only": 13,
+        "undefined_reconstruction_normal": 0,
+        "valid_common": 15192,
+        "valid_reconstruction_only": 13
+      },
+      "coverage_common": 0.9971775516901871,
+      "coverage_oracle_only": 0.0,
+      "coverage_reconstruction_only": 1.0,
+      "distributions": {
+        "displacement": {
+          "max": 0.567322850227356,
+          "median": 0.0006651895237155259,
+          "min": 0.0,
+          "p95": 0.0036694527836516498
+        },
+        "frame_relative_Q_shift": {
+          "max": 1.2937254734082513,
+          "median": 0.008447032184916457,
+          "min": 4.4383187957039274e-05,
+          "p95": 0.026007869383523362
+        },
+        "normal_angle_degrees": {
+          "max": 146.0653461321027,
+          "median": 0.7379846176159358,
+          "min": 0.006376575137479427,
+          "p95": 2.0559201289168243
+        },
+        "oracle_view_degrees": {
+          "max": 90.1244824497923,
+          "median": 46.67155398219045,
+          "min": 0.05193985414526857,
+          "p95": 76.42329340142763
+        },
+        "orientation_shift_degrees": {
+          "max": 86.47521742118633,
+          "median": 0.34266987413086686,
+          "min": 0.0002158207384713322,
+          "p95": 1.116400580685855
+        },
+        "projection_distance": {
+          "max": 0.002660239547525261,
+          "median": 0.0004280003714802009,
+          "min": 1.5514802062117783e-08,
+          "p95": 0.0013157967544917975
+        },
+        "reconstruction_view_degrees": {
+          "max": 89.68148845297803,
+          "median": 46.695732193554626,
+          "min": 0.46749673319264434,
+          "p95": 76.79628082787242
+        },
+        "roundtrip_distance": {
+          "max": 0.00020694157072202165,
+          "median": 1.1635036288636138e-05,
+          "min": 6.763470048955888e-09,
+          "p95": 5.950800881679243e-05
+        },
+        "sampling_relative_Q_shift": {
+          "max": 0.8462493666947036,
+          "median": 0.0007130422842103227,
+          "min": 5.281457747397651e-11,
+          "p95": 0.014022797065169316
+        },
+        "sampling_signed_major_width_shift": {
+          "max": 0.029913021955381813,
+          "median": -1.7250727957218714e-08,
+          "min": -0.03553910905766966,
+          "p95": 0.000486308945192714
+        },
+        "sampling_signed_minor_width_shift": {
+          "max": 0.0066677172791516914,
+          "median": -8.321259685195592e-07,
+          "min": -0.005082616108080751,
+          "p95": 0.00013798960104573064
+        },
+        "signed_depth": {
+          "max": 0.42807602882385254,
+          "median": -0.00017642974853515625,
+          "min": -0.567322850227356,
+          "p95": 0.002057230472564697
+        },
+        "total_relative_Q_shift": {
+          "max": 1.2722918016238804,
+          "median": 0.009435428850646153,
+          "min": 0.00012953845565082507,
+          "p95": 0.029396216076305635
+        }
+      },
+      "silhouette_IoU": 0.9953612962237032
+    },
+    "held_out": {
+      "counts": {
+        "both_hit": 7324,
+        "both_miss": 25413,
+        "near_degenerate": 3,
+        "oracle_grazing": 73,
+        "oracle_nonpositive_facing": 2,
+        "oracle_only": 22,
+        "orientation_eligible": 7067,
+        "reason_any": {
+          "boundary_side_ambiguity": 16,
+          "invalid_reconstructed_normal": 0,
+          "no_oracle_candidate": 0,
+          "normal_mismatch": 0,
+          "oracle_hidden": 2,
+          "reverse_unresolved": 0
+        },
+        "reason_primary": {
+          "boundary_side_ambiguity": 16,
+          "invalid_reconstructed_normal": 0,
+          "no_oracle_candidate": 0,
+          "normal_mismatch": 0,
+          "oracle_hidden": 2,
+          "reverse_unresolved": 0
+        },
+        "reconstruction_grazing": 65,
+        "reconstruction_nonpositive_facing": 0,
+        "reconstruction_only": 9,
+        "undefined_reconstruction_normal": 0,
+        "valid_common": 7308,
+        "valid_reconstruction_only": 7
+      },
+      "coverage_common": 0.997815401419989,
+      "coverage_oracle_only": 0.0,
+      "coverage_reconstruction_only": 0.7777777777777778,
+      "distributions": {
+        "displacement": {
+          "max": 0.024896500632166862,
+          "median": 0.0007419002649839967,
+          "min": 8.601791137152759e-07,
+          "p95": 0.0024663648218847807
+        },
+        "frame_relative_Q_shift": {
+          "max": 0.12067801915776,
+          "median": 0.007650316988280803,
+          "min": 4.2772415223712675e-05,
+          "p95": 0.023992031452090966
+        },
+        "normal_angle_degrees": {
+          "max": 9.253341573152548,
+          "median": 0.6765512139597334,
+          "min": 0.005758551982801845,
+          "p95": 1.717527151054451
+        },
+        "oracle_view_degrees": {
+          "max": 91.39694822428636,
+          "median": 38.359479895069995,
+          "min": 0.15065477649784662,
+          "p95": 75.65107249733609
+        },
+        "orientation_shift_degrees": {
+          "max": 6.471532283331872,
+          "median": 0.2940306486232598,
+          "min": 0.0009135964466847237,
+          "p95": 0.9737849324045401
+        },
+        "projection_distance": {
+          "max": 0.002642840797855821,
+          "median": 0.0005316220257091441,
+          "min": 3.6367478334766553e-07,
+          "p95": 0.0013584145628752953
+        },
+        "reconstruction_view_degrees": {
+          "max": 89.04298291911253,
+          "median": 38.51650450409676,
+          "min": 0.43204617845091675,
+          "p95": 75.64712587397382
+        },
+        "roundtrip_distance": {
+          "max": 0.0002027292054573166,
+          "median": 1.379578757661182e-05,
+          "min": 1.8957831249350432e-08,
+          "p95": 6.277771990902471e-05
+        },
+        "sampling_relative_Q_shift": {
+          "max": 0.09204146318014397,
+          "median": 0.0007621608016884654,
+          "min": 1.934391110803475e-07,
+          "p95": 0.004399687152060287
+        },
+        "sampling_signed_major_width_shift": {
+          "max": 0.0018243087386150547,
+          "median": 3.524650746544733e-06,
+          "min": -0.0023370574678829303,
+          "p95": 0.00020391331252699014
+        },
+        "sampling_signed_minor_width_shift": {
+          "max": 0.0021742421997785755,
+          "median": -2.770381974659397e-07,
+          "min": -0.002102988019515306,
+          "p95": 8.474179310119647e-05
+        },
+        "signed_depth": {
+          "max": 0.02489650249481201,
+          "median": -0.0003224611282348633,
+          "min": -0.020129919052124023,
+          "p95": 0.0018373250961303688
+        },
+        "total_relative_Q_shift": {
+          "max": 0.1481210607309197,
+          "median": 0.00790141748070852,
+          "min": 0.0002850985541290829,
+          "p95": 0.0243893512389387
+        }
+      },
+      "silhouette_IoU": 0.9957851801495581
+    }
+  }
+}

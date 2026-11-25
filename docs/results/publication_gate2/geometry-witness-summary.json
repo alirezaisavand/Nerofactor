@@ -1,0 +1,55 @@
+{
+  "depth_tail_counts": {
+    "0": {
+      "0.005": 69,
+      "0.05": 0
+    },
+    "1": {
+      "0.005": 118,
+      "0.05": 1
+    },
+    "28": {
+      "0.005": 21,
+      "0.05": 0
+    },
+    "34": {
+      "0.005": 55,
+      "0.05": 0
+    },
+    "45": {
+      "0.005": 70,
+      "0.05": 4
+    },
+    "50": {
+      "0.005": 96,
+      "0.05": 5
+    }
+  },
+  "independent_checks": 384,
+  "independent_hits": 186,
+  "independent_max_errors": {
+    "depth_error": 1.1535014809993527e-07,
+    "normal_error": 9.014959356790087e-08,
+    "normal_length_error": 9.914285303835868e-08,
+    "position_error": 9.832958758337895e-08
+  },
+  "independent_shared_edge": 0,
+  "max_transport_width_change": 3.3306690738754696e-16,
+  "near_degenerate": [
+    {
+      "camera": 34,
+      "pixel": 9157,
+      "valid_transfer": true
+    },
+    {
+      "camera": 34,
+      "pixel": 9284,
+      "valid_transfer": true
+    },
+    {
+      "camera": 34,
+      "pixel": 9285,
+      "valid_transfer": true
+    }
+  ]
+}

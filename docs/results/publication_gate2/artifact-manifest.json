@@ -1,0 +1,210 @@
+{
+  "authorization": {
+    "bytes": 1251,
+    "path": "/home/isavand/paper/evidence/donut-geometry-gate2-e261dd42053f4b7ab24016d0346b00cd/authorization.json",
+    "sha256": "5f3ec5b3356d67c92e7a9d1c06e392eab2033d858c48e9f94bf3bae0cd7068a1"
+  },
+  "backend": {
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "variant": "predicate_fp64"
+  },
+  "batch": "/home/isavand/paper/evidence/donut-geometry-gate2-e261dd42053f4b7ab24016d0346b00cd",
+  "counters": {
+    "cpu_ray_checks": 384,
+    "nearest_searches": 45162,
+    "primary_rays": 196608,
+    "projection_candidates": 1000663,
+    "visibility_rays": 22578
+  },
+  "execution_commit": "fa25a6908644ba305820d37be9c1c9fd6e37d7c8",
+  "exit_code": {
+    "bytes": 2,
+    "path": "/home/isavand/paper/evidence/donut-geometry-gate2-e261dd42053f4b7ab24016d0346b00cd/exit-code.txt",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  "freeze": {
+    "bytes": 6458,
+    "path": "/home/isavand/paper/evidence/donut-geometry-gate2-e261dd42053f4b7ab24016d0346b00cd/freeze.json",
+    "sha256": "25b53011c62ae5bb36539c813178ef3c0c1b6b9217dc8283e6f5ca3c5e1f7cc9"
+  },
+  "inputs": {
+    "cameras": {
+      "bytes": 86413,
+      "path": "/home/isavand/nero/data/nerf_synthetic/donut/transforms_train.json",
+      "sha256": "89fc7b8d05db69437f3654cac1a8c6e68a23cfb411c28703824e18f0fdcaa82a"
+    },
+    "dataset": {
+      "admission": {
+        "bytes": 6626,
+        "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9-admission.json",
+        "sha256": "a6eab416054c5bf74b43834c3be224847e2d78d9af7eb4989745fe37333618fb"
+      },
+      "generation": {
+        "bytes": 25006,
+        "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/generation.json",
+        "sha256": "de8dda85559b286456d926e09731c6c501dfcbd6707d1aaf3aef9cf8784c58a0"
+      },
+      "verification": {
+        "bytes": 15604,
+        "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9-verification-v1.json",
+        "sha256": "22e7894fdba2f84ed0355299999cc74a1784cb40c74667f7b0b9e432cb598340"
+      }
+    },
+    "mesh": {
+      "bytes": 7062117,
+      "path": "/home/isavand/nero/final_results/meshes/donut_shape-300000.ply",
+      "sha256": "1206fa06e7b1b724731082dd8cc22185afa62bc2b14600ad54fb6593a758f20c"
+    },
+    "oracle": {
+      "bytes": 2589411,
+      "path": "/home/isavand/paper/evidence/donut-blend-inspection-v2/oracle-geometry-and-frames.npz",
+      "sha256": "cfe903c177dfe404c47390aed2a3fa025ea9499ca0af644dba667b721c0139f1"
+    },
+    "views": {
+      "view-0.npz": {
+        "bytes": 2403543,
+        "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-0.npz",
+        "sha256": "e570bfd965ad8a5775c44e4306a029f9b2c1515a0f9bb1f256cfff150cd8a134"
+      },
+      "view-1.npz": {
+        "bytes": 2187672,
+        "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-1.npz",
+        "sha256": "f8ce285b6b0f3c1280b0d3bb41562e813ff688cee4f0d75f320d5e445e173d7d"
+      },
+      "view-28.npz": {
+        "bytes": 2565614,
+        "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-28.npz",
+        "sha256": "44e6ddb03d8519f7c490ca2aafce395ed553f20f173a0d96babddc647115639b"
+      },
+      "view-34.npz": {
+        "bytes": 1308423,
+        "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-34.npz",
+        "sha256": "730739337f9fa08b6d6e9aceb8a34d121fae424d52991649b8175ad474226ba1"
+      },
+      "view-45.npz": {
+        "bytes": 2092230,
+        "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-45.npz",
+        "sha256": "949802ee07a2b196ba1d6347f314df6ff31b66613eb1e0145bf4fd163527fe55"
+      },
+      "view-50.npz": {
+        "bytes": 1383119,
+        "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-50.npz",
+        "sha256": "daff67e19645246274dfb937f21a943f3f93a0c145050b3c52fadd0e81e253e5"
+      }
+    }
+  },
+  "native_outputs": {
+    "correspondence-0.npz": {
+      "bytes": 2486684,
+      "sha256": "eb767071787651665abe1d314dcfa6c2ede3cfb9450279eeca852b31dc074675"
+    },
+    "correspondence-1.npz": {
+      "bytes": 2275972,
+      "sha256": "f8fb68eaf1779f1426bc06442da38c61c443867be7d6725e88d47835fc584ada"
+    },
+    "correspondence-28.npz": {
+      "bytes": 2650126,
+      "sha256": "7f8c7520eaa3eadb58db45eda414ffc9c95a5f8e825a2a3317d6c1400b7e048c"
+    },
+    "correspondence-34.npz": {
+      "bytes": 1367181,
+      "sha256": "8dfe4b68a177c46bb6654dd658fa53299e80765d462de36fde0b613fd48a1699"
+    },
+    "correspondence-45.npz": {
+      "bytes": 2167224,
+      "sha256": "db780934840188c5b1472eafae5dba0b441addc41c3df2785b26fa7ae391f60b"
+    },
+    "correspondence-50.npz": {
+      "bytes": 1425611,
+      "sha256": "9859ca085c200c6f0a9d23f05446c09a3e90a218dbc0bdc686098596972f9ad0"
+    },
+    "primary-0.npz": {
+      "bytes": 965130,
+      "sha256": "27e0e0d7288a43d0436dce246c292ae03323c789df86469eafb9c6665483bfbb"
+    },
+    "primary-1.npz": {
+      "bytes": 912823,
+      "sha256": "9d84095e3c9f6af6fea30aa20789bca4442f4683863f0d2320be92b45b8c363d"
+    },
+    "primary-28.npz": {
+      "bytes": 994333,
+      "sha256": "6416549e063c022a83de4ec8134654dd36c3f58f8f2942977b5263e96c10a54b"
+    },
+    "primary-34.npz": {
+      "bytes": 748337,
+      "sha256": "d53f136cdb909f3185d88d3c86a37b4adcbb31a155555a613dbabd84191fceeb"
+    },
+    "primary-45.npz": {
+      "bytes": 885225,
+      "sha256": "b1f035fe60de9ccc07dbaaa2c432f8e508ae2c9bed019b894c68a4e0750fc311"
+    },
+    "primary-50.npz": {
+      "bytes": 765833,
+      "sha256": "63cded7f4d911e9c42670c7df4aa7c6c4673825480d21718c6deba8bbb979cfd"
+    },
+    "witnesses-0.json": {
+      "bytes": 21704,
+      "sha256": "0fb9503a052ebf621bb13db6798489c2369598e2799403439fb725ad8408f944"
+    },
+    "witnesses-1.json": {
+      "bytes": 21726,
+      "sha256": "d3238646137c07f1bad62a9816409c22590d76194a87f2f09251ac8d9f41ed60"
+    },
+    "witnesses-28.json": {
+      "bytes": 21682,
+      "sha256": "6c86e80dc102e0c42a04fec8655cbfc7c548ac0126433fc982193d63edc7f9b3"
+    },
+    "witnesses-34.json": {
+      "bytes": 21658,
+      "sha256": "a580e8bb8df9ef6ef1cb043df3c5f18e679c1bc2e7be949760774ef75ef050d7"
+    },
+    "witnesses-45.json": {
+      "bytes": 21692,
+      "sha256": "0c929192fd20c3109df7f981d4372fea3baaa0f939c3feed5173d9cc2204e61b"
+    },
+    "witnesses-50.json": {
+      "bytes": 21706,
+      "sha256": "0b51e76bb4b5a94a2ddb89ffb4e3b8ca42ee638121fb32e6263b221faa43c30c"
+    }
+  },
+  "offline": [
+    {
+      "bytes": 34695,
+      "path": "/home/isavand/paper/evidence/donut-geometry-gate2-e261dd42053f4b7ab24016d0346b00cd-analysis-v1/geometry-metrics.json",
+      "sha256": "9c24b45f5e4810506ac24866fd4550385ac7622633350f3ed3ff7dea15297667"
+    },
+    {
+      "bytes": 262665,
+      "path": "/home/isavand/paper/evidence/donut-geometry-gate2-e261dd42053f4b7ab24016d0346b00cd-analysis-v1/geometry-diagnostics.png",
+      "sha256": "65d19dfbbf324d249c0d04b855e123a43ef80f91f25f8ca1c4208dbade544128"
+    }
+  ],
+  "packaged_files": {
+    "depth-outliers.csv": {
+      "bytes": 1382,
+      "sha256": "3ce560302a86d79bdae2b5f729c59f7cf311adf71320b67846eef103425117ce"
+    },
+    "geometry-diagnostics.png": {
+      "bytes": 262665,
+      "sha256": "65d19dfbbf324d249c0d04b855e123a43ef80f91f25f8ca1c4208dbade544128"
+    },
+    "geometry-metrics.json": {
+      "bytes": 34695,
+      "sha256": "9c24b45f5e4810506ac24866fd4550385ac7622633350f3ed3ff7dea15297667"
+    },
+    "geometry-witness-summary.json": {
+      "bytes": 990,
+      "sha256": "adbcb581fd7a328fd128324fde0f4748ef81f5722dc1f428f492863f690a4d9a"
+    }
+  },
+  "protocol": "donut-reconstructed-geometry-validation-v1",
+  "receipt": {
+    "bytes": 7588,
+    "path": "/home/isavand/paper/evidence/donut-geometry-gate2-e261dd42053f4b7ab24016d0346b00cd/audit/receipt.json",
+    "sha256": "5c99f7f93fa4f87fb3a8a5630ed2846f217fb9d1512131d0b24a622de0b978e2"
+  },
+  "schema_version": 1
+}
