@@ -1,0 +1,104 @@
+{
+  "accepted_layout_replay": {
+    "28": {
+      "accepted_rows": 4830,
+      "archived_batch_sizes": [
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        222
+      ],
+      "chunk_membership_changed": 93,
+      "expanded_batch_sizes": [
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        241
+      ],
+      "expanded_positions_changed": 4601,
+      "expanded_rows": 4849
+    },
+    "34": {
+      "accepted_rows": 2476,
+      "archived_batch_sizes": [
+        512,
+        512,
+        512,
+        512,
+        428
+      ],
+      "chunk_membership_changed": 22,
+      "expanded_batch_sizes": [
+        512,
+        512,
+        512,
+        512,
+        447
+      ],
+      "expanded_positions_changed": 1794,
+      "expanded_rows": 2495
+    }
+  },
+  "batch": "/home/isavand/paper/evidence/donut-relight-gate6-489e4c860f47404a9b215e9e51b1acaa",
+  "cleanup_verified": false,
+  "commit": "eec1dcd3f075d0be7eb7e7afee81d3008b2d9f55",
+  "counters": {
+    "checkpoint_loads": 1,
+    "independent_BRDF_point_directions": 0,
+    "independent_shadow_directions": 0,
+    "native_shader_calls": 320,
+    "native_shadow_slots": 238338048,
+    "optimizer_updates": 0,
+    "primary_rays": 0
+  },
+  "elapsed_seconds": 9.567273136228323,
+  "error": "SignatureError: Restored physical field differs from accepted endpoint",
+  "failed_arm": "K1-Oracle",
+  "failed_camera": 28,
+  "failure_location_inferred_from": "320 shader calls equals first camera 10 chunks \u00d7 32 draws, first of three arms",
+  "files": {
+    "authorization.json": {
+      "bytes": 1385,
+      "sha256": "3f8c456c03c42bcad555bb855f5919a001e276c9bdccfa59103e8a33cb1f72c0"
+    },
+    "console.txt": {
+      "bytes": 1055,
+      "sha256": "1232385c0f096942fc393ae126fbb5746632b88a9823fd0a99f61b315b39a82f"
+    },
+    "container.cid": {
+      "bytes": 64,
+      "sha256": "ceb9a8abbe47d482437ac50728c3ff4d80a96ad0fed3342513680e3fda4ae8fb"
+    },
+    "exit-code.txt": {
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    "freeze.json": {
+      "bytes": 14020,
+      "sha256": "1d418aa790a68a26257be5ed759467b9cfda3d173fbd92f3bae8e7ac349a97a1"
+    },
+    "run/progress.json": {
+      "bytes": 2193,
+      "sha256": "13c731646e0878e60baa8c9fe1946704c85638c8cb41b221106c10863018183f"
+    },
+    "run/receipt.json": {
+      "bytes": 2444,
+      "sha256": "5ae147dc86f002a45eac9b1b56709e7a5b42f85099e129df2928860afb0bc51d"
+    }
+  },
+  "individual_field_residuals_saved": false,
+  "protocol": "donut-unseen-light-gate6-v1",
+  "status": "failed"
+}
