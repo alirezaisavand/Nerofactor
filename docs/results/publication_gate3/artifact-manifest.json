@@ -1,0 +1,187 @@
+{
+  "authorization": {
+    "bytes": 1256,
+    "path": "/home/isavand/paper/evidence/donut-geometry-rgb-gate3-a0feb701948a45c2a41785fe1325a220/authorization.json",
+    "sha256": "27bf58873781c4db972bf4fb25d74b4ca2aa381333700033782a8e9a5d76c101"
+  },
+  "backend": {
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "variant": "predicate_fp64"
+  },
+  "batch": "/home/isavand/paper/evidence/donut-geometry-rgb-gate3-a0feb701948a45c2a41785fe1325a220",
+  "counters": {
+    "BRDF_point_directions": 14805237760,
+    "shadow_directions": 14805237760
+  },
+  "execution_commit": "77dc87d6919dd44e52d7dcccecc6fc1fe2654582",
+  "exit_code": {
+    "bytes": 2,
+    "path": "/home/isavand/paper/evidence/donut-geometry-rgb-gate3-a0feb701948a45c2a41785fe1325a220/exit-code.txt",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  "freeze": {
+    "bytes": 14598,
+    "path": "/home/isavand/paper/evidence/donut-geometry-rgb-gate3-a0feb701948a45c2a41785fe1325a220/freeze.json",
+    "sha256": "77653de0486e47ff1e4b52475b1afb5a1e8492ae15e2b520ccf5c97e2c3c4040"
+  },
+  "gate2_receipt": {
+    "bytes": 7588,
+    "path": "/home/isavand/paper/evidence/donut-geometry-gate2-e261dd42053f4b7ab24016d0346b00cd/audit/receipt.json",
+    "sha256": "5c99f7f93fa4f87fb3a8a5630ed2846f217fb9d1512131d0b24a622de0b978e2"
+  },
+  "native_outputs": {
+    "camera-0-oracle-base-256.npz": {
+      "bytes": 326910,
+      "sha256": "c76a85cebbfda4b42f3a50ff846a297d74e4aadcd9b2445efb919a8e6ebb37a7"
+    },
+    "camera-0-oracle-base-512.npz": {
+      "bytes": 328097,
+      "sha256": "cfaf418d24ca94cfc557db1fcfb24948c75bae2b5ecd19241fb09b53c8774076"
+    },
+    "camera-0-reconstruction-base-256.npz": {
+      "bytes": 324022,
+      "sha256": "0eee65d60dde7dc0953bf77655d965c7788ff113a150b9febda4721dbf3aa6e5"
+    },
+    "camera-0-reconstruction-base-512.npz": {
+      "bytes": 325874,
+      "sha256": "cee73906dd863429ceaebfecec2d4a2eb7057ba81b8417036a9da99758c15894"
+    },
+    "camera-1-oracle-base-256.npz": {
+      "bytes": 298213,
+      "sha256": "25790d51d8523cc8e2f87306f5d044013abf5e89f87fc25bf286b557bbc7cbd8"
+    },
+    "camera-1-oracle-base-512.npz": {
+      "bytes": 299409,
+      "sha256": "421ae04a258633153bb869056ce7f89937d438bd35d5ac63ca946b0caae5b67d"
+    },
+    "camera-1-reconstruction-base-256.npz": {
+      "bytes": 296249,
+      "sha256": "5823a56536edf2713ca0213aadfafbfb6c95e4e76f5fb852168cc651e76dc51d"
+    },
+    "camera-1-reconstruction-base-512.npz": {
+      "bytes": 297938,
+      "sha256": "28504d59edfb328b68bb4e86d81c87759cfe0132d7a0cf5af725e6b3311a30d5"
+    },
+    "camera-28-oracle-base-256.npz": {
+      "bytes": 349677,
+      "sha256": "fa8a22b189b45d7fc64d04ff78e2d5080c1502cfe2c417ebdbe447b114a7dfad"
+    },
+    "camera-28-oracle-base-512.npz": {
+      "bytes": 350877,
+      "sha256": "6b15aecd56a93f8e182d76b50d20939039093442f05b7db7f65755be35312e37"
+    },
+    "camera-28-reconstruction-base-256.npz": {
+      "bytes": 347141,
+      "sha256": "fe3fba68981317de4f2f112db81bbb0f5a21eac1674e3cdc7513bdd13cc54a96"
+    },
+    "camera-28-reconstruction-base-512.npz": {
+      "bytes": 349031,
+      "sha256": "132eb37dd700df62dffaf595d45fb8359cfc87f670e3d9384d8592ea141bbc5a"
+    },
+    "camera-34-oracle-base-256.npz": {
+      "bytes": 179045,
+      "sha256": "db295adb9212e67461b171d66f97db998286406aabab7fa7cf26b97f191e255a"
+    },
+    "camera-34-oracle-base-512.npz": {
+      "bytes": 179803,
+      "sha256": "55fcfbff1c0c168e55f434c0caac2eb8e561a43189fe8b486022be37d971f5fb"
+    },
+    "camera-34-reconstruction-base-256.npz": {
+      "bytes": 177276,
+      "sha256": "1948248035d9ebde8388e12aef2029d97c64fd0cb920f28801d1a3b181b6e71f"
+    },
+    "camera-34-reconstruction-base-512.npz": {
+      "bytes": 178484,
+      "sha256": "e6993fca23723e685e0ca138b65af133b1d8fbbf7898ef5de976c9c300d1749e"
+    },
+    "camera-45-oracle-base-256.npz": {
+      "bytes": 285733,
+      "sha256": "f8878433d6f9135c35ba04488073fae26e4240d13d4cd13a0c44b9ebe95cecc6"
+    },
+    "camera-45-oracle-base-512.npz": {
+      "bytes": 286891,
+      "sha256": "2456feeaac8cbefb2e40f0cfc727b6a76153275ea67e72c50ae41b819b1cdf2f"
+    },
+    "camera-45-reconstruction-base-256.npz": {
+      "bytes": 282757,
+      "sha256": "21defacfcb6c7c75a981688d5c78357450d674339ac9f1ace07ff7a5c844e74b"
+    },
+    "camera-45-reconstruction-base-512.npz": {
+      "bytes": 284262,
+      "sha256": "07572aa5522071a0652152f7a0c84d99f9ae709b7bd53f1650e1b3613499a427"
+    },
+    "camera-50-oracle-base-256.npz": {
+      "bytes": 189215,
+      "sha256": "c330411add90285f223c2098fd5ae0f8bf4c7b6400f20ccde028b15b793148bf"
+    },
+    "camera-50-oracle-base-512.npz": {
+      "bytes": 190127,
+      "sha256": "d0a176b07a3905a13890030b98e67d003231801eed8ba1df141bbd6394b7ecfa"
+    },
+    "camera-50-oracle-pixel-7317-1024.npz": {
+      "bytes": 864,
+      "sha256": "9f279039eccbe809dafde8ffa648011f047398b86fcbcbe2d21ce825f03647a7"
+    },
+    "camera-50-oracle-pixel-7317-2048.npz": {
+      "bytes": 863,
+      "sha256": "aae65a538c8497990eadb0a554307f79011d124f7ccd2539246c1475627ecd01"
+    },
+    "camera-50-reconstruction-base-256.npz": {
+      "bytes": 185912,
+      "sha256": "cec055125ef65cead19df580610ddb7f4f309deb47530dc34b4a9014eb0860cf"
+    },
+    "camera-50-reconstruction-base-512.npz": {
+      "bytes": 187093,
+      "sha256": "467a55ce3f2de843782dfb97298723c5dd77b608bd44ac5e9f32e05154dc66bf"
+    },
+    "camera-50-reconstruction-pixel-7317-1024.npz": {
+      "bytes": 864,
+      "sha256": "bfdd09cbb5097fd148f90f0f51d7cd4e56d01161043b37138767eb47f5e5993f"
+    },
+    "camera-50-reconstruction-pixel-7317-2048.npz": {
+      "bytes": 863,
+      "sha256": "5d19770bc45f0b015db50aede69bf40a3f92f11296123eda250bd85e3c7b56fe"
+    }
+  },
+  "offline": [
+    {
+      "bytes": 180856,
+      "path": "/home/isavand/paper/evidence/donut-geometry-rgb-gate3-a0feb701948a45c2a41785fe1325a220-analysis-v1/rgb-metrics.json",
+      "sha256": "26090feeffe48263a385fbcc6ddf10d87c3e53774ae15f907f91ab7174cea22b"
+    },
+    {
+      "bytes": 2227,
+      "path": "/home/isavand/paper/evidence/donut-geometry-rgb-gate3-a0feb701948a45c2a41785fe1325a220-analysis-v1/depth-outlier-rgb.csv",
+      "sha256": "a31746ff56f721121332401ea6fa7e182d2d371d298fb1d6c6816ddac717ac90"
+    },
+    {
+      "bytes": 412996,
+      "path": "/home/isavand/paper/evidence/donut-geometry-rgb-gate3-a0feb701948a45c2a41785fe1325a220-analysis-v1/rgb-differences.png",
+      "sha256": "99e6bd11fb3f5ef591ffb1302984b11e8f3ca23b8876af69cf62ce4838f2aee1"
+    }
+  ],
+  "packaged_files": {
+    "depth-outlier-rgb.csv": {
+      "bytes": 2227,
+      "sha256": "a31746ff56f721121332401ea6fa7e182d2d371d298fb1d6c6816ddac717ac90"
+    },
+    "rgb-differences.png": {
+      "bytes": 412996,
+      "sha256": "99e6bd11fb3f5ef591ffb1302984b11e8f3ca23b8876af69cf62ce4838f2aee1"
+    },
+    "rgb-metrics.json": {
+      "bytes": 180856,
+      "sha256": "26090feeffe48263a385fbcc6ddf10d87c3e53774ae15f907f91ab7174cea22b"
+    }
+  },
+  "protocol": "donut-geometry-fixed-material-rgb-v1",
+  "receipt": {
+    "bytes": 9580,
+    "path": "/home/isavand/paper/evidence/donut-geometry-rgb-gate3-a0feb701948a45c2a41785fe1325a220/render/receipt.json",
+    "sha256": "832fa3706725e8abad345fd72036b5ee6ad163dfc18190217b785a9d016c4d62"
+  },
+  "schema_version": 1
+}
