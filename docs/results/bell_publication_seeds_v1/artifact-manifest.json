@@ -1,0 +1,319 @@
+{
+  "accepted_6033": {
+    "bytes": 11086,
+    "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/results/bell_final_tensor_pair_v1/artifact-manifest.json",
+    "sha256": "0117608d0c5745f03fd33a71b05ccbdfe6f5aedcd3e6b1756569f34c72bfb4b8"
+  },
+  "arms": {
+    "Final-Ambient-6034": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 25813648,
+          "sha256": "cd5ea11ec6e4c1950902a341947317a72f492ffa81be0caefcba4e30d035fd1a"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 25813584,
+          "sha256": "646a8e89287294f7874a1763ba7248805feb6fd1eacc99e5a8531d91908d4dee"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 25813648,
+          "sha256": "64e6ab21c117f9641bea49d1bd63eb2576d0808179846f5658d6036849db5dea"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 25813584,
+          "sha256": "ef70eabe07c8e8b31e4f2d5329a01bcb5d1a080e38f8bcadbc2f48d3ffd705b3"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 25813584,
+          "sha256": "10ea94de08e680ae88893053fb834bbe475c36b5d03728ccde031f7f3f6d5ea3"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/bell-publication-seeds-v1-6779c35a95414583a3de6f8863708940/Final-Ambient-6034-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 339623542,
+      "outputs": 2628,
+      "receipt": {
+        "bytes": 681930,
+        "path": "/home/isavand/paper/evidence/bell-publication-seeds-v1-6779c35a95414583a3de6f8863708940/Final-Ambient-6034/recovery.json",
+        "sha256": "cff42755b390542bfea3d84ebe519377fdad68ee99ae4ce717818460b9f6599e"
+      },
+      "stream": {
+        "bytes": 20480000,
+        "sha256": "4d09ff0c4687815c7dee75216769abb473d1db277adac1e29e95df0f6e3f455b"
+      }
+    },
+    "Final-Ambient-6035": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 25813648,
+          "sha256": "6c45860039c2ba996d8668adb0a74ab115784ffebdb023e0078b57f38b7fd662"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 25813648,
+          "sha256": "fe18a470db9f69fd5805bc43e338324bac2628f5fbee7fa2788f48f9ea4b7d5b"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 25813584,
+          "sha256": "8d9ef2cbc0225c10bfe3b2f16b679c6bf20f2a2f50ef2793e7ee59d5b3dae399"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 25813584,
+          "sha256": "fbfa0599d1c6eb9c2db1e389f82e6f1e38259c95c95b946ae81487a6a2d39979"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 25813584,
+          "sha256": "ae151ec82a9e203c9b989b25723519524af28b49e458f564dccd46403f57085e"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/bell-publication-seeds-v1-6779c35a95414583a3de6f8863708940/Final-Ambient-6035-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 339651260,
+      "outputs": 2628,
+      "receipt": {
+        "bytes": 681942,
+        "path": "/home/isavand/paper/evidence/bell-publication-seeds-v1-6779c35a95414583a3de6f8863708940/Final-Ambient-6035/recovery.json",
+        "sha256": "271fc5eea51cfdfdadfa757299c0528f4fd277bd867205835490897f7342a7ba"
+      },
+      "stream": {
+        "bytes": 20480000,
+        "sha256": "f25978b115bdfbed0d1a7b095bd7f4056192634e8f14dc0c8096e2b70279dc4f"
+      }
+    },
+    "Final-Chart-6034": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 25805456,
+          "sha256": "7be7ad6404a952a5bfcaf57e5cf86df825884067d05912d3109034b23644adce"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 25805392,
+          "sha256": "c7d5a1dcf2e3fcd42fbe1d1942df1affc49457d044b657769508f08aa09f96a5"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 25805456,
+          "sha256": "4e3ab00a406318628d354f123f57ac9e34955e4c2ca3ac74e5f20c7be543d16a"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 25805392,
+          "sha256": "13beff0f276ef66ea8d0b1da5b5e0d689b925404c142c999e51c9b10e720d776"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 25805392,
+          "sha256": "50a5a4937980602690667edf1246c61ebb412689a7c05ceeb0ab00808651e573"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/bell-publication-seeds-v1-6779c35a95414583a3de6f8863708940/Final-Chart-6034-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 338751450,
+      "outputs": 2628,
+      "receipt": {
+        "bytes": 681700,
+        "path": "/home/isavand/paper/evidence/bell-publication-seeds-v1-6779c35a95414583a3de6f8863708940/Final-Chart-6034/recovery.json",
+        "sha256": "84fd62b6d9d67910b1f9ec94d61a80f169830857a7e303ba55a5895f4f73352f"
+      },
+      "stream": {
+        "bytes": 20480000,
+        "sha256": "4d09ff0c4687815c7dee75216769abb473d1db277adac1e29e95df0f6e3f455b"
+      }
+    },
+    "Final-Chart-6035": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 25805456,
+          "sha256": "5df432925c2237cc9067c8ff880debaa8babb445dce2c025f9dade973dc4cf38"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 25805456,
+          "sha256": "d8654a9a39b5fb60762a39bd4566540d18a7b6c2f6de48cc00812a1a571be56b"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 25805392,
+          "sha256": "23792ac002fe669116f0d5fe15b7d17a3327444fe6f6e3a6c52067427f3fbbe2"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 25805392,
+          "sha256": "ab7aabce970226e6b49495df0b276dc1d0f2278ecd96faef6580fc34a6b7c16f"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 25805392,
+          "sha256": "c4222558ec5550af5208de5550b05c8840125ab609a03b51ca9f77532c9bc073"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/bell-publication-seeds-v1-6779c35a95414583a3de6f8863708940/Final-Chart-6035-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 338745222,
+      "outputs": 2628,
+      "receipt": {
+        "bytes": 681698,
+        "path": "/home/isavand/paper/evidence/bell-publication-seeds-v1-6779c35a95414583a3de6f8863708940/Final-Chart-6035/recovery.json",
+        "sha256": "b59af895530d85e60793e7d1f82e3f6132964b87e73ca3e70fbfc8c434308641"
+      },
+      "stream": {
+        "bytes": 20480000,
+        "sha256": "f25978b115bdfbed0d1a7b095bd7f4056192634e8f14dc0c8096e2b70279dc4f"
+      }
+    },
+    "K1-Dense-6034": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 25805067,
+          "sha256": "3050add163ac5a99ab7d58c107097fa05200abd939c11b8373e2fa9d5acc58fd"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 25805067,
+          "sha256": "3578e0e8115d601bb513719462bcb0ca82a9d90267d9d3137ea7bdb1e912a54b"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 25805131,
+          "sha256": "82de25563dfcbfe918adc3291afbebabc53b1bccd1e0d4eb5e67ad832eeaebd5"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 25805067,
+          "sha256": "428d73dc2fe584ce5345cdd0c7ac0b6fa0035780715002bbc84190af261a913d"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 25805067,
+          "sha256": "e720a837009bd42adef527eb6819ed9ba1630ecbf3aee2b8fa2b61a32200958d"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/bell-publication-seeds-v1-6779c35a95414583a3de6f8863708940/K1-Dense-6034-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 317871164,
+      "outputs": 2626,
+      "receipt": {
+        "bytes": 679673,
+        "path": "/home/isavand/paper/evidence/bell-publication-seeds-v1-6779c35a95414583a3de6f8863708940/K1-Dense-6034/recovery.json",
+        "sha256": "1984cda588b9cb1f93c20830c469ae4f556aac255058f54e68aeb8d477f4f2c3"
+      },
+      "stream": {
+        "bytes": 20480000,
+        "sha256": "4d09ff0c4687815c7dee75216769abb473d1db277adac1e29e95df0f6e3f455b"
+      }
+    },
+    "K1-Dense-6035": {
+      "checkpoints": {
+        "checkpoint-02000.pth": {
+          "bytes": 25805067,
+          "sha256": "f3e64b171adf86d632b63433bc7f48b7c179affdf3950125f158187ce12c3ac1"
+        },
+        "checkpoint-04000.pth": {
+          "bytes": 25805131,
+          "sha256": "1950e13f00f73f99cd261a4b9f807033c43efe21f94419ac785dafc05fce1d80"
+        },
+        "checkpoint-06000.pth": {
+          "bytes": 25805067,
+          "sha256": "f1cbc74b0a09603090dceba5a01b875909da4cfd6f681a913f7bdb4007157e08"
+        },
+        "checkpoint-08000.pth": {
+          "bytes": 25805067,
+          "sha256": "4cbde6ff7d3f43cd0826462177b3351442951e6a952bff86c89ec7a2595a6c6c"
+        },
+        "checkpoint-10000.pth": {
+          "bytes": 25805067,
+          "sha256": "a2ebf6ffdf4a189b0154c48b22a95ea3300c25ad1b931ca7a55763ca5daefb1e"
+        }
+      },
+      "exit_code": {
+        "bytes": 2,
+        "path": "/home/isavand/paper/evidence/bell-publication-seeds-v1-6779c35a95414583a3de6f8863708940/K1-Dense-6035-exit-code.txt",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "output_bytes": 317871028,
+      "outputs": 2626,
+      "receipt": {
+        "bytes": 679692,
+        "path": "/home/isavand/paper/evidence/bell-publication-seeds-v1-6779c35a95414583a3de6f8863708940/K1-Dense-6035/recovery.json",
+        "sha256": "6337221dcc532b51f2c92a2e0dcf2569643580c51227449795ae01a9f34194b1"
+      },
+      "stream": {
+        "bytes": 20480000,
+        "sha256": "f25978b115bdfbed0d1a7b095bd7f4056192634e8f14dc0c8096e2b70279dc4f"
+      }
+    }
+  },
+  "authorization": {
+    "bytes": 12779,
+    "path": "/home/isavand/paper/evidence/bell-publication-seeds-v1-6779c35a95414583a3de6f8863708940/authorization.json",
+    "sha256": "dc1d6a1b5314b60a5a360a09f54c808513ee9a9c63547cc35837ee397d1d0f82"
+  },
+  "batch": "/home/isavand/paper/evidence/bell-publication-seeds-v1-6779c35a95414583a3de6f8863708940",
+  "dataset": {
+    "admission": {
+      "bytes": 1714,
+      "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2-admission.json",
+      "sha256": "87197a0bc7e5cec3a320ed92193ac25e238151b2cfb408af58a79b0c20e7399c"
+    },
+    "generation": {
+      "bytes": 66671,
+      "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2/reference/generation.json",
+      "sha256": "d68db52c2d491f2fbf4870b1021bec0240355ae1e7f7c9c33ef1390622a027b4"
+    },
+    "verification": {
+      "bytes": 39637,
+      "path": "/home/isavand/paper/evidence/bell-dense-reference-v2-b802d6fa419b4743b4c6e5fe27d73bd2-verification-v2/verification.json",
+      "sha256": "f0081135df01a7a89f0a640f6fd8e166a9aabfc9bd7fc5737ecaaed8ed9a1cd4"
+    }
+  },
+  "execution_commit": "3a3a63e539dbcec4ad774093d98ceb71414e83b3",
+  "freeze": {
+    "bytes": 23377,
+    "path": "/home/isavand/paper/evidence/bell-publication-seeds-v1-6779c35a95414583a3de6f8863708940/freeze.json",
+    "sha256": "5d3f59e206aa874daace6d61c69c5cf3eb022a4fd21a15d19d448dcbd72eee64"
+  },
+  "offline_analysis": [
+    {
+      "bytes": 6599706,
+      "path": "/home/isavand/paper/evidence/bell-publication-seeds-v1-6779c35a95414583a3de6f8863708940-analysis-v1/analysis.json",
+      "sha256": "9994a3882fed5955991ad19110ffa4918848173284c22e0e59be20f134ec5902"
+    },
+    {
+      "bytes": 1756,
+      "path": "/home/isavand/paper/evidence/bell-publication-seeds-v1-6779c35a95414583a3de6f8863708940-analysis-v1/paired-endpoints.csv",
+      "sha256": "fca06a3c148f6a316ee98fc28acffbbbf75b7069a6978307b66892183b5173b2"
+    },
+    {
+      "bytes": 7968,
+      "path": "/home/isavand/paper/evidence/bell-publication-seeds-v1-6779c35a95414583a3de6f8863708940-analysis-v1/paired-seed-results.json",
+      "sha256": "8d6c71e80f348f5943eb44b251f0b03907bae30e4e3a52bdabe67f8c7ca791fd"
+    },
+    {
+      "bytes": 13325,
+      "path": "/home/isavand/paper/evidence/bell-publication-seeds-v1-6779c35a95414583a3de6f8863708940-analysis-v1/summary.csv",
+      "sha256": "d3bb399e57d6b597d9f20bc91d61b7ce839689ad1eef82b336a6938386539b87"
+    }
+  ],
+  "packaged_files": {
+    "ambient-minus-control.csv": {
+      "bytes": 2008,
+      "sha256": "dd596277424d68bb83aa1daa8448d78338a879b89e2d614f41947dc3305d6812"
+    },
+    "held-out-across-seeds.png": {
+      "bytes": 203119,
+      "sha256": "84195f0d618ae3a18c760670c0c2ffd3357bb684088e2d357c553fd9bc1ff1cb"
+    },
+    "held-out-endpoints.csv": {
+      "bytes": 2812,
+      "sha256": "e3bc050f7c46842dc299c23eef29a1a5ac102305d962fbd6417b8af33bc3d73e"
+    },
+    "stability-and-orientation.json": {
+      "bytes": 3618,
+      "sha256": "8b5daa8588087f510db747e445a43225ec68b928ac975809763655c0c5cbe421"
+    }
+  },
+  "schema_version": 1
+}
