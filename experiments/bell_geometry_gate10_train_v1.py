@@ -126,7 +126,9 @@ def own_checkpoint(path, step, network, torch, optimizer=None, expected=None):
 def run(out, source, f, report, torch, cfg, budget, progress):
     from dataset import database, train_dataset
     from network import renderer
+    from train import trainer as trainer_module
     from train.trainer import Trainer
+    from infrastructure.bell_geometry_workers_v2 import spawned_loaders
 
     train_root=Path('/inputs/training')
     acquisition=Acquisition(train_root,g.read_staged(f,train_root),f['splits'])
@@ -288,7 +290,8 @@ def run(out, source, f, report, torch, cfg, budget, progress):
     cleanup=[]
     try:
         sys.settrace(observe)
-        t.run()
+        with spawned_loaders(trainer_module,report):
+            t.run()
     finally:
         sys.settrace(None)
         for target,method in ((owned.get('train_iter'),'_shutdown_workers'),(owned.get('pbar'),'close'),

@@ -45,6 +45,7 @@ def completed_train(root, f, args):
             and r['step_1000_gate']['validation']['view']=='58' and r['last_validation']['view']=='58'
             and r['step_1000_gate']['validation']['checkpoint_step']==g.CADENCE
             and r['last_validation']['checkpoint_step']==g.STEP
+            and r.get('loader_transport')==[dict(workers=8,start_method='spawn',dataset='DummyDataset')]*2
             and [r['training_witnesses'][i]['parameters_changed'] for i in (0,1)]==[False,True],
             'G training completion/cleanup receipt is missing or incompatible')
     require(set(r.get('retained_checkpoints',{}))==set(map(str,g.KEEP_STEPS)),'Missing intermediate checkpoints')

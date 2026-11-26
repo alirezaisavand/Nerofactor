@@ -1,0 +1,66 @@
+{
+  "freeze": "docs/protocols/BELL_AUTHENTICATED_GEOMETRY_GATE10_V2.freeze.json",
+  "freeze_sha256": "4670dae77321b66542348b2284fd1d4c842de5dfcf6f4805256f15fc4b273cf7",
+  "host_output": "/home/isavand/paper/evidence/bell-geometry-gate10-v2-5dee7249c10247d7892315fbb9f134cb",
+  "limitation": "Fork/native runtime state is the identified hazard. Exact segfault cause lacks a native backtrace.",
+  "modified_runtime_policy": "spawn-eight-original-dummy-workers",
+  "new_GPU_execution": false,
+  "new_checkpoint_loads": 0,
+  "new_run_allocated": false,
+  "new_training_updates": 0,
+  "parent_commit": "275931483df2278093c693376843463a87a10e9d",
+  "preserved_v1_freeze": {
+    "bytes": 42978,
+    "sha256": "6c5af379e302d9246be1e682d81d2562686b7892b009b22f7034c99fcdf79bac"
+  },
+  "prior_failure_manifest": {
+    "bytes": 38100,
+    "sha256": "944ca221fcd830c7a9718fa65a2942fdebee9207a8fc501be233856336eab2ed"
+  },
+  "scientific_invariants_equal_to_v1": true,
+  "sources": {
+    "geometry": {
+      "commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+      "files_verified": 99
+    },
+    "material": {
+      "commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "files_verified": 106
+    }
+  },
+  "status": "FIX_AND_PROCEED_pending_fresh_execution_approval",
+  "validation": {
+    "Python38_grammar": true,
+    "command": "python3 -B -m pytest tests/scientific/test_bell_geometry_gate10_v1.py tests/scientific/test_bell_geometry_workers_v2.py -q -p no:cacheprovider --junitxml=/tmp/gate10-v2-tests.xml",
+    "counts": {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 14
+    },
+    "exit_code": 0,
+    "inventory": [
+      "test_actual_loss_and_lr_schedules",
+      "test_split_guard_actual_adapter_dispatch",
+      "test_real_admitted_staging_excludes_oracle_and_heldout",
+      "test_signed_surface_and_full_exclusion_accounting",
+      "test_sdf_raw_zero_crossing_and_signed_A_normal[0-False-True]",
+      "test_sdf_raw_zero_crossing_and_signed_A_normal[0.01-False-False]",
+      "test_sdf_raw_zero_crossing_and_signed_A_normal[0-True-False]",
+      "test_train_receipt_rejects_missing_cleanup_and_wrong_split",
+      "test_scientific_import_blocker_in_fresh_process",
+      "test_offline_sdf_verifier_rejects_altered_scientific_gate",
+      "test_full_resolution_mesh_sampling_exceeds_historical_audit_cap_and_has_no_rim",
+      "test_spawn_loader_changes_only_transport_and_restores_binding",
+      "test_exception_restores_original_loader",
+      "test_real_eight_spawn_workers_preserve_payloads_indices_and_parent_rng"
+    ],
+    "junit": {
+      "bytes": 2715,
+      "sha256": "c36584e4de1310802d48e315fc05bf7d3b9c5e11c05792c9ac949a791c430182"
+    },
+    "native_container_worker_validation": "unexecuted",
+    "real_host_CPU_spawn_test": true,
+    "shell_syntax": true
+  }
+}
