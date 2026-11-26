@@ -1,0 +1,164 @@
+{
+  "backend": {
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "variant": "predicate_fp64"
+  },
+  "backlog": [
+    "foreground-only mask loss",
+    "background-NeRF interaction",
+    "loss schedules",
+    "anisotropy-aware geometry",
+    "fixed 15k/30k/50k/300k checkpoint geometry evolution"
+  ],
+  "branch": "feat/donut-physical-recovery-v1",
+  "checkpoint": {
+    "bytes": 29967467,
+    "sha256": "27c8c2256d529a84680e1ab806081acfa796a04937a2681587a8bb6d1a3681cd"
+  },
+  "decision": "FIX_AND_PROCEED",
+  "domain": {
+    "basis": "Existing geometry-domain mask only. No learned SDF values, oracle or extraction used.",
+    "cell_counts": {
+      "boundary_cells": 1230074,
+      "fully_inside": 69248221,
+      "fully_outside": 62954536,
+      "grid_spacing": 0.003913894324853229,
+      "maximum_boundary_omission_depth": 0.00677906382610128,
+      "total_cells": 133432831
+    },
+    "grid_shape": [
+      512,
+      512,
+      512
+    ],
+    "mask_dtype": "bool",
+    "mask_identity": {
+      "bytes": 134217856,
+      "sha256": "84b9e58c81a76e9fce3f5c61a54e4d1efd1a7c6a0570b2358bf7cdbb2305fe1b"
+    },
+    "strictly_inside_nodes": 69861728
+  },
+  "extraction_policy": "all-eight-corners-inside-for-every-consistent-generating-cell",
+  "foreground_launch": {
+    "approval_required": true,
+    "authorization": "/home/isavand/paper/evidence/bell-geometry-gate102-f1811a9dadb946bbb96c7f7cdec35892-authorization.json",
+    "launcher": "experiments/run_bell_geometry_gate102.sh",
+    "source": "/home/isavand/paper/Nerofactor-donut-recovery"
+  },
+  "freeze": {
+    "bytes": 11222,
+    "path": "docs/protocols/BELL_DOMAIN_AWARE_EXTRACTION_GATE102_V1.freeze.json",
+    "sha256": "f5cdf0e825dbcdf42037021ffd8115cd60b607cc158f8abddcf62760fbb9130e"
+  },
+  "geometry_admitted": false,
+  "host_output": "/home/isavand/paper/evidence/bell-geometry-gate102-f1811a9dadb946bbb96c7f7cdec35892",
+  "image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "limits": {
+    "CPU_ray_checks": 384,
+    "MC_calls": 1,
+    "SDF_points": 1536,
+    "checkpoint_loads": 1,
+    "gradient_points": 512,
+    "grid_nodes": 134217728,
+    "max_faces": 4000000,
+    "network_queries_for_extraction": 0,
+    "optimizer_returns": 0,
+    "primary_BVH_rays": 196608,
+    "shader_calls": 0
+  },
+  "network_sha256": "b524c01566b1407b3618705fa622883c3d148426c7109422f8add4ad6f62a670",
+  "next_action": "Researcher review, then one commit/freeze/output-bound authorization for extraction and the original audit.",
+  "numerical_policy": "float32-exact-coordinate-weld-and-exact-zero-area-removal",
+  "original_mesh": {
+    "bytes": 21140958,
+    "sha256": "99c093250840be41dac95b73de38db9e7da92dbbc5235215ccccd27fc581d149"
+  },
+  "outside_mask": {
+    "bytes": 134217856,
+    "sha256": "84b9e58c81a76e9fce3f5c61a54e4d1efd1a7c6a0570b2358bf7cdbb2305fe1b"
+  },
+  "preparation_checks": {
+    "authorization_file_created": false,
+    "focused_CPU_tests": {
+      "failed": 0,
+      "junit": {
+        "bytes": 2558,
+        "sha256": "11a16a8caa838ab8d9ec0e2d6408596f0f00ab2cbf68e94b97df3773a4f0579c"
+      },
+      "passed": 13,
+      "skipped": 0,
+      "tests": 13
+    },
+    "fresh_output_absent": true,
+    "input_hashes": "pass",
+    "python38_AST_syntax": "pass",
+    "shell_syntax": "pass",
+    "source_freeze_replay": "pass"
+  },
+  "preparation_scientific_work": {
+    "CUDA_calls": 0,
+    "MC_calls": 0,
+    "SDF_queries": 0,
+    "checkpoint_loads": 0,
+    "model_constructions": 0,
+    "native_BVH_rays": 0,
+    "optimizer_updates": 0
+  },
+  "prior_diagnostic": "/home/isavand/paper/evidence/bell-geometry-gate101-ea426f2b86d44aa3ae8be40fd6ab25c0",
+  "prior_diagnostic_execution": "complete_successful_unchanged",
+  "prior_diagnostic_receipt": {
+    "bytes": 67616,
+    "sha256": "2a8c748f687bb3db1c53ebd364aba90275af01068efb6064f6b62eed4c34bcb0"
+  },
+  "protected_sources": {
+    "geometry": {
+      "commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+      "verified_files": 99
+    },
+    "material": {
+      "commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "verified_files": 106
+    }
+  },
+  "protocol": "bell-domain-aware-raw-SDF-gate10.2-v1",
+  "quality": {
+    "grazing_cosine": 0.1,
+    "max_sdf_failures": 0,
+    "min_iou": 0.9,
+    "min_oracle_correspondence": 0.8,
+    "minimum_sdf_interior_points": 128,
+    "normal_degrees": 30.0,
+    "radius": 0.02,
+    "sdf_min_gradient": 1e-06,
+    "sdf_min_sign": 1e-07,
+    "sdf_step": 0.0019569471624266144,
+    "tight_radius": 0.005
+  },
+  "raw_grid": {
+    "bytes": 536871040,
+    "sha256": "31059f399d38e17d78fa890d4c6191d22e4d8d6694cf588348a4bcb8afa391ff"
+  },
+  "resources": {
+    "allocator": 0.75,
+    "cpu_threads": 4,
+    "grace": 30,
+    "inner": 1740,
+    "memory_gib": 128,
+    "output_bytes": 8589934592,
+    "pids": 128,
+    "watchdog": 1800
+  },
+  "schema_version": 1,
+  "starting_commit": "c01bc2624f88f0c25eadc090a9e476eb2178299d",
+  "status": "prepared_pending_exact_source_authorization",
+  "uncertainty": [
+    "Native domain-aware extraction and audit have not executed.",
+    "Conservative boundary support is intentionally incomplete; original full-raster quality thresholds remain binding.",
+    "Exact cleanup may leave tiny positive faces; invalid native normals remain a stop condition.",
+    "Raw learned zero crossings can still be geometrically inaccurate; no quality pass is inferred.",
+    "No authenticated G-to-A handoff or material launch is authorized by preparation."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "basis": "Existing geometry-domain mask only. No learned SDF values, oracle or extraction used.",
+  "cell_counts": {
+    "boundary_cells": 1230074,
+    "fully_inside": 69248221,
+    "fully_outside": 62954536,
+    "grid_spacing": 0.003913894324853229,
+    "maximum_boundary_omission_depth": 0.00677906382610128,
+    "total_cells": 133432831
+  },
+  "grid_shape": [
+    512,
+    512,
+    512
+  ],
+  "mask_dtype": "bool",
+  "mask_identity": {
+    "bytes": 134217856,
+    "sha256": "84b9e58c81a76e9fce3f5c61a54e4d1efd1a7c6a0570b2358bf7cdbb2305fe1b"
+  },
+  "strictly_inside_nodes": 69861728
+}

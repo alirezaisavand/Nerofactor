@@ -1,0 +1,201 @@
+{
+  "acquisition": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark",
+  "backend": {
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "variant": "predicate_fp64"
+  },
+  "bounds": [
+    -1,
+    1
+  ],
+  "cell_policy": "all-eight-corners-inside-for-every-consistent-generating-cell",
+  "checkpoint": {
+    "bytes": 29967467,
+    "sha256": "27c8c2256d529a84680e1ab806081acfa796a04937a2681587a8bb6d1a3681cd"
+  },
+  "diagnostic": "/home/isavand/paper/evidence/bell-geometry-gate101-ea426f2b86d44aa3ae8be40fd6ab25c0",
+  "diagnostic_receipt": {
+    "bytes": 67616,
+    "sha256": "2a8c748f687bb3db1c53ebd364aba90275af01068efb6064f6b62eed4c34bcb0"
+  },
+  "domain": {
+    "basis": "Existing geometry-domain mask only. No learned SDF values, oracle or extraction used.",
+    "cell_counts": {
+      "boundary_cells": 1230074,
+      "fully_inside": 69248221,
+      "fully_outside": 62954536,
+      "grid_spacing": 0.003913894324853229,
+      "maximum_boundary_omission_depth": 0.00677906382610128,
+      "total_cells": 133432831
+    },
+    "grid_shape": [
+      512,
+      512,
+      512
+    ],
+    "mask_dtype": "bool",
+    "mask_identity": {
+      "bytes": 134217856,
+      "sha256": "84b9e58c81a76e9fce3f5c61a54e4d1efd1a7c6a0570b2358bf7cdbb2305fe1b"
+    },
+    "strictly_inside_nodes": 69861728
+  },
+  "eval_files": {
+    "calibrations-safe.npz": {
+      "bytes": 5325,
+      "sha256": "4d8f4e13d7fd5fffec8d258bfc7c5599ef6d81525547d678ba088e76b1656c9c"
+    },
+    "mesh.ply": {
+      "bytes": 4729497,
+      "sha256": "4ea98341ca915cf55f2b37581556583308cc50a8e2d2d8d48140d49224866e01"
+    },
+    "rays/105.npz": {
+      "bytes": 300920,
+      "sha256": "f37c8878cd52ef92567ae13ce2a187b1ccd5ba40c7906da7885389c905c7b42d"
+    },
+    "rays/11.npz": {
+      "bytes": 326945,
+      "sha256": "a32224dcd0f9ad55723381f663b2f503c3c49d143c776cf9a18167c03031494d"
+    },
+    "rays/114.npz": {
+      "bytes": 299485,
+      "sha256": "dec2dae8bb2d981454ac597219127609deaee12f5d773810969e85112a4baaaf"
+    },
+    "rays/17.npz": {
+      "bytes": 329398,
+      "sha256": "fc278157bf801aaa3ab900c14a3210a04aa26faae002818c8aec9e5f3c1a2569"
+    },
+    "rays/58.npz": {
+      "bytes": 321821,
+      "sha256": "213d441a31c309b2f32a37f40b9e0667f62e004c644da94e68c76b3e24667187"
+    },
+    "rays/76.npz": {
+      "bytes": 318386,
+      "sha256": "1823c5a2459f4e2733acd056ed316821562b25c1a44986a6e5724d5d8d49fa28"
+    }
+  },
+  "grid_shape": [
+    512,
+    512,
+    512
+  ],
+  "host_output": "/home/isavand/paper/evidence/bell-geometry-gate102-f1811a9dadb946bbb96c7f7cdec35892",
+  "image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "level": 0,
+  "limits": {
+    "CPU_ray_checks": 384,
+    "MC_calls": 1,
+    "SDF_points": 1536,
+    "checkpoint_loads": 1,
+    "gradient_points": 512,
+    "grid_nodes": 134217728,
+    "max_faces": 4000000,
+    "network_queries_for_extraction": 0,
+    "optimizer_returns": 0,
+    "primary_BVH_rays": 196608,
+    "shader_calls": 0
+  },
+  "network_sha256": "b524c01566b1407b3618705fa622883c3d148426c7109422f8add4ad6f62a670",
+  "numerical_policy": "float32-exact-coordinate-weld-and-exact-zero-area-removal",
+  "original_mesh": {
+    "bytes": 21140958,
+    "sha256": "99c093250840be41dac95b73de38db9e7da92dbbc5235215ccccd27fc581d149"
+  },
+  "outside_mask": {
+    "bytes": 134217856,
+    "sha256": "84b9e58c81a76e9fce3f5c61a54e4d1efd1a7c6a0570b2358bf7cdbb2305fe1b"
+  },
+  "protocol": "bell-domain-aware-raw-SDF-gate10.2-v1",
+  "quality": {
+    "grazing_cosine": 0.1,
+    "max_sdf_failures": 0,
+    "min_iou": 0.9,
+    "min_oracle_correspondence": 0.8,
+    "minimum_sdf_interior_points": 128,
+    "normal_degrees": 30.0,
+    "radius": 0.02,
+    "sdf_min_gradient": 1e-06,
+    "sdf_min_sign": 1e-07,
+    "sdf_step": 0.0019569471624266144,
+    "tight_radius": 0.005
+  },
+  "raw_grid": {
+    "bytes": 536871040,
+    "sha256": "31059f399d38e17d78fa890d4c6191d22e4d8d6694cf588348a4bcb8afa391ff"
+  },
+  "resources": {
+    "allocator": 0.75,
+    "cpu_threads": 4,
+    "grace": 30,
+    "inner": 1740,
+    "memory_gib": 128,
+    "output_bytes": 8589934592,
+    "pids": 128,
+    "watchdog": 1800
+  },
+  "scientific_commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+  "sources": {
+    "audits/bell_calibration_e11.py": "14ffee7690bd1507ecb6e3a69098c64faabbf7f89c31e407ed248440684b5f71",
+    "benchmarks/bell_e11.py": "01b18245999d0d9ffcf0fdfe9b317fdfd427d9e1bee6ca7db395eaa0b3c94e8a",
+    "benchmarks/bell_geometry_e11.py": "491f86b7799d03911c4665e1884ceb81b62ae8dc085141b7f112b43891ab3737",
+    "benchmarks/bell_geometry_gate101.py": "b109102068b0a5ccd5508f8eb1398def1d395bb5bc54b59c307cee993ca4e61b",
+    "benchmarks/bell_geometry_gate102.py": "e98b9062cf5ec424d2ef064de7e4a6374f9705aa4050a0e175219be59e54ad29",
+    "benchmarks/bell_geometry_gate10_v1.py": "e1e250395aa9a6bc475c1e317e1ab613db863adfa4b1207449389cbf1dbd0e7c",
+    "benchmarks/donut_reconstructed_geometry_v1.py": "4357f6c4f85499b970701002d32e4e0f245a57edc7dc53237c846ae8220cfaac",
+    "benchmarks/donut_recovery_v1.py": "28bc3cb19f371a33bf8715c0a2ca55f236a606fae295e1b3de3248121b80b556",
+    "benchmarks/generate_bell_e11.py": "877b826ce3e2eabda860d296051de6791cf048f543e1bb41dbe60886654c7647",
+    "docs/evidence/RAY_BACKEND_E11C_ACCEPTANCE_V2.json": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "docs/protocols/BELL_AUTHENTICATED_GEOMETRY_GATE10_V1.md": "d44daf923ad0a4b02b02d2fc0c927330780def3ae4553160109236e5fc92e9c4",
+    "docs/protocols/BELL_AUTHENTICATED_GEOMETRY_GATE10_V2.md": "ce365fa8a5d1aba8033716772f3ec5b40ca6fe14e368aa91217b9258e3f83c75",
+    "docs/protocols/BELL_AUTHENTICATED_GEOMETRY_GATE10_V3.md": "91a6ba926757648f20da11fb5eb13cd290948e074a15d5c330e480cd59708927",
+    "docs/protocols/BELL_AUTHENTICATED_GEOMETRY_GATE10_V4.freeze.json": "6c77069cc577735a63638674094e6e7ce23666f57a12e72a3ea91a6044683a8e",
+    "docs/protocols/BELL_AUTHENTICATED_GEOMETRY_GATE10_V4.md": "23979ccb40df910eb4d6472719b781a5758a2090b8f1f0262eeda69b0bff9f7f",
+    "docs/protocols/BELL_DOMAIN_AWARE_EXTRACTION_GATE102_V1.md": "6eeee743c026ca4581bcc4f9ad2620104ac25c7c00ae35d296b94265976806b2",
+    "docs/protocols/BELL_GEOMETRY_EXTRACTION_GATE101_V1.freeze.json": "b1ad431e11a2bd59e97734de566eb767f7d9cd1339d08afabb80ae2c67608933",
+    "docs/protocols/BELL_GEOMETRY_EXTRACTION_GATE101_V1.md": "d2b96a16af08136a9d1c5aebc0640eb34be7eadc7c69175663a72f5db403f5a0",
+    "docs/results/publication_gate10/README.md": "dcd1f3f6dbb680c9ccfcf401fd152142c9ad985bc317bba44348d9673ca6f128",
+    "docs/results/publication_gate10/RESULTS_V4.md": "518b843ff47a22e35044be1ab314144d1b7f612406d3c80c688a3510f2035940",
+    "docs/results/publication_gate10/results-v4/summary.json": "d7424dbd73c329827d1c07117e1c7cb0d79e4db783b05a69764e25e58f57b653",
+    "docs/results/publication_gate101/README.md": "dd7dad0f338fc5cc315f2d84c082eeb9d81f9a44f3f05d386ea318c7b7e9e889",
+    "docs/results/publication_gate101/results-v1/artifact-manifest.json": "b8d4f94eb367049cee50008d1a67fe72a6990f35ebd0bb108f8a593eaef903cc",
+    "docs/results/publication_gate101/results-v1/summary.json": "c72104adba0da597c94d3d9ce30e50837b62cc72fccbe75e3c55ad9daa69fb75",
+    "docs/results/publication_gate102/README.md": "74fbe9f4818b71d136579073046a7bdaa0eb64a50689d5f6262bbbd834c8ca8c",
+    "docs/results/publication_gate102/domain-statistics.json": "e9ab35a6370b9c4795575849b48e83187f6d7cf027aec0ad328ecef255482e90",
+    "experiments/bell_geometry_gate101.py": "d7cf09377813696e28b617c2cca3ee9c95f562a5938f9479bc797c6413bbed84",
+    "experiments/bell_geometry_gate102.py": "6ff6c05dd938cdf820bc809a8f75b6eb278ed7e724d097f4cace62be91a4297c",
+    "experiments/bell_geometry_gate10_evaluate_v1.py": "4ca95d41d1c5ad83e63f700409e64ab3ba408d373c09da235709f9764ce6477b",
+    "experiments/bell_geometry_gate10_train_v1.py": "8b21155564c2ce80f1fd45c8dc1b4315198acb981bda012478563c4b110d3c14",
+    "experiments/bell_geometry_gate10_v1.py": "2d5a7aaba41e3b3418fa7f5353782aebeb62038f03a0f2c2a8979842497a8c1f",
+    "experiments/donut_reconstructed_geometry_v1.py": "fd32bdbc52393b672a7e02349c7f04e142551e1993c3965b059250bcdf2c1553",
+    "experiments/run_bell_geometry_gate101.sh": "4f0e933c40580d7aeadc96023c8883f354632f684ac404f5343393cf9014d862",
+    "experiments/run_bell_geometry_gate102.sh": "827031825feb8efd6712bc0ba06375570db06d8bd8ab69698f9aee9edbb494f0",
+    "experiments/run_bell_geometry_gate10_v1.sh": "08b88ecf13f92fca870b4ba03148d820c0227b70de46aa181c24b17a64d9adfe",
+    "infrastructure/bell_geometry_workers_v2.py": "04e8938b0d1b80348bb967519b1406a4735dd27b1abc58af936c60ea438e5cf1",
+    "infrastructure/g_checkpoint.py": "2e30adcd8b1ef7ff62a00c4020724e2b079be25a46972d8daafdecb9abeaa634",
+    "infrastructure/g_training.py": "476228029b615c57edc1990987bf2d21127d130a955ee4f57bc1b4b734234e67",
+    "infrastructure/geometry_sdf_mesh_audit.py": "993baffc5e0f9a6b9a34b515d359563554d987fa29be1ce815961d37a76de1d7",
+    "infrastructure/geometry_training_smoke.py": "3a57eef25ed66d8041fc1baa7f7334288b5420b6d6fc8cc9c1dd104270efaba6",
+    "infrastructure/mesh_diagnostics.py": "f534fb34e9f06ced00ce218e6df250f783e5f9015d73a364eec5ad7f6210c615",
+    "infrastructure/paths.py": "e771fa11a5243a03724b8291dba790502e822531f1fc9179ba27c9b8a06cece4",
+    "infrastructure/ray_backend_e11c.py": "73e2a75bdd6dad7317f644a23c7cfcc9ffddfc7e25f814da85ebcb04002a8191",
+    "infrastructure/signatures.py": "f3eb6c82de610913c1049745271d8be5391d34f02d78866a14fad0032b7f4759",
+    "infrastructure/stage_sources.py": "3c904a09662663fd9f37e3a6afee33576963675508e416dbc6141a5c68d44dc8",
+    "infrastructure/stage_workspace.py": "5d1eb334f39ed86a9d53dc999b56a19a7c1cb3283f16b23d09fd2c969ce6b591",
+    "infrastructure/verified_ray_backend.py": "e103775b70a72a24d0772dd6f09d622820d403d8d9ced63837521981df81dffd",
+    "scientific_sources/geometry_g/configs/shape/syn/bell.yaml": "026f9a683c0cec3bee7e7ff65c07316c61c2d32a8338a18aa839345e28fefd8f",
+    "scientific_sources/manifest-v1.json": "39b9baecce2aab6fc62ec57bd6f45e453d8e9d68215f6af3f25b8ed118c5a3f6",
+    "scientific_sources/material_a/raytracing/raytracer.py": "f670b215c5379d3bdcd9993c836935ea658f5ee9570bbe46bb38096b3f0ac25f",
+    "tests/scientific/test_bell_geometry_cache_v4.py": "e5819ad8033f5a377b37df8dd95e4646bee4cbf2289a1a1d1dd04c2b8f16f428",
+    "tests/scientific/test_bell_geometry_gate101.py": "0daa34831f073a43eb71ad246d858d53052f2570b6594b54fc802ebde50c6207",
+    "tests/scientific/test_bell_geometry_gate102.py": "0a29d8d90f9597da8d2fb009ffa256210dbcba46a5813c839c281d83087b3405",
+    "tests/scientific/test_bell_geometry_gate10_v1.py": "d89b86b88e829f32d0503c36f849a0ccea37aa9551266a33ad8f47b20551059e",
+    "tests/scientific/test_bell_geometry_workers_v2.py": "195766e99db3038817b759fee07e3555e58b87977605516dd92f921154857772"
+  },
+  "verification": {
+    "bytes": 269,
+    "sha256": "a005f86d2d6180e9dd9f5c67e34a334ac59c4ef861beeb97ea97fbc5ca48bca5"
+  }
+}
