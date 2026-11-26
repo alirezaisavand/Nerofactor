@@ -1,0 +1,3610 @@
+{
+  "K1_receipt": {
+    "bytes": 238418,
+    "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/K1-Oracle/recovery.json",
+    "sha256": "613b15c891e2251ffd4fe51684a01087d1387adc455a739486332fcafec281fb"
+  },
+  "files": {
+    "comparison.json": {
+      "bytes": 1058734,
+      "sha256": "524e0226c63e40c214eae86b7764bf099bc6c3ccbef877e58f3cc775590eded5"
+    },
+    "held-out-trajectory.pdf": {
+      "bytes": 18381,
+      "sha256": "38759478c207f919218bbffbbb05cfb6c44cc1a8ea680b0b97fab570de0c0045"
+    },
+    "unseen-light-comparison.pdf": {
+      "bytes": 103689,
+      "sha256": "34eb628435e0b2458728b20beb87d4eaa542759cdabe9892ad852178dd77df83"
+    }
+  },
+  "freeze_sha256": "707a3a91e71eedc1dd52c3be96432400b6919771d9d8ad3b182c7c2dc9a3074d",
+  "native_root": "/home/isavand/paper/evidence/donut-thesis-attribution-gate8-baa6c828f21c4aa08821044f032719d1/A-Original-Oracle",
+  "original_outputs": {
+    "checkpoint-02000.pth": {
+      "bytes": 25345466,
+      "sha256": "52d95b4f8a1d30f473e04f72844b0cf33594bdd1a84d85997e51c2248964f677"
+    },
+    "checkpoint-04000.pth": {
+      "bytes": 25345530,
+      "sha256": "43d32190cf3514648dda7d466190fbad6715c976a729ed5c95014c64d44400bb"
+    },
+    "checkpoint-06000.pth": {
+      "bytes": 25345466,
+      "sha256": "05ce3675b3810fb6b7f5c2e7eb28ff515ec9e26c7da8f20c92f1905ec72ee057"
+    },
+    "checkpoint-08000.pth": {
+      "bytes": 25345466,
+      "sha256": "ad6af43126affedd721b4b1a21d8e46658f8e747557462a083453b591b93fc7f"
+    },
+    "checkpoint-10000.pth": {
+      "bytes": 25345466,
+      "sha256": "f7f456de966d47080fe5833a1dbe965cd533b0b38e349cf0715a9fae3e648b1c"
+    },
+    "initial.json": {
+      "bytes": 308,
+      "sha256": "3e55001f96c96e599e9270bb4de278de3615c66593b1a25b6c1e8985631ff569"
+    },
+    "native-reference-gate.npz": {
+      "bytes": 10417,
+      "sha256": "5ab9fc7ff31cf58914e8dc93f87cb863e731c560d41708b0fec7a33bb6c62477"
+    },
+    "photometric-indices.u32le": {
+      "bytes": 20480000,
+      "sha256": "0c8b943813ee391218aa74d00f620c086cca509753a579f9d04c62cea588ce36"
+    },
+    "step-00000/camera-0-errors.npz": {
+      "bytes": 428392,
+      "sha256": "1045954686e8a35422bf872aeb7353a59780b0ce9f6cdb2fd61e2d656d57a03b"
+    },
+    "step-00000/camera-0/Q_world_00.png": {
+      "bytes": 1875,
+      "sha256": "9a5ce0901a39650ddbb954109ea15d5b47a28eddced8fdfa2172b847c5954ce6"
+    },
+    "step-00000/camera-0/Q_world_01.png": {
+      "bytes": 1817,
+      "sha256": "96fd8a6f0e7b86ef563ef6a4f8a09a0a003c0da22f56bc917866010cfd499968"
+    },
+    "step-00000/camera-0/Q_world_02.png": {
+      "bytes": 1996,
+      "sha256": "41570f18124b69d31d8366e2802ca649083cb659cb6237ad9670319aeb5d4388"
+    },
+    "step-00000/camera-0/Q_world_11.png": {
+      "bytes": 2011,
+      "sha256": "30bee0ea938fb199aff7f689affdd7147576c1ebe91cce4e03dac453dcd122e2"
+    },
+    "step-00000/camera-0/Q_world_12.png": {
+      "bytes": 2087,
+      "sha256": "4ef855f65ff020506f05455fc9687a2afe1514b4b531106e85d4c56cfbd7fc5e"
+    },
+    "step-00000/camera-0/Q_world_22.png": {
+      "bytes": 2139,
+      "sha256": "b885bf122e0b3675e2077ef2b7fb1108002568cc19ff16d27a3c5f204a4e746f"
+    },
+    "step-00000/camera-0/albedo.png": {
+      "bytes": 721,
+      "sha256": "e94de449f6b50195d740f5198985161aa8e23ce949f6cfb76a53cc433e8e44a1"
+    },
+    "step-00000/camera-0/diffuse.png": {
+      "bytes": 5293,
+      "sha256": "793645a1987749f2006bd5ed6311fc887edc6a9874e2469de84119ca6b64d081"
+    },
+    "step-00000/camera-0/ground_truth.png": {
+      "bytes": 7265,
+      "sha256": "98f089a3f58fc2c62f66c4ca7f6c78356fcfc0ed5b449c186398d7548ba3b436"
+    },
+    "step-00000/camera-0/major_width.png": {
+      "bytes": 550,
+      "sha256": "1750eab0b0ac11329669f44d1d6ab57be8b2b2769b6572c90a336287a0778ee4"
+    },
+    "step-00000/camera-0/mask.png": {
+      "bytes": 525,
+      "sha256": "af6f72caad54d0685a928737a3ef6780b355025ec965d7aab8b283c0bda647c2"
+    },
+    "step-00000/camera-0/materials.npz": {
+      "bytes": 1068506,
+      "sha256": "0da16057c24f2c14a0fa148902e39dbdfefb0b8e4accc826e1247633e39d9f20"
+    },
+    "step-00000/camera-0/metallic.png": {
+      "bytes": 550,
+      "sha256": "d9aab955b2711236a81abed87dbf770316b794486c260151e6e07df5119e2960"
+    },
+    "step-00000/camera-0/minor_width.png": {
+      "bytes": 550,
+      "sha256": "af98ecaaa0b97ec2e9cc6da113cfb5cb439554a909b5fb1f4ffc7c2987d86ff1"
+    },
+    "step-00000/camera-0/mx.png": {
+      "bytes": 550,
+      "sha256": "af98ecaaa0b97ec2e9cc6da113cfb5cb439554a909b5fb1f4ffc7c2987d86ff1"
+    },
+    "step-00000/camera-0/my.png": {
+      "bytes": 550,
+      "sha256": "1750eab0b0ac11329669f44d1d6ab57be8b2b2769b6572c90a336287a0778ee4"
+    },
+    "step-00000/camera-0/normal.png": {
+      "bytes": 7321,
+      "sha256": "27223671dac1d312791d046d19c508f4aec7de6230e59cfbfc15af5fa77526e0"
+    },
+    "step-00000/camera-0/orientation.png": {
+      "bytes": 2712,
+      "sha256": "b500ab604d859d1322a104677c7985157c0cfe545657ca330c09e32261528c84"
+    },
+    "step-00000/camera-0/orientation_raw.png": {
+      "bytes": 2712,
+      "sha256": "fb8a7f622049c7b544eaf5292054e9b29f9853c92ef2b050ba5f7de76d403c5d"
+    },
+    "step-00000/camera-0/orientation_world_projector.png": {
+      "bytes": 716,
+      "sha256": "262e27cf6427fd94b3c491ca3db9c0b5d3c71d04e3711005a4f1ca9e09ed0ffe"
+    },
+    "step-00000/camera-0/reconstructed.png": {
+      "bytes": 6342,
+      "sha256": "4983b8ec2861ac426fdaf2f544ac975b272f8e0547d4f832280569f504d2728d"
+    },
+    "step-00000/camera-0/specular.png": {
+      "bytes": 6617,
+      "sha256": "b90ecd855bc0b52029f965d0311ea91a194dfc6025dfef706b75ebf47b217205"
+    },
+    "step-00000/camera-0/view.json": {
+      "bytes": 3904,
+      "sha256": "cf9ab7c7d785398c5df10eed850a7f3d33cafe42c7b8f3ef9da21a7d76df408c"
+    },
+    "step-00000/camera-1-errors.npz": {
+      "bytes": 390368,
+      "sha256": "b6138c15e7fa7de83b3ceee66f88274f531a6117067a351f08c31c96ab9d7e02"
+    },
+    "step-00000/camera-1/Q_world_00.png": {
+      "bytes": 1632,
+      "sha256": "37d9469b8ec7b674467c45b0dc139bb0ac6d493cced678e647a53b17e1d19c8c"
+    },
+    "step-00000/camera-1/Q_world_01.png": {
+      "bytes": 1556,
+      "sha256": "bf4c836a6b63554f93de1bae773cfdb74ef30a0d888d0f48b1746f7f0ecd9569"
+    },
+    "step-00000/camera-1/Q_world_02.png": {
+      "bytes": 1754,
+      "sha256": "1532e8e245c9ce969b86ffe1631a0c33e5127b835d57b3368bde225ec84e197c"
+    },
+    "step-00000/camera-1/Q_world_11.png": {
+      "bytes": 1552,
+      "sha256": "69809797ede533574f22725e598ce100d61df8c0aec7f5caa238fd47cc64e196"
+    },
+    "step-00000/camera-1/Q_world_12.png": {
+      "bytes": 1637,
+      "sha256": "48e312af6fe6592918b7618d8f8e69535a0f34c6b6db0030a1afea34a42b9889"
+    },
+    "step-00000/camera-1/Q_world_22.png": {
+      "bytes": 1689,
+      "sha256": "2f12eb05b0d091e6065af81be9b484ea538342390ff1f2b3e72d0d3e7b520d82"
+    },
+    "step-00000/camera-1/albedo.png": {
+      "bytes": 556,
+      "sha256": "0f109137fc95e6368f358b454ae468ea83e90fad4f354c25664c9ed51ed8e838"
+    },
+    "step-00000/camera-1/diffuse.png": {
+      "bytes": 4268,
+      "sha256": "635b3807ff5c9a6894852e731e3ec46235d2088a853dc562e5b2df6f316712a0"
+    },
+    "step-00000/camera-1/ground_truth.png": {
+      "bytes": 5704,
+      "sha256": "e4ca46c8f1d70ec5463622fc66a52b92359a6bb38e12b9859aca1b9f33312832"
+    },
+    "step-00000/camera-1/major_width.png": {
+      "bytes": 412,
+      "sha256": "9c778261f07bea905fb9dc80a48c68316538cfa5523779746b2f520e9d3f1b7a"
+    },
+    "step-00000/camera-1/mask.png": {
+      "bytes": 400,
+      "sha256": "314e2e9020268b3a64caec525871f6cde1f88adbd6dcc3ec79c06e7ce05fea78"
+    },
+    "step-00000/camera-1/materials.npz": {
+      "bytes": 973972,
+      "sha256": "658edd319a1c64ecae032abf98eb2a0f6541cd2984870841293e63b11ee39335"
+    },
+    "step-00000/camera-1/metallic.png": {
+      "bytes": 412,
+      "sha256": "ff5cbe3d92dd924cdd2325ca9db473061a2157a2f1c6e6b8946106933a77a62d"
+    },
+    "step-00000/camera-1/minor_width.png": {
+      "bytes": 412,
+      "sha256": "910b302b7d1901c5e786ffd1b1998a0e2b568d29db3cdf8fcd4076411d99fea9"
+    },
+    "step-00000/camera-1/mx.png": {
+      "bytes": 412,
+      "sha256": "910b302b7d1901c5e786ffd1b1998a0e2b568d29db3cdf8fcd4076411d99fea9"
+    },
+    "step-00000/camera-1/my.png": {
+      "bytes": 412,
+      "sha256": "9c778261f07bea905fb9dc80a48c68316538cfa5523779746b2f520e9d3f1b7a"
+    },
+    "step-00000/camera-1/normal.png": {
+      "bytes": 6087,
+      "sha256": "5caeb3274a27eb541d0ee67dee7f95865a5e95a95ece909c42167d119456585b"
+    },
+    "step-00000/camera-1/orientation.png": {
+      "bytes": 2292,
+      "sha256": "8a21fe31c2afb117eb4ef324dbccfa3de67b730555e8d31270cd9601da6787e1"
+    },
+    "step-00000/camera-1/orientation_raw.png": {
+      "bytes": 2270,
+      "sha256": "55c77c342da5237e257295021c759492a9b831ff662ac6ddf6d08c89b1ba359c"
+    },
+    "step-00000/camera-1/orientation_world_projector.png": {
+      "bytes": 553,
+      "sha256": "9950df6ffa7ece4c712ad590e97974888db2f04d5597ec3d6b7375f7ee69136b"
+    },
+    "step-00000/camera-1/reconstructed.png": {
+      "bytes": 5250,
+      "sha256": "698edca8f89f35d58153bf59b2ea36af41cb5806ae9d7dfa8ebc65a224963af1"
+    },
+    "step-00000/camera-1/specular.png": {
+      "bytes": 5662,
+      "sha256": "ca20eedef10aab74149d1c445ab409c3a2d14f920c282327c955c07a5683b0c9"
+    },
+    "step-00000/camera-1/view.json": {
+      "bytes": 3903,
+      "sha256": "9b17eac73754b92ed8bf752481b21fc3e159dbb4f322f9a2d19c8beaecb89141"
+    },
+    "step-00000/camera-28-errors.npz": {
+      "bytes": 455228,
+      "sha256": "d1d4b0fd4f5097c0c43ef25d2927fa882972e870df49580a5f6ef03d1cb10032"
+    },
+    "step-00000/camera-28/Q_world_00.png": {
+      "bytes": 2032,
+      "sha256": "f6bb173816d494d46a26ae3a248e578801ebf85b844734ad38a4733e7471fdec"
+    },
+    "step-00000/camera-28/Q_world_01.png": {
+      "bytes": 2041,
+      "sha256": "403cf04352199a303e402db9880b701f3dfbb2bb79824328d3c458e882b0c7fc"
+    },
+    "step-00000/camera-28/Q_world_02.png": {
+      "bytes": 2190,
+      "sha256": "8cfffca126d9f477fbf224355899fce711d141c635c7d3d245dda33ad8b8a0f2"
+    },
+    "step-00000/camera-28/Q_world_11.png": {
+      "bytes": 2215,
+      "sha256": "e15d5fe8f05ce0cfe147086730a2d362075b62a0b62a16e94355e3482deff57b"
+    },
+    "step-00000/camera-28/Q_world_12.png": {
+      "bytes": 2250,
+      "sha256": "9ea74acf975a2f2cb17078cdca735829765e03dfd82895789753fdcdeaa6aa96"
+    },
+    "step-00000/camera-28/Q_world_22.png": {
+      "bytes": 2369,
+      "sha256": "3b55e581668f12753bde2d68811c7152dfd9b30ae3b3abb12c82868f49ceebd6"
+    },
+    "step-00000/camera-28/albedo.png": {
+      "bytes": 784,
+      "sha256": "8905908f24a7f37adcedea02aa3d11ebc19ec2092315a36e3ea7acec526e1b91"
+    },
+    "step-00000/camera-28/diffuse.png": {
+      "bytes": 5792,
+      "sha256": "e453f4f90e5a7781cb5347ec33a762fee8b2ac51552bd4669a508e2f7d873ac8"
+    },
+    "step-00000/camera-28/ground_truth.png": {
+      "bytes": 8047,
+      "sha256": "85932acb8601872e7f0c8a992ba5a4a76f0eec371aba0cc36b3039094b9f5dfa"
+    },
+    "step-00000/camera-28/major_width.png": {
+      "bytes": 594,
+      "sha256": "bfee453cdf3eec9c08201567b3e9bf63cf462203b239f7a0f08862d66881b273"
+    },
+    "step-00000/camera-28/mask.png": {
+      "bytes": 572,
+      "sha256": "a2d1658cd269cb1bfa65d08550b197ef0c1f5de9853246ca9ee07972eeae77b5"
+    },
+    "step-00000/camera-28/materials.npz": {
+      "bytes": 1140940,
+      "sha256": "bc252dd1beb8a7386407c253f95ead016d95508dc59535493ffa14c807685528"
+    },
+    "step-00000/camera-28/metallic.png": {
+      "bytes": 594,
+      "sha256": "afd761df604091010a02931afc70da7397dc6e024a925d7c88c9fd2f6c483103"
+    },
+    "step-00000/camera-28/minor_width.png": {
+      "bytes": 594,
+      "sha256": "1edce18c4ee5adcdb61a600e66abf0f4ed9b8e927279b18616e0a82d8ab81f42"
+    },
+    "step-00000/camera-28/mx.png": {
+      "bytes": 594,
+      "sha256": "1edce18c4ee5adcdb61a600e66abf0f4ed9b8e927279b18616e0a82d8ab81f42"
+    },
+    "step-00000/camera-28/my.png": {
+      "bytes": 594,
+      "sha256": "bfee453cdf3eec9c08201567b3e9bf63cf462203b239f7a0f08862d66881b273"
+    },
+    "step-00000/camera-28/normal.png": {
+      "bytes": 7952,
+      "sha256": "efb3d75911dc95301a910a1e295d63cb01996c42e734f75c127f6bad201645fd"
+    },
+    "step-00000/camera-28/orientation.png": {
+      "bytes": 2833,
+      "sha256": "c4ef90a28a6a127844b7758d01c88c165956125d904de08104599197086bd3e1"
+    },
+    "step-00000/camera-28/orientation_raw.png": {
+      "bytes": 2825,
+      "sha256": "b0c009440d793cf417d7822ca0ddd4bc87bd555f01ac36adcaff1c1f5dd0719f"
+    },
+    "step-00000/camera-28/orientation_world_projector.png": {
+      "bytes": 779,
+      "sha256": "e65eeba3cb996ffb8fd328852b0e46f5396e50a61fcee5cc1be6e0c38750e092"
+    },
+    "step-00000/camera-28/reconstructed.png": {
+      "bytes": 6588,
+      "sha256": "5e6dc79a6832859b9bb21d9d140ae47f60057f754ac72a343423ef79d7550ea4"
+    },
+    "step-00000/camera-28/specular.png": {
+      "bytes": 6957,
+      "sha256": "ddee395340c9541e44c1b72130fe9e6366fa3c5e48161f4f26a102803956ee83"
+    },
+    "step-00000/camera-28/view.json": {
+      "bytes": 3905,
+      "sha256": "e8355c9264b50c7c3684a65efd6adad2e4683cc396ae233c67c4debdfe9073e3"
+    },
+    "step-00000/camera-34-errors.npz": {
+      "bytes": 236589,
+      "sha256": "15000fc4b156b6d069db105241eb28f9bff390805745e1507591f266e4ec0b44"
+    },
+    "step-00000/camera-34/Q_world_00.png": {
+      "bytes": 851,
+      "sha256": "76cf25ce3497af6d598fb6055139baa37630c72adf8213230163066126666e9a"
+    },
+    "step-00000/camera-34/Q_world_01.png": {
+      "bytes": 839,
+      "sha256": "e6225837a5d4fa10aa71f8eb671bbc7e6e6070805f6d0ad0431ccfc2213ca518"
+    },
+    "step-00000/camera-34/Q_world_02.png": {
+      "bytes": 731,
+      "sha256": "a503b693240e698b361b1d235ff23322f81692698b2d5bfa1d5f51db17e06db5"
+    },
+    "step-00000/camera-34/Q_world_11.png": {
+      "bytes": 837,
+      "sha256": "22c37e536a1e62638629a22c600d3e6c5d50385ab3e9427640ea4942375208a2"
+    },
+    "step-00000/camera-34/Q_world_12.png": {
+      "bytes": 800,
+      "sha256": "dc21a04314d5882a115ef8d5ee1541672f12cde021a24c9fcd7239c73eab11b0"
+    },
+    "step-00000/camera-34/Q_world_22.png": {
+      "bytes": 691,
+      "sha256": "a8a017e70610633324be7e44ab530966255cd0242f70563fde2c9553d3f7a976"
+    },
+    "step-00000/camera-34/albedo.png": {
+      "bytes": 364,
+      "sha256": "fe1cb442b24e027704f46cadfb21b1fddf1303990cc7c5b495d7df2eebd9b209"
+    },
+    "step-00000/camera-34/diffuse.png": {
+      "bytes": 1949,
+      "sha256": "54879d6f47584bcfb0f310e64fbd2f8acd07d49827dbfddbd890c33eff8c1c3c"
+    },
+    "step-00000/camera-34/ground_truth.png": {
+      "bytes": 2475,
+      "sha256": "828c80db1a55c0cd2606355adbe5d731f2152cacbae655774c5bffa1ad06917e"
+    },
+    "step-00000/camera-34/major_width.png": {
+      "bytes": 281,
+      "sha256": "808fdd72566e8cb6596422f4c35542e605af0f117603e58a74865fb488a265b7"
+    },
+    "step-00000/camera-34/mask.png": {
+      "bytes": 274,
+      "sha256": "a18eb92e777517738c1f76aae126c2a165517930bb5f58bb7d814a399f443ab2"
+    },
+    "step-00000/camera-34/materials.npz": {
+      "bytes": 590630,
+      "sha256": "c8b9580228831e9b8cdf527bf6cbc4b797d864c497840a6648be9759a6df9e92"
+    },
+    "step-00000/camera-34/metallic.png": {
+      "bytes": 280,
+      "sha256": "405d55e90cea41a653e7efed4dea5f10cbd267d46cb56034fb3a6eca8ddcffc8"
+    },
+    "step-00000/camera-34/minor_width.png": {
+      "bytes": 280,
+      "sha256": "2950df13b326adb36f3cd7948ff8824bd037705c382107f6baf3c57e09c2d1e9"
+    },
+    "step-00000/camera-34/mx.png": {
+      "bytes": 280,
+      "sha256": "2950df13b326adb36f3cd7948ff8824bd037705c382107f6baf3c57e09c2d1e9"
+    },
+    "step-00000/camera-34/my.png": {
+      "bytes": 281,
+      "sha256": "808fdd72566e8cb6596422f4c35542e605af0f117603e58a74865fb488a265b7"
+    },
+    "step-00000/camera-34/normal.png": {
+      "bytes": 2603,
+      "sha256": "caaeee765b9e3382c26b74246afb8f9d41cac4d255ce78c79e5fa969c4353f75"
+    },
+    "step-00000/camera-34/orientation.png": {
+      "bytes": 1360,
+      "sha256": "02f18411dfb6675c406cc2953af895da1f6829cbbe94340e13dfdd20639b987d"
+    },
+    "step-00000/camera-34/orientation_raw.png": {
+      "bytes": 1353,
+      "sha256": "073c860a88c37bb93eb0e5651cd489cd8acd4ba095749585a7051999e5e29cd2"
+    },
+    "step-00000/camera-34/orientation_world_projector.png": {
+      "bytes": 359,
+      "sha256": "73d32f2a2a19fd2728b7b5c7cda63aa7cdd9eb1d3a21dc8c8114b030f9d6b9ae"
+    },
+    "step-00000/camera-34/reconstructed.png": {
+      "bytes": 2943,
+      "sha256": "23f9df718cfa58c9cf1d063c3243b78ba0b6ce3ca96c70d4236feaf44e77379c"
+    },
+    "step-00000/camera-34/specular.png": {
+      "bytes": 3349,
+      "sha256": "71704ca2910bf25896803bcc586f967db6fb48a8ec07d84872253b19f0cb3f91"
+    },
+    "step-00000/camera-34/view.json": {
+      "bytes": 3898,
+      "sha256": "f5164c38118c31f468b7aac2d56bf16d19066711da947e33087df122d35cb3f7"
+    },
+    "step-00000/camera-45-errors.npz": {
+      "bytes": 370180,
+      "sha256": "1ce5613c7160e48f78434a9b0349a1d5c6a892037f2903fefe25de2ca36953ac"
+    },
+    "step-00000/camera-45/Q_world_00.png": {
+      "bytes": 1593,
+      "sha256": "7b55ac8851b6f24835c3d7a4c870269cced1d1a4ac5bcb5d05731927d14ef30a"
+    },
+    "step-00000/camera-45/Q_world_01.png": {
+      "bytes": 1457,
+      "sha256": "b3cca2457a1c6217abd6e42bd4d35552ff6ff8f000dd98eaa3ce4d10267c86f9"
+    },
+    "step-00000/camera-45/Q_world_02.png": {
+      "bytes": 1609,
+      "sha256": "d2750d909c67ad40ccc19e1c34d4565ec05fa74d3d102f9fcd1d9c45a3e3b81d"
+    },
+    "step-00000/camera-45/Q_world_11.png": {
+      "bytes": 1504,
+      "sha256": "c1a7045c2944bcc8c65d5a428decbca3a7c6e1bf95a0541903dc27fac96cf0ee"
+    },
+    "step-00000/camera-45/Q_world_12.png": {
+      "bytes": 1598,
+      "sha256": "9c3b6b836e61b19b53af91f1908e3abacc56570f19c52f4921bb28f70edd56b1"
+    },
+    "step-00000/camera-45/Q_world_22.png": {
+      "bytes": 1612,
+      "sha256": "06d56b29c895778988b02487b39bf3d4ebcddd7cd90a5c13a3f2e032f1c91c90"
+    },
+    "step-00000/camera-45/albedo.png": {
+      "bytes": 546,
+      "sha256": "0a750b417c3b47edba0e110696e754ee753a664286828f6843ce269767ab96ad"
+    },
+    "step-00000/camera-45/diffuse.png": {
+      "bytes": 4033,
+      "sha256": "17e9ecd721cfbb8ffa1efcc56fab239a6e25e1e12c513c9cdb2ba6bc990246fe"
+    },
+    "step-00000/camera-45/ground_truth.png": {
+      "bytes": 5156,
+      "sha256": "ab8cb95ff5dd136cae877a1b5d38d96f2e73ee390eeaf347ea5ddb2184271345"
+    },
+    "step-00000/camera-45/major_width.png": {
+      "bytes": 404,
+      "sha256": "1df1f0dcbace088e031396d5387759b1eb6d70afbbeba971ddc49c97a3c0fbef"
+    },
+    "step-00000/camera-45/mask.png": {
+      "bytes": 390,
+      "sha256": "01c603163231c552003601be4c71d70162ea905266640ca747d46b87974b4696"
+    },
+    "step-00000/camera-45/materials.npz": {
+      "bytes": 932221,
+      "sha256": "d41880f38c95a816c7af1b0dc01e9bad233bf28f7a4a98578f77f9ea8900dc67"
+    },
+    "step-00000/camera-45/metallic.png": {
+      "bytes": 403,
+      "sha256": "89f379376e2c1581b5e9708fadbb2984c1ba5a4f9175f41b87fab777845b2765"
+    },
+    "step-00000/camera-45/minor_width.png": {
+      "bytes": 403,
+      "sha256": "0f2aa4a351e81c8a8a28d7c06f9a1fec24e3333b63f78f3df0cc87077213e936"
+    },
+    "step-00000/camera-45/mx.png": {
+      "bytes": 403,
+      "sha256": "0f2aa4a351e81c8a8a28d7c06f9a1fec24e3333b63f78f3df0cc87077213e936"
+    },
+    "step-00000/camera-45/my.png": {
+      "bytes": 404,
+      "sha256": "1df1f0dcbace088e031396d5387759b1eb6d70afbbeba971ddc49c97a3c0fbef"
+    },
+    "step-00000/camera-45/normal.png": {
+      "bytes": 5728,
+      "sha256": "1de0ff113376680ec3aa339a561c632d45041f3a66885b6129056a19ec9b69bf"
+    },
+    "step-00000/camera-45/orientation.png": {
+      "bytes": 2265,
+      "sha256": "81c030ef7a1c481478bc70b814f9ac1622d285178114005553b5818475e107ae"
+    },
+    "step-00000/camera-45/orientation_raw.png": {
+      "bytes": 2265,
+      "sha256": "fd918deae8c6d3fbbf9a055b2712b1fbaf3f2f0ab2a349d8253b1a38d308a6fa"
+    },
+    "step-00000/camera-45/orientation_world_projector.png": {
+      "bytes": 542,
+      "sha256": "d85583fd49fd52150d5c6a0477fc495103c37f31fd3cce3c8d356d3bc161d25e"
+    },
+    "step-00000/camera-45/reconstructed.png": {
+      "bytes": 5150,
+      "sha256": "efae2c032318464b0b8e2259ece2342bedad4a5f75fe589fcf0789a031137c3c"
+    },
+    "step-00000/camera-45/specular.png": {
+      "bytes": 5510,
+      "sha256": "92f0a40443e6fa5484d006f32ca1a26ae35053d56102df635b10783c3f412c7c"
+    },
+    "step-00000/camera-45/view.json": {
+      "bytes": 3904,
+      "sha256": "7275ef4967aa96c230966e57b9a7a12fce51a4ae0b0b887b0461bc303fbd06ee"
+    },
+    "step-00000/camera-50-errors.npz": {
+      "bytes": 242649,
+      "sha256": "04c6bfedbe8756977d57cef571adea5815586230c6ff5d6cec58dc79a09212b3"
+    },
+    "step-00000/camera-50/Q_world_00.png": {
+      "bytes": 856,
+      "sha256": "2c24998a5690ea66663fbb1b6c9557e283bcdbf6fabfa99fd5d577c602102c50"
+    },
+    "step-00000/camera-50/Q_world_01.png": {
+      "bytes": 895,
+      "sha256": "6211928b644c81869ad6999e82e5ba21311430ce7c8883a0bbd6c7ee561dbe72"
+    },
+    "step-00000/camera-50/Q_world_02.png": {
+      "bytes": 803,
+      "sha256": "bdb2d8fee1cf8690177e0192a96ff8c50230c412e8330a35d9c8cbcf051ffb4b"
+    },
+    "step-00000/camera-50/Q_world_11.png": {
+      "bytes": 929,
+      "sha256": "a0895b1e769487a212eb669cde4e60f6b803500e9707206efbaef9cf46fbdc76"
+    },
+    "step-00000/camera-50/Q_world_12.png": {
+      "bytes": 883,
+      "sha256": "9afcd0caf3cb008603319843ee96c908ac5bde79a4711c1c9b72a536d75f5b25"
+    },
+    "step-00000/camera-50/Q_world_22.png": {
+      "bytes": 820,
+      "sha256": "416b7f17e5646fe864309e32708ff72fd216618b703b617ee2042d830e9cbc61"
+    },
+    "step-00000/camera-50/albedo.png": {
+      "bytes": 371,
+      "sha256": "e833497c432d2b0f987a7bf081507db26525f9a19d7dcc43d869376b95294dec"
+    },
+    "step-00000/camera-50/diffuse.png": {
+      "bytes": 2067,
+      "sha256": "86de9a73dfe4322cdd6cdb59584d6685f11d97f48aa113d4618fb27e4eb09187"
+    },
+    "step-00000/camera-50/ground_truth.png": {
+      "bytes": 2930,
+      "sha256": "bccffadf5af37538ab86079b3322a91aba999be2dd927262aef591c279670c33"
+    },
+    "step-00000/camera-50/major_width.png": {
+      "bytes": 292,
+      "sha256": "2cb46f9b6550cc4052a680a5ba34040ca1819628f902eb8de187a1e0c43d0329"
+    },
+    "step-00000/camera-50/mask.png": {
+      "bytes": 285,
+      "sha256": "6f7a889de6ec8f2de41fcfc0805dcfd14f0210389c9c3a528e29f7186e2275ae"
+    },
+    "step-00000/camera-50/materials.npz": {
+      "bytes": 620401,
+      "sha256": "289de094dc8998d7540f91d8ffcee45142506b45405a6cae0fabcc5b9b9b0f7f"
+    },
+    "step-00000/camera-50/metallic.png": {
+      "bytes": 291,
+      "sha256": "3c7634705e321085c369c6fa43ae0898e344feb45e4480ec930e18a90eeab73d"
+    },
+    "step-00000/camera-50/minor_width.png": {
+      "bytes": 291,
+      "sha256": "06dcfe4765d1e54eb5d5ade619e9b759c440f28e8a80b5a638688bb3c72f97fa"
+    },
+    "step-00000/camera-50/mx.png": {
+      "bytes": 291,
+      "sha256": "06dcfe4765d1e54eb5d5ade619e9b759c440f28e8a80b5a638688bb3c72f97fa"
+    },
+    "step-00000/camera-50/my.png": {
+      "bytes": 292,
+      "sha256": "2cb46f9b6550cc4052a680a5ba34040ca1819628f902eb8de187a1e0c43d0329"
+    },
+    "step-00000/camera-50/normal.png": {
+      "bytes": 2919,
+      "sha256": "ce151b2d3fe5ba701dfa116f125c2e3f3e85609693f1fcfc2e03db0769c185f2"
+    },
+    "step-00000/camera-50/orientation.png": {
+      "bytes": 1419,
+      "sha256": "3ab9755c2b5f1ad8fdb8c9b2e3809fd840b87ec5907dd8d41615d9d02a8c5104"
+    },
+    "step-00000/camera-50/orientation_raw.png": {
+      "bytes": 1424,
+      "sha256": "7330bc360504f32f28ada190907290988c0100c1afa22c680bf7faae59a9b34c"
+    },
+    "step-00000/camera-50/orientation_world_projector.png": {
+      "bytes": 367,
+      "sha256": "a2df082d0fa3e8e77c57b4118c690ac375994f2a3d397396c3e9439cee7d32f7"
+    },
+    "step-00000/camera-50/reconstructed.png": {
+      "bytes": 3171,
+      "sha256": "e57b835dfde1d4088a7314261b837c810d3ef4e07bd25d06f5072a477c3ce6b5"
+    },
+    "step-00000/camera-50/specular.png": {
+      "bytes": 3527,
+      "sha256": "829f36f1e9bbab5788569e9f9aa7bee196fa5b146c675c93750956aaa6e3e35f"
+    },
+    "step-00000/camera-50/view.json": {
+      "bytes": 3898,
+      "sha256": "ab6ec346105f885fdbdc76a85e87c2daafe2209c04cda03c392a4851d528722e"
+    },
+    "step-00000/illumination-preview.png": {
+      "bytes": 2964,
+      "sha256": "2b187794dafbbc835b24ce04f12bba976019edaac7040f9b2e83b5f09cd09e44"
+    },
+    "step-00000/illumination.npz": {
+      "bytes": 263187,
+      "sha256": "5380d6b6977decd196da8b18a5017ebad6c55c4c77b341a29d31c986e53d93a4"
+    },
+    "step-00000/metrics.json": {
+      "bytes": 13022,
+      "sha256": "509f5f282bb07d05bc57d79ce6c3057f0ea7ccdb4cc28d0164ebf50247eda4ef"
+    },
+    "step-02000/camera-0-errors.npz": {
+      "bytes": 433323,
+      "sha256": "bb4b8d3bb01c9c8fe063ce5d70998ee359c2179ba690e276879d4c33d5f2bcc3"
+    },
+    "step-02000/camera-0/Q_world_00.png": {
+      "bytes": 1935,
+      "sha256": "c51f9d9ce5c5f9ae6c8f3014688050102f1ccbd272213853944845bcfbb6af4d"
+    },
+    "step-02000/camera-0/Q_world_01.png": {
+      "bytes": 2038,
+      "sha256": "7fa9ac094e0b7c4ead83b3378d49be6023d34e95447e6e18b4041a866c5d501a"
+    },
+    "step-02000/camera-0/Q_world_02.png": {
+      "bytes": 1846,
+      "sha256": "6473a3a50ea71187d2d5a545da2b3bfbcc7885bdd14e5942bb6603b36b4bd716"
+    },
+    "step-02000/camera-0/Q_world_11.png": {
+      "bytes": 2032,
+      "sha256": "513c8faaa36ce56df711fb5d6618df8d3f6e7923ec922fc4f9d24a13300fc605"
+    },
+    "step-02000/camera-0/Q_world_12.png": {
+      "bytes": 1831,
+      "sha256": "beeb9cc492cecfa7ada9f9fa12fb5fb748bea3118fee86c52823076758f96f96"
+    },
+    "step-02000/camera-0/Q_world_22.png": {
+      "bytes": 1609,
+      "sha256": "e56852cbb8533edd2d847f2deee8f81c5789c04028c4d452b22bf9ad4052b485"
+    },
+    "step-02000/camera-0/albedo.png": {
+      "bytes": 3060,
+      "sha256": "8816bc58aa640fbd5e531fb7f7ca42731396aeaf5c21fccb3a4c4f94cb22b3e6"
+    },
+    "step-02000/camera-0/diffuse.png": {
+      "bytes": 4970,
+      "sha256": "c676b1de88e39e7e8e371d82d43c56f12700e917a42c01bd89b6afaa43cd6024"
+    },
+    "step-02000/camera-0/ground_truth.png": {
+      "bytes": 7265,
+      "sha256": "98f089a3f58fc2c62f66c4ca7f6c78356fcfc0ed5b449c186398d7548ba3b436"
+    },
+    "step-02000/camera-0/major_width.png": {
+      "bytes": 1630,
+      "sha256": "a58707690a47ede734222e3e04bd90e41feb744736b1db09eb2bc5a747e3118e"
+    },
+    "step-02000/camera-0/mask.png": {
+      "bytes": 525,
+      "sha256": "af6f72caad54d0685a928737a3ef6780b355025ec965d7aab8b283c0bda647c2"
+    },
+    "step-02000/camera-0/materials.npz": {
+      "bytes": 1133867,
+      "sha256": "3c0df1f563652efdf62c8021caa5e73717af5270ef5f0c0288e4c95b5df4e895"
+    },
+    "step-02000/camera-0/metallic.png": {
+      "bytes": 942,
+      "sha256": "7b2ea791a73454233bb4964e044bffc024a34c465f9343b00e67eaffa7f7aa9b"
+    },
+    "step-02000/camera-0/minor_width.png": {
+      "bytes": 1781,
+      "sha256": "3968b24ff132969fc3ee7cc0c5d88611d9b313b3f679c982e004cca8080f322f"
+    },
+    "step-02000/camera-0/mx.png": {
+      "bytes": 1781,
+      "sha256": "3968b24ff132969fc3ee7cc0c5d88611d9b313b3f679c982e004cca8080f322f"
+    },
+    "step-02000/camera-0/my.png": {
+      "bytes": 1630,
+      "sha256": "a58707690a47ede734222e3e04bd90e41feb744736b1db09eb2bc5a747e3118e"
+    },
+    "step-02000/camera-0/normal.png": {
+      "bytes": 7321,
+      "sha256": "27223671dac1d312791d046d19c508f4aec7de6230e59cfbfc15af5fa77526e0"
+    },
+    "step-02000/camera-0/orientation.png": {
+      "bytes": 6867,
+      "sha256": "d8a931e2456ac4556da34a9d293e4d1684eb86f3b0d87ed90c6ad352d440b2b4"
+    },
+    "step-02000/camera-0/orientation_raw.png": {
+      "bytes": 6879,
+      "sha256": "4c4fee58ff429d254908b10c34c4b83c58dabf33012db75e110999221cd96d7e"
+    },
+    "step-02000/camera-0/orientation_world_projector.png": {
+      "bytes": 9297,
+      "sha256": "67aaf9d043b861f8c0856e597c2c3210bd1da86b34ceba254e992906e558e50f"
+    },
+    "step-02000/camera-0/reconstructed.png": {
+      "bytes": 7653,
+      "sha256": "872776240d2497c55d1fa36403bf4a9a64c6666a98989f802f528442cf2dcebb"
+    },
+    "step-02000/camera-0/specular.png": {
+      "bytes": 8025,
+      "sha256": "64fe29826908b58dbcb33880d292f4798b1179fd6b4e7db6a6bb1c2638b72890"
+    },
+    "step-02000/camera-0/view.json": {
+      "bytes": 3913,
+      "sha256": "06f5a9fe34e0c7f02c511f7ac37a0f441dd3e98e1815c6fd7a6003342f75a067"
+    },
+    "step-02000/camera-1-errors.npz": {
+      "bytes": 395907,
+      "sha256": "a062f76f56a3443d0f2e6ef56a0ff93ace7a4b0a5edca12128efee2bb8731cb7"
+    },
+    "step-02000/camera-1/Q_world_00.png": {
+      "bytes": 1608,
+      "sha256": "8f7b73bd58a5384f13022c944c8f883e69d4d90ce00f44bf887101a505b26f64"
+    },
+    "step-02000/camera-1/Q_world_01.png": {
+      "bytes": 1659,
+      "sha256": "975c90f98c14d5a18d8027d64bba7bc9e35232489192644b049d4fb30b7795f7"
+    },
+    "step-02000/camera-1/Q_world_02.png": {
+      "bytes": 1509,
+      "sha256": "3d187e7fc67910e4b2391ec079514147391dcf2fe3a307cd4a58e788f0c97034"
+    },
+    "step-02000/camera-1/Q_world_11.png": {
+      "bytes": 1659,
+      "sha256": "840e9ef013e37b591fd5994e5f503453d3cfcb6660a28157af68b9f70ecef7a6"
+    },
+    "step-02000/camera-1/Q_world_12.png": {
+      "bytes": 1531,
+      "sha256": "6e6123d3fa5b5e940b47c3b0fb836a5b5ae0ed1baaf3d474ba18d85f8cfd5a5b"
+    },
+    "step-02000/camera-1/Q_world_22.png": {
+      "bytes": 1397,
+      "sha256": "178c45b2b27f73bd70484197268b655f87ef91773f8edfa45413a2c1cb02578c"
+    },
+    "step-02000/camera-1/albedo.png": {
+      "bytes": 2772,
+      "sha256": "e158dc15919f243e0c5181742e1e17f92086d75f2dec344afa816031718be75e"
+    },
+    "step-02000/camera-1/diffuse.png": {
+      "bytes": 4066,
+      "sha256": "c0636b4922894d88be51474dbd135ff24ebb60bbeb08edfe4348a4ae834a1c3a"
+    },
+    "step-02000/camera-1/ground_truth.png": {
+      "bytes": 5704,
+      "sha256": "e4ca46c8f1d70ec5463622fc66a52b92359a6bb38e12b9859aca1b9f33312832"
+    },
+    "step-02000/camera-1/major_width.png": {
+      "bytes": 1441,
+      "sha256": "c8fda558cb1e602a431cc9ce70767e97bf46dbfc7102dd7d8d8a1bc3e220edb0"
+    },
+    "step-02000/camera-1/mask.png": {
+      "bytes": 400,
+      "sha256": "314e2e9020268b3a64caec525871f6cde1f88adbd6dcc3ec79c06e7ce05fea78"
+    },
+    "step-02000/camera-1/materials.npz": {
+      "bytes": 1034034,
+      "sha256": "51d2f9a4d3f774fb27a1f92707e5827f0993ed0c044a69e03d0372cd12bac681"
+    },
+    "step-02000/camera-1/metallic.png": {
+      "bytes": 753,
+      "sha256": "2227fe7fa412d73e17f6e57770d1f42c0e471107c684900b6dde1126f4fb88a2"
+    },
+    "step-02000/camera-1/minor_width.png": {
+      "bytes": 1512,
+      "sha256": "9eabfb634f57eabff0d736a6f652bd2a8456d449ddc21c94d8afac24bf516cfd"
+    },
+    "step-02000/camera-1/mx.png": {
+      "bytes": 1512,
+      "sha256": "9eabfb634f57eabff0d736a6f652bd2a8456d449ddc21c94d8afac24bf516cfd"
+    },
+    "step-02000/camera-1/my.png": {
+      "bytes": 1441,
+      "sha256": "c8fda558cb1e602a431cc9ce70767e97bf46dbfc7102dd7d8d8a1bc3e220edb0"
+    },
+    "step-02000/camera-1/normal.png": {
+      "bytes": 6087,
+      "sha256": "5caeb3274a27eb541d0ee67dee7f95865a5e95a95ece909c42167d119456585b"
+    },
+    "step-02000/camera-1/orientation.png": {
+      "bytes": 6001,
+      "sha256": "c70a2f1a4160e5cf265d4e5fbe8f574c259343dfbcc3477d665295181ca948e4"
+    },
+    "step-02000/camera-1/orientation_raw.png": {
+      "bytes": 5982,
+      "sha256": "542bfbe5a35d0e9a186e2e5289046cfc73a4ba49bd970f0ea298ccfc860904ce"
+    },
+    "step-02000/camera-1/orientation_world_projector.png": {
+      "bytes": 7943,
+      "sha256": "81e45beccac70de53bf58851bb6ac4aa9c27a604d656aa9a26052418c09f8678"
+    },
+    "step-02000/camera-1/reconstructed.png": {
+      "bytes": 6306,
+      "sha256": "9522b86512ba6ea1414e646c4ad157e232e5e0fc27f206a8b317b004b223740e"
+    },
+    "step-02000/camera-1/specular.png": {
+      "bytes": 6868,
+      "sha256": "5b0e0c2e826ee73b5d0ad2b25336eee17c4869ce3815de777584442cdbef3bf9"
+    },
+    "step-02000/camera-1/view.json": {
+      "bytes": 3913,
+      "sha256": "6a53f05869797149d13a21da14abe5598869219cfa35206e74251fc97767bc8d"
+    },
+    "step-02000/camera-28-errors.npz": {
+      "bytes": 461172,
+      "sha256": "6004b9054a288e6f0919524b8b4d40b91997cc3d4d2689e9476344fe57d726bd"
+    },
+    "step-02000/camera-28/Q_world_00.png": {
+      "bytes": 2155,
+      "sha256": "a25eda0aa0a69a208ad1d074326c2568a9627956cbfc48617cca38fb848f293f"
+    },
+    "step-02000/camera-28/Q_world_01.png": {
+      "bytes": 2233,
+      "sha256": "4fa7a20e1f8e597b52823e5def3194a85c8418906500e1c6164e9a8e258ac1bb"
+    },
+    "step-02000/camera-28/Q_world_02.png": {
+      "bytes": 1995,
+      "sha256": "35faa03540bcc31aea1e7cf820082c36979c433653912bca57f7ba36d35b02b6"
+    },
+    "step-02000/camera-28/Q_world_11.png": {
+      "bytes": 2232,
+      "sha256": "5c380fd9ddd5cffbc8146f64a2e66949656fafae8db677566daf3eaacf8a84ad"
+    },
+    "step-02000/camera-28/Q_world_12.png": {
+      "bytes": 1905,
+      "sha256": "c56eaa0700162b2c8c6872b0461c0d398519a3bbc7af02fd70c2385da36cd585"
+    },
+    "step-02000/camera-28/Q_world_22.png": {
+      "bytes": 1677,
+      "sha256": "48f99c56b0b45b2a32f4e6cc2fc95275bbe3184a742cf126a3972d105da03a4d"
+    },
+    "step-02000/camera-28/albedo.png": {
+      "bytes": 3264,
+      "sha256": "23eb40eaa6d27603180cd5bc8e0ca4e139fad0b139bb81a380da3e5346eef4fe"
+    },
+    "step-02000/camera-28/diffuse.png": {
+      "bytes": 5333,
+      "sha256": "c12b7c91af5294c4aea1a932aadec428628d21fbf319fa911d3f5ef3c34dd498"
+    },
+    "step-02000/camera-28/ground_truth.png": {
+      "bytes": 8047,
+      "sha256": "85932acb8601872e7f0c8a992ba5a4a76f0eec371aba0cc36b3039094b9f5dfa"
+    },
+    "step-02000/camera-28/major_width.png": {
+      "bytes": 1743,
+      "sha256": "8cde1382377d54f2d9eb58afc9ba6027a30bd89c4bfb4c4e49ef7bfddffe2b5e"
+    },
+    "step-02000/camera-28/mask.png": {
+      "bytes": 572,
+      "sha256": "a2d1658cd269cb1bfa65d08550b197ef0c1f5de9853246ca9ee07972eeae77b5"
+    },
+    "step-02000/camera-28/materials.npz": {
+      "bytes": 1211472,
+      "sha256": "b9f6c2b470cdc3943d48fd2761a6bcd9de7ce82ed275777726cf8e88cdd77c54"
+    },
+    "step-02000/camera-28/metallic.png": {
+      "bytes": 1013,
+      "sha256": "e356810b77d421ee20e6c419eb5bfa832e1d11a278b762920b4c58e56dbbd5bf"
+    },
+    "step-02000/camera-28/minor_width.png": {
+      "bytes": 1836,
+      "sha256": "46da06b2d761c7cae23f16fde50809bbb6a0056c84bca6c375f75739156540d7"
+    },
+    "step-02000/camera-28/mx.png": {
+      "bytes": 1836,
+      "sha256": "46da06b2d761c7cae23f16fde50809bbb6a0056c84bca6c375f75739156540d7"
+    },
+    "step-02000/camera-28/my.png": {
+      "bytes": 1743,
+      "sha256": "8cde1382377d54f2d9eb58afc9ba6027a30bd89c4bfb4c4e49ef7bfddffe2b5e"
+    },
+    "step-02000/camera-28/normal.png": {
+      "bytes": 7952,
+      "sha256": "efb3d75911dc95301a910a1e295d63cb01996c42e734f75c127f6bad201645fd"
+    },
+    "step-02000/camera-28/orientation.png": {
+      "bytes": 7482,
+      "sha256": "ba0536974a5909faaf4c663b914171cb86365afaf6c280a2abeb5e3770f9beee"
+    },
+    "step-02000/camera-28/orientation_raw.png": {
+      "bytes": 7504,
+      "sha256": "cc84c35b4343ac71f975c5c826e6ee435465bc5a7a446505b42f4c9b5710be4e"
+    },
+    "step-02000/camera-28/orientation_world_projector.png": {
+      "bytes": 10048,
+      "sha256": "5b6a01c7f8dfb0f13dff2052e5ac8f7512803abcecccbe963392ec47a7d5c23b"
+    },
+    "step-02000/camera-28/reconstructed.png": {
+      "bytes": 8229,
+      "sha256": "6e134eca4b673b26723a08860bb62fed12a03f59cdad766911af03fd9ac588ee"
+    },
+    "step-02000/camera-28/specular.png": {
+      "bytes": 8724,
+      "sha256": "56e0c224d137a2478a7d09f909559d5a38418d941f76807ede2d5cec317682e3"
+    },
+    "step-02000/camera-28/view.json": {
+      "bytes": 3916,
+      "sha256": "3dd5251b487eb12a9aa417b60d98478c4c95c78140005f9483d4b238b6e12723"
+    },
+    "step-02000/camera-34-errors.npz": {
+      "bytes": 239415,
+      "sha256": "c1cbef7474ef4f65369fa54cedefa25711fe2f4f8f26892f711ab4e6ffe231e2"
+    },
+    "step-02000/camera-34/Q_world_00.png": {
+      "bytes": 876,
+      "sha256": "dcee64d3dee4f35ff4b68a5bd1e0c40c1ee51634c9fce6e057ab8cd290e7d7fc"
+    },
+    "step-02000/camera-34/Q_world_01.png": {
+      "bytes": 964,
+      "sha256": "41d4643f40a71b7bcdf5baedd6dea625902fa85a5b66deef6635b4d36c9fbdce"
+    },
+    "step-02000/camera-34/Q_world_02.png": {
+      "bytes": 861,
+      "sha256": "cc0c20631454891473f8e4bec5f0e4dd94797828fc119ad4261374522542c281"
+    },
+    "step-02000/camera-34/Q_world_11.png": {
+      "bytes": 1047,
+      "sha256": "19c74ac4188199aa7eea8d7b8558ce4c4944acb480a6c578f0b0c09084b9dc56"
+    },
+    "step-02000/camera-34/Q_world_12.png": {
+      "bytes": 1048,
+      "sha256": "c10a56a2b506d41ed8c7cc9faed9e4fc2d58683739d6059dea07575cd6004d90"
+    },
+    "step-02000/camera-34/Q_world_22.png": {
+      "bytes": 939,
+      "sha256": "408c542f77f783aee1597db36cea763b1a2c8c0eb7e2fa7c2ece502874d03c5a"
+    },
+    "step-02000/camera-34/albedo.png": {
+      "bytes": 1538,
+      "sha256": "d2a7ccba76d67b4a865911dc9f1458fea8bb867a8e73941d7ec41e8b7a04b0c8"
+    },
+    "step-02000/camera-34/diffuse.png": {
+      "bytes": 1989,
+      "sha256": "f461aff919f396ad5ae260d67434abbc59f29cb2e269de6172b030fa26672c14"
+    },
+    "step-02000/camera-34/ground_truth.png": {
+      "bytes": 2475,
+      "sha256": "828c80db1a55c0cd2606355adbe5d731f2152cacbae655774c5bffa1ad06917e"
+    },
+    "step-02000/camera-34/major_width.png": {
+      "bytes": 794,
+      "sha256": "e1afc4fc82558db8e16d5d1b7839de6864f13c37facf8a854164277144d62488"
+    },
+    "step-02000/camera-34/mask.png": {
+      "bytes": 274,
+      "sha256": "a18eb92e777517738c1f76aae126c2a165517930bb5f58bb7d814a399f443ab2"
+    },
+    "step-02000/camera-34/materials.npz": {
+      "bytes": 627365,
+      "sha256": "7a5571a766a6b11c1f3b6ed21e582bb4dd4103249bd3a7d3a204465b3d20cc2e"
+    },
+    "step-02000/camera-34/metallic.png": {
+      "bytes": 445,
+      "sha256": "f005c9dbec3080145dc01280d5e3c0936b42f0b40cc825772b7cdaa92d6c2f66"
+    },
+    "step-02000/camera-34/minor_width.png": {
+      "bytes": 895,
+      "sha256": "a5bdbeec32993819aa1f36a940a5468b9452b42cdc3bfabbee8800c27e68f9c2"
+    },
+    "step-02000/camera-34/mx.png": {
+      "bytes": 895,
+      "sha256": "a5bdbeec32993819aa1f36a940a5468b9452b42cdc3bfabbee8800c27e68f9c2"
+    },
+    "step-02000/camera-34/my.png": {
+      "bytes": 794,
+      "sha256": "e1afc4fc82558db8e16d5d1b7839de6864f13c37facf8a854164277144d62488"
+    },
+    "step-02000/camera-34/normal.png": {
+      "bytes": 2603,
+      "sha256": "caaeee765b9e3382c26b74246afb8f9d41cac4d255ce78c79e5fa969c4353f75"
+    },
+    "step-02000/camera-34/orientation.png": {
+      "bytes": 3538,
+      "sha256": "a691acfa84314e274559dd7c0a1f606cfc2e49975806eb0c4728ecd5215463d8"
+    },
+    "step-02000/camera-34/orientation_raw.png": {
+      "bytes": 3530,
+      "sha256": "85bea170e315dddc9ad1d4e61a3aced7eeee3b5a8bdf69076c8db55b2865d1bc"
+    },
+    "step-02000/camera-34/orientation_world_projector.png": {
+      "bytes": 4684,
+      "sha256": "28c9475cf6e753eaf01152aa4d9601a38874815ee0183552ede07de1f3ebbbd3"
+    },
+    "step-02000/camera-34/reconstructed.png": {
+      "bytes": 3266,
+      "sha256": "787c205f0e619cd03b1c121e5e850bf977ebe3ea084d5caf06bca1c54f1238ab"
+    },
+    "step-02000/camera-34/specular.png": {
+      "bytes": 3586,
+      "sha256": "ad2831f451acb39261c4e24024ed368a40d70574e266933ea247430280d0be53"
+    },
+    "step-02000/camera-34/view.json": {
+      "bytes": 3905,
+      "sha256": "bf4d20e8444144c04048135a36532ec6f58b7916c4abf136e171eabc886d8c9a"
+    },
+    "step-02000/camera-45-errors.npz": {
+      "bytes": 376427,
+      "sha256": "60bf4d22f4c02d6beccc022d0201f40f606bbf97cdecbfd7f592259bca6bb2d1"
+    },
+    "step-02000/camera-45/Q_world_00.png": {
+      "bytes": 1647,
+      "sha256": "753c8834e3c209b6d10c0c412938d25daaa0187e0bbe36f13625ba9321701482"
+    },
+    "step-02000/camera-45/Q_world_01.png": {
+      "bytes": 1700,
+      "sha256": "2706d23ea4ef18ce7300d9bdd4f07da11d47eaaefbae33e27d71179520609179"
+    },
+    "step-02000/camera-45/Q_world_02.png": {
+      "bytes": 1604,
+      "sha256": "ff9cf282a206616c5226a393679d5d028031b34b610afacceb3a749e6543c073"
+    },
+    "step-02000/camera-45/Q_world_11.png": {
+      "bytes": 1706,
+      "sha256": "26548da21814a571bf475bc46218e0239f1386b7ba7949bd436f11f4ae5b818b"
+    },
+    "step-02000/camera-45/Q_world_12.png": {
+      "bytes": 1549,
+      "sha256": "484cc1faf927aca933f060e74c6271f03560642da8b8fa9573f46eaf816a9a5d"
+    },
+    "step-02000/camera-45/Q_world_22.png": {
+      "bytes": 1374,
+      "sha256": "6a45ad2bc0340ae88c0314e8ab4e5750f7ca61355ae1951bffbff624b9682f8d"
+    },
+    "step-02000/camera-45/albedo.png": {
+      "bytes": 2588,
+      "sha256": "abf2a6937178783de3948d43c5b0f765587848af7ace064b0c4a2eae417c3fda"
+    },
+    "step-02000/camera-45/diffuse.png": {
+      "bytes": 3867,
+      "sha256": "228c94967af62ba933be5ed6dcc22e436a3b8e8fa18ce8d617d16ff949fc15bc"
+    },
+    "step-02000/camera-45/ground_truth.png": {
+      "bytes": 5156,
+      "sha256": "ab8cb95ff5dd136cae877a1b5d38d96f2e73ee390eeaf347ea5ddb2184271345"
+    },
+    "step-02000/camera-45/major_width.png": {
+      "bytes": 1424,
+      "sha256": "8dc640e9135df1d192e738b196bdc4842ba6ac07bf1576e397b5af8bd69618e8"
+    },
+    "step-02000/camera-45/mask.png": {
+      "bytes": 390,
+      "sha256": "01c603163231c552003601be4c71d70162ea905266640ca747d46b87974b4696"
+    },
+    "step-02000/camera-45/materials.npz": {
+      "bytes": 989485,
+      "sha256": "9e4c3ac9a73012ae711feafe6d1f16e7ef12ebe3bb13e8369b81f7be35e261bc"
+    },
+    "step-02000/camera-45/metallic.png": {
+      "bytes": 711,
+      "sha256": "5edd6da9d1bcc4ab799906caba107b511a9c36446816608e84a3225da23185af"
+    },
+    "step-02000/camera-45/minor_width.png": {
+      "bytes": 1490,
+      "sha256": "c5605f51494715706714b70f42f4a91f0f7a44cc5b9fccdf8ffc08852b68a4eb"
+    },
+    "step-02000/camera-45/mx.png": {
+      "bytes": 1490,
+      "sha256": "c5605f51494715706714b70f42f4a91f0f7a44cc5b9fccdf8ffc08852b68a4eb"
+    },
+    "step-02000/camera-45/my.png": {
+      "bytes": 1424,
+      "sha256": "8dc640e9135df1d192e738b196bdc4842ba6ac07bf1576e397b5af8bd69618e8"
+    },
+    "step-02000/camera-45/normal.png": {
+      "bytes": 5728,
+      "sha256": "1de0ff113376680ec3aa339a561c632d45041f3a66885b6129056a19ec9b69bf"
+    },
+    "step-02000/camera-45/orientation.png": {
+      "bytes": 5881,
+      "sha256": "ee56fe2be89605a6e1fd934253caddfeda409bdefc9c44deacd6232fb2c81300"
+    },
+    "step-02000/camera-45/orientation_raw.png": {
+      "bytes": 5912,
+      "sha256": "956cf76d60cd04afe11c681e740b857a03436d8304ba6910eb93abc38bd96ee0"
+    },
+    "step-02000/camera-45/orientation_world_projector.png": {
+      "bytes": 8073,
+      "sha256": "bc786e0111a9b24a837fd3cd7b816e51e9b31a0c8dd1e3e7e62d1af25c3fa8f9"
+    },
+    "step-02000/camera-45/reconstructed.png": {
+      "bytes": 5827,
+      "sha256": "2646e2d1ada66d2548f789223b630c1eafe3bba52b7540da13c0203d52fd5d9d"
+    },
+    "step-02000/camera-45/specular.png": {
+      "bytes": 6129,
+      "sha256": "70cf99a03c64258c90d26cc3ec1eda35df09349d131dd3e0240d67fe871945c6"
+    },
+    "step-02000/camera-45/view.json": {
+      "bytes": 3913,
+      "sha256": "079b7fda398165b70a4b838ffdb582ca267b148d2f3fe4097bb49fac7808ee35"
+    },
+    "step-02000/camera-50-errors.npz": {
+      "bytes": 246952,
+      "sha256": "d6d050c6162b89a7affc04b98464a86e6f89ac89532db10c7527e5a521f7375d"
+    },
+    "step-02000/camera-50/Q_world_00.png": {
+      "bytes": 995,
+      "sha256": "0ba6f20803ea92c9ff2ed66ee40db39e8c40d9db2b880d7501382274c5647e00"
+    },
+    "step-02000/camera-50/Q_world_01.png": {
+      "bytes": 1131,
+      "sha256": "d00ca14e59769bb1decf95c1fa420da92530690ba3cb213752ff41fe3b047edb"
+    },
+    "step-02000/camera-50/Q_world_02.png": {
+      "bytes": 1040,
+      "sha256": "dd1632db5153f1e7cf315725d4a0109138b22d8bcfa2f09325e20ad3b814f012"
+    },
+    "step-02000/camera-50/Q_world_11.png": {
+      "bytes": 1210,
+      "sha256": "713fdfd4f98a4ff5df49e41e60d38e75398dde3e2af5d6b52d93948404faa8ee"
+    },
+    "step-02000/camera-50/Q_world_12.png": {
+      "bytes": 1197,
+      "sha256": "418186152d333305da6a9210feb79003f57c60a94891bb5790c74b093326d6e7"
+    },
+    "step-02000/camera-50/Q_world_22.png": {
+      "bytes": 1050,
+      "sha256": "1e73b2e16cc5362147f8b819d5ac18b293a32d0ed3611f748de8f263cf905523"
+    },
+    "step-02000/camera-50/albedo.png": {
+      "bytes": 1786,
+      "sha256": "d737160f2585369414faa32e6f0de4791f6f65e51d75e60e5d3dc2345ae2e3e0"
+    },
+    "step-02000/camera-50/diffuse.png": {
+      "bytes": 2134,
+      "sha256": "4dd32b5458bfd08cbbadbe7adbcd7f263e4a0a997309f15a631269defcd5d5c9"
+    },
+    "step-02000/camera-50/ground_truth.png": {
+      "bytes": 2930,
+      "sha256": "bccffadf5af37538ab86079b3322a91aba999be2dd927262aef591c279670c33"
+    },
+    "step-02000/camera-50/major_width.png": {
+      "bytes": 985,
+      "sha256": "60f5b749010a63c42843e802db4584621c1ebd6a097196280e02de457317fdc1"
+    },
+    "step-02000/camera-50/mask.png": {
+      "bytes": 285,
+      "sha256": "6f7a889de6ec8f2de41fcfc0805dcfd14f0210389c9c3a528e29f7186e2275ae"
+    },
+    "step-02000/camera-50/materials.npz": {
+      "bytes": 659424,
+      "sha256": "541d05cb45731f6d4e391fe8e1608bd2ea3d4103b0a3c5d2bf9265d264494277"
+    },
+    "step-02000/camera-50/metallic.png": {
+      "bytes": 487,
+      "sha256": "5b2c3ad9aae66b3e5e3cc8725513c33d8caeb1167231f05e1344206edbb712ae"
+    },
+    "step-02000/camera-50/minor_width.png": {
+      "bytes": 1052,
+      "sha256": "e6749f03d41d3ae23c67176b4cf68e1cebcd06f9010c4b7262aedb0777b4bb4e"
+    },
+    "step-02000/camera-50/mx.png": {
+      "bytes": 1052,
+      "sha256": "e6749f03d41d3ae23c67176b4cf68e1cebcd06f9010c4b7262aedb0777b4bb4e"
+    },
+    "step-02000/camera-50/my.png": {
+      "bytes": 985,
+      "sha256": "60f5b749010a63c42843e802db4584621c1ebd6a097196280e02de457317fdc1"
+    },
+    "step-02000/camera-50/normal.png": {
+      "bytes": 2919,
+      "sha256": "ce151b2d3fe5ba701dfa116f125c2e3f3e85609693f1fcfc2e03db0769c185f2"
+    },
+    "step-02000/camera-50/orientation.png": {
+      "bytes": 4172,
+      "sha256": "b51c8aa02fda7aba4710c2ac9b573432f20bd3c2286d23f601996fe5fe28d082"
+    },
+    "step-02000/camera-50/orientation_raw.png": {
+      "bytes": 4187,
+      "sha256": "3581149ecbab2e7f02ed0cb2c708b5a1b9731ba4384f3056d37d595b98534da2"
+    },
+    "step-02000/camera-50/orientation_world_projector.png": {
+      "bytes": 5539,
+      "sha256": "ba2f40ed9f90dad9d46c6319114fae74049c32e7b99a91fbbc095db106449ab3"
+    },
+    "step-02000/camera-50/reconstructed.png": {
+      "bytes": 3672,
+      "sha256": "1129ebc1a269fdf198c793fa44f9342f67dd27e388c64596649301bcbbf187f7"
+    },
+    "step-02000/camera-50/specular.png": {
+      "bytes": 4014,
+      "sha256": "516e55fdb818bfa26def89a96ea24843936317c015c44470a2149f8325300d75"
+    },
+    "step-02000/camera-50/view.json": {
+      "bytes": 3910,
+      "sha256": "d967565e5d5fc7556c46771443979d104046712634036a4594441d56fb65d798"
+    },
+    "step-02000/illumination-preview.png": {
+      "bytes": 2964,
+      "sha256": "2b187794dafbbc835b24ce04f12bba976019edaac7040f9b2e83b5f09cd09e44"
+    },
+    "step-02000/illumination.npz": {
+      "bytes": 263187,
+      "sha256": "5380d6b6977decd196da8b18a5017ebad6c55c4c77b341a29d31c986e53d93a4"
+    },
+    "step-02000/metrics.json": {
+      "bytes": 13839,
+      "sha256": "a0e7f94cee85dc6510a38b704df9b3a88c566926025fb5e18a1545220ebff31d"
+    },
+    "step-04000/camera-0-errors.npz": {
+      "bytes": 433413,
+      "sha256": "991c85eabb53ba537025e5ab3829cdd5c6a1c5b630779dca541cbd3592053a23"
+    },
+    "step-04000/camera-0/Q_world_00.png": {
+      "bytes": 2093,
+      "sha256": "66e40e8f3fdd3ec9bb2cfe50a3de32c838487071ac78d3b0fd788171455b865e"
+    },
+    "step-04000/camera-0/Q_world_01.png": {
+      "bytes": 2182,
+      "sha256": "a34d284a593fd6416fe2b970e5c538d008fa358346f2e5f7ce7821dae499de72"
+    },
+    "step-04000/camera-0/Q_world_02.png": {
+      "bytes": 1993,
+      "sha256": "538870dc8cdf6db3548d674553a0198fbbc2039952f8293d182028b5a6636b32"
+    },
+    "step-04000/camera-0/Q_world_11.png": {
+      "bytes": 2141,
+      "sha256": "4ee623e0b31d933744984f3beda41217ab7c56dbedfc803f77730eaa02a9bd5c"
+    },
+    "step-04000/camera-0/Q_world_12.png": {
+      "bytes": 1919,
+      "sha256": "d157a258393c66cf044d1d546d104d2b545f59218868362e3165b548c35c747f"
+    },
+    "step-04000/camera-0/Q_world_22.png": {
+      "bytes": 1666,
+      "sha256": "a084772f1b3df0364b1ba9cf9dd56065182212c6c2db58221879ecc824b88b32"
+    },
+    "step-04000/camera-0/albedo.png": {
+      "bytes": 4017,
+      "sha256": "1b01116195ceacfce31a298b00d17e6207b749b56fb4ea0dac706fb5e872dd87"
+    },
+    "step-04000/camera-0/diffuse.png": {
+      "bytes": 5087,
+      "sha256": "a2e8686111a251c2a1feed56a6629dd68c134efa82f8130fc132783781caf117"
+    },
+    "step-04000/camera-0/ground_truth.png": {
+      "bytes": 7265,
+      "sha256": "98f089a3f58fc2c62f66c4ca7f6c78356fcfc0ed5b449c186398d7548ba3b436"
+    },
+    "step-04000/camera-0/major_width.png": {
+      "bytes": 1760,
+      "sha256": "958935bbdf0b19eaabe587f252f600be35dca3e33c8db0e81af56f061e8740da"
+    },
+    "step-04000/camera-0/mask.png": {
+      "bytes": 525,
+      "sha256": "af6f72caad54d0685a928737a3ef6780b355025ec965d7aab8b283c0bda647c2"
+    },
+    "step-04000/camera-0/materials.npz": {
+      "bytes": 1135553,
+      "sha256": "627ac4bf648706416c7ed8a64cadfbd2662e461183216ee5ce085045694c22d2"
+    },
+    "step-04000/camera-0/metallic.png": {
+      "bytes": 992,
+      "sha256": "0e585cfba363e75c27736d1f693e2ef3880e0b41fcee83196235ffc3bb3d4717"
+    },
+    "step-04000/camera-0/minor_width.png": {
+      "bytes": 1818,
+      "sha256": "0b740a96efe4e7ebe6d506abe6df3f12dd4cba180e02bcc21851c96b47053181"
+    },
+    "step-04000/camera-0/mx.png": {
+      "bytes": 1818,
+      "sha256": "0b740a96efe4e7ebe6d506abe6df3f12dd4cba180e02bcc21851c96b47053181"
+    },
+    "step-04000/camera-0/my.png": {
+      "bytes": 1760,
+      "sha256": "958935bbdf0b19eaabe587f252f600be35dca3e33c8db0e81af56f061e8740da"
+    },
+    "step-04000/camera-0/normal.png": {
+      "bytes": 7321,
+      "sha256": "27223671dac1d312791d046d19c508f4aec7de6230e59cfbfc15af5fa77526e0"
+    },
+    "step-04000/camera-0/orientation.png": {
+      "bytes": 7230,
+      "sha256": "228297145da5c3297c3d9fa42a46dba798e713a30d6b4711b959d832adbbd39b"
+    },
+    "step-04000/camera-0/orientation_raw.png": {
+      "bytes": 7238,
+      "sha256": "6641b160f306079c5bd3cbcc3eba21599c50ea382eac83f01f984ffe5ba3a989"
+    },
+    "step-04000/camera-0/orientation_world_projector.png": {
+      "bytes": 9622,
+      "sha256": "cee899047b472dd40bb29ca8f97a467e60e20d874957abb2d6cb919041507dd8"
+    },
+    "step-04000/camera-0/reconstructed.png": {
+      "bytes": 7769,
+      "sha256": "7f642659e9355f339639b690e6b2554f2d02a32071cf1310a38c3bce217fa9e4"
+    },
+    "step-04000/camera-0/specular.png": {
+      "bytes": 8092,
+      "sha256": "5fda3c5de3245c2800aa96c3d23885d07d41c8fb3824a6234a900decf9891841"
+    },
+    "step-04000/camera-0/view.json": {
+      "bytes": 3913,
+      "sha256": "e2f639e6a534871d0a92e7d48bf6a6b980004939a45022e578becbf85ae7ad93"
+    },
+    "step-04000/camera-1-errors.npz": {
+      "bytes": 395805,
+      "sha256": "09e17865a9f9b43293e45744154fcf262b8b5763d360262db454c6d190cf5317"
+    },
+    "step-04000/camera-1/Q_world_00.png": {
+      "bytes": 1740,
+      "sha256": "7d4d7123e288fe6cded47db885c0b7c03b7183f1cd06060732e9c07124e0e7f4"
+    },
+    "step-04000/camera-1/Q_world_01.png": {
+      "bytes": 1759,
+      "sha256": "f35b45169db1b8b09651c9752e2ee26f92981f3881d1cd0de481952aaba10f84"
+    },
+    "step-04000/camera-1/Q_world_02.png": {
+      "bytes": 1650,
+      "sha256": "3c8e27dc34961011139abe100629f892b486a905e8c3391cc437928ebe8adfaa"
+    },
+    "step-04000/camera-1/Q_world_11.png": {
+      "bytes": 1759,
+      "sha256": "e2e47c312ba82048516abee179d5a03d286ed7ab996291c06c7bccb053376b5f"
+    },
+    "step-04000/camera-1/Q_world_12.png": {
+      "bytes": 1589,
+      "sha256": "fbc61cf66afec7a45a2f7c77bc28b3212180bc5e45d5dd95c9abe6429fcc1aa4"
+    },
+    "step-04000/camera-1/Q_world_22.png": {
+      "bytes": 1496,
+      "sha256": "5a3f26377f34113d07691383c1ecdc94cbb5a310e5a5be3d77d8ea5a4b45020b"
+    },
+    "step-04000/camera-1/albedo.png": {
+      "bytes": 3615,
+      "sha256": "f5918f098c87d948170c48f86cdde694ed79fbb78f645b8050bee7acfcff4ad4"
+    },
+    "step-04000/camera-1/diffuse.png": {
+      "bytes": 4173,
+      "sha256": "e70d260b600fdd39690e47c837a040de446141eaf1bc07d85f4c82c7dbc93512"
+    },
+    "step-04000/camera-1/ground_truth.png": {
+      "bytes": 5704,
+      "sha256": "e4ca46c8f1d70ec5463622fc66a52b92359a6bb38e12b9859aca1b9f33312832"
+    },
+    "step-04000/camera-1/major_width.png": {
+      "bytes": 1555,
+      "sha256": "b08cc0b3ebcf02f0c6f87b08afaf5900a4c480a49b9cb94751b388cf93a3b8e3"
+    },
+    "step-04000/camera-1/mask.png": {
+      "bytes": 400,
+      "sha256": "314e2e9020268b3a64caec525871f6cde1f88adbd6dcc3ec79c06e7ce05fea78"
+    },
+    "step-04000/camera-1/materials.npz": {
+      "bytes": 1035394,
+      "sha256": "58eb6fed22ce30264c8ac42af4035f534edf47de664a2450d66e179735f12156"
+    },
+    "step-04000/camera-1/metallic.png": {
+      "bytes": 782,
+      "sha256": "4fa703cc46fae8d4fcd6321968fc26b0c97255aa034c3ce0941a49af1c203050"
+    },
+    "step-04000/camera-1/minor_width.png": {
+      "bytes": 1566,
+      "sha256": "12d73c6e5eccf97b068d33b7d4d891c8e2a2576bc1b653f94f6acaf057471204"
+    },
+    "step-04000/camera-1/mx.png": {
+      "bytes": 1566,
+      "sha256": "12d73c6e5eccf97b068d33b7d4d891c8e2a2576bc1b653f94f6acaf057471204"
+    },
+    "step-04000/camera-1/my.png": {
+      "bytes": 1555,
+      "sha256": "b08cc0b3ebcf02f0c6f87b08afaf5900a4c480a49b9cb94751b388cf93a3b8e3"
+    },
+    "step-04000/camera-1/normal.png": {
+      "bytes": 6087,
+      "sha256": "5caeb3274a27eb541d0ee67dee7f95865a5e95a95ece909c42167d119456585b"
+    },
+    "step-04000/camera-1/orientation.png": {
+      "bytes": 6219,
+      "sha256": "e3f0c5bf8259d15a4f1374f94b553491b155b71c0790207afd0e6b3a7c94edd5"
+    },
+    "step-04000/camera-1/orientation_raw.png": {
+      "bytes": 6256,
+      "sha256": "9fc89aa69feb5d476ab82c59d933d7345c40cec1c1ea44860ea444cca3c9002e"
+    },
+    "step-04000/camera-1/orientation_world_projector.png": {
+      "bytes": 8345,
+      "sha256": "b22fa7859cce090bb69ceaaf58737f8e53b137bf1e56451ce6917bd724fc032b"
+    },
+    "step-04000/camera-1/reconstructed.png": {
+      "bytes": 6367,
+      "sha256": "6f1547fe4faef74a85999785d8526476b212cd9c51c36568f3fa17f60d41fe83"
+    },
+    "step-04000/camera-1/specular.png": {
+      "bytes": 6925,
+      "sha256": "efcba7c2e815df98b382d4b96d393a11e590ac0542aeee98249e864bc8db33bb"
+    },
+    "step-04000/camera-1/view.json": {
+      "bytes": 3913,
+      "sha256": "c5c31dc75c1fcd24f4da102dca64aa8b242da36cf1fbd5dc824588dbfd705151"
+    },
+    "step-04000/camera-28-errors.npz": {
+      "bytes": 461308,
+      "sha256": "2156af3b0307dd099ff821b6fa2140c1f2d33e4d60e97b888704c992e10b1a08"
+    },
+    "step-04000/camera-28/Q_world_00.png": {
+      "bytes": 2292,
+      "sha256": "aed3645f1fbbf9b9abd4a73d23a79ae88faab46ea8288143c35b26499250ddac"
+    },
+    "step-04000/camera-28/Q_world_01.png": {
+      "bytes": 2327,
+      "sha256": "de50b7ada7852020915009e822b70a925d5ca84d0f15de201076411d98c52522"
+    },
+    "step-04000/camera-28/Q_world_02.png": {
+      "bytes": 2150,
+      "sha256": "76ed4ece02737ddf915961735db99924e599fd95624fb5efb45dbad01d13b68d"
+    },
+    "step-04000/camera-28/Q_world_11.png": {
+      "bytes": 2350,
+      "sha256": "486bbcb5ef5e6489fd20b7db936ee4021931fbf1928d4b6027a08f865de174cf"
+    },
+    "step-04000/camera-28/Q_world_12.png": {
+      "bytes": 1993,
+      "sha256": "d26c79327abd2654c280047b7c594eacbc1e4ce20e838d521b5f24d76d612cd9"
+    },
+    "step-04000/camera-28/Q_world_22.png": {
+      "bytes": 1770,
+      "sha256": "3b511c578d82f2183fb0c12b7bd4ffbbd47d99cdd7dbf40f4f56ca263325a874"
+    },
+    "step-04000/camera-28/albedo.png": {
+      "bytes": 4306,
+      "sha256": "6964e93fbd8423c517064a7be2844b310a725448fa99cf9a4073263b1eaff3cc"
+    },
+    "step-04000/camera-28/diffuse.png": {
+      "bytes": 5403,
+      "sha256": "59609cc666c6455f509c8cea2ecba4d8448bec43aff2792c9dac35022fc3bf4d"
+    },
+    "step-04000/camera-28/ground_truth.png": {
+      "bytes": 8047,
+      "sha256": "85932acb8601872e7f0c8a992ba5a4a76f0eec371aba0cc36b3039094b9f5dfa"
+    },
+    "step-04000/camera-28/major_width.png": {
+      "bytes": 1861,
+      "sha256": "e5bf021a236769edeb92c8e2726bccfda38ed7f788fefc4de5c8e744c3a13a19"
+    },
+    "step-04000/camera-28/mask.png": {
+      "bytes": 572,
+      "sha256": "a2d1658cd269cb1bfa65d08550b197ef0c1f5de9853246ca9ee07972eeae77b5"
+    },
+    "step-04000/camera-28/materials.npz": {
+      "bytes": 1213040,
+      "sha256": "62f269f2bba2c142e2ef02e490a2386aabc6a7b569a7aa9fa6a69aa2aa786c93"
+    },
+    "step-04000/camera-28/metallic.png": {
+      "bytes": 1065,
+      "sha256": "e8d753cff6d5973fdd22bc316708e47efe75f18e061d58a370218faf560730fd"
+    },
+    "step-04000/camera-28/minor_width.png": {
+      "bytes": 1928,
+      "sha256": "0aba4086a20f5f54dac144a14dd8c563c6192018796fbff015f9a59cf9000018"
+    },
+    "step-04000/camera-28/mx.png": {
+      "bytes": 1928,
+      "sha256": "0aba4086a20f5f54dac144a14dd8c563c6192018796fbff015f9a59cf9000018"
+    },
+    "step-04000/camera-28/my.png": {
+      "bytes": 1861,
+      "sha256": "e5bf021a236769edeb92c8e2726bccfda38ed7f788fefc4de5c8e744c3a13a19"
+    },
+    "step-04000/camera-28/normal.png": {
+      "bytes": 7952,
+      "sha256": "efb3d75911dc95301a910a1e295d63cb01996c42e734f75c127f6bad201645fd"
+    },
+    "step-04000/camera-28/orientation.png": {
+      "bytes": 7784,
+      "sha256": "1fe9a8f5b50ae330c1ab6edf0b45cc15029f7915fe23c68ea6407a4d514ab694"
+    },
+    "step-04000/camera-28/orientation_raw.png": {
+      "bytes": 7810,
+      "sha256": "9807ffb70c58fe3912b59f511e69a9b56909d977121424581a1f5ca08aaf6727"
+    },
+    "step-04000/camera-28/orientation_world_projector.png": {
+      "bytes": 10375,
+      "sha256": "5a723d132eaf79f1421b59b51f4d0bd1017f7e3599a7b6fdd886f539fc328854"
+    },
+    "step-04000/camera-28/reconstructed.png": {
+      "bytes": 8335,
+      "sha256": "0ac11c59e890110dbba05b41ee96bb3e09e01feb9d10a37c152e2db0937b08f8"
+    },
+    "step-04000/camera-28/specular.png": {
+      "bytes": 8808,
+      "sha256": "5a6d981e9e01141c8cc3730a793974886fb78325fe37128fcbc87feabd61345f"
+    },
+    "step-04000/camera-28/view.json": {
+      "bytes": 3916,
+      "sha256": "ac9685fa61e90baa4b5c7a15fd05eec45216e3acae32ecc7ecdddbfb96cf393b"
+    },
+    "step-04000/camera-34-errors.npz": {
+      "bytes": 239265,
+      "sha256": "1fcff09c64718bc2b9069de8a32993dfb75cc8be5ddb93f9d9998c9399857ee7"
+    },
+    "step-04000/camera-34/Q_world_00.png": {
+      "bytes": 922,
+      "sha256": "80b2757143cacc2b9a734ce6e1a59f493692b1a5393dc089ae8fcdbc92c289e7"
+    },
+    "step-04000/camera-34/Q_world_01.png": {
+      "bytes": 994,
+      "sha256": "1992ab2bc02671f85041ac0e55b55c8c226bb19e1e602c4e46d411b2bfa9c642"
+    },
+    "step-04000/camera-34/Q_world_02.png": {
+      "bytes": 925,
+      "sha256": "0637e4233910902e8d00ff379c65722166272da87081ac2fad189abed930b6b1"
+    },
+    "step-04000/camera-34/Q_world_11.png": {
+      "bytes": 1106,
+      "sha256": "46d1ade7e6b9ae5991a06bba6c88890dab587480ab951e0e783c4183e80c252a"
+    },
+    "step-04000/camera-34/Q_world_12.png": {
+      "bytes": 1129,
+      "sha256": "e8867e021ca5c9a3036e1f6af398b1e5bc58f134c489f439fc225db00f547d51"
+    },
+    "step-04000/camera-34/Q_world_22.png": {
+      "bytes": 996,
+      "sha256": "9f984a3ce89ee06bbaaad66baee6d9e311d5665be72b91e0078751919b93d5d7"
+    },
+    "step-04000/camera-34/albedo.png": {
+      "bytes": 1967,
+      "sha256": "7704ae1a8fd1ca1542e5e440cfb6a5219019e0f2c73eca0972f9b9f477fe6913"
+    },
+    "step-04000/camera-34/diffuse.png": {
+      "bytes": 2065,
+      "sha256": "0eb1d49149cf92b35f240192bcaaef0d8c58bb74c1869efe5c314fb60cc4473c"
+    },
+    "step-04000/camera-34/ground_truth.png": {
+      "bytes": 2475,
+      "sha256": "828c80db1a55c0cd2606355adbe5d731f2152cacbae655774c5bffa1ad06917e"
+    },
+    "step-04000/camera-34/major_width.png": {
+      "bytes": 895,
+      "sha256": "09d76841bca2c793301e89654a252ee589dc15516eeccafeb99e9124b8049622"
+    },
+    "step-04000/camera-34/mask.png": {
+      "bytes": 274,
+      "sha256": "a18eb92e777517738c1f76aae126c2a165517930bb5f58bb7d814a399f443ab2"
+    },
+    "step-04000/camera-34/materials.npz": {
+      "bytes": 628376,
+      "sha256": "c042f93ca96d26a979d54ba9717ab60a28c0b38c0fb5a5ab1f4c388f6eb925c1"
+    },
+    "step-04000/camera-34/metallic.png": {
+      "bytes": 472,
+      "sha256": "ade21a7b05b22ed243bbe0445e926bb04cf4f237a86f5b48e4ebaad79bd6f56d"
+    },
+    "step-04000/camera-34/minor_width.png": {
+      "bytes": 882,
+      "sha256": "4346be912e730b74245da7a043fc98c3c0f266fd499d1cedde4dbda55ace6828"
+    },
+    "step-04000/camera-34/mx.png": {
+      "bytes": 882,
+      "sha256": "4346be912e730b74245da7a043fc98c3c0f266fd499d1cedde4dbda55ace6828"
+    },
+    "step-04000/camera-34/my.png": {
+      "bytes": 895,
+      "sha256": "09d76841bca2c793301e89654a252ee589dc15516eeccafeb99e9124b8049622"
+    },
+    "step-04000/camera-34/normal.png": {
+      "bytes": 2603,
+      "sha256": "caaeee765b9e3382c26b74246afb8f9d41cac4d255ce78c79e5fa969c4353f75"
+    },
+    "step-04000/camera-34/orientation.png": {
+      "bytes": 3735,
+      "sha256": "29d590f3a3702d316ccf4e053593c7f5d0fd263edcb471f978585dc454eb1c76"
+    },
+    "step-04000/camera-34/orientation_raw.png": {
+      "bytes": 3747,
+      "sha256": "43fd2523cde0fd00d96e342687f1d1b1c77719bf98f5f8e1387e8040bd2d7a67"
+    },
+    "step-04000/camera-34/orientation_world_projector.png": {
+      "bytes": 4900,
+      "sha256": "552eac9e87664ffcaf243cd98971e955da57fd0f30f967760fe1216d4069072e"
+    },
+    "step-04000/camera-34/reconstructed.png": {
+      "bytes": 3300,
+      "sha256": "5588cb811fd9a9a1b89cb18e1357670876ef07d1591587416a855a5976e47287"
+    },
+    "step-04000/camera-34/specular.png": {
+      "bytes": 3623,
+      "sha256": "34170164eb811cbdc9f73706b567bab33d7c81a84f2d20f0ce991a3ad0988bf2"
+    },
+    "step-04000/camera-34/view.json": {
+      "bytes": 3905,
+      "sha256": "fb40c5349b00cb040daf7a4f9e0dd18a9cde644daeb1f944900c4dc502e2f991"
+    },
+    "step-04000/camera-45-errors.npz": {
+      "bytes": 376506,
+      "sha256": "c0f025fc37c4cb35b29fd83772474d7957b87c1ed9f18f4cea564e851a2c1846"
+    },
+    "step-04000/camera-45/Q_world_00.png": {
+      "bytes": 1712,
+      "sha256": "5d1d1db4dfcf66cb45b961cc5bcb62cd96208ba4c2d951753b54f47338e6d710"
+    },
+    "step-04000/camera-45/Q_world_01.png": {
+      "bytes": 1749,
+      "sha256": "1c3ad88e8a3ca21c13662a5a51483075dd5645d13aac5b1eb165b8bc2debf79c"
+    },
+    "step-04000/camera-45/Q_world_02.png": {
+      "bytes": 1702,
+      "sha256": "e8961781218019812c330ae29f2fe12ea8e45575ca15a3bfc40ae73ba8d2ee8e"
+    },
+    "step-04000/camera-45/Q_world_11.png": {
+      "bytes": 1792,
+      "sha256": "0c39a9179dc6010cfcf6a09e24fb8948ff87e3705e857ea1448d81353f76cb1b"
+    },
+    "step-04000/camera-45/Q_world_12.png": {
+      "bytes": 1577,
+      "sha256": "091dc36b0654758de5dc1061d9aba6a0e8d7042184699a5a61936891673d8c14"
+    },
+    "step-04000/camera-45/Q_world_22.png": {
+      "bytes": 1397,
+      "sha256": "1a9c4ef215d8947b0a6213434ca98b1f25a7a8d6cd69c23a423ad191fc0120a5"
+    },
+    "step-04000/camera-45/albedo.png": {
+      "bytes": 3358,
+      "sha256": "0c1a31ec872462ddd07b7ff9c8c89ed889e468b18eab569c50f3da974facebe6"
+    },
+    "step-04000/camera-45/diffuse.png": {
+      "bytes": 3986,
+      "sha256": "35f02d001cd031d697b9ebc9a880ac5bd81019df4e24fc9a8e5ee8b88ebcd8dc"
+    },
+    "step-04000/camera-45/ground_truth.png": {
+      "bytes": 5156,
+      "sha256": "ab8cb95ff5dd136cae877a1b5d38d96f2e73ee390eeaf347ea5ddb2184271345"
+    },
+    "step-04000/camera-45/major_width.png": {
+      "bytes": 1528,
+      "sha256": "9cc9d7cb85e79199fb62bb1dff43c87e4b25dec27bcbfe034c7a37b891bce6f8"
+    },
+    "step-04000/camera-45/mask.png": {
+      "bytes": 390,
+      "sha256": "01c603163231c552003601be4c71d70162ea905266640ca747d46b87974b4696"
+    },
+    "step-04000/camera-45/materials.npz": {
+      "bytes": 991090,
+      "sha256": "53373ad3bf8b09467e11294be01ed223c388a8b0a52e433ae1493f7074dec5f1"
+    },
+    "step-04000/camera-45/metallic.png": {
+      "bytes": 769,
+      "sha256": "5b3853394fae0f4ef1dc0f99fc8c1eba5c00b84f0bbf35f9e085b7fd10a22bc2"
+    },
+    "step-04000/camera-45/minor_width.png": {
+      "bytes": 1524,
+      "sha256": "c0547f8d6630f8b26504828b586c48d9868a7ae345f9836a8a9dc14da47b1587"
+    },
+    "step-04000/camera-45/mx.png": {
+      "bytes": 1524,
+      "sha256": "c0547f8d6630f8b26504828b586c48d9868a7ae345f9836a8a9dc14da47b1587"
+    },
+    "step-04000/camera-45/my.png": {
+      "bytes": 1528,
+      "sha256": "9cc9d7cb85e79199fb62bb1dff43c87e4b25dec27bcbfe034c7a37b891bce6f8"
+    },
+    "step-04000/camera-45/normal.png": {
+      "bytes": 5728,
+      "sha256": "1de0ff113376680ec3aa339a561c632d45041f3a66885b6129056a19ec9b69bf"
+    },
+    "step-04000/camera-45/orientation.png": {
+      "bytes": 6070,
+      "sha256": "b9aef756695ffd33de35462c79e2bb4e395ce77bab9fb3244f4129eeaba7c97e"
+    },
+    "step-04000/camera-45/orientation_raw.png": {
+      "bytes": 6077,
+      "sha256": "3ff8dce640e4d3ba99da0be1b188ab369b8c0c32007d317644ec7d5e4ab01113"
+    },
+    "step-04000/camera-45/orientation_world_projector.png": {
+      "bytes": 8235,
+      "sha256": "562a9c11efcb4e8369fc7210b343fcbb924d208dc6c74c3b391c65cb01756151"
+    },
+    "step-04000/camera-45/reconstructed.png": {
+      "bytes": 5889,
+      "sha256": "a473b4d1a75aeeb12cd13866692bef01822153af9b68b83853655d167eacf0ae"
+    },
+    "step-04000/camera-45/specular.png": {
+      "bytes": 6205,
+      "sha256": "7f0f65c4e45bad8ee07058cacf571932bb67ebb147bec05a2b00373e106e8868"
+    },
+    "step-04000/camera-45/view.json": {
+      "bytes": 3913,
+      "sha256": "6814a032f5b1f5c421c1aaec2072b3cef0b6f44e17dce62859a900715b3244e2"
+    },
+    "step-04000/camera-50-errors.npz": {
+      "bytes": 247299,
+      "sha256": "a8452e7318cb4cce2a624a7ec8a136764031fbf0a64dd6ca18bf79e84e9e9c80"
+    },
+    "step-04000/camera-50/Q_world_00.png": {
+      "bytes": 1070,
+      "sha256": "13897225903e671a82001252be0b57250e2619a654388c4b0173dbc4a34b95ff"
+    },
+    "step-04000/camera-50/Q_world_01.png": {
+      "bytes": 1129,
+      "sha256": "4ea68c1e908893c36fcec84dacd92cbe56ca03a8e747191dc50e40e05f16ab94"
+    },
+    "step-04000/camera-50/Q_world_02.png": {
+      "bytes": 1072,
+      "sha256": "70da24022ef1e0391cc49c44e9f6c07cf78e27f714e3b6face729da909c94ed5"
+    },
+    "step-04000/camera-50/Q_world_11.png": {
+      "bytes": 1220,
+      "sha256": "5424eda0cd33cc84acfbd7076212665ff187b451aaf70342b4c0fda23a25e45b"
+    },
+    "step-04000/camera-50/Q_world_12.png": {
+      "bytes": 1200,
+      "sha256": "f2315fc3a5ac18315a12d8c45a643c8fe0ffccebdbe5c74f9edbf965e198dcde"
+    },
+    "step-04000/camera-50/Q_world_22.png": {
+      "bytes": 1028,
+      "sha256": "44440f07495ace362b844a402f076dca1fee274818b9b60d838a1cdd434f37c9"
+    },
+    "step-04000/camera-50/albedo.png": {
+      "bytes": 2234,
+      "sha256": "1e7a330365bba865c2caac1cf0ecfd81486bbe81672ea0733808bc9067025fa1"
+    },
+    "step-04000/camera-50/diffuse.png": {
+      "bytes": 2187,
+      "sha256": "dc6a61aad7ccb2bd3858b072bd5f1d11c97a99f1790446e47b89ab1efd5498e2"
+    },
+    "step-04000/camera-50/ground_truth.png": {
+      "bytes": 2930,
+      "sha256": "bccffadf5af37538ab86079b3322a91aba999be2dd927262aef591c279670c33"
+    },
+    "step-04000/camera-50/major_width.png": {
+      "bytes": 1039,
+      "sha256": "f0c3f3c80d154a2f84b55ca1af0ccb724cf7dc955a2173984823b38827bcf789"
+    },
+    "step-04000/camera-50/mask.png": {
+      "bytes": 285,
+      "sha256": "6f7a889de6ec8f2de41fcfc0805dcfd14f0210389c9c3a528e29f7186e2275ae"
+    },
+    "step-04000/camera-50/materials.npz": {
+      "bytes": 659773,
+      "sha256": "7bb2134c4aa160a90555620103e3a6f9299731d7abc53a5c15b9b834ac398a84"
+    },
+    "step-04000/camera-50/metallic.png": {
+      "bytes": 503,
+      "sha256": "a3b7347a667dd3d5653a32ee744247dccf18de423d606aa8dd232aac351cf14e"
+    },
+    "step-04000/camera-50/minor_width.png": {
+      "bytes": 1042,
+      "sha256": "cc948d2a8fa5e172f86b285d1885d44d0e527f3c5edbe898f9c5f1ebe325447c"
+    },
+    "step-04000/camera-50/mx.png": {
+      "bytes": 1042,
+      "sha256": "cc948d2a8fa5e172f86b285d1885d44d0e527f3c5edbe898f9c5f1ebe325447c"
+    },
+    "step-04000/camera-50/my.png": {
+      "bytes": 1039,
+      "sha256": "f0c3f3c80d154a2f84b55ca1af0ccb724cf7dc955a2173984823b38827bcf789"
+    },
+    "step-04000/camera-50/normal.png": {
+      "bytes": 2919,
+      "sha256": "ce151b2d3fe5ba701dfa116f125c2e3f3e85609693f1fcfc2e03db0769c185f2"
+    },
+    "step-04000/camera-50/orientation.png": {
+      "bytes": 4138,
+      "sha256": "859409c679556127577b325022ad4b9b38673da08800f2979c3efef10765fa09"
+    },
+    "step-04000/camera-50/orientation_raw.png": {
+      "bytes": 4134,
+      "sha256": "0460d32b9f29513d5ca9308e7ee35c1d2d90367ff2ea866effc0265ed6fc78ce"
+    },
+    "step-04000/camera-50/orientation_world_projector.png": {
+      "bytes": 5471,
+      "sha256": "7efe7ac639ec56fefd9ff3b578f8ea5a4e7329d11cf700d604fdde48d2ced9cb"
+    },
+    "step-04000/camera-50/reconstructed.png": {
+      "bytes": 3638,
+      "sha256": "7fe784a0e127dd4f407c3d48512ee5f6f5e83b442fccabc3e3fbabf1d9797056"
+    },
+    "step-04000/camera-50/specular.png": {
+      "bytes": 3939,
+      "sha256": "7219e37494200384ad8dd04813afc1f19ab096eaa9b3306a57ff33032b00b48b"
+    },
+    "step-04000/camera-50/view.json": {
+      "bytes": 3913,
+      "sha256": "ca1e8394a21ebae021d55bc8cd2c5360910f2ccf061c97e01db847556652abd0"
+    },
+    "step-04000/illumination-preview.png": {
+      "bytes": 2964,
+      "sha256": "2b187794dafbbc835b24ce04f12bba976019edaac7040f9b2e83b5f09cd09e44"
+    },
+    "step-04000/illumination.npz": {
+      "bytes": 263187,
+      "sha256": "5380d6b6977decd196da8b18a5017ebad6c55c4c77b341a29d31c986e53d93a4"
+    },
+    "step-04000/metrics.json": {
+      "bytes": 13824,
+      "sha256": "111b4f7460aaaae8ba3e02d8e9b0d6ea793a32b5fad28b218c2f68aa5fb77ca9"
+    },
+    "step-06000/camera-0-errors.npz": {
+      "bytes": 433357,
+      "sha256": "202c66d982439d62b75c06b65dec2c44d0ef7813eafaa0158fd104f30c1e7ee9"
+    },
+    "step-06000/camera-0/Q_world_00.png": {
+      "bytes": 2164,
+      "sha256": "05a7838cd17a47ef29482c81a5eeee83d2fdf2efc801507f22f3fa32db623d47"
+    },
+    "step-06000/camera-0/Q_world_01.png": {
+      "bytes": 2270,
+      "sha256": "e06090650434d34e0dde944e6a77056926f53c9cc5ca25360305aee513a25007"
+    },
+    "step-06000/camera-0/Q_world_02.png": {
+      "bytes": 2037,
+      "sha256": "b481361f0c093907d3ad0752610f07bbc75fc27436e1e58d3002b8707887b611"
+    },
+    "step-06000/camera-0/Q_world_11.png": {
+      "bytes": 2215,
+      "sha256": "5e6bb40fe6c074c5b51cacb858fbc3d02db1cc89973fc80ba1dcaee86fc17717"
+    },
+    "step-06000/camera-0/Q_world_12.png": {
+      "bytes": 2030,
+      "sha256": "76cebeebfe70c97b18054a66988cf24580e4d7a1b98df989d88a3c9972c325e2"
+    },
+    "step-06000/camera-0/Q_world_22.png": {
+      "bytes": 1740,
+      "sha256": "253a399c6beed251edc0073147e5072dd149a1df95efee894923176d273083cd"
+    },
+    "step-06000/camera-0/albedo.png": {
+      "bytes": 4405,
+      "sha256": "a26f35720c06cc8fb76f712c7ec9112dd395cfd7b3fbb8bfb72f17a82f657430"
+    },
+    "step-06000/camera-0/diffuse.png": {
+      "bytes": 5095,
+      "sha256": "a33e9a480c182ef7c692dc6aee6994dd482a705cec86455bf036c4cd9623415c"
+    },
+    "step-06000/camera-0/ground_truth.png": {
+      "bytes": 7265,
+      "sha256": "98f089a3f58fc2c62f66c4ca7f6c78356fcfc0ed5b449c186398d7548ba3b436"
+    },
+    "step-06000/camera-0/major_width.png": {
+      "bytes": 1713,
+      "sha256": "6ec31219098677a4a9c476920e083c7c8ed48c41a230a8b1054f0c3a1941b99a"
+    },
+    "step-06000/camera-0/mask.png": {
+      "bytes": 525,
+      "sha256": "af6f72caad54d0685a928737a3ef6780b355025ec965d7aab8b283c0bda647c2"
+    },
+    "step-06000/camera-0/materials.npz": {
+      "bytes": 1136494,
+      "sha256": "0aead5f7130c5d42a207668a7e49f356becfe60118eb7f8fd017850ec15fc53b"
+    },
+    "step-06000/camera-0/metallic.png": {
+      "bytes": 993,
+      "sha256": "94f4907995700a7029281092f3d693a731c5f6ae9877372b5d6a23c9f4dbb8d3"
+    },
+    "step-06000/camera-0/minor_width.png": {
+      "bytes": 1768,
+      "sha256": "17124129f1914b5e7e8aef23685fdf56b92763044adab1b54eda4c892328e881"
+    },
+    "step-06000/camera-0/mx.png": {
+      "bytes": 1768,
+      "sha256": "17124129f1914b5e7e8aef23685fdf56b92763044adab1b54eda4c892328e881"
+    },
+    "step-06000/camera-0/my.png": {
+      "bytes": 1713,
+      "sha256": "6ec31219098677a4a9c476920e083c7c8ed48c41a230a8b1054f0c3a1941b99a"
+    },
+    "step-06000/camera-0/normal.png": {
+      "bytes": 7321,
+      "sha256": "27223671dac1d312791d046d19c508f4aec7de6230e59cfbfc15af5fa77526e0"
+    },
+    "step-06000/camera-0/orientation.png": {
+      "bytes": 7408,
+      "sha256": "501f87aac658a2d2fa3952586dfb6d143ff1e4e82c0d54f76e9a6a6b55a8a71f"
+    },
+    "step-06000/camera-0/orientation_raw.png": {
+      "bytes": 7380,
+      "sha256": "2b4d16084beddea01ed250f658308fb60d4ab10c1de504bc8cdfa23d9c611ec9"
+    },
+    "step-06000/camera-0/orientation_world_projector.png": {
+      "bytes": 9928,
+      "sha256": "455d3ca387796b67d7eb9d50e3c8ecbc65b1dc401a2f6afd3bd846a4b4e3480b"
+    },
+    "step-06000/camera-0/reconstructed.png": {
+      "bytes": 7794,
+      "sha256": "d53737aee582acfc1a270b711035ddd3078b8a4aaa942155b25425db20fb6fcb"
+    },
+    "step-06000/camera-0/specular.png": {
+      "bytes": 8151,
+      "sha256": "f67eabd00c857e58e20cf74694da1c4e670b261373dd4a9033ab7c283d09d651"
+    },
+    "step-06000/camera-0/view.json": {
+      "bytes": 3913,
+      "sha256": "69d6398901bae3481a925c714f225d2e884972d0d858f91fa0b7c3cf1e46703d"
+    },
+    "step-06000/camera-1-errors.npz": {
+      "bytes": 395560,
+      "sha256": "e491bd64c3e0fee3e32386b249a29e680df5b91e857c1bf274ef40f8b91c1cc9"
+    },
+    "step-06000/camera-1/Q_world_00.png": {
+      "bytes": 1851,
+      "sha256": "2bae8cb157678141aec68e1750a8db1415304bb8bba583854cf827000cacddbb"
+    },
+    "step-06000/camera-1/Q_world_01.png": {
+      "bytes": 1847,
+      "sha256": "76585c632c2069c187be3c1afb592506409663941b9d95295e5f89df48c25c34"
+    },
+    "step-06000/camera-1/Q_world_02.png": {
+      "bytes": 1732,
+      "sha256": "c2ded198f661b8440163d4f490d7eb6b0f4f583957b33ecd48bd9ff8c822b0c7"
+    },
+    "step-06000/camera-1/Q_world_11.png": {
+      "bytes": 1842,
+      "sha256": "8f125ebdc310e8de0763e1fbf31acaed7b36cc37c66a109f5eb81f72b9f1380d"
+    },
+    "step-06000/camera-1/Q_world_12.png": {
+      "bytes": 1721,
+      "sha256": "91eaf6258f596f8bef80208210a025113092a74d13374b42a5e197d5b9cdef1a"
+    },
+    "step-06000/camera-1/Q_world_22.png": {
+      "bytes": 1575,
+      "sha256": "f76e05a8e5d8ccece30f467e84c6f9a5f19ab8aa4aa207901f7416f65852a230"
+    },
+    "step-06000/camera-1/albedo.png": {
+      "bytes": 3877,
+      "sha256": "6a657c0282b0994f75cafd3779cb85620a9258982e12d8806cdf59d02fbf6d71"
+    },
+    "step-06000/camera-1/diffuse.png": {
+      "bytes": 4155,
+      "sha256": "89fd2b9cab932b9b037e8ceb893468679ac6b45f2562a1fc99972644198a3456"
+    },
+    "step-06000/camera-1/ground_truth.png": {
+      "bytes": 5704,
+      "sha256": "e4ca46c8f1d70ec5463622fc66a52b92359a6bb38e12b9859aca1b9f33312832"
+    },
+    "step-06000/camera-1/major_width.png": {
+      "bytes": 1487,
+      "sha256": "6f66baa1b38cd227095fab0decc1b23da4c6450072c923f4543434e4da506822"
+    },
+    "step-06000/camera-1/mask.png": {
+      "bytes": 400,
+      "sha256": "314e2e9020268b3a64caec525871f6cde1f88adbd6dcc3ec79c06e7ce05fea78"
+    },
+    "step-06000/camera-1/materials.npz": {
+      "bytes": 1035554,
+      "sha256": "f886f4c762b1800a282ad2017e363792904e6406a16108947fdaa6cc5bd97545"
+    },
+    "step-06000/camera-1/metallic.png": {
+      "bytes": 797,
+      "sha256": "d0bf1f25878908a4a482878059a5dc810ed66b42536328f282096bc414c5b121"
+    },
+    "step-06000/camera-1/minor_width.png": {
+      "bytes": 1466,
+      "sha256": "e5c1f4e0333b664b28092e487f7a4f5f0c407afc17040771711d92bc56901216"
+    },
+    "step-06000/camera-1/mx.png": {
+      "bytes": 1466,
+      "sha256": "e5c1f4e0333b664b28092e487f7a4f5f0c407afc17040771711d92bc56901216"
+    },
+    "step-06000/camera-1/my.png": {
+      "bytes": 1487,
+      "sha256": "6f66baa1b38cd227095fab0decc1b23da4c6450072c923f4543434e4da506822"
+    },
+    "step-06000/camera-1/normal.png": {
+      "bytes": 6087,
+      "sha256": "5caeb3274a27eb541d0ee67dee7f95865a5e95a95ece909c42167d119456585b"
+    },
+    "step-06000/camera-1/orientation.png": {
+      "bytes": 6478,
+      "sha256": "0a4ac490a13880a6dc25a2a065e156dc04672b5f42448937c4470d56c821fbdf"
+    },
+    "step-06000/camera-1/orientation_raw.png": {
+      "bytes": 6480,
+      "sha256": "09b5203c689f3fbea9dd3554fb6f12f918d2461861a44d3e7e756c8459c91673"
+    },
+    "step-06000/camera-1/orientation_world_projector.png": {
+      "bytes": 8695,
+      "sha256": "8c6cb56de907e0d1d10c785e0457d96e5b05efdab190515d92915d773c637a42"
+    },
+    "step-06000/camera-1/reconstructed.png": {
+      "bytes": 6482,
+      "sha256": "5bb30cd2092881e73df5dea24f483e333cde8b801b1d4111555072bb5bec0897"
+    },
+    "step-06000/camera-1/specular.png": {
+      "bytes": 7041,
+      "sha256": "24742e279827cfb46de011dd158ce617f8974450c91f35b5126640cb87401eb7"
+    },
+    "step-06000/camera-1/view.json": {
+      "bytes": 3913,
+      "sha256": "c985aa7973636fccdd10d1c2c4c114d1b84bcd114689772c469ebf00dbf83650"
+    },
+    "step-06000/camera-28-errors.npz": {
+      "bytes": 461044,
+      "sha256": "6012bb8d0b3ad6869b07cb9cbbf1927a7f305fa4f341ef01442bfd6392c8ab8b"
+    },
+    "step-06000/camera-28/Q_world_00.png": {
+      "bytes": 2460,
+      "sha256": "234020e4969760ee0aef561524af6808989fb8a82661e5e170645cf35a0bf4eb"
+    },
+    "step-06000/camera-28/Q_world_01.png": {
+      "bytes": 2479,
+      "sha256": "42e637bc9751eacdf8e4f773cc6c096e5561625becb82b74aa94b075cc15c90e"
+    },
+    "step-06000/camera-28/Q_world_02.png": {
+      "bytes": 2252,
+      "sha256": "8a9c30a6decd6207e2bc0c61fd7e82762ce0559a6456b6b5c81c9a59ce0d1cf4"
+    },
+    "step-06000/camera-28/Q_world_11.png": {
+      "bytes": 2440,
+      "sha256": "49feea30029a976c4f658b96e0c5db6457415f6113cc47819fa83d0937f4ec14"
+    },
+    "step-06000/camera-28/Q_world_12.png": {
+      "bytes": 2140,
+      "sha256": "e5df7753466cb1ad97aee3c9774b73b3f7c3cbc053fe537ee283c6434ec977d2"
+    },
+    "step-06000/camera-28/Q_world_22.png": {
+      "bytes": 1852,
+      "sha256": "7b7ad10069641c6592340a21267660c5bd81c6fb1eac9de3f755526d50241e3a"
+    },
+    "step-06000/camera-28/albedo.png": {
+      "bytes": 4671,
+      "sha256": "c9f8159cfbe4a013e2128bd8f7a4b1a3cb622011d764e31f00b62163d758b1d4"
+    },
+    "step-06000/camera-28/diffuse.png": {
+      "bytes": 5450,
+      "sha256": "159f52f940787f924644c99cd03802d752ffb93425fe80ed160a4bcf1a2bbde1"
+    },
+    "step-06000/camera-28/ground_truth.png": {
+      "bytes": 8047,
+      "sha256": "85932acb8601872e7f0c8a992ba5a4a76f0eec371aba0cc36b3039094b9f5dfa"
+    },
+    "step-06000/camera-28/major_width.png": {
+      "bytes": 1825,
+      "sha256": "fcc436ee351a3cc4c1d0973bca47c89405661484468f4c389c6dfdb566467c05"
+    },
+    "step-06000/camera-28/mask.png": {
+      "bytes": 572,
+      "sha256": "a2d1658cd269cb1bfa65d08550b197ef0c1f5de9853246ca9ee07972eeae77b5"
+    },
+    "step-06000/camera-28/materials.npz": {
+      "bytes": 1214161,
+      "sha256": "79dc65acb223fa9884216a0cd3f83e870f2bff6c043f1cc9ea50e981e3cd58ea"
+    },
+    "step-06000/camera-28/metallic.png": {
+      "bytes": 1089,
+      "sha256": "0d0406f894c26b19bf22128074ab7dc9e78563d7b54878a3365212a1f061d523"
+    },
+    "step-06000/camera-28/minor_width.png": {
+      "bytes": 1845,
+      "sha256": "deb7c8babd14a1c54694033c2b4e3d35628895cff24704768267337caf54f530"
+    },
+    "step-06000/camera-28/mx.png": {
+      "bytes": 1845,
+      "sha256": "deb7c8babd14a1c54694033c2b4e3d35628895cff24704768267337caf54f530"
+    },
+    "step-06000/camera-28/my.png": {
+      "bytes": 1825,
+      "sha256": "fcc436ee351a3cc4c1d0973bca47c89405661484468f4c389c6dfdb566467c05"
+    },
+    "step-06000/camera-28/normal.png": {
+      "bytes": 7952,
+      "sha256": "efb3d75911dc95301a910a1e295d63cb01996c42e734f75c127f6bad201645fd"
+    },
+    "step-06000/camera-28/orientation.png": {
+      "bytes": 7982,
+      "sha256": "5cb0936a10820deae328849e54b5832f2115adce11aa99778c48e028cf75f7be"
+    },
+    "step-06000/camera-28/orientation_raw.png": {
+      "bytes": 8010,
+      "sha256": "5d2f3272fde4489e93bb6e4a7468c209237c23c0cc4765bb0780f62489cb1550"
+    },
+    "step-06000/camera-28/orientation_world_projector.png": {
+      "bytes": 10727,
+      "sha256": "ed385dca005c442ba97df2e5f9dda701b603b848f28cf1514fd0a02fbbe9ed68"
+    },
+    "step-06000/camera-28/reconstructed.png": {
+      "bytes": 8553,
+      "sha256": "efd9b46b9addcb3c505a400e6a73a6db9867dcca415d994f0973fb031745f9d1"
+    },
+    "step-06000/camera-28/specular.png": {
+      "bytes": 9019,
+      "sha256": "bf796d31a8f59712e75762a786ed4fd95c2f41a20865b84c581e2a9deb57e92c"
+    },
+    "step-06000/camera-28/view.json": {
+      "bytes": 3916,
+      "sha256": "058d0334476260020563254e9848ffe7316d0db1cd47e245bfbf046e36ff44bc"
+    },
+    "step-06000/camera-34-errors.npz": {
+      "bytes": 239259,
+      "sha256": "034e0c1e04749c174407f41c7d5469e34046eb1b5e06da9f18633eb3e86569ca"
+    },
+    "step-06000/camera-34/Q_world_00.png": {
+      "bytes": 923,
+      "sha256": "7db96fa3c5b21ab035962b3e0295305eb4e6784f656a408d60ca00055e3537f6"
+    },
+    "step-06000/camera-34/Q_world_01.png": {
+      "bytes": 1016,
+      "sha256": "a6b9cb09274792b90f68263a45903498601d9eb98e955017dd3720f15863dddf"
+    },
+    "step-06000/camera-34/Q_world_02.png": {
+      "bytes": 968,
+      "sha256": "af25af9f5273ad805e9d9a9ebbca2478513dc02da7e67861f06b3169c2671ec3"
+    },
+    "step-06000/camera-34/Q_world_11.png": {
+      "bytes": 1118,
+      "sha256": "692ecdba75ab739f68b3d7137a2dbdf711ca00f3afe8bbbe800b4a1a122f7ed2"
+    },
+    "step-06000/camera-34/Q_world_12.png": {
+      "bytes": 1174,
+      "sha256": "04409d6b3bcfb42b18d29f3702fe15ad755ee7a0cb229f0a6346eb9289512051"
+    },
+    "step-06000/camera-34/Q_world_22.png": {
+      "bytes": 999,
+      "sha256": "1d5f5a99b3e2a0e3ae63e9a59ad11b9c7fb75a95fe5a9588e6e3606888572bfe"
+    },
+    "step-06000/camera-34/albedo.png": {
+      "bytes": 2113,
+      "sha256": "1dce08c4360d71e55cfe4276dd6b6f392f04332a11f1edaf6bb0f1df779cc509"
+    },
+    "step-06000/camera-34/diffuse.png": {
+      "bytes": 2082,
+      "sha256": "fd4817257f4de05924a4037462bd4ceebe3a747962f44a0826c4a9b2de1af11e"
+    },
+    "step-06000/camera-34/ground_truth.png": {
+      "bytes": 2475,
+      "sha256": "828c80db1a55c0cd2606355adbe5d731f2152cacbae655774c5bffa1ad06917e"
+    },
+    "step-06000/camera-34/major_width.png": {
+      "bytes": 839,
+      "sha256": "5a05e8642ff2fae7923cf14473a1fe8574bb830fcfe406b18cc417b03b0e2137"
+    },
+    "step-06000/camera-34/mask.png": {
+      "bytes": 274,
+      "sha256": "a18eb92e777517738c1f76aae126c2a165517930bb5f58bb7d814a399f443ab2"
+    },
+    "step-06000/camera-34/materials.npz": {
+      "bytes": 628850,
+      "sha256": "0adf5a7938c856f621cc4117ce5071cb813f20c7b9e5a4fb6695cb8b4ee3d09c"
+    },
+    "step-06000/camera-34/metallic.png": {
+      "bytes": 472,
+      "sha256": "125abd4debe374e6cb66e64ff93c204524049f4a59a6e41664263b4e855921f0"
+    },
+    "step-06000/camera-34/minor_width.png": {
+      "bytes": 865,
+      "sha256": "14af48c2cf0fa6fc662ea175c43334e07f83d01e0da2ffe218d3e9c065c89bad"
+    },
+    "step-06000/camera-34/mx.png": {
+      "bytes": 865,
+      "sha256": "14af48c2cf0fa6fc662ea175c43334e07f83d01e0da2ffe218d3e9c065c89bad"
+    },
+    "step-06000/camera-34/my.png": {
+      "bytes": 839,
+      "sha256": "5a05e8642ff2fae7923cf14473a1fe8574bb830fcfe406b18cc417b03b0e2137"
+    },
+    "step-06000/camera-34/normal.png": {
+      "bytes": 2603,
+      "sha256": "caaeee765b9e3382c26b74246afb8f9d41cac4d255ce78c79e5fa969c4353f75"
+    },
+    "step-06000/camera-34/orientation.png": {
+      "bytes": 3816,
+      "sha256": "87abdda96dd6a8e79c4c828c7db1db6465eabb74fc6dadb18eefb110e560a574"
+    },
+    "step-06000/camera-34/orientation_raw.png": {
+      "bytes": 3824,
+      "sha256": "0d456057b935f42e1b56fbf206f6024d2a2691bacb3816db67e7f7029311d4f8"
+    },
+    "step-06000/camera-34/orientation_world_projector.png": {
+      "bytes": 5053,
+      "sha256": "d25cee2901b94b1c891a194be3f823b641c7abc93b4a74f96d50c3c28653e965"
+    },
+    "step-06000/camera-34/reconstructed.png": {
+      "bytes": 3312,
+      "sha256": "1e1f9cdab11ab04383994ed01e17db02555fcec3b4139c6c311621094f7d0ddf"
+    },
+    "step-06000/camera-34/specular.png": {
+      "bytes": 3615,
+      "sha256": "fe56ec31aea31953f987660a375bbd13483ca45ccbc13a4732b372bf7f60d1af"
+    },
+    "step-06000/camera-34/view.json": {
+      "bytes": 3906,
+      "sha256": "e4d14a09b357000c6050f15859b9025da14f96ca758bbafcb711954025b1c974"
+    },
+    "step-06000/camera-45-errors.npz": {
+      "bytes": 376834,
+      "sha256": "6c76942f7a804f2a86fac05f1c12e532ea70bea681647e51209050e9339255f3"
+    },
+    "step-06000/camera-45/Q_world_00.png": {
+      "bytes": 1783,
+      "sha256": "561cd2cb74a0baadc444f3fb90328c3d25eabb19b3d21cabe63acd0ca9c50d3e"
+    },
+    "step-06000/camera-45/Q_world_01.png": {
+      "bytes": 1860,
+      "sha256": "158dd6cc7a0013ba16b909ea0e74ec3400d0c343a22c5d904363853c51bc250f"
+    },
+    "step-06000/camera-45/Q_world_02.png": {
+      "bytes": 1764,
+      "sha256": "d95ddefaa88c97c506dc80e0b75c7b5312e8df5d2c3b54f5746766a212065afb"
+    },
+    "step-06000/camera-45/Q_world_11.png": {
+      "bytes": 1826,
+      "sha256": "dfe1b0c0a5ce3a371c2fd0232129076cfcce1ed5b26fd7a11fe472538bf486d2"
+    },
+    "step-06000/camera-45/Q_world_12.png": {
+      "bytes": 1691,
+      "sha256": "8d0e0de1dad4d14ddf0061a53d42f5a09b76f3521cf0e50b9f52e6fa44364d7e"
+    },
+    "step-06000/camera-45/Q_world_22.png": {
+      "bytes": 1506,
+      "sha256": "0ff56a5c1bfe894bad429c2cf55b8dc673c739a1c81b3cc3d2cec78e340b36cc"
+    },
+    "step-06000/camera-45/albedo.png": {
+      "bytes": 3656,
+      "sha256": "dbb340677082e53438b9cf959c45c882f6b537906275291d0482199d2419931b"
+    },
+    "step-06000/camera-45/diffuse.png": {
+      "bytes": 4037,
+      "sha256": "4d269a2a7038fbb1c4ae48b1be2c21301c9400422a35a36296dbf3b71f3c1f51"
+    },
+    "step-06000/camera-45/ground_truth.png": {
+      "bytes": 5156,
+      "sha256": "ab8cb95ff5dd136cae877a1b5d38d96f2e73ee390eeaf347ea5ddb2184271345"
+    },
+    "step-06000/camera-45/major_width.png": {
+      "bytes": 1509,
+      "sha256": "9473592dedfd8c9147a1175a93d7065862a6773bc75e24174c46b857aae0811d"
+    },
+    "step-06000/camera-45/mask.png": {
+      "bytes": 390,
+      "sha256": "01c603163231c552003601be4c71d70162ea905266640ca747d46b87974b4696"
+    },
+    "step-06000/camera-45/materials.npz": {
+      "bytes": 991631,
+      "sha256": "1e7516ff199a0057ab58ca48a32dfaa8512e1a4f3a095a96367af29971c2bfde"
+    },
+    "step-06000/camera-45/metallic.png": {
+      "bytes": 784,
+      "sha256": "27e7901dc948a52edfdda43e15ebf31dd5b1538075db5fe2b3651a88fae5e959"
+    },
+    "step-06000/camera-45/minor_width.png": {
+      "bytes": 1501,
+      "sha256": "25f77f32c70321ba2fdd231b15c908052078934cf883b684f3a564c54e7a5415"
+    },
+    "step-06000/camera-45/mx.png": {
+      "bytes": 1501,
+      "sha256": "25f77f32c70321ba2fdd231b15c908052078934cf883b684f3a564c54e7a5415"
+    },
+    "step-06000/camera-45/my.png": {
+      "bytes": 1509,
+      "sha256": "9473592dedfd8c9147a1175a93d7065862a6773bc75e24174c46b857aae0811d"
+    },
+    "step-06000/camera-45/normal.png": {
+      "bytes": 5728,
+      "sha256": "1de0ff113376680ec3aa339a561c632d45041f3a66885b6129056a19ec9b69bf"
+    },
+    "step-06000/camera-45/orientation.png": {
+      "bytes": 6229,
+      "sha256": "38d5f89ee4ed5b94f0d4a29135d7a4da5e1e53d872015f41bfe23e262c7d4065"
+    },
+    "step-06000/camera-45/orientation_raw.png": {
+      "bytes": 6251,
+      "sha256": "9636f9cb8ebf765ffa2a691c85084d734fc80d58589e7c189bce4d228956ad8a"
+    },
+    "step-06000/camera-45/orientation_world_projector.png": {
+      "bytes": 8487,
+      "sha256": "ff053ca4380f796e23137b02247b68f5f14bc83589602a83555047751f4cfbed"
+    },
+    "step-06000/camera-45/reconstructed.png": {
+      "bytes": 5950,
+      "sha256": "a19ed108824a7f7d95402884695656d0077766ce8dbea6192d9532efb523b784"
+    },
+    "step-06000/camera-45/specular.png": {
+      "bytes": 6263,
+      "sha256": "38bbf66fda482777c0de54716b1c86e216c1c4e86198b286aa33cd690343d5be"
+    },
+    "step-06000/camera-45/view.json": {
+      "bytes": 3913,
+      "sha256": "4beddaafc071d1fde77ef8018b02f8e82b8f8c8ec51f4a478f2d34fe45b36eb0"
+    },
+    "step-06000/camera-50-errors.npz": {
+      "bytes": 247282,
+      "sha256": "bd6555768b36347830f91d6d24700250af10076898d7c6ce733cd12d489c46da"
+    },
+    "step-06000/camera-50/Q_world_00.png": {
+      "bytes": 1094,
+      "sha256": "9dc62e889729cf986eb6299b4fd2b8cf6960f2eb187c5e4fca36a077a947a953"
+    },
+    "step-06000/camera-50/Q_world_01.png": {
+      "bytes": 1151,
+      "sha256": "1fd19f3a47f47ec65fa547655d9fe859a7d377c28455590c747cc9b2b6353306"
+    },
+    "step-06000/camera-50/Q_world_02.png": {
+      "bytes": 1067,
+      "sha256": "5d2bf4925623678ce2453f59385682ec7fe4fa9cf58f5254d691e09848e231f4"
+    },
+    "step-06000/camera-50/Q_world_11.png": {
+      "bytes": 1221,
+      "sha256": "bc15226d415f01b710e65362008e599ae27dffc0165fd3167dfcfac339e6fb5a"
+    },
+    "step-06000/camera-50/Q_world_12.png": {
+      "bytes": 1200,
+      "sha256": "4ab01d7c49e5b0e7d672db44c151a6a9e70e7697d1c469130d30aa865be9ffa5"
+    },
+    "step-06000/camera-50/Q_world_22.png": {
+      "bytes": 1029,
+      "sha256": "22955477faede51ddd6a9d04e29d43499c037a1231b3f4cbe271c16ed96f5154"
+    },
+    "step-06000/camera-50/albedo.png": {
+      "bytes": 2373,
+      "sha256": "66976536bb8803df5781a2803a532754a0fa0a76a42521dafa445294143fa224"
+    },
+    "step-06000/camera-50/diffuse.png": {
+      "bytes": 2178,
+      "sha256": "fbb69bb32c8dce1c81a0b781966e8ebe9cbcda017ec3c7655d82c5c8de743167"
+    },
+    "step-06000/camera-50/ground_truth.png": {
+      "bytes": 2930,
+      "sha256": "bccffadf5af37538ab86079b3322a91aba999be2dd927262aef591c279670c33"
+    },
+    "step-06000/camera-50/major_width.png": {
+      "bytes": 1004,
+      "sha256": "c02775991256bea9c7daf9feebe3a6852fbd0f635979cc226df7d791346cb8fd"
+    },
+    "step-06000/camera-50/mask.png": {
+      "bytes": 285,
+      "sha256": "6f7a889de6ec8f2de41fcfc0805dcfd14f0210389c9c3a528e29f7186e2275ae"
+    },
+    "step-06000/camera-50/materials.npz": {
+      "bytes": 660151,
+      "sha256": "3ea25f7035c8e7cf5dd91a030eec69733ef9bc07252b201f892b6cdd8b2f40d5"
+    },
+    "step-06000/camera-50/metallic.png": {
+      "bytes": 485,
+      "sha256": "4dd338e3a4a62bbbfaba890882cb760a60d1e30b978c10c00a820fbc71dc2b6f"
+    },
+    "step-06000/camera-50/minor_width.png": {
+      "bytes": 1009,
+      "sha256": "c1783a2a2a81e16ae9b02c17f3ddde6c484224add84e546e9c63e4bef6f3424b"
+    },
+    "step-06000/camera-50/mx.png": {
+      "bytes": 1009,
+      "sha256": "c1783a2a2a81e16ae9b02c17f3ddde6c484224add84e546e9c63e4bef6f3424b"
+    },
+    "step-06000/camera-50/my.png": {
+      "bytes": 1004,
+      "sha256": "c02775991256bea9c7daf9feebe3a6852fbd0f635979cc226df7d791346cb8fd"
+    },
+    "step-06000/camera-50/normal.png": {
+      "bytes": 2919,
+      "sha256": "ce151b2d3fe5ba701dfa116f125c2e3f3e85609693f1fcfc2e03db0769c185f2"
+    },
+    "step-06000/camera-50/orientation.png": {
+      "bytes": 4175,
+      "sha256": "8cf6a24191f1d6394d314ce9af61b64b7f0bc9fe4c0847cfd4a1c731577745ae"
+    },
+    "step-06000/camera-50/orientation_raw.png": {
+      "bytes": 4178,
+      "sha256": "8e6a652745a887bebfca7a99c305438f561c4ecb2ac9e0b1fb21a4a5082977ad"
+    },
+    "step-06000/camera-50/orientation_world_projector.png": {
+      "bytes": 5505,
+      "sha256": "b2fa6d936788c8dd26c3e33cd80f6c3cf219c4c2014de28dd693b71e7a224ffb"
+    },
+    "step-06000/camera-50/reconstructed.png": {
+      "bytes": 3597,
+      "sha256": "843e909d7f35dbaa4cfc3a03a8c5c8e70e1d75797a1a1be0d2eb1c2d45bd61aa"
+    },
+    "step-06000/camera-50/specular.png": {
+      "bytes": 3944,
+      "sha256": "6e08ece47b5e1ba0fd0e10ae542efd6ab620b2104d0c35467f96a153a02f9be8"
+    },
+    "step-06000/camera-50/view.json": {
+      "bytes": 3913,
+      "sha256": "0b5b254717a0ad24a5c69b188b13ba07cc0441133fd626dba10ec60b78f3ddd7"
+    },
+    "step-06000/illumination-preview.png": {
+      "bytes": 2964,
+      "sha256": "2b187794dafbbc835b24ce04f12bba976019edaac7040f9b2e83b5f09cd09e44"
+    },
+    "step-06000/illumination.npz": {
+      "bytes": 263187,
+      "sha256": "5380d6b6977decd196da8b18a5017ebad6c55c4c77b341a29d31c986e53d93a4"
+    },
+    "step-06000/metrics.json": {
+      "bytes": 13850,
+      "sha256": "2e63a0ac28288587aac5532780ab72990048c263627508ca30a3e655c8b97e84"
+    },
+    "step-08000/camera-0-errors.npz": {
+      "bytes": 433193,
+      "sha256": "95a8a559bccd5a7a3f0bfb0fa9565be24fb343ab1da06abf6da439892f3a2b04"
+    },
+    "step-08000/camera-0/Q_world_00.png": {
+      "bytes": 2155,
+      "sha256": "7b985de69e44a2f86f278558141238e9006ea56556cbfdc9cfdbc64b97aeb1d2"
+    },
+    "step-08000/camera-0/Q_world_01.png": {
+      "bytes": 2276,
+      "sha256": "d43f58f3f0d894d2128f1d5734df01c0ab8c4701cb59932cbb973722f563ae7c"
+    },
+    "step-08000/camera-0/Q_world_02.png": {
+      "bytes": 2008,
+      "sha256": "15970a605a312d1d38d190d9aeb9a2fdf8ae6c5a2c46eaebe2cdf1e07a6b46fc"
+    },
+    "step-08000/camera-0/Q_world_11.png": {
+      "bytes": 2231,
+      "sha256": "c9f720f1d2fa40910f23daed4695b2923031a7e7578fb620269da78826e60361"
+    },
+    "step-08000/camera-0/Q_world_12.png": {
+      "bytes": 2063,
+      "sha256": "64a09f3fd4ac3e9895b3471f178e0b23cbcf2e9ebb5209aeab4c36849ce39876"
+    },
+    "step-08000/camera-0/Q_world_22.png": {
+      "bytes": 1763,
+      "sha256": "74ac6fa9c444bf1d5215780b94dfbaad2202d342e73ca4c99cf9627ad0f93389"
+    },
+    "step-08000/camera-0/albedo.png": {
+      "bytes": 4781,
+      "sha256": "c0c5dd0a5b0a02e5ce3e82a9f9c89ae4f1196bb348f76868ce09d22b45a43abb"
+    },
+    "step-08000/camera-0/diffuse.png": {
+      "bytes": 5092,
+      "sha256": "8bcc8ba76f8f4d22f7a852998404ce16f8205bec08ddeec0f0480398037e26c2"
+    },
+    "step-08000/camera-0/ground_truth.png": {
+      "bytes": 7265,
+      "sha256": "98f089a3f58fc2c62f66c4ca7f6c78356fcfc0ed5b449c186398d7548ba3b436"
+    },
+    "step-08000/camera-0/major_width.png": {
+      "bytes": 1700,
+      "sha256": "5f26901b5d7dcc45c3b309cdcf1591a9e724e4625b148b867be452eb91613605"
+    },
+    "step-08000/camera-0/mask.png": {
+      "bytes": 525,
+      "sha256": "af6f72caad54d0685a928737a3ef6780b355025ec965d7aab8b283c0bda647c2"
+    },
+    "step-08000/camera-0/materials.npz": {
+      "bytes": 1136591,
+      "sha256": "7bddedd382c607c5bca6143c3fc7bd1099cef461c84f9df4882f606312146876"
+    },
+    "step-08000/camera-0/metallic.png": {
+      "bytes": 992,
+      "sha256": "f52f37cbef62b580ef8142fec3831f5563a129144f2ac71574ec8779b17ed375"
+    },
+    "step-08000/camera-0/minor_width.png": {
+      "bytes": 1758,
+      "sha256": "fbb56831c2751ebcaf65866754436b0287664a2340c8290e757b8bda1a8c9cf9"
+    },
+    "step-08000/camera-0/mx.png": {
+      "bytes": 1758,
+      "sha256": "fbb56831c2751ebcaf65866754436b0287664a2340c8290e757b8bda1a8c9cf9"
+    },
+    "step-08000/camera-0/my.png": {
+      "bytes": 1700,
+      "sha256": "5f26901b5d7dcc45c3b309cdcf1591a9e724e4625b148b867be452eb91613605"
+    },
+    "step-08000/camera-0/normal.png": {
+      "bytes": 7321,
+      "sha256": "27223671dac1d312791d046d19c508f4aec7de6230e59cfbfc15af5fa77526e0"
+    },
+    "step-08000/camera-0/orientation.png": {
+      "bytes": 7499,
+      "sha256": "f599a2fc8c0747d0d07c6b8b0264eb6d3bf0afa727d3559599886fdcbb6e8b80"
+    },
+    "step-08000/camera-0/orientation_raw.png": {
+      "bytes": 7522,
+      "sha256": "1ba05e63675be231d090093debfdc464285e3ccb702165932f52bf3992118732"
+    },
+    "step-08000/camera-0/orientation_world_projector.png": {
+      "bytes": 9955,
+      "sha256": "6401a1ed0dd639a9556c779a8f0e2b6a60e4e1025263d30394d1dd681ca2a789"
+    },
+    "step-08000/camera-0/reconstructed.png": {
+      "bytes": 7804,
+      "sha256": "74a13785702af65e97986d788c7ad350f1e26ff21faef265d13e4f8f18d93324"
+    },
+    "step-08000/camera-0/specular.png": {
+      "bytes": 8168,
+      "sha256": "820322f97b815dfd4e3c553aa8c886e41ce19f6a0b626abf4729ee2156dfd7c2"
+    },
+    "step-08000/camera-0/view.json": {
+      "bytes": 3913,
+      "sha256": "e1ea231d54d1b1566b71a8ee5eb2e14df9000f0c0b6ad17d9812c82c8d5ea22c"
+    },
+    "step-08000/camera-1-errors.npz": {
+      "bytes": 395122,
+      "sha256": "0085b0fc87f80e09bc421548ada9b728971228db135ad321d07cdebdeffc30ca"
+    },
+    "step-08000/camera-1/Q_world_00.png": {
+      "bytes": 1852,
+      "sha256": "a59741b5ebc5ed8010c1994557214a6117848a696f2093c1a86167ca92f6c36b"
+    },
+    "step-08000/camera-1/Q_world_01.png": {
+      "bytes": 1841,
+      "sha256": "2c8dd79539c643c7270e2a426fbab0eb9e30f4b0609430c29d5cdc800653bfc3"
+    },
+    "step-08000/camera-1/Q_world_02.png": {
+      "bytes": 1679,
+      "sha256": "ab6a41064bf8d70977cf36e378414b2da2c93b2632651d053d55e4ec5ccbf2cb"
+    },
+    "step-08000/camera-1/Q_world_11.png": {
+      "bytes": 1813,
+      "sha256": "9c55cd9aa8d27d5bdeb11197c7662a7c24ec563adabbb422fc205c104ca8240f"
+    },
+    "step-08000/camera-1/Q_world_12.png": {
+      "bytes": 1702,
+      "sha256": "f576f7afbf48acc4d5a7f8367552e937923ad6c195817f33fd69b59fe5d9e375"
+    },
+    "step-08000/camera-1/Q_world_22.png": {
+      "bytes": 1613,
+      "sha256": "6d29591323ccd0c06d5bebd238ac76aed39edafdb81d6f0ec04807e7e1823426"
+    },
+    "step-08000/camera-1/albedo.png": {
+      "bytes": 4233,
+      "sha256": "89a041c72f233ab4603072e2d99f79c9b78f015270bed527cd733ba0eb95bd1e"
+    },
+    "step-08000/camera-1/diffuse.png": {
+      "bytes": 4124,
+      "sha256": "a530e2e1fc2bd0d922b555a3c9d2103c25d121185072920461f1f3e6bc6ef154"
+    },
+    "step-08000/camera-1/ground_truth.png": {
+      "bytes": 5704,
+      "sha256": "e4ca46c8f1d70ec5463622fc66a52b92359a6bb38e12b9859aca1b9f33312832"
+    },
+    "step-08000/camera-1/major_width.png": {
+      "bytes": 1464,
+      "sha256": "55f51678c0090366f7d2350d868b6e9c26394df9288d752112e7f15ffe8c2ab9"
+    },
+    "step-08000/camera-1/mask.png": {
+      "bytes": 400,
+      "sha256": "314e2e9020268b3a64caec525871f6cde1f88adbd6dcc3ec79c06e7ce05fea78"
+    },
+    "step-08000/camera-1/materials.npz": {
+      "bytes": 1035080,
+      "sha256": "0c77d950b56b3f090903f489caf8c9f643e8f64f1a8527395be885dc5f7e1722"
+    },
+    "step-08000/camera-1/metallic.png": {
+      "bytes": 791,
+      "sha256": "90401352ba295f259d8296a9e88a79a7a0d5a6b84f8007f264c5059b80fec10e"
+    },
+    "step-08000/camera-1/minor_width.png": {
+      "bytes": 1458,
+      "sha256": "382d75bf88a1d6f42483f722b4dbd5826ec2fe39889e29780b1be9e199c58344"
+    },
+    "step-08000/camera-1/mx.png": {
+      "bytes": 1458,
+      "sha256": "382d75bf88a1d6f42483f722b4dbd5826ec2fe39889e29780b1be9e199c58344"
+    },
+    "step-08000/camera-1/my.png": {
+      "bytes": 1464,
+      "sha256": "55f51678c0090366f7d2350d868b6e9c26394df9288d752112e7f15ffe8c2ab9"
+    },
+    "step-08000/camera-1/normal.png": {
+      "bytes": 6087,
+      "sha256": "5caeb3274a27eb541d0ee67dee7f95865a5e95a95ece909c42167d119456585b"
+    },
+    "step-08000/camera-1/orientation.png": {
+      "bytes": 6513,
+      "sha256": "11523108b8f3b20eb905159c201905f911c9e1e83310e7cddef77898644026cd"
+    },
+    "step-08000/camera-1/orientation_raw.png": {
+      "bytes": 6533,
+      "sha256": "9e2dc21d21fadd3dd5069e4d7803977ccf90ddf256c323abcad677b03af18dfd"
+    },
+    "step-08000/camera-1/orientation_world_projector.png": {
+      "bytes": 8679,
+      "sha256": "e554476958183c6d750c648b7c9df115c3be8bc70294f4f02f172a51c0e8e4f1"
+    },
+    "step-08000/camera-1/reconstructed.png": {
+      "bytes": 6453,
+      "sha256": "71bee9d519218d0b983fe5202044f458164ac5c9077409775ca810707b21d8d7"
+    },
+    "step-08000/camera-1/specular.png": {
+      "bytes": 7014,
+      "sha256": "035dc5d2994c3b3dc79bc64427781b9bffad6336fa896fa88612a33d4c0082fa"
+    },
+    "step-08000/camera-1/view.json": {
+      "bytes": 3913,
+      "sha256": "ddfde6c684f9507b893e312f2f1d2fd7557691715df676b0416edc33440d48c6"
+    },
+    "step-08000/camera-28-errors.npz": {
+      "bytes": 461101,
+      "sha256": "4add346847d3a7dba3983b1b28daf11fd6071f4aa7ebc652c9ac5b268a4424d0"
+    },
+    "step-08000/camera-28/Q_world_00.png": {
+      "bytes": 2435,
+      "sha256": "e597e86936af1ef9f62b2b13d3956ee7a280f0937085ba40a1f1b53e87bc8266"
+    },
+    "step-08000/camera-28/Q_world_01.png": {
+      "bytes": 2505,
+      "sha256": "f78c95b744ae542d3fb5db3177b42e202fd9133186b3c4fbb44eab1b1b8ba812"
+    },
+    "step-08000/camera-28/Q_world_02.png": {
+      "bytes": 2223,
+      "sha256": "c591468bb154ea11f07cc40119559fede3c6780386eb6e74e8a3a7350567229a"
+    },
+    "step-08000/camera-28/Q_world_11.png": {
+      "bytes": 2465,
+      "sha256": "ca34e823208bcf74d8c9cfdcb82b97fe3a005c63f5308f540d156dcabb72ba19"
+    },
+    "step-08000/camera-28/Q_world_12.png": {
+      "bytes": 2230,
+      "sha256": "1b63d5c3f8e188d94838c62d49b2b5e17cf457e4aa92a4de3708e7db7ba26e55"
+    },
+    "step-08000/camera-28/Q_world_22.png": {
+      "bytes": 1897,
+      "sha256": "cc531929feed1fc6c3f9a67c2be8b6787a69ea5c93be325999cf40ee5845e7c7"
+    },
+    "step-08000/camera-28/albedo.png": {
+      "bytes": 5197,
+      "sha256": "d84584316f35d08b9177437ddc981da751ec02fe4c9a88f028bdb06ecb84f743"
+    },
+    "step-08000/camera-28/diffuse.png": {
+      "bytes": 5431,
+      "sha256": "3273c6b5a3f5cd17529d03f15cee4ac6c496c6c3542613e8e9b6df93f0a3c6d9"
+    },
+    "step-08000/camera-28/ground_truth.png": {
+      "bytes": 8047,
+      "sha256": "85932acb8601872e7f0c8a992ba5a4a76f0eec371aba0cc36b3039094b9f5dfa"
+    },
+    "step-08000/camera-28/major_width.png": {
+      "bytes": 1799,
+      "sha256": "845934d834d06ce32e77cd15f68b1d116b733042e3a98a74b44e666ffecd4f6c"
+    },
+    "step-08000/camera-28/mask.png": {
+      "bytes": 572,
+      "sha256": "a2d1658cd269cb1bfa65d08550b197ef0c1f5de9853246ca9ee07972eeae77b5"
+    },
+    "step-08000/camera-28/materials.npz": {
+      "bytes": 1213963,
+      "sha256": "9f80b50835425d85513f4a84b93bac837a5a75f0bcd6565260173c1d72767cb3"
+    },
+    "step-08000/camera-28/metallic.png": {
+      "bytes": 1067,
+      "sha256": "e397752bc5ae6aeb4c2c66a548b85609f0b1ccfcbacd3c676684473568cfa378"
+    },
+    "step-08000/camera-28/minor_width.png": {
+      "bytes": 1854,
+      "sha256": "76e42997fefe02432e2207417108968b836d33374e1e956b4b07bbbb68c48e8a"
+    },
+    "step-08000/camera-28/mx.png": {
+      "bytes": 1854,
+      "sha256": "76e42997fefe02432e2207417108968b836d33374e1e956b4b07bbbb68c48e8a"
+    },
+    "step-08000/camera-28/my.png": {
+      "bytes": 1799,
+      "sha256": "845934d834d06ce32e77cd15f68b1d116b733042e3a98a74b44e666ffecd4f6c"
+    },
+    "step-08000/camera-28/normal.png": {
+      "bytes": 7952,
+      "sha256": "efb3d75911dc95301a910a1e295d63cb01996c42e734f75c127f6bad201645fd"
+    },
+    "step-08000/camera-28/orientation.png": {
+      "bytes": 8088,
+      "sha256": "a547b70415967049a3043d58fe2d60820cbe7211af3c3a5e870d58145c61ee51"
+    },
+    "step-08000/camera-28/orientation_raw.png": {
+      "bytes": 8116,
+      "sha256": "7624aa15a64c7b8e5ab4b4137d5c27848d60c1ff398ff2c15c9f0df2297dfdd3"
+    },
+    "step-08000/camera-28/orientation_world_projector.png": {
+      "bytes": 10888,
+      "sha256": "f14e695dafc30225ef62420598e3056b79d88e41e68b882ce36d695e1fe1f39b"
+    },
+    "step-08000/camera-28/reconstructed.png": {
+      "bytes": 8436,
+      "sha256": "86ea56da0d4ce9644c9b915fd64356b6753ba64beded501cd16b6ec42bb88eb1"
+    },
+    "step-08000/camera-28/specular.png": {
+      "bytes": 8926,
+      "sha256": "8de434b918be4f8e01d9d3098c532b58b9b5adba05c27e02af518724ba0826a3"
+    },
+    "step-08000/camera-28/view.json": {
+      "bytes": 3916,
+      "sha256": "810361aaf8d0819e5046d3188619860ea2dd95c7c96495cb85c92f8d09af7b9b"
+    },
+    "step-08000/camera-34-errors.npz": {
+      "bytes": 239134,
+      "sha256": "c0c32d17c5f02a871d4ebefd4b051b1dfacebea3c883b1e9e8a4d3d75b1b84a2"
+    },
+    "step-08000/camera-34/Q_world_00.png": {
+      "bytes": 910,
+      "sha256": "dacf57e0987465d3e430a5eb04a8033ded5369da392a90f09083088fdb6d7c80"
+    },
+    "step-08000/camera-34/Q_world_01.png": {
+      "bytes": 1030,
+      "sha256": "6165ce65a266bc576369e99b8eb8a945752c76820bf583b48623c6b769b2d727"
+    },
+    "step-08000/camera-34/Q_world_02.png": {
+      "bytes": 942,
+      "sha256": "308964b96664458565b0d130e624d5583d5c7bcc22b5c2155812d7b76441aa64"
+    },
+    "step-08000/camera-34/Q_world_11.png": {
+      "bytes": 1091,
+      "sha256": "f0ecdd907fc1eaaf0d49fe5ef79727bba85529fe18fe393edbcfbf9d9a3ac668"
+    },
+    "step-08000/camera-34/Q_world_12.png": {
+      "bytes": 1159,
+      "sha256": "c45b51d65ff0a2d7d0d8ca4da8d425e3ca1d1b4ab63f949dd07b348b4efbc254"
+    },
+    "step-08000/camera-34/Q_world_22.png": {
+      "bytes": 1025,
+      "sha256": "eaf9a92c3be05aaafcdb579f2042fa29e9f49b66feff974af7d2cb8491478e9b"
+    },
+    "step-08000/camera-34/albedo.png": {
+      "bytes": 2318,
+      "sha256": "880da2f2b945584d708255dce09624d7810bc097d2d23365d5ba3fd2155c8028"
+    },
+    "step-08000/camera-34/diffuse.png": {
+      "bytes": 2092,
+      "sha256": "bf26479eb9b39029cd6f2a95190f3485abb8548705cc5928622bec879c6fea4c"
+    },
+    "step-08000/camera-34/ground_truth.png": {
+      "bytes": 2475,
+      "sha256": "828c80db1a55c0cd2606355adbe5d731f2152cacbae655774c5bffa1ad06917e"
+    },
+    "step-08000/camera-34/major_width.png": {
+      "bytes": 812,
+      "sha256": "f8d1ad7d94e4d47df3106c364a2e370ba5d6200ae115957f78b928afe190397b"
+    },
+    "step-08000/camera-34/mask.png": {
+      "bytes": 274,
+      "sha256": "a18eb92e777517738c1f76aae126c2a165517930bb5f58bb7d814a399f443ab2"
+    },
+    "step-08000/camera-34/materials.npz": {
+      "bytes": 628803,
+      "sha256": "da5991c57ea2a01fa1826a6cf3b49f4627c537d9963292872696d2f62aa7072b"
+    },
+    "step-08000/camera-34/metallic.png": {
+      "bytes": 485,
+      "sha256": "6c12821e1294fb795c23039f4f4e77b7fccea5ed36ccaf18bbc5a59551b27ccc"
+    },
+    "step-08000/camera-34/minor_width.png": {
+      "bytes": 884,
+      "sha256": "35df51fd4ccd5d3593e704589a41cd8c2953c6395d5671aced2505b05c4aa1d2"
+    },
+    "step-08000/camera-34/mx.png": {
+      "bytes": 884,
+      "sha256": "35df51fd4ccd5d3593e704589a41cd8c2953c6395d5671aced2505b05c4aa1d2"
+    },
+    "step-08000/camera-34/my.png": {
+      "bytes": 812,
+      "sha256": "f8d1ad7d94e4d47df3106c364a2e370ba5d6200ae115957f78b928afe190397b"
+    },
+    "step-08000/camera-34/normal.png": {
+      "bytes": 2603,
+      "sha256": "caaeee765b9e3382c26b74246afb8f9d41cac4d255ce78c79e5fa969c4353f75"
+    },
+    "step-08000/camera-34/orientation.png": {
+      "bytes": 3771,
+      "sha256": "e08837e596b9d0dd919b415985812921f0d90ac5124c853e05240e7febb3aedd"
+    },
+    "step-08000/camera-34/orientation_raw.png": {
+      "bytes": 3778,
+      "sha256": "54328d1c764b2eb3edb72385dc042672bed49b52ad15609817239fd28f567e9d"
+    },
+    "step-08000/camera-34/orientation_world_projector.png": {
+      "bytes": 4970,
+      "sha256": "0158a2a380c63a3d00c2b0c306e2105d760bd2f9c27dc3e9b02485990d21b44c"
+    },
+    "step-08000/camera-34/reconstructed.png": {
+      "bytes": 3301,
+      "sha256": "0b3a7a6a731aa61f921c6840e29cf7d4f91e1fa7d30b347a93bfad5979cc4596"
+    },
+    "step-08000/camera-34/specular.png": {
+      "bytes": 3666,
+      "sha256": "088ce040157aeb7bb6b6ea806283194ddd0e518912eb17aff277a88ba6836e40"
+    },
+    "step-08000/camera-34/view.json": {
+      "bytes": 3907,
+      "sha256": "47fadd5fcf1013e1ebf9cd4f619f9dff7902e6d3e57e47a03d37e5643fcda4db"
+    },
+    "step-08000/camera-45-errors.npz": {
+      "bytes": 376906,
+      "sha256": "a067efecb4e41da17c323a1a6d0c6ff0209bca94d5743310135ce3546a6af881"
+    },
+    "step-08000/camera-45/Q_world_00.png": {
+      "bytes": 1780,
+      "sha256": "b3f3df2fa9a93715fb32e6c839860a0ffbafcbc159de71986645252348c61a0a"
+    },
+    "step-08000/camera-45/Q_world_01.png": {
+      "bytes": 1860,
+      "sha256": "b91bdc05517df581e0df11d6ab01ecfc4b22ddd418162ed4cd8a77b142f288e8"
+    },
+    "step-08000/camera-45/Q_world_02.png": {
+      "bytes": 1748,
+      "sha256": "4f4dc911325c4c0e90b0a902ef26d61aabdacfb46980470c488ce86adae9972b"
+    },
+    "step-08000/camera-45/Q_world_11.png": {
+      "bytes": 1819,
+      "sha256": "4220567ba9a6de4cba3e9f785bdd9309b23e6e1665eeefc23c67332e072d8f87"
+    },
+    "step-08000/camera-45/Q_world_12.png": {
+      "bytes": 1750,
+      "sha256": "848133d29fe656ec1f6a5d690d6959e84bcca6dd4a51dc6539b4233adca71715"
+    },
+    "step-08000/camera-45/Q_world_22.png": {
+      "bytes": 1492,
+      "sha256": "68938beafdf6e16e6c5ed998006f9bda0c5bb6570b8e0448f15fab0d5c0e1b9f"
+    },
+    "step-08000/camera-45/albedo.png": {
+      "bytes": 3987,
+      "sha256": "3c01833933813fce0d1d07c5b6c0e2dd859a3a9cedb1c26675bb838ae75668b3"
+    },
+    "step-08000/camera-45/diffuse.png": {
+      "bytes": 3980,
+      "sha256": "f34ae70b3b541e4039aaa654b018d26e658fba38e13e84a37f5b21f9d8e77dab"
+    },
+    "step-08000/camera-45/ground_truth.png": {
+      "bytes": 5156,
+      "sha256": "ab8cb95ff5dd136cae877a1b5d38d96f2e73ee390eeaf347ea5ddb2184271345"
+    },
+    "step-08000/camera-45/major_width.png": {
+      "bytes": 1461,
+      "sha256": "15c24333cef9ab5ec6967402b5f27d31f54b9fba37e3b45f0257ae8de36f56ce"
+    },
+    "step-08000/camera-45/mask.png": {
+      "bytes": 390,
+      "sha256": "01c603163231c552003601be4c71d70162ea905266640ca747d46b87974b4696"
+    },
+    "step-08000/camera-45/materials.npz": {
+      "bytes": 992089,
+      "sha256": "ac4738a8951b8db60237354e95a7c0988fab430ed499a4bc7c8ff407a4a95b37"
+    },
+    "step-08000/camera-45/metallic.png": {
+      "bytes": 761,
+      "sha256": "bb1ab75946225fef3c6d063cff6dbd9873b542e5e88d7535b828c6eb38ff0667"
+    },
+    "step-08000/camera-45/minor_width.png": {
+      "bytes": 1495,
+      "sha256": "3dc4dd9896752a8cd239dbe8e6f1daa5b40780aec47889505c575f37fb1a74de"
+    },
+    "step-08000/camera-45/mx.png": {
+      "bytes": 1495,
+      "sha256": "3dc4dd9896752a8cd239dbe8e6f1daa5b40780aec47889505c575f37fb1a74de"
+    },
+    "step-08000/camera-45/my.png": {
+      "bytes": 1461,
+      "sha256": "15c24333cef9ab5ec6967402b5f27d31f54b9fba37e3b45f0257ae8de36f56ce"
+    },
+    "step-08000/camera-45/normal.png": {
+      "bytes": 5728,
+      "sha256": "1de0ff113376680ec3aa339a561c632d45041f3a66885b6129056a19ec9b69bf"
+    },
+    "step-08000/camera-45/orientation.png": {
+      "bytes": 6321,
+      "sha256": "224cad64908844b9073e187a7050d18f7d10a63322089f24ccd7bc3efaf08096"
+    },
+    "step-08000/camera-45/orientation_raw.png": {
+      "bytes": 6325,
+      "sha256": "b9e7f84f8f9d98f6531e5724b26f1cbc94622e3ecd449be9a7e393123dfdb25b"
+    },
+    "step-08000/camera-45/orientation_world_projector.png": {
+      "bytes": 8616,
+      "sha256": "d038f51d5e84586a09b386720f8aa8efe7904354a850af98a5e5726029bae115"
+    },
+    "step-08000/camera-45/reconstructed.png": {
+      "bytes": 5956,
+      "sha256": "dc11b9df539786309e873a9c3a58f8a5f2f1cdc2e2dc6b4fe31d212d43bd2b15"
+    },
+    "step-08000/camera-45/specular.png": {
+      "bytes": 6262,
+      "sha256": "4cfb3d9d811a592455f6b48b488e791fad7ea3b06b4b6fa150506d754a4beada"
+    },
+    "step-08000/camera-45/view.json": {
+      "bytes": 3913,
+      "sha256": "8434403974dd4d37494f2cf18cc24789ea58b17b7f30dc33c45f8142d615daa8"
+    },
+    "step-08000/camera-50-errors.npz": {
+      "bytes": 247414,
+      "sha256": "5cf6c2532b10e502f7a3bddcc0bfba6e4c9159116e27085be015872997bed0eb"
+    },
+    "step-08000/camera-50/Q_world_00.png": {
+      "bytes": 1114,
+      "sha256": "ff0b66705b6b095890ee5aa74fd941ecb00b962c871965dcaba3bd6511127dc6"
+    },
+    "step-08000/camera-50/Q_world_01.png": {
+      "bytes": 1197,
+      "sha256": "df50c161c4f35f5d6486957e2d209883f5be1370758ff8e0dcb47d1f7faf4288"
+    },
+    "step-08000/camera-50/Q_world_02.png": {
+      "bytes": 1097,
+      "sha256": "b3fa52ac25509be58e7c21d67b522b5679ee99d3c0146ba5c0a51dd69edea72d"
+    },
+    "step-08000/camera-50/Q_world_11.png": {
+      "bytes": 1239,
+      "sha256": "b427726361e32f82e8e6c4a353feae830ced2e389e3c28bb7ebbf3dd37e51c3a"
+    },
+    "step-08000/camera-50/Q_world_12.png": {
+      "bytes": 1235,
+      "sha256": "4dfc6c69140f27acc0e26a5c0bd0d6be913c64e65321f0f96c7d703a296b1259"
+    },
+    "step-08000/camera-50/Q_world_22.png": {
+      "bytes": 1067,
+      "sha256": "32ac09bf7bee63ea86465f6a890babb25c2e91c1b837986b58ef47342a46a427"
+    },
+    "step-08000/camera-50/albedo.png": {
+      "bytes": 2553,
+      "sha256": "dd07830672fd6bf726657d52f45790f81e1bca2c775ccdd38ac369e06f04b881"
+    },
+    "step-08000/camera-50/diffuse.png": {
+      "bytes": 2209,
+      "sha256": "1c780a52689ce9fedc444a0d37dfed09e7bdf73d7d0bc61db8e0f122e9abb559"
+    },
+    "step-08000/camera-50/ground_truth.png": {
+      "bytes": 2930,
+      "sha256": "bccffadf5af37538ab86079b3322a91aba999be2dd927262aef591c279670c33"
+    },
+    "step-08000/camera-50/major_width.png": {
+      "bytes": 990,
+      "sha256": "fd61a78162dd309b6c98024d6f3f78e441eb794731a470fc5702bf7a2b2f4756"
+    },
+    "step-08000/camera-50/mask.png": {
+      "bytes": 285,
+      "sha256": "6f7a889de6ec8f2de41fcfc0805dcfd14f0210389c9c3a528e29f7186e2275ae"
+    },
+    "step-08000/camera-50/materials.npz": {
+      "bytes": 660146,
+      "sha256": "06317e0178ca39995477bac22da8e0cefb8006ccc1885a372fa993c0015dbac5"
+    },
+    "step-08000/camera-50/metallic.png": {
+      "bytes": 498,
+      "sha256": "1d1e3d5e0e25e6edd0c469416b44530ed145c76235b0bb5eb47dee2f1b739ee4"
+    },
+    "step-08000/camera-50/minor_width.png": {
+      "bytes": 988,
+      "sha256": "a943ef0b2e49d162c242ab29e6672a064124c2f546089d9c8e775267a8ec4a39"
+    },
+    "step-08000/camera-50/mx.png": {
+      "bytes": 988,
+      "sha256": "a943ef0b2e49d162c242ab29e6672a064124c2f546089d9c8e775267a8ec4a39"
+    },
+    "step-08000/camera-50/my.png": {
+      "bytes": 990,
+      "sha256": "fd61a78162dd309b6c98024d6f3f78e441eb794731a470fc5702bf7a2b2f4756"
+    },
+    "step-08000/camera-50/normal.png": {
+      "bytes": 2919,
+      "sha256": "ce151b2d3fe5ba701dfa116f125c2e3f3e85609693f1fcfc2e03db0769c185f2"
+    },
+    "step-08000/camera-50/orientation.png": {
+      "bytes": 4228,
+      "sha256": "bab80058fe92e7f7e277e96857b1c8d63fcfca9a18d2d276d7a1712b43e6d844"
+    },
+    "step-08000/camera-50/orientation_raw.png": {
+      "bytes": 4243,
+      "sha256": "02afc7434a3b067b76f0924697e863474cdcf785a3062c8664b2771d9bf8801e"
+    },
+    "step-08000/camera-50/orientation_world_projector.png": {
+      "bytes": 5632,
+      "sha256": "66d7388c1b6c5171d92c6f1f670fe39248dff050cf3fba19d80371f3c652280c"
+    },
+    "step-08000/camera-50/reconstructed.png": {
+      "bytes": 3676,
+      "sha256": "6612ccc96dfcca6a18b8ec3db3853b62eb322fc8c7347cd1cfe502b55745f089"
+    },
+    "step-08000/camera-50/specular.png": {
+      "bytes": 4013,
+      "sha256": "5580e62f733f9a57030c989ccc3c4b060bc425868385497c8b9003926800275c"
+    },
+    "step-08000/camera-50/view.json": {
+      "bytes": 3909,
+      "sha256": "71574eddf06a87657ace9fcaec8b2b4bda2c59bbe606e3237bfabb63369ccb99"
+    },
+    "step-08000/illumination-preview.png": {
+      "bytes": 2964,
+      "sha256": "2b187794dafbbc835b24ce04f12bba976019edaac7040f9b2e83b5f09cd09e44"
+    },
+    "step-08000/illumination.npz": {
+      "bytes": 263187,
+      "sha256": "5380d6b6977decd196da8b18a5017ebad6c55c4c77b341a29d31c986e53d93a4"
+    },
+    "step-08000/metrics.json": {
+      "bytes": 13834,
+      "sha256": "b83f47112bc2e6e2b6ac8b5dd6205487d3b36f6a05f164660a9adb6f18c14f0e"
+    },
+    "step-10000/camera-0-errors.npz": {
+      "bytes": 433512,
+      "sha256": "02d6a9ee65ba3bcbaca35890971d098dd6ebeb110a4164cef0f7f5634e600985"
+    },
+    "step-10000/camera-0/Q_world_00.png": {
+      "bytes": 2180,
+      "sha256": "9b19776cb4e6c59bc6e9b8a85ed5b19a61ac826a3fbd8b4446f15e3ab50e9d21"
+    },
+    "step-10000/camera-0/Q_world_01.png": {
+      "bytes": 2254,
+      "sha256": "0411b2d773acd4d2f51d8e42955df411e56c3570d23e7174be007e77c29a7119"
+    },
+    "step-10000/camera-0/Q_world_02.png": {
+      "bytes": 2071,
+      "sha256": "fde8a6913e90792ba39a19b3a7a50c5b7f4ea08c759348640825560f1ea85dad"
+    },
+    "step-10000/camera-0/Q_world_11.png": {
+      "bytes": 2216,
+      "sha256": "b1db859caefc7b915c2169e19f931c2155288672ad344d1cf7e304db9a92f274"
+    },
+    "step-10000/camera-0/Q_world_12.png": {
+      "bytes": 2042,
+      "sha256": "8f2ec9c608e45b5814941ecf0bd6b1ac8207d75f8b4da76516c51dd75892707b"
+    },
+    "step-10000/camera-0/Q_world_22.png": {
+      "bytes": 1759,
+      "sha256": "0fd83456afda6395ded51c02ed00c09a417b68711581a43d3c05fb2ef8c43ecf"
+    },
+    "step-10000/camera-0/albedo.png": {
+      "bytes": 5018,
+      "sha256": "9b81e81bbbe48960b5531eac7c407bc1a3b8fe5b71075a9f492fae9349cf8e1c"
+    },
+    "step-10000/camera-0/diffuse.png": {
+      "bytes": 5118,
+      "sha256": "9f0a3d36f6e77777e5bbca05c781e4837040a355239a7bd7b3147bf6c025b969"
+    },
+    "step-10000/camera-0/ground_truth.png": {
+      "bytes": 7265,
+      "sha256": "98f089a3f58fc2c62f66c4ca7f6c78356fcfc0ed5b449c186398d7548ba3b436"
+    },
+    "step-10000/camera-0/major_width.png": {
+      "bytes": 1632,
+      "sha256": "b684738b7aa516688b9ba81982a76127768adfcb7aa579f09cb09b1dbb4ecb8e"
+    },
+    "step-10000/camera-0/mask.png": {
+      "bytes": 525,
+      "sha256": "af6f72caad54d0685a928737a3ef6780b355025ec965d7aab8b283c0bda647c2"
+    },
+    "step-10000/camera-0/materials.npz": {
+      "bytes": 1136342,
+      "sha256": "b32f324a42079abba9f52eed005b185c488ce655aeeb4b51e01e361cc36dc991"
+    },
+    "step-10000/camera-0/metallic.png": {
+      "bytes": 938,
+      "sha256": "8120c4a67289c180bf7690462a2e4e1d5532e607d08bffba95fdf6b212ecfb99"
+    },
+    "step-10000/camera-0/minor_width.png": {
+      "bytes": 1724,
+      "sha256": "8030b70f300719da59ec087c833d325b4b3fffc9d32f37cf9e33a3921a2a32a3"
+    },
+    "step-10000/camera-0/mx.png": {
+      "bytes": 1724,
+      "sha256": "8030b70f300719da59ec087c833d325b4b3fffc9d32f37cf9e33a3921a2a32a3"
+    },
+    "step-10000/camera-0/my.png": {
+      "bytes": 1632,
+      "sha256": "b684738b7aa516688b9ba81982a76127768adfcb7aa579f09cb09b1dbb4ecb8e"
+    },
+    "step-10000/camera-0/normal.png": {
+      "bytes": 7321,
+      "sha256": "27223671dac1d312791d046d19c508f4aec7de6230e59cfbfc15af5fa77526e0"
+    },
+    "step-10000/camera-0/orientation.png": {
+      "bytes": 7491,
+      "sha256": "da1be5d55100ec3a4a512b83315b8a98babf551312b616f36207777fff19e370"
+    },
+    "step-10000/camera-0/orientation_raw.png": {
+      "bytes": 7472,
+      "sha256": "9df682136ef39fab1072d5be1583147817e012cbfd11906708bb8ab07aae2f8a"
+    },
+    "step-10000/camera-0/orientation_world_projector.png": {
+      "bytes": 10075,
+      "sha256": "3fac546e15f583f47acbfd683283bb8bdd6ce3aef8c3e71f8d1529936d286da7"
+    },
+    "step-10000/camera-0/reconstructed.png": {
+      "bytes": 7772,
+      "sha256": "b2a739a8871871bf1f20dae648d363cab4d94fa09af1ac0557a960ffea80a3c5"
+    },
+    "step-10000/camera-0/specular.png": {
+      "bytes": 8060,
+      "sha256": "83d5236e5453674a1258bf9c93756e4d3d7a7775f903d2b8f3268fef30598471"
+    },
+    "step-10000/camera-0/view.json": {
+      "bytes": 3915,
+      "sha256": "21b54dd0ca9543b66eb850b7ad70625777d16b2efb8d08cd563b059c9fa0faa1"
+    },
+    "step-10000/camera-1-errors.npz": {
+      "bytes": 395413,
+      "sha256": "3d5a044bc19325852b6a3dd5c2fa6a53ec4a1ab4d1cb5d2e0fccdaae118d831f"
+    },
+    "step-10000/camera-1/Q_world_00.png": {
+      "bytes": 1831,
+      "sha256": "499709d550d8735702b800f5b1164ed9ecbdec120351a6da2ff8f27433a216bd"
+    },
+    "step-10000/camera-1/Q_world_01.png": {
+      "bytes": 1866,
+      "sha256": "20ffdf2e1ecffe18b3b8b4113774de7abaf9a122920e345592d80171071de372"
+    },
+    "step-10000/camera-1/Q_world_02.png": {
+      "bytes": 1743,
+      "sha256": "cc9420545cf2d99f79befb02a7a4d7c88eaae6cd4dd2f4912bcab3b89bfa18a8"
+    },
+    "step-10000/camera-1/Q_world_11.png": {
+      "bytes": 1796,
+      "sha256": "d8d12e8bbf4e9c634c8e2b001e7a89ca8fcfcdbc7383ad6a2f4e06de01a1ff9b"
+    },
+    "step-10000/camera-1/Q_world_12.png": {
+      "bytes": 1662,
+      "sha256": "3ff076c336344f48c57e635edf3d9b57962aeb8fdf93fd8bfa60e3defe0cb22e"
+    },
+    "step-10000/camera-1/Q_world_22.png": {
+      "bytes": 1555,
+      "sha256": "a9d3a3aeb57c654e32c1b3a0e7ba65b6e7569bacacdbd8fd37cad2fdf8dcb838"
+    },
+    "step-10000/camera-1/albedo.png": {
+      "bytes": 4435,
+      "sha256": "eefbb2ef6b9b60912bef758061adf357cd46a9590d1ee60731e477ca3d636d77"
+    },
+    "step-10000/camera-1/diffuse.png": {
+      "bytes": 4129,
+      "sha256": "ae0aa9364739553d9ceb67c67da025bb7d0cfd508c15dc9f363c3d952c52a118"
+    },
+    "step-10000/camera-1/ground_truth.png": {
+      "bytes": 5704,
+      "sha256": "e4ca46c8f1d70ec5463622fc66a52b92359a6bb38e12b9859aca1b9f33312832"
+    },
+    "step-10000/camera-1/major_width.png": {
+      "bytes": 1374,
+      "sha256": "9ed4ce2fa8ddabc35ad626e1972375477d1fbaa6907b2215b91231c481658efe"
+    },
+    "step-10000/camera-1/mask.png": {
+      "bytes": 400,
+      "sha256": "314e2e9020268b3a64caec525871f6cde1f88adbd6dcc3ec79c06e7ce05fea78"
+    },
+    "step-10000/camera-1/materials.npz": {
+      "bytes": 1035729,
+      "sha256": "082223f5ed694c84a9d52462836ac56d054dfed9d23676f0ec0f105db4527e8e"
+    },
+    "step-10000/camera-1/metallic.png": {
+      "bytes": 741,
+      "sha256": "5c878f6b31ac2a4134aca37178ce49aaf91563c169eb517dadb686a514f169d8"
+    },
+    "step-10000/camera-1/minor_width.png": {
+      "bytes": 1424,
+      "sha256": "d004a065ec70c4bb8297cc6e54efc6933983eec6219b0893bd3ce195ce627fa2"
+    },
+    "step-10000/camera-1/mx.png": {
+      "bytes": 1424,
+      "sha256": "d004a065ec70c4bb8297cc6e54efc6933983eec6219b0893bd3ce195ce627fa2"
+    },
+    "step-10000/camera-1/my.png": {
+      "bytes": 1374,
+      "sha256": "9ed4ce2fa8ddabc35ad626e1972375477d1fbaa6907b2215b91231c481658efe"
+    },
+    "step-10000/camera-1/normal.png": {
+      "bytes": 6087,
+      "sha256": "5caeb3274a27eb541d0ee67dee7f95865a5e95a95ece909c42167d119456585b"
+    },
+    "step-10000/camera-1/orientation.png": {
+      "bytes": 6514,
+      "sha256": "c38883d405b83bab4079d0bdb4a893cc8ad9d9e012aa3f34b37670a22522ffd5"
+    },
+    "step-10000/camera-1/orientation_raw.png": {
+      "bytes": 6505,
+      "sha256": "474410b087ab6f546173c904199dea87f8f02ead0a964ac78e3d793ed57ffcb4"
+    },
+    "step-10000/camera-1/orientation_world_projector.png": {
+      "bytes": 8701,
+      "sha256": "81821edd25b5e4742e9540c4673e14842437cb56259855768549dbf270e26730"
+    },
+    "step-10000/camera-1/reconstructed.png": {
+      "bytes": 6391,
+      "sha256": "8446cf880d61e3cf03a2910dfce5c4946b5ffad1e0a3ed80d8a06d14533124ed"
+    },
+    "step-10000/camera-1/specular.png": {
+      "bytes": 6944,
+      "sha256": "06f375c12fa2fa53a4cd7d8afcc7ff831a186c10f3a5a32a854e5b6e7ed36b09"
+    },
+    "step-10000/camera-1/view.json": {
+      "bytes": 3914,
+      "sha256": "b60308d95d565a0e256ad54f6fdda3962c99fdc1c713f07f8c3fc29729cf02ec"
+    },
+    "step-10000/camera-28-errors.npz": {
+      "bytes": 461798,
+      "sha256": "d47502f7aaed82974af749d7536112e097bef25b28c7d4298b383d7a0d570b4a"
+    },
+    "step-10000/camera-28/Q_world_00.png": {
+      "bytes": 2450,
+      "sha256": "40303250229f168c1dfb2abfc14b28d3593d26a37972f612ac95d46e46a74f59"
+    },
+    "step-10000/camera-28/Q_world_01.png": {
+      "bytes": 2461,
+      "sha256": "71186d6f6b354c1020a36013e20d1d0047ddda476f7fa95b2c8fa3bd5dde2e50"
+    },
+    "step-10000/camera-28/Q_world_02.png": {
+      "bytes": 2250,
+      "sha256": "111293c9307dbf52e74dde22511cfdd77263f54e2d21d441f2126f5473dc255b"
+    },
+    "step-10000/camera-28/Q_world_11.png": {
+      "bytes": 2480,
+      "sha256": "98b7a5a9e581d270c4900ea0fb4546484ac5a7f006d8557d90d69535bfb97a3e"
+    },
+    "step-10000/camera-28/Q_world_12.png": {
+      "bytes": 2166,
+      "sha256": "414133ee7c0e4530c812c24054d1fa6c2adeef5f7cba16459b306fcc00e47741"
+    },
+    "step-10000/camera-28/Q_world_22.png": {
+      "bytes": 1882,
+      "sha256": "b1f397d2f5e0f71fa70fb31e7b8881be254dd9c2e9e197f929759e737a515916"
+    },
+    "step-10000/camera-28/albedo.png": {
+      "bytes": 5509,
+      "sha256": "9e867f21dcacf7292006b46bad296f016c00f83f271c2499d5512be935ed26d6"
+    },
+    "step-10000/camera-28/diffuse.png": {
+      "bytes": 5409,
+      "sha256": "6d584e5339e21d9b230eb7cebe5cca0700b4045b440b1344b83b1c94304e993c"
+    },
+    "step-10000/camera-28/ground_truth.png": {
+      "bytes": 8047,
+      "sha256": "85932acb8601872e7f0c8a992ba5a4a76f0eec371aba0cc36b3039094b9f5dfa"
+    },
+    "step-10000/camera-28/major_width.png": {
+      "bytes": 1769,
+      "sha256": "4e4b3bc0fca6ad2f07df8162260c17280a0c0f21d5f3a9052b02cdf1eb36da29"
+    },
+    "step-10000/camera-28/mask.png": {
+      "bytes": 572,
+      "sha256": "a2d1658cd269cb1bfa65d08550b197ef0c1f5de9853246ca9ee07972eeae77b5"
+    },
+    "step-10000/camera-28/materials.npz": {
+      "bytes": 1213936,
+      "sha256": "3a43b7d138b7b7a19f863704d1bc8adc1025e2ac729ca2427777f630f520b2ff"
+    },
+    "step-10000/camera-28/metallic.png": {
+      "bytes": 1036,
+      "sha256": "964d73eaa0d46eb7afb4a685d12195dd72f4373ba023c28806e3ac27a9771b88"
+    },
+    "step-10000/camera-28/minor_width.png": {
+      "bytes": 1832,
+      "sha256": "726002ba81e8bb5c7b153e8e55bd6dab6bbe8ad9994c83623da21291fdc68f95"
+    },
+    "step-10000/camera-28/mx.png": {
+      "bytes": 1832,
+      "sha256": "726002ba81e8bb5c7b153e8e55bd6dab6bbe8ad9994c83623da21291fdc68f95"
+    },
+    "step-10000/camera-28/my.png": {
+      "bytes": 1769,
+      "sha256": "4e4b3bc0fca6ad2f07df8162260c17280a0c0f21d5f3a9052b02cdf1eb36da29"
+    },
+    "step-10000/camera-28/normal.png": {
+      "bytes": 7952,
+      "sha256": "efb3d75911dc95301a910a1e295d63cb01996c42e734f75c127f6bad201645fd"
+    },
+    "step-10000/camera-28/orientation.png": {
+      "bytes": 8092,
+      "sha256": "288b56bcbbc0a05eac977ce5f95cd19b9e2b169027b79b6cd6b7d62da419c0e1"
+    },
+    "step-10000/camera-28/orientation_raw.png": {
+      "bytes": 8102,
+      "sha256": "a37f6db475eff5d3b645e479ab58ab172c34615f6a34aea80e1454ff434c51ae"
+    },
+    "step-10000/camera-28/orientation_world_projector.png": {
+      "bytes": 10930,
+      "sha256": "fd21a5fa8651184f81e9f6dc9cedd15282dd9640251bfe9ae2b968bfb64f156d"
+    },
+    "step-10000/camera-28/reconstructed.png": {
+      "bytes": 8464,
+      "sha256": "dc063a55e224ce632166a3f93827186b2e963b3f30d633e1e0f218c9908273fa"
+    },
+    "step-10000/camera-28/specular.png": {
+      "bytes": 8999,
+      "sha256": "bd126ad5cd5659aae409f2e1619b1fafc08729a05e0f15837c2637b5e0094cf4"
+    },
+    "step-10000/camera-28/view.json": {
+      "bytes": 3917,
+      "sha256": "a8ac85382323108fa4aa8aab956015f2e4d17e283102370bcf32169de37f7a20"
+    },
+    "step-10000/camera-34-errors.npz": {
+      "bytes": 239350,
+      "sha256": "aa408a585a4d1b6f7d3150879edccd40fb8f1384236f8207cfe85e460470ffbb"
+    },
+    "step-10000/camera-34/Q_world_00.png": {
+      "bytes": 963,
+      "sha256": "a61dbf26a28806d991fe05072d4f750aecef30af4ee65f91c14d72e8f80f314d"
+    },
+    "step-10000/camera-34/Q_world_01.png": {
+      "bytes": 1016,
+      "sha256": "e83bb6cc8f1f5c5c023333edf3e5a3ddcea4652f8adcbe7916f59f68090a7880"
+    },
+    "step-10000/camera-34/Q_world_02.png": {
+      "bytes": 965,
+      "sha256": "c7f1cc1369a5fc8601d5043fa704aa98371d43e9d3812f5531c131bfec519142"
+    },
+    "step-10000/camera-34/Q_world_11.png": {
+      "bytes": 1113,
+      "sha256": "b5c13b29a5d62d4a769a740f7f3823dcd1a90e9c717a0a3ad9f111d8f3a52d41"
+    },
+    "step-10000/camera-34/Q_world_12.png": {
+      "bytes": 1155,
+      "sha256": "8bd2b14262bdd668ec78bb8147cbae9591a50b78865ee904eb67038fd46a5741"
+    },
+    "step-10000/camera-34/Q_world_22.png": {
+      "bytes": 988,
+      "sha256": "5fb2abea1089c6b4e8787863fe3ab7723f4a78e9dea6d9c0cc1718322af0f8c5"
+    },
+    "step-10000/camera-34/albedo.png": {
+      "bytes": 2447,
+      "sha256": "295740a4a9b16d97acd8ccfff13d723469a2d8295ca3e0c8ecbfc9ebba8320cd"
+    },
+    "step-10000/camera-34/diffuse.png": {
+      "bytes": 2090,
+      "sha256": "d705efddc38b445b284de022a7dde88488fecac2dcf83baa9077dfd4f84425b6"
+    },
+    "step-10000/camera-34/ground_truth.png": {
+      "bytes": 2475,
+      "sha256": "828c80db1a55c0cd2606355adbe5d731f2152cacbae655774c5bffa1ad06917e"
+    },
+    "step-10000/camera-34/major_width.png": {
+      "bytes": 786,
+      "sha256": "9c7aa5a2dbe0fc982ac4a8489d526175083f5a67d7a0033f29ad1d4550399aa2"
+    },
+    "step-10000/camera-34/mask.png": {
+      "bytes": 274,
+      "sha256": "a18eb92e777517738c1f76aae126c2a165517930bb5f58bb7d814a399f443ab2"
+    },
+    "step-10000/camera-34/materials.npz": {
+      "bytes": 628691,
+      "sha256": "8407c7135e852886bd1ad8f4830330c34869746a199f19168bf9c7309136f8fc"
+    },
+    "step-10000/camera-34/metallic.png": {
+      "bytes": 449,
+      "sha256": "0d85be87dc95aaa0ad9dae701d440ed20a8887341f3f7dcb44aac1e8060b1510"
+    },
+    "step-10000/camera-34/minor_width.png": {
+      "bytes": 850,
+      "sha256": "3cc411c0e72bbb6380b63d6e139d36d2c484c372fd9953ee2a5c020a7f57a1b3"
+    },
+    "step-10000/camera-34/mx.png": {
+      "bytes": 850,
+      "sha256": "3cc411c0e72bbb6380b63d6e139d36d2c484c372fd9953ee2a5c020a7f57a1b3"
+    },
+    "step-10000/camera-34/my.png": {
+      "bytes": 786,
+      "sha256": "9c7aa5a2dbe0fc982ac4a8489d526175083f5a67d7a0033f29ad1d4550399aa2"
+    },
+    "step-10000/camera-34/normal.png": {
+      "bytes": 2603,
+      "sha256": "caaeee765b9e3382c26b74246afb8f9d41cac4d255ce78c79e5fa969c4353f75"
+    },
+    "step-10000/camera-34/orientation.png": {
+      "bytes": 3832,
+      "sha256": "1a9e939adc09696b7b63b0bcaaff51ca3cf0b4f573310cf8350672e059e3bb07"
+    },
+    "step-10000/camera-34/orientation_raw.png": {
+      "bytes": 3831,
+      "sha256": "5c37015a1e4db447295e151db5e602db8e5701b12dbdb754972c59d8aa796781"
+    },
+    "step-10000/camera-34/orientation_world_projector.png": {
+      "bytes": 5043,
+      "sha256": "57b761bbb212a31d0a100c3e0827b52a0d19c60a67bed8b69cc5bbfc9ec7c058"
+    },
+    "step-10000/camera-34/reconstructed.png": {
+      "bytes": 3331,
+      "sha256": "617951877beac369ce4fb0190ee0865ac52e4090d20dc9ca2dd981b4d5ff12dc"
+    },
+    "step-10000/camera-34/specular.png": {
+      "bytes": 3651,
+      "sha256": "8f41aad9f8ae0341720e96ff9692f7a5645863466da613a93c90a1129ed980cc"
+    },
+    "step-10000/camera-34/view.json": {
+      "bytes": 3907,
+      "sha256": "1c4ef0f2850d9871e96a89164c4292fe49c56f75436761ba7ec067a4b4c5e950"
+    },
+    "step-10000/camera-45-errors.npz": {
+      "bytes": 377291,
+      "sha256": "d13a9cad8ee49a7f4dd31232c2ebf3a80bc84ffde0a1416cce8cce99b02d05e2"
+    },
+    "step-10000/camera-45/Q_world_00.png": {
+      "bytes": 1790,
+      "sha256": "f87e496482049b103a148b1a1ea07f4243c931e58c92810cd498d42af17c8168"
+    },
+    "step-10000/camera-45/Q_world_01.png": {
+      "bytes": 1839,
+      "sha256": "2bfaa13ca0a10741120e02df34eb86c6cf4c9a854eac3fd18972be75940a1a16"
+    },
+    "step-10000/camera-45/Q_world_02.png": {
+      "bytes": 1782,
+      "sha256": "cd8f2ee9df0dedaa461fb6b6d586014ff3f633dc9bf3dba779b272dbbf7773d0"
+    },
+    "step-10000/camera-45/Q_world_11.png": {
+      "bytes": 1793,
+      "sha256": "354ffc4b98f7166fbc3f883704011d74583e0b4a0579ffb114fb5457091832eb"
+    },
+    "step-10000/camera-45/Q_world_12.png": {
+      "bytes": 1690,
+      "sha256": "473e45c4a3fcaeea9dfa5eab6d355285c2b03bfe13f2babbb7b0accbf9f34be2"
+    },
+    "step-10000/camera-45/Q_world_22.png": {
+      "bytes": 1506,
+      "sha256": "929c107d0b19fc217bb7c20bd55b3ea69ccaa517c597664310d3220ae11aab99"
+    },
+    "step-10000/camera-45/albedo.png": {
+      "bytes": 4170,
+      "sha256": "28f4e07263a55724139d6cfd46594b7e5df40bf3983ecb3afdb660d92fea3404"
+    },
+    "step-10000/camera-45/diffuse.png": {
+      "bytes": 4036,
+      "sha256": "69698bebc875dee5ef095d12901b10a51f58831068b1686cf814d2b626d4bc01"
+    },
+    "step-10000/camera-45/ground_truth.png": {
+      "bytes": 5156,
+      "sha256": "ab8cb95ff5dd136cae877a1b5d38d96f2e73ee390eeaf347ea5ddb2184271345"
+    },
+    "step-10000/camera-45/major_width.png": {
+      "bytes": 1412,
+      "sha256": "cf2feddab39e7af9b20bf556a551f784d37bda03cc2d43e5289412103a88e767"
+    },
+    "step-10000/camera-45/mask.png": {
+      "bytes": 390,
+      "sha256": "01c603163231c552003601be4c71d70162ea905266640ca747d46b87974b4696"
+    },
+    "step-10000/camera-45/materials.npz": {
+      "bytes": 991497,
+      "sha256": "d7489345cd1fff982ed7f03eba55099f1847ff1c533c5ebcdbe57457a25c782a"
+    },
+    "step-10000/camera-45/metallic.png": {
+      "bytes": 735,
+      "sha256": "7cc0f191fcce8069a6b24f0b8d9dede239c028d4c3f7e1ab8cc03536bf2b728a"
+    },
+    "step-10000/camera-45/minor_width.png": {
+      "bytes": 1476,
+      "sha256": "8d66afa06f25e4b68df1657bf6d3c0bc8247c7cfeb224a3a079cc577efbc6611"
+    },
+    "step-10000/camera-45/mx.png": {
+      "bytes": 1476,
+      "sha256": "8d66afa06f25e4b68df1657bf6d3c0bc8247c7cfeb224a3a079cc577efbc6611"
+    },
+    "step-10000/camera-45/my.png": {
+      "bytes": 1412,
+      "sha256": "cf2feddab39e7af9b20bf556a551f784d37bda03cc2d43e5289412103a88e767"
+    },
+    "step-10000/camera-45/normal.png": {
+      "bytes": 5728,
+      "sha256": "1de0ff113376680ec3aa339a561c632d45041f3a66885b6129056a19ec9b69bf"
+    },
+    "step-10000/camera-45/orientation.png": {
+      "bytes": 6272,
+      "sha256": "6b2a4245fffdf6139f1f05bbbe57a9010ef71109eb46747034f640bd116814b9"
+    },
+    "step-10000/camera-45/orientation_raw.png": {
+      "bytes": 6287,
+      "sha256": "3bfbd2d471639174a9a708f4d0a8a9b6c5bb6129eae8fd5c8a74bd0dd712a52d"
+    },
+    "step-10000/camera-45/orientation_world_projector.png": {
+      "bytes": 8545,
+      "sha256": "0cccca16619244945be85cc1f0a0d694941debe5704488ad5b39892b2acc8544"
+    },
+    "step-10000/camera-45/reconstructed.png": {
+      "bytes": 5883,
+      "sha256": "9c441107c5536da2a1222c65bcca8203d3cee5d50d86d28b910b0a11ddb0705a"
+    },
+    "step-10000/camera-45/specular.png": {
+      "bytes": 6215,
+      "sha256": "6834f4623820a68d5d63ea3f967abf30f758e7bb92eb832932ce1e45e5f4e2fe"
+    },
+    "step-10000/camera-45/view.json": {
+      "bytes": 3914,
+      "sha256": "3253a808b34eeae7c9d3d0666f13cc613b46cba73704fad3d9246ccb95a21fb5"
+    },
+    "step-10000/camera-50-errors.npz": {
+      "bytes": 247383,
+      "sha256": "92ac2ced4ef46ec3100ece1015bb5a063b601642c407f158b555854e6ad5f15d"
+    },
+    "step-10000/camera-50/Q_world_00.png": {
+      "bytes": 1099,
+      "sha256": "04b15e8363245f12a662d3596329b8f488f845d984eed7021c425f9409a6ae4e"
+    },
+    "step-10000/camera-50/Q_world_01.png": {
+      "bytes": 1151,
+      "sha256": "a43c6c2219b44b5bb6e21f48ad94713122c9c83585efb9192b0e40aa70f2ae96"
+    },
+    "step-10000/camera-50/Q_world_02.png": {
+      "bytes": 1100,
+      "sha256": "809eb10e47d12fdabe4cf36c914d3cc6c3982919d3e33d7abfd7d34f63e8bf41"
+    },
+    "step-10000/camera-50/Q_world_11.png": {
+      "bytes": 1245,
+      "sha256": "2d06e4c0e248c85ac47a1d54c21fbe809935bb3d729657dbe7cc72a13eab5088"
+    },
+    "step-10000/camera-50/Q_world_12.png": {
+      "bytes": 1210,
+      "sha256": "575f5662135a90c42329bc90eb9bfd526daee0f9fa530f7745f1793fd1614768"
+    },
+    "step-10000/camera-50/Q_world_22.png": {
+      "bytes": 1038,
+      "sha256": "bbbf8b3c093c74862ee0d06a36c453c3439449d2afe84d858d34b12f73e8e961"
+    },
+    "step-10000/camera-50/albedo.png": {
+      "bytes": 2658,
+      "sha256": "57423f0ac4e93e4d25f233d4ceffa518091abec7a728b2f808286edd0a394cac"
+    },
+    "step-10000/camera-50/diffuse.png": {
+      "bytes": 2203,
+      "sha256": "b3c5ee5fe8fbe4e5636aa57f76b4cb4603f7f214d75ba0fdf95739114e9f3506"
+    },
+    "step-10000/camera-50/ground_truth.png": {
+      "bytes": 2930,
+      "sha256": "bccffadf5af37538ab86079b3322a91aba999be2dd927262aef591c279670c33"
+    },
+    "step-10000/camera-50/major_width.png": {
+      "bytes": 936,
+      "sha256": "55b92712eca0a4067e3b0264f7f35d26ff98bd0ae56c3d722ae6283e616de3c3"
+    },
+    "step-10000/camera-50/mask.png": {
+      "bytes": 285,
+      "sha256": "6f7a889de6ec8f2de41fcfc0805dcfd14f0210389c9c3a528e29f7186e2275ae"
+    },
+    "step-10000/camera-50/materials.npz": {
+      "bytes": 659882,
+      "sha256": "595b292c8971f1443cfca826db53b7e3589819fff14593fdb53fba973a6b519c"
+    },
+    "step-10000/camera-50/metallic.png": {
+      "bytes": 470,
+      "sha256": "a7dbc16860a51569f52f6474dabda1373347c019c80bda90950442c0f5a1fe3d"
+    },
+    "step-10000/camera-50/minor_width.png": {
+      "bytes": 974,
+      "sha256": "745d5d22854c629e5fd10c2668839b9644b1d96c18374b255ec869021f00f676"
+    },
+    "step-10000/camera-50/mx.png": {
+      "bytes": 974,
+      "sha256": "745d5d22854c629e5fd10c2668839b9644b1d96c18374b255ec869021f00f676"
+    },
+    "step-10000/camera-50/my.png": {
+      "bytes": 936,
+      "sha256": "55b92712eca0a4067e3b0264f7f35d26ff98bd0ae56c3d722ae6283e616de3c3"
+    },
+    "step-10000/camera-50/normal.png": {
+      "bytes": 2919,
+      "sha256": "ce151b2d3fe5ba701dfa116f125c2e3f3e85609693f1fcfc2e03db0769c185f2"
+    },
+    "step-10000/camera-50/orientation.png": {
+      "bytes": 4201,
+      "sha256": "1831d281bafe70ab6b1d0b335b3848d08f846a06156faf0290b60bf8ccc3d401"
+    },
+    "step-10000/camera-50/orientation_raw.png": {
+      "bytes": 4194,
+      "sha256": "3d9e5203ff699d0cf564ae9f561f0e123bba6d7d8de4346b8312ae3cf051deb4"
+    },
+    "step-10000/camera-50/orientation_world_projector.png": {
+      "bytes": 5519,
+      "sha256": "7251c396948b76704b85cfc87f628e7f0c49fca44abb91db777142803191c7c0"
+    },
+    "step-10000/camera-50/reconstructed.png": {
+      "bytes": 3567,
+      "sha256": "f8e890e91d383eded23a75cc8188e0e00aafcf4f06df530c89ee553a5ef13508"
+    },
+    "step-10000/camera-50/specular.png": {
+      "bytes": 3926,
+      "sha256": "4c76ebd1ac49e7493e8cd80f6688a8c97164fde4a286563ea97ba218c4f32e8e"
+    },
+    "step-10000/camera-50/view.json": {
+      "bytes": 3910,
+      "sha256": "9d593927a67937724028d7d07f8ba872d26b1571fac20cf818bcc1a9a8fbbcad"
+    },
+    "step-10000/illumination-preview.png": {
+      "bytes": 2964,
+      "sha256": "2b187794dafbbc835b24ce04f12bba976019edaac7040f9b2e83b5f09cd09e44"
+    },
+    "step-10000/illumination.npz": {
+      "bytes": 263187,
+      "sha256": "5380d6b6977decd196da8b18a5017ebad6c55c4c77b341a29d31c986e53d93a4"
+    },
+    "step-10000/metrics.json": {
+      "bytes": 13837,
+      "sha256": "ef99f86a866e10b2cabe5ef357df8d3f50d6b2832f2813d53c982483c4c8f654"
+    },
+    "training.jsonl": {
+      "bytes": 7901795,
+      "sha256": "fb8a8f7a7c64a02382c43265958b789481be23751f34ea99c29087a9a9439ce3"
+    },
+    "unseen-camera-28.npz": {
+      "bytes": 5057014,
+      "sha256": "b37e35e31143f3bfcce162c6f71e11a8151e5f30f908f0cd746b0abc42d20448"
+    },
+    "unseen-camera-34.npz": {
+      "bytes": 2609104,
+      "sha256": "828898c4817929efbc071174312af64c8f93a41b7e73b1f251654e6bf758dfb0"
+    }
+  },
+  "original_receipt_sha256": "2c9cde6722b39fc8fc2d7185d4adb873c31af922fc2242b24f3a3108fed5714a",
+  "relight_panels": {
+    "28": {
+      "bytes": 3970032,
+      "path": "/home/isavand/paper/evidence/donut-relight-gate6-v2-bd5d5897ce164928a044e8c04b2b5d71-analysis-v2/camera-28-relighting.npz",
+      "sha256": "fc63bef2a6c6396818f93449092a71237ae7b43c2462df16c4843e36f72895c6"
+    },
+    "34": {
+      "bytes": 2049383,
+      "path": "/home/isavand/paper/evidence/donut-relight-gate6-v2-bd5d5897ce164928a044e8c04b2b5d71-analysis-v2/camera-34-relighting.npz",
+      "sha256": "2516a82baaafbb7abce0795af562a632ec8f2352d1052a8f562f75d5e451157e"
+    }
+  }
+}

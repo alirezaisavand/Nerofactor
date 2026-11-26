@@ -1,0 +1,63 @@
+{
+  "analysis_directory": "/home/isavand/paper/evidence/donut-thesis-attribution-gate8-baa6c828f21c4aa08821044f032719d1-analysis-v2",
+  "analysis_v1": {
+    "absolute_difference": 6.938893903907228e-18,
+    "differing_field": "pooled_limit",
+    "error": "SignatureError: Original A compatibility evidence differs",
+    "fresh_output_created": false,
+    "host": 0.0324804207271424,
+    "native": 0.03248042072714239,
+    "process_exit_code": 1,
+    "scientific_decisions_differed": false
+  },
+  "analysis_v2": {
+    "analyzer_sha256": "3f7fb3d979e9279fb725ff2da0ea9982d05fbd3c6b2855cff6c1263931fb51c7",
+    "comparator": "one binary64 ULP for pooled_limit only",
+    "optimizer_updates": 0,
+    "process_exit_code": 0,
+    "renderer_calls": 0,
+    "test_process_exit_code": 0,
+    "tests_passed": 8,
+    "tests_sha256": "5061ca49a2403308f1a020b9eb0b9ef60b0e34b4087ae7d2a943e26bb275ea77"
+  },
+  "authorization_sha256": "7b564e213fe4b3632e9b3a451e9c0b46cee899cd833fee92251a32db2bae4592",
+  "cleanup_verified": true,
+  "execution_commit": "e7e06426406828b260d3e178f00985efc6b022d6",
+  "freeze_sha256": "707a3a91e71eedc1dd52c3be96432400b6919771d9d8ad3b182c7c2dc9a3074d",
+  "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "native_batch": "/home/isavand/paper/evidence/donut-thesis-attribution-gate8-baa6c828f21c4aa08821044f032719d1",
+  "native_exit_code": 0,
+  "native_receipt_sha256": "2c9cde6722b39fc8fc2d7185d4adb873c31af922fc2242b24f3a3108fed5714a",
+  "resources": {
+    "CUDA_peak_allocated": 422470656,
+    "CUDA_peak_reserved": 507510784,
+    "elapsed_seconds": 817.2773398309946,
+    "host_peak_RSS": 5387255808
+  },
+  "status": "verified_complete",
+  "work": {
+    "L2": {
+      "component_reverse_sweeps": 30,
+      "shader_calls": 12288,
+      "shadow_rays": 9524158464
+    },
+    "historical_checkpoint_loads": 0,
+    "new_reference_integrations": 0,
+    "optimizer_returns": 10000,
+    "primary_rays": 0,
+    "unseen": {
+      "learned_module_calls": 0,
+      "state_sha256": "275e8edef722ffd2c414cd5f0aa3918eb352aee5ca99a544d24e451556a39a4c",
+      "state_unchanged": true,
+      "unseen_environment": {
+        "calls": 480,
+        "directions": 333949629
+      },
+      "work": {
+        "shader_calls": 480,
+        "shadow_rays": 360972288
+      }
+    },
+    "verified_native_artifacts": 893
+  }
+}
