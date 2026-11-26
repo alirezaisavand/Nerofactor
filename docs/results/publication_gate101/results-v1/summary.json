@@ -1,0 +1,296 @@
+{
+  "additional_scientific_execution": {
+    "SDF_queries": 0,
+    "checkpoint_loads": 0,
+    "extractions": 0,
+    "optimizer_returns": 0,
+    "ray_queries": 0
+  },
+  "checkpoint": {
+    "bytes": 29967467,
+    "sha256": "27c8c2256d529a84680e1ab806081acfa796a04937a2681587a8bb6d1a3681cd"
+  },
+  "cleanup_verified": true,
+  "conditional_correction_path_executed": false,
+  "containers_absent": true,
+  "derived_candidate_exported": false,
+  "diagnostic_positive_area_view_constructed": true,
+  "execution_commit": "1852244c140c1e825003f44743865ece36aede35",
+  "execution_status": "complete",
+  "face_localization": [
+    {
+      "first_zero_area_stage": "marching",
+      "marching_area": 0.0,
+      "marching_unique_coordinates": 2,
+      "processed_area": 0.0,
+      "processed_unique_coordinates": 2,
+      "returned_area": 0.0,
+      "returned_unique_coordinates": 2,
+      "serialized_area": 0.0,
+      "serialized_face_id": 229038,
+      "serialized_unique_coordinates": 2
+    },
+    {
+      "first_zero_area_stage": "marching",
+      "marching_area": 0.0,
+      "marching_unique_coordinates": 2,
+      "processed_area": 0.0,
+      "processed_unique_coordinates": 2,
+      "returned_area": 0.0,
+      "returned_unique_coordinates": 2,
+      "serialized_area": 0.0,
+      "serialized_face_id": 229053,
+      "serialized_unique_coordinates": 2
+    },
+    {
+      "first_zero_area_stage": "marching",
+      "marching_area": 0.0,
+      "marching_unique_coordinates": 1,
+      "processed_area": 0.0,
+      "processed_unique_coordinates": 1,
+      "returned_area": 0.0,
+      "returned_unique_coordinates": 1,
+      "serialized_area": 0.0,
+      "serialized_face_id": 229055,
+      "serialized_unique_coordinates": 1
+    },
+    {
+      "first_zero_area_stage": "marching",
+      "marching_area": 0.0,
+      "marching_unique_coordinates": 2,
+      "processed_area": 0.0,
+      "processed_unique_coordinates": 2,
+      "returned_area": 0.0,
+      "returned_unique_coordinates": 2,
+      "serialized_area": 0.0,
+      "serialized_face_id": 233117,
+      "serialized_unique_coordinates": 2
+    },
+    {
+      "first_zero_area_stage": "serialized",
+      "marching_area": 1.6437357665943777e-07,
+      "marching_unique_coordinates": 3,
+      "processed_area": 2.5179679373621662e-12,
+      "processed_unique_coordinates": 3,
+      "returned_area": 2.5179679373621662e-12,
+      "returned_unique_coordinates": 3,
+      "serialized_area": 0.0,
+      "serialized_face_id": 458754,
+      "serialized_unique_coordinates": 2
+    },
+    {
+      "first_zero_area_stage": "serialized",
+      "marching_area": 4.916534387706757e-06,
+      "marching_unique_coordinates": 3,
+      "processed_area": 7.531427010849994e-11,
+      "processed_unique_coordinates": 3,
+      "returned_area": 7.531427010849994e-11,
+      "returned_unique_coordinates": 3,
+      "serialized_area": 0.0,
+      "serialized_face_id": 462320,
+      "serialized_unique_coordinates": 2
+    },
+    {
+      "first_zero_area_stage": "serialized",
+      "marching_area": 3.259530728978958e-10,
+      "marching_unique_coordinates": 3,
+      "processed_area": 4.9931345676961206e-15,
+      "processed_unique_coordinates": 3,
+      "returned_area": 4.9931345676961206e-15,
+      "returned_unique_coordinates": 3,
+      "serialized_area": 0.0,
+      "serialized_face_id": 701575,
+      "serialized_unique_coordinates": 2
+    },
+    {
+      "first_zero_area_stage": "serialized",
+      "marching_area": 7.79599189869814e-06,
+      "marching_unique_coordinates": 3,
+      "processed_area": 1.1942343821595744e-10,
+      "processed_unique_coordinates": 3,
+      "returned_area": 1.1942343821595744e-10,
+      "returned_unique_coordinates": 3,
+      "serialized_area": 0.0,
+      "serialized_face_id": 705281,
+      "serialized_unique_coordinates": 2
+    },
+    {
+      "first_zero_area_stage": "processed",
+      "marching_area": 2.1073417349090152e-07,
+      "marching_unique_coordinates": 3,
+      "processed_area": 0.0,
+      "processed_unique_coordinates": 2,
+      "returned_area": 3.2281459102591663e-12,
+      "returned_unique_coordinates": 3,
+      "serialized_area": 0.0,
+      "serialized_face_id": 773844,
+      "serialized_unique_coordinates": 2
+    },
+    {
+      "first_zero_area_stage": "processed",
+      "marching_area": 1.9848749881496473e-10,
+      "marching_unique_coordinates": 3,
+      "processed_area": 0.0,
+      "processed_unique_coordinates": 2,
+      "returned_area": 3.040544383063403e-15,
+      "returned_unique_coordinates": 3,
+      "serialized_area": 0.0,
+      "serialized_face_id": 777213,
+      "serialized_unique_coordinates": 2
+    }
+  ],
+  "float64_export": {
+    "float32_BVH_input_zero_faces": 10,
+    "open3d_exact": true,
+    "zero_area_faces": 6
+  },
+  "follow_up": "Researcher review of domain-aware raw-SDF extraction from saved field with no artificial sphere closure.",
+  "freeze_sha256": "b1ad431e11a2bd59e97734de566eb767f7d9cd1339d08afabb80ae2c67608933",
+  "geometry_admitted": false,
+  "handoff_created": false,
+  "lower_surface": {
+    "gradient_length": {
+      "max": 1.053644278932598,
+      "median": 0.993015713172485,
+      "min": 0.9016160127945301,
+      "p05": 0.952876258311745,
+      "p95": 1.0274513349571293
+    },
+    "raw_SDF": {
+      "max": -1.4007091522216797e-05,
+      "median": -0.19757934659719467,
+      "min": -0.6602902412414551,
+      "p05": -0.5722982883453369,
+      "p95": -0.013260409235954285
+    },
+    "raw_supported": 2,
+    "raw_unsupported": 254,
+    "samples": 256,
+    "unique_original_faces": 256,
+    "zero_level_distance_proxy": {
+      "max": 0.6859690515239016,
+      "median": 0.19616739246242618,
+      "min": 1.4333794912937032e-05,
+      "p05": 0.01279188530572708,
+      "p95": 0.5883516451493723
+    }
+  },
+  "missing_original_audit": [
+    "silhouette",
+    "depth",
+    "signed_normals",
+    "correspondence",
+    "full_raster_exclusions",
+    "original_complete_SDF_mesh_quality_gate"
+  ],
+  "receipt": {
+    "bytes": 67616,
+    "sha256": "2a8c748f687bb3db1c53ebd364aba90275af01068efb6064f6b62eed4c34bcb0"
+  },
+  "scientific_status": "BLOCKED_substantive_geometry_review_required",
+  "sentinel_grid_edges": {
+    "0": 42941,
+    "1": 110993,
+    "2": 43302
+  },
+  "serialized_coordinate_shift": 2.980229840687798e-08,
+  "sphere_direction_groups": {
+    "global_256": {
+      "ambiguous": 1,
+      "no_radial_crossing": 213,
+      "raw_SDF_at_radius1": {
+        "max": 0.6810862421989441,
+        "median": 0.5025215148925781,
+        "min": -0.6498032808303833,
+        "p05": -0.3065273240208626,
+        "p95": 0.639856368303299
+      },
+      "raw_radial_crossing": 0,
+      "sentinel_crossing": 42
+    },
+    "lower_128": {
+      "ambiguous": 4,
+      "no_radial_crossing": 6,
+      "raw_SDF_at_radius1": {
+        "max": 0.03730127215385437,
+        "median": -0.17049583047628403,
+        "min": -0.6833953261375427,
+        "p05": -0.557827028632164,
+        "p95": 0.0008158579468727034
+      },
+      "raw_radial_crossing": 0,
+      "sentinel_crossing": 118
+    }
+  },
+  "stages": [
+    {
+      "coincident_coordinate_count": 4,
+      "face_dtype": "uint64",
+      "faces": 1112676,
+      "repeated_index_count": 0,
+      "stage": "marching",
+      "vertex_dtype": "float64",
+      "vertices": 556332,
+      "zero_area_count": 4
+    },
+    {
+      "coincident_coordinate_count": 4,
+      "face_dtype": "uint64",
+      "faces": 1112676,
+      "repeated_index_count": 0,
+      "stage": "returned",
+      "vertex_dtype": "float64",
+      "vertices": 556332,
+      "zero_area_count": 4
+    },
+    {
+      "coincident_coordinate_count": 6,
+      "face_dtype": "int64",
+      "faces": 1112676,
+      "repeated_index_count": 6,
+      "stage": "processed",
+      "vertex_dtype": "float64",
+      "vertices": 556329,
+      "zero_area_count": 6
+    },
+    {
+      "coincident_coordinate_count": 10,
+      "face_dtype": "int32",
+      "faces": 1112676,
+      "repeated_index_count": 6,
+      "stage": "serialized",
+      "vertex_dtype": "float32",
+      "vertices": 556329,
+      "zero_area_count": 10
+    }
+  ],
+  "total_sentinel_grid_edges": 197236,
+  "verification": {
+    "bytes": 269,
+    "sha256": "a005f86d2d6180e9dd9f5c67e34a334ac59c4ef861beeb97ea97fbc5ca48bca5"
+  },
+  "vertex_processing": {
+    "mapping": {
+      "dtype": "int64",
+      "sha256": "a78448f43e2f6380f416db24d224c3260a595d59c1f963e6bfb4d35c2bb2aea3",
+      "shape": [
+        556332
+      ]
+    },
+    "maximum_coordinate_shift": 1.6495825501496585e-09,
+    "merged_vertices": 3,
+    "unreferenced_raw_vertices": 0
+  },
+  "wall_seconds": 26.523824939504266,
+  "work": {
+    "checkpoint_loads": 1,
+    "diagnostic_SDF_points": 3840,
+    "diagnostic_gradient_points": 640,
+    "extraction_nodes": 134217728,
+    "extraction_tiles": 512,
+    "marching_cubes_calls": 1,
+    "optimizer_returns": 0,
+    "original_geometry_audit_executed": false,
+    "shader_calls": 0
+  }
+}

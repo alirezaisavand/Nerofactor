@@ -1,0 +1,5 @@
+stage,vertices,faces,vertex_dtype,face_dtype,zero_area_count,repeated_index_count,coincident_coordinate_count
+marching,556332,1112676,float64,uint64,4,0,4
+returned,556332,1112676,float64,uint64,4,0,4
+processed,556329,1112676,float64,int64,6,6,6
+serialized,556329,1112676,float32,int32,10,6,10

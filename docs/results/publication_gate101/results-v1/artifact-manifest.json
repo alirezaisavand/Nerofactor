@@ -1,0 +1,135 @@
+{
+  "analysis_source": {
+    "bytes": 13856,
+    "sha256": "ed2ce827d9fb0897829d77b5725be0047622e39cd5afc8c025b70713e50dbe0e"
+  },
+  "files": {
+    "authorization.json": {
+      "bytes": 1800,
+      "sha256": "570cef253b342b27c8ebbe00bde614b400807335d49670817b3bee3dc399d9ee"
+    },
+    "console.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "container-absent.txt": {
+      "bytes": 7,
+      "sha256": "7925d3e9a9613a093e5eb4054b32aa39de910d2b03ba7e8046c3b4550b8de1e4"
+    },
+    "container.cid": {
+      "bytes": 64,
+      "sha256": "6f71b725bb2111226963245d071b33ed5dd63702e6ba2d3ba8590fb2de842956"
+    },
+    "exit-code.txt": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "freeze.json": {
+      "bytes": 9530,
+      "sha256": "b1ad431e11a2bd59e97734de566eb767f7d9cd1339d08afabb80ae2c67608933"
+    },
+    "run/lower-surface-witnesses.npz": {
+      "bytes": 11629,
+      "sha256": "25b235f74bd22b91ab5dbe5ebcd2c3a16ae3825a01c0815cc5f78baaa679dc85"
+    },
+    "run/receipt.json": {
+      "bytes": 67616,
+      "sha256": "2a8c748f687bb3db1c53ebd364aba90275af01068efb6064f6b62eed4c34bcb0"
+    },
+    "run/sphere-witnesses.npz": {
+      "bytes": 43634,
+      "sha256": "742bc6e5a8a6ec12805b229f9af6803a5c1d781812f65c56b2859dac8dbb2bf0"
+    },
+    "run/stages/extraction-field.npy": {
+      "bytes": 536871040,
+      "sha256": "7ac13754b7873e2bcd146385b7e50294aad49e849922b038131623d67ded4c91"
+    },
+    "run/stages/marching-faces.npy": {
+      "bytes": 26704352,
+      "sha256": "7a48a587ec3e8e0acb19a0ab2f8a91cdacbc76f17e05b8996bc496e53196bb3e"
+    },
+    "run/stages/marching-vertices.npy": {
+      "bytes": 13352096,
+      "sha256": "9909198449f87f60bececcbc24960424b80110437a980643d6ff887e63466fb2"
+    },
+    "run/stages/original-default.ply": {
+      "bytes": 21140958,
+      "sha256": "99c093250840be41dac95b73de38db9e7da92dbbc5235215ccccd27fc581d149"
+    },
+    "run/stages/outside-sphere.npy": {
+      "bytes": 134217856,
+      "sha256": "84b9e58c81a76e9fce3f5c61a54e4d1efd1a7c6a0570b2358bf7cdbb2305fe1b"
+    },
+    "run/stages/processed-faces.npy": {
+      "bytes": 26704352,
+      "sha256": "8c82cd1523f03a6e3b1edf166c5538e81893f04943e97b931fa52365b61f903e"
+    },
+    "run/stages/processed-float64.ply": {
+      "bytes": 27816867,
+      "sha256": "f9de993c8795c628890ba99120cbc387fa6972aa2bb268e573736450c1ee7863"
+    },
+    "run/stages/processed-vertices.npy": {
+      "bytes": 13352024,
+      "sha256": "afb0179a5e20abab0bb852b1ac8c898cd6ea911557db6f01f3a881e3dc1aebe0"
+    },
+    "run/stages/raw-SDF-grid.npy": {
+      "bytes": 536871040,
+      "sha256": "31059f399d38e17d78fa890d4c6191d22e4d8d6694cf588348a4bcb8afa391ff"
+    },
+    "run/stages/returned-faces.npy": {
+      "bytes": 26704352,
+      "sha256": "7a48a587ec3e8e0acb19a0ab2f8a91cdacbc76f17e05b8996bc496e53196bb3e"
+    },
+    "run/stages/returned-to-processed.npy": {
+      "bytes": 4450784,
+      "sha256": "c78d733978f22f1736c7a13673562b1199b212c1c2cc7ff3db76915b7db177c8"
+    },
+    "run/stages/returned-vertices.npy": {
+      "bytes": 13352096,
+      "sha256": "7397c0ef160b5d55a20a7ffcba5248f31c57a4c0aeb77516077a77bab3f59392"
+    },
+    "run/stages/serialized-faces.npy": {
+      "bytes": 13352240,
+      "sha256": "fae1a878d85387c120c1c58ac64993d249c16d57a2ac239ab1986548e5da6182"
+    },
+    "run/stages/serialized-vertices.npy": {
+      "bytes": 6676076,
+      "sha256": "ffba99c56094d42a2d9809cac161e287939b2ade9103d235fdb63ab0af9fcca0"
+    },
+    "verification.json": {
+      "bytes": 269,
+      "sha256": "a005f86d2d6180e9dd9f5c67e34a334ac59c4ef861beeb97ea97fbc5ca48bca5"
+    }
+  },
+  "original_output": "/home/isavand/paper/evidence/bell-geometry-gate101-ea426f2b86d44aa3ae8be40fd6ab25c0",
+  "outputs": {
+    "defect-stages-and-surface-support.png": {
+      "bytes": 143736,
+      "sha256": "80ff55a6721e9ccdd94b0c44d1f6cfdf815e50285e2fa23b7e29f2cda557d399"
+    },
+    "exact-zero-grid-corners.json": {
+      "bytes": 671,
+      "sha256": "927c2cd9c0aef8c987529aa6ab9928fc2ece33da4ad07dba3666d3fb782a0c29"
+    },
+    "face-localization.csv": {
+      "bytes": 922,
+      "sha256": "d656432a08f2c3807eae3b1001991675b4f60fd47808355b0913d7fd34680ad6"
+    },
+    "mesh-stages.csv": {
+      "bytes": 293,
+      "sha256": "7a28f268052c716ab16cb4116995d694b378226709b89fab2f08ac68f9963aa6"
+    },
+    "raw-versus-sentinel-fields.png": {
+      "bytes": 559653,
+      "sha256": "c5e3e885f4877ea9fd7a510880eb73badc5a90598cc22568738faf90e327634d"
+    },
+    "sphere-crossing-evidence.png": {
+      "bytes": 133859,
+      "sha256": "3d07093cc91145e344932a21c8eb65793337cd7bcbbe323c0e14080bc4e9137c"
+    },
+    "summary.json": {
+      "bytes": 8887,
+      "sha256": "c72104adba0da597c94d3d9ce30e50837b62cc72fccbe75e3c55ad9daa69fb75"
+    }
+  }
+}
