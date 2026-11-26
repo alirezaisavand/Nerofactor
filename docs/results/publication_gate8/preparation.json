@@ -1,0 +1,60 @@
+{
+  "file_only_replay": {
+    "K1_camera_step_captures_verified": 36,
+    "K1_receipt": {
+      "bytes": 238418,
+      "path": "/home/isavand/paper/evidence/donut-matched-geometry-gate4-e54adc81e8ee4a2eb446e8d00b0515f7/K1-Oracle/recovery.json",
+      "sha256": "613b15c891e2251ffd4fe51684a01087d1387adc455a739486332fcafec281fb"
+    },
+    "camera_counts": {
+      "0": 4513,
+      "1": 4131,
+      "28": 4830,
+      "34": 2476,
+      "45": 3942,
+      "50": 2605
+    },
+    "fitting_index_sha256": "0c8b943813ee391218aa74d00f620c086cca509753a579f9d04c62cea588ce36",
+    "observations_and_RGB_sha256": "c3634a728c082605e36e5bb4e60263f1f26bfac8c86b442b30eea28167c34575",
+    "unseen_pixels": {
+      "28": 4849,
+      "34": 2495
+    }
+  },
+  "focused_CPU_tests": {
+    "counts": {
+      "errors": 0,
+      "failures": 0,
+      "passed": 6,
+      "skipped": 0,
+      "tests": 6
+    },
+    "exit_code": 0,
+    "test_names": [
+      "test_original_dispatch_and_linear_capture_without_native_import",
+      "test_original_capture_preserves_fp32_components",
+      "test_initial_parity_excludes_only_the_behavior_tag",
+      "test_frame_exclusion_includes_raw_zero_and_original_sqrt_sign_degeneracy",
+      "test_no_physical_frames_still_reports_all_rgb_and_scalar_rows",
+      "test_compiled_overlay_preserves_optimizer_loop_and_distinct_authorization"
+    ]
+  },
+  "freeze_sha256": "707a3a91e71eedc1dd52c3be96432400b6919771d9d8ad3b182c7c2dc9a3074d",
+  "fresh_output": "/home/isavand/paper/evidence/donut-thesis-attribution-gate8-baa6c828f21c4aa08821044f032719d1",
+  "image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "original_A_source_commit": "e1e859779301faced46d6476691e20b546c27ae0",
+  "scientific_work": {
+    "historical_checkpoint_loads": 0,
+    "optimizer_returns": 0,
+    "reference_integrations": 0,
+    "shader_calls": 0
+  },
+  "source_snapshot_files_verified": 106,
+  "static_checks": [
+    "Bash syntax",
+    "Python 3.8 grammar of frozen Python sources",
+    "report local links",
+    "frozen source hash and unused execution/authorization paths"
+  ],
+  "status": "prepared_pending_separate_execution_approval"
+}
