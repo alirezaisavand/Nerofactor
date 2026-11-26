@@ -1,0 +1,84 @@
+{
+  "extension_cache": "/outputs/torch_extensions",
+  "freeze": "docs/protocols/BELL_AUTHENTICATED_GEOMETRY_GATE10_V4.freeze.json",
+  "freeze_sha256": "6c77069cc577735a63638674094e6e7ce23666f57a12e72a3ea91a6044683a8e",
+  "host_output": "/home/isavand/paper/evidence/bell-geometry-gate10-v4-5eba8365e19e4ab9aa2320491429cffb",
+  "limitation": "Host mapping and environment fixtures do not establish corrected container CUDA execution.",
+  "new_GPU_execution": false,
+  "new_checkpoint_loads": 0,
+  "new_run_allocated": false,
+  "new_training_updates": 0,
+  "parent_commit": "70bd696c9bc5446f54094874ab1db660b127cc60",
+  "preserved_freezes": {
+    "V1": {
+      "bytes": 42978,
+      "sha256": "6c5af379e302d9246be1e682d81d2562686b7892b009b22f7034c99fcdf79bac"
+    },
+    "V2": {
+      "bytes": 43415,
+      "sha256": "4670dae77321b66542348b2284fd1d4c842de5dfcf6f4805256f15fc4b273cf7"
+    },
+    "V3": {
+      "bytes": 43565,
+      "sha256": "8faf460f194b9815416e1eb00894635d85811b7a2663951f3ca8952a494cb002"
+    }
+  },
+  "prior_failure_manifest": {
+    "bytes": 38231,
+    "sha256": "afe134501541d290077366cf014e0bb10f24e4c47403a49a6376bddb5c53469f"
+  },
+  "runtime_library_policy": "Existing Torch/nvdiffrast source JIT under owned output. Persist and hash compiled files.",
+  "scientific_invariants_equal_to_v3": true,
+  "sources": {
+    "geometry": {
+      "commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+      "files_verified": 99
+    },
+    "material": {
+      "commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "files_verified": 106
+    }
+  },
+  "status": "FIX_AND_PROCEED_pending_fresh_execution_approval",
+  "validation": {
+    "Python38_grammar": true,
+    "command": "python3 -B -m pytest tests/scientific/test_bell_geometry_gate10_v1.py tests/scientific/test_bell_geometry_workers_v2.py tests/scientific/test_bell_geometry_cache_v4.py -q -p no:cacheprovider --junitxml=/tmp/gate10-v4-tests.xml",
+    "counts": {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 21
+    },
+    "exit_code": 0,
+    "host_evidence_CPU_shared_library_mapping": true,
+    "inventory": [
+      "test_actual_loss_and_lr_schedules",
+      "test_split_guard_actual_adapter_dispatch",
+      "test_real_admitted_staging_excludes_oracle_and_heldout",
+      "test_signed_surface_and_full_exclusion_accounting",
+      "test_sdf_raw_zero_crossing_and_signed_A_normal[0-False-True]",
+      "test_sdf_raw_zero_crossing_and_signed_A_normal[0.01-False-False]",
+      "test_sdf_raw_zero_crossing_and_signed_A_normal[0-True-False]",
+      "test_train_receipt_rejects_missing_cleanup_and_wrong_split",
+      "test_scientific_import_blocker_in_fresh_process",
+      "test_offline_sdf_verifier_rejects_altered_scientific_gate",
+      "test_full_resolution_mesh_sampling_exceeds_historical_audit_cap_and_has_no_rim",
+      "test_spawn_loader_changes_only_transport_and_restores_binding",
+      "test_exception_restores_original_loader",
+      "test_real_eight_spawn_workers_preserve_payloads_indices_and_parent_rng",
+      "test_unclosed_namespace_reproduces_failure_and_bootstrap_prevents_fallback",
+      "test_bootstrap_rejects_already_imported_mixed_namespace",
+      "test_frozen_entry_bootstraps_before_dataset_payload_import",
+      "test_actual_frozen_entry_runs_closed_worker_bootstrap_without_scientific_execution",
+      "test_launcher_routes_only_extension_cache_to_owned_output",
+      "test_cache_guard_precedes_scientific_execution_and_hashes_artifacts",
+      "test_owned_evidence_mount_supports_cpu_shared_library_mapping"
+    ],
+    "junit": {
+      "bytes": 4031,
+      "sha256": "e8813a2be91b49a4d74554c891c4c52372411c5a0fe0b694f461195f6fa16bb4"
+    },
+    "original_nvdiffrast_CUDA_execution": "unexecuted",
+    "shell_syntax": true
+  }
+}

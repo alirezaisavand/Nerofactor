@@ -12,8 +12,8 @@ from infrastructure.signatures import require
 from infrastructure.stage_sources import ROOT, PINS, digest
 from infrastructure.verified_ray_backend import identity
 
-PROTOCOL = 'bell-v3-authenticated-geometry-gate10-v3'
-FREEZE = 'docs/protocols/BELL_AUTHENTICATED_GEOMETRY_GATE10_V3.freeze.json'
+PROTOCOL = 'bell-v3-authenticated-geometry-gate10-v4'
+FREEZE = 'docs/protocols/BELL_AUTHENTICATED_GEOMETRY_GATE10_V4.freeze.json'
 CFG = 'scientific_sources/geometry_g/configs/shape/syn/bell.yaml'
 ARCHIVE = Path('/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240')
 ADMISSION = ARCHIVE.parent/'bell-oracle-e12-admission-v1/oracle-admission.json'
@@ -51,6 +51,8 @@ SOURCES = (
     'docs/protocols/BELL_AUTHENTICATED_GEOMETRY_GATE10_V1.md',
     'docs/protocols/BELL_AUTHENTICATED_GEOMETRY_GATE10_V2.md',
     'docs/protocols/BELL_AUTHENTICATED_GEOMETRY_GATE10_V3.md',
+    'docs/protocols/BELL_AUTHENTICATED_GEOMETRY_GATE10_V4.md',
+    'tests/scientific/test_bell_geometry_cache_v4.py',
     'infrastructure/bell_geometry_workers_v2.py',
     'tests/scientific/test_bell_geometry_workers_v2.py',
     'docs/results/publication_gate10/README.md', CFG,
@@ -128,7 +130,7 @@ def definition(out):
         check(root/'geometry'/name,row)
     subset=training_calibration(root/'geometry/calibrations-safe.npz',split()['train']+split()['validation'])
     return dict(protocol=PROTOCOL,host_output=str(out),scientific_commit=PINS['geometry'],seed=SEED,
-                stage='geometry',worker_transport='spawn-eight-original-dummy-workers-closed-G-bootstrap',retained_checkpoints=list(KEEP_STEPS),image=IMAGE,backend=identity(),splits=split(),acquisition=str(root),train_files=training,
+                stage='geometry',extension_cache='/outputs/torch_extensions',worker_transport='spawn-eight-original-dummy-workers-closed-G-bootstrap',retained_checkpoints=list(KEEP_STEPS),image=IMAGE,backend=identity(),splits=split(),acquisition=str(root),train_files=training,
                 eval_files=evaluation,calibration_subset_sha256=calibration_sha(subset),
                 receipts={'generation':GEN_SHA,'verification':VERIFY_SHA,'admission':ADMISSION_SHA},
                 extraction=EXTRACTION,
@@ -144,7 +146,7 @@ def freeze(sha):
     require(o.resolve()==o and o.parent==ARCHIVE.parent and o.name.startswith('bell-geometry-gate10-')
             and f['protocol']==PROTOCOL and f['scientific_commit']==PINS['geometry'] and f['image']==IMAGE
             and f['worker_transport']=='spawn-eight-original-dummy-workers-closed-G-bootstrap' and f['retained_checkpoints']==list(KEEP_STEPS) and f['stage']=='geometry' and f['acquisition']==str(ARCHIVE/'benchmark')
-            and f['backend']==identity() and f['extraction']==EXTRACTION
+            and f['extension_cache']=='/outputs/torch_extensions' and f['backend']==identity() and f['extraction']==EXTRACTION
             and f['seed']==SEED and f['splits']==split() and f['limits']==LIMITS and f['resources']==RESOURCES
             and f['quality']==QUALITY and set(f['sources'])==set(SOURCES)
             and set(f['train_files'])==train_names(f['splits'])

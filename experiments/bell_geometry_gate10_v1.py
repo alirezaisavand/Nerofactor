@@ -68,6 +68,8 @@ def native(f,args):
     approval(Path('/authorization.json'),f,args)
     out=Path('/outputs')
     require(out.is_dir() and not any(out.iterdir()),'Native Gate 10 output must be empty')
+    require(os.environ.get('TORCH_EXTENSIONS_DIR')==f['extension_cache']==str(out/'torch_extensions'),
+            'Torch extension cache must be inside the owned output mount')
     require(os.getuid()!=0 and sys.version_info[:2]==(3,8) and torch.__version__=='1.8.1+cu111'
             and torch.version.cuda=='11.1' and torch.cuda.is_available() and torch.cuda.device_count()==1
             and torch.cuda.get_device_name(0)=='NVIDIA A100 80GB PCIe','Wrong native Gate 10 environment')
@@ -85,7 +87,7 @@ def native(f,args):
                 cleanup_verified=False,runtime=runtime_identity(torch),
                 source=dict(stage='geometry',algorithm='geometry-G',scientific_commit=g.PINS['geometry'],
                             scientific_files=manifest['files'],source_manifest_sha256=f['sources']['scientific_sources/manifest-v1.json']),
-                limits=g.LIMITS, eval_only_oracle_mesh=True, held_out_seen_by_trainer=False)
+                limits=g.LIMITS,extension_cache=f['extension_cache'], eval_only_oracle_mesh=True, held_out_seen_by_trainer=False)
     if args.phase=='train':
         report.update(adam_returns=0,validation_calls=0,periodic_saves=0,best_saves=0,training_witnesses=[])
     else:
@@ -141,6 +143,9 @@ def native(f,args):
         report.update(status='failed',error={'type':type(exc).__name__,'message':str(exc)})
         raise
     finally:
+        cache=out/'torch_extensions'
+        report['runtime_extension_files']={p.relative_to(out).as_posix():g.item(p)
+                                           for p in sorted(cache.rglob('*')) if p.is_file() and p.resolve()==p}
         progress()
 
 

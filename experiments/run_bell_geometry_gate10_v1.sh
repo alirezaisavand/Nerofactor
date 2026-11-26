@@ -8,7 +8,7 @@ test "$(realpath "$BELL_GEOMETRY_AUTH")" = "$BELL_GEOMETRY_AUTH"
 test -z "$(git -C "$BELL_GEOMETRY_SOURCE" status --porcelain)"
 commit=$(git -C "$BELL_GEOMETRY_SOURCE" rev-parse HEAD)
 cd "$BELL_GEOMETRY_SOURCE"
-freeze=docs/protocols/BELL_AUTHENTICATED_GEOMETRY_GATE10_V3.freeze.json
+freeze=docs/protocols/BELL_AUTHENTICATED_GEOMETRY_GATE10_V4.freeze.json
 sha=$(sha256sum "$freeze" | cut -d' ' -f1)
 auth_sha=$(sha256sum "$BELL_GEOMETRY_AUTH" | cut -d' ' -f1)
 entry=experiments/bell_geometry_gate10_v1.py
@@ -73,6 +73,7 @@ launch() {
         --user "$(id -u):$(id -g)" --gpus device=0 --network none --read-only --cap-drop ALL \
         --security-opt no-new-privileges:true --memory 128g --memory-swap 128g --cpus 4 --pids-limit 256 \
         --shm-size 4g --ulimit core=0 --tmpfs /tmp:rw,nosuid,nodev,noexec,size=512m \
+        --env TORCH_EXTENSIONS_DIR=/outputs/torch_extensions \
         --env HOME=/tmp --env XDG_CACHE_HOME=/tmp --env OMP_NUM_THREADS=4 --env MKL_NUM_THREADS=4 \
         --env OPENBLAS_NUM_THREADS=4 --mount "type=bind,src=$BELL_GEOMETRY_SOURCE,dst=/workspace,readonly" \
         --mount "type=bind,src=$out/authorization.json,dst=/authorization.json,readonly" \
