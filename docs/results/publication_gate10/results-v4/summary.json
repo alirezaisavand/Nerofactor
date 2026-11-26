@@ -1,0 +1,415 @@
+{
+  "adam_returns": 300000,
+  "additional_scientific_execution": {
+    "Adam_updates": 0,
+    "SDF_queries": 0,
+    "checkpoint_deserializations": 0,
+    "geometry_rays": 0,
+    "mesh_repairs": 0,
+    "shader_calls": 0
+  },
+  "authorization_sha256": "79d7e013f1e0d37586dfda7fb1b2a979484fb8d2e1d565bc5db1eb8b2dbcc498",
+  "commit": "6638d3233e439b2c1ec9279eb46c2d514ba2509a",
+  "containers_absent": true,
+  "endpoint_checkpoint": {
+    "bytes": 29967467,
+    "sha256": "27c8c2256d529a84680e1ab806081acfa796a04937a2681587a8bb6d1a3681cd"
+  },
+  "evaluation_cleanup_verified": false,
+  "evaluation_receipt": {
+    "bytes": 60740,
+    "sha256": "d5b8a8fc3f2d6e9d0d3ce5ccf2b312d899ac1063922e0b1df8af46e9d2a1f657"
+  },
+  "extraction_grid_nodes": 134217728,
+  "extraction_tiles": 512,
+  "final_native_validation": {
+    "checkpoint_step": 300000,
+    "metric_means": {
+      "loss_eikonal": 4.7556419303873554e-05,
+      "loss_rgb": 0.03836777061223984,
+      "psnr": 33.72638672155809,
+      "ssim": 0.9398656463947002
+    },
+    "native_PSNR": 33.72638672155809,
+    "view": "58"
+  },
+  "freeze_sha256": "6c77069cc577735a63638674094e6e7ce23666f57a12e72a3ea91a6044683a8e",
+  "geometry_admitted": false,
+  "handoff_created": false,
+  "known_limit": "No raw pre-Trimesh or pre-PLY vertex/face arrays were saved; stage attribution remains unresolved.",
+  "mesh": {
+    "bytes": 21140958,
+    "sha256": "99c093250840be41dac95b73de38db9e7da92dbbc5235215ccccd27fc581d149"
+  },
+  "mesh_diagnostics": {
+    "area_fraction_entirely_in_sphere_band": 0.36947479458746985,
+    "bounds": [
+      [
+        -0.7338564395904541,
+        -0.9977295398712158,
+        -0.7416889667510986
+      ],
+      [
+        0.7338740229606628,
+        0.7183223366737366,
+        0.7339224219322205
+      ]
+    ],
+    "coincident_coordinate_zero_area_faces": 10,
+    "distinct_index_zero_area_faces": 4,
+    "faces": 1112676,
+    "faces_entirely_in_sphere_band": 395786,
+    "faces_touching_sphere_band": 398569,
+    "finite_triangle_areas": true,
+    "finite_vertices": true,
+    "minimum_positive_area": 3.076740298213702e-15,
+    "raw_extraction_counts": {
+      "faces": 1112676,
+      "vertices": 556332
+    },
+    "repeated_index_faces": 6,
+    "sphere_cap_attribution": "unverified without raw SDF and staged extraction witnesses",
+    "total_positive_area": 5.97116157997547,
+    "unit_sphere_band_width": 0.003913894324853229,
+    "vertices": 556329,
+    "vertices_removed_before_PLY": 3,
+    "zero_area_away_from_sphere": 6,
+    "zero_area_faces": 10,
+    "zero_area_fraction": 8.9873422272072e-06,
+    "zero_area_near_sphere": 4
+  },
+  "mesh_packages": {
+    "PyMCubes": "0.1.4",
+    "open3d": "0.16.0",
+    "trimesh": "4.12.2"
+  },
+  "missing_evaluation": [
+    "oracle replay",
+    "FP64 ray witnesses",
+    "silhouette IoU",
+    "depth errors",
+    "signed normal errors",
+    "correspondence/foreground exclusions",
+    "raw SDF/mesh consistency",
+    "unit-sphere cap attribution"
+  ],
+  "original_output": "/home/isavand/paper/evidence/bell-geometry-gate10-v4-5eba8365e19e4ab9aa2320491429cffb",
+  "peak_RSS_bytes": 10047692800,
+  "peak_cuda_allocated_bytes": 8244000768,
+  "peak_cuda_reserved_bytes": 19172163584,
+  "phase_validation": {
+    "0-1000": {
+      "native_PSNR_max": 36.0836,
+      "native_PSNR_median": 36.0836,
+      "native_PSNR_min": 36.0836
+    },
+    "1000-10000": {
+      "native_PSNR_max": 38.23873,
+      "native_PSNR_median": 35.05484,
+      "native_PSNR_min": 33.65493
+    },
+    "10000-20000": {
+      "native_PSNR_max": 38.79227,
+      "native_PSNR_median": 36.509845,
+      "native_PSNR_min": 33.85202
+    },
+    "100000-200000": {
+      "native_PSNR_max": 34.90558,
+      "native_PSNR_median": 33.922315,
+      "native_PSNR_min": 32.68649
+    },
+    "20000-50000": {
+      "native_PSNR_max": 34.78608,
+      "native_PSNR_median": 33.79182,
+      "native_PSNR_min": 32.52312
+    },
+    "200000-300000": {
+      "native_PSNR_max": 34.35925,
+      "native_PSNR_median": 34.088719999999995,
+      "native_PSNR_min": 33.53132
+    },
+    "50000-100000": {
+      "native_PSNR_max": 34.66494,
+      "native_PSNR_median": 33.819925,
+      "native_PSNR_min": 31.6788
+    }
+  },
+  "retained_checkpoints": {
+    "1000": {
+      "bytes": 29966561,
+      "sha256": "5c1b61ea59c6e0451668f3c7955c73ef9621182737458ccb7577d60bc0b10cc3"
+    },
+    "100000": {
+      "bytes": 29967467,
+      "sha256": "e679c9c1d8cacac6eaa0898b578276d39f8cb42301286d450d56be7cc51fd20e"
+    },
+    "15000": {
+      "bytes": 29966625,
+      "sha256": "8022a6caafd4a70e8b1c27c2b5eec6658f6c4c5b816db14c14aab8f754691114"
+    },
+    "200000": {
+      "bytes": 29967467,
+      "sha256": "ddaaecc2b284292b63d6ee6c7928c6e85000d9736f811225984f200f3add67e2"
+    },
+    "30000": {
+      "bytes": 29967147,
+      "sha256": "04a103499ebc5c23b701615749bb60bc403c1b8ab9cc075d8ac50be8cec62b59"
+    },
+    "50000": {
+      "bytes": 29967147,
+      "sha256": "50ce75c0477946115010fc01fb27649c5a2978056e28ab08f2b25ab34c512ff1"
+    }
+  },
+  "status": "BLOCKED_geometry_admission_failed",
+  "training_cleanup_verified": true,
+  "training_complete": true,
+  "training_hours": 10.963663601409644,
+  "training_receipt": {
+    "bytes": 40269,
+    "sha256": "b98e9da593a4ac5027f1a401588aa1a80da556005d7193f1896575cab851b9dc"
+  },
+  "training_witnesses": [
+    {
+      "LR": 0.0,
+      "active_parameters": 135,
+      "completed": 1,
+      "parameters_changed": false,
+      "preclip_gradient_norm": 1.594611406326294,
+      "weighted_loss_components": {
+        "loss_curv": 4.5315823626879137e-07,
+        "loss_eikonal": 0.0010744286701083183,
+        "loss_mask": 0.04397446662187576,
+        "loss_occ": 0.0,
+        "loss_opacity": 0.0001184344946523197,
+        "loss_rgb": 1.093798041343689,
+        "loss_sdf_large": 0.0,
+        "loss_sdf_small": 0.0
+      }
+    },
+    {
+      "LR": 1.0000000000000001e-07,
+      "active_parameters": 135,
+      "completed": 2,
+      "parameters_changed": true,
+      "preclip_gradient_norm": 1.544398546218872,
+      "weighted_loss_components": {
+        "loss_curv": 4.5317719354898145e-07,
+        "loss_eikonal": 0.0010964907705783844,
+        "loss_mask": 0.0400938056409359,
+        "loss_occ": 0.0,
+        "loss_opacity": 0.00011901629477506503,
+        "loss_rgb": 1.1124820709228516,
+        "loss_sdf_large": 0.0,
+        "loss_sdf_small": 0.0
+      }
+    },
+    {
+      "LR": 9.99e-05,
+      "active_parameters": 135,
+      "completed": 1000,
+      "preclip_gradient_norm": 0.4320904314517975,
+      "weighted_loss_components": {
+        "loss_curv": 4.536101414487348e-07,
+        "loss_eikonal": 0.0009507315699011087,
+        "loss_mask": 0.0013649056199938059,
+        "loss_occ": 0.0,
+        "loss_opacity": 9.729040903039277e-05,
+        "loss_rgb": 0.055494796484708786,
+        "loss_sdf_large": 1.4117019020432053e-07,
+        "loss_sdf_small": 0.0
+      }
+    },
+    {
+      "LR": 0.0004999000000000001,
+      "active_parameters": 135,
+      "completed": 5000,
+      "preclip_gradient_norm": 1.0983678102493286,
+      "weighted_loss_components": {
+        "loss_curv": 4.551628478566272e-07,
+        "loss_eikonal": 0.0017208519857376814,
+        "loss_mask": 0.0050370716489851475,
+        "loss_occ": 0.0,
+        "loss_opacity": 9.026772022480145e-05,
+        "loss_rgb": 0.20710182189941406
+      }
+    },
+    {
+      "LR": 0.0004986547838791366,
+      "active_parameters": 135,
+      "completed": 15000,
+      "preclip_gradient_norm": 0.12489182502031326,
+      "weighted_loss_components": {
+        "loss_curv": 4.583517636547185e-07,
+        "loss_eikonal": 0.00044774854904972017,
+        "loss_mask": 0.0013071275316178799,
+        "loss_occ": 0.0,
+        "loss_opacity": 0.00012104569759685546,
+        "loss_rgb": 0.0370979867875576
+      }
+    },
+    {
+      "LR": 0.0004986545150499075,
+      "active_parameters": 136,
+      "completed": 15001,
+      "preclip_gradient_norm": 0.22674356400966644,
+      "weighted_loss_components": {
+        "loss_curv": 4.580507493301411e-07,
+        "loss_eikonal": 0.00048335528117604554,
+        "loss_mask": 0.0013892673887312412,
+        "loss_occ": 0.0,
+        "loss_opacity": 0.0001194937140098773,
+        "loss_rgb": 0.03534267470240593
+      }
+    },
+    {
+      "LR": 0.0004969762342463193,
+      "active_parameters": 136,
+      "completed": 20001,
+      "preclip_gradient_norm": 0.13900424540042877,
+      "weighted_loss_components": {
+        "loss_curv": 4.658741943330824e-07,
+        "loss_eikonal": 0.00028619603835977614,
+        "loss_mask": 4.671110582421534e-05,
+        "loss_occ": 0.02137187123298645,
+        "loss_opacity": 2.00524773390498e-05,
+        "loss_rgb": 0.0343363955616951
+      }
+    },
+    {
+      "LR": 0.0004916330342821737,
+      "active_parameters": 136,
+      "completed": 30000,
+      "preclip_gradient_norm": 1.3166075944900513,
+      "weighted_loss_components": {
+        "loss_curv": 4.7386819801431557e-07,
+        "loss_eikonal": 0.0005847591673955321,
+        "loss_mask": 0.0016298650298267603,
+        "loss_occ": 0.0013642993289977312,
+        "loss_opacity": 2.9536620786529966e-05,
+        "loss_rgb": 0.033472586423158646
+      }
+    },
+    {
+      "LR": 0.0004916323688434476,
+      "active_parameters": 136,
+      "completed": 30001,
+      "preclip_gradient_norm": 0.10022202879190445,
+      "weighted_loss_components": {
+        "loss_curv": 4.7019497628753015e-07,
+        "loss_eikonal": 0.0005864744307473302,
+        "loss_mask": 1.8540304154157639e-06,
+        "loss_occ": 0.002612655283883214,
+        "loss_opacity": 2.8273299903958105e-05,
+        "loss_rgb": 0.03407447040081024
+      }
+    },
+    {
+      "LR": 0.0004732472840314212,
+      "active_parameters": 136,
+      "completed": 50000,
+      "preclip_gradient_norm": 0.5154759287834167,
+      "weighted_loss_components": {
+        "loss_curv": 4.7220123633451294e-07,
+        "loss_eikonal": 0.0002942403079941869,
+        "loss_mask": 4.136469215154648e-06,
+        "loss_occ": 0.009747515432536602,
+        "loss_opacity": 9.076132846530527e-05,
+        "loss_rgb": 0.03225984424352646
+      }
+    },
+    {
+      "LR": 0.0004732461178259357,
+      "active_parameters": 136,
+      "completed": 50001,
+      "preclip_gradient_norm": 1.0316650867462158,
+      "weighted_loss_components": {
+        "loss_curv": 4.715792840670474e-07,
+        "loss_eikonal": 0.00022198537772055715,
+        "loss_mask": 0.0002048867754638195,
+        "loss_occ": 0.021181922405958176,
+        "loss_opacity": 8.979244739748538e-05,
+        "loss_rgb": 0.032877594232559204
+      }
+    },
+    {
+      "LR": 0.00038847710980217525,
+      "active_parameters": 136,
+      "completed": 100000,
+      "preclip_gradient_norm": 0.5738380551338196,
+      "weighted_loss_components": {
+        "loss_curv": 4.796194161826861e-07,
+        "loss_eikonal": 0.00022583830286748707,
+        "loss_mask": 0.0039019519463181496,
+        "loss_occ": 0.014073153957724571,
+        "loss_opacity": 8.096758392639458e-05,
+        "loss_rgb": 0.035539574921131134
+      }
+    },
+    {
+      "LR": 0.0001474213807955857,
+      "active_parameters": 136,
+      "completed": 200000,
+      "preclip_gradient_norm": 0.34129709005355835,
+      "weighted_loss_components": {
+        "loss_curv": 4.7355297283502296e-07,
+        "loss_eikonal": 7.715375249972567e-05,
+        "loss_mask": 5.6126504205167294e-05,
+        "loss_occ": 0.00561783742159605,
+        "loss_opacity": 8.787871047388762e-05,
+        "loss_rgb": 0.03251427784562111
+      }
+    },
+    {
+      "LR": 2.5000000013467564e-05,
+      "active_parameters": 136,
+      "completed": 300000,
+      "preclip_gradient_norm": 0.316972553730011,
+      "weighted_loss_components": {
+        "loss_curv": 4.843860210712592e-07,
+        "loss_eikonal": 5.1371891458984464e-05,
+        "loss_mask": 1.816079020500183e-06,
+        "loss_occ": 0.008235504850745201,
+        "loss_opacity": 7.975604967214167e-05,
+        "loss_rgb": 0.03211056813597679
+      }
+    }
+  ],
+  "validation_visualization_sources": {
+    "1000": {
+      "bytes": 3317,
+      "path": "/home/isavand/paper/evidence/bell-geometry-gate10-v4-5eba8365e19e4ab9aa2320491429cffb/train/workspace/data/train_vis/bell_shape-val/999-index-0.jpg",
+      "sha256": "376b5899d88b476239af0b97196032a5d9798690708d33a9fda31ccd4ee2edac"
+    },
+    "100000": {
+      "bytes": 3721,
+      "path": "/home/isavand/paper/evidence/bell-geometry-gate10-v4-5eba8365e19e4ab9aa2320491429cffb/train/workspace/data/train_vis/bell_shape-val/99999-index-0.jpg",
+      "sha256": "5ae3efebab2a2f8fdb0daf419380056e1006e54ba03682343324a8e64b841c45"
+    },
+    "15000": {
+      "bytes": 3267,
+      "path": "/home/isavand/paper/evidence/bell-geometry-gate10-v4-5eba8365e19e4ab9aa2320491429cffb/train/workspace/data/train_vis/bell_shape-val/14999-index-0.jpg",
+      "sha256": "3f9a777733e3428f5b5db232e2c0dc26cccab3b84fbdfa6b0382301271242149"
+    },
+    "200000": {
+      "bytes": 3834,
+      "path": "/home/isavand/paper/evidence/bell-geometry-gate10-v4-5eba8365e19e4ab9aa2320491429cffb/train/workspace/data/train_vis/bell_shape-val/199999-index-0.jpg",
+      "sha256": "37ac102901093e0ce2973a4890478d2d30fb061033b821024816135d2ff1c722"
+    },
+    "30000": {
+      "bytes": 3679,
+      "path": "/home/isavand/paper/evidence/bell-geometry-gate10-v4-5eba8365e19e4ab9aa2320491429cffb/train/workspace/data/train_vis/bell_shape-val/29999-index-0.jpg",
+      "sha256": "000b5f9bd92c97bd22cf219b501a3723656b38dedfe45834af117a5777e39ca2"
+    },
+    "300000": {
+      "bytes": 3967,
+      "path": "/home/isavand/paper/evidence/bell-geometry-gate10-v4-5eba8365e19e4ab9aa2320491429cffb/train/workspace/data/train_vis/bell_shape-val/299999-index-0.jpg",
+      "sha256": "b9ca718222e274f63cbd03da92a1af176668a9339caed3e0b38eb7267ba3f50a"
+    },
+    "50000": {
+      "bytes": 3666,
+      "path": "/home/isavand/paper/evidence/bell-geometry-gate10-v4-5eba8365e19e4ab9aa2320491429cffb/train/workspace/data/train_vis/bell_shape-val/49999-index-0.jpg",
+      "sha256": "4a8b355b49ca1a80a7fe20d7c079c7a6e7223e934e1880c990204e6b066c3ee6"
+    }
+  },
+  "validations": 300
+}
