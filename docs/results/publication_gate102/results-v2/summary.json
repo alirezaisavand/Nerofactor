@@ -1,0 +1,756 @@
+{
+  "additional_scientific_execution": {
+    "SDF_queries": 0,
+    "checkpoint_loads": 0,
+    "extractions": 0,
+    "optimizer_returns": 0,
+    "ray_queries": 0
+  },
+  "area_accounting": {
+    "candidate_area": 3.7590768373925836,
+    "domain_retained_area_before_rounding": 3.759076855673881,
+    "excluded_area": 3.2723213719271587,
+    "float32_rounding_net_area_change": -1.8281297364808324e-08,
+    "global_raw_area": 7.03139822760104,
+    "groups": [
+      {
+        "faces": 716127,
+        "float64_area": 3.759076855673881,
+        "fraction_of_global_raw_area": 0.5346129936031793,
+        "group": "retained_domain"
+      },
+      {
+        "faces": 0,
+        "float64_area": 0.0,
+        "fraction_of_global_raw_area": 0.0,
+        "group": "mixed_generators"
+      },
+      {
+        "faces": 5725,
+        "float64_area": 0.037396306130708115,
+        "fraction_of_global_raw_area": 0.005318473640692503,
+        "group": "boundary_cells"
+      },
+      {
+        "faces": 617012,
+        "float64_area": 3.2349250657964492,
+        "fraction_of_global_raw_area": 0.460068532756128,
+        "group": "outside_corner_cells"
+      }
+    ],
+    "open_boundary": {
+      "band_depth": 0.00677906382610128,
+      "boundary_edges": 1803,
+      "boundary_edges_in_conservative_radial_band": 1803,
+      "boundary_vertices": 1803,
+      "endpoint_degree_histogram": {
+        "2": 1803
+      },
+      "midpoint_radius": {
+        "count": 1803,
+        "maximum": 0.9998245110183206,
+        "mean": 0.996715501875198,
+        "median": 0.9967444424536374,
+        "minimum": 0.9937470672913191,
+        "p95": 0.9985674757022036
+      },
+      "total_boundary_edge_length": 6.517776222564148
+    },
+    "removed_face_ids": [
+      360670,
+      360685,
+      360687,
+      364461,
+      794337,
+      797925
+    ],
+    "removed_faces_original_area": 1.1942843135052513e-10,
+    "removed_faces_raw_exact_zero": 4,
+    "removed_faces_raw_positive": 2
+  },
+  "backend": {
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "variant": "predicate_fp64"
+  },
+  "cameras": [
+    {
+      "absolute_depth": {
+        "count": 4155,
+        "maximum": 0.11309099197387695,
+        "mean": 0.003173417677804738,
+        "median": 0.0022962093353271484,
+        "minimum": 7.152557373046875e-07,
+        "p95": 0.00859472751617431
+      },
+      "camera": "58",
+      "common": 4155,
+      "distance_failures": 43,
+      "distance_normal_overlap": 3,
+      "excluded_common": 64,
+      "grazing_absolute_depth": {
+        "count": 26,
+        "maximum": 0.0658121109008789,
+        "mean": 0.027298624698932353,
+        "median": 0.025765657424926758,
+        "minimum": 0.0010139942169189453,
+        "p95": 0.060453176498413086
+      },
+      "grazing_common": 26,
+      "large_depth_over_point1": 1,
+      "matched": 4091,
+      "matched_fraction_oracle": 0.9845968712394705,
+      "missing_inside_domain": 0,
+      "missing_outside_domain": 0,
+      "nongrazing_absolute_depth": {
+        "count": 4129,
+        "maximum": 0.11309099197387695,
+        "mean": 0.003021503078010764,
+        "median": 0.0022749900817871094,
+        "minimum": 7.152557373046875e-07,
+        "p95": 0.008095741271972653
+      },
+      "normal_failures": 24,
+      "oracle": 4155,
+      "oracle_domain_supported": 4155,
+      "oracle_only": 0,
+      "passed": false,
+      "reconstructed": 4631,
+      "reconstruction_only": 476,
+      "reconstruction_only_radial_boundary_band": 44,
+      "reconstruction_only_radial_interior": 432,
+      "reconstruction_only_radius": {
+        "count": 476,
+        "maximum": 0.9982484884146989,
+        "mean": 0.955182088897821,
+        "median": 0.9786620956627383,
+        "minimum": 0.3581855340116708,
+        "p95": 0.9947095496415101
+      },
+      "shared_miss": 11753,
+      "signed_depth": {
+        "count": 4155,
+        "maximum": 0.008366823196411133,
+        "mean": -0.002792472185210631,
+        "median": -0.002205371856689453,
+        "minimum": -0.11309099197387695,
+        "p95": 0.0013786077499389647
+      },
+      "signed_normal_degrees": {
+        "count": 4155,
+        "maximum": 127.85950539203567,
+        "mean": 2.690110007269765,
+        "median": 1.7897200091226961,
+        "minimum": 0.03596006219832934,
+        "p95": 5.786471210630665
+      },
+      "silhouette_iou": 0.8972144245303391,
+      "split": "validation",
+      "total_pixels": 16384
+    },
+    {
+      "absolute_depth": {
+        "count": 4377,
+        "maximum": 0.21314597129821777,
+        "mean": 0.0030206197577849737,
+        "median": 0.0021250247955322266,
+        "minimum": 4.76837158203125e-07,
+        "p95": 0.00855135917663574
+      },
+      "camera": "11",
+      "common": 4377,
+      "distance_failures": 17,
+      "distance_normal_overlap": 9,
+      "excluded_common": 58,
+      "grazing_absolute_depth": {
+        "count": 21,
+        "maximum": 0.08076071739196777,
+        "mean": 0.01883797418503534,
+        "median": 0.016341209411621094,
+        "minimum": 0.00011420249938964844,
+        "p95": 0.030898332595825195
+      },
+      "grazing_common": 21,
+      "large_depth_over_point1": 2,
+      "matched": 4319,
+      "matched_fraction_oracle": 0.986748914781814,
+      "missing_inside_domain": 0,
+      "missing_outside_domain": 0,
+      "nongrazing_absolute_depth": {
+        "count": 4356,
+        "maximum": 0.21314597129821777,
+        "mean": 0.0029443652942927195,
+        "median": 0.0021134614944458008,
+        "minimum": 4.76837158203125e-07,
+        "p95": 0.008439362049102783
+      },
+      "normal_failures": 50,
+      "oracle": 4377,
+      "oracle_domain_supported": 4377,
+      "oracle_only": 0,
+      "passed": true,
+      "reconstructed": 4733,
+      "reconstruction_only": 356,
+      "reconstruction_only_radial_boundary_band": 35,
+      "reconstruction_only_radial_interior": 321,
+      "reconstruction_only_radius": {
+        "count": 356,
+        "maximum": 0.9984909568055014,
+        "mean": 0.9498288602233426,
+        "median": 0.9804646813666271,
+        "minimum": 0.32107362156351243,
+        "p95": 0.995293057137588
+      },
+      "shared_miss": 11651,
+      "signed_depth": {
+        "count": 4377,
+        "maximum": 0.005446195602416992,
+        "mean": -0.0026008775579022415,
+        "median": -0.001986265182495117,
+        "minimum": -0.21314597129821777,
+        "p95": 0.001416206359863281
+      },
+      "signed_normal_degrees": {
+        "count": 4377,
+        "maximum": 151.3544227254153,
+        "mean": 3.2495094016202875,
+        "median": 1.8651876340344409,
+        "minimum": 0.05448565301035413,
+        "p95": 6.059695460886551
+      },
+      "silhouette_iou": 0.924783435453201,
+      "split": "held_view_nvs",
+      "total_pixels": 16384
+    },
+    {
+      "absolute_depth": {
+        "count": 3607,
+        "maximum": 0.5065891742706299,
+        "mean": 0.004817775124025569,
+        "median": 0.002749919891357422,
+        "minimum": 2.86102294921875e-06,
+        "p95": 0.012385797500610349
+      },
+      "camera": "105",
+      "common": 3607,
+      "distance_failures": 74,
+      "distance_normal_overlap": 16,
+      "excluded_common": 88,
+      "grazing_absolute_depth": {
+        "count": 27,
+        "maximum": 0.5065891742706299,
+        "mean": 0.05667384465535482,
+        "median": 0.03249955177307129,
+        "minimum": 0.0077571868896484375,
+        "p95": 0.13483815193176263
+      },
+      "grazing_common": 27,
+      "large_depth_over_point1": 14,
+      "matched": 3519,
+      "matched_fraction_oracle": 0.9756029941779872,
+      "missing_inside_domain": 0,
+      "missing_outside_domain": 0,
+      "nongrazing_absolute_depth": {
+        "count": 3580,
+        "maximum": 0.2944650650024414,
+        "mean": 0.004426681862197109,
+        "median": 0.0027360916137695312,
+        "minimum": 2.86102294921875e-06,
+        "p95": 0.011228466033935541
+      },
+      "normal_failures": 30,
+      "oracle": 3607,
+      "oracle_domain_supported": 3607,
+      "oracle_only": 0,
+      "passed": false,
+      "reconstructed": 4151,
+      "reconstruction_only": 544,
+      "reconstruction_only_radial_boundary_band": 59,
+      "reconstruction_only_radial_interior": 485,
+      "reconstruction_only_radius": {
+        "count": 544,
+        "maximum": 0.9988626337399104,
+        "mean": 0.9630706613776338,
+        "median": 0.9786430844371541,
+        "minimum": 0.3728218813932305,
+        "p95": 0.9954384165389701
+      },
+      "shared_miss": 12233,
+      "signed_depth": {
+        "count": 3607,
+        "maximum": 0.005780220031738281,
+        "mean": -0.00445947212164244,
+        "median": -0.0026857852935791016,
+        "minimum": -0.5065891742706299,
+        "p95": 0.0014540672302246062
+      },
+      "signed_normal_degrees": {
+        "count": 3607,
+        "maximum": 117.90166316217794,
+        "mean": 2.674544430534171,
+        "median": 1.6571263178021247,
+        "minimum": 0.022284777608796946,
+        "p95": 5.614840337455046
+      },
+      "silhouette_iou": 0.8689472416285232,
+      "split": "held_view_nvs",
+      "total_pixels": 16384
+    },
+    {
+      "absolute_depth": {
+        "count": 3475,
+        "maximum": 0.6292552947998047,
+        "mean": 0.005535333070823614,
+        "median": 0.0027234554290771484,
+        "minimum": 7.152557373046875e-07,
+        "p95": 0.01217639446258545
+      },
+      "camera": "114",
+      "common": 3475,
+      "distance_failures": 72,
+      "distance_normal_overlap": 24,
+      "excluded_common": 83,
+      "grazing_absolute_depth": {
+        "count": 30,
+        "maximum": 0.5385820865631104,
+        "mean": 0.048400036493937176,
+        "median": 0.030913114547729492,
+        "minimum": 0.007396221160888672,
+        "p95": 0.06902027130126953
+      },
+      "grazing_common": 30,
+      "large_depth_over_point1": 16,
+      "matched": 3392,
+      "matched_fraction_oracle": 0.9761151079136691,
+      "missing_inside_domain": 0,
+      "missing_outside_domain": 0,
+      "nongrazing_absolute_depth": {
+        "count": 3445,
+        "maximum": 0.6292552947998047,
+        "mean": 0.0051620555373857605,
+        "median": 0.0026967525482177734,
+        "minimum": 7.152557373046875e-07,
+        "p95": 0.011175155639648436
+      },
+      "normal_failures": 35,
+      "oracle": 3475,
+      "oracle_domain_supported": 3475,
+      "oracle_only": 0,
+      "passed": false,
+      "reconstructed": 4016,
+      "reconstruction_only": 541,
+      "reconstruction_only_radial_boundary_band": 43,
+      "reconstruction_only_radial_interior": 498,
+      "reconstruction_only_radius": {
+        "count": 541,
+        "maximum": 0.9993606825244307,
+        "mean": 0.9697893091308116,
+        "median": 0.9792702700381689,
+        "minimum": 0.36566236362122784,
+        "p95": 0.9944830830867794
+      },
+      "shared_miss": 12368,
+      "signed_depth": {
+        "count": 3475,
+        "maximum": 0.011757373809814453,
+        "mean": -0.005283553583158864,
+        "median": -0.002661466598510742,
+        "minimum": -0.6292552947998047,
+        "p95": 0.00085198879241943
+      },
+      "signed_normal_degrees": {
+        "count": 3475,
+        "maximum": 142.84713673266614,
+        "mean": 2.8436153575361147,
+        "median": 1.4684625999002185,
+        "minimum": 0.031912985005166046,
+        "p95": 6.959045023988434
+      },
+      "silhouette_iou": 0.8652888446215139,
+      "split": "held_view_nvs",
+      "total_pixels": 16384
+    },
+    {
+      "absolute_depth": {
+        "count": 4363,
+        "maximum": 0.10915350914001465,
+        "mean": 0.002724306752259322,
+        "median": 0.0018756389617919922,
+        "minimum": 7.152557373046875e-07,
+        "p95": 0.008151912689208982
+      },
+      "camera": "17",
+      "common": 4363,
+      "distance_failures": 13,
+      "distance_normal_overlap": 4,
+      "excluded_common": 48,
+      "grazing_absolute_depth": {
+        "count": 20,
+        "maximum": 0.05050849914550781,
+        "mean": 0.015562343597412109,
+        "median": 0.01134800910949707,
+        "minimum": 0.00022649765014648438,
+        "p95": 0.03502851724624635
+      },
+      "grazing_common": 20,
+      "large_depth_over_point1": 1,
+      "matched": 4315,
+      "matched_fraction_oracle": 0.9889983955993582,
+      "missing_inside_domain": 0,
+      "missing_outside_domain": 0,
+      "nongrazing_absolute_depth": {
+        "count": 4343,
+        "maximum": 0.10915350914001465,
+        "mean": 0.0026651861589130047,
+        "median": 0.001867055892944336,
+        "minimum": 7.152557373046875e-07,
+        "p95": 0.007983422279357909
+      },
+      "normal_failures": 39,
+      "oracle": 4363,
+      "oracle_domain_supported": 4363,
+      "oracle_only": 0,
+      "passed": true,
+      "reconstructed": 4760,
+      "reconstruction_only": 397,
+      "reconstruction_only_radial_boundary_band": 40,
+      "reconstruction_only_radial_interior": 357,
+      "reconstruction_only_radius": {
+        "count": 397,
+        "maximum": 0.9984171710773644,
+        "mean": 0.939087928293672,
+        "median": 0.9796013517057119,
+        "minimum": 0.32215454407247385,
+        "p95": 0.9956789177175376
+      },
+      "shared_miss": 11624,
+      "signed_depth": {
+        "count": 4363,
+        "maximum": 0.013628721237182617,
+        "mean": -0.002489773581778268,
+        "median": -0.0018048286437988281,
+        "minimum": -0.10915350914001465,
+        "p95": 0.0008682489395141564
+      },
+      "signed_normal_degrees": {
+        "count": 4363,
+        "maximum": 143.95465734634982,
+        "mean": 2.62908696708208,
+        "median": 1.4395110366197024,
+        "minimum": 0.027363008955652413,
+        "p95": 5.484797397788008
+      },
+      "silhouette_iou": 0.9165966386554621,
+      "split": "held_view_nvs",
+      "total_pixels": 16384
+    },
+    {
+      "absolute_depth": {
+        "count": 4024,
+        "maximum": 0.3314523696899414,
+        "mean": 0.0035933573724735326,
+        "median": 0.002686619758605957,
+        "minimum": 4.76837158203125e-07,
+        "p95": 0.007606720924377441
+      },
+      "camera": "76",
+      "common": 4024,
+      "distance_failures": 29,
+      "distance_normal_overlap": 9,
+      "excluded_common": 45,
+      "grazing_absolute_depth": {
+        "count": 30,
+        "maximum": 0.17931580543518066,
+        "mean": 0.03451170126597087,
+        "median": 0.023380398750305176,
+        "minimum": 0.0007441043853759766,
+        "p95": 0.08452315330505371
+      },
+      "grazing_common": 30,
+      "large_depth_over_point1": 4,
+      "matched": 3979,
+      "matched_fraction_oracle": 0.9888170974155069,
+      "missing_inside_domain": 0,
+      "missing_outside_domain": 0,
+      "nongrazing_absolute_depth": {
+        "count": 3994,
+        "maximum": 0.3314523696899414,
+        "mean": 0.0033611214393726514,
+        "median": 0.0026723146438598633,
+        "minimum": 4.76837158203125e-07,
+        "p95": 0.00735105276107788
+      },
+      "normal_failures": 25,
+      "oracle": 4024,
+      "oracle_domain_supported": 4024,
+      "oracle_only": 0,
+      "passed": false,
+      "reconstructed": 4517,
+      "reconstruction_only": 493,
+      "reconstruction_only_radial_boundary_band": 41,
+      "reconstruction_only_radial_interior": 452,
+      "reconstruction_only_radius": {
+        "count": 493,
+        "maximum": 0.9979766829597156,
+        "mean": 0.9557164529650504,
+        "median": 0.9792383380197193,
+        "minimum": 0.3524880083046346,
+        "p95": 0.9948750696776804
+      },
+      "shared_miss": 11867,
+      "signed_depth": {
+        "count": 4024,
+        "maximum": 0.01700448989868164,
+        "mean": -0.0032479549734066304,
+        "median": -0.002613663673400879,
+        "minimum": -0.3314523696899414,
+        "p95": 0.001250815391540527
+      },
+      "signed_normal_degrees": {
+        "count": 4024,
+        "maximum": 122.49230335515243,
+        "mean": 2.536824278624748,
+        "median": 1.4866148718859158,
+        "minimum": 0.030806686585251836,
+        "p95": 6.015702169887607
+      },
+      "silhouette_iou": 0.8908567633384991,
+      "split": "held_view_nvs",
+      "total_pixels": 16384
+    }
+  ],
+  "checkpoint": {
+    "bytes": 29967467,
+    "sha256": "27c8c2256d529a84680e1ab806081acfa796a04937a2681587a8bb6d1a3681cd"
+  },
+  "cleanup": {
+    "domain_faces": 716127,
+    "exact_coordinate_merges": 3,
+    "maximum_float32_coordinate_change": 2.980229840687798e-08,
+    "minimum_positive_area": 2.2684032717079104e-14,
+    "no_positive_area_face_removed": true,
+    "removed_zero_faces": 6,
+    "retained_faces": 716121,
+    "unused_canonical_vertices": 0
+  },
+  "cleanup_verified": true,
+  "decision": "BLOCKED",
+  "execution_commit": "f26cea4ae99b7b465d0ed9b357be714a87950b2e",
+  "execution_status": "complete_successful",
+  "freeze_sha256": "8b6cc635502d9794acaa69a7fe1c8de470c5acaa46ae1bc4f8e7e7bf70e27285",
+  "full_raster": {
+    "common": 24001,
+    "distance_failures": 248,
+    "distance_normal_overlap": 65,
+    "excluded_common": 386,
+    "grazing_common": 154,
+    "large_depth_over_point1": 38,
+    "matched": 23615,
+    "missing_inside_domain": 0,
+    "missing_outside_domain": 0,
+    "normal_failures": 203,
+    "oracle": 24001,
+    "oracle_domain_supported": 24001,
+    "oracle_only": 0,
+    "reconstructed": 26808,
+    "reconstruction_only": 2807,
+    "reconstruction_only_radial_boundary_band": 262,
+    "reconstruction_only_radial_interior": 2545,
+    "shared_miss": 71496,
+    "total_pixels": 98304
+  },
+  "geometry_admitted": false,
+  "handoff_created": false,
+  "historical_comparison": {
+    "candidate_area": 3.7590768373925836,
+    "candidate_faces": 716121,
+    "candidate_near_sphere_area": 0.0008515353039669203,
+    "candidate_zero_area_faces": 0,
+    "comparison_scope": "Saved positive-area geometry statistics. Native audit uses the valid candidate.",
+    "original_area": 5.97116157997547,
+    "original_faces": 1112676,
+    "original_near_sphere_area": 2.2061936982100288,
+    "original_zero_area_faces": 10
+  },
+  "image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "independent_CPU_witnesses": {
+    "passed": 384,
+    "total": 384
+  },
+  "mesh": {
+    "domain-aware-300000.ply": "a3b09297ba90fb3ce8f85c79c977372b6cde84ab08f2cf766c864b9816c28971"
+  },
+  "network_state_preserved": true,
+  "original_SDF_gate": {
+    "eligible": 509,
+    "first_order_distance": {
+      "maximum": 0.0003073296583884422,
+      "mean": 2.5100241313974703e-05,
+      "median": 1.8926789786194684e-05,
+      "p95": 6.912665032336393e-05
+    },
+    "gradient_evaluations": 512,
+    "interior_failures": 0,
+    "near_sphere_samples": 71,
+    "near_sphere_unsupported": 0,
+    "near_zero_gradients": 0,
+    "oriented_interior_samples": 382,
+    "outside_or_crosses_sphere": 3,
+    "passed": true,
+    "raw_SDF_evaluations": 1536,
+    "samples": 512,
+    "signed_alignment": {
+      "maximum": 0.9999999280686691,
+      "mean": 0.9997817778752331,
+      "median": 0.9999707208949502,
+      "p95": 0.99999750715739
+    },
+    "signed_orientation_failures": 0
+  },
+  "peak_RSS_bytes": 6714757120,
+  "peak_cuda_allocated_bytes": 15303680,
+  "quality_passed": false,
+  "receipt": {
+    "bytes": 231418,
+    "sha256": "8cc3ea347e55cfba766297e23ab4efc2f4f7dcc70ab0e00d7da59b80c3cacad6"
+  },
+  "split_summaries": {
+    "held_view_nvs": {
+      "absolute_depth": {
+        "maximum": 0.6292552947998047,
+        "mean": 0.003838560435364206,
+        "median": 0.0024226903915405273,
+        "p95": 0.009230434894561768
+      },
+      "common": 19846,
+      "coverage": 0.9837750680237831,
+      "displacement": {
+        "maximum": 0.6292553544044495,
+        "mean": 0.0038385603111237288,
+        "median": 0.0024226983077824116,
+        "p95": 0.009230424417182803
+      },
+      "eligible": 19524,
+      "normal_degrees": {
+        "maximum": 151.3544227254153,
+        "mean": 2.7930381494422987,
+        "median": 1.5876220452516256,
+        "p95": 6.026301452188148
+      },
+      "oracle": 19846,
+      "oracle_only": 0,
+      "reconstructed": 22177,
+      "reconstructed_only": 2331,
+      "signed_depth": {
+        "maximum": 0.01700448989868164,
+        "mean": -0.003515184856669672,
+        "median": -0.002345442771911621,
+        "p95": 0.001247107982635498
+      },
+      "silhouette_iou": 0.8948911033954097
+    },
+    "validation": {
+      "absolute_depth": {
+        "maximum": 0.11309099197387695,
+        "mean": 0.003173417677804738,
+        "median": 0.0022962093353271484,
+        "p95": 0.00859472751617431
+      },
+      "common": 4155,
+      "coverage": 0.9845968712394705,
+      "displacement": {
+        "maximum": 0.11309099942445755,
+        "mean": 0.003173417178913951,
+        "median": 0.0022962086368352175,
+        "p95": 0.008594719786196942
+      },
+      "eligible": 4091,
+      "normal_degrees": {
+        "maximum": 127.85950539203567,
+        "mean": 2.690110007269765,
+        "median": 1.7897200091226961,
+        "p95": 5.786471210630665
+      },
+      "oracle": 4155,
+      "oracle_only": 0,
+      "reconstructed": 4631,
+      "reconstructed_only": 476,
+      "signed_depth": {
+        "maximum": 0.008366823196411133,
+        "mean": -0.002792472185210631,
+        "median": -0.002205371856689453,
+        "p95": 0.0013786077499389647
+      },
+      "silhouette_iou": 0.8972144245303391
+    }
+  },
+  "topology_after": {
+    "component_areas": [
+      3.7590536426714154,
+      6.093216178537867e-06,
+      9.998456108519637e-06,
+      4.714137824687397e-06,
+      3.2576284199626137e-07,
+      2.0631482158441055e-06
+    ],
+    "component_face_counts": [
+      716106,
+      5,
+      3,
+      3,
+      1,
+      3
+    ],
+    "edge_connected_components": 6,
+    "inconsistent_two_face_edges": 0,
+    "nonmanifold_edges": 0,
+    "open_boundary_edges": 1803,
+    "self_edges": 0
+  },
+  "topology_before": {
+    "component_areas": [
+      3.7590536611637457,
+      6.092981504376509e-06,
+      9.99824964820299e-06,
+      4.714250177975495e-06,
+      3.2577062579189145e-07,
+      2.063258169777403e-06
+    ],
+    "component_face_counts": [
+      716112,
+      5,
+      3,
+      3,
+      1,
+      3
+    ],
+    "edge_connected_components": 6,
+    "inconsistent_two_face_edges": 0,
+    "nonmanifold_edges": 0,
+    "open_boundary_edges": 1803,
+    "self_edges": 0
+  },
+  "verification": {
+    "bytes": 2317,
+    "sha256": "5058c776d0f1087451d95d2bc2507ea248b41ccb1192cf036a015c5c5abebbd9"
+  },
+  "verifier_replay": "exact_nonmutating",
+  "wall_seconds": 32.41356117464602,
+  "work": {
+    "CPU_ray_checks": 384,
+    "MC_attempts": 0,
+    "MC_returns": 0,
+    "SDF": {
+      "completed_gradient_points": 512,
+      "gradient_slots_attempted": 512,
+      "point_slots_attempted": 1536,
+      "query_point_slots": 1536
+    },
+    "checkpoint_loads": 1,
+    "optimizer_returns": 0,
+    "primary_BVH_rays": 196608,
+    "shader_calls": 0
+  }
+}
