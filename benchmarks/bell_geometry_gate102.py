@@ -10,11 +10,13 @@ from benchmarks import bell_geometry_gate10_v1 as original
 from infrastructure.signatures import require
 from infrastructure.stage_sources import ROOT,PINS,baseline,digest
 
-PROTOCOL='bell-domain-aware-raw-SDF-gate10.2-v1'
-FREEZE='docs/protocols/BELL_DOMAIN_AWARE_EXTRACTION_GATE102_V1.freeze.json'
+PROTOCOL='bell-domain-aware-raw-SDF-gate10.2-v2'
+FREEZE='docs/protocols/BELL_DOMAIN_AWARE_EXTRACTION_GATE102_V2.freeze.json'
+FAILED='docs/results/publication_gate102/failure-v1/artifact-manifest.json'
+CAPTURE=previous.read(ROOT/FAILED)['root']
 DIAGNOSTIC=previous.read(ROOT/previous.FREEZE)['host_output']
 DOMAIN='docs/results/publication_gate102/domain-statistics.json'
-LIMITS=dict(MC_calls=1,grid_nodes=512**3,network_queries_for_extraction=0,checkpoint_loads=1,
+LIMITS=dict(MC_calls=0,grid_nodes=512**3,network_queries_for_extraction=0,checkpoint_loads=1,
             SDF_points=1536,gradient_points=512,primary_BVH_rays=196608,CPU_ray_checks=384,
             max_faces=4000000,optimizer_returns=0,shader_calls=0)
 RESOURCES=previous.RESOURCES
@@ -24,7 +26,11 @@ SOURCES=tuple(dict.fromkeys((*previous.SOURCES,previous.FREEZE,
     'benchmarks/bell_geometry_gate102.py','experiments/bell_geometry_gate102.py',
     'experiments/run_bell_geometry_gate102.sh','tests/scientific/test_bell_geometry_gate102.py',
     'docs/protocols/BELL_DOMAIN_AWARE_EXTRACTION_GATE102_V1.md',
-    'docs/results/publication_gate102/README.md',DOMAIN)))
+    'docs/results/publication_gate102/README.md',DOMAIN,
+    'docs/protocols/BELL_DOMAIN_AWARE_EXTRACTION_GATE102_V1.freeze.json',
+    'docs/protocols/BELL_DOMAIN_AWARE_EXTRACTION_GATE102_V2.md',
+    'tests/scientific/test_bell_geometry_gate102_serialization.py',FAILED,
+    'docs/results/publication_gate102/failure-v1/summary.json')))
 read,write,item,check=previous.read,previous.write,previous.item,previous.check
 
 
@@ -32,6 +38,8 @@ def definition(out):
     prior=read(ROOT/previous.FREEZE)
     accepted=read(ROOT/'docs/results/publication_gate101/results-v1/summary.json')
     inventory=read(ROOT/'docs/results/publication_gate101/results-v1/artifact-manifest.json')['files']
+    failure=read(ROOT/'docs/results/publication_gate102/failure-v1/summary.json')
+    captures=read(ROOT/FAILED)['files']
     require(accepted['execution_status']=='complete' and accepted['cleanup_verified'] and
             accepted['checkpoint']==prior['checkpoint'],'Accepted Gate 10.1 identity differs')
     return dict(protocol=PROTOCOL,host_output=str(out),diagnostic=DIAGNOSTIC,
@@ -44,6 +52,11 @@ def definition(out):
                 grid_shape=[512,512,512],bounds=[-1,1],level=0,domain=read(ROOT/DOMAIN),
                 cell_policy='all-eight-corners-inside-for-every-consistent-generating-cell',
                 numerical_policy='float32-exact-coordinate-weld-and-exact-zero-area-removal',
+                completed_extraction=dict(root=CAPTURE,commit=failure['original_commit'],
+                    freeze_sha256=failure['freeze_sha256'],receipt=captures['run/receipt.json'],
+                    layout=failure['raw_mesh_layout'],
+                    arrays={name:captures['run/'+name] for name in
+                            ('raw-voxel-vertices.npy','raw-world-vertices.npy','raw-faces.npy')}),
                 quality=original.QUALITY,limits=LIMITS,resources=RESOURCES,
                 sources={name:digest(ROOT/name) for name in SOURCES})
 
@@ -71,6 +84,18 @@ def host_inputs(f):
     check(previous.PRIOR/'evaluate/bell_shape-300000.ply',f['original_mesh'])
     for name,row in f['eval_files'].items():check(Path(f['acquisition'])/'geometry'/name,row)
     baseline('geometry',PINS['geometry'])
+    captures=read(ROOT/FAILED)
+    for name,identity in captures['files'].items():check(Path(CAPTURE)/name,identity)
+    receipt=read(Path(CAPTURE)/'run/receipt.json')
+    require(receipt['status']=='failed' and receipt['MC_attempts']==receipt['MC_returns']==1 and
+            receipt['primary_BVH_rays']==receipt['CPU_ray_checks']==receipt['checkpoint_loads']==0 and
+            receipt['raw_grid_identity']==f['raw_grid'] and receipt['image_id']==f['image'] and
+            receipt['commit']==f['completed_extraction']['commit'] and
+            receipt['freeze_sha256']==f['completed_extraction']['freeze_sha256'] and
+            receipt['error']==dict(type='TypeError',message="save() got an unexpected keyword argument 'retained'") and
+            (Path(CAPTURE)/'exit-code.txt').read_text().strip()=='1' and
+            (Path(CAPTURE)/'container-absent.txt').read_text().strip()=='absent',
+            'Expected preserved completed extraction and pre-audit serialization failure')
 
 
 def authorization(f,commit,sha):
@@ -79,6 +104,7 @@ def authorization(f,commit,sha):
                 checkpoint_sha256=previous.CHECKPOINT_SHA,
                 CPU_pickle='at most one accepted endpoint load, only for original consistency evaluation',
                 limits=LIMITS,resources=RESOURCES,maximum_execution_launches=1,
+                completed_extraction=f['completed_extraction'],no_new_marching_cubes=True,
                 no_training=True,cell_policy=f['cell_policy'],numerical_policy=f['numerical_policy'])
 
 

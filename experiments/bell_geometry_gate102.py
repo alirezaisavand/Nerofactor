@@ -1,4 +1,4 @@
-"""One authorized saved-grid extraction and original Gate 10 geometry audit."""
+"""One authorized saved-extraction continuation and original Gate 10 geometry audit."""
 import argparse
 import os
 from pathlib import Path
@@ -27,10 +27,19 @@ from infrastructure.stage_sources import activate,baseline,PINS
 from infrastructure.verified_ray_backend import load
 
 
+def read_completed_extraction(captured,root):
+    arrays={name:np.load(p.check(root/name,identity),allow_pickle=False,mmap_mode='r')
+            for name,identity in captured['arrays'].items()}
+    voxel,world,faces=(arrays[name] for name in ('raw-voxel-vertices.npy','raw-world-vertices.npy','raw-faces.npy'))
+    layout=captured['layout']
+    require(voxel.shape==world.shape==(layout['vertices'],3) and faces.shape==(layout['faces'],3) and
+            str(voxel.dtype)==str(world.dtype)==layout['vertex_dtype'] and str(faces.dtype)==layout['face_dtype'] and
+            faces.min()>=0 and faces.max()<len(voxel) and np.array_equal(world,voxel/511*2-1),
+            'Captured extraction layout or coordinate transform differs')
+    return voxel,world,faces
+
+
 def extract(plan,out,r,budget,progress):
-    import mcubes
-    import importlib.metadata
-    require(importlib.metadata.version('PyMCubes')=='0.1.4','Pinned marching-cubes runtime required')
     raw=np.load(p.check(Path('/inputs/raw.npy'),plan['raw_grid']),allow_pickle=False,mmap_mode='r')
     outside=np.load(p.check(Path('/inputs/outside.npy'),plan['outside_mask']),allow_pickle=False,mmap_mode='r')
     require(raw.shape==outside.shape==(512,512,512) and raw.dtype==np.float32 and outside.dtype==bool
@@ -39,22 +48,17 @@ def extract(plan,out,r,budget,progress):
     require(p.cell_counts(valid,any_inside)==plan['domain']['cell_counts'],'Supported-cell inventory differs')
     save_array(out/'supported-cells.npy',valid)
     r['domain_cells']=p.cell_counts(valid,any_inside)
-    data=np.array(raw,dtype=np.float32,copy=True,order='C')
-    require(r['MC_attempts']==0,'One extraction attempt only')
-    r['MC_attempts']+=1;progress()
-    voxel,faces=mcubes.marching_cubes(data,0)
-    r['MC_returns']+=1
-    require(np.array_equal(data,raw),'Marching cubes altered its raw input values')
-    del data
+    voxel,world,faces=read_completed_extraction(plan['completed_extraction'],Path('/inputs/capture'))
+    require(r['MC_attempts']==r['MC_returns']==0,'No new extraction authorized')
+    r['reused_completed_extraction']=True
     require(8<len(faces)<=p.LIMITS['max_faces'] and np.isfinite(voxel).all() and
             voxel.min()>=0 and voxel.max()<=511,'Raw extraction empty, invalid or over budget')
     r['raw_mesh_layout']=dict(vertices=len(voxel),faces=len(faces),vertex_dtype=str(voxel.dtype),face_dtype=str(faces.dtype))
-    world=voxel/511*2-1
     save_array(out/'raw-voxel-vertices.npy',voxel)
     save_array(out/'raw-world-vertices.npy',world)
     save_array(out/'raw-faces.npy',faces)
     keep,reason,possible,good=p.face_domain(voxel,faces,valid,any_inside)
-    save(out/'face-domain.npz',retained=keep,reason=reason,possible_cells=possible,supported_cells=good)
+    save(out/'face-domain.npz',dict(retained=keep,reason=reason,possible_cells=possible,supported_cells=good))
     r['domain_faces']=dict(global_raw=len(faces),retained=int(keep.sum()),
                            rejected_mixed_generators=int((reason==1).sum()),
                            rejected_boundary_cells=int((reason==2).sum()),
@@ -63,17 +67,17 @@ def extract(plan,out,r,budget,progress):
     progress();budget()
     require(keep.any(),'No raw zero-level faces satisfy the supported-domain policy')
     before,labels,edges=p.topology(world,faces[keep])
-    save(out/'topology-before-cleanup.npz',face_labels=labels,boundary_edges=edges)
+    save(out/'topology-before-cleanup.npz',dict(face_labels=labels,boundary_edges=edges))
     r['topology_before_cleanup']=before
     v,f,mapping,retained,removed,info=p.numerical_cleanup(world,faces,keep)
-    save(out/'cleanup-mappings.npz',raw_vertex_to_candidate=mapping,
-         candidate_face_to_raw=retained,removed_exact_zero_raw_faces=removed)
+    save(out/'cleanup-mappings.npz',dict(raw_vertex_to_candidate=mapping,
+         candidate_face_to_raw=retained,removed_exact_zero_raw_faces=removed))
     save_array(out/'candidate-vertices.npy',v);save_array(out/'candidate-faces.npy',f)
     r['cleanup']=info
     require(8<len(f)<=p.LIMITS['max_faces'],'Insufficient native-compatible candidate faces')
     r['candidate_geometry']=geometry(v,f,np)
     after,labels,edges=p.topology(v,f)
-    save(out/'topology-after-cleanup.npz',face_labels=labels,boundary_edges=edges)
+    save(out/'topology-after-cleanup.npz',dict(face_labels=labels,boundary_edges=edges))
     r['topology_after_cleanup']=after
     candidate=out/'domain-aware-300000.ply'
     p.previous.write_ply(candidate,v,f)
@@ -94,8 +98,8 @@ def extract(plan,out,r,budget,progress):
     new_band=(abs(np.linalg.norm(xyz,axis=2)-1)<=2/511).all(axis=1)
     area=p.areas(v,f)
     original_topology,old_labels,old_edges=p.topology(ov,of[oa>0])
-    save(out/'historical-positive-area-topology.npz',face_labels=old_labels,boundary_edges=old_edges,
-         face_to_original=np.flatnonzero(oa>0))
+    save(out/'historical-positive-area-topology.npz',dict(face_labels=old_labels,boundary_edges=old_edges,
+         face_to_original=np.flatnonzero(oa>0)))
     r['historical_positive_area_topology']=original_topology
     r['historical_comparison']=dict(original_faces=len(of),candidate_faces=len(f),
         original_zero_area_faces=int((oa==0).sum()),candidate_zero_area_faces=int((area==0).sum()),
@@ -203,6 +207,7 @@ def native(plan,args):
            optimizer_returns=0,shader_calls=0,MC_attempts=0,MC_returns=0,
            primary_BVH_rays=0,CPU_ray_checks=0,views=[],runtime=runtime_identity(torch),
            raw_grid_identity=plan['raw_grid'],domain_policy=plan['cell_policy'],numerical_policy=plan['numerical_policy'])
+    r['completed_extraction_input']=plan['completed_extraction']
     start=time.monotonic()
     def progress():
         temp=out/'receipt.next';temp.unlink(missing_ok=True)
@@ -251,7 +256,9 @@ def verify(plan,args):
             r['domain_policy']==plan['cell_policy'] and r['numerical_policy']==plan['numerical_policy'] and
             r['optimizer_returns']==r['shader_calls']==0 and r['open3d_exact'] and
             r['scientific_work_complete'] and r['cleanup_verified'] and r['checkpoint_loads']==1 and
-            r['MC_attempts']==r['MC_returns']==1 and r['network_queries_for_extraction']==0 and
+            r['MC_attempts']==r['MC_returns']==0 and r['reused_completed_extraction'] and
+            r['completed_extraction_input']==plan['completed_extraction'] and r['network_queries_for_extraction']==0 and
+            r['raw_mesh_layout']==plan['completed_extraction']['layout'] and
             r['network_state_preserved'] and r['primary_BVH_rays']==196608 and r['CPU_ray_checks']==384,
             'Incomplete frozen extraction/audit receipt')
     require(r['checkpoint']==plan['checkpoint'] and r['SDF_work']['point_slots_attempted']<=p.LIMITS['SDF_points'] and
@@ -265,6 +272,9 @@ def verify(plan,args):
     voxel=np.load(out/'raw-voxel-vertices.npy',allow_pickle=False)
     world=np.load(out/'raw-world-vertices.npy',allow_pickle=False)
     faces=np.load(out/'raw-faces.npy',allow_pickle=False)
+    for name,value in (('raw-voxel-vertices.npy',voxel),('raw-world-vertices.npy',world),('raw-faces.npy',faces)):
+        source=p.check(Path(plan['completed_extraction']['root'])/'run'/name,plan['completed_extraction']['arrays'][name])
+        require(np.array_equal(np.load(source,allow_pickle=False,mmap_mode='r'),value),'Captured extraction replay differs')
     require(np.array_equal(world,voxel/511*2-1),'Coordinate transformation changed')
     keep,reason,possible,good=p.face_domain(voxel,faces,valid,any_inside)
     with np.load(out/'face-domain.npz',allow_pickle=False) as z:
@@ -304,7 +314,8 @@ def verify(plan,args):
                    orientation='Inherited marching-cubes winding; no normal flips',
                    material_preprocessing='A-original-read-triangles-and-compute-missing-vertex-normals-no-file-write',
                    mesh_derivation=dict(policy=p.PROTOCOL,raw_grid=plan['raw_grid'],cell_policy=plan['cell_policy'],
-                                        numerical_policy=plan['numerical_policy'],mapping=p.item(out/'cleanup-mappings.npz')),
+                                        numerical_policy=plan['numerical_policy'],mapping=p.item(out/'cleanup-mappings.npz'),
+                                        completed_extraction=plan['completed_extraction']),
                    researcher_admission_pending=True)
         p.write(out/'handoff.json',value)
         resolver=PathResolver(dict(datasets=Path(plan['acquisition'])/'datasets',thesis=p.previous.PRIOR/'train',geometry=out),
@@ -325,7 +336,7 @@ def main():
     root=Path(plan['host_output']);auth=args.authorization or root/'authorization.json'
     require(p.digest(auth)==args.authorization_sha256 and p.read(auth)==p.authorization(plan,args.commit,args.freeze_sha256),
             'Exact source/freeze/output approval required')
-    if args.phase=='verify':verify(plan,args);return
+    if args.phase=='verify':p.host_inputs(plan);verify(plan,args);return
     require(not os.path.lexists(root),'Fresh output required')
     p.host_inputs(plan)
     print(root);print(plan['image']);print(plan['acquisition']+'/geometry')

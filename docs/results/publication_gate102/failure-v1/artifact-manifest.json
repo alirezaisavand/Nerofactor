@@ -1,0 +1,53 @@
+{
+  "files": {
+    "authorization.json": {
+      "bytes": 1898,
+      "sha256": "affea6b2db189df3a31142b2b33ffb7268a95d3d255d163773eac5dfa370c930"
+    },
+    "console.txt": {
+      "bytes": 856,
+      "sha256": "549d8a783f0996e6c263cef3f589a64cb419f702813ebacafc80fafbc59ebe17"
+    },
+    "container-absent.txt": {
+      "bytes": 7,
+      "sha256": "7925d3e9a9613a093e5eb4054b32aa39de910d2b03ba7e8046c3b4550b8de1e4"
+    },
+    "container.cid": {
+      "bytes": 64,
+      "sha256": "db9aed60dbe54e99ba9283154de245df5f715ea1571dba7435bf4aa17294b34e"
+    },
+    "exit-code.txt": {
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    "freeze.json": {
+      "bytes": 11222,
+      "sha256": "f5cdf0e825dbcdf42037021ffd8115cd60b607cc158f8abddcf62760fbb9130e"
+    },
+    "image-id.txt": {
+      "bytes": 72,
+      "sha256": "973bb2336f0834f6fd10cc27a7e7e3e8b311aefb1fa8cd371528c08a9cf740af"
+    },
+    "run/raw-faces.npy": {
+      "bytes": 32132864,
+      "sha256": "da99ef55904d1d65f31ba73d037279e9a44373c97585d490d117f32d818d9553"
+    },
+    "run/raw-voxel-vertices.npy": {
+      "bytes": 16117328,
+      "sha256": "45a9a842fe2179f60907279f924fb03fa8622553a0f5913bc83f23448ff719a9"
+    },
+    "run/raw-world-vertices.npy": {
+      "bytes": 16117328,
+      "sha256": "77e066f6e6243bd7162c039020cf8608d2df1cb4e024cdc0091b5bf79eec0c57"
+    },
+    "run/receipt.json": {
+      "bytes": 19554,
+      "sha256": "e5742c6550b7aeb1248ceaacabbfb95b357f7faf5810ec40f9edcca7b3006452"
+    },
+    "run/supported-cells.npy": {
+      "bytes": 133432959,
+      "sha256": "4b0819ca766aaa4266c7a50ea0736d2f56bb62ec6a9cb6e1629ee9e66ff9c9e1"
+    }
+  },
+  "root": "/home/isavand/paper/evidence/bell-geometry-gate102-f1811a9dadb946bbb96c7f7cdec35892"
+}

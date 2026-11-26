@@ -1,0 +1,33 @@
+{
+  "CPU_ray_checks": 0,
+  "MC_attempts": 1,
+  "MC_returns": 1,
+  "arrays_reusable_after_separate_authorization": true,
+  "authorization_sha256": "affea6b2db189df3a31142b2b33ffb7268a95d3d255d163773eac5dfa370c930",
+  "checkpoint_loads": 0,
+  "coordinate_transform_replay": "exact",
+  "failure": {
+    "message": "save() got an unexpected keyword argument 'retained'",
+    "type": "TypeError"
+  },
+  "freeze_sha256": "f5cdf0e825dbcdf42037021ffd8115cd60b607cc158f8abddcf62760fbb9130e",
+  "host_container_absent": true,
+  "host_exit": 1,
+  "native_cleanup_verified": false,
+  "optimizer_returns": 0,
+  "original_commit": "1223420470109adb408909824efea05f4ef630f0",
+  "preservation": "Original batch, authorizations, freeze and all artifacts left unchanged.",
+  "primary_BVH_rays": 0,
+  "raw_mesh_layout": {
+    "face_dtype": "uint64",
+    "faces": 1338864,
+    "vertex_dtype": "float64",
+    "vertices": 671550
+  },
+  "receipt": {
+    "bytes": 19554,
+    "sha256": "e5742c6550b7aeb1248ceaacabbfb95b357f7faf5810ec40f9edcca7b3006452"
+  },
+  "scientific_quality": "not_evaluated",
+  "status": "failed_serialization_interface"
+}

@@ -7,7 +7,7 @@ test "$(realpath "$BELL_DOMAIN_AUTH")" = "$BELL_DOMAIN_AUTH"
 test -z "$(git -C "$BELL_DOMAIN_SOURCE" status --porcelain)"
 commit=$(git -C "$BELL_DOMAIN_SOURCE" rev-parse HEAD)
 cd "$BELL_DOMAIN_SOURCE"
-freeze=docs/protocols/BELL_DOMAIN_AWARE_EXTRACTION_GATE102_V1.freeze.json
+freeze=docs/protocols/BELL_DOMAIN_AWARE_EXTRACTION_GATE102_V2.freeze.json
 sha=$(sha256sum "$freeze" | cut -d' ' -f1)
 auth_sha=$(sha256sum "$BELL_DOMAIN_AUTH" | cut -d' ' -f1)
 entry=experiments/bell_geometry_gate102.py
@@ -41,6 +41,11 @@ diagnostic=$(python3 -B - <<'PY2'
 from benchmarks import bell_geometry_gate102 as p
 print(p.DIAGNOSTIC)
 PY2
+)
+capture=$(python3 -B - <<'PY3'
+from benchmarks import bell_geometry_gate102 as p
+print(p.CAPTURE)
+PY3
 )
 mkdir "$out" "$out/run"
 printf '%s\n' "$actual_image" >"$out/image-id.txt"
@@ -77,6 +82,7 @@ timeout --foreground --signal=TERM --kill-after=30s 1800s \
     --mount "type=bind,src=$out/run,dst=/outputs" \
     --mount "type=bind,src=$diagnostic/run/stages/raw-SDF-grid.npy,dst=/inputs/raw.npy,readonly" \
     --mount "type=bind,src=$diagnostic/run/stages/outside-sphere.npy,dst=/inputs/outside.npy,readonly" \
+    --mount "type=bind,src=$capture/run,dst=/inputs/capture,readonly" \
     --mount "type=bind,src=$prior/evaluate/bell_shape-300000.ply,dst=/inputs/original.ply,readonly" \
     --mount "type=bind,src=$prior/train/checkpoints/model.pth,dst=/inputs/checkpoint.pth,readonly" \
     --mount "type=bind,src=$oracle,dst=/inputs/oracle,readonly" \

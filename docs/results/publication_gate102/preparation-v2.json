@@ -1,0 +1,148 @@
+{
+  "backend": {
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "variant": "predicate_fp64"
+  },
+  "checks": {
+    "actual_production_save_calls_tested": 7,
+    "failed": 0,
+    "focused_new_CPU_tests": 9,
+    "junit": {
+      "bytes": 2071,
+      "sha256": "70c9f002e50c4ebc3ee6eb2a1f60a102eb46413805f69eafe9abf7a77a05d0f2"
+    },
+    "original_input_hashes": "pass",
+    "protected_sources": {
+      "geometry": {
+        "commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+        "verified_files": 99
+      },
+      "material": {
+        "commit": "e1e859779301faced46d6476691e20b546c27ae0",
+        "verified_files": 106
+      }
+    },
+    "python38_AST_syntax": "pass",
+    "saved_capture_hashes": "pass",
+    "saved_voxel_to_world_transform": "exact",
+    "shell_syntax": "pass",
+    "skipped": 0
+  },
+  "completed_extraction": {
+    "arrays": {
+      "raw-faces.npy": {
+        "bytes": 32132864,
+        "sha256": "da99ef55904d1d65f31ba73d037279e9a44373c97585d490d117f32d818d9553"
+      },
+      "raw-voxel-vertices.npy": {
+        "bytes": 16117328,
+        "sha256": "45a9a842fe2179f60907279f924fb03fa8622553a0f5913bc83f23448ff719a9"
+      },
+      "raw-world-vertices.npy": {
+        "bytes": 16117328,
+        "sha256": "77e066f6e6243bd7162c039020cf8608d2df1cb4e024cdc0091b5bf79eec0c57"
+      }
+    },
+    "commit": "1223420470109adb408909824efea05f4ef630f0",
+    "freeze_sha256": "f5cdf0e825dbcdf42037021ffd8115cd60b607cc158f8abddcf62760fbb9130e",
+    "layout": {
+      "face_dtype": "uint64",
+      "faces": 1338864,
+      "vertex_dtype": "float64",
+      "vertices": 671550
+    },
+    "receipt": {
+      "bytes": 19554,
+      "sha256": "e5742c6550b7aeb1248ceaacabbfb95b357f7faf5810ec40f9edcca7b3006452"
+    },
+    "root": "/home/isavand/paper/evidence/bell-geometry-gate102-f1811a9dadb946bbb96c7f7cdec35892"
+  },
+  "continuation": "Read hash-bound completed v1 marching-cubes arrays. No extraction rerun or fallback.",
+  "correction": "Five save(path, **fields) calls become save(path, dict(**fields)); writer unchanged.",
+  "decision": "FIX_AND_PROCEED",
+  "failed_run_manifest": {
+    "bytes": 1783,
+    "sha256": "adb1792da424b9a9e0aa7c49d75393847f2bf3de064c5da63eb0806b9e28c8ae"
+  },
+  "failed_run_preserved": true,
+  "foreground_launch": {
+    "authorization": "/home/isavand/paper/evidence/bell-geometry-gate102-v2-be50de3a6c33491db3e30703056e71a1-authorization.json",
+    "launcher": "experiments/run_bell_geometry_gate102.sh",
+    "source": "/home/isavand/paper/Nerofactor-donut-recovery"
+  },
+  "freeze": {
+    "bytes": 12930,
+    "path": "docs/protocols/BELL_DOMAIN_AWARE_EXTRACTION_GATE102_V2.freeze.json",
+    "sha256": "8b6cc635502d9794acaa69a7fe1c8de470c5acaa46ae1bc4f8e7e7bf70e27285"
+  },
+  "geometry_admitted": false,
+  "host_output": "/home/isavand/paper/evidence/bell-geometry-gate102-v2-be50de3a6c33491db3e30703056e71a1",
+  "image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "limitations": [
+    "No geometry-quality results exist yet.",
+    "Native continuation is unexecuted; stop on any mandatory failure.",
+    "Original native cleanup was not verified, while host container removal is recorded.",
+    "The consumed v1 approval does not authorize this changed source, v2 freeze or fresh output."
+  ],
+  "limits": {
+    "CPU_ray_checks": 384,
+    "MC_calls": 0,
+    "SDF_points": 1536,
+    "checkpoint_loads": 1,
+    "gradient_points": 512,
+    "grid_nodes": 134217728,
+    "max_faces": 4000000,
+    "network_queries_for_extraction": 0,
+    "optimizer_returns": 0,
+    "primary_BVH_rays": 196608,
+    "shader_calls": 0
+  },
+  "new_scientific_work": {
+    "MC_calls": 0,
+    "SDF_queries": 0,
+    "checkpoint_loads": 0,
+    "native_rays": 0,
+    "optimizer_updates": 0
+  },
+  "protocol": "bell-domain-aware-raw-SDF-gate10.2-v2",
+  "quality": {
+    "grazing_cosine": 0.1,
+    "max_sdf_failures": 0,
+    "min_iou": 0.9,
+    "min_oracle_correspondence": 0.8,
+    "minimum_sdf_interior_points": 128,
+    "normal_degrees": 30.0,
+    "radius": 0.02,
+    "sdf_min_gradient": 1e-06,
+    "sdf_min_sign": 1e-07,
+    "sdf_step": 0.0019569471624266144,
+    "tight_radius": 0.005
+  },
+  "resources": {
+    "allocator": 0.75,
+    "cpu_threads": 4,
+    "grace": 30,
+    "inner": 1740,
+    "memory_gib": 128,
+    "output_bytes": 8589934592,
+    "pids": 128,
+    "watchdog": 1800
+  },
+  "starting_commit": "1223420470109adb408909824efea05f4ef630f0",
+  "status": "prepared_pending_fresh_authorization",
+  "unchanged_numeric_functions": [
+    "domain_cells",
+    "cell_counts",
+    "bounds_support",
+    "face_domain",
+    "point_domain",
+    "areas",
+    "numerical_cleanup",
+    "topology",
+    "geometry_audit",
+    "sdf_audit"
+  ]
+}
