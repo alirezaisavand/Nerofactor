@@ -8,7 +8,7 @@ test "$(realpath "$BELL_GEOMETRY_AUTH")" = "$BELL_GEOMETRY_AUTH"
 test -z "$(git -C "$BELL_GEOMETRY_SOURCE" status --porcelain)"
 commit=$(git -C "$BELL_GEOMETRY_SOURCE" rev-parse HEAD)
 cd "$BELL_GEOMETRY_SOURCE"
-freeze=docs/protocols/BELL_AUTHENTICATED_GEOMETRY_GATE10_V2.freeze.json
+freeze=docs/protocols/BELL_AUTHENTICATED_GEOMETRY_GATE10_V3.freeze.json
 sha=$(sha256sum "$freeze" | cut -d' ' -f1)
 auth_sha=$(sha256sum "$BELL_GEOMETRY_AUTH" | cut -d' ' -f1)
 entry=experiments/bell_geometry_gate10_v1.py

@@ -2,7 +2,13 @@
 from contextlib import contextmanager
 
 from infrastructure.signatures import require
-from infrastructure.stage_sources import PINS, baseline, imported_sources
+from infrastructure.stage_sources import PINS, activate, baseline, imported_sources
+
+
+def bootstrap_geometry_worker():
+    # multiprocessing executes __mp_main__ before unpickling its Process payload.
+    # Establish the same closed import finder used in the selected parent.
+    activate('geometry',PINS['geometry'])
 
 
 def validate_worker(worker_id):
@@ -12,7 +18,7 @@ def validate_worker(worker_id):
             'Unexpected Bell worker identity')
     require(not torch.cuda.is_initialized(),'Bell dummy worker initialized CUDA')
     root,_=baseline('geometry',PINS['geometry'])
-    imported_sources(root)  # Spawn inherits the selected source path, not the parent's import finder.
+    imported_sources(root)  # Validate the closed namespace established before dataset unpickling.
 
 
 @contextmanager

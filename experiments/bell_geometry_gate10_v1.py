@@ -9,6 +9,10 @@ import time
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 
+if __name__=='__mp_main__':
+    from infrastructure.bell_geometry_workers_v2 import bootstrap_geometry_worker
+    bootstrap_geometry_worker()
+
 import numpy as np
 
 from benchmarks import bell_geometry_gate10_v1 as g

@@ -1,0 +1,80 @@
+{
+  "freeze": "docs/protocols/BELL_AUTHENTICATED_GEOMETRY_GATE10_V3.freeze.json",
+  "freeze_sha256": "8faf460f194b9815416e1eb00894635d85811b7a2663951f3ca8952a494cb002",
+  "host_output": "/home/isavand/paper/evidence/bell-geometry-gate10-v3-095dc606109241bbbb43dc30cb370b2f",
+  "limitation": "Host CPU and namespace/bootstrap coverage do not establish corrected container execution.",
+  "modified_runtime_policy": "spawn-eight-original-dummy-workers-closed-G-bootstrap",
+  "new_GPU_execution": false,
+  "new_checkpoint_loads": 0,
+  "new_run_allocated": false,
+  "new_training_updates": 0,
+  "parent_commit": "d9fa97b5c33b6eb491f66ea211696dec78f1f5ff",
+  "preserved_freezes": {
+    "V1": {
+      "bytes": 42978,
+      "sha256": "6c5af379e302d9246be1e682d81d2562686b7892b009b22f7034c99fcdf79bac"
+    },
+    "V2": {
+      "bytes": 43415,
+      "sha256": "4670dae77321b66542348b2284fd1d4c842de5dfcf6f4805256f15fc4b273cf7"
+    }
+  },
+  "prior_failure_manifest": {
+    "bytes": 38118,
+    "sha256": "d7be95bc3048a9515957c855efbe581beface074daf05c6a788c06127e65fe99"
+  },
+  "prior_test_gap": "V2 synthetic dummy fixture did not import scientific namespaces in children. V3 exercises them and the actual entry bootstrap.",
+  "scientific_invariants_equal_to_v2": true,
+  "sources": {
+    "geometry": {
+      "commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+      "files_verified": 99
+    },
+    "material": {
+      "commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "files_verified": 106
+    }
+  },
+  "status": "FIX_AND_PROCEED_pending_fresh_execution_approval",
+  "validation": {
+    "Python38_grammar": true,
+    "command": "python3 -B -m pytest tests/scientific/test_bell_geometry_gate10_v1.py tests/scientific/test_bell_geometry_workers_v2.py -q -p no:cacheprovider --junitxml=/tmp/gate10-v3-final-tests.xml",
+    "counts": {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 18
+    },
+    "exit_code": 0,
+    "foreign_fallback_rejected": true,
+    "inventory": [
+      "test_actual_loss_and_lr_schedules",
+      "test_split_guard_actual_adapter_dispatch",
+      "test_real_admitted_staging_excludes_oracle_and_heldout",
+      "test_signed_surface_and_full_exclusion_accounting",
+      "test_sdf_raw_zero_crossing_and_signed_A_normal[0-False-True]",
+      "test_sdf_raw_zero_crossing_and_signed_A_normal[0.01-False-False]",
+      "test_sdf_raw_zero_crossing_and_signed_A_normal[0-True-False]",
+      "test_train_receipt_rejects_missing_cleanup_and_wrong_split",
+      "test_scientific_import_blocker_in_fresh_process",
+      "test_offline_sdf_verifier_rejects_altered_scientific_gate",
+      "test_full_resolution_mesh_sampling_exceeds_historical_audit_cap_and_has_no_rim",
+      "test_spawn_loader_changes_only_transport_and_restores_binding",
+      "test_exception_restores_original_loader",
+      "test_real_eight_spawn_workers_preserve_payloads_indices_and_parent_rng",
+      "test_unclosed_namespace_reproduces_failure_and_bootstrap_prevents_fallback",
+      "test_bootstrap_rejects_already_imported_mixed_namespace",
+      "test_frozen_entry_bootstraps_before_dataset_payload_import",
+      "test_actual_frozen_entry_runs_closed_worker_bootstrap_without_scientific_execution"
+    ],
+    "junit": {
+      "bytes": 3480,
+      "sha256": "4eb0ea20eea140120a76ee3f888a0fa104812eb7618edfd289de86446f8a9efb"
+    },
+    "namespace_merge_failure_reproduced": true,
+    "native_container_worker_validation": "unexecuted",
+    "real_entry_mp_main_bootstrap": true,
+    "real_host_CPU_spawn_test": true,
+    "shell_syntax": true
+  }
+}

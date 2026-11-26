@@ -44,6 +44,13 @@ def test_real_eight_spawn_workers_preserve_payloads_indices_and_parent_rng(tmp_p
 import json
 import sys
 from types import SimpleNamespace
+from infrastructure.bell_geometry_workers_v2 import bootstrap_geometry_worker
+if __name__=='__mp_main__':
+    bootstrap_geometry_worker()
+    import dataset
+    from infrastructure.stage_sources import ROOT, imported_sources
+    assert list(dataset.__path__)==[str(ROOT/'scientific_sources/geometry_g/dataset')]
+    imported_sources(ROOT/'scientific_sources/geometry_g')
 import torch
 from torch.utils.data import Dataset,DataLoader
 from infrastructure.bell_geometry_workers_v2 import spawned_loaders
@@ -89,3 +96,88 @@ if __name__=='__main__':
     run=subprocess.run([sys.executable,'-B',str(script)],cwd=root,env=env,capture_output=True,text=True,timeout=120)
     assert run.returncode==0,run.stdout+run.stderr
     assert json.loads(run.stdout)['parent_rng_parity']
+
+
+def test_unclosed_namespace_reproduces_failure_and_bootstrap_prevents_fallback(tmp_path):
+    root=Path(__file__).resolve().parents[2]
+    foreign=tmp_path/'foreign'
+    (foreign/'dataset').mkdir(parents=True)
+    (foreign/'dataset'/'foreign_only.py').write_text('marker=True')
+    template="""
+import sys
+from infrastructure.stage_sources import ROOT, imported_sources
+from infrastructure.signatures import SignatureError
+from infrastructure.bell_geometry_workers_v2 import bootstrap_geometry_worker
+root=ROOT/'scientific_sources/geometry_g'
+sys.path.insert(0,FOREIGN)
+sys.path.insert(0,str(root))
+BOOTSTRAP
+import dataset
+if CLOSED:
+ assert list(dataset.__path__)==[str(root/'dataset')]
+ imported_sources(root)
+ try:
+  import dataset.foreign_only
+ except ModuleNotFoundError:
+  pass
+ else:
+  raise AssertionError('Foreign namespace fallback accepted')
+else:
+ assert len(list(dataset.__path__))>=2
+ try:
+  imported_sources(root)
+ except SignatureError as e:
+  assert 'Mixed namespace path' in str(e)
+ else:
+  raise AssertionError('Unclosed namespace accepted')
+"""
+    for closed in (False,True):
+        code=template.replace('FOREIGN',repr(str(foreign))).replace('BOOTSTRAP','bootstrap_geometry_worker()' if closed else '').replace('CLOSED',repr(closed))
+        run=subprocess.run([sys.executable,'-B','-c',code],cwd=root,capture_output=True,text=True)
+        assert run.returncode==0,run.stdout+run.stderr
+
+
+def test_bootstrap_rejects_already_imported_mixed_namespace():
+    root=Path(__file__).resolve().parents[2]
+    code="""
+import dataset
+from infrastructure.bell_geometry_workers_v2 import bootstrap_geometry_worker
+from infrastructure.signatures import SignatureError
+try:
+ bootstrap_geometry_worker()
+except SignatureError as exc:
+ assert 'Scientific namespace already imported' in str(exc)
+else:
+ raise AssertionError('Already mixed namespace was silently repaired')
+"""
+    run=subprocess.run([sys.executable,'-B','-c',code],cwd=root,capture_output=True,text=True)
+    assert run.returncode==0,run.stdout+run.stderr
+
+
+def test_frozen_entry_bootstraps_before_dataset_payload_import():
+    import ast
+    root=Path(__file__).resolve().parents[2]
+    tree=ast.parse((root/'experiments/bell_geometry_gate10_v1.py').read_text())
+    guard=next(n for n in tree.body if isinstance(n,ast.If) and '__mp_main__' in ast.dump(n.test))
+    assert any(isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id=='bootstrap_geometry_worker'
+               for n in ast.walk(guard))
+    imports=[n for n in tree.body if isinstance(n,ast.ImportFrom) and
+             n.module and n.module.startswith(('benchmarks','experiments'))]
+    assert guard.lineno<min(n.lineno for n in imports)
+
+
+def test_actual_frozen_entry_runs_closed_worker_bootstrap_without_scientific_execution():
+    root=Path(__file__).resolve().parents[2]
+    code="""
+import runpy,sys
+from infrastructure.stage_sources import ROOT,StageFinder,imported_sources
+runpy.run_path(str(ROOT/'experiments/bell_geometry_gate10_v1.py'),run_name='__mp_main__')
+import dataset
+assert list(dataset.__path__)==[str(ROOT/'scientific_sources/geometry_g/dataset')]
+assert sum(isinstance(f,StageFinder) for f in sys.meta_path)==1
+imported_sources(ROOT/'scientific_sources/geometry_g')
+assert 'torch' not in sys.modules
+assert 'network.renderer' not in sys.modules
+"""
+    run=subprocess.run([sys.executable,'-B','-c',code],cwd=root,capture_output=True,text=True)
+    assert run.returncode==0,run.stdout+run.stderr
