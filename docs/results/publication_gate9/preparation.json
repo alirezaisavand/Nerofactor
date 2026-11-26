@@ -1,0 +1,141 @@
+{
+  "CPU_analytic_quadrature_controls": {
+    "pdf": 0.15915494309189535,
+    "rows": [
+      {
+        "area_error": 0.0,
+        "cosine_integral_error": 0.0,
+        "size": 4,
+        "unit_error": 2.220446049250313e-16,
+        "z2_integral": 2.061670178918302,
+        "z2_midpoint_exact": 2.061670178918302
+      },
+      {
+        "area_error": 0.0,
+        "cosine_integral_error": 0.0,
+        "size": 8,
+        "unit_error": 1.1102230246251565e-16,
+        "z2_integral": 2.086213871524472,
+        "z2_midpoint_exact": 2.086213871524472
+      },
+      {
+        "area_error": 0.0,
+        "cosine_integral_error": 0.0,
+        "size": 32,
+        "unit_error": 1.1102230246251565e-16,
+        "z2_integral": 2.0938837754639,
+        "z2_midpoint_exact": 2.0938837754639
+      }
+    ],
+    "solid_angle_domain": "z=cos(theta) in(0,1),phi in(0,2pi)",
+    "status": "pass",
+    "weight": "dOmega=2*pi/N; SUM f*Li*cos*dOmega, not mean and no extra sin(theta)"
+  },
+  "endpoints": {
+    "28": {
+      "D2": {
+        "Q_axis_reconstruction_max_abs": 1.5834493147237616e-08,
+        "pixels": 4849
+      },
+      "D8-C": {
+        "Q_axis_reconstruction_max_abs": 8.877154053510417e-09,
+        "pixels": 4849
+      },
+      "D8-T": {
+        "Q_axis_reconstruction_max_abs": 7.416992700570724e-09,
+        "pixels": 4849
+      }
+    },
+    "34": {
+      "D2": {
+        "Q_axis_reconstruction_max_abs": 1.5938744650501047e-08,
+        "pixels": 2495
+      },
+      "D8-C": {
+        "Q_axis_reconstruction_max_abs": 9.077635115817273e-09,
+        "pixels": 2495
+      },
+      "D8-T": {
+        "Q_axis_reconstruction_max_abs": 9.72171072810557e-09,
+        "pixels": 2495
+      }
+    }
+  },
+  "focused_cpu_tests": {
+    "errors": 0,
+    "exit_code": 0,
+    "failures": 0,
+    "names": [
+      "test_illumination_scale_is_reported_without_erasing_color_error",
+      "test_three_role_refinement_reuses_exact_gate6_policy",
+      "test_missing_or_invalid_physical_frame_fails_closed",
+      "test_frozen_no_oracle_image_or_checkpoint_mount_and_zero_work"
+    ],
+    "skipped": 0,
+    "tests": 4
+  },
+  "freeze_sha256": "97facca61f92c29116f4e2b2f23e374a2432bee13b53914d4474a25c57733406",
+  "fresh_output": "/home/isavand/paper/evidence/donut-learned-relight-gate9-3a3f10579e934db4ad5d989ac8ec55fe",
+  "gate6_unseen_support_verified": true,
+  "image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "light_offline": {
+    "D2": {
+      "diagnostic_global_gain": 1.0666985020213182,
+      "gain_aligned_relative_L2": 0.20192121705049698,
+      "mean_RGB": [
+        0.15289053699080282,
+        0.15297143225922374,
+        0.15282615158323878
+      ],
+      "raw_relative_L2": 0.211003595666993,
+      "reference_mean_RGB": [
+        0.13995771766028675,
+        0.14655455327313444,
+        0.16744453844744803
+      ]
+    },
+    "D8-C": {
+      "diagnostic_global_gain": 1.0849738231592563,
+      "gain_aligned_relative_L2": 0.39588961521888094,
+      "mean_RGB": [
+        0.14840145221882733,
+        0.14838929495309336,
+        0.14871066133794605
+      ],
+      "raw_relative_L2": 0.4023693224673512,
+      "reference_mean_RGB": [
+        0.13995771766028675,
+        0.14655455327313444,
+        0.16744453844744803
+      ]
+    },
+    "D8-T": {
+      "diagnostic_global_gain": 1.041885604956231,
+      "gain_aligned_relative_L2": 0.27320124776898747,
+      "mean_RGB": [
+        0.1550042481821978,
+        0.15463793474656057,
+        0.15494422877060607
+      ],
+      "raw_relative_L2": 0.27592475611085937,
+      "reference_mean_RGB": [
+        0.13995771766028675,
+        0.14655455327313444,
+        0.16744453844744803
+      ]
+    }
+  },
+  "pinned_scientific_sources": {
+    "geometry": "79252178e65914ad1acbc14790b1514f276bfea0",
+    "material": "e1e859779301faced46d6476691e20b546c27ae0"
+  },
+  "scientific_work": {
+    "BRDF_point_directions": 0,
+    "checkpoint_loads": 0,
+    "independent_visibility_rays": 0,
+    "native_shader_calls": 0,
+    "optimizer_updates": 0,
+    "primary_rays": 0
+  },
+  "status": "prepared_pending_separate_execution_approval"
+}

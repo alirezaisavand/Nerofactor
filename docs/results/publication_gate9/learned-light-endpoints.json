@@ -1,0 +1,47 @@
+{
+  "arms": {
+    "D2": {
+      "step-10000/camera-28/materials.npz": {
+        "bytes": 1215912,
+        "sha256": "e86cf9db4da67e9fd6af6dd48ec2d5aaf598b3038887d49140c3d36a60316014"
+      },
+      "step-10000/camera-34/materials.npz": {
+        "bytes": 631920,
+        "sha256": "9ab0016fdcb652c3f72ed8fb0c9b16b146246fe93901aab3422b01521524399e"
+      },
+      "step-10000/illumination.npz": {
+        "bytes": 596631,
+        "sha256": "9884f64064414dd4c9cffe1f775c2ec436b6680709dd9e5281cf997eee059752"
+      }
+    },
+    "D8-C": {
+      "step-10000/camera-28/materials.npz": {
+        "bytes": 1448627,
+        "sha256": "8da6eba82dde3853e63dfb7c29fe6029b064430c9164ff2fbb6f50647768c0a7"
+      },
+      "step-10000/camera-34/materials.npz": {
+        "bytes": 752411,
+        "sha256": "1e431fbcf0bf95fa1545f3efd6b4318b5f71240a7da5140b5938407e77b768d6"
+      },
+      "step-10000/illumination.npz": {
+        "bytes": 600626,
+        "sha256": "cdb4bcbe4084a9ffb163a58d03c3744755df7250493db5dbc044299bc1576d35"
+      }
+    },
+    "D8-T": {
+      "step-10000/camera-28/materials.npz": {
+        "bytes": 1476074,
+        "sha256": "a37f534f5211851ad5753dff6608094270b8d0136560751a4829132b41745210"
+      },
+      "step-10000/camera-34/materials.npz": {
+        "bytes": 766869,
+        "sha256": "45c922c22d50ec5cdb22d7f43a16a810f7f1038ca4eca1103c3ce905731496ac"
+      },
+      "step-10000/illumination.npz": {
+        "bytes": 599451,
+        "sha256": "c81c30bfb7f661e63d23faa1c4ca160a7068215e3004bb9c14d2456385580969"
+      }
+    }
+  },
+  "source_manifest_sha256": "b3e045f86946804824c4bec542d849933163044202d9133bfe05bb4a8c971591"
+}

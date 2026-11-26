@@ -1,0 +1,251 @@
+{
+  "bell": {
+    "acquisition": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark",
+    "archived_observations": {
+      "RGB_above_unit_pixels": 0,
+      "RGB_peak": 0.15398352633922466,
+      "energy_above_unit_pixels": 0,
+      "energy_peak": 0.5757195873903642,
+      "pixels": 515698
+    },
+    "calibrations_sha256": "4d8f4e13d7fd5fffec8d258bfc7c5599ef6d81525547d678ba088e76b1656c9c",
+    "generation_sha256": "5035b22b594848900426fd5dfaa8b96382b57a76cfde97864b7ef7591c46e6d7",
+    "maximum_origin_component_difference": 1.1920928955078125e-07,
+    "maximum_ray_component_difference": 9.832068603721211e-08,
+    "orientation": {
+      "105": {
+        "eligible": 3195,
+        "hit": 3607
+      },
+      "11": {
+        "eligible": 4308,
+        "hit": 4377
+      },
+      "114": {
+        "eligible": 2866,
+        "hit": 3475
+      },
+      "17": {
+        "eligible": 4100,
+        "hit": 4363
+      },
+      "76": {
+        "eligible": 3138,
+        "hit": 4024
+      }
+    },
+    "ray_samples_per_camera": [
+      0,
+      63,
+      127,
+      8127,
+      16256,
+      16383
+    ],
+    "splits": {
+      "held_view_nvs": [
+        "11",
+        "105",
+        "114",
+        "17",
+        "76"
+      ],
+      "train": [
+        "14",
+        "98",
+        "103",
+        "117",
+        "91",
+        "63",
+        "67",
+        "104",
+        "20",
+        "39",
+        "74",
+        "35",
+        "51",
+        "18",
+        "87",
+        "2",
+        "47",
+        "100",
+        "22",
+        "32",
+        "62",
+        "72",
+        "106",
+        "19",
+        "88",
+        "59",
+        "86",
+        "54",
+        "123",
+        "99",
+        "16",
+        "3",
+        "75",
+        "122",
+        "8",
+        "84",
+        "64",
+        "23",
+        "119",
+        "36",
+        "0",
+        "60",
+        "6",
+        "10",
+        "120",
+        "121",
+        "116",
+        "70",
+        "29",
+        "102",
+        "27",
+        "55",
+        "97",
+        "25",
+        "109",
+        "82",
+        "127",
+        "124",
+        "125",
+        "57",
+        "28",
+        "52",
+        "24",
+        "41",
+        "77",
+        "26",
+        "15",
+        "126",
+        "68",
+        "95",
+        "81",
+        "107",
+        "30",
+        "12",
+        "33",
+        "94",
+        "111",
+        "80",
+        "43",
+        "31",
+        "110",
+        "21",
+        "78",
+        "37",
+        "101",
+        "44",
+        "5",
+        "40",
+        "48",
+        "89",
+        "1",
+        "49",
+        "108",
+        "79",
+        "66",
+        "71",
+        "65",
+        "34",
+        "42",
+        "61",
+        "46",
+        "83",
+        "90",
+        "113",
+        "13",
+        "9",
+        "7",
+        "56",
+        "96",
+        "85",
+        "4",
+        "112",
+        "92",
+        "50",
+        "115",
+        "118",
+        "69",
+        "45",
+        "73",
+        "53",
+        "38",
+        "93"
+      ],
+      "validation": [
+        "58"
+      ]
+    }
+  },
+  "historical_donut": {
+    "/home/isavand/nero/data/nerf_synthetic/donut": {
+      "test": {
+        "existing": 0,
+        "listed": 250,
+        "transforms_sha256": "091c7b47fd14424c1a6605da6a5fe3baf626c4baf93a486a5c431b0f951862e3"
+      },
+      "train": {
+        "existing": 100,
+        "first_existing_image": "/home/isavand/nero/data/nerf_synthetic/donut/train/0001.png",
+        "first_image_mode": "RGBA",
+        "first_image_shape": [
+          1080,
+          1080
+        ],
+        "listed": 100,
+        "transforms_sha256": "89fc7b8d05db69437f3654cac1a8c6e68a23cfb411c28703824e18f0fdcaa82a"
+      }
+    },
+    "/home/isavand/paper/data/nerf_synthetic/donut": {
+      "test": {
+        "existing": 0,
+        "listed": 250,
+        "transforms_sha256": "091c7b47fd14424c1a6605da6a5fe3baf626c4baf93a486a5c431b0f951862e3"
+      },
+      "train": {
+        "existing": 100,
+        "first_existing_image": "/home/isavand/paper/data/nerf_synthetic/donut/train/0001.png",
+        "first_image_mode": "RGBA",
+        "first_image_shape": [
+          1080,
+          1080
+        ],
+        "listed": 100,
+        "transforms_sha256": "89fc7b8d05db69437f3654cac1a8c6e68a23cfb411c28703824e18f0fdcaa82a"
+      }
+    }
+  },
+  "native_execution": false,
+  "paper": "https://doi.org/10.5194/isprs-archives-XLVIII-2-W12-2026-33-2026",
+  "source_bytes": {
+    "configs/shinynerf/shiny_blender_bitangent_radius.gin": {
+      "bytes": 587,
+      "sha256": "2d0e17696da4f7c5a863d2e1687a69ec5734ae4a316906da3661d54267838eab"
+    },
+    "src/data/data_util/shiny_blender_bitangents.py": {
+      "bytes": 11829,
+      "sha256": "b0eaa1546f80c90e5c5cebe768c19f96820b8437bb86605e42b979d74948e920"
+    },
+    "src/data/ray_utils.py": {
+      "bytes": 4325,
+      "sha256": "d9209750c2cb6816daad2dc21ff5e5fc6af2e436ed7e14609039ec0574c623a9"
+    },
+    "src/model/shinynerf/ASG2vMFs_l_14.pth": {
+      "bytes": 146878,
+      "sha256": "c7d58af5045c7ce14a676a3c2c3990bc4abe6ed117e39223db9a808ad5d325a8"
+    },
+    "src/model/shinynerf/model.py": {
+      "bytes": 69272,
+      "sha256": "abd8461094c6dce060ff4c4ddfe03c929dc34fe933536b18e914cb563f9cb46b"
+    },
+    "src/model/shinynerf/shiny_utils.py": {
+      "bytes": 15755,
+      "sha256": "a3a741519af92e7e964aaa1ec2782fda24f37de95f8fc6d39870ed28f32584aa"
+    }
+  },
+  "status": "static_and_saved_data_only",
+  "upstream_commit": "15c74e98eff684dc0f650b9ecaf00d6bdc19d40e",
+  "upstream_url": "https://github.com/multimedia-eurecat/ShinyNeRF"
+}
