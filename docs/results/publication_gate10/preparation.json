@@ -1,0 +1,102 @@
+{
+  "admitted_input_files": 255,
+  "execution": {
+    "CUDA_calls": 0,
+    "checkpoint_deserializations": 0,
+    "fresh_output_allocated": false,
+    "geometry_extractions": 0,
+    "native_runtime_and_quality": "unexecuted",
+    "scientific_render_calls": 0,
+    "training_updates": 0
+  },
+  "focused_tests": {
+    "actual_exit_code": 0,
+    "command": "python3 -B -m pytest tests/scientific/test_bell_geometry_gate10_v1.py -q -p no:cacheprovider --junitxml=/tmp/gate10-tests-final.xml",
+    "counts": {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 11
+    },
+    "inventory": [
+      "test_actual_loss_and_lr_schedules",
+      "test_split_guard_actual_adapter_dispatch",
+      "test_real_admitted_staging_excludes_oracle_and_heldout",
+      "test_signed_surface_and_full_exclusion_accounting",
+      "test_sdf_raw_zero_crossing_and_signed_A_normal[0-False-True]",
+      "test_sdf_raw_zero_crossing_and_signed_A_normal[0.01-False-False]",
+      "test_sdf_raw_zero_crossing_and_signed_A_normal[0-True-False]",
+      "test_train_receipt_rejects_missing_cleanup_and_wrong_split",
+      "test_scientific_import_blocker_in_fresh_process",
+      "test_offline_sdf_verifier_rejects_altered_scientific_gate",
+      "test_full_resolution_mesh_sampling_exceeds_historical_audit_cap_and_has_no_rim"
+    ],
+    "junit": {
+      "bytes": 2173,
+      "sha256": "13d07c956538f9527d081db60bb80a86024c8beb26081a2e429cab82bf181ca6"
+    }
+  },
+  "freeze_path": "docs/protocols/BELL_AUTHENTICATED_GEOMETRY_GATE10_V1.freeze.json",
+  "freeze_sha256": "6c5af379e302d9246be1e682d81d2562686b7892b009b22f7034c99fcdf79bac",
+  "historical_planning_only": {
+    "event_elapsed_hours": 10.968012483848465,
+    "historical_checkpoint_loads": 0,
+    "logs": {
+      "train.txt": {
+        "bytes": 1967300,
+        "lines": 15000,
+        "path": "/home/isavand/nero/final_results/model/bell_shape/train.txt",
+        "sha256": "7250b274e0d4d3b6626f3596d92327be26419ed228ff33c270b678eb133243f7"
+      },
+      "val.txt": {
+        "bytes": 25800,
+        "lines": 300,
+        "path": "/home/isavand/nero/final_results/model/bell_shape/val.txt",
+        "sha256": "898de60200fe0cb8743ecf79e0c6c4d1fc4a310359acbe07d82fe308b63d7702"
+      }
+    },
+    "producing_revision": "unverified"
+  },
+  "host_output": "/home/isavand/paper/evidence/bell-geometry-gate10-501802f31fee4d388a25b9355105d42e",
+  "limitations": [
+    "Original extraction unit-sphere support may truncate Bell. Raw-SDF and full-raster quality gates decide handoff.",
+    "Native full-run timing and memory remain unmeasured. Fixed endpoint may time out and will not extend.",
+    "Same-ray and sampled SDF validation have explicitly limited coverage.",
+    "Geometry appearance lacks a physical principal director despite two roughness encodings. Error causality is not isolated."
+  ],
+  "original_schedule": {
+    "endpoint": 300000,
+    "last_major_phase_step": 50000,
+    "retained": [
+      1000,
+      15000,
+      30000,
+      50000,
+      100000,
+      200000
+    ],
+    "step1000_scope": "execution/lifecycle only"
+  },
+  "preparation_parent_commit": "98fc5c8f857dfb10b938f5295596d6e6c50ffd6f",
+  "protocol": "bell-v3-authenticated-geometry-gate10-v1",
+  "scientific_source_verification": {
+    "geometry": {
+      "commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+      "files": 99,
+      "manifest_verified": true
+    },
+    "material": {
+      "commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "files": 106,
+      "manifest_verified": true
+    }
+  },
+  "staged_calibration_numeric_rows": 123,
+  "static_checks": {
+    "scientific_import_blocker": true,
+    "selected_Python38_grammar": true,
+    "shell_syntax": true
+  },
+  "status": "PROCEED_pending_separate_execution_approval",
+  "train_files": 247
+}
