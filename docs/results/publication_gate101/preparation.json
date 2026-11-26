@@ -1,0 +1,135 @@
+{
+  "checkpoint": {
+    "bytes": 29967467,
+    "sha256": "27c8c2256d529a84680e1ab806081acfa796a04937a2681587a8bb6d1a3681cd"
+  },
+  "conditional_correction": "drop-only-the-ten-exact-zero-area-serialized-faces-without-reindexing",
+  "freeze": "docs/protocols/BELL_GEOMETRY_EXTRACTION_GATE101_V1.freeze.json",
+  "freeze_sha256": "b1ad431e11a2bd59e97734de566eb767f7d9cd1339d08afabb80ae2c67608933",
+  "host_output": "/home/isavand/paper/evidence/bell-geometry-gate101-ea426f2b86d44aa3ae8be40fd6ab25c0",
+  "image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "input_receipts": {
+    "failed_evaluation": {
+      "bytes": 60740,
+      "sha256": "d5b8a8fc3f2d6e9d0d3ce5ccf2b312d899ac1063922e0b1df8af46e9d2a1f657"
+    },
+    "training": {
+      "bytes": 40269,
+      "sha256": "b98e9da593a4ac5027f1a401588aa1a80da556005d7193f1896575cab851b9dc"
+    }
+  },
+  "limitations": [
+    "Native capture and numerical correction remain unexecuted.",
+    "Any broad unsupported sphere surface requires substantive extraction-policy review.",
+    "Original Gate 10 geometry thresholds remain mandatory even after numerical correction.",
+    "Finite witnesses are local evidence. Complete learned-SDF geometry is not authenticated by sampling alone."
+  ],
+  "limits": {
+    "CPU_ray_checks": 384,
+    "MC_calls": 1,
+    "checkpoint_loads": 1,
+    "diagnostic_SDF_points": 3840,
+    "diagnostic_gradient_points": 640,
+    "extraction_nodes": 134217728,
+    "extraction_tiles": 512,
+    "max_faces": 4000000,
+    "optimizer_returns": 0,
+    "original_SDF_points": 1536,
+    "original_gradient_points": 512,
+    "primary_BVH_rays": 196608,
+    "shader_calls": 0
+  },
+  "mandatory_review": "Any diagnosed sentinel crossing, unsupported lower-surface witness or missing lower-domain sample",
+  "original_extraction": {
+    "bounds": [
+      -1,
+      1
+    ],
+    "chunk_axis": 64,
+    "outside_value": 1,
+    "resolution": 512,
+    "threshold": 0
+  },
+  "original_mesh": {
+    "bytes": 21140958,
+    "sha256": "99c093250840be41dac95b73de38db9e7da92dbbc5235215ccccd27fc581d149"
+  },
+  "original_quality_criteria": {
+    "grazing_cosine": 0.1,
+    "max_sdf_failures": 0,
+    "min_iou": 0.9,
+    "min_oracle_correspondence": 0.8,
+    "minimum_sdf_interior_points": 128,
+    "normal_degrees": 30.0,
+    "radius": 0.02,
+    "sdf_min_gradient": 1e-06,
+    "sdf_min_sign": 1e-07,
+    "sdf_step": 0.0019569471624266144,
+    "tight_radius": 0.005
+  },
+  "parent_commit": "cbdbd2d552efc59b368c1f525189c54f8e968d51",
+  "preparation_work": {
+    "CUDA_calls": 0,
+    "checkpoint_deserializations": 0,
+    "execution_authorization_created": false,
+    "extractions": 0,
+    "optimizer_returns": 0,
+    "original_SDF_queries": 0,
+    "scientific_output_directory_allocated": false
+  },
+  "protocol": "bell-authenticated-geometry-gate10.1-v1",
+  "resources": {
+    "allocator": 0.75,
+    "cpu_threads": 4,
+    "grace": 30,
+    "inner": 1740,
+    "memory_gib": 128,
+    "output_bytes": 8589934592,
+    "pids": 128,
+    "watchdog": 1800
+  },
+  "source_verification": {
+    "geometry": {
+      "commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+      "files_verified": 99
+    },
+    "material": {
+      "commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "files_verified": 106
+    }
+  },
+  "status": "PROCEED_pending_explicit_execution_approval",
+  "tests": {
+    "Python38_grammar": true,
+    "actual_exit_code": 0,
+    "command": "python3 -B -m pytest tests/scientific/test_bell_geometry_gate101.py -q -p no:cacheprovider --junitxml=/tmp/gate101-final-tests.xml",
+    "counts": {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 14
+    },
+    "inventory": [
+      "test_stages_localize_float32_collapse_and_preserve_positive_faces",
+      "test_exact_vertex_mapping_detects_merges_without_losing_face_identity",
+      "test_binary_export_precision_and_original_compatibility",
+      "test_radial_labels_distinguish_sentinel_raw_and_absent_crossing",
+      "test_raw_zero_crossing_uses_original_thresholds",
+      "test_capture_boundary_still_matches_original_function",
+      "test_diagnosis_module_imports_without_torch_or_scientific_namespaces",
+      "test_mapping_preserves_unreferenced_vertex_as_explicit_missing",
+      "test_freeze_validation_is_mount_independent_and_has_no_checkpoint_read",
+      "test_actual_capture_observer_with_synthetic_functions",
+      "test_substantive_stop_owns_the_only_original_audit_call",
+      "test_nonfinite_raw_support_cannot_satisfy_zero_level_gate",
+      "test_unsigned_marching_indices_and_signed_trimesh_indices_keep_integer_mapping",
+      "test_rejected_query_preserves_budget_and_failed_query_records_attempt"
+    ],
+    "junit": {
+      "bytes": 2778,
+      "sha256": "695ae7f73808387c3227032044fb6814977607585edb34c843168fbb2128c48a"
+    },
+    "native_runtime": "unexecuted",
+    "shell_syntax": true
+  }
+}
