@@ -1,0 +1,73 @@
+{
+  "analysis_v1": {
+    "error": "SignatureError: Saved material-field admission differs",
+    "exact_scalar_mismatches": [
+      {
+        "absolute_difference": 4.163336342344337e-17,
+        "arm": "D8-C",
+        "camera": "28",
+        "host_residual": 8.877154053510417e-09,
+        "pixel_count": 4849,
+        "runtime_residual": 8.87715409514378e-09
+      },
+      {
+        "absolute_difference": 2.7755575615628914e-17,
+        "arm": "D8-T",
+        "camera": "28",
+        "host_residual": 7.416992700570724e-09,
+        "pixel_count": 4849,
+        "runtime_residual": 7.416992672815148e-09
+      },
+      {
+        "absolute_difference": 6.938893903907228e-18,
+        "arm": "D8-T",
+        "camera": "34",
+        "host_residual": 9.72171072810557e-09,
+        "pixel_count": 2495,
+        "runtime_residual": 9.721710721166676e-09
+      }
+    ],
+    "exit_code": 1,
+    "output_created": false,
+    "scientific_decisions_changed": false
+  },
+  "analysis_v2": {
+    "absolute_roundoff": 2.220446049250313e-16,
+    "added_renderer_calls": 0,
+    "analyzer_sha256": "9abd0038ada9e954cbf6eb67a60b6843045ab8473563cb63c53ca6afe46aaa52",
+    "scalar": "Q_axis_reconstruction_max_abs",
+    "scientific_Q_threshold": 1e-06,
+    "test_counts": {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 8
+    },
+    "test_sha256": "27739d1a29667e804afb064ddc03f446db0dd960e3de334d91a7e5f4058c4cbf",
+    "tests_exit_code": 0
+  },
+  "capture_count": 16,
+  "cleanup_verified": true,
+  "cuda_peak_allocated_bytes": 21244928,
+  "host_peak_rss_bytes": 5079412736,
+  "native_elapsed_seconds": 145.1943186391145,
+  "native_exit_code": 0,
+  "native_work": {
+    "checkpoint_loads": 0,
+    "independent_BRDF_point_directions": 7313817600,
+    "independent_shadow_directions": 2437939200,
+    "native_shader_calls": 0,
+    "new_reference_integrations": 0,
+    "optimizer_updates": 0,
+    "primary_rays": 0
+  },
+  "refined_pixels_total": 6,
+  "results_analysis_exit_code": 0,
+  "runtime": {
+    "cuda": "11.1",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "torch": "1.8.1+cu111"
+  },
+  "scientific_launches": 1,
+  "status": "verified_complete"
+}

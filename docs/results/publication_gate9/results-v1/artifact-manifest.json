@@ -1,0 +1,207 @@
+{
+  "analysis_directory": "/home/isavand/paper/evidence/donut-learned-relight-gate9-3a3f10579e934db4ad5d989ac8ec55fe-analysis-v2",
+  "authorization_sha256": "eda60b9f85b0637dfb0bc800c4108fcf324fbaed22fd77eec82596f102602436",
+  "backend": {
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "variant": "predicate_fp64"
+  },
+  "execution_commit": "3b0c9b3f05cd9b033eb71278b4254c873269bc5d",
+  "freeze_sha256": "97facca61f92c29116f4e2b2f23e374a2432bee13b53914d4474a25c57733406",
+  "input_artifacts": {
+    "admission": {
+      "bytes": 6626,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9-admission.json",
+      "sha256": "a6eab416054c5bf74b43834c3be224847e2d78d9af7eb4989745fe37333618fb"
+    },
+    "export_D2_28": {
+      "bytes": 1215912,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D2/step-10000/camera-28/materials.npz",
+      "sha256": "e86cf9db4da67e9fd6af6dd48ec2d5aaf598b3038887d49140c3d36a60316014"
+    },
+    "export_D2_34": {
+      "bytes": 631920,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D2/step-10000/camera-34/materials.npz",
+      "sha256": "9ab0016fdcb652c3f72ed8fb0c9b16b146246fe93901aab3422b01521524399e"
+    },
+    "export_D8-C_28": {
+      "bytes": 1448627,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D8-C/step-10000/camera-28/materials.npz",
+      "sha256": "8da6eba82dde3853e63dfb7c29fe6029b064430c9164ff2fbb6f50647768c0a7"
+    },
+    "export_D8-C_34": {
+      "bytes": 752411,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D8-C/step-10000/camera-34/materials.npz",
+      "sha256": "1e431fbcf0bf95fa1545f3efd6b4318b5f71240a7da5140b5938407e77b768d6"
+    },
+    "export_D8-T_28": {
+      "bytes": 1476074,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D8-T/step-10000/camera-28/materials.npz",
+      "sha256": "a37f534f5211851ad5753dff6608094270b8d0136560751a4829132b41745210"
+    },
+    "export_D8-T_34": {
+      "bytes": 766869,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D8-T/step-10000/camera-34/materials.npz",
+      "sha256": "45c922c22d50ec5cdb22d7f43a16a810f7f1038ca4eca1103c3ce905731496ac"
+    },
+    "generation": {
+      "bytes": 25006,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/generation.json",
+      "sha256": "de8dda85559b286456d926e09731c6c501dfcbd6707d1aaf3aef9cf8784c58a0"
+    },
+    "geometry_28": {
+      "bytes": 2565614,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-28.npz",
+      "sha256": "44e6ddb03d8519f7c490ca2aafce395ed553f20f173a0d96babddc647115639b"
+    },
+    "geometry_34": {
+      "bytes": 1308423,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9/reference/view-34.npz",
+      "sha256": "730739337f9fa08b6d6e9aceb8a34d121fae424d52991649b8175ad474226ba1"
+    },
+    "illumination_D2": {
+      "bytes": 596631,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D2/step-10000/illumination.npz",
+      "sha256": "9884f64064414dd4c9cffe1f775c2ec436b6680709dd9e5281cf997eee059752"
+    },
+    "illumination_D8-C": {
+      "bytes": 600626,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D8-C/step-10000/illumination.npz",
+      "sha256": "cdb4bcbe4084a9ffb163a58d03c3744755df7250493db5dbc044299bc1576d35"
+    },
+    "illumination_D8-T": {
+      "bytes": 599451,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D8-T/step-10000/illumination.npz",
+      "sha256": "c81c30bfb7f661e63d23faa1c4ca160a7068215e3004bb9c14d2456385580969"
+    },
+    "oracle": {
+      "bytes": 2589411,
+      "path": "/home/isavand/paper/evidence/donut-blend-inspection-v2/oracle-geometry-and-frames.npz",
+      "sha256": "cfe903c177dfe404c47390aed2a3fa025ea9499ca0af644dba667b721c0139f1"
+    },
+    "receipt_D2": {
+      "bytes": 236743,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D2/recovery.json",
+      "sha256": "e7acd1fd942b76878409078c67d33ef914e2893b0480137e9c2c2d9754c2cd27"
+    },
+    "receipt_D8-C": {
+      "bytes": 242968,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D8-C/recovery.json",
+      "sha256": "be78724958b815b4f08af1f36fce83d790687f7242bcd877d23666b9e0fb1622"
+    },
+    "receipt_D8-T": {
+      "bytes": 243006,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-training-v1-b2c418dcdff1405fbe4815d03d2225b2/D8-T/recovery.json",
+      "sha256": "b9e22d5618835c1acda837d94eabbb8d44b97e16ef69714ff010f57b66683b88"
+    },
+    "reference_28": {
+      "bytes": 3970032,
+      "path": "/home/isavand/paper/evidence/donut-relight-gate6-v2-bd5d5897ce164928a044e8c04b2b5d71-analysis-v2/camera-28-relighting.npz",
+      "sha256": "fc63bef2a6c6396818f93449092a71237ae7b43c2462df16c4843e36f72895c6"
+    },
+    "reference_34": {
+      "bytes": 2049383,
+      "path": "/home/isavand/paper/evidence/donut-relight-gate6-v2-bd5d5897ce164928a044e8c04b2b5d71-analysis-v2/camera-34-relighting.npz",
+      "sha256": "2516a82baaafbb7abce0795af562a632ec8f2352d1052a8f562f75d5e451157e"
+    },
+    "verification": {
+      "bytes": 15604,
+      "path": "/home/isavand/paper/evidence/donut-heterogeneous-reference-v2-a16a62957d2b47679e8ff07f59c87ac9-verification-v1.json",
+      "sha256": "22e7894fdba2f84ed0355299999cc74a1784cb40c74667f7b0b9e432cb598340"
+    }
+  },
+  "native_batch": "/home/isavand/paper/evidence/donut-learned-relight-gate9-3a3f10579e934db4ad5d989ac8ec55fe",
+  "native_captures": {
+    "camera-28-base-256.npz": {
+      "bytes": 1008747,
+      "sha256": "af652bfa7a63414599863709439228892e424959ad413de1396e4da2431bc927"
+    },
+    "camera-28-base-512.npz": {
+      "bytes": 1010153,
+      "sha256": "279f25d2c3c18e1d7f481a96c0afe67122cd1aa095ebea3a693a0cd33c7374e7"
+    },
+    "camera-34-base-256.npz": {
+      "bytes": 518235,
+      "sha256": "912bbfa40cb86f0d259712701314b10463bb60026cccfb59a0e98805fd13834a"
+    },
+    "camera-34-base-512.npz": {
+      "bytes": 519037,
+      "sha256": "25157625366f9438c631b0a29cf43bd2a11767e1a015b8662b96be9d985e6595"
+    },
+    "camera-34-pixel-10014-1024.npz": {
+      "bytes": 1018,
+      "sha256": "7db5fb668e4b6b2d332470ca10ed41ef75b3831e77291ba00b47c51b9d9baafe"
+    },
+    "camera-34-pixel-10014-2048.npz": {
+      "bytes": 1017,
+      "sha256": "8855465707513b7b77e5e4e967dc0a1d6ee32578ca7578139d1041b748281bdb"
+    },
+    "camera-34-pixel-9109-1024.npz": {
+      "bytes": 1019,
+      "sha256": "da9cc8b51c853b898af5599045de950e82a45b62a3c00070bac70cf7252e4938"
+    },
+    "camera-34-pixel-9109-2048.npz": {
+      "bytes": 1018,
+      "sha256": "4fb915ae22a8e35d3149cadaa7d50d6d0b4a673da711c91a4a899f25cad05e1b"
+    },
+    "camera-34-pixel-9366-1024.npz": {
+      "bytes": 1017,
+      "sha256": "32ce56cbd2bfe5ab16f7b1c2c90f974003813ae9745409269cfe2feb4b548dfc"
+    },
+    "camera-34-pixel-9366-2048.npz": {
+      "bytes": 1019,
+      "sha256": "22d7de73d3dea7098f4a4df1149b312c2cf818bfe44d91488dbc51690dac45dc"
+    },
+    "camera-34-pixel-9495-1024.npz": {
+      "bytes": 1017,
+      "sha256": "25c8ff36e1581f4b9702f15054c1606465edc64650b5d3e25bdffad61ed6b529"
+    },
+    "camera-34-pixel-9495-2048.npz": {
+      "bytes": 1017,
+      "sha256": "dfa60eaab373b5fabcde3fd6600c9b8c8cbc98d0171854187eba36e559b953d7"
+    },
+    "camera-34-pixel-9624-1024.npz": {
+      "bytes": 1018,
+      "sha256": "97478431698652eb4783995af5584ebe670e530c49a754d0713b5060918f66cc"
+    },
+    "camera-34-pixel-9624-2048.npz": {
+      "bytes": 1018,
+      "sha256": "5239155073e54ac3d40652e7a2797e29a1e465b80a7412af329bd4c3db67cdfa"
+    },
+    "camera-34-pixel-9754-1024.npz": {
+      "bytes": 1019,
+      "sha256": "f92b85b8d23a0d3173a5dd9401a346492215a1bf0d5e243fd25ed03d0600bacc"
+    },
+    "camera-34-pixel-9754-2048.npz": {
+      "bytes": 1018,
+      "sha256": "825f700af0383b0d67a897cf2c2d6fd96410082f17a6be7252501cba70cc674c"
+    }
+  },
+  "native_receipt_sha256": "2ecd36ad6d78dcb1f7012c45eabfc71088dbabba38540b49eb2fb49e0ce316c4",
+  "packaged_files": {
+    "camera-28-reference-D2-D8C-D8T-K1-chart-ambient.png": {
+      "bytes": 54161,
+      "sha256": "243919a3aadbe78ac1ac9c7ba9e0bf32a053658828877e258a17f30db558e679"
+    },
+    "camera-34-reference-D2-D8C-D8T-K1-chart-ambient.png": {
+      "bytes": 19460,
+      "sha256": "483bce639f0aa4bfbe2f9c0c9ad327119ebc4e3c82b7ff01914fac3b9f76aa11"
+    },
+    "comparison.json": {
+      "bytes": 206632,
+      "sha256": "87e4cff2cb0cafb8d7e7997e3c398d382ea3266e05051f7e6cd7189c1aa26631"
+    },
+    "image-metrics.csv": {
+      "bytes": 85483,
+      "sha256": "ddfc7d51570a91243fd73bd93a2c84eff7ebf101a16eac033da2d817d312f90e"
+    },
+    "verification.json": {
+      "bytes": 2156,
+      "sha256": "40357783a86d8c05afb29ed0af29401f0827c586bdb81029ad6ddee07aeae6cb"
+    }
+  },
+  "protocol": "donut-learned-light-relighting-gate9-v1",
+  "runtime_image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331"
+}
