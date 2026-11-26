@@ -1,0 +1,64 @@
+{
+  "component_order": [
+    "diffuse",
+    "specular",
+    "RGB"
+  ],
+  "data": {
+    "L2_fitting": {
+      "maximum_linear_RGB": 0.30733370780944824,
+      "metallic_above_098": 14423,
+      "metallic_median": 0.9999809265136719,
+      "observations": 15191,
+      "oracle_component_mean_Y": [
+        0.020370240796773027,
+        0.02781098048804944,
+        0.048181221284822384
+      ],
+      "oracle_metallic_above_098": 0,
+      "oracle_metallic_median": 0.6777879763703561,
+      "predicted_component_mean_Y": [
+        0.0002642542978090574,
+        0.048704917881577416,
+        0.048969172169221836
+      ]
+    },
+    "L2_held_out": {
+      "maximum_linear_RGB": 0.9650434255599976,
+      "metallic_above_098": 6951,
+      "metallic_median": 0.9999841451644897,
+      "observations": 7306,
+      "oracle_component_mean_Y": [
+        0.020885595156672848,
+        0.031301508483254886,
+        0.05218710363992749
+      ],
+      "oracle_metallic_above_098": 0,
+      "oracle_metallic_median": 0.6691344679379911,
+      "predicted_component_mean_Y": [
+        0.0002502437769599368,
+        0.046365835326273336,
+        0.04661607910639349
+      ]
+    },
+    "unseen_held_out": {
+      "maximum_linear_RGB": 1.9252125024795532,
+      "metallic_above_098": 6951,
+      "metallic_median": 0.9999841451644897,
+      "observations": 7306,
+      "oracle_component_mean_Y": [
+        0.02288381571816675,
+        0.030936843790070463,
+        0.05382065950823704
+      ],
+      "oracle_metallic_above_098": 0,
+      "oracle_metallic_median": 0.6691344679379911,
+      "predicted_component_mean_Y": [
+        0.0003479123639530445,
+        0.05877401122387831,
+        0.05912192360688036
+      ]
+    }
+  },
+  "observed_fit": "RGB fit and near-unit metallic are endpoint observations; no causal intervention"
+}

@@ -1,0 +1,99 @@
+{
+  "authorization_sha256": "f3c896392105ea4ae6724b2e9a52ede922d583b4fd21a88f22ee5d9a96c10cd8",
+  "cleanup_verified": true,
+  "elapsed_seconds": 353.22097537480295,
+  "execution_commit": "d36d30befea338f3fca1bf6e76855d4268afd82d",
+  "freeze_sha256": "bbc32d09a622ad8363c7c8a62737ac51ab10ce327990275b9de9c87340c74add",
+  "native_counters": {
+    "backwards": 10000,
+    "checkpoint_loads": 0,
+    "optimizer_returns": 10000,
+    "primary_rays": 0,
+    "reference_renders": 0,
+    "shader_calls": 10062,
+    "shadow_slots": 7910155776
+  },
+  "native_files": {
+    "L2-camera-0.npz": {
+      "bytes": 224609,
+      "sha256": "56458d64ec845ba8762079fd23116f9ce53b9d3cc16a0e368dcbda0a5ba6992f"
+    },
+    "L2-camera-1.npz": {
+      "bytes": 204245,
+      "sha256": "17d3f3c5c7866021a5bbfc5c663ef03d41562dcb8e6a907d3f76a0f1009890fc"
+    },
+    "L2-camera-28.npz": {
+      "bytes": 238645,
+      "sha256": "b74d4d056fbd704d8e2847aecc8bce369effdf9090b3d054302bfe440ae79ccd"
+    },
+    "L2-camera-34.npz": {
+      "bytes": 122130,
+      "sha256": "a6fc4ebc0dc9267a3be0ad8413a92836bb919fbf8a964427551fae5747e4f674"
+    },
+    "L2-camera-45.npz": {
+      "bytes": 197098,
+      "sha256": "76f8729213bc3ccbe5b7f5c10cee67c2185ead085d3963bad9c9869f2f3d4042"
+    },
+    "L2-camera-50.npz": {
+      "bytes": 127200,
+      "sha256": "d1f4cda2615721067e434430c43ccdf7fb88263bc600733b19c91cca50781bbb"
+    },
+    "checkpoint-10000.pth": {
+      "bytes": 5739799,
+      "sha256": "00a475c56eeaffb81614a3b4a47464c0b28b666c3e1e64f9f69cbb4343622f40"
+    },
+    "fit-indices.bin": {
+      "bytes": 20480000,
+      "sha256": "0c8b943813ee391218aa74d00f620c086cca509753a579f9d04c62cea588ce36"
+    },
+    "training.csv": {
+      "bytes": 894990,
+      "sha256": "10f46472032e9992e9ffa6bdb8a23790231b24ba1c626d2fec61361851f77adf"
+    },
+    "unseen-camera-28.npz": {
+      "bytes": 241160,
+      "sha256": "3632cbbab92d821558746de678f882f061f0da5c2d37c7485cdba2bb144a860c"
+    },
+    "unseen-camera-34.npz": {
+      "bytes": 123144,
+      "sha256": "f2fa6022d198542d50a711225908026b17f455c5c50bbcc90371ba386dae9932"
+    }
+  },
+  "native_output": "/home/isavand/paper/evidence/donut-nero-gate7-163bfa50c6304fa2b4b1921c528faea6",
+  "native_receipt_sha256": "9f15c3a214f7a9e683b27b8c400125726d3aadd6ce949cb6706aa184abc6998b",
+  "offline_checkpoint_loads": 0,
+  "offline_shader_calls": 0,
+  "packaged_files": {
+    "comparison.json": {
+      "bytes": 1112726,
+      "sha256": "961db9b7a9378a19ae9a465deea19cf674da742a8d98d6a12aa57331196054b4"
+    },
+    "held-out-native-relighting.pdf": {
+      "bytes": 155754,
+      "sha256": "b68e4991cc15a6a62c7523f3d90f67f7009e478b8ff3bfa2e822cf3cd41d0e5c"
+    },
+    "held-out-native-relighting.png": {
+      "bytes": 226596,
+      "sha256": "27775451197d43bc2d21b12086fffca498c2fd6d0dc34cfd036397ed81f567a0"
+    },
+    "image-metrics.csv": {
+      "bytes": 76247,
+      "sha256": "1b966b0400f0d77e1ce6141063862f9b5625fb8ade7b9aac2594745e294a5d83"
+    },
+    "material-diagnostics.json": {
+      "bytes": 1815,
+      "sha256": "c190ffc32e6f2c48a19e7c914c803e3e0724bbdcfb11d125e2a44fd4ca8afa14"
+    }
+  },
+  "prior_analysis": {
+    "bytes": 2776,
+    "path": "/home/isavand/paper/evidence/donut-nero-gate7-163bfa50c6304fa2b4b1921c528faea6-analysis-v1/artifact-manifest.json",
+    "sha256": "81d77fd6d0cd8b20ee1aac252f19e92ef723f6b6de438a2ff772de2f035deecf"
+  },
+  "prior_gate5_sha256": "b52100c7eb3f91bf8efe85b1b73aca2ff87b444a6cfb638eae8b31a1439d87e0",
+  "prior_gate6_sha256": "faa10d4df2f2de4074a567f19af1d2a209942fe1147dda3b728eb02119b9666c",
+  "protocol": "donut-nero-known-geometry-light-gate7-v1",
+  "status": "verified_complete",
+  "trainable_parameters": 1086986,
+  "upstream_commit": "89166a96ea81141dfeec5ba0fc541ccaec92aae4"
+}
