@@ -1,0 +1,38 @@
+{
+  "accepted_one_float64_ULP_normal_summary_differences": 2,
+  "additional_scientific_execution": {
+    "SDF_queries": 0,
+    "checkpoint_loads": 0,
+    "extractions": 0,
+    "neural_renders": 0,
+    "new_BVH_queries": 0,
+    "optimizer_returns": 0
+  },
+  "eligibility_decision_or_classification_mismatches": 0,
+  "failed_tests": 0,
+  "focused_CPU_tests": 14,
+  "frozen_native_source_and_inputs_unchanged": true,
+  "full_fitting_views_replayed": 488,
+  "geometry_admitted": false,
+  "handoff_created": false,
+  "host_container_absent": true,
+  "host_exit": 0,
+  "local_document_links": true,
+  "native_artifact_hashes_verified": 756,
+  "native_cleanup_verified": true,
+  "native_receipt": {
+    "bytes": 2621444,
+    "sha256": "d5ab16728aaec6f14f7e6d0eff124bbdd51e169ad75f50b7799a40c435214856"
+  },
+  "offline_artifact_hashes_verified": 11,
+  "offline_verification": {
+    "bytes": 3474,
+    "sha256": "bd7ec5b8900ce093ce4b0ddae9d8fe0321108e7782dee648c6be105e8d9dff3a"
+  },
+  "protected_original_files": {
+    "geometry": 99,
+    "material": 106
+  },
+  "python38_AST": true,
+  "status": "complete_verified_diagnostic"
+}

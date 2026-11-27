@@ -1,0 +1,157 @@
+{
+  "captured_results_modified": false,
+  "comparison_is_development_evidence": true,
+  "geometry_admitted": false,
+  "handoff_created": false,
+  "publication_endpoint": 300000,
+  "quality_decisions": {
+    "15000": {
+      "SDF": true,
+      "original_six_views": [
+        {
+          "camera": "58",
+          "passed": false
+        },
+        {
+          "camera": "11",
+          "passed": false
+        },
+        {
+          "camera": "105",
+          "passed": false
+        },
+        {
+          "camera": "114",
+          "passed": false
+        },
+        {
+          "camera": "17",
+          "passed": false
+        },
+        {
+          "camera": "76",
+          "passed": false
+        }
+      ]
+    },
+    "30000": {
+      "SDF": true,
+      "original_six_views": [
+        {
+          "camera": "58",
+          "passed": true
+        },
+        {
+          "camera": "11",
+          "passed": true
+        },
+        {
+          "camera": "105",
+          "passed": true
+        },
+        {
+          "camera": "114",
+          "passed": false
+        },
+        {
+          "camera": "17",
+          "passed": true
+        },
+        {
+          "camera": "76",
+          "passed": true
+        }
+      ]
+    },
+    "300000": {
+      "SDF": true,
+      "original_six_views": [
+        {
+          "camera": "58",
+          "passed": false
+        },
+        {
+          "camera": "11",
+          "passed": true
+        },
+        {
+          "camera": "105",
+          "passed": false
+        },
+        {
+          "camera": "114",
+          "passed": false
+        },
+        {
+          "camera": "17",
+          "passed": true
+        },
+        {
+          "camera": "76",
+          "passed": false
+        }
+      ]
+    },
+    "50000": {
+      "SDF": true,
+      "original_six_views": [
+        {
+          "camera": "58",
+          "passed": true
+        },
+        {
+          "camera": "11",
+          "passed": true
+        },
+        {
+          "camera": "105",
+          "passed": true
+        },
+        {
+          "camera": "114",
+          "passed": true
+        },
+        {
+          "camera": "17",
+          "passed": true
+        },
+        {
+          "camera": "76",
+          "passed": true
+        }
+      ]
+    }
+  },
+  "receipt": {
+    "bytes": 2621444,
+    "sha256": "d5ab16728aaec6f14f7e6d0eff124bbdd51e169ad75f50b7799a40c435214856"
+  },
+  "replay_policy": "normal-angle-summary-float64-adjacent-v1",
+  "roundoff_events": [
+    {
+      "absolute_difference": 3.552713678800501e-15,
+      "camera": "61",
+      "captured": 20.87159936365109,
+      "field": "signed_normal_error_degrees.p95",
+      "float64_ULPs": 1,
+      "replayed": 20.871599363651086,
+      "step": 30000
+    },
+    {
+      "absolute_difference": 8.881784197001252e-16,
+      "camera": "98",
+      "captured": 5.776839143688098,
+      "field": "signed_normal_error_degrees.mean",
+      "float64_ULPs": 1,
+      "replayed": 5.776839143688097,
+      "step": 50000
+    }
+  ],
+  "status": "complete_verified_diagnostic",
+  "substantive_mismatches": 0,
+  "verifier_sources": {
+    "benchmarks/bell_geometry_gate103_replay_v3.py": "f5d792bb0d760e1510bcca70818a78e49ee12d50a7b9172af90d76d83099b3f7",
+    "experiments/bell_geometry_gate103_offline_v3.py": "18aab7b56b7afab8ac9e3b48c8dff10708b592228661565dff52f62828664efe",
+    "tests/scientific/test_bell_geometry_gate103_replay_v3.py": "85a8085d1039c964b0cfb2137e14e36a965936cb8c025944bd6d0964a3e67113"
+  }
+}
