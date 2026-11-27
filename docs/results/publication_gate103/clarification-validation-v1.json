@@ -1,0 +1,79 @@
+{
+  "checks": {
+    "binary_only_samples": 69,
+    "evaluation_tests": "not rerun; evaluation code unchanged",
+    "json_parse": "passed",
+    "local_markdown_links": "passed",
+    "mask_acquisition_ray_hit_matches": 128,
+    "mask_split_counts": {
+      "fitting": 122,
+      "held_out_staged": 0,
+      "validation": 1
+    },
+    "png_confidence_samples": 69,
+    "python_AST": "passed",
+    "staged_mask_hash_matches": 123,
+    "whitespace": "passed"
+  },
+  "limits": "Scoped confidence-artifact search; per-scene SAM2 producing recipes and original confidence archives remain unresolved. No Gate 10.3 native result or geometry-method efficacy is claimed.",
+  "observed_date_UTC": "2026-11-27",
+  "protected_files": [
+    {
+      "path": "docs/protocols/BELL_GEOMETRY_EVOLUTION_GATE103_V1.md",
+      "sha256_after": "ff6fa4dda5c096f2f9e99a3035f952939bfc00a71f8d1df256439120827cb3d1",
+      "sha256_before": "ff6fa4dda5c096f2f9e99a3035f952939bfc00a71f8d1df256439120827cb3d1",
+      "unchanged": true
+    },
+    {
+      "path": "benchmarks/bell_geometry_gate103.py",
+      "sha256_after": "2e428542878ea5c8cd9a05d91b655966a00e004cb718a336be67185e4a115403",
+      "sha256_before": "2e428542878ea5c8cd9a05d91b655966a00e004cb718a336be67185e4a115403",
+      "unchanged": true
+    },
+    {
+      "path": "experiments/bell_geometry_gate103.py",
+      "sha256_after": "580f3ec9732cccd9c42d7554f8b13158ec0ae7e0ea4ba37e7f92453ead8d8598",
+      "sha256_before": "580f3ec9732cccd9c42d7554f8b13158ec0ae7e0ea4ba37e7f92453ead8d8598",
+      "unchanged": true
+    },
+    {
+      "path": "experiments/run_bell_geometry_gate103.sh",
+      "sha256_after": "8c7d6fe8f2320d99fe61c18accefce14dec493d8bb1856eef0ae2344e0f2ce32",
+      "sha256_before": "8c7d6fe8f2320d99fe61c18accefce14dec493d8bb1856eef0ae2344e0f2ce32",
+      "unchanged": true
+    },
+    {
+      "path": "tests/scientific/test_bell_geometry_gate103.py",
+      "sha256_after": "0db870369cdeeeca8cb5013228be2db408eaaf69ccbd983543bcc53dd66fbb94",
+      "sha256_before": "0db870369cdeeeca8cb5013228be2db408eaaf69ccbd983543bcc53dd66fbb94",
+      "unchanged": true
+    },
+    {
+      "path": "docs/results/publication_gate103/input-inventory.json",
+      "sha256_after": "62caba60503081b41326855f3d6811b48643dca4c972da882f2f895c8fee5ef3",
+      "sha256_before": "62caba60503081b41326855f3d6811b48643dca4c972da882f2f895c8fee5ef3",
+      "unchanged": true
+    },
+    {
+      "path": "docs/results/publication_gate102/RESULTS_V2.md",
+      "sha256_after": "ebe0de45bff02e1f976253a5cf769658463dfe3ecf3a9f5aaf958532824f1dbe",
+      "sha256_before": "ebe0de45bff02e1f976253a5cf769658463dfe3ecf3a9f5aaf958532824f1dbe",
+      "unchanged": true
+    },
+    {
+      "path": "docs/results/publication_gate102/results-v2/summary.json",
+      "sha256_after": "3ebd34236c24e975294964f09b47dac1149d9864f7586a095a490116ebbefd20",
+      "sha256_before": "3ebd34236c24e975294964f09b47dac1149d9864f7586a095a490116ebbefd20",
+      "unchanged": true
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Gate 10.3 scientific clarification and file-only provenance audit",
+  "work": {
+    "checkpoint_loads": 0,
+    "geometry_optimization_updates": 0,
+    "native_evaluation_launches": 0,
+    "new_SDF_queries": 0,
+    "segmentation_inference": 0
+  }
+}

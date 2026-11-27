@@ -1,0 +1,2026 @@
+{
+  "audit": "bell-mask-provenance-gate103-v1",
+  "counts": {
+    "acquisition_masks": 128,
+    "exact_ray_hit_matches": 128,
+    "fitting_masks": 122,
+    "held_out_staged_masks": 0,
+    "validation_masks": 1
+  },
+  "data_access": {
+    "train": {
+      "K": 122,
+      "mask": 122,
+      "pose": 122,
+      "rgb": 122
+    },
+    "validation": {
+      "K": 1,
+      "depth": 300,
+      "mask": 1,
+      "pose": 1,
+      "rgb": 1
+    }
+  },
+  "generation_receipt": {
+    "bytes": 475481,
+    "path": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark/geometry/generation.json",
+    "sha256": "5035b22b594848900426fd5dfaa8b96382b57a76cfde97864b7ef7591c46e6d7"
+  },
+  "historical_admission_mask_origin": "Producing segmentation/rendering procedure unresolved",
+  "masks": [
+    {
+      "acquisition": {
+        "bytes": 522,
+        "sha256": "7b2809d9e3f345653eb5cc100e2fac3e3567b60d16a6eaed57174e966b1a9543"
+      },
+      "camera": "0",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4395,
+      "historical_admission_mask": {
+        "bytes": 4406,
+        "sha256": "858278ac092005e797b6eb4c69d1389a0a2792d85feeb739d340db66d4e1d93c"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 502,
+        "sha256": "0bcdb520235d729fa0db441c79c82af08eb3ba0fb0a314fbaf51fa6b50e4c53e"
+      },
+      "camera": "1",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4374,
+      "historical_admission_mask": {
+        "bytes": 4256,
+        "sha256": "b3d3edbf271f88f453173f45bb532ff9834d4fafe5922f9a1b5dc6f0dd15eb04"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 513,
+        "sha256": "117c9b290c8fc111db66dc84d8a6f50fbf4e0de53c9fbdc56678765a48cc5596"
+      },
+      "camera": "2",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4421,
+      "historical_admission_mask": {
+        "bytes": 4331,
+        "sha256": "ff94281890bc4524371a0463657369cedcebb0d4f48cb94c9e0cad29b6c512e1"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 499,
+        "sha256": "cf567512178276cd6e34480ec9197631bcdd1a155c21566f823439d50b2b2f4c"
+      },
+      "camera": "3",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4341,
+      "historical_admission_mask": {
+        "bytes": 4055,
+        "sha256": "d88f218500665e500b5318aebbb5296b6026d0a5825970ec962b7b619ab3b746"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 494,
+        "sha256": "b4f96ebe48c03683cf40f583127aa770887d4682f7e60ba61de6d5fd3c40b751"
+      },
+      "camera": "4",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4365,
+      "historical_admission_mask": {
+        "bytes": 4110,
+        "sha256": "0dc907ac4f474ed86f3cbf090028147bdc52712b010225d3bfc0b12610c1d35d"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 526,
+        "sha256": "4f877fd68a008b3fc569e92bd35266f6e8bb719c6872845b7e0da7c7cc18d5ff"
+      },
+      "camera": "5",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4418,
+      "historical_admission_mask": {
+        "bytes": 4351,
+        "sha256": "736960a917b95a69f3be091131326c4173b1b28451f1009df8d8a3dcc27df811"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 522,
+        "sha256": "172eb751e1b2af2534f65147d62eeb90bbef54dc6dde23c5474aa2c412709287"
+      },
+      "camera": "6",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4397,
+      "historical_admission_mask": {
+        "bytes": 4308,
+        "sha256": "c172735ac6067e6d5d99d2cd99f7c419a2fdb1f1973f4456f4d584b8d1784ab7"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 511,
+        "sha256": "9a4579a9134402338014b271fc0632622007ad7bc84224dc2fd0b1c92deddb2c"
+      },
+      "camera": "7",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4375,
+      "historical_admission_mask": {
+        "bytes": 4157,
+        "sha256": "147b54c8286134bcee0488471dcdcb0d0d082ce384d932d8e1c74a6292db9018"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 496,
+        "sha256": "20cd04daae30774a2d699a7f3280f2d31a054f0786e4e45e61c1ba5e071a8e84"
+      },
+      "camera": "8",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4337,
+      "historical_admission_mask": {
+        "bytes": 4028,
+        "sha256": "753b348e47cbef698002d133c30e75162280176e3351a0fb87e0171a6d0126c6"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 530,
+        "sha256": "08209bdb892cf7a25b4b034caf6055335958723737628a16588cb51df4d4df01"
+      },
+      "camera": "9",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4402,
+      "historical_admission_mask": {
+        "bytes": 4288,
+        "sha256": "03637d83349172bcbd6552fdeea83bd53988f211f73fc36a75574af96fc42648"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 508,
+        "sha256": "5f7aaa5491f40f7ee294be54c5580a277f947088392a77aeca37bf5a666ccd3e"
+      },
+      "camera": "10",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4405,
+      "historical_admission_mask": {
+        "bytes": 4377,
+        "sha256": "3ee196f6fd6194151373006a5f960b6c0c33c488f5079ae893264f716e211d60"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 507,
+        "sha256": "33eccf6628453cc8445871e7b8cd41800fb06ee5213f389d0103f0bb5971a52e"
+      },
+      "camera": "11",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4377,
+      "historical_admission_mask": {
+        "bytes": 4290,
+        "sha256": "ee0f4daa96fd79baa449002b12a356feed0eb78b2284ae77a1322597985b1cc2"
+      },
+      "role": "held_view_nvs",
+      "staged": false
+    },
+    {
+      "acquisition": {
+        "bytes": 458,
+        "sha256": "e7e34d391cdc6808b779bb66bf3335dadda796d02f93fc0ac9509161e854ee56"
+      },
+      "camera": "12",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4281,
+      "historical_admission_mask": {
+        "bytes": 3819,
+        "sha256": "6ad869f8ade5127cc6fc91803a935cf55a095c4344ecd2656d0649af2650cf72"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 525,
+        "sha256": "346dfb16c2fdc0f01fe87ad28f4ed020b3421bf9a5fc310af4215c2cf3299dfb"
+      },
+      "camera": "13",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4421,
+      "historical_admission_mask": {
+        "bytes": 4298,
+        "sha256": "5b716fda4a7f740d6ce00b71a0d5ce9ffa8578be210768289bb05fd2bb41f2db"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 497,
+        "sha256": "484edb493f81690b0bde61a5b81bc92bf3408e47c950de23eac8942239f37c38"
+      },
+      "camera": "14",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4349,
+      "historical_admission_mask": {
+        "bytes": 4313,
+        "sha256": "910be48333f41aba498ea8b4b17de97689245b6370740a550cfbf0e88b2b3fd7"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 526,
+        "sha256": "78b864bae0e615358d49f70a7be25e46758c0c300e0219e4edae9197a9ce076a"
+      },
+      "camera": "15",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4412,
+      "historical_admission_mask": {
+        "bytes": 4342,
+        "sha256": "c897e3f6b54fc9c8f51b0fda92a14d749a64b3ad01a21ab4ac6f12020ed430dc"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 466,
+        "sha256": "798ecdce3c6d8c8e7c331bee325fbb40cd6f15602703ba26a068219c8f2de496"
+      },
+      "camera": "16",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4273,
+      "historical_admission_mask": {
+        "bytes": 3835,
+        "sha256": "c3c8fa9746e691254b842786a8520d99e10019eee10ad510506fdd57b11eb69b"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 523,
+        "sha256": "811fe016d8599de4ebb2271ed72b2430995a640fe9c7c1719d0832b8c1c79c73"
+      },
+      "camera": "17",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4363,
+      "historical_admission_mask": {
+        "bytes": 4239,
+        "sha256": "bd3111fe15a0ddf78ff635fc69821e5991ec46b49cce031d7d3484a200dd88fc"
+      },
+      "role": "held_view_nvs",
+      "staged": false
+    },
+    {
+      "acquisition": {
+        "bytes": 529,
+        "sha256": "86344e389424c84e4d8e34a985b45869c9d49aaf818c95a993fe7d12dad3eb94"
+      },
+      "camera": "18",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4390,
+      "historical_admission_mask": {
+        "bytes": 4371,
+        "sha256": "8d09359754ccdbc5a09e13c7b06d832e3ff27b761e151fb28234ba26a0226740"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 522,
+        "sha256": "038cedddf1389deda288dc817782e6f4c55d0ea806f933957a82b3d9ffb6a5d7"
+      },
+      "camera": "19",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4392,
+      "historical_admission_mask": {
+        "bytes": 4336,
+        "sha256": "3f6947658fe5d67b2fd67f44f6c09adb73eecd4bf4290bd884b93d018b96467e"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 518,
+        "sha256": "98963aa1329f1e2190230911385d9bcf8894a914b6d68194c380063582e1b097"
+      },
+      "camera": "20",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4312,
+      "historical_admission_mask": {
+        "bytes": 3995,
+        "sha256": "a1a09976e87334c7bb62a21886274815cf5f7dfe7bb02d76a7451b2ebaad518d"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 512,
+        "sha256": "0dc936c68a6667ae89b0d97560e2f59ef5c09bf94e2902dc1217c6cf2375a0a2"
+      },
+      "camera": "21",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4360,
+      "historical_admission_mask": {
+        "bytes": 4219,
+        "sha256": "ffe932641a2cc1925d849d2e9f7ef549c706bd703ed4e9cf4b2b3c485a643fb3"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 514,
+        "sha256": "5f8400c6ec280afcf7dd021a5a337e8daec9511aa8d5f87ff9d18b8a10bfb36f"
+      },
+      "camera": "22",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4369,
+      "historical_admission_mask": {
+        "bytes": 4313,
+        "sha256": "9efe614cc6d47ae36aa4d87b87d022458f3854a31c93cefea1779e2139768933"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 524,
+        "sha256": "b9b2ce0f052cadbb9497dfa976229b1cf7bf174d392956c1193a4f0afb0bcc71"
+      },
+      "camera": "23",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4395,
+      "historical_admission_mask": {
+        "bytes": 4379,
+        "sha256": "8b05739b7a2c319fe8ed05187af8a576ed6e3591c6c058243c9e17211f139a9f"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 514,
+        "sha256": "95aa4f07c18e5c2626d9d9dda4d246713d6be89a5102903c2f80284f894c3e69"
+      },
+      "camera": "24",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4336,
+      "historical_admission_mask": {
+        "bytes": 4156,
+        "sha256": "745c61b862fab08291f68c2322097ef662d25bb716136a4df080507da70b36a8"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 514,
+        "sha256": "42f0d12fbce70f03ebf0d36e44b45d2987974b8a4749b6b2931bdfc378f47bd0"
+      },
+      "camera": "25",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4308,
+      "historical_admission_mask": {
+        "bytes": 4080,
+        "sha256": "5de7c4f82f4b510cac85614a3919d306fe26cab6aa007bd76575ddee600c6523"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 540,
+        "sha256": "6cb5cd39713deebbbc31e499a77c017ae499ab0c6cd416cfbaf091fb6ba37f4f"
+      },
+      "camera": "26",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4403,
+      "historical_admission_mask": {
+        "bytes": 4340,
+        "sha256": "101be803c05ec6e363af28eb958d6fbce3e92f99370207803174f3eaef686eda"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 526,
+        "sha256": "b35673e83a02092614a156fda552abe7746e0d2c67ddb3d14070ae156537396c"
+      },
+      "camera": "27",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4342,
+      "historical_admission_mask": {
+        "bytes": 4356,
+        "sha256": "3b73ee91b93580b9e7efeb2e87c96ffbf7398d0b50d3d116f416a38fc3216df2"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 541,
+        "sha256": "4e7f288bfd447cedf3719b1ca3e424e18499fcd79731e0aa2551ace26ec31608"
+      },
+      "camera": "28",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4361,
+      "historical_admission_mask": {
+        "bytes": 4252,
+        "sha256": "d79ccecb1ae6b6e071c20f96e5faaff38cf0212e7448561a1034b8de4b57a9e5"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 458,
+        "sha256": "db6ae4dfac9e4579d4d8acdf435d5758c5abc67af4fc700a8573662200be527c"
+      },
+      "camera": "29",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4276,
+      "historical_admission_mask": {
+        "bytes": 3868,
+        "sha256": "4894da3cb9bbbec502f197c9f6a7c8507b3110728bcfb2ca898befcdd6580f25"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 538,
+        "sha256": "a4d86d221a1afb797cee6603ca9e4818e7c2c0a2cc1409876a24e9245c9ad75e"
+      },
+      "camera": "30",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4352,
+      "historical_admission_mask": {
+        "bytes": 4386,
+        "sha256": "405f6109c66e01aa80e75340ff890ee0b95be492564684c97e82031353b38160"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 530,
+        "sha256": "e08025efb7c7521a1c2c6f99ca8a236fa883ca4bb83e2d34d760a031f3eda2e0"
+      },
+      "camera": "31",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4342,
+      "historical_admission_mask": {
+        "bytes": 4295,
+        "sha256": "5e9c7b3136f875436be2fc4b10e9381d629404a4cec028556144599f86404888"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 548,
+        "sha256": "703f0d220a58587242c2b4a30f94f7c5f80d378ea2f47f70f1f0f0da49038d9d"
+      },
+      "camera": "32",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4354,
+      "historical_admission_mask": {
+        "bytes": 4345,
+        "sha256": "03868b4de68e8ac7ffab4dd1291a79cbfb2797468cf2719f8dc09e2c08ee26e2"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 440,
+        "sha256": "83b1d5180e6d64e62f82941fff21e867b43e5fb4693595447ccad9d08839d8bb"
+      },
+      "camera": "33",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4216,
+      "historical_admission_mask": {
+        "bytes": 3761,
+        "sha256": "fa01014bc97f33b186c7fa13e11362e2bb95205c22ec4093d1b7229df02c3242"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 536,
+        "sha256": "504a836453a819fbab95438e76ec6816dac480a4f2da0f97b7ee9d9722bcc03a"
+      },
+      "camera": "34",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4354,
+      "historical_admission_mask": {
+        "bytes": 4380,
+        "sha256": "d476dd443435917fa57c5954eaceefe002ed1a790f7eec4cfcaff777fa41c6c1"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 520,
+        "sha256": "7411d20ee56c35877863d6874c890c42410e2b02fa4d712d98767a279f2c0f9a"
+      },
+      "camera": "35",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4308,
+      "historical_admission_mask": {
+        "bytes": 4296,
+        "sha256": "5344d1aae6a8ea372ce539d4eec87445d53cdffc62fa6de99c07c40f6e6b5434"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 534,
+        "sha256": "fb3dc60bd630b798ebce63a1801db2686e2a8924fe81e3df9f6385db3f701eff"
+      },
+      "camera": "36",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4357,
+      "historical_admission_mask": {
+        "bytes": 4391,
+        "sha256": "0da4cc7bc9b4a92a2e600f335dcc8f4b54d171e04cb7e40345f9e36ef1aef6e0"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 465,
+        "sha256": "123e7cea9f8143e5e7aad3a00aa2bd1a3e27d549e91815d34e06cab2d463a43a"
+      },
+      "camera": "37",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4258,
+      "historical_admission_mask": {
+        "bytes": 3915,
+        "sha256": "446663cd2ce91e97c7a7b2f4368df980f4a0cf2163c4a43f555f93e466c09a88"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 518,
+        "sha256": "2db7f3436b57ca8bee9a8f96712d8812b8abf20751cb0aa422fe7ed4db075162"
+      },
+      "camera": "38",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4285,
+      "historical_admission_mask": {
+        "bytes": 4186,
+        "sha256": "83d28d19ec53e6d66a3c6ba42849452f7f8e513e803bb37a2fbc0e112587b311"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 528,
+        "sha256": "76e21427dd9a930c0aeb52037f3ef5ab36791f2782ae7e45a5b14d15f707b8b1"
+      },
+      "camera": "39",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4330,
+      "historical_admission_mask": {
+        "bytes": 4356,
+        "sha256": "06404b4f25f17c922669aec13a1946cb4a13dc54c1db1df766e89190744929b2"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 532,
+        "sha256": "9428ae69894617f33a3acf734cd1ba93e4b95d19bd5e89ebc6522112b92698c9"
+      },
+      "camera": "40",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4311,
+      "historical_admission_mask": {
+        "bytes": 4343,
+        "sha256": "ad294b1dabaac0a93b6cf587a102bcf61e7f3983caba47160a1beeebe8bbe91c"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 508,
+        "sha256": "8a22949ef8fe5da0d6636a5e5fcd54bf0a9b68624c72a915af42e580184305e3"
+      },
+      "camera": "41",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4262,
+      "historical_admission_mask": {
+        "bytes": 4098,
+        "sha256": "d0d8a7c4bdce113597bf8d82647348e522774edef1f32d118b36b8dc6a126fc4"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 507,
+        "sha256": "454fc60fcf0ce0497eecc443b798080417063746f20dbfd10a7e230726c9ef99"
+      },
+      "camera": "42",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4263,
+      "historical_admission_mask": {
+        "bytes": 4083,
+        "sha256": "668913150275bd3ed307d559e006bdcf345e27af662a442abc8dac118bbfb684"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 523,
+        "sha256": "1f35aa09bea47388e2e3055f3cee44216d68cd5818c7758463f6036b2d33ab54"
+      },
+      "camera": "43",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4293,
+      "historical_admission_mask": {
+        "bytes": 4355,
+        "sha256": "234dec7505ac1d12f69d1a896736b5bb8cdffbc036fcf322613523cc2d2ace07"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 529,
+        "sha256": "1f05d496c5f943c4b3c1fe93b5150a2145d181bc6e5d00a08f3b1cb2b5a9dbb8"
+      },
+      "camera": "44",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4309,
+      "historical_admission_mask": {
+        "bytes": 4354,
+        "sha256": "96ff6a0fd2a279487956ba1036ce799a5e52c830015356b3016c87b3e46acb9b"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 526,
+        "sha256": "b6fa527fd7dff714509b140a1ff3d3f1017caca37d1082f6b3cd24d610bc5b99"
+      },
+      "camera": "45",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4261,
+      "historical_admission_mask": {
+        "bytes": 4194,
+        "sha256": "101495841bade9c7880a164c9a40a30a9fdff2546110349f1a141f4da678f644"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 482,
+        "sha256": "e69c7fbe02d67f95a9de81819d63cca51d152f5308c79e17e6f85aab64b454aa"
+      },
+      "camera": "46",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4201,
+      "historical_admission_mask": {
+        "bytes": 3867,
+        "sha256": "4fc3a39abf211f9ea95853cfd689b956af0e94137ceb926038078192f9189a0c"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 536,
+        "sha256": "e7118672e5cd449206f0da71f6199c3288751d15159e3fb5c0c46815cfd8aaad"
+      },
+      "camera": "47",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4311,
+      "historical_admission_mask": {
+        "bytes": 4414,
+        "sha256": "05a33a81f2f9c9b2bdc688c39504943e6f5587cc96ce1e7ed52bfae084eb0fe9"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 517,
+        "sha256": "42eaf503e6f9e6aa7776f96ec073280888790d041b81c7e566890c20b5e15231"
+      },
+      "camera": "48",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4241,
+      "historical_admission_mask": {
+        "bytes": 4320,
+        "sha256": "251096bfbe5bc00a4dc782ccc8f0db4a551d7d24b912be4fa23b64847271cf6d"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 527,
+        "sha256": "e89d6844021dd61115f777f07783b7cbd72ab95ae85f4c8c9fb265c1fda6a8ea"
+      },
+      "camera": "49",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4285,
+      "historical_admission_mask": {
+        "bytes": 4309,
+        "sha256": "710d969d34acd9a00cf90da5e2adc489c22909c773973ee238e6b91d501f19e7"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 432,
+        "sha256": "9f7758d48c46740790e0260cca53a6b183b61e75e996f27559f179991c352468"
+      },
+      "camera": "50",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4126,
+      "historical_admission_mask": {
+        "bytes": 3698,
+        "sha256": "55ca159c750aa387751183aebd049b16791c172100f53f47eb40f1ed4c0e5ea7"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 541,
+        "sha256": "aaa1b1bdc3214e45c06576f72621d42d9ad30b7dd6e01bfbe96ede6c6c7c3312"
+      },
+      "camera": "51",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4247,
+      "historical_admission_mask": {
+        "bytes": 4366,
+        "sha256": "ce1de3de2614424b9f766010e0e449e20787b5a29cd2eaf5f027baf07315514e"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 512,
+        "sha256": "dff6551f60000b95d6af753f49dfffbf4c31aa83df95c6a04a9fcd5ff9e1c544"
+      },
+      "camera": "52",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4254,
+      "historical_admission_mask": {
+        "bytes": 4233,
+        "sha256": "972b7578ea0a0cf3b9b3b89304bc6702cf9549bd9652babe9b8ec59b212f2f8b"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 538,
+        "sha256": "5bf843461b8454f46728c6259bd950e11c2d212aabc5b4f1616ebff00eb103a2"
+      },
+      "camera": "53",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4238,
+      "historical_admission_mask": {
+        "bytes": 4398,
+        "sha256": "634f13761aa7e5a6b36bc4fa24ff5c3f8ed3d3b3027c0ad27afe5ce0e47ad16b"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 478,
+        "sha256": "fd14f484361b06877c9ae3f12f2dc43ddac0f8842386951260b032a884a7d76f"
+      },
+      "camera": "54",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4166,
+      "historical_admission_mask": {
+        "bytes": 3854,
+        "sha256": "69803c40702136dba7171858a68975bb9333e70d57b1e5966e7a8a0e4b88e957"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 522,
+        "sha256": "46077edb1a740a9b5361c8d9661b68bde336a35ebaabda6904186a78e0875f93"
+      },
+      "camera": "55",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4228,
+      "historical_admission_mask": {
+        "bytes": 4220,
+        "sha256": "0c5172cc67ffabb23aa3e50a01e71a6708a4782f485a24865992edac9a641b93"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 528,
+        "sha256": "6e5c3744038144744e358f18c5e8d298950e897b1a4cde0a91b2d1d87c2700cb"
+      },
+      "camera": "56",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4195,
+      "historical_admission_mask": {
+        "bytes": 4326,
+        "sha256": "746d2daa6623c4b78eae533f33443e69711d0fa92b025c3b203917736df84fbb"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 538,
+        "sha256": "859d6ca64401f809a52faa9547033dd4c4adc8a8a68846141152198d4590c5c3"
+      },
+      "camera": "57",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4238,
+      "historical_admission_mask": {
+        "bytes": 4394,
+        "sha256": "2e35384e3aee4d3cbf89968d3a93d766fb8d5a32dd56702ab309369347d76b33"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 503,
+        "sha256": "9e4eec864a1ac4eb555c4653aabc0c0b1d30c8b60623fc6e7376746b91f4eb89"
+      },
+      "camera": "58",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4155,
+      "historical_admission_mask": {
+        "bytes": 4027,
+        "sha256": "16369180999e2987806fde56c4e0534d252c5df74fd10f12abcf8442b34a3f14"
+      },
+      "role": "validation",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 499,
+        "sha256": "a81714031fb65c2dfda587f3e0abafdd93632fe7e1b5ebb731ccdfc7b88abe9b"
+      },
+      "camera": "59",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4152,
+      "historical_admission_mask": {
+        "bytes": 4016,
+        "sha256": "a90f37317ffc8b7bc23a76b36760ae7024f080451130aa80bee63371f1e6a529"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 551,
+        "sha256": "438a31661158d22861ec4a6978d6316bdf3a650026e1aca8f49b9aa309049c25"
+      },
+      "camera": "60",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4210,
+      "historical_admission_mask": {
+        "bytes": 4312,
+        "sha256": "ff1aee83a029b298df4fa2d07f528e60824b238bd0650ce0816289d3b638ee42"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 517,
+        "sha256": "8b3e9cbc12a86c113513b6d3659ca167d3bf18ece4d6b1d18b4cec281c441e59"
+      },
+      "camera": "61",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4168,
+      "historical_admission_mask": {
+        "bytes": 4306,
+        "sha256": "25435363b92854cea93096c6dea9ca194f3985724f0ae2977b0dcc889085e6a6"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 522,
+        "sha256": "b8ef3c76ec5e4bc651877e28def7351ff0e2dad2c4155f33ac95e577baef96b2"
+      },
+      "camera": "62",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4165,
+      "historical_admission_mask": {
+        "bytes": 4135,
+        "sha256": "5a9eb368c777b4a1bb2f36a8bc257892f3b0cc07d1777a71023421888f13d737"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 483,
+        "sha256": "331d42a27badafe644de3a74deb65f13ff53e7543c1ec9ae6ebfb49b2b73ba3d"
+      },
+      "camera": "63",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4118,
+      "historical_admission_mask": {
+        "bytes": 3846,
+        "sha256": "3c602c0599fe6077910a1c121a53c0b59c8c342e833b690f3145259c6c953a32"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 522,
+        "sha256": "cb70787ffbbd0f3ed2a64cb4f5cd07b503957563c0bcd7b56c41c5a2ef9ac2f0"
+      },
+      "camera": "64",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4148,
+      "historical_admission_mask": {
+        "bytes": 4340,
+        "sha256": "9a6ef6a619e565b36099786fb37c30ac977b4fd3f6da76b523b869234e8169c8"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 525,
+        "sha256": "95cf0c2ab137c649e4afc0afd709fb4e964477dc37863c858c887c3a2309ce19"
+      },
+      "camera": "65",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4161,
+      "historical_admission_mask": {
+        "bytes": 4334,
+        "sha256": "8849c222960b44b02226a8aa69da3b4c6334fd690d771e1d0e48c5f402528bf7"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 518,
+        "sha256": "d6a88da4384391df36475bc029db8f944c40f0b3787cc9097e5bcce1b16aaaa3"
+      },
+      "camera": "66",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4130,
+      "historical_admission_mask": {
+        "bytes": 4237,
+        "sha256": "43a823a9a470b1617081670a90d13246c876b869391b7d237c48a259a8e49114"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 439,
+        "sha256": "ae8ed6cfdebce490895ff803c37e83d3279c6ea5204fdc3c7d750b9967287a10"
+      },
+      "camera": "67",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4024,
+      "historical_admission_mask": {
+        "bytes": 3645,
+        "sha256": "2fc8c4987108ffdebab384c9674042e90d183f9b445e36dc18e9cddce2cda1d3"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 509,
+        "sha256": "cd615315907f780f4c0017207a23273098328ee52be44acf6a9b2b870fbcf061"
+      },
+      "camera": "68",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4138,
+      "historical_admission_mask": {
+        "bytes": 4268,
+        "sha256": "96e463711e9bdda32e93c05ac9d20cbd9d04c3754e39e6831b048390e86d6b94"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 495,
+        "sha256": "504f3e9305aa2998170e8367466111137e598703897ad863f628eec3f4df7669"
+      },
+      "camera": "69",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4092,
+      "historical_admission_mask": {
+        "bytes": 4186,
+        "sha256": "33d083a81503cfadfa2ece190623a3d2fc7909a2f4acf58bbc67775959b6d8c8"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 529,
+        "sha256": "1e46f9889074191dab00d90d805010788ee17da82425f2684107b1ac4176d038"
+      },
+      "camera": "70",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4126,
+      "historical_admission_mask": {
+        "bytes": 4221,
+        "sha256": "d491b58c01eda40a65ed4fe544a867ecac08b7f00ab8dd75f286fb5f11495e9d"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 456,
+        "sha256": "50bec7e9de7fc5c21adfba0366c6d8b52063a6b68d8d13b4b4ab93545c165761"
+      },
+      "camera": "71",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4025,
+      "historical_admission_mask": {
+        "bytes": 3691,
+        "sha256": "67da06683bddf7132a69f8d761b4acfd7ff85a96f12d7666c876c07df0f58b0f"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 514,
+        "sha256": "1e1c169a735a5f7f69f286c911392bc2ace6f62eb8272a03b9ea583c10061bbd"
+      },
+      "camera": "72",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4065,
+      "historical_admission_mask": {
+        "bytes": 4180,
+        "sha256": "efdbf78d8b2c20ee1c57ef8ee7213d9c14fb3fef2c43aa3b751a9ff8ddbcdc87"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 510,
+        "sha256": "5dec39e4492e03c51672692fd9fc2fa24ac7b8087be6ee1702bd1d55c0fca6ef"
+      },
+      "camera": "73",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4087,
+      "historical_admission_mask": {
+        "bytes": 4223,
+        "sha256": "1dc2a2ae0120484f0b8d6a098042ae71dbcd1dae86db3b417d05a5ba33b4fe81"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 537,
+        "sha256": "a266d32b2aac949d8fd789df055ddfb525e13aa665e49e7ec5297c9642446b1d"
+      },
+      "camera": "74",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4060,
+      "historical_admission_mask": {
+        "bytes": 4282,
+        "sha256": "efa3d14858515ba720b6cdd3e9ad1f5fa4afef2384a581ba6fb4ea848de5d617"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 486,
+        "sha256": "5886c2c4f30043946de3833f3a3e4e5d69e4f0dd8c889985ba3e849803d637a8"
+      },
+      "camera": "75",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4022,
+      "historical_admission_mask": {
+        "bytes": 3945,
+        "sha256": "e55b85c8db89d3972bfc9230ef9eb30a571667fddfb02429b9185e02472563fe"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 492,
+        "sha256": "d14083d54e57dc2def0cbd67f36b027a4599500897d1a3b07a32dad1c0f10ac3"
+      },
+      "camera": "76",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4024,
+      "historical_admission_mask": {
+        "bytes": 4035,
+        "sha256": "815d9e36c2035f1865de24235e404999b5ac39e7a7a912e65af46c2530957f8e"
+      },
+      "role": "held_view_nvs",
+      "staged": false
+    },
+    {
+      "acquisition": {
+        "bytes": 507,
+        "sha256": "e2ec111bf56ad576cab3626e8d6cc70c247763c93493457e93c8a46395d09774"
+      },
+      "camera": "77",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4025,
+      "historical_admission_mask": {
+        "bytes": 4156,
+        "sha256": "6833f3bedb933679a27dcc2688659a999a81d9fc2a98234e283d293154ce5d32"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 507,
+        "sha256": "dbd64e360d9848df08374964e97b972b1447e07aa3b538c3a6494d5e0e5972a5"
+      },
+      "camera": "78",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4040,
+      "historical_admission_mask": {
+        "bytes": 4171,
+        "sha256": "aa1dc80628ed2982a981317ad216429eede4a17f09723a88e83f4b3c2ad2dcfa"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 510,
+        "sha256": "6366bd0fba0550b2adf4c08cb3d0834ff0031737668435f2f131be8a30e86d68"
+      },
+      "camera": "79",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3985,
+      "historical_admission_mask": {
+        "bytes": 4062,
+        "sha256": "639a071160a496b4aa4008a692727af57abb33fdd32a006b669601d0ebfa74de"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 460,
+        "sha256": "00ab65fe27f85a7f3a7b6670c845db5ed72c154fc48d976553a2e610e084c0eb"
+      },
+      "camera": "80",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3957,
+      "historical_admission_mask": {
+        "bytes": 3837,
+        "sha256": "c2e2df04fbfd3b7f7775b6fe34bf4dd8c616d3f1327e3e330d387093ed1b1edc"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 513,
+        "sha256": "fb3e1d8382e37ead7c5ce44af22c9db7de6f68fd8bb7d5ea2b807bb3da3bbc1b"
+      },
+      "camera": "81",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 4018,
+      "historical_admission_mask": {
+        "bytes": 4218,
+        "sha256": "57b6188fa0bebaa4f03065a629cb4e7ad95682040ea55b6329b3c7e5da3c51c3"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 488,
+        "sha256": "ea8ef35b15115c7fb6021d779492621c66aa42c8523032aebfceac2d3891cf95"
+      },
+      "camera": "82",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3967,
+      "historical_admission_mask": {
+        "bytes": 4076,
+        "sha256": "0bb642562103543574c19986b5084da489f93fc10ba195eb0fed670a54f258c2"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 520,
+        "sha256": "92e22f45f610a5f25d6e2b7767c49daa3f712c4cb966e6fce36cd387b2d8be20"
+      },
+      "camera": "83",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3973,
+      "historical_admission_mask": {
+        "bytes": 4148,
+        "sha256": "0f7ee243d33c63b9ee7c2dee04af68ffab1642e7255d1b76212f9d9854f69ec6"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 440,
+        "sha256": "80659f66a78edaf56ff5180f5b9af353a3e2015e1bfbe9a6918f9fc41abc855c"
+      },
+      "camera": "84",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3898,
+      "historical_admission_mask": {
+        "bytes": 3565,
+        "sha256": "8dc45f33ccab95d3a317affe29e0424e16a5870f7c6ab596388c5cf07bdbc89c"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 512,
+        "sha256": "ee777cfca18185cd952b77f25cfb3470627b80cf2761eed1d189088ae9803b95"
+      },
+      "camera": "85",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3934,
+      "historical_admission_mask": {
+        "bytes": 4115,
+        "sha256": "a7545724e19778edd142e969f04165b01093192afb81ba4eed668bb55456e325"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 453,
+        "sha256": "5de45d4ee08b7add03d914f37813d7234aa8ec2e7a615e2ca4bfa5302280d251"
+      },
+      "camera": "86",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3953,
+      "historical_admission_mask": {
+        "bytes": 3973,
+        "sha256": "398f1b71a2c6b3891c7a16e50dcf3f0707c2f524521bf7f9f23eca17b3f11f6f"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 518,
+        "sha256": "a3df3fb2e48f1aada3d1d54be1393e3aa305e21081d5dcec44cd077cbec68d80"
+      },
+      "camera": "87",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3913,
+      "historical_admission_mask": {
+        "bytes": 4130,
+        "sha256": "90840c99ef72a58275e91c7f3aa223a7ed18ef93af1f79563b926f8f24a804b4"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 440,
+        "sha256": "c6cb4056a840376b51dcf590552a56704235404f68ea717a3040d772cb832b54"
+      },
+      "camera": "88",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3854,
+      "historical_admission_mask": {
+        "bytes": 3536,
+        "sha256": "04571c59bc05f220bba472854c948a11c6d8b16d8e9976f9799a4208a76c443e"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 496,
+        "sha256": "92f558632ee39f447b36ee3829f51fe89e05654d37abf30bc6243251a63cff7b"
+      },
+      "camera": "89",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3900,
+      "historical_admission_mask": {
+        "bytes": 4075,
+        "sha256": "0fdc14bed72851eefed8ec1fc6716f4f9f6c5ed157a7d116256745e375c7af6c"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 486,
+        "sha256": "08d3e60c14052bdc27e1952eed526f36982aa6c9feb449e1bb7f41117fca726d"
+      },
+      "camera": "90",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3873,
+      "historical_admission_mask": {
+        "bytes": 3905,
+        "sha256": "f7ec926b203569d447f027feb7a806763dc1c3cbf72b4c3344319fb2bec10498"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 518,
+        "sha256": "06ff27a6009e597d6fafc74a6fd744a56b544246bc3be8fa42665ee9ec436460"
+      },
+      "camera": "91",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3891,
+      "historical_admission_mask": {
+        "bytes": 4084,
+        "sha256": "c6e8bdaee5458a49be3cb69e3e32c48e4f6586b7665aa7b04b2759798cd2eda0"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 457,
+        "sha256": "511830456f3a706f9885fcb59126f4d0f6737d10d11358b7389775e8c464c3dc"
+      },
+      "camera": "92",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3829,
+      "historical_admission_mask": {
+        "bytes": 3712,
+        "sha256": "ce6f8cbebda8dd8232e786ae0b6974b125a7aec8ad08a7f85465eac272f0970e"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 491,
+        "sha256": "2c691906965866f12b472c7abbd7a8f7919b5ab1747cd167d479c537ec148e06"
+      },
+      "camera": "93",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3822,
+      "historical_admission_mask": {
+        "bytes": 3904,
+        "sha256": "41f6de5e13d94d65ed82eec6b185c6e4bf69cd9b7fa50bfcbb3e0918990cadd0"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 482,
+        "sha256": "dcd705b429129f58082c3d032cb16a8f786474e271871683bb006e386996427f"
+      },
+      "camera": "94",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3853,
+      "historical_admission_mask": {
+        "bytes": 3873,
+        "sha256": "1f168327f1a195b7bcfc9d6e01ed32398bfed3787ac36ad293be9ed88fca7e32"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 483,
+        "sha256": "0cb4bcd0b945c849ac9de330144541a4a070f3e643661c6ded2bb0ccc286f080"
+      },
+      "camera": "95",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3813,
+      "historical_admission_mask": {
+        "bytes": 3917,
+        "sha256": "0d532ad047976f538d465692c61ff6b1bbecb115343fb386f2ba5a2217f39200"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 483,
+        "sha256": "cecf2ced348824709b8d724a8aa4cd08f03b110dfc217af898f2e063f4497f55"
+      },
+      "camera": "96",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3789,
+      "historical_admission_mask": {
+        "bytes": 3872,
+        "sha256": "16aa446f848439129b174a799dcd64d4c28c5e05682d8beb1d773288039af615"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 458,
+        "sha256": "58ab8640e1ae556dec6ed82bd4f677f3912d5e7c15ae43bb9b47e1ae016fcb56"
+      },
+      "camera": "97",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3770,
+      "historical_admission_mask": {
+        "bytes": 3703,
+        "sha256": "9ee847e8ff247071c861a7b33c117b26e666641fd0b301a84866c8731324a6a9"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 483,
+        "sha256": "b1abffef9488745182347f8ba9f65b8bc95972b7d58cd5a96892555c46841bf6"
+      },
+      "camera": "98",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3773,
+      "historical_admission_mask": {
+        "bytes": 3912,
+        "sha256": "f89f4ea61bcc090540c5a71f143872cd040d6d91ab64cf3332593975a89f2686"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 457,
+        "sha256": "91985e678ee1dfe3b3f8b92703c1c8e8d604f1b427e996d58bb3919f346f1610"
+      },
+      "camera": "99",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3774,
+      "historical_admission_mask": {
+        "bytes": 3739,
+        "sha256": "5854649ef6133d8a47e9beb11b4e4a4bb92a7166cdddd71dda24370983923592"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 494,
+        "sha256": "f84c279cb2cdb8985024087c69f904ed81c9f3fadb36a70fe75626d877252272"
+      },
+      "camera": "100",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3730,
+      "historical_admission_mask": {
+        "bytes": 3844,
+        "sha256": "de373895990a8e72b5ef0ddc081b03f134e64edb6b5c2a8446e399b838342403"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 434,
+        "sha256": "4c276ebe80e66dd59579ae74c340d4d27997fa5e4a1540365ba17bd45c58cd06"
+      },
+      "camera": "101",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3695,
+      "historical_admission_mask": {
+        "bytes": 3470,
+        "sha256": "724018f4d641c7f50412929308ed82782d49dc88987932f6d7e32f1a9beafeb6"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 475,
+        "sha256": "b0add0e4e21caf3a4d59587d02020dfc6ffad2ea7a3cec95278c3fcb2111b9ef"
+      },
+      "camera": "102",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3720,
+      "historical_admission_mask": {
+        "bytes": 3889,
+        "sha256": "a99ca5eaf6797eb2f9734e70cfb09bed4856561acffb33d232e1a8dbfadc6cb5"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 430,
+        "sha256": "a165c03075977da64521b511a04083713162e8dcc8247dbde96f7799ee289616"
+      },
+      "camera": "103",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3700,
+      "historical_admission_mask": {
+        "bytes": 3571,
+        "sha256": "f0833b0731419fca86a06ce06f547e11b8d00caba8cac1c1b8ceef5b8ce46e8d"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 488,
+        "sha256": "cdd05c84df94f776988a4d86d8092c46bfe22f69b80575d4587511d7102e129b"
+      },
+      "camera": "104",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3681,
+      "historical_admission_mask": {
+        "bytes": 3855,
+        "sha256": "dbf82933e876c3a57ce83312b044f6d73a851f4d4eeda7ea1a8101bf64d055a1"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 415,
+        "sha256": "0b346a6ad956569e06c13cb0f6113251ef29a3228c0996a79f5c8b411f9a8842"
+      },
+      "camera": "105",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3607,
+      "historical_admission_mask": {
+        "bytes": 3351,
+        "sha256": "706560675ab3db9bb6d4b320ce0a79782faccb8fbc414f5909253ee643a84f51"
+      },
+      "role": "held_view_nvs",
+      "staged": false
+    },
+    {
+      "acquisition": {
+        "bytes": 481,
+        "sha256": "bf840d11f328602fee09840eb7e0be045db783465c6d1a20014fd6b39d517b9d"
+      },
+      "camera": "106",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3625,
+      "historical_admission_mask": {
+        "bytes": 3777,
+        "sha256": "b20edf4e5dc88a13470f9b909ecb98d58744495fc348e5341ff062255864cc6d"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 435,
+        "sha256": "fcfdf7e35bc0e9d5b402ef1369762b4104836935b7155df057e0b1c0f0cb7651"
+      },
+      "camera": "107",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3673,
+      "historical_admission_mask": {
+        "bytes": 3479,
+        "sha256": "6eefbe157e9730cf5b5c80e6b10d3b97d7be4fa493ccec2786d7b96cc6dc8c60"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 469,
+        "sha256": "8a75fef2c5a5b42037801986dfd9dffc4ec716d18f0ab4059c22a4494c54910a"
+      },
+      "camera": "108",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3585,
+      "historical_admission_mask": {
+        "bytes": 3688,
+        "sha256": "4dd151317f1bad4d9ea2fcea575a50ccd1400ec10eafeb08f558e152616a79fe"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 441,
+        "sha256": "4746162289370ea161f10f59a2360803fe935c72f981235e2ea94f2b56c1259a"
+      },
+      "camera": "109",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3574,
+      "historical_admission_mask": {
+        "bytes": 3438,
+        "sha256": "66e2445e6cadf767c78db58ae9b62645bfeaae5449acca95af49fc4e7a6b18e9"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 440,
+        "sha256": "63812aae6de0da227f3568ac2adefef6a777d4ac19d45000b7d0deb0e8da418b"
+      },
+      "camera": "110",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3556,
+      "historical_admission_mask": {
+        "bytes": 3627,
+        "sha256": "cf44abde861ad0aa721cd41bdf6c3fb9b08273c68910c8965ce07bf054d2a1df"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 414,
+        "sha256": "18290d7fe3bbd53ec684d65542e72328fe35f1f6fea9313bd15f3b079616d01c"
+      },
+      "camera": "111",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3525,
+      "historical_admission_mask": {
+        "bytes": 3241,
+        "sha256": "56fea5ef97924765de790f70c90f7649b0b01a4e12199fc8b9f34014edeb0488"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 429,
+        "sha256": "cc9ba317d3c2de2965e392e1b41dd46a0fd267f91d00d11ae1af6c77f4e67d68"
+      },
+      "camera": "112",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3510,
+      "historical_admission_mask": {
+        "bytes": 3427,
+        "sha256": "3ed31b7787c96342cead9b7f7953cbee6d542f6a6e87b8ed683a18928e2cd6a4"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 427,
+        "sha256": "1610f2c52bd1ae6f4f0892be31d497ceedacdbb4050bc8c50d75f972df3f104a"
+      },
+      "camera": "113",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3490,
+      "historical_admission_mask": {
+        "bytes": 3461,
+        "sha256": "e8f4c69d375254aa6ad52f435ce60aff0b237354ef4d132fd6f094272efe6448"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 416,
+        "sha256": "0092dd0a5ff5dcd2d174f6f0550abdae3c3c017ad57f434d38a4731841629816"
+      },
+      "camera": "114",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3475,
+      "historical_admission_mask": {
+        "bytes": 3381,
+        "sha256": "bc6ad135c7c70ceed47cbb8dab250345f0772ec8e8a70a47ecfbf82eb2f355c1"
+      },
+      "role": "held_view_nvs",
+      "staged": false
+    },
+    {
+      "acquisition": {
+        "bytes": 412,
+        "sha256": "70f6f6f66d495a33ac51b619d459c7e1b8e525ef4bb457c429825bc4dec57051"
+      },
+      "camera": "115",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3428,
+      "historical_admission_mask": {
+        "bytes": 3290,
+        "sha256": "65dfc1468e54080108c3e2169edd3576c19db62a0680affc818211764545a7d0"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 387,
+        "sha256": "96f25a3a4150ab1f69f25dc69b593071258ef1078018221ee1c26aab27c3b9bf"
+      },
+      "camera": "116",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3386,
+      "historical_admission_mask": {
+        "bytes": 3064,
+        "sha256": "942744fbb9dd0e5e2b24b72fd2b066c8fdc8ffc20a8a857801fa9982d51372bc"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 433,
+        "sha256": "e8186aaf6df2f7b20d4cc36ed7aeb561a9c8eba2eb93f1acc5119d48b278a474"
+      },
+      "camera": "117",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3402,
+      "historical_admission_mask": {
+        "bytes": 3409,
+        "sha256": "63d787b2822196eab711c72b3ea5808194338e087f4ed14ea3c2d2470bcf127a"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 406,
+        "sha256": "9e16cb752a2ba720a5d807751cd1d1b584cadf0919719677d3ec9a63c359cc73"
+      },
+      "camera": "118",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3387,
+      "historical_admission_mask": {
+        "bytes": 3197,
+        "sha256": "e38b5f533b37eb20bb3a67c3b40f433854b0fe049764d249a5126f9cf27916ac"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 393,
+        "sha256": "a860985becff5d18362e00a03400d2ec2c7f292bb52c0609a29bb6d0567b9a9e"
+      },
+      "camera": "119",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3337,
+      "historical_admission_mask": {
+        "bytes": 3248,
+        "sha256": "a02fc8ccebb0e97c16d59eedfa89c774e0d12c19bccc0aae0384ec1221d8161d"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 351,
+        "sha256": "c14c7e3fb13c10f118b9c8d663ac9fb3600ff19cfa94e88c1245916a906d85bc"
+      },
+      "camera": "120",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3305,
+      "historical_admission_mask": {
+        "bytes": 2921,
+        "sha256": "d18e07a32db854187defa61e6ac642fd58f182c4b55d6fd66ec19349f5408c1d"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 385,
+        "sha256": "ae332433453a326d8bca1345c9bb886d29a1fcdca679042ecc8301573732482f"
+      },
+      "camera": "121",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3305,
+      "historical_admission_mask": {
+        "bytes": 3186,
+        "sha256": "0209ec5bfcf598d80b61e7641ae137640f062790556b945b3d83dacced1e9be2"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 370,
+        "sha256": "d24e0dee244a72b15356a8f3b41ab88708e15f17f2d227fe3c533834f31f4f02"
+      },
+      "camera": "122",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3303,
+      "historical_admission_mask": {
+        "bytes": 3029,
+        "sha256": "0f272da2edd4b713e080acb0b87613ee1f698639acaa05e7d20c06012efd8c6b"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 377,
+        "sha256": "0a3bdc02a996c3e3e24e62913924694cbfb554bfae6a467e2b3a7fab6f041d4b"
+      },
+      "camera": "123",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3298,
+      "historical_admission_mask": {
+        "bytes": 3089,
+        "sha256": "e23ca735cfe899fcbd60d5177d8ad626a971986cf277ddf270bbfcc5193fc99f"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 344,
+        "sha256": "a42839b324df2668bd85cf9eaf118cb6c023f3f89b02cce8ac29fea3c5b4335b"
+      },
+      "camera": "124",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3289,
+      "historical_admission_mask": {
+        "bytes": 2921,
+        "sha256": "74a4bfa306bd75f08a9546a060288802e917395b66fda80e5079093e5d90df4f"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 375,
+        "sha256": "137ae850e5d0afb5717825ae615f0ec81661a1016390f0c6674a071dfe6b1ca0"
+      },
+      "camera": "125",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3304,
+      "historical_admission_mask": {
+        "bytes": 3107,
+        "sha256": "7edd65b0ee43d389b6ab5e1755274fb4f61bad0377b0435b6e724c44c909f7a4"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 354,
+        "sha256": "15b0a11b718f4dd52304256a3c478bfc6b8c8e48f68120ef862f960647855c8e"
+      },
+      "camera": "126",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3298,
+      "historical_admission_mask": {
+        "bytes": 2938,
+        "sha256": "5487aa31e2ff16ebc3ab65b3bb54ad587e25782ad4a958dbe0b8a4239062b9b0"
+      },
+      "role": "train",
+      "staged": true
+    },
+    {
+      "acquisition": {
+        "bytes": 389,
+        "sha256": "70a60ca37c7cf661cc86ac55f67a49cbab50281fbc8a7d85c11332d38bf55b63"
+      },
+      "camera": "127",
+      "exact_ray_hit_equality": true,
+      "foreground_pixels": 3301,
+      "historical_admission_mask": {
+        "bytes": 3097,
+        "sha256": "8574962865aaaeb37378d55e6559e92db9d5cc59c38bc0960c7a137adef027c5"
+      },
+      "role": "train",
+      "staged": true
+    }
+  ],
+  "observed_date_UTC": "2026-11-27",
+  "producing_commit": "6638d3233e439b2c1ec9279eb46c2d514ba2509a",
+  "schema_version": 1,
+  "scientific_commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+  "scope": "PNG/NPZ/JSON/source reads only",
+  "semantics": "Binary oracle-mesh primary-ray hits; not SAM2 predictions",
+  "sources": {
+    "/home/isavand/paper/Nerofactor-donut-recovery/benchmarks/bell_e11.py": {
+      "bytes": 10820,
+      "sha256": "01b18245999d0d9ffcf0fdfe9b317fdfd427d9e1bee6ca7db395eaa0b3c94e8a"
+    },
+    "/home/isavand/paper/Nerofactor-donut-recovery/benchmarks/generate_bell_e11.py": {
+      "bytes": 23932,
+      "sha256": "877b826ce3e2eabda860d296051de6791cf048f543e1bb41dbe60886654c7647"
+    },
+    "/home/isavand/paper/Nerofactor-donut-recovery/experiments/bell_geometry_gate10_train_v1.py": {
+      "bytes": 16101,
+      "sha256": "8b21155564c2ce80f1fd45c8dc1b4315198acb981bda012478563c4b110d3c14"
+    },
+    "/home/isavand/paper/Nerofactor-donut-recovery/scientific_sources/geometry_g/dataset/database.py": {
+      "bytes": 23881,
+      "sha256": "e2490556c8b3d7aa0f5a9ea1db59fed3f060a00401787625874af46c57301fa3"
+    },
+    "/home/isavand/paper/Nerofactor-donut-recovery/scientific_sources/geometry_g/network/loss.py": {
+      "bytes": 13346,
+      "sha256": "2d19419c3b7e006117e40c11526549f9f7901c9bda1c0018b0b452c415c7a17c"
+    },
+    "/home/isavand/paper/Nerofactor-donut-recovery/scientific_sources/geometry_g/network/renderer.py": {
+      "bytes": 78674,
+      "sha256": "38c280ed812c4fb22b980caf842f0cd302acbee3bde9c449972dabd23485584b"
+    },
+    "/home/isavand/sam2/click.py": {
+      "bytes": 1492,
+      "sha256": "f55ede38187a9a2a5493237a3f8cf9def67e109139edd4d43d8cee67d352340e"
+    },
+    "/home/isavand/sam2/convert_jpg.py": {
+      "bytes": 766,
+      "sha256": "d7df48e7ecaca4cde78c127af7250bda78b2ccb7542ac167a749d2d8c318aec1"
+    },
+    "/home/isavand/sam2/sam2.py": {
+      "bytes": 7457,
+      "sha256": "08ff1f987122a079f389f676dab12f55ae844b019fe95170a04ed39199ddd316"
+    },
+    "/home/isavand/sam2/sam2/build_sam.py": {
+      "bytes": 6405,
+      "sha256": "856d64d71e44407401297b551884fb4cd1aba8082de0ff5fc60fac3dd42f094d"
+    },
+    "/home/isavand/sam2/sam2/sam2_video_predictor.py": {
+      "bytes": 58921,
+      "sha256": "912555920a77f72ded07839efa33fcceecc79f3523abbec783f0be46ee2c55c2"
+    },
+    "/home/isavand/sam_codes/__pycache__/sam2.cpython-310.pyc": {
+      "bytes": 3526,
+      "sha256": "d18b0dd6b4900d1a0e14efec6fd984f5212fb5cdc99d33cd8301337ceb2b8270"
+    }
+  },
+  "training_freeze": {
+    "bytes": 43869,
+    "path": "/home/isavand/paper/Nerofactor-donut-recovery/docs/protocols/BELL_AUTHENTICATED_GEOMETRY_GATE10_V4.freeze.json",
+    "sha256": "6c77069cc577735a63638674094e6e7ce23666f57a12e72a3ea91a6044683a8e"
+  },
+  "training_receipt": {
+    "bytes": 40269,
+    "path": "/home/isavand/paper/evidence/bell-geometry-gate10-v4-5eba8365e19e4ab9aa2320491429cffb/train/training.json",
+    "sha256": "b98e9da593a4ac5027f1a401588aa1a80da556005d7193f1896575cab851b9dc"
+  },
+  "work": {
+    "checkpoint_deserializations": 0,
+    "model_queries": 0,
+    "native_rays": 0,
+    "optimizer_updates": 0,
+    "reference_generation": 0
+  }
+}

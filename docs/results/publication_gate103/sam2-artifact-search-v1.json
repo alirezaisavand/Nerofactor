@@ -1,0 +1,1468 @@
+{
+  "interpretation": "No candidate saved original confidence maps found in this scope. Binary PNGs are insufficient to reconstruct original logits. Historical pyc inspected separately as strings only.",
+  "observed_date_UTC": "2026-11-27",
+  "png_sampling": "First, middle and last lexically sorted PNG in each masks_* directory of nero/data and seg_masks/projected_masks; paper/data duplicate tree not resampled. Samples do not establish all-file value ranges.",
+  "roots": [
+    {
+      "errors": [],
+      "files": 583,
+      "mask_dirs": [],
+      "root": "/home/isavand/sam2",
+      "score_candidates": []
+    },
+    {
+      "errors": [],
+      "files": 0,
+      "mask_dirs": [],
+      "root": "/home/isavand/sam_codes",
+      "score_candidates": []
+    },
+    {
+      "errors": [],
+      "files": 10342,
+      "mask_dirs": [
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 128,
+          "path": "/home/isavand/nero/data/GlossyReal/maneki/images_raw_1024/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 129,
+          "path": "/home/isavand/nero/data/GlossyReal/bunny/images_raw_1024/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 126,
+          "path": "/home/isavand/nero/data/GlossyReal/coral/images_raw_1024/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 128,
+          "path": "/home/isavand/nero/data/GlossyReal/vase/images_raw_1024/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 97,
+          "path": "/home/isavand/nero/data/GlossyReal/bear/train_masked"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 97,
+          "path": "/home/isavand/nero/data/GlossyReal/bear/images_raw_1024/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 100,
+          "path": "/home/isavand/nero/data/nerf_synthetic/sphere/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 100,
+          "path": "/home/isavand/nero/data/nerf_synthetic/cone/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 100,
+          "path": "/home/isavand/nero/data/nerf_synthetic/icosphere/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 100,
+          "path": "/home/isavand/nero/data/nerf_synthetic/tetra/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 100,
+          "path": "/home/isavand/nero/data/nerf_synthetic/donut/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 100,
+          "path": "/home/isavand/nero/data/nerf_synthetic/cube/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 100,
+          "path": "/home/isavand/nero/data/nerf_synthetic/smoothcylinder/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 100,
+          "path": "/home/isavand/nero/data/nerf_synthetic/smoothcylinder/masks_train_binary"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 128,
+          "path": "/home/isavand/nero/data/GlossySynthetic/bell/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 128,
+          "path": "/home/isavand/nero/data/GlossySynthetic/cat/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 128,
+          "path": "/home/isavand/nero/data/GlossySynthetic/potion/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 128,
+          "path": "/home/isavand/nero/data/GlossySynthetic/luyu/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 128,
+          "path": "/home/isavand/nero/data/GlossySynthetic/tbell/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 128,
+          "path": "/home/isavand/nero/data/GlossySynthetic/angel/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 128,
+          "path": "/home/isavand/nero/data/GlossySynthetic/teapot/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 128,
+          "path": "/home/isavand/nero/data/GlossySynthetic/teapot/train_masked"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 128,
+          "path": "/home/isavand/nero/data/GlossySynthetic/horse/masks_train"
+        }
+      ],
+      "root": "/home/isavand/nero/data",
+      "score_candidates": []
+    },
+    {
+      "errors": [
+        "[Errno 2] No such file or directory: '/home/isavand/nerofactor/data'"
+      ],
+      "files": 0,
+      "mask_dirs": [],
+      "root": "/home/isavand/nerofactor/data",
+      "score_candidates": []
+    },
+    {
+      "errors": [],
+      "files": 268,
+      "mask_dirs": [],
+      "root": "/home/isavand/nerofactor_real",
+      "score_candidates": []
+    },
+    {
+      "errors": [],
+      "files": 10315,
+      "mask_dirs": [
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 128,
+          "path": "/home/isavand/paper/data/GlossyReal/maneki/images_raw_1024/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 129,
+          "path": "/home/isavand/paper/data/GlossyReal/bunny/images_raw_1024/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 126,
+          "path": "/home/isavand/paper/data/GlossyReal/coral/images_raw_1024/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 128,
+          "path": "/home/isavand/paper/data/GlossyReal/vase/images_raw_1024/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 97,
+          "path": "/home/isavand/paper/data/GlossyReal/bear/train_masked"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 97,
+          "path": "/home/isavand/paper/data/GlossyReal/bear/images_raw_1024/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 100,
+          "path": "/home/isavand/paper/data/nerf_synthetic/sphere/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 100,
+          "path": "/home/isavand/paper/data/nerf_synthetic/cone/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 100,
+          "path": "/home/isavand/paper/data/nerf_synthetic/icosphere/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 100,
+          "path": "/home/isavand/paper/data/nerf_synthetic/tetra/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 100,
+          "path": "/home/isavand/paper/data/nerf_synthetic/donut/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 100,
+          "path": "/home/isavand/paper/data/nerf_synthetic/cube/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 100,
+          "path": "/home/isavand/paper/data/nerf_synthetic/smoothcylinder/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 100,
+          "path": "/home/isavand/paper/data/nerf_synthetic/smoothcylinder/masks_train_binary"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 128,
+          "path": "/home/isavand/paper/data/GlossySynthetic/bell/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 128,
+          "path": "/home/isavand/paper/data/GlossySynthetic/cat/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 128,
+          "path": "/home/isavand/paper/data/GlossySynthetic/potion/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 128,
+          "path": "/home/isavand/paper/data/GlossySynthetic/luyu/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 128,
+          "path": "/home/isavand/paper/data/GlossySynthetic/tbell/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 128,
+          "path": "/home/isavand/paper/data/GlossySynthetic/angel/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 128,
+          "path": "/home/isavand/paper/data/GlossySynthetic/teapot/masks_train"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 128,
+          "path": "/home/isavand/paper/data/GlossySynthetic/teapot/train_masked"
+        },
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 128,
+          "path": "/home/isavand/paper/data/GlossySynthetic/horse/masks_train"
+        }
+      ],
+      "root": "/home/isavand/paper/data",
+      "score_candidates": []
+    },
+    {
+      "errors": [],
+      "files": 125,
+      "mask_dirs": [
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 125,
+          "path": "/home/isavand/seg_masks"
+        }
+      ],
+      "root": "/home/isavand/seg_masks",
+      "score_candidates": []
+    },
+    {
+      "errors": [],
+      "files": 125,
+      "mask_dirs": [
+        {
+          "extensions": [
+            ".png"
+          ],
+          "files": 125,
+          "path": "/home/isavand/projected_masks"
+        }
+      ],
+      "root": "/home/isavand/projected_masks",
+      "score_candidates": []
+    }
+  ],
+  "sampled_pngs": [
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossyReal/maneki/images_raw_1024/masks_train/004.png",
+      "sha256": "700426bbf1943ea0b66ee5916e8d5ec905d0523d749f7f80c165bf4730d8d0fa",
+      "shape": [
+        1024,
+        768
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossyReal/maneki/images_raw_1024/masks_train/132.png",
+      "sha256": "cf5e545c38093d11b6b9618044389b238651a450fddca65688f42fbeb5a32a16",
+      "shape": [
+        1024,
+        768
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossyReal/maneki/images_raw_1024/masks_train/226.png",
+      "sha256": "bf73e6cfc45cb093b58321da79a8500ebacc88558ae3d3a442df6e8257c072c7",
+      "shape": [
+        1024,
+        768
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossyReal/bunny/images_raw_1024/masks_train/001.png",
+      "sha256": "46630f4b68d362d6aad4daea2d4fc9120c835500a9e578f2e8b9491b44d8bbf1",
+      "shape": [
+        1024,
+        768
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossyReal/bunny/images_raw_1024/masks_train/065.png",
+      "sha256": "6fc87b8802153411a54704e640a3e32c032a8163203d2f976a463063fd4896d5",
+      "shape": [
+        1024,
+        768
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossyReal/bunny/images_raw_1024/masks_train/129.png",
+      "sha256": "6743aa8bbd164b91786c348bc0ba5e3d9962c4eff5a16dd0be9f93555624de6a",
+      "shape": [
+        1024,
+        768
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossyReal/coral/images_raw_1024/masks_train/234.png",
+      "sha256": "386136dfc5b3256b669f6c580c70f807c603dff63925c1437b4b0296394b3577",
+      "shape": [
+        1024,
+        768
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossyReal/coral/images_raw_1024/masks_train/297.png",
+      "sha256": "2d26d259fdb0908e49641fe25f88bafd311ca4a63b955a94cf55db50992327ce",
+      "shape": [
+        1024,
+        768
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossyReal/coral/images_raw_1024/masks_train/359.png",
+      "sha256": "6e048060b04a5eff24bd21dc62fe62c502d87f4e061d55b92850a2029360283d",
+      "shape": [
+        1024,
+        768
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossyReal/vase/images_raw_1024/masks_train/200.png",
+      "sha256": "b04d1145d3db0ab107076fa88faeb3f7268f4a46341220ff263e7c2bf3203f5f",
+      "shape": [
+        1024,
+        768
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossyReal/vase/images_raw_1024/masks_train/264.png",
+      "sha256": "4b87189aa923473fbb66a881c8123db1b1aaaf62493e1405085eefa8016069e7",
+      "shape": [
+        1024,
+        768
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossyReal/vase/images_raw_1024/masks_train/327.png",
+      "sha256": "2db0d4b44c0365067fce4b26b9f3e8bc78225ea235fbe94e7b57f8e9ff80db6d",
+      "shape": [
+        1024,
+        768
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossyReal/bear/images_raw_1024/masks_train/1436.png",
+      "sha256": "1f7b3b3b67cb2f9cfc255938b9c6568e68de60dec970d9f48ffe458a0fd04431",
+      "shape": [
+        1024,
+        768
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossyReal/bear/images_raw_1024/masks_train/1484.png",
+      "sha256": "a9f0475f6fc27546c44b052a26dcbb75e9b3bbee77af2b8fde532a8a4ef526ec",
+      "shape": [
+        1024,
+        768
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossyReal/bear/images_raw_1024/masks_train/1532.png",
+      "sha256": "0ab929bc21823c911b68b630c4b5bd51e47c8895f4e57009b8a8ee45c735933b",
+      "shape": [
+        1024,
+        768
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/sphere/masks_train/0001.png",
+      "sha256": "0dfa75af3d23c2bb66023bd9dfd8c711df1bee87e493d6d00ea9f96302883bbc",
+      "shape": [
+        1080,
+        1080
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/sphere/masks_train/0051.png",
+      "sha256": "0ab4db7ddc5e427317cbde384e18d36c4c91d31ef2919a9b3ba8ffe8bf51daa3",
+      "shape": [
+        1080,
+        1080
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/sphere/masks_train/0100.png",
+      "sha256": "4e91d6bcd2426a031eb3caa56c91b515be21fdaca2588cf21d4c0d8552ca78f8",
+      "shape": [
+        1080,
+        1080
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/cone/masks_train/0001.png",
+      "sha256": "2cd4b37cfd2611cece8cda94a52471c181f48f62c1be3dcd1155dcba8edf34c9",
+      "shape": [
+        1080,
+        1080
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/cone/masks_train/0051.png",
+      "sha256": "71f4d1f18187dd2935323451e9c2dbe9a6b41281cc32faf3f3d03d7bdca396a8",
+      "shape": [
+        1080,
+        1080
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/cone/masks_train/0100.png",
+      "sha256": "133329580db779f3d991cd5cd002593ef2a8d357e5b919d503ea59d72e2a8109",
+      "shape": [
+        1080,
+        1080
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/icosphere/masks_train/0001.png",
+      "sha256": "7aef479977fc7444ae7db2d6dab9d52edb7ecdd302e2868f22e308c1e79a3328",
+      "shape": [
+        1080,
+        1920
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/icosphere/masks_train/0051.png",
+      "sha256": "5e822e7455dc5314c574e7684024d3c8201f2246fd76f2a0e641c8292ec35d5d",
+      "shape": [
+        1080,
+        1920
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/icosphere/masks_train/0100.png",
+      "sha256": "b946f115dbab8c2b2123ae4af85020471f9a23606cbc133837d6386c11af5d8b",
+      "shape": [
+        1080,
+        1920
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/tetra/masks_train/0001.png",
+      "sha256": "6f0bc7000c76732f5739f9c5dc09ed71596da26bf7feb84c71f0dd5a0c5e0358",
+      "shape": [
+        1080,
+        1080
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/tetra/masks_train/0051.png",
+      "sha256": "899ecbae11e59f1e44ba7ee4247840a8a958e2c3281a46ecbd537fa9bd29552b",
+      "shape": [
+        1080,
+        1080
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/tetra/masks_train/0100.png",
+      "sha256": "c007b3170562523cf3758b963956d20da7af5a318619441093ecf81b7d186320",
+      "shape": [
+        1080,
+        1080
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/donut/masks_train/0001.png",
+      "sha256": "f43c169584f7bd5abe44c9a6919a2ade3745c49fc6b67883dffed7b6c74345e6",
+      "shape": [
+        1080,
+        1080
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/donut/masks_train/0051.png",
+      "sha256": "fbf1aae9ff1b3e5ac04ccfd902044c7ca439d5629beaf04e9535faa96c0d73a7",
+      "shape": [
+        1080,
+        1080
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/donut/masks_train/0100.png",
+      "sha256": "9b17539e87a7dd71ac9e9d54c522ea9467c0f2598208640d5b2e386bb40948b6",
+      "shape": [
+        1080,
+        1080
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/cube/masks_train/0001.png",
+      "sha256": "0a54655e09ec0e90a07c09c6d74ea4c9f9e1acb3b4012f4b18170c7fe2684e82",
+      "shape": [
+        1080,
+        1080
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/cube/masks_train/0051.png",
+      "sha256": "e743bda72d2776769eb108b599f4269e8309d09bce7ecf4f474b1d155cbfe595",
+      "shape": [
+        1080,
+        1080
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/cube/masks_train/0100.png",
+      "sha256": "a84fdef58dfbef80a684fa431ae0e305c66262b66f373e0ee4527355be0385d8",
+      "shape": [
+        1080,
+        1080
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/smoothcylinder/masks_train/0001.png",
+      "sha256": "3cef52df8da7019731783520bd08aba684a9d8502c5dd4d9efe3f94917cba9bc",
+      "shape": [
+        1080,
+        1080
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/smoothcylinder/masks_train/0051.png",
+      "sha256": "4cd51e907d64dfdc32e129c9548bab3b941951fecb092bf893577a42818cf53e",
+      "shape": [
+        1080,
+        1080
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/smoothcylinder/masks_train/0100.png",
+      "sha256": "220a17f2d35ce59a16365d542468870e4e9ddac1581c164d0425316382e50507",
+      "shape": [
+        1080,
+        1080
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/smoothcylinder/masks_train_binary/0001.png",
+      "sha256": "9608addf53b285597fa5b036516b6c3efd4c9eea80134a4647b4d349b8984ba6",
+      "shape": [
+        1080,
+        1080
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/smoothcylinder/masks_train_binary/0051.png",
+      "sha256": "87c29ef2798eaef5179019f29680b013a65dcbcd8fd5ce7a79c1653659e0ecde",
+      "shape": [
+        1080,
+        1080
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/nerf_synthetic/smoothcylinder/masks_train_binary/0100.png",
+      "sha256": "0a681a3665e71aab70ed96995cef769b26ce6992f54386801ce12b6a2486ffd6",
+      "shape": [
+        1080,
+        1080
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/bell/masks_train/0.png",
+      "sha256": "858278ac092005e797b6eb4c69d1389a0a2792d85feeb739d340db66d4e1d93c",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/bell/masks_train/41.png",
+      "sha256": "d0d8a7c4bdce113597bf8d82647348e522774edef1f32d118b36b8dc6a126fc4",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/bell/masks_train/99.png",
+      "sha256": "5854649ef6133d8a47e9beb11b4e4a4bb92a7166cdddd71dda24370983923592",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/cat/masks_train/0.png",
+      "sha256": "4971626ea06eaab66796d1885ef3a128b664689d07fd7b56080663da3c4390d8",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/cat/masks_train/41.png",
+      "sha256": "a427049a851bda84bcd75d3d34aba0fd6c699f47b94457c7b41221040fec8245",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/cat/masks_train/99.png",
+      "sha256": "f61326474bb5d893ccada0e69a9f1765171bb4752dfa21d691ca3a419f3e1247",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/potion/masks_train/0.png",
+      "sha256": "efb18e575237a2b5a9b46201d56b61b8fb88ffcf50250c2a77bcb2b9d5ea019c",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/potion/masks_train/41.png",
+      "sha256": "a36501a805d1a1fe5f93590bbf2033c38450dc7ccd582dfe9488a843c1ffe865",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/potion/masks_train/99.png",
+      "sha256": "f9c6431886a3ec18d320908a4fd9d86accbebd737afb3480dc55c5eddc4fcaf8",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/luyu/masks_train/0.png",
+      "sha256": "64fc52bc00d55641f8c9b58ab8c8d20e68c8341312041ad4a167e3a1fb5458e8",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/luyu/masks_train/41.png",
+      "sha256": "0674165620a9169775104334fcb73957d7d15d91f762a978f8518b35aebf1232",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/luyu/masks_train/99.png",
+      "sha256": "e606ec66e13d2f350774c60d0954aa3e9753b6dbb079e784875e073f2bcbf2c6",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/tbell/masks_train/0.png",
+      "sha256": "76a5cebf4d6e958401f8ba00b692c7fe4aab25a42d0c3c2a4c1093c078753c38",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/tbell/masks_train/41.png",
+      "sha256": "46be9039caefcf14b20fc88cbad68bf4759620974eb787ee3e3242c0668e7741",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/tbell/masks_train/99.png",
+      "sha256": "bc7ed657ea99b37412338059c1eeb2bd156917c358d8b1b8a153491a231f4df6",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/angel/masks_train/0.png",
+      "sha256": "214b7b8909fc76b44dd85ffefc9be1c36f760b893f5032537e61d82910e575df",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/angel/masks_train/41.png",
+      "sha256": "2ad484228eee3037afce19562dd050b9bfc83a864213c6fa25bf789320a38cff",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/angel/masks_train/99.png",
+      "sha256": "10083a0b24d885bf83bfcaaafd83c72a4ffa6e55e0cd5dad7ca18301c97ff110",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/teapot/masks_train/0.png",
+      "sha256": "36a353cf0a94499d76b2a9b77e181358018e9526030d084ecd5384880cd17e95",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/teapot/masks_train/41.png",
+      "sha256": "386c5c95b04e3c4150822cf29bfccac6500197032a1a64885d58ec6b3ff91821",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/teapot/masks_train/99.png",
+      "sha256": "1bdebd4ae22c1cb19275a4269a5190ff1c2c2a75897d6ccd6f6c758358d206aa",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/horse/masks_train/0.png",
+      "sha256": "37c74a39f541c545a57af7b0b1c83a5f617a779f8fc2f920a68c4d010b7fa881",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/horse/masks_train/41.png",
+      "sha256": "9ec90960d8e82926b216d1be2d5768736d6c7b9abadb220c8abf23e194c3977e",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/nero/data/GlossySynthetic/horse/masks_train/99.png",
+      "sha256": "bdc0009c6ff0d901a6b6d07487155a15bd46141bb6e68868f4d6a2a71023dd0a",
+      "shape": [
+        800,
+        800
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/seg_masks/mask_000.png",
+      "sha256": "a4245da47cb8c45a62414af58a14a14ec49b273e53a1e1f94ef39e16834ab760",
+      "shape": [
+        1080,
+        1920
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/seg_masks/mask_062.png",
+      "sha256": "fe4f75068891924941dbd478f0c1f815ef7925e256c49af14cf52c35e8862008",
+      "shape": [
+        1080,
+        1920
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/seg_masks/mask_124.png",
+      "sha256": "e30a99178496c46e95057b17c091463b306303e7aebca9fbcda97a666e0729f8",
+      "shape": [
+        1080,
+        1920
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/projected_masks/mask_000.png",
+      "sha256": "a4245da47cb8c45a62414af58a14a14ec49b273e53a1e1f94ef39e16834ab760",
+      "shape": [
+        1080,
+        1920
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/projected_masks/mask_062.png",
+      "sha256": "55a8f8f2ee47bea09555546da8b8a7c2c99bccf48363138e96c50760ee7ddc3c",
+      "shape": [
+        1080,
+        1920
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    },
+    {
+      "dtype": "uint8",
+      "mode": "L",
+      "path": "/home/isavand/projected_masks/mask_124.png",
+      "sha256": "e782d61d60d9da31d6ec7221b9435ddca7af58ecd11fb8e5cb7d4d588ccc4540",
+      "shape": [
+        1080,
+        1920
+      ],
+      "unique_count": 2,
+      "unique_values": [
+        0,
+        255
+      ]
+    }
+  ],
+  "schema_version": 1,
+  "search_method": {
+    "excluded_directories": [
+      ".git",
+      "__pycache__",
+      "site-packages",
+      "tangent"
+    ],
+    "filename_keywords": [
+      "logit",
+      "confidence",
+      "score",
+      "inference_state",
+      "video_segment"
+    ],
+    "limitation": "Filename/extension search of selected roots only; generic archives elsewhere were not exhaustively inspected",
+    "mask_directory_archive_extensions": [
+      ".npz",
+      ".npy",
+      ".pt",
+      ".pth",
+      ".pkl",
+      ".pickle"
+    ],
+    "walk": "os.walk, no directory-symlink traversal"
+  }
+}

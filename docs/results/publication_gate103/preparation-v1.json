@@ -1,0 +1,158 @@
+{
+  "authorization_created": false,
+  "authorization_path": "/home/isavand/paper/evidence/bell-geometry-gate103-bbffde0bad6148a68153104832860281-authorization.json",
+  "backend": {
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "variant": "predicate_fp64"
+  },
+  "base_commit": "f632850ae3f6668a11c770e14a5b7e1e534513f7",
+  "checkpoints": {
+    "15000": {
+      "file": "model-step15000.pth",
+      "identity": {
+        "bytes": 29966625,
+        "sha256": "8022a6caafd4a70e8b1c27c2b5eec6658f6c4c5b816db14c14aab8f754691114"
+      }
+    },
+    "30000": {
+      "file": "model-step30000.pth",
+      "identity": {
+        "bytes": 29967147,
+        "sha256": "04a103499ebc5c23b701615749bb60bc403c1b8ab9cc075d8ac50be8cec62b59"
+      }
+    },
+    "300000": {
+      "file": "model.pth",
+      "identity": {
+        "bytes": 29967467,
+        "sha256": "27c8c2256d529a84680e1ab806081acfa796a04937a2681587a8bb6d1a3681cd"
+      }
+    },
+    "50000": {
+      "file": "model-step50000.pth",
+      "identity": {
+        "bytes": 29967147,
+        "sha256": "50ce75c0477946115010fc01fb27649c5a2978056e28ab08f2b25ab34c512ff1"
+      }
+    }
+  },
+  "freeze": {
+    "identity": {
+      "bytes": 172189,
+      "sha256": "8d0337fe10c02aa00f7ecf797ac02620888daa4e5a2766698ecf856918f20c82"
+    },
+    "path": "docs/protocols/BELL_GEOMETRY_EVOLUTION_GATE103_V1.freeze.json",
+    "sha256": "8d0337fe10c02aa00f7ecf797ac02620888daa4e5a2766698ecf856918f20c82"
+  },
+  "geometry_admitted": false,
+  "handoff_created": false,
+  "host_output": "/home/isavand/paper/evidence/bell-geometry-gate103-bbffde0bad6148a68153104832860281",
+  "image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "launch_environment": {
+    "BELL_EVOLUTION_AUTH": "/home/isavand/paper/evidence/bell-geometry-gate103-bbffde0bad6148a68153104832860281-authorization.json",
+    "BELL_EVOLUTION_SOURCE": "/home/isavand/paper/Nerofactor-donut-recovery"
+  },
+  "launcher": "experiments/run_bell_geometry_gate103.sh",
+  "limitations": [
+    "Native compatibility, runtime duration and cached-plugin reuse remain untested for the combined study.",
+    "Intermediate tensor fingerprints are intentionally unknown until separately authorized CPU checkpoint deserialization.",
+    "Two fixed neural draws diagnose sampling sensitivity and do not constitute a converged Monte Carlo interval.",
+    "The existing Bell validation and held cameras are development evidence; 300k remains the original fixed endpoint.",
+    "The original foreground-only mask objective has no direct background gradient; this does not establish causation.",
+    "Bell v3 uses synthetic oracle-hit masks. SAM2-unlabeled pixels in imperfect masks must remain unknown.",
+    "The historical clarification validation preserves an earlier unfrozen snapshot; this freeze binds the final reviewed preparation."
+  ],
+  "output_directory_created": false,
+  "protocol": "bell-geometry-evolution-gate10.3-v1",
+  "resource_limits": {
+    "MAX_JOBS": 4,
+    "allocator": 0.75,
+    "cpu_threads": 4,
+    "grace": 30,
+    "inner": 3540,
+    "memory_gib": 128,
+    "output_bytes": 8589934592,
+    "pids": 128,
+    "watchdog": 3600
+  },
+  "scientific_work_this_preparation": {
+    "BVH_queries": 0,
+    "SDF_queries": 0,
+    "checkpoint_loads": 0,
+    "extractions": 0,
+    "model_constructions": 0,
+    "native_renders": 0,
+    "optimizer_returns": 0
+  },
+  "status": "prepared_pending_explicit_execution_authorization",
+  "validation": {
+    "CPU_fixture_runtime": {
+      "CUDA_VISIBLE_DEVICES": "",
+      "python": "3.9.12 (main, Apr  5 2022, 06:56:58) \n[GCC 7.5.0]",
+      "torch": "2.4.0+cu121"
+    },
+    "bash_syntax": true,
+    "checkpoint_tensor_schema_validation": false,
+    "file_hash_verification": {
+      "accepted_JIT_cache_files": 19,
+      "checkpoints": 4,
+      "geometry_files": 130,
+      "reused_Gate102_artifacts": 28
+    },
+    "focused_CPU_tests": {
+      "artifact": {
+        "bytes": 3690,
+        "sha256": "e85c285f2a9c2480c0611c1fdd312e58145036def2b120ecb5fa7d439304b0ce"
+      },
+      "command": "CUDA_VISIBLE_DEVICES='' python3 -B -m pytest tests/scientific/test_bell_geometry_gate103.py -q -p no:cacheprovider --junitxml=/tmp/gate103-tests.xml",
+      "errors": 0,
+      "failed": 0,
+      "passed": 19
+    },
+    "mask_provenance_replay_exact": true,
+    "native_runtime_validation": false,
+    "plugin_reuse_validation": false,
+    "protected_original_sources": {
+      "geometry": 99,
+      "material": 106
+    },
+    "python38_AST": {
+      "files": [
+        "benchmarks/bell_geometry_gate103.py",
+        "experiments/bell_geometry_gate103.py",
+        "tests/scientific/test_bell_geometry_gate103.py",
+        "audits/bell_mask_provenance_gate103.py"
+      ],
+      "passed": true
+    },
+    "source_definition_replay_exact": true
+  },
+  "work_limits": {
+    "CPU_ray_checks": 1408,
+    "MC_calls": 3,
+    "appearance_forward_calls": 128,
+    "appearance_point_slots": 5242880,
+    "audit_BVH_rays": 589824,
+    "checkpoint_loads": 4,
+    "checkpoint_writes": 0,
+    "consistency_SDF_points": 4608,
+    "consistency_gradient_points": 1536,
+    "dense_SDF_points": 402653184,
+    "dense_grids": 3,
+    "dense_tiles": 1536,
+    "fitting_BVH_rays": 7995392,
+    "material_calls": 0,
+    "max_faces_per_mesh": 4000000,
+    "neural_SDF_forward_points": 35127296,
+    "neural_final_sample_slots": 5242880,
+    "neural_gradient_points": 10485760,
+    "neural_rays": 32768,
+    "neural_render_calls": 128,
+    "occ_probe_origins": 196608,
+    "optimizer_returns": 0,
+    "validation_probe_origins": 0
+  }
+}
