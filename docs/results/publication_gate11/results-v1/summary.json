@@ -1,0 +1,546 @@
+{
+  "boundary_domain_statistics": {
+    "O0": {
+      "domain_band_width": 0.00677906382610128,
+      "edges": 1803,
+      "edges_deeper_than_domain_band": 0,
+      "midpoint_radius": {
+        "count": 1803,
+        "maximum": 0.9998245110183206,
+        "mean": 0.996715501875198,
+        "median": 0.9967444424536374,
+        "minimum": 0.9937470672913191,
+        "p95": 0.9985674757022036,
+        "p99": 0.9994160382946305
+      }
+    },
+    "O1": {
+      "domain_band_width": 0.00677906382610128,
+      "edges": 2495,
+      "edges_deeper_than_domain_band": 0,
+      "midpoint_radius": {
+        "count": 2495,
+        "maximum": 0.9998807669594436,
+        "mean": 0.9972389760082127,
+        "median": 0.9972179684056435,
+        "minimum": 0.9944692665652376,
+        "p95": 0.9991515320037154,
+        "p99": 0.9995940534166845
+      }
+    }
+  },
+  "checkpoint": {
+    "bytes": 29967468,
+    "sha256": "b9a5fb4c461de77ec9f387466e05373f959df65baebd5151f02278d1648c46e7"
+  },
+  "display_limits": [
+    {
+      "above_display": 0,
+      "arm": "O0",
+      "below_display": 8,
+      "camera": "58",
+      "field": "signed_depth",
+      "joint": 4149
+    },
+    {
+      "above_display": 23,
+      "arm": "O0",
+      "below_display": 0,
+      "camera": "58",
+      "field": "normal_degrees",
+      "joint": 4149
+    },
+    {
+      "above_display": 7,
+      "arm": "O1",
+      "below_display": 7,
+      "camera": "58",
+      "field": "signed_depth",
+      "joint": 4149
+    },
+    {
+      "above_display": 36,
+      "arm": "O1",
+      "below_display": 0,
+      "camera": "58",
+      "field": "normal_degrees",
+      "joint": 4149
+    },
+    {
+      "above_display": 0,
+      "arm": "O0",
+      "below_display": 22,
+      "camera": "105",
+      "field": "signed_depth",
+      "joint": 3605
+    },
+    {
+      "above_display": 29,
+      "arm": "O0",
+      "below_display": 0,
+      "camera": "105",
+      "field": "normal_degrees",
+      "joint": 3605
+    },
+    {
+      "above_display": 2,
+      "arm": "O1",
+      "below_display": 4,
+      "camera": "105",
+      "field": "signed_depth",
+      "joint": 3605
+    },
+    {
+      "above_display": 43,
+      "arm": "O1",
+      "below_display": 0,
+      "camera": "105",
+      "field": "normal_degrees",
+      "joint": 3605
+    },
+    {
+      "above_display": 0,
+      "arm": "O0",
+      "below_display": 31,
+      "camera": "114",
+      "field": "signed_depth",
+      "joint": 3469
+    },
+    {
+      "above_display": 34,
+      "arm": "O0",
+      "below_display": 0,
+      "camera": "114",
+      "field": "normal_degrees",
+      "joint": 3469
+    },
+    {
+      "above_display": 3,
+      "arm": "O1",
+      "below_display": 3,
+      "camera": "114",
+      "field": "signed_depth",
+      "joint": 3469
+    },
+    {
+      "above_display": 15,
+      "arm": "O1",
+      "below_display": 0,
+      "camera": "114",
+      "field": "normal_degrees",
+      "joint": 3469
+    }
+  ],
+  "freeze_sha256": "4b09eb7871eb2f0d8e52f142a814d7148808a3908320c464d8d4d05a003cc81c",
+  "geometry_admitted": false,
+  "handoff_created": false,
+  "initial_parity": true,
+  "interpretation": "Strong silhouette/opacity improvement with small recall loss and worse p95 geometry/normal errors; oracle-mask diagnostic only.",
+  "joint_support": {
+    "fitting": {
+      "arms": {
+        "O0": {
+          "absolute_depth": {
+            "count": 491017,
+            "maximum": 1.3508985042572021,
+            "mean": 0.003892563555676116,
+            "median": 0.0025634765625,
+            "minimum": 0.0,
+            "p95": 0.008306741714477539,
+            "p99": 0.018523263931274375
+          },
+          "displacement": {
+            "count": 491017,
+            "maximum": 1.3508983850479126,
+            "mean": 0.0038925637491047382,
+            "median": 0.0025634728372097015,
+            "minimum": 0.0,
+            "p95": 0.008306755125522614,
+            "p99": 0.018523273169994317
+          },
+          "normal_degrees": {
+            "count": 491017,
+            "maximum": 166.2989655417618,
+            "mean": 2.6183312965949876,
+            "median": 1.4482905675592355,
+            "minimum": 0.0,
+            "p95": 6.038897608576329,
+            "p99": 23.693142198509847
+          },
+          "signed_depth": {
+            "count": 491017,
+            "maximum": 0.06828141212463379,
+            "mean": -0.0036056110565186976,
+            "median": -0.0025043487548828125,
+            "minimum": -1.3508985042572021,
+            "p95": 0.0009997367858886608,
+            "p99": 0.0028988933563232344
+          }
+        },
+        "O1": {
+          "absolute_depth": {
+            "count": 491017,
+            "maximum": 1.216681957244873,
+            "mean": 0.003248943160391151,
+            "median": 0.001817941665649414,
+            "minimum": 0.0,
+            "p95": 0.009564208984374989,
+            "p99": 0.023582677841186422
+          },
+          "displacement": {
+            "count": 491017,
+            "maximum": 1.2166820764541626,
+            "mean": 0.003248943015933037,
+            "median": 0.0018179513281211257,
+            "minimum": 0.0,
+            "p95": 0.009564202092587938,
+            "p99": 0.023582685142755407
+          },
+          "normal_degrees": {
+            "count": 491017,
+            "maximum": 159.42530981822046,
+            "mean": 3.36091910425428,
+            "median": 2.163208064679505,
+            "minimum": 0.0,
+            "p95": 8.284191655944717,
+            "p99": 26.84847432221511
+          },
+          "signed_depth": {
+            "count": 491017,
+            "maximum": 0.7751562595367432,
+            "mean": 0.0019087186565287335,
+            "median": 0.0014677047729492188,
+            "minimum": -1.216681957244873,
+            "p95": 0.0084228515625,
+            "p99": 0.01709728240966793
+          }
+        }
+      },
+      "counts": {
+        "O0_missing": 0,
+        "O1_missing": 680,
+        "joint": 491017,
+        "oracle": 491697
+      }
+    },
+    "held_view_nvs": {
+      "arms": {
+        "O0": {
+          "absolute_depth": {
+            "count": 19814,
+            "maximum": 0.6292552947998047,
+            "mean": 0.003827846049059168,
+            "median": 0.0024186372756958008,
+            "minimum": 4.76837158203125e-07,
+            "p95": 0.00919162034988403,
+            "p99": 0.019930181503295886
+          },
+          "displacement": {
+            "count": 19814,
+            "maximum": 0.6292553544044495,
+            "mean": 0.0038278456777334213,
+            "median": 0.002418618416413665,
+            "minimum": 4.786961653735489e-07,
+            "p95": 0.009191625472158191,
+            "p99": 0.019930179882794608
+          },
+          "normal_degrees": {
+            "count": 19814,
+            "maximum": 143.95465734634982,
+            "mean": 2.750297165280101,
+            "median": 1.5855363510359504,
+            "minimum": 0.022284777608796946,
+            "p95": 5.946990788956128,
+            "p99": 25.814352275210418
+          },
+          "signed_depth": {
+            "count": 19814,
+            "maximum": 0.01700448989868164,
+            "mean": -0.003506160906276393,
+            "median": -0.0023446083068847656,
+            "minimum": -0.6292552947998047,
+            "p95": 0.001246535778045654,
+            "p99": 0.0027334690093993898
+          }
+        },
+        "O1": {
+          "absolute_depth": {
+            "count": 19814,
+            "maximum": 0.478532075881958,
+            "mean": 0.003395268711803587,
+            "median": 0.0020035505294799805,
+            "minimum": 0.0,
+            "p95": 0.010261368751525873,
+            "p99": 0.02144195795059199
+          },
+          "displacement": {
+            "count": 19814,
+            "maximum": 0.478532075881958,
+            "mean": 0.0033952684607356787,
+            "median": 0.002003555651754141,
+            "minimum": 0.0,
+            "p95": 0.01026137950830161,
+            "p99": 0.021441958267241667
+          },
+          "normal_degrees": {
+            "count": 19814,
+            "maximum": 144.22762139309944,
+            "mean": 3.467193849345471,
+            "median": 2.3343240463464006,
+            "minimum": 0.015028085130630505,
+            "p95": 8.244405572966992,
+            "p99": 25.780596898992943
+          },
+          "signed_depth": {
+            "count": 19814,
+            "maximum": 0.3334474563598633,
+            "mean": 0.002236546066582979,
+            "median": 0.001653432846069336,
+            "minimum": -0.478532075881958,
+            "p95": 0.009113049507141108,
+            "p99": 0.01787796735763546
+          }
+        }
+      },
+      "counts": {
+        "O0_missing": 0,
+        "O1_missing": 32,
+        "joint": 19814,
+        "oracle": 19846
+      }
+    },
+    "validation": {
+      "arms": {
+        "O0": {
+          "absolute_depth": {
+            "count": 4149,
+            "maximum": 0.11309099197387695,
+            "mean": 0.0031569518362593724,
+            "median": 0.0022957324981689453,
+            "minimum": 7.152557373046875e-07,
+            "p95": 0.008564329147338862,
+            "p99": 0.0198926925659177
+          },
+          "displacement": {
+            "count": 4149,
+            "maximum": 0.11309099942445755,
+            "mean": 0.003156951628625393,
+            "median": 0.002295732032507658,
+            "minimum": 7.071799359437136e-07,
+            "p95": 0.008564322069287294,
+            "p99": 0.01989269055426094
+          },
+          "normal_degrees": {
+            "count": 4149,
+            "maximum": 127.85950539203567,
+            "mean": 2.6666242144695023,
+            "median": 1.7871244085687121,
+            "minimum": 0.03596006219832934,
+            "p95": 5.706280305583897,
+            "p99": 18.138358077993196
+          },
+          "signed_depth": {
+            "count": 4149,
+            "maximum": 0.008366823196411133,
+            "mean": -0.0027754554463513188,
+            "median": -0.0022039413452148438,
+            "minimum": -0.11309099197387695,
+            "p95": 0.0013786792755126954,
+            "p99": 0.00264408111572265
+          }
+        },
+        "O1": {
+          "absolute_depth": {
+            "count": 4149,
+            "maximum": 0.2378990650177002,
+            "mean": 0.0035796721144221322,
+            "median": 0.0020906925201416016,
+            "minimum": 2.384185791015625e-07,
+            "p95": 0.011097717285156248,
+            "p99": 0.021847715377807553
+          },
+          "displacement": {
+            "count": 4149,
+            "maximum": 0.2378990650177002,
+            "mean": 0.0035796717274934053,
+            "median": 0.0020906978752464056,
+            "minimum": 2.3853496600168e-07,
+            "p95": 0.011097710579633711,
+            "p99": 0.021847710758447582
+          },
+          "normal_degrees": {
+            "count": 4149,
+            "maximum": 131.1110721867578,
+            "mean": 3.789419508036639,
+            "median": 2.692203004876893,
+            "minimum": 0.07530417794737451,
+            "p95": 8.545788682659813,
+            "p99": 28.539551409073905
+          },
+          "signed_depth": {
+            "count": 4149,
+            "maximum": 0.2378990650177002,
+            "mean": 0.0024319528872549004,
+            "median": 0.001710653305053711,
+            "minimum": -0.06070542335510254,
+            "p95": 0.009884834289550781,
+            "p99": 0.01802142143249505
+          }
+        }
+      },
+      "counts": {
+        "O0_missing": 0,
+        "O1_missing": 6,
+        "joint": 4149,
+        "oracle": 4155
+      }
+    }
+  },
+  "mask_loss_replay": {
+    "extra_gradient_queries": 0,
+    "float32_addition_exact": true,
+    "original_schedule_replayed": true,
+    "records": 15006,
+    "schedule_one_ULP_events": []
+  },
+  "mesh": {
+    "bytes": 17460484,
+    "sha256": "0becad75d5f5404b84f5a154870eaf66e71f00ba5b843776f50dd6b1989d7ac3"
+  },
+  "native_evaluation": {
+    "bytes": 2630032,
+    "sha256": "d3d1e4078862e28ef551605eb7c3fe0d29c45d8cf03fb10d7868c50aeba8ce4e"
+  },
+  "native_training": {
+    "bytes": 94418,
+    "sha256": "30ce199705e8edaa18b78bc9bf51c9c7e3554ff8510e2f9a121fa0c32c2bce2f"
+  },
+  "native_verification": {
+    "bytes": 2952,
+    "sha256": "ffbfe7f47d8846a29e067438687969c39e00d7b8b0513c5c32b65ea5964bdce2"
+  },
+  "new_scientific_execution": {
+    "SDF_queries": 0,
+    "checkpoint_loads": 0,
+    "native_rays": 0,
+    "neural_renders": 0,
+    "optimizer_updates": 0
+  },
+  "observed_work": {
+    "appearance_calls": 128,
+    "appearance_points": 3010904,
+    "consistency_SDF": 6144,
+    "grid_SDF": 536870912,
+    "jit_loads": 1,
+    "loads": 4,
+    "neural_SDF": 28394632,
+    "neural_gradients": 6021808,
+    "occ_origins": 196608,
+    "renders": 128,
+    "validation_origins": 0
+  },
+  "offline_replay": {
+    "bytes": 2952,
+    "sha256": "ffbfe7f47d8846a29e067438687969c39e00d7b8b0513c5c32b65ea5964bdce2"
+  },
+  "oracle_total_mesh_area": 5.2315011413366515,
+  "prepared_comparison": {
+    "bytes": 50433,
+    "sha256": "8fd0918d3d7e29485e018459974e3a6e251bcb4a4e0391bc9d1f836bbb9611ff"
+  },
+  "primary_endpoint": 300000,
+  "quality_eligible": true,
+  "runtime": {
+    "O0_training_seconds": 39469.18896507472,
+    "O1_evaluation_seconds": 1504.1841436177492,
+    "O1_training_peak_CUDA": 8002807296,
+    "O1_training_peak_RSS": 10088697856,
+    "O1_training_seconds": 39295.07920939103,
+    "interpretation": "Total runtime includes diagnostics/system load, not an isolated timing of the background term."
+  },
+  "source_commit": "2d5a1ac0d2f04e701e0a75276d7ac67aee1ad9a1",
+  "status": "complete_verified_eligible_pending_researcher_admission",
+  "topology": [
+    {
+      "area": 3.856768982122904,
+      "arm": "O0",
+      "components": 1,
+      "nonmanifold_edges": 0,
+      "open_edges": 1873,
+      "secondary_area": 0.0,
+      "secondary_area_fraction": 0.0,
+      "step": 15000
+    },
+    {
+      "area": 2.969961582996623,
+      "arm": "O1",
+      "components": 1,
+      "nonmanifold_edges": 0,
+      "open_edges": 1614,
+      "secondary_area": 0.0,
+      "secondary_area_fraction": 0.0,
+      "step": 15000
+    },
+    {
+      "area": 3.592962821738911,
+      "arm": "O0",
+      "components": 1,
+      "nonmanifold_edges": 0,
+      "open_edges": 1619,
+      "secondary_area": 0.0,
+      "secondary_area_fraction": 0.0,
+      "step": 30000
+    },
+    {
+      "area": 4.1543245776525035,
+      "arm": "O1",
+      "components": 45,
+      "nonmanifold_edges": 0,
+      "open_edges": 2102,
+      "secondary_area": 0.00012425397064230737,
+      "secondary_area_fraction": 2.990954806726246e-05,
+      "step": 30000
+    },
+    {
+      "area": 3.675006286530275,
+      "arm": "O0",
+      "components": 1,
+      "nonmanifold_edges": 0,
+      "open_edges": 1625,
+      "secondary_area": 0.0,
+      "secondary_area_fraction": 0.0,
+      "step": 50000
+    },
+    {
+      "area": 4.924841755591149,
+      "arm": "O1",
+      "components": 77,
+      "nonmanifold_edges": 0,
+      "open_edges": 1677,
+      "secondary_area": 0.001028871165074996,
+      "secondary_area_fraction": 0.00020891456337798542,
+      "step": 50000
+    },
+    {
+      "area": 3.759076837392585,
+      "arm": "O0",
+      "components": 6,
+      "nonmanifold_edges": 0,
+      "open_edges": 1803,
+      "secondary_area": 2.3194721169517152e-05,
+      "secondary_area_fraction": 6.1703237717284195e-06,
+      "step": 300000
+    },
+    {
+      "area": 4.7043907793371265,
+      "arm": "O1",
+      "components": 144,
+      "nonmanifold_edges": 0,
+      "open_edges": 2495,
+      "secondary_area": 0.0014465965524355084,
+      "secondary_area_fraction": 0.00030749923216186165,
+      "step": 300000
+    }
+  ],
+  "variant": "G_background_opacity_oracle_v1"
+}

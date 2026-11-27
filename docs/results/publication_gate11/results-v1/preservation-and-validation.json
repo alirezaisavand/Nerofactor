@@ -1,0 +1,23 @@
+{
+  "native_root": "/home/isavand/paper/evidence/bell-background-opacity-gate11-a8d84c48f9a04864a659b10786bd23b9",
+  "new_SDF_queries": 0,
+  "new_checkpoint_loads": 0,
+  "new_native_rays": 0,
+  "new_neural_renders": 0,
+  "new_optimizer_updates": 0,
+  "offline_verification": {
+    "bytes": 696,
+    "sha256": "7fbff6801101e6c737c7f1bb4b6e76534fb3ee1d47ea481883554f1f248eb97a"
+  },
+  "original_artifacts_preserved": true,
+  "original_manifest": {
+    "bytes": 217442,
+    "sha256": "8a4d12c9b865e027a872045e36d92702bb90f9eff0380a8b22b21506fffd2c4e"
+  },
+  "original_verification": {
+    "bytes": 2952,
+    "sha256": "ffbfe7f47d8846a29e067438687969c39e00d7b8b0513c5c32b65ea5964bdce2"
+  },
+  "status": "original_verifier_replayed_exactly",
+  "verified_artifacts": 1364
+}

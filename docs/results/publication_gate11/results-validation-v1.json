@@ -1,0 +1,66 @@
+{
+  "authorized_source": "2d5a1ac0d2f04e701e0a75276d7ac67aee1ad9a1",
+  "finalization_files_verified": 20,
+  "focused_CPU_tests": {
+    "failures": 0,
+    "junit": {
+      "bytes": 807,
+      "sha256": "67968b898256a16f82c1ddd587f2bc79647391c2622438f677a10ec528e0917a"
+    },
+    "passed": 3,
+    "skipped": 0
+  },
+  "freeze_sha256": "4b09eb7871eb2f0d8e52f142a814d7148808a3908320c464d8d4d05a003cc81c",
+  "frozen_source_definition_unchanged": true,
+  "geometry_admitted": false,
+  "geometry_quality_eligible": true,
+  "handoff_created": false,
+  "local_report_links_verified": 10,
+  "new_scientific_execution": {
+    "SDF_queries": 0,
+    "checkpoint_loads": 0,
+    "native_rays": 0,
+    "neural_renders": 0,
+    "optimizer_updates": 0
+  },
+  "original_manifest": {
+    "bytes": 217442,
+    "sha256": "8a4d12c9b865e027a872045e36d92702bb90f9eff0380a8b22b21506fffd2c4e"
+  },
+  "original_manifest_artifacts_previously_verified": 1364,
+  "original_verifier_replay_exact": true,
+  "python38_AST_checks": [
+    "experiments/report_bell_geometry_gate11_results_v1.py",
+    "tests/scientific/test_bell_geometry_gate11_results_v1.py"
+  ],
+  "report": {
+    "bytes": 15860,
+    "sha256": "ff075d4c5bdf238a2c2d311bd992dfa3e2cf451db7cfdcb79cd4b6e53491b37a"
+  },
+  "result_manifest": {
+    "bytes": 221049,
+    "sha256": "0c0451d6abed22ae9ff9784d02cd063e62ed2b7116f2bb7eec318be37a21bcf7"
+  },
+  "result_sources": {
+    "experiments/report_bell_geometry_gate11_results_v1.py": {
+      "bytes": 16003,
+      "sha256": "93f385527592c0ef793485598173be6539e64a087b964060ac9957ce3642b792"
+    },
+    "tests/scientific/test_bell_geometry_gate11_results_v1.py": {
+      "bytes": 1586,
+      "sha256": "a827358941a505bd3fb46d6ed142d3dc1db2856c35048568a3b825cae23fc76c"
+    }
+  },
+  "scientific_sources": {
+    "geometry": {
+      "commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+      "unchanged_files": 99
+    },
+    "material": {
+      "commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "unchanged_files": 106
+    }
+  },
+  "scope": "Saved-file finalization only. No extra native validation or accepted test-suite rerun.",
+  "status": "verified_results_ready_for_researcher_review"
+}

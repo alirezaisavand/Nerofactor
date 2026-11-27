@@ -1,0 +1,138 @@
+{
+  "captured_results_modified": false,
+  "comparison_is_development_evidence": true,
+  "geometry_admitted": false,
+  "handoff_created": false,
+  "publication_endpoint": 300000,
+  "quality_decisions": {
+    "15000": {
+      "SDF": true,
+      "original_six_views": [
+        {
+          "camera": "58",
+          "passed": false
+        },
+        {
+          "camera": "11",
+          "passed": false
+        },
+        {
+          "camera": "105",
+          "passed": false
+        },
+        {
+          "camera": "114",
+          "passed": false
+        },
+        {
+          "camera": "17",
+          "passed": false
+        },
+        {
+          "camera": "76",
+          "passed": false
+        }
+      ]
+    },
+    "30000": {
+      "SDF": true,
+      "original_six_views": [
+        {
+          "camera": "58",
+          "passed": false
+        },
+        {
+          "camera": "11",
+          "passed": false
+        },
+        {
+          "camera": "105",
+          "passed": false
+        },
+        {
+          "camera": "114",
+          "passed": false
+        },
+        {
+          "camera": "17",
+          "passed": false
+        },
+        {
+          "camera": "76",
+          "passed": false
+        }
+      ]
+    },
+    "300000": {
+      "SDF": true,
+      "original_six_views": [
+        {
+          "camera": "58",
+          "passed": true
+        },
+        {
+          "camera": "11",
+          "passed": true
+        },
+        {
+          "camera": "105",
+          "passed": true
+        },
+        {
+          "camera": "114",
+          "passed": true
+        },
+        {
+          "camera": "17",
+          "passed": true
+        },
+        {
+          "camera": "76",
+          "passed": true
+        }
+      ]
+    },
+    "50000": {
+      "SDF": true,
+      "original_six_views": [
+        {
+          "camera": "58",
+          "passed": false
+        },
+        {
+          "camera": "11",
+          "passed": false
+        },
+        {
+          "camera": "105",
+          "passed": false
+        },
+        {
+          "camera": "114",
+          "passed": false
+        },
+        {
+          "camera": "17",
+          "passed": false
+        },
+        {
+          "camera": "76",
+          "passed": false
+        }
+      ]
+    }
+  },
+  "receipt": {
+    "bytes": 2630032,
+    "sha256": "d3d1e4078862e28ef551605eb7c3fe0d29c45d8cf03fb10d7868c50aeba8ce4e"
+  },
+  "replay_policy": "normal-angle-summary-float64-adjacent-v1",
+  "roundoff_events": [],
+  "status": "complete_verified_O1_comparison",
+  "substantive_mismatches": 0,
+  "verifier_sources": {
+    "benchmarks/bell_geometry_gate103_replay_v3.py": "f5d792bb0d760e1510bcca70818a78e49ee12d50a7b9172af90d76d83099b3f7",
+    "experiments/bell_geometry_gate11_verify.py": "9ced9d3d83fefc3cbea97a55ba41d6a19adf8a107ee2c72ca70495952b4fab33",
+    "tests/scientific/test_bell_geometry_gate11.py": "10945d44344430d2886f8db4a77baf49b75808fb63f1bbff597bcca9dfaff01d"
+  }
+}
