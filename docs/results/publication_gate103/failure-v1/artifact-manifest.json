@@ -1,0 +1,181 @@
+{
+  "files": {
+    "authorization.json": {
+      "bytes": 5818,
+      "sha256": "a2bb0f1a314e20482111556edea247e8b0b498e0f9c361c03d0858d2f4e091e3"
+    },
+    "console.txt": {
+      "bytes": 987,
+      "sha256": "0a28e092c10f73b6d250bdf0d4ac764a1ffda09aa7acf37dae27b4bd2e70da84"
+    },
+    "container-absent.txt": {
+      "bytes": 7,
+      "sha256": "7925d3e9a9613a093e5eb4054b32aa39de910d2b03ba7e8046c3b4550b8de1e4"
+    },
+    "container.cid": {
+      "bytes": 64,
+      "sha256": "02665aecc8535c676a1281495b1c94955e538df38df626351a8c04dc9fd228ee"
+    },
+    "exit-code.txt": {
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    "freeze.json": {
+      "bytes": 172189,
+      "sha256": "8d0337fe10c02aa00f7ecf797ac02620888daa4e5a2766698ecf856918f20c82"
+    },
+    "image-id.txt": {
+      "bytes": 72,
+      "sha256": "973bb2336f0834f6fd10cc27a7e7e3e8b311aefb1fa8cd371528c08a9cf740af"
+    },
+    "run/15000/candidate.ply": {
+      "bytes": 14449752,
+      "sha256": "2809e6a2235c55c1f690346aba1c8b3f7fc079b5e4abc08492f322958870503e"
+    },
+    "run/15000/cleanup-mappings.npz": {
+      "bytes": 1893688,
+      "sha256": "ef6f6a9069b799b0f2c4a60a8440d9deed0dd253e888b82e07cd0dbb6060f915"
+    },
+    "run/15000/face-domain.npz": {
+      "bytes": 32823,
+      "sha256": "363e736cd12cea2e634c5ac6ef0292764626deefc0fb015cff3ecfe14420ff9d"
+    },
+    "run/15000/fitting/14.npz": {
+      "bytes": 378516,
+      "sha256": "9db557c07bcd1b6a3c3584210c15d1155eb9fa47b133b8a0130154f11810798c"
+    },
+    "run/15000/rasters/105.npz": {
+      "bytes": 815033,
+      "sha256": "1207c6ff932727a221368942518b2e9500783d60179eb8ea7b979f0b8ec99f42"
+    },
+    "run/15000/rasters/11.npz": {
+      "bytes": 871406,
+      "sha256": "218155106e8f1e30fbf7c20cc7c7fd1df329ba69cf78313962f04d1b0b5b48dc"
+    },
+    "run/15000/rasters/114.npz": {
+      "bytes": 809331,
+      "sha256": "4da4510a1b489acffbcc897bbef6e2cb27f4f668c6191b432122252b43b35eaf"
+    },
+    "run/15000/rasters/17.npz": {
+      "bytes": 876967,
+      "sha256": "762376c9d4142d85ceda289cdab1ff9f36579350f37ec33754b0332eb5746523"
+    },
+    "run/15000/rasters/58.npz": {
+      "bytes": 859270,
+      "sha256": "8963c608a58c7f544f17f8161b179b3d4f0aa4c6e1ccaefee76a1ecacd7834b2"
+    },
+    "run/15000/rasters/76.npz": {
+      "bytes": 853731,
+      "sha256": "7bd4f450b4a40223a658f09de6f1edb06a6be49ba19d039fabf2ab8bd1e8ade8"
+    },
+    "run/15000/raw-SDF-grid.npy": {
+      "bytes": 536871040,
+      "sha256": "a82e8232e2bc396e16d0722cba6b228dcfc0e32025292adc9ae15b177975a168"
+    },
+    "run/15000/raw-faces.npy": {
+      "bytes": 29526032,
+      "sha256": "73b78cec163200964e4e516ced2c4b697f5c003cf07597b04255530b9c474cf0"
+    },
+    "run/15000/raw-voxel-vertices.npy": {
+      "bytes": 14801240,
+      "sha256": "fd47b4426392517d06952eb08ba2436137617d7a583655c417a0e85a88ca14d6"
+    },
+    "run/15000/raw-world-vertices.npy": {
+      "bytes": 14801240,
+      "sha256": "ac5ba0c560b709bf136018160cfdd98378c73cae3d067d4a440707a39c7f4235"
+    },
+    "run/15000/sdf-witnesses.npz": {
+      "bytes": 35199,
+      "sha256": "14ab1ed6162cd3c0ce9317953c4f137606f2612468300de0861151535dc21835"
+    },
+    "run/15000/topology-after-cleanup.npz": {
+      "bytes": 12095,
+      "sha256": "c51a243cbc17538610f588a3368caa3e715ea9aaaf58dbe830daa58903168843"
+    },
+    "run/15000/topology-before-cleanup.npz": {
+      "bytes": 11883,
+      "sha256": "8153536059e69636b5b161793d19f5b3978a9522c972b37605c5c2c8eb1fccfa"
+    },
+    "run/receipt.json": {
+      "bytes": 254263,
+      "sha256": "ebe86acd54182d338830b02205a98127669fb23c3f9b8e4f27071c7fa17b0e63"
+    },
+    "run/torch_extensions/nvdiffrast_plugin/.ninja_deps": {
+      "bytes": 15568,
+      "sha256": "f56fcd0bb920edad68b46a24578a26694aedc8b6471c5b786e3813e3d32c30e6"
+    },
+    "run/torch_extensions/nvdiffrast_plugin/.ninja_log": {
+      "bytes": 979,
+      "sha256": "229a6d2f38d59034bcfd49cd0be8b827df838f9149ebbbf1c27430c2228886d9"
+    },
+    "run/torch_extensions/nvdiffrast_plugin/Buffer.o": {
+      "bytes": 379400,
+      "sha256": "5cbff0408fa1fe9de2b87f97891487256fe93bc9caea4ef217ae4a84a652ebe8"
+    },
+    "run/torch_extensions/nvdiffrast_plugin/CudaRaster.o": {
+      "bytes": 9040,
+      "sha256": "eccaabe4d12cf067bd9ff36526c9945f02d5d9e4ccfa71d4de7f4551083dc871"
+    },
+    "run/torch_extensions/nvdiffrast_plugin/RasterImpl.cuda.o": {
+      "bytes": 456768,
+      "sha256": "7fb534be1f7285c68f1bf3b6871cc8f353faf0a97db7a1c35da4d65be7c3970b"
+    },
+    "run/torch_extensions/nvdiffrast_plugin/RasterImpl.o": {
+      "bytes": 418072,
+      "sha256": "f8d8408dcb829ab36102eb6bc0bc5a80d4c2d8e63de6d9d41803f282a8c9ce8f"
+    },
+    "run/torch_extensions/nvdiffrast_plugin/antialias.cuda.o": {
+      "bytes": 127776,
+      "sha256": "f476d6e7101a655ce9142da8ca7be2d8303d6088aaa01ff42cf812d20b03f3f8"
+    },
+    "run/torch_extensions/nvdiffrast_plugin/build.ninja": {
+      "bytes": 3989,
+      "sha256": "0aab13e3b6100f9306da1e98ad570a240748906ad16ba5609cb267a74d4f9adf"
+    },
+    "run/torch_extensions/nvdiffrast_plugin/common.o": {
+      "bytes": 2632,
+      "sha256": "733b337da270f4b46f57e6f40dfb40a10f3fab21745cefe60b1f5e2ff9ef0564"
+    },
+    "run/torch_extensions/nvdiffrast_plugin/interpolate.cuda.o": {
+      "bytes": 248304,
+      "sha256": "c21e32f83cf128a46680c2ac18ee6b1e4c46b890271ae3df59f22ac367344b28"
+    },
+    "run/torch_extensions/nvdiffrast_plugin/nvdiffrast_plugin.so": {
+      "bytes": 5454392,
+      "sha256": "415d946526fc8e8a0f6180a4de009eaab123d2d7404bcca38ac61308af1f80b0"
+    },
+    "run/torch_extensions/nvdiffrast_plugin/rasterize.cuda.o": {
+      "bytes": 86392,
+      "sha256": "49d6ff534d89cd13ad252784d64f37ce07b569af80a2f9434a30263d2af4d02c"
+    },
+    "run/torch_extensions/nvdiffrast_plugin/texture.cuda.o": {
+      "bytes": 2119864,
+      "sha256": "ca8e8b3cac00be1985e4623444ce553669a22650186d72e4d8c8bc3cbd003ded"
+    },
+    "run/torch_extensions/nvdiffrast_plugin/texture.o": {
+      "bytes": 372392,
+      "sha256": "d0e4da612fa6d8372f8ad7e14ccc09ef3178e7fefbbf570c293163f4a21ee7a5"
+    },
+    "run/torch_extensions/nvdiffrast_plugin/torch_antialias.o": {
+      "bytes": 740680,
+      "sha256": "fb63948380f0ff3d606e2467d7095c8765c166a03116ffff44ded9b90aa81446"
+    },
+    "run/torch_extensions/nvdiffrast_plugin/torch_bindings.o": {
+      "bytes": 2934864,
+      "sha256": "61ad299c817ffc05a7aaa7f26c565e163db444528576c53c889664f03027e792"
+    },
+    "run/torch_extensions/nvdiffrast_plugin/torch_interpolate.o": {
+      "bytes": 755160,
+      "sha256": "88024f50589fdd8876e53546f80b7a99c799e489a6145e3a7d2a83ee4eaa9a8a"
+    },
+    "run/torch_extensions/nvdiffrast_plugin/torch_rasterize.o": {
+      "bytes": 739952,
+      "sha256": "3273f8ecc923a14ea20fbcf85a0a487d0974f090d0d9d6f195e9132d53700327"
+    },
+    "run/torch_extensions/nvdiffrast_plugin/torch_texture.o": {
+      "bytes": 891072,
+      "sha256": "047d4b8ef549586fdce8e3746fc2b0121cb6663d7f9eb92f63975a30826e4254"
+    }
+  },
+  "root": "/home/isavand/paper/evidence/bell-geometry-gate103-bbffde0bad6148a68153104832860281"
+}

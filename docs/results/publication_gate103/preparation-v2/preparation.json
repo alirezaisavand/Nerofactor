@@ -1,0 +1,85 @@
+{
+  "attribution": "GPU camera arithmetic precision is suspected; v1 saved no failing ray errors. Two prospectively frozen camera-only CUDA witnesses will test the TF32 explanation without changing shader precision.",
+  "authorization_created": false,
+  "base_commit": "d19f71fee36edd109a0999baed0536180f46423e",
+  "checkpoint_deserializations_this_task": 0,
+  "correction": "Original CPU camera construction and processing; transfer returned rays/near/far/human poses to CUDA only after unchanged 2e-6 ray gate.",
+  "decision": "FIX AND PROCEED",
+  "freeze": "docs/protocols/BELL_GEOMETRY_EVOLUTION_GATE103_V2.freeze.json",
+  "freeze_sha256": "e027b4ab9320049086b4e3d7b83c47646f6b228cf9399b43a015a84b089bb862",
+  "historical_cleanup": {
+    "host_container_absent": true,
+    "native_success_cleanup_flag": false
+  },
+  "host_output": "/home/isavand/paper/evidence/bell-geometry-gate103-v2-ad4a430c57b149f58a6b936ede1f017d",
+  "image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "limitations": [
+    "Pinned-runtime CPU prefix and complete v2 rendering remain untested until a separate authorization.",
+    "All prior source, freeze, authorization and failed captures are preserved.",
+    "No geometry quality gate is relaxed and 300k remains the fixed publication endpoint."
+  ],
+  "new_extraction_steps": [
+    30000,
+    50000
+  ],
+  "protocol": "bell-geometry-evolution-gate10.3-v2",
+  "resources": {
+    "MAX_JOBS": 4,
+    "allocator": 0.75,
+    "cpu_threads": 4,
+    "grace": 30,
+    "inner": 3540,
+    "memory_gib": 128,
+    "output_bytes": 8589934592,
+    "pids": 128,
+    "watchdog": 3600
+  },
+  "reused_steps": [
+    15000,
+    300000
+  ],
+  "scientific_execution_performed": false,
+  "scientific_quality_thresholds_unchanged": true,
+  "status": "prepared_pending_new_execution_authorization",
+  "validation": {
+    "CPU_camera_origin_and_direction_maximum_errors": 0.0,
+    "all_16_CPU_camera_prefixes": "pass",
+    "bash_syntax": true,
+    "completed_15k_raster_and_SDF_replay": "pass",
+    "errors": 0,
+    "failed_artifact_hashes_verified": 44,
+    "failures": 0,
+    "focused_CPU_tests": 9,
+    "native_v2_execution": false,
+    "protected_original_A_files": 106,
+    "protected_original_G_files": 99,
+    "python38_AST": true,
+    "v1_freeze_and_sources_unchanged": true
+  },
+  "work_limits": {
+    "CPU_ray_checks": 1024,
+    "MC_calls": 2,
+    "appearance_forward_calls": 128,
+    "appearance_point_slots": 5242880,
+    "audit_BVH_rays": 393216,
+    "camera_precision_probe_calls": 2,
+    "checkpoint_loads": 4,
+    "checkpoint_writes": 0,
+    "consistency_SDF_points": 3072,
+    "consistency_gradient_points": 1024,
+    "dense_SDF_points": 268435456,
+    "dense_grids": 2,
+    "dense_tiles": 1024,
+    "fitting_BVH_rays": 7995392,
+    "material_calls": 0,
+    "max_faces_per_mesh": 4000000,
+    "neural_SDF_forward_points": 35127296,
+    "neural_final_sample_slots": 5242880,
+    "neural_gradient_points": 10485760,
+    "neural_rays": 32768,
+    "neural_render_calls": 128,
+    "occ_probe_origins": 196608,
+    "optimizer_returns": 0,
+    "validation_probe_origins": 0
+  }
+}

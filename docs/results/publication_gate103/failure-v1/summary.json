@@ -1,0 +1,62 @@
+{
+  "SDF_gate": {
+    "eligible": 512,
+    "first_order_distance": {
+      "maximum": 0.0001400318199350256,
+      "mean": 2.914477438704506e-05,
+      "median": 2.4326504132662086e-05,
+      "p95": 7.364647546694317e-05
+    },
+    "gradient_evaluations": 512,
+    "interior_failures": 0,
+    "near_sphere_samples": 71,
+    "near_sphere_unsupported": 0,
+    "near_zero_gradients": 0,
+    "oriented_interior_samples": 384,
+    "outside_or_crosses_sphere": 0,
+    "passed": true,
+    "raw_SDF_evaluations": 1536,
+    "samples": 512,
+    "signed_alignment": {
+      "maximum": 0.9999998394746106,
+      "mean": 0.9999194766861438,
+      "median": 0.9999590420719189,
+      "p95": 0.9999963048955373
+    },
+    "signed_orientation_failures": 0
+  },
+  "authorization_sha256": "a2bb0f1a314e20482111556edea247e8b0b498e0f9c361c03d0858d2f4e091e3",
+  "commit": "d19f71fee36edd109a0999baed0536180f46423e",
+  "completed_extraction_step": 15000,
+  "completed_six_camera_audit": true,
+  "failure": {
+    "message": "Neural/mesh rays differ",
+    "type": "SignatureError"
+  },
+  "freeze_sha256": "8d0337fe10c02aa00f7ecf797ac02620888daa4e5a2766698ecf856918f20c82",
+  "host_container_absent": true,
+  "host_exit": 1,
+  "native_success_cleanup_flag": false,
+  "no_neural_render": true,
+  "no_optimization": true,
+  "observed": {
+    "appearance_calls": 0,
+    "appearance_points": 0,
+    "consistency_SDF": 1536,
+    "grid_SDF": 134217728,
+    "jit_loads": 1,
+    "loads": 1,
+    "neural_SDF": 0,
+    "neural_gradients": 0,
+    "occ_origins": 0,
+    "renders": 0,
+    "validation_origins": 0
+  },
+  "partial_fitting_CPU_checks": 4,
+  "partial_fitting_rays": 16384,
+  "preservation": "All original failed artifacts, authorization and source freeze remain unchanged.",
+  "proposed_reuse": "Exact completed 15k extraction, six-view audit and SDF witnesses; remaining study requires a fresh authorization.",
+  "ray_error_values": "Not saved by v1; precise native error mechanism remains unconfirmed.",
+  "status": "failed_neural_camera_ray_admission",
+  "wall_seconds": 46.568557700142264
+}
