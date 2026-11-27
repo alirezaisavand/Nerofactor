@@ -1,0 +1,79 @@
+{
+  "date_UTC": "2026-11-27",
+  "historical_confidence": "Not recovered; reuse previous scoped archive search, do not rescan.",
+  "inputs": {
+    "INSTALL.md": {
+      "bytes": 10583,
+      "sha256": "3295dc994038232f8e90b3123996d4bb087570ce7c10eb5da91a37cccada48aa"
+    },
+    "checkpoints/sam2.1_hiera_large.pt": {
+      "bytes": 898083611,
+      "sha256": "2647878d5dfa5098f2f8649825738a9345572bae2d4350a2468587ece47dd318"
+    },
+    "click.py": {
+      "bytes": 1492,
+      "sha256": "f55ede38187a9a2a5493237a3f8cf9def67e109139edd4d43d8cee67d352340e"
+    },
+    "convert_jpg.py": {
+      "bytes": 766,
+      "sha256": "d7df48e7ecaca4cde78c127af7250bda78b2ccb7542ac167a749d2d8c318aec1"
+    },
+    "pyproject.toml": {
+      "bytes": 120,
+      "sha256": "c58230f78769620dcd11d15824d491b049be8f542eeb875d2e8091be797ec3f3"
+    },
+    "sam2.py": {
+      "bytes": 7457,
+      "sha256": "08ff1f987122a079f389f676dab12f55ae844b019fe95170a04ed39199ddd316"
+    },
+    "sam2/_C.so": {
+      "bytes": 1397976,
+      "sha256": "9f6f59950f6cc9eebaf761d166680fe83a7a5ee86ae5994eaaf858e610609831"
+    },
+    "sam2/build_sam.py": {
+      "bytes": 6405,
+      "sha256": "856d64d71e44407401297b551884fb4cd1aba8082de0ff5fc60fac3dd42f094d"
+    },
+    "sam2/configs/sam2.1/sam2.1_hiera_l.yaml": {
+      "bytes": 3798,
+      "sha256": "1dbd6cb6dfebeaf588c7006ee222c6efbfa9049a7ad472a3cdfb2f5d919e8107"
+    },
+    "sam2/sam2_video_predictor.py": {
+      "bytes": 58921,
+      "sha256": "912555920a77f72ded07839efa33fcceecc79f3523abbec783f0be46ee2c55c2"
+    },
+    "sam2/utils/misc.py": {
+      "bytes": 13090,
+      "sha256": "01600c01c161cd079d7106fb1d4da845cf91aa31ab2bcecaf8cb151b6d6d20a2"
+    },
+    "setup.py": {
+      "bytes": 5051,
+      "sha256": "9ca49a33def161d2cafa56ddef744178fa56d3219242bd8b69909904c2e63dff"
+    }
+  },
+  "metadata": {
+    "packages": {
+      "Pillow": "11.0.0",
+      "SAM-2": "1.0",
+      "hydra-core": "1.3.2",
+      "iopath": "0.1.10",
+      "numpy": "2.1.2",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124"
+    },
+    "python": "3.10.18 (main, Jun  5 2025, 13:14:17) [GCC 11.2.0]"
+  },
+  "model_checkpoint_deserialized": false,
+  "native_extension_loading_tested": false,
+  "runtime": "/home/isavand/anaconda3/envs/sam2/bin/python",
+  "scope": "Read-only source/package metadata and byte hashes; no torch/model/SAM2 imports.",
+  "segmentation_inference_executed": false,
+  "source_commit": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+  "source_root": "/home/isavand/sam2",
+  "source_status": [
+    "?? click.py",
+    "?? convert_jpg.py",
+    "?? sam2.py",
+    "?? visualize.jpg"
+  ]
+}
