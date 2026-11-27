@@ -1,0 +1,340 @@
+{
+  "O0_accepted_audit": {
+    "bytes": 231418,
+    "sha256": "8cc3ea347e55cfba766297e23ab4efc2f4f7dcc70ab0e00d7da59b80c3cacad6"
+  },
+  "O1_admission": {
+    "bytes": 10715,
+    "sha256": "46ae8c7bb6a23956185afb1a2c6b97e5b769702946baa7005500952a1a9e8e14"
+  },
+  "O1_admission_path": "/home/isavand/paper/evidence/bell-background-opacity-gate11-a8d84c48f9a04864a659b10786bd23b9-controlled-admission-v1.json",
+  "O1_native_evaluation": {
+    "bytes": 2630032,
+    "sha256": "d3d1e4078862e28ef551605eb7c3fe0d29c45d8cf03fb10d7868c50aeba8ce4e"
+  },
+  "backend": {
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "variant": "predicate_fp64"
+  },
+  "counts": {
+    "defined": {
+      "O0": 23615,
+      "O1": 23607
+    },
+    "oracle_total": 24001,
+    "per_camera": [
+      {
+        "O0": {
+          "audit_vs_label_normal_max_abs": 2.174864122128639e-08,
+          "defined": 4091,
+          "excess": 476,
+          "grazing": 26,
+          "large_depth_shift": 6,
+          "missing": 0,
+          "near_open_boundary": 169,
+          "undefined": 540
+        },
+        "O1": {
+          "audit_vs_label_normal_max_abs": 2.174864122128639e-08,
+          "defined": 4091,
+          "excess": 5,
+          "grazing": 28,
+          "large_depth_shift": 9,
+          "missing": 6,
+          "near_open_boundary": 0,
+          "undefined": 63
+        },
+        "camera": "58",
+        "oracle": 4155
+      },
+      {
+        "O0": {
+          "audit_vs_label_normal_max_abs": 2.422871081542155e-08,
+          "defined": 4319,
+          "excess": 356,
+          "grazing": 21,
+          "large_depth_shift": 6,
+          "missing": 0,
+          "near_open_boundary": 140,
+          "undefined": 414
+        },
+        "O1": {
+          "audit_vs_label_normal_max_abs": 2.422871081542155e-08,
+          "defined": 4307,
+          "excess": 3,
+          "grazing": 21,
+          "large_depth_shift": 10,
+          "missing": 9,
+          "near_open_boundary": 0,
+          "undefined": 64
+        },
+        "camera": "11",
+        "oracle": 4377
+      },
+      {
+        "O0": {
+          "audit_vs_label_normal_max_abs": 2.174864122128639e-08,
+          "defined": 3519,
+          "excess": 544,
+          "grazing": 27,
+          "large_depth_shift": 22,
+          "missing": 0,
+          "near_open_boundary": 194,
+          "undefined": 632
+        },
+        "O1": {
+          "audit_vs_label_normal_max_abs": 2.174864122128639e-08,
+          "defined": 3525,
+          "excess": 4,
+          "grazing": 30,
+          "large_depth_shift": 5,
+          "missing": 2,
+          "near_open_boundary": 0,
+          "undefined": 84
+        },
+        "camera": "105",
+        "oracle": 3607
+      },
+      {
+        "O0": {
+          "audit_vs_label_normal_max_abs": 2.133011345328839e-08,
+          "defined": 3392,
+          "excess": 541,
+          "grazing": 30,
+          "large_depth_shift": 25,
+          "missing": 0,
+          "near_open_boundary": 187,
+          "undefined": 624
+        },
+        "O1": {
+          "audit_vs_label_normal_max_abs": 2.133011345328839e-08,
+          "defined": 3430,
+          "excess": 1,
+          "grazing": 33,
+          "large_depth_shift": 6,
+          "missing": 6,
+          "near_open_boundary": 0,
+          "undefined": 40
+        },
+        "camera": "114",
+        "oracle": 3475
+      },
+      {
+        "O0": {
+          "audit_vs_label_normal_max_abs": 2.267896614949194e-08,
+          "defined": 4315,
+          "excess": 397,
+          "grazing": 20,
+          "large_depth_shift": 2,
+          "missing": 0,
+          "near_open_boundary": 150,
+          "undefined": 445
+        },
+        "O1": {
+          "audit_vs_label_normal_max_abs": 2.267896614949194e-08,
+          "defined": 4305,
+          "excess": 3,
+          "grazing": 24,
+          "large_depth_shift": 10,
+          "missing": 9,
+          "near_open_boundary": 0,
+          "undefined": 52
+        },
+        "camera": "17",
+        "oracle": 4363
+      },
+      {
+        "O0": {
+          "audit_vs_label_normal_max_abs": 2.1344289169444863e-08,
+          "defined": 3979,
+          "excess": 493,
+          "grazing": 30,
+          "large_depth_shift": 12,
+          "missing": 0,
+          "near_open_boundary": 175,
+          "undefined": 538
+        },
+        "O1": {
+          "audit_vs_label_normal_max_abs": 2.1344289169444863e-08,
+          "defined": 3949,
+          "excess": 5,
+          "grazing": 30,
+          "large_depth_shift": 16,
+          "missing": 6,
+          "near_open_boundary": 0,
+          "undefined": 74
+        },
+        "camera": "76",
+        "oracle": 4024
+      }
+    ],
+    "undefined_total": 3570
+  },
+  "domain_band": 0.00677906382610128,
+  "files": {
+    "O0": {
+      "domain-aware-300000.ply": {
+        "bytes": 13617068,
+        "sha256": "a3b09297ba90fb3ce8f85c79c977372b6cde84ab08f2cf766c864b9816c28971"
+      },
+      "rasters/105.npz": {
+        "bytes": 806840,
+        "sha256": "5ca5a6e5dcc256bf23f6396a7f686aa20557135d3cb5a633194d968d3e4ad4e8"
+      },
+      "rasters/11.npz": {
+        "bytes": 855507,
+        "sha256": "556db1f8e230c739411eaf8fdb3c4ab464dff7ce9ccb1b6cc7831fb05ecd57c2"
+      },
+      "rasters/114.npz": {
+        "bytes": 803208,
+        "sha256": "0c2a5c3970cb9f60183af3febe0ee796661e3035358bba5c044220bcde849b5b"
+      },
+      "rasters/17.npz": {
+        "bytes": 861600,
+        "sha256": "81821dcb0056585036e779c1b9b28a6be672f056c2586718071f0de3b7293b15"
+      },
+      "rasters/58.npz": {
+        "bytes": 847480,
+        "sha256": "29b471f95ae0c98e923b7aa27350309eac2995416e5437766a8fbc641d1beb59"
+      },
+      "rasters/76.npz": {
+        "bytes": 841423,
+        "sha256": "14db6621802fa8453177a5fc5ad4019a5ca08b4c77ae69fb5915f017dfbe5df3"
+      },
+      "topology-after-cleanup.npz": {
+        "bytes": 11825,
+        "sha256": "822bc63b5e1b1c6e1e3c7bd85c27e02dc9edc9ccacfcde84fbe607c9066a13be"
+      }
+    },
+    "O1": {
+      "candidate.ply": {
+        "bytes": 17460484,
+        "sha256": "0becad75d5f5404b84f5a154870eaf66e71f00ba5b843776f50dd6b1989d7ac3"
+      },
+      "rasters/105.npz": {
+        "bytes": 785778,
+        "sha256": "1bddd123a15b8ac8c8a6b64340a111d2eae9e96bc832be136a04fa2418c1e7b8"
+      },
+      "rasters/11.npz": {
+        "bytes": 841535,
+        "sha256": "662b770e6fb9b3da28183435e88d608217ae95d465879719fdb0d383ad6e5135"
+      },
+      "rasters/114.npz": {
+        "bytes": 782032,
+        "sha256": "8122d415b198de4678461219238b7b0162b23ab46439a89f04eafb71c7137e02"
+      },
+      "rasters/17.npz": {
+        "bytes": 845953,
+        "sha256": "594ad6d0d0907934f58d5e97514c033dd9ef763d30aa5090b7d6e70af0535b8d"
+      },
+      "rasters/58.npz": {
+        "bytes": 829015,
+        "sha256": "42e83e243a10aae94ba9bd8b92f114ef17bebe281d88383c33d1d4827d204998"
+      },
+      "rasters/76.npz": {
+        "bytes": 822194,
+        "sha256": "da8459cb795bb77fb1dec66bee0da6d371818534cd6a025b3a165b47139a1ec8"
+      },
+      "topology-after-cleanup.npz": {
+        "bytes": 16967,
+        "sha256": "860cde4cde0b87531e429750c23312a2dba417dd76cf7968d6c1bf54e85de420"
+      }
+    },
+    "oracle": {
+      "geometry/calibrations-safe.npz": {
+        "bytes": 5325,
+        "sha256": "4d8f4e13d7fd5fffec8d258bfc7c5599ef6d81525547d678ba088e76b1656c9c"
+      },
+      "geometry/generation.json": {
+        "bytes": 475481,
+        "sha256": "5035b22b594848900426fd5dfaa8b96382b57a76cfde97864b7ef7591c46e6d7"
+      },
+      "geometry/labels/105.npz": {
+        "bytes": 785382,
+        "sha256": "79285641a6a0a900bdbe8ce99bb42589a5a3c5949ac62cede151b918062b3736"
+      },
+      "geometry/labels/11.npz": {
+        "bytes": 952799,
+        "sha256": "2210a51e519d7d9d2097b3ace05ae73efe30978bf2f2f77365cb3edcc328a667"
+      },
+      "geometry/labels/114.npz": {
+        "bytes": 758691,
+        "sha256": "8ab33870cad53faf21d6eb3ea6592ce1d2fc8c74e48df23c73f0125d1179f3f6"
+      },
+      "geometry/labels/17.npz": {
+        "bytes": 950075,
+        "sha256": "8be0f2023e20b904753f1b023e621390cc470e70c605b6e39d27ec966acd2f90"
+      },
+      "geometry/labels/58.npz": {
+        "bytes": 905043,
+        "sha256": "7b2b3f06e3df269fdc80c732f70b8e7c56074594bc57be19aee29d2ca0a61688"
+      },
+      "geometry/labels/76.npz": {
+        "bytes": 877965,
+        "sha256": "139d218ee4c31ab6b6e1df00d6bbf67a1bb8d978532817190d6fc65ecf2f6a09"
+      },
+      "geometry/mesh.ply": {
+        "bytes": 4729497,
+        "sha256": "4ea98341ca915cf55f2b37581556583308cc50a8e2d2d8d48140d49224866e01"
+      },
+      "geometry/rays/105.npz": {
+        "bytes": 300920,
+        "sha256": "f37c8878cd52ef92567ae13ce2a187b1ccd5ba40c7906da7885389c905c7b42d"
+      },
+      "geometry/rays/11.npz": {
+        "bytes": 326945,
+        "sha256": "a32224dcd0f9ad55723381f663b2f503c3c49d143c776cf9a18167c03031494d"
+      },
+      "geometry/rays/114.npz": {
+        "bytes": 299485,
+        "sha256": "dec2dae8bb2d981454ac597219127609deaee12f5d773810969e85112a4baaaf"
+      },
+      "geometry/rays/17.npz": {
+        "bytes": 329398,
+        "sha256": "fc278157bf801aaa3ab900c14a3210a04aa26faae002818c8aec9e5f3c1a2569"
+      },
+      "geometry/rays/58.npz": {
+        "bytes": 321821,
+        "sha256": "213d441a31c309b2f32a37f40b9e0667f62e004c644da94e68c76b3e24667187"
+      },
+      "geometry/rays/76.npz": {
+        "bytes": 318386,
+        "sha256": "1823c5a2459f4e2733acd056ed316821562b25c1a44986a6e5724d5d8d49fa28"
+      },
+      "references/105.npz": {
+        "bytes": 662473,
+        "sha256": "924ae76b0994efd0a1d5f9081cf79f012b0a0f02b034752a7c8e28220b00a807"
+      },
+      "references/11.npz": {
+        "bytes": 801824,
+        "sha256": "7098e3f5cb89a293469e8ce41c6854399355318d87cf0e18cb2463e9f63f1f7e"
+      },
+      "references/114.npz": {
+        "bytes": 639011,
+        "sha256": "1d28003ed8cf7395064b7a3385d3af84415a85e9a8869269a4babb0cdda713af"
+      },
+      "references/17.npz": {
+        "bytes": 800677,
+        "sha256": "5636c382ba32aedadf18a52f6e0971f5cd1ef12bd27836d7d93b10a76b3957b0"
+      },
+      "references/58.npz": {
+        "bytes": 762035,
+        "sha256": "e47372b8c75008ffe51a296ccdc66fc837a7f10abb1258c3fa76a5ca788a03a7"
+      },
+      "references/76.npz": {
+        "bytes": 738911,
+        "sha256": "8bb2c679287424586d9a0ee16f64cb06306fa342020fe5f55b9cdef980f457cf"
+      }
+    }
+  },
+  "image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "protocol": "bell-authenticated-geometry-rgb-gate12-v1",
+  "roots": {
+    "O0": "/home/isavand/paper/evidence/bell-geometry-gate102-v2-be50de3a6c33491db3e30703056e71a1/run",
+    "O1": "/home/isavand/paper/evidence/bell-background-opacity-gate11-a8d84c48f9a04864a659b10786bd23b9/evaluate/300000",
+    "oracle": "/home/isavand/paper/evidence/bell-oracle-e11-v3-fea6430e2a644b679b0b35989569c240/benchmark"
+  }
+}

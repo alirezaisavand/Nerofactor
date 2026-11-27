@@ -1,0 +1,293 @@
+{
+  "arms": [
+    "oracle",
+    "O0",
+    "O1"
+  ],
+  "backend": {
+    "acceptance_sha256": "1131ff9e1fb28907202f6aae14420debc159a47c2ef537ac482952c16e9eac15",
+    "binary_path": "/opt/e11c/corrected/_raytracing.cpython-38-x86_64-linux-gnu.so",
+    "binary_sha256": "800606e1544c42f3e750978d0cce747c5b69c15996391a8709fdc3669274f3e5",
+    "image_id": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+    "variant": "predicate_fp64"
+  },
+  "baseline_grids": [
+    256,
+    512
+  ],
+  "counts": {
+    "defined": {
+      "O0": 23615,
+      "O1": 23607
+    },
+    "oracle_total": 24001,
+    "per_camera": [
+      {
+        "O0": {
+          "audit_vs_label_normal_max_abs": 2.174864122128639e-08,
+          "defined": 4091,
+          "excess": 476,
+          "grazing": 26,
+          "large_depth_shift": 6,
+          "missing": 0,
+          "near_open_boundary": 169,
+          "undefined": 540
+        },
+        "O1": {
+          "audit_vs_label_normal_max_abs": 2.174864122128639e-08,
+          "defined": 4091,
+          "excess": 5,
+          "grazing": 28,
+          "large_depth_shift": 9,
+          "missing": 6,
+          "near_open_boundary": 0,
+          "undefined": 63
+        },
+        "camera": "58",
+        "oracle": 4155
+      },
+      {
+        "O0": {
+          "audit_vs_label_normal_max_abs": 2.422871081542155e-08,
+          "defined": 4319,
+          "excess": 356,
+          "grazing": 21,
+          "large_depth_shift": 6,
+          "missing": 0,
+          "near_open_boundary": 140,
+          "undefined": 414
+        },
+        "O1": {
+          "audit_vs_label_normal_max_abs": 2.422871081542155e-08,
+          "defined": 4307,
+          "excess": 3,
+          "grazing": 21,
+          "large_depth_shift": 10,
+          "missing": 9,
+          "near_open_boundary": 0,
+          "undefined": 64
+        },
+        "camera": "11",
+        "oracle": 4377
+      },
+      {
+        "O0": {
+          "audit_vs_label_normal_max_abs": 2.174864122128639e-08,
+          "defined": 3519,
+          "excess": 544,
+          "grazing": 27,
+          "large_depth_shift": 22,
+          "missing": 0,
+          "near_open_boundary": 194,
+          "undefined": 632
+        },
+        "O1": {
+          "audit_vs_label_normal_max_abs": 2.174864122128639e-08,
+          "defined": 3525,
+          "excess": 4,
+          "grazing": 30,
+          "large_depth_shift": 5,
+          "missing": 2,
+          "near_open_boundary": 0,
+          "undefined": 84
+        },
+        "camera": "105",
+        "oracle": 3607
+      },
+      {
+        "O0": {
+          "audit_vs_label_normal_max_abs": 2.133011345328839e-08,
+          "defined": 3392,
+          "excess": 541,
+          "grazing": 30,
+          "large_depth_shift": 25,
+          "missing": 0,
+          "near_open_boundary": 187,
+          "undefined": 624
+        },
+        "O1": {
+          "audit_vs_label_normal_max_abs": 2.133011345328839e-08,
+          "defined": 3430,
+          "excess": 1,
+          "grazing": 33,
+          "large_depth_shift": 6,
+          "missing": 6,
+          "near_open_boundary": 0,
+          "undefined": 40
+        },
+        "camera": "114",
+        "oracle": 3475
+      },
+      {
+        "O0": {
+          "audit_vs_label_normal_max_abs": 2.267896614949194e-08,
+          "defined": 4315,
+          "excess": 397,
+          "grazing": 20,
+          "large_depth_shift": 2,
+          "missing": 0,
+          "near_open_boundary": 150,
+          "undefined": 445
+        },
+        "O1": {
+          "audit_vs_label_normal_max_abs": 2.267896614949194e-08,
+          "defined": 4305,
+          "excess": 3,
+          "grazing": 24,
+          "large_depth_shift": 10,
+          "missing": 9,
+          "near_open_boundary": 0,
+          "undefined": 52
+        },
+        "camera": "17",
+        "oracle": 4363
+      },
+      {
+        "O0": {
+          "audit_vs_label_normal_max_abs": 2.1344289169444863e-08,
+          "defined": 3979,
+          "excess": 493,
+          "grazing": 30,
+          "large_depth_shift": 12,
+          "missing": 0,
+          "near_open_boundary": 175,
+          "undefined": 538
+        },
+        "O1": {
+          "audit_vs_label_normal_max_abs": 2.1344289169444863e-08,
+          "defined": 3949,
+          "excess": 5,
+          "grazing": 30,
+          "large_depth_shift": 16,
+          "missing": 6,
+          "near_open_boundary": 0,
+          "undefined": 74
+        },
+        "camera": "76",
+        "oracle": 4024
+      }
+    ],
+    "undefined_total": 3570
+  },
+  "exposure": 1,
+  "handoff": {
+    "bytes": 10715,
+    "sha256": "46ae8c7bb6a23956185afb1a2c6b97e5b769702946baa7005500952a1a9e8e14"
+  },
+  "host_output": "/home/isavand/paper/evidence/bell-geometry-rgb-gate12-0ea32eb2081a435aa20ffef242773ce5",
+  "illumination": {
+    "ambient": [
+      0.08,
+      0.08,
+      0.08
+    ],
+    "lobes": [
+      {
+        "RGB": [
+          1.0,
+          0.8,
+          0.6
+        ],
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "power": 12
+      },
+      {
+        "RGB": [
+          0.3,
+          0.5,
+          0.9
+        ],
+        "axis": [
+          1,
+          0,
+          0
+        ],
+        "power": 6
+      }
+    ]
+  },
+  "image": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "indirect": "zero",
+  "input_inventory": {
+    "bytes": 11132,
+    "sha256": "f3f9b04421d611a9fa761c65423cd4febb7337ea87cb314f5e8608735d6f1e2a"
+  },
+  "kinds": [
+    "primary",
+    "oracle_visibility",
+    "unoccluded",
+    "transported_source",
+    "transported_source_unoccluded"
+  ],
+  "limits": {
+    "BRDF_point_directions": 42678681600,
+    "checkpoint_loads": 0,
+    "environment_point_directions": 25607208960,
+    "native_models": 0,
+    "optimizer_updates": 0,
+    "primary_rays": 0,
+    "shadow_directions": 45018316800
+  },
+  "max_refined_per_view": 32,
+  "max_refined_total": 128,
+  "panel": [
+    "58",
+    "11",
+    "105",
+    "114",
+    "17",
+    "76"
+  ],
+  "protocol": "bell-authenticated-geometry-rgb-gate12-v1",
+  "refined_grids": [
+    1024,
+    2048
+  ],
+  "resources": {
+    "cpu_threads": 4,
+    "cuda_allocator_fraction": 0.25,
+    "host_memory_gib": 64,
+    "inner_seconds": 7080,
+    "kill_grace_seconds": 30,
+    "output_bytes": 2147483648,
+    "pids": 128,
+    "watchdog_seconds": 7200
+  },
+  "sources": {
+    "benchmarks/bell_e11.py": "01b18245999d0d9ffcf0fdfe9b317fdfd427d9e1bee6ca7db395eaa0b3c94e8a",
+    "benchmarks/bell_geometry_e11.py": "491f86b7799d03911c4665e1884ceb81b62ae8dc085141b7f112b43891ab3737",
+    "benchmarks/bell_geometry_gate10_v1.py": "e1e250395aa9a6bc475c1e317e1ab613db863adfa4b1207449389cbf1dbd0e7c",
+    "benchmarks/bell_geometry_gate11.py": "6fffd51b8fdd78592bb09f928a8b57eae8e5047c847aaed7fb6454bc8ca833bd",
+    "benchmarks/bell_geometry_rgb_gate12.py": "3670fba836cad22c10916796a41e88b53bba536e4d1765b645575286a560afc1",
+    "benchmarks/bell_reference_e11.py": "be4b95e3a8f37d5142920637a6533da89ecb2ff96c916343423254016ca7f673",
+    "benchmarks/bell_sam2_ordering_gate12.py": "f615020ff61a3d5142aaffaa4e5d4529664dcabb488112ee224fefca083a5d86",
+    "benchmarks/donut_oracle_geometry_rgb_v1.py": "f208135444d5966c0ef8f81e6c858db6cf5daaf109ef382d3db994e95fbbaec6",
+    "benchmarks/donut_reconstructed_geometry_v1.py": "4357f6c4f85499b970701002d32e4e0f245a57edc7dc53237c846ae8220cfaac",
+    "benchmarks/generate_bell_e11.py": "877b826ce3e2eabda860d296051de6791cf048f543e1bb41dbe60886654c7647",
+    "docs/protocols/BELL_GEOMETRY_RGB_GATE12_V1.md": "75a6af48b0d4abaadf8d1979814b0619ffa4b56968a30b00e37f777d5115f529",
+    "docs/results/publication_gate102/results-v2/artifact-manifest.json": "67ac8e6fbdeecb4bf16eb401d3a19e2ab24bad5cd09daad4d2abd03e7618ee53",
+    "docs/results/publication_gate11/results-v1/artifact-manifest.json": "0c0451d6abed22ae9ff9784d02cd063e62ed2b7116f2bb7eec318be37a21bcf7",
+    "docs/results/publication_gate12/O1-controlled-handoff.json": "46ae8c7bb6a23956185afb1a2c6b97e5b769702946baa7005500952a1a9e8e14",
+    "docs/results/publication_gate12/input-inventory.json": "f3f9b04421d611a9fa761c65423cd4febb7337ea87cb314f5e8608735d6f1e2a",
+    "docs/results/publication_gate12/sam2-ordering-v2.json": "8a21593babc6157eeec6b460e1f23babc5d5013472af43e23e19c4f404bf70c8",
+    "experiments/bell_geometry_rgb_gate12.py": "f0ee62e31cad2eb4220e5d1312d5f89c1e69fd7413d1b111fcabe18357ca8473",
+    "experiments/bell_highlight_e11d.py": "93ef7b7a693622ad54b278a61c96d10575e647969326675411a265da94f3ee19",
+    "experiments/bell_highlight_pilot_e11d.py": "0c781ed2a380462c52c59b8442a61a77cdf919c75f52fb50c814faa33f7b18c6",
+    "experiments/bell_quadrature_e11e.py": "d91c09671eae577b890ac15603c3ae646d4daa88d8fbd1c73c5763a536b42098",
+    "experiments/donut_reconstructed_geometry_v1.py": "fd32bdbc52393b672a7e02349c7f04e142551e1993c3965b059250bcdf2c1553",
+    "experiments/prepare_bell_geometry_rgb_gate12.py": "6daad4e9506b0a9052f2731d832b38417eeda072928cfedeea88f397ce4c1a1f",
+    "experiments/run_bell_geometry_rgb_gate12.sh": "03fff773f5af34961d8176be3b375d13638d69551f12e5aa32a1aa03e6821e99",
+    "experiments/verify_bell_geometry_rgb_gate12.py": "0c246a1537f92fe2769f02f8b6cc01c64c6d2e36397f9a2a93e1bdaef9cc5642",
+    "experiments/verify_donut_oracle_geometry_rgb_v1.py": "1a4bbbe29c70bf852dd648c86126ca0084f92609ed183479b1389ad4168d000e",
+    "infrastructure/signatures.py": "f3eb6c82de610913c1049745271d8be5391d34f02d78866a14fad0032b7f4759",
+    "infrastructure/stage_sources.py": "3c904a09662663fd9f37e3a6afee33576963675508e416dbc6141a5c68d44dc8",
+    "infrastructure/verified_ray_backend.py": "e103775b70a72a24d0772dd6f09d622820d403d8d9ced63837521981df81dffd",
+    "scientific_sources/manifest-v1.json": "39b9baecce2aab6fc62ec57bd6f45e453d8e9d68215f6af3f25b8ed118c5a3f6",
+    "scientific_sources/material_a/raytracing/raytracer.py": "f670b215c5379d3bdcd9993c836935ea658f5ee9570bbe46bb38096b3f0ac25f",
+    "tests/scientific/test_bell_geometry_rgb_gate12.py": "ab71feb7891bcd77e8835ef01452e8ac588f8bdd86028494c887649e629463d1"
+  }
+}

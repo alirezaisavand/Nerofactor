@@ -1,0 +1,91 @@
+{
+  "O0_admission_unchanged_and_blocked": true,
+  "O1_admitted_for_controlled_downstream": true,
+  "accepted_artifact_provenance_checked": true,
+  "all_six_saved_inventories_and_primary_field_equations_replayed": true,
+  "base_commit": "e04795c68fe914a3d42d2fb3987d81798b2b6ccb",
+  "external_admission": "/home/isavand/paper/evidence/bell-background-opacity-gate11-a8d84c48f9a04864a659b10786bd23b9-controlled-admission-v1.json",
+  "focused_CPU_tests": {
+    "failed": 0,
+    "junit": {
+      "bytes": 1721,
+      "sha256": "726e434eada46d34ca7839b236aa99f699de3e1f53693097a6d25eba63f569a4"
+    },
+    "passed": 8,
+    "scope": "Synthetic CPU controls only; toy tracer is not geometry/BVH rendering.",
+    "skipped": 0
+  },
+  "freeze": {
+    "bytes": 10023,
+    "sha256": "f20bab2ebcddc48bbd8d22dc384c06d0ee3f6231d181b09560d32c3968fe5e9a"
+  },
+  "freeze_sha256": "f20bab2ebcddc48bbd8d22dc384c06d0ee3f6231d181b09560d32c3968fe5e9a",
+  "handoff": {
+    "bytes": 10715,
+    "sha256": "46ae8c7bb6a23956185afb1a2c6b97e5b769702946baa7005500952a1a9e8e14"
+  },
+  "image_identity_from_accepted_evidence": "sha256:40024bfedce45251e359d6af63f26bf5a497136d2916d8b06046cc09b5f45331",
+  "limits": {
+    "BRDF_point_directions": 42678681600,
+    "checkpoint_loads": 0,
+    "environment_point_directions": 25607208960,
+    "native_models": 0,
+    "optimizer_updates": 0,
+    "primary_rays": 0,
+    "shadow_directions": 45018316800
+  },
+  "markdown_links_verified": 12,
+  "native_Docker_image_inspection": false,
+  "native_runtime_tested": false,
+  "notes": [
+    "O1 is a perfect-synthetic-mask-assisted derivative, not original G or realistic SAM2.",
+    "Primary material uses the original global analytic field; per-ray transported source material is diagnostic only.",
+    "Unmatched material/radiance stays undefined; O0/O1 full-raster rendering cannot be ranked without this limitation.",
+    "Independent convergence and native execution remain untested until separately approved."
+  ],
+  "original_Gate11_freeze_unchanged": true,
+  "output": "/home/isavand/paper/evidence/bell-geometry-rgb-gate12-0ea32eb2081a435aa20ffef242773ce5",
+  "output_fresh": true,
+  "python38_AST_checks": [
+    "benchmarks/bell_geometry_rgb_gate12.py",
+    "benchmarks/bell_sam2_ordering_gate12.py",
+    "experiments/bell_geometry_rgb_gate12.py",
+    "experiments/prepare_bell_geometry_rgb_gate12.py",
+    "experiments/verify_bell_geometry_rgb_gate12.py",
+    "tests/scientific/test_bell_geometry_rgb_gate12.py"
+  ],
+  "resources": {
+    "cpu_threads": 4,
+    "cuda_allocator_fraction": 0.25,
+    "host_memory_gib": 64,
+    "inner_seconds": 7080,
+    "kill_grace_seconds": 30,
+    "output_bytes": 2147483648,
+    "pids": 128,
+    "watchdog_seconds": 7200
+  },
+  "scientific_execution": {
+    "SAM2_inference": 0,
+    "checkpoint_deserializations": 0,
+    "native_material_models": 0,
+    "new_SDF_queries": 0,
+    "new_incident_visibility_rays": 0,
+    "new_primary_rays": 0,
+    "new_reference_integrations": 0,
+    "optimizer_returns": 0
+  },
+  "scientific_sources": {
+    "geometry": {
+      "commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+      "unchanged_files": 99
+    },
+    "material": {
+      "commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "unchanged_files": 106
+    }
+  },
+  "selected_input_files_verified": 37,
+  "shell_syntax": true,
+  "status": "prepared_pending_separate_exact_execution_authorization",
+  "unapproved_preflight_rejected_without_output_creation": true
+}
