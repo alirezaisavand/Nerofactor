@@ -1,0 +1,2510 @@
+{
+  "diagnostic_events": [
+    {
+      "absolute_difference": 8.809142651444724e-20,
+      "diagnostic_allowance": 2e-12,
+      "original": 4.5572469311406025e-05,
+      "path": "/all_views/O0/material_coordinate_and_frame/Q_coordinate_shift/mean",
+      "replayed": 4.557246931140611e-05
+    },
+    {
+      "absolute_difference": 1.734723475976807e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.005737954855182252,
+      "path": "/all_views/O0/material_coordinate_and_frame/Q_frame_shift/mean",
+      "replayed": 0.005737954855182254
+    },
+    {
+      "absolute_difference": 8.673617379884035e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.003938942623379376,
+      "path": "/all_views/O0/material_coordinate_and_frame/Q_frame_shift/median",
+      "replayed": 0.003938942623379377
+    },
+    {
+      "absolute_difference": 1.734723475976807e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.015255466100431232,
+      "path": "/all_views/O0/material_coordinate_and_frame/Q_frame_shift/p95",
+      "replayed": 0.015255466100431233
+    },
+    {
+      "absolute_difference": 4.163336342344337e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.06185144770561831,
+      "path": "/all_views/O0/material_coordinate_and_frame/Q_projection_vs_transport/maximum",
+      "replayed": 0.06185144770561827
+    },
+    {
+      "absolute_difference": 4.336808689942018e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.001745073343136173,
+      "path": "/all_views/O0/material_coordinate_and_frame/Q_projection_vs_transport/median",
+      "replayed": 0.0017450733431361727
+    },
+    {
+      "absolute_difference": 3.382710778154774e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0074940265140067824,
+      "path": "/all_views/O0/material_coordinate_and_frame/Q_projection_vs_transport/p95",
+      "replayed": 0.007494026514006816
+    },
+    {
+      "absolute_difference": 5.421010862427522e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.00041812523801815536,
+      "path": "/all_views/O0/scopes/raster/RGB/signed_luminance",
+      "replayed": -0.0004181252380181554
+    },
+    {
+      "absolute_difference": 1.6940658945086007e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": -9.213282088515242e-06,
+      "path": "/all_views/O1/controlled_contrasts/global_field_vs_transported_source/diffuse/signed_luminance",
+      "replayed": -9.213282088515244e-06
+    },
+    {
+      "absolute_difference": 2.6469779601696886e-22,
+      "diagnostic_allowance": 1e-15,
+      "original": 3.9932007254741474e-07,
+      "path": "/all_views/O1/controlled_contrasts/global_field_vs_transported_source/specular/signed_luminance",
+      "replayed": 3.9932007254741447e-07
+    },
+    {
+      "absolute_difference": 6.505213034913027e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0018670295252318605,
+      "path": "/all_views/O1/controlled_contrasts/occlusion_effect/RGB/signed_luminance",
+      "replayed": -0.0018670295252318598
+    },
+    {
+      "absolute_difference": 6.776263578034403e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": -3.499580760377865e-05,
+      "path": "/all_views/O1/controlled_contrasts/unoccluded_normal_frame_change/diffuse/signed_luminance",
+      "replayed": -3.4995807603778645e-05
+    },
+    {
+      "absolute_difference": 4.235164736271502e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 7.581318401664411e-06,
+      "path": "/all_views/O1/controlled_contrasts/unoccluded_normal_frame_change/specular/signed_luminance",
+      "replayed": 7.581318401664415e-06
+    },
+    {
+      "absolute_difference": 8.809142651444724e-20,
+      "diagnostic_allowance": 2e-12,
+      "original": 4.482790895719304e-05,
+      "path": "/all_views/O1/material_coordinate_and_frame/Q_coordinate_shift/mean",
+      "replayed": 4.4827908957193126e-05
+    },
+    {
+      "absolute_difference": 2.8189256484623115e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.00013761873257292474,
+      "path": "/all_views/O1/material_coordinate_and_frame/Q_coordinate_shift/p95",
+      "replayed": 0.00013761873257292192
+    },
+    {
+      "absolute_difference": 3.469446951953614e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.005675243124422565,
+      "path": "/all_views/O1/material_coordinate_and_frame/Q_frame_shift/median",
+      "replayed": 0.005675243124422562
+    },
+    {
+      "absolute_difference": 3.469446951953614e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0227185596684049,
+      "path": "/all_views/O1/material_coordinate_and_frame/Q_frame_shift/p95",
+      "replayed": 0.022718559668404897
+    },
+    {
+      "absolute_difference": 2.0816681711721685e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.05926476070681677,
+      "path": "/all_views/O1/material_coordinate_and_frame/Q_projection_vs_transport/maximum",
+      "replayed": 0.05926476070681679
+    },
+    {
+      "absolute_difference": 3.469446951953614e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0024990510481102666,
+      "path": "/all_views/O1/material_coordinate_and_frame/Q_projection_vs_transport/median",
+      "replayed": 0.00249905104811027
+    },
+    {
+      "absolute_difference": 6.938893903907228e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.010130318764619716,
+      "path": "/all_views/O1/material_coordinate_and_frame/Q_projection_vs_transport/p95",
+      "replayed": 0.010130318764619709
+    },
+    {
+      "absolute_difference": 1.3552527156068805e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": 5.835473999604548e-05,
+      "path": "/all_views/O1/scopes/common/specular/signed_luminance",
+      "replayed": 5.835473999604547e-05
+    },
+    {
+      "absolute_difference": 2.710505431213761e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -7.79956536675536e-05,
+      "path": "/all_views/O1/scopes/grazing/diffuse/signed_luminance",
+      "replayed": -7.799565366755357e-05
+    },
+    {
+      "absolute_difference": 1.3552527156068805e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -3.631828923375358e-05,
+      "path": "/all_views/O1/scopes/grazing/specular/signed_luminance",
+      "replayed": -3.631828923375359e-05
+    },
+    {
+      "absolute_difference": 1.3552527156068805e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": 5.835473999604548e-05,
+      "path": "/all_views/O1/scopes/incident_disagreement_any/specular/signed_luminance",
+      "replayed": 5.835473999604547e-05
+    },
+    {
+      "absolute_difference": 8.673617379884035e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": 0.003211148015824098,
+      "path": "/all_views/O1/scopes/normal_gt15/specular/signed_luminance",
+      "replayed": 0.003211148015824099
+    },
+    {
+      "absolute_difference": 3.3881317890172014e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": -1.1366087869477347e-05,
+      "path": "/all_views/O1/scopes/orientation_eligible/diffuse/signed_luminance",
+      "replayed": -1.136608786947735e-05
+    },
+    {
+      "absolute_difference": 1.2705494208814505e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": -2.6807111546241375e-06,
+      "path": "/all_views/O1/scopes/raster/RGB/signed_luminance",
+      "replayed": -2.6807111546241363e-06
+    },
+    {
+      "absolute_difference": 1.6940658945086007e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": -1.2010513957873929e-05,
+      "path": "/all_views/O1/scopes/raster/diffuse/signed_luminance",
+      "replayed": -1.201051395787393e-05
+    },
+    {
+      "absolute_difference": 8.131516293641283e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.00010440081400662479,
+      "path": "/all_views/O1/scopes/shadow_radial_band_seen/diffuse/signed_luminance",
+      "replayed": -0.00010440081400662471
+    },
+    {
+      "absolute_difference": 1.3552527156068805e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": 5.835473999604548e-05,
+      "path": "/all_views/O1/scopes/valid/specular/signed_luminance",
+      "replayed": 5.835473999604547e-05
+    },
+    {
+      "absolute_difference": 4.336808689942018e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.002639448449026516,
+      "path": "/held/O0/controlled_contrasts/occlusion_effect/diffuse/signed_luminance",
+      "replayed": -0.0026394484490265156
+    },
+    {
+      "absolute_difference": 2.710505431213761e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0001040215111792575,
+      "path": "/held/O0/controlled_contrasts/unoccluded_normal_frame_change/RGB/signed_luminance",
+      "replayed": -0.00010402151117925753
+    },
+    {
+      "absolute_difference": 9.486769009248164e-20,
+      "diagnostic_allowance": 2e-12,
+      "original": 4.8013268672449295e-05,
+      "path": "/held/O0/material_coordinate_and_frame/Q_coordinate_shift/mean",
+      "replayed": 4.801326867244939e-05
+    },
+    {
+      "absolute_difference": 4.336808689942018e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.00013754533627938223,
+      "path": "/held/O0/material_coordinate_and_frame/Q_coordinate_shift/p95",
+      "replayed": 0.00013754533627938656
+    },
+    {
+      "absolute_difference": 8.673617379884035e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.005659376580317003,
+      "path": "/held/O0/material_coordinate_and_frame/Q_frame_shift/mean",
+      "replayed": 0.0056593765803170035
+    },
+    {
+      "absolute_difference": 4.336808689942018e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0038516850899388807,
+      "path": "/held/O0/material_coordinate_and_frame/Q_frame_shift/median",
+      "replayed": 0.003851685089938885
+    },
+    {
+      "absolute_difference": 3.469446951953614e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.015182064337472063,
+      "path": "/held/O0/material_coordinate_and_frame/Q_frame_shift/p95",
+      "replayed": 0.015182064337472066
+    },
+    {
+      "absolute_difference": 4.163336342344337e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.06185144770561831,
+      "path": "/held/O0/material_coordinate_and_frame/Q_projection_vs_transport/maximum",
+      "replayed": 0.06185144770561827
+    },
+    {
+      "absolute_difference": 9.324138683375338e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0017171175030163653,
+      "path": "/held/O0/material_coordinate_and_frame/Q_projection_vs_transport/median",
+      "replayed": 0.001717117503016356
+    },
+    {
+      "absolute_difference": 1.5612511283791264e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0074265026374861305,
+      "path": "/held/O0/material_coordinate_and_frame/Q_projection_vs_transport/p95",
+      "replayed": 0.007426502637486115
+    },
+    {
+      "absolute_difference": 8.673617379884035e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.003710808464945288,
+      "path": "/held/O0/scopes/grazing/RGB/signed_luminance",
+      "replayed": -0.003710808464945287
+    },
+    {
+      "absolute_difference": 1.0842021724855044e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0005623367611811528,
+      "path": "/held/O0/scopes/normal_gt15/specular/signed_luminance",
+      "replayed": -0.0005623367611811529
+    },
+    {
+      "absolute_difference": 1.6940658945086007e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": -8.476313519712131e-06,
+      "path": "/held/O1/controlled_contrasts/global_field_vs_transported_source/diffuse/signed_luminance",
+      "replayed": -8.476313519712133e-06
+    },
+    {
+      "absolute_difference": 4.235164736271502e-22,
+      "diagnostic_allowance": 1e-15,
+      "original": -1.2557497958683566e-06,
+      "path": "/held/O1/controlled_contrasts/global_field_vs_transported_source/specular/signed_luminance",
+      "replayed": -1.2557497958683562e-06
+    },
+    {
+      "absolute_difference": 1.1519648082658485e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 4.667167731019327e-05,
+      "path": "/held/O1/material_coordinate_and_frame/Q_coordinate_shift/mean",
+      "replayed": 4.6671677310193385e-05
+    },
+    {
+      "absolute_difference": 6.674619624363887e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 2.9828176085358472e-05,
+      "path": "/held/O1/material_coordinate_and_frame/Q_coordinate_shift/median",
+      "replayed": 2.982817608535914e-05
+    },
+    {
+      "absolute_difference": 1.6750923564901044e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.00014459138120569875,
+      "path": "/held/O1/material_coordinate_and_frame/Q_coordinate_shift/p95",
+      "replayed": 0.0001445913812057155
+    },
+    {
+      "absolute_difference": 3.469446951953614e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.005546527305649947,
+      "path": "/held/O1/material_coordinate_and_frame/Q_frame_shift/median",
+      "replayed": 0.005546527305649944
+    },
+    {
+      "absolute_difference": 3.469446951953614e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.022508103959468274,
+      "path": "/held/O1/material_coordinate_and_frame/Q_frame_shift/p95",
+      "replayed": 0.02250810395946827
+    },
+    {
+      "absolute_difference": 2.0816681711721685e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.05926476070681677,
+      "path": "/held/O1/material_coordinate_and_frame/Q_projection_vs_transport/maximum",
+      "replayed": 0.05926476070681679
+    },
+    {
+      "absolute_difference": 1.6479873021779667e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0024755913605852284,
+      "path": "/held/O1/material_coordinate_and_frame/Q_projection_vs_transport/median",
+      "replayed": 0.002475591360585245
+    },
+    {
+      "absolute_difference": 3.469446951953614e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.010146286131516809,
+      "path": "/held/O1/material_coordinate_and_frame/Q_projection_vs_transport/p95",
+      "replayed": 0.010146286131516812
+    },
+    {
+      "absolute_difference": 5.082197683525802e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 8.664421657845386e-06,
+      "path": "/held/O1/scopes/common/diffuse/signed_luminance",
+      "replayed": 8.664421657845391e-06
+    },
+    {
+      "absolute_difference": 1.3552527156068805e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": 4.996976362240181e-05,
+      "path": "/held/O1/scopes/common/specular/signed_luminance",
+      "replayed": 4.9969763622401825e-05
+    },
+    {
+      "absolute_difference": 5.082197683525802e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 8.664421657845386e-06,
+      "path": "/held/O1/scopes/incident_disagreement_any/diffuse/signed_luminance",
+      "replayed": 8.664421657845391e-06
+    },
+    {
+      "absolute_difference": 1.3552527156068805e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": 4.996976362240181e-05,
+      "path": "/held/O1/scopes/incident_disagreement_any/specular/signed_luminance",
+      "replayed": 4.9969763622401825e-05
+    },
+    {
+      "absolute_difference": 6.938893903907228e-18,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0400940617409648,
+      "path": "/held/O1/scopes/oracle_only/diffuse/signed_luminance",
+      "replayed": -0.04009406174096479
+    },
+    {
+      "absolute_difference": 6.776263578034403e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 3.1622514668649024e-05,
+      "path": "/held/O1/scopes/orientation_eligible/RGB/signed_luminance",
+      "replayed": 3.162251466864902e-05
+    },
+    {
+      "absolute_difference": 1.3552527156068805e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": 5.9276844717282355e-05,
+      "path": "/held/O1/scopes/three_arm_joint/RGB/signed_luminance",
+      "replayed": 5.927684471728234e-05
+    },
+    {
+      "absolute_difference": 5.082197683525802e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 8.032899229438321e-06,
+      "path": "/held/O1/scopes/three_arm_joint/diffuse/signed_luminance",
+      "replayed": 8.032899229438316e-06
+    },
+    {
+      "absolute_difference": 5.082197683525802e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 8.664421657845386e-06,
+      "path": "/held/O1/scopes/valid/diffuse/signed_luminance",
+      "replayed": 8.664421657845391e-06
+    },
+    {
+      "absolute_difference": 1.3552527156068805e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": 4.996976362240181e-05,
+      "path": "/held/O1/scopes/valid/specular/signed_luminance",
+      "replayed": 4.9969763622401825e-05
+    },
+    {
+      "absolute_difference": 3.3881317890172014e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": -2.1697007234813262e-05,
+      "path": "/per_camera/105/O0/controlled_contrasts/unoccluded_normal_frame_change/specular/signed_luminance",
+      "replayed": -2.1697007234813266e-05
+    },
+    {
+      "absolute_difference": 2.1629833341085813e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.00025652479888252225,
+      "path": "/per_camera/105/O0/material_coordinate_and_frame/Q_coordinate_shift/maximum",
+      "replayed": 0.0002565247988825006
+    },
+    {
+      "absolute_difference": 2.710505431213761e-20,
+      "diagnostic_allowance": 2e-12,
+      "original": 4.17360938369409e-05,
+      "path": "/per_camera/105/O0/material_coordinate_and_frame/Q_coordinate_shift/mean",
+      "replayed": 4.1736093836940925e-05
+    },
+    {
+      "absolute_difference": 5.1906179007743525e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.00010552525600949225,
+      "path": "/per_camera/105/O0/material_coordinate_and_frame/Q_coordinate_shift/p95",
+      "replayed": 0.00010552525600948706
+    },
+    {
+      "absolute_difference": 4.336808689942018e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.003887557595159368,
+      "path": "/per_camera/105/O0/material_coordinate_and_frame/Q_frame_shift/median",
+      "replayed": 0.0038875575951593674
+    },
+    {
+      "absolute_difference": 1.734723475976807e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.015079028909243493,
+      "path": "/per_camera/105/O0/material_coordinate_and_frame/Q_frame_shift/p95",
+      "replayed": 0.015079028909243494
+    },
+    {
+      "absolute_difference": 1.734723475976807e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0018145763308295346,
+      "path": "/per_camera/105/O0/material_coordinate_and_frame/Q_projection_vs_transport/median",
+      "replayed": 0.0018145763308295329
+    },
+    {
+      "absolute_difference": 1.734723475976807e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.007312195157148583,
+      "path": "/per_camera/105/O0/material_coordinate_and_frame/Q_projection_vs_transport/p95",
+      "replayed": 0.007312195157148585
+    },
+    {
+      "absolute_difference": 2.168404344971009e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0009489111549220387,
+      "path": "/per_camera/105/O0/scopes/common/diffuse/signed_luminance",
+      "replayed": -0.0009489111549220385
+    },
+    {
+      "absolute_difference": 2.168404344971009e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0009489111549220387,
+      "path": "/per_camera/105/O0/scopes/incident_disagreement_any/diffuse/signed_luminance",
+      "replayed": -0.0009489111549220385
+    },
+    {
+      "absolute_difference": 2.168404344971009e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0007002009489472385,
+      "path": "/per_camera/105/O0/scopes/orientation_eligible/diffuse/signed_luminance",
+      "replayed": -0.0007002009489472383
+    },
+    {
+      "absolute_difference": 2.168404344971009e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0009489111549220387,
+      "path": "/per_camera/105/O0/scopes/valid/diffuse/signed_luminance",
+      "replayed": -0.0009489111549220385
+    },
+    {
+      "absolute_difference": 6.776263578034403e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 4.524519303468065e-05,
+      "path": "/per_camera/105/O1/controlled_contrasts/unoccluded_normal_frame_change/RGB/signed_luminance",
+      "replayed": 4.5245193034680645e-05
+    },
+    {
+      "absolute_difference": 1.6317242695906842e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.00028014625325399866,
+      "path": "/per_camera/105/O1/material_coordinate_and_frame/Q_coordinate_shift/maximum",
+      "replayed": 0.00028014625325398234
+    },
+    {
+      "absolute_difference": 2.486549919959724e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 2.8562295362808324e-05,
+      "path": "/per_camera/105/O1/material_coordinate_and_frame/Q_coordinate_shift/median",
+      "replayed": 2.856229536283319e-05
+    },
+    {
+      "absolute_difference": 1.3877787807814457e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.09380919178648234,
+      "path": "/per_camera/105/O1/material_coordinate_and_frame/Q_frame_shift/maximum",
+      "replayed": 0.09380919178648235
+    },
+    {
+      "absolute_difference": 2.6020852139652106e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.005492746372509516,
+      "path": "/per_camera/105/O1/material_coordinate_and_frame/Q_frame_shift/median",
+      "replayed": 0.005492746372509513
+    },
+    {
+      "absolute_difference": 6.938893903907228e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.02276919984776274,
+      "path": "/per_camera/105/O1/material_coordinate_and_frame/Q_frame_shift/p95",
+      "replayed": 0.022769199847762732
+    },
+    {
+      "absolute_difference": 6.938893903907228e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.051593437037949996,
+      "path": "/per_camera/105/O1/material_coordinate_and_frame/Q_projection_vs_transport/maximum",
+      "replayed": 0.05159343703795
+    },
+    {
+      "absolute_difference": 4.336808689942018e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.003660825807436589,
+      "path": "/per_camera/105/O1/material_coordinate_and_frame/Q_projection_vs_transport/mean",
+      "replayed": 0.0036608258074365893
+    },
+    {
+      "absolute_difference": 1.8214596497756474e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.002548044898050674,
+      "path": "/per_camera/105/O1/material_coordinate_and_frame/Q_projection_vs_transport/median",
+      "replayed": 0.0025480448980506557
+    },
+    {
+      "absolute_difference": 4.85722573273506e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.010438501655117055,
+      "path": "/per_camera/105/O1/material_coordinate_and_frame/Q_projection_vs_transport/p95",
+      "replayed": 0.010438501655117104
+    },
+    {
+      "absolute_difference": 2.710505431213761e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": 0.00016321305811681436,
+      "path": "/per_camera/105/O1/scopes/common/RGB/signed_luminance",
+      "replayed": 0.0001632130581168144
+    },
+    {
+      "absolute_difference": 2.710505431213761e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": 0.00016321305811681436,
+      "path": "/per_camera/105/O1/scopes/incident_disagreement_any/RGB/signed_luminance",
+      "replayed": 0.0001632130581168144
+    },
+    {
+      "absolute_difference": 4.336808689942018e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": 0.0031342037690068984,
+      "path": "/per_camera/105/O1/scopes/normal_gt15/specular/signed_luminance",
+      "replayed": 0.003134203769006898
+    },
+    {
+      "absolute_difference": 1.3877787807814457e-17,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.05478686072211475,
+      "path": "/per_camera/105/O1/scopes/oracle_only/RGB/signed_luminance",
+      "replayed": -0.054786860722114736
+    },
+    {
+      "absolute_difference": 2.710505431213761e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": 0.00012624364462091584,
+      "path": "/per_camera/105/O1/scopes/orientation_eligible/specular/signed_luminance",
+      "replayed": 0.00012624364462091587
+    },
+    {
+      "absolute_difference": 8.470329472543003e-22,
+      "diagnostic_allowance": 1e-15,
+      "original": -2.6593755307538994e-06,
+      "path": "/per_camera/105/O1/scopes/raster/diffuse/signed_luminance",
+      "replayed": -2.6593755307538986e-06
+    },
+    {
+      "absolute_difference": 5.421010862427522e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": 0.0001760005645824911,
+      "path": "/per_camera/105/O1/scopes/three_arm_joint/RGB/signed_luminance",
+      "replayed": 0.00017600056458249105
+    },
+    {
+      "absolute_difference": 2.710505431213761e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": 0.00016321305811681436,
+      "path": "/per_camera/105/O1/scopes/valid/RGB/signed_luminance",
+      "replayed": 0.0001632130581168144
+    },
+    {
+      "absolute_difference": 4.0657581468206416e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -9.868773080940676e-05,
+      "path": "/per_camera/105/O1/scopes/weak_or_isotropic/RGB/signed_luminance",
+      "replayed": -9.868773080940672e-05
+    },
+    {
+      "absolute_difference": 4.235164736271502e-22,
+      "diagnostic_allowance": 1e-15,
+      "original": 3.382962518064754e-06,
+      "path": "/per_camera/11/O0/controlled_contrasts/global_field_vs_transported_source/RGB/signed_luminance",
+      "replayed": 3.3829625180647542e-06
+    },
+    {
+      "absolute_difference": 2.710505431213761e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.00014705393726600658,
+      "path": "/per_camera/11/O0/controlled_contrasts/unoccluded_normal_frame_change/diffuse/signed_luminance",
+      "replayed": -0.00014705393726600655
+    },
+    {
+      "absolute_difference": 2.710505431213761e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0001564021458281282,
+      "path": "/per_camera/11/O0/controlled_contrasts/unoccluded_normal_frame_change/specular/signed_luminance",
+      "replayed": -0.00015640214582812823
+    },
+    {
+      "absolute_difference": 4.0657581468206416e-20,
+      "diagnostic_allowance": 2e-12,
+      "original": 3.357719714468092e-05,
+      "path": "/per_camera/11/O0/material_coordinate_and_frame/Q_coordinate_shift/mean",
+      "replayed": 3.357719714468088e-05
+    },
+    {
+      "absolute_difference": 1.9786689647860456e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.00010418873382170448,
+      "path": "/per_camera/11/O0/material_coordinate_and_frame/Q_coordinate_shift/p95",
+      "replayed": 0.00010418873382170646
+    },
+    {
+      "absolute_difference": 1.734723475976807e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.004631832438757268,
+      "path": "/per_camera/11/O0/material_coordinate_and_frame/Q_frame_shift/median",
+      "replayed": 0.004631832438757266
+    },
+    {
+      "absolute_difference": 2.7755575615628914e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.04748579581825295,
+      "path": "/per_camera/11/O0/material_coordinate_and_frame/Q_projection_vs_transport/maximum",
+      "replayed": 0.04748579581825292
+    },
+    {
+      "absolute_difference": 8.673617379884035e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0028455545507612367,
+      "path": "/per_camera/11/O0/material_coordinate_and_frame/Q_projection_vs_transport/mean",
+      "replayed": 0.002845554550761236
+    },
+    {
+      "absolute_difference": 2.6020852139652106e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0020058453781456047,
+      "path": "/per_camera/11/O0/material_coordinate_and_frame/Q_projection_vs_transport/median",
+      "replayed": 0.002005845378145602
+    },
+    {
+      "absolute_difference": 2.2551405187698492e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.007776850483063732,
+      "path": "/per_camera/11/O0/material_coordinate_and_frame/Q_projection_vs_transport/p95",
+      "replayed": 0.007776850483063755
+    },
+    {
+      "absolute_difference": 4.235164736271502e-22,
+      "diagnostic_allowance": 1e-15,
+      "original": -2.597771227949056e-06,
+      "path": "/per_camera/11/O1/controlled_contrasts/global_field_vs_transported_source/RGB/signed_luminance",
+      "replayed": -2.5977712279490562e-06
+    },
+    {
+      "absolute_difference": 2.168404344971009e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.001260458966339749,
+      "path": "/per_camera/11/O1/controlled_contrasts/occlusion_effect/RGB/signed_luminance",
+      "replayed": -0.0012604589663397492
+    },
+    {
+      "absolute_difference": 6.776263578034403e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": -3.1249128446838166e-05,
+      "path": "/per_camera/11/O1/controlled_contrasts/unoccluded_normal_frame_change/RGB/signed_luminance",
+      "replayed": -3.124912844683817e-05
+    },
+    {
+      "absolute_difference": 1.5585406229479126e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 3.389504839618626e-05,
+      "path": "/per_camera/11/O1/material_coordinate_and_frame/Q_coordinate_shift/mean",
+      "replayed": 3.389504839618642e-05
+    },
+    {
+      "absolute_difference": 1.734723475976807e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0064512546119625536,
+      "path": "/per_camera/11/O1/material_coordinate_and_frame/Q_frame_shift/median",
+      "replayed": 0.006451254611962552
+    },
+    {
+      "absolute_difference": 3.469446951953614e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.022087085899150836,
+      "path": "/per_camera/11/O1/material_coordinate_and_frame/Q_frame_shift/p95",
+      "replayed": 0.02208708589915084
+    },
+    {
+      "absolute_difference": 6.938893903907228e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.05799360187965831,
+      "path": "/per_camera/11/O1/material_coordinate_and_frame/Q_projection_vs_transport/maximum",
+      "replayed": 0.0579936018796583
+    },
+    {
+      "absolute_difference": 2.3418766925686896e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0028735477604687385,
+      "path": "/per_camera/11/O1/material_coordinate_and_frame/Q_projection_vs_transport/median",
+      "replayed": 0.002873547760468762
+    },
+    {
+      "absolute_difference": 3.469446951953614e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.010048036936132156,
+      "path": "/per_camera/11/O1/material_coordinate_and_frame/Q_projection_vs_transport/p95",
+      "replayed": 0.010048036936132152
+    },
+    {
+      "absolute_difference": 6.776263578034403e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 4.572230677443652e-05,
+      "path": "/per_camera/11/O1/scopes/common/RGB/signed_luminance",
+      "replayed": 4.5722306774436515e-05
+    },
+    {
+      "absolute_difference": 3.3881317890172014e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 1.688094110587012e-05,
+      "path": "/per_camera/11/O1/scopes/common/diffuse/signed_luminance",
+      "replayed": 1.6880941105870125e-05
+    },
+    {
+      "absolute_difference": 3.3881317890172014e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 2.884136566856637e-05,
+      "path": "/per_camera/11/O1/scopes/common/specular/signed_luminance",
+      "replayed": 2.8841365668566367e-05
+    },
+    {
+      "absolute_difference": 3.3881317890172014e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -2.6297309432458534e-05,
+      "path": "/per_camera/11/O1/scopes/grazing/specular/signed_luminance",
+      "replayed": -2.6297309432458568e-05
+    },
+    {
+      "absolute_difference": 6.776263578034403e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 4.572230677443652e-05,
+      "path": "/per_camera/11/O1/scopes/incident_disagreement_any/RGB/signed_luminance",
+      "replayed": 4.5722306774436515e-05
+    },
+    {
+      "absolute_difference": 3.3881317890172014e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 1.688094110587012e-05,
+      "path": "/per_camera/11/O1/scopes/incident_disagreement_any/diffuse/signed_luminance",
+      "replayed": 1.6880941105870125e-05
+    },
+    {
+      "absolute_difference": 3.3881317890172014e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 2.884136566856637e-05,
+      "path": "/per_camera/11/O1/scopes/incident_disagreement_any/specular/signed_luminance",
+      "replayed": 2.8841365668566367e-05
+    },
+    {
+      "absolute_difference": 4.336808689942018e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": 0.0026221085615022103,
+      "path": "/per_camera/11/O1/scopes/normal_gt15/diffuse/signed_luminance",
+      "replayed": 0.0026221085615022108
+    },
+    {
+      "absolute_difference": 3.3881317890172014e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": -2.4728313130745187e-05,
+      "path": "/per_camera/11/O1/scopes/orientation_eligible/diffuse/signed_luminance",
+      "replayed": -2.4728313130745184e-05
+    },
+    {
+      "absolute_difference": 3.3881317890172014e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 1.2651875486213244e-05,
+      "path": "/per_camera/11/O1/scopes/orientation_eligible/specular/signed_luminance",
+      "replayed": 1.2651875486213247e-05
+    },
+    {
+      "absolute_difference": 6.776263578034403e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": -1.76169319886089e-05,
+      "path": "/per_camera/11/O1/scopes/raster/RGB/signed_luminance",
+      "replayed": -1.7616931988608906e-05
+    },
+    {
+      "absolute_difference": 1.6940658945086007e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": -5.364962361110175e-07,
+      "path": "/per_camera/11/O1/scopes/raster/specular/signed_luminance",
+      "replayed": -5.364962361110158e-07
+    },
+    {
+      "absolute_difference": 3.3881317890172014e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 1.7881761628579557e-05,
+      "path": "/per_camera/11/O1/scopes/three_arm_joint/diffuse/signed_luminance",
+      "replayed": 1.788176162857956e-05
+    },
+    {
+      "absolute_difference": 2.0328790734103208e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": 2.9857498845625102e-05,
+      "path": "/per_camera/11/O1/scopes/three_arm_joint/specular/signed_luminance",
+      "replayed": 2.985749884562508e-05
+    },
+    {
+      "absolute_difference": 6.776263578034403e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 4.572230677443652e-05,
+      "path": "/per_camera/11/O1/scopes/valid/RGB/signed_luminance",
+      "replayed": 4.5722306774436515e-05
+    },
+    {
+      "absolute_difference": 3.3881317890172014e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 1.688094110587012e-05,
+      "path": "/per_camera/11/O1/scopes/valid/diffuse/signed_luminance",
+      "replayed": 1.6880941105870125e-05
+    },
+    {
+      "absolute_difference": 3.3881317890172014e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 2.884136566856637e-05,
+      "path": "/per_camera/11/O1/scopes/valid/specular/signed_luminance",
+      "replayed": 2.8841365668566367e-05
+    },
+    {
+      "absolute_difference": 8.258571235729428e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": -1.7111297802100536e-06,
+      "path": "/per_camera/114/O0/controlled_contrasts/unoccluded_normal_frame_change/RGB/signed_luminance",
+      "replayed": -1.7111297802100619e-06
+    },
+    {
+      "absolute_difference": 5.421010862427522e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 7.011097885363329e-05,
+      "path": "/per_camera/114/O0/material_coordinate_and_frame/Q_coordinate_shift/mean",
+      "replayed": 7.011097885363383e-05
+    },
+    {
+      "absolute_difference": 4.70950318673391e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 5.5704743597718794e-05,
+      "path": "/per_camera/114/O0/material_coordinate_and_frame/Q_coordinate_shift/median",
+      "replayed": 5.5704743597714084e-05
+    },
+    {
+      "absolute_difference": 7.779150587583494e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.00018706836082202073,
+      "path": "/per_camera/114/O0/material_coordinate_and_frame/Q_coordinate_shift/p95",
+      "replayed": 0.0001870683608220285
+    },
+    {
+      "absolute_difference": 1.3877787807814457e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.1007912135303686,
+      "path": "/per_camera/114/O0/material_coordinate_and_frame/Q_frame_shift/maximum",
+      "replayed": 0.10079121353036859
+    },
+    {
+      "absolute_difference": 4.336808689942018e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0035336477832042133,
+      "path": "/per_camera/114/O0/material_coordinate_and_frame/Q_frame_shift/median",
+      "replayed": 0.0035336477832042176
+    },
+    {
+      "absolute_difference": 3.469446951953614e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.017292338736208685,
+      "path": "/per_camera/114/O0/material_coordinate_and_frame/Q_frame_shift/p95",
+      "replayed": 0.01729233873620869
+    },
+    {
+      "absolute_difference": 8.673617379884035e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0028008991218614982,
+      "path": "/per_camera/114/O0/material_coordinate_and_frame/Q_projection_vs_transport/mean",
+      "replayed": 0.002800899121861499
+    },
+    {
+      "absolute_difference": 1.0842021724855044e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0017907579516975693,
+      "path": "/per_camera/114/O0/material_coordinate_and_frame/Q_projection_vs_transport/median",
+      "replayed": 0.0017907579516975682
+    },
+    {
+      "absolute_difference": 5.204170427930421e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.00818952167990669,
+      "path": "/per_camera/114/O0/material_coordinate_and_frame/Q_projection_vs_transport/p95",
+      "replayed": 0.008189521679906695
+    },
+    {
+      "absolute_difference": 8.131516293641283e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.00021745099288849668,
+      "path": "/per_camera/114/O0/scopes/grazing/RGB/signed_luminance",
+      "replayed": -0.0002174509928884966
+    },
+    {
+      "absolute_difference": 4.336808689942018e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0024413452723321136,
+      "path": "/per_camera/114/O0/scopes/normal_gt15/RGB/signed_luminance",
+      "replayed": -0.002441345272332114
+    },
+    {
+      "absolute_difference": 5.421010862427522e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": 0.00047749840139619994,
+      "path": "/per_camera/114/O0/scopes/normal_gt15/specular/signed_luminance",
+      "replayed": 0.0004774984013962
+    },
+    {
+      "absolute_difference": 2.710505431213761e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.00022467039896115082,
+      "path": "/per_camera/114/O0/scopes/raster/specular/signed_luminance",
+      "replayed": -0.0002246703989611508
+    },
+    {
+      "absolute_difference": 2.168404344971009e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0017904598088617297,
+      "path": "/per_camera/114/O0/scopes/shadow_radial_band_seen/specular/signed_luminance",
+      "replayed": -0.0017904598088617294
+    },
+    {
+      "absolute_difference": 4.336808689942018e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0021047490513047794,
+      "path": "/per_camera/114/O1/controlled_contrasts/occlusion_effect/diffuse/signed_luminance",
+      "replayed": -0.002104749051304779
+    },
+    {
+      "absolute_difference": 1.0842021724855044e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0005883931137966372,
+      "path": "/per_camera/114/O1/controlled_contrasts/occlusion_effect/specular/signed_luminance",
+      "replayed": -0.0005883931137966371
+    },
+    {
+      "absolute_difference": 6.776263578034403e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 4.147193625302039e-05,
+      "path": "/per_camera/114/O1/controlled_contrasts/unoccluded_normal_frame_change/RGB/signed_luminance",
+      "replayed": 4.1471936253020393e-05
+    },
+    {
+      "absolute_difference": 5.293955920339377e-22,
+      "diagnostic_allowance": 1e-15,
+      "original": 5.936326278518169e-07,
+      "path": "/per_camera/114/O1/controlled_contrasts/visibility_function_change/specular/signed_luminance",
+      "replayed": 5.936326278518174e-07
+    },
+    {
+      "absolute_difference": 2.303929616531697e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 6.395476330693249e-05,
+      "path": "/per_camera/114/O1/material_coordinate_and_frame/Q_coordinate_shift/mean",
+      "replayed": 6.395476330693272e-05
+    },
+    {
+      "absolute_difference": 8.40256683676266e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.00020662754367457788,
+      "path": "/per_camera/114/O1/material_coordinate_and_frame/Q_coordinate_shift/p95",
+      "replayed": 0.00020662754367458628
+    },
+    {
+      "absolute_difference": 1.3877787807814457e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.09774885961654893,
+      "path": "/per_camera/114/O1/material_coordinate_and_frame/Q_frame_shift/maximum",
+      "replayed": 0.09774885961654894
+    },
+    {
+      "absolute_difference": 8.673617379884035e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0052781314610406095,
+      "path": "/per_camera/114/O1/material_coordinate_and_frame/Q_frame_shift/median",
+      "replayed": 0.005278131461040609
+    },
+    {
+      "absolute_difference": 3.469446951953614e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.02546994420902942,
+      "path": "/per_camera/114/O1/material_coordinate_and_frame/Q_frame_shift/p95",
+      "replayed": 0.025469944209029417
+    },
+    {
+      "absolute_difference": 2.0816681711721685e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.05926476070681677,
+      "path": "/per_camera/114/O1/material_coordinate_and_frame/Q_projection_vs_transport/maximum",
+      "replayed": 0.05926476070681679
+    },
+    {
+      "absolute_difference": 8.673617379884035e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.004026393320350636,
+      "path": "/per_camera/114/O1/material_coordinate_and_frame/Q_projection_vs_transport/mean",
+      "replayed": 0.004026393320350637
+    },
+    {
+      "absolute_difference": 1.3444106938820255e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0025661845310085275,
+      "path": "/per_camera/114/O1/material_coordinate_and_frame/Q_projection_vs_transport/median",
+      "replayed": 0.002566184531008541
+    },
+    {
+      "absolute_difference": 1.0408340855860843e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.011881128462970248,
+      "path": "/per_camera/114/O1/material_coordinate_and_frame/Q_projection_vs_transport/p95",
+      "replayed": 0.011881128462970238
+    },
+    {
+      "absolute_difference": 1.3552527156068805e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.00010406541526911707,
+      "path": "/per_camera/114/O1/scopes/grazing/RGB/signed_luminance",
+      "replayed": -0.00010406541526911705
+    },
+    {
+      "absolute_difference": 1.6940658945086007e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": -1.088750690760043e-05,
+      "path": "/per_camera/114/O1/scopes/raster/diffuse/signed_luminance",
+      "replayed": -1.0887506907600431e-05
+    },
+    {
+      "absolute_difference": 8.470329472543003e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 8.837141299165702e-06,
+      "path": "/per_camera/114/O1/scopes/three_arm_joint/diffuse/signed_luminance",
+      "replayed": 8.837141299165694e-06
+    },
+    {
+      "absolute_difference": 5.421010862427522e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0003108041987529399,
+      "path": "/per_camera/114/O1/scopes/weak_or_isotropic/RGB/signed_luminance",
+      "replayed": -0.00031080419875293997
+    },
+    {
+      "absolute_difference": 8.470329472543003e-22,
+      "diagnostic_allowance": 1e-15,
+      "original": 4.1345864123417156e-06,
+      "path": "/per_camera/17/O0/controlled_contrasts/global_field_vs_transported_source/RGB/signed_luminance",
+      "replayed": 4.134586412341716e-06
+    },
+    {
+      "absolute_difference": 4.336808689942018e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0034780097957290714,
+      "path": "/per_camera/17/O0/controlled_contrasts/occlusion_effect/RGB/signed_luminance",
+      "replayed": -0.003478009795729072
+    },
+    {
+      "absolute_difference": 1.0842021724855044e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0007765291875585426,
+      "path": "/per_camera/17/O0/controlled_contrasts/occlusion_effect/specular/signed_luminance",
+      "replayed": -0.0007765291875585427
+    },
+    {
+      "absolute_difference": 6.776263578034403e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 4.4805700202542475e-05,
+      "path": "/per_camera/17/O0/controlled_contrasts/unoccluded_normal_frame_change/RGB/signed_luminance",
+      "replayed": 4.480570020254248e-05
+    },
+    {
+      "absolute_difference": 6.776263578034403e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 5.368320197941004e-05,
+      "path": "/per_camera/17/O0/controlled_contrasts/unoccluded_normal_frame_change/diffuse/signed_luminance",
+      "replayed": 5.3683201979410045e-05
+    },
+    {
+      "absolute_difference": 3.3881317890172014e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": -8.87750177686751e-06,
+      "path": "/per_camera/17/O0/controlled_contrasts/unoccluded_normal_frame_change/specular/signed_luminance",
+      "replayed": -8.877501776867506e-06
+    },
+    {
+      "absolute_difference": 1.3552527156068805e-20,
+      "diagnostic_allowance": 2e-12,
+      "original": 6.0241197996262406e-05,
+      "path": "/per_camera/17/O0/material_coordinate_and_frame/Q_coordinate_shift/mean",
+      "replayed": 6.024119799626242e-05
+    },
+    {
+      "absolute_difference": 8.239936510889834e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0037953618781475427,
+      "path": "/per_camera/17/O0/material_coordinate_and_frame/Q_frame_shift/median",
+      "replayed": 0.003795361878147551
+    },
+    {
+      "absolute_difference": 1.734723475976807e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.013973509742118714,
+      "path": "/per_camera/17/O0/material_coordinate_and_frame/Q_frame_shift/p95",
+      "replayed": 0.013973509742118716
+    },
+    {
+      "absolute_difference": 4.336808689942018e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0023795687905792564,
+      "path": "/per_camera/17/O0/material_coordinate_and_frame/Q_projection_vs_transport/mean",
+      "replayed": 0.002379568790579256
+    },
+    {
+      "absolute_difference": 1.474514954580286e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0015265138264563668,
+      "path": "/per_camera/17/O0/material_coordinate_and_frame/Q_projection_vs_transport/median",
+      "replayed": 0.001526513826456352
+    },
+    {
+      "absolute_difference": 5.421010862427522e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.000434590356613392,
+      "path": "/per_camera/17/O0/scopes/shadow_radial_band_seen/specular/signed_luminance",
+      "replayed": -0.00043459035661339197
+    },
+    {
+      "absolute_difference": 5.421010862427522e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0003632082193505523,
+      "path": "/per_camera/17/O0/scopes/three_arm_joint/specular/signed_luminance",
+      "replayed": -0.00036320821935055227
+    },
+    {
+      "absolute_difference": 1.3552527156068805e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -7.648209331726467e-05,
+      "path": "/per_camera/17/O1/controlled_contrasts/unoccluded_normal_frame_change/diffuse/signed_luminance",
+      "replayed": -7.648209331726466e-05
+    },
+    {
+      "absolute_difference": 1.3552527156068805e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -6.670829470802396e-05,
+      "path": "/per_camera/17/O1/controlled_contrasts/unoccluded_normal_frame_change/specular/signed_luminance",
+      "replayed": -6.670829470802397e-05
+    },
+    {
+      "absolute_difference": 2.439454888092385e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 6.104684096867477e-05,
+      "path": "/per_camera/17/O1/material_coordinate_and_frame/Q_coordinate_shift/mean",
+      "replayed": 6.104684096867501e-05
+    },
+    {
+      "absolute_difference": 1.3877787807814457e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.08687063946516463,
+      "path": "/per_camera/17/O1/material_coordinate_and_frame/Q_frame_shift/maximum",
+      "replayed": 0.08687063946516464
+    },
+    {
+      "absolute_difference": 2.6020852139652106e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.005605805160370368,
+      "path": "/per_camera/17/O1/material_coordinate_and_frame/Q_frame_shift/median",
+      "replayed": 0.005605805160370366
+    },
+    {
+      "absolute_difference": 6.938893903907228e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.021702484245700912,
+      "path": "/per_camera/17/O1/material_coordinate_and_frame/Q_frame_shift/p95",
+      "replayed": 0.021702484245700905
+    },
+    {
+      "absolute_difference": 2.0816681711721685e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0527320616398792,
+      "path": "/per_camera/17/O1/material_coordinate_and_frame/Q_projection_vs_transport/maximum",
+      "replayed": 0.05273206163987922
+    },
+    {
+      "absolute_difference": 4.336808689942018e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0033207979304973236,
+      "path": "/per_camera/17/O1/material_coordinate_and_frame/Q_projection_vs_transport/mean",
+      "replayed": 0.003320797930497324
+    },
+    {
+      "absolute_difference": 2.5153490401663703e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.002275833700530047,
+      "path": "/per_camera/17/O1/material_coordinate_and_frame/Q_projection_vs_transport/median",
+      "replayed": 0.002275833700530072
+    },
+    {
+      "absolute_difference": 1.734723475976807e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.009057640526422618,
+      "path": "/per_camera/17/O1/material_coordinate_and_frame/Q_projection_vs_transport/p95",
+      "replayed": 0.009057640526422616
+    },
+    {
+      "absolute_difference": 1.3552527156068805e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -5.5794202364973237e-05,
+      "path": "/per_camera/17/O1/scopes/common/diffuse/signed_luminance",
+      "replayed": -5.579420236497322e-05
+    },
+    {
+      "absolute_difference": 1.3552527156068805e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -5.5794202364973237e-05,
+      "path": "/per_camera/17/O1/scopes/incident_disagreement_any/diffuse/signed_luminance",
+      "replayed": -5.579420236497322e-05
+    },
+    {
+      "absolute_difference": 8.673617379884035e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": 0.004902156047501957,
+      "path": "/per_camera/17/O1/scopes/normal_gt15/RGB/signed_luminance",
+      "replayed": 0.004902156047501958
+    },
+    {
+      "absolute_difference": 2.710505431213761e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.00020630526267093594,
+      "path": "/per_camera/17/O1/scopes/orientation_eligible/RGB/signed_luminance",
+      "replayed": -0.00020630526267093597
+    },
+    {
+      "absolute_difference": 3.3881317890172014e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": -2.6134359261849352e-05,
+      "path": "/per_camera/17/O1/scopes/raster/specular/signed_luminance",
+      "replayed": -2.613435926184935e-05
+    },
+    {
+      "absolute_difference": 1.3552527156068805e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -5.5794202364973237e-05,
+      "path": "/per_camera/17/O1/scopes/valid/diffuse/signed_luminance",
+      "replayed": -5.579420236497322e-05
+    },
+    {
+      "absolute_difference": 5.421010862427522e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0003081300020983806,
+      "path": "/per_camera/17/O1/scopes/weak_or_isotropic/specular/signed_luminance",
+      "replayed": -0.00030813000209838065
+    },
+    {
+      "absolute_difference": 4.235164736271502e-22,
+      "diagnostic_allowance": 1e-15,
+      "original": 5.822130046148439e-07,
+      "path": "/per_camera/58/O0/controlled_contrasts/global_field_vs_transported_source/RGB/signed_luminance",
+      "replayed": 5.822130046148443e-07
+    },
+    {
+      "absolute_difference": 1.3552527156068805e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -8.688174585779386e-05,
+      "path": "/per_camera/58/O0/controlled_contrasts/unoccluded_normal_frame_change/specular/signed_luminance",
+      "replayed": -8.688174585779387e-05
+    },
+    {
+      "absolute_difference": 3.5453411040275995e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.00027833079566739165,
+      "path": "/per_camera/58/O0/material_coordinate_and_frame/Q_coordinate_shift/maximum",
+      "replayed": 0.0002783307956674271
+    },
+    {
+      "absolute_difference": 9.486769009248164e-20,
+      "diagnostic_allowance": 2e-12,
+      "original": 3.392393185723617e-05,
+      "path": "/per_camera/58/O0/material_coordinate_and_frame/Q_coordinate_shift/mean",
+      "replayed": 3.3923931857236266e-05
+    },
+    {
+      "absolute_difference": 3.848917712323541e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 9.329636829358032e-05,
+      "path": "/per_camera/58/O0/material_coordinate_and_frame/Q_coordinate_shift/p95",
+      "replayed": 9.329636829357647e-05
+    },
+    {
+      "absolute_difference": 1.3877787807814457e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.09593454764266955,
+      "path": "/per_camera/58/O0/material_coordinate_and_frame/Q_frame_shift/maximum",
+      "replayed": 0.09593454764266957
+    },
+    {
+      "absolute_difference": 8.673617379884035e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.006112963957716878,
+      "path": "/per_camera/58/O0/material_coordinate_and_frame/Q_frame_shift/mean",
+      "replayed": 0.006112963957716877
+    },
+    {
+      "absolute_difference": 6.071532165918825e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.004400008617687275,
+      "path": "/per_camera/58/O0/material_coordinate_and_frame/Q_frame_shift/median",
+      "replayed": 0.004400008617687281
+    },
+    {
+      "absolute_difference": 5.204170427930421e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.015578693388525943,
+      "path": "/per_camera/58/O0/material_coordinate_and_frame/Q_frame_shift/p95",
+      "replayed": 0.015578693388525938
+    },
+    {
+      "absolute_difference": 1.3877787807814457e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.048945762855065474,
+      "path": "/per_camera/58/O0/material_coordinate_and_frame/Q_projection_vs_transport/maximum",
+      "replayed": 0.04894576285506549
+    },
+    {
+      "absolute_difference": 2.710505431213761e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0018810683393155417,
+      "path": "/per_camera/58/O0/material_coordinate_and_frame/Q_projection_vs_transport/median",
+      "replayed": 0.0018810683393155688
+    },
+    {
+      "absolute_difference": 1.0408340855860843e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.007599285199418878,
+      "path": "/per_camera/58/O0/material_coordinate_and_frame/Q_projection_vs_transport/p95",
+      "replayed": 0.007599285199418888
+    },
+    {
+      "absolute_difference": 2.168404344971009e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0014307129480044534,
+      "path": "/per_camera/58/O0/scopes/common/RGB/signed_luminance",
+      "replayed": -0.0014307129480044531
+    },
+    {
+      "absolute_difference": 2.168404344971009e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0014307129480044534,
+      "path": "/per_camera/58/O0/scopes/incident_disagreement_any/RGB/signed_luminance",
+      "replayed": -0.0014307129480044531
+    },
+    {
+      "absolute_difference": 1.0842021724855044e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0005884638417184465,
+      "path": "/per_camera/58/O0/scopes/normal_gt15/specular/signed_luminance",
+      "replayed": -0.0005884638417184464
+    },
+    {
+      "absolute_difference": 5.421010862427522e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0003694172349334902,
+      "path": "/per_camera/58/O0/scopes/raster/RGB/signed_luminance",
+      "replayed": -0.0003694172349334901
+    },
+    {
+      "absolute_difference": 2.168404344971009e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0014307129480044534,
+      "path": "/per_camera/58/O0/scopes/valid/RGB/signed_luminance",
+      "replayed": -0.0014307129480044531
+    },
+    {
+      "absolute_difference": 4.336808689942018e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.002665135938671992,
+      "path": "/per_camera/58/O0/scopes/weak_or_isotropic/diffuse/signed_luminance",
+      "replayed": -0.0026651359386719916
+    },
+    {
+      "absolute_difference": 8.470329472543003e-22,
+      "diagnostic_allowance": 1e-15,
+      "original": -4.434185686649633e-06,
+      "path": "/per_camera/58/O1/controlled_contrasts/global_field_vs_transported_source/RGB/signed_luminance",
+      "replayed": -4.4341856866496326e-06
+    },
+    {
+      "absolute_difference": 2.168404344971009e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.001762513326215012,
+      "path": "/per_camera/58/O1/controlled_contrasts/occlusion_effect/RGB/signed_luminance",
+      "replayed": -0.0017625133262150123
+    },
+    {
+      "absolute_difference": 3.3881317890172014e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": -2.0166149716092852e-05,
+      "path": "/per_camera/58/O1/controlled_contrasts/unoccluded_normal_frame_change/diffuse/signed_luminance",
+      "replayed": -2.016614971609285e-05
+    },
+    {
+      "absolute_difference": 2.710505431213761e-20,
+      "diagnostic_allowance": 2e-12,
+      "original": 3.6032264083775094e-05,
+      "path": "/per_camera/58/O1/material_coordinate_and_frame/Q_coordinate_shift/mean",
+      "replayed": 3.603226408377512e-05
+    },
+    {
+      "absolute_difference": 8.673617379884035e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.006275357291678075,
+      "path": "/per_camera/58/O1/material_coordinate_and_frame/Q_frame_shift/median",
+      "replayed": 0.0062753572916780746
+    },
+    {
+      "absolute_difference": 2.0816681711721685e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.047820261128811554,
+      "path": "/per_camera/58/O1/material_coordinate_and_frame/Q_projection_vs_transport/maximum",
+      "replayed": 0.047820261128811575
+    },
+    {
+      "absolute_difference": 4.336808689942018e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0037726240853430595,
+      "path": "/per_camera/58/O1/material_coordinate_and_frame/Q_projection_vs_transport/mean",
+      "replayed": 0.003772624085343059
+    },
+    {
+      "absolute_difference": 3.0357660829594124e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0026258761582512507,
+      "path": "/per_camera/58/O1/material_coordinate_and_frame/Q_projection_vs_transport/median",
+      "replayed": 0.0026258761582512538
+    },
+    {
+      "absolute_difference": 5.204170427930421e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.010037851654610484,
+      "path": "/per_camera/58/O1/material_coordinate_and_frame/Q_projection_vs_transport/p95",
+      "replayed": 0.010037851654610479
+    },
+    {
+      "absolute_difference": 1.3552527156068805e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -6.0808389459858024e-05,
+      "path": "/per_camera/58/O1/scopes/grazing/diffuse/signed_luminance",
+      "replayed": -6.080838945985804e-05
+    },
+    {
+      "absolute_difference": 1.3552527156068805e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": 5.887789808361657e-05,
+      "path": "/per_camera/58/O1/scopes/orientation_eligible/RGB/signed_luminance",
+      "replayed": 5.8877898083616554e-05
+    },
+    {
+      "absolute_difference": 3.3881317890172014e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": -5.814939710820904e-06,
+      "path": "/per_camera/58/O1/scopes/orientation_eligible/diffuse/signed_luminance",
+      "replayed": -5.8149397108209006e-06
+    },
+    {
+      "absolute_difference": 1.6940658945086007e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 1.4504311855119226e-05,
+      "path": "/per_camera/58/O1/scopes/raster/RGB/signed_luminance",
+      "replayed": 1.4504311855119225e-05
+    },
+    {
+      "absolute_difference": 1.6940658945086007e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": -3.8133985488853193e-06,
+      "path": "/per_camera/58/O1/scopes/raster/diffuse/signed_luminance",
+      "replayed": -3.813398548885321e-06
+    },
+    {
+      "absolute_difference": 4.404571325722362e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": 1.942285719610625e-05,
+      "path": "/per_camera/58/O1/scopes/weak_or_isotropic/RGB/signed_luminance",
+      "replayed": 1.9422857196106293e-05
+    },
+    {
+      "absolute_difference": 5.421010862427522e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.00034278572673822523,
+      "path": "/per_camera/58/O1/scopes/weak_or_isotropic/diffuse/signed_luminance",
+      "replayed": -0.0003427857267382253
+    },
+    {
+      "absolute_difference": 4.235164736271502e-22,
+      "diagnostic_allowance": 1e-15,
+      "original": 1.6540001047319698e-06,
+      "path": "/per_camera/76/O0/controlled_contrasts/global_field_vs_transported_source/RGB/signed_luminance",
+      "replayed": 1.6540001047319702e-06
+    },
+    {
+      "absolute_difference": 3.903127820947816e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.003291891973463663,
+      "path": "/per_camera/76/O0/material_coordinate_and_frame/Q_frame_shift/median",
+      "replayed": 0.003291891973463659
+    },
+    {
+      "absolute_difference": 4.163336342344337e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.06185144770561831,
+      "path": "/per_camera/76/O0/material_coordinate_and_frame/Q_projection_vs_transport/maximum",
+      "replayed": 0.06185144770561827
+    },
+    {
+      "absolute_difference": 1.3227266504323154e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0015232056436633714,
+      "path": "/per_camera/76/O0/material_coordinate_and_frame/Q_projection_vs_transport/median",
+      "replayed": 0.0015232056436633847
+    },
+    {
+      "absolute_difference": 8.673617379884035e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0071223224315453745,
+      "path": "/per_camera/76/O0/material_coordinate_and_frame/Q_projection_vs_transport/p95",
+      "replayed": 0.007122322431545375
+    },
+    {
+      "absolute_difference": 8.470329472543003e-22,
+      "diagnostic_allowance": 1e-15,
+      "original": -6.004907286366049e-06,
+      "path": "/per_camera/76/O1/controlled_contrasts/global_field_vs_transported_source/RGB/signed_luminance",
+      "replayed": -6.00490728636605e-06
+    },
+    {
+      "absolute_difference": 8.470329472543003e-22,
+      "diagnostic_allowance": 1e-15,
+      "original": 7.610036315332887e-06,
+      "path": "/per_camera/76/O1/controlled_contrasts/global_field_vs_transported_source/specular/signed_luminance",
+      "replayed": 7.610036315332886e-06
+    },
+    {
+      "absolute_difference": 2.752857078576476e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 1.682943166229588e-06,
+      "path": "/per_camera/76/O1/controlled_contrasts/unoccluded_normal_frame_change/diffuse/signed_luminance",
+      "replayed": 1.6829431662295907e-06
+    },
+    {
+      "absolute_difference": 6.776263578034403e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 4.401651780745076e-05,
+      "path": "/per_camera/76/O1/controlled_contrasts/visibility_function_change/diffuse/signed_luminance",
+      "replayed": 4.4016517807450767e-05
+    },
+    {
+      "absolute_difference": 1.0842021724855044e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 3.220642743601223e-05,
+      "path": "/per_camera/76/O1/material_coordinate_and_frame/Q_coordinate_shift/mean",
+      "replayed": 3.2206427436012125e-05
+    },
+    {
+      "absolute_difference": 2.1277467635028025e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 2.3025688932903175e-05,
+      "path": "/per_camera/76/O1/material_coordinate_and_frame/Q_coordinate_shift/median",
+      "replayed": 2.3025688932881897e-05
+    },
+    {
+      "absolute_difference": 9.75781955236954e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 9.083230561260284e-05,
+      "path": "/per_camera/76/O1/material_coordinate_and_frame/Q_coordinate_shift/p95",
+      "replayed": 9.083230561259308e-05
+    },
+    {
+      "absolute_difference": 6.071532165918825e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.004820646495913595,
+      "path": "/per_camera/76/O1/material_coordinate_and_frame/Q_frame_shift/median",
+      "replayed": 0.0048206464959136015
+    },
+    {
+      "absolute_difference": 8.673617379884035e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.002171613676074536,
+      "path": "/per_camera/76/O1/material_coordinate_and_frame/Q_projection_vs_transport/median",
+      "replayed": 0.002171613676074535
+    },
+    {
+      "absolute_difference": 1.734723475976807e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.009637893186389163,
+      "path": "/per_camera/76/O1/material_coordinate_and_frame/Q_projection_vs_transport/p95",
+      "replayed": 0.00963789318638918
+    },
+    {
+      "absolute_difference": 2.710505431213761e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": 0.00014013779846285503,
+      "path": "/per_camera/76/O1/scopes/orientation_eligible/RGB/signed_luminance",
+      "replayed": 0.000140137798462855
+    },
+    {
+      "absolute_difference": 4.235164736271502e-22,
+      "diagnostic_allowance": 1e-15,
+      "original": 5.822130046148439e-07,
+      "path": "/validation/O0/controlled_contrasts/global_field_vs_transported_source/RGB/signed_luminance",
+      "replayed": 5.822130046148443e-07
+    },
+    {
+      "absolute_difference": 1.3552527156068805e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -8.688174585779386e-05,
+      "path": "/validation/O0/controlled_contrasts/unoccluded_normal_frame_change/specular/signed_luminance",
+      "replayed": -8.688174585779387e-05
+    },
+    {
+      "absolute_difference": 3.5453411040275995e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.00027833079566739165,
+      "path": "/validation/O0/material_coordinate_and_frame/Q_coordinate_shift/maximum",
+      "replayed": 0.0002783307956674271
+    },
+    {
+      "absolute_difference": 9.486769009248164e-20,
+      "diagnostic_allowance": 2e-12,
+      "original": 3.392393185723617e-05,
+      "path": "/validation/O0/material_coordinate_and_frame/Q_coordinate_shift/mean",
+      "replayed": 3.3923931857236266e-05
+    },
+    {
+      "absolute_difference": 3.848917712323541e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 9.329636829358032e-05,
+      "path": "/validation/O0/material_coordinate_and_frame/Q_coordinate_shift/p95",
+      "replayed": 9.329636829357647e-05
+    },
+    {
+      "absolute_difference": 1.3877787807814457e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.09593454764266955,
+      "path": "/validation/O0/material_coordinate_and_frame/Q_frame_shift/maximum",
+      "replayed": 0.09593454764266957
+    },
+    {
+      "absolute_difference": 8.673617379884035e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.006112963957716878,
+      "path": "/validation/O0/material_coordinate_and_frame/Q_frame_shift/mean",
+      "replayed": 0.006112963957716877
+    },
+    {
+      "absolute_difference": 6.071532165918825e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.004400008617687275,
+      "path": "/validation/O0/material_coordinate_and_frame/Q_frame_shift/median",
+      "replayed": 0.004400008617687281
+    },
+    {
+      "absolute_difference": 5.204170427930421e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.015578693388525943,
+      "path": "/validation/O0/material_coordinate_and_frame/Q_frame_shift/p95",
+      "replayed": 0.015578693388525938
+    },
+    {
+      "absolute_difference": 1.3877787807814457e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.048945762855065474,
+      "path": "/validation/O0/material_coordinate_and_frame/Q_projection_vs_transport/maximum",
+      "replayed": 0.04894576285506549
+    },
+    {
+      "absolute_difference": 2.710505431213761e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0018810683393155417,
+      "path": "/validation/O0/material_coordinate_and_frame/Q_projection_vs_transport/median",
+      "replayed": 0.0018810683393155688
+    },
+    {
+      "absolute_difference": 1.0408340855860843e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.007599285199418878,
+      "path": "/validation/O0/material_coordinate_and_frame/Q_projection_vs_transport/p95",
+      "replayed": 0.007599285199418888
+    },
+    {
+      "absolute_difference": 2.168404344971009e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0014307129480044534,
+      "path": "/validation/O0/scopes/common/RGB/signed_luminance",
+      "replayed": -0.0014307129480044531
+    },
+    {
+      "absolute_difference": 2.168404344971009e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0014307129480044534,
+      "path": "/validation/O0/scopes/incident_disagreement_any/RGB/signed_luminance",
+      "replayed": -0.0014307129480044531
+    },
+    {
+      "absolute_difference": 1.0842021724855044e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0005884638417184465,
+      "path": "/validation/O0/scopes/normal_gt15/specular/signed_luminance",
+      "replayed": -0.0005884638417184464
+    },
+    {
+      "absolute_difference": 5.421010862427522e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0003694172349334902,
+      "path": "/validation/O0/scopes/raster/RGB/signed_luminance",
+      "replayed": -0.0003694172349334901
+    },
+    {
+      "absolute_difference": 2.168404344971009e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.0014307129480044534,
+      "path": "/validation/O0/scopes/valid/RGB/signed_luminance",
+      "replayed": -0.0014307129480044531
+    },
+    {
+      "absolute_difference": 4.336808689942018e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.002665135938671992,
+      "path": "/validation/O0/scopes/weak_or_isotropic/diffuse/signed_luminance",
+      "replayed": -0.0026651359386719916
+    },
+    {
+      "absolute_difference": 8.470329472543003e-22,
+      "diagnostic_allowance": 1e-15,
+      "original": -4.434185686649633e-06,
+      "path": "/validation/O1/controlled_contrasts/global_field_vs_transported_source/RGB/signed_luminance",
+      "replayed": -4.4341856866496326e-06
+    },
+    {
+      "absolute_difference": 2.168404344971009e-19,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.001762513326215012,
+      "path": "/validation/O1/controlled_contrasts/occlusion_effect/RGB/signed_luminance",
+      "replayed": -0.0017625133262150123
+    },
+    {
+      "absolute_difference": 3.3881317890172014e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": -2.0166149716092852e-05,
+      "path": "/validation/O1/controlled_contrasts/unoccluded_normal_frame_change/diffuse/signed_luminance",
+      "replayed": -2.016614971609285e-05
+    },
+    {
+      "absolute_difference": 2.710505431213761e-20,
+      "diagnostic_allowance": 2e-12,
+      "original": 3.6032264083775094e-05,
+      "path": "/validation/O1/material_coordinate_and_frame/Q_coordinate_shift/mean",
+      "replayed": 3.603226408377512e-05
+    },
+    {
+      "absolute_difference": 8.673617379884035e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.006275357291678075,
+      "path": "/validation/O1/material_coordinate_and_frame/Q_frame_shift/median",
+      "replayed": 0.0062753572916780746
+    },
+    {
+      "absolute_difference": 2.0816681711721685e-17,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.047820261128811554,
+      "path": "/validation/O1/material_coordinate_and_frame/Q_projection_vs_transport/maximum",
+      "replayed": 0.047820261128811575
+    },
+    {
+      "absolute_difference": 4.336808689942018e-19,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0037726240853430595,
+      "path": "/validation/O1/material_coordinate_and_frame/Q_projection_vs_transport/mean",
+      "replayed": 0.003772624085343059
+    },
+    {
+      "absolute_difference": 3.0357660829594124e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.0026258761582512507,
+      "path": "/validation/O1/material_coordinate_and_frame/Q_projection_vs_transport/median",
+      "replayed": 0.0026258761582512538
+    },
+    {
+      "absolute_difference": 5.204170427930421e-18,
+      "diagnostic_allowance": 2e-12,
+      "original": 0.010037851654610484,
+      "path": "/validation/O1/material_coordinate_and_frame/Q_projection_vs_transport/p95",
+      "replayed": 0.010037851654610479
+    },
+    {
+      "absolute_difference": 1.3552527156068805e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -6.0808389459858024e-05,
+      "path": "/validation/O1/scopes/grazing/diffuse/signed_luminance",
+      "replayed": -6.080838945985804e-05
+    },
+    {
+      "absolute_difference": 1.3552527156068805e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": 5.887789808361657e-05,
+      "path": "/validation/O1/scopes/orientation_eligible/RGB/signed_luminance",
+      "replayed": 5.8877898083616554e-05
+    },
+    {
+      "absolute_difference": 3.3881317890172014e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": -5.814939710820904e-06,
+      "path": "/validation/O1/scopes/orientation_eligible/diffuse/signed_luminance",
+      "replayed": -5.8149397108209006e-06
+    },
+    {
+      "absolute_difference": 1.6940658945086007e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": 1.4504311855119226e-05,
+      "path": "/validation/O1/scopes/raster/RGB/signed_luminance",
+      "replayed": 1.4504311855119225e-05
+    },
+    {
+      "absolute_difference": 1.6940658945086007e-21,
+      "diagnostic_allowance": 1e-15,
+      "original": -3.8133985488853193e-06,
+      "path": "/validation/O1/scopes/raster/diffuse/signed_luminance",
+      "replayed": -3.813398548885321e-06
+    },
+    {
+      "absolute_difference": 4.404571325722362e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": 1.942285719610625e-05,
+      "path": "/validation/O1/scopes/weak_or_isotropic/RGB/signed_luminance",
+      "replayed": 1.9422857196106293e-05
+    },
+    {
+      "absolute_difference": 5.421010862427522e-20,
+      "diagnostic_allowance": 1e-15,
+      "original": -0.00034278572673822523,
+      "path": "/validation/O1/scopes/weak_or_isotropic/diffuse/signed_luminance",
+      "replayed": -0.0003427857267382253
+    }
+  ],
+  "original_transfer_events": [
+    {
+      "arm": "O0",
+      "camera": "58",
+      "field": "normal_degrees",
+      "max_abs": 8.881784197001252e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "58",
+      "field": "normal_degrees",
+      "max_abs": 8.881784197001252e-16
+    },
+    {
+      "arm": "O0",
+      "camera": "11",
+      "field": "normal_degrees",
+      "max_abs": 3.552713678800501e-15
+    },
+    {
+      "arm": "O1",
+      "camera": "11",
+      "field": "normal_degrees",
+      "max_abs": 3.552713678800501e-15
+    },
+    {
+      "arm": "O0",
+      "camera": "105",
+      "field": "normal_degrees",
+      "max_abs": 8.881784197001252e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "105",
+      "field": "normal_degrees",
+      "max_abs": 8.881784197001252e-16
+    },
+    {
+      "arm": "O0",
+      "camera": "114",
+      "field": "normal_degrees",
+      "max_abs": 3.552713678800501e-15
+    },
+    {
+      "arm": "O1",
+      "camera": "114",
+      "field": "normal_degrees",
+      "max_abs": 4.440892098500626e-16
+    },
+    {
+      "arm": "O0",
+      "camera": "17",
+      "field": "normal_degrees",
+      "max_abs": 8.881784197001252e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "17",
+      "field": "normal_degrees",
+      "max_abs": 8.881784197001252e-16
+    },
+    {
+      "arm": "O0",
+      "camera": "76",
+      "field": "normal_degrees",
+      "max_abs": 4.440892098500626e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "76",
+      "field": "normal_degrees",
+      "max_abs": 4.440892098500626e-16
+    }
+  ],
+  "replayed_transfer_events": [
+    {
+      "arm": "O0",
+      "camera": "58",
+      "field": "transported_Q",
+      "max_abs": 5.551115123125783e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "58",
+      "field": "coordinate_Q",
+      "max_abs": 6.938893903907228e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "58",
+      "field": "primary_Q",
+      "max_abs": 9.71445146547012e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "58",
+      "field": "normal_degrees",
+      "max_abs": 8.881784197001252e-16
+    },
+    {
+      "arm": "O0",
+      "camera": "58",
+      "field": "Q_coordinate_shift",
+      "max_abs": 8.747139839705709e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "58",
+      "field": "Q_frame_shift",
+      "max_abs": 2.7755575615628914e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "58",
+      "field": "Q_projection_vs_transport",
+      "max_abs": 9.454242944073599e-17
+    },
+    {
+      "arm": "O1",
+      "camera": "58",
+      "field": "transported_Q",
+      "max_abs": 5.551115123125783e-17
+    },
+    {
+      "arm": "O1",
+      "camera": "58",
+      "field": "coordinate_Q",
+      "max_abs": 8.326672684688674e-17
+    },
+    {
+      "arm": "O1",
+      "camera": "58",
+      "field": "primary_Q",
+      "max_abs": 6.938893903907228e-17
+    },
+    {
+      "arm": "O1",
+      "camera": "58",
+      "field": "normal_degrees",
+      "max_abs": 8.881784197001252e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "58",
+      "field": "Q_coordinate_shift",
+      "max_abs": 7.878084035822797e-17
+    },
+    {
+      "arm": "O1",
+      "camera": "58",
+      "field": "Q_frame_shift",
+      "max_abs": 3.122502256758253e-17
+    },
+    {
+      "arm": "O1",
+      "camera": "58",
+      "field": "Q_projection_vs_transport",
+      "max_abs": 1.205632815803881e-16
+    },
+    {
+      "arm": "O0",
+      "camera": "11",
+      "field": "transported_Q",
+      "max_abs": 5.551115123125783e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "11",
+      "field": "coordinate_Q",
+      "max_abs": 8.326672684688674e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "11",
+      "field": "primary_Q",
+      "max_abs": 8.326672684688674e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "11",
+      "field": "normal_degrees",
+      "max_abs": 3.552713678800501e-15
+    },
+    {
+      "arm": "O0",
+      "camera": "11",
+      "field": "Q_coordinate_shift",
+      "max_abs": 5.279725766825505e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "11",
+      "field": "Q_frame_shift",
+      "max_abs": 2.949029909160572e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "11",
+      "field": "Q_projection_vs_transport",
+      "max_abs": 1.3791051634015616e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "11",
+      "field": "transported_Q",
+      "max_abs": 5.551115123125783e-17
+    },
+    {
+      "arm": "O1",
+      "camera": "11",
+      "field": "coordinate_Q",
+      "max_abs": 1.1102230246251565e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "11",
+      "field": "primary_Q",
+      "max_abs": 9.71445146547012e-17
+    },
+    {
+      "arm": "O1",
+      "camera": "11",
+      "field": "normal_degrees",
+      "max_abs": 3.552713678800501e-15
+    },
+    {
+      "arm": "O1",
+      "camera": "11",
+      "field": "Q_coordinate_shift",
+      "max_abs": 5.1167566277737775e-17
+    },
+    {
+      "arm": "O1",
+      "camera": "11",
+      "field": "Q_frame_shift",
+      "max_abs": 2.7755575615628914e-17
+    },
+    {
+      "arm": "O1",
+      "camera": "11",
+      "field": "Q_projection_vs_transport",
+      "max_abs": 1.487525380650112e-16
+    },
+    {
+      "arm": "O0",
+      "camera": "105",
+      "field": "transported_Q",
+      "max_abs": 5.551115123125783e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "105",
+      "field": "coordinate_Q",
+      "max_abs": 2.1163626406917047e-16
+    },
+    {
+      "arm": "O0",
+      "camera": "105",
+      "field": "primary_Q",
+      "max_abs": 1.700029006457271e-16
+    },
+    {
+      "arm": "O0",
+      "camera": "105",
+      "field": "normal_degrees",
+      "max_abs": 8.881784197001252e-16
+    },
+    {
+      "arm": "O0",
+      "camera": "105",
+      "field": "Q_coordinate_shift",
+      "max_abs": 8.582476634759473e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "105",
+      "field": "Q_frame_shift",
+      "max_abs": 3.469446951953614e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "105",
+      "field": "Q_projection_vs_transport",
+      "max_abs": 9.063930161978817e-17
+    },
+    {
+      "arm": "O1",
+      "camera": "105",
+      "field": "transported_Q",
+      "max_abs": 5.551115123125783e-17
+    },
+    {
+      "arm": "O1",
+      "camera": "105",
+      "field": "coordinate_Q",
+      "max_abs": 2.1510571102112408e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "105",
+      "field": "primary_Q",
+      "max_abs": 1.3530843112619095e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "105",
+      "field": "normal_degrees",
+      "max_abs": 8.881784197001252e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "105",
+      "field": "Q_coordinate_shift",
+      "max_abs": 9.612299292031251e-17
+    },
+    {
+      "arm": "O1",
+      "camera": "105",
+      "field": "Q_frame_shift",
+      "max_abs": 2.7755575615628914e-17
+    },
+    {
+      "arm": "O1",
+      "camera": "105",
+      "field": "Q_projection_vs_transport",
+      "max_abs": 9.367506770274758e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "114",
+      "field": "transported_Q",
+      "max_abs": 5.551115123125783e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "114",
+      "field": "coordinate_Q",
+      "max_abs": 9.367506770274758e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "114",
+      "field": "primary_Q",
+      "max_abs": 1.6653345369377348e-16
+    },
+    {
+      "arm": "O0",
+      "camera": "114",
+      "field": "normal_degrees",
+      "max_abs": 3.552713678800501e-15
+    },
+    {
+      "arm": "O0",
+      "camera": "114",
+      "field": "Q_coordinate_shift",
+      "max_abs": 9.806608650131388e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "114",
+      "field": "Q_frame_shift",
+      "max_abs": 3.469446951953614e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "114",
+      "field": "Q_projection_vs_transport",
+      "max_abs": 1.0733601507606494e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "114",
+      "field": "transported_Q",
+      "max_abs": 5.551115123125783e-17
+    },
+    {
+      "arm": "O1",
+      "camera": "114",
+      "field": "coordinate_Q",
+      "max_abs": 9.71445146547012e-17
+    },
+    {
+      "arm": "O1",
+      "camera": "114",
+      "field": "primary_Q",
+      "max_abs": 2.220446049250313e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "114",
+      "field": "normal_degrees",
+      "max_abs": 4.440892098500626e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "114",
+      "field": "Q_coordinate_shift",
+      "max_abs": 1.3707703592005793e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "114",
+      "field": "Q_frame_shift",
+      "max_abs": 2.7755575615628914e-17
+    },
+    {
+      "arm": "O1",
+      "camera": "114",
+      "field": "Q_projection_vs_transport",
+      "max_abs": 1.0321604682062002e-16
+    },
+    {
+      "arm": "O0",
+      "camera": "17",
+      "field": "transported_Q",
+      "max_abs": 5.551115123125783e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "17",
+      "field": "coordinate_Q",
+      "max_abs": 1.1102230246251565e-16
+    },
+    {
+      "arm": "O0",
+      "camera": "17",
+      "field": "primary_Q",
+      "max_abs": 8.326672684688674e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "17",
+      "field": "normal_degrees",
+      "max_abs": 8.881784197001252e-16
+    },
+    {
+      "arm": "O0",
+      "camera": "17",
+      "field": "Q_coordinate_shift",
+      "max_abs": 1.4412604410710822e-16
+    },
+    {
+      "arm": "O0",
+      "camera": "17",
+      "field": "Q_frame_shift",
+      "max_abs": 3.122502256758253e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "17",
+      "field": "Q_projection_vs_transport",
+      "max_abs": 1.409327298959595e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "17",
+      "field": "transported_Q",
+      "max_abs": 5.551115123125783e-17
+    },
+    {
+      "arm": "O1",
+      "camera": "17",
+      "field": "coordinate_Q",
+      "max_abs": 1.1102230246251565e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "17",
+      "field": "primary_Q",
+      "max_abs": 1.1102230246251565e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "17",
+      "field": "normal_degrees",
+      "max_abs": 8.881784197001252e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "17",
+      "field": "Q_coordinate_shift",
+      "max_abs": 1.2802733591159299e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "17",
+      "field": "Q_frame_shift",
+      "max_abs": 3.8163916471489756e-17
+    },
+    {
+      "arm": "O1",
+      "camera": "17",
+      "field": "Q_projection_vs_transport",
+      "max_abs": 1.5612511283791264e-16
+    },
+    {
+      "arm": "O0",
+      "camera": "76",
+      "field": "transported_Q",
+      "max_abs": 5.551115123125783e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "76",
+      "field": "coordinate_Q",
+      "max_abs": 4.2674197509029455e-16
+    },
+    {
+      "arm": "O0",
+      "camera": "76",
+      "field": "primary_Q",
+      "max_abs": 8.326672684688674e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "76",
+      "field": "normal_degrees",
+      "max_abs": 4.440892098500626e-16
+    },
+    {
+      "arm": "O0",
+      "camera": "76",
+      "field": "Q_coordinate_shift",
+      "max_abs": 8.640413688351667e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "76",
+      "field": "Q_frame_shift",
+      "max_abs": 2.7755575615628914e-17
+    },
+    {
+      "arm": "O0",
+      "camera": "76",
+      "field": "Q_projection_vs_transport",
+      "max_abs": 1.3183898417423734e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "76",
+      "field": "transported_Q",
+      "max_abs": 5.551115123125783e-17
+    },
+    {
+      "arm": "O1",
+      "camera": "76",
+      "field": "coordinate_Q",
+      "max_abs": 4.3368086899420177e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "76",
+      "field": "primary_Q",
+      "max_abs": 2.2898349882893854e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "76",
+      "field": "normal_degrees",
+      "max_abs": 4.440892098500626e-16
+    },
+    {
+      "arm": "O1",
+      "camera": "76",
+      "field": "Q_coordinate_shift",
+      "max_abs": 7.376640531048251e-17
+    },
+    {
+      "arm": "O1",
+      "camera": "76",
+      "field": "Q_frame_shift",
+      "max_abs": 3.642919299551295e-17
+    },
+    {
+      "arm": "O1",
+      "camera": "76",
+      "field": "Q_projection_vs_transport",
+      "max_abs": 1.3183898417423734e-16
+    }
+  ],
+  "scientific_flags_counts_RGB_errors_exact": true
+}

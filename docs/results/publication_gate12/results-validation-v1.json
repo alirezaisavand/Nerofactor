@@ -1,0 +1,72 @@
+{
+  "O0_admitted": false,
+  "O1_admission": "perfect-synthetic-mask-assisted derivative for controlled downstream evaluation",
+  "RGB_error_metrics_scientific_flags_and_counts_exact": true,
+  "SAM2_inference": 0,
+  "SAM2_planning": {
+    "bytes": 2748,
+    "sha256": "7c731cc4a2b03022374043016f340600029025fd60e20773b4ac28c1ae2a0e89"
+  },
+  "SDF_queries": 0,
+  "accepted_preparation_tests_not_repeated": true,
+  "artifact_manifest": {
+    "bytes": 18800,
+    "sha256": "6a4d8c62e7d939e9213d2ae3e26b4680a57dd44042ec79edcd4c45899ebf10ea"
+  },
+  "authorized_source": "3c3831957c805c38038abb0c9be4633b4672769a",
+  "checkpoint_deserializations": 0,
+  "diagnostic_float_differences": 275,
+  "finalized_files_verified": 27,
+  "first_supplemental_postcheck": "Exact entire-JSON comparison stopped on floating diagnostic differences after the frozen verifier passed; original files and separate v1 replay retained.",
+  "focused_result_CPU_tests": {
+    "failed": 0,
+    "junit": {
+      "bytes": 785,
+      "sha256": "1a59e55e525136ed13bbf7beb45975b18050c5a5a79e2826831a1097a2b9b1f4"
+    },
+    "passed": 3,
+    "skipped": 0
+  },
+  "freeze_sha256": "f20bab2ebcddc48bbd8d22dc384c06d0ee3f6231d181b09560d32c3968fe5e9a",
+  "frozen_scientific_verifier_replay": "passed unchanged; only output path rebound to preserve original analysis",
+  "markdown_links_checked": 15,
+  "material_training_launched": false,
+  "maximum_diagnostic_difference": 4.85722573273506e-17,
+  "native_captures_verified": 72,
+  "native_transfer_roundoff_events": 12,
+  "new_geometry_rays": 0,
+  "new_shader_integrations": 0,
+  "new_source_files": {
+    "experiments/finalize_bell_geometry_rgb_gate12.py": {
+      "bytes": 18563,
+      "sha256": "1b8e8854f330a80432c00cb4524708344d4d940abb315392ee07300793f25d15"
+    },
+    "tests/scientific/test_finalize_bell_geometry_rgb_gate12.py": {
+      "bytes": 2475,
+      "sha256": "b9717d29eba5d4bd5118b53faa6454ef768a31b20b8b50aa1a3d953c0bc20aec"
+    }
+  },
+  "next": "Separate freeze/approval for the K1-style oracle/O1 known-light matched material pair; preserve sharper unseen-light sensitivity as a future relighting opportunity.",
+  "protected_original_files_verified": 16,
+  "python38_AST_checked": [
+    "experiments/finalize_bell_geometry_rgb_gate12.py",
+    "tests/scientific/test_finalize_bell_geometry_rgb_gate12.py"
+  ],
+  "replayed_transfer_roundoff_events": 84,
+  "report": {
+    "bytes": 14690,
+    "sha256": "e85e6dd16ae0bf460ec1fce4a6b212d9f69bd7117cc9326f5276275930e16efe"
+  },
+  "scientific_tolerances_unchanged": true,
+  "source_snapshots": {
+    "geometry": {
+      "commit": "79252178e65914ad1acbc14790b1514f276bfea0",
+      "unchanged_files": 99
+    },
+    "material": {
+      "commit": "e1e859779301faced46d6476691e20b546c27ae0",
+      "unchanged_files": 106
+    }
+  },
+  "status": "complete_verified_results_PROCEED"
+}
