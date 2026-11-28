@@ -1,0 +1,750 @@
+{
+  "date_UTC": "2026-11-28",
+  "focused_CPU_log": {
+    "bytes": 1443,
+    "sha256": "a76f6e982af705fbf6b978c8fa65c6ed4e1bcb9d42a8fd23c54cad668861e9b5"
+  },
+  "focused_CPU_tests": 13,
+  "freeze_sha256": "0f3b48a894cad4d88539d2e8f16a5ce96383406a2ca3cb9c44d4bb2d9bd67aa3",
+  "fresh_output_absent": true,
+  "inputs_verified": 544,
+  "native_admission": "Not run; all actual native compatibility, finite-gradient/Adam, weights, tape and image gates remain mandatory inside separately approved batch.",
+  "oracle_analytic_archive_Q_max_absolute": 2.040034807748725e-15,
+  "original_A_and_G_manifest_verified": true,
+  "paired_saved_views_verified": 128,
+  "parent_commit": "6c9a9e7adde146a857e649ee714b1b38a826a435",
+  "saved_camera58_analysis_adapter_check": "All six saved-data diagnostic fields match the 4091-point frozen inventory; no new rays or BRDF integration.",
+  "scientific_execution": {
+    "BRDF_integrations": 0,
+    "SAM_inference": 0,
+    "SDF_queries": 0,
+    "checkpoint_loads": 0,
+    "native_models": 0,
+    "optimizer_returns": 0,
+    "primary_rays": 0,
+    "shadow_rays": 0
+  },
+  "sources": {
+    "benchmarks/bell_dense_known_l2_v1.py": "e969e7c6c537732be0908306307ba6ca8887ef9cbae3fb398764f9ce2efe3bee",
+    "benchmarks/bell_e11.py": "01b18245999d0d9ffcf0fdfe9b317fdfd427d9e1bee6ca7db395eaa0b3c94e8a",
+    "benchmarks/bell_geometry_e11.py": "491f86b7799d03911c4665e1884ceb81b62ae8dc085141b7f112b43891ab3737",
+    "benchmarks/bell_geometry_gate10_v1.py": "e1e250395aa9a6bc475c1e317e1ab613db863adfa4b1207449389cbf1dbd0e7c",
+    "benchmarks/bell_geometry_gate11.py": "6fffd51b8fdd78592bb09f928a8b57eae8e5047c847aaed7fb6454bc8ca833bd",
+    "benchmarks/bell_geometry_rgb_gate12.py": "3670fba836cad22c10916796a41e88b53bba536e4d1765b645575286a560afc1",
+    "benchmarks/bell_known_l2_v1.py": "e198f30f2d66f36d89a54bcad066e580dacc63191f802accd465af7f615ece34",
+    "benchmarks/bell_material_geometry_gate13.py": "fbae6d2401925ba06e1c76502a1fd72305f4def6f47943b87c9a247f980a049f",
+    "benchmarks/bell_reference_e11.py": "be4b95e3a8f37d5142920637a6533da89ecb2ff96c916343423254016ca7f673",
+    "benchmarks/bell_sam2_ordering_gate12.py": "f615020ff61a3d5142aaffaa4e5d4529664dcabb488112ee224fefca083a5d86",
+    "benchmarks/donut_heterogeneous_training_v1.py": "6484739741cd9742f96562d6500bcaa236c70207f1dc4e546ceae8228f2d7037",
+    "benchmarks/donut_matched_geometry_recovery_v1.py": "075cb3cf6df177356ada3126c35118714901644758c9475bd2ebffc313013d77",
+    "benchmarks/donut_oracle_geometry_rgb_v1.py": "f208135444d5966c0ef8f81e6c858db6cf5daaf109ef382d3db994e95fbbaec6",
+    "benchmarks/donut_reconstructed_geometry_v1.py": "4357f6c4f85499b970701002d32e4e0f245a57edc7dc53237c846ae8220cfaac",
+    "benchmarks/donut_recovery_v1.py": "28bc3cb19f371a33bf8715c0a2ca55f236a606fae295e1b3de3248121b80b556",
+    "benchmarks/generate_bell_e11.py": "877b826ce3e2eabda860d296051de6791cf048f543e1bb41dbe60886654c7647",
+    "benchmarks/neural_observation_e16.py": "14d5efac6f58d7b7a28d66d937da46cf51521ae83a7b0540920a697f5d758f7c",
+    "docs/protocols/BELL_DENSE_KNOWN_L2_RECOVERY_V2.freeze.json": "1c7887d33f8f8ba3fb28cc48d795636ee2955eedbeebc7ead56bdef26736faf7",
+    "docs/protocols/BELL_GATE13_RELIGHTING_PROSPECTIVE.md": "a8a339409f2c034c27f9f8d539a3c5072cc536ca9c846f52d14cb0cb0c7606f4",
+    "docs/protocols/BELL_GEOMETRY_RGB_GATE12_V1.md": "75a6af48b0d4abaadf8d1979814b0619ffa4b56968a30b00e37f777d5115f529",
+    "docs/protocols/BELL_MATCHED_MATERIAL_GATE13_V1.md": "cde12c48133e7d452af85a566030b72f12e693a6db19ffcf7aae844e44339f40",
+    "docs/results/publication_gate102/results-v2/artifact-manifest.json": "67ac8e6fbdeecb4bf16eb401d3a19e2ab24bad5cd09daad4d2abd03e7618ee53",
+    "docs/results/publication_gate11/results-v1/artifact-manifest.json": "0c0451d6abed22ae9ff9784d02cd063e62ed2b7116f2bb7eec318be37a21bcf7",
+    "docs/results/publication_gate12/O1-controlled-handoff.json": "46ae8c7bb6a23956185afb1a2c6b97e5b769702946baa7005500952a1a9e8e14",
+    "docs/results/publication_gate12/input-inventory.json": "f3f9b04421d611a9fa761c65423cd4febb7337ea87cb314f5e8608735d6f1e2a",
+    "docs/results/publication_gate12/results-v1/finalization-manifest.json": "6a4d8c62e7d939e9213d2ae3e26b4680a57dd44042ec79edcd4c45899ebf10ea",
+    "docs/results/publication_gate12/sam2-ordering-v2.json": "8a21593babc6157eeec6b460e1f23babc5d5013472af43e23e19c4f404bf70c8",
+    "docs/results/publication_gate13/SAM_READINESS.md": "431222856c8138cae1c4657fac77fadd1c1f339b487cc1aeb5d21ac8a27bfceb",
+    "docs/results/publication_gate13/input-inventory.json": "ae7758b96c7531c2fd126e19f04f1e2687ca82df7c74c973a2148d80afea3f05",
+    "experiments/analyze_bell_material_geometry_gate13.py": "7aec9b6215542609db5b1ec20800f903337541d529e5f63dbbb0b125aec8f86e",
+    "experiments/analyze_donut_heterogeneous_training_v1.py": "f70daf32cc8bc47b7be94baece084ff8a1cb2e3a582b7e0d202dfaff07aef86c",
+    "experiments/bell_final_tensor_trainer_v1.py": "44eb8062e2b5e34f129ef3675f8c93666f789081ab313b2e72be1024354e74ef",
+    "experiments/bell_geometry_rgb_gate12.py": "f0ee62e31cad2eb4220e5d1312d5f89c1e69fd7413d1b111fcabe18357ca8473",
+    "experiments/bell_highlight_e11d.py": "93ef7b7a693622ad54b278a61c96d10575e647969326675411a265da94f3ee19",
+    "experiments/bell_highlight_pilot_e11d.py": "0c781ed2a380462c52c59b8442a61a77cdf919c75f52fb50c814faa33f7b18c6",
+    "experiments/bell_neural_material_e16.py": "4be6581994be035ed992ce9514089048dabf7fff43dad2126f1d62ce695efc9d",
+    "experiments/bell_quadrature_e11e.py": "d91c09671eae577b890ac15603c3ae646d4daa88d8fbd1c73c5763a536b42098",
+    "experiments/donut_material_recovery_v1.py": "ac511516e3b05b3c27b3a55b7f8d5e5a5e97f01eba2deb83f67ae968a341baa7",
+    "experiments/donut_reconstructed_geometry_v1.py": "fd32bdbc52393b672a7e02349c7f04e142551e1993c3965b059250bcdf2c1553",
+    "experiments/prepare_bell_geometry_rgb_gate12.py": "6daad4e9506b0a9052f2731d832b38417eeda072928cfedeea88f397ce4c1a1f",
+    "experiments/prepare_bell_material_geometry_gate13.py": "4dd95cfd0886862b8f6348a0bc0585998048479b6c1e21de466e5b8f408a8abc",
+    "experiments/run_bell_geometry_rgb_gate12.sh": "03fff773f5af34961d8176be3b375d13638d69551f12e5aa32a1aa03e6821e99",
+    "experiments/run_bell_material_geometry_gate13.sh": "aef4c2e18a7c6a540c7780171f8d415f9575d71cb639e12143df830a50cd27da",
+    "experiments/train_bell_dense_known_l2_v1.py": "c4b459419f7bef59c791595a7c925f5d4e359edbd4b71f3af24bf6345bfcc431",
+    "experiments/train_bell_material_geometry_gate13.py": "44c79a5d0f2897ccc8c8eed554ed1b03f6e2b219420f90c997920b16aaa41d54",
+    "experiments/train_donut_matched_geometry_v1.py": "9562ef63bbb4065c9300389642b8bf90b0128974956a77326813e29f6a7edc8c",
+    "experiments/verify_bell_geometry_rgb_gate12.py": "0c246a1537f92fe2769f02f8b6cc01c64c6d2e36397f9a2a93e1bdaef9cc5642",
+    "experiments/verify_donut_oracle_geometry_rgb_v1.py": "1a4bbbe29c70bf852dd648c86126ca0084f92609ed183479b1389ad4168d000e",
+    "infrastructure/bell_material_pair_gate13.py": "69e53704773396b3c6b6ad0abc35829612c5560840f68f03e239dde973827c18",
+    "infrastructure/known_l2_audit.py": "fbc497113e9b03697cae26ba4b33423399be425618345b34e2d6d8cea4bf8add",
+    "infrastructure/material_recovery_e13_evaluation.py": "1ba98e148c898808b161eaba4c93f37d46ac2f58007c1ab54e6086f860ed7616",
+    "infrastructure/signatures.py": "f3eb6c82de610913c1049745271d8be5391d34f02d78866a14fad0032b7f4759",
+    "infrastructure/sphere_replay.py": "a8149046bb6dec1e15f5e9ee7a31fa2fcf7351c8a5191a2838631becc9f3190e",
+    "infrastructure/sphere_visuals.py": "56e28641ece240ddcae1de42ffaaabb2ea39ef0105044716bcbeca11b7a438e0",
+    "infrastructure/stage_sources.py": "3c904a09662663fd9f37e3a6afee33576963675508e416dbc6141a5c68d44dc8",
+    "infrastructure/surface_q_regularization.py": "db8c2b3e6cb5e85fcec74944e01d719dea19b539a84973ac0e7911505dcef50c",
+    "infrastructure/verified_ray_backend.py": "e103775b70a72a24d0772dd6f09d622820d403d8d9ced63837521981df81dffd",
+    "scientific_sources/manifest-v1.json": "39b9baecce2aab6fc62ec57bd6f45e453d8e9d68215f6af3f25b8ed118c5a3f6",
+    "scientific_sources/material_a/raytracing/raytracer.py": "f670b215c5379d3bdcd9993c836935ea658f5ee9570bbe46bb38096b3f0ac25f",
+    "scientific_variants/material_a_v1.py": "52603dc041920f7220748c9114f8293ad2499f778ffd688ef639bbe4e8759875",
+    "tests/scientific/test_bell_geometry_rgb_gate12.py": "ab71feb7891bcd77e8835ef01452e8ac588f8bdd86028494c887649e629463d1",
+    "tests/scientific/test_bell_material_geometry_gate13.py": "6f6a5dab1fd1e6aa5555a3267b8cd901d35a3819d103f74163762fa8e18e99b3"
+  },
+  "status": "PROCEED",
+  "support": {
+    "cameras": [
+      {
+        "camera": 14,
+        "common": 4269,
+        "split": "fitting"
+      },
+      {
+        "camera": 98,
+        "common": 3709,
+        "split": "fitting"
+      },
+      {
+        "camera": 103,
+        "common": 3612,
+        "split": "fitting"
+      },
+      {
+        "camera": 117,
+        "common": 3344,
+        "split": "fitting"
+      },
+      {
+        "camera": 91,
+        "common": 3834,
+        "split": "fitting"
+      },
+      {
+        "camera": 63,
+        "common": 4024,
+        "split": "fitting"
+      },
+      {
+        "camera": 67,
+        "common": 3940,
+        "split": "fitting"
+      },
+      {
+        "camera": 104,
+        "common": 3627,
+        "split": "fitting"
+      },
+      {
+        "camera": 20,
+        "common": 4255,
+        "split": "fitting"
+      },
+      {
+        "camera": 39,
+        "common": 4256,
+        "split": "fitting"
+      },
+      {
+        "camera": 74,
+        "common": 3999,
+        "split": "fitting"
+      },
+      {
+        "camera": 35,
+        "common": 4220,
+        "split": "fitting"
+      },
+      {
+        "camera": 51,
+        "common": 4211,
+        "split": "fitting"
+      },
+      {
+        "camera": 18,
+        "common": 4317,
+        "split": "fitting"
+      },
+      {
+        "camera": 87,
+        "common": 3845,
+        "split": "fitting"
+      },
+      {
+        "camera": 2,
+        "common": 4371,
+        "split": "fitting"
+      },
+      {
+        "camera": 47,
+        "common": 4259,
+        "split": "fitting"
+      },
+      {
+        "camera": 100,
+        "common": 3680,
+        "split": "fitting"
+      },
+      {
+        "camera": 22,
+        "common": 4298,
+        "split": "fitting"
+      },
+      {
+        "camera": 32,
+        "common": 4290,
+        "split": "fitting"
+      },
+      {
+        "camera": 62,
+        "common": 4119,
+        "split": "fitting"
+      },
+      {
+        "camera": 72,
+        "common": 4012,
+        "split": "fitting"
+      },
+      {
+        "camera": 106,
+        "common": 3574,
+        "split": "fitting"
+      },
+      {
+        "camera": 19,
+        "common": 4338,
+        "split": "fitting"
+      },
+      {
+        "camera": 88,
+        "common": 3784,
+        "split": "fitting"
+      },
+      {
+        "camera": 59,
+        "common": 4080,
+        "split": "fitting"
+      },
+      {
+        "camera": 86,
+        "common": 3874,
+        "split": "fitting"
+      },
+      {
+        "camera": 54,
+        "common": 4107,
+        "split": "fitting"
+      },
+      {
+        "camera": 123,
+        "common": 3194,
+        "split": "fitting"
+      },
+      {
+        "camera": 99,
+        "common": 3706,
+        "split": "fitting"
+      },
+      {
+        "camera": 16,
+        "common": 4154,
+        "split": "fitting"
+      },
+      {
+        "camera": 3,
+        "common": 4233,
+        "split": "fitting"
+      },
+      {
+        "camera": 75,
+        "common": 3967,
+        "split": "fitting"
+      },
+      {
+        "camera": 122,
+        "common": 3229,
+        "split": "fitting"
+      },
+      {
+        "camera": 8,
+        "common": 4262,
+        "split": "fitting"
+      },
+      {
+        "camera": 84,
+        "common": 3786,
+        "split": "fitting"
+      },
+      {
+        "camera": 64,
+        "common": 4099,
+        "split": "fitting"
+      },
+      {
+        "camera": 23,
+        "common": 4339,
+        "split": "fitting"
+      },
+      {
+        "camera": 119,
+        "common": 3269,
+        "split": "fitting"
+      },
+      {
+        "camera": 36,
+        "common": 4308,
+        "split": "fitting"
+      },
+      {
+        "camera": 0,
+        "common": 4334,
+        "split": "fitting"
+      },
+      {
+        "camera": 60,
+        "common": 4140,
+        "split": "fitting"
+      },
+      {
+        "camera": 6,
+        "common": 4319,
+        "split": "fitting"
+      },
+      {
+        "camera": 10,
+        "common": 4328,
+        "split": "fitting"
+      },
+      {
+        "camera": 120,
+        "common": 3232,
+        "split": "fitting"
+      },
+      {
+        "camera": 121,
+        "common": 3256,
+        "split": "fitting"
+      },
+      {
+        "camera": 116,
+        "common": 3312,
+        "split": "fitting"
+      },
+      {
+        "camera": 70,
+        "common": 4083,
+        "split": "fitting"
+      },
+      {
+        "camera": 29,
+        "common": 4180,
+        "split": "fitting"
+      },
+      {
+        "camera": 102,
+        "common": 3669,
+        "split": "fitting"
+      },
+      {
+        "camera": 27,
+        "common": 4263,
+        "split": "fitting"
+      },
+      {
+        "camera": 55,
+        "common": 4171,
+        "split": "fitting"
+      },
+      {
+        "camera": 97,
+        "common": 3674,
+        "split": "fitting"
+      },
+      {
+        "camera": 25,
+        "common": 4217,
+        "split": "fitting"
+      },
+      {
+        "camera": 109,
+        "common": 3506,
+        "split": "fitting"
+      },
+      {
+        "camera": 82,
+        "common": 3876,
+        "split": "fitting"
+      },
+      {
+        "camera": 127,
+        "common": 3205,
+        "split": "fitting"
+      },
+      {
+        "camera": 124,
+        "common": 3208,
+        "split": "fitting"
+      },
+      {
+        "camera": 125,
+        "common": 3199,
+        "split": "fitting"
+      },
+      {
+        "camera": 57,
+        "common": 4178,
+        "split": "fitting"
+      },
+      {
+        "camera": 28,
+        "common": 4303,
+        "split": "fitting"
+      },
+      {
+        "camera": 52,
+        "common": 4174,
+        "split": "fitting"
+      },
+      {
+        "camera": 24,
+        "common": 4276,
+        "split": "fitting"
+      },
+      {
+        "camera": 41,
+        "common": 4215,
+        "split": "fitting"
+      },
+      {
+        "camera": 77,
+        "common": 3948,
+        "split": "fitting"
+      },
+      {
+        "camera": 26,
+        "common": 4340,
+        "split": "fitting"
+      },
+      {
+        "camera": 15,
+        "common": 4359,
+        "split": "fitting"
+      },
+      {
+        "camera": 126,
+        "common": 3221,
+        "split": "fitting"
+      },
+      {
+        "camera": 68,
+        "common": 4087,
+        "split": "fitting"
+      },
+      {
+        "camera": 95,
+        "common": 3748,
+        "split": "fitting"
+      },
+      {
+        "camera": 81,
+        "common": 3957,
+        "split": "fitting"
+      },
+      {
+        "camera": 107,
+        "common": 3570,
+        "split": "fitting"
+      },
+      {
+        "camera": 30,
+        "common": 4301,
+        "split": "fitting"
+      },
+      {
+        "camera": 12,
+        "common": 4197,
+        "split": "fitting"
+      },
+      {
+        "camera": 33,
+        "common": 4141,
+        "split": "fitting"
+      },
+      {
+        "camera": 94,
+        "common": 3762,
+        "split": "fitting"
+      },
+      {
+        "camera": 111,
+        "common": 3448,
+        "split": "fitting"
+      },
+      {
+        "camera": 80,
+        "common": 3873,
+        "split": "fitting"
+      },
+      {
+        "camera": 43,
+        "common": 4241,
+        "split": "fitting"
+      },
+      {
+        "camera": 31,
+        "common": 4269,
+        "split": "fitting"
+      },
+      {
+        "camera": 110,
+        "common": 3468,
+        "split": "fitting"
+      },
+      {
+        "camera": 21,
+        "common": 4306,
+        "split": "fitting"
+      },
+      {
+        "camera": 78,
+        "common": 3972,
+        "split": "fitting"
+      },
+      {
+        "camera": 37,
+        "common": 4163,
+        "split": "fitting"
+      },
+      {
+        "camera": 101,
+        "common": 3623,
+        "split": "fitting"
+      },
+      {
+        "camera": 44,
+        "common": 4240,
+        "split": "fitting"
+      },
+      {
+        "camera": 5,
+        "common": 4342,
+        "split": "fitting"
+      },
+      {
+        "camera": 40,
+        "common": 4237,
+        "split": "fitting"
+      },
+      {
+        "camera": 48,
+        "common": 4157,
+        "split": "fitting"
+      },
+      {
+        "camera": 89,
+        "common": 3839,
+        "split": "fitting"
+      },
+      {
+        "camera": 1,
+        "common": 4281,
+        "split": "fitting"
+      },
+      {
+        "camera": 49,
+        "common": 4235,
+        "split": "fitting"
+      },
+      {
+        "camera": 108,
+        "common": 3526,
+        "split": "fitting"
+      },
+      {
+        "camera": 79,
+        "common": 3918,
+        "split": "fitting"
+      },
+      {
+        "camera": 66,
+        "common": 4069,
+        "split": "fitting"
+      },
+      {
+        "camera": 71,
+        "common": 3925,
+        "split": "fitting"
+      },
+      {
+        "camera": 65,
+        "common": 4081,
+        "split": "fitting"
+      },
+      {
+        "camera": 34,
+        "common": 4308,
+        "split": "fitting"
+      },
+      {
+        "camera": 42,
+        "common": 4185,
+        "split": "fitting"
+      },
+      {
+        "camera": 61,
+        "common": 4085,
+        "split": "fitting"
+      },
+      {
+        "camera": 46,
+        "common": 4112,
+        "split": "fitting"
+      },
+      {
+        "camera": 83,
+        "common": 3936,
+        "split": "fitting"
+      },
+      {
+        "camera": 90,
+        "common": 3782,
+        "split": "fitting"
+      },
+      {
+        "camera": 113,
+        "common": 3432,
+        "split": "fitting"
+      },
+      {
+        "camera": 13,
+        "common": 4369,
+        "split": "fitting"
+      },
+      {
+        "camera": 9,
+        "common": 4346,
+        "split": "fitting"
+      },
+      {
+        "camera": 7,
+        "common": 4319,
+        "split": "fitting"
+      },
+      {
+        "camera": 56,
+        "common": 4107,
+        "split": "fitting"
+      },
+      {
+        "camera": 96,
+        "common": 3740,
+        "split": "fitting"
+      },
+      {
+        "camera": 85,
+        "common": 3877,
+        "split": "fitting"
+      },
+      {
+        "camera": 4,
+        "common": 4264,
+        "split": "fitting"
+      },
+      {
+        "camera": 112,
+        "common": 3444,
+        "split": "fitting"
+      },
+      {
+        "camera": 92,
+        "common": 3756,
+        "split": "fitting"
+      },
+      {
+        "camera": 50,
+        "common": 4008,
+        "split": "fitting"
+      },
+      {
+        "camera": 115,
+        "common": 3368,
+        "split": "fitting"
+      },
+      {
+        "camera": 118,
+        "common": 3296,
+        "split": "fitting"
+      },
+      {
+        "camera": 69,
+        "common": 4005,
+        "split": "fitting"
+      },
+      {
+        "camera": 45,
+        "common": 4194,
+        "split": "fitting"
+      },
+      {
+        "camera": 73,
+        "common": 3999,
+        "split": "fitting"
+      },
+      {
+        "camera": 53,
+        "common": 4180,
+        "split": "fitting"
+      },
+      {
+        "camera": 38,
+        "common": 4224,
+        "split": "fitting"
+      },
+      {
+        "camera": 93,
+        "common": 3770,
+        "split": "fitting"
+      },
+      {
+        "camera": 58,
+        "common": 4091,
+        "split": "validation"
+      },
+      {
+        "camera": 11,
+        "common": 4307,
+        "split": "held_out"
+      },
+      {
+        "camera": 105,
+        "common": 3525,
+        "split": "held_out"
+      },
+      {
+        "camera": 114,
+        "common": 3430,
+        "split": "held_out"
+      },
+      {
+        "camera": 17,
+        "common": 4305,
+        "split": "held_out"
+      },
+      {
+        "camera": 76,
+        "common": 3949,
+        "split": "held_out"
+      }
+    ],
+    "effective_training_passes": 10.599053537641131,
+    "evaluation_observations": 506669,
+    "fitting_observations": 483062,
+    "observations_and_targets_sha256": "69829e2cdcb2ea7cb723b725a9df233e5685ab9a64a78b68f475670d0ba886d8",
+    "photometric_index_sha256": "1e210592f8a285674e8f8ce8a4254a9128b9faf42b438a5cfd5764432d809573",
+    "restriction": "oracle-assisted same-ray correspondence, displacement<=.02, signed normals<=30deg, both actual normals positive",
+    "training_observation_exposures": 5120000
+  },
+  "transport_orthogonality_max_absolute": 2.220446049250313e-16,
+  "unchanged_raw_trainer_sha256": "ac511516e3b05b3c27b3a55b7f8d5e5a5e97f01eba2deb83f67ae968a341baa7",
+  "work_per_arm": {
+    "component_reverse_sweeps": 30,
+    "shader_calls": 60960,
+    "shadow_rays": 45221191680
+  }
+}
